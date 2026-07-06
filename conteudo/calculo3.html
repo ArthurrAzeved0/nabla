@@ -308,7 +308,7 @@
   <p>Converte o <strong>fluxo através de uma superfície fechada</strong> \(S\) (com normal apontando para fora) numa integral tripla do divergente no sólido \(E\) interior:</p>
   <div class="formula">
     <div class="rotulo">Teorema de Gauss</div>
-    $$\oiint_S \vec F \cdot d\vec S = \iiint_E \nabla \cdot \vec F\;\; dV$$
+    $$\iint_S \vec F \cdot d\vec S = \iiint_E \nabla \cdot \vec F\;\; dV \qquad (S \text{ fechada, normal exterior})$$
   </div>
   <p>Roteiro: (1) verifique que \(S\) é fechada (se não for, feche com uma "tampa" e desconte o fluxo dela); (2) calcule \(\nabla\cdot\vec F\); (3) escolha coordenadas adequadas (cilíndricas/esféricas) para a tripla; (4) confira a orientação: o teorema exige normal <strong>exterior</strong>.</p>
   <div class="macete">Se \(\nabla \cdot \vec F\) der uma constante \(c\), o fluxo total é simplesmente \(c \cdot V(E)\) — volume do sólido vezes a constante. Isso transforma questões aparentemente cabeludas em geometria básica (volume de esfera, cilindro, cone).</div>
@@ -335,6 +335,6 @@
     \qquad
     \underbrace{\oint_C \vec F \cdot d\vec r = \iint_S (\nabla\times\vec F)\cdot d\vec S}_{\text{Stokes: borda} \to \text{superfície}}
     \qquad
-    \underbrace{\oiint_S \vec F \cdot d\vec S = \iiint_E \nabla\cdot\vec F\, dV}_{\text{Gauss: casca fechada} \to \text{sólido}}$$
+    \underbrace{\iint_S \vec F \cdot d\vec S = \iiint_E \nabla\cdot\vec F\, dV}_{\text{Gauss: casca fechada} \to \text{sólido}}$$
   </div>
 </section>
