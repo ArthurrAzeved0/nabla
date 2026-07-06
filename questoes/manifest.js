@@ -19,7 +19,7 @@ window.QUESTOES_MANIFEST = {
     "final": ["q01.html", "q02.html", "q03.html", "q04.html", "q05.html"]
   },
   eletromag: {
-    "1ee": ["q01.html", "q02.html", "q03.html", "q04.html"],
+    "1ee": ["q01.html", "q02.html", "q03.html", "q04.html", "q05.html", "q06.html", "q07.html", "q08.html", "q09.html", "q10.html", "q11.html", "q12.html"],
     "2ee": ["q01.html", "q02.html", "q03.html", "q04.html"],
     "final": ["q01.html", "q02.html", "q03.html", "q04.html"]
   }
