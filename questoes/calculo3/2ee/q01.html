@@ -1,0 +1,37 @@
+<article class="questao" data-id="calculo3-2ee-01" data-tema="integrais-multiplas">
+  <div class="q-topo">
+    <span class="q-id">Questão 01</span>
+    <span class="q-tag">2ª Avaliação · 2023.2</span>
+    <span class="q-tag">Integrais múltiplas</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Escolha um <strong>e apenas um</strong> dos itens abaixo e forneça o que se pede:</p>
+    <ol type="a">
+      <li>Encontre o volume do sólido limitado abaixo pelo plano \(z = 0\) e acima pela superfície \(z = f(x,y) = 1 - x^2 - y^2\);</li>
+      <li>Calcule a integral \(\displaystyle\int_1^2 \int_{y=x}^{y=x^2} \int_{z=x-y}^{z=x+y} 2xz\; dz\, dy\, dx\).</li>
+    </ol>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">a) \(V = \dfrac{\pi}{2}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo (item a)</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> O paraboloide \(z = 1 - x^2 - y^2\) corta o plano \(z = 0\) quando \(x^2 + y^2 = 1\): a base é o disco de raio 1. O volume é</p>
+      $$V = \iint_D (1 - x^2 - y^2)\; dA$$
+      <p><strong>Passo 2 —</strong> Simetria circular \(\Rightarrow\) polares (\(x^2+y^2 = r^2\), \(dA = r\,dr\,d\theta\)):</p>
+      $$V = \int_0^{2\pi}\!\!\int_0^1 (1 - r^2)\, r\; dr\, d\theta$$
+      <p><strong>Passo 3 —</strong> Resolva a integral radial:</p>
+      $$\int_0^1 (r - r^3)\, dr = \left[\frac{r^2}{2} - \frac{r^4}{4}\right]_0^1 = \frac{1}{2} - \frac{1}{4} = \frac{1}{4}$$
+      <p><strong>Passo 4 —</strong> Multiplique pela integral angular:</p>
+      $$V = 2\pi \cdot \frac{1}{4} = \boxed{\dfrac{\pi}{2}}$$
+    </div>
+  </details>
+</article>

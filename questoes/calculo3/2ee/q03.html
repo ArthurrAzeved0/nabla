@@ -1,0 +1,42 @@
+<article class="questao" data-id="calculo3-2ee-03" data-tema="campos-conservativos">
+  <div class="q-topo">
+    <span class="q-id">Questão 03</span>
+    <span class="q-tag">2ª Avaliação · 2023.2</span>
+    <span class="q-tag">Campos conservativos</span>
+    <span class="q-tag">4,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Considere o campo vetorial \(\vec F(x,y) = (x^2 + y^2)\,\vec i + (2xy + y^3 + 1)\,\vec j\).</p>
+    <ol type="a">
+      <li>(1,0 pt) Mostre que o campo é conservativo;</li>
+      <li>(1,5 pt) Encontre o campo escalar \(\varphi(x,y)\) tal que \(\nabla\varphi = \vec F\);</li>
+      <li>(1,5 pt) Calcule \(\displaystyle\int_\varphi \vec F \cdot d\vec s\) ao longo do caminho \(x = y^2\) entre os pontos \(C(1,-1)\) e \(D(1,1)\).</li>
+    </ol>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">a) \(P_y = Q_x = 2y\) ✓ &nbsp; b) \(\varphi = \dfrac{x^3}{3} + xy^2 + \dfrac{y^4}{4} + y\) &nbsp; c) \(\varphi(1,1) - \varphi(1,-1) = 2\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Item (a) —</strong> Com \(P = x^2 + y^2\) e \(Q = 2xy + y^3 + 1\):</p>
+      $$\frac{\partial P}{\partial y} = 2y \qquad\text{e}\qquad \frac{\partial Q}{\partial x} = 2y$$
+      <p>Como \(P_y = Q_x\) em todo o plano (que é simplesmente conexo), \(\vec F\) é conservativo.</p>
+      <p><strong>Item (b)</strong></p>
+      <p><strong>Passo 1 —</strong> Integre \(P\) em \(x\):</p>
+      $$\varphi = \int (x^2 + y^2)\, dx = \frac{x^3}{3} + xy^2 + g(y)$$
+      <p><strong>Passo 2 —</strong> Derive em \(y\) e iguale a \(Q\):</p>
+      $$\frac{\partial \varphi}{\partial y} = 2xy + g'(y) = 2xy + y^3 + 1 \;\Rightarrow\; g'(y) = y^3 + 1 \;\Rightarrow\; g(y) = \frac{y^4}{4} + y$$
+      <p><strong>Passo 3 —</strong> Potencial completo:</p>
+      $$\varphi(x,y) = \frac{x^3}{3} + xy^2 + \frac{y^4}{4} + y$$
+      <p><strong>Item (c) —</strong> Campo conservativo \(\Rightarrow\) Teorema Fundamental (o caminho \(x = y^2\) é irrelevante):</p>
+      $$\int_C^D \vec F \cdot d\vec s = \varphi(1,1) - \varphi(1,-1) = \left(\tfrac13 + 1 + \tfrac14 + 1\right) - \left(\tfrac13 + 1 + \tfrac14 - 1\right) = \boxed{2}$$
+    </div>
+  </details>
+</article>

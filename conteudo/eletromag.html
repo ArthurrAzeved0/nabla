@@ -1,0 +1,293 @@
+<!-- ============================================================
+  Conteúdo teórico: Fundamentos do Eletromagnetismo
+  Ordem dos tópicos: ementa oficial / cronograma da POLI/UPE.
+  Este arquivo é um FRAGMENTO de HTML injetado em curso.html.
+============================================================= -->
+
+<nav class="sumario" aria-label="Sumário do conteúdo">
+  <h2>1ª Unidade</h2>
+  <ol>
+    <li><a href="#em-carga">Carga elétrica e Lei de Coulomb</a></li>
+    <li><a href="#em-campo">Campo elétrico</a></li>
+    <li><a href="#em-gauss">Lei de Gauss</a></li>
+    <li><a href="#em-potencial">Potencial elétrico</a></li>
+    <li><a href="#em-capacitancia">Capacitância</a></li>
+    <li><a href="#em-corrente">Corrente e resistência elétrica</a></li>
+    <li><a href="#em-circuitos">Circuitos de corrente contínua</a></li>
+  </ol>
+  <h2>2ª Unidade</h2>
+  <ol start="8">
+    <li><a href="#em-magnetico">Campos magnéticos e força magnética</a></li>
+    <li><a href="#em-fontes">Fontes de campo: Biot-Savart e Ampère</a></li>
+    <li><a href="#em-inducao">Indução: Lei de Faraday e Lei de Lenz</a></li>
+    <li><a href="#em-indutancia">Indutância e circuitos RL</a></li>
+    <li><a href="#em-oscilacoes">Oscilações LC/RLC e corrente alternada</a></li>
+    <li><a href="#em-maxwell">Equações de Maxwell</a></li>
+  </ol>
+</nav>
+
+<!-- ================= 1ª UNIDADE ================= -->
+
+<section class="topico" id="em-carga">
+  <h2><span class="num">01</span> Carga elétrica e Lei de Coulomb</h2>
+  <p>A carga elétrica é uma propriedade fundamental da matéria, com duas espécies (positiva e negativa). Cargas de mesmo sinal se repelem; de sinais opostos se atraem. Propriedades essenciais:</p>
+  <ul>
+    <li><strong>Quantização:</strong> toda carga é múltiplo inteiro da carga elementar, \(q = n\,e\), com \(e = 1,6\times 10^{-19}\,\mathrm{C}\);</li>
+    <li><strong>Conservação:</strong> a carga total de um sistema isolado não muda — ela apenas se transfere;</li>
+    <li><strong>Condutores</strong> têm cargas livres (metais); <strong>isolantes (dielétricos)</strong> não. Num condutor em equilíbrio eletrostático, o excesso de carga fica na superfície e o campo interno é nulo.</li>
+  </ul>
+  <div class="formula">
+    <div class="rotulo">Lei de Coulomb</div>
+    $$F = k_0 \frac{|q_1||q_2|}{d^2}, \qquad k_0 = \frac{1}{4\pi\epsilon_0} = 9\times 10^9\;\tfrac{\mathrm{N\,m^2}}{\mathrm{C^2}}, \qquad \epsilon_0 = 8,85\times10^{-12}\,\tfrac{\mathrm{C^2}}{\mathrm{N\,m^2}}$$
+  </div>
+  <p>A força é vetorial e atua na linha que une as cargas. Para várias cargas, vale o <strong>princípio da superposição</strong>: some vetorialmente as forças de cada par.</p>
+  <div class="macete">Monte SEMPRE o diagrama de forças antes de somar. Decomponha em x e y; por simetria, muitas componentes se cancelam — enxergar a simetria primeiro corta a conta pela metade.</div>
+</section>
+
+<section class="topico" id="em-campo">
+  <h2><span class="num">02</span> Campo elétrico</h2>
+  <p>O campo elétrico é a força por unidade de carga de prova: \(\vec E = \vec F / q_0\). Uma carga positiva cria campo apontando <strong>para fora</strong> dela; negativa, <strong>para dentro</strong>.</p>
+  <div class="formula">
+    <div class="rotulo">Campo de uma carga pontual</div>
+    $$E = k_0 \frac{|q|}{r^2} \qquad\text{e}\qquad \vec F = q\vec E \text{ sobre uma carga } q \text{ imersa no campo}$$
+  </div>
+  <h3>Linhas de campo</h3>
+  <p>Saem de cargas positivas e chegam em negativas; nunca se cruzam; a densidade de linhas indica a intensidade do campo. O <strong>dipolo elétrico</strong> (par \(+q\), \(-q\) separado por \(d\)) tem momento \(p = qd\) e sofre torque \(\vec\tau = \vec p \times \vec E\) num campo externo.</p>
+  <h3>Distribuições contínuas de carga</h3>
+  <p>Divida a distribuição em elementos \(dq\), escreva o campo \(dE = k_0\,dq/r^2\) de cada elemento e integre (usando simetria para eliminar componentes):</p>
+  <div class="formula">
+    <div class="rotulo">Densidades de carga</div>
+    $$\lambda = \frac{q}{L} \;(\text{linear}), \qquad \sigma = \frac{q}{A} \;(\text{superficial}), \qquad \rho = \frac{q}{V} \;(\text{volumétrica})$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Resultados clássicos (decorar!)</div>
+    $$\text{Anel (eixo): } E = \frac{k_0 q z}{(z^2+R^2)^{3/2}} \qquad
+      \text{Fio infinito: } E = \frac{\lambda}{2\pi\epsilon_0 r} \qquad
+      \text{Plano infinito: } E = \frac{\sigma}{2\epsilon_0}$$
+  </div>
+  <div class="macete dica">Questão típica de 1º EE (2025.2): campo de duas cargas iguais num ponto do eixo de simetria. As componentes horizontais se cancelam e sobra \(E = 2\,E_1\cos\theta\) na vertical. Escreva \(\cos\theta = z/r\) com \(r = \sqrt{z^2 + (d/2)^2}\) e analise os limites \(z=0\) (campo nulo) e \(z \gg d\) (vira carga pontual \(2q\)) — os itens (b) quase sempre pedem esses limites.</div>
+</section>
+
+<section class="topico" id="em-gauss">
+  <h2><span class="num">03</span> Lei de Gauss</h2>
+  <p>O <strong>fluxo elétrico</strong> mede quanto campo atravessa uma superfície: \(\Phi_E = \oint \vec E \cdot d\vec A\). A Lei de Gauss diz que o fluxo por uma superfície <strong>fechada</strong> só depende da carga interna:</p>
+  <div class="formula">
+    <div class="rotulo">Lei de Gauss</div>
+    $$\Phi_E = \oint_S \vec E \cdot d\vec A = \frac{q_{int}}{\epsilon_0}$$
+  </div>
+  <p>Para calcular campos, escolha uma <strong>superfície gaussiana</strong> que respeite a simetria do problema, de modo que \(E\) seja constante sobre ela:</p>
+  <ul>
+    <li><strong>Simetria esférica</strong> (esfera carregada): gaussiana esférica, \(E \cdot 4\pi r^2 = q_{int}/\epsilon_0\);</li>
+    <li><strong>Simetria cilíndrica</strong> (fio, cilindro): gaussiana cilíndrica, \(E \cdot 2\pi r L = q_{int}/\epsilon_0\);</li>
+    <li><strong>Simetria planar</strong> (placa infinita): caixinha ("pillbox"), \(E \cdot 2A = \sigma A/\epsilon_0\).</li>
+  </ul>
+  <div class="formula">
+    <div class="rotulo">Esfera isolante uniformemente carregada (raio R, carga Q)</div>
+    $$E_{dentro}(r) = \frac{k_0 Q\, r}{R^3} \;\; (r \le R) \qquad\qquad E_{fora}(r) = \frac{k_0 Q}{r^2} \;\;(r \ge R)$$
+  </div>
+  <div class="macete">Dentro cresce linear com \(r\), fora cai com \(1/r^2\), com máximo na superfície — o gráfico "montanha" desse campo é figurinha repetida de prova. Para CONDUTOR, o campo interno é ZERO e toda a carga está na superfície.</div>
+  <div class="macete dica">Questões conceituais tipo "cargas dentro de um avião" (Final 2025.1): o fluxo total é apenas \(\sum q_{int}/\epsilon_0\), não importa a forma da superfície. Fluxo negativo significa mais linhas entrando do que saindo.</div>
+</section>
+
+<section class="topico" id="em-potencial">
+  <h2><span class="num">04</span> Potencial elétrico</h2>
+  <p>O potencial é a energia potencial por unidade de carga: \(V = U/q\). É um <strong>escalar</strong> (bem mais fácil de somar que campo!). Definição a partir do campo:</p>
+  <div class="formula">
+    $$\Delta V = V_B - V_A = -\int_A^B \vec E \cdot d\vec \ell
+    \qquad\text{e, no sentido inverso,}\qquad
+    \vec E = -\nabla V = -\left(\frac{\partial V}{\partial x}, \frac{\partial V}{\partial y}, \frac{\partial V}{\partial z}\right)$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Potencial de carga pontual (referência no infinito)</div>
+    $$V = \frac{k_0\, q}{r} \qquad\qquad V_{total} = \sum_i \frac{k_0 q_i}{r_i} \;\;(\text{soma escalar, com sinal!})$$
+  </div>
+  <h3>Trabalho e energia potencial</h3>
+  <div class="formula">
+    $$U = \frac{k_0 q_1 q_2}{d} \qquad W_{campo} = -\Delta U = q\,(V_A - V_B)$$
+  </div>
+  <p>Para um sistema de várias cargas, \(U_{total}\) é a soma de \(k_0 q_i q_j / d_{ij}\) sobre <strong>todos os pares</strong>. Se uma carga é trazida do infinito em equilíbrio (velocidade constante), o trabalho do agente externo é \(W_{ext} = q\,V_{final}\) e o do campo é \(W_{campo} = -q\,V_{final}\).</p>
+  <p><strong>Superfícies equipotenciais</strong> são perpendiculares às linhas de campo; mover carga sobre uma equipotencial não custa trabalho. Num condutor em equilíbrio, todo o volume é um equipotencial.</p>
+  <div class="macete dica">Questão 3 do 1º EE 2025.2 é o modelo clássico: quatro cargas nos vértices de um quadrado, trabalho para trazer uma quinta carga até um ponto P. Receita: calcule \(V(P) = \sum k_0 q_i / r_i\) (escalar, com sinais), depois \(W = q\,V(P)\). Nada de vetores aqui!</div>
+</section>
+
+<section class="topico" id="em-capacitancia">
+  <h2><span class="num">05</span> Capacitância</h2>
+  <p>Um capacitor armazena cargas \(+q\) e \(-q\) em dois condutores com diferença de potencial \(V\). A capacitância mede a "capacidade de armazenar carga por volt":</p>
+  <div class="formula">
+    $$C = \frac{q}{V} \;\;[\mathrm{F}] \qquad\qquad C_{placas} = \frac{\epsilon_0 A}{d} \qquad C_{esf} = 4\pi\epsilon_0\frac{ab}{b-a} \qquad C_{cil} = \frac{2\pi\epsilon_0 L}{\ln(b/a)}$$
+  </div>
+  <h3>Associações</h3>
+  <div class="formula">
+    $$\text{Paralelo (mesma d.d.p.): } C_{eq} = C_1 + C_2 + \cdots \qquad\quad
+      \text{Série (mesma carga): } \frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2} + \cdots$$
+  </div>
+  <div class="macete">Capacitor soma no PARALELO e "inverte" na série — o CONTRÁRIO dos resistores. Em série todos os capacitores carregam a MESMA carga q; em paralelo, todos têm a MESMA tensão V.</div>
+  <h3>Energia armazenada e dielétricos</h3>
+  <div class="formula">
+    $$U = \frac{q^2}{2C} = \frac{1}{2}CV^2 = \frac{1}{2}qV \qquad\qquad u = \frac{\epsilon_0 E^2}{2} \;(\text{densidade de energia do campo})$$
+  </div>
+  <p>Inserir um dielétrico de constante \(\kappa\) multiplica a capacitância: \(C = \kappa\, C_0\). Se o capacitor está <strong>desconectado</strong> da bateria, \(q\) fica constante e \(V\) cai; se está <strong>conectado</strong>, \(V\) fica constante e \(q\) aumenta.</p>
+</section>
+
+<section class="topico" id="em-corrente">
+  <h2><span class="num">06</span> Corrente e resistência elétrica</h2>
+  <div class="formula">
+    <div class="rotulo">Corrente e densidade de corrente</div>
+    $$i = \frac{dq}{dt}\;[\mathrm{A}] \qquad\qquad J = \frac{i}{A} = n\,e\,v_d \;\;(\text{deriva dos portadores})$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Lei de Ohm, resistência e resistividade</div>
+    $$V = R\,i \qquad\qquad R = \rho\frac{L}{A} \qquad\qquad \rho(T) = \rho_0[1 + \alpha(T - T_0)]$$
+  </div>
+  <p>A resistividade \(\rho\) é propriedade do material; a resistência \(R\) depende também da geometria (comprimento \(L\), seção \(A\)).</p>
+  <h3>Potência elétrica</h3>
+  <div class="formula">
+    $$P = V\,i = R\,i^2 = \frac{V^2}{R}$$
+  </div>
+  <div class="macete">Qual fórmula de potência usar? A que tiver as duas grandezas que você CONHECE do elemento. Resistores em série: mesma corrente \(\Rightarrow\) maior R dissipa mais. Em paralelo: mesma tensão \(\Rightarrow\) menor R dissipa mais.</div>
+</section>
+
+<section class="topico" id="em-circuitos">
+  <h2><span class="num">07</span> Circuitos de corrente contínua</h2>
+  <h3>Associação de resistores</h3>
+  <div class="formula">
+    $$\text{Série: } R_{eq} = R_1 + R_2 + \cdots \qquad\qquad \text{Paralelo: } \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots$$
+  </div>
+  <h3>Leis de Kirchhoff</h3>
+  <ul>
+    <li><strong>Lei dos nós:</strong> a soma das correntes que entram num nó é igual à soma das que saem (conservação de carga);</li>
+    <li><strong>Lei das malhas:</strong> a soma das variações de potencial ao longo de qualquer malha fechada é zero (conservação de energia).</li>
+  </ul>
+  <p>Convenções ao percorrer a malha: atravessar resistor <strong>no sentido da corrente</strong> \(\Rightarrow -Ri\); contra a corrente \(\Rightarrow +Ri\); atravessar fonte do terminal − para o + \(\Rightarrow +\varepsilon\).</p>
+  <div class="macete dica">Questões tipo "dado \(i_6\), ache a fem" (1º EE 2025.2): trabalhe DE TRÁS PARA FRENTE. Ache a tensão no resistor conhecido, propague pelos paralelos (mesma tensão) e séries (mesma corrente) até chegar à fonte. É conta de padaria bem organizada — organize numa tabela \(R\), \(i\), \(V\) por resistor.</div>
+  <h3>Circuito RC</h3>
+  <div class="formula">
+    <div class="rotulo">Carga e descarga do capacitor (constante de tempo τ = RC)</div>
+    $$q(t) = C\varepsilon\left(1 - e^{-t/RC}\right) \;\;(\text{carga}) \qquad\qquad q(t) = q_0\, e^{-t/RC} \;\;(\text{descarga})$$
+  </div>
+  <p>No instante inicial o capacitor descarregado age como <strong>fio</strong> (curto); após muito tempo, age como <strong>chave aberta</strong> (corrente zero no seu ramo).</p>
+</section>
+
+<!-- ================= 2ª UNIDADE ================= -->
+
+<section class="topico" id="em-magnetico">
+  <h2><span class="num">08</span> Campos magnéticos e força magnética</h2>
+  <div class="formula">
+    <div class="rotulo">Força magnética sobre carga e sobre corrente</div>
+    $$\vec F = q\,\vec v \times \vec B \qquad\qquad \vec F = i\,\vec L \times \vec B \qquad (F = qvB\sin\theta,\;\; F = BiL\sin\theta)$$
+  </div>
+  <p>A força é perpendicular a \(\vec v\) e a \(\vec B\) (regra da mão direita; para carga negativa, inverta). Ela <strong>não realiza trabalho</strong> — só muda a direção da velocidade.</p>
+  <h3>Movimento circular no campo</h3>
+  <div class="formula">
+    $$r = \frac{mv}{|q|B} \qquad\qquad \omega = \frac{|q|B}{m} \;(\text{frequência de cíclotron, independe de } v)$$
+  </div>
+  <h3>Espira de corrente: torque e momento de dipolo</h3>
+  <div class="formula">
+    $$\mu = N\,i\,A \qquad\qquad \vec\tau = \vec\mu \times \vec B \qquad\qquad U = -\vec\mu\cdot\vec B$$
+  </div>
+  <p>O <strong>efeito Hall</strong> permite medir o sinal e a densidade dos portadores: o campo empurra portadores para um lado da fita, criando a tensão Hall \(V_H = B i /(n e t)\).</p>
+  <div class="macete">Regra da mão direita "tapa": dedos apontam \(\vec v\), dobram para \(\vec B\), o polegar (ou a palma empurrando) dá \(\vec F\) para carga positiva. Treine com os símbolos ⊙ (saindo do papel) e ⊗ (entrando no papel) — as provas usam esses símbolos o tempo todo.</div>
+</section>
+
+<section class="topico" id="em-fontes">
+  <h2><span class="num">09</span> Fontes de campo magnético: Biot-Savart e Ampère</h2>
+  <h3>Lei de Biot-Savart</h3>
+  <div class="formula">
+    $$d\vec B = \frac{\mu_0\, i}{4\pi} \frac{d\vec s \times \hat r}{r^2}, \qquad \mu_0 = 4\pi\times10^{-7}\;\mathrm{T\,m/A}$$
+  </div>
+  <p>Roteiro (é a demonstração pedida na 2ª EE 2025.2): escreva \(|d\vec s \times \hat r| = dx\sin\theta\), use \(r^2 = x^2 + a^2\) e \(\sin\theta = a/\sqrt{x^2+a^2}\), e integre com \(\displaystyle\int\frac{dx}{(x^2+a^2)^{3/2}} = \frac{x}{a^2\sqrt{x^2+a^2}}\).</p>
+  <div class="formula">
+    <div class="rotulo">Resultados que valem ouro</div>
+    $$\text{Fio infinito: } B = \frac{\mu_0 i}{2\pi a} \qquad
+      \text{Centro de espira: } B = \frac{\mu_0 i}{2R} \qquad
+      \text{Arco de ângulo } \phi: B = \frac{\mu_0 i \phi}{4\pi R}$$
+  </div>
+  <h3>Força entre fios paralelos</h3>
+  <div class="formula">
+    $$\frac{F}{L} = \frac{\mu_0\, i_1 i_2}{2\pi d} \qquad \text{correntes no mesmo sentido se ATRAEM; opostas se repelem}$$
+  </div>
+  <h3>Lei de Ampère</h3>
+  <div class="formula">
+    $$\oint \vec B \cdot d\vec \ell = \mu_0\, i_{env}$$
+  </div>
+  <p>Use com curvas amperianas circulares em problemas de simetria cilíndrica. Para fio grosso de raio \(a\) com corrente uniforme (questão clássica):</p>
+  <div class="formula">
+    $$B_{dentro}(r) = \frac{\mu_0 i_0\, r}{2\pi a^2} \;\;(r \le a) \qquad\qquad B_{fora}(r) = \frac{\mu_0 i_0}{2\pi r} \;\;(r \ge a)$$
+  </div>
+  <div class="macete">Mesmo gráfico "montanha" da esfera de Gauss: cresce linear até \(r=a\), depois cai com \(1/r\). A fração de corrente envolvida vem da razão de áreas: \(i_{env} = i_0\, r^2/a^2\). Solenoide ideal: \(B = \mu_0 n i\) dentro, zero fora; toroide: \(B = \mu_0 N i / (2\pi r)\).</div>
+</section>
+
+<section class="topico" id="em-inducao">
+  <h2><span class="num">10</span> Indução: Lei de Faraday e Lei de Lenz</h2>
+  <div class="formula">
+    <div class="rotulo">Fluxo magnético e Lei de Faraday</div>
+    $$\Phi_B = \int \vec B \cdot d\vec A \qquad\qquad \mathcal{E} = -\frac{d\Phi_B}{dt} \qquad (\text{com } N \text{ espiras: } \mathcal{E} = -N\frac{d\Phi_B}{dt})$$
+  </div>
+  <p>A fem aparece sempre que o fluxo varia: mudando \(B\), mudando a área, ou girando a espira. A corrente induzida é \(i = |\mathcal{E}|/R\).</p>
+  <h3>Lei de Lenz (o sinal de menos)</h3>
+  <p>A corrente induzida cria um campo que <strong>se opõe à variação</strong> do fluxo: fluxo aumentando para fora do papel \(\Rightarrow\) corrente horária (para criar campo entrando); fluxo diminuindo \(\Rightarrow\) corrente anti-horária (para "segurar" o fluxo).</p>
+  <div class="macete dica">Questão padrão das provas (2ª EE 2025.2 e Final 2025.1): campo não uniforme \(B(x,t)\) sobre espira retangular. Receita: (1) fatie a espira em tiras \(dA = a\,dx\); (2) \(\Phi = \int B\, dA\) integrando em x; (3) \(\mathcal{E} = -d\Phi/dt\); (4) sentido pela Lei de Lenz; (5) se pedirem energia dissipada: \(P = \mathcal{E}^2/R\) e \(E = \int_0^t P\,dt\).</div>
+  <h3>Fem de movimento e campos induzidos</h3>
+  <div class="formula">
+    $$\mathcal{E} = B\ell v \;\;(\text{barra deslizando}) \qquad\qquad \oint \vec E \cdot d\vec\ell = -\frac{d\Phi_B}{dt} \;(\text{E induzido, não conservativo})$$
+  </div>
+</section>
+
+<section class="topico" id="em-indutancia">
+  <h2><span class="num">11</span> Indutância e circuitos RL</h2>
+  <div class="formula">
+    <div class="rotulo">Indutância e fem auto-induzida</div>
+    $$L = \frac{N\Phi_B}{i}\;[\mathrm{H}] \qquad\qquad \mathcal{E}_L = -L\frac{di}{dt} \qquad\qquad L_{solenoide} = \mu_0 n^2 A \ell$$
+  </div>
+  <h3>Circuito RL</h3>
+  <div class="formula">
+    <div class="rotulo">Crescimento e decaimento da corrente (τ = L/R)</div>
+    $$i(t) = \frac{\varepsilon}{R}\left(1 - e^{-t/\tau_L}\right) \qquad\qquad i(t) = i_0\, e^{-t/\tau_L} \qquad \tau_L = \frac{L}{R}$$
+  </div>
+  <p>Em \(t = 0\) o indutor bloqueia a variação: age como <strong>chave aberta</strong> (corrente nula, toda a fem cai nele: \(V_L = \varepsilon\)). Após muito tempo, age como <strong>fio</strong> e \(i = \varepsilon/R\).</p>
+  <div class="macete dica">Questão 4 da Final 2025.1: "em t=0, \(V_L = 20\) V e \(di/dt = 2{,}5\) A/s". Em t=0 a corrente é nula \(\Rightarrow \varepsilon = V_L\). E \(V_L = L\,di/dt\) dá o L. Guarde: \(di/dt = (\varepsilon/L)e^{-t/\tau}\).</div>
+  <h3>Energia no indutor e no campo magnético</h3>
+  <div class="formula">
+    $$U_L = \frac{1}{2}L\,i^2 \qquad\qquad u_B = \frac{B^2}{2\mu_0} \;(\text{densidade de energia})$$
+  </div>
+  <p><strong>Indutância mútua:</strong> \(\mathcal{E}_2 = -M\, di_1/dt\) — a variação de corrente numa bobina induz fem na vizinha (princípio do transformador).</p>
+</section>
+
+<section class="topico" id="em-oscilacoes">
+  <h2><span class="num">12</span> Oscilações LC/RLC e corrente alternada</h2>
+  <h3>Oscilador LC</h3>
+  <p>A energia oscila entre o capacitor (\(q^2/2C\)) e o indutor (\(Li^2/2\)), como um sistema massa-mola:</p>
+  <div class="formula">
+    $$q(t) = Q\cos(\omega_0 t + \phi), \qquad \omega_0 = \frac{1}{\sqrt{LC}}$$
+  </div>
+  <p>Com resistência (RLC), a oscilação é <strong>amortecida</strong>: \(q(t) = Q\,e^{-Rt/2L}\cos(\omega' t + \phi)\).</p>
+  <h3>Corrente alternada: reatâncias e impedância</h3>
+  <div class="formula">
+    $$X_L = \omega_d L \qquad X_C = \frac{1}{\omega_d C} \qquad Z = \sqrt{R^2 + (X_L - X_C)^2} \qquad I = \frac{\mathcal{E}_m}{Z}$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Fase e potência média</div>
+    $$\tan\phi = \frac{X_L - X_C}{R} \qquad\quad i(t) = I\sin(\omega_d t - \phi) \qquad\quad P_{med} = I_{rms}^2 R = \frac{I^2}{2}R, \;\; I_{rms} = \frac{I}{\sqrt2}$$
+  </div>
+  <h3>Ressonância</h3>
+  <p>Quando \(\omega_d = \omega_0 = 1/\sqrt{LC}\): \(X_L = X_C\), a impedância vira \(Z = R\) (mínima), a corrente é máxima e \(\phi = 0\) (circuito puramente resistivo).</p>
+  <div class="macete dica">Perguntas conceituais da 2ª EE 2025.2: (i) trocar resistores NÃO muda \(\omega_0\) (não há R na fórmula); (ii) acrescentar capacitor em PARALELO aumenta \(C_{eq}\) e DIMINUI \(\omega_0\); em série, diminui \(C_{eq}\) e aumenta \(\omega_0\). Justifique sempre com \(\omega_0 = 1/\sqrt{LC}\).</div>
+</section>
+
+<section class="topico" id="em-maxwell">
+  <h2><span class="num">13</span> Equações de Maxwell</h2>
+  <p>Todo o eletromagnetismo clássico cabe em quatro equações:</p>
+  <div class="formula">
+    <div class="rotulo">Forma integral</div>
+    $$\oint \vec E \cdot d\vec A = \frac{q_{int}}{\epsilon_0} \qquad\qquad \oint \vec B \cdot d\vec A = 0$$
+    $$\oint \vec E \cdot d\vec\ell = -\frac{d\Phi_B}{dt} \qquad\qquad \oint \vec B \cdot d\vec\ell = \mu_0\, i_{env} + \mu_0\epsilon_0 \frac{d\Phi_E}{dt}$$
+  </div>
+  <ol>
+    <li><strong>Gauss (E):</strong> cargas criam campo elétrico divergente;</li>
+    <li><strong>Gauss (B):</strong> não existem monopolos magnéticos — as linhas de \(\vec B\) sempre fecham;</li>
+    <li><strong>Faraday:</strong> fluxo magnético variável induz campo elétrico (circulante);</li>
+    <li><strong>Ampère–Maxwell:</strong> correntes E fluxo elétrico variável criam campo magnético. O termo \(i_d = \epsilon_0\, d\Phi_E/dt\) é a <strong>corrente de deslocamento</strong> — a correção de Maxwell, que explica o campo entre as placas de um capacitor carregando.</li>
+  </ol>
+  <div class="macete">A corrente de deslocamento entre as placas de um capacitor é numericamente IGUAL à corrente de condução no fio: \(i_d = i\). É o que fecha a continuidade da Lei de Ampère — pergunta teórica recorrente.</div>
+  <p>Das equações de Maxwell no vácuo saem as <strong>ondas eletromagnéticas</strong>, que viajam com \(c = 1/\sqrt{\mu_0\epsilon_0} \approx 3\times10^8\) m/s, com \(\vec E \perp \vec B\) e \(E = cB\).</p>
+</section>

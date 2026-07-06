@@ -1,0 +1,42 @@
+<article class="questao" data-id="calculo3-2ee-02" data-tema="integrais-de-linha-green">
+  <div class="q-topo">
+    <span class="q-id">Questão 02</span>
+    <span class="q-tag">2ª Avaliação · 2023.2</span>
+    <span class="q-tag">Integrais de linha · Green</span>
+    <span class="q-tag">4,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Encontre as seguintes integrais de linha:</p>
+    <ol type="a">
+      <li>\(\displaystyle\oint_\varphi (2x - y)\,dx + (2x + 1)\,dy\) ao longo do caminho retangular de vértices \(V_1(0,0)\), \(V_2(5,0)\), \(V_3(5,3)\) e \(V_4(0,3)\), percorrido no sentido anti-horário (sugestão: use o Teorema de Green);</li>
+      <li>\(\displaystyle\int_\varphi 2xy\,dx + (x^2 + y^2)\,dy\) ao longo do caminho \(\varphi: y = x^2\) entre os pontos \(A(-1,1)\) e \(B(1,1)\).</li>
+    </ol>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">a) 45 &nbsp;&nbsp; b) 2 (o campo é conservativo, com potencial \(\varphi = x^2y + \tfrac{y^3}{3}\))</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Item (a)</strong></p>
+      <p><strong>Passo 1 —</strong> Curva fechada + sentido anti-horário: condições perfeitas para Green. Com \(P = 2x - y\) e \(Q = 2x + 1\):</p>
+      $$\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 2 - (-1) = 3$$
+      <p><strong>Passo 2 —</strong> A integral vira 3 vezes a área do retângulo \(5 \times 3\):</p>
+      $$\oint_\varphi P\,dx + Q\,dy = \iint_D 3\; dA = 3 \cdot (5)(3) = \boxed{45}$$
+      <p><strong>Item (b)</strong></p>
+      <p><strong>Passo 1 —</strong> Antes de parametrizar, teste se o campo é conservativo. Com \(P = 2xy\) e \(Q = x^2 + y^2\):</p>
+      $$\frac{\partial P}{\partial y} = 2x = \frac{\partial Q}{\partial x} \;\;\checkmark \text{ conservativo}$$
+      <p><strong>Passo 2 —</strong> Ache o potencial: \(\varphi = \int 2xy\,dx = x^2 y + g(y)\). Derivando em \(y\): \(x^2 + g'(y) = x^2 + y^2 \Rightarrow g(y) = \tfrac{y^3}{3}\). Logo</p>
+      $$\varphi(x,y) = x^2 y + \frac{y^3}{3}$$
+      <p><strong>Passo 3 —</strong> Pelo Teorema Fundamental, a integral só depende dos extremos:</p>
+      $$\int_\varphi \vec F \cdot d\vec r = \varphi(1,1) - \varphi(-1,1) = \left(1 + \tfrac13\right) - \left(-1 + \tfrac13\right) = \boxed{2}$$
+      <p><em>Repare:</em> a parábola \(y = x^2\) era só distração — qualquer caminho de \(A\) a \(B\) daria o mesmo valor.</p>
+    </div>
+  </details>
+</article>

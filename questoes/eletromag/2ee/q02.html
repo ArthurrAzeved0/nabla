@@ -1,0 +1,37 @@
+<article class="questao" data-id="eletromag-2ee-02" data-tema="lei-de-ampere-fio-grosso">
+  <div class="q-topo">
+    <span class="q-id">Questão 02</span>
+    <span class="q-tag">2º EE · 2025.2</span>
+    <span class="q-tag">Lei de Ampère · Fio grosso</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Um fio cilíndrico maciço ("fio grosso") de raio \(a\) transporta uma corrente total \(I_0\) uniformemente distribuída pela sua seção transversal. Usando a Lei de Ampère, determine o campo magnético:</p>
+    <p>(a) em um ponto interno, \(r &lt; a\);</p>
+    <p>(b) em um ponto externo, \(r &gt; a\).</p>
+    <p>(c) Esboce o gráfico de \(B(r)\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(B_{\text{int}} = \dfrac{\mu_0 I_0\, r}{2\pi a^2}\) (cresce linearmente) &nbsp;·&nbsp; (b) \(B_{\text{ext}} = \dfrac{\mu_0 I_0}{2\pi r}\) (decai com \(1/r\)) &nbsp;·&nbsp; (c) máximo em \(r = a\): \(B_{\max} = \dfrac{\mu_0 I_0}{2\pi a}\).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Por simetria cilíndrica, \(\vec B\) é tangente a círculos concêntricos ao fio e tem módulo constante em cada círculo. A Lei de Ampère em uma amperiana circular de raio \(r\):</p>
+      $$\oint \vec B \cdot d\vec s = B\,(2\pi r) = \mu_0\, I_{\text{env}}$$
+      <p><strong>Passo 2 —</strong> <em>Região interna (\(r &lt; a\))</em>: a corrente é uniforme, então a corrente envolvida é proporcional à área:</p>
+      $$I_{\text{env}} = I_0\,\frac{\pi r^2}{\pi a^2} = I_0\,\frac{r^2}{a^2}$$
+      <p><strong>Passo 3 —</strong> Substituindo:</p>
+      $$B\,(2\pi r) = \mu_0 I_0 \frac{r^2}{a^2} \;\Rightarrow\; \boxed{B_{\text{int}} = \frac{\mu_0 I_0\, r}{2\pi a^2}}$$
+      <p><strong>Passo 4 —</strong> <em>Região externa (\(r &gt; a\))</em>: a amperiana envolve toda a corrente, \(I_{\text{env}} = I_0\):</p>
+      $$B\,(2\pi r) = \mu_0 I_0 \;\Rightarrow\; \boxed{B_{\text{ext}} = \frac{\mu_0 I_0}{2\pi r}}$$
+      <p><strong>Passo 5 —</strong> Gráfico: \(B\) cresce <strong>linearmente</strong> de 0 até \(B_{\max} = \frac{\mu_0 I_0}{2\pi a}\) em \(r = a\), e depois decai como \(1/r\). As duas expressões coincidem em \(r = a\) (continuidade). ✓</p>
+    </div>
+  </details>
+</article>

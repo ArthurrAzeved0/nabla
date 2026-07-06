@@ -1,0 +1,34 @@
+<article class="questao" data-id="calculo3-1ee-04" data-tema="integrais-duplas-polares">
+  <div class="q-topo">
+    <span class="q-id">Questão 04</span>
+    <span class="q-tag">1º EE · 2023.2</span>
+    <span class="q-tag">Integrais duplas · Polares</span>
+    <span class="q-tag">3,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Considere o domínio \(D\) do plano \(Oxy\) limitado por \(1 \le x^2 + y^2 \le 16\). Calcule</p>
+    $$\iint_D \frac{x}{(x^2+y^2)^3}\; dA$$
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">A integral vale 0 (a integral em \(\theta\) de \(\cos\theta\) sobre uma volta completa é nula).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> O domínio é um anel (coroa circular) com \(1 \le r \le 4\) e \(0 \le \theta \le 2\pi\). Região circular + integrando com \(x^2+y^2\) \(\Rightarrow\) coordenadas polares:</p>
+      $$x = r\cos\theta, \qquad x^2 + y^2 = r^2, \qquad dA = r\, dr\, d\theta$$
+      <p><strong>Passo 2 —</strong> Substitua:</p>
+      $$\iint_D \frac{x}{(x^2+y^2)^3}\,dA = \int_0^{2\pi}\!\!\int_1^4 \frac{r\cos\theta}{r^6}\; r\, dr\, d\theta = \int_0^{2\pi}\cos\theta\; d\theta \cdot \int_1^4 r^{-4}\, dr$$
+      <p><strong>Passo 3 —</strong> A integral angular zera:</p>
+      $$\int_0^{2\pi} \cos\theta\; d\theta = \big[\sin\theta\big]_0^{2\pi} = 0$$
+      <p><strong>Passo 4 —</strong> Como o produto tem um fator nulo, a integral vale <strong>0</strong>.</p>
+      <p><em>Interpretação:</em> o integrando é ímpar em \(x\) e o anel é simétrico em relação ao eixo \(y\) — as contribuições de \(x>0\) e \(x<0\) se cancelam exatamente. Perceber a simetria já responde a questão; a conta em polares confirma.</p>
+    </div>
+  </details>
+</article>

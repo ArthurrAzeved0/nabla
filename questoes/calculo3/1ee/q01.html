@@ -1,0 +1,38 @@
+<article class="questao" data-id="calculo3-1ee-01" data-tema="limites">
+  <div class="q-topo">
+    <span class="q-id">Questão 01</span>
+    <span class="q-tag">1º EE · 2023.2</span>
+    <span class="q-tag">Limites</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Escolha um <strong>e apenas um</strong> dos itens abaixo e forneça o que se pede:</p>
+    <ol type="a">
+      <li>Assumindo que o limite exista, calcule \(\displaystyle\lim_{(x,y)\to(0,0)} \frac{1-\cos(x^2+y^2)}{2x^2+2y^2}\)</li>
+      <li>Mostre que não existe o limite \(\displaystyle\lim_{(x,y)\to(0,0)} \frac{x^2-y^2}{x^2+y^2}\)</li>
+    </ol>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">a) O limite vale 0. &nbsp;&nbsp; b) Pelos caminhos \(y=0\) e \(x=0\) obtêm-se 1 e −1: o limite não existe.</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Item (a)</strong></p>
+      <p><strong>Passo 1 —</strong> Faça a substituição \(u = x^2 + y^2\). Quando \((x,y)\to(0,0)\), temos \(u \to 0^+\):</p>
+      $$\lim_{(x,y)\to(0,0)} \frac{1-\cos(x^2+y^2)}{2(x^2+y^2)} = \frac{1}{2}\lim_{u\to 0} \frac{1-\cos u}{u}$$
+      <p><strong>Passo 2 —</strong> Use o limite fundamental \(\displaystyle\lim_{u\to0}\frac{1-\cos u}{u} = 0\) (verifique por L'Hôpital: \(\frac{\sin u}{1}\to 0\)).</p>
+      <p><strong>Passo 3 —</strong> Conclua: \(\frac{1}{2}\cdot 0 = 0\).</p>
+      <p><strong>Item (b)</strong></p>
+      <p><strong>Passo 1 —</strong> Aproxime-se pelo eixo \(x\) (caminho \(y = 0\)): $$\frac{x^2 - 0}{x^2 + 0} = 1 \;\to\; 1$$</p>
+      <p><strong>Passo 2 —</strong> Aproxime-se pelo eixo \(y\) (caminho \(x = 0\)): $$\frac{0 - y^2}{0 + y^2} = -1 \;\to\; -1$$</p>
+      <p><strong>Passo 3 —</strong> Dois caminhos com valores distintos (\(1 \neq -1\)) \(\Rightarrow\) o limite não existe.</p>
+    </div>
+  </details>
+</article>

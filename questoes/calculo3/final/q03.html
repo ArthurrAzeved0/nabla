@@ -1,0 +1,36 @@
+<article class="questao" data-id="calculo3-final-03" data-tema="teorema-de-green">
+  <div class="q-topo">
+    <span class="q-id">Questão 03</span>
+    <span class="q-tag">Final · 2023.1</span>
+    <span class="q-tag">Teorema de Green</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Use o Teorema de Green para calcular a integral de linha \(\displaystyle\oint_C -y^2\,dx + x^2\,dy\) da curva com sentido anti-horário formada no primeiro quadrante do círculo \(x^2 + y^2 = 4\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\dfrac{32}{3}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Feche a região: o quarto de círculo no 1º quadrante é delimitado pelo arco \(C\), pelo segmento do eixo \(y\) (descendo de \((0,2)\) à origem) e pelo segmento do eixo \(x\) (da origem até \((2,0)\)). Chame o contorno completo de \(C'\).</p>
+      <p><strong>Passo 2 —</strong> Aplique Green em \(C'\), com \(P = -y^2\) e \(Q = x^2\):</p>
+      $$\oint_{C'} -y^2\,dx + x^2\,dy = \iint_A \left(\frac{\partial}{\partial x}(x^2) - \frac{\partial}{\partial y}(-y^2)\right) dA = \iint_A (2x + 2y)\, dA$$
+      <p><strong>Passo 3 —</strong> Passe para polares (\(0 \le r \le 2\), \(0 \le \theta \le \pi/2\)):</p>
+      $$2\int_0^{\pi/2}\!\!\int_0^2 r(r\cos\theta + r\sin\theta)\, dr\, d\theta = 2\int_0^{\pi/2}(\cos\theta + \sin\theta)\,d\theta \cdot \int_0^2 r^2\, dr$$
+      <p><strong>Passo 4 —</strong> Calcule cada fator:</p>
+      $$\int_0^{\pi/2}(\cos\theta+\sin\theta)\,d\theta = \big[\sin\theta - \cos\theta\big]_0^{\pi/2} = 1 - (-1) = 2, \qquad \int_0^2 r^2\,dr = \frac{8}{3}$$
+      $$\oint_{C'} = 2\cdot 2 \cdot \frac{8}{3} = \frac{32}{3}$$
+      <p><strong>Passo 5 —</strong> Desconte os trechos dos eixos. No eixo \(y\) (\(x=0\), \(\vec r(t) = (0, 2-t)\)): \(\vec F = (-(2-t)^2, 0)\) e \(\vec r\,' = (0,-1)\), produto escalar nulo \(\Rightarrow\) integral 0. No eixo \(x\) (\(y=0\), \(\vec r(t) = (t,0)\)): \(\vec F = (0, t^2)\) e \(\vec r\,' = (1,0)\), produto nulo \(\Rightarrow\) integral 0.</p>
+      <p><strong>Passo 6 —</strong> Logo a integral no arco pedido é</p>
+      $$\oint_C -y^2\,dx + x^2\,dy = \frac{32}{3} - 0 - 0 = \boxed{\frac{32}{3}}$$
+    </div>
+  </details>
+</article>

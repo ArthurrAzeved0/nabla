@@ -1,0 +1,41 @@
+<article class="questao" data-id="eletromag-final-03" data-tema="inducao-energia-dissipada">
+  <div class="q-topo">
+    <span class="q-id">Questão 03</span>
+    <span class="q-tag">Final · 2025.1</span>
+    <span class="q-tag">Indução · Energia dissipada</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Uma espira retangular de lados \(a\) (em \(x\)) e \(b\) (em \(y\)) e resistência \(R\) está no plano \(xy\) com um vértice na origem. O campo magnético na região é \(\vec B = x\,y\,t^2\,\hat z\).</p>
+    <p>(a) Calcule o fluxo magnético através da espira.</p>
+    <p>(b) Determine a corrente induzida e seu sentido.</p>
+    <p>(c) Calcule a energia dissipada na espira entre \(0\) e \(t\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(\Phi_B = \dfrac{a^2 b^2 t^2}{4}\) &nbsp;·&nbsp; (b) \(i = \dfrac{a^2 b^2 t}{2R}\), sentido horário (visto de \(+z\)) &nbsp;·&nbsp; (c) \(E_{\text{diss}} = \dfrac{a^4 b^4 t^3}{12\,R}\).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> O campo depende de \(x\) e \(y\), então integre em toda a área com \(dA = dx\,dy\):</p>
+      $$\Phi_B = \int_0^b\!\!\int_0^a x\,y\,t^2\; dx\,dy = t^2\left(\int_0^a x\,dx\right)\!\left(\int_0^b y\,dy\right) = t^2\cdot\frac{a^2}{2}\cdot\frac{b^2}{2}$$
+      $$\boxed{\Phi_B = \frac{a^2 b^2\, t^2}{4}}$$
+      <p><strong>Passo 2 —</strong> F.e.m. pela Lei de Faraday:</p>
+      $$|\varepsilon| = \frac{d\Phi_B}{dt} = \frac{a^2 b^2}{4}\cdot 2t = \frac{a^2 b^2\, t}{2}$$
+      <p><strong>Passo 3 —</strong> Corrente induzida (Lei de Ohm):</p>
+      $$\boxed{i = \frac{|\varepsilon|}{R} = \frac{a^2 b^2\, t}{2R}}$$
+      <p>Sentido (Lei de Lenz): o fluxo em \(+\hat z\) cresce, então a corrente cria campo em \(-\hat z\) dentro da espira \(\Rightarrow\) <strong>sentido horário</strong> visto de cima.</p>
+      <p><strong>Passo 4 —</strong> Potência dissipada instantânea:</p>
+      $$P(t) = R\,i^2 = R\cdot\frac{a^4 b^4\, t^2}{4R^2} = \frac{a^4 b^4\, t^2}{4R}$$
+      <p><strong>Passo 5 —</strong> Energia = integral da potência no tempo:</p>
+      $$E_{\text{diss}} = \int_0^{t} P\,dt' = \frac{a^4 b^4}{4R}\cdot\frac{t^3}{3} = \boxed{\frac{a^4 b^4\, t^3}{12R}}$$
+      <p><em>Observação:</em> o gabarito manuscrito da prova traz \(t^2\) na última linha por erro de escrita — integrando \(t'^2\) o resultado correto é \(t^3/3\), como acima.</p>
+    </div>
+  </details>
+</article>

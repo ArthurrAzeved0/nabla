@@ -1,0 +1,35 @@
+<article class="questao" data-id="eletromag-2ee-03" data-tema="lei-de-faraday-espira">
+  <div class="q-topo">
+    <span class="q-id">Questão 03</span>
+    <span class="q-tag">2º EE · 2025.2</span>
+    <span class="q-tag">Lei de Faraday · Fem induzida</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Uma espira retangular de largura \(a\) (ao longo de \(x\)) e altura \(b\) (ao longo de \(y\)) está no plano \(xy\), com um vértice na origem. A região é atravessada por um campo magnético não uniforme e dependente do tempo, \(\vec B = A\,t^3\,x\;\hat z\), onde \(A\) é uma constante positiva.</p>
+    <p>(a) Calcule o fluxo magnético através da espira.</p>
+    <p>(b) Determine a f.e.m. induzida na espira.</p>
+    <p>(c) Indique o sentido da corrente induzida.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(\Phi_B = \dfrac{A\,b\,a^2\,t^3}{2}\) &nbsp;·&nbsp; (b) \(|\varepsilon| = \dfrac{3A\,a^2 b\,t^2}{2}\) &nbsp;·&nbsp; (c) sentido horário (visto do lado de onde \(\hat z\) aponta), pois o fluxo em \(+\hat z\) está crescendo (Lei de Lenz).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Como \(B\) varia com \(x\), integre sobre a área da espira com \(dA = b\,dx\) (faixas verticais):</p>
+      $$\Phi_B = \int \vec B\cdot d\vec A = \int_0^{a} A\,t^3\,x\; (b\,dx) = A\,t^3\,b\int_0^a x\,dx$$
+      <p><strong>Passo 2 —</strong> Calcule a integral:</p>
+      $$\Phi_B = A\,t^3\,b\cdot\frac{a^2}{2} = \boxed{\frac{A\,a^2 b\,t^3}{2}}$$
+      <p><strong>Passo 3 —</strong> Lei de Faraday:</p>
+      $$\varepsilon = -\frac{d\Phi_B}{dt} = -\frac{A\,a^2 b}{2}\cdot 3t^2 \;\Rightarrow\; \boxed{|\varepsilon| = \frac{3A\,a^2 b\,t^2}{2}}$$
+      <p><strong>Passo 4 —</strong> Lei de Lenz: o fluxo aponta em \(+\hat z\) e cresce com o tempo. A corrente induzida cria um campo que se opõe a esse crescimento, ou seja, campo em \(-\hat z\) dentro da espira. Pela regra da mão direita, a corrente circula no <strong>sentido horário</strong> quando vista de cima (do semieixo \(+z\)).</p>
+    </div>
+  </details>
+</article>

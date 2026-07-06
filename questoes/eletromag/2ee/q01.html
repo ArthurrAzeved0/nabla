@@ -1,0 +1,36 @@
+<article class="questao" data-id="eletromag-2ee-01" data-tema="biot-savart-fio-reto">
+  <div class="q-topo">
+    <span class="q-id">Questão 01</span>
+    <span class="q-tag">2º EE · 2025.2</span>
+    <span class="q-tag">Lei de Biot-Savart · Fio reto</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Utilizando a Lei de Biot-Savart, deduza a expressão do campo magnético gerado por um fio reto <em>infinito</em>, percorrido por corrente \(i\), em um ponto situado a uma distância \(a\) do fio.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(B = \dfrac{\mu_0\, i}{2\pi a}\), com direção dada pela regra da mão direita (circunda o fio).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Coloque o fio ao longo do eixo \(x\) e o ponto \(P\) a uma distância \(a\) sobre a perpendicular. A Lei de Biot-Savart para um elemento \(d\vec s = dx\,\hat x\):</p>
+      $$d\vec B = \frac{\mu_0 i}{4\pi}\,\frac{d\vec s \times \hat r}{r^2}$$
+      <p><strong>Passo 2 —</strong> O módulo do produto vetorial é \(|d\vec s \times \hat r| = dx\,\sin\theta\), onde \(\theta\) é o ângulo entre \(d\vec s\) e a linha até \(P\). Todos os \(d\vec B\) apontam na mesma direção (saindo/entrando no plano), então basta integrar módulos:</p>
+      $$B = \frac{\mu_0 i}{4\pi}\int_{-\infty}^{+\infty} \frac{\sin\theta\; dx}{r^2}$$
+      <p><strong>Passo 3 —</strong> Da geometria: \(r = \sqrt{x^2 + a^2}\) e \(\sin\theta = \dfrac{a}{\sqrt{x^2+a^2}}\). Logo:</p>
+      $$B = \frac{\mu_0 i}{4\pi}\int_{-\infty}^{+\infty} \frac{a\; dx}{(x^2+a^2)^{3/2}}$$
+      <p><strong>Passo 4 —</strong> Integral tabelada (ou substituição \(x = a\tan\varphi\)):</p>
+      $$\int_{-\infty}^{+\infty} \frac{dx}{(x^2+a^2)^{3/2}} = \left[\frac{x}{a^2\sqrt{x^2+a^2}}\right]_{-\infty}^{+\infty} = \frac{1}{a^2} - \left(-\frac{1}{a^2}\right) = \frac{2}{a^2}$$
+      <p><strong>Passo 5 —</strong> Substitua:</p>
+      $$B = \frac{\mu_0 i}{4\pi}\cdot a \cdot \frac{2}{a^2} = \boxed{\frac{\mu_0 i}{2\pi a}}$$
+      <p>A direção é tangente a círculos centrados no fio, no sentido dado pela regra da mão direita (polegar na corrente, dedos indicam \(\vec B\)).</p>
+    </div>
+  </details>
+</article>

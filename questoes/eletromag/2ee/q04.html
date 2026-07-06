@@ -1,0 +1,37 @@
+<article class="questao" data-id="eletromag-2ee-04" data-tema="circuito-rlc-ressonancia">
+  <div class="q-topo">
+    <span class="q-id">Questão 04</span>
+    <span class="q-tag">2º EE · 2025.2</span>
+    <span class="q-tag">Circuito RLC · Ressonância</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Um circuito de corrente alternada possui fonte \(v(t) = 20\,\text{sen}(\omega t)\ \text{V}\), dois resistores em paralelo \(R_1 = 4\ \Omega\) e \(R_2 = 8\ \Omega\), um indutor \(L = 1{,}5\ \text{H}\) e um capacitor \(C = 5\ \mu\text{F}\), todos em série com o paralelo de resistores. O circuito opera na <strong>frequência de ressonância</strong>.</p>
+    <p>(a) Calcule a frequência angular de ressonância \(\omega_0\).</p>
+    <p>(b) Determine a corrente \(i(t)\) fornecida pela fonte.</p>
+    <p>(c) Calcule a potência média dissipada no circuito.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(\omega_0 = \dfrac{1}{\sqrt{LC}} \approx 365\ \text{rad/s}\ (\approx 116\pi)\) &nbsp;·&nbsp; (b) \(i(t) = 7{,}5\,\text{sen}(\omega_0 t)\ \text{A}\) &nbsp;·&nbsp; (c) \(P_{\text{méd}} \approx 75\ \text{W}\).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Na ressonância, as reatâncias indutiva e capacitiva se cancelam (\(X_L = X_C\)):</p>
+      $$\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{1{,}5 \cdot 5\times10^{-6}}} = \frac{1}{\sqrt{7{,}5\times10^{-6}}} \approx \boxed{365\ \text{rad/s} \approx 116\pi\ \text{rad/s}}$$
+      <p><strong>Passo 2 —</strong> Na ressonância a impedância do circuito é puramente resistiva. Resistência equivalente do paralelo:</p>
+      $$R_{eq} = \frac{R_1 R_2}{R_1 + R_2} = \frac{4\cdot8}{12} = \frac{8}{3} \approx 2{,}67\ \Omega$$
+      <p><strong>Passo 3 —</strong> Corrente de pico e corrente instantânea (em fase com a fonte, pois \(Z = R_{eq}\)):</p>
+      $$I_{\max} = \frac{V_{\max}}{R_{eq}} = \frac{20}{8/3} = 7{,}5\ \text{A} \;\Rightarrow\; \boxed{i(t) = 7{,}5\,\text{sen}(\omega_0 t)\ \text{A}}$$
+      <p><strong>Passo 4 —</strong> Potência média (fator de potência \(\cos\varphi = 1\) na ressonância):</p>
+      $$P_{\text{méd}} = \frac{V_{\max} I_{\max}}{2}\cos\varphi = \frac{20\cdot 7{,}5}{2} = \boxed{75\ \text{W}}$$
+      <p>Só os resistores dissipam energia; indutor e capacitor apenas trocam energia entre si.</p>
+    </div>
+  </details>
+</article>

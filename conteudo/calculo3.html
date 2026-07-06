@@ -1,0 +1,340 @@
+<!-- ============================================================
+  Conteúdo teórico: Cálculo Diferencial e Integral 3 (MAT05)
+  Ordem dos tópicos: ementa oficial da POLI/UPE.
+  Este arquivo é um FRAGMENTO de HTML injetado em curso.html.
+  Fórmulas em LaTeX: \( ... \) para linha e $$ ... $$ para destaque.
+============================================================= -->
+
+<nav class="sumario" aria-label="Sumário do conteúdo">
+  <h2>1ª Unidade</h2>
+  <ol>
+    <li><a href="#c3-funcoes">Funções de várias variáveis</a></li>
+    <li><a href="#c3-limites">Limites e continuidade</a></li>
+    <li><a href="#c3-parciais">Derivadas parciais</a></li>
+    <li><a href="#c3-gradiente">Diferenciabilidade, gradiente e derivada direcional</a></li>
+    <li><a href="#c3-maxmin">Máximos e mínimos. Hessiana</a></li>
+    <li><a href="#c3-lagrange">Multiplicadores de Lagrange</a></li>
+    <li><a href="#c3-multiplas">Integrais múltiplas</a></li>
+  </ol>
+  <h2>2ª Unidade</h2>
+  <ol start="8">
+    <li><a href="#c3-curvas">Curvas no espaço. Triedro de Frenet</a></li>
+    <li><a href="#c3-linha">Integrais de linha e campos conservativos</a></li>
+    <li><a href="#c3-green">Teorema de Green</a></li>
+    <li><a href="#c3-superficie">Superfícies parametrizadas e integrais de superfície</a></li>
+    <li><a href="#c3-nabla">Operador nabla: divergente e rotacional</a></li>
+    <li><a href="#c3-gauss">Teorema da divergência (Gauss)</a></li>
+    <li><a href="#c3-stokes">Teorema de Stokes</a></li>
+  </ol>
+</nav>
+
+<!-- ================= 1ª UNIDADE ================= -->
+
+<section class="topico" id="c3-funcoes">
+  <h2><span class="num">01</span> Funções de várias variáveis</h2>
+  <p>Uma função de duas variáveis associa a cada par \((x,y)\) de um domínio \(D \subseteq \mathbb{R}^2\) um único número real \(z = f(x,y)\). O <strong>gráfico</strong> de \(f\) é uma superfície em \(\mathbb{R}^3\). Para três variáveis, \(w = f(x,y,z)\), não conseguimos desenhar o gráfico, mas visualizamos a função por suas superfícies de nível.</p>
+  <h3>Domínio</h3>
+  <p>Determinar o domínio é a primeira pergunta clássica de prova. As restrições mais comuns:</p>
+  <ul>
+    <li>Raiz de índice par: o radicando deve ser \(\geq 0\);</li>
+    <li>Denominador: deve ser \(\neq 0\);</li>
+    <li>Logaritmo: o argumento deve ser \(> 0\);</li>
+    <li>\(\arcsin\) e \(\arccos\): argumento em \([-1, 1]\).</li>
+  </ul>
+  <h3>Curvas e superfícies de nível</h3>
+  <p>A <strong>curva de nível</strong> \(k\) é o conjunto dos pontos do domínio onde \(f(x,y) = k\). É a "fatia horizontal" do gráfico projetada no plano \(xy\) — exatamente como as curvas de altitude de um mapa topográfico. Para \(f(x,y,z)\), o análogo é a <strong>superfície de nível</strong> \(f(x,y,z)=k\).</p>
+  <div class="macete">Curvas de nível muito próximas umas das outras indicam região onde a função varia rápido (gráfico íngreme); curvas espaçadas indicam variação lenta. O gradiente é sempre perpendicular às curvas de nível.</div>
+  <h3>Superfícies quádricas que você precisa reconhecer</h3>
+  <ul>
+    <li><strong>Paraboloide elíptico:</strong> \(z = x^2 + y^2\) (uma "tigela");</li>
+    <li><strong>Paraboloide hiperbólico (sela):</strong> \(z = x^2 - y^2\);</li>
+    <li><strong>Esfera:</strong> \(x^2 + y^2 + z^2 = R^2\);</li>
+    <li><strong>Elipsoide:</strong> \(\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1\);</li>
+    <li><strong>Cone:</strong> \(z^2 = x^2 + y^2\);</li>
+    <li><strong>Cilindro:</strong> \(x^2 + y^2 = R^2\) (livre em \(z\)).</li>
+  </ul>
+</section>
+
+<section class="topico" id="c3-limites">
+  <h2><span class="num">02</span> Limites e continuidade</h2>
+  <p>Dizemos que \(\displaystyle\lim_{(x,y)\to(a,b)} f(x,y) = L\) quando \(f(x,y)\) fica arbitrariamente próximo de \(L\) para todo \((x,y)\) suficientemente próximo de \((a,b)\), <strong>por qualquer caminho de aproximação</strong>. Essa é a diferença crucial em relação ao Cálculo 1: na reta só há dois lados; no plano há infinitos caminhos.</p>
+  <h3>Como mostrar que o limite NÃO existe</h3>
+  <p>Basta exibir <strong>dois caminhos</strong> que levem a valores diferentes. Caminhos usuais: eixos (\(y=0\) ou \(x=0\)), retas \(y = mx\), parábolas \(y = x^2\).</p>
+  <div class="formula">
+    <div class="rotulo">Exemplo clássico (cai direto em prova)</div>
+    $$\lim_{(x,y)\to(0,0)} \frac{x^2 - y^2}{x^2 + y^2}: \quad \text{por } y=0 \Rightarrow \frac{x^2}{x^2} = 1; \quad \text{por } x=0 \Rightarrow \frac{-y^2}{y^2} = -1.$$
+    <p>Valores diferentes \(\Rightarrow\) o limite não existe.</p>
+  </div>
+  <h3>Como mostrar que o limite EXISTE</h3>
+  <ul>
+    <li><strong>Coordenadas polares:</strong> troque \(x = r\cos\theta\), \(y = r\sin\theta\); então \((x,y)\to(0,0)\) equivale a \(r \to 0\). Se o resultado não depender de \(\theta\), o limite existe;</li>
+    <li><strong>Teorema do confronto (sanduíche):</strong> encontre \(g\) com \(|f| \leq g\) e \(g \to 0\). Desigualdades úteis: \(|x| \leq \sqrt{x^2+y^2}\), \(\;x^2 \leq x^2+y^2\), \(\;|xy| \leq \tfrac{1}{2}(x^2+y^2)\);</li>
+    <li><strong>Limite fundamental:</strong> \(\displaystyle\lim_{u\to 0}\frac{\sin u}{u} = 1\) e \(\displaystyle\lim_{u\to 0}\frac{1-\cos u}{u} = 0\), com \(u = x^2+y^2\) por exemplo.</li>
+  </ul>
+  <div class="macete">Se o grau do numerador for MAIOR que o do denominador, desconfie que o limite existe e vale 0 (prove por polares/confronto). Se os graus forem IGUAIS, desconfie que não existe (procure dois caminhos).</div>
+  <div class="formula">
+    <div class="rotulo">Exemplo com limite fundamental (1º EE 2023.2)</div>
+    $$\lim_{(x,y)\to(0,0)} \frac{1-\cos(x^2+y^2)}{2x^2+2y^2} \;\overset{u = x^2+y^2}{=}\; \frac{1}{2}\lim_{u\to 0}\frac{1-\cos u}{u} = \frac{1}{2}\cdot 0 = 0.$$
+  </div>
+  <p>Uma função é <strong>contínua</strong> em \((a,b)\) quando o limite existe e é igual a \(f(a,b)\). Polinômios são contínuos em todo o plano; quocientes são contínuos onde o denominador não zera.</p>
+</section>
+
+<section class="topico" id="c3-parciais">
+  <h2><span class="num">03</span> Derivadas parciais</h2>
+  <p>A derivada parcial em relação a \(x\) mede a taxa de variação de \(f\) quando só \(x\) varia (o \(y\) é tratado como constante):</p>
+  <div class="formula">
+    <div class="rotulo">Definição</div>
+    $$\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h,\,b) - f(a,b)}{h}, \qquad \frac{\partial f}{\partial y}(a,b) = \lim_{h \to 0} \frac{f(a,\,b+h) - f(a,b)}{h}$$
+  </div>
+  <p>Na prática: para achar \(f_x\), derive normalmente em \(x\) fingindo que \(y\) é um número, e vice-versa.</p>
+  <h3>Derivadas de ordem superior e Teorema de Clairaut/Schwarz</h3>
+  <p>Podemos derivar de novo: \(f_{xx}\), \(f_{yy}\), \(f_{xy}\), \(f_{yx}\). Se as derivadas mistas forem contínuas, então</p>
+  <div class="formula">$$f_{xy} = f_{yx}$$</div>
+  <div class="macete">Use \(f_{xy} = f_{yx}\) para conferir suas contas na montagem da Hessiana: se as mistas derem diferentes, você errou alguma derivada.</div>
+  <h3>Regra da cadeia</h3>
+  <p>Se \(z = f(x,y)\) com \(x = x(t)\) e \(y = y(t)\):</p>
+  <div class="formula">$$\frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}$$</div>
+  <p>Se \(x\) e \(y\) dependem de duas variáveis \(u,v\), aplica-se o mesmo esquema para \(\partial z/\partial u\) e \(\partial z/\partial v\): soma-se uma parcela por "caminho" de dependência.</p>
+  <h3>Derivação implícita</h3>
+  <p>Se \(F(x,y,z) = 0\) define \(z\) implicitamente:</p>
+  <div class="formula">$$\frac{\partial z}{\partial x} = -\frac{F_x}{F_z}, \qquad \frac{\partial z}{\partial y} = -\frac{F_y}{F_z}$$</div>
+</section>
+
+<section class="topico" id="c3-gradiente">
+  <h2><span class="num">04</span> Diferenciabilidade, gradiente e derivada direcional</h2>
+  <h3>Gradiente</h3>
+  <p>O gradiente empacota todas as derivadas parciais num vetor:</p>
+  <div class="formula">$$\nabla f = \left(\frac{\partial f}{\partial x},\; \frac{\partial f}{\partial y},\; \frac{\partial f}{\partial z}\right)$$</div>
+  <p>Propriedades geométricas fundamentais (caem em questões conceituais):</p>
+  <ul>
+    <li>\(\nabla f\) aponta na direção de <strong>máximo crescimento</strong> de \(f\); a taxa máxima é \(\lVert\nabla f\rVert\);</li>
+    <li>\(-\nabla f\) aponta na direção de máximo decrescimento;</li>
+    <li>\(\nabla f\) é <strong>perpendicular</strong> às curvas/superfícies de nível.</li>
+  </ul>
+  <h3>Derivada direcional</h3>
+  <p>Taxa de variação de \(f\) na direção de um vetor <strong>unitário</strong> \(\hat{u}\):</p>
+  <div class="formula">$$D_{\hat u} f(P) = \nabla f(P) \cdot \hat{u}, \qquad \hat u = \frac{\vec u}{\lVert \vec u \rVert}$$</div>
+  <div class="macete dica">O erro mais cobrado da 1ª unidade: esquecer de NORMALIZAR o vetor direção. Se a questão dá \(\vec u = (1,0,1)\), use \(\hat u = \left(\tfrac{1}{\sqrt2}, 0, \tfrac{1}{\sqrt2}\right)\). Sempre divida pela norma antes do produto escalar.</div>
+  <h3>Plano tangente e reta normal</h3>
+  <p>Para uma superfície dada como gráfico \(z = f(x,y)\), no ponto \((x_0, y_0, z_0)\):</p>
+  <div class="formula">
+    <div class="rotulo">Plano tangente (gráfico)</div>
+    $$z - z_0 = f_x(x_0,y_0)\,(x - x_0) + f_y(x_0,y_0)\,(y - y_0)$$
+  </div>
+  <p>Para uma superfície de nível \(F(x,y,z) = k\), o vetor normal é \(\nabla F(P)\) e o plano tangente é:</p>
+  <div class="formula">
+    <div class="rotulo">Plano tangente (superfície de nível)</div>
+    $$F_x(P)(x-x_0) + F_y(P)(y-y_0) + F_z(P)(z-z_0) = 0$$
+  </div>
+  <h3>Diferenciabilidade e linearização</h3>
+  <p>Ser diferenciável significa que o plano tangente aproxima bem a função perto do ponto. A <strong>aproximação linear</strong> é:</p>
+  <div class="formula">$$f(x,y) \approx f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)$$</div>
+  <p>Se as derivadas parciais existem e são contínuas numa vizinhança do ponto, então \(f\) é diferenciável ali (condição suficiente).</p>
+</section>
+
+<section class="topico" id="c3-maxmin">
+  <h2><span class="num">05</span> Máximos e mínimos. Hessiana</h2>
+  <h3>Pontos críticos</h3>
+  <p>\(P\) é ponto crítico quando o gradiente zera (ou não existe):</p>
+  <div class="formula">$$\nabla f(P) = \vec 0 \iff \begin{cases} f_x = 0 \\ f_y = 0 \end{cases}$$</div>
+  <p>Resolva o sistema com cuidado — cada solução \((x,y)\) é um candidato a máximo, mínimo ou sela.</p>
+  <h3>Classificação: teste da segunda derivada (Hessiana)</h3>
+  <div class="formula">
+    <div class="rotulo">Determinante Hessiano</div>
+    $$D(x,y) = \det\begin{pmatrix} f_{xx} & f_{xy} \\ f_{xy} & f_{yy} \end{pmatrix} = f_{xx}\,f_{yy} - (f_{xy})^2$$
+  </div>
+  <ul>
+    <li>\(D > 0\) e \(f_{xx} > 0\) \(\Rightarrow\) <strong>mínimo local</strong>;</li>
+    <li>\(D > 0\) e \(f_{xx} < 0\) \(\Rightarrow\) <strong>máximo local</strong>;</li>
+    <li>\(D < 0\) \(\Rightarrow\) <strong>ponto de sela</strong>;</li>
+    <li>\(D = 0\) \(\Rightarrow\) o teste é inconclusivo (analise diretamente a função).</li>
+  </ul>
+  <div class="macete">"D positivo decide com \(f_{xx}\); D negativo é sela." Como \(D>0\) força \(f_{xx}\) e \(f_{yy}\) a terem o mesmo sinal, você pode olhar qualquer um dos dois para decidir entre máx/mín.</div>
+  <h3>Máximos e mínimos globais em regiões fechadas</h3>
+  <p>Pelo Teorema de Weierstrass, uma função contínua em região fechada e limitada atinge máximo e mínimo globais. Roteiro:</p>
+  <ol>
+    <li>Ache os pontos críticos no interior;</li>
+    <li>Analise a função na fronteira (parametrize ou use Lagrange);</li>
+    <li>Compare todos os valores obtidos: o maior é o máximo global e o menor, o mínimo global.</li>
+  </ol>
+</section>
+
+<section class="topico" id="c3-lagrange">
+  <h2><span class="num">06</span> Multiplicadores de Lagrange</h2>
+  <p>Para otimizar \(f(x,y)\) <strong>sujeita a uma restrição</strong> \(g(x,y) = k\), usa-se o fato geométrico de que, no ótimo, as curvas de nível de \(f\) tangenciam a curva da restrição — logo os gradientes são paralelos:</p>
+  <div class="formula">
+    <div class="rotulo">Sistema de Lagrange</div>
+    $$\begin{cases} \nabla f = \lambda \nabla g \\ g(x,y) = k \end{cases} \iff \begin{cases} f_x = \lambda\, g_x \\ f_y = \lambda\, g_y \\ g(x,y) = k \end{cases}$$
+  </div>
+  <p>Resolvido o sistema, avalie \(f\) em cada solução: o maior valor é o máximo e o menor, o mínimo (a restrição sendo fechada e limitada).</p>
+  <div class="macete">Truque padrão para resolver o sistema: divida uma equação pela outra para eliminar \(\lambda\) (cuidando dos casos em que o denominador zera — analise-os em separado!). Outra via: isole \(\lambda\) nas duas primeiras equações e iguale.</div>
+  <p>Com duas restrições \(g = k_1\) e \(h = k_2\), o sistema vira \(\nabla f = \lambda \nabla g + \mu \nabla h\) junto com as duas restrições.</p>
+  <div class="macete dica">Palavras-chave no enunciado que gritam "Lagrange": "sobre a curva", "sujeito a", "na elipse/esfera", "com perímetro/área fixa", "caixa de volume dado com custo mínimo".</div>
+</section>
+
+<section class="topico" id="c3-multiplas">
+  <h2><span class="num">07</span> Integrais múltiplas: domínios, áreas e volumes</h2>
+  <h3>Integral dupla</h3>
+  <p>\(\iint_D f\, dA\) soma os valores de \(f\) sobre a região \(D\). Se \(f \geq 0\), é o <strong>volume</strong> sob o gráfico; se \(f = 1\), é a <strong>área</strong> de \(D\). Pelo Teorema de Fubini, calcula-se como integral iterada:</p>
+  <div class="formula">
+    <div class="rotulo">Região tipo I (entre duas curvas em y)</div>
+    $$\iint_D f\,dA = \int_a^b \int_{g_1(x)}^{g_2(x)} f(x,y)\; dy\, dx$$
+  </div>
+  <div class="macete">Sempre DESENHE a região antes de montar os limites. Se a integral ficar impossível numa ordem (ex.: \(\int e^{y^2} dy\)), INVERTA a ordem de integração — essa é uma pegadinha recorrente.</div>
+  <h3>Coordenadas polares</h3>
+  <p>Para regiões circulares/anulares ou integrandos com \(x^2 + y^2\):</p>
+  <div class="formula">
+    <div class="rotulo">Mudança polar (não esqueça o Jacobiano r!)</div>
+    $$x = r\cos\theta, \quad y = r\sin\theta, \quad dA = r\, dr\, d\theta, \quad x^2 + y^2 = r^2$$
+  </div>
+  <h3>Integral tripla</h3>
+  <p>\(\iiint_E f\, dV\) com \(f = 1\) dá o <strong>volume</strong> de \(E\). Duas mudanças de variáveis essenciais:</p>
+  <div class="formula">
+    <div class="rotulo">Cilíndricas (simetria em torno do eixo z)</div>
+    $$x = r\cos\theta,\quad y = r\sin\theta,\quad z = z, \qquad dV = r\; dz\, dr\, d\theta$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Esféricas (esferas e cones)</div>
+    $$x = \rho\sin\phi\cos\theta,\quad y = \rho\sin\phi\sin\theta,\quad z = \rho\cos\phi, \qquad dV = \rho^2 \sin\phi\; d\rho\, d\phi\, d\theta$$
+  </div>
+  <div class="macete">Escolha do sistema: cilindro/paraboloide \(\to\) cilíndricas; esfera/cone \(\to\) esféricas. Em esféricas, \(\phi\) é medido a partir do eixo \(z\) positivo: \(\phi \in [0, \pi/2]\) é o hemisfério de cima, e o cone \(z=\sqrt{x^2+y^2}\) é \(\phi = \pi/4\).</div>
+  <h3>Aplicações</h3>
+  <ul>
+    <li>Massa: \(m = \iint_D \delta\, dA\) (ou tripla com \(dV\)), onde \(\delta\) é a densidade;</li>
+    <li>Centro de massa: \(\bar x = \frac{1}{m}\iint x\,\delta\, dA\), \(\;\bar y = \frac{1}{m}\iint y\,\delta\, dA\);</li>
+    <li>Valor médio de \(f\) em \(D\): \(\frac{1}{A(D)}\iint_D f\, dA\).</li>
+  </ul>
+</section>
+
+<!-- ================= 2ª UNIDADE ================= -->
+
+<section class="topico" id="c3-curvas">
+  <h2><span class="num">08</span> Curvas no espaço. Triedro de Frenet</h2>
+  <p>Uma curva é descrita por uma função vetorial \(\vec r(t) = (x(t),\, y(t),\, z(t))\). O vetor \(\vec r\,'(t)\) é tangente à curva (velocidade) e \(\lVert \vec r\,'(t)\rVert\) é a rapidez.</p>
+  <div class="formula">
+    <div class="rotulo">Comprimento de arco</div>
+    $$L = \int_a^b \lVert \vec r\,'(t) \rVert\, dt = \int_a^b \sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2}\; dt$$
+  </div>
+  <h3>Triedro de Frenet</h3>
+  <p>Em cada ponto da curva definimos três vetores unitários ortogonais:</p>
+  <div class="formula">
+    $$\hat T = \frac{\vec r\,'}{\lVert \vec r\,' \rVert} \;(\text{tangente}), \qquad
+      \hat N = \frac{\hat T'}{\lVert \hat T' \rVert} \;(\text{normal principal}), \qquad
+      \hat B = \hat T \times \hat N \;(\text{binormal})$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Curvatura</div>
+    $$\kappa = \frac{\lVert \hat T'(t) \rVert}{\lVert \vec r\,'(t) \rVert} = \frac{\lVert \vec r\,' \times \vec r\,'' \rVert}{\lVert \vec r\,' \rVert^3}$$
+  </div>
+  <p>A curvatura mede o quanto a curva "dobra": uma reta tem \(\kappa = 0\) e um círculo de raio \(R\) tem \(\kappa = 1/R\). A <strong>parametrização pelo comprimento de arco</strong> \(s\) é aquela em que se percorre a curva com rapidez 1; nela, \(\kappa = \lVert \hat T'(s)\rVert\) diretamente.</p>
+  <div class="macete">Para parametrizar pelo comprimento de arco: calcule \(s(t)=\int_0^t \lVert\vec r\,'(u)\rVert du\), inverta para obter \(t(s)\) e substitua. Para a hélice \(\vec r=(a\cos t, a\sin t, bt)\), \(\lVert\vec r\,'\rVert=\sqrt{a^2+b^2}\) é constante — por isso ela é a curva favorita das provas.</div>
+</section>
+
+<section class="topico" id="c3-linha">
+  <h2><span class="num">09</span> Integrais de linha e campos conservativos</h2>
+  <h3>Integral de linha escalar (em relação ao comprimento de arco)</h3>
+  <div class="formula">$$\int_C f\; ds = \int_a^b f(\vec r(t))\, \lVert \vec r\,'(t) \rVert\; dt$$</div>
+  <p>Interpretação: massa de um arame com densidade \(f\), ou área de uma "cerca" de altura \(f\) sobre a curva.</p>
+  <h3>Integral de linha vetorial (trabalho)</h3>
+  <div class="formula">$$W = \int_C \vec F \cdot d\vec r = \int_a^b \vec F(\vec r(t)) \cdot \vec r\,'(t)\; dt = \int_C P\,dx + Q\,dy$$</div>
+  <p>Roteiro de cálculo direto: (1) parametrize a curva; (2) substitua na \(\vec F\); (3) faça o produto escalar com \(\vec r\,'(t)\); (4) integre em \(t\). Inverter a orientação da curva troca o sinal.</p>
+  <h3>Campos conservativos e o Teorema Fundamental</h3>
+  <p>\(\vec F\) é <strong>conservativo</strong> quando existe função potencial \(\varphi\) com \(\nabla \varphi = \vec F\). Teste em 2D (região simplesmente conexa):</p>
+  <div class="formula">
+    <div class="rotulo">Teste de conservatividade</div>
+    $$\vec F = (P,\,Q) \text{ conservativo} \iff \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Teorema Fundamental das integrais de linha</div>
+    $$\int_C \nabla\varphi \cdot d\vec r = \varphi(B) - \varphi(A)$$
+  </div>
+  <p>Consequências: a integral de um campo conservativo <strong>não depende do caminho</strong>, só dos extremos; em qualquer curva fechada, vale zero.</p>
+  <p><strong>Como achar o potencial:</strong> integre \(P\) em \(x\) obtendo \(\varphi = \int P\,dx + g(y)\); derive em \(y\), iguale a \(Q\) e descubra \(g(y)\).</p>
+  <div class="macete dica">Antes de parametrizar qualquer integral de linha, TESTE se o campo é conservativo. Se for, ache \(\varphi\) e use \(\varphi(B)-\varphi(A)\) — economiza a maior parte da conta. As provas quase sempre montam a questão para premiar quem percebe isso.</div>
+</section>
+
+<section class="topico" id="c3-green">
+  <h2><span class="num">10</span> Teorema de Green</h2>
+  <p>Relaciona a integral de linha numa curva fechada \(C\) (orientada no sentido <strong>anti-horário</strong>) com uma integral dupla na região \(D\) delimitada por ela:</p>
+  <div class="formula">
+    <div class="rotulo">Teorema de Green</div>
+    $$\oint_C P\,dx + Q\,dy = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA$$
+  </div>
+  <p>Condições: \(C\) fechada, simples, orientada positivamente; \(P\) e \(Q\) com derivadas contínuas em \(D\) (cuidado com singularidades dentro da região, como a origem em campos com \(x^2+y^2\) no denominador).</p>
+  <h3>Aplicação: área via integral de linha</h3>
+  <div class="formula">$$A(D) = \oint_C x\, dy = -\oint_C y\, dx = \frac{1}{2} \oint_C x\,dy - y\,dx$$</div>
+  <div class="macete">Se a curva do enunciado NÃO é fechada, você ainda pode usar Green: feche-a com segmentos simples (eixos, retas), aplique o teorema no contorno completo e desconte as integrais dos trechos adicionados — foi exatamente essa a questão 3 da Final 2023.1.</div>
+  <div class="macete dica">Sentido horário? Aplique Green normalmente e TROQUE O SINAL do resultado. Escreva isso explicitamente na prova para não perder ponto por orientação.</div>
+</section>
+
+<section class="topico" id="c3-superficie">
+  <h2><span class="num">11</span> Superfícies parametrizadas e integrais de superfície</h2>
+  <p>Uma superfície é descrita por \(\vec r(u,v) = (x(u,v),\, y(u,v),\, z(u,v))\). O vetor normal vem do produto vetorial dos vetores tangentes:</p>
+  <div class="formula">$$\vec n = \vec r_u \times \vec r_v, \qquad dS = \lVert \vec r_u \times \vec r_v \rVert\; du\, dv$$</div>
+  <h3>Integral de superfície escalar</h3>
+  <div class="formula">$$\iint_S f\; dS = \iint_D f(\vec r(u,v))\, \lVert \vec r_u \times \vec r_v \rVert\; du\, dv$$</div>
+  <p>Caso a superfície seja um gráfico \(z = g(x,y)\):</p>
+  <div class="formula">$$dS = \sqrt{1 + g_x^2 + g_y^2}\;\; dA \qquad\text{(área: } A(S) = \iint_D \sqrt{1+g_x^2+g_y^2}\, dA\text{)}$$</div>
+  <h3>Integral de superfície vetorial (fluxo)</h3>
+  <div class="formula">$$\Phi = \iint_S \vec F \cdot d\vec S = \iint_D \vec F \cdot (\vec r_u \times \vec r_v)\; du\, dv$$</div>
+  <p>O fluxo mede "quanto campo atravessa a superfície". A orientação (para onde aponta \(\vec n\)) muda o sinal — leia sempre se o enunciado pede normal exterior ou para cima.</p>
+  <div class="macete">Parametrizações que valem decorar: esfera de raio \(a\): \(\vec r(\phi,\theta) = (a\sin\phi\cos\theta,\, a\sin\phi\sin\theta,\, a\cos\phi)\) com \(\lVert\vec r_\phi \times \vec r_\theta\rVert = a^2\sin\phi\); cilindro de raio \(a\): \(\vec r(\theta, z) = (a\cos\theta,\, a\sin\theta,\, z)\) com \(dS = a\, d\theta\, dz\).</div>
+</section>
+
+<section class="topico" id="c3-nabla">
+  <h2><span class="num">12</span> Operador nabla: divergente e rotacional</h2>
+  <p>O operador \(\nabla = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right)\) gera as três operações do cálculo vetorial:</p>
+  <div class="formula">
+    <div class="rotulo">Divergente (escalar): "produto escalar" com nabla</div>
+    $$\operatorname{div} \vec F = \nabla \cdot \vec F = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Rotacional (vetor): "produto vetorial" com nabla</div>
+    $$\operatorname{rot} \vec F = \nabla \times \vec F = \begin{vmatrix} \hat i & \hat j & \hat k \\ \partial_x & \partial_y & \partial_z \\ P & Q & R \end{vmatrix}
+    = \left( R_y - Q_z,\;\; P_z - R_x,\;\; Q_x - P_y \right)$$
+  </div>
+  <p>Interpretações físicas: o divergente mede expansão/compressão local (fontes e sumidouros); o rotacional mede a tendência de rotação local do campo.</p>
+  <h3>Identidades importantes</h3>
+  <ul>
+    <li>\(\nabla \times (\nabla \varphi) = \vec 0\) — gradientes não giram (campo conservativo \(\Rightarrow\) rotacional nulo);</li>
+    <li>\(\nabla \cdot (\nabla \times \vec F) = 0\) — rotacionais não têm divergência;</li>
+    <li>Em 3D (domínio simplesmente conexo): \(\vec F\) conservativo \(\iff \nabla \times \vec F = \vec 0\).</li>
+  </ul>
+  <div class="macete">Memorize pela sonoridade: DIVergente = produto escalar (dá escalar). ROTacional = produto vetorial (dá vetor). O teste de campo conservativo 2D \(Q_x = P_y\) é só a componente \(\hat k\) do rotacional zerando.</div>
+</section>
+
+<section class="topico" id="c3-gauss">
+  <h2><span class="num">13</span> Teorema da divergência (Gauss)</h2>
+  <p>Converte o <strong>fluxo através de uma superfície fechada</strong> \(S\) (com normal apontando para fora) numa integral tripla do divergente no sólido \(E\) interior:</p>
+  <div class="formula">
+    <div class="rotulo">Teorema de Gauss</div>
+    $$\oiint_S \vec F \cdot d\vec S = \iiint_E \nabla \cdot \vec F\;\; dV$$
+  </div>
+  <p>Roteiro: (1) verifique que \(S\) é fechada (se não for, feche com uma "tampa" e desconte o fluxo dela); (2) calcule \(\nabla\cdot\vec F\); (3) escolha coordenadas adequadas (cilíndricas/esféricas) para a tripla; (4) confira a orientação: o teorema exige normal <strong>exterior</strong>.</p>
+  <div class="macete">Se \(\nabla \cdot \vec F\) der uma constante \(c\), o fluxo total é simplesmente \(c \cdot V(E)\) — volume do sólido vezes a constante. Isso transforma questões aparentemente cabeludas em geometria básica (volume de esfera, cilindro, cone).</div>
+  <div class="macete dica">Sinal de que a questão quer Gauss: pedem fluxo por uma superfície FECHADA (esfera, cubo, cilindro com tampas) ou o campo é feio mas o divergente é simples. Sinal de Stokes: pedem circulação numa curva fechada de um campo com rotacional simples.</div>
+</section>
+
+<section class="topico" id="c3-stokes">
+  <h2><span class="num">14</span> Teorema de Stokes</h2>
+  <p>Generaliza Green para o espaço: a <strong>circulação</strong> de \(\vec F\) na curva fechada \(C\) que borda uma superfície \(S\) é o fluxo do rotacional por \(S\):</p>
+  <div class="formula">
+    <div class="rotulo">Teorema de Stokes</div>
+    $$\oint_C \vec F \cdot d\vec r = \iint_S (\nabla \times \vec F) \cdot d\vec S$$
+  </div>
+  <p>A orientação segue a <strong>regra da mão direita</strong>: com os dedos no sentido de percurso de \(C\), o polegar dá o sentido da normal de \(S\).</p>
+  <p>Duas jogadas estratégicas que as provas adoram:</p>
+  <ul>
+    <li><strong>Trocar a integral de linha por fluxo do rotacional</strong> quando a curva é ruim de parametrizar mas o rotacional é simples;</li>
+    <li><strong>Trocar a superfície:</strong> como o resultado só depende da borda \(C\), você pode substituir uma superfície complicada (paraboloide, hemisfério) pelo <strong>disco plano</strong> de mesma borda — a conta despenca de dificuldade.</li>
+  </ul>
+  <div class="macete">Se \(\nabla \times \vec F = \vec 0\), a circulação em qualquer curva fechada é zero (campo conservativo). Verifique isso ANTES de parametrizar qualquer coisa.</div>
+  <h3>Resumo dos três grandes teoremas</h3>
+  <div class="formula">
+    $$\underbrace{\oint_C P\,dx + Q\,dy = \iint_D (Q_x - P_y)\, dA}_{\text{Green: curva} \to \text{região plana}}
+    \qquad
+    \underbrace{\oint_C \vec F \cdot d\vec r = \iint_S (\nabla\times\vec F)\cdot d\vec S}_{\text{Stokes: borda} \to \text{superfície}}
+    \qquad
+    \underbrace{\oiint_S \vec F \cdot d\vec S = \iiint_E \nabla\cdot\vec F\, dV}_{\text{Gauss: casca fechada} \to \text{sólido}}$$
+  </div>
+</section>
