@@ -1,0 +1,39 @@
+<article class="questao" data-id="eletromag-1ee-05" data-tema="campo-eletrico-vetorial">
+  <div class="q-topo">
+    <span class="q-id">Questão 05</span>
+    <span class="q-tag">1º EE · 2024.1</span>
+    <span class="q-tag">Campo elétrico · Soma vetorial</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Uma carga \(q_1 = 5\ \mu\text{C}\) está localizada no ponto \((1,\ 3)\ \text{m}\) e uma carga \(q_2 = -4\ \mu\text{C}\) está no ponto \((2,\ -2)\ \text{m}\).</p>
+    <p>Determine o campo elétrico resultante (componentes, módulo e sentido) no ponto \(P(-3,\ 1)\ \text{m}\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\vec E \approx (-1{,}10\,\hat i - 1{,}55\,\hat j)\times 10^{3}\ \text{N/C}\), com módulo \(|\vec E| \approx 1{,}90\times 10^{3}\ \text{N/C}\).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Vetores que vão de cada carga até \(P\):</p>
+      $$\vec r_1 = P - (1,3) = (-4,\ -2)\ \text{m}, \qquad r_1 = \sqrt{16+4} = \sqrt{20} \approx 4{,}47\ \text{m}$$
+      $$\vec r_2 = P - (2,-2) = (-5,\ 3)\ \text{m}, \qquad r_2 = \sqrt{25+9} = \sqrt{34} \approx 5{,}83\ \text{m}$$
+      <p><strong>Passo 2 —</strong> Módulos dos campos:</p>
+      $$E_1 = \frac{k|q_1|}{r_1^2} = \frac{(8{,}99\times10^9)(5\times10^{-6})}{20} \approx 2{,}25\times10^{3}\ \text{N/C}$$
+      $$E_2 = \frac{k|q_2|}{r_2^2} = \frac{(8{,}99\times10^9)(4\times10^{-6})}{34} \approx 1{,}06\times10^{3}\ \text{N/C}$$
+      <p><strong>Passo 3 —</strong> Direções: \(q_1 > 0\) → o campo em \(P\) <em>aponta para longe</em> de \(q_1\) (na direção de \(\hat r_1\)); \(q_2 < 0\) → o campo <em>aponta para</em> \(q_2\) (sentido oposto a \(\hat r_2\)):</p>
+      $$\vec E_1 = E_1\,\hat r_1 = 2{,}25\times10^3 \cdot \frac{(-4,-2)}{4{,}47} \approx (-2{,}01,\ -1{,}00)\times10^{3}\ \text{N/C}$$
+      $$\vec E_2 = -E_2\,\hat r_2 = 1{,}06\times10^3 \cdot \frac{(5,-3)}{5{,}83} \approx (0{,}91,\ -0{,}54)\times10^{3}\ \text{N/C}$$
+      <p><strong>Passo 4 —</strong> Somando componente a componente:</p>
+      $$\vec E = \vec E_1 + \vec E_2 \approx \boxed{(-1{,}10\,\hat i - 1{,}55\,\hat j)\times10^{3}\ \text{N/C}}$$
+      $$|\vec E| = \sqrt{(1{,}10)^2 + (1{,}55)^2}\times10^3 \approx \boxed{1{,}90\times10^{3}\ \text{N/C}}$$
+      <p>O campo aponta para o 3º quadrante (esquerda e para baixo).</p>
+    </div>
+  </details>
+</article>

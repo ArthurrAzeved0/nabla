@@ -1,0 +1,37 @@
+<article class="questao" data-id="eletromag-1ee-09" data-tema="lei-de-gauss-plano">
+  <div class="q-topo">
+    <span class="q-id">Questão 09</span>
+    <span class="q-tag">1º EE · 2024.2</span>
+    <span class="q-tag">Lei de Gauss · Plano infinito</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>(a) Usando a Lei de Gauss, mostre que o campo elétrico de um plano infinito com densidade superficial de carga \(\sigma &gt; 0\) vale \(E = \dfrac{\sigma}{2\varepsilon_0}\), independente da distância ao plano.</p>
+    <p>(b) Dois planos infinitos paralelos possuem densidades \(+\sigma\) e \(-\sigma\). Determine o campo elétrico <strong>entre</strong> os planos e <strong>fora</strong> deles.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(E = \dfrac{\sigma}{2\varepsilon_0}\) &nbsp;·&nbsp; (b) entre os planos \(E = \dfrac{\sigma}{\varepsilon_0}\) (do \(+\) para o \(-\)); fora, \(E = 0\).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Por simetria, \(\vec E\) é perpendicular ao plano e tem o mesmo módulo dos dois lados. Escolha como gaussiana um <em>cilindro</em> de área de base \(A\) atravessando o plano.</p>
+      <p><strong>Passo 2 —</strong> Só as duas tampas contribuem para o fluxo (na lateral \(\vec E \perp \hat n\)):</p>
+      $$\Phi = EA + EA = 2EA$$
+      <p><strong>Passo 3 —</strong> A carga envolvida é \(q_{\text{int}} = \sigma A\). Pela Lei de Gauss:</p>
+      $$2EA = \frac{\sigma A}{\varepsilon_0} \;\Rightarrow\; \boxed{E = \frac{\sigma}{2\varepsilon_0}}$$
+      <p>Como \(A\) cancela e nada depende da distância, o campo é <em>uniforme</em>.</p>
+      <p><strong>Passo 4 —</strong> Dois planos \(+\sigma\) e \(-\sigma\): cada um gera \(\sigma/2\varepsilon_0\). Entre eles, o campo do plano positivo aponta <em>para longe</em> dele e o do negativo aponta <em>para</em> ele — ou seja, os dois apontam no <strong>mesmo sentido</strong> (do \(+\) para o \(-\)) e se somam:</p>
+      $$E_{\text{entre}} = \frac{\sigma}{2\varepsilon_0} + \frac{\sigma}{2\varepsilon_0} = \boxed{\frac{\sigma}{\varepsilon_0}}$$
+      <p><strong>Passo 5 —</strong> Fora dos planos, os dois campos têm sentidos opostos e mesmo módulo:</p>
+      $$E_{\text{fora}} = \frac{\sigma}{2\varepsilon_0} - \frac{\sigma}{2\varepsilon_0} = \boxed{0}$$
+      <p>É a configuração do capacitor de placas paralelas ideal.</p>
+    </div>
+  </details>
+</article>

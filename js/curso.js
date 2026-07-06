@@ -85,8 +85,15 @@
   /* ---------- carrega as questões ---------- */
 
   var PROVAS_ROTULO = { "1ee": "1º EE", "2ee": "2º EE", "final": "Prova Final" };
+  var provaCorrente = "1ee";
+
+  /* API mínima para o js/estudo.js (ex.: sair do modo simulado) */
+  window.RA = {
+    recarregarQuestoes: function () { carregarQuestoes(provaCorrente); }
+  };
 
   function carregarQuestoes(prova) {
+    provaCorrente = prova;
     var manifesto = window.QUESTOES_MANIFEST || {};
     var arquivos = (manifesto[curso.id] && manifesto[curso.id][prova]) || [];
 
@@ -96,6 +103,7 @@
       listaQuestoes.innerHTML =
         '<p class="aviso-vazio">Ainda não há questões cadastradas para ' +
         (PROVAS_ROTULO[prova] || prova) + " nesta cadeira.</p>";
+      if (window.ESTUDO) ESTUDO.aoRenderizar(curso.id, prova, listaQuestoes);
       return;
     }
 
@@ -117,6 +125,8 @@
     ).then(function (blocos) {
       listaQuestoes.innerHTML = blocos.join("\n");
       renderizarMatematica(listaQuestoes);
+      /* ativa marcações, cronômetro, estatísticas e filtros (js/estudo.js) */
+      if (window.ESTUDO) ESTUDO.aoRenderizar(curso.id, prova, listaQuestoes);
     });
   }
 

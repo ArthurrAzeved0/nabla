@@ -62,11 +62,48 @@
 
   <!-- Questões: blocos questoes/<id>/<prova>/*.html injetados aqui -->
   <section id="painel-questoes" class="painel" role="tabpanel">
+
+    <!-- Estatísticas de progresso (preenchido pelo js/estudo.js) -->
+    <div id="estatisticas" class="estatisticas"></div>
+
     <div class="filtro-provas" role="tablist">
       <button class="chip ativo" data-prova="1ee">1º EE</button>
       <button class="chip" data-prova="2ee">2º EE</button>
       <button class="chip" data-prova="final">Prova Final</button>
+      <button id="btn-simulado" class="chip chip-simulado" type="button">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 9v4l2.5 2.5M9.5 2.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+        Modo simulado
+      </button>
     </div>
+
+    <!-- Configuração do simulado -->
+    <div id="simulado-config" class="simulado-config oculto">
+      <label>Questões <input id="simulado-n" type="number" min="1" max="20" value="4"></label>
+      <label>Duração (min) <input id="simulado-min" type="number" min="5" max="300" value="100"></label>
+      <button id="simulado-iniciar" class="q-btn destaque" type="button">Iniciar</button>
+      <button id="simulado-cancelar" class="q-btn" type="button">Cancelar</button>
+      <p class="simulado-ajuda">Sorteia questões da prova selecionada acima, esconde os gabaritos e cronometra. Ao encerrar, você corrige e recebe a nota.</p>
+    </div>
+
+    <!-- Barra fixa exibida durante o simulado -->
+    <div id="simulado-barra" class="simulado-barra oculto">
+      <span id="simulado-tempo" class="simulado-tempo"></span>
+      <span id="simulado-info" class="simulado-info"></span>
+      <span id="simulado-nota" class="simulado-nota"></span>
+      <button id="simulado-encerrar" class="q-btn destaque" type="button">Encerrar e corrigir</button>
+      <button id="simulado-sair" class="q-btn oculto" type="button">Sair do simulado</button>
+    </div>
+
+    <!-- Filtro por status das marcações -->
+    <div class="filtro-status">
+      <button class="chip-status ativo" data-status="todas">Todas</button>
+      <button class="chip-status" data-status="a">Acertei</button>
+      <button class="chip-status" data-status="e">Errei</button>
+      <button class="chip-status" data-status="r">Revisar</button>
+      <button class="chip-status" data-status="nao">Não feitas</button>
+    </div>
+    <p id="aviso-filtro-vazio" class="aviso-vazio oculto">Nenhuma questão desta prova com esse status.</p>
+
     <div id="lista-questoes">
       <p class="aviso-carregando">Carregando questões…</p>
     </div>
@@ -79,6 +116,7 @@
 
 <script src="js/cursos.js"></script>
 <script src="questoes/manifest.js"></script>
+<script src="js/estudo.js"></script>
 <script src="js/curso.js"></script>
 </body>
 </html>

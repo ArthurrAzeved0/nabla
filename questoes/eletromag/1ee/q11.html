@@ -1,0 +1,37 @@
+<article class="questao" data-id="eletromag-1ee-11" data-tema="potencial-eletrico">
+  <div class="q-topo">
+    <span class="q-id">Questão 11</span>
+    <span class="q-tag">1º EE · 2024.2</span>
+    <span class="q-tag">Potencial elétrico</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Considere a esfera da questão anterior: raio \(R\), densidade \(\rho(r) = A/r\) e carga total \(Q = 2\pi A R^2\), de modo que o campo externo é \(E(r) = \dfrac{AR^2}{2\varepsilon_0 r^2}\).</p>
+    <p>(a) Determine o potencial elétrico \(V(r)\) para \(r &gt; R\) (com \(V(\infty) = 0\)).</p>
+    <p>(b) Calcule a diferença de potencial \(V_A - V_B\) entre os pontos \(A\) (em \(r = 2R\)) e \(B\) (em \(r = 4R\)).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(V(r) = \dfrac{AR^2}{2\varepsilon_0 r}\) &nbsp;·&nbsp; (b) \(V_A = \dfrac{AR}{4\varepsilon_0}\), \(V_B = \dfrac{AR}{8\varepsilon_0}\) e \(V_A - V_B = \dfrac{AR}{8\varepsilon_0}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> O potencial é obtido integrando o campo do infinito até \(r\):</p>
+      $$V(r) = -\int_{\infty}^{r} \vec E\cdot d\vec r = \int_{r}^{\infty} \frac{AR^2}{2\varepsilon_0 r'^2}\,dr'$$
+      <p><strong>Passo 2 —</strong> Resolvendo a integral:</p>
+      $$V(r) = \frac{AR^2}{2\varepsilon_0}\left[-\frac{1}{r'}\right]_{r}^{\infty} = \boxed{\frac{AR^2}{2\varepsilon_0\,r}}$$
+      <p>(Equivalente a tratar a esfera como carga pontual: \(V = \frac{Q}{4\pi\varepsilon_0 r}\) com \(Q = 2\pi AR^2\) ✓)</p>
+      <p><strong>Passo 3 —</strong> Avaliando nos dois pontos:</p>
+      $$V_A = V(2R) = \frac{AR^2}{2\varepsilon_0 (2R)} = \boxed{\frac{AR}{4\varepsilon_0}} \qquad V_B = V(4R) = \frac{AR^2}{2\varepsilon_0 (4R)} = \boxed{\frac{AR}{8\varepsilon_0}}$$
+      <p><strong>Passo 4 —</strong> Diferença de potencial:</p>
+      $$V_A - V_B = \frac{AR}{4\varepsilon_0} - \frac{AR}{8\varepsilon_0} = \boxed{\frac{AR}{8\varepsilon_0}}$$
+      <p>Positiva, como esperado: aproximando-se de uma carga positiva o potencial cresce.</p>
+    </div>
+  </details>
+</article>

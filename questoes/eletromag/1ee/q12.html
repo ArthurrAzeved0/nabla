@@ -1,0 +1,40 @@
+<article class="questao" data-id="eletromag-1ee-12" data-tema="circuitos-kirchhoff">
+  <div class="q-topo">
+    <span class="q-id">Questão 12</span>
+    <span class="q-tag">1º EE · 2024.2</span>
+    <span class="q-tag">Circuitos · Leis de Kirchhoff</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Entre dois nós \(A\) e \(B\) há três ramos em paralelo: <strong>ramo 1</strong> com a bateria \(\varepsilon_1 = 4\ \text{V}\) em série com \(R_1 = 1\ \Omega\); <strong>ramo 2</strong> com a bateria \(\varepsilon_2 = 3\ \text{V}\) em série com \(R_2 = 2\ \Omega\) (as duas baterias "empurram" corrente para o nó \(A\)); e <strong>ramo 3</strong> com uma chave \(S\) em série com \(R_3 = 1\ \Omega\).</p>
+    <p>(a) Com \(S\) <strong>aberta</strong>, calcule a corrente no circuito e diga qual bateria está sendo carregada.</p>
+    <p>(b) Com \(S\) <strong>fechada</strong>, calcule as correntes \(i_1\), \(i_2\) e \(i_3\) nos três ramos.</p>
+    <p>(c) Calcule a potência dissipada em \(R_3\) com \(S\) fechada.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(i \approx 0{,}33\ \text{A}\), carregando \(\varepsilon_2\) &nbsp;·&nbsp; (b) \(i_1 = 1{,}80\ \text{A}\), \(i_2 = 0{,}40\ \text{A}\), \(i_3 = 2{,}20\ \text{A}\) &nbsp;·&nbsp; (c) \(P_{R_3} \approx 4{,}84\ \text{W}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> \(S\) aberta: só existe a malha formada pelos ramos 1 e 2. Como \(\varepsilon_1 &gt; \varepsilon_2\), a bateria 1 domina e força corrente "contra" \(\varepsilon_2\):</p>
+      $$i = \frac{\varepsilon_1 - \varepsilon_2}{R_1 + R_2} = \frac{4 - 3}{1 + 2} \approx \boxed{0{,}33\ \text{A}}$$
+      <p>A corrente entra pelo terminal \(+\) de \(\varepsilon_2\): a bateria 2 está sendo <strong>carregada</strong>.</p>
+      <p><strong>Passo 2 —</strong> \(S\) fechada: chame \(V\) a tensão do nó \(A\) em relação a \(B\). Correntes que chegam ao nó pelos ramos 1 e 2 e saem pelo ramo 3:</p>
+      $$i_1 = \frac{\varepsilon_1 - V}{R_1} = \frac{4 - V}{1}, \qquad i_2 = \frac{\varepsilon_2 - V}{R_2} = \frac{3 - V}{2}, \qquad i_3 = \frac{V}{R_3} = \frac{V}{1}$$
+      <p><strong>Passo 3 —</strong> Lei dos nós, \(i_1 + i_2 = i_3\):</p>
+      $$(4 - V) + \frac{3 - V}{2} = V \;\Rightarrow\; 8 - 2V + 3 - V = 2V \;\Rightarrow\; V = \frac{11}{5} = 2{,}2\ \text{V}$$
+      <p><strong>Passo 4 —</strong> Substituindo:</p>
+      $$i_1 = 4 - 2{,}2 = \boxed{1{,}80\ \text{A}} \qquad i_2 = \frac{3 - 2{,}2}{2} = \boxed{0{,}40\ \text{A}} \qquad i_3 = \boxed{2{,}20\ \text{A}}$$
+      <p>Agora as <em>duas</em> baterias fornecem corrente (com \(S\) fechada, \(V = 2{,}2\ \text{V} &lt; \varepsilon_2\)).</p>
+      <p><strong>Passo 5 —</strong> Potência em \(R_3\):</p>
+      $$P_{R_3} = i_3^2 R_3 = (2{,}2)^2 \cdot 1 \approx \boxed{4{,}84\ \text{W}}$$
+    </div>
+  </details>
+</article>

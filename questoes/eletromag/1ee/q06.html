@@ -1,0 +1,36 @@
+<article class="questao" data-id="eletromag-1ee-06" data-tema="lei-de-gauss-esfera">
+  <div class="q-topo">
+    <span class="q-id">Questão 06</span>
+    <span class="q-tag">1º EE · 2024.1</span>
+    <span class="q-tag">Lei de Gauss · Modelo de Thomson</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>No modelo atômico de Thomson, o átomo é uma esfera de raio \(R\) com carga positiva \(q = Ze\) distribuída <em>uniformemente</em> em seu volume.</p>
+    <p>(a) Usando a Lei de Gauss, determine o campo elétrico para \(r &lt; R\) (interior) e \(r &gt; R\) (exterior).</p>
+    <p>(b) Para o átomo de ouro (\(Z = 79\), \(R = 1{,}0\times10^{-10}\ \text{m}\)), calcule o campo elétrico na superfície da esfera.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(E_{\text{int}} = \dfrac{qr}{4\pi\varepsilon_0 R^3}\) e \(E_{\text{ext}} = \dfrac{q}{4\pi\varepsilon_0 r^2}\) &nbsp;·&nbsp; (b) \(E \approx 1{,}1\times10^{13}\ \text{N/C}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Gaussiana esférica de raio \(r &lt; R\). A carga interna é proporcional ao volume envolvido:</p>
+      $$q_{\text{int}} = q\,\frac{\frac{4}{3}\pi r^3}{\frac{4}{3}\pi R^3} = q\,\frac{r^3}{R^3}$$
+      <p><strong>Passo 2 —</strong> Lei de Gauss com simetria esférica (\(\Phi = E\cdot 4\pi r^2\)):</p>
+      $$E\cdot 4\pi r^2 = \frac{q\,r^3/R^3}{\varepsilon_0} \;\Rightarrow\; \boxed{E_{\text{int}} = \frac{q\,r}{4\pi\varepsilon_0 R^3}}$$
+      <p>O campo interno cresce <em>linearmente</em> com \(r\).</p>
+      <p><strong>Passo 3 —</strong> Para \(r &gt; R\) a gaussiana envolve toda a carga, e a esfera se comporta como carga pontual:</p>
+      $$\boxed{E_{\text{ext}} = \frac{q}{4\pi\varepsilon_0 r^2}}$$
+      <p><strong>Passo 4 —</strong> Na superfície (\(r = R\)) as duas expressões coincidem. Para o ouro, \(q = 79\,e = 79 \times 1{,}6\times10^{-19} = 1{,}264\times10^{-17}\ \text{C}\):</p>
+      $$E = \frac{kq}{R^2} = \frac{(8{,}99\times10^9)(1{,}264\times10^{-17})}{(1{,}0\times10^{-10})^2} \approx \boxed{1{,}1\times10^{13}\ \text{N/C}}$$
+    </div>
+  </details>
+</article>

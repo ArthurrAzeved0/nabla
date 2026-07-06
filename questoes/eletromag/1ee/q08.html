@@ -1,0 +1,36 @@
+<article class="questao" data-id="eletromag-1ee-08" data-tema="circuitos-potencia-maxima">
+  <div class="q-topo">
+    <span class="q-id">Questão 08</span>
+    <span class="q-tag">Baseada no 1º EE · 2024.1</span>
+    <span class="q-tag">Circuitos · Máxima transferência de potência</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Uma fonte real de fem \(\varepsilon = 10\ \text{V}\) e resistência interna \(r = 12\ \Omega\) alimenta um resistor variável \(R_1\).</p>
+    <p>(a) Calcule a corrente no circuito e a potência dissipada em \(R_1\) quando \(R_1 = 12\ \Omega\).</p>
+    <p>(b) Mostre que a potência dissipada em \(R_1\) é <strong>máxima</strong> exatamente quando \(R_1 = r = 12\ \Omega\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(i \approx 0{,}42\ \text{A}\) e \(P_{R_1} \approx 2{,}08\ \text{W}\) &nbsp;·&nbsp; (b) \(dP/dR_1 = 0 \Rightarrow R_1 = r = 12\ \Omega\).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Malha única: \(\varepsilon = i(r + R_1)\). Com \(R_1 = 12\ \Omega\):</p>
+      $$i = \frac{\varepsilon}{r + R_1} = \frac{10}{12 + 12} \approx \boxed{0{,}42\ \text{A}}$$
+      $$P_{R_1} = i^2 R_1 = (0{,}417)^2 \cdot 12 \approx \boxed{2{,}08\ \text{W}}$$
+      <p><strong>Passo 2 —</strong> Potência em \(R_1\) como função de \(R_1\):</p>
+      $$P(R_1) = i^2 R_1 = \frac{\varepsilon^2 R_1}{(r + R_1)^2}$$
+      <p><strong>Passo 3 —</strong> Derivando e igualando a zero (regra do quociente):</p>
+      $$\frac{dP}{dR_1} = \varepsilon^2\,\frac{(r+R_1)^2 - R_1\cdot 2(r+R_1)}{(r+R_1)^4} = \varepsilon^2\,\frac{r - R_1}{(r+R_1)^3} = 0$$
+      $$\Rightarrow \boxed{R_1 = r = 12\ \Omega}$$
+      <p><strong>Passo 4 —</strong> Para \(R_1 &lt; r\) a derivada é positiva e para \(R_1 &gt; r\) é negativa — logo é de fato um <em>máximo</em>. Este é o teorema da máxima transferência de potência: a carga recebe potência máxima quando "casa" com a resistência interna da fonte.</p>
+    </div>
+  </details>
+</article>

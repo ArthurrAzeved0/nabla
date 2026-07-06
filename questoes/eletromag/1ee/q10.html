@@ -1,0 +1,38 @@
+<article class="questao" data-id="eletromag-1ee-10" data-tema="lei-de-gauss-esfera">
+  <div class="q-topo">
+    <span class="q-id">Questão 10</span>
+    <span class="q-tag">1º EE · 2024.2</span>
+    <span class="q-tag">Lei de Gauss · Densidade não uniforme</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Uma esfera <em>não condutora</em> de raio \(R\) possui densidade volumétrica de carga que varia com o raio: \(\rho(r) = \dfrac{A}{r}\), onde \(A\) é constante.</p>
+    <p>(a) Determine a carga total da esfera.</p>
+    <p>(b) Calcule o campo elétrico no interior (\(r &lt; R\)).</p>
+    <p>(c) Calcule o campo elétrico no exterior (\(r &gt; R\)).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(Q = 2\pi A R^2\) &nbsp;·&nbsp; (b) \(E_{\text{int}} = \dfrac{A}{2\varepsilon_0}\) (constante!) &nbsp;·&nbsp; (c) \(E_{\text{ext}} = \dfrac{A R^2}{2\varepsilon_0 r^2}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Como \(\rho\) depende de \(r\), a carga é obtida integrando em cascas esféricas \(dV = 4\pi r'^2\,dr'\):</p>
+      $$q(r) = \int_0^{r} \frac{A}{r'}\,4\pi r'^2\,dr' = 4\pi A \int_0^{r} r'\,dr' = 2\pi A r^2$$
+      <p><strong>Passo 2 —</strong> A carga total é \(q(R)\):</p>
+      $$\boxed{Q = 2\pi A R^2}$$
+      <p><strong>Passo 3 —</strong> Interior: gaussiana de raio \(r &lt; R\) envolve \(q(r) = 2\pi A r^2\):</p>
+      $$E\cdot 4\pi r^2 = \frac{2\pi A r^2}{\varepsilon_0} \;\Rightarrow\; \boxed{E_{\text{int}} = \frac{A}{2\varepsilon_0}}$$
+      <p>O \(r^2\) cancela: o campo interno é <em>uniforme em módulo</em> — resultado curioso e clássico dessa distribuição.</p>
+      <p><strong>Passo 4 —</strong> Exterior: a gaussiana envolve toda a carga \(Q = 2\pi A R^2\):</p>
+      $$E\cdot 4\pi r^2 = \frac{2\pi A R^2}{\varepsilon_0} \;\Rightarrow\; \boxed{E_{\text{ext}} = \frac{A R^2}{2\varepsilon_0 r^2}}$$
+      <p>Em \(r = R\) as duas expressões coincidem (\(A/2\varepsilon_0\)) ✓</p>
+    </div>
+  </details>
+</article>
