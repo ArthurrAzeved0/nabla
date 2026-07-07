@@ -9,6 +9,25 @@
   <div class="q-enunciado">
     <p>Considere o domínio \(D\) do plano \(Oxy\) limitado por \(1 \le x^2 + y^2 \le 16\). Calcule</p>
     $$\iint_D \frac{x}{(x^2+y^2)^3}\; dA$$
+    <figure class="figura">
+      <svg viewBox="0 0 240 220" role="img" aria-label="Domínio anular entre os círculos de raio 1 e raio 4">
+        <line x1="20" y1="110" x2="220" y2="110" stroke="var(--ink-3)" stroke-width="1"/>
+        <polygon points="220,110 211,106 211,114" fill="var(--ink-3)"/>
+        <text x="212" y="124" font-size="10" fill="var(--ink-3)">x</text>
+        <line x1="120" y1="205" x2="120" y2="15" stroke="var(--ink-3)" stroke-width="1"/>
+        <polygon points="120,15 116,24 124,24" fill="var(--ink-3)"/>
+        <text x="126" y="22" font-size="10" fill="var(--ink-3)">y</text>
+        <path d="M 120 14 A 96 96 0 1 0 120.1 14 Z M 120 86 A 24 24 0 1 1 119.9 86 Z" fill="var(--accent-soft)" fill-rule="evenodd" stroke="none"/>
+        <circle cx="120" cy="110" r="96" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        <circle cx="120" cy="110" r="24" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        <line x1="120" y1="110" x2="120" y2="14" stroke="var(--ink-2)" stroke-dasharray="4 3"/>
+        <text x="124" y="58" font-size="10" fill="var(--ink-2)">r = 4</text>
+        <line x1="120" y1="110" x2="144" y2="110" stroke="var(--warn)" stroke-width="2"/>
+        <text x="128" y="102" font-size="10" fill="var(--warn)">r = 1</text>
+        <text x="120" y="180" font-size="12" fill="var(--accent)" text-anchor="middle">D</text>
+      </svg>
+      <figcaption>\(D\) é a coroa circular entre os raios \(r = 1\) e \(r = 4\): pede polares, com \(1 \le r \le 4\) e \(0 \le \theta \le 2\pi\). A simetria em \(x\) já antecipa que a integral zera.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

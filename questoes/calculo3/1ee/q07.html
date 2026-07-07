@@ -10,6 +10,25 @@
     <p>Determine a derivada direcional de</p>
     $$g(x,y,z) = (x + 2y + 3z)^{3/2}$$
     <p>no ponto \((1,\ 1,\ 2)\), no sentido do vetor \(\vec v = 2\vec j - \vec k\).</p>
+    <figure class="figura">
+      <svg viewBox="0 0 280 180" role="img" aria-label="Derivada direcional como projeção do gradiente sobre a direção unitária u">
+        <circle cx="90" cy="120" r="4.5" fill="var(--warn)"/>
+        <text x="72" y="138" font-size="10" fill="var(--warn)">P</text>
+        <!-- gradiente -->
+        <line x1="90" y1="120" x2="210" y2="40" stroke="var(--accent)" stroke-width="2.6"/>
+        <polygon points="210,40 198,42 204,51" fill="var(--accent)"/>
+        <text x="214" y="40" font-size="12" fill="var(--accent)">∇g</text>
+        <!-- direção u -->
+        <line x1="90" y1="120" x2="200" y2="120" stroke="var(--ok)" stroke-width="2.6"/>
+        <polygon points="200,120 189,116 189,124" fill="var(--ok)"/>
+        <text x="150" y="136" font-size="12" fill="var(--ok)">u (unitário)</text>
+        <!-- projeção -->
+        <line x1="210" y1="40" x2="210" y2="120" stroke="var(--line-2)" stroke-dasharray="4 3"/>
+        <line x1="90" y1="120" x2="210" y2="120" stroke="var(--warn)" stroke-width="3.5" opacity="0.5"/>
+        <text x="120" y="156" font-size="10" fill="var(--ink-2)">Dᵤg = ∇g · u (a projeção)</text>
+      </svg>
+      <figcaption>A derivada direcional é a <em>projeção</em> do gradiente na direção \(\vec u\): por isso normalizamos \(\vec v\) primeiro e depois fazemos \(\nabla g\cdot\vec u\).</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

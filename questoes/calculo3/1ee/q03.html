@@ -12,6 +12,29 @@
       <li>Encontre e classifique os pontos críticos de \(f\);</li>
       <li>Encontre o plano tangente a \(f(x,y)\) no ponto \(P(-1, 1)\).</li>
     </ol>
+    <figure class="figura">
+      <svg viewBox="0 0 300 220" role="img" aria-label="Os quatro pontos críticos no plano xy classificados como mínimo, máximo e selas">
+        <line x1="30" y1="110" x2="280" y2="110" stroke="var(--ink-3)" stroke-width="1.2"/>
+        <polygon points="280,110 271,106 271,114" fill="var(--ink-3)"/>
+        <text x="284" y="114" font-size="11" fill="var(--ink-3)">x</text>
+        <line x1="150" y1="205" x2="150" y2="15" stroke="var(--ink-3)" stroke-width="1.2"/>
+        <polygon points="150,15 146,24 154,24" fill="var(--ink-3)"/>
+        <text x="156" y="22" font-size="11" fill="var(--ink-3)">y</text>
+        <!-- mínimo (1,2) -->
+        <circle cx="200" cy="40" r="6" fill="var(--ok)"/>
+        <text x="208" y="38" font-size="11" fill="var(--ok)">(1, 2) mín</text>
+        <!-- sela (-1,2) -->
+        <circle cx="100" cy="40" r="6" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+        <text x="16" y="38" font-size="11" fill="var(--warn)">(−1, 2) sela</text>
+        <!-- sela (1,-2) -->
+        <circle cx="200" cy="180" r="6" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+        <text x="208" y="184" font-size="11" fill="var(--warn)">(1, −2) sela</text>
+        <!-- máximo (-1,-2) -->
+        <circle cx="100" cy="180" r="6" fill="var(--accent)"/>
+        <text x="10" y="184" font-size="11" fill="var(--accent)">(−1, −2) máx</text>
+      </svg>
+      <figcaption>Os quatro pontos críticos: o sinal de \(D = 36xy\) alterna pelos quadrantes — daí um mínimo, um máximo e duas selas em diagonal.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

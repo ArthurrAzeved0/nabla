@@ -32,7 +32,16 @@
 
 <section class="topico" id="c3-funcoes">
   <h2><span class="num">01</span> Funções de várias variáveis</h2>
-  <p>Uma função de duas variáveis associa a cada par \((x,y)\) de um domínio \(D \subseteq \mathbb{R}^2\) um único número real \(z = f(x,y)\). O <strong>gráfico</strong> de \(f\) é uma superfície em \(\mathbb{R}^3\). Para três variáveis, \(w = f(x,y,z)\), não conseguimos desenhar o gráfico, mas visualizamos a função por suas superfícies de nível.</p>
+  <p><strong>A ideia.</strong> No Cálculo 1 a função era uma "máquina" que recebia um número e devolvia outro: \(y = f(x)\), e o gráfico era uma curva no plano. Agora a máquina recebe <em>dois</em> números (um ponto do plano) e devolve um: \(z = f(x,y)\). O gráfico vira uma <strong>superfície</strong> flutuando sobre o plano \(xy\) — pense num terreno com morros e vales, em que a altura do terreno sobre o ponto \((x,y)\) é o valor \(f(x,y)\). Toda a 1ª unidade é aprender a "enxergar" e medir esse terreno: onde ele sobe, onde desce, onde tem pico.</p>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(f(x,y)\) — a função: recebe o ponto \((x,y)\) e devolve um número (a "altura");</li>
+      <li>\(D \subseteq \mathbb{R}^2\) — o <strong>domínio</strong>: o conjunto de pontos do plano onde a função faz sentido;</li>
+      <li>\(z = f(x,y)\) — o gráfico: superfície em \(\mathbb{R}^3\) formada pelos pontos \((x, y, f(x,y))\);</li>
+      <li>\(w = f(x,y,z)\) — função de três variáveis: não dá para desenhar o gráfico (precisaria de 4 dimensões), então usamos superfícies de nível.</li>
+    </ul>
+  </div>
   <h3>Domínio</h3>
   <p>Determinar o domínio é a primeira pergunta clássica de prova. As restrições mais comuns:</p>
   <ul>
@@ -41,8 +50,49 @@
     <li>Logaritmo: o argumento deve ser \(> 0\);</li>
     <li>\(\arcsin\) e \(\arccos\): argumento em \([-1, 1]\).</li>
   </ul>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — domínio</div>
+    <p>Determine o domínio de \(f(x,y) = \dfrac{\sqrt{4 - x^2 - y^2}}{y - x}\).</p>
+    <p>Duas exigências ao mesmo tempo: o radicando \(\geq 0\) dá \(x^2 + y^2 \leq 4\) (disco de raio 2), e o denominador \(\neq 0\) dá \(y \neq x\) (tira a reta \(y = x\)). Logo \(D = \{(x,y):\, x^2+y^2 \leq 4 \text{ e } y \neq x\}\): o disco de raio 2 <em>sem</em> a reta diagonal. Na prova, desenhe a região e hachure.</p>
+  </div>
   <h3>Curvas e superfícies de nível</h3>
   <p>A <strong>curva de nível</strong> \(k\) é o conjunto dos pontos do domínio onde \(f(x,y) = k\). É a "fatia horizontal" do gráfico projetada no plano \(xy\) — exatamente como as curvas de altitude de um mapa topográfico. Para \(f(x,y,z)\), o análogo é a <strong>superfície de nível</strong> \(f(x,y,z)=k\).</p>
+  <div class="fig-par">
+    <figure class="figura">
+      <svg viewBox="0 0 300 200" role="img" aria-label="Perfil do paraboloide cortado por planos horizontais">
+        <line x1="30" y1="180" x2="280" y2="180" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <text x="272" y="172" font-size="11" fill="var(--ink-3)">x</text>
+        <line x1="150" y1="185" x2="150" y2="15" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <text x="156" y="24" font-size="11" fill="var(--ink-3)">z</text>
+        <!-- parábola z = x² -->
+        <path d="M 60 40 Q 150 320 240 40" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+        <!-- cortes horizontais -->
+        <line x1="88" y1="80" x2="212" y2="80" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="218" y="84" font-size="10" fill="var(--warn)">z = 3</text>
+        <line x1="98" y1="110" x2="202" y2="110" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="208" y="114" font-size="10" fill="var(--warn)">z = 2</text>
+        <line x1="112" y1="140" x2="188" y2="140" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="194" y="144" font-size="10" fill="var(--warn)">z = 1</text>
+        <text x="70" y="30" font-size="11" fill="var(--accent)">z = x² + y² (a "tigela")</text>
+      </svg>
+      <figcaption>Cada plano horizontal \(z = k\) corta a superfície num círculo…</figcaption>
+    </figure>
+    <figure class="figura">
+      <svg viewBox="0 0 300 200" role="img" aria-label="Curvas de nível do paraboloide: círculos concêntricos">
+        <line x1="20" y1="100" x2="280" y2="100" stroke="var(--ink-3)" stroke-width="1.2"/>
+        <text x="272" y="92" font-size="11" fill="var(--ink-3)">x</text>
+        <line x1="150" y1="190" x2="150" y2="10" stroke="var(--ink-3)" stroke-width="1.2"/>
+        <text x="156" y="20" font-size="11" fill="var(--ink-3)">y</text>
+        <circle cx="150" cy="100" r="26" fill="none" stroke="var(--warn)" stroke-width="2"/>
+        <circle cx="150" cy="100" r="52" fill="none" stroke="var(--warn)" stroke-width="2"/>
+        <circle cx="150" cy="100" r="78" fill="none" stroke="var(--warn)" stroke-width="2"/>
+        <text x="150" y="80" font-size="10" fill="var(--warn)" text-anchor="middle">k=1</text>
+        <text x="150" y="54" font-size="10" fill="var(--warn)" text-anchor="middle">k=2</text>
+        <text x="150" y="28" font-size="10" fill="var(--warn)" text-anchor="middle">k=3</text>
+      </svg>
+      <figcaption>… e a projeção desses cortes no plano \(xy\) é o <em>mapa de curvas de nível</em>: círculos \(x^2+y^2 = k\).</figcaption>
+    </figure>
+  </div>
   <div class="macete">Curvas de nível muito próximas umas das outras indicam região onde a função varia rápido (gráfico íngreme); curvas espaçadas indicam variação lenta. O gradiente é sempre perpendicular às curvas de nível.</div>
   <h3>Superfícies quádricas que você precisa reconhecer</h3>
   <ul>
@@ -57,7 +107,34 @@
 
 <section class="topico" id="c3-limites">
   <h2><span class="num">02</span> Limites e continuidade</h2>
-  <p>Dizemos que \(\displaystyle\lim_{(x,y)\to(a,b)} f(x,y) = L\) quando \(f(x,y)\) fica arbitrariamente próximo de \(L\) para todo \((x,y)\) suficientemente próximo de \((a,b)\), <strong>por qualquer caminho de aproximação</strong>. Essa é a diferença crucial em relação ao Cálculo 1: na reta só há dois lados; no plano há infinitos caminhos.</p>
+  <p><strong>A ideia.</strong> No Cálculo 1, para chegar num ponto da reta só existem dois lados: pela esquerda e pela direita. No plano, você pode chegar em \((a,b)\) por <em>infinitos</em> caminhos — pelos eixos, por retas inclinadas, por parábolas, por espirais. Dizemos que \(\displaystyle\lim_{(x,y)\to(a,b)} f(x,y) = L\) quando \(f(x,y)\) fica arbitrariamente próximo de \(L\) <strong>por qualquer caminho de aproximação</strong>. Se dois caminhos derem valores diferentes, o limite não existe — e essa é a jogada nº 1 das provas.</p>
+  <figure class="figura">
+    <svg viewBox="0 0 320 210" role="img" aria-label="Vários caminhos de aproximação até a origem no plano xy">
+      <line x1="15" y1="150" x2="305" y2="150" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <text x="298" y="142" font-size="11" fill="var(--ink-3)">x</text>
+      <line x1="160" y1="200" x2="160" y2="15" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <text x="166" y="24" font-size="11" fill="var(--ink-3)">y</text>
+      <circle cx="160" cy="150" r="5" fill="var(--warn)"/>
+      <text x="168" y="168" font-size="11" fill="var(--warn)">(a,b)</text>
+      <!-- caminho pelo eixo x -->
+      <line x1="285" y1="150" x2="182" y2="150" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="182,150 194,144 194,156" fill="var(--accent)"/>
+      <text x="252" y="140" font-size="10" fill="var(--accent)">por y = 0</text>
+      <!-- caminho pelo eixo y -->
+      <line x1="160" y1="30" x2="160" y2="128" stroke="var(--ok)" stroke-width="2.5"/>
+      <polygon points="160,128 154,116 166,116" fill="var(--ok)"/>
+      <text x="168" y="46" font-size="10" fill="var(--ok)">por x = 0</text>
+      <!-- reta y = mx -->
+      <line x1="60" y1="60" x2="142" y2="134" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="142,134 130,130 136,122" fill="var(--accent)"/>
+      <text x="30" y="52" font-size="10" fill="var(--accent)">por y = mx</text>
+      <!-- parábola -->
+      <path d="M 40 148 Q 92 96 148 141" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+      <polygon points="148,141 136,140 140,131" fill="var(--ok)"/>
+      <text x="38" y="128" font-size="10" fill="var(--ok)">por y = x²</text>
+    </svg>
+    <figcaption>O limite só existe se <strong>todos</strong> os caminhos levarem ao mesmo valor. Basta um par discordante para o limite não existir.</figcaption>
+  </figure>
   <h3>Como mostrar que o limite NÃO existe</h3>
   <p>Basta exibir <strong>dois caminhos</strong> que levem a valores diferentes. Caminhos usuais: eixos (\(y=0\) ou \(x=0\)), retas \(y = mx\), parábolas \(y = x^2\).</p>
   <div class="formula">
@@ -81,12 +158,25 @@
 
 <section class="topico" id="c3-parciais">
   <h2><span class="num">03</span> Derivadas parciais</h2>
-  <p>A derivada parcial em relação a \(x\) mede a taxa de variação de \(f\) quando só \(x\) varia (o \(y\) é tratado como constante):</p>
+  <p><strong>A ideia.</strong> Imagine que você está parado num ponto do "terreno" \(z = f(x,y)\) e quer saber a inclinação. Inclinação em qual direção? A derivada parcial \(f_x\) responde: "se eu andar só na direção do eixo \(x\), quanto o terreno sobe?". É como cortar a superfície com um plano vertical paralelo ao eixo \(x\) e medir a inclinação da curva que sobra. A parcial \(f_y\) faz o mesmo na direção \(y\).</p>
   <div class="formula">
     <div class="rotulo">Definição</div>
     $$\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h,\,b) - f(a,b)}{h}, \qquad \frac{\partial f}{\partial y}(a,b) = \lim_{h \to 0} \frac{f(a,\,b+h) - f(a,b)}{h}$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(\partial\) — o "d curvo": indica derivada <em>parcial</em> (só uma variável varia por vez);</li>
+      <li>\(\frac{\partial f}{\partial x}\) ou \(f_x\) — taxa de variação de \(f\) andando na direção \(x\), com \(y\) congelado;</li>
+      <li>\(h\) — o passo pequeno dado <em>apenas</em> na variável derivada; repare que em \(f_x\) o \(b\) não muda;</li>
+      <li>\((a,b)\) — o ponto onde a inclinação está sendo medida.</li>
+    </ul>
+  </div>
   <p>Na prática: para achar \(f_x\), derive normalmente em \(x\) fingindo que \(y\) é um número, e vice-versa.</p>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — parciais</div>
+    <p>Seja \(f(x,y) = x^2 y + y^3\). Para \(f_x\), trate \(y\) como constante: \(f_x = 2xy\) (o \(y^3\) é "número", some na derivada). Para \(f_y\), trate \(x\) como constante: \(f_y = x^2 + 3y^2\). No ponto \((1,2)\): \(f_x(1,2) = 4\) e \(f_y(1,2) = 13\) — o terreno sobe mais rápido na direção \(y\).</p>
+  </div>
   <h3>Derivadas de ordem superior e Teorema de Clairaut/Schwarz</h3>
   <p>Podemos derivar de novo: \(f_{xx}\), \(f_{yy}\), \(f_{xy}\), \(f_{yx}\). Se as derivadas mistas forem contínuas, então</p>
   <div class="formula">$$f_{xy} = f_{yx}$$</div>
@@ -95,6 +185,31 @@
   <p>Se \(z = f(x,y)\) com \(x = x(t)\) e \(y = y(t)\):</p>
   <div class="formula">$$\frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}$$</div>
   <p>Se \(x\) e \(y\) dependem de duas variáveis \(u,v\), aplica-se o mesmo esquema para \(\partial z/\partial u\) e \(\partial z/\partial v\): soma-se uma parcela por "caminho" de dependência.</p>
+  <figure class="figura">
+    <svg viewBox="0 0 320 170" role="img" aria-label="Árvore de dependências da regra da cadeia: z depende de x e y, que dependem de t">
+      <circle cx="160" cy="35" r="16" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="160" y="40" font-size="13" fill="var(--accent)" text-anchor="middle">z</text>
+      <circle cx="90" cy="95" r="16" fill="var(--card)" stroke="var(--ink-2)" stroke-width="1.5"/>
+      <text x="90" y="100" font-size="13" fill="var(--ink-2)" text-anchor="middle">x</text>
+      <circle cx="230" cy="95" r="16" fill="var(--card)" stroke="var(--ink-2)" stroke-width="1.5"/>
+      <text x="230" y="100" font-size="13" fill="var(--ink-2)" text-anchor="middle">y</text>
+      <circle cx="160" cy="150" r="16" fill="var(--ok-soft)" stroke="var(--ok)" stroke-width="2"/>
+      <text x="160" y="155" font-size="13" fill="var(--ok)" text-anchor="middle">t</text>
+      <line x1="148" y1="46" x2="102" y2="84" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <text x="103" y="60" font-size="10" fill="var(--ink-3)">∂z/∂x</text>
+      <line x1="172" y1="46" x2="218" y2="84" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <text x="204" y="60" font-size="10" fill="var(--ink-3)">∂z/∂y</text>
+      <line x1="101" y1="107" x2="148" y2="141" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <text x="94" y="135" font-size="10" fill="var(--ink-3)">dx/dt</text>
+      <line x1="219" y1="107" x2="172" y2="141" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <text x="200" y="135" font-size="10" fill="var(--ink-3)">dy/dt</text>
+    </svg>
+    <figcaption>Desça da raiz \(z\) até \(t\) por cada caminho, <em>multiplicando</em> as derivadas do caminho, e <em>some</em> os caminhos: \(\frac{dz}{dt} = \frac{\partial z}{\partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt}\).</figcaption>
+  </figure>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — regra da cadeia</div>
+    <p>Seja \(z = x^2 y\) com \(x = \cos t\) e \(y = t^2\). Então \(\frac{dz}{dt} = (2xy)(-\sin t) + (x^2)(2t) = -2t^2\cos t\,\sin t + 2t\cos^2 t\). Confira substituindo direto: \(z = t^2\cos^2 t\) e derivando em \(t\) — dá o mesmo.</p>
+  </div>
   <h3>Derivação implícita</h3>
   <p>Se \(F(x,y,z) = 0\) define \(z\) implicitamente:</p>
   <div class="formula">$$\frac{\partial z}{\partial x} = -\frac{F_x}{F_z}, \qquad \frac{\partial z}{\partial y} = -\frac{F_y}{F_z}$$</div>
@@ -102,18 +217,56 @@
 
 <section class="topico" id="c3-gradiente">
   <h2><span class="num">04</span> Diferenciabilidade, gradiente e derivada direcional</h2>
+  <p><strong>A ideia.</strong> As parciais \(f_x\) e \(f_y\) medem a inclinação em duas direções fixas. Mas e se eu quiser andar em qualquer direção? O <strong>gradiente</strong> resolve tudo de uma vez: é um vetor que, em cada ponto, aponta para onde o terreno sobe mais rápido — como uma bússola do "caminho mais íngreme". Com ele, a inclinação em qualquer direção vira um simples produto escalar.</p>
   <h3>Gradiente</h3>
   <p>O gradiente empacota todas as derivadas parciais num vetor:</p>
   <div class="formula">$$\nabla f = \left(\frac{\partial f}{\partial x},\; \frac{\partial f}{\partial y},\; \frac{\partial f}{\partial z}\right)$$</div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(\nabla\) (nabla) — o operador que "coleciona" as derivadas parciais num vetor;</li>
+      <li>\(\nabla f(P)\) — um <strong>vetor</strong> preso ao ponto \(P\), apontando para onde \(f\) mais cresce;</li>
+      <li>\(\lVert\nabla f\rVert\) — o comprimento do gradiente: é a taxa <em>máxima</em> de crescimento nesse ponto.</li>
+    </ul>
+  </div>
   <p>Propriedades geométricas fundamentais (caem em questões conceituais):</p>
   <ul>
     <li>\(\nabla f\) aponta na direção de <strong>máximo crescimento</strong> de \(f\); a taxa máxima é \(\lVert\nabla f\rVert\);</li>
     <li>\(-\nabla f\) aponta na direção de máximo decrescimento;</li>
     <li>\(\nabla f\) é <strong>perpendicular</strong> às curvas/superfícies de nível.</li>
   </ul>
+  <figure class="figura">
+    <svg viewBox="0 0 320 210" role="img" aria-label="Curvas de nível com o gradiente perpendicular a elas e uma direção unitária u">
+      <ellipse cx="150" cy="110" rx="35" ry="24" fill="none" stroke="var(--line-2)" stroke-width="1.5"/>
+      <ellipse cx="150" cy="110" rx="70" ry="48" fill="none" stroke="var(--line-2)" stroke-width="1.5"/>
+      <ellipse cx="150" cy="110" rx="105" ry="72" fill="none" stroke="var(--line-2)" stroke-width="1.5"/>
+      <text x="150" y="114" font-size="10" fill="var(--ink-3)" text-anchor="middle">k=3</text>
+      <text x="150" y="72" font-size="10" fill="var(--ink-3)" text-anchor="middle">k=2</text>
+      <text x="150" y="48" font-size="10" fill="var(--ink-3)" text-anchor="middle">k=1</text>
+      <!-- ponto P na curva k=2 -->
+      <circle cx="220" cy="110" r="4.5" fill="var(--ink-2)"/>
+      <text x="228" y="122" font-size="11" fill="var(--ink-2)">P</text>
+      <!-- gradiente: perpendicular à elipse, apontando para dentro (crescimento) -->
+      <line x1="220" y1="110" x2="188" y2="110" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="188,110 200,104 200,116" fill="var(--accent)"/>
+      <text x="186" y="98" font-size="12" fill="var(--accent)">∇f</text>
+      <!-- direção u qualquer -->
+      <line x1="220" y1="110" x2="252" y2="78" stroke="var(--ok)" stroke-width="2.5"/>
+      <polygon points="252,78 242,81 249,88" fill="var(--ok)"/>
+      <text x="258" y="74" font-size="12" fill="var(--ok)">û</text>
+      <!-- ângulo -->
+      <path d="M 204 110 A 16 16 0 0 1 209 99" fill="none" stroke="var(--ink-3)" stroke-width="1.2" transform="translate(16,0)"/>
+      <text x="216" y="94" font-size="10" fill="var(--ink-3)">θ</text>
+    </svg>
+    <figcaption>\(\nabla f\) é perpendicular às curvas de nível e aponta para os valores maiores. A derivada direcional é a "sombra" de \(\nabla f\) na direção \(\hat u\): \(D_{\hat u}f = \lVert\nabla f\rVert\cos\theta\).</figcaption>
+  </figure>
   <h3>Derivada direcional</h3>
   <p>Taxa de variação de \(f\) na direção de um vetor <strong>unitário</strong> \(\hat{u}\):</p>
   <div class="formula">$$D_{\hat u} f(P) = \nabla f(P) \cdot \hat{u}, \qquad \hat u = \frac{\vec u}{\lVert \vec u \rVert}$$</div>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — derivada direcional</div>
+    <p>Seja \(f(x,y) = x^2 + y^2\), \(P = (1,1)\) e a direção \(\vec u = (1,1)\). Primeiro o gradiente: \(\nabla f = (2x, 2y)\), então \(\nabla f(P) = (2,2)\). Normalize a direção: \(\hat u = \left(\tfrac{1}{\sqrt2}, \tfrac{1}{\sqrt2}\right)\). Por fim: \(D_{\hat u}f(P) = (2,2)\cdot\left(\tfrac{1}{\sqrt2},\tfrac{1}{\sqrt2}\right) = \tfrac{4}{\sqrt2} = 2\sqrt2 \approx 2{,}83\). Como \(\hat u\) tem exatamente o sentido de \(\nabla f(P)\), essa é também a taxa máxima: \(\lVert\nabla f(P)\rVert = 2\sqrt2\).</p>
+  </div>
   <div class="macete dica">O erro mais cobrado da 1ª unidade: esquecer de NORMALIZAR o vetor direção. Se a questão dá \(\vec u = (1,0,1)\), use \(\hat u = \left(\tfrac{1}{\sqrt2}, 0, \tfrac{1}{\sqrt2}\right)\). Sempre divida pela norma antes do produto escalar.</div>
   <h3>Plano tangente e reta normal</h3>
   <p>Para uma superfície dada como gráfico \(z = f(x,y)\), no ponto \((x_0, y_0, z_0)\):</p>
@@ -134,6 +287,7 @@
 
 <section class="topico" id="c3-maxmin">
   <h2><span class="num">05</span> Máximos e mínimos. Hessiana</h2>
+  <p><strong>A ideia.</strong> No topo de um morro ou no fundo de um vale, o terreno fica momentaneamente "plano": nenhuma direção sobe. Matematicamente, o gradiente zera. Mas atenção: existe um terceiro personagem que não existia no Cálculo 1 — a <strong>sela</strong> (como uma sela de cavalo ou um passo de montanha): o ponto é plano, mas sobe numa direção e desce na outra. O teste da Hessiana serve exatamente para distinguir esses três casos.</p>
   <h3>Pontos críticos</h3>
   <p>\(P\) é ponto crítico quando o gradiente zera (ou não existe):</p>
   <div class="formula">$$\nabla f(P) = \vec 0 \iff \begin{cases} f_x = 0 \\ f_y = 0 \end{cases}$$</div>
@@ -143,12 +297,51 @@
     <div class="rotulo">Determinante Hessiano</div>
     $$D(x,y) = \det\begin{pmatrix} f_{xx} & f_{xy} \\ f_{xy} & f_{yy} \end{pmatrix} = f_{xx}\,f_{yy} - (f_{xy})^2$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(f_{xx},\; f_{yy}\) — segundas derivadas "puras": medem a concavidade nas direções \(x\) e \(y\);</li>
+      <li>\(f_{xy}\) — derivada mista (derive em \(x\), depois em \(y\)); pelo teorema de Schwarz, \(f_{xy} = f_{yx}\);</li>
+      <li>\(D\) — o determinante da matriz Hessiana, avaliado <strong>em cada ponto crítico</strong> separadamente.</li>
+    </ul>
+  </div>
   <ul>
     <li>\(D > 0\) e \(f_{xx} > 0\) \(\Rightarrow\) <strong>mínimo local</strong>;</li>
     <li>\(D > 0\) e \(f_{xx} < 0\) \(\Rightarrow\) <strong>máximo local</strong>;</li>
     <li>\(D < 0\) \(\Rightarrow\) <strong>ponto de sela</strong>;</li>
     <li>\(D = 0\) \(\Rightarrow\) o teste é inconclusivo (analise diretamente a função).</li>
   </ul>
+  <div class="fig-par">
+    <figure class="figura">
+      <svg viewBox="0 0 280 190" role="img" aria-label="Curvas de nível fechadas em torno de um mínimo local">
+        <ellipse cx="140" cy="95" rx="28" ry="18" fill="none" stroke="var(--ok)" stroke-width="2"/>
+        <ellipse cx="140" cy="95" rx="58" ry="38" fill="none" stroke="var(--ok)" stroke-width="1.8" opacity="0.75"/>
+        <ellipse cx="140" cy="95" rx="90" ry="60" fill="none" stroke="var(--ok)" stroke-width="1.6" opacity="0.5"/>
+        <circle cx="140" cy="95" r="4" fill="var(--ok)"/>
+        <text x="140" y="86" font-size="10" fill="var(--ok)" text-anchor="middle">mín</text>
+        <text x="140" y="176" font-size="11" fill="var(--ink-3)" text-anchor="middle">D &gt; 0: curvas fechadas (poço ou pico)</text>
+      </svg>
+      <figcaption>Perto de máximo/mínimo, as curvas de nível são "anéis" fechados em torno do ponto.</figcaption>
+    </figure>
+    <figure class="figura">
+      <svg viewBox="0 0 280 190" role="img" aria-label="Curvas de nível hiperbólicas em torno de um ponto de sela">
+        <path d="M 40 30 Q 130 95 40 160" fill="none" stroke="var(--warn)" stroke-width="2"/>
+        <path d="M 240 30 Q 150 95 240 160" fill="none" stroke="var(--warn)" stroke-width="2"/>
+        <path d="M 60 20 Q 140 82 220 20" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        <path d="M 60 170 Q 140 108 220 170" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        <circle cx="140" cy="95" r="4" fill="var(--ink-2)"/>
+        <text x="152" y="100" font-size="10" fill="var(--ink-2)">sela</text>
+        <text x="140" y="184" font-size="11" fill="var(--ink-3)" text-anchor="middle">D &lt; 0: curvas em "X" (sobe num eixo, desce no outro)</text>
+      </svg>
+      <figcaption>Perto de uma sela, as curvas de nível formam hipérboles: \(f\) cresce numa direção e decresce na outra.</figcaption>
+    </figure>
+  </div>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — classificação</div>
+    <p>Classifique os pontos críticos de \(f(x,y) = x^3 - 3x + y^2\).</p>
+    <p><em>Pontos críticos:</em> \(f_x = 3x^2 - 3 = 0 \Rightarrow x = \pm 1\); \(f_y = 2y = 0 \Rightarrow y = 0\). Candidatos: \((1,0)\) e \((-1,0)\).</p>
+    <p><em>Hessiana:</em> \(f_{xx} = 6x\), \(f_{yy} = 2\), \(f_{xy} = 0\), então \(D = 12x\). Em \((1,0)\): \(D = 12 > 0\) e \(f_{xx} = 6 > 0\) → <strong>mínimo local</strong>. Em \((-1,0)\): \(D = -12 < 0\) → <strong>ponto de sela</strong>.</p>
+  </div>
   <div class="macete">"D positivo decide com \(f_{xx}\); D negativo é sela." Como \(D>0\) força \(f_{xx}\) e \(f_{yy}\) a terem o mesmo sinal, você pode olhar qualquer um dos dois para decidir entre máx/mín.</div>
   <h3>Máximos e mínimos globais em regiões fechadas</h3>
   <p>Pelo Teorema de Weierstrass, uma função contínua em região fechada e limitada atinge máximo e mínimo globais. Roteiro:</p>
@@ -161,12 +354,53 @@
 
 <section class="topico" id="c3-lagrange">
   <h2><span class="num">06</span> Multiplicadores de Lagrange</h2>
-  <p>Para otimizar \(f(x,y)\) <strong>sujeita a uma restrição</strong> \(g(x,y) = k\), usa-se o fato geométrico de que, no ótimo, as curvas de nível de \(f\) tangenciam a curva da restrição — logo os gradientes são paralelos:</p>
+  <p><strong>A ideia.</strong> Agora você não pode mais andar livremente pelo terreno: está preso a uma trilha (a restrição \(g(x,y)=k\)) e quer achar o ponto mais alto <em>da trilha</em>. Pense nas curvas de nível de \(f\) como as linhas de altitude do mapa: enquanto a trilha ainda <em>cruza</em> curvas de nível, dá para subir mais. O ponto ótimo é onde a trilha apenas <em>tangencia</em> uma curva de nível — e curvas tangentes têm normais paralelas, ou seja, \(\nabla f \parallel \nabla g\). O \(\lambda\) é só o fator de proporcionalidade entre os dois gradientes.</p>
   <div class="formula">
     <div class="rotulo">Sistema de Lagrange</div>
     $$\begin{cases} \nabla f = \lambda \nabla g \\ g(x,y) = k \end{cases} \iff \begin{cases} f_x = \lambda\, g_x \\ f_y = \lambda\, g_y \\ g(x,y) = k \end{cases}$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(f\) — a função que você quer maximizar/minimizar (o "objetivo");</li>
+      <li>\(g(x,y) = k\) — a restrição: a curva/superfície da qual você não pode sair;</li>
+      <li>\(\lambda\) (lambda) — o multiplicador: um número auxiliar que torna os gradientes proporcionais. Normalmente você <em>não precisa</em> do valor de \(\lambda\), só dos pontos \((x,y)\).</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 340 220" role="img" aria-label="Curvas de nível de f tangenciando a curva de restrição g com gradientes paralelos no ponto ótimo">
+      <!-- curvas de nível de f (retas inclinadas, ex. f = x + y) -->
+      <line x1="20" y1="150" x2="180" y2="10" stroke="var(--line-2)" stroke-width="1.5"/>
+      <line x1="50" y1="180" x2="230" y2="22" stroke="var(--line-2)" stroke-width="1.5"/>
+      <line x1="85" y1="205" x2="280" y2="34" stroke="var(--accent)" stroke-width="2"/>
+      <line x1="140" y1="215" x2="322" y2="55" stroke="var(--line-2)" stroke-width="1.5"/>
+      <text x="164" y="18" font-size="10" fill="var(--ink-3)">f = 1</text>
+      <text x="216" y="30" font-size="10" fill="var(--ink-3)">f = 2</text>
+      <text x="266" y="42" font-size="10" fill="var(--accent)">f = 3 (ótimo)</text>
+      <text x="308" y="64" font-size="10" fill="var(--ink-3)">f = 4</text>
+      <!-- restrição: elipse -->
+      <ellipse cx="140" cy="130" rx="88" ry="56" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+      <text x="66" y="196" font-size="11" fill="var(--ok)">g(x,y) = k (a trilha)</text>
+      <!-- ponto de tangência: aproximado onde a reta f=3 tangencia a elipse -->
+      <circle cx="196" cy="88" r="4.5" fill="var(--warn)"/>
+      <text x="204" y="102" font-size="11" fill="var(--warn)">P*</text>
+      <!-- gradientes paralelos -->
+      <line x1="196" y1="88" x2="228" y2="60" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="228,60 217,63 224,71" fill="var(--accent)"/>
+      <text x="232" y="56" font-size="11" fill="var(--accent)">∇f</text>
+      <line x1="196" y1="88" x2="218" y2="69" stroke="var(--ok)" stroke-width="2.5" transform="translate(-10,22)"/>
+      <polygon points="218,69 207,72 214,80" fill="var(--ok)" transform="translate(-10,22)"/>
+      <text x="212" y="96" font-size="11" fill="var(--ok)">∇g</text>
+    </svg>
+    <figcaption>No ponto ótimo \(P^*\), a curva de nível de \(f\) tangencia a restrição: \(\nabla f\) e \(\nabla g\) ficam paralelos (\(\nabla f = \lambda\nabla g\)).</figcaption>
+  </figure>
   <p>Resolvido o sistema, avalie \(f\) em cada solução: o maior valor é o máximo e o menor, o mínimo (a restrição sendo fechada e limitada).</p>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — Lagrange</div>
+    <p>Máximo e mínimo de \(f(x,y) = xy\) sobre o círculo \(x^2 + y^2 = 2\).</p>
+    <p><em>Sistema:</em> \(y = \lambda\,2x\), \(\;x = \lambda\,2y\), \(\;x^2+y^2 = 2\). Dividindo as duas primeiras (para \(x,y\neq 0\)): \(\frac{y}{x} = \frac{x}{y} \Rightarrow y^2 = x^2 \Rightarrow y = \pm x\). Na restrição: \(2x^2 = 2 \Rightarrow x = \pm 1\).</p>
+    <p><em>Candidatos:</em> \((1,1), (-1,-1)\) com \(f = 1\); \((1,-1), (-1,1)\) com \(f = -1\). Máximo \(= 1\), mínimo \(= -1\).</p>
+  </div>
   <div class="macete">Truque padrão para resolver o sistema: divida uma equação pela outra para eliminar \(\lambda\) (cuidando dos casos em que o denominador zera — analise-os em separado!). Outra via: isole \(\lambda\) nas duas primeiras equações e iguale.</div>
   <p>Com duas restrições \(g = k_1\) e \(h = k_2\), o sistema vira \(\nabla f = \lambda \nabla g + \mu \nabla h\) junto com as duas restrições.</p>
   <div class="macete dica">Palavras-chave no enunciado que gritam "Lagrange": "sobre a curva", "sujeito a", "na elipse/esfera", "com perímetro/área fixa", "caixa de volume dado com custo mínimo".</div>
@@ -174,18 +408,90 @@
 
 <section class="topico" id="c3-multiplas">
   <h2><span class="num">07</span> Integrais múltiplas: domínios, áreas e volumes</h2>
+  <p><strong>A ideia.</strong> A integral simples somava "fatias" de área sob uma curva. A integral dupla soma "colunas": divida a região \(D\) do plano em quadradinhos \(dA\), sobre cada um erga uma coluna de altura \(f(x,y)\), e some o volume de todas. O trabalho de prova quase nunca está no integrando — está em <strong>descrever a região</strong> corretamente (os limites de integração) e em <strong>escolher o sistema de coordenadas</strong> que deixa a região simples.</p>
   <h3>Integral dupla</h3>
   <p>\(\iint_D f\, dA\) soma os valores de \(f\) sobre a região \(D\). Se \(f \geq 0\), é o <strong>volume</strong> sob o gráfico; se \(f = 1\), é a <strong>área</strong> de \(D\). Pelo Teorema de Fubini, calcula-se como integral iterada:</p>
   <div class="formula">
     <div class="rotulo">Região tipo I (entre duas curvas em y)</div>
     $$\iint_D f\,dA = \int_a^b \int_{g_1(x)}^{g_2(x)} f(x,y)\; dy\, dx$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(dA\) — o "pedacinho de área" da região (em cartesianas, \(dA = dy\,dx\));</li>
+      <li>\(a, b\) — o intervalo em que \(x\) varre a região (limites <strong>numéricos</strong>, sempre na integral de fora);</li>
+      <li>\(g_1(x), g_2(x)\) — as curvas de baixo e de cima: para cada \(x\) fixo, \(y\) varre de \(g_1(x)\) até \(g_2(x)\) (limites que <strong>podem depender de \(x\)</strong>, sempre na integral de dentro).</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 340 220" role="img" aria-label="Região tipo I entre duas curvas, com uma fatia vertical de x fixo">
+      <line x1="20" y1="190" x2="320" y2="190" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <polygon points="320,190 310,186 310,194" fill="var(--ink-3)"/>
+      <text x="312" y="180" font-size="11" fill="var(--ink-3)">x</text>
+      <line x1="40" y1="210" x2="40" y2="15" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <polygon points="40,15 36,25 44,25" fill="var(--ink-3)"/>
+      <text x="26" y="24" font-size="11" fill="var(--ink-3)">y</text>
+      <!-- curvas -->
+      <path d="M 80 150 Q 180 190 280 140" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+      <text x="286" y="140" font-size="11" fill="var(--ok)">g₁(x)</text>
+      <path d="M 80 90 Q 180 20 280 70" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+      <text x="286" y="66" font-size="11" fill="var(--accent)">g₂(x)</text>
+      <!-- limites a, b -->
+      <line x1="80" y1="190" x2="80" y2="150" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+      <text x="80" y="204" font-size="11" fill="var(--ink-2)" text-anchor="middle">a</text>
+      <line x1="280" y1="190" x2="280" y2="140" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+      <text x="280" y="204" font-size="11" fill="var(--ink-2)" text-anchor="middle">b</text>
+      <!-- fatia vertical -->
+      <rect x="172" y="52" width="16" height="121" fill="var(--warn)" opacity="0.3" stroke="var(--warn)" stroke-width="1.5"/>
+      <line x1="180" y1="120" x2="180" y2="80" stroke="var(--warn)" stroke-width="2"/>
+      <polygon points="180,80 175,90 185,90" fill="var(--warn)"/>
+      <text x="196" y="112" font-size="10" fill="var(--warn)">para x fixo, y vai de g₁(x) a g₂(x)</text>
+    </svg>
+    <figcaption>Região tipo I: \(x\) varre de \(a\) a \(b\) e, em cada fatia vertical, \(y\) sobe da curva de baixo à de cima. Desenhar a região é 80% da questão.</figcaption>
+  </figure>
   <div class="macete">Sempre DESENHE a região antes de montar os limites. Se a integral ficar impossível numa ordem (ex.: \(\int e^{y^2} dy\)), INVERTA a ordem de integração — essa é uma pegadinha recorrente.</div>
   <h3>Coordenadas polares</h3>
   <p>Para regiões circulares/anulares ou integrandos com \(x^2 + y^2\):</p>
   <div class="formula">
     <div class="rotulo">Mudança polar (não esqueça o Jacobiano r!)</div>
     $$x = r\cos\theta, \quad y = r\sin\theta, \quad dA = r\, dr\, d\theta, \quad x^2 + y^2 = r^2$$
+  </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(r\) — distância do ponto à origem (\(r \geq 0\));</li>
+      <li>\(\theta\) — ângulo medido a partir do eixo \(x\) positivo, no sentido anti-horário;</li>
+      <li>o fator \(r\) em \(dA = r\,dr\,d\theta\) é o <strong>Jacobiano</strong>: o quadradinho polar fica maior longe da origem, e o \(r\) corrige isso. Esquecê-lo é o erro nº 1 dessa unidade.</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 340 210" role="img" aria-label="Elemento de área em coordenadas polares">
+      <line x1="30" y1="180" x2="320" y2="180" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <text x="312" y="172" font-size="11" fill="var(--ink-3)">x</text>
+      <line x1="30" y1="180" x2="30" y2="15" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <text x="38" y="24" font-size="11" fill="var(--ink-3)">y</text>
+      <!-- arcos -->
+      <path d="M 190 180 A 160 160 0 0 0 30 20" fill="none" stroke="var(--line-2)" stroke-width="1.5"/>
+      <path d="M 230 180 A 200 200 0 0 0 30 -20" fill="none" stroke="var(--line-2)" stroke-width="1.5"/>
+      <!-- raios -->
+      <line x1="30" y1="180" x2="255" y2="60" stroke="var(--line-2)" stroke-width="1.5"/>
+      <line x1="30" y1="180" x2="225" y2="35" stroke="var(--line-2)" stroke-width="1.5"/>
+      <!-- elemento de área -->
+      <path d="M 172 104 L 208 85 L 219 103 L 182 123 Z" fill="var(--warn)" opacity="0.45" stroke="var(--warn)" stroke-width="1.5"/>
+      <text x="238" y="86" font-size="10" fill="var(--warn)">dA ≈ (r dθ)(dr)</text>
+      <!-- rótulos r e θ -->
+      <text x="110" y="146" font-size="11" fill="var(--ink-2)">r</text>
+      <path d="M 80 180 A 50 50 0 0 0 74 153" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="90" y="170" font-size="11" fill="var(--accent)">θ</text>
+    </svg>
+    <figcaption>O "retângulo polar" tem lados \(dr\) (radial) e \(r\,d\theta\) (arco) — daí \(dA = r\,dr\,d\theta\). Quanto mais longe da origem, maior o arco: esse é o papel do Jacobiano.</figcaption>
+  </figure>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — polares</div>
+    <p>Calcule \(\displaystyle\iint_D e^{x^2+y^2}\, dA\), onde \(D\) é o disco \(x^2+y^2 \leq 1\).</p>
+    <p>Em cartesianas essa integral é impossível. Em polares, \(D\) vira \(0 \leq r \leq 1\), \(0 \leq \theta \leq 2\pi\):</p>
+    $$\int_0^{2\pi}\!\!\int_0^1 e^{r^2}\, r\, dr\, d\theta = 2\pi \left[\tfrac{1}{2}e^{r^2}\right]_0^1 = \pi(e - 1).$$
+    <p>Note que o Jacobiano \(r\) foi exatamente o que permitiu a substituição \(u = r^2\).</p>
   </div>
   <h3>Integral tripla</h3>
   <p>\(\iiint_E f\, dV\) com \(f = 1\) dá o <strong>volume</strong> de \(E\). Duas mudanças de variáveis essenciais:</p>
@@ -197,7 +503,49 @@
     <div class="rotulo">Esféricas (esferas e cones)</div>
     $$x = \rho\sin\phi\cos\theta,\quad y = \rho\sin\phi\sin\theta,\quad z = \rho\cos\phi, \qquad dV = \rho^2 \sin\phi\; d\rho\, d\phi\, d\theta$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo (esféricas)</div>
+    <ul>
+      <li>\(\rho\) (rô) — distância do ponto à <strong>origem</strong> (esfera de raio \(a\): \(\rho = a\));</li>
+      <li>\(\phi\) (fi) — ângulo medido a partir do <strong>eixo \(z\) positivo</strong> "descendo" até o ponto (\(\phi \in [0,\pi]\));</li>
+      <li>\(\theta\) (teta) — o mesmo ângulo das polares, girando no plano \(xy\) (\(\theta \in [0, 2\pi]\));</li>
+      <li>\(\rho^2\sin\phi\) — o Jacobiano das esféricas (nunca esqueça!).</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 340 230" role="img" aria-label="Coordenadas esféricas: rho, phi medido do eixo z e theta no plano xy">
+      <!-- eixos -->
+      <line x1="160" y1="200" x2="160" y2="20" stroke="var(--ink-3)" stroke-width="1.5"/>
+      <polygon points="160,20 156,30 164,30" fill="var(--ink-3)"/>
+      <text x="168" y="28" font-size="11" fill="var(--ink-3)">z</text>
+      <line x1="160" y1="140" x2="305" y2="180" stroke="var(--ink-3)" stroke-width="1.2"/>
+      <text x="308" y="188" font-size="11" fill="var(--ink-3)">x</text>
+      <line x1="160" y1="140" x2="40" y2="180" stroke="var(--ink-3)" stroke-width="1.2"/>
+      <text x="28" y="188" font-size="11" fill="var(--ink-3)">y</text>
+      <!-- vetor rho -->
+      <line x1="160" y1="140" x2="252" y2="58" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="252,58 240,61 246,70" fill="var(--accent)"/>
+      <circle cx="252" cy="58" r="4" fill="var(--accent)"/>
+      <text x="260" y="54" font-size="11" fill="var(--accent)">P</text>
+      <text x="196" y="92" font-size="12" fill="var(--accent)">ρ</text>
+      <!-- projeção no plano xy -->
+      <line x1="252" y1="58" x2="252" y2="164" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+      <line x1="160" y1="140" x2="252" y2="164" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+      <!-- phi -->
+      <path d="M 160 96 A 44 44 0 0 1 194 110" fill="none" stroke="var(--ok)" stroke-width="2"/>
+      <text x="176" y="98" font-size="12" fill="var(--ok)">φ</text>
+      <!-- theta -->
+      <path d="M 205 152 A 46 14 0 0 1 196 155" fill="none" stroke="var(--warn)" stroke-width="2"/>
+      <text x="206" y="168" font-size="12" fill="var(--warn)">θ</text>
+    </svg>
+    <figcaption>\(\phi\) "desce" do eixo \(z\) até o raio \(\rho\); \(\theta\) gira no plano \(xy\). O cone \(z = \sqrt{x^2+y^2}\) é simplesmente \(\phi = \pi/4\).</figcaption>
+  </figure>
   <div class="macete">Escolha do sistema: cilindro/paraboloide \(\to\) cilíndricas; esfera/cone \(\to\) esféricas. Em esféricas, \(\phi\) é medido a partir do eixo \(z\) positivo: \(\phi \in [0, \pi/2]\) é o hemisfério de cima, e o cone \(z=\sqrt{x^2+y^2}\) é \(\phi = \pi/4\).</div>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — volume em esféricas</div>
+    <p>Volume da esfera de raio \(a\): \(0\leq\rho\leq a\), \(0\leq\phi\leq\pi\), \(0\leq\theta\leq 2\pi\):</p>
+    $$V = \int_0^{2\pi}\!\!\int_0^{\pi}\!\!\int_0^{a} \rho^2\sin\phi\; d\rho\, d\phi\, d\theta = 2\pi \cdot \Big[-\cos\phi\Big]_0^{\pi} \cdot \frac{a^3}{3} = 2\pi\cdot 2\cdot\frac{a^3}{3} = \frac{4}{3}\pi a^3. \checkmark$$
+  </div>
   <h3>Aplicações</h3>
   <ul>
     <li>Massa: \(m = \iint_D \delta\, dA\) (ou tripla com \(dV\)), onde \(\delta\) é a densidade;</li>
@@ -210,13 +558,48 @@
 
 <section class="topico" id="c3-curvas">
   <h2><span class="num">08</span> Curvas no espaço. Triedro de Frenet</h2>
+  <p><strong>A ideia.</strong> Pense numa partícula (ou numa formiga) viajando pelo espaço: em cada instante \(t\) ela está numa posição \(\vec r(t)\). A trajetória é a curva; a derivada \(\vec r\,'(t)\) é a velocidade (sempre tangente ao caminho); e o comprimento do caminho é a integral da rapidez. O triedro de Frenet é o "GPS local" da formiga: para onde vou (\(\hat T\)), para onde a curva está virando (\(\hat N\)) e o eixo em torno do qual ela gira (\(\hat B\)).</p>
   <p>Uma curva é descrita por uma função vetorial \(\vec r(t) = (x(t),\, y(t),\, z(t))\). O vetor \(\vec r\,'(t)\) é tangente à curva (velocidade) e \(\lVert \vec r\,'(t)\rVert\) é a rapidez.</p>
   <div class="formula">
     <div class="rotulo">Comprimento de arco</div>
     $$L = \int_a^b \lVert \vec r\,'(t) \rVert\, dt = \int_a^b \sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2}\; dt$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(\vec r(t)\) — posição no instante \(t\) (uma "receita" que transforma o número \(t\) num ponto do espaço);</li>
+      <li>\(\vec r\,'(t)\) — vetor velocidade: tangente à curva, no sentido do percurso;</li>
+      <li>\(\lVert\vec r\,'(t)\rVert\) — rapidez (módulo da velocidade); integrá-la no tempo dá a distância percorrida \(L\).</li>
+    </ul>
+  </div>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — comprimento da hélice</div>
+    <p>Para a hélice \(\vec r(t) = (\cos t,\; \sin t,\; t)\), \(t \in [0, 2\pi]\): \(\vec r\,'(t) = (-\sin t, \cos t, 1)\) e \(\lVert\vec r\,'\rVert = \sqrt{\sin^2 t + \cos^2 t + 1} = \sqrt2\) (constante!). Logo \(L = \sqrt2 \cdot 2\pi = 2\sqrt2\,\pi\).</p>
+  </div>
   <h3>Triedro de Frenet</h3>
   <p>Em cada ponto da curva definimos três vetores unitários ortogonais:</p>
+  <figure class="figura">
+    <svg viewBox="0 0 340 210" role="img" aria-label="Curva no espaço com os vetores T tangente, N normal e B binormal num ponto">
+      <!-- curva -->
+      <path d="M 30 180 C 100 160 130 60 200 80 C 250 95 280 60 320 30" fill="none" stroke="var(--ink-2)" stroke-width="2.5"/>
+      <text x="34" y="168" font-size="11" fill="var(--ink-2)">C</text>
+      <!-- ponto -->
+      <circle cx="200" cy="80" r="4.5" fill="var(--warn)"/>
+      <!-- T tangente -->
+      <line x1="200" y1="80" x2="262" y2="94" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="262,94 251,87 249,97" fill="var(--accent)"/>
+      <text x="268" y="100" font-size="12" fill="var(--accent)">T̂ (tangente)</text>
+      <!-- N normal: aponta para a concavidade -->
+      <line x1="200" y1="80" x2="188" y2="136" stroke="var(--ok)" stroke-width="2.5"/>
+      <polygon points="188,136 184,124 194,126" fill="var(--ok)"/>
+      <text x="196" y="152" font-size="12" fill="var(--ok)">N̂ (normal)</text>
+      <!-- B binormal -->
+      <line x1="200" y1="80" x2="216" y2="26" stroke="var(--warn)" stroke-width="2.5"/>
+      <polygon points="216,26 208,35 218,38" fill="var(--warn)"/>
+      <text x="222" y="24" font-size="12" fill="var(--warn)">B̂ = T̂ × N̂</text>
+    </svg>
+    <figcaption>\(\hat T\) aponta para onde a curva vai; \(\hat N\) aponta para dentro da "curva" (a concavidade); \(\hat B\) completa o trio, perpendicular aos dois.</figcaption>
+  </figure>
   <div class="formula">
     $$\hat T = \frac{\vec r\,'}{\lVert \vec r\,' \rVert} \;(\text{tangente}), \qquad
       \hat N = \frac{\hat T'}{\lVert \hat T' \rVert} \;(\text{normal principal}), \qquad
@@ -232,11 +615,51 @@
 
 <section class="topico" id="c3-linha">
   <h2><span class="num">09</span> Integrais de linha e campos conservativos</h2>
+  <p><strong>A ideia.</strong> Um <strong>campo vetorial</strong> \(\vec F\) é como um "vento" que sopra em cada ponto do plano/espaço. A integral de linha vetorial responde: se eu empurrar uma partícula ao longo da curva \(C\), quanto o vento me ajuda ou atrapalha? Em cada pedacinho do caminho, só conta a componente de \(\vec F\) <em>na direção do movimento</em> — por isso o produto escalar \(\vec F\cdot d\vec r\). O resultado é o <strong>trabalho</strong> realizado pelo campo.</p>
   <h3>Integral de linha escalar (em relação ao comprimento de arco)</h3>
   <div class="formula">$$\int_C f\; ds = \int_a^b f(\vec r(t))\, \lVert \vec r\,'(t) \rVert\; dt$$</div>
   <p>Interpretação: massa de um arame com densidade \(f\), ou área de uma "cerca" de altura \(f\) sobre a curva.</p>
   <h3>Integral de linha vetorial (trabalho)</h3>
   <div class="formula">$$W = \int_C \vec F \cdot d\vec r = \int_a^b \vec F(\vec r(t)) \cdot \vec r\,'(t)\; dt = \int_C P\,dx + Q\,dy$$</div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(\vec F = (P, Q)\) — o campo vetorial: \(P\) é a componente em \(x\) e \(Q\) a componente em \(y\);</li>
+      <li>\(d\vec r = \vec r\,'(t)\,dt\) — o passinho vetorial ao longo da curva (direção e sentido do percurso);</li>
+      <li>\(\vec F \cdot d\vec r\) — só a parte do campo alinhada com o movimento contribui;</li>
+      <li>\(ds = \lVert\vec r\,'\rVert\,dt\) — o passinho <em>escalar</em> (só o comprimento, sem direção): usado na integral escalar.</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 340 210" role="img" aria-label="Curva atravessando um campo vetorial, com F e dr num ponto do caminho">
+      <!-- campo de fundo -->
+      <g stroke="var(--line-2)" stroke-width="1.5" fill="var(--line-2)">
+        <line x1="40" y1="50" x2="62" y2="42"/><polygon points="62,42 53,41 55,48"/>
+        <line x1="40" y1="110" x2="62" y2="102"/><polygon points="62,102 53,101 55,108"/>
+        <line x1="40" y1="170" x2="62" y2="162"/><polygon points="62,162 53,161 55,168"/>
+        <line x1="130" y1="40" x2="152" y2="32"/><polygon points="152,32 143,31 145,38"/>
+        <line x1="130" y1="170" x2="152" y2="162"/><polygon points="152,162 143,161 145,168"/>
+        <line x1="230" y1="50" x2="252" y2="42"/><polygon points="252,42 243,41 245,48"/>
+        <line x1="230" y1="160" x2="252" y2="152"/><polygon points="252,152 243,151 245,158"/>
+        <line x1="290" y1="100" x2="312" y2="92"/><polygon points="312,92 303,91 305,98"/>
+      </g>
+      <!-- curva C -->
+      <path d="M 50 190 C 120 150 140 80 220 90 C 270 96 290 60 320 40" fill="none" stroke="var(--ink-2)" stroke-width="2.5"/>
+      <circle cx="50" cy="190" r="4" fill="var(--ink-2)"/>
+      <text x="38" y="204" font-size="11" fill="var(--ink-2)">A</text>
+      <circle cx="320" cy="40" r="4" fill="var(--ink-2)"/>
+      <text x="326" y="36" font-size="11" fill="var(--ink-2)">B</text>
+      <!-- ponto com F e dr -->
+      <circle cx="220" cy="90" r="4.5" fill="var(--warn)"/>
+      <line x1="220" y1="90" x2="278" y2="96" stroke="var(--ink-2)" stroke-width="2.2"/>
+      <polygon points="278,96 267,90 266,100" fill="var(--ink-2)"/>
+      <text x="262" y="114" font-size="11" fill="var(--ink-2)">dr (tangente)</text>
+      <line x1="220" y1="90" x2="266" y2="66" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="266,66 254,66 258,75" fill="var(--accent)"/>
+      <text x="272" y="62" font-size="12" fill="var(--accent)">F</text>
+    </svg>
+    <figcaption>Em cada ponto do caminho, \(\vec F\cdot d\vec r\) mede o quanto o campo "empurra" no sentido do movimento. Somando tudo, sai o trabalho \(W\).</figcaption>
+  </figure>
   <p>Roteiro de cálculo direto: (1) parametrize a curva; (2) substitua na \(\vec F\); (3) faça o produto escalar com \(\vec r\,'(t)\); (4) integre em \(t\). Inverter a orientação da curva troca o sinal.</p>
   <h3>Campos conservativos e o Teorema Fundamental</h3>
   <p>\(\vec F\) é <strong>conservativo</strong> quando existe função potencial \(\varphi\) com \(\nabla \varphi = \vec F\). Teste em 2D (região simplesmente conexa):</p>
@@ -249,18 +672,70 @@
     $$\int_C \nabla\varphi \cdot d\vec r = \varphi(B) - \varphi(A)$$
   </div>
   <p>Consequências: a integral de um campo conservativo <strong>não depende do caminho</strong>, só dos extremos; em qualquer curva fechada, vale zero.</p>
+  <figure class="figura">
+    <svg viewBox="0 0 320 190" role="img" aria-label="Dois caminhos diferentes entre A e B dando o mesmo trabalho em campo conservativo">
+      <circle cx="50" cy="150" r="5" fill="var(--ink-2)"/>
+      <text x="38" y="168" font-size="12" fill="var(--ink-2)">A</text>
+      <circle cx="270" cy="45" r="5" fill="var(--ink-2)"/>
+      <text x="278" y="42" font-size="12" fill="var(--ink-2)">B</text>
+      <!-- caminho 1 -->
+      <path d="M 50 150 C 100 40 180 20 270 45" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="180,29 168,27 172,37" fill="var(--accent)"/>
+      <text x="130" y="42" font-size="11" fill="var(--accent)">C₁</text>
+      <!-- caminho 2 -->
+      <path d="M 50 150 C 140 180 230 130 270 45" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+      <polygon points="190,151 178,155 184,163" fill="var(--ok)"/>
+      <text x="150" y="176" font-size="11" fill="var(--ok)">C₂</text>
+      <text x="160" y="98" font-size="11" fill="var(--ink-3)" text-anchor="middle">∫C₁ F·dr = ∫C₂ F·dr = φ(B) − φ(A)</text>
+    </svg>
+    <figcaption>Campo conservativo: tanto faz o caminho — só os extremos importam. Numa curva fechada (\(A = B\)), o trabalho é zero.</figcaption>
+  </figure>
   <p><strong>Como achar o potencial:</strong> integre \(P\) em \(x\) obtendo \(\varphi = \int P\,dx + g(y)\); derive em \(y\), iguale a \(Q\) e descubra \(g(y)\).</p>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — potencial e trabalho</div>
+    <p>Calcule \(\int_C \vec F\cdot d\vec r\) para \(\vec F = (y,\, x)\), de \(A = (0,0)\) até \(B = (1,2)\), por qualquer caminho.</p>
+    <p><em>Teste:</em> \(Q_x = 1 = P_y\) ✓ conservativo. <em>Potencial:</em> \(\varphi = \int y\,dx = xy + g(y)\); derivando em \(y\): \(x + g'(y) = x \Rightarrow g' = 0\), logo \(\varphi = xy\). <em>Resposta:</em> \(W = \varphi(1,2) - \varphi(0,0) = 2 - 0 = 2\). Nenhuma parametrização foi necessária.</p>
+  </div>
   <div class="macete dica">Antes de parametrizar qualquer integral de linha, TESTE se o campo é conservativo. Se for, ache \(\varphi\) e use \(\varphi(B)-\varphi(A)\) — economiza a maior parte da conta. As provas quase sempre montam a questão para premiar quem percebe isso.</div>
 </section>
 
 <section class="topico" id="c3-green">
   <h2><span class="num">10</span> Teorema de Green</h2>
-  <p>Relaciona a integral de linha numa curva fechada \(C\) (orientada no sentido <strong>anti-horário</strong>) com uma integral dupla na região \(D\) delimitada por ela:</p>
+  <p><strong>A ideia.</strong> Dar a volta completa numa curva fechada calculando \(\oint \vec F\cdot d\vec r\) pode ser trabalhoso (parametrizar cada trecho…). O Teorema de Green oferece uma troca: em vez de somar o campo <em>ao longo da borda</em>, some uma quantidade (\(Q_x - P_y\), o "giro local" do campo) <em>dentro da região</em>. Borda ↔ interior: essa é a essência dos três grandes teoremas da unidade.</p>
   <div class="formula">
     <div class="rotulo">Teorema de Green</div>
     $$\oint_C P\,dx + Q\,dy = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(\oint\) — integral numa curva <strong>fechada</strong> (o circulinho lembra isso);</li>
+      <li>\(C\) — a borda da região, percorrida no sentido <strong>anti-horário</strong> (região sempre à esquerda);</li>
+      <li>\(D\) — a região do plano cercada por \(C\);</li>
+      <li>\(Q_x - P_y\) — o "rotacional 2D": mede a tendência de giro do campo em cada ponto de \(D\).</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 320 210" role="img" aria-label="Região D com borda C orientada no sentido anti-horário">
+      <path d="M 160 30 C 250 30 290 90 270 140 C 250 190 90 200 60 150 C 30 100 70 30 160 30 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+      <text x="160" y="115" font-size="14" fill="var(--accent)" text-anchor="middle">D</text>
+      <text x="160" y="136" font-size="10" fill="var(--ink-3)" text-anchor="middle">∬ (Q_x − P_y) dA</text>
+      <!-- setas de orientação anti-horária -->
+      <polygon points="160,30 174,24 174,36" fill="var(--accent)" transform="rotate(180 167 30)"/>
+      <polygon points="272,132 264,120 278,122" fill="var(--accent)"/>
+      <polygon points="62,146 74,152 70,140" fill="var(--accent)"/>
+      <text x="238" y="24" font-size="11" fill="var(--accent)">C (anti-horário)</text>
+    </svg>
+    <figcaption>A circulação ao longo da borda \(C\) (anti-horária: a região fica à sua esquerda) é igual à soma do "giro local" dentro de \(D\).</figcaption>
+  </figure>
   <p>Condições: \(C\) fechada, simples, orientada positivamente; \(P\) e \(Q\) com derivadas contínuas em \(D\) (cuidado com singularidades dentro da região, como a origem em campos com \(x^2+y^2\) no denominador).</p>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — Green em ação</div>
+    <p>Calcule \(\oint_C (x^2 - y)\,dx + (x + y^2)\,dy\), onde \(C\) é o círculo \(x^2+y^2 = 4\), anti-horário.</p>
+    <p>Aqui \(P = x^2 - y\) e \(Q = x + y^2\), então \(Q_x - P_y = 1 - (-1) = 2\). Por Green:</p>
+    $$\oint_C = \iint_D 2\, dA = 2\cdot A(D) = 2\cdot \pi\,2^2 = 8\pi.$$
+    <p>Sem Green, seriam quatro substituições trigonométricas; com Green, virou "2 vezes a área".</p>
+  </div>
   <h3>Aplicação: área via integral de linha</h3>
   <div class="formula">$$A(D) = \oint_C x\, dy = -\oint_C y\, dx = \frac{1}{2} \oint_C x\,dy - y\,dx$$</div>
   <div class="macete">Se a curva do enunciado NÃO é fechada, você ainda pode usar Green: feche-a com segmentos simples (eixos, retas), aplique o teorema no contorno completo e desconte as integrais dos trechos adicionados — foi exatamente essa a questão 3 da Final 2023.1.</div>
@@ -269,31 +744,120 @@
 
 <section class="topico" id="c3-superficie">
   <h2><span class="num">11</span> Superfícies parametrizadas e integrais de superfície</h2>
-  <p>Uma superfície é descrita por \(\vec r(u,v) = (x(u,v),\, y(u,v),\, z(u,v))\). O vetor normal vem do produto vetorial dos vetores tangentes:</p>
-  <div class="formula">$$\vec n = \vec r_u \times \vec r_v, \qquad dS = \lVert \vec r_u \times \vec r_v \rVert\; du\, dv$$</div>
+  <p><strong>A ideia.</strong> Uma curva precisa de <em>um</em> parâmetro (\(t\)) para ser varrida; uma superfície precisa de <em>dois</em> (\(u\) e \(v\)) — como as coordenadas de um mapa que cobre uma folha amassada no espaço. Fixando \(v\) e variando \(u\), você anda numa "linha de grade"; o vetor tangente a ela é \(\vec r_u\). Idem para \(\vec r_v\). Esses dois tangentes geram o plano tangente à superfície, e o <strong>produto vetorial</strong> deles dá o vetor <strong>normal</strong> (perpendicular à superfície). O tamanho desse produto vetorial é a área do paralelogramo formado pelos dois passinhos — ou seja, o "pedacinho de área" \(dS\).</p>
+  <div class="formula">
+    <div class="rotulo">Normal e elemento de área</div>
+    $$\vec n = \vec r_u \times \vec r_v, \qquad dS = \lVert \vec r_u \times \vec r_v \rVert\; du\, dv$$
+  </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(\vec r(u,v)\) — a receita que mapeia o retângulo \((u,v)\) do plano na superfície do espaço;</li>
+      <li>\(\vec r_u,\ \vec r_v\) — vetores tangentes às linhas de grade (derivadas parciais de \(\vec r\));</li>
+      <li>\(\vec r_u \times \vec r_v\) — vetor normal à superfície; sua direção define a orientação;</li>
+      <li>\(dS\) — o pedacinho de área da superfície; \(d\vec S = \vec n\, du\, dv\) é o mesmo pedacinho <em>com direção</em>.</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 320 210" role="img" aria-label="Retalho de superfície com vetores tangentes r_u, r_v e normal n">
+      <!-- retalho de superfície -->
+      <path d="M 40 130 C 90 100 150 110 200 90 C 230 78 260 95 285 75" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+      <path d="M 55 165 C 105 135 165 145 215 125 C 245 113 275 130 300 110" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+      <path d="M 40 130 C 45 145 50 152 55 165" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+      <path d="M 200 90 C 205 105 210 112 215 125" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+      <path d="M 120 106 C 125 121 130 128 135 141" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+      <path d="M 285 75 C 290 90 295 97 300 110" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+      <path d="M 40 130 C 90 100 150 110 200 90 C 230 78 260 95 285 75 L 300 110 C 275 130 245 113 215 125 C 165 145 105 135 55 165 Z" fill="var(--accent-soft)" stroke="none"/>
+      <text x="70" y="120" font-size="12" fill="var(--ink-3)">S</text>
+      <!-- ponto e vetores -->
+      <circle cx="150" cy="118" r="4" fill="var(--warn)"/>
+      <line x1="150" y1="118" x2="215" y2="106" stroke="var(--ink-2)" stroke-width="2.2"/>
+      <polygon points="215,106 204,102 205,112" fill="var(--ink-2)"/>
+      <text x="200" y="126" font-size="12" fill="var(--ink-2)">r_u</text>
+      <line x1="150" y1="118" x2="168" y2="150" stroke="var(--ok)" stroke-width="2.2"/>
+      <polygon points="168,150 157,145 166,140" fill="var(--ok)"/>
+      <text x="172" y="158" font-size="12" fill="var(--ok)">r_v</text>
+      <line x1="150" y1="118" x2="132" y2="52" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="132,52 126,63 139,61" fill="var(--accent)"/>
+      <text x="112" y="46" font-size="13" fill="var(--accent)">n = r_u × r_v</text>
+    </svg>
+    <figcaption>Os tangentes \(\vec r_u\) e \(\vec r_v\) geram o plano tangente; seu produto vetorial é a normal \(\vec n\), e o tamanho dele é o pedacinho de área \(dS\).</figcaption>
+  </figure>
   <h3>Integral de superfície escalar</h3>
   <div class="formula">$$\iint_S f\; dS = \iint_D f(\vec r(u,v))\, \lVert \vec r_u \times \vec r_v \rVert\; du\, dv$$</div>
-  <p>Caso a superfície seja um gráfico \(z = g(x,y)\):</p>
-  <div class="formula">$$dS = \sqrt{1 + g_x^2 + g_y^2}\;\; dA \qquad\text{(área: } A(S) = \iint_D \sqrt{1+g_x^2+g_y^2}\, dA\text{)}$$</div>
+  <p>Interpretação: massa de uma chapa fina de densidade \(f\), ou (com \(f=1\)) a própria área da superfície. Caso a superfície seja um gráfico \(z = g(x,y)\), a conta simplifica:</p>
+  <div class="formula">$$dS = \sqrt{1 + g_x^2 + g_y^2}\;\; dA \qquad\Rightarrow\qquad A(S) = \iint_D \sqrt{1+g_x^2+g_y^2}\, dA$$</div>
   <h3>Integral de superfície vetorial (fluxo)</h3>
   <div class="formula">$$\Phi = \iint_S \vec F \cdot d\vec S = \iint_D \vec F \cdot (\vec r_u \times \vec r_v)\; du\, dv$$</div>
-  <p>O fluxo mede "quanto campo atravessa a superfície". A orientação (para onde aponta \(\vec n\)) muda o sinal — leia sempre se o enunciado pede normal exterior ou para cima.</p>
+  <p>O fluxo mede "quanto do campo atravessa a superfície" — como a vazão de água passando por uma rede. Só conta a parte de \(\vec F\) <em>alinhada com a normal</em> (por isso o produto escalar com \(\vec n\)). A orientação (para onde aponta \(\vec n\)) muda o sinal — leia sempre se o enunciado pede normal exterior ou "para cima".</p>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — área de um retalho de plano</div>
+    <p>Ache a área da parte do plano \(z = g(x,y) = 2x + 2y\) sobre o disco \(D:\ x^2+y^2\le 1\).</p>
+    <p>\(g_x = 2,\ g_y = 2\), então \(\sqrt{1+g_x^2+g_y^2} = \sqrt{1+4+4} = 3\). Logo \(A(S) = \iint_D 3\, dA = 3\cdot(\text{área de }D) = 3\pi\). A raiz é constante aqui, então a integral vira "3 vezes a área da base".</p>
+  </div>
   <div class="macete">Parametrizações que valem decorar: esfera de raio \(a\): \(\vec r(\phi,\theta) = (a\sin\phi\cos\theta,\, a\sin\phi\sin\theta,\, a\cos\phi)\) com \(\lVert\vec r_\phi \times \vec r_\theta\rVert = a^2\sin\phi\); cilindro de raio \(a\): \(\vec r(\theta, z) = (a\cos\theta,\, a\sin\theta,\, z)\) com \(dS = a\, d\theta\, dz\).</div>
 </section>
 
 <section class="topico" id="c3-nabla">
   <h2><span class="num">12</span> Operador nabla: divergente e rotacional</h2>
-  <p>O operador \(\nabla = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right)\) gera as três operações do cálculo vetorial:</p>
+  <p><strong>A ideia.</strong> Pense no campo \(\vec F\) como o escoamento de um fluido: em cada ponto há um vetor dizendo para onde e com que força a água se move. Duas perguntas naturais surgem. "Nesse ponto, está saindo mais água do que entrando (uma torneira) ou o contrário (um ralo)?" — quem responde é o <strong>divergente</strong>, um número. "Nesse ponto, o fluido tende a girar como um redemoinho?" — quem responde é o <strong>rotacional</strong>, um vetor que aponta no eixo do giro. O operador \(\nabla\) ("nabla") é só um jeito compacto de escrever as duas coisas: divergente é \(\nabla\) num "produto escalar" e rotacional é \(\nabla\) num "produto vetorial".</p>
   <div class="formula">
-    <div class="rotulo">Divergente (escalar): "produto escalar" com nabla</div>
+    <div class="rotulo">O operador nabla</div>
+    $$\nabla = \left(\frac{\partial}{\partial x},\ \frac{\partial}{\partial y},\ \frac{\partial}{\partial z}\right)$$
+  </div>
+  <div class="formula">
+    <div class="rotulo">Divergente (dá escalar): "produto escalar" com nabla</div>
     $$\operatorname{div} \vec F = \nabla \cdot \vec F = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
   </div>
   <div class="formula">
-    <div class="rotulo">Rotacional (vetor): "produto vetorial" com nabla</div>
+    <div class="rotulo">Rotacional (dá vetor): "produto vetorial" com nabla</div>
     $$\operatorname{rot} \vec F = \nabla \times \vec F = \begin{vmatrix} \hat i & \hat j & \hat k \\ \partial_x & \partial_y & \partial_z \\ P & Q & R \end{vmatrix}
     = \left( R_y - Q_z,\;\; P_z - R_x,\;\; Q_x - P_y \right)$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(\vec F = (P,Q,R)\) — as três componentes do campo;</li>
+      <li>\(\nabla\cdot\vec F\) — soma das derivadas "de cada componente na sua própria direção": mede fonte/sumidouro;</li>
+      <li>\(\nabla\times\vec F\) — determinante simbólico; cada componente é uma diferença de derivadas cruzadas;</li>
+      <li>\(\hat i,\hat j,\hat k\) — os vetores unitários dos eixos \(x, y, z\).</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 340 190" role="img" aria-label="Comparação entre um campo com divergente (fonte) e um campo com rotacional (giro)">
+      <!-- divergente: fonte -->
+      <text x="80" y="20" font-size="12" fill="var(--ink-2)" text-anchor="middle">div &gt; 0 (fonte)</text>
+      <circle cx="80" cy="100" r="4" fill="var(--warn)"/>
+      <g stroke="var(--accent)" stroke-width="2" fill="var(--accent)">
+        <line x1="80" y1="100" x2="80" y2="55"/><polygon points="80,50 76,60 84,60"/>
+        <line x1="80" y1="100" x2="80" y2="145"/><polygon points="80,150 76,140 84,140"/>
+        <line x1="80" y1="100" x2="35" y2="100"/><polygon points="30,100 40,96 40,104"/>
+        <line x1="80" y1="100" x2="125" y2="100"/><polygon points="130,100 120,96 120,104"/>
+        <line x1="80" y1="100" x2="48" y2="68"/><polygon points="44,64 54,66 48,74"/>
+        <line x1="80" y1="100" x2="112" y2="68"/><polygon points="116,64 106,66 112,74"/>
+        <line x1="80" y1="100" x2="48" y2="132"/><polygon points="44,136 48,126 54,134"/>
+        <line x1="80" y1="100" x2="112" y2="132"/><polygon points="116,136 112,126 106,134"/>
+      </g>
+      <line x1="170" y1="30" x2="170" y2="160" stroke="var(--line-2)" stroke-width="1"/>
+      <!-- rotacional: giro -->
+      <text x="258" y="20" font-size="12" fill="var(--ink-2)" text-anchor="middle">rot ≠ 0 (giro)</text>
+      <circle cx="258" cy="100" r="42" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+      <polygon points="300,100 292,92 289,103" fill="var(--ok)"/>
+      <polygon points="258,142 266,134 250,134" fill="var(--ok)" transform="rotate(-8 258 138)"/>
+      <polygon points="216,100 224,108 227,97" fill="var(--ok)"/>
+      <circle cx="258" cy="100" r="4" fill="var(--warn)"/>
+      <line x1="258" y1="100" x2="258" y2="52" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="258,48 254,58 262,58" fill="var(--accent)"/>
+      <text x="266" y="58" font-size="11" fill="var(--accent)">eixo</text>
+    </svg>
+    <figcaption>Divergente mede o quanto o campo "jorra" de um ponto (fonte) ou some nele (ralo). Rotacional mede o giro local; o vetor aponta no eixo da rotação (regra da mão direita).</figcaption>
+  </figure>
   <p>Interpretações físicas: o divergente mede expansão/compressão local (fontes e sumidouros); o rotacional mede a tendência de rotação local do campo.</p>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — div e rot de um campo</div>
+    <p>Seja \(\vec F = (x,\ y,\ 0)\) (campo que aponta para fora, radial no plano).</p>
+    <p><em>Divergente:</em> \(\nabla\cdot\vec F = 1 + 1 + 0 = 2 &gt; 0\) — é fonte em todo ponto, coerente com as setas apontando para fora. <em>Rotacional:</em> \(R_y - Q_z = 0\), \(P_z - R_x = 0\), \(Q_x - P_y = 0-0 = 0\), logo \(\nabla\times\vec F = \vec 0\): não gira. Este campo é, aliás, conservativo (\(\varphi = \tfrac{x^2+y^2}{2}\)).</p>
+  </div>
   <h3>Identidades importantes</h3>
   <ul>
     <li>\(\nabla \times (\nabla \varphi) = \vec 0\) — gradientes não giram (campo conservativo \(\Rightarrow\) rotacional nulo);</li>
@@ -305,24 +869,91 @@
 
 <section class="topico" id="c3-gauss">
   <h2><span class="num">13</span> Teorema da divergência (Gauss)</h2>
-  <p>Converte o <strong>fluxo através de uma superfície fechada</strong> \(S\) (com normal apontando para fora) numa integral tripla do divergente no sólido \(E\) interior:</p>
+  <p><strong>A ideia.</strong> Imagine uma superfície fechada — uma casca, tipo um balão — mergulhada num escoamento. Quer saber a vazão líquida que sai por toda a casca (o fluxo). Uma opção é somar o campo <em>ponto a ponto na superfície</em> (trabalhoso). O Teorema de Gauss oferece a troca: essa vazão total pela casca é igual à soma de todas as "torneiras e ralos" (o divergente) <em>espalhados pelo sólido de dentro</em>. Faz sentido físico: se dentro do balão só há fontes jorrando água, tudo isso tem que sair pela casca. É a mesma filosofia de Green (borda ↔ interior), só que agora casca 2D ↔ sólido 3D.</p>
   <div class="formula">
     <div class="rotulo">Teorema de Gauss</div>
     $$\iint_S \vec F \cdot d\vec S = \iiint_E \nabla \cdot \vec F\;\; dV \qquad (S \text{ fechada, normal exterior})$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(S\) — a superfície <strong>fechada</strong> que envolve o sólido (a "casca");</li>
+      <li>\(E\) — o sólido tridimensional cercado por \(S\);</li>
+      <li>\(d\vec S\) — pedacinho de área com normal apontando para <strong>fora</strong>;</li>
+      <li>\(\nabla\cdot\vec F\) — o divergente (fonte/sumidouro) integrado no volume.</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 300 200" role="img" aria-label="Superfície fechada com fontes internas e fluxo saindo pela casca">
+      <ellipse cx="150" cy="105" rx="95" ry="72" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+      <text x="150" y="45" font-size="12" fill="var(--accent)" text-anchor="middle">S (casca fechada)</text>
+      <text x="150" y="115" font-size="11" fill="var(--ink-3)" text-anchor="middle">E: ∭ ∇·F dV</text>
+      <!-- fontes internas -->
+      <g fill="var(--warn)">
+        <circle cx="120" cy="95" r="3"/><circle cx="175" cy="120" r="3"/><circle cx="150" cy="88" r="3"/>
+      </g>
+      <!-- fluxo saindo (normais exteriores) -->
+      <g stroke="var(--ok)" stroke-width="2" fill="var(--ok)">
+        <line x1="245" y1="105" x2="272" y2="105"/><polygon points="277,105 267,101 267,109"/>
+        <line x1="55" y1="105" x2="28" y2="105"/><polygon points="23,105 33,101 33,109"/>
+        <line x1="150" y1="33" x2="150" y2="10"/><polygon points="150,5 146,15 154,15"/>
+        <line x1="150" y1="177" x2="150" y2="200"/><polygon points="150,205 146,195 154,195"/>
+        <line x1="218" y1="52" x2="238" y2="34"/><polygon points="242,30 232,33 238,41"/>
+        <line x1="82" y1="158" x2="62" y2="176"/><polygon points="58,180 68,177 62,169"/>
+      </g>
+    </svg>
+    <figcaption>Toda a "água" produzida pelas fontes dentro de \(E\) (bolinhas) precisa sair pela casca \(S\): fluxo pela superfície = divergente somado no volume.</figcaption>
+  </figure>
   <p>Roteiro: (1) verifique que \(S\) é fechada (se não for, feche com uma "tampa" e desconte o fluxo dela); (2) calcule \(\nabla\cdot\vec F\); (3) escolha coordenadas adequadas (cilíndricas/esféricas) para a tripla; (4) confira a orientação: o teorema exige normal <strong>exterior</strong>.</p>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — fluxo por uma esfera</div>
+    <p>Calcule o fluxo de \(\vec F = (x,\ y,\ z)\) para fora da esfera \(x^2+y^2+z^2 = a^2\).</p>
+    <p>\(\nabla\cdot\vec F = 1+1+1 = 3\) (constante!). Por Gauss, \(\Phi = \iiint_E 3\, dV = 3\cdot V(\text{esfera}) = 3\cdot\tfrac{4}{3}\pi a^3 = 4\pi a^3\). Sem Gauss, seria uma integral de superfície com \(\vec r_\phi\times\vec r_\theta\); com Gauss, virou "3 vezes o volume da esfera".</p>
+  </div>
   <div class="macete">Se \(\nabla \cdot \vec F\) der uma constante \(c\), o fluxo total é simplesmente \(c \cdot V(E)\) — volume do sólido vezes a constante. Isso transforma questões aparentemente cabeludas em geometria básica (volume de esfera, cilindro, cone).</div>
   <div class="macete dica">Sinal de que a questão quer Gauss: pedem fluxo por uma superfície FECHADA (esfera, cubo, cilindro com tampas) ou o campo é feio mas o divergente é simples. Sinal de Stokes: pedem circulação numa curva fechada de um campo com rotacional simples.</div>
 </section>
 
 <section class="topico" id="c3-stokes">
   <h2><span class="num">14</span> Teorema de Stokes</h2>
-  <p>Generaliza Green para o espaço: a <strong>circulação</strong> de \(\vec F\) na curva fechada \(C\) que borda uma superfície \(S\) é o fluxo do rotacional por \(S\):</p>
+  <p><strong>A ideia.</strong> É o Green "levantado do plano para o espaço". Você tem uma curva fechada \(C\) no espaço e quer a circulação \(\oint_C\vec F\cdot d\vec r\) (o quanto o campo "gira" ao longo dela). Stokes diz: em vez de percorrer a borda, escolha <em>qualquer</em> superfície \(S\) que tenha \(C\) como contorno (uma "tampa" apoiada na curva) e some o rotacional através dela. O detalhe libertador: como o resultado só depende da borda, você pode trocar uma superfície feia (paraboloide, hemisfério) por um <strong>disco plano</strong> de mesma borda — e a conta desmorona.</p>
   <div class="formula">
     <div class="rotulo">Teorema de Stokes</div>
     $$\oint_C \vec F \cdot d\vec r = \iint_S (\nabla \times \vec F) \cdot d\vec S$$
   </div>
+  <div class="simbolos">
+    <div class="rotulo">O que é cada símbolo</div>
+    <ul>
+      <li>\(C\) — curva fechada no espaço (a borda);</li>
+      <li>\(S\) — <em>qualquer</em> superfície cujo contorno seja \(C\) (a "tampa");</li>
+      <li>\(\nabla\times\vec F\) — o rotacional do campo, cujo fluxo se soma por \(S\);</li>
+      <li>orientações de \(C\) e \(S\) casadas pela <strong>regra da mão direita</strong>.</li>
+    </ul>
+  </div>
+  <figure class="figura">
+    <svg viewBox="0 0 300 200" role="img" aria-label="Curva fechada C bordando uma superfície S com normal pela regra da mão direita">
+      <!-- superfície tampa -->
+      <ellipse cx="150" cy="120" rx="100" ry="38" fill="var(--accent-soft)" stroke="none"/>
+      <ellipse cx="150" cy="120" rx="100" ry="38" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+      <text x="150" y="126" font-size="12" fill="var(--accent)" text-anchor="middle">S (tampa)</text>
+      <!-- setas de circulação em C -->
+      <polygon points="250,120 240,113 240,127" fill="var(--ok)"/>
+      <polygon points="50,120 60,127 60,113" fill="var(--ok)"/>
+      <polygon points="150,158 160,151 140,151" fill="var(--ok)"/>
+      <text x="205" y="168" font-size="11" fill="var(--ok)">C (borda)</text>
+      <!-- normal -->
+      <line x1="150" y1="120" x2="150" y2="40" stroke="var(--warn)" stroke-width="2.5"/>
+      <polygon points="150,34 145,46 155,46" fill="var(--warn)"/>
+      <text x="158" y="52" font-size="12" fill="var(--warn)">n (mão direita)</text>
+    </svg>
+    <figcaption>A circulação ao longo de \(C\) é igual ao fluxo do rotacional por qualquer superfície \(S\) apoiada em \(C\). Dedos no sentido de \(C\), polegar aponta \(\vec n\).</figcaption>
+  </figure>
   <p>A orientação segue a <strong>regra da mão direita</strong>: com os dedos no sentido de percurso de \(C\), o polegar dá o sentido da normal de \(S\).</p>
+  <div class="exemplo">
+    <div class="rotulo">Exemplo rápido — trocando a superfície</div>
+    <p>Calcule \(\oint_C \vec F\cdot d\vec r\) para \(\vec F = (-y,\ x,\ z)\), onde \(C\) é o círculo \(x^2+y^2=1\) no plano \(z=0\), anti-horário visto de cima.</p>
+    <p>\(\nabla\times\vec F = (0,0,\,Q_x-P_y) = (0,0,\,1-(-1)) = (0,0,2)\). Tomo \(S\) = disco \(x^2+y^2\le1\) no plano \(z=0\), com \(\vec n = (0,0,1)\). Então \(\iint_S(\nabla\times\vec F)\cdot d\vec S = \iint_D 2\, dA = 2\cdot\pi\cdot1^2 = 2\pi\). O disco plano fez o trabalho pesado.</p>
+  </div>
   <p>Duas jogadas estratégicas que as provas adoram:</p>
   <ul>
     <li><strong>Trocar a integral de linha por fluxo do rotacional</strong> quando a curva é ruim de parametrizar mas o rotacional é simples;</li>
