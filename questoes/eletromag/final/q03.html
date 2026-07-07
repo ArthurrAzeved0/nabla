@@ -11,6 +11,34 @@
     <p>(a) Calcule o fluxo magnético através da espira.</p>
     <p>(b) Determine a corrente induzida e seu sentido.</p>
     <p>(c) Calcule a energia dissipada na espira entre \(0\) e \(t\).</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 320 200" role="img" aria-label="Espira retangular no plano xy com campo saindo da tela mais intenso longe da origem">
+        <!-- eixos -->
+        <line x1="40" y1="170" x2="300" y2="170" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <polygon points="300,170 290,166 290,174" fill="var(--ink-3)"/>
+        <text x="292" y="160" font-size="11" fill="var(--ink-3)">x</text>
+        <line x1="40" y1="170" x2="40" y2="20" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <polygon points="40,20 36,30 44,30" fill="var(--ink-3)"/>
+        <text x="48" y="28" font-size="11" fill="var(--ink-3)">y</text>
+        <!-- espira -->
+        <rect x="40" y="70" width="180" height="100" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+        <text x="130" y="62" font-size="11" fill="var(--ink-2)" text-anchor="middle">a</text>
+        <text x="230" y="122" font-size="11" fill="var(--ink-2)">b</text>
+        <!-- B saindo da tela, densidade cresce com x·y -->
+        <g stroke="var(--accent)" fill="var(--accent)">
+          <circle cx="80" cy="145" r="4.5" fill="none" stroke-width="1.2"/><circle cx="80" cy="145" r="1.2"/>
+          <circle cx="130" cy="140" r="5.5" fill="none" stroke-width="1.4"/><circle cx="130" cy="140" r="1.5"/>
+          <circle cx="90" cy="105" r="5.5" fill="none" stroke-width="1.4"/><circle cx="90" cy="105" r="1.5"/>
+          <circle cx="145" cy="102" r="7" fill="none" stroke-width="1.6"/><circle cx="145" cy="102" r="1.8"/>
+          <circle cx="190" cy="130" r="7" fill="none" stroke-width="1.6"/><circle cx="190" cy="130" r="1.8"/>
+          <circle cx="195" cy="88" r="9" fill="none" stroke-width="2"/><circle cx="195" cy="88" r="2.2"/>
+        </g>
+        <text x="248" y="45" font-size="11" fill="var(--accent)">B = x y t² ẑ</text>
+        <text x="248" y="60" font-size="10" fill="var(--ink-3)">(sai da tela)</text>
+      </svg>
+      <figcaption>O campo sai da tela e é mais intenso longe da origem (cresce com \(x\,y\)); o fluxo exige integral dupla.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

@@ -11,6 +11,32 @@
     <p>(a) Calcule a carga total da esfera.</p>
     <p>(b) Determine o fluxo do campo elétrico através de uma superfície esférica de raio \(r = 2\ \text{m}\) concêntrica com a esfera.</p>
     <p>(c) Calcule o módulo do campo elétrico sobre essa superfície.</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 300 200" role="img" aria-label="Esfera carregada e superfície gaussiana externa">
+        <!-- esfera carregada -->
+        <circle cx="150" cy="100" r="34" fill="var(--warn)" opacity="0.25" stroke="var(--warn)" stroke-width="2"/>
+        <text x="150" y="105" font-size="12" fill="var(--ink-2)" text-anchor="middle">ρ</text>
+        <line x1="150" y1="100" x2="178" y2="80" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <text x="168" y="78" font-size="11" fill="var(--ink-2)">R</text>
+        <!-- gaussiana -->
+        <circle cx="150" cy="100" r="80" fill="none" stroke="var(--ok)" stroke-width="2" stroke-dasharray="6 5"/>
+        <line x1="150" y1="100" x2="95" y2="158" stroke="var(--ink-3)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="106" y="140" font-size="11" fill="var(--ink-3)">r = 2 m</text>
+        <text x="216" y="176" font-size="11" fill="var(--ok)">gaussiana</text>
+        <!-- vetores E radiais -->
+        <line x1="230" y1="100" x2="262" y2="100" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="262,100 252,95 252,105" fill="var(--accent)"/>
+        <line x1="150" y1="20" x2="150" y2="4" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="150,4 145,14 155,14" fill="var(--accent)"/>
+        <line x1="70" y1="100" x2="38" y2="100" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="38,100 48,95 48,105" fill="var(--accent)"/>
+        <line x1="150" y1="180" x2="150" y2="196" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="150,196 145,186 155,186" fill="var(--accent)"/>
+        <text x="268" y="92" font-size="12" fill="var(--accent)">E</text>
+      </svg>
+      <figcaption>A gaussiana (tracejada) envolve toda a carga da esfera; \(\vec E\) é radial e tem o mesmo módulo em todos os pontos dela.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

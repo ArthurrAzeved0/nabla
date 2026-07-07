@@ -11,6 +11,41 @@
     <p>(a) Calcule o fluxo magnético através da espira.</p>
     <p>(b) Determine a f.e.m. induzida na espira.</p>
     <p>(c) Indique o sentido da corrente induzida.</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 340 210" role="img" aria-label="Espira retangular no plano xy com campo saindo da tela mais intenso à direita">
+        <!-- eixos -->
+        <line x1="30" y1="180" x2="320" y2="180" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <polygon points="320,180 310,176 310,184" fill="var(--ink-3)"/>
+        <text x="312" y="170" font-size="11" fill="var(--ink-3)">x</text>
+        <line x1="30" y1="180" x2="30" y2="20" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <polygon points="30,20 26,30 34,30" fill="var(--ink-3)"/>
+        <text x="38" y="28" font-size="11" fill="var(--ink-3)">y</text>
+        <!-- espira -->
+        <rect x="30" y="70" width="200" height="110" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+        <text x="130" y="62" font-size="11" fill="var(--ink-2)" text-anchor="middle">a</text>
+        <text x="240" y="130" font-size="11" fill="var(--ink-2)">b</text>
+        <!-- B saindo da tela, densidade crescendo com x -->
+        <g stroke="var(--accent)" fill="var(--accent)">
+          <circle cx="70" cy="125" r="6" fill="none" stroke-width="1.4"/><circle cx="70" cy="125" r="1.5"/>
+          <circle cx="120" cy="100" r="7" fill="none" stroke-width="1.6"/><circle cx="120" cy="100" r="1.8"/>
+          <circle cx="120" cy="150" r="7" fill="none" stroke-width="1.6"/><circle cx="120" cy="150" r="1.8"/>
+          <circle cx="170" cy="90" r="8" fill="none" stroke-width="1.8"/><circle cx="170" cy="90" r="2"/>
+          <circle cx="170" cy="125" r="8" fill="none" stroke-width="1.8"/><circle cx="170" cy="125" r="2"/>
+          <circle cx="170" cy="160" r="8" fill="none" stroke-width="1.8"/><circle cx="170" cy="160" r="2"/>
+          <circle cx="210" cy="95" r="9" fill="none" stroke-width="2"/><circle cx="210" cy="95" r="2.2"/>
+          <circle cx="210" cy="150" r="9" fill="none" stroke-width="2"/><circle cx="210" cy="150" r="2.2"/>
+        </g>
+        <text x="270" y="90" font-size="11" fill="var(--accent)">B = A t³ x ẑ</text>
+        <text x="270" y="105" font-size="10" fill="var(--ink-3)">(sai da tela,</text>
+        <text x="270" y="118" font-size="10" fill="var(--ink-3)">cresce com x)</text>
+        <!-- corrente induzida horária -->
+        <path d="M 105 42 A 40 14 0 1 1 155 42" fill="none" stroke="var(--ok)" stroke-width="2"/>
+        <polygon points="155,42 145,38 147,47" fill="var(--ok)"/>
+        <text x="130" y="24" font-size="10" fill="var(--ok)" text-anchor="middle">i induzida (horária)</text>
+      </svg>
+      <figcaption>O fluxo em \(+\hat z\) cresce com o tempo; pela Lei de Lenz, a corrente induzida circula no sentido horário para se opor.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

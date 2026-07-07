@@ -9,6 +9,45 @@
   <div class="q-enunciado">
     <p>Duas cargas positivas iguais \(+Q\) estão fixas sobre o eixo \(x\), nas posições \(x = +d\) e \(x = -d\).</p>
     <p>Determine o campo elétrico resultante em um ponto \(P = (0,\ y)\) sobre o eixo \(y\) (módulo, direção e sentido).</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 320 210" role="img" aria-label="Duas cargas positivas no eixo x e ponto P no eixo y com campo resultante vertical">
+        <!-- eixos -->
+        <line x1="20" y1="160" x2="300" y2="160" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <polygon points="300,160 290,156 290,164" fill="var(--ink-3)"/>
+        <text x="292" y="150" font-size="11" fill="var(--ink-3)">x</text>
+        <line x1="160" y1="200" x2="160" y2="15" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <polygon points="160,15 156,25 164,25" fill="var(--ink-3)"/>
+        <text x="168" y="24" font-size="11" fill="var(--ink-3)">y</text>
+        <!-- cargas -->
+        <circle cx="80" cy="160" r="9" fill="var(--warn)"/>
+        <text x="80" y="164" font-size="12" fill="#fff" text-anchor="middle">+</text>
+        <text x="80" y="184" font-size="11" fill="var(--ink-2)" text-anchor="middle">+Q (−d)</text>
+        <circle cx="240" cy="160" r="9" fill="var(--warn)"/>
+        <text x="240" y="164" font-size="12" fill="#fff" text-anchor="middle">+</text>
+        <text x="240" y="184" font-size="11" fill="var(--ink-2)" text-anchor="middle">+Q (+d)</text>
+        <!-- P -->
+        <circle cx="160" cy="70" r="4" fill="var(--ink-2)"/>
+        <text x="146" y="66" font-size="12" fill="var(--ink-2)">P</text>
+        <!-- linhas r -->
+        <line x1="80" y1="160" x2="160" y2="70" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+        <line x1="240" y1="160" x2="160" y2="70" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+        <text x="106" y="112" font-size="11" fill="var(--ink-3)">r</text>
+        <text x="208" y="112" font-size="11" fill="var(--ink-3)">r</text>
+        <!-- E1, E2 -->
+        <line x1="160" y1="70" x2="188" y2="39" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="188,39 179,42 185,49" fill="var(--accent)"/>
+        <text x="194" y="36" font-size="11" fill="var(--accent)">E₁</text>
+        <line x1="160" y1="70" x2="132" y2="39" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="132,39 135,49 141,42" fill="var(--accent)"/>
+        <text x="112" y="36" font-size="11" fill="var(--accent)">E₂</text>
+        <!-- resultante -->
+        <line x1="160" y1="70" x2="160" y2="26" stroke="var(--ok)" stroke-width="2.5"/>
+        <polygon points="160,26 155,36 165,36" fill="var(--ok)"/>
+        <text x="170" y="42" font-size="11" fill="var(--ok)">E resultante (ŷ)</text>
+      </svg>
+      <figcaption>As componentes em \(x\) se cancelam por simetria; o campo resultante em \(P\) aponta ao longo de \(+\hat y\).</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

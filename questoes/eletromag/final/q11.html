@@ -9,6 +9,29 @@
   <div class="q-enunciado">
     <p>Uma espira circular de raio \(5\ \text{cm}\) e resistência \(R = 0{,}4\ \Omega\) está em um campo magnético perpendicular ao seu plano, que cresce à taxa constante \(dB/dt = 40\ \text{mT/s}\).</p>
     <p>Calcule: (a) a fem induzida; (b) a corrente induzida; (c) a potência dissipada na espira.</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 300 180" role="img" aria-label="Espira circular com campo crescente saindo da tela e corrente induzida horária">
+        <!-- espira -->
+        <circle cx="130" cy="90" r="60" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+        <!-- B saindo da tela -->
+        <g stroke="var(--accent)" fill="var(--accent)">
+          <circle cx="110" cy="70" r="6" fill="none" stroke-width="1.5"/><circle cx="110" cy="70" r="1.6"/>
+          <circle cx="150" cy="70" r="6" fill="none" stroke-width="1.5"/><circle cx="150" cy="70" r="1.6"/>
+          <circle cx="110" cy="110" r="6" fill="none" stroke-width="1.5"/><circle cx="110" cy="110" r="1.6"/>
+          <circle cx="150" cy="110" r="6" fill="none" stroke-width="1.5"/><circle cx="150" cy="110" r="1.6"/>
+        </g>
+        <text x="228" y="60" font-size="11" fill="var(--accent)">B crescente</text>
+        <text x="228" y="75" font-size="10" fill="var(--ink-3)">(sai da tela,</text>
+        <text x="228" y="89" font-size="10" fill="var(--ink-3)">dB/dt &gt; 0)</text>
+        <!-- corrente induzida horária -->
+        <path d="M 95 33 A 68 68 0 0 1 168 35" fill="none" stroke="var(--ok)" stroke-width="2"/>
+        <polygon points="168,35 157,32 160,41" fill="var(--ok)"/>
+        <text x="130" y="18" font-size="10" fill="var(--ok)" text-anchor="middle">i induzida (horária — Lenz)</text>
+        <text x="130" y="168" font-size="11" fill="var(--ink-2)" text-anchor="middle">r = 5 cm</text>
+      </svg>
+      <figcaption>Fluxo crescendo para fora da tela → a corrente induzida circula no sentido horário para se opor (Lei de Lenz).</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

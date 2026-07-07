@@ -8,6 +8,58 @@
 
   <div class="q-enunciado">
     <p>No circuito resistivo da prova, os resistores são \(R_1 = 2\ \Omega\), \(R_2 = 4\ \Omega\), \(R_3 = 2\ \Omega\), \(R_4 = 6\ \Omega\), \(R_5 = 4\ \Omega\) e \(R_6 = 8\ \Omega\). \(R_5\) e \(R_6\) estão em série entre si, e esse ramo está em paralelo com \(R_4\); esse conjunto está em paralelo também com \(R_3\), tudo em série com \(R_2\), e \(R_2\) em paralelo com \(R_3\) conecta-se a \(R_1\) e à fonte \(\varepsilon\). Sabendo que a corrente que passa por \(R_6\) é \(i_6 = 1{,}4\ \text{A}\), determine as correntes em todos os resistores e a f.e.m. \(\varepsilon\) da fonte.</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 400 200" role="img" aria-label="Circuito com fonte, R1 em série e associações de R2 a R6">
+        <!-- fonte à esquerda -->
+        <line x1="40" y1="60" x2="40" y2="85" stroke="var(--ink-2)" stroke-width="2"/>
+        <line x1="28" y1="85" x2="52" y2="85" stroke="var(--ink-2)" stroke-width="2.5"/>
+        <line x1="34" y1="95" x2="46" y2="95" stroke="var(--ink-2)" stroke-width="2"/>
+        <line x1="40" y1="95" x2="40" y2="150" stroke="var(--ink-2)" stroke-width="2"/>
+        <text x="14" y="94" font-size="13" fill="var(--ink-2)">ε</text>
+        <!-- fio superior + R1 -->
+        <line x1="40" y1="60" x2="80" y2="60" stroke="var(--ink-2)" stroke-width="2"/>
+        <rect x="80" y="52" width="44" height="16" fill="var(--card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="102" y="45" font-size="11" fill="var(--accent)" text-anchor="middle">R₁</text>
+        <line x1="124" y1="60" x2="170" y2="60" stroke="var(--ink-2)" stroke-width="2"/>
+        <!-- nó A -->
+        <circle cx="170" cy="60" r="3" fill="var(--ink-2)"/>
+        <!-- ramo R3 vertical -->
+        <line x1="170" y1="60" x2="170" y2="80" stroke="var(--ink-2)" stroke-width="2"/>
+        <rect x="162" y="80" width="16" height="44" fill="var(--card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="150" y="106" font-size="11" fill="var(--accent)" text-anchor="end">R₃</text>
+        <line x1="170" y1="124" x2="170" y2="150" stroke="var(--ink-2)" stroke-width="2"/>
+        <!-- segue para R2 -->
+        <line x1="170" y1="60" x2="210" y2="60" stroke="var(--ink-2)" stroke-width="2"/>
+        <rect x="210" y="52" width="44" height="16" fill="var(--card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="232" y="45" font-size="11" fill="var(--accent)" text-anchor="middle">R₂</text>
+        <line x1="254" y1="60" x2="300" y2="60" stroke="var(--ink-2)" stroke-width="2"/>
+        <circle cx="300" cy="60" r="3" fill="var(--ink-2)"/>
+        <!-- ramo R4 -->
+        <line x1="300" y1="60" x2="300" y2="80" stroke="var(--ink-2)" stroke-width="2"/>
+        <rect x="292" y="80" width="16" height="44" fill="var(--card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="280" y="106" font-size="11" fill="var(--accent)" text-anchor="end">R₄</text>
+        <line x1="300" y1="124" x2="300" y2="150" stroke="var(--ink-2)" stroke-width="2"/>
+        <!-- ramo R5 + R6 -->
+        <line x1="300" y1="60" x2="360" y2="60" stroke="var(--ink-2)" stroke-width="2"/>
+        <line x1="360" y1="60" x2="360" y2="70" stroke="var(--ink-2)" stroke-width="2"/>
+        <rect x="352" y="70" width="16" height="30" fill="var(--card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="374" y="88" font-size="11" fill="var(--accent)">R₅</text>
+        <line x1="360" y1="100" x2="360" y2="108" stroke="var(--ink-2)" stroke-width="2"/>
+        <rect x="352" y="108" width="16" height="30" fill="var(--card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="374" y="126" font-size="11" fill="var(--accent)">R₆</text>
+        <line x1="360" y1="138" x2="360" y2="150" stroke="var(--ink-2)" stroke-width="2"/>
+        <!-- fio inferior -->
+        <line x1="40" y1="150" x2="360" y2="150" stroke="var(--ink-2)" stroke-width="2"/>
+        <circle cx="170" cy="150" r="3" fill="var(--ink-2)"/>
+        <circle cx="300" cy="150" r="3" fill="var(--ink-2)"/>
+        <!-- seta corrente -->
+        <line x1="60" y1="170" x2="100" y2="170" stroke="var(--ok)" stroke-width="2"/>
+        <polygon points="100,170 90,165 90,175" fill="var(--ok)"/>
+        <text x="66" y="186" font-size="11" fill="var(--ok)">i₁ (total)</text>
+      </svg>
+      <figcaption>\(R_5 + R_6\) em série; esse ramo em paralelo com \(R_4\); o conjunto em série com \(R_2\); e tudo em paralelo com \(R_3\).</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

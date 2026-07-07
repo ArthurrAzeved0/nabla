@@ -10,6 +10,35 @@
     <p>Um circuito RLC em série tem \(R = 3\ \Omega\), \(L = 2\ \text{H}\) e \(C = 15\ \mu\text{F}\), alimentado por \(\varepsilon(t) = 15\,\text{sen}(100t)\ \text{V}\).</p>
     <p>(a) Calcule as reatâncias, a impedância, a amplitude da corrente e a constante de fase. Escreva \(i(t)\). O circuito é indutivo ou capacitivo?</p>
     <p>(b) Determine a frequência angular de ressonância \(\omega_0\) e a amplitude da corrente caso a fonte operasse em \(\omega_0\).</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 320 200" role="img" aria-label="Triângulo de impedância do circuito capacitivo">
+        <!-- eixos -->
+        <line x1="60" y1="100" x2="290" y2="100" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <line x1="70" y1="185" x2="70" y2="15" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <!-- R no eixo horizontal -->
+        <line x1="70" y1="100" x2="130" y2="100" stroke="var(--warn)" stroke-width="3"/>
+        <text x="100" y="90" font-size="11" fill="var(--warn)" text-anchor="middle">R</text>
+        <!-- XL para cima -->
+        <line x1="70" y1="100" x2="70" y2="70" stroke="var(--accent)" stroke-width="3"/>
+        <polygon points="70,70 65,80 75,80" fill="var(--accent)"/>
+        <text x="52" y="80" font-size="11" fill="var(--accent)">X_L</text>
+        <!-- XC para baixo (maior) -->
+        <line x1="82" y1="100" x2="82" y2="178" stroke="var(--ok)" stroke-width="3"/>
+        <polygon points="82,178 77,168 87,168" fill="var(--ok)"/>
+        <text x="94" y="150" font-size="11" fill="var(--ok)">X_C</text>
+        <!-- Z resultante -->
+        <line x1="70" y1="100" x2="130" y2="172" stroke="var(--ink-2)" stroke-width="2.5"/>
+        <polygon points="130,172 121,167 127,161" fill="var(--ink-2)"/>
+        <text x="138" y="176" font-size="11" fill="var(--ink-2)">Z</text>
+        <!-- ângulo φ -->
+        <path d="M 100 100 A 30 30 0 0 1 92 126" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+        <text x="106" y="122" font-size="11" fill="var(--ink-3)">φ &lt; 0</text>
+        <text x="185" y="40" font-size="11" fill="var(--ink-2)">X_C ≫ X_L → capacitivo:</text>
+        <text x="185" y="56" font-size="11" fill="var(--ink-2)">corrente adiantada da fem</text>
+      </svg>
+      <figcaption>Como \(X_C \gg X_L\), a reatância líquida aponta "para baixo": \(\varphi \approx -90°\) e o circuito é capacitivo.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

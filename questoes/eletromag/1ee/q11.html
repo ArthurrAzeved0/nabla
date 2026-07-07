@@ -10,6 +10,30 @@
     <p>Considere a esfera da questão anterior: raio \(R\), densidade \(\rho(r) = A/r\) e carga total \(Q = 2\pi A R^2\), de modo que o campo externo é \(E(r) = \dfrac{AR^2}{2\varepsilon_0 r^2}\).</p>
     <p>(a) Determine o potencial elétrico \(V(r)\) para \(r &gt; R\) (com \(V(\infty) = 0\)).</p>
     <p>(b) Calcule a diferença de potencial \(V_A - V_B\) entre os pontos \(A\) (em \(r = 2R\)) e \(B\) (em \(r = 4R\)).</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 360 140" role="img" aria-label="Esfera carregada com pontos A em 2R e B em 4R sobre uma linha radial">
+        <circle cx="70" cy="70" r="34" fill="var(--warn)" opacity="0.25" stroke="var(--warn)" stroke-width="2"/>
+        <text x="70" y="75" font-size="12" fill="var(--ink-2)" text-anchor="middle">Q</text>
+        <line x1="70" y1="70" x2="96" y2="50" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <text x="88" y="46" font-size="10" fill="var(--ink-2)">R</text>
+        <!-- linha radial -->
+        <line x1="104" y1="70" x2="340" y2="70" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+        <!-- ponto A em 2R -->
+        <circle cx="138" cy="70" r="4" fill="var(--accent)"/>
+        <text x="138" y="56" font-size="12" fill="var(--accent)" text-anchor="middle">A</text>
+        <text x="138" y="92" font-size="10" fill="var(--ink-3)" text-anchor="middle">2R</text>
+        <!-- ponto B em 4R -->
+        <circle cx="274" cy="70" r="4" fill="var(--ok)"/>
+        <text x="274" y="56" font-size="12" fill="var(--ok)" text-anchor="middle">B</text>
+        <text x="274" y="92" font-size="10" fill="var(--ink-3)" text-anchor="middle">4R</text>
+        <!-- E radial -->
+        <line x1="300" y1="70" x2="332" y2="70" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="332,70 322,65 322,75" fill="var(--accent)"/>
+        <text x="322" y="58" font-size="11" fill="var(--accent)">E</text>
+      </svg>
+      <figcaption>\(A\) está mais perto da esfera que \(B\), então \(V_A &gt; V_B\) (potencial cresce ao se aproximar de carga positiva).</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

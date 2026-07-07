@@ -11,6 +11,26 @@
     <p>(a) Determine a carga total da esfera.</p>
     <p>(b) Calcule o campo elétrico no interior (\(r &lt; R\)).</p>
     <p>(c) Calcule o campo elétrico no exterior (\(r &gt; R\)).</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 340 190" role="img" aria-label="Gráfico do campo: constante dentro da esfera e decaindo com 1 sobre r ao quadrado fora">
+        <line x1="50" y1="150" x2="320" y2="150" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <polygon points="320,150 310,146 310,154" fill="var(--ink-3)"/>
+        <text x="312" y="140" font-size="11" fill="var(--ink-3)">r</text>
+        <line x1="50" y1="150" x2="50" y2="20" stroke="var(--ink-3)" stroke-width="1.5"/>
+        <polygon points="50,20 46,30 54,30" fill="var(--ink-3)"/>
+        <text x="30" y="30" font-size="11" fill="var(--ink-3)">E</text>
+        <!-- patamar constante -->
+        <line x1="50" y1="55" x2="150" y2="55" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="72" y="45" font-size="11" fill="var(--accent)">A/2ε₀ (constante!)</text>
+        <!-- decaimento -->
+        <path d="M 150 55 Q 200 110 250 128 T 315 140" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+        <text x="228" y="100" font-size="11" fill="var(--ok)">∝ 1/r²</text>
+        <line x1="150" y1="150" x2="150" y2="55" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+        <text x="150" y="166" font-size="12" fill="var(--ink-2)" text-anchor="middle">R</text>
+      </svg>
+      <figcaption>Com \(\rho = A/r\), o campo interno sai <em>uniforme em módulo</em>; fora da esfera decai como carga pontual.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

@@ -11,6 +11,39 @@
     <p>(a) Calcule \(\omega_0\) e escreva \(\varepsilon(t)\) e \(i(t)\).</p>
     <p>(b) Em um diagrama de fasores, o que significa \(\varphi &lt; 0\), \(\varphi = 0\) e \(\varphi &gt; 0\)?</p>
     <p>(c) Calcule a potência média dissipada na ressonância e explique por que ela diminui se a fonte operar em \(2\omega_0\).</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 380 170" role="img" aria-label="Três diagramas de fasores: capacitivo, ressonância e indutivo">
+        <!-- caso 1: φ < 0 -->
+        <line x1="30" y1="110" x2="115" y2="110" stroke="var(--ink-2)" stroke-width="2"/>
+        <polygon points="115,110 105,105 105,115" fill="var(--ink-2)"/>
+        <text x="118" y="106" font-size="10" fill="var(--ink-2)">ε</text>
+        <line x1="30" y1="110" x2="98" y2="72" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="98,72 87,75 92,83" fill="var(--accent)"/>
+        <text x="102" y="68" font-size="10" fill="var(--accent)">i</text>
+        <text x="70" y="140" font-size="10" fill="var(--ink-3)" text-anchor="middle">φ &lt; 0 · capacitivo</text>
+        <text x="70" y="154" font-size="9" fill="var(--ink-3)" text-anchor="middle">corrente adiantada</text>
+        <!-- caso 2: φ = 0 -->
+        <line x1="155" y1="110" x2="240" y2="110" stroke="var(--ink-2)" stroke-width="2"/>
+        <polygon points="240,110 230,105 230,115" fill="var(--ink-2)"/>
+        <text x="243" y="106" font-size="10" fill="var(--ink-2)">ε</text>
+        <line x1="155" y1="102" x2="228" y2="102" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="228,102 218,97 218,107" fill="var(--accent)"/>
+        <text x="232" y="96" font-size="10" fill="var(--accent)">i</text>
+        <text x="195" y="140" font-size="10" fill="var(--ink-3)" text-anchor="middle">φ = 0 · ressonância</text>
+        <text x="195" y="154" font-size="9" fill="var(--ink-3)" text-anchor="middle">em fase (P máxima)</text>
+        <!-- caso 3: φ > 0 -->
+        <line x1="280" y1="110" x2="365" y2="110" stroke="var(--ink-2)" stroke-width="2"/>
+        <polygon points="365,110 355,105 355,115" fill="var(--ink-2)"/>
+        <text x="368" y="106" font-size="10" fill="var(--ink-2)">ε</text>
+        <line x1="280" y1="110" x2="348" y2="148" stroke="var(--accent)" stroke-width="2"/>
+        <polygon points="348,148 337,145 342,137" fill="var(--accent)"/>
+        <text x="352" y="158" font-size="10" fill="var(--accent)">i</text>
+        <text x="320" y="35" font-size="10" fill="var(--ink-3)" text-anchor="middle">φ &gt; 0 · indutivo</text>
+        <text x="320" y="49" font-size="9" fill="var(--ink-3)" text-anchor="middle">corrente atrasada</text>
+      </svg>
+      <figcaption>Os três regimes do fasor da corrente em relação ao da fem: capacitivo, ressonância e indutivo.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">
