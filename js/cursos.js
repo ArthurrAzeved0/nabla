@@ -10,7 +10,7 @@
 window.CURSOS = [
   {
     id: "calculo3",                    // usado nas URLs e nomes de pasta (sem espaços/acentos)
-    nome: "Cálculo Diferencial e Integral 3",
+    nome: "Cálculo Diferencial e Integral Vetorial (Cálculo 3)", // nome completo da cadeira
     codigo: "MAT05 · 60h",
     descricao: "Funções de várias variáveis, limites, derivadas parciais, máximos e mínimos, integrais múltiplas, integrais de linha e de superfície, e os teoremas de Green, Gauss e Stokes.",
     // Ícone em SVG (desenhado à mão, sem bibliotecas externas):
