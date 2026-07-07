@@ -1,0 +1,36 @@
+<article class="questao" data-id="eletromag-2ee-07" data-tema="circuito-rl">
+  <div class="q-topo">
+    <span class="q-id">Questão 07</span>
+    <span class="q-tag">2º EE · 2024.1</span>
+    <span class="q-tag">Circuito RL</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Uma bobina de indutância \(L = 4\ \text{mH}\) e resistência \(R = 150\ \Omega\) é ligada a uma fonte de \(\varepsilon = 12\ \text{V}\) no instante \(t = 0\).</p>
+    <p>(a) Qual é a taxa de crescimento da corrente \(dI/dt\) no instante em que a corrente vale <strong>metade</strong> do seu valor final?</p>
+    <p>(b) Quanto tempo leva para a corrente atingir \(99\%\) do valor final?</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(dI/dt = \varepsilon/2L = 1{,}5\times10^{3}\ \text{A/s}\) &nbsp;·&nbsp; (b) \(t = \tau\ln 100 \approx 122{,}8\ \mu\text{s}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Lei das malhas no circuito RL em qualquer instante:</p>
+      $$\varepsilon = RI + L\frac{dI}{dt}$$
+      <p><strong>Passo 2 —</strong> O valor final da corrente é \(I_f = \varepsilon/R\). Quando \(I = I_f/2 = \varepsilon/2R\):</p>
+      $$\frac{dI}{dt} = \frac{\varepsilon - R\cdot\frac{\varepsilon}{2R}}{L} = \frac{\varepsilon}{2L} = \frac{12}{2(4\times10^{-3})} = \boxed{1{,}5\times10^{3}\ \text{A/s}}$$
+      <p><strong>Passo 3 —</strong> A corrente cresce como \(I(t) = I_f\,(1 - e^{-t/\tau})\) com constante de tempo:</p>
+      $$\tau = \frac{L}{R} = \frac{4\times10^{-3}}{150} \approx 2{,}67\times10^{-5}\ \text{s}$$
+      <p><strong>Passo 4 —</strong> Impondo \(I = 0{,}99\,I_f\):</p>
+      $$1 - e^{-t/\tau} = 0{,}99 \;\Rightarrow\; e^{-t/\tau} = 0{,}01 \;\Rightarrow\; t = \tau\ln 100$$
+      $$t = (2{,}67\times10^{-5})(4{,}605) \approx \boxed{122{,}8\ \mu\text{s}}$$
+    </div>
+  </details>
+</article>

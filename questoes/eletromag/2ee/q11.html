@@ -1,0 +1,39 @@
+<article class="questao" data-id="eletromag-2ee-11" data-tema="circuito-rl">
+  <div class="q-topo">
+    <span class="q-id">Questão 11</span>
+    <span class="q-tag">2º EE · 2024.2</span>
+    <span class="q-tag">Circuito RL · Energia</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Em um circuito RL com \(\varepsilon = 20\ \text{V}\) e \(R = 5\ \Omega\), observa-se que a corrente atinge \(1/4\) do seu valor final em \(t = 4\ \text{s}\) após o fechamento da chave.</p>
+    <p>(a) Determine a constante de tempo \(\tau\) e a indutância \(L\).</p>
+    <p>(b) No instante \(t = 0{,}2\ \text{s}\), calcule: a corrente \(I\), a potência fornecida pela fonte, as tensões \(V_R\) e \(V_L\), e a energia armazenada no indutor.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(\tau \approx 13{,}9\ \text{s}\) e \(L \approx 69{,}0\ \text{H}\) &nbsp;·&nbsp; (b) \(I \approx 56\ \text{mA}\), \(P \approx 1120\ \text{mW}\), \(V_R \approx 280\ \text{mV}\), \(V_L \approx 19{,}7\ \text{V}\), \(U_L \approx 108\ \text{mJ}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Corrente no RL: \(I(t) = I_f(1 - e^{-t/\tau})\), com \(I_f = \varepsilon/R = 4\ \text{A}\). Impondo \(I(4) = I_f/4\):</p>
+      $$1 - e^{-4/\tau} = 0{,}25 \;\Rightarrow\; e^{-4/\tau} = 0{,}75 \;\Rightarrow\; \tau = \frac{-4}{\ln 0{,}75} \approx \boxed{13{,}9\ \text{s}}$$
+      $$L = \tau R = 13{,}79\cdot 5 \approx \boxed{69{,}0\ \text{H}}$$
+      <p><strong>Passo 2 —</strong> Corrente em \(t = 0{,}2\ \text{s}\):</p>
+      $$I = 4\left(1 - e^{-0{,}2/13{,}79}\right) = 4(1 - 0{,}9856) \approx \boxed{56\ \text{mA}}$$
+      <p><strong>Passo 3 —</strong> Potência fornecida pela fonte e tensão no resistor:</p>
+      $$P = \varepsilon I = 20\cdot 0{,}056 \approx \boxed{1120\ \text{mW}} \qquad V_R = RI = 5\cdot 0{,}056 \approx \boxed{280\ \text{mV}}$$
+      <p><strong>Passo 4 —</strong> Tensão no indutor, \(V_L = L\,dI/dt\), com \(\dfrac{dI}{dt} = \dfrac{\varepsilon}{L}e^{-t/\tau} = \dfrac{20}{68{,}96}(0{,}9856) \approx 0{,}286\ \text{A/s}\):</p>
+      $$V_L = 68{,}96\cdot 0{,}286 \approx \boxed{19{,}7\ \text{V}}$$
+      <p>Conferindo a malha: \(V_R + V_L = 0{,}28 + 19{,}72 = 20\ \text{V} = \varepsilon\) ✓</p>
+      <p><strong>Passo 5 —</strong> Energia armazenada no indutor:</p>
+      $$U_L = \frac{1}{2}LI^2 = \frac{1}{2}(68{,}96)(0{,}056)^2 \approx \boxed{108\ \text{mJ}}$$
+    </div>
+  </details>
+</article>

@@ -1,0 +1,37 @@
+<article class="questao" data-id="eletromag-2ee-10" data-tema="lei-de-ampere">
+  <div class="q-topo">
+    <span class="q-id">Questão 10</span>
+    <span class="q-tag">2º EE · 2024.2</span>
+    <span class="q-tag">Lei de Ampère · Força entre fios</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Um fio cilíndrico longo ("fio grosso") de raio \(a\) conduz corrente \(I_0\) uniformemente distribuída em sua seção transversal.</p>
+    <p>(a) Usando a Lei de Ampère, obtenha \(B(r)\) dentro (\(r &lt; a\)) e fora (\(r &gt; a\)) do fio, e esboce o gráfico \(B \times r\).</p>
+    <p>(b) Um segundo fio, fino e paralelo ao primeiro, está a uma distância \(r = 4a\) e conduz \(I_2 = 2I_0\) no <strong>mesmo sentido</strong>. Determine a força por unidade de comprimento entre os fios e diga se é atrativa ou repulsiva.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(B_{\text{int}} = \dfrac{\mu_0 I_0 r}{2\pi a^2}\) (linear) e \(B_{\text{ext}} = \dfrac{\mu_0 I_0}{2\pi r}\) (decai como \(1/r\)) &nbsp;·&nbsp; (b) \(\dfrac{F}{\ell} = \dfrac{\mu_0 I_0^2}{4\pi a} = 10^{-7}\,\dfrac{I_0^2}{a}\ \text{N/m}\), atrativa.</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Amperiana circular de raio \(r &lt; a\). A corrente envolvida é proporcional à área:</p>
+      $$I_{\text{env}} = I_0\,\frac{\pi r^2}{\pi a^2} = I_0\,\frac{r^2}{a^2}$$
+      <p><strong>Passo 2 —</strong> Lei de Ampère \(\oint \vec B\cdot d\vec l = \mu_0 I_{\text{env}}\), com \(B\) constante sobre o círculo:</p>
+      $$B\cdot 2\pi r = \mu_0 I_0 \frac{r^2}{a^2} \;\Rightarrow\; \boxed{B_{\text{int}} = \frac{\mu_0 I_0\,r}{2\pi a^2}}$$
+      <p><strong>Passo 3 —</strong> Para \(r &gt; a\), toda a corrente é envolvida:</p>
+      $$B\cdot 2\pi r = \mu_0 I_0 \;\Rightarrow\; \boxed{B_{\text{ext}} = \frac{\mu_0 I_0}{2\pi r}}$$
+      <p>Gráfico: cresce linearmente de \(0\) até \(\mu_0 I_0/2\pi a\) em \(r = a\), depois decai como \(1/r\).</p>
+      <p><strong>Passo 4 —</strong> O campo do fio grosso na posição do segundo fio (\(r = 4a\)) é \(B = \frac{\mu_0 I_0}{2\pi(4a)}\). Força por comprimento sobre o fio 2:</p>
+      $$\frac{F}{\ell} = B\,I_2 = \frac{\mu_0 I_0}{8\pi a}\cdot 2I_0 = \boxed{\frac{\mu_0 I_0^2}{4\pi a} = 10^{-7}\,\frac{I_0^2}{a}\ \text{N/m}}$$
+      <p><strong>Passo 5 —</strong> Correntes <em>paralelas no mesmo sentido se atraem</em> — a força é <strong>atrativa</strong>.</p>
+    </div>
+  </details>
+</article>

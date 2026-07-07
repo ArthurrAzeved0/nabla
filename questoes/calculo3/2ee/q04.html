@@ -1,0 +1,33 @@
+<article class="questao" data-id="calculo3-2ee-04" data-tema="integrais-duplas">
+  <div class="q-topo">
+    <span class="q-id">Questão 04</span>
+    <span class="q-tag">1º EE · 2024.2</span>
+    <span class="q-tag">Integrais duplas · Região geral</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Calcule a integral dupla</p>
+    $$\iint_D x^3 y^2\; dA$$
+    <p>onde \(D = \{(x,y)\ /\ 0 \le x \le 2,\ -x \le y \le x\}\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle\iint_D x^3y^2\,dA = \frac{256}{21}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> A região é do tipo I (triângulo entre as retas \(y = x\) e \(y = -x\), até \(x = 2\)). Monte a integral iterada integrando primeiro em \(y\):</p>
+      $$\int_0^2\!\!\int_{-x}^{x} x^3 y^2\; dy\, dx$$
+      <p><strong>Passo 2 —</strong> Integral interna (\(x\) é constante):</p>
+      $$\int_{-x}^{x} x^3 y^2\,dy = x^3\left[\frac{y^3}{3}\right]_{-x}^{x} = \frac{x^3}{3}\left[x^3 - (-x)^3\right] = \frac{x^3}{3}\cdot 2x^3 = \frac{2x^6}{3}$$
+      <p><strong>Passo 3 —</strong> Integral externa:</p>
+      $$\int_0^2 \frac{2x^6}{3}\,dx = \frac{2}{3}\cdot\frac{x^7}{7}\bigg|_0^2 = \frac{2}{3}\cdot\frac{128}{7} = \boxed{\frac{256}{21}}$$
+    </div>
+  </details>
+</article>

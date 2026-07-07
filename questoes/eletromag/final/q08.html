@@ -1,0 +1,40 @@
+<article class="questao" data-id="eletromag-final-08" data-tema="circuito-rl">
+  <div class="q-topo">
+    <span class="q-id">Questão 08</span>
+    <span class="q-tag">Final · 2023.2</span>
+    <span class="q-tag">Circuito RL · Transitórios</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Uma bateria de \(10\ \text{V}\) está em série com uma chave \(S\) e um resistor \(R_a = 4\ \Omega\), ligados a um nó. Desse nó saem dois ramos até o terra: um resistor \(R_b = 4\ \Omega\) e, em paralelo com ele, o ramo formado por \(R_c = 8\ \Omega\) em série com um indutor \(L = 1\ \text{H}\).</p>
+    <p>Determine a corrente na bateria \(i_B\) e no indutor \(i_L\):</p>
+    <p>(a) imediatamente após fechar \(S\);</p>
+    <p>(b) muito tempo depois de fechada;</p>
+    <p>(c) imediatamente após <em>reabrir</em> \(S\);</p>
+    <p>(d) muito tempo depois de reaberta.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(i_L = 0\), \(i_B = 1{,}25\ \text{A}\) &nbsp;·&nbsp; (b) \(i_B = 1{,}50\ \text{A}\), \(i_L = 0{,}50\ \text{A}\) &nbsp;·&nbsp; (c) \(i_B = 0\), \(i_L = 0{,}50\ \text{A}\) &nbsp;·&nbsp; (d) \(i_B = i_L = 0\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Regra de ouro: a corrente no indutor <em>não pode mudar instantaneamente</em>. Em \(t = 0^+\) (chave recém-fechada), \(i_L = 0\): o ramo do indutor se comporta como <strong>circuito aberto</strong>.</p>
+      $$i_B = \frac{10}{R_a + R_b} = \frac{10}{4 + 4} = \boxed{1{,}25\ \text{A}} \qquad \boxed{i_L = 0}$$
+      <p><strong>Passo 2 —</strong> Em regime permanente (\(t \to \infty\)), \(di/dt = 0\) e o indutor vira <strong>fio ideal</strong>. O paralelo entre \(R_b = 4\) e \(R_c = 8\) vale \(\frac{4\cdot 8}{12} \approx 2{,}67\ \Omega\):</p>
+      $$i_B = \frac{10}{4 + 2{,}67} = \boxed{1{,}50\ \text{A}}$$
+      <p>Tensão no nó: \(V = 10 - (1{,}5)(4) = 4\ \text{V}\). Corrente no ramo do indutor:</p>
+      $$i_L = \frac{V}{R_c} = \frac{4}{8} = \boxed{0{,}50\ \text{A}}$$
+      <p><strong>Passo 3 —</strong> Ao reabrir \(S\), a bateria é desligada: \(i_B = 0\). Mas o indutor mantém sua corrente, que agora circula na malha \(R_c\)–\(L\)–\(R_b\):</p>
+      $$\boxed{i_B = 0 \qquad i_L = 0{,}50\ \text{A}}$$
+      <p><strong>Passo 4 —</strong> Essa corrente decai exponencialmente com \(\tau = L/(R_b + R_c) = 1/12\ \text{s}\). Muito tempo depois:</p>
+      $$\boxed{i_B = i_L = 0}$$
+    </div>
+  </details>
+</article>

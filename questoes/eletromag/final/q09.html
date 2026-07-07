@@ -1,0 +1,34 @@
+<article class="questao" data-id="eletromag-final-09" data-tema="campo-eletrico">
+  <div class="q-topo">
+    <span class="q-id">Questão 09</span>
+    <span class="q-tag">Final · 2024.1</span>
+    <span class="q-tag">Campo elétrico · Simetria</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Duas cargas positivas iguais \(+Q\) estão fixas sobre o eixo \(x\), nas posições \(x = +d\) e \(x = -d\).</p>
+    <p>Determine o campo elétrico resultante em um ponto \(P = (0,\ y)\) sobre o eixo \(y\) (módulo, direção e sentido).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\vec E = \dfrac{Q\,y}{2\pi\varepsilon_0\,(y^2 + d^2)^{3/2}}\ \hat j\) — as componentes \(x\) se cancelam e o campo aponta ao longo de \(+y\) (para \(y &gt; 0\)).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> As duas cargas estão à mesma distância de \(P\):</p>
+      $$r = \sqrt{y^2 + d^2} \;\Rightarrow\; E_1 = E_2 = \frac{Q}{4\pi\varepsilon_0\,(y^2 + d^2)}$$
+      <p><strong>Passo 2 —</strong> Simetria: cada campo aponta <em>para longe</em> da sua carga. As componentes horizontais são opostas e <strong>se cancelam</strong>; as componentes verticais são iguais e <strong>se somam</strong>.</p>
+      <p><strong>Passo 3 —</strong> A componente vertical de cada campo envolve \(\cos\theta = \dfrac{y}{\sqrt{y^2+d^2}}\) (ângulo com o eixo \(y\)):</p>
+      $$E_y = 2\,E_1\cos\theta = 2\cdot\frac{Q}{4\pi\varepsilon_0 (y^2+d^2)}\cdot\frac{y}{\sqrt{y^2+d^2}}$$
+      <p><strong>Passo 4 —</strong> Simplificando:</p>
+      $$\boxed{\vec E = \frac{Q\,y}{2\pi\varepsilon_0\,(y^2 + d^2)^{3/2}}\ \hat j}$$
+      <p>Sentido: afastando-se das cargas (\(+\hat j\) para \(y &gt; 0\)). Casos-limite: em \(y = 0\) o campo é nulo (simetria); para \(y \gg d\), \(E \to \frac{2Q}{4\pi\varepsilon_0 y^2}\), como uma carga pontual \(2Q\) ✓</p>
+    </div>
+  </details>
+</article>

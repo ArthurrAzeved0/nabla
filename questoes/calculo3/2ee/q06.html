@@ -1,0 +1,35 @@
+<article class="questao" data-id="calculo3-2ee-06" data-tema="integrais-triplas-esfericas">
+  <div class="q-topo">
+    <span class="q-id">Questão 06</span>
+    <span class="q-tag">Final · 2022.2</span>
+    <span class="q-tag">Integrais triplas · Coordenadas esféricas</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Calcule</p>
+    $$\iiint_S \left(x^2 + y^2 + z^2\right) dV$$
+    <p>onde \(S\) é a região limitada pela porção da esfera \(x^2 + y^2 + z^2 = 4\) pertencente ao <strong>primeiro octante</strong> e pelos planos coordenados.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle\iiint_S (x^2+y^2+z^2)\,dV = \frac{16\pi}{5}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Em esféricas, \(x^2+y^2+z^2 = \rho^2\) e \(dV = \rho^2\,\text{sen}\,\varphi\ d\rho\,d\varphi\,d\theta\). O primeiro octante da bola de raio 2 é:</p>
+      $$0 \le \rho \le 2, \qquad 0 \le \varphi \le \tfrac{\pi}{2}, \qquad 0 \le \theta \le \tfrac{\pi}{2}$$
+      <p><strong>Passo 2 —</strong> Monte a integral (o integrando vira \(\rho^2\cdot\rho^2\,\text{sen}\,\varphi = \rho^4\,\text{sen}\,\varphi\)):</p>
+      $$\int_0^{\pi/2}\!\!\int_0^{\pi/2}\!\!\int_0^{2} \rho^4\,\text{sen}\,\varphi\ d\rho\,d\varphi\,d\theta$$
+      <p><strong>Passo 3 —</strong> As três integrais se separam:</p>
+      $$\int_0^{2}\rho^4\,d\rho = \frac{32}{5} \qquad \int_0^{\pi/2}\text{sen}\,\varphi\,d\varphi = \left[-\cos\varphi\right]_0^{\pi/2} = 1 \qquad \int_0^{\pi/2}d\theta = \frac{\pi}{2}$$
+      <p><strong>Passo 4 —</strong> Multiplicando:</p>
+      $$\frac{32}{5}\cdot 1\cdot\frac{\pi}{2} = \boxed{\frac{16\pi}{5}}$$
+    </div>
+  </details>
+</article>

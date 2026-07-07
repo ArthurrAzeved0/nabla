@@ -1,0 +1,34 @@
+<article class="questao" data-id="calculo3-2ee-05" data-tema="integrais-duplas-polares">
+  <div class="q-topo">
+    <span class="q-id">Questão 05</span>
+    <span class="q-tag">1º EE · 2024.2</span>
+    <span class="q-tag">Integrais duplas · Coordenadas polares</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Usando integrais duplas em coordenadas polares, calcule</p>
+    $$\iint_R e^{-(x^2+y^2)}\; dx\,dy$$
+    <p>onde \(R\) é o disco definido por \(x^2 + y^2 \le 4\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle\iint_R e^{-(x^2+y^2)}\,dA = \pi\left(1 - \frac{1}{e^4}\right)\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Em polares, \(x^2 + y^2 = r^2\) e \(dA = r\,dr\,d\theta\). O disco vira \(0 \le r \le 2\), \(0 \le \theta \le 2\pi\):</p>
+      $$\int_0^{2\pi}\!\!\int_0^{2} e^{-r^2}\, r\,dr\,d\theta$$
+      <p>Repare: sem o jacobiano \(r\), a integral de \(e^{-x^2-y^2}\) não teria primitiva elementar — é o \(r\) que salva a conta.</p>
+      <p><strong>Passo 2 —</strong> Substituição \(u = -r^2\), \(du = -2r\,dr\):</p>
+      $$\int_0^{2} e^{-r^2}\,r\,dr = -\frac{1}{2}\,e^{-r^2}\bigg|_0^2 = \frac{1}{2}\left(1 - e^{-4}\right)$$
+      <p><strong>Passo 3 —</strong> A integral em \(\theta\) só multiplica por \(2\pi\):</p>
+      $$\int_0^{2\pi} \frac{1}{2}\left(1 - e^{-4}\right)d\theta = \boxed{\pi\left(1 - \frac{1}{e^4}\right)}$$
+    </div>
+  </details>
+</article>

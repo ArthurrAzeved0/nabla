@@ -1,0 +1,41 @@
+<article class="questao" data-id="eletromag-2ee-08" data-tema="circuito-rlc">
+  <div class="q-topo">
+    <span class="q-id">Questão 08</span>
+    <span class="q-tag">2º EE · 2024.1</span>
+    <span class="q-tag">Circuito RLC · Corrente alternada</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Um circuito RLC em série tem \(R = 3\ \Omega\), \(L = 2\ \text{H}\) e \(C = 15\ \mu\text{F}\), alimentado por \(\varepsilon(t) = 15\,\text{sen}(100t)\ \text{V}\).</p>
+    <p>(a) Calcule as reatâncias, a impedância, a amplitude da corrente e a constante de fase. Escreva \(i(t)\). O circuito é indutivo ou capacitivo?</p>
+    <p>(b) Determine a frequência angular de ressonância \(\omega_0\) e a amplitude da corrente caso a fonte operasse em \(\omega_0\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(X_L = 200\ \Omega\), \(X_C \approx 666{,}7\ \Omega\), \(Z \approx 466{,}7\ \Omega\), \(I \approx 0{,}032\ \text{A}\), \(\varphi \approx -89{,}6° \approx -1{,}56\ \text{rad}\); \(i(t) = 0{,}032\,\text{sen}(100t + 1{,}56)\ \text{A}\) — capacitivo &nbsp;·&nbsp; (b) \(\omega_0 \approx 182{,}6\ \text{rad/s}\) e \(I = \varepsilon_m/R = 5{,}0\ \text{A}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Reatâncias em \(\omega_d = 100\ \text{rad/s}\):</p>
+      $$X_L = \omega_d L = 100\cdot 2 = 200\ \Omega \qquad X_C = \frac{1}{\omega_d C} = \frac{1}{100\cdot 15\times10^{-6}} \approx 666{,}7\ \Omega$$
+      <p><strong>Passo 2 —</strong> Impedância e amplitude da corrente:</p>
+      $$Z = \sqrt{R^2 + (X_L - X_C)^2} = \sqrt{3^2 + (-466{,}7)^2} \approx 466{,}7\ \Omega$$
+      $$I = \frac{\varepsilon_m}{Z} = \frac{15}{466{,}7} \approx \boxed{0{,}032\ \text{A}}$$
+      <p><strong>Passo 3 —</strong> Constante de fase:</p>
+      $$\tan\varphi = \frac{X_L - X_C}{R} = \frac{-466{,}7}{3} \;\Rightarrow\; \varphi \approx -89{,}6° \approx -1{,}56\ \text{rad}$$
+      <p>Como \(X_C &gt; X_L\), o circuito é <strong>capacitivo</strong> e a corrente está <em>adiantada</em> em relação à fem:</p>
+      $$\boxed{i(t) = 0{,}032\,\text{sen}(100t + 1{,}56)\ \text{A}}$$
+      <p><strong>Passo 4 —</strong> Ressonância (\(X_L = X_C\)):</p>
+      $$\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{2\cdot 15\times10^{-6}}} \approx \boxed{182{,}6\ \text{rad/s}}$$
+      <p><strong>Passo 5 —</strong> Na ressonância \(Z = R = 3\ \Omega\), então:</p>
+      $$I = \frac{15}{3} = \boxed{5{,}0\ \text{A}}$$
+      <p>Repare no salto: de 32 mA para 5 A — a ressonância maximiza a corrente.</p>
+    </div>
+  </details>
+</article>

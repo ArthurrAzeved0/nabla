@@ -1,0 +1,35 @@
+<article class="questao" data-id="calculo3-final-06" data-tema="teorema-de-green">
+  <div class="q-topo">
+    <span class="q-id">Questão 06</span>
+    <span class="q-tag">Final · 2022.2</span>
+    <span class="q-tag">Teorema de Green</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Calcule a integral de linha</p>
+    $$\oint_C y^2\,dx + 4xy\,dy$$
+    <p>onde \(C\) é a curva fechada formada pelo arco da parábola \(y = x^2\) da origem até \((2, 4)\), seguido do segmento da reta \(y = 2x\) de \((2, 4)\) de volta à origem.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle\oint_C y^2\,dx + 4xy\,dy = \frac{64}{15}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> A curva é fechada e percorrida no sentido positivo (anti-horário), então aplique o Teorema de Green com \(P = y^2\) e \(Q = 4xy\):</p>
+      $$\oint_C P\,dx + Q\,dy = \iint_R \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dA = \iint_R (4y - 2y)\,dA = \iint_R 2y\; dA$$
+      <p><strong>Passo 2 —</strong> A região \(R\) fica entre a parábola (por baixo) e a reta (por cima), pois \(x^2 \le 2x\) para \(0 \le x \le 2\):</p>
+      $$0 \le x \le 2, \qquad x^2 \le y \le 2x$$
+      <p><strong>Passo 3 —</strong> Integral interna em \(y\):</p>
+      $$\int_{x^2}^{2x} 2y\,dy = \left[y^2\right]_{x^2}^{2x} = 4x^2 - x^4$$
+      <p><strong>Passo 4 —</strong> Integral externa:</p>
+      $$\int_0^2 \left(4x^2 - x^4\right)dx = \frac{4\cdot 8}{3} - \frac{32}{5} = \frac{160 - 96}{15} = \boxed{\frac{64}{15}}$$
+    </div>
+  </details>
+</article>

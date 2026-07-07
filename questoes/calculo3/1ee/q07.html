@@ -1,0 +1,36 @@
+<article class="questao" data-id="calculo3-1ee-07" data-tema="gradiente-derivada-direcional">
+  <div class="q-topo">
+    <span class="q-id">Questão 07</span>
+    <span class="q-tag">1º EE · 2024.2</span>
+    <span class="q-tag">Derivada direcional</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Determine a derivada direcional de</p>
+    $$g(x,y,z) = (x + 2y + 3z)^{3/2}$$
+    <p>no ponto \((1,\ 1,\ 2)\), no sentido do vetor \(\vec v = 2\vec j - \vec k\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(D_{\vec u}\,g = \dfrac{9}{2\sqrt{5}} = \dfrac{9\sqrt 5}{10} \approx 2{,}01\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Normalize a direção: \(\vec v = (0, 2, -1)\), \(|\vec v| = \sqrt{4 + 1} = \sqrt 5\):</p>
+      $$\vec u = \left(0,\ \tfrac{2}{\sqrt 5},\ -\tfrac{1}{\sqrt 5}\right)$$
+      <p><strong>Passo 2 —</strong> Gradiente pela regra da cadeia, com \(w = x + 2y + 3z\):</p>
+      $$\nabla g = \tfrac{3}{2}\,w^{1/2}\,(1,\ 2,\ 3)$$
+      <p><strong>Passo 3 —</strong> No ponto \((1,1,2)\): \(w = 1 + 2 + 6 = 9\), então \(w^{1/2} = 3\):</p>
+      $$\nabla g\big|_P = \tfrac{3}{2}\cdot 3\,(1, 2, 3) = \left(\tfrac{9}{2},\ 9,\ \tfrac{27}{2}\right)$$
+      <p><strong>Passo 4 —</strong> Derivada direcional = produto escalar:</p>
+      $$D_{\vec u}\,g = \nabla g\cdot \vec u = 0 + \frac{18}{\sqrt 5} - \frac{27}{2\sqrt 5} = \frac{36 - 27}{2\sqrt 5} = \boxed{\frac{9}{2\sqrt 5} = \frac{9\sqrt 5}{10}}$$
+      <p>Positiva: \(g\) cresce nesse sentido.</p>
+    </div>
+  </details>
+</article>

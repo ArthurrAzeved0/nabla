@@ -16,7 +16,8 @@ Responde Ai - Poli/
 │   ├── theme.js            # Alternância de tema (salvo em localStorage)
 │   ├── cursos.js            # REGISTRO CENTRAL de cursos (window.CURSOS)
 │   ├── home.js             # Monta os cards da página inicial
-│   └── curso.js            # Lógica da página de curso (abas, fetch de conteúdo e questões)
+│   ├── curso.js            # Lógica da página de curso (abas, fetch de conteúdo e questões)
+│   └── estudo.js           # Ferramentas de estudo (marcação, estatísticas, cronômetro, simulado)
 ├── conteudo/
 │   ├── calculo3.html       # Teoria completa de Cálculo 3 (fragmento HTML)
 │   └── eletromag.html      # Teoria completa de Eletromag (fragmento HTML)
@@ -24,14 +25,33 @@ Responde Ai - Poli/
     ├── manifest.js         # REGISTRO CENTRAL de questões (window.QUESTOES_MANIFEST)
     ├── _modelo-questao.html # Modelo comentado para criar novas questões
     ├── calculo3/
-    │   ├── 1ee/q01.html … q04.html
-    │   ├── 2ee/q01.html … q03.html
-    │   └── final/q01.html … q05.html
+    │   ├── 1ee/q01.html … q10.html
+    │   ├── 2ee/q01.html … q06.html
+    │   └── final/q01.html … q06.html
     └── eletromag/
-        ├── 1ee/q01.html … q04.html
-        ├── 2ee/q01.html … q04.html
-        └── final/q01.html … q04.html
+        ├── 1ee/q01.html … q12.html
+        ├── 2ee/q01.html … q12.html
+        └── final/q01.html … q12.html
 ```
+
+## Ferramentas de estudo (js/estudo.js)
+
+Na aba **Questões** de cada curso existem ferramentas de apoio, todas salvas em
+`localStorage` na chave `ra-progresso` (só no navegador do aluno):
+
+- **Marcação Acertei / Errei / Revisar** — botões em cada questão; clicar de novo
+  desmarca. A borda esquerda do cartão muda de cor conforme o status.
+- **Filtros por status** — chips "Todas / Acertei / Errei / Revisar / Não feitas"
+  acima da lista.
+- **Estatísticas de progresso** — barra de progresso e contagem por prova, com
+  botão "Limpar progresso".
+- **Cronômetro por questão** — botão de relógio em cada questão; o tempo fica
+  registrado junto ao status.
+- **Modo simulado** — sorteia N questões, esconde gabaritos, roda um cronômetro
+  de prova regressivo e ao encerrar mostra a nota (10 × acertos / total).
+
+A integração é feita pelo hook `ESTUDO.aoRenderizar(cursoId, prova, listaEl)`,
+chamado por `curso.js` sempre que a lista de questões é renderizada.
 
 ## Rodando localmente
 

@@ -1,0 +1,36 @@
+<article class="questao" data-id="calculo3-1ee-09" data-tema="multiplicadores-lagrange">
+  <div class="q-topo">
+    <span class="q-id">Questão 09</span>
+    <span class="q-tag">Final · 2022.2</span>
+    <span class="q-tag">Multiplicadores de Lagrange</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Utilize os multiplicadores de Lagrange para determinar os valores extremos da função</p>
+    $$f(x,y) = x^2 + y^2$$
+    <p>sujeita à restrição \(xy = 1\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">Pontos críticos \((1, 1)\) e \((-1, -1)\), com \(f = 2\) em ambos — é o valor <strong>mínimo</strong>. Não há máximo (sobre \(xy = 1\), \(f \to \infty\)).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Monte o sistema \(\nabla f = \lambda\,\nabla g\) com \(g(x,y) = xy - 1 = 0\):</p>
+      $$\nabla f = (2x,\ 2y) \qquad \nabla g = (y,\ x)$$
+      $$\begin{cases} 2x = \lambda y \\ 2y = \lambda x \\ xy = 1 \end{cases}$$
+      <p><strong>Passo 2 —</strong> Da primeira equação, \(\lambda = 2x/y\) (note \(y \neq 0\) pois \(xy = 1\)). Substituindo na segunda:</p>
+      $$2y = \frac{2x}{y}\cdot x \;\Rightarrow\; y^2 = x^2 \;\Rightarrow\; x = \pm y$$
+      <p><strong>Passo 3 —</strong> Combine com a restrição \(xy = 1\). Se \(x = -y\), então \(xy = -y^2 = 1\), impossível. Logo \(x = y\), e \(x^2 = 1\):</p>
+      $$\boxed{(1,\ 1) \quad\text{e}\quad (-1,\ -1)}$$
+      <p><strong>Passo 4 —</strong> Avaliando: \(f(1,1) = f(-1,-1) = 2\).</p>
+      <p><strong>Passo 5 —</strong> Interpretação: sobre a hipérbole \(xy = 1\), quando \(x \to \infty\) temos \(f \to \infty\), então <em>não existe máximo</em>. O valor \(f = 2\) é o <strong>mínimo</strong>: os pontos da hipérbole mais próximos da origem estão à distância \(\sqrt 2\).</p>
+    </div>
+  </details>
+</article>
