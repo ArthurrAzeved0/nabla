@@ -1,0 +1,36 @@
+<article class="questao" data-id="eqdiferenciais-1ee-11" data-tema="coeficientes-indeterminados">
+  <div class="q-topo">
+    <span class="q-id">Questão 11</span>
+    <span class="q-tag">1º EE · 2025.2</span>
+    <span class="q-tag">Coef. indeterminados · Abel</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>a) (1,5) Encontre a solução geral da EDO de segunda ordem</p>
+    $$y'' - 3y' + 2y = e^{3x}(1 + x)$$
+    <p>b) (1,0) Encontre o Wronskiano de duas soluções da EDO \(\;e^x y'' + (e^x\cos x)\,y' - xy = 0\), explicitando se estas soluções serão linearmente independentes ou não.</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">a) \(y = C_1e^{x} + C_2e^{2x} + e^{3x}\left(\tfrac12 x - \tfrac14\right)\); &nbsp;b) \(W = Ce^{-\operatorname{sen} x} \ne 0\) — soluções linearmente independentes.</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 (a) —</strong> Homogênea: \(m^2 - 3m + 2 = 0 \Rightarrow m_1 = 1,\ m_2 = 2\):</p>
+      $$y_h = C_1e^{x} + C_2e^{2x}$$
+      <p><strong>Passo 2 —</strong> Como \(3\) não é raiz da característica, chute \(y_p = e^{3x}(A_1x + A_0)\). Derivando:</p>
+      $$y_p' = e^{3x}\big(3A_1x + (A_1 + 3A_0)\big), \qquad y_p'' = e^{3x}\big(9A_1x + (6A_1 + 9A_0)\big)$$
+      <p><strong>Passo 3 —</strong> Substituindo em \(y'' - 3y' + 2y\):</p>
+      $$e^{3x}\Big[\big(9A_1 - 9A_1 + 2A_1\big)x + \big(6A_1 + 9A_0 - 3A_1 - 9A_0 + 2A_0\big)\Big] = e^{3x}(x + 1)$$
+      $$2A_1 = 1 \Rightarrow A_1 = \tfrac12; \qquad 3A_1 + 2A_0 = 1 \Rightarrow A_0 = -\tfrac14$$
+      <p><strong>Passo 4 —</strong> Solução geral do item (a):</p>
+      $$\boxed{y = C_1e^{x} + C_2e^{2x} + e^{3x}\left(\tfrac12 x - \tfrac14\right)}$$
+      <p><strong>Passo 5 (b) —</strong> Coloque na forma padrão dividindo por \(e^x\):</p>
+      $$y'' + (\cos x)\,y' - \frac{x}{e^x}\,y = 0 \qquad\Rightarrow\qquad p(x) = \cos x$$
+      <p><strong>Passo 6 —</strong> Pela fórmula de Abel:</p>
+      $$W(y_1,y_2)(x) = Ce^{-\int \cos x\,dx} = Ce^{-\operatorname{sen} x}$$
+      <p>Como \(e^{-\operatorname{sen} x} \ne 0\) para todo \(x\), o Wronskiano nunca se anula (para \(C \ne 0\)) e as soluções são <strong>linearmente independentes</strong>.</p>
+    </div>
+  </details>
+</article>

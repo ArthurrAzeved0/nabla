@@ -1,0 +1,35 @@
+<article class="questao" data-id="eqdiferenciais-2ee-13" data-tema="series-ponto-ordinario">
+  <div class="q-topo">
+    <span class="q-id">Questão 13</span>
+    <span class="q-tag">2º EE · 2025.2</span>
+    <span class="q-tag">Série de potências · PVI</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Considere a equação diferencial:</p>
+    $$(x^2 - 4)y'' + 3xy' + y = 0$$
+    <p>a) Verifique que \(x_0 = 0\) é ponto ordinário e encontre a relação de recorrência da solução em série;<br>
+       b) Resolva o problema de valor inicial com \(y(0) = 4\) e \(y'(0) = 1\), escrevendo os primeiros termos.</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(c_{n+2} = \dfrac{(n+1)c_n}{4(n+2)}\); &nbsp; \(y(x) = 4 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6} + \dfrac{3x^4}{32} + \dfrac{x^5}{30} + \cdots\)</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 (a) —</strong> Os pontos singulares vêm de \(x^2 - 4 = 0\), ou seja \(x = \pm 2\). Como \(x_0 = 0\) não anula o coeficiente líder, é <em>ponto ordinário</em> (raio de convergência mínimo: distância até a singularidade mais próxima, \(R \ge 2\)).</p>
+      <p><strong>Passo 2 —</strong> Com \(y = \sum c_nx^n\), substituímos e separamos \((x^2-4)y'' = x^2y'' - 4y''\):</p>
+      $$\sum_{n=0}^{\infty}\Big[n(n-1)c_n - 4(n+2)(n+1)c_{n+2} + 3nc_n + c_n\Big]x^n = 0$$
+      <p><strong>Passo 3 —</strong> Como \(n(n-1) + 3n + 1 = n^2 + 2n + 1 = (n+1)^2\):</p>
+      $$(n+1)^2c_n = 4(n+2)(n+1)c_{n+2} \;\Rightarrow\; \boxed{c_{n+2} = \frac{(n+1)\,c_n}{4(n+2)}}$$
+      <p><strong>Passo 4 (b) —</strong> Condições iniciais: \(c_0 = 4\), \(c_1 = 1\). Aplicando a recorrência:</p>
+      <p>• \(n=0\): \(c_2 = \dfrac{1\cdot 4}{4\cdot 2} = \dfrac12\);<br>
+         • \(n=1\): \(c_3 = \dfrac{2\cdot 1}{4\cdot 3} = \dfrac16\);<br>
+         • \(n=2\): \(c_4 = \dfrac{3\cdot(1/2)}{4\cdot 4} = \dfrac{3}{32}\);<br>
+         • \(n=3\): \(c_5 = \dfrac{4\cdot(1/6)}{4\cdot 5} = \dfrac{1}{30}\).</p>
+      <p><strong>Passo 5 —</strong> Solução do PVI:</p>
+      $$\boxed{y(x) = 4 + x + \frac{x^2}{2} + \frac{x^3}{6} + \frac{3x^4}{32} + \frac{x^5}{30} + \cdots}$$
+    </div>
+  </details>
+</article>

@@ -22,6 +22,13 @@ window.CURSOS = [
     codigo: "FÍSICA 3 · 60h",
     descricao: "Carga e campo elétrico, Lei de Gauss, potencial, capacitância, circuitos CC, campos magnéticos, Biot-Savart e Ampère, indução, circuitos RL/RLC e Equações de Maxwell.",
     icone: '<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><path d="M18 3 8 18h6l-2 11 12-16h-7l3-10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>'
+  },
+  {
+    id: "eqdiferenciais",
+    nome: "Equações Diferenciais (Cálculo 4)",
+    codigo: "MAT06 · 60h",
+    descricao: "EDOs de 1ª ordem (lineares, separáveis, exatas, Bernoulli), 2ª ordem e ordem superior, aplicações (oscilador, RLC), sistemas lineares por autovalores, séries de potências, Cauchy-Euler e Frobenius.",
+    icone: '<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><path d="M4 26c5 0 5-20 10-20s5 20 10 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M22 8h7M22 8l6 7M28 8l-6 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M4 28h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
   }
 
   /* ------------------- MODELO PARA NOVA CADEIRA -------------------

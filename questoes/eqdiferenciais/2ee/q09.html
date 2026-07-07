@@ -1,0 +1,32 @@
+<article class="questao" data-id="eqdiferenciais-2ee-09" data-tema="sistemas-autovalores-complexos">
+  <div class="q-topo">
+    <span class="q-id">Questão 09</span>
+    <span class="q-tag">2º EE · 2025.2</span>
+    <span class="q-tag">Sistema · autovalores complexos</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Determine a solução geral do sistema:</p>
+    $$\begin{cases} \dfrac{dx}{dt} = 4x + 5y \\[4pt] \dfrac{dy}{dt} = -2x + 6y \end{cases}$$
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(\lambda = 5 \pm 3i\); &nbsp; \(X(t) = c_1e^{5t}\begin{pmatrix}\cos 3t + 3\operatorname{sen} 3t\\ 2\cos 3t\end{pmatrix} + c_2e^{5t}\begin{pmatrix}-3\cos 3t + \operatorname{sen} 3t\\ 2\operatorname{sen} 3t\end{pmatrix}\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> \(A = \begin{pmatrix} 4 & 5 \\ -2 & 6 \end{pmatrix}\). Autovalores:</p>
+      $$\det(A - \lambda I) = \lambda^2 - 10\lambda + 34 = 0 \;\Rightarrow\; \lambda = \frac{10 \pm \sqrt{100 - 136}}{2} = 5 \pm 3i$$
+      <p><strong>Passo 2 —</strong> Autovetor para \(\lambda_1 = 5 + 3i\):</p>
+      $$\begin{pmatrix} -1-3i & 5 \\ -2 & 1-3i \end{pmatrix}K = 0 \;\Rightarrow\; 2k_1 = (1-3i)k_2$$
+      <p>Com \(k_2 = 2\): \(k_1 = 1 - 3i\), então</p>
+      $$K_1 = \begin{pmatrix}1-3i\\2\end{pmatrix} = \underbrace{\begin{pmatrix}1\\2\end{pmatrix}}_{B_1} + i\underbrace{\begin{pmatrix}-3\\0\end{pmatrix}}_{B_2}$$
+      <p><strong>Passo 3 —</strong> Com \(\alpha = 5\) e \(\beta = 3\), as soluções reais são:</p>
+      $$X_1 = e^{5t}\big(B_1\cos 3t - B_2\operatorname{sen} 3t\big) = e^{5t}\begin{pmatrix}\cos 3t + 3\operatorname{sen} 3t\\ 2\cos 3t\end{pmatrix}$$
+      $$X_2 = e^{5t}\big(B_2\cos 3t + B_1\operatorname{sen} 3t\big) = e^{5t}\begin{pmatrix}-3\cos 3t + \operatorname{sen} 3t\\ 2\operatorname{sen} 3t\end{pmatrix}$$
+      <p><strong>Passo 4 —</strong> Solução geral (espiral instável, pois \(\operatorname{Re}\lambda = 5 &gt; 0\)):</p>
+      $$\boxed{X(t) = c_1e^{5t}\begin{pmatrix}\cos 3t + 3\operatorname{sen} 3t\\ 2\cos 3t\end{pmatrix} + c_2e^{5t}\begin{pmatrix}-3\cos 3t + \operatorname{sen} 3t\\ 2\operatorname{sen} 3t\end{pmatrix}}$$
+    </div>
+  </details>
+</article>

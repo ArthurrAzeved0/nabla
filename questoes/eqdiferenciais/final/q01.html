@@ -1,0 +1,36 @@
+<article class="questao" data-id="eqdiferenciais-final-01" data-tema="coeficientes-indeterminados">
+  <div class="q-topo">
+    <span class="q-id">Questão 01</span>
+    <span class="q-tag">Final · 2025.1</span>
+    <span class="q-tag">2ª ordem · coeficientes indeterminados</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Considere a equação diferencial de segunda ordem:</p>
+    $$y'' + 2y' + 5y = 3\operatorname{sen} 2x$$
+    <p>a) Encontre a solução da equação homogênea (1,0 pt);<br>
+       b) Encontre a solução geral da equação diferencial (1,5 pts).</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(y(x) = e^{-x}(c_1\cos 2x + c_2\operatorname{sen} 2x) + \dfrac{3}{17}\operatorname{sen} 2x - \dfrac{12}{17}\cos 2x\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 (a) —</strong> Equação característica da homogênea:</p>
+      $$r^2 + 2r + 5 = 0 \;\Rightarrow\; r = \frac{-2 \pm \sqrt{4 - 20}}{2} = -1 \pm 2i$$
+      <p>Raízes complexas com \(\alpha = -1\), \(\beta = 2\):</p>
+      $$y_h = e^{-x}\big(c_1\cos 2x + c_2\operatorname{sen} 2x\big)$$
+      <p><strong>Passo 2 (b) —</strong> Como \(2i\) não é raiz da característica, tentamos:</p>
+      $$y_p = A\operatorname{sen} 2x + B\cos 2x$$
+      <p><strong>Passo 3 —</strong> Derivando e substituindo (\(y_p'' = -4y_p\)):</p>
+      $$(-4A - 4B + 5A)\operatorname{sen} 2x + (-4B + 4A + 5B)\cos 2x = 3\operatorname{sen} 2x$$
+      $$\begin{cases} A - 4B = 3 \\ B + 4A = 0 \end{cases}$$
+      <p><strong>Passo 4 —</strong> Da 2ª equação, \(B = -4A\). Substituindo: \(A + 16A = 3\), logo</p>
+      $$A = \frac{3}{17}, \qquad B = -\frac{12}{17}$$
+      <p><strong>Passo 5 —</strong> Solução geral:</p>
+      $$\boxed{y(x) = e^{-x}\big(c_1\cos 2x + c_2\operatorname{sen} 2x\big) + \frac{3}{17}\operatorname{sen} 2x - \frac{12}{17}\cos 2x}$$
+    </div>
+  </details>
+</article>

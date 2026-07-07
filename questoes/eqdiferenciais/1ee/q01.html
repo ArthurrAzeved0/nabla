@@ -1,0 +1,29 @@
+<article class="questao" data-id="eqdiferenciais-1ee-01" data-tema="crescimento-exponencial">
+  <div class="q-topo">
+    <span class="q-id">Questão 01</span>
+    <span class="q-tag">1º EE · 2025.2</span>
+    <span class="q-tag">Crescimento exponencial</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Uma cultura de bactérias cresce a uma taxa proporcional à quantidade presente, \(\dfrac{dQ}{dt} = -k\,Q(t)\). Após uma hora, observaram-se 1.000 núcleos de bactérias na cultura e, após 4 horas, observaram-se 3.000 núcleos. Determine a expressão para o número de núcleos presentes na cultura no tempo arbitrário \(t\). Considere \(3^{1/3} = 1{,}44\).</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(Q(t) = 694{,}44\,e^{\frac{\ln 3}{3}t}\) (com \(k = -\tfrac{\ln 3}{3}\) e \(Q_0 \approx 694{,}44\)).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> A equação é separável:</p>
+      $$\int \frac{dQ}{Q} = \int -k\,dt \;\Rightarrow\; \ln Q = -kt + c \;\Rightarrow\; Q(t) = Q_0\,e^{-kt}$$
+      <p><strong>Passo 2 —</strong> Impondo os dados: \(Q(1) = 1000 \Rightarrow 1000 = Q_0 e^{-k}\) e \(Q(4) = 3000 \Rightarrow 3000 = Q_0 e^{-4k}\).</p>
+      <p><strong>Passo 3 —</strong> Dividindo uma equação pela outra para eliminar \(Q_0\):</p>
+      $$\frac{1000}{3000} = \frac{e^{-k}}{e^{-4k}} = e^{3k} \;\Rightarrow\; \frac13 = e^{3k} \;\Rightarrow\; 3k = -\ln 3 \;\Rightarrow\; k = -\frac{\ln 3}{3}$$
+      <p><strong>Passo 4 —</strong> Voltando na primeira condição:</p>
+      $$1000 = Q_0\,e^{-(-\frac{\ln 3}{3})} = Q_0\,e^{\frac{\ln 3}{3}} = Q_0\cdot 3^{1/3} = Q_0 \cdot 1{,}44 \;\Rightarrow\; Q_0 = \frac{1000}{1{,}44} \approx 694{,}44$$
+      <p><strong>Passo 5 —</strong> Expressão final:</p>
+      $$\boxed{Q(t) = 694{,}44\,e^{\frac{\ln 3}{3}t}}$$
+    </div>
+  </details>
+</article>

@@ -1,0 +1,33 @@
+<article class="questao" data-id="eqdiferenciais-1ee-14" data-tema="circuito-rlc">
+  <div class="q-topo">
+    <span class="q-id">Questão 14</span>
+    <span class="q-tag">1º EE · 2024.1</span>
+    <span class="q-tag">Circuito RLC</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Seja o circuito elétrico composto por um resistor \(R\), um indutor \(L\) e um capacitor \(C\) conectados em série com uma fonte de tensão \(V(t)\). A EDO que modela o circuito é \(V(t) = R\,Q' + L\,Q'' + \dfrac{Q}{C}\), que na forma canônica se resume a</p>
+    $$Q'' + \frac{R}{L}Q' + \frac{1}{LC}Q = V$$
+    <p>Considerando \(R = 2\,\Omega\), \(L = 1\,H\), \(C = 1\,F\), \(V(t) = 10\operatorname{sen}(t)\) e condições \(Q(0) = 0\) e \(Q'(0) = 0\), encontre a solução da EDO em termos da carga \(Q\):<br>
+    a) (0,5) solução da homogênea; &nbsp;b) (1,0) solução da não homogênea; &nbsp;c) (1,0) solução final.</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">a) \(Q_h = C_1e^{-t} + C_2te^{-t}\); &nbsp;b) \(Q_p = -5\cos t\); &nbsp;c) \(Q(t) = 5\big(e^{-t} + te^{-t} - \cos t\big)\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 (a) —</strong> A equação é \(Q'' + 2Q' + Q = 10\operatorname{sen} t\). Característica:</p>
+      $$m^2 + 2m + 1 = (m+1)^2 = 0 \;\Rightarrow\; m = -1 \text{ (dupla)} \;\Rightarrow\; Q_h = C_1e^{-t} + C_2te^{-t}$$
+      <p><strong>Passo 2 (b) —</strong> Chute \(Q_p = R_0\operatorname{sen} t + S_0\cos t\). Substituindo e agrupando:</p>
+      $$(-R_0 - 2S_0 + R_0)\operatorname{sen} t + (-S_0 + 2R_0 + S_0)\cos t = 10\operatorname{sen} t$$
+      $$\Rightarrow\; -2S_0 = 10 \;\text{e}\; 2R_0 = 0 \;\Rightarrow\; R_0 = 0,\; S_0 = -5 \;\Rightarrow\; Q_p = -5\cos t$$
+      <p><strong>Passo 3 —</strong> Solução geral: \(Q(t) = C_1e^{-t} + C_2te^{-t} - 5\cos t\).</p>
+      <p><strong>Passo 4 (c) —</strong> Condições iniciais: \(Q(0) = C_1 - 5 = 0 \Rightarrow C_1 = 5\). E</p>
+      $$Q'(t) = -C_1e^{-t} + C_2e^{-t} - C_2te^{-t} + 5\operatorname{sen} t \;\Rightarrow\; Q'(0) = -C_1 + C_2 = 0 \Rightarrow C_2 = 5$$
+      <p><strong>Passo 5 —</strong> Solução final:</p>
+      $$\boxed{Q(t) = 5\big(e^{-t} + te^{-t} - \cos t\big)}$$
+    </div>
+  </details>
+</article>

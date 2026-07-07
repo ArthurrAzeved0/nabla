@@ -1,0 +1,33 @@
+<article class="questao" data-id="eqdiferenciais-final-06" data-tema="ordem-superior">
+  <div class="q-topo">
+    <span class="q-id">Questão 06</span>
+    <span class="q-tag">Final · 2023.2</span>
+    <span class="q-tag">3ª ordem · variação de parâmetros</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Encontre a solução geral da EDO:</p>
+    $$y''' + y' = \operatorname{sen}^2 x$$
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(y = C_1 + C_2\operatorname{sen} x + C_3\cos x + \dfrac{1}{4}\big(2x + \operatorname{sen} 2x\big) + \left(\cos x - \dfrac{\cos^3 x}{3}\right)\operatorname{sen} x - \dfrac{\operatorname{sen}^3 x}{3}\cos x\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Característica: \(m^3 + m = m(m^2+1) = 0 \Rightarrow m = 0,\ \pm i\):</p>
+      $$y_h = C_1 + C_2\operatorname{sen} x + C_3\cos x$$
+      <p><strong>Passo 2 —</strong> Variação de parâmetros com \(y_1 = 1\), \(y_2 = \operatorname{sen} x\), \(y_3 = \cos x\) e \(g(x) = \operatorname{sen}^2 x\). Wronskiano:</p>
+      $$W = \begin{vmatrix} 1 & \operatorname{sen} x & \cos x \\ 0 & \cos x & -\operatorname{sen} x \\ 0 & -\operatorname{sen} x & -\cos x \end{vmatrix} = -1$$
+      <p><strong>Passo 3 —</strong> Cramer (\(u_k' = g\cdot W_k/W\), com a coluna \(k\) trocada por \((0,0,1)\)): \(W_1 = -1\), \(W_2 = \operatorname{sen} x\), \(W_3 = \cos x\). Assim:</p>
+      $$u_1' = \operatorname{sen}^2 x \;\Rightarrow\; u_1 = \int \frac{1 - \cos 2x}{2}\,dx \cdot(-1)^0 = \frac{1}{4}\big(2x + \operatorname{sen} 2x\big)$$
+      $$u_2' = -\operatorname{sen}^2 x\,\operatorname{sen} x \;\Rightarrow\; u_2 = -\int (1 - \cos^2 x)\operatorname{sen} x\,dx = \cos x - \frac{\cos^3 x}{3}$$
+      $$u_3' = -\operatorname{sen}^2 x\,\cos x \;\Rightarrow\; u_3 = -\frac{\operatorname{sen}^3 x}{3}$$
+      <p><strong>Passo 4 —</strong> Solução particular \(y_p = u_1y_1 + u_2y_2 + u_3y_3\):</p>
+      $$y_p = \frac{1}{4}\big(2x + \operatorname{sen} 2x\big) + \left(\cos x - \frac{\cos^3 x}{3}\right)\operatorname{sen} x - \frac{\operatorname{sen}^3 x}{3}\cos x$$
+      <p><strong>Passo 5 —</strong> Solução geral:</p>
+      $$\boxed{y = C_1 + C_2\operatorname{sen} x + C_3\cos x + \frac{2x + \operatorname{sen} 2x}{4} + \left(\cos x - \frac{\cos^3 x}{3}\right)\operatorname{sen} x - \frac{\operatorname{sen}^3 x}{3}\cos x}$$
+    </div>
+  </details>
+</article>

@@ -1,0 +1,274 @@
+<nav class="sumario">
+  <strong>Nesta página:</strong>
+  <a href="#ed-1">1. Classificação e conceitos básicos</a>
+  <a href="#ed-2">2. Equações separáveis</a>
+  <a href="#ed-3">3. Lineares de 1ª ordem (fator integrante)</a>
+  <a href="#ed-4">4. Equações exatas</a>
+  <a href="#ed-5">5. Equação de Bernoulli</a>
+  <a href="#ed-6">6. Aplicações de 1ª ordem</a>
+  <a href="#ed-7">7. 2ª ordem homogênea e equação característica</a>
+  <a href="#ed-8">8. Wronskiano, Abel e redução de ordem</a>
+  <a href="#ed-9">9. Coeficientes indeterminados</a>
+  <a href="#ed-10">10. Variação de parâmetros</a>
+  <a href="#ed-11">11. Aplicações: oscilador amortecido e circuito RLC</a>
+  <a href="#ed-12">12. Ordem superior e Cauchy-Euler</a>
+  <a href="#ed-13">13. Sistemas de EDOs lineares (autovalores)</a>
+  <a href="#ed-14">14. Sistemas: casos complexo, repetido e não homogêneo</a>
+  <a href="#ed-15">15. Séries de potências (pontos ordinários)</a>
+  <a href="#ed-16">16. Pontos singulares e método de Frobenius</a>
+</nav>
+
+<section class="topico" id="ed-1">
+  <h2>1. Classificação e conceitos básicos</h2>
+  <p>Uma <strong>equação diferencial ordinária (EDO)</strong> é uma equação que envolve uma função incógnita \(y(x)\) e suas derivadas. Três classificações caem direto em prova:</p>
+  <p><strong>Ordem</strong> — a ordem da maior derivada que aparece. \(y' + xy = 0\) é de 1ª ordem; \(y'' - 3y' + 2y = e^{3x}\) é de 2ª ordem; \(y''' + y' = \sec x\) é de 3ª ordem.</p>
+  <p><strong>Linearidade</strong> — a EDO é <em>linear</em> quando pode ser escrita como</p>
+  <div class="formula"><span class="rotulo">Forma geral linear de ordem \(n\)</span>
+  $$a_n(x)\,y^{(n)} + a_{n-1}(x)\,y^{(n-1)} + \cdots + a_1(x)\,y' + a_0(x)\,y = g(x)$$
+  </div>
+  <p>ou seja: \(y\) e suas derivadas aparecem só na 1ª potência, sem produtos entre si e sem estarem dentro de funções (nada de \(y^2\), \(yy'\), \(\operatorname{sen}(y)\), \(e^y\)…). Se \(g(x)=0\), a equação é <strong>homogênea</strong>; caso contrário, <strong>não homogênea</strong>.</p>
+  <p><strong>Solução</strong> — uma função \(\varphi(x)\) é solução num intervalo se, substituída na equação, a transforma numa identidade. A <em>solução geral</em> de uma EDO de ordem \(n\) carrega \(n\) constantes arbitrárias; um <strong>PVI (problema de valor inicial)</strong> fixa essas constantes impondo \(y(x_0)=y_0\), \(y'(x_0)=y_1\), etc.</p>
+  <p><strong>Existência e unicidade (Picard)</strong> — para \(y' = f(x,y)\), \(y(x_0)=y_0\): se \(f\) e \(\partial f/\partial y\) são contínuas num retângulo contendo \((x_0,y_0)\), existe uma única solução do PVI num intervalo em torno de \(x_0\). Para a linear \(y' + P(x)y = Q(x)\), basta \(P\) e \(Q\) contínuas no intervalo — e a solução vale no intervalo inteiro.</p>
+  <div class="macete"><p>Para decidir se uma EDO é linear, olhe apenas para \(y\) e suas derivadas — os coeficientes podem depender de \(x\) à vontade. \(x^2y'' + xy' - y = 0\) é linear; \(y\,y' = x\) não é.</p></div>
+  <div class="macete dica"><p>Em prova, o intervalo de validade da solução de um PVI linear é o maior intervalo contendo \(x_0\) onde \(P\) e \(Q\) são contínuas. No PVI \(\tfrac1x y' - \tfrac{2y}{x^2} = x\cos x\), \(y(\pi)=\pi^3\) (1º EE 2025.1), o intervalo é \((0,\infty)\), pois há divisão por \(x\).</p></div>
+</section>
+
+<section class="topico" id="ed-2">
+  <h2>2. Equações separáveis</h2>
+  <p>Uma EDO de 1ª ordem é <strong>separável</strong> quando dá para escrever tudo que tem \(y\) de um lado e tudo que tem \(x\) do outro:</p>
+  <div class="formula"><span class="rotulo">Forma separável</span>
+  $$\frac{dy}{dx} = g(x)\,h(y) \quad\Longrightarrow\quad \int \frac{dy}{h(y)} = \int g(x)\,dx + C$$
+  </div>
+  <p>Receita: (1) escreva \(y' = dy/dx\); (2) separe as variáveis; (3) integre os dois lados; (4) se houver condição inicial, ache \(C\); (5) se possível, isole \(y\) (solução explícita) — senão, deixe implícita.</p>
+  <p><strong>Atenção às soluções constantes:</strong> se \(h(y_0)=0\), então \(y \equiv y_0\) é solução (de equilíbrio) e pode se perder na divisão por \(h(y)\). Sempre cheque.</p>
+  <div class="macete"><p>O modelo exponencial \(\frac{dQ}{dt} = kQ\) é separável e dá direto \(Q(t) = Q_0 e^{kt}\). É a base de TODA questão de crescimento populacional, bactérias, decaimento radioativo e juros contínuos.</p></div>
+  <div class="macete dica"><p>Nas provas de C4 da POLI, a 1ª questão do 1º EE quase sempre é uma aplicação separável: crescimento de bactérias (achar \(k\) com dois dados e projetar), população (2024.1) ou arrefecimento de Newton (2023.2). Treine a manipulação de logaritmos: \(e^{kt_1} = a \Rightarrow k = \tfrac{\ln a}{t_1}\).</p></div>
+</section>
+
+<section class="topico" id="ed-3">
+  <h2>3. Lineares de 1ª ordem — fator integrante</h2>
+  <p>Toda linear de 1ª ordem pode ser posta na <strong>forma padrão</strong> (coeficiente de \(y'\) igual a 1):</p>
+  <div class="formula"><span class="rotulo">Forma padrão</span>
+  $$y' + P(x)\,y = Q(x)$$
+  </div>
+  <p>Multiplicando pelo <strong>fator integrante</strong> \(\mu(x)\), o lado esquerdo vira a derivada de um produto:</p>
+  <div class="formula"><span class="rotulo">Fator integrante</span>
+  $$\mu(x) = e^{\int P(x)\,dx} \qquad\Longrightarrow\qquad \big(\mu\,y\big)' = \mu\,Q \qquad\Longrightarrow\qquad y = \frac{1}{\mu}\left[\int \mu\,Q\,dx + C\right]$$
+  </div>
+  <p>Receita: (1) coloque na forma padrão — <em>divida</em> pelo coeficiente de \(y'\); (2) calcule \(\mu = e^{\int P dx}\) (sem constante); (3) escreva \((\mu y)' = \mu Q\); (4) integre; (5) isole \(y\) e aplique a condição inicial.</p>
+  <p><strong>Exemplo clássico de prova:</strong> \((x+1)y' + 2y = 12(x+1)^4\). Forma padrão: \(y' + \tfrac{2}{x+1}y = 12(x+1)^3\). Então \(\mu = e^{2\ln|x+1|} = (x+1)^2\) e \(\big[(x+1)^2 y\big]' = 12(x+1)^5\), logo \((x+1)^2 y = 2(x+1)^6 + C\).</p>
+  <div class="macete"><p>Truques de simplificação do \(\mu\): \(e^{a\ln u} = u^a\) e \(e^{\ln u} = u\). Se \(P(x) = \tfrac{a}{x}\), então \(\mu = x^a\). Errar essa simplificação é a maior fonte de pontos perdidos nessa questão.</p></div>
+  <div class="macete dica"><p>Se a equação vier "disfarçada", como \(\tfrac1x y' - \tfrac{2}{x^2}y = x\cos x\) (1º EE 2025.1), multiplique tudo por \(x\) primeiro para chegar à forma padrão \(y' - \tfrac{2}{x}y = x^2\cos x\), que dá \(\mu = x^{-2}\) e \((x^{-2}y)' = \cos x\). Elegante e rápido.</p></div>
+</section>
+
+<section class="topico" id="ed-4">
+  <h2>4. Equações exatas</h2>
+  <p>Uma equação na forma diferencial \(M(x,y)\,dx + N(x,y)\,dy = 0\) é <strong>exata</strong> quando existe uma função potencial \(F(x,y)\) com \(F_x = M\) e \(F_y = N\); a solução é \(F(x,y) = C\).</p>
+  <div class="formula"><span class="rotulo">Critério de exatidão</span>
+  $$\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}$$
+  </div>
+  <p>Receita para achar \(F\): (1) verifique \(M_y = N_x\); (2) integre \(F = \int M\,dx + g(y)\) (a "constante" depende de \(y\)); (3) derive em relação a \(y\) e compare com \(N\) para achar \(g'(y)\); (4) integre \(g\) e escreva \(F(x,y) = C\).</p>
+  <p><strong>Exemplo (1º EE):</strong> \(\left(\tfrac{y}{x} + 6x\right)dx + (\ln x - 2)\,dy = 0\), \(x&gt;0\). Aqui \(M_y = \tfrac1x = N_x\) ✓. Então \(F = \int (\tfrac yx + 6x)dx = y\ln x + 3x^2 + g(y)\); \(F_y = \ln x + g'(y) = \ln x - 2 \Rightarrow g = -2y\). Solução: \(y\ln x + 3x^2 - 2y = C\).</p>
+  <p><strong>Fator integrante para tornar exata:</strong> se \(M_y \ne N_x\), procure \(\mu\) que dependa só de \(x\) ou só de \(y\):</p>
+  <div class="formula"><span class="rotulo">Fatores integrantes especiais</span>
+  $$\frac{M_y - N_x}{N} = f(x) \Rightarrow \mu = e^{\int f\,dx} \qquad\qquad \frac{N_x - M_y}{M} = g(y) \Rightarrow \mu = e^{\int g\,dy}$$
+  </div>
+  <div class="macete"><p>Depois de multiplicar pelo \(\mu\), SEMPRE verifique de novo \(M_y = N_x\) antes de integrar — é rápido e evita carregar um erro pela questão toda.</p></div>
+  <div class="macete dica"><p>Na Prova Final 2025.1 caiu \(xy\,dx + (2x^2 + 3y^2 - 20)\,dy = 0\), que só fica exata com \(\mu = y^3\) (o quociente \(\tfrac{N_x - M_y}{M} = \tfrac 3y\) depende só de \(y\)). Resultado: \(\tfrac{x^2y^4}{2} + \tfrac{y^6}{2} - 5y^4 = C\).</p></div>
+</section>
+
+<section class="topico" id="ed-5">
+  <h2>5. Equação de Bernoulli</h2>
+  <p>A <strong>equação de Bernoulli</strong> é uma não linear que vira linear com uma substituição:</p>
+  <div class="formula"><span class="rotulo">Bernoulli e substituição</span>
+  $$y' + P(x)\,y = Q(x)\,y^{\,n} \qquad (n\ne 0,1) \qquad\Longrightarrow\qquad u = y^{\,1-n},\quad u' + (1-n)P\,u = (1-n)Q$$
+  </div>
+  <p>Receita: (1) identifique \(n\); (2) divida tudo por \(y^n\); (3) troque \(u = y^{1-n}\) (note \(u' = (1-n)y^{-n}y'\)); (4) resolva a linear em \(u\) por fator integrante; (5) volte para \(y\).</p>
+  <p><strong>Exemplo (1º EE 2024.1):</strong> \(y' + 4y = 3e^{2x}y^2\). Aqui \(n=2\), \(u = y^{-1}\), e a equação vira \(u' - 4u = -3e^{2x}\). Com \(\mu = e^{-4x}\): \(u = e^{4x}\left(\tfrac{3}{2}e^{-2x}\cdot\!... \right)\) — resolvendo, \(y = \dfrac{2e^{-4x}}{3e^{-2x} + C}\) (forma equivalente do gabarito).</p>
+  <div class="macete"><p>Guarde: \(n=2 \Rightarrow u = 1/y\) e \(n=3 \Rightarrow u = 1/y^2\), sempre com o sinal do \((1-n)\) trocando o \(P\) e o \(Q\). Esquecer o fator \((1-n)\) é o erro nº 1 nessa questão.</p></div>
+  <div class="macete dica"><p>No 1º EE 2025.1 a Bernoulli veio "de trás para frente": \(y - y' = 3y^3e^{-2x}\). Reescreva como \(y' - y = -3e^{-2x}y^3\) antes de identificar \(P\), \(Q\) e \(n=3\).</p></div>
+</section>
+
+<section class="topico" id="ed-6">
+  <h2>6. Aplicações de 1ª ordem</h2>
+  <p><strong>Crescimento/decaimento exponencial.</strong> Se a taxa de variação é proporcional à quantidade presente:</p>
+  <div class="formula"><span class="rotulo">Modelo exponencial</span>
+  $$\frac{dQ}{dt} = kQ \quad\Longrightarrow\quad Q(t) = Q_0\,e^{kt}$$
+  </div>
+  <p>Com dois dados (ex.: "triplica em 1 hora"), você acha \(k = \ln 3\) e responde qualquer outra pergunta. Para achar o valor inicial dado um valor futuro, é só isolar \(Q_0 = Q(t_1)e^{-kt_1}\).</p>
+  <p><strong>Lei do arrefecimento de Newton.</strong> A temperatura de um corpo se aproxima da temperatura ambiente \(T_m\):</p>
+  <div class="formula"><span class="rotulo">Arrefecimento de Newton</span>
+  $$\frac{dT}{dt} = k\,(T - T_m) \quad\Longrightarrow\quad T(t) = T_m + (T_0 - T_m)\,e^{kt}$$
+  </div>
+  <p>Receita: use o segundo dado de temperatura para achar \(k\) (vai aparecer um \(\ln\) de fração), depois resolva para o tempo ou temperatura pedidos.</p>
+  <p><strong>Misturas (salmoura).</strong> Tanque com volume \(V(t)\), entrada e saída: \(\dfrac{dA}{dt} = (\text{taxa que entra}) - (\text{taxa que sai}) = c_e r_e - \dfrac{A}{V(t)}r_s\) — uma linear de 1ª ordem.</p>
+  <div class="macete"><p>Nas questões de Newton, escolha \(t=0\) no primeiro dado. O \(k\) sai sempre de uma razão: \(e^{kt_1} = \dfrac{T(t_1)-T_m}{T_0 - T_m}\).</p></div>
+  <div class="macete dica"><p>1º EE 2023.2: corpo a 100° num ambiente a 30°, cai para 80° em 20 min — quanto tempo até 50°? Resposta: \(t = 20\,\dfrac{\ln(7/2)}{\ln(7/5)} \approx 52\) min. 1º EE 2024.1: população dobra em 5 anos e vale 150.000 em \(t\) dado — pedem \(P_0\) (dá \(150000/9 \approx 16.667\)). O padrão é sempre o mesmo!</p></div>
+</section>
+
+<section class="topico" id="ed-7">
+  <h2>7. 2ª ordem homogênea — equação característica</h2>
+  <p>Para a linear homogênea com <strong>coeficientes constantes</strong> \(ay'' + by' + cy = 0\), tentamos \(y = e^{\lambda x}\), o que leva à <strong>equação característica</strong>:</p>
+  <div class="formula"><span class="rotulo">Equação característica</span>
+  $$a\lambda^2 + b\lambda + c = 0$$
+  </div>
+  <p>São três casos, conforme o discriminante \(\Delta = b^2 - 4ac\):</p>
+  <div class="formula"><span class="rotulo">Caso 1 — raízes reais distintas (\(\Delta&gt;0\))</span>
+  $$y = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}$$
+  </div>
+  <div class="formula"><span class="rotulo">Caso 2 — raiz real dupla (\(\Delta=0\))</span>
+  $$y = (C_1 + C_2 x)\,e^{\lambda x}$$
+  </div>
+  <div class="formula"><span class="rotulo">Caso 3 — raízes complexas \(\lambda = \alpha \pm \beta i\) (\(\Delta&lt;0\))</span>
+  $$y = e^{\alpha x}\big(C_1\cos\beta x + C_2\operatorname{sen}\beta x\big)$$
+  </div>
+  <p>A solução geral é combinação linear de duas soluções <em>linearmente independentes</em> \(y_1, y_2\) (um <strong>conjunto fundamental</strong>). O mesmo raciocínio vale para ordem \(n\): cada raiz real simples dá um \(e^{\lambda x}\); raiz de multiplicidade \(m\) dá \(e^{\lambda x}, xe^{\lambda x}, \dots, x^{m-1}e^{\lambda x}\); cada par complexo dá o bloco seno/cosseno.</p>
+  <div class="macete"><p>No caso da raiz dupla, o \(x\) multiplicando o segundo termo NÃO é opcional — sem ele \(y_1\) e \(y_2\) seriam proporcionais e você não teria solução geral. É exatamente o que o Wronskiano detecta.</p></div>
+  <div class="macete dica"><p>A Q2 do 1º EE 2024.1 pede a solução geral de QUATRO equações de uma vez — uma de cada caso, mais uma Cauchy-Euler. Treine reconhecer o caso em segundos: \(y'' - 10y' + 25y = 0 \Rightarrow (\lambda-5)^2 \Rightarrow y = (C_1 + C_2x)e^{5x}\).</p></div>
+</section>
+
+<section class="topico" id="ed-8">
+  <h2>8. Wronskiano, fórmula de Abel e redução de ordem</h2>
+  <p>O <strong>Wronskiano</strong> mede a independência linear de duas soluções:</p>
+  <div class="formula"><span class="rotulo">Wronskiano</span>
+  $$W(y_1,y_2)(x) = \begin{vmatrix} y_1 & y_2 \\ y_1' & y_2' \end{vmatrix} = y_1 y_2' - y_2 y_1'$$
+  </div>
+  <p>Para soluções de \(y'' + p(x)y' + q(x)y = 0\): \(\{y_1, y_2\}\) é conjunto fundamental \(\iff W \ne 0\) no intervalo. E o Wronskiano ou é sempre zero, ou nunca zero — consequência da <strong>fórmula de Abel</strong>:</p>
+  <div class="formula"><span class="rotulo">Fórmula de Abel</span>
+  $$W(x) = C\,e^{-\int p(x)\,dx}$$
+  </div>
+  <p>Ela permite calcular \(W\) <em>sem conhecer as soluções</em>: basta ler o coeficiente \(p(x)\) da forma padrão.</p>
+  <p><strong>Redução de ordem.</strong> Conhecida uma solução \(y_1\) da homogênea, a segunda vem de \(y_2 = v(x)\,y_1\):</p>
+  <div class="formula"><span class="rotulo">Redução de ordem</span>
+  $$y_2 = y_1 \int \frac{e^{-\int p\,dx}}{y_1^{\,2}}\,dx$$
+  </div>
+  <p>Receita: coloque a equação na forma padrão (coeficiente de \(y''\) igual a 1!), identifique \(p\), aplique a fórmula.</p>
+  <div class="macete"><p>Antes de usar Abel ou redução de ordem, DIVIDA pelo coeficiente de \(y''\). Em \((x-1)y'' - xy' + y = 0\), o \(p\) certo é \(-\tfrac{x}{x-1}\), não \(-x\).</p></div>
+  <div class="macete dica"><p>Dois clássicos: 1º EE 2025.1 — \((x-1)y'' - xy' + y = 0\) com \(y_1 = e^x\) (redução de ordem dá \(y_2 = x\)); e 1º EE com gabarito — \(y'' + (\cos x)y' + \dots = 0\), Abel dá \(W = Ce^{-\operatorname{sen} x}\). Também já pediram \(\lim_{x\to\infty} W(x)\): é só analisar a exponencial.</p></div>
+</section>
+
+<section class="topico" id="ed-9">
+  <h2>9. Não homogêneas — coeficientes indeterminados</h2>
+  <p>Para \(ay'' + by' + cy = g(x)\), a solução geral é</p>
+  <div class="formula"><span class="rotulo">Estrutura da solução</span>
+  $$y = y_h + y_p$$
+  </div>
+  <p>onde \(y_h\) resolve a homogênea e \(y_p\) é UMA solução particular. O método dos <strong>coeficientes indeterminados</strong> funciona quando \(g\) é combinação de polinômios, exponenciais, senos e cossenos. Chute \(y_p\) "com a mesma cara" de \(g\):</p>
+  <div class="formula"><span class="rotulo">Tabela de chutes</span>
+  $$g = P_n(x) \Rightarrow y_p = A_nx^n + \dots + A_0 \qquad g = e^{\alpha x} \Rightarrow y_p = Ae^{\alpha x} \qquad g = \cos\beta x \text{ ou } \operatorname{sen}\beta x \Rightarrow y_p = A\cos\beta x + B\operatorname{sen}\beta x$$
+  </div>
+  <p>Produtos combinam os chutes: \(g = e^{3x}(1+x) \Rightarrow y_p = e^{3x}(Ax + B)\). <strong>Regra da ressonância:</strong> se algum termo do chute já aparece em \(y_h\), multiplique o chute por \(x\) (por \(x^2\) se ainda coincidir).</p>
+  <p>Receita: (1) resolva a homogênea; (2) monte o chute pela tabela; (3) confira ressonância com \(y_h\); (4) derive, substitua e iguale coeficientes; (5) some \(y = y_h + y_p\).</p>
+  <div class="macete"><p>Mesmo que \(g\) tenha só \(\cos\), o chute precisa de \(A\cos + B\operatorname{sen}\) — as derivadas misturam os dois. E se \(g\) é soma de tipos diferentes, use o princípio da superposição: um \(y_p\) para cada parcela.</p></div>
+  <div class="macete dica"><p>Prova real: \(y'' - 3y' + 2y = e^{3x}(1+x)\) — como \(3\) não é raiz de \(\lambda^2-3\lambda+2\), o chute \(e^{3x}(Ax+B)\) funciona direto. Já em \(y'' - 10y' + 25y = 3e^{2t}\) (2024.1), \(2\) não é raiz dupla \(5\), então \(y_p = \tfrac{3}{9}e^{2t} = \tfrac13 e^{2t}\).</p></div>
+</section>
+
+<section class="topico" id="ed-10">
+  <h2>10. Variação de parâmetros</h2>
+  <p>Método geral que funciona para QUALQUER \(g(x)\) (inclusive \(\sec x\), \(\ln x\), \(1/x\)…), inclusive com coeficientes variáveis, desde que se conheça o conjunto fundamental \(\{y_1, y_2\}\). Com a equação na forma padrão \(y'' + p\,y' + q\,y = f(x)\):</p>
+  <div class="formula"><span class="rotulo">Variação de parâmetros</span>
+  $$y_p = u_1 y_1 + u_2 y_2, \qquad u_1' = \frac{-y_2\,f}{W}, \qquad u_2' = \frac{y_1\,f}{W}$$
+  </div>
+  <p>Receita: (1) forma padrão (dividir pelo coeficiente de \(y''\) — o \(f\) muda!); (2) ache \(y_1, y_2\) e \(W\); (3) integre \(u_1\) e \(u_2\) (sem constantes); (4) monte \(y_p\) e some com \(y_h\).</p>
+  <div class="macete"><p>Ordem superior funciona igual, com Wronskiano \(3\times 3\) e regra de Cramer. Para \(y''' + y' = \sec x\) (1º EE 2025.1): \(y_h = C_1 + C_2\cos x + C_3\operatorname{sen} x\) e a variação de parâmetros fecha a questão.</p></div>
+  <div class="macete dica"><p>Questão típica da POLI: \((1-x)y'' + xy' - y = ...\) com \(y_1 = e^x\) e \(y_2 = x\) DADOS (2º EE 2023.2 e outras). Eles dão o conjunto fundamental de propósito — a questão testa se você lembra de dividir por \((1-x)\) antes de identificar \(f\).</p></div>
+</section>
+
+<section class="topico" id="ed-11">
+  <h2>11. Aplicações: oscilador amortecido e circuito RLC</h2>
+  <p><strong>Sistema massa-mola com amortecimento</strong> (massa \(m\), atrito \(b\), rigidez \(k\)):</p>
+  <div class="formula"><span class="rotulo">Oscilador amortecido</span>
+  $$m\,x'' + b\,x' + k\,x = F(t) \qquad\Longrightarrow\qquad m\lambda^2 + b\lambda + k = 0$$
+  </div>
+  <p>O discriminante \(\Delta = b^2 - 4mk\) decide o regime: <strong>subamortecido</strong> (\(\Delta&lt;0\)): oscila com amplitude decaindo, \(x = e^{\alpha t}(C_1\cos\beta t + C_2\operatorname{sen}\beta t)\); <strong>criticamente amortecido</strong> (\(\Delta=0\)): \(x = (C_1 + C_2t)e^{\lambda t}\), volta ao equilíbrio o mais rápido possível sem oscilar; <strong>superamortecido</strong> (\(\Delta&gt;0\)): duas exponenciais decrescentes, sem oscilação.</p>
+  <p><strong>Circuito RLC em série</strong> — mesma matemática, outra roupa:</p>
+  <div class="formula"><span class="rotulo">Circuito RLC (carga \(Q\))</span>
+  $$L\,Q'' + R\,Q' + \frac{1}{C}\,Q = E(t)$$
+  </div>
+  <p>Com fonte senoidal \(E(t)\), a solução particular (coeficientes indeterminados com \(A\cos\omega t + B\operatorname{sen}\omega t\)) é o <em>regime permanente</em>; a homogênea, que morre exponencialmente, é o <em>transiente</em>.</p>
+  <div class="macete"><p>Dicionário mecânico–elétrico: \(m \leftrightarrow L\), \(b \leftrightarrow R\), \(k \leftrightarrow 1/C\), \(x \leftrightarrow Q\), \(F \leftrightarrow E\). Uma teoria, duas questões de prova.</p></div>
+  <div class="macete dica"><p>1º EE 2023.2: oscilador com \(b=10\) fixo, variando \(k/m\) para cair nos 3 casos — a questão quer que você classifique e escreva a solução de cada regime. 1º EE 2024.1: RLC com \(Q'' + 2Q' + Q = 10\operatorname{sen} t\), \(Q(0)=Q'(0)=0\), resposta \(Q = 5(e^{-t} + te^{-t} - \cos t)\) — note a raiz dupla \(\lambda = -1\).</p></div>
+</section>
+
+<section class="topico" id="ed-12">
+  <h2>12. Ordem superior e equação de Cauchy-Euler</h2>
+  <p><strong>Ordem superior com coeficientes constantes:</strong> tudo igual à 2ª ordem, com equação característica de grau \(n\). Ex.: \(y''' - 3y'' + 2y' = 0 \Rightarrow \lambda(\lambda-1)(\lambda-2) = 0 \Rightarrow y = C_1 + C_2e^{x} + C_3e^{2x}\).</p>
+  <p><strong>Equação de Cauchy-Euler</strong> — coeficientes variáveis com padrão \(x^k y^{(k)}\):</p>
+  <div class="formula"><span class="rotulo">Cauchy-Euler e equação auxiliar</span>
+  $$ax^2y'' + bxy' + cy = 0 \qquad\xrightarrow{\;y = x^m\;}\qquad a\,m(m-1) + b\,m + c = 0$$
+  </div>
+  <p>Casos (para \(x&gt;0\)): raízes reais distintas \(\Rightarrow y = C_1x^{m_1} + C_2x^{m_2}\); raiz dupla \(\Rightarrow y = (C_1 + C_2\ln x)\,x^{m}\); complexas \(m = \alpha\pm\beta i \Rightarrow y = x^{\alpha}\big(C_1\cos(\beta\ln x) + C_2\operatorname{sen}(\beta\ln x)\big)\).</p>
+  <div class="macete"><p>Não confunda \(m(m-1)\) com \(m^2\)! Em \(x^2y'' + xy' - y = 0\): \(m(m-1) + m - 1 = m^2 - 1 = 0 \Rightarrow y = C_1x + C_2x^{-1}\). A substituição \(x = e^t\) transforma Cauchy-Euler em coeficientes constantes, se você preferir.</p></div>
+  <div class="macete dica"><p>No 2º EE 2025.2 caiu a versão com parâmetro: \(x^2y'' + xy' - p^2y = 0\) \(\Rightarrow m^2 = p^2 \Rightarrow y = C_1x^{-p} + C_2x^{p}\). A Cauchy-Euler também aparece escondida no meio da Q2 do 1º EE 2024.1.</p></div>
+</section>
+
+<section class="topico" id="ed-13">
+  <h2>13. Sistemas de EDOs lineares — método dos autovalores</h2>
+  <p>Um sistema linear homogêneo de 1ª ordem se escreve em forma matricial:</p>
+  <div class="formula"><span class="rotulo">Sistema linear homogêneo</span>
+  $$\mathbf{X}' = A\,\mathbf{X}, \qquad \mathbf{X}(t) = \begin{pmatrix} x(t) \\ y(t) \end{pmatrix}$$
+  </div>
+  <p>Tentando \(\mathbf{X} = \mathbf{K}e^{\lambda t}\), caímos no problema de autovalores: \(A\mathbf{K} = \lambda\mathbf{K}\).</p>
+  <div class="formula"><span class="rotulo">Autovalores e autovetores</span>
+  $$\det(A - \lambda I) = 0 \quad\text{(acha os } \lambda\text{)}, \qquad (A - \lambda I)\mathbf{K} = \mathbf{0} \quad\text{(acha os } \mathbf{K}\text{)}$$
+  </div>
+  <p><strong>Caso 1 — autovalores reais e distintos:</strong> cada par \((\lambda_i, \mathbf{K}_i)\) dá uma solução, e a geral é</p>
+  <div class="formula"><span class="rotulo">Solução geral (reais distintos)</span>
+  $$\mathbf{X}(t) = C_1\mathbf{K}_1 e^{\lambda_1 t} + C_2\mathbf{K}_2 e^{\lambda_2 t}$$
+  </div>
+  <p>Receita: (1) monte \(\det(A-\lambda I)=0\) e resolva o polinômio característico; (2) para cada \(\lambda\), resolva \((A-\lambda I)\mathbf{K}=0\) escolhendo uma componente livre (ex.: \(k_2=1\)); (3) monte a combinação. Para \(3\times 3\) o processo é idêntico, com três autopares. Num PVI, imponha \(\mathbf{X}(0) = \mathbf{X}_0\) e resolva o sistema linear nos \(C_i\).</p>
+  <p><strong>Retrato de fase (noções):</strong> com \(\lambda_1,\lambda_2 &lt; 0\) a origem é um nó atrator (estável); sinais opostos dão sela; complexos com parte real \(\ne 0\) dão espiral; parte real \(= 0\) dá centro (órbitas periódicas). O traço e o determinante de \(A\) resumem tudo: órbitas periódicas exigem \(\operatorname{tr} A = 0\) com \(\det A &gt; 0\).</p>
+  <div class="macete"><p>Cheque rápido dos autovalores: \(\lambda_1 + \lambda_2 = \operatorname{tr} A\) e \(\lambda_1\lambda_2 = \det A\). Se não bater, você errou o polinômio característico.</p></div>
+  <div class="macete dica"><p>Na revisão do 2º EE do prof. César: sistema com \(\lambda = -3, -4\) e \(\mathbf{K}_1 = (1,1)\), \(\mathbf{K}_2 = (1,2)\); e a questão de órbitas periódicas com parâmetro \(a\), onde \(\operatorname{tr} A = -5 \ne 0\) para todo \(a\) — logo, nunca há órbitas periódicas. No 2º EE 2025.1 caiu um \(3\times3\) com \(\lambda = 0, 1, 2\).</p></div>
+</section>
+
+<section class="topico" id="ed-14">
+  <h2>14. Sistemas: autovalores complexos, repetidos e sistemas não homogêneos</h2>
+  <p><strong>Caso 2 — autovalores complexos \(\lambda = \alpha \pm \beta i\):</strong> ache o autovetor complexo \(\mathbf{K} = \mathbf{B}_1 + i\,\mathbf{B}_2\) para \(\lambda = \alpha + \beta i\) e separe parte real e imaginária de \(\mathbf{K}e^{\lambda t}\):</p>
+  <div class="formula"><span class="rotulo">Solução real (autovalores complexos)</span>
+  $$\mathbf{X} = C_1 e^{\alpha t}\big(\mathbf{B}_1\cos\beta t - \mathbf{B}_2\operatorname{sen}\beta t\big) + C_2 e^{\alpha t}\big(\mathbf{B}_2\cos\beta t + \mathbf{B}_1\operatorname{sen}\beta t\big)$$
+  </div>
+  <p><strong>Caso 3 — autovalor real duplo com um só autovetor \(\mathbf{K}\):</strong> a segunda solução usa o <em>autovetor generalizado</em> \(\mathbf{P}\):</p>
+  <div class="formula"><span class="rotulo">Autovalor repetido</span>
+  $$(A - \lambda I)\,\mathbf{P} = \mathbf{K} \qquad\Longrightarrow\qquad \mathbf{X}_2 = \big(\mathbf{K}\,t + \mathbf{P}\big)e^{\lambda t}, \qquad \mathbf{X} = C_1\mathbf{K}e^{\lambda t} + C_2\mathbf{X}_2$$
+  </div>
+  <p><strong>Sistemas não homogêneos</strong> \(\mathbf{X}' = A\mathbf{X} + \mathbf{F}(t)\): a geral é \(\mathbf{X} = \mathbf{X}_h + \mathbf{X}_p\). Duas ferramentas:</p>
+  <p><em>Coeficientes indeterminados:</em> \(\mathbf{F}\) polinomial \(\Rightarrow\) chute vetorial polinomial. Ex.: \(\mathbf{F} = \begin{pmatrix} t \\ 1\end{pmatrix} \Rightarrow \mathbf{X}_p = \mathbf{a}t + \mathbf{b}\); substitua e iguale componente a componente.</p>
+  <p><em>Matriz fundamental / variação de parâmetros:</em> se \(\Phi(t)\) tem por colunas um conjunto fundamental,</p>
+  <div class="formula"><span class="rotulo">Variação de parâmetros (sistemas)</span>
+  $$\mathbf{X}_p = \Phi(t)\int \Phi^{-1}(t)\,\mathbf{F}(t)\,dt, \qquad \mathbf{X} = \Phi(t)\,\mathbf{C} + \mathbf{X}_p$$
+  </div>
+  <div class="macete"><p>Para verificar se um \(\mathbf{X}_p\) dado é solução (questão de prova!), basta derivar e substituir: \(\mathbf{X}_p' \stackrel{?}{=} A\mathbf{X}_p + \mathbf{F}\). Não precisa resolver nada.</p></div>
+  <div class="macete dica"><p>Da revisão do César: complexos \(\lambda = -2 \pm 3i\); repetido \(\lambda = 3\) com \(\mathbf{P} = (0,1)\); não homogêneo com \(\mathbf{X}_p = \mathbf{a}t+\mathbf{b}\) dando \(\mathbf{a} = (0,-\tfrac13)\), \(\mathbf{b} = (\tfrac13, -\tfrac49)\); e o PVI resolvido com matriz fundamental. No 2º EE 2025.2, o sistema \(2\times2\) tinha \(\lambda = 5 \pm 3i\). Ou seja: os TRÊS casos caem.</p></div>
+</section>
+
+<section class="topico" id="ed-15">
+  <h2>15. Séries de potências — pontos ordinários</h2>
+  <p>Quando os coeficientes não são constantes e não há truque (Cauchy-Euler etc.), resolvemos por <strong>série de potências</strong> em torno de \(x_0\):</p>
+  <div class="formula"><span class="rotulo">Solução em série</span>
+  $$y = \sum_{n=0}^{\infty} c_n (x - x_0)^n, \qquad y' = \sum_{n=1}^{\infty} n\,c_n(x-x_0)^{n-1}, \qquad y'' = \sum_{n=2}^{\infty} n(n-1)\,c_n(x-x_0)^{n-2}$$
+  </div>
+  <p>Para \(y'' + P(x)y' + Q(x)y = 0\), \(x_0\) é <strong>ponto ordinário</strong> se \(P\) e \(Q\) são analíticas em \(x_0\) (para coeficientes polinomiais: o coeficiente de \(y''\) não zera em \(x_0\)). Nesse caso existem duas soluções em série, com raio de convergência pelo menos até o ponto singular mais próximo.</p>
+  <p>Receita: (1) substitua as séries na equação; (2) reindexe para deixar todas as somas com o mesmo expoente \(x^k\); (3) iguale cada coeficiente a zero — surge a <strong>relação de recorrência</strong>; (4) gere os \(c_n\) a partir de \(c_0\) e \(c_1\) (que ficam livres, ou vêm do PVI: \(c_0 = y(x_0)\), \(c_1 = y'(x_0)\)); (5) escreva os primeiros termos das duas soluções.</p>
+  <p><strong>Exemplo (2º EE 2025.2):</strong> \((x^2-4)y'' + 3xy' + y = 0\) em torno de \(x_0 = 0\) (ordinário, singulares em \(\pm 2\)). A recorrência sai \(c_{n+2} = \dfrac{(n+1)\,c_n}{4(n+2)}\); com PVI \(y(0) = 4\), \(y'(0) = 1\), é só iterar: \(c_2 = \tfrac{c_0}{8}\), \(c_3 = \tfrac{c_1}{6}\), …</p>
+  <div class="macete"><p>Reindexação sem erro: em \(\sum_{n\ge2} n(n-1)c_nx^{n-2}\), troque \(k = n-2\): \(\sum_{k\ge0}(k+2)(k+1)c_{k+2}x^k\). Termos com \(x\cdot y'\) ou \(x^2 y''\) muitas vezes NEM precisam reindexar — o \(x\) já ajusta o expoente.</p></div>
+  <div class="macete dica"><p>Dois padrões recorrentes na POLI: \(y' + xy = \alpha + \beta x\) (recorrência de 1ª ordem, caiu no 2º EE 2025.1 e na revisão do César, com resposta \(y = \beta + \alpha(x - \tfrac{x^3}{3} + \tfrac{x^5}{15} - \dots)\)) e séries centradas em \(x_0 = 1\) (aí escreva TUDO em potências de \((x-1)\), inclusive o coeficiente: \(x = 1 + (x-1)\)).</p></div>
+</section>
+
+<section class="topico" id="ed-16">
+  <h2>16. Pontos singulares e método de Frobenius</h2>
+  <p>Se \(x_0\) anula o coeficiente de \(y''\), ele é <strong>ponto singular</strong>. Escrevendo \(y'' + P(x)y' + Q(x)y = 0\), o ponto é <strong>singular regular</strong> quando</p>
+  <div class="formula"><span class="rotulo">Singular regular</span>
+  $$p(x) = (x-x_0)\,P(x) \quad\text{e}\quad q(x) = (x-x_0)^2\,Q(x) \quad\text{são analíticas em } x_0$$
+  </div>
+  <p>Nesse caso, o <strong>método de Frobenius</strong> busca solução na forma</p>
+  <div class="formula"><span class="rotulo">Série de Frobenius e equação indicial</span>
+  $$y = \sum_{n=0}^{\infty} c_n\,(x-x_0)^{n+r}, \qquad r(r-1) + p_0\,r + q_0 = 0$$
+  </div>
+  <p>onde \(p_0 = p(x_0)\) e \(q_0 = q(x_0)\). As raízes \(r_1 \ge r_2\) da <strong>equação indicial</strong> são as <em>raízes indiciais</em>. Se \(r_1 - r_2\) não é inteiro, há duas soluções de Frobenius independentes (uma para cada \(r\)); se difere por inteiro ou é raiz dupla, a segunda solução pode envolver \(\ln x\).</p>
+  <p>Na prática da prova: substitua a série na equação e olhe o coeficiente da MENOR potência de \(x\) — ele fatora como \(c_0\cdot(\text{equação indicial})\).</p>
+  <p><strong>Equações clássicas:</strong> a equação de <strong>Bessel</strong> \(x^2y'' + xy' + (x^2 - \nu^2)y = 0\) tem \(x_0=0\) singular regular com indicial \(r^2 = \nu^2\); a de <strong>Legendre</strong> \((1-x^2)y'' - 2xy' + \alpha(\alpha+1)y = 0\) tem \(x_0 = 0\) ordinário (soluções polinomiais para \(\alpha\) inteiro — os polinômios de Legendre).</p>
+  <div class="macete"><p>Atalho para a indicial: \(r(r-1) + p_0 r + q_0 = 0\) com \(p_0 = \lim_{x\to x_0}(x-x_0)P\) e \(q_0 = \lim_{x\to x_0}(x-x_0)^2Q\). Em segundos você sabe os \(r\) sem desenvolver a série toda.</p></div>
+  <div class="macete dica"><p>A equação \(2xy'' + (1+x)y' + y = 0\) (ou \(2xy'' + y' + xy = 0\)) é a queridinha da banca — caiu no 2º EE 2025.1 e na Final 2025.2. Indicial: \(2r(r-1) + r = 0 \Rightarrow r(2r-1) = 0 \Rightarrow r_1 = \tfrac12,\; r_2 = 0\). Como a diferença não é inteiro, são duas séries de Frobenius tranquilas.</p></div>
+</section>
+

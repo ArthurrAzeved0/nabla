@@ -1,0 +1,30 @@
+<article class="questao" data-id="eqdiferenciais-2ee-04" data-tema="sistemas-autovalor-repetido">
+  <div class="q-topo">
+    <span class="q-id">Questão 04</span>
+    <span class="q-tag">Revisão 2º EE · Prof. César</span>
+    <span class="q-tag">Sistema · autovalor repetido</span>
+    <span class="q-tag">1,0 pt</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Encontre a solução geral do sistema de equações diferenciais abaixo:</p>
+    $$\begin{cases} x' = 2x + y \\ y' = -x + 4y \end{cases}$$
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(\lambda = 3\) (duplo), \(K = \begin{pmatrix}1\\1\end{pmatrix}\), \(W = \begin{pmatrix}0\\1\end{pmatrix}\); &nbsp; \(X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{3t} + c_2\left[\begin{pmatrix}1\\1\end{pmatrix}t + \begin{pmatrix}0\\1\end{pmatrix}\right]e^{3t}\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> \(X' = \begin{pmatrix} 2 & 1 \\ -1 & 4 \end{pmatrix}X\). Autovalores:</p>
+      $$\det(A-\lambda I) = \lambda^2 - 6\lambda + 9 = (\lambda - 3)^2 = 0 \;\Rightarrow\; \lambda = 3 \text{ (multiplicidade 2)}$$
+      <p><strong>Passo 2 —</strong> Autovetor:</p>
+      $$\begin{pmatrix} -1 & 1 \\ -1 & 1 \end{pmatrix}K = 0 \;\Rightarrow\; k_1 = k_2 \;\Rightarrow\; K = \begin{pmatrix}1\\1\end{pmatrix}$$
+      <p>Só há UM autovetor independente — precisamos do autovetor generalizado.</p>
+      <p><strong>Passo 3 —</strong> Autovetor generalizado \(W\), resolvendo \((A - 3I)W = K\):</p>
+      $$\begin{pmatrix} -1 & 1 \\ -1 & 1 \end{pmatrix}W = \begin{pmatrix}1\\1\end{pmatrix} \;\Rightarrow\; -w_1 + w_2 = 1 \;\Rightarrow\; W = \begin{pmatrix}0\\1\end{pmatrix}$$
+      <p><strong>Passo 4 —</strong> A segunda solução é \(X_2 = (Kt + W)e^{3t}\). Solução geral:</p>
+      $$\boxed{X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{3t} + c_2\left[\begin{pmatrix}1\\1\end{pmatrix}t + \begin{pmatrix}0\\1\end{pmatrix}\right]e^{3t}}$$
+    </div>
+  </details>
+</article>

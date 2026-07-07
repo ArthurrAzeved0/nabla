@@ -1,0 +1,36 @@
+<article class="questao" data-id="eqdiferenciais-final-04" data-tema="ordem-superior">
+  <div class="q-topo">
+    <span class="q-id">Questão 04</span>
+    <span class="q-tag">Final · 2025.1</span>
+    <span class="q-tag">3ª ordem · coeficientes indeterminados</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Considere a EDO \(y''' - 3y'' + 2y' = r(x)\).</p>
+    <p>a) Encontre a solução para \(r(x) = 0\) (1,0 pt);<br>
+       b) Encontre a solução geral para \(r(x) = e^{3x} - \cos x\) (1,5 pts).</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(y = C_1 + C_2e^{x} + C_3e^{2x} + \dfrac{e^{3x}}{6} - \dfrac{1}{10}(\operatorname{sen} x + 3\cos x)\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 (a) —</strong> Equação característica:</p>
+      $$m^3 - 3m^2 + 2m = m(m^2 - 3m + 2) = m(m-1)(m-2) = 0 \;\Rightarrow\; m = 0,\ 1,\ 2$$
+      $$y_h = C_1 + C_2e^{x} + C_3e^{2x}$$
+      <p><strong>Passo 2 (b) —</strong> Como \(3\), \(\pm i\) não são raízes, tentamos:</p>
+      $$y_p = Ae^{3x} + B\operatorname{sen} x + C\cos x$$
+      <p><strong>Passo 3 —</strong> Derivadas: \(y_p' = 3Ae^{3x} + B\cos x - C\operatorname{sen} x\), \(y_p'' = 9Ae^{3x} - B\operatorname{sen} x - C\cos x\), \(y_p''' = 27Ae^{3x} - B\cos x + C\operatorname{sen} x\). Substituindo:</p>
+      $$6Ae^{3x} + (C + 3B - 2C)\operatorname{sen} x + (-B + 3C + 2B)\cos x = e^{3x} - \cos x$$
+      <p><strong>Passo 4 —</strong> Igualando os coeficientes:</p>
+      <p>• \(e^{3x}\): \(6A = 1 \Rightarrow A = \dfrac16\);<br>
+         • \(\operatorname{sen} x\): \(3B - C = 0\);<br>
+         • \(\cos x\): \(B + 3C = -1\).</p>
+      <p>De \(C = 3B\): \(B + 9B = -1 \Rightarrow B = -\dfrac{1}{10}\), \(C = -\dfrac{3}{10}\).</p>
+      <p><strong>Passo 5 —</strong> Solução geral:</p>
+      $$\boxed{y = C_1 + C_2e^{x} + C_3e^{2x} + \frac{e^{3x}}{6} - \frac{1}{10}\big(\operatorname{sen} x + 3\cos x\big)}$$
+    </div>
+  </details>
+</article>

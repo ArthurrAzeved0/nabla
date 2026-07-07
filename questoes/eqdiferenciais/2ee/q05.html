@@ -1,0 +1,28 @@
+<article class="questao" data-id="eqdiferenciais-2ee-05" data-tema="sistemas-analise-qualitativa">
+  <div class="q-topo">
+    <span class="q-id">Questão 05</span>
+    <span class="q-tag">Revisão 2º EE · Prof. César</span>
+    <span class="q-tag">Sistema · análise qualitativa</span>
+    <span class="q-tag">1,0 pt</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Considere o sistema com parâmetro real \(a\):</p>
+    $$\begin{cases} x' = -3x + ay \\ y' = ax - 2y \end{cases}$$
+    <p>Existe algum valor de \(a\) para o qual o sistema apresenta órbitas periódicas (ciclos fechados)? Justifique.</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">Não. Como \(\operatorname{tr}A = -5\) para qualquer \(a\), a soma dos autovalores é sempre \(-5 \neq 0\), logo nunca ocorrem autovalores imaginários puros — condição necessária para órbitas periódicas.</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> \(A = \begin{pmatrix} -3 & a \\ a & -2 \end{pmatrix}\). O polinômio característico é:</p>
+      $$\det(A - \lambda I) = \lambda^2 - (\operatorname{tr}A)\lambda + \det A = \lambda^2 + 5\lambda + (6 - a^2)$$
+      <p><strong>Passo 2 —</strong> Órbitas periódicas (soluções fechadas, centro) exigem autovalores imaginários puros, \(\lambda = \pm i\beta\), o que só ocorre quando \(\operatorname{tr}A = \lambda_1 + \lambda_2 = 0\).</p>
+      <p><strong>Passo 3 —</strong> Aqui \(\operatorname{tr}A = -3 - 2 = -5\) <em>independentemente</em> de \(a\). Se os autovalores forem complexos, \(\operatorname{Re}\lambda = -\tfrac52 &lt; 0\) (espiral estável); se forem reais, a soma é \(-5\) (nó ou sela).</p>
+      <p><strong>Passo 4 —</strong> Conclusão:</p>
+      $$\boxed{\text{Não existe } a \text{ com órbitas periódicas, pois } \operatorname{tr}A = -5 \neq 0 \text{ para todo } a.}$$
+    </div>
+  </details>
+</article>

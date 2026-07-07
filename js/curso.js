@@ -130,9 +130,10 @@
     });
   }
 
-  document.querySelectorAll(".chip").forEach(function (chip) {
+  
+  document.querySelectorAll(".chip[data-prova]").forEach(function (chip) {
     chip.addEventListener("click", function () {
-      document.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("ativo"); });
+      document.querySelectorAll(".chip[data-prova]").forEach(function (c) { c.classList.remove("ativo"); });
       chip.classList.add("ativo");
       carregarQuestoes(chip.dataset.prova);
     });

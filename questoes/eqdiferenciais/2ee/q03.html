@@ -1,0 +1,31 @@
+<article class="questao" data-id="eqdiferenciais-2ee-03" data-tema="sistemas-autovalores-complexos">
+  <div class="q-topo">
+    <span class="q-id">Questão 03</span>
+    <span class="q-tag">Revisão 2º EE · Prof. César</span>
+    <span class="q-tag">Sistema · autovalores complexos</span>
+    <span class="q-tag">1,0 pt</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Considere o sistema:</p>
+    $$\begin{cases} x' = -2x - 3y \\ y' = 3x - 2y \end{cases}$$
+    <p>Escreva o sistema na forma vetorial \(X' = AX\) e obtenha a sua solução geral.</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(\lambda = -2 \pm 3i\); &nbsp; \(X(t) = c_1e^{-2t}\begin{pmatrix}\cos 3t\\ \operatorname{sen} 3t\end{pmatrix} + c_2e^{-2t}\begin{pmatrix}\operatorname{sen} 3t\\ -\cos 3t\end{pmatrix}\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> \(X' = \begin{pmatrix} -2 & -3 \\ 3 & -2 \end{pmatrix}X\). Autovalores:</p>
+      $$\det(A-\lambda I) = (\lambda+2)^2 + 9 = 0 \;\Rightarrow\; \lambda = -2 \pm 3i$$
+      <p><strong>Passo 2 —</strong> Autovetor para \(\lambda_1 = -2 + 3i\):</p>
+      $$\begin{pmatrix} -3i & -3 \\ 3 & -3i \end{pmatrix}K = 0 \;\Rightarrow\; k_1 = ik_2 \;\Rightarrow\; K_1 = \begin{pmatrix}1\\-i\end{pmatrix} = \underbrace{\begin{pmatrix}1\\0\end{pmatrix}}_{B_1} + i\underbrace{\begin{pmatrix}0\\-1\end{pmatrix}}_{B_2}$$
+      <p><strong>Passo 3 —</strong> Com \(\alpha = -2\) e \(\beta = 3\), as duas soluções reais são:</p>
+      $$X_1 = e^{-2t}\big(B_1\cos 3t - B_2\operatorname{sen} 3t\big) = e^{-2t}\begin{pmatrix}\cos 3t\\ \operatorname{sen} 3t\end{pmatrix}$$
+      $$X_2 = e^{-2t}\big(B_2\cos 3t + B_1\operatorname{sen} 3t\big) = e^{-2t}\begin{pmatrix}\operatorname{sen} 3t\\ -\cos 3t\end{pmatrix}$$
+      <p><strong>Passo 4 —</strong> Solução geral (uma espiral estável, pois \(\operatorname{Re}\lambda = -2 &lt; 0\)):</p>
+      $$\boxed{X(t) = c_1e^{-2t}\begin{pmatrix}\cos 3t\\ \operatorname{sen} 3t\end{pmatrix} + c_2e^{-2t}\begin{pmatrix}\operatorname{sen} 3t\\ -\cos 3t\end{pmatrix}}$$
+    </div>
+  </details>
+</article>

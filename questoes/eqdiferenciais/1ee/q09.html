@@ -1,0 +1,31 @@
+<article class="questao" data-id="eqdiferenciais-1ee-09" data-tema="bernoulli">
+  <div class="q-topo">
+    <span class="q-id">Questão 09</span>
+    <span class="q-tag">1º EE · 2024.1</span>
+    <span class="q-tag">Equação de Bernoulli</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Encontre a solução da EDO</p>
+    $$y' + 4y = 3e^{2x}\,y^2$$
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(y = \dfrac{2e^{-4x}}{3e^{-2x} + C}\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> É uma Bernoulli com \(n = 2\), \(P(x) = 4\), \(Q(x) = 3e^{2x}\). Substituição:</p>
+      $$z = y^{1-n} = y^{-1} = \frac1y$$
+      <p><strong>Passo 2 —</strong> A equação em \(z\) é \(z' + (1-n)P\,z = (1-n)Q\):</p>
+      $$z' - 4z = -3e^{2x}$$
+      <p><strong>Passo 3 —</strong> Linear em \(z\); fator integrante \(\mu = e^{\int -4\,dx} = e^{-4x}\):</p>
+      $$\big(e^{-4x}z\big)' = -3e^{2x}e^{-4x} = -3e^{-2x}$$
+      <p><strong>Passo 4 —</strong> Integrando:</p>
+      $$e^{-4x}z = -3\int e^{-2x}dx = \frac{3}{2}e^{-2x} + \frac{C}{2} \;\Rightarrow\; z = \frac{3e^{-2x} + C}{2e^{-4x}}$$
+      <p><strong>Passo 5 —</strong> Voltando para \(y = 1/z\):</p>
+      $$\boxed{y = \frac{2e^{-4x}}{3e^{-2x} + C}}$$
+    </div>
+  </details>
+</article>

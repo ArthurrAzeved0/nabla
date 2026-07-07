@@ -1,0 +1,33 @@
+<article class="questao" data-id="eqdiferenciais-1ee-15" data-tema="oscilador-amortecido">
+  <div class="q-topo">
+    <span class="q-id">Questão 15</span>
+    <span class="q-tag">1º EE · 2023.2</span>
+    <span class="q-tag">Oscilador amortecido</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>As equações diferenciais que representam um movimento harmônico amortecido e não forçado têm a forma</p>
+    $$\frac{d^2y}{dt^2} + b\,\frac{dy}{dt} + \frac{k}{m}\,y = 0$$
+    <p>onde \(b\) é a constante de amortecimento, \(k\) a constante elástica da mola e \(m\) a massa. Encontre a solução geral para:</p>
+    <p>A) \(b = 10\), \(k = 20\), \(m = 0{,}5\); &nbsp; B) \(b = 10\), \(k = 40\), \(m = 2\); &nbsp; C) \(b = 10\), \(k = 50\), \(m = 2\).</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">A) \(y = e^{-5t}\big(A\cos\sqrt{15}\,t + B\operatorname{sen}\sqrt{15}\,t\big)\) (subamortecido); &nbsp;B) \(y = Ae^{(-5+\sqrt5)t} + Be^{(-5-\sqrt5)t}\) (superamortecido); &nbsp;C) \(y = (A + Bt)\,e^{-5t}\) (crítico).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> A característica é \(\lambda^2 + b\lambda + \dfrac{k}{m} = 0\), com \(\Delta = b^2 - 4\dfrac{k}{m}\).</p>
+      <p><strong>Passo 2 (A) —</strong> \(b = 10\), \(k/m = 40\): \(\Delta = 100 - 160 = -60 &lt; 0\). Raízes complexas:</p>
+      $$\lambda = -5 \pm \sqrt{15}\,i \;\Rightarrow\; y = e^{-5t}\big(A\cos\sqrt{15}\,t + B\operatorname{sen}\sqrt{15}\,t\big)$$
+      <p>Movimento <em>subamortecido</em>: oscila com amplitude decaindo.</p>
+      <p><strong>Passo 3 (B) —</strong> \(k/m = 20\): \(\Delta = 100 - 80 = 20 &gt; 0\). Raízes reais distintas:</p>
+      $$\lambda = -5 \pm \sqrt5 \;\Rightarrow\; y = Ae^{(-5+\sqrt5)t} + Be^{(-5-\sqrt5)t}$$
+      <p>Movimento <em>superamortecido</em>: retorna ao equilíbrio sem oscilar.</p>
+      <p><strong>Passo 4 (C) —</strong> \(k/m = 25\): \(\Delta = 100 - 100 = 0\). Raiz real dupla:</p>
+      $$\lambda_1 = \lambda_2 = -5 \;\Rightarrow\; \boxed{y = (A + Bt)\,e^{-5t}}$$
+      <p>Movimento <em>criticamente amortecido</em>: o retorno mais rápido possível sem oscilação.</p>
+    </div>
+  </details>
+</article>

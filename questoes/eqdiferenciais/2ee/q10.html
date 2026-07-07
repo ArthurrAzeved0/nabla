@@ -1,0 +1,31 @@
+<article class="questao" data-id="eqdiferenciais-2ee-10" data-tema="sistemas-verificacao">
+  <div class="q-topo">
+    <span class="q-id">Questão 10</span>
+    <span class="q-tag">2º EE · 2025.2</span>
+    <span class="q-tag">Sistema · verificação de solução particular</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Verifique que o vetor</p>
+    $$X_p = \begin{pmatrix}\operatorname{sen} 3t\\ 0\\ \cos 3t\end{pmatrix}$$
+    <p>é uma solução particular do sistema:</p>
+    $$X' = \begin{pmatrix} 1 & 2 & 3 \\ -4 & 2 & 0 \\ -6 & 1 & 0 \end{pmatrix}X + \begin{pmatrix}-1\\4\\3\end{pmatrix}\operatorname{sen} 3t$$
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">Substituindo, \(AX_p + F(t) = \begin{pmatrix}3\cos 3t\\ 0\\ -3\operatorname{sen} 3t\end{pmatrix} = X_p'\) ✓ — logo \(X_p\) é solução particular.</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Derivamos o candidato:</p>
+      $$X_p' = \begin{pmatrix}3\cos 3t\\ 0\\ -3\operatorname{sen} 3t\end{pmatrix}$$
+      <p><strong>Passo 2 —</strong> Calculamos \(AX_p\):</p>
+      $$AX_p = \begin{pmatrix} 1 & 2 & 3 \\ -4 & 2 & 0 \\ -6 & 1 & 0 \end{pmatrix}\begin{pmatrix}\operatorname{sen} 3t\\ 0\\ \cos 3t\end{pmatrix} = \begin{pmatrix}\operatorname{sen} 3t + 3\cos 3t\\ -4\operatorname{sen} 3t\\ -6\operatorname{sen} 3t\end{pmatrix}$$
+      <p><strong>Passo 3 —</strong> Somamos o termo não homogêneo:</p>
+      $$AX_p + \begin{pmatrix}-1\\4\\3\end{pmatrix}\operatorname{sen} 3t = \begin{pmatrix}\operatorname{sen} 3t + 3\cos 3t - \operatorname{sen} 3t\\ -4\operatorname{sen} 3t + 4\operatorname{sen} 3t\\ -6\operatorname{sen} 3t + 3\operatorname{sen} 3t\end{pmatrix} = \begin{pmatrix}3\cos 3t\\ 0\\ -3\operatorname{sen} 3t\end{pmatrix}$$
+      <p><strong>Passo 4 —</strong> Comparando com o Passo 1: os dois lados coincidem. <em>Atenção ao detalhe:</em> na 3ª componente, \(-6\operatorname{sen} 3t + 3\operatorname{sen} 3t = -3\operatorname{sen} 3t\), que é exatamente \((\cos 3t)' = -3\operatorname{sen} 3t\).</p>
+      $$\boxed{X_p' = AX_p + F(t) \quad\Rightarrow\quad X_p \text{ é solução particular do sistema.}}$$
+    </div>
+  </details>
+</article>

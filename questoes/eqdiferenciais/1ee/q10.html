@@ -1,0 +1,35 @@
+<article class="questao" data-id="eqdiferenciais-1ee-10" data-tema="equacao-caracteristica">
+  <div class="q-topo">
+    <span class="q-id">Questão 10</span>
+    <span class="q-tag">1º EE · 2024.1</span>
+    <span class="q-tag">Eq. característica · Cauchy-Euler</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Resolva as seguintes equações diferenciais:</p>
+    <p>a) (0,5) \(2y'' - 5y' + 3y = 0\)<br>
+       b) (0,5) \(x^2y'' + xy' - y = 0\)<br>
+       c) (0,5) \(y'' + 4y' + 7y = 0\)<br>
+       d) (1,0) \(y'' - 10y' + 25y = 3e^{2t}\)</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">a) \(y = c_1e^{3t/2} + c_2e^{t}\); &nbsp;b) \(y = c_1x + \dfrac{c_2}{x}\); &nbsp;c) \(y = e^{-2t}\big(c_1\operatorname{sen}(\sqrt3\,t) + c_2\cos(\sqrt3\,t)\big)\); &nbsp;d) \(y = c_1e^{5t} + c_2te^{5t} + \tfrac13 e^{2t}\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 (a) —</strong> Característica \(2r^2 - 5r + 3 = 0\), \(\Delta = 25 - 24 = 1\):</p>
+      $$r_1 = \frac{5+1}{4} = \frac32, \quad r_2 = \frac{5-1}{4} = 1 \;\Rightarrow\; y = c_1e^{3t/2} + c_2e^{t}$$
+      <p><strong>Passo 2 (b) —</strong> É Cauchy-Euler: com \(y = x^m\), \(m(m-1) + m - 1 = m^2 - 1 = 0\):</p>
+      $$m = \pm 1 \;\Rightarrow\; y = c_1x + \frac{c_2}{x}$$
+      <p><strong>Passo 3 (c) —</strong> \(r^2 + 4r + 7 = 0\), \(\Delta = 16 - 28 = -12\):</p>
+      $$r = -2 \pm \sqrt3\,i \;\Rightarrow\; y = e^{-2t}\big(c_1\operatorname{sen}(\sqrt3\,t) + c_2\cos(\sqrt3\,t)\big)$$
+      <p><strong>Passo 4 (d) —</strong> Homogênea: \(r^2 - 10r + 25 = (r-5)^2 = 0\), raiz dupla \(r = 5\):</p>
+      $$y_h = c_1e^{5t} + c_2te^{5t}$$
+      <p><strong>Passo 5 (d) —</strong> Particular por coeficientes indeterminados, chute \(Y = Ae^{2t}\) (\(2\) não é raiz):</p>
+      $$4Ae^{2t} - 20Ae^{2t} + 25Ae^{2t} = 3e^{2t} \;\Rightarrow\; 9A = 3 \;\Rightarrow\; A = \frac13$$
+      $$\boxed{y = c_1e^{5t} + c_2te^{5t} + \tfrac13 e^{2t}}$$
+    </div>
+  </details>
+</article>

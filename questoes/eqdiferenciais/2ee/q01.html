@@ -1,0 +1,35 @@
+<article class="questao" data-id="eqdiferenciais-2ee-01" data-tema="sistemas-autovalores-reais">
+  <div class="q-topo">
+    <span class="q-id">Questão 01</span>
+    <span class="q-tag">Revisão 2º EE · Prof. César</span>
+    <span class="q-tag">Sistema · autovalores reais</span>
+    <span class="q-tag">1,0 pt</span>
+  </div>
+  <div class="q-enunciado">
+    <p>Considere o sistema de equações diferenciais abaixo:</p>
+    $$\begin{cases} x' = -2x - y \\ y' = 2x - 5y \end{cases}$$
+    <p>a) Escreva o sistema na forma de operador diferencial;<br>
+       b) Calcule os autovalores e autovetores da matriz do sistema;<br>
+       c) Resolva o sistema de EDOs.</p>
+  </div>
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div><p><span class="q-resposta-final">\(\lambda_1 = -3\), \(K_1 = \begin{pmatrix}1\\1\end{pmatrix}\); \(\lambda_2 = -4\), \(K_2 = \begin{pmatrix}1\\2\end{pmatrix}\); \(X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{-3t} + c_2\begin{pmatrix}1\\2\end{pmatrix}e^{-4t}\).</span></p></div>
+  </details>
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 (a) —</strong> Com o operador \(D = \dfrac{d}{dt}\):</p>
+      $$(D+2)x + y = 0, \qquad -2x + (D+5)y = 0$$
+      <p>Na forma vetorial: \(X' = \begin{pmatrix} -2 & -1 \\ 2 & -5 \end{pmatrix}X\).</p>
+      <p><strong>Passo 2 (b) —</strong> Autovalores:</p>
+      $$\det(A - \lambda I) = \begin{vmatrix} -2-\lambda & -1 \\ 2 & -5-\lambda \end{vmatrix} = \lambda^2 + 7\lambda + 12 = 0 \;\Rightarrow\; \lambda_1 = -3,\ \lambda_2 = -4$$
+      <p><strong>Passo 3 —</strong> Autovetores, \((A - \lambda I)K = 0\). Para \(\lambda_1 = -3\):</p>
+      $$\begin{pmatrix} 1 & -1 \\ 2 & -2 \end{pmatrix}\begin{pmatrix} k_1 \\ k_2\end{pmatrix} = 0 \;\Rightarrow\; k_1 = k_2 \;\Rightarrow\; K_1 = \begin{pmatrix}1\\1\end{pmatrix}$$
+      <p>Para \(\lambda_2 = -4\):</p>
+      $$\begin{pmatrix} 2 & -1 \\ 2 & -1 \end{pmatrix}K = 0 \;\Rightarrow\; 2k_1 = k_2 \;\Rightarrow\; K_2 = \begin{pmatrix}1\\2\end{pmatrix}$$
+      <p><strong>Passo 4 (c) —</strong> Solução geral:</p>
+      $$\boxed{X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{-3t} + c_2\begin{pmatrix}1\\2\end{pmatrix}e^{-4t}}$$
+    </div>
+  </details>
+</article>
