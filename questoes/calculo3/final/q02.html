@@ -8,6 +8,25 @@
 
   <div class="q-enunciado">
     <p>Determine os pontos críticos da função \(f(x,y) = 3xy + x^2 - 3x\) e interprete se são máximos e/ou mínimos locais, ou ponto de sela.</p>
+    <figure class="figura">
+      <svg viewBox="0 0 230 180" role="img" aria-label="Superfície em forma de sela: sobe numa direção e desce na outra a partir do ponto crítico">
+        <!-- retalho de sela -->
+        <path d="M 40 70 Q 115 30 190 70 Q 115 110 40 70 Z" fill="var(--accent-soft)" stroke="none"/>
+        <!-- curva que desce (vale) -->
+        <path d="M 40 70 Q 115 120 190 70" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        <!-- curva que sobe (crista) -->
+        <path d="M 55 130 Q 115 55 175 130" fill="none" stroke="var(--warn)" stroke-width="2"/>
+        <!-- linhas de grade da sela -->
+        <path d="M 70 55 Q 115 95 160 55" fill="none" stroke="var(--line-2)" stroke-width="1"/>
+        <path d="M 70 90 Q 115 55 160 90" fill="none" stroke="var(--line-2)" stroke-width="1"/>
+        <!-- ponto de sela -->
+        <circle cx="115" cy="80" r="4" fill="var(--ink-2)"/>
+        <text x="120" y="76" font-size="10" fill="var(--ink-2)">ponto crítico</text>
+        <text x="150" y="128" font-size="10" fill="var(--warn)">sobe</text>
+        <text x="150" y="86" font-size="10" fill="var(--accent)">desce</text>
+      </svg>
+      <figcaption>Quando o Hessiano \(D<0\), o ponto crítico é uma <strong>sela</strong>: numa direção a função sobe, na outra desce — não é máximo nem mínimo, como o centro de uma sela de cavalo.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

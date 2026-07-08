@@ -12,6 +12,22 @@
       <li>Encontre o volume do sólido limitado abaixo pelo plano \(z = 0\) e acima pela superfície \(z = f(x,y) = 1 - x^2 - y^2\);</li>
       <li>Calcule a integral \(\displaystyle\int_1^2 \int_{y=x}^{y=x^2} \int_{z=x-y}^{z=x+y} 2xz\; dz\, dy\, dx\).</li>
     </ol>
+    <figure class="figura">
+      <svg viewBox="0 0 240 210" role="img" aria-label="Paraboloide z=1-x²-y² como uma cúpula sobre o disco de raio 1 no plano z=0">
+        <!-- disco base (elipse) -->
+        <ellipse cx="120" cy="165" rx="85" ry="26" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.4"/>
+        <!-- cúpula (paraboloide) -->
+        <path d="M 35 165 Q 45 70 120 55 Q 195 70 205 165" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+        <path d="M 35 165 A 85 26 0 0 0 205 165" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+        <!-- topo z=1 -->
+        <circle cx="120" cy="55" r="3.5" fill="var(--warn)"/>
+        <text x="126" y="52" font-size="11" fill="var(--warn)">z = 1</text>
+        <!-- eixo z tracejado -->
+        <line x1="120" y1="55" x2="120" y2="165" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="150" y="200" font-size="11" fill="var(--ink-3)">disco x²+y² ≤ 1  (z = 0)</text>
+      </svg>
+      <figcaption>O paraboloide \(z=1-x^2-y^2\) é uma cúpula que encosta no plano \(z=0\) sobre o círculo \(x^2+y^2=1\). O volume é a integral da altura sobre esse disco — daí a simetria pedir coordenadas polares.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

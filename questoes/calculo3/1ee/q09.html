@@ -10,6 +10,28 @@
     <p>Utilize os multiplicadores de Lagrange para determinar os valores extremos da função</p>
     $$f(x,y) = x^2 + y^2$$
     <p>sujeita à restrição \(xy = 1\).</p>
+    <figure class="figura">
+      <svg viewBox="0 0 240 200" role="img" aria-label="Círculos de nível de x²+y² tangentes à hipérbole xy=1 nos pontos (1,1) e (-1,-1)">
+        <!-- eixos -->
+        <line x1="20" y1="100" x2="220" y2="100" stroke="var(--line-2)" stroke-width="1"/>
+        <line x1="120" y1="10" x2="120" y2="190" stroke="var(--line-2)" stroke-width="1"/>
+        <!-- hipérbole xy=1 (ramos) -->
+        <path d="M 135 40 Q 150 70 210 90" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+        <path d="M 105 160 Q 90 130 30 110" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+        <text x="196" y="82" font-size="10" fill="var(--ink-2)">xy = 1</text>
+        <!-- círculo de nível mínimo r=√2 (tangente) -->
+        <circle cx="120" cy="100" r="42" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+        <!-- círculo menor (não alcança a restrição) -->
+        <circle cx="120" cy="100" r="24" fill="none" stroke="var(--line-2)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="123" y="94" font-size="9" fill="var(--ink-3)">f menor</text>
+        <!-- pontos de tangência -->
+        <circle cx="150" cy="70" r="4" fill="var(--warn)"/>
+        <text x="155" y="66" font-size="10" fill="var(--warn)">(1, 1)</text>
+        <circle cx="90" cy="130" r="4" fill="var(--warn)"/>
+        <text x="46" y="144" font-size="10" fill="var(--warn)">(-1, -1)</text>
+      </svg>
+      <figcaption>No mínimo, o círculo de nível \(x^2+y^2=c\) apenas <em>toca</em> a hipérbole \(xy=1\): os gradientes ficam paralelos (\(\nabla f = \lambda\nabla g\)). O menor círculo que alcança a restrição tem raio \(\sqrt2\).</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">

@@ -10,6 +10,25 @@
     <p>A área da superfície lateral de um cone circular reto de altura \(h\) e raio da base \(r\) é dada por</p>
     $$A = \pi r\sqrt{h^2 + r^2}$$
     <p>Se \(r\) é mantido fixo em \(3\ \text{cm}\) enquanto \(h\) varia, encontre a taxa de variação de \(A\) em relação a \(h\) no instante em que \(h = 7\ \text{cm}\).</p>
+    <figure class="figura">
+      <svg viewBox="0 0 220 210" role="img" aria-label="Cone reto de altura h, raio da base r e geratriz g">
+        <!-- superfície lateral -->
+        <path d="M 110 20 L 40 170 L 180 170 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+        <!-- base elíptica -->
+        <ellipse cx="110" cy="170" rx="70" ry="18" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+        <path d="M 40 170 A 70 18 0 0 0 180 170" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+        <!-- altura h -->
+        <line x1="110" y1="20" x2="110" y2="170" stroke="var(--ink-2)" stroke-width="1.3" stroke-dasharray="4 3"/>
+        <text x="115" y="100" font-size="12" fill="var(--ink-2)">h</text>
+        <!-- raio r -->
+        <line x1="110" y1="170" x2="180" y2="170" stroke="var(--warn)" stroke-width="1.8"/>
+        <text x="140" y="188" font-size="12" fill="var(--warn)">r</text>
+        <!-- geratriz -->
+        <text x="60" y="100" font-size="11" fill="var(--ink-3)">√(h²+r²)</text>
+        <circle cx="110" cy="170" r="2.5" fill="var(--ink-2)"/>
+      </svg>
+      <figcaption>A área lateral \(A = \pi r\sqrt{h^2+r^2}\) depende da geratriz \(\sqrt{h^2+r^2}\). Com \(r\) fixo, \(\partial A/\partial h\) mede quanto a lateral cresce ao esticar a altura.</figcaption>
+    </figure>
   </div>
 
   <details class="q-gabarito">
