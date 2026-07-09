@@ -1,0 +1,59 @@
+<article class="questao" data-id="eletromag-final-27" data-tema="rlc-sem-capacitor-fasores">
+  <div class="q-topo">
+    <span class="q-id">Questão 27</span>
+    <span class="q-tag">Final · Banco</span>
+    <span class="q-tag">RL (CA) · Fasores</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Um circuito RLC teve o <strong>capacitor removido</strong>, restando \(R = 180\ \Omega\) e \(L = 280\ \text{mH}\), com \(f = 55{,}0\ \text{Hz}\) e \(\varepsilon_m = 30{,}0\ \text{V}\).</p>
+    <p>(a) Determine \(Z\) e a constante de fase \(\varphi\).</p>
+    <p>(b) Escreva explicitamente \(\varepsilon(t)\) e \(i(t)\) como funções seno.</p>
+    <p>(c) Desenhe o diagrama fasorial (posição relativa de \(\vec V_R\), \(\vec V_L\) e \(\vec E\)).</p>
+    <p>(d) Determine a potência média dissipada no resistor.</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 200 170" role="img" aria-label="Diagrama fasorial com VR horizontal, VL vertical e E na diagonal">
+        <line x1="30" y1="140" x2="185" y2="140" stroke="var(--ink-3)" stroke-width="1"/>
+        <line x1="30" y1="140" x2="30" y2="20" stroke="var(--ink-3)" stroke-width="1"/>
+        <!-- VR (horizontal, ref) -->
+        <line x1="30" y1="140" x2="140" y2="140" stroke="var(--accent)" stroke-width="2.5"/>
+        <polygon points="140,140 130,135 130,145" fill="var(--accent)"/>
+        <text x="95" y="155" font-size="10" fill="var(--accent)">V_R (∥ I)</text>
+        <!-- VL (vertical) -->
+        <line x1="30" y1="140" x2="30" y2="80" stroke="var(--ok)" stroke-width="2.5"/>
+        <polygon points="30,80 25,90 35,90" fill="var(--ok)"/>
+        <text x="38" y="95" font-size="10" fill="var(--ok)">V_L</text>
+        <!-- E (diagonal, soma) -->
+        <line x1="30" y1="140" x2="140" y2="80" stroke="var(--warn)" stroke-width="2.5"/>
+        <polygon points="140,80 129,80 134,89" fill="var(--warn)"/>
+        <text x="120" y="72" font-size="10" fill="var(--warn)">E</text>
+        <!-- ângulo φ -->
+        <path d="M 60 140 A 30 30 0 0 0 55 124" fill="none" stroke="var(--ink-2)" stroke-width="1"/>
+        <text x="66" y="130" font-size="9" fill="var(--ink-2)">φ</text>
+      </svg>
+      <figcaption>\(\vec V_R\) alinhado com a corrente; \(\vec V_L\) adiantado 90°; \(\vec E\) é a soma vetorial, formando o triângulo de impedância.</figcaption>
+    </figure>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(Z \approx 204{,}4\ \Omega\), \(\varphi \approx 28{,}3°\) &nbsp;·&nbsp; (b) \(\varepsilon(t) = 30{,}0\,\text{sen}(345{,}6\,t)\), \(i(t) = 0{,}1468\,\text{sen}(345{,}6\,t - 28{,}3°)\) &nbsp;·&nbsp; (d) \(P_{\text{med}} \approx 1{,}94\ \text{W}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Sem capacitor, \(Z = \sqrt{R^2 + X_L^2}\). Com \(\omega = 2\pi f \approx 345{,}6\ \text{rad/s}\), \(X_L = \omega L \approx 96{,}8\ \Omega\):</p>
+      $$Z = \sqrt{180^2 + 96{,}8^2} \approx \boxed{204{,}4\ \Omega} \qquad \varphi = \arctan\frac{X_L}{R} \approx \boxed{28{,}3°}$$
+      <p><strong>Passo 2 —</strong> Amplitude da corrente: \(I = \varepsilon_m/Z \approx 146{,}8\ \text{mA}\). Como o circuito é <strong>indutivo</strong>, a corrente <em>atrasa</em> em relação à tensão:</p>
+      $$\varepsilon(t) = 30{,}0\,\text{sen}(345{,}6\,t)\ \text{V} \qquad \boxed{i(t) = 0{,}1468\,\text{sen}(345{,}6\,t - 28{,}3°)\ \text{A}}$$
+      <p><strong>Passo 3 —</strong> No diagrama fasorial: \(\vec V_R\) fica alinhado com \(\vec I\) (eixo horizontal, referência); \(\vec V_L\) fica 90° adiantado (para cima); a soma \(\vec E = \vec V_R + \vec V_L\) forma ângulo \(\varphi = 28{,}3°\) acima de \(\vec I\) — é o triângulo retângulo de catetos \(R\) e \(X_L\) e hipotenusa \(Z\).</p>
+      <p><strong>Passo 4 —</strong> Potência média (só o resistor dissipa):</p>
+      $$P_{\text{med}} = \frac{1}{2}I^2 R = \frac{1}{2}(0{,}1468)^2(180) \approx \boxed{1{,}94\ \text{W}}$$
+    </div>
+  </details>
+</article>

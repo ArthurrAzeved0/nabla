@@ -1,0 +1,69 @@
+<article class="questao" data-id="eletromag-final-30" data-tema="kirchhoff-multi-malha">
+  <div class="q-topo">
+    <span class="q-id">Questão 30</span>
+    <span class="q-tag">Final · Banco</span>
+    <span class="q-tag">Kirchhoff · Multi-malha</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Entre dois nós \(a\) e \(b\) há três ramos em paralelo: o ramo 1 tem \(\varepsilon_1 = 12\ \text{V}\) em série com \(R_1 = 4{,}0\ \Omega\); o ramo 2 tem \(\varepsilon_2 = 9{,}0\ \text{V}\) em série com \(R_2 = 3{,}0\ \Omega\); o ramo 3 tem apenas \(R_3 = 6{,}0\ \Omega\) (sem fem). Determine as três correntes.</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 240 180" role="img" aria-label="Três ramos em paralelo entre nós a e b, dois com fontes e um só com resistor">
+        <!-- nós -->
+        <line x1="30" y1="20" x2="30" y2="160" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <line x1="210" y1="20" x2="210" y2="160" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <circle cx="30" cy="90" r="3.5" fill="var(--ink-2)"/>
+        <text x="20" y="94" font-size="11" fill="var(--ink-2)">a</text>
+        <circle cx="210" cy="90" r="3.5" fill="var(--ink-2)"/>
+        <text x="216" y="94" font-size="11" fill="var(--ink-2)">b</text>
+        <!-- ramo 1 -->
+        <line x1="30" y1="30" x2="70" y2="30" stroke="var(--ink-2)" stroke-width="1.3"/>
+        <line x1="70" y1="22" x2="70" y2="38" stroke="var(--warn)" stroke-width="2.5"/>
+        <line x1="76" y1="26" x2="76" y2="34" stroke="var(--warn)" stroke-width="1.5"/>
+        <text x="73" y="16" font-size="8.5" fill="var(--warn)" text-anchor="middle">ε₁</text>
+        <line x1="76" y1="30" x2="120" y2="30" stroke="var(--ink-2)" stroke-width="1.3"/>
+        <rect x="120" y="24" width="30" height="12" fill="var(--card-2)" stroke="var(--accent)" stroke-width="1.3"/>
+        <text x="135" y="19" font-size="8.5" fill="var(--accent)" text-anchor="middle">R₁</text>
+        <line x1="150" y1="30" x2="210" y2="30" stroke="var(--ink-2)" stroke-width="1.3"/>
+        <!-- ramo 2 -->
+        <line x1="30" y1="90" x2="70" y2="90" stroke="var(--ink-2)" stroke-width="1.3"/>
+        <line x1="70" y1="82" x2="70" y2="98" stroke="var(--warn)" stroke-width="2.5"/>
+        <line x1="76" y1="86" x2="76" y2="94" stroke="var(--warn)" stroke-width="1.5"/>
+        <text x="73" y="76" font-size="8.5" fill="var(--warn)" text-anchor="middle">ε₂</text>
+        <line x1="76" y1="90" x2="120" y2="90" stroke="var(--ink-2)" stroke-width="1.3"/>
+        <rect x="120" y="84" width="30" height="12" fill="var(--card-2)" stroke="var(--accent)" stroke-width="1.3"/>
+        <text x="135" y="79" font-size="8.5" fill="var(--accent)" text-anchor="middle">R₂</text>
+        <line x1="150" y1="90" x2="210" y2="90" stroke="var(--ink-2)" stroke-width="1.3"/>
+        <!-- ramo 3 -->
+        <line x1="30" y1="150" x2="105" y2="150" stroke="var(--ink-2)" stroke-width="1.3"/>
+        <rect x="105" y="144" width="30" height="12" fill="var(--card-2)" stroke="var(--accent)" stroke-width="1.3"/>
+        <text x="120" y="139" font-size="8.5" fill="var(--accent)" text-anchor="middle">R₃</text>
+        <line x1="135" y1="150" x2="210" y2="150" stroke="var(--ink-2)" stroke-width="1.3"/>
+      </svg>
+      <figcaption>Três ramos entre \(a\) e \(b\): o método do potencial de nó resolve tudo com uma equação.</figcaption>
+    </figure>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(V_{ab} = -8{,}0\ \text{V}\) &nbsp;·&nbsp; \(i_1 = 1{,}00\ \text{A}\) (\(a\to b\)), \(i_2 = 0{,}33\ \text{A}\) (\(a\to b\)), \(i_3 = 1{,}33\ \text{A}\) (\(b\to a\)).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Método do potencial de nó: escreva a corrente que <em>sai</em> de \(a\) por cada ramo em função de \(V_{ab}=V_a-V_b\) e imponha \(\sum i = 0\):</p>
+      $$V_{ab}\left(\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3}\right) = -\left(\frac{\varepsilon_1}{R_1}+\frac{\varepsilon_2}{R_2}\right)$$
+      <p><strong>Passo 2 —</strong> Substituindo os valores:</p>
+      $$V_{ab}\left(\tfrac14+\tfrac13+\tfrac16\right) = -\left(\tfrac{12}{4}+\tfrac{9}{3}\right) \;\Rightarrow\; V_{ab}\,(0{,}75) = -6 \;\Rightarrow\; \boxed{V_{ab} = -8{,}0\ \text{V}}$$
+      <p><strong>Passo 3 —</strong> Volte em cada ramo para achar as correntes:</p>
+      $$i_1 = \frac{\varepsilon_1 + V_{ab}}{R_1} = \frac{12 - 8}{4} = \boxed{1{,}00\ \text{A}} \qquad i_2 = \frac{\varepsilon_2 + V_{ab}}{R_2} = \frac{9 - 8}{3} = \boxed{0{,}33\ \text{A}}$$
+      $$i_3 = \frac{|V_{ab}|}{R_3} = \frac{8}{6} = \boxed{1{,}33\ \text{A}}$$
+      <p><strong>Passo 4 —</strong> Confira a Lei dos Nós: \(i_1 + i_2 = 1{,}33 = i_3\) ✓. As correntes 1 e 2 vão de \(a\) para \(b\); a 3 retorna de \(b\) para \(a\).</p>
+    </div>
+  </details>
+</article>

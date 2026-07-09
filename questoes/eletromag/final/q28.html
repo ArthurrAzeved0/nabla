@@ -1,0 +1,80 @@
+<article class="questao" data-id="eletromag-final-28" data-tema="rlc-capacitores-misto">
+  <div class="q-topo">
+    <span class="q-id">Questão 28</span>
+    <span class="q-tag">Final · Banco</span>
+    <span class="q-tag">RLC · Capacitores associados</span>
+    <span class="q-tag">2,5 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Um circuito RLC série tem \(R = 25{,}0\ \Omega\) e \(L = 50{,}0\ \text{mH}\), excitado por \(\varepsilon(t) = 15{,}0\,\text{sen}(200\pi t)\ \text{V}\). No lugar de um único capacitor, há \(C_1 = 6{,}0\ \mu\text{F}\) em série com \(C_2 = 3{,}0\ \mu\text{F}\), e esse conjunto em paralelo com \(C_3 = 4{,}0\ \mu\text{F}\).</p>
+    <p>(a) Determine a capacitância equivalente.</p>
+    <p>(b) Determine \(X_L\), \(X_C\) e \(Z\).</p>
+    <p>(c) Determine a amplitude da corrente \(I\).</p>
+    <p>(d) Determine a potência média dissipada.</p>
+
+    <figure class="figura">
+      <svg viewBox="0 0 260 160" role="img" aria-label="Circuito RLC com R, L e capacitores C1 e C2 em série em paralelo com C3">
+        <circle cx="30" cy="80" r="14" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <path d="M 22 80 q 4 -6 8 0 q 4 6 8 0" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <text x="30" y="112" font-size="9" fill="var(--ink-2)" text-anchor="middle">E(t)</text>
+        <line x1="30" y1="66" x2="30" y2="35"/>
+        <line x1="30" y1="35" x2="55" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <!-- R -->
+        <rect x="55" y="29" width="34" height="12" fill="var(--card-2)" stroke="var(--accent)" stroke-width="1.3"/>
+        <text x="72" y="24" font-size="9" fill="var(--accent)" text-anchor="middle">R</text>
+        <line x1="89" y1="35" x2="105" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <!-- L -->
+        <path d="M 105 35 q 5 -8 10 0 q 5 -8 10 0 q 5 -8 10 0" fill="none" stroke="var(--ok)" stroke-width="1.6"/>
+        <text x="120" y="22" font-size="9" fill="var(--ok)" text-anchor="middle">L</text>
+        <line x1="135" y1="35" x2="160" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <!-- C1 e C2 em série (ramo de cima) -->
+        <line x1="160" y1="35" x2="160" y2="22" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <line x1="160" y1="22" x2="178" y2="22" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <line x1="182" y1="16" x2="182" y2="28" stroke="var(--warn)" stroke-width="2"/>
+        <line x1="187" y1="16" x2="187" y2="28" stroke="var(--warn)" stroke-width="2"/>
+        <text x="184" y="12" font-size="8" fill="var(--warn)" text-anchor="middle">C₁</text>
+        <line x1="187" y1="22" x2="200" y2="22" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <line x1="204" y1="16" x2="204" y2="28" stroke="var(--warn)" stroke-width="2"/>
+        <line x1="209" y1="16" x2="209" y2="28" stroke="var(--warn)" stroke-width="2"/>
+        <text x="206" y="12" font-size="8" fill="var(--warn)" text-anchor="middle">C₂</text>
+        <line x1="209" y1="22" x2="225" y2="22" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <line x1="225" y1="22" x2="225" y2="35" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <!-- C3 em paralelo (ramo de baixo) -->
+        <line x1="160" y1="35" x2="160" y2="52" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <line x1="160" y1="52" x2="184" y2="52" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <line x1="188" y1="46" x2="188" y2="58" stroke="var(--warn)" stroke-width="2"/>
+        <line x1="193" y1="46" x2="193" y2="58" stroke="var(--warn)" stroke-width="2"/>
+        <text x="190" y="70" font-size="8" fill="var(--warn)" text-anchor="middle">C₃</text>
+        <line x1="193" y1="52" x2="225" y2="52" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <line x1="225" y1="52" x2="225" y2="35" stroke="var(--ink-2)" stroke-width="1.2"/>
+        <line x1="225" y1="35" x2="240" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <line x1="240" y1="35" x2="240" y2="130" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <line x1="30" y1="94" x2="30" y2="130" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <line x1="30" y1="130" x2="240" y2="130" stroke="var(--ink-2)" stroke-width="1.5"/>
+      </svg>
+      <figcaption>Primeiro \(C_1\) em série com \(C_2\), depois esse resultado em paralelo com \(C_3\).</figcaption>
+    </figure>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) \(C_{\text{eq}} = 6{,}0\ \mu\text{F}\) &nbsp;·&nbsp; (b) \(X_L \approx 31{,}4\ \Omega\), \(X_C \approx 265{,}3\ \Omega\), \(Z \approx 235{,}2\ \Omega\) &nbsp;·&nbsp; (c) \(I \approx 63{,}8\ \text{mA}\) &nbsp;·&nbsp; (d) \(P_{\text{med}} \approx 50{,}9\ \text{mW}\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> \(C_1\) e \(C_2\) em <em>série</em>: \(C_s = \dfrac{C_1 C_2}{C_1 + C_2} = \dfrac{6\cdot3}{9} = 2{,}0\ \mu\text{F}\). Em <em>paralelo</em> com \(C_3\): \(C_{\text{eq}} = C_s + C_3 = \boxed{6{,}0\ \mu\text{F}}\).</p>
+      <p><strong>Passo 2 —</strong> Com \(\omega = 200\pi \approx 628{,}3\ \text{rad/s}\):</p>
+      $$X_L = \omega L \approx 31{,}4\ \Omega \qquad X_C = \frac{1}{\omega C_{\text{eq}}} \approx 265{,}3\ \Omega$$
+      $$Z = \sqrt{R^2 + (X_L - X_C)^2} \approx \boxed{235{,}2\ \Omega}$$
+      <p><strong>Passo 3 —</strong> Amplitude da corrente:</p>
+      $$I = \frac{\varepsilon_m}{Z} = \frac{15}{235{,}2} \approx \boxed{63{,}8\ \text{mA}}$$
+      <p><strong>Passo 4 —</strong> Potência média com \(\cos\varphi = R/Z \approx 0{,}106\) (bem capacitivo, \(X_C \gg X_L\)):</p>
+      $$P_{\text{med}} = \frac{1}{2}\varepsilon_m I\cos\varphi \approx \boxed{50{,}9\ \text{mW}}$$
+    </div>
+  </details>
+</article>

@@ -300,6 +300,16 @@
     $$E_{dentro}(r) = \frac{k_0 Q\, r}{R^3} \;\; (r \le R) \qquad\qquad E_{fora}(r) = \frac{k_0 Q}{r^2} \;\;(r \ge R)$$
   </div>
   <p>Por que dentro só vale \(r\)? Porque a gaussiana de raio \(r &lt; R\) só envolve a <strong>fração</strong> da carga proporcional ao volume: \(q_{int} = Q\,r^3/R^3\). Fora, envolve \(Q\) inteira e a esfera se comporta como carga pontual.</p>
+  <div class="formula">
+    <div class="rotulo">Condutor em equilíbrio (campo na superfície)</div>
+    $$E_{dentro} = 0 \qquad\qquad E_{superfície} = \frac{\sigma}{\epsilon_0}$$
+  </div>
+  <div class="simbolos">
+    <ul>
+      <li>Num condutor toda a carga vai para a superfície e o campo interno é <b>zero</b>;</li>
+      <li>\(E = \sigma/\epsilon_0\) — campo logo fora da superfície do condutor. Cuidado: é o <b>dobro</b> do plano isolante (\(\sigma/2\epsilon_0\)), porque no condutor toda a carga fica de um lado só.</li>
+    </ul>
+  </div>
   <div class="macete">Dentro cresce linear com \(r\), fora cai com \(1/r^2\), com máximo na superfície — o gráfico "montanha" acima é figurinha repetida de prova. Para CONDUTOR, o campo interno é ZERO e toda a carga está na superfície.</div>
   <div class="macete dica">Questões conceituais tipo "cargas dentro de um avião" (Final 2025.1): o fluxo total é apenas \(\sum q_{int}/\epsilon_0\), não importa a forma da superfície. Fluxo negativo significa mais linhas entrando do que saindo.</div>
 </section>
@@ -1021,7 +1031,19 @@
   <p>Com resistência (RLC), parte da energia vira calor a cada ciclo e a oscilação é <strong>amortecida</strong>: \(q(t) = Q\,e^{-Rt/2L}\cos(\omega' t + \phi)\).</p>
 
   <h3>Corrente alternada: reatâncias e impedância</h3>
-  <p>Agora force o circuito RLC com uma fonte senoidal de frequência \(\omega_d\). Cada elemento "atrapalha" a corrente de um jeito: o resistor dissipa, o indutor odeia frequências altas (\(X_L\) cresce com \(\omega\)), o capacitor odeia frequências baixas (\(X_C\) cresce quando \(\omega\) cai). O efeito conjunto é a <strong>impedância</strong> \(Z\) — a "resistência generalizada" do circuito:</p>
+  <p>Agora force o circuito RLC com uma fonte senoidal de frequência \(\omega_d\). A fonte impõe uma tensão que varia no tempo — é justamente a expressão que aparece nos enunciados de prova:</p>
+  <div class="formula">
+    <div class="rotulo">Tensão da fonte alternada</div>
+    $$\mathcal{E}(t) = \mathcal{E}_m\,\sin(\omega_d t) \qquad \omega_d = 2\pi f$$
+  </div>
+  <div class="simbolos">
+    <ul>
+      <li>\(\mathcal{E}_m\) — amplitude (valor de pico) da fem, em volts;</li>
+      <li>\(\omega_d\) — frequência angular da fonte (rad/s); \(f\) — frequência em Hz;</li>
+      <li>Cuidado: quando o enunciado dá \(\mathcal{E}(t) = 10\,\text{sen}(200\pi t)\), leia \(\mathcal{E}_m = 10\ \text{V}\) e \(\omega_d = 200\pi\ \text{rad/s}\) (logo \(f = 100\ \text{Hz}\)).</li>
+    </ul>
+  </div>
+  <p>Cada elemento "atrapalha" a corrente de um jeito: o resistor dissipa, o indutor odeia frequências altas (\(X_L\) cresce com \(\omega\)), o capacitor odeia frequências baixas (\(X_C\) cresce quando \(\omega\) cai). O efeito conjunto é a <strong>impedância</strong> \(Z\) — a "resistência generalizada" do circuito:</p>
   <div class="formula">
     $$X_L = \omega_d L \qquad X_C = \frac{1}{\omega_d C} \qquad Z = \sqrt{R^2 + (X_L - X_C)^2} \qquad I = \frac{\mathcal{E}_m}{Z}$$
   </div>
@@ -1034,8 +1056,26 @@
     </ul>
   </div>
   <div class="formula">
+    <div class="rotulo">Tensão em cada elemento (amplitudes)</div>
+    $$V_R = I R \qquad V_L = I X_L \qquad V_C = I X_C \qquad \mathcal{E}_m = \sqrt{V_R^2 + (V_L - V_C)^2}$$
+  </div>
+  <div class="simbolos">
+    <ul>
+      <li>\(V_R, V_L, V_C\) — amplitudes de tensão em cada elemento (V); a corrente \(I\) é a mesma nos três (circuito série);</li>
+      <li>Atenção: as tensões NÃO se somam diretamente — \(V_R\) está em fase com a corrente, \(V_L\) adianta 90° e \(V_C\) atrasa 90°. Por isso a soma é "vetorial" (fasorial), como no teorema de Pitágoras acima.</li>
+    </ul>
+  </div>
+  <div class="formula">
     <div class="rotulo">Fase e potência média</div>
-    $$\tan\phi = \frac{X_L - X_C}{R} \qquad\quad i(t) = I\sin(\omega_d t - \phi) \qquad\quad P_{med} = I_{rms}^2 R = \frac{I^2}{2}R, \;\; I_{rms} = \frac{I}{\sqrt2}$$
+    $$\tan\phi = \frac{X_L - X_C}{R} \qquad\quad i(t) = I\sin(\omega_d t - \phi) \qquad\quad \cos\phi = \frac{R}{Z}$$
+    $$P_{med} = I_{rms}^2 R = \frac{I^2}{2}R = \frac{1}{2}\mathcal{E}_m I\cos\phi, \qquad I_{rms} = \frac{I}{\sqrt2}, \quad \mathcal{E}_{rms} = \frac{\mathcal{E}_m}{\sqrt2}$$
+  </div>
+  <div class="simbolos">
+    <ul>
+      <li>\(\phi\) — ângulo de fase entre corrente e fem; \(\phi>0\) circuito indutivo (\(X_L>X_C\)), \(\phi<0\) capacitivo;</li>
+      <li>\(\cos\phi = R/Z\) — <b>fator de potência</b>; só o resistor dissipa energia, por isso \(P_{med}\propto R\);</li>
+      <li>\(I_{rms}, \mathcal{E}_{rms}\) — valores eficazes (RMS), que os multímetros medem; em ressonância \(\cos\phi=1\) e a potência é máxima.</li>
+    </ul>
   </div>
 
   <h3>Ressonância</h3>
