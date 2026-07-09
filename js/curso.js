@@ -19,6 +19,21 @@
 
   /* ---------- utilidades ---------- */
 
+  /* Versão dos assets: lida da própria tag (ex.: js/curso.js?v=1) e anexada aos
+     arquivos carregados via fetch (teoria/questões), para o cache-busting valer
+     também no conteúdo dinâmico. Basta incrementar o ?v=N no HTML ao publicar. */
+  var VERSAO = (function () {
+    var s = document.currentScript ||
+      document.querySelector('script[src*="js/curso.js"]');
+    var m = s && s.src.match(/[?&]v=([^&]+)/);
+    return m ? m[1] : "";
+  })();
+
+  function comVersao(url) {
+    if (!VERSAO) return url;
+    return url + (url.indexOf("?") >= 0 ? "&" : "?") + "v=" + encodeURIComponent(VERSAO);
+  }
+
   function parametroCurso() {
     var m = window.location.search.match(/[?&]curso=([^&]+)/);
     return m ? decodeURIComponent(m[1]) : null;
@@ -66,7 +81,7 @@
 
   /* ---------- carrega a teoria ---------- */
 
-  fetch("conteudo/" + curso.id + ".html")
+  fetch(comVersao("conteudo/" + curso.id + ".html"))
     .then(function (r) {
       if (!r.ok) throw new Error(r.status);
       return r.text();
@@ -112,7 +127,7 @@
     // Busca todos os blocos em paralelo, mas insere na ordem do manifesto.
     Promise.all(
       arquivos.map(function (arquivo) {
-        return fetch("questoes/" + curso.id + "/" + prova + "/" + arquivo)
+        return fetch(comVersao("questoes/" + curso.id + "/" + prova + "/" + arquivo))
           .then(function (r) {
             if (!r.ok) throw new Error(arquivo);
             return r.text();
