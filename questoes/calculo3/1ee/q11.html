@@ -1,0 +1,37 @@
+<article class="questao" data-id="calculo3-1ee-11" data-tema="funcoes-varias-variaveis">
+  <div class="q-topo">
+    <span class="q-id">Questão 11</span>
+    <span class="q-tag">1º EE</span>
+    <span class="q-tag">Funções de várias variáveis</span>
+    <span class="q-tag">Estilo de prova</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Considere a função \(f(x,y) = 4x^2 + y^2 + 1\).</p>
+    <ol type="a">
+      <li>Determine o domínio e a imagem de \(f\) e diga que tipo de superfície é o gráfico \(z = f(x,y)\).</li>
+      <li>Verifique se existe o limite \(\displaystyle\lim_{(x,y)\to(0,0)} \frac{2x^2 y}{x^4 + y^2}\).</li>
+    </ol>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">(a) Domínio \(\mathbb R^2\); imagem \([1,+\infty)\); paraboloide elíptico. (b) O limite <strong>não existe</strong>.</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 (a) —</strong> Não há divisão nem raiz: \(f\) está definida para todo \((x,y)\), logo o domínio é \(\mathbb R^2\).</p>
+      <p><strong>Passo 2 —</strong> Como \(4x^2 \ge 0\) e \(y^2 \ge 0\), temos \(f \ge 1\), com igualdade em \((0,0)\). A imagem é \([1,+\infty)\). O gráfico \(z = 4x^2 + y^2 + 1\) é um <strong>paraboloide elíptico</strong> com vértice em \((0,0,1)\), abrindo para cima.</p>
+      <p><strong>Passo 3 (b) —</strong> Teste caminhos diferentes chegando à origem. Ao longo do eixo \(x\) (\(y = 0\)):</p>
+      $$\frac{2x^2\cdot 0}{x^4 + 0} = 0 \;\Rightarrow\; \text{limite } 0$$
+      <p><strong>Passo 4 —</strong> Ao longo da parábola \(y = x^2\):</p>
+      $$\frac{2x^2\cdot x^2}{x^4 + (x^2)^2} = \frac{2x^4}{x^4 + x^4} = \frac{2x^4}{2x^4} = 1 \;\Rightarrow\; \text{limite } 1$$
+      <p><strong>Passo 5 —</strong> Dois caminhos dão valores diferentes (\(0 \ne 1\)). Logo o limite <strong>não existe</strong>.</p>
+    </div>
+  </details>
+</article>

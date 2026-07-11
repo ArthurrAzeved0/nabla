@@ -1,0 +1,38 @@
+<article class="questao" data-id="calculo3-final-07" data-tema="integrais-triplas-esfericas">
+  <div class="q-topo">
+    <span class="q-id">Questão 07</span>
+    <span class="q-tag">Final</span>
+    <span class="q-tag">Integral tripla · esféricas</span>
+    <span class="q-tag">Estilo de prova</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Usando coordenadas esféricas, calcule</p>
+    $$\iiint_E \sqrt{x^2 + y^2 + z^2}\,dV$$
+    <p>onde \(E\) é a bola \(x^2 + y^2 + z^2 \le 9\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle\iiint_E \sqrt{x^2+y^2+z^2}\,dV = 81\pi\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Em coordenadas esféricas: \(x^2+y^2+z^2 = \rho^2\), o integrando \(\sqrt{x^2+y^2+z^2} = \rho\), e o elemento de volume é</p>
+      $$dV = \rho^2\operatorname{sen}\varphi\,d\rho\,d\varphi\,d\theta$$
+      <p><strong>Passo 2 —</strong> Limites da bola inteira de raio \(3\):</p>
+      $$0 \le \rho \le 3,\qquad 0 \le \varphi \le \pi,\qquad 0 \le \theta \le 2\pi$$
+      <p><strong>Passo 3 —</strong> Monte a integral (integrando \(\rho\cdot\rho^2\operatorname{sen}\varphi = \rho^3\operatorname{sen}\varphi\)). Como as variáveis separam:</p>
+      $$\iiint_E \rho\,dV = \int_0^{2\pi} d\theta \int_0^{\pi}\operatorname{sen}\varphi\,d\varphi \int_0^{3}\rho^3\,d\rho$$
+      <p><strong>Passo 4 —</strong> Cada fator:</p>
+      $$\int_0^{2\pi} d\theta = 2\pi,\quad \int_0^{\pi}\operatorname{sen}\varphi\,d\varphi = 2,\quad \int_0^{3}\rho^3\,d\rho = \frac{81}{4}$$
+      $$\iiint_E \sqrt{x^2+y^2+z^2}\,dV = 2\pi\cdot 2\cdot\frac{81}{4} = 81\pi$$
+      <p>Dica de limites: bola completa \(\Rightarrow \varphi\) percorre \(0\) a \(\pi\) (polo norte ao sul) e \(\theta\) toda a volta \(0\) a \(2\pi\).</p>
+    </div>
+  </details>
+</article>

@@ -1,0 +1,38 @@
+<article class="questao" data-id="calculo3-2ee-16" data-tema="teorema-de-stokes">
+  <div class="q-topo">
+    <span class="q-id">Questão 16</span>
+    <span class="q-tag">2º EE · 2022.2</span>
+    <span class="q-tag">Teorema de Stokes</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Use o Teorema de Stokes para calcular \(\displaystyle\iint_S (\nabla\times\vec F)\cdot d\vec S\), onde</p>
+    $$\vec F(x,y,z) = (-4y,\; 2z,\; 3x)$$
+    <p>e \(S\) é a parte do paraboloide \(z = 10 - x^2 - y^2\) acima do plano \(z = 1\), orientada para cima.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle\iint_S (\nabla\times\vec F)\cdot d\vec S = 36\pi\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Calcule o rotacional \(\nabla\times\vec F\) com \(P=-4y\), \(Q=2z\), \(R=3x\):</p>
+      $$\nabla\times\vec F = \left(R_y - Q_z,\; P_z - R_x,\; Q_x - P_y\right) = (0-2,\; 0-3,\; 0-(-4)) = (-2,\, -3,\, 4)$$
+      <p><strong>Passo 2 —</strong> Aqui há dois caminhos. Fazendo o fluxo do rotacional direto pela superfície \(z = g(x,y) = 10 - x^2 - y^2\) (orientação para cima), o vetor de área é</p>
+      $$d\vec S = (-g_x,\, -g_y,\, 1)\,dA = (2x,\, 2y,\, 1)\,dA$$
+      <p><strong>Passo 3 —</strong> Faça o produto escalar do rotacional constante com \(d\vec S\):</p>
+      $$(\nabla\times\vec F)\cdot d\vec S = \big[(-2)(2x) + (-3)(2y) + 4(1)\big]\,dA = (-4x - 6y + 4)\,dA$$
+      <p><strong>Passo 4 —</strong> A projeção no plano \(xy\) é o disco onde \(z\ge 1\), isto é \(10 - x^2 - y^2 \ge 1 \Rightarrow x^2+y^2\le 9\) (raio \(3\)). Integre sobre esse disco \(D\):</p>
+      $$\iint_D (-4x - 6y + 4)\,dA$$
+      <p><strong>Passo 5 —</strong> Por simetria, \(\iint_D x\,dA = \iint_D y\,dA = 0\) (disco centrado na origem). Sobra só a constante:</p>
+      $$\iint_D 4\,dA = 4\cdot\text{área}(D) = 4\cdot\pi(3)^2 = 36\pi$$
+      <p>Observação: pelo Teorema de Stokes esse valor é igual à circulação \(\oint_C \vec F\cdot d\vec r\) na circunferência de borda \(x^2+y^2=9\), \(z=1\) — poderia ter sido feito por lá também.</p>
+    </div>
+  </details>
+</article>

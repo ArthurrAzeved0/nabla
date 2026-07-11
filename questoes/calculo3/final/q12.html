@@ -1,0 +1,41 @@
+<article class="questao" data-id="calculo3-final-12" data-tema="area-de-superficie">
+  <div class="q-topo">
+    <span class="q-id">Questão 12</span>
+    <span class="q-tag">Final</span>
+    <span class="q-tag">Área de superfície</span>
+    <span class="q-tag">Estilo de prova</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Calcule a área da parte do paraboloide \(z = x^2 + y^2\) que está abaixo do plano \(z = 4\).</p>
+    <figure class="figura">
+      <svg viewBox="0 0 220 200" role="img" aria-label="Paraboloide abaixo de z=4">
+        <ellipse cx="110" cy="55" rx="70" ry="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+        <path d="M40 55 Q110 205 180 55" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+        <text x="118" y="46" fill="var(--ink-2)" font-size="11">z=4</text>
+        <text x="122" y="150" fill="var(--ink-2)" font-size="11">z=x²+y²</text>
+      </svg>
+      <figcaption>Taça do paraboloide até a altura \(z=4\) (raio \(r=2\)).</figcaption>
+    </figure>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle A = \frac{\pi}{6}\left(17\sqrt{17} - 1\right)\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Área de \(z = f(x,y)\): \(\displaystyle A = \iint_D \sqrt{1 + f_x^2 + f_y^2}\,dA\). Com \(f = x^2+y^2\): \(f_x = 2x\), \(f_y = 2y\), então o integrando é \(\sqrt{1 + 4x^2 + 4y^2}\).</p>
+      <p><strong>Passo 2 —</strong> A região \(D\) é a projeção: \(z\le 4 \Rightarrow x^2 + y^2 \le 4\), disco de raio \(2\). Em polares (\(0\le r\le 2\), \(0\le\theta\le 2\pi\)): \(\sqrt{1 + 4r^2}\).</p>
+      <p><strong>Passo 3 —</strong> Monte a integral:</p>
+      $$A = \int_0^{2\pi}\!\!\int_0^{2}\sqrt{1+4r^2}\,r\,dr\,d\theta = 2\pi\int_0^{2} r\sqrt{1+4r^2}\,dr$$
+      <p><strong>Passo 4 —</strong> Substituição \(u = 1 + 4r^2\), \(r\,dr = \tfrac{du}{8}\); \(r:0\to 2\) dá \(u:1\to 17\):</p>
+      $$A = 2\pi\cdot\frac18\int_1^{17}\sqrt{u}\,du = \frac{\pi}{4}\cdot\frac23\,u^{3/2}\Big|_1^{17} = \frac{\pi}{6}\left(17\sqrt{17} - 1\right)$$
+    </div>
+  </details>
+</article>

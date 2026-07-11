@@ -1,0 +1,35 @@
+<article class="questao" data-id="calculo3-1ee-16" data-tema="area-de-superficie">
+  <div class="q-topo">
+    <span class="q-id">Questão 16</span>
+    <span class="q-tag">1º EE · 2023.1</span>
+    <span class="q-tag">Área de superfície</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Calcule a área da parte do paraboloide hiperbólico \(z = y^2 - x^2\) que está entre os cilindros \(x^2 + y^2 = 1\) e \(x^2 + y^2 = 4\).</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle A = \frac{\pi}{6}\left(17\sqrt{17} - 5\sqrt{5}\right)\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> A área de \(z = f(x,y)\) sobre \(D\) é \(\displaystyle A = \iint_D \sqrt{1 + f_x^2 + f_y^2}\,dA\). Com \(f = y^2 - x^2\): \(f_x = -2x\), \(f_y = 2y\), então</p>
+      $$\sqrt{1 + 4x^2 + 4y^2}$$
+      <p><strong>Passo 2 —</strong> A região \(D\) entre os cilindros é o anel \(1 \le x^2 + y^2 \le 4\). Em polares (\(x^2+y^2 = r^2\), \(dA = r\,dr\,d\theta\)):</p>
+      $$1 \le r \le 2,\qquad 0 \le \theta \le 2\pi,\qquad \sqrt{1 + 4r^2}$$
+      <p><strong>Passo 3 —</strong> Monte a integral:</p>
+      $$A = \int_0^{2\pi}\!\!\int_1^{2} \sqrt{1 + 4r^2}\,r\,dr\,d\theta = 2\pi\int_1^{2} r\sqrt{1+4r^2}\,dr$$
+      <p><strong>Passo 4 —</strong> Substituição \(u = 1 + 4r^2\), \(du = 8r\,dr \Rightarrow r\,dr = \tfrac{du}{8}\). Para \(r:1\to 2\), \(u:5\to 17\):</p>
+      $$A = 2\pi\cdot\frac18\int_5^{17}\sqrt{u}\,du = \frac{\pi}{4}\cdot\frac23\,u^{3/2}\Big|_5^{17} = \frac{\pi}{6}\left(17^{3/2} - 5^{3/2}\right)$$
+      <p><strong>Passo 5 —</strong> Como \(17^{3/2} = 17\sqrt{17}\) e \(5^{3/2} = 5\sqrt{5}\):</p>
+      $$A = \frac{\pi}{6}\left(17\sqrt{17} - 5\sqrt{5}\right)$$
+    </div>
+  </details>
+</article>

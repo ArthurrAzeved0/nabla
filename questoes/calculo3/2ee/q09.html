@@ -1,0 +1,35 @@
+<article class="questao" data-id="calculo3-2ee-09" data-tema="teorema-de-green">
+  <div class="q-topo">
+    <span class="q-id">Questão 09</span>
+    <span class="q-tag">2º EE · 2022.2</span>
+    <span class="q-tag">Teorema de Green</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Use o Teorema de Green para calcular a integral de linha</p>
+    $$\oint_C \left(3y - e^{\sin x}\right)dx + \left(7x + \sqrt{y^4+1}\right)dy$$
+    <p>onde \(C\) é a circunferência \(x^2 + y^2 = 4\), orientada no sentido anti-horário.</p>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle\oint_C \vec F\cdot d\vec r = 16\pi\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> O Teorema de Green troca a integral de linha por uma integral dupla sobre a região \(D\) cercada por \(C\):</p>
+      $$\oint_C P\,dx + Q\,dy = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dA$$
+      <p>Aqui \(P = 3y - e^{\sin x}\) e \(Q = 7x + \sqrt{y^4+1}\).</p>
+      <p><strong>Passo 2 —</strong> Repare que as parcelas feias \(e^{\sin x}\) e \(\sqrt{y^4+1}\) somem nas derivadas certas:</p>
+      $$\frac{\partial Q}{\partial x} = 7,\qquad \frac{\partial P}{\partial y} = 3 \quad\Rightarrow\quad \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 7 - 3 = 4$$
+      <p><strong>Passo 3 —</strong> A integral dupla vira uma constante vezes a área do disco \(D\) de raio \(2\):</p>
+      $$\iint_D 4\,dA = 4\cdot\text{área}(D) = 4\cdot\pi(2)^2 = 4\cdot 4\pi = 16\pi$$
+      <p>Moral: quando o rotacional escalar \(Q_x - P_y\) é constante, a integral de linha é só essa constante vezes a área cercada.</p>
+    </div>
+  </details>
+</article>

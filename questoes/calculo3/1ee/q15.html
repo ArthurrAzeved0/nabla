@@ -1,0 +1,39 @@
+<article class="questao" data-id="calculo3-1ee-15" data-tema="multiplicadores-lagrange">
+  <div class="q-topo">
+    <span class="q-id">Questão 15</span>
+    <span class="q-tag">1º EE</span>
+    <span class="q-tag">Multiplicadores de Lagrange</span>
+    <span class="q-tag">Estilo de prova</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Usando multiplicadores de Lagrange, encontre os valores máximo e mínimo de \(f(x,y,z) = xyz\) sujeitos à restrição</p>
+    $$x^2 + 2y^2 + 3z^2 = 6$$
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(f_{\max} = \dfrac{2\sqrt{3}}{3}\) e \(f_{\min} = -\dfrac{2\sqrt{3}}{3}\).</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Com \(g = x^2 + 2y^2 + 3z^2 - 6\), o sistema \(\nabla f = \lambda\nabla g\) dá</p>
+      $$yz = 2\lambda x,\qquad xz = 4\lambda y,\qquad xy = 6\lambda z$$
+      <p><strong>Passo 2 —</strong> Multiplique cada equação por \(x, y, z\) respectivamente. Todas ficam iguais a \(xyz\):</p>
+      $$xyz = 2\lambda x^2 = 4\lambda y^2 = 6\lambda z^2$$
+      <p><strong>Passo 3 —</strong> Para um extremo com \(\lambda \ne 0\), cancele \(\lambda\): \(\;2x^2 = 4y^2 = 6z^2\). Daí</p>
+      $$x^2 = 2y^2,\qquad z^2 = \frac{2y^2}{3}$$
+      <p><strong>Passo 4 —</strong> Leve à restrição:</p>
+      $$x^2 + 2y^2 + 3z^2 = 2y^2 + 2y^2 + 3\cdot\frac{2y^2}{3} = 6y^2 = 6 \;\Rightarrow\; y^2 = 1$$
+      <p>Logo \(y^2 = 1\), \(x^2 = 2\), \(z^2 = \tfrac23\).</p>
+      <p><strong>Passo 5 —</strong> O valor de \(|f| = |xyz|\) é o mesmo em todos esses pontos:</p>
+      $$|f| = \sqrt{2}\cdot 1\cdot\sqrt{\tfrac23} = \sqrt{2}\cdot\frac{\sqrt{2}}{\sqrt{3}} = \frac{2}{\sqrt{3}} = \frac{2\sqrt{3}}{3}$$
+      <p>Escolhendo os sinais adequados, \(f_{\max} = \dfrac{2\sqrt{3}}{3}\) e \(f_{\min} = -\dfrac{2\sqrt{3}}{3}\).</p>
+    </div>
+  </details>
+</article>

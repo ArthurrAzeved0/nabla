@@ -1,0 +1,43 @@
+<article class="questao" data-id="calculo3-1ee-14" data-tema="integrais-duplas-polares">
+  <div class="q-topo">
+    <span class="q-id">Questão 14</span>
+    <span class="q-tag">1º EE · 2023.1</span>
+    <span class="q-tag">Integral dupla · polares</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Calcule, convertendo para coordenadas polares, a integral</p>
+    $$\int_{-2}^{2}\int_{0}^{\sqrt{4-x^2}} \left(x^2 + y^2\right)\,dy\,dx$$
+    <figure class="figura">
+      <svg viewBox="0 0 220 200" role="img" aria-label="Semidisco superior de raio 2">
+        <line x1="20" y1="150" x2="200" y2="150" stroke="var(--ink-3)" stroke-width="1"/>
+        <line x1="110" y1="170" x2="110" y2="30" stroke="var(--ink-3)" stroke-width="1"/>
+        <path d="M40 150 A70 70 0 0 1 180 150 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+        <text x="182" y="164" fill="var(--ink-2)" font-size="11">2</text>
+        <text x="30" y="164" fill="var(--ink-2)" font-size="11">-2</text>
+      </svg>
+      <figcaption>Região: semidisco superior \(x^2+y^2\le 4,\ y\ge 0\).</figcaption>
+    </figure>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(\displaystyle\int_{-2}^{2}\int_{0}^{\sqrt{4-x^2}}(x^2+y^2)\,dy\,dx = 4\pi\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Identifique a região. O limite superior \(y = \sqrt{4 - x^2}\) é a semicircunferência de cima (\(y\ge 0\)) de raio \(2\), com \(x\) indo de \(-2\) a \(2\). É o <strong>semidisco superior</strong>.</p>
+      <p><strong>Passo 2 —</strong> Em polares: \(x^2 + y^2 = r^2\) e \(dA = r\,dr\,d\theta\). O semidisco superior é</p>
+      $$0 \le r \le 2,\qquad 0 \le \theta \le \pi$$
+      <p><strong>Passo 3 —</strong> Reescreva o integrando \((x^2+y^2) = r^2\) e monte a integral:</p>
+      $$\int_0^{\pi}\!\!\int_0^{2} r^2\cdot r\,dr\,d\theta = \int_0^{\pi}\!\!\int_0^{2} r^3\,dr\,d\theta$$
+      <p><strong>Passo 4 —</strong> Resolva:</p>
+      $$\int_0^{2} r^3\,dr = \left[\frac{r^4}{4}\right]_0^2 = 4,\qquad \int_0^{\pi} 4\,d\theta = 4\pi$$
+    </div>
+  </details>
+</article>

@@ -1,0 +1,45 @@
+<article class="questao" data-id="calculo3-2ee-17" data-tema="integrais-triplas-cilindricas">
+  <div class="q-topo">
+    <span class="q-id">Questão 17</span>
+    <span class="q-tag">2º EE · 2022.2</span>
+    <span class="q-tag">Integral tripla · cilíndricas</span>
+    <span class="q-tag">2,0 pts</span>
+  </div>
+
+  <div class="q-enunciado">
+    <p>Um cano é uma casca cilíndrica de comprimento \(L = 20\text{ cm}\), raio interno \(r_{\text{int}} = 6\text{ cm}\) e raio externo \(r_{\text{ext}} = 7\text{ cm}\). Usando integral tripla em coordenadas cilíndricas, calcule o volume do material do cano.</p>
+    <figure class="figura">
+      <svg viewBox="0 0 220 200" role="img" aria-label="Seção da casca cilíndrica">
+        <circle cx="110" cy="100" r="70" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+        <circle cx="110" cy="100" r="52" fill="var(--card-2)" stroke="var(--accent)" stroke-width="1.6"/>
+        <line x1="110" y1="100" x2="180" y2="100" stroke="var(--ink-2)" stroke-width="1"/>
+        <line x1="110" y1="100" x2="110" y2="48" stroke="var(--ink-2)" stroke-width="1"/>
+        <text x="140" y="94" fill="var(--ink-2)" font-size="11">7</text>
+        <text x="94" y="78" fill="var(--ink-2)" font-size="11">6</text>
+      </svg>
+      <figcaption>Seção transversal: anel entre \(r=6\) e \(r=7\).</figcaption>
+    </figure>
+  </div>
+
+  <details class="q-gabarito">
+    <summary>Gabarito</summary>
+    <div>
+      <p><span class="q-resposta-final">\(V = 260\pi\ \text{cm}^3 \approx 816{,}8\ \text{cm}^3\)</span></p>
+    </div>
+  </details>
+
+  <details class="q-passos">
+    <summary>Passo a passo</summary>
+    <div>
+      <p><strong>Passo 1 —</strong> Em coordenadas cilíndricas o elemento de volume é \(dV = r\,dr\,d\theta\,dz\). O material do cano ocupa</p>
+      $$6\le r\le 7,\qquad 0\le\theta\le 2\pi,\qquad 0\le z\le 20$$
+      <p><strong>Passo 2 —</strong> Monte a integral tripla. Como os limites são constantes, ela separa em produto:</p>
+      $$V = \int_0^{2\pi}\!\!\int_0^{20}\!\!\int_6^7 r\,dr\,dz\,d\theta = \int_0^{2\pi} d\theta \int_0^{20} dz \int_6^7 r\,dr$$
+      <p><strong>Passo 3 —</strong> Resolva cada fator:</p>
+      $$\int_0^{2\pi} d\theta = 2\pi,\qquad \int_0^{20} dz = 20,\qquad \int_6^7 r\,dr = \left[\frac{r^2}{2}\right]_6^7 = \frac{49-36}{2} = \frac{13}{2}$$
+      <p><strong>Passo 4 —</strong> Multiplique:</p>
+      $$V = 2\pi\cdot 20\cdot\frac{13}{2} = 260\pi\ \text{cm}^3$$
+      <p>Confere com a fórmula direta da casca: \(V = \pi(r_{\text{ext}}^2 - r_{\text{int}}^2)L = \pi(49-36)\cdot 20 = 260\pi\).</p>
+    </div>
+  </details>
+</article>
