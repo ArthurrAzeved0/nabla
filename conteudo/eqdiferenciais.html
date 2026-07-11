@@ -8,29 +8,29 @@
 <nav class="sumario" aria-label="Sumário do conteúdo">
   <h2>1ª Unidade</h2>
   <ol>
-    <li><a href="#ed-1">Classificação e conceitos básicos</a></li>
-    <li><a href="#ed-2">Equações separáveis</a></li>
-    <li><a href="#ed-3">Lineares de 1ª ordem (fator integrante)</a></li>
-    <li><a href="#ed-4">Equações exatas</a></li>
-    <li><a href="#ed-5">Equação de Bernoulli</a></li>
-    <li><a href="#ed-6">Aplicações de 1ª ordem</a></li>
-    <li><a href="#ed-7">2ª ordem homogênea e equação característica</a></li>
-    <li><a href="#ed-8">Wronskiano, Abel e redução de ordem</a></li>
-    <li><a href="#ed-9">Coeficientes indeterminados</a></li>
-    <li><a href="#ed-10">Variação de parâmetros</a></li>
-    <li><a href="#ed-11">Aplicações: oscilador amortecido e circuito RLC</a></li>
-    <li><a href="#ed-12">Ordem superior e Cauchy-Euler</a></li>
+    <li><a href="#ed-classificacao">Classificação e conceitos básicos</a></li>
+    <li><a href="#ed-separaveis">Equações separáveis</a></li>
+    <li><a href="#ed-lineares">Lineares de 1ª ordem (fator integrante)</a></li>
+    <li><a href="#ed-exatas">Equações exatas</a></li>
+    <li><a href="#ed-bernoulli">Equação de Bernoulli</a></li>
+    <li><a href="#ed-aplicacoes1">Aplicações de 1ª ordem</a></li>
+    <li><a href="#ed-homogenea">2ª ordem homogênea e equação característica</a></li>
+    <li><a href="#ed-wronskiano">Wronskiano, Abel e redução de ordem</a></li>
+    <li><a href="#ed-coef-indeterminados">Coeficientes indeterminados</a></li>
+    <li><a href="#ed-variacao-parametros">Variação de parâmetros</a></li>
+    <li><a href="#ed-aplicacoes2">Aplicações: oscilador amortecido e circuito RLC</a></li>
+    <li><a href="#ed-cauchy-euler">Ordem superior e Cauchy-Euler</a></li>
   </ol>
   <h2>2ª Unidade</h2>
   <ol start="13">
-    <li><a href="#ed-13">Sistemas de EDOs lineares (autovalores)</a></li>
-    <li><a href="#ed-14">Sistemas: casos complexo, repetido e não homogêneo</a></li>
-    <li><a href="#ed-15">Séries de potências (pontos ordinários)</a></li>
-    <li><a href="#ed-16">Pontos singulares e método de Frobenius</a></li>
+    <li><a href="#ed-sistemas">Sistemas de EDOs lineares (autovalores)</a></li>
+    <li><a href="#ed-sistemas-casos">Sistemas: casos complexo, repetido e não homogêneo</a></li>
+    <li><a href="#ed-series">Séries de potências (pontos ordinários)</a></li>
+    <li><a href="#ed-frobenius">Pontos singulares e método de Frobenius</a></li>
   </ol>
 </nav>
 
-<section class="topico" id="ed-1">
+<section class="topico" id="ed-classificacao">
   <h2>1. Classificação e conceitos básicos</h2>
 
   <h3>A ideia</h3>
@@ -63,7 +63,7 @@
   <div class="macete dica"><p>Em prova, o intervalo de validade da solução de um PVI linear é o maior intervalo contendo \(x_0\) onde \(P\) e \(Q\) são contínuas. No PVI \(\tfrac1x y' - \tfrac{2y}{x^2} = x\cos x\), \(y(\pi)=\pi^3\) (1º EE 2025.1), o intervalo é \((0,\infty)\), pois há divisão por \(x\).</p></div>
 </section>
 
-<section class="topico" id="ed-2">
+<section class="topico" id="ed-separaveis">
   <h2>2. Equações separáveis</h2>
 
   <h3>A ideia</h3>
@@ -91,7 +91,7 @@
   <div class="macete dica"><p>Nas provas de C4 da POLI, a 1ª questão do 1º EE quase sempre é uma aplicação separável: crescimento de bactérias (achar \(k\) com dois dados e projetar), população (2024.1) ou arrefecimento de Newton (2023.2). Treine a manipulação de logaritmos: \(e^{kt_1} = a \Rightarrow k = \tfrac{\ln a}{t_1}\).</p></div>
 </section>
 
-<section class="topico" id="ed-3">
+<section class="topico" id="ed-lineares">
   <h2>3. Lineares de 1ª ordem — fator integrante</h2>
 
   <h3>A ideia</h3>
@@ -123,7 +123,7 @@
   <div class="macete dica"><p>Se a equação vier "disfarçada", como \(\tfrac1x y' - \tfrac{2}{x^2}y = x\cos x\) (1º EE 2025.1), multiplique tudo por \(x\) primeiro para chegar à forma padrão \(y' - \tfrac{2}{x}y = x^2\cos x\), que dá \(\mu = x^{-2}\) e \((x^{-2}y)' = \cos x\). Elegante e rápido.</p></div>
 </section>
 
-<section class="topico" id="ed-4">
+<section class="topico" id="ed-exatas">
   <h2>4. Equações exatas</h2>
 
   <h3>A ideia</h3>
@@ -153,7 +153,7 @@
   <div class="macete dica"><p>Na Prova Final 2025.1 caiu \(xy\,dx + (2x^2 + 3y^2 - 20)\,dy = 0\), que só fica exata com \(\mu = y^3\) (o quociente \(\tfrac{N_x - M_y}{M} = \tfrac 3y\) depende só de \(y\)). Resultado: \(\tfrac{x^2y^4}{2} + \tfrac{y^6}{2} - 5y^4 = C\).</p></div>
 </section>
 
-<section class="topico" id="ed-5">
+<section class="topico" id="ed-bernoulli">
   <h2>5. Equação de Bernoulli</h2>
 
   <h3>A ideia</h3>
@@ -178,7 +178,7 @@
   <div class="macete dica"><p>No 1º EE 2025.1 a Bernoulli veio "de trás para frente": \(y - y' = 3y^3e^{-2x}\). Reescreva como \(y' - y = -3e^{-2x}y^3\) antes de identificar \(P\), \(Q\) e \(n=3\).</p></div>
 </section>
 
-<section class="topico" id="ed-6">
+<section class="topico" id="ed-aplicacoes1">
   <h2>6. Aplicações de 1ª ordem</h2>
 
   <h3>A ideia</h3>
@@ -262,7 +262,7 @@
   <div class="macete dica"><p>1º EE 2023.2: corpo a 100° num ambiente a 30°, cai para 80° em 20 min — quanto tempo até 50°? Resposta: \(t = 20\,\dfrac{\ln(7/2)}{\ln(7/5)} \approx 52\) min. 1º EE 2024.1: população dobra em 5 anos e vale 150.000 em \(t\) dado — pedem \(P_0\) (dá \(150000/9 \approx 16.667\)). O padrão é sempre o mesmo!</p></div>
 </section>
 
-<section class="topico" id="ed-7">
+<section class="topico" id="ed-homogenea">
   <h2>7. 2ª ordem homogênea — equação característica</h2>
 
   <h3>A ideia</h3>
@@ -304,7 +304,7 @@
   <div class="macete dica"><p>A Q2 do 1º EE 2024.1 pede a solução geral de QUATRO equações de uma vez — uma de cada caso, mais uma Cauchy-Euler. Treine reconhecer o caso em segundos: \(y'' - 10y' + 25y = 0 \Rightarrow (\lambda-5)^2 \Rightarrow y = (C_1 + C_2x)e^{5x}\).</p></div>
 </section>
 
-<section class="topico" id="ed-8">
+<section class="topico" id="ed-wronskiano">
   <h2>8. Wronskiano, fórmula de Abel e redução de ordem</h2>
 
   <h3>A ideia</h3>
@@ -338,7 +338,7 @@
   <div class="macete dica"><p>Dois clássicos: 1º EE 2025.1 — \((x-1)y'' - xy' + y = 0\) com \(y_1 = e^x\) (redução de ordem dá \(y_2 = x\)); e 1º EE com gabarito — \(y'' + (\cos x)y' + \dots = 0\), Abel dá \(W = Ce^{-\operatorname{sen} x}\). Também já pediram \(\lim_{x\to\infty} W(x)\): é só analisar a exponencial.</p></div>
 </section>
 
-<section class="topico" id="ed-9">
+<section class="topico" id="ed-coef-indeterminados">
   <h2>9. Não homogêneas — coeficientes indeterminados</h2>
 
   <h3>A ideia</h3>
@@ -368,7 +368,7 @@
   <div class="macete dica"><p>Prova real: \(y'' - 3y' + 2y = e^{3x}(1+x)\) — como \(3\) não é raiz de \(\lambda^2-3\lambda+2\), o chute \(e^{3x}(Ax+B)\) funciona direto. Já em \(y'' - 10y' + 25y = 3e^{2t}\) (2024.1), \(2\) não é raiz dupla \(5\), então \(y_p = \tfrac{3}{9}e^{2t} = \tfrac13 e^{2t}\).</p></div>
 </section>
 
-<section class="topico" id="ed-10">
+<section class="topico" id="ed-variacao-parametros">
   <h2>10. Variação de parâmetros</h2>
 
   <h3>A ideia</h3>
@@ -394,7 +394,7 @@
   <div class="macete dica"><p>Questão típica da POLI: \((1-x)y'' + xy' - y = ...\) com \(y_1 = e^x\) e \(y_2 = x\) DADOS (2º EE 2023.2 e outras). Eles dão o conjunto fundamental de propósito — a questão testa se você lembra de dividir por \((1-x)\) antes de identificar \(f\).</p></div>
 </section>
 
-<section class="topico" id="ed-11">
+<section class="topico" id="ed-aplicacoes2">
   <h2>11. Aplicações: oscilador amortecido e circuito RLC</h2>
 
   <h3>A ideia</h3>
@@ -443,7 +443,7 @@
   <div class="macete dica"><p>1º EE 2023.2: oscilador com \(b=10\) fixo, variando \(k/m\) para cair nos 3 casos — a questão quer que você classifique e escreva a solução de cada regime. 1º EE 2024.1: RLC com \(Q'' + 2Q' + Q = 10\operatorname{sen} t\), \(Q(0)=Q'(0)=0\), resposta \(Q = 5(e^{-t} + te^{-t} - \cos t)\) — note a raiz dupla \(\lambda = -1\).</p></div>
 </section>
 
-<section class="topico" id="ed-12">
+<section class="topico" id="ed-cauchy-euler">
   <h2>12. Ordem superior e equação de Cauchy-Euler</h2>
 
   <h3>A ideia</h3>
@@ -468,7 +468,7 @@
   <div class="macete dica"><p>No 2º EE 2025.2 caiu a versão com parâmetro: \(x^2y'' + xy' - p^2y = 0\) \(\Rightarrow m^2 = p^2 \Rightarrow y = C_1x^{-p} + C_2x^{p}\). A Cauchy-Euler também aparece escondida no meio da Q2 do 1º EE 2024.1.</p></div>
 </section>
 
-<section class="topico" id="ed-13">
+<section class="topico" id="ed-sistemas">
   <h2>13. Sistemas de EDOs lineares — método dos autovalores</h2>
 
   <h3>A ideia</h3>
@@ -578,7 +578,7 @@
   <div class="macete dica"><p>Na revisão do 2º EE do prof. César: sistema com \(\lambda = -3, -4\) e \(\mathbf{K}_1 = (1,1)\), \(\mathbf{K}_2 = (1,2)\); e a questão de órbitas periódicas com parâmetro \(a\), onde \(\operatorname{tr} A = -5 \ne 0\) para todo \(a\) — logo, nunca há órbitas periódicas. No 2º EE 2025.1 caiu um \(3\times3\) com \(\lambda = 0, 1, 2\).</p></div>
 </section>
 
-<section class="topico" id="ed-14">
+<section class="topico" id="ed-sistemas-casos">
   <h2>14. Sistemas: autovalores complexos, repetidos e sistemas não homogêneos</h2>
 
   <h3>A ideia</h3>
@@ -619,7 +619,7 @@
   <div class="macete dica"><p>Da revisão do César: complexos \(\lambda = -2 \pm 3i\); repetido \(\lambda = 3\) com \(\mathbf{P} = (0,1)\); não homogêneo com \(\mathbf{X}_p = \mathbf{a}t+\mathbf{b}\) dando \(\mathbf{a} = (0,-\tfrac13)\), \(\mathbf{b} = (\tfrac13, -\tfrac49)\); e o PVI resolvido com matriz fundamental. No 2º EE 2025.2, o sistema \(2\times2\) tinha \(\lambda = 5 \pm 3i\). Ou seja: os TRÊS casos caem.</p></div>
 </section>
 
-<section class="topico" id="ed-15">
+<section class="topico" id="ed-series">
   <h2>15. Séries de potências — pontos ordinários</h2>
 
   <h3>A ideia</h3>
@@ -646,7 +646,7 @@
   <div class="macete dica"><p>Dois padrões recorrentes na POLI: \(y' + xy = \alpha + \beta x\) (recorrência de 1ª ordem, caiu no 2º EE 2025.1 e na revisão do César, com resposta \(y = \beta + \alpha(x - \tfrac{x^3}{3} + \tfrac{x^5}{15} - \dots)\)) e séries centradas em \(x_0 = 1\) (aí escreva TUDO em potências de \((x-1)\), inclusive o coeficiente: \(x = 1 + (x-1)\)).</p></div>
 </section>
 
-<section class="topico" id="ed-16">
+<section class="topico" id="ed-frobenius">
   <h2>16. Pontos singulares e método de Frobenius</h2>
 
   <h3>A ideia</h3>
