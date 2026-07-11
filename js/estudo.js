@@ -87,6 +87,25 @@
       if (q.querySelector(".q-ferramentas") || !q.dataset.id) return;
       var id = q.dataset.id;
 
+      /* rótulo "Questão N" vira link: copia o endereço direto da questão */
+      var idLabel = q.querySelector(".q-id");
+      if (idLabel && !idLabel.classList.contains("q-id-link")) {
+        idLabel.classList.add("q-id-link");
+        idLabel.setAttribute("role", "button");
+        idLabel.tabIndex = 0;
+        idLabel.title = "Copiar o link direto desta questão";
+        var copiarLink = function () {
+          try { history.replaceState(null, "", "#" + id); } catch (e) { window.location.hash = id; }
+          q.classList.add("destaque-questao");
+          setTimeout(function () { q.classList.remove("destaque-questao"); }, 2200);
+          if (navigator.clipboard) navigator.clipboard.writeText(window.location.href).catch(function () {});
+        };
+        idLabel.addEventListener("click", copiarLink);
+        idLabel.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copiarLink(); }
+        });
+      }
+
       var bar = document.createElement("div");
       bar.className = "q-ferramentas";
       bar.innerHTML =
@@ -153,6 +172,7 @@
           salvarDados();
           aplicarVisual(q);
           atualizarEstatisticas();
+          atualizarContadoresStatus();
           if (!simulado) aplicarFiltroStatus();
           if (simulado && simulado.corrigindo) atualizarNota();
         });
@@ -207,6 +227,40 @@
     });
   }
 
+  /* Contador ao lado de cada chip. Cria (ou reaproveita) um <span class="chip-num">. */
+  function definirContador(chip, n) {
+    var span = chip.querySelector(".chip-num");
+    if (!span) {
+      span = document.createElement("span");
+      span.className = "chip-num";
+      chip.appendChild(span);
+    }
+    span.textContent = n;
+  }
+
+  /* Chips de prova (1º EE / 2º EE / Final): total de questões pelo manifesto. */
+  function atualizarContadoresProvas() {
+    var man = (window.QUESTOES_MANIFEST || {})[cursoAtual] || {};
+    document.querySelectorAll(".chip[data-prova]").forEach(function (chip) {
+      definirContador(chip, (man[chip.dataset.prova] || []).length);
+    });
+  }
+
+  /* Chips de status: contagem por status entre as questões da prova atual. */
+  function atualizarContadoresStatus() {
+    if (!lista) return;
+    var c = { todas: 0, a: 0, e: 0, r: 0, nao: 0 };
+    lista.querySelectorAll(".questao").forEach(function (q) {
+      if (!q.dataset.id) return;
+      c.todas++;
+      var s = dados[q.dataset.id] && dados[q.dataset.id].s;
+      if (s === "a") c.a++; else if (s === "e") c.e++; else if (s === "r") c.r++; else c.nao++;
+    });
+    document.querySelectorAll(".chip-status").forEach(function (chip) {
+      definirContador(chip, c[chip.dataset.status]);
+    });
+  }
+
   /* ======================================================================
      3. Estatísticas de progresso
      ====================================================================== */
@@ -250,6 +304,7 @@
       });
       salvarDados();
       atualizarEstatisticas();
+      atualizarContadoresStatus();
       if (lista) lista.querySelectorAll(".questao").forEach(aplicarVisual);
       aplicarFiltroStatus();
     });
@@ -405,6 +460,8 @@
       }
       equiparQuestoes();
       atualizarEstatisticas();
+      atualizarContadoresProvas();
+      atualizarContadoresStatus();
       aplicarFiltroStatus();
     }
   };

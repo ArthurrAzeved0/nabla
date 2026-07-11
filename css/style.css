@@ -256,6 +256,17 @@ a:hover { text-decoration: underline; }
 .chip:hover { border-color: var(--ink-3); }
 .chip.ativo { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 
+/* Contador (badge) ao lado do texto dos chips de prova e de status */
+.chip[data-prova], .chip-status { display: inline-flex; align-items: center; gap: 7px; }
+.chip-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px; padding: 0 5px;
+  border-radius: 999px; font-size: 11px; font-weight: 700; line-height: 1;
+  background: var(--line-2); color: var(--ink-3);
+}
+.chip.ativo .chip-num,
+.chip-status.ativo .chip-num { background: var(--accent); color: #fff; }
+
 .aviso-carregando, .aviso-vazio { color: var(--ink-3); font-size: 14.5px; padding: 18px 4px; }
 
 /* Cartão de questão (fragmentos em questoes/) */
@@ -295,6 +306,48 @@ a:hover { text-decoration: underline; }
   0%, 30% { box-shadow: 0 0 0 3px var(--accent); background: var(--accent-soft); }
   100% { box-shadow: 0 0 0 0 transparent; background: transparent; }
 }
+
+/* Rótulo "Questão N" clicável (copia o link direto) e destaque ao abrir o link */
+.questao .q-id-link { cursor: pointer; }
+.questao .q-id-link:hover { text-decoration: underline; }
+.questao.destaque-questao { animation: destaque-teoria 2.2s ease-out; }
+
+/* Botão flutuante "voltar ao topo" */
+.voltar-topo {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-2);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .18);
+  transition: opacity .2s ease, transform .2s ease, background .2s ease, color .2s ease;
+  z-index: 50;
+}
+.voltar-topo:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+.voltar-topo.oculto { opacity: 0; pointer-events: none; transform: translateY(8px); }
+
+/* Botão "Praticar este assunto" no fim das seções da teoria */
+.topico .praticar-assunto {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 18px;
+  padding: 8px 15px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font: 600 13.5px/1 var(--sans);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.topico .praticar-assunto:hover { background: var(--accent); color: #fff; }
 
 .questao .q-enunciado { color: var(--ink-2); }
 .questao .q-enunciado p { margin: 8px 0; }

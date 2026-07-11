@@ -49,6 +49,19 @@
   var ano = document.getElementById("ano");
   if (ano) ano.textContent = new Date().getFullYear();
 
+  /* ---------- botão "voltar ao topo" ---------- */
+  var btnTopo = document.getElementById("voltar-topo");
+  if (btnTopo) {
+    var atualizarBtnTopo = function () {
+      btnTopo.classList.toggle("oculto", window.pageYOffset < 400);
+    };
+    window.addEventListener("scroll", atualizarBtnTopo, { passive: true });
+    btnTopo.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    atualizarBtnTopo();
+  }
+
   /* ---------- identifica a cadeira ---------- */
 
   var id = parametroCurso();
@@ -101,6 +114,78 @@
     }, 80);
   }
 
+  /* Deep-link para uma questão: hash no formato <curso>-<prova>-<num>
+     (ex.: #calculo3-final-05). Permite compartilhar uma questão específica. */
+  var PROVAS = ["1ee", "2ee", "final"];
+  var questaoPendente = null; // id de questão a focar após carregar a prova
+  var temaPendente = null;    // temas a focar (link "Praticar este assunto")
+
+  function questaoDoHash() {
+    var h = (window.location.hash || "").slice(1);
+    if (!h) return null;
+    var partes = h.split("-");
+    if (partes.length < 3 || partes[0] !== curso.id || PROVAS.indexOf(partes[1]) < 0) return null;
+    return { prova: partes[1], id: h };
+  }
+
+  function focarQuestao(id) {
+    var alvo = listaQuestoes.querySelector('.questao[data-id="' + id + '"]');
+    if (!alvo) return;
+    ativarAba("painel-questoes");
+    window.setTimeout(function () {
+      alvo.scrollIntoView({ behavior: "smooth", block: "start" });
+      alvo.classList.add("destaque-questao");
+      window.setTimeout(function () { alvo.classList.remove("destaque-questao"); }, 2200);
+    }, 80);
+  }
+
+  /* Foca a 1ª questão da prova atual cujo data-tema esteja na lista `temas`.
+     Se nenhuma questão dessa prova casar, guarda os temas em temaPendente para
+     tentar de novo quando o usuário trocar de prova. */
+  function focarTema(temas) {
+    ativarAba("painel-questoes");
+    var alvo = null;
+    var qs = listaQuestoes.querySelectorAll(".questao");
+    for (var i = 0; i < qs.length; i++) {
+      if (temas.indexOf(qs[i].dataset.tema) >= 0) { alvo = qs[i]; break; }
+    }
+    if (!alvo) { temaPendente = temas; return; }
+    temaPendente = null;
+    window.setTimeout(function () {
+      alvo.scrollIntoView({ behavior: "smooth", block: "start" });
+      alvo.classList.add("destaque-questao");
+      window.setTimeout(function () { alvo.classList.remove("destaque-questao"); }, 2200);
+    }, 80);
+  }
+
+  /* Insere um botão "Praticar este assunto" no fim de cada seção da teoria que
+     tenha questões associadas (aparece como valor no mapa curso.teoria). */
+  function inserirBotoesPraticar() {
+    var mapa = curso.teoria;
+    if (!mapa) return;
+    var temasPorSecao = {};
+    Object.keys(mapa).forEach(function (tema) {
+      var sec = mapa[tema];
+      (temasPorSecao[sec] = temasPorSecao[sec] || []).push(tema);
+    });
+    Object.keys(temasPorSecao).forEach(function (secId) {
+      var secEl = document.getElementById(secId);
+      if (!secEl || secEl.querySelector(".praticar-assunto")) return;
+      var temas = temasPorSecao[secId];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "praticar-assunto";
+      btn.title = "Ir para as questões deste assunto";
+      btn.innerHTML =
+        '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">' +
+          '<path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>' +
+        '<span>Praticar este assunto</span>';
+      btn.addEventListener("click", function () { focarTema(temas); });
+      secEl.appendChild(btn);
+    });
+  }
+
   /* ---------- carrega a teoria ---------- */
 
   fetch(comVersao("conteudo/" + curso.id + ".html"))
@@ -110,6 +195,7 @@
     })
     .then(function (html) {
       painelConteudo.innerHTML = html;
+      inserirBotoesPraticar();
       renderizarMatematica(painelConteudo).then(irParaAncora);
     })
     .catch(function () {
@@ -164,10 +250,12 @@
       renderizarMatematica(listaQuestoes);
       /* ativa marcações, cronômetro, estatísticas e filtros (js/estudo.js) */
       if (window.ESTUDO) ESTUDO.aoRenderizar(curso.id, prova, listaQuestoes);
+      if (questaoPendente) { var q = questaoPendente; questaoPendente = null; focarQuestao(q); }
+      else if (temaPendente) { var t = temaPendente; temaPendente = null; focarTema(t); }
     });
   }
 
-  
+
   document.querySelectorAll(".chip[data-prova]").forEach(function (chip) {
     chip.addEventListener("click", function () {
       document.querySelectorAll(".chip[data-prova]").forEach(function (c) { c.classList.remove("ativo"); });
@@ -176,5 +264,15 @@
     });
   });
 
-  carregarQuestoes("1ee");
+  /* Se a URL apontar para uma questão, começa na prova certa (e na aba Questões). */
+  var alvoInicial = questaoDoHash();
+  var provaInicial = (alvoInicial && alvoInicial.prova) || "1ee";
+  if (alvoInicial) {
+    questaoPendente = alvoInicial.id;
+    ativarAba("painel-questoes");
+    document.querySelectorAll(".chip[data-prova]").forEach(function (c) {
+      c.classList.toggle("ativo", c.dataset.prova === provaInicial);
+    });
+  }
+  carregarQuestoes(provaInicial);
 })();

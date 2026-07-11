@@ -152,7 +152,15 @@ window.CURSOS = [
     nome: "Nome da Cadeira",
     codigo: "CÓDIGO · carga horária",
     descricao: "Resumo de uma ou duas linhas do que a cadeira cobre.",
-    icone: '<svg viewBox="0 0 32 32" width="34" height="34">...</svg>'
+    icone: '<svg viewBox="0 0 32 32" width="34" height="34">...</svg>',
+    // Liga cada tema das questões (data-tema) à seção da teoria.
+    // Chave = data-tema da questão; valor = id da <section class="topico">
+    // em conteudo/<id>.html. Vários temas podem apontar para a mesma seção.
+    // Alimenta os botões "Ver material" (questão) e "Praticar este assunto"
+    // (teoria). Sem este mapa, os botões não aparecem.
+    teoria: {
+      "tema-da-questao": "f4-tema1"
+    }
   }
   ------------------------------------------------------------------ */
 ];
