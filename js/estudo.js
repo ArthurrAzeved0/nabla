@@ -55,9 +55,35 @@
      1. Barra de ferramentas em cada questão (status + cronômetro)
      ====================================================================== */
 
+  /* Link "Ver material": aponta para a seção da teoria correspondente ao
+     data-tema da questão (mapa em window.CURSOS[].teoria). Abre em nova guia. */
+  function inserirLinkTeoria(q) {
+    var tema = q.dataset.tema;
+    if (!tema) return;
+    var curso = (window.CURSOS || []).find(function (c) { return c.id === cursoAtual; });
+    var secao = curso && curso.teoria && curso.teoria[tema];
+    if (!secao) return;
+    var topo = q.querySelector(".q-topo");
+    if (!topo || topo.querySelector(".q-link-teoria")) return;
+    var a = document.createElement("a");
+    a.className = "q-link-teoria";
+    a.href = "curso.html?curso=" + encodeURIComponent(cursoAtual) + "#" + secao;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.title = "Abrir a teoria deste assunto em uma nova guia";
+    a.innerHTML =
+      '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">' +
+        '<path d="M5 4h9l4 4v12H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>' +
+        '<path d="M13 4v5h5M8 13h7M8 16.5h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '</svg>' +
+      '<span>Ver material</span>';
+    topo.appendChild(a);
+  }
+
   function equiparQuestoes() {
     if (!lista) return;
     lista.querySelectorAll(".questao").forEach(function (q) {
+      inserirLinkTeoria(q);
       if (q.querySelector(".q-ferramentas") || !q.dataset.id) return;
       var id = q.dataset.id;
 

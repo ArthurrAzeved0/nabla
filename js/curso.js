@@ -41,8 +41,9 @@
 
   function renderizarMatematica(elemento) {
     if (window.MathJax && MathJax.typesetPromise) {
-      MathJax.typesetPromise([elemento]).catch(function () { /* silencioso */ });
+      return MathJax.typesetPromise([elemento]).catch(function () { /* silencioso */ });
     }
+    return Promise.resolve();
   }
 
   var ano = document.getElementById("ano");
@@ -70,14 +71,35 @@
 
   /* ---------- abas Conteúdo / Questões ---------- */
 
-  document.querySelectorAll(".aba").forEach(function (aba) {
-    aba.addEventListener("click", function () {
-      document.querySelectorAll(".aba").forEach(function (a) { a.classList.remove("ativa"); });
-      document.querySelectorAll(".painel").forEach(function (p) { p.classList.remove("ativo"); });
-      aba.classList.add("ativa");
-      document.getElementById(aba.dataset.painel).classList.add("ativo");
+  function ativarAba(painelId) {
+    document.querySelectorAll(".aba").forEach(function (a) {
+      a.classList.toggle("ativa", a.dataset.painel === painelId);
     });
+    document.querySelectorAll(".painel").forEach(function (p) {
+      p.classList.toggle("ativo", p.id === painelId);
+    });
+  }
+
+  document.querySelectorAll(".aba").forEach(function (aba) {
+    aba.addEventListener("click", function () { ativarAba(aba.dataset.painel); });
   });
+
+  /* Se a URL trouxer #âncora (link "Ver material" das questões), abre a aba
+     Conteúdo e rola até a seção da teoria, com um destaque rápido. Precisa
+     rodar só depois que a teoria foi injetada e o MathJax reajustou as alturas. */
+  function irParaAncora() {
+    var hash = window.location.hash;
+    if (!hash || hash.length < 2) return;
+    var alvo;
+    try { alvo = painelConteudo.querySelector(hash); } catch (e) { return; }
+    if (!alvo) return;
+    ativarAba("painel-conteudo");
+    window.setTimeout(function () {
+      alvo.scrollIntoView({ behavior: "smooth", block: "start" });
+      alvo.classList.add("destaque-teoria");
+      window.setTimeout(function () { alvo.classList.remove("destaque-teoria"); }, 2200);
+    }, 80);
+  }
 
   /* ---------- carrega a teoria ---------- */
 
@@ -88,7 +110,7 @@
     })
     .then(function (html) {
       painelConteudo.innerHTML = html;
-      renderizarMatematica(painelConteudo);
+      renderizarMatematica(painelConteudo).then(irParaAncora);
     })
     .catch(function () {
       painelConteudo.innerHTML =

@@ -14,7 +14,36 @@ window.CURSOS = [
     codigo: "MAT05 · 60h",
     descricao: "Funções de várias variáveis, limites, derivadas parciais, máximos e mínimos, integrais múltiplas, integrais de linha e de superfície, e os teoremas de Green, Gauss e Stokes.",
     // Ícone em SVG (desenhado à mão, sem bibliotecas externas):
-    icone: '<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><path d="M5 26c4-1 6-4 7-9s3-10 8-11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 6h7M20 6l6 8M26 6l-6 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M4 28h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+    icone: '<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><path d="M5 26c4-1 6-4 7-9s3-10 8-11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 6h7M20 6l6 8M26 6l-6 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M4 28h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    // Mapa tema (data-tema da questão) -> id da seção em conteudo/<id>.html.
+    // Usado pelo botão "Ver material" de cada questão (abre a teoria na âncora).
+    teoria: {
+      "funcoes-varias-variaveis": "c3-funcoes",
+      "limites": "c3-limites",
+      "derivadas-parciais": "c3-parciais",
+      "gradiente-derivada-direcional": "c3-gradiente",
+      "derivada-direcional": "c3-gradiente",
+      "plano-tangente": "c3-gradiente",
+      "plano-tangente-aproximacao-linear": "c3-gradiente",
+      "pontos-criticos": "c3-maxmin",
+      "maximos-e-minimos": "c3-maxmin",
+      "multiplicadores-lagrange": "c3-lagrange",
+      "integrais-multiplas": "c3-multiplas",
+      "integrais-duplas": "c3-multiplas",
+      "integrais-duplas-polares": "c3-multiplas",
+      "integrais-triplas-esfericas": "c3-multiplas",
+      "integrais-triplas-cilindricas": "c3-multiplas",
+      "integrais-de-linha": "c3-linha",
+      "campos-conservativos": "c3-linha",
+      "integrais-de-linha-green": "c3-green",
+      "teorema-de-green": "c3-green",
+      "plano-tangente-superficie-parametrizada": "c3-superficie",
+      "integral-de-superficie": "c3-superficie",
+      "area-de-superficie": "c3-superficie",
+      "fluxo-integral-de-superficie": "c3-superficie",
+      "teorema-da-divergencia": "c3-gauss",
+      "teorema-de-stokes": "c3-stokes"
+    }
   },
 
   {
