@@ -2,10 +2,13 @@
   MODELO DE BLOCO DE QUESTÃO — copie este arquivo, renomeie
   (ex.: q05.html), preencha e registre em questoes/manifest.js.
 
-  Atributos data-* do <article> (usados para manutenção e
-  futuros filtros por tema):
-    data-id     identificador único: <cadeira>-<prova>-<número>
-    data-tema   tema principal da questão (livre)
+  Atributos data-* do <article>:
+    data-id     identificador único: <cadeira>-<prova>-<número>.
+                Usado no link direto da questão (clicar em "Questão N"
+                copia o endereço) e nos contadores dos chips.
+    data-tema   tema principal (kebab-case). Para os botões "Ver material"
+                e "Praticar este assunto" funcionarem, deve ser uma CHAVE
+                do mapa `teoria` da cadeira em js/cursos.js.
   Fórmulas: LaTeX com \( ... \) na linha e $$ ... $$ em destaque.
 ============================================================= -->
 <article class="questao" data-id="cadeira-prova-00" data-tema="tema-da-questao">

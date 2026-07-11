@@ -19,19 +19,16 @@ Responde Ai - Poli/
 │   ├── curso.js            # Lógica da página de curso (abas, fetch de conteúdo e questões)
 │   └── estudo.js           # Ferramentas de estudo (marcação, estatísticas, cronômetro, simulado)
 ├── conteudo/
+│   ├── _modelo-conteudo.html # Modelo comentado para a teoria de um novo curso
 │   ├── calculo3.html       # Teoria completa de Cálculo 3 (fragmento HTML)
+│   ├── eqdiferenciais.html # Teoria completa de Cálculo 4 / Eq. Diferenciais
 │   └── eletromag.html      # Teoria completa de Eletromag (fragmento HTML)
 └── questoes/
     ├── manifest.js         # REGISTRO CENTRAL de questões (window.QUESTOES_MANIFEST)
     ├── _modelo-questao.html # Modelo comentado para criar novas questões
-    ├── calculo3/
-    │   ├── 1ee/q01.html … q10.html
-    │   ├── 2ee/q01.html … q06.html
-    │   └── final/q01.html … q06.html
-    └── eletromag/
-        ├── 1ee/q01.html … q12.html
-        ├── 2ee/q01.html … q12.html
-        └── final/q01.html … q12.html
+    ├── calculo3/           # 1ee/ 2ee/ final/, cada uma com qNN.html
+    ├── eqdiferenciais/     # (idem)
+    └── eletromag/          # (idem)
 ```
 
 ## Ferramentas de estudo (js/estudo.js)
@@ -49,9 +46,29 @@ Na aba **Questões** de cada curso existem ferramentas de apoio, todas salvas em
   registrado junto ao status.
 - **Modo simulado** — sorteia N questões, esconde gabaritos, roda um cronômetro
   de prova regressivo e ao encerrar mostra a nota (10 × acertos / total).
+- **Contadores nos chips** — cada chip de prova mostra o total de questões e cada
+  chip de status mostra quantas questões da prova atual têm aquele status.
+- **Link direto por questão** — clicar em "Questão N" copia o endereço da questão
+  (`curso.html?curso=<id>#<data-id>`); abrir esse link já rola e destaca a questão.
+- **Voltar ao topo** — botão flutuante que aparece após rolar a página.
 
 A integração é feita pelo hook `ESTUDO.aoRenderizar(cursoId, prova, listaEl)`,
 chamado por `curso.js` sempre que a lista de questões é renderizada.
+
+### Ligação teoria ↔ questões
+
+Cada questão tem um `data-tema`, e cada cadeira tem em `js/cursos.js` um mapa
+`teoria` que liga esse `data-tema` ao id de uma seção do conteúdo teórico:
+
+```js
+teoria: { "integrais-duplas": "c3-multiplas", ... }  // data-tema -> id da seção
+```
+
+Com isso, sem editar nenhum arquivo de questão, o site cria dois atalhos:
+
+- **"Ver material"** — botão em cada questão que abre a seção da teoria em nova guia;
+- **"Praticar este assunto"** — botão no fim de cada seção da teoria que pula para
+  a primeira questão daquele tema (troque de prova se não houver na atual).
 
 ## Rodando localmente
 
@@ -120,6 +137,11 @@ Nada precisa ser compilado — é um site 100% estático.
 
    A ordem da lista é a ordem de exibição no site. Pronto — nenhum outro arquivo precisa ser alterado.
 
+> **Dica:** para os botões "Ver material" e "Praticar este assunto" funcionarem, o
+> `data-tema` da questão precisa ser uma chave do mapa `teoria` da cadeira em
+> `js/cursos.js`. Se for um tema novo, adicione a chave lá apontando para o id da
+> seção correspondente em `conteudo/<curso>.html`.
+
 ### Dicas de LaTeX
 
 - Matemática inline: `\( ... \)` — ex.: `\(\vec F = q\vec E\)`
@@ -138,20 +160,24 @@ Exemplo: adicionar "Física 4" com id `fisica4`.
      nome: "Física 4",
      codigo: "Código da disciplina",
      descricao: "Descrição curta exibida no card da home.",
-     icone: "<svg ...>...</svg>"       // ícone SVG desenhado à mão (sem emojis)
+     icone: "<svg ...>...</svg>",      // ícone SVG desenhado à mão (sem emojis)
+     teoria: {                         // data-tema da questão -> id da seção da teoria
+       "tema-da-questao": "f4-tema1"
+     }
    }
    ```
 
-2. **Crie o conteúdo teórico** em `conteudo/fisica4.html`. É um *fragmento* HTML (sem `<html>`/`<head>`), com a estrutura:
+2. **Crie o conteúdo teórico** em `conteudo/fisica4.html` copiando o modelo comentado
+   `conteudo/_modelo-conteudo.html`. É um *fragmento* HTML (sem `<html>`/`<head>`), com a estrutura:
 
    ```html
    <nav class="sumario"> ... links para as seções ... </nav>
-   <section class="topico" id="f4-tema1">
-     <h2>1. Nome do tema</h2>
-     <p>Explicação...</p>
+   <section class="topico" id="f4-tema1">   <!-- id deve bater com o mapa teoria -->
+     <h2><span class="num">01</span> Nome do tema</h2>
+     <p><strong>A ideia.</strong> Explicação em linguagem simples...</p>
      <div class="formula"><span class="rotulo">Nome da fórmula</span> $$ ... $$</div>
-     <div class="macete"><p>Truque que sempre cai...</p></div>
-     <div class="macete dica"><p>Referência a questão de prova...</p></div>
+     <div class="macete">Truque que sempre cai...</div>
+     <div class="exemplo"><div class="rotulo">Exemplo rápido</div><p>...</p></div>
    </section>
    ```
 
