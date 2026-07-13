@@ -39,7 +39,7 @@
   <details class="q-gabarito">
     <summary>Gabarito</summary>
     <div>
-      <p><span class="q-resposta-final">a) 45 &nbsp;&nbsp; b) 2 (o campo é conservativo, com potencial \(\varphi = x^2y + \tfrac{y^3}{3}\))</span></p>
+      <p><span class="q-resposta-final">a) 45 &nbsp;&nbsp; b) 0 (o campo é conservativo, com potencial \(\varphi = x^2y + \tfrac{y^3}{3}\))</span></p>
     </div>
   </details>
 
@@ -56,9 +56,9 @@
       $$\frac{\partial P}{\partial y} = 2x = \frac{\partial Q}{\partial x} \;\;\checkmark \text{ conservativo}$$
       <p><strong>Passo 2 —</strong> Ache o potencial: \(\varphi = \int 2xy\,dx = x^2 y + g(y)\). Derivando em \(y\): \(x^2 + g'(y) = x^2 + y^2 \Rightarrow g(y) = \tfrac{y^3}{3}\). Logo</p>
       $$\varphi(x,y) = x^2 y + \frac{y^3}{3}$$
-      <p><strong>Passo 3 —</strong> Pelo Teorema Fundamental, a integral só depende dos extremos:</p>
-      $$\int_\varphi \vec F \cdot d\vec r = \varphi(1,1) - \varphi(-1,1) = \left(1 + \tfrac13\right) - \left(-1 + \tfrac13\right) = \boxed{2}$$
-      <p><em>Repare:</em> a parábola \(y = x^2\) era só distração — qualquer caminho de \(A\) a \(B\) daria o mesmo valor.</p>
+      <p><strong>Passo 3 —</strong> Pelo Teorema Fundamental, a integral só depende dos extremos. Atenção ao sinal: como o potencial tem \(x^2\), tanto em \(x=1\) quanto em \(x=-1\) vale \(x^2 = 1\):</p>
+      $$\int_\varphi \vec F \cdot d\vec r = \varphi(1,1) - \varphi(-1,1) = \left(1 + \tfrac13\right) - \left(1 + \tfrac13\right) = \boxed{0}$$
+      <p><em>Repare:</em> a parábola \(y = x^2\) era só distração — qualquer caminho de \(A\) a \(B\) daria o mesmo valor. E como \(A(-1,1)\) e \(B(1,1)\) têm o mesmo \(y\) e o mesmo \(x^2\), estão na mesma equipotencial, então a integral dá zero.</p>
     </div>
   </details>
 </article>
