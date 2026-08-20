@@ -1,11 +1,12 @@
 {
   "name": "nabla",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "type": "module",
   "private": true,
   "description": "Nabla — guia do aluno da POLI/UPE: teoria, banco de questões e mapa da grade.",
   "scripts": {
     "dev": "astro dev",
+    "dev:rede": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
@@ -15,6 +16,9 @@
     "@astrojs/check": "^0.9.10",
     "@astrojs/markdown-remark": "^7.2.4",
     "@astrojs/mdx": "^7.0.7",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource/archivo-narrow": "^5.3.0",
     "astro": "^7.2.4",
     "katex": "^0.18.4",
     "rehype-katex": "^7.0.1",

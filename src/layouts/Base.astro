@@ -13,11 +13,22 @@
    ************************************************************************** */
 /* ==========================================================================
    Base.astro — casca de todas as páginas.
-   FASE 0: estrutura mínima e neutra de propósito. A identidade visual do
-   Nabla (paleta, tipografia, header/footer de verdade) entra na FASE 1.
    ========================================================================== */
+
+/* Fontes auto-hospedadas. Não usamos Google Fonts de propósito: o
+   humans.txt declara "sem rastreadores", e a folha do Google entregaria o
+   IP de cada visitante a um terceiro. Assim também funciona offline. */
+import "@fontsource-variable/archivo";
+import "@fontsource/archivo-narrow/600.css";
+import "@fontsource/archivo-narrow/700.css";
+import "@fontsource-variable/jetbrains-mono";
+
 import "katex/dist/katex.min.css";
+import "~/styles/tokens.css";
 import "~/styles/base.css";
+
+import Marca from "~/components/Marca.astro";
+import BotaoTema from "~/components/BotaoTema.astro";
 
 interface Props {
   titulo: string;
@@ -25,6 +36,7 @@ interface Props {
 }
 
 const { titulo, descricao } = Astro.props;
+const base = import.meta.env.BASE_URL;
 const ano = new Date().getFullYear();
 ---
 
@@ -35,32 +47,111 @@ const ano = new Date().getFullYear();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{titulo} — Nabla</title>
     {descricao && <meta name="description" content={descricao} />}
-    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
     {/* Convenção humanstxt.org: as pessoas por trás do site. */}
-    <link rel="author" href={`${import.meta.env.BASE_URL}humans.txt`} />
+    <link rel="author" href={`${base}humans.txt`} />
+
+    {/* Aplica o tema salvo ANTES da primeira pintura, senão a página pisca
+        no tema errado por um instante. Precisa ser inline e sem defer. */}
+    <script is:inline>
+      try {
+        var t = localStorage.getItem("nabla-tema");
+        if (t === "light" || t === "dark") {
+          document.documentElement.setAttribute("data-theme", t);
+        }
+        document.documentElement.dataset.temaEscolha = t === "light" || t === "dark" ? t : "auto";
+      } catch (e) {
+        /* sem storage: segue o sistema */
+      }
+    </script>
   </head>
+
   <body>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
     <header class="topo">
-      <a class="marca" href={import.meta.env.BASE_URL}>
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <path
-            d="M3.5 4.5h17L12 20.5z"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linejoin="round"></path>
-        </svg>
-        <span>Nabla</span>
-      </a>
-      <span class="sub">Guia do aluno · POLI/UPE</span>
+      <div class="pagina faixa">
+        <a class="link-marca" href={base}><Marca /></a>
+        <span class="sub">guia do aluno · poli/upe</span>
+        <BotaoTema />
+      </div>
     </header>
 
-    <main class="conteudo">
+    <main id="conteudo" class="pagina corpo">
       <slot />
     </main>
 
     <footer class="rodape">
-      <p>© {ano} Nabla — feito por Arthur Azevedo (Eng. de Controle e Automação, POLI/UPE).</p>
+      <div class="pagina">
+        <p>
+          © {ano} Nabla — feito por <strong>Arthur Azevedo</strong>, aluno de Eng. de Controle e
+          Automação na POLI/UPE.
+        </p>
+      </div>
     </footer>
   </body>
 </html>
+
+<style>
+  .pular {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10;
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-botao);
+    padding: var(--e-2) var(--e-3);
+    font-size: var(--t-sm);
+  }
+  .pular:focus {
+    left: var(--e-3);
+    top: var(--e-3);
+  }
+
+  .topo {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  .faixa {
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+    flex-wrap: wrap;
+    padding-top: var(--e-3);
+    padding-bottom: var(--e-3);
+  }
+  .link-marca {
+    text-decoration: none;
+  }
+  .sub {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .faixa :global(.btn-tema) {
+    margin-left: auto;
+  }
+
+  .corpo {
+    padding-top: var(--e-7);
+    padding-bottom: var(--e-8);
+  }
+
+  .rodape {
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    padding: var(--e-5) 0 var(--e-6);
+  }
+  .rodape p {
+    font-size: var(--t-sm);
+    color: var(--ink-3);
+    margin: 0;
+  }
+</style>

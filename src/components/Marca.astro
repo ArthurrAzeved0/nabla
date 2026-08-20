@@ -1,0 +1,60 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                             Marca.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+interface Props {
+  /** Tamanho do glifo em px. */
+  tamanho?: number;
+  /** Só o glifo, sem o nome escrito. */
+  soGlifo?: boolean;
+}
+
+const { tamanho = 20, soGlifo = false } = Astro.props;
+---
+
+<span class="marca">
+  <svg
+    viewBox="0 0 24 24"
+    width={tamanho}
+    height={tamanho}
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M3 5h18L12 20z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linejoin="round"></path>
+  </svg>
+  {soGlifo ? <span class="so-leitor">Nabla</span> : <span class="nome">Nabla</span>}
+</span>
+
+<style>
+  .marca {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-2);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .marca svg {
+    color: var(--accent);
+    flex: none;
+  }
+  .nome {
+    font-family: var(--f-titulo);
+    font-size: var(--t-md);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+</style>

@@ -1,0 +1,217 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                           Questao.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Cartão de questão — o "registro de trabalho" do Nabla.
+   Na Fase 1 é só a casca visual: as ferramentas (marcar, cronometrar,
+   filtrar) viram uma ilha interativa na Fase 3. Os botões aqui são
+   estáticos de propósito.
+
+   O `estado` pinta a barra lateral com a cor semântica, para dar para ler
+   a situação da questão sem interpretar nada. */
+import Etiqueta from "./Etiqueta.astro";
+
+interface Props {
+  /** Igual ao data-id do site 1.x: <curso>-<prova>-<NN>. Vira a âncora. */
+  id: string;
+  numero: number;
+  prova: string;
+  tema: string;
+  pontos?: string;
+  /** Questão inventada/prevista, sem prova antiga confirmada. */
+  estiloDeProva?: boolean;
+  /** Link para a seção da teoria correspondente. */
+  material?: string;
+  estado?: "nenhum" | "acertei" | "errei" | "revisar";
+  /** Só para a maquete: mostra um tempo no cronômetro. */
+  tempo?: string;
+}
+
+const {
+  id,
+  numero,
+  prova,
+  tema,
+  pontos,
+  estiloDeProva = false,
+  material,
+  estado = "nenhum",
+  tempo,
+} = Astro.props;
+
+const rotulo = String(numero).padStart(2, "0");
+---
+
+<article class:list={["questao", `st-${estado}`]} id={id}>
+  <div class="topo">
+    <span class="qid">Questão {rotulo}</span>
+    <Etiqueta>{prova}</Etiqueta>
+    <Etiqueta>{tema}</Etiqueta>
+    {estiloDeProva && <Etiqueta tom="alerta">Estilo de prova</Etiqueta>}
+    {pontos && <Etiqueta tom="neutra">{pontos}</Etiqueta>}
+    {
+      material && (
+        <a class="material" href={material}>
+          <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false">
+            <path
+              d="M5 4h9l4 4v12H5z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"></path>
+            <path
+              d="M13 4v5h5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"></path>
+          </svg>
+          Ver material
+        </a>
+      )
+    }
+  </div>
+
+  <div class="enunciado"><slot /></div>
+
+  <div class="ferramentas">
+    <button type="button" class="botao acao" disabled>Gabarito</button>
+    <button type="button" class="botao" disabled>Passo a passo</button>
+    <button type="button" class:list={["botao", { "on-ok": estado === "acertei" }]} disabled>
+      Acertei
+    </button>
+    <button type="button" class:list={["botao", { "on-err": estado === "errei" }]} disabled>
+      Errei
+    </button>
+    <button type="button" class:list={["botao", { "on-rev": estado === "revisar" }]} disabled>
+      Revisar
+    </button>
+    {tempo && <span class="tempo">{tempo}</span>}
+  </div>
+</article>
+
+<style>
+  .questao {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: var(--r-cartao);
+    padding: var(--e-4) var(--e-5);
+    margin: var(--e-4) 0;
+    box-shadow: var(--sombra-1);
+    scroll-margin-top: var(--e-7);
+  }
+
+  .st-acertei {
+    border-left-color: var(--ok);
+  }
+  .st-errei {
+    border-left-color: var(--err);
+  }
+  .st-revisar {
+    border-left-color: var(--rev);
+  }
+
+  .topo {
+    display: flex;
+    align-items: center;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+    margin-bottom: var(--e-3);
+  }
+
+  .qid {
+    font-family: var(--f-mono);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .material {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--t-sm);
+    color: var(--accent);
+    text-decoration: none;
+    background: var(--accent-soft);
+    border: 1px solid transparent;
+    padding: 4px 10px;
+    border-radius: var(--r-pilula);
+  }
+  .material:hover {
+    border-color: var(--accent);
+  }
+
+  .enunciado {
+    color: var(--ink);
+  }
+  .enunciado :global(> :last-child) {
+    margin-bottom: 0;
+  }
+
+  .ferramentas {
+    display: flex;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: var(--e-4);
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--line);
+  }
+
+  .botao {
+    font-family: var(--f-texto);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    padding: 7px 13px;
+    border-radius: var(--r-botao);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .botao:disabled {
+    cursor: default;
+  }
+  .botao.acao {
+    background: var(--action);
+    border-color: var(--action);
+    color: #fff;
+    font-weight: 600;
+  }
+  .botao.on-ok {
+    background: var(--ok);
+    border-color: var(--ok);
+    color: #fff;
+  }
+  .botao.on-err {
+    background: var(--err);
+    border-color: var(--err);
+    color: #fff;
+  }
+  .botao.on-rev {
+    background: var(--rev);
+    border-color: var(--rev);
+    color: #fff;
+  }
+
+  .tempo {
+    margin-left: auto;
+    font-family: var(--f-mono);
+    font-size: var(--t-sm);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+  }
+</style>

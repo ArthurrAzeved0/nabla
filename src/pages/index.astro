@@ -11,37 +11,280 @@
    * Página:  https://github.com/ArthurrAzeved0                             *
    * Contato: arthur_azevedo05@hotmail.com                                  *
    ************************************************************************** */
+/* Vitrine do sistema visual (Fase 1). Mostra cada peça com conteúdo real
+   para avaliar rodando. Vira a home de verdade na Fase 2, quando as
+   cadeiras existirem como conteúdo. */
 import Base from "~/layouts/Base.astro";
+import Caixa from "~/components/Caixa.astro";
+import Regua from "~/components/Regua.astro";
+import Questao from "~/components/Questao.astro";
+import NoGrade from "~/components/NoGrade.astro";
+import Etiqueta from "~/components/Etiqueta.astro";
 
 const base = import.meta.env.BASE_URL;
 ---
 
 <Base
-  titulo="Fundação"
-  descricao="Nabla — guia do aluno da POLI/UPE. Fundação da migração para Astro."
+  titulo="Sistema visual"
+  descricao="Nabla — guia do aluno da POLI/UPE. Vitrine do sistema visual da Fase 1."
 >
-  <h1>Nabla</h1>
-  <p>
-    Guia do aluno da POLI/UPE: teoria, banco de questões e mapa da grade. Esta página é a
-    <strong>fundação</strong> da migração (Fase 0) — o visual de verdade entra na Fase 1.
+  <span class="rotulo">Fase 1 · sistema visual</span>
+  <h1>Prancha</h1>
+  <p class="prosa abre">
+    Papel milimetrado no claro, planta de engenharia no escuro. Use o botão no topo para
+    alternar entre <strong>automático</strong>, <strong>claro</strong> e <strong>escuro</strong> —
+    e note que o escuro não é o claro invertido: é outro material.
   </p>
 
-  <h2>O que já está de pé</h2>
-  <ul>
-    <li>Astro + TypeScript em modo <code>strict</code>, com atalho <code>~/</code> para <code>src/</code>;</li>
-    <li>MDX habilitado — o formato em que teoria e questões vão viver;</li>
-    <li>KaTeX renderizando <strong>no build</strong> (o HTML já sai com a fórmula pronta);</li>
-    <li>caminho base alternável por host: raiz no Cloudflare, subpasta no GitHub Pages.</li>
-  </ul>
+  <Regua rotulo="teoria" />
 
-  <p>
-    <a href={`${base}teste-formulas`}>Ver o teste de fórmulas →</a>
+  <span class="rotulo">Cálculo 3 · seção 07</span>
+  <h2 class="sem-topo">Integrais múltiplas</h2>
+  <div class="prosa">
+    <p>
+      <strong>A ideia.</strong> Integrar sobre uma região do plano ou do espaço é somar infinitos
+      pedacinhos. A dificuldade nunca está na conta — está em montar os limites, e é exatamente
+      aí que a prova cobra.
+    </p>
+  </div>
+
+  <div class="katex-display">
+    <span class="katex">∭<sub>E</sub> <em>f</em>(<em>x</em>,<em>y</em>,<em>z</em>) <em>dV</em> = ∭<sub
+        >E</sub
+      > <em>f</em> · ρ² sen φ <em>dρ dφ dθ</em></span
+    >
+  </div>
+
+  <Caixa tipo="simbolos">
+    <ul>
+      <li>ρ — distância do ponto até a origem;</li>
+      <li>φ — ângulo medido a partir do eixo <em>z</em> (0 no polo norte, π no sul);</li>
+      <li>θ — a volta no plano <em>xy</em>;</li>
+      <li>ρ² sen φ — o jacobiano: sem ele a conta sai errada.</li>
+    </ul>
+  </Caixa>
+
+  <Caixa tipo="exemplo">
+    <p>
+      Bola de raio 3: ρ vai de 0 a 3, φ de 0 a π, θ de 0 a 2π. As variáveis separam, e o
+      resultado é 81π.
+    </p>
+  </Caixa>
+
+  <Caixa tipo="macete">
+    <p>
+      Bola inteira? φ percorre 0 a π (polo a polo) e θ dá a volta toda. Meia bola de cima? φ para
+      em π/2. Errar esse limite é o erro mais comum da prova.
+    </p>
+  </Caixa>
+
+  <Regua rotulo="questões" />
+
+  <p class="prosa">
+    O cartão de questão é o registro de trabalho: etiquetas de prova e tema, link para a teoria,
+    e a barra de ferramentas embaixo. A cor da barra lateral diz o estado sem precisar ler nada.
+    Nesta fase os botões são estáticos — as ferramentas viram uma ilha interativa na Fase 3.
   </p>
 
-  <h2>O site atual continua no ar</h2>
-  <p>
-    Nada foi removido: <code>index.html</code>, <code>curso.html</code>, <code>conteudo/</code>,
-    <code>questoes/</code> e <code>js/</code> seguem intactos e publicados. A migração acontece ao
-    lado, e a virada é o último passo.
+  <Questao
+    id="calculo3-final-07"
+    numero={7}
+    prova="Final"
+    tema="Integral tripla · esféricas"
+    pontos="2,0 pts"
+    estiloDeProva={true}
+    material="#conteudo"
+    estado="acertei"
+    tempo="04:12"
+  >
+    <p>
+      Usando coordenadas esféricas, calcule ∭<sub>E</sub> √(<em>x</em>²+<em>y</em>²+<em>z</em>²) <em
+        >dV</em
+      >, onde <em>E</em> é a bola <em>x</em>²+<em>y</em>²+<em>z</em>² ≤ 9.
+    </p>
+  </Questao>
+
+  <Questao
+    id="calculo3-2ee-09"
+    numero={9}
+    prova="2º EE"
+    tema="Teorema de Green"
+    pontos="2,5 pts"
+    material="#conteudo"
+    estado="errei"
+    tempo="07:48"
+  >
+    <p>
+      Use o Teorema de Green para calcular a integral de linha de <em>F</em> = ⟨−<em>y</em>³, <em
+        >x</em
+      >³⟩ ao longo da circunferência <em>x</em>² + <em>y</em>² = 4, orientada positivamente.
+    </p>
+  </Questao>
+
+  <Questao
+    id="calculo3-1ee-13"
+    numero={13}
+    prova="1º EE"
+    tema="Máximos e mínimos · Hessiana"
+    pontos="2,0 pts"
+    material="#conteudo"
+    estado="revisar"
+  >
+    <p>
+      Classifique os pontos críticos de <em>f</em>(<em>x</em>,<em>y</em>) = <em>x</em>³ + <em>y</em
+      >³ − 3<em>xy</em> usando o teste da Hessiana.
+    </p>
+  </Questao>
+
+  <Regua rotulo="grade" />
+
+  <p class="prosa">
+    Peças do fluxograma. O grafo, o roteamento das setas e a interação entram na Fase 4, quando o
+    fluxograma que você já tem for portado para dentro do site. A cor diz o estado, e o nó azul é
+    clicável porque aquela cadeira tem questões aqui.
+  </p>
+
+  <div class="rolagem-x">
+    <div class="fluxo">
+      <NoGrade codigo="MAT19" nome="Cálc. V. Var." estado="feito" />
+      <span class="seta" aria-hidden="true">→</span>
+      <NoGrade codigo="MAT20" nome="Cálculo 3" estado="tem" href={`${base}teste-formulas`} />
+      <span class="seta" aria-hidden="true">→</span>
+      <NoGrade codigo="MAT21" nome="Cálculo 4" estado="pode" />
+      <span class="seta" aria-hidden="true">→</span>
+      <NoGrade codigo="CIVL41" nome="Resist. Mat. 1" />
+    </div>
+  </div>
+
+  <div class="legenda">
+    <span><i class="p-ok"></i>concluída</span>
+    <span><i class="p-ac"></i>pode cursar</span>
+    <span><i class="p-id"></i>tem questões no site</span>
+    <span><i class="p-no"></i>bloqueada</span>
+  </div>
+
+  <Regua rotulo="peças" />
+
+  <h2 class="sem-topo">Etiquetas</h2>
+  <p class="prosa">Três tons, com papéis fixos: identidade, atenção e dado seco.</p>
+  <div class="etqs">
+    <Etiqueta>Final</Etiqueta>
+    <Etiqueta>Integral tripla · esféricas</Etiqueta>
+    <Etiqueta tom="alerta">Estilo de prova</Etiqueta>
+    <Etiqueta tom="neutra">2,0 pts</Etiqueta>
+  </div>
+
+  <h2>Escala tipográfica</h2>
+  <div class="escala">
+    <p class="e-3xl">Aa 48</p>
+    <p class="e-2xl">Aa 36</p>
+    <p class="e-xl">Aa 28</p>
+    <p class="e-lg">Aa 22</p>
+    <p class="e-md">Aa 17</p>
+    <p class="e-base">Aa 15 — texto corrido, Archivo</p>
+    <p class="e-sm">Aa 13 — botão e legenda</p>
+    <p class="e-xs">AA 11 — RÓTULO EM MONOESPAÇADA</p>
+  </div>
+
+  <h2>Fórmula de verdade</h2>
+  <p class="prosa">
+    As fórmulas acima estão aproximadas com texto. Para ver o KaTeX renderizando no build, abra a
+    <a href={`${base}teste-formulas`}>página de teste de fórmulas</a> — ela usa o LaTeX real das
+    questões do site.
   </p>
 </Base>
+
+<style>
+  .abre {
+    font-size: var(--t-md);
+  }
+  .sem-topo {
+    margin-top: 0;
+  }
+
+  .fluxo {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: var(--e-1) 0;
+    width: max-content;
+  }
+  .seta {
+    padding: 0 var(--e-3);
+    color: var(--ink-3);
+  }
+
+  .legenda {
+    display: flex;
+    gap: var(--e-4);
+    flex-wrap: wrap;
+    margin-top: var(--e-3);
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    color: var(--ink-3);
+  }
+  .legenda i {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+    margin-right: 5px;
+  }
+  .p-ok {
+    background: var(--ok);
+  }
+  .p-ac {
+    background: var(--action);
+  }
+  .p-id {
+    background: var(--accent);
+  }
+  .p-no {
+    background: var(--line-2);
+  }
+
+  .etqs {
+    display: flex;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+  }
+
+  .escala p {
+    margin: 0 0 var(--e-2);
+    font-family: var(--f-titulo);
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .e-3xl {
+    font-size: var(--t-3xl);
+  }
+  .e-2xl {
+    font-size: var(--t-2xl);
+  }
+  .e-xl {
+    font-size: var(--t-xl);
+  }
+  .e-lg {
+    font-size: var(--t-lg);
+  }
+  .e-md {
+    font-size: var(--t-md);
+  }
+  .escala .e-base,
+  .escala .e-sm {
+    font-family: var(--f-texto);
+    color: var(--ink-2);
+  }
+  .e-base {
+    font-size: var(--t-base);
+  }
+  .e-sm {
+    font-size: var(--t-sm);
+  }
+  .escala .e-xs {
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    letter-spacing: var(--tr-rotulo);
+    color: var(--accent);
+  }
+</style>

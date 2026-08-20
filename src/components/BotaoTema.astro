@@ -1,0 +1,121 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                         BotaoTema.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Alternador de tema. Três estados, na ordem: automático -> claro -> escuro.
+   "Automático" é o padrão e não grava nada: a página segue o sistema.
+
+   O script que evita o piscar de tema fica no <head> do layout, não aqui —
+   ele precisa rodar ANTES da primeira pintura. */
+---
+
+<button id="botao-tema" class="btn-tema" type="button" aria-live="polite">
+  <svg class="i-auto" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+    <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+    <path d="M12 3.5v17A8.5 8.5 0 0 0 12 3.5z" fill="currentColor"></path>
+  </svg>
+  <svg class="i-claro" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+    <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+    <path
+      d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"></path>
+  </svg>
+  <svg class="i-escuro" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+    <path
+      d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linejoin="round"></path>
+  </svg>
+  <span class="so-leitor">Alternar tema</span>
+</button>
+
+<script>
+  const CHAVE = "nabla-tema";
+  const CICLO = ["auto", "light", "dark"] as const;
+  type Tema = (typeof CICLO)[number];
+
+  const raiz = document.documentElement;
+  const botao = document.getElementById("botao-tema");
+
+  function aplicar(tema: Tema) {
+    if (tema === "auto") {
+      raiz.removeAttribute("data-theme");
+      try {
+        localStorage.removeItem(CHAVE);
+      } catch {
+        /* sem storage disponível */
+      }
+    } else {
+      raiz.setAttribute("data-theme", tema);
+      try {
+        localStorage.setItem(CHAVE, tema);
+      } catch {
+        /* sem storage disponível */
+      }
+    }
+    raiz.dataset.temaEscolha = tema;
+    const nomes: Record<Tema, string> = {
+      auto: "Tema: automático",
+      light: "Tema: claro",
+      dark: "Tema: escuro",
+    };
+    botao?.setAttribute("title", nomes[tema]);
+    botao?.setAttribute("aria-label", nomes[tema]);
+  }
+
+  function atual(): Tema {
+    const t = raiz.getAttribute("data-theme");
+    return t === "light" || t === "dark" ? t : "auto";
+  }
+
+  aplicar(atual());
+
+  botao?.addEventListener("click", () => {
+    const i = CICLO.indexOf(atual());
+    aplicar(CICLO[(i + 1) % CICLO.length]!);
+  });
+</script>
+
+<style>
+  .btn-tema {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-botao);
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .btn-tema:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* mostra só o ícone do estado atual */
+  .btn-tema svg {
+    display: none;
+  }
+  :global(html:not([data-tema-escolha])) .i-auto,
+  :global(html[data-tema-escolha="auto"]) .i-auto,
+  :global(html[data-tema-escolha="light"]) .i-claro,
+  :global(html[data-tema-escolha="dark"]) .i-escuro {
+    display: block;
+  }
+</style>
