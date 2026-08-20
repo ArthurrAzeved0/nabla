@@ -23,7 +23,64 @@ pré-lançamento — uma tag por fase concluída da migração.
 
 ## [Não publicado]
 
-Fase 1 — design system e identidade visual do Nabla.
+Fase 2 — conteúdo tipado: schemas e migração da teoria e das 146 questões.
+
+## [2.0.0-alpha.2] — 2026-08-20
+
+**Fase 1 da migração: identidade visual.** O sistema de design do Nabla, com o
+conceito de **uma identidade e dois materiais** — papel milimetrado no claro,
+planta de engenharia no escuro. O escuro não é o claro invertido: planta de
+verdade é traço claro sobre azul, e é isso que ele imita.
+
+### Adicionado
+
+- `src/styles/tokens.css` — paleta, escala tipográfica, espaçamento, raios e
+  sombras, nos três estados de tema (claro; escuro por preferência do sistema;
+  escuro por escolha explícita). Nenhuma cor é declarada apenas dentro de
+  `@media` ou `[data-theme]`, para que os três estados sempre resolvam.
+- **Dois acentos com papéis fixos:** azul de prancha para identidade (marca,
+  rótulo de seção, link, "tem questões") e laranja-sinal só para ação e atenção
+  (botão principal, "pode cursar"). Cores de estado (acertei/errei/revisar) ficam
+  **fora** da paleta de marca, de propósito.
+- A grade do papel em CSS puro — quatro gradientes empilhados, sem imagem:
+  escala em qualquer tela e muda de cor junto com o tema.
+- Componentes: `Marca`, `Regua` (régua de cota), `Caixa` (símbolos / exemplo /
+  macete), `Etiqueta`, `Questao`, `NoGrade` e `BotaoTema`.
+- Alternador de tema com três estados (automático → claro → escuro), com o tema
+  aplicado inline no `<head>` antes da primeira pintura, para a página não piscar.
+- Vitrine do sistema em `/`, com conteúdo real das cadeiras.
+- Atalho `npm run dev:rede`, que expõe o servidor de desenvolvimento na rede
+  local para testar em outros aparelhos.
+- `public/_headers` com `Content-Type` e política de cache. Os assets em
+  `/_astro/` têm hash no nome, então podem ser `immutable` — isso substitui o
+  `?v=N` manual que o site 1.x precisava.
+
+### Alterado
+
+- **Fontes auto-hospedadas** (`@fontsource`) em vez de Google Fonts. O
+  `humans.txt` declara "sem rastreadores", e a folha do Google entregaria o IP de
+  cada visitante a um terceiro. Verificado: o HTML e o CSS gerados não têm
+  nenhuma URL externa. De quebra, funciona offline.
+- `humans.txt`: seção de tecnologia reescrita no formato da convenção
+  (padrões, linguagem, componentes, tipografia), sem linguagem subjetiva — o
+  tom pessoal fica restrito à dedicatória.
+
+### Corrigido
+
+- **Contraste de texto.** A grade fina de 8&nbsp;px passava atrás das letras e
+  comia o contraste percebido. O texto corrido subiu de 5,38:1 para 7,75:1 no
+  claro e de 7,35:1 para 9,48:1 no escuro, e a grade fina foi atenuada (a forte,
+  de 48&nbsp;px, ficou intacta para não perder a assinatura). Ao medir,
+  apareceram **duas reprovações de WCAG AA** que passaram batido: rótulos e
+  legendas a 2,75:1 no claro (agora 5,03) e 4,12:1 no escuro (agora 5,93), e o
+  laranja de ação a 4,00:1 (agora 4,89). Nenhum par reprova mais.
+- **Acentos do `humans.txt` quebrados no navegador.** O arquivo sempre esteve em
+  UTF-8; o servidor mandava `Content-Type: text/plain` sem `charset`, e o
+  navegador caía num encoding legado (`ção` virava `Ã§Ã£o`). Resolvido em duas
+  camadas: BOM UTF-8 no arquivo, que funciona em qualquer host — inclusive no
+  GitHub Pages, que não permite configurar cabeçalho — e a declaração explícita
+  de `charset` no `_headers`, lido pelo Cloudflare Pages.
+- Erro de tipo em `Caixa.astro`: indexação de objeto sem tipo declarado.
 
 ## [2.0.0-alpha.1] — 2026-08-20
 
@@ -116,5 +173,6 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.0.0-alpha.2]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.2
 [2.0.0-alpha.1]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.1
 [1.0.0]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v1.0.0
