@@ -1,0 +1,66 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                              Base.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* ==========================================================================
+   Base.astro — casca de todas as páginas.
+   FASE 0: estrutura mínima e neutra de propósito. A identidade visual do
+   Nabla (paleta, tipografia, header/footer de verdade) entra na FASE 1.
+   ========================================================================== */
+import "katex/dist/katex.min.css";
+import "~/styles/base.css";
+
+interface Props {
+  titulo: string;
+  descricao?: string;
+}
+
+const { titulo, descricao } = Astro.props;
+const ano = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo} — Nabla</title>
+    {descricao && <meta name="description" content={descricao} />}
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    {/* Convenção humanstxt.org: as pessoas por trás do site. */}
+    <link rel="author" href={`${import.meta.env.BASE_URL}humans.txt`} />
+  </head>
+  <body>
+    <header class="topo">
+      <a class="marca" href={import.meta.env.BASE_URL}>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path
+            d="M3.5 4.5h17L12 20.5z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"></path>
+        </svg>
+        <span>Nabla</span>
+      </a>
+      <span class="sub">Guia do aluno · POLI/UPE</span>
+    </header>
+
+    <main class="conteudo">
+      <slot />
+    </main>
+
+    <footer class="rodape">
+      <p>© {ano} Nabla — feito por Arthur Azevedo (Eng. de Controle e Automação, POLI/UPE).</p>
+    </footer>
+  </body>
+</html>

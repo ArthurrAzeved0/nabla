@@ -1,0 +1,47 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                             index.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+import Base from "~/layouts/Base.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Base
+  titulo="Fundação"
+  descricao="Nabla — guia do aluno da POLI/UPE. Fundação da migração para Astro."
+>
+  <h1>Nabla</h1>
+  <p>
+    Guia do aluno da POLI/UPE: teoria, banco de questões e mapa da grade. Esta página é a
+    <strong>fundação</strong> da migração (Fase 0) — o visual de verdade entra na Fase 1.
+  </p>
+
+  <h2>O que já está de pé</h2>
+  <ul>
+    <li>Astro + TypeScript em modo <code>strict</code>, com atalho <code>~/</code> para <code>src/</code>;</li>
+    <li>MDX habilitado — o formato em que teoria e questões vão viver;</li>
+    <li>KaTeX renderizando <strong>no build</strong> (o HTML já sai com a fórmula pronta);</li>
+    <li>caminho base alternável por host: raiz no Cloudflare, subpasta no GitHub Pages.</li>
+  </ul>
+
+  <p>
+    <a href={`${base}teste-formulas`}>Ver o teste de fórmulas →</a>
+  </p>
+
+  <h2>O site atual continua no ar</h2>
+  <p>
+    Nada foi removido: <code>index.html</code>, <code>curso.html</code>, <code>conteudo/</code>,
+    <code>questoes/</code> e <code>js/</code> seguem intactos e publicados. A migração acontece ao
+    lado, e a virada é o último passo.
+  </p>
+</Base>

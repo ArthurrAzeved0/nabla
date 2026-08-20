@@ -1,0 +1,134 @@
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                                base.css *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* ==========================================================================
+   base.css — reset e tipografia mínimos da FASE 0.
+
+   ATENÇÃO: isto NÃO é o design system do Nabla. É o suficiente para a
+   fundação ficar legível enquanto validamos o build. A paleta de verdade,
+   a tipografia e os componentes visuais entram na FASE 1.
+   ========================================================================== */
+
+:root {
+  --ground: #ffffff;
+  --ink: #16191f;
+  --ink-2: #5a6470;
+  --line: #e3e7ec;
+  --accent: #1f5fd0;
+
+  --largura: 720px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0e1116;
+    --ink: #e7ecf2;
+    --ink-2: #98a4b2;
+    --line: #232b35;
+    --accent: #6ea4ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+code {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.9em;
+}
+
+/* ---------- casca ---------- */
+
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.topo .sub {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.conteudo {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.rodape {
+  border-top: 1px solid var(--line);
+  padding: 20px 24px 40px;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.rodape p {
+  max-width: var(--largura);
+  margin: 0 auto;
+}
+
+/* Fórmulas em destaque com rolagem própria: fórmula larga não empurra a
+   página para o lado (problema clássico em telas de celular). */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
