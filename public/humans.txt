@@ -1,4 +1,4 @@
-                     _     _
+﻿                     _     _
                     | |   | |
   _ __    __ _  ___ | |__ | | __ _
  | '_ \  / _` |/ _ \| '_ \| |/ _` |
@@ -59,9 +59,13 @@
 
 /* TECNOLOGIA */
 
-  Astro, TypeScript, MDX, KaTeX
-  Sem rastreadores. Sem anúncios. Sem cadastro.
-  Feito à mão, em silêncio, de madrugada.
+  Padrões ........ HTML5, CSS3, ES2022
+  Linguagem ...... TypeScript
+  Componentes .... Astro, MDX, KaTeX
+  Tipografia ..... Archivo, Archivo Narrow, JetBrains Mono
+  Entrega ........ site estático, sem servidor de aplicação
+  Privacidade .... sem rastreadores, sem anúncios, sem cadastro
+                   nenhuma requisição a terceiros
 
 
 /* AVISO */
