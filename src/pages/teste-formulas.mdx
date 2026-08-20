@@ -1,0 +1,120 @@
+---
+layout: ~/layouts/Base.astro
+titulo: Teste de fórmulas
+descricao: Verificação do KaTeX com LaTeX real vindo das questões que já existem no site.
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                      teste-formulas.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+# Teste de fórmulas
+
+Página de verificação: todo o LaTeX abaixo foi copiado de questões e da teoria que **já existem**
+no site, para checar se o KaTeX cobre o que o MathJax cobria. Se tudo renderizar aqui, a Fase 2
+(migrar as 146 questões) não tem surpresa de sintaxe.
+
+## Integral tripla em esféricas (Cálculo 3, final, q07)
+
+Calcule $\iiint_E \sqrt{x^2 + y^2 + z^2}\,dV$ onde $E$ é a bola $x^2 + y^2 + z^2 \le 9$.
+
+O elemento de volume:
+
+$$
+dV = \rho^2\operatorname{sen}\varphi\,d\rho\,d\varphi\,d\theta
+$$
+
+Separando as variáveis:
+
+$$
+\iiint_E \rho\,dV = \int_0^{2\pi} d\theta \int_0^{\pi}\operatorname{sen}\varphi\,d\varphi \int_0^{3}\rho^3\,d\rho
+$$
+
+Cada fator: $\int_0^{2\pi} d\theta = 2\pi$, $\int_0^{\pi}\operatorname{sen}\varphi\,d\varphi = 2$
+e $\int_0^{3}\rho^3\,d\rho = \frac{81}{4}$. Logo
+
+$$
+\iiint_E \sqrt{x^2+y^2+z^2}\,dV = 2\pi\cdot 2\cdot\frac{81}{4} = 81\pi
+$$
+
+## Domínio e frações empilhadas (Cálculo 3, teoria)
+
+Determine o domínio de $f(x,y) = \dfrac{\sqrt{4 - x^2 - y^2}}{y - x}$, com
+$D = \{(x,y):\, x^2+y^2 \leq 4 \text{ e } y \neq x\}$ e $D \subseteq \mathbb{R}^2$.
+
+## Eletromagnetismo
+
+Campo de um fio reto e a lei de Faraday:
+
+$$
+B = \frac{\mu_0 I}{2\pi r} \qquad \varepsilon = -\frac{d\Phi_B}{dt} = 2Bv^2t
+$$
+
+Fator de potência: $\cos\varphi = R/Z$.
+
+## Equações diferenciais
+
+Um sistema linear e a equação característica:
+
+$$
+\mathbf{x}' = \begin{pmatrix} 1 & 2 \\ 3 & -4 \end{pmatrix}\mathbf{x}, \qquad
+\lambda^2 + 3\lambda - 10 = 0
+$$
+
+## Operadores vetoriais
+
+$$
+\nabla f = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle
+\qquad
+\nabla \times \mathbf{F} = \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+\partial_x & \partial_y & \partial_z \\
+F_1 & F_2 & F_3
+\end{vmatrix}
+$$
+
+---
+
+## Notas de migração (achados deste teste)
+
+Duas diferenças entre o MathJax do site atual e o `remark-math`. As duas são **silenciosas** —
+não quebram o build — então o conversor da Fase 2 tem de tratá-las explicitamente.
+
+### 1. Fórmula em linha muda de sintaxe
+
+O site escreve `\( ... \)`, que o `remark-math` não reconhece. Converter para `$ ... $`
+(e `\[ ... \]` para a forma de destaque abaixo). Sem isso, a fórmula aparece como texto cru.
+
+### 2. Fórmula de destaque precisa da cerca sozinha na linha
+
+Este é o achado que importa. As duas formas abaixo **não** dão o mesmo resultado:
+
+```
+$$                          $$formula em uma linha$$
+formula
+$$
+
+  -> destaque, centralizada    -> EM LINHA, pequena, dentro do parágrafo
+```
+
+O site atual usa a forma da direita em todas as fórmulas de destaque. Migrada como está, cada uma
+delas viraria fórmula *em linha*: sem erro, sem aviso, só menor e fora de lugar. E se a fórmula
+ocupar mais de uma linha, é pior — o `$$` de abertura engole o texto até o próximo `$$` e o KaTeX
+devolve `ParseError: Can't use function '$' in math mode`.
+
+**Portanto:** o conversor deve normalizar todo `$$…$$` para a forma com cerca própria, e a
+verificação da Fase 2 deve contar `katex-display` no HTML gerado — não basta procurar por erro.
+
+### O que já está confirmado funcionando
+
+`\operatorname{sen}`, `\dfrac`, `\displaystyle`, `\iiint`, `\mathbb`, `\begin{pmatrix}`,
+`\begin{vmatrix}`, `\left\langle`, `\partial`, `\qquad`, `\Phi`, `\varepsilon` e `\mu_0`.
