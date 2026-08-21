@@ -147,7 +147,12 @@ servidor — a Cloudflare serve os arquivos de `dist/` e nada mais.
 |---|---|
 | build command | `npm run build` |
 | deploy command | `npx wrangler deploy` |
-| `NODE_VERSION` | `22` |
+| deploy command (outras branches) | `npx wrangler versions upload` |
+| path | `/` |
+
+A versão do Node vem de `.node-version` e de `engines` no `package.json`, não
+de variável no painel: configuração de build pertence ao repositório, onde
+fica versionada junto com o que ela constrói.
 
 Publicar à mão, se precisar: `npm run build && npx wrangler deploy`.
 
