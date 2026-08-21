@@ -43,6 +43,10 @@ const AUTORIA = [
      abre / fecha  = delimitadores
      recuo         = indentação das linhas seguintes (alinha os asteriscos)
      posicao       = onde o cabeçalho entra no arquivo */
+/* O separador do cabeçalho é uma linha de hífens, mas comentário XML NÃO
+   PODE conter "--": um SVG com isso é mal formado e o navegador se recusa a
+   renderizá-lo — foi o que manteve o favicon invisível. Em XML o separador
+   passa a ser "=". */
 const ESTILOS = {
   ".css": { abre: "/* ", fecha: " */", recuo: "   ", posicao: "topo" },
   ".mjs": { abre: "/* ", fecha: " */", recuo: "   ", posicao: "topo" },
@@ -52,7 +56,7 @@ const ESTILOS = {
   ".mdx": { abre: "{/* ", fecha: " */}", recuo: "     ", posicao: "pos-frontmatter" },
   ".md": { abre: "<!-- ", fecha: " -->", recuo: "     ", posicao: "topo" },
   ".html": { abre: "<!-- ", fecha: " -->", recuo: "     ", posicao: "pos-doctype" },
-  ".svg": { abre: "<!-- ", fecha: " -->", recuo: "     ", posicao: "pos-xml" },
+  ".svg": { abre: "<!-- ", fecha: " -->", recuo: "     ", posicao: "pos-xml", sep: "=" },
   ".yaml": { abre: "# ", fecha: "", recuo: "# ", posicao: "topo" },
   ".yml": { abre: "# ", fecha: "", recuo: "# ", posicao: "topo" },
 };
@@ -64,8 +68,8 @@ const IGNORAR = new Set(["node_modules", "dist", ".astro", ".git", ".claude"]);
 function borda() {
   return "*".repeat(LARGURA);
 }
-function separador() {
-  return "*" + "-".repeat(LARGURA - 2) + "*";
+function separador(caractere = "-") {
+  return "*" + caractere.repeat(LARGURA - 2) + "*";
 }
 function linha(txt) {
   /* [...txt].length e não txt.length: acentos e "—" contam como 1 caractere
@@ -85,7 +89,7 @@ function titulo(nomeArquivo) {
 }
 
 function montarCabecalho(nomeArquivo, estilo) {
-  const corpo = [titulo(nomeArquivo), separador(), ...AUTORIA.map(linha)];
+  const corpo = [titulo(nomeArquivo), separador(estilo.sep), ...AUTORIA.map(linha)];
   const out = [estilo.abre + borda()];
   for (const l of corpo) out.push(estilo.recuo + l);
   out.push(estilo.recuo + borda() + estilo.fecha);
