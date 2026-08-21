@@ -15,7 +15,11 @@
 **Guia do aluno da POLI/UPE**: teoria na ordem da ementa, banco de questões de
 provas reais com resolução passo a passo, e o mapa da grade curricular.
 
-No ar em <https://arthurrazeved0.github.io/RespondeAi-Poli/>
+No ar em <https://nabla-poli.pages.dev>
+
+O endereço antigo (`arthurrazeved0.github.io/RespondeAi-Poli/`) redireciona
+para cá, preservando âncora de questão e de seção — os links que já
+circularam continuam funcionando.
 
 > Software proprietário. O repositório é público para consulta e portfólio;
 > isso **não** concede licença de uso. Ver [`LICENSE`](LICENSE).
@@ -45,8 +49,8 @@ npm run dev:rede     # também acessível na rede local (testar no celular)
 
 | comando | o que faz |
 |---|---|
-| `npm run build` | compila para `dist/` (caminho base na raiz) |
-| `npm run build:ghpages` | compila para publicar no GitHub Pages (subpasta) |
+| `npm run build` | compila para `dist/` — é o que o Cloudflare Pages roda |
+| `npm run build:ghpages` | mesma coisa com caminho base em subpasta, se um dia voltar ao GitHub Pages |
 | `npm test` | testa progresso, regras da matriz, roteamento das setas e a ponte de endereços |
 | `npm run verificar` | confere o conteúdo do `dist/`: links de teoria, LaTeX cru, falhas do KaTeX |
 | `npm run cabecalhos` | confere o cabeçalho de autoria em todo arquivo |
@@ -137,6 +141,24 @@ sozinha; não há código novo a escrever.
 - **Um cabeçalho de autoria em todo arquivo**, gerado por
   `scripts/cabecalho.mjs`. Os conversores o emitem, então sobrevive a uma
   reconversão.
+
+## Publicação
+
+O Cloudflare Pages compila a cada push na `main`:
+
+| | |
+|---|---|
+| comando de build | `npm run build` |
+| pasta de saída | `dist` |
+| versão do Node | 22 ou superior |
+
+`public/_headers` declara o `charset` do `humans.txt` e marca os assets de
+`/_astro/` como `immutable` — eles têm hash no nome, então podem ser
+guardados para sempre. Isso substitui o `?v=N` manual do site 1.x.
+
+Os dois HTML na raiz do repositório (`index.html` e `curso.html`) **não fazem
+parte do site**: são redirecionadores do endereço antigo, servidos pelo
+GitHub Pages. O Astro compila de `src/` e os ignora.
 
 ## Histórico
 
