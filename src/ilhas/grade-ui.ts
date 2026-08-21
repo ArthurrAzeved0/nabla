@@ -137,47 +137,78 @@ export function ligarGrade() {
 
   /* ------------------------------------------------------------- desenho */
   let escala: number | null = null; /* null = ajustar à largura */
+
+  /* `zoom` OU `transform`, e a diferença importa: zoom afeta o LAYOUT, então
+     o contêiner encolhe junto e não sobra barra de rolagem quando o mapa
+     cabe. `transform` só afeta a pintura — o elemento continua ocupando os
+     ~2100px originais e o contêiner mostra barra mesmo com tudo visível. Era
+     essa a barra que aparecia com o mapa já ajustado.
+
+     Medimos o suporte em vez de supor, e transform fica como reserva. */
+  const temZoom = typeof CSS !== "undefined" && CSS.supports?.("zoom", "0.5");
+
+  /* Largura natural do mapa. Com zoom aplicado, scrollWidth devolve a
+     largura JÁ escalada — medir assim realimentaria o cálculo a cada
+     chamada. Então mede-se uma vez com o zoom limpo e guarda-se: a largura
+     não depende da janela (as colunas têm largura fixa). */
+  let larguraNatural = 0;
+  function medirNatural() {
+    if (larguraNatural) return larguraNatural;
+    const antes = quadro.style.zoom;
+    quadro.style.zoom = "";
+    larguraNatural = quadro.scrollWidth;
+    quadro.style.zoom = antes;
+    return larguraNatural;
+  }
+
   function ajuste() {
-    /* clientWidth já desconta a barra de rolagem; o padding lateral do
-       contêiner é o que sobra a descontar. Sem Math.min(1, ...) o mapa
-       cresceria além do tamanho natural em telas largas, e os cartões
-       ficariam borrados — melhor sobrar margem que esticar. */
     const estilo = getComputedStyle(rolagem);
     const padding = parseFloat(estilo.paddingLeft) + parseFloat(estilo.paddingRight);
     const disponivel = rolagem.clientWidth - padding;
-    return Math.min(1, disponivel / Math.max(1, quadro.scrollWidth));
+    /* sem o teto de 1 o mapa esticaria além do tamanho natural em tela
+       larga, e os cartões ficariam borrados — melhor sobrar margem */
+    return Math.min(1, disponivel / Math.max(1, medirNatural()));
   }
+
   function aplicarEscala() {
     const z = escala ?? ajuste();
-    /* transform em vez de `zoom`: o Firefox só passou a suportar `zoom`
-       recentemente, e transform é o caminho previsível em todo navegador */
-    quadro.style.transform = `scale(${z})`;
-    quadro.style.transformOrigin = "0 0";
-    /* O contêiner precisa reservar a altura PÓS-escala: `transform` não
-       muda o espaço que o elemento ocupa no fluxo, então sem isto sobraria
-       um buraco embaixo (ou o conteúdo seguinte subiria por cima). */
-    const estilo = getComputedStyle(rolagem);
-    const padY = parseFloat(estilo.paddingTop) + parseFloat(estilo.paddingBottom);
-    rolagem.style.height = `${quadro.scrollHeight * z + padY}px`;
+    if (temZoom) {
+      quadro.style.zoom = String(z);
+      quadro.style.transform = "";
+      quadro.style.transformOrigin = "";
+      /* com zoom o layout acompanha: nada de altura calculada à mão */
+      rolagem.style.height = "";
+    } else {
+      quadro.style.zoom = "";
+      quadro.style.transform = `scale(${z})`;
+      quadro.style.transformOrigin = "0 0";
+      const estilo = getComputedStyle(rolagem);
+      const padY = parseFloat(estilo.paddingTop) + parseFloat(estilo.paddingBottom);
+      rolagem.style.height = `${quadro.scrollHeight * z + padY}px`;
+    }
     const lbl = raiz.querySelector<HTMLElement>("[data-zoom]");
     if (lbl) lbl.textContent = `${Math.round(z * 100)}%`;
   }
+
+  /* A ORDEM importa: escala primeiro, setas depois. Com zoom, offsetLeft e
+     offsetTop passam a vir na escala aplicada; desenhar antes deixaria as
+     setas medidas numa escala e pintadas em outra. */
   function redesenhar() {
-    desenharSetas(grade, svg, cartao, CORREDOR);
     aplicarEscala();
+    desenharSetas(grade, svg, cartao, CORREDOR);
   }
 
   raiz.querySelector("[data-zoom-mais]")?.addEventListener("click", () => {
     escala = Math.min(1.6, (escala ?? ajuste()) + 0.1);
-    aplicarEscala();
+    redesenhar();
   });
   raiz.querySelector("[data-zoom-menos]")?.addEventListener("click", () => {
     escala = Math.max(0.3, (escala ?? ajuste()) - 0.1);
-    aplicarEscala();
+    redesenhar();
   });
   raiz.querySelector("[data-zoom-ajustar]")?.addEventListener("click", () => {
     escala = null;
-    aplicarEscala();
+    redesenhar();
   });
 
   /* ---------------------------------------------------- quadro <-> lista */
@@ -221,6 +252,7 @@ export function ligarGrade() {
     const rot = btn.textContent;
     btn.disabled = true;
     btn.textContent = "Gerando PDF…";
+    const zoomAntes = quadro.style.zoom;
     const escalaAntes = quadro.style.transform;
     const modoAntes = raiz.dataset.modoAtual;
     try {
@@ -230,6 +262,7 @@ export function ligarGrade() {
       ]);
       if (modoAntes !== "quadro") definirModo("quadro");
       if (semProgresso) raiz.classList.add("sem-estado");
+      quadro.style.zoom = "";
       quadro.style.transform = "none";
       desenharSetas(grade, svg, cartao, CORREDOR);
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
@@ -297,9 +330,10 @@ export function ligarGrade() {
       window.alert(`Não consegui gerar o PDF.\n\n${(e as Error).message}`);
     } finally {
       raiz.classList.remove("sem-estado");
+      quadro.style.zoom = zoomAntes;
       quadro.style.transform = escalaAntes;
       if (modoAntes && modoAntes !== "quadro") definirModo(modoAntes as "lista");
-      else aplicarEscala();
+      else redesenhar();
       btn.disabled = false;
       btn.textContent = rot;
     }
@@ -320,6 +354,10 @@ export function ligarGrade() {
   window.addEventListener("resize", () => {
     window.clearTimeout(t);
     t = window.setTimeout(() => {
+      /* invalida a medida guardada: a largura natural não depende da janela,
+         mas fonte que carrega tarde pode mudá-la, e o resize é a deixa mais
+         barata para conferir de novo */
+      larguraNatural = 0;
       if (raiz.dataset.modoAtual === "quadro") redesenhar();
     }, 120);
   });

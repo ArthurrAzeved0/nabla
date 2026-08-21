@@ -398,13 +398,15 @@ const href = (d: (typeof g.disciplinas)[number]) => {
      coluna de leitura — remendo que desalinhava o mapa do cabeçalho.) */
   .rolagem {
     padding: var(--e-2) 0 var(--e-4);
+    /* rola só quando não couber; com o mapa ajustado não aparece barra */
     overflow-x: auto;
-    overflow-y: hidden;
   }
   .quadro {
     position: relative;
     width: max-content;
-    padding: 2px 2px var(--e-4);
+    /* respiro em cima para as etiquetas "pode cursar", que sobem acima da
+       borda do cartão e seriam cortadas */
+    padding: 12px 2px var(--e-4);
   }
   .colunas {
     display: flex;
