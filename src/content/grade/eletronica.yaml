@@ -269,6 +269,7 @@ disciplinas:
     categoria: basico
     pre: [ESTATICA]
     co: [EQDIF]
+    cadeira: dinamica
   - id: LABFIS
     codigo: —
     nome: Laboratório de Física Básica

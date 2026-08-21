@@ -1,0 +1,60 @@
+---
+origem: "2022.1"
+tema: "Movimento retilíneo · Distância percorrida"
+temaId: deslocamento-distancia
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O movimento de um ponto material é dado por $x = 2t^3 - 15t^2 + 24t + 4$, com $x$ em metros e $t$ em segundos. Determine:
+
+<ol type="a">
+<li>os instantes nos quais a velocidade se anula;</li>
+<li>a distância total percorrida de $0$ a $5{,}0\ \mathrm{s}$.</li>
+</ol>
+
+<Gabarito>
+a) $t = 1{,}0\ \mathrm{s}$ e $t = 4{,}0\ \mathrm{s}$.    b) $s_T = 49\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Derive a posição para obter a velocidade:
+
+$$
+v = \frac{dx}{dt} = 6t^2 - 30t + 24
+$$
+
+**Passo 2 —** Iguale a zero e resolva. Dividindo por 6, $t^2 - 5t + 4 = 0$:
+
+$$
+t = \frac{30 \pm \sqrt{900 - 576}}{12} = \frac{30 \pm 18}{12}
+\quad\Longrightarrow\quad
+t = 1{,}0\ \mathrm{s} \ \text{ e } \ t = 4{,}0\ \mathrm{s}
+$$
+
+**Passo 3 —** Estes são os instantes em que a partícula **inverte o sentido**, e é por isso que a distância não é o deslocamento. Calcule a posição em cada um deles e nos extremos:
+
+$$
+x(0) = 4, \qquad x(1) = 15, \qquad x(4) = -12, \qquad x(5) = -1
+$$
+
+**Passo 4 —** Some os trechos em módulo:
+
+$$
+s_T = |15 - 4| + |-12 - 15| + |-1 - (-12)| = 11 + 27 + 11 = 49\ \mathrm{m}
+$$
+
+**Cuidado.** O deslocamento seria $x(5) - x(0) = -5\ \mathrm{m}$, de módulo 5 — nada a ver com os 49 m percorridos. Quem não procura os instantes de $v = 0$ responde 5 e perde a questão.
+</Passos>

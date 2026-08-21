@@ -127,5 +127,33 @@
       "rlc-sem-capacitor-fasores": "em-oscilacoes",
       "rlc-componentes-associados": "em-oscilacoes"
     }
+  },
+  {
+    "id": "dinamica",
+    "nome": "Dinâmica (Mecânica Geral 2)",
+    "codigo": "MEC02 · 60h",
+    "descricao": "Cinemática da partícula: movimento retilíneo com aceleração variável, movimento dependente por cabos, movimento relativo, movimento curvilíneo e projétil. Depois, cinética e corpos rígidos.",
+    "ordem": 4,
+    "teoria": {
+      "analise-vetorial": "din-vetores",
+      "produto-escalar": "din-vetores",
+      "produto-vetorial": "din-vetores",
+      "movimento-retilineo": "din-retilineo",
+      "posicao-velocidade-aceleracao": "din-retilineo",
+      "deslocamento-distancia": "din-retilineo",
+      "aceleracao-constante": "din-retilineo",
+      "aceleracao-variavel": "din-aceleracao-variavel",
+      "aceleracao-funcao-tempo": "din-aceleracao-variavel",
+      "aceleracao-funcao-velocidade": "din-aceleracao-variavel",
+      "aceleracao-funcao-posicao": "din-aceleracao-variavel",
+      "movimento-dependente": "din-dependente",
+      "blocos-cabos-polias": "din-dependente",
+      "movimento-relativo": "din-relativo",
+      "movimento-curvilineo": "din-curvilineo",
+      "coordenadas-retangulares": "din-curvilineo",
+      "movimento-projetil": "din-projetil",
+      "alcance-altura-maxima": "din-projetil",
+      "equacao-trajetoria": "din-projetil"
+    }
   }
 ]

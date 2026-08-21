@@ -289,6 +289,7 @@ disciplinas:
     categoria: basico
     pre: [MEC01]
     co: []
+    cadeira: dinamica
   - id: ELE02
     codigo: ELE02
     nome: Circuitos Elétricos 2

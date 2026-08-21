@@ -1,0 +1,349 @@
+---
+cadeira: dinamica
+titulo: "Dinâmica (Mecânica Geral 2)"
+unidades:
+  - nome: "1ª Unidade"
+    secoes:
+      - { id: din-vetores, titulo: "Análise vetorial: o que fica do Cálculo e da Estática" }
+      - { id: din-retilineo, titulo: "Movimento retilíneo: posição, velocidade e aceleração" }
+      - { id: din-aceleracao-variavel, titulo: "Aceleração variável: a = f(t), a = f(v), a = f(s)" }
+      - { id: din-dependente, titulo: "Movimento dependente: blocos, cabos e polias" }
+      - { id: din-relativo, titulo: "Movimento relativo entre duas partículas" }
+      - { id: din-curvilineo, titulo: "Movimento curvilíneo em coordenadas retangulares" }
+      - { id: din-projetil, titulo: "Movimento de projétil" }
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                            dinamica.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+<Topico id="din-vetores" num="01" titulo="Análise vetorial: o que fica do Cálculo e da Estática">
+
+**A ideia.** A Estática (Mecânica Geral 1) tratava de corpos que **não** se movem: a soma das forças era zero e você resolvia sistemas de equações. A Dinâmica solta o corpo. Agora posição, velocidade e aceleração mudam com o tempo, e a ferramenta que amarra as três é a **derivada**. Antes de qualquer coisa, vale arrumar a linguagem vetorial — porque daqui para frente quase toda grandeza tem direção, e errar um sinal de componente é o jeito mais comum de perder a questão inteira.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mathbf{r}$ — vetor **posição**: aponta da origem até onde a partícula está;
+- $\mathbf{v}$ — vetor **velocidade**, $\mathbf{v} = \dot{\mathbf{r}}$;
+- $\mathbf{a}$ — vetor **aceleração**, $\mathbf{a} = \dot{\mathbf{v}} = \ddot{\mathbf{r}}$;
+- $\mathbf{i}, \mathbf{j}, \mathbf{k}$ — versores dos eixos $x$, $y$, $z$: têm módulo 1 e só servem para dizer "nesta direção";
+- o ponto sobre a letra é derivada **em relação ao tempo**: $\dot{s} = ds/dt$, $\ddot{s} = d^2s/dt^2$. É a notação do Hibbeler e a que aparece nas provas.
+
+</Caixa>
+
+### As três operações que aparecem em prova
+
+$$
+\mathbf{A} \cdot \mathbf{B} = A_x B_x + A_y B_y + A_z B_z = AB\cos\theta
+$$
+
+O **produto escalar** devolve número, e o uso prático é achar ângulo entre vetores ou projetar um vetor sobre uma direção. O **produto vetorial** devolve vetor, perpendicular aos dois:
+
+$$
+\mathbf{A} \times \mathbf{B} =
+\begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+A_x & A_y & A_z \\
+B_x & B_y & B_z
+\end{vmatrix}
+$$
+
+e é dele que sai momento de força, momento angular e a velocidade de um ponto de corpo rígido em rotação. O **módulo** fecha a lista:
+
+$$
+|\mathbf{A}| = \sqrt{A_x^2 + A_y^2 + A_z^2}
+$$
+
+<Caixa tipo="dica">
+
+Derivada de vetor em coordenadas retangulares é derivada componente por componente, porque $\mathbf{i}$, $\mathbf{j}$ e $\mathbf{k}$ são fixos. **Isso deixa de valer** em coordenadas polares e no triedro tangente-normal, onde os versores giram junto com a partícula — e é exatamente daí que nascem os termos extras da 2ª unidade.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-retilineo" num="02" titulo="Movimento retilíneo: posição, velocidade e aceleração">
+
+**A ideia.** A partícula anda sobre uma reta. Um único eixo basta, e a posição vira um número com sinal, $s$, medido a partir de uma origem que **você** escolhe. Tudo nesta seção é consequência de duas definições: velocidade é a taxa com que a posição muda, e aceleração é a taxa com que a velocidade muda.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $s$ — **posição** na reta (com sinal, não é distância);
+- $\Delta s = s_2 - s_1$ — **deslocamento**: só olha começo e fim;
+- $s_T$ — **distância percorrida**: soma dos trechos, sempre positiva;
+- $v = \dfrac{ds}{dt}$ — velocidade instantânea; o sinal diz o sentido;
+- $a = \dfrac{dv}{dt} = \dfrac{d^2s}{dt^2}$ — aceleração instantânea.
+
+</Caixa>
+
+### A terceira equação, a que não tem tempo
+
+Além das duas definições, existe uma relação que elimina $t$ — e é a mais pedida em prova, porque quase toda questão dá posições e velocidades sem falar de tempo:
+
+$$
+a\,ds = v\,dv
+$$
+
+Ela sai de $a = dv/dt$ multiplicando por $ds/ds$: $a = \dfrac{dv}{dt}\dfrac{ds}{ds} = v\dfrac{dv}{ds}$.
+
+<Caixa tipo="macete">
+
+**Aceleração constante é caso particular, não regra.** As três fórmulas que todo mundo decora no ensino médio,
+
+$$
+v = v_0 + a_c t, \qquad
+s = s_0 + v_0 t + \tfrac{1}{2}a_c t^2, \qquad
+v^2 = v_0^2 + 2a_c(s - s_0)
+$$
+
+só valem com $a_c$ **constante**. Em Dinâmica, metade das questões da 1ª unidade é justamente com aceleração variável — usar essas três ali é o erro clássico. Antes de escrever qualquer uma, confirme no enunciado que a aceleração não depende de $t$, $v$ nem $s$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — deslocamento não é distância">
+
+Uma partícula tem $s = t^3 - 6t^2 + 9t$ (em metros, $t$ em segundos). Ache o deslocamento e a distância percorrida de $t = 0$ a $t = 4\text{ s}$.
+
+Primeiro, onde ela para: $v = 3t^2 - 12t + 9 = 3(t-1)(t-3)$, logo $v = 0$ em $t = 1$ e $t = 3$. As posições: $s(0) = 0$, $s(1) = 4$, $s(3) = 0$, $s(4) = 4$.
+
+O **deslocamento** é $s(4) - s(0) = 4\text{ m}$. A **distância** soma os trechos em módulo: $|4-0| + |0-4| + |4-0| = 12\text{ m}$. Quem não procura os instantes em que $v = 0$ responde 4 nas duas e perde metade da questão.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-aceleracao-variavel" num="03" titulo="Aceleração variável: a = f(t), a = f(v), a = f(s)">
+
+**A ideia.** Este é o assunto que a ementa destaca em separado, e com razão: é o coração do 1º EE. O enunciado dá a aceleração como função de **alguma coisa**, e o que muda de caso para caso não é a física — é qual das três relações você separa e integra. Reconhecer o caso é 80% da questão.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $a = f(t)$ — aceleração dada em função do **tempo**;
+- $a = f(v)$ — em função da **velocidade** (arrasto do ar, atrito viscoso);
+- $a = f(s)$ — em função da **posição** (mola, campo gravitacional, ímã);
+- as condições iniciais $s_0$ e $v_0$: sem elas a integral fica com constante solta e a resposta não fecha.
+
+</Caixa>
+
+### O roteiro dos três casos
+
+**Caso 1 — $a = f(t)$.** Use $dv = a\,dt$ e integre; depois $ds = v\,dt$ e integre de novo.
+
+$$
+\int_{v_0}^{v} dv = \int_0^t f(t)\,dt
+$$
+
+**Caso 2 — $a = f(v)$.** Aqui há duas saídas, e a escolha depende do que se pede. Para relacionar $v$ com $t$, separe $\dfrac{dv}{f(v)} = dt$. Para relacionar $v$ com $s$, use a relação sem tempo:
+
+$$
+\int_{s_0}^{s} ds = \int_{v_0}^{v} \frac{v\,dv}{f(v)}
+$$
+
+**Caso 3 — $a = f(s)$.** Só uma saída: a relação sem tempo, porque $a$ e $s$ já estão do mesmo lado.
+
+$$
+\int_{v_0}^{v} v\,dv = \int_{s_0}^{s} f(s)\,ds
+\qquad\Longrightarrow\qquad
+\frac{v^2 - v_0^2}{2} = \int_{s_0}^{s} f(s)\,ds
+$$
+
+<Caixa tipo="macete">
+
+**Olhe a variável do lado direito e escolha a equação que já a contém.** Se aparece $t$, use $a = dv/dt$. Se aparece $s$, use $a\,ds = v\,dv$. Se aparece $v$, as duas servem — decida pela pergunta: "quanto tempo" pede a primeira, "que distância" pede a segunda. Nunca comece integrando antes de decidir isto.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — arrasto proporcional à velocidade">
+
+Um barco desliga o motor a $v_0 = 8\text{ m/s}$ e sofre desaceleração $a = -0{,}5\,v$ (com $v$ em m/s). Que distância ele percorre até parar praticamente, isto é, até $v = 1\text{ m/s}$?
+
+É o caso $a = f(v)$, e a pergunta é **distância** — então a relação sem tempo:
+
+$$
+\int_{s_0}^{s} ds = \int_{v_0}^{v}\frac{v\,dv}{-0{,}5\,v}
+= \int_{8}^{1} \frac{dv}{-0{,}5} = -2\,(1 - 8) = 14
+$$
+
+Logo $s = 14\text{ m}$. Note que o $v$ do numerador cancelou com o $v$ da aceleração: é o que torna esse caso rápido, e é por isso que ele cai tanto. Se a pergunta fosse "em quanto tempo", o caminho seria $dv/(-0{,}5v) = dt$, que dá logaritmo — e mostra que a rigor ele nunca para.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-dependente" num="04" titulo="Movimento dependente: blocos, cabos e polias">
+
+**A ideia.** Dois ou mais corpos ligados por um cabo que não estica. Se um desce, o outro sobe — e a relação entre as velocidades **não** é sempre 1 para 1: depende de quantos trechos de cabo sustentam cada bloco. O truque do assunto é não raciocinar sobre o movimento, e sim escrever que o **comprimento total do cabo é constante** e derivar.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $s_A$, $s_B$ — posições dos blocos, medidas de uma **referência fixa** (normalmente a linha das polias fixas), sempre no sentido em que o cabo se estende;
+- $l_T$ — comprimento total do cabo, **constante**;
+- os trechos que passam por polias e o comprimento em volta delas: constantes, então derivam a zero.
+
+</Caixa>
+
+### O procedimento, em três passos
+
+1. Escolha a origem numa parte **fixa** e meça $s_A$ e $s_B$ dali, no sentido do cabo.
+2. Escreva $l_T = (\text{soma dos trechos}) = \text{const}$. Trechos que não mudam podem ser jogados numa constante única.
+3. Derive em relação ao tempo: as constantes somem e sobra a relação entre velocidades. Derive de novo para as acelerações.
+
+$$
+2 s_B + s_A = l \quad\Longrightarrow\quad 2 v_B + v_A = 0 \quad\Longrightarrow\quad 2 a_B + a_A = 0
+$$
+
+<Caixa tipo="macete">
+
+**O coeficiente é o número de trechos de cabo que seguram o bloco.** Se o bloco $B$ pende de uma polia móvel com dois trechos subindo, ele aparece com o fator 2, e a velocidade dele é *metade* da de $A$. E o **sinal negativo** que sobra não é erro: ele está dizendo que, no referencial que você escolheu, os dois se movem em sentidos opostos. Escrever "$v_A = -2v_B$" e depois trocar o sinal "porque desce" é contar a mesma coisa duas vezes.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — polia móvel">
+
+Na montagem em que o cabo sai do bloco $A$, sobe até uma polia fixa, desce e dá a volta na polia móvel do bloco $B$ e sobe de novo para uma âncora fixa, tem-se $s_A + 2s_B = l$. Se $A$ desce a $6\text{ m/s}$, com que velocidade $B$ sobe?
+
+Derivando: $v_A + 2v_B = 0$, então $v_B = -v_A/2 = -3\text{ m/s}$. O módulo é $3\text{ m/s}$, e o sinal negativo diz que $B$ anda no sentido contrário ao que foi adotado positivo para $A$ — isto é, sobe enquanto $A$ desce.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-relativo" num="05" titulo="Movimento relativo entre duas partículas">
+
+**A ideia.** Duas partículas se movendo, e a pergunta é sobre uma **vista pela outra**: o avião em relação ao vento, o carro em relação ao outro carro. Nesta unidade os eixos que acompanham a partícula observadora apenas **transladam** — não giram —, e por isso a conta é uma soma vetorial simples. (A versão com eixos girando é assunto da 2ª unidade.)
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mathbf{r}_A$, $\mathbf{r}_B$ — posições medidas do referencial **fixo**;
+- $\mathbf{r}_{B/A}$ — posição de $B$ **relativa a** $A$: "de $A$ para $B$";
+- $\mathbf{v}_{B/A}$, $\mathbf{a}_{B/A}$ — velocidade e aceleração de $B$ vistas por quem viaja com $A$.
+
+</Caixa>
+
+$$
+\mathbf{r}_B = \mathbf{r}_A + \mathbf{r}_{B/A}
+\qquad
+\mathbf{v}_B = \mathbf{v}_A + \mathbf{v}_{B/A}
+\qquad
+\mathbf{a}_B = \mathbf{a}_A + \mathbf{a}_{B/A}
+$$
+
+<Caixa tipo="macete">
+
+**Leia o índice duplo em voz alta e a equação se monta sozinha.** Em $\mathbf{v}_{B/A}$ o índice de baixo é o observador. Na soma $\mathbf{v}_B = \mathbf{v}_A + \mathbf{v}_{B/A}$, os índices "se cancelam" na diagonal — $B$ fica de fora à esquerda, $A$ com $A$ no meio. Se você montou algo em que os índices não fecham assim, a equação está errada antes de qualquer número.
+
+E não some módulos: **projete em $\mathbf{i}$ e $\mathbf{j}$**. Somar $600$ com $50$ porque "um vai a 600 e o outro a 50" é o erro que mais aparece nessas questões.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — dois carros numa curva">
+
+O carro $A$ vai para leste a $18\text{ m/s}$ e freia a $2\text{ m/s}^2$; o carro $B$ vai para o norte a $12\text{ m/s}$, com velocidade constante. Qual a velocidade de $B$ vista de $A$?
+
+Com $\mathbf{i}$ para leste e $\mathbf{j}$ para o norte: $\mathbf{v}_A = 18\mathbf{i}$ e $\mathbf{v}_B = 12\mathbf{j}$. Então
+
+$$
+\mathbf{v}_{B/A} = \mathbf{v}_B - \mathbf{v}_A = -18\mathbf{i} + 12\mathbf{j}
+$$
+
+de módulo $\sqrt{18^2 + 12^2} = 21{,}6\text{ m/s}$, apontando a noroeste. Para a aceleração, $\mathbf{a}_A = -2\mathbf{i}$ e $\mathbf{a}_B = \mathbf{0}$, logo $\mathbf{a}_{B/A} = +2\mathbf{i}$: para quem está em $A$ freando, $B$ parece **ganhar** velocidade para leste.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-curvilineo" num="06" titulo="Movimento curvilíneo em coordenadas retangulares">
+
+**A ideia.** A trajetória deixa de ser reta. A posição vira vetor, e velocidade e aceleração saem de derivar esse vetor. O fato geométrico que organiza tudo: a **velocidade é sempre tangente** à trajetória, enquanto a aceleração aponta para dentro da curva — ela tem uma parte que muda o módulo da velocidade e outra que muda a direção.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mathbf{r} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k}$ — posição;
+- $\mathbf{v} = \dot{x}\mathbf{i} + \dot{y}\mathbf{j} + \dot{z}\mathbf{k}$ — velocidade, **tangente** à trajetória;
+- $\mathbf{a} = \ddot{x}\mathbf{i} + \ddot{y}\mathbf{j} + \ddot{z}\mathbf{k}$ — aceleração, que **não** é tangente;
+- $v = |\mathbf{v}| = \sqrt{\dot{x}^2 + \dot{y}^2 + \dot{z}^2}$ — a rapidez, que é o número que o velocímetro mostra.
+
+</Caixa>
+
+Em coordenadas retangulares os versores são fixos, então cada eixo se resolve **independentemente** dos outros — três problemas de movimento retilíneo em paralelo. É essa independência que faz o próximo assunto, o projétil, ser tão direto.
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 300 200" role="img" aria-label="Trajetória curva com o vetor velocidade tangente e a aceleração apontando para dentro">
+  <path d="M 30 170 Q 130 20 270 90" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  <circle cx="140" cy="63" r="4.5" fill="var(--ink)"/>
+  <line x1="140" y1="63" x2="215" y2="52" stroke="var(--ok)" stroke-width="2.5"/>
+  <polygon points="215,52 205,48 206,57" fill="var(--ok)"/>
+  <text x="196" y="42" font-size="11" fill="var(--ok)">v</text>
+  <line x1="140" y1="63" x2="163" y2="126" stroke="var(--warn)" stroke-width="2.5"/>
+  <polygon points="163,126 154,119 162,116" fill="var(--warn)"/>
+  <text x="168" y="122" font-size="11" fill="var(--warn)">a</text>
+  <text x="40" y="150" font-size="11" fill="var(--accent)">trajetória</text>
+  </svg>
+  <figcaption>A velocidade é sempre tangente; a aceleração aponta para o lado de dentro da curva.</figcaption>
+  </Figura>
+</FigPar>
+
+</Topico>
+
+<Topico id="din-projetil" num="07" titulo="Movimento de projétil">
+
+**A ideia.** Caso particular do movimento curvilíneo, e o mais pedido da unidade. Desprezando o ar, sobra uma única força: o peso. Logo a aceleração é $g$ para baixo, e mais nada. A consequência é a que resolve toda questão do assunto: **na horizontal a velocidade não muda; na vertical o movimento é uniformemente acelerado**. Dois problemas independentes, amarrados pelo mesmo relógio.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v_0$, $\theta$ — módulo e ângulo da velocidade de lançamento;
+- $v_{0x} = v_0\cos\theta$ e $v_{0y} = v_0\sin\theta$ — as componentes iniciais;
+- $g = 9{,}81\text{ m/s}^2$ — para baixo; com o eixo $y$ apontando para cima, entra como $-g$;
+- $t$ — o **tempo, que é o mesmo nos dois eixos**: é ele que liga as duas contas.
+
+</Caixa>
+
+$$
+x = x_0 + v_{0x}t
+\qquad
+y = y_0 + v_{0y}t - \tfrac{1}{2}gt^2
+\qquad
+v_y = v_{0y} - gt
+$$
+
+### Alcance, altura máxima e trajetória
+
+No **ponto mais alto**, $v_y = 0$ — é essa condição, e não uma fórmula decorada, que dá o instante $t = v_{0y}/g$ e a altura. Eliminando $t$ entre $x$ e $y$ chega-se à **equação da trajetória**, que é uma parábola:
+
+$$
+y = x\tan\theta - \frac{g\,x^2}{2v_0^2\cos^2\theta}
+$$
+
+<Caixa tipo="macete">
+
+**Escreva as três equações e conte as incógnitas.** Quase toda questão de projétil se resolve achando primeiro o **tempo de voo** por um dos eixos e levando esse tempo para o outro. Se o enunciado diz onde o projétil cai, comece pela vertical; se diz quanto tempo ficou no ar, comece pela horizontal.
+
+E cuidado com o alcance: a fórmula $R = v_0^2\sin(2\theta)/g$ **só vale se a saída e a chegada estiverem na mesma altura**. Em questão com projétil caindo de um barranco ou acertando um alvo mais alto, ela dá errado — ali é montar $x$ e $y$ e resolver.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — bola lançada de uma mesa">
+
+Uma bola sai horizontalmente da beirada de uma mesa de $1{,}25\text{ m}$ a $3\text{ m/s}$. A que distância do pé da mesa ela toca o chão?
+
+Lançamento horizontal, então $v_{0y} = 0$. Pela vertical, com origem na beirada e $y$ para cima, o chão está em $y = -1{,}25$:
+
+$$
+-1{,}25 = -\tfrac{1}{2}(9{,}81)t^2 \quad\Longrightarrow\quad t = 0{,}505\text{ s}
+$$
+
+Levando esse tempo para a horizontal: $x = 3(0{,}505) = 1{,}51\text{ m}$. Note que a velocidade de saída não entrou na conta do tempo — a bola cai no mesmo tempo que cairia se fosse solta parada. É o mesmo tempo, alcance diferente.
+
+</Caixa>
+
+</Topico>

@@ -240,6 +240,7 @@ disciplinas:
     categoria: basico
     pre: [ESTATICA]
     co: [EQDIF]
+    cadeira: dinamica
   - id: EQDIF
     codigo: MATM0021
     nome: Equações Diferenciais

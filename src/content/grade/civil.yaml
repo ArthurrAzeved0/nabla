@@ -248,6 +248,7 @@ disciplinas:
     categoria: basico
     pre: [FIS07]
     co: []
+    cadeira: dinamica
   - id: ELD2
     codigo: —
     nome: DCExt Eletiva 2
