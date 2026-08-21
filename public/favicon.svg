@@ -13,5 +13,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Nabla">
   <title>Nabla</title>
   <rect width="32" height="32" rx="7" fill="#0f6c86"/>
-  <path d="M3.4 7.4h25.2L16 26.8z" fill="#eef1f1"/>
+  <path d="M3 7.2h26L16 26.8z" fill="none" stroke="#eef1f1" stroke-width="4.2" stroke-linejoin="round"/>
 </svg>

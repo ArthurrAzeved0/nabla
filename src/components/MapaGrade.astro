@@ -95,9 +95,8 @@ const href = (d: (typeof g.disciplinas)[number]) => {
   </div>
 
   <p class="ajuda">
-    Clique numa disciplina para marcá-la como concluída. Passe o mouse para ver só a cadeia de
-    requisitos dela — em repouso as setas ficam de fundo de propósito, porque 61 delas em peso
-    cheio viram rabisco. As em azul têm questões e teoria aqui no site.
+    Clique numa disciplina para marcá-la como concluída. Passe o mouse para acender só a cadeia de
+    requisitos dela. As em azul têm questões e teoria aqui no site.
     <span class="so-toque">
       No celular, o <strong>modo lista</strong> mostra os requisitos escritos, que lê melhor que o
       mapa numa tela estreita.
@@ -219,6 +218,17 @@ const href = (d: (typeof g.disciplinas)[number]) => {
     --corredor: 40px; /* precisa casar com CORREDOR em grade-ui.ts */
     --cartao-w: 172px;
   }
+  /* Teto explícito em cada peça larga. Se um ancestral for esticado por
+     engano, o estrago para aqui em vez de empurrar a página inteira —
+     sintoma que já apareceu com o mapa. */
+  .painel,
+  .legenda,
+  .ajuda,
+  .rolagem,
+  .lista {
+    max-width: 100%;
+  }
+
   .painel {
     background: var(--surface);
     border: 1px solid var(--line);

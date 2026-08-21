@@ -31,10 +31,13 @@ magick /tmp/ico/16.png /tmp/ico/32.png public/favicon.ico
 
 ## Duas decisões
 
-**O ∇ é maciço aqui, e de traço no site.** Na guia o ícone é desenhado a
-16px, e traço de 2px ali vira um fio que desaparece. A identidade se mantém
-pela forma, não pelo acabamento.
+**O ∇ continua VAZADO, com traço grosso.** Maciço ele deixa de ser o
+operador nabla e passa a ler como uma seta para baixo — foi a primeira
+tentativa, e estava errada. O que resolve o tamanho pequeno não é preencher,
+é engrossar: traço de 4,2 (em 32 de viewBox) sobrevive a 16px e mantém o
+vazado.
 
-**O glifo ocupa ~20% da placa.** Medido, não estimado: com a margem original
-ele ficava em 12% e sumia no tamanho real. A placa colorida também resolve o
-contraste — funciona na barra clara e na escura, sem depender do tema.
+**A calibragem foi medida, não estimada.** A 16px, traço 2,4 deixa 5% de
+tinta e desaparece; traço 5 fecha o vazado e vira triângulo cheio. 4,2 dá 22%
+com o centro ainda aberto. A placa colorida resolve o contraste — funciona na
+barra clara e na escura, sem depender do tema.
