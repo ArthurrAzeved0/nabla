@@ -215,6 +215,14 @@ th {
   max-width: var(--largura-pagina);
   margin: 0 auto;
   padding: 0 var(--e-5);
+  /* O `width: 100%` não é redundante: o <body> é uma coluna flex, e margem
+     automática no eixo transversal DESLIGA o `stretch` do item flex. Sem
+     largura explícita o <main> deixava de ocupar a linha e passava a abraçar
+     o próprio conteúdo — 710px, a coluna de leitura mais o padding. Era por
+     isso que `largura="ampla"` não largava nada, e era isso que fazia o
+     <main> esticar até os ~2100px do mapa da grade e a página inteira rolar
+     para o lado. */
+  width: 100%;
 }
 
 .prosa {

@@ -21,6 +21,45 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.4.0] — 2026-08-21
+
+**A página larga passou a ser larga de verdade.** O `largura="ampla"` nunca
+tinha largado nada; a barra do topo virou a mesma em todas as abas.
+
+### Corrigido
+
+- **`largura="ampla"` não fazia efeito nenhum.** `.pagina` traz
+  `margin: 0 auto` e o `<body>` é uma coluna flex — e margem automática no eixo
+  transversal **desliga o `stretch` do item flex**. Sem largura explícita, o
+  `<main>` deixava de ocupar a linha e passava a abraçar o próprio conteúdo:
+  710px, a coluna de leitura mais o padding, sempre, em qualquer janela. Um
+  `width: 100%` em `.pagina` resolve.
+- Isso era também **a causa raiz do transbordo horizontal do mapa da grade**,
+  aberta desde a Fase 5: como o `<main>` abraçava o conteúdo, ele esticava até
+  os ~2100px do mapa e a página inteira rolava para o lado, e o
+  `rolagem.clientWidth` media ~2080 em vez da janela. Medido agora numa janela
+  de 1366: `main` 1351px, `rolagem.clientWidth` 1303px, documento sem
+  transbordo. A blindagem que limitava a medida pela janela continua no lugar,
+  agora como cinto e suspensório.
+- No mapa, o parágrafo de ajuda saía **"aqui no site.No celular"** em telas de
+  toque: o compilador come o espaço em branco entre o texto e a tag seguinte.
+
+### Alterado
+
+- **A barra do topo e o rodapé são sempre largos**, em toda página. Enquanto
+  seguiam a `largura` do conteúdo, a mesma barra aparecia recuada na aba
+  Cadeiras e rente à janela na aba Grade — a moldura do site mudando de lugar
+  ao trocar de aba.
+- O índice de `/grade/` ganhou **duas grades encaixadas**: os cursos lado a
+  lado e, dentro de cada um, as suas matrizes lado a lado. Com dois cursos de
+  duas matrizes dá um bloco 2×2 que enche a linha, em vez da coluna de quatro
+  cartões empilhados no meio da tela.
+- Texto de abertura do índice enxugado: era um parágrafo de cinco linhas
+  explicando o que os selos dos cartões já dizem.
+- No mapa, a nota das setas passa para a linha inteira, embaixo da legenda.
+  Ela ia para a direita com `margin-left: auto`, o que funcionava enquanto a
+  página era estreita; larga de verdade, ficava sozinha na outra ponta.
+
 ## [2.3.0] — 2026-08-21
 
 **O perfil antigo de Civil**, e o índice das grades passando a usar a página
@@ -590,6 +629,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.4.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.4.0
 [2.3.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.3.0
 [2.2.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.2.1
 [2.2.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.2.0

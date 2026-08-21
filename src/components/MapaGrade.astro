@@ -96,7 +96,9 @@ const href = (d: (typeof g.disciplinas)[number]) => {
 
   <p class="ajuda">
     Clique numa disciplina para marcá-la como concluída. Passe o mouse para acender só a cadeia de
-    requisitos dela. As com legenda azul têm questões e teoria aqui no site.
+    requisitos dela. As com legenda azul têm questões e teoria aqui no site.{" "}
+    {/* o espaço explícito é necessário: o compilador come o espaço em branco
+        entre o texto e a tag, e no toque saía "aqui no site.No celular" */}
     <span class="so-toque">
       No celular, o <strong>modo lista</strong> mostra os requisitos escritos, que lê melhor que o
       mapa numa tela estreita.
@@ -353,8 +355,13 @@ const href = (d: (typeof g.disciplinas)[number]) => {
     background: transparent;
     border: 2px solid var(--action);
   }
+  /* A nota das setas ocupa a linha inteira, embaixo da legenda. Antes ia
+     para a direita com `margin-left: auto`, o que funcionava enquanto a
+     página era estreita; numa página larga de verdade ela ficava sozinha na
+     outra ponta, a um palmo do que explica. */
   .sep {
-    margin-left: auto;
+    flex-basis: 100%;
+    color: var(--ink-3);
   }
   .ajuda {
     font-size: var(--t-sm);

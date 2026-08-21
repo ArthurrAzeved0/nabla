@@ -33,9 +33,14 @@ import BotaoTema from "~/components/BotaoTema.astro";
 interface Props {
   titulo: string;
   descricao?: string;
-  /** "leitura" (padrão) limita a coluna; "ampla" usa a janela toda.
-      O mapa da grade é ferramenta, não texto: preso na coluna de leitura,
-      o cabeçalho ficava minúsculo no meio de uma página vazia. */
+  /** "leitura" (padrão) limita a coluna do CONTEÚDO; "ampla" usa a janela
+      toda. O mapa da grade é ferramenta, não texto: preso na coluna de
+      leitura, o cabeçalho ficava minúsculo no meio de uma página vazia.
+
+      Vale só para o <main>: a barra do topo e o rodapé são sempre largos, em
+      toda página. Enquanto seguiam esta propriedade, a mesma barra aparecia
+      recuada na aba Cadeiras e rente à janela na aba Grade — a moldura do
+      site mudando de lugar ao trocar de aba. */
   largura?: "leitura" | "ampla";
 }
 
@@ -86,7 +91,7 @@ const naGrade = caminho.includes("/grade/");
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="topo">
-      <div class:list={["pagina", "faixa", largura]}>
+      <div class:list={["pagina", "faixa", "ampla"]}>
         <a class="link-marca" href={base}><Marca /></a>
         <nav class="nav-topo" aria-label="Seções">
           <a href={base} aria-current={naGrade ? undefined : "page"}>Cadeiras</a>
@@ -101,7 +106,7 @@ const naGrade = caminho.includes("/grade/");
     </main>
 
     <footer class="rodape">
-      <div class:list={["pagina", "faixa-rodape", largura]}>
+      <div class:list={["pagina", "faixa-rodape", "ampla"]}>
         <p>
           © {ano} Nabla — feito por <strong>Arthur Azevedo</strong>, aluno de Eng. de Controle e
           Automação na POLI/UPE.
