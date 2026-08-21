@@ -32,6 +32,10 @@ html {
    A ordem em `background` vai da camada de cima para a de baixo.          */
 body {
   margin: 0;
+  /* coluna flex de altura mínima total: é o que permite ao <main> crescer e
+     o rodapé assentar embaixo mesmo quando o conteúdo é curto */
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background:
     linear-gradient(var(--grid-2) 1px, transparent 1px) 0 0 / 100% var(--grid-forte),
