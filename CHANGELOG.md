@@ -63,6 +63,52 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
     análise de velocidade relativa, centro instantâneo de rotação, análise de
     aceleração relativa, momento de inércia com eixos paralelos, equações do
     movimento plano e o teorema da energia com a parcela de rotação.
+- **A cadeira de Dinâmica ficou completa: 56 questões**, nas três provas.
+  Saíram de todo o material que eu tinha — inclusive as fotos, os PDFs
+  escaneados e os gabaritos manuscritos, que só se leem como imagem.
+  - **1º EE (24 questões)**: os quatro tipos de aceleração variável
+    ($a = -2v^3$, $-k/x$, $kt$ e $10 - 0,9v^2$), quatro vínculos por cabo —
+    duas delas com o trator, em que a corda cresce como raiz —, raio de
+    curvatura, o ângulo que maximiza a **área** da trajetória, o esquiador na
+    parábola, o anel na barra girando, onde a caixa abandona o arco, a
+    resultante em módulo $\sqrt5\,mg$ no movimento circular, e as dez
+    afirmativas de verdadeiro-ou-falso de 2025.2.
+  - **2º EE (26 questões)**: trabalho e energia com força variável, os dois
+    tipos de colisão (direta e oblíqua), explosão de projétil, momento
+    angular, três questões de corpo rígido (engrenagem planetária,
+    cremalheira e haste com cursor), o cilindro que rola na parábola, a
+    corrente que escorrega do tubo (a única em que a altura é a do **centro de
+    massa** de um arco) e a prancha articulada que lança a bola no cesto.
+  - **Final (6 questões)**: bobina com raio de giração, o ginasta e a
+    conservação do momento angular, o impulso de $F = 5^t t^2$, e as três do
+    simulado de 2025.
+- Fontes: 2021.2 (Prof. Rogério), 2022.1 e 2022.2, 2023.1 (Profs. Osmundo e
+  Maciel), 2024.1 e 2024.2 (Prof. Paulo Roberto), 2025.1, 2025.2 (Prof.
+  Leonardo), a 2ª chamada, a prova em branco sem data, o simulado da final e
+  as listas de energia.
+
+### Corrigido no material-fonte
+
+- Dois arquivos do zip estavam na pasta errada, e a alocação no site segue o
+  **conteúdo**, não o nome do arquivo: o "2024.1 — Gabarito manuscrito" é o
+  gabarito da prova de **2024.2**, e as páginas 3 e 4 das fotos da final são
+  de uma **2ª Avaliação** (o cabeçalho diz isso).
+- A força da Q3 da final de 2024 é mesmo $F = 5^{t}\,t^{2}$, e não $5t^2$: eu
+  ia tratar como erro de digitação, mas o gabarito manuscrito integra por
+  partes duas vezes e carrega $\ln 5$ até o fim.
+- Onde a prova se contradiz, a nota fica na questão: a de 2024.2 chama o corpo
+  de "disco" e depois de "esfera" — adotei disco, que é o que está declarado
+  com a massa, e registrei o outro resultado.
+- As listas dos Profs. Paulo Roberto e Leonardo são **páginas escaneadas do
+  Hibbeler**, então não foram transcritas: livro com direito autoral. As três
+  questões de energia que entraram vêm das listas de banca brasileira, não do
+  livro.
+
+### Alterado
+
+- `scripts/cabecalho.mjs` passou a olhar os primeiros 8.000 caracteres, e não
+  2.000, para decidir se um arquivo já tem cabeçalho. Em `.mdx` o cabeçalho vem
+  **depois** do frontmatter, e o da teoria de Dinâmica agora lista 29 seções.
 
 ## [2.11.0] — 2026-08-21
 

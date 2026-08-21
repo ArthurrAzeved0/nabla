@@ -1,0 +1,111 @@
+---
+origem: "Revisão · Prof. Paulo Roberto"
+tema: "Força resultante no movimento circular · Altura na rampa"
+temaId: movimento-circular
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um objeto puntiforme de massa $m$ é lançado do ponto $X$ e descreve inicialmente uma trajetória circular de raio $R$ e centro em $O$, numa pista lisa tangente ao solo. O objeto passa pelo ponto $Y$, cuja distância até a superfície horizontal é igual ao raio $R$ — isto é, $Y$ está no nível do centro $O$. Se o módulo da **força resultante** sobre o objeto em $Y$ é $\sqrt{5}\,mg$, determine a altura máxima $h_{\max}$ que ele atinge na rampa.
+
+<Figura>
+  <svg viewBox="0 0 260 170" role="img" aria-label="Trajetória circular tangente ao solo, com o ponto Y no nível do centro, ligada a uma rampa à direita" >
+    {/* solo */}
+    <line x1="14" y1="140" x2="248" y2="140" stroke="var(--ink-2)" stroke-width="1.8"/>
+    {/* círculo tangente ao solo */}
+    <circle cx="86" cy="90" r="50" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4"/>
+    <circle cx="86" cy="90" r="3" fill="var(--ink-2)"/>
+    <text x="76" y="86" font-size="11" fill="var(--ink-2)">O</text>
+    {/* ponto Y no nível de O */}
+    <circle cx="136" cy="90" r="5" fill="var(--ok)"/>
+    <text x="142" y="86" font-size="11" fill="var(--ok)">Y</text>
+    {/* raio horizontal até Y */}
+    <line x1="86" y1="90" x2="136" y2="90" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="104" y="102" font-size="9" fill="var(--ink-3)">R</text>
+    {/* cota: Y ao solo */}
+    <line x1="152" y1="90" x2="152" y2="140" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 2"/>
+    <text x="156" y="118" font-size="9" fill="var(--ink-3)">R</text>
+    {/* forças em Y */}
+    <line x1="130" y1="90" x2="104" y2="90" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="99,90 107,86 107,94" fill="var(--warn)"/>
+    <text x="100" y="82" font-size="9" fill="var(--warn)">N</text>
+    <line x1="136" y1="96" x2="136" y2="124" stroke="var(--ink-3)" stroke-width="1.6"/>
+    <polygon points="136,130 132,122 140,122" fill="var(--ink-3)"/>
+    <text x="118" y="122" font-size="9" fill="var(--ink-3)">mg</text>
+    {/* ponto X */}
+    <circle cx="86" cy="140" r="4" fill="var(--accent)"/>
+    <text x="78" y="156" font-size="11" fill="var(--accent)">X</text>
+    {/* rampa */}
+    <line x1="180" y1="140" x2="238" y2="46" stroke="var(--ink-3)" stroke-width="2.4"/>
+    <line x1="248" y1="46" x2="248" y2="140" stroke="var(--ok)" stroke-width="0.9"/>
+    <text x="204" y="40" font-size="10" fill="var(--ok)">h<tspan font-size="8" dy="2.5">max</tspan></text>
+  </svg>
+  <figcaption>
+
+Em $Y$ o raio é **horizontal**: a normal é horizontal e o peso é tangencial. Por isso a resultante é a hipotenusa de $N$ e $mg$ — e é ela que o enunciado dá.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$h_{\max} = 2R$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a chave da questão: decomponha a resultante em $Y$.** O ponto $Y$ está no nível do centro, então o raio $OY$ é **horizontal**. Consequências:
+
+- a **normal** é radial, portanto horizontal, apontando para $O$;
+- o **peso** é vertical, portanto **tangencial** — nenhuma componente radial.
+
+As duas são perpendiculares, e o módulo da resultante é a hipotenusa:
+
+$$
+\left|\vec{F}_R\right| = \sqrt{N^2 + (mg)^2} = \sqrt{5}\,mg
+$$
+
+$$
+N^2 = 5m^2g^2 - m^2g^2 = 4m^2g^2
+\quad\Longrightarrow\quad
+N = 2mg
+$$
+
+**Passo 2 — a normal é a única força centrípeta ali.** Como o peso é puramente tangencial em $Y$:
+
+$$
+N = m\,\frac{v_Y^2}{R}
+\quad\Longrightarrow\quad
+2mg = m\,\frac{v_Y^2}{R}
+\quad\Longrightarrow\quad
+v_Y^2 = 2gR
+$$
+
+**Passo 3 — energia de $Y$ até o topo da rampa.** A pista é lisa; no ponto mais alto da rampa o objeto para. Tomando o solo como referência, $Y$ está a uma altura $R$:
+
+$$
+m\,g\,R + \tfrac{1}{2}m\,v_Y^2 = m\,g\,h_{\max}
+$$
+
+$$
+h_{\max} = R + \frac{v_Y^2}{2g} = R + \frac{2gR}{2g}
+$$
+
+$$
+\boxed{h_{\max} = 2R}
+$$
+
+**Por que o resultado é tão limpo.** A altura extra que a velocidade compra é $v_Y^2/2g = R$ — exatamente o mesmo $R$ da altura de $Y$. Não é coincidência: o $\sqrt{5}$ do enunciado foi escolhido para dar $N = 2mg$, e $N = 2mg$ dá $v_Y^2 = 2gR$, que dá altura $R$. Questão de banca é construída de trás para frente assim.
+
+**Cuidado — o erro que a questão está caçando.** É tentador escrever $N - mg = mv^2/R$, como se fosse o ponto mais baixo da circunferência. Em $Y$ **o peso não tem componente radial**: ele não soma nem subtrai da normal, ele fica perpendicular a ela. Antes de montar $\sum F_n$, desenhe o raio e veja para onde ele aponta.
+</Passos>

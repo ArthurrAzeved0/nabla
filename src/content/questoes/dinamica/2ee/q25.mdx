@@ -1,0 +1,122 @@
+---
+origem: "Lista de energia"
+tema: "Mola num anel horizontal · Energia com geometria de Thales"
+temaId: energia-elastica
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A figura mostra a vista superior de um anel de raio $R$, contido num plano **horizontal**, que serve de trilho para uma pequena conta de massa $m$ deslizar sobre ele **sem atrito**. Uma mola de constante elástica $k$ e comprimento natural $R$ tem uma extremidade fixa no ponto $A$ do anel e a outra ligada à conta. Inicialmente a conta está em repouso no ponto $B$, diametralmente oposto a $A$. Se $P$ é um ponto qualquer do anel e $\theta$ é o ângulo entre os segmentos $AB$ e $AP$, a velocidade da conta ao passar por $P$ é:
+
+<ol type="a">
+<li>$R\sqrt{\dfrac{k}{m}}\;|\cos\theta|$</li>
+<li>$2R\sqrt{\dfrac{k}{m}}\;\operatorname{sen}\theta$</li>
+<li>$R\sqrt{\dfrac{k}{m}}\;|\cos\theta + \operatorname{sen}\theta - 1|$</li>
+<li>$2R\sqrt{\dfrac{k}{m}\left(\cos\theta - \cos^2\theta\right)}$</li>
+<li>$R\sqrt{\dfrac{k}{m}}\;\operatorname{sen}\theta\cos\theta$</li>
+</ol>
+
+<Figura>
+  <svg viewBox="0 0 220 190" role="img" aria-label="Vista superior de um anel com A à esquerda, B diametralmente oposto à direita, e a conta em P, ligada a A pela mola" >
+    {/* anel */}
+    <circle cx="110" cy="100" r="70" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+    {/* A e B */}
+    <circle cx="40" cy="100" r="4.5" fill="var(--ink-2)"/>
+    <text x="22" y="98" font-size="11" fill="var(--ink-2)">A</text>
+    <circle cx="180" cy="100" r="4.5" fill="var(--ok)"/>
+    <text x="188" y="98" font-size="11" fill="var(--ok)">B</text>
+    {/* diâmetro AB */}
+    <line x1="40" y1="100" x2="180" y2="100" stroke="var(--line-2)" stroke-width="1.2" stroke-dasharray="4 3"/>
+    {/* P no anel */}
+    <circle cx="145" cy="40" r="6" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="152" y="34" font-size="11" fill="var(--warn)">P</text>
+    {/* mola A->P */}
+    <path d="M 46 98 l 9 -6 l 8 2 l 9 -8 l 8 2 l 9 -8 l 8 2 l 9 -8 l 8 2 l 9 -8 l 8 2 l 9 -8" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    {/* ângulo teta em A */}
+    <path d="M 74 100 A 34 34 0 0 0 70 86" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="74" y="92" font-size="11" fill="var(--accent)">θ</text>
+    {/* ângulo reto em P (Thales) */}
+    <line x1="145" y1="40" x2="180" y2="100" stroke="var(--line-2)" stroke-width="1"/>
+    <path d="M 149 47 l 6 -4 l 4 6" fill="none" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="112" y="182" font-size="9" fill="var(--ink-3)" text-anchor="middle">AB é diâmetro ⇒ ângulo em P é reto</text>
+  </svg>
+  <figcaption>
+
+$AB$ é diâmetro, então o ângulo $A\hat{P}B$ é reto (Thales) — e daí $\overline{AP} = 2R\cos\theta$ **sem nenhuma trigonometria adicional**.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Alternativa **(d)**:
+
+$$
+v = 2R\sqrt{\frac{k}{m}\left(\cos\theta - \cos^2\theta\right)}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a geometria, que é metade da questão.** $AB$ é um **diâmetro** (B é diametralmente oposto a A), logo $\overline{AB} = 2R$. Pelo teorema de Thales, todo ponto $P$ do círculo vê o diâmetro sob **ângulo reto**: o triângulo $APB$ é retângulo em $P$. Então
+
+$$
+\overline{AP} = \overline{AB}\cos\theta = 2R\cos\theta
+$$
+
+**Passo 2 — as deformações da mola.** Comprimento natural $R$.
+
+Em $B$: comprimento $2R$, deformação
+
+$$
+s_B = 2R - R = R
+$$
+
+Em $P$: comprimento $2R\cos\theta$, deformação
+
+$$
+s_P = 2R\cos\theta - R = R\,(2\cos\theta - 1)
+$$
+
+**Passo 3 — conservação da energia.** O plano é **horizontal**: o peso não trabalha, e o trilho é liso. Partindo do repouso em $B$:
+
+$$
+\tfrac{1}{2}k\,s_B^2 = \tfrac{1}{2}m\,v^2 + \tfrac{1}{2}k\,s_P^2
+$$
+
+$$
+m\,v^2 = k\,R^2\left[1 - (2\cos\theta - 1)^2\right]
+$$
+
+**Passo 4 — abra o quadrado.** É aqui que a expressão desaba:
+
+$$
+1 - (4\cos^2\theta - 4\cos\theta + 1) = 4\cos\theta - 4\cos^2\theta
+$$
+
+$$
+v^2 = \frac{4kR^2}{m}\left(\cos\theta - \cos^2\theta\right)
+\quad\Longrightarrow\quad
+v = 2R\sqrt{\frac{k}{m}\left(\cos\theta - \cos^2\theta\right)}
+$$
+
+**Confira nos casos-limite** — é o jeito mais rápido de eliminar as alternativas erradas sem fazer a conta:
+
+- $\theta = 0$ ($P = B$): $\cos\theta - \cos^2\theta = 0 \Rightarrow v = 0$. ✔ É de onde a conta partiu, em repouso.
+- $\theta = 90^\circ$ ($P$ no topo, $\overline{AP} = 0$): daria $v = 0$ também — e faz sentido, porque ali a mola estaria comprimida de $R$, guardando a mesma energia de antes. ✔
+- **Máximo** em $\cos\theta = 1/2$, ou $\theta = 60^\circ$: a conta passa mais rápido quando a mola está no seu comprimento natural, $\overline{AP} = R$. ✔ Perfeitamente coerente: energia elástica nula, toda a energia é cinética.
+
+Nenhuma das outras alternativas satisfaz as três verificações.
+
+**Cuidado.** A deformação é medida do **comprimento natural** $R$, não de zero. Usar $s = 2R\cos\theta$ dá uma expressão que não anula em $\theta = 0$ — e o teste-limite pega o erro na hora.
+</Passos>
