@@ -214,6 +214,11 @@ export function ligarGrade() {
     btn.textContent = "Gerando PDF…";
     const escalaAntes = quadro.style.transform;
     const modoAntes = raiz.dataset.modoAtual;
+    /* Fundo escuro no papel gasta tinta e sai ruim. O tema do PDF é uma
+       escolha própria, independente do tema da tela: força-se `light` na
+       raiz durante a captura e devolve-se depois. */
+    const querClaro = raiz.querySelector<HTMLInputElement>("[data-pdf-claro]")?.checked ?? false;
+    const temaAntes = document.documentElement.getAttribute("data-theme");
     try {
       const [{ toJpeg }, { jsPDF }] = await Promise.all([
         import("html-to-image"),
@@ -221,16 +226,27 @@ export function ligarGrade() {
       ]);
       if (modoAntes !== "quadro") definirModo("quadro");
       if (semProgresso) raiz.classList.add("sem-estado");
+      if (querClaro) document.documentElement.setAttribute("data-theme", "light");
       quadro.style.transform = "none";
       desenharSetas(grade, svg, cartao, CORREDOR);
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+      /* A página do PDF nasce branca. Como o mapa é capturado com o fundo do
+         tema atual, sobrava uma moldura branca em volta. Pinta-se a página
+         com a MESMA cor e escolhe-se o tom do texto pela luminância dela. */
+      /* lido DEPOIS de trocar o tema, senão pegaria a cor antiga */
+      const fundoCss = getComputedStyle(document.body).backgroundColor;
+      const [fr, fg, fb] = (fundoCss.match(/\d+(?:\.\d+)?/g) ?? ["255", "255", "255"])
+        .slice(0, 3)
+        .map(Number) as [number, number, number];
+      const claro = (0.2126 * fr + 0.7152 * fg + 0.0722 * fb) / 255 > 0.55;
 
       const largura = quadro.scrollWidth;
       const altura = quadro.scrollHeight;
       /* limite de canvas dos navegadores móveis fica perto de 4096px */
       const pr = Math.min(2, 4000 / largura, 4000 / altura);
       const png = await toJpeg(quadro, {
-        backgroundColor: getComputedStyle(document.body).backgroundColor,
+        backgroundColor: fundoCss,
         pixelRatio: pr,
         quality: 0.92,
       });
@@ -250,11 +266,21 @@ export function ligarGrade() {
         unit: "mm",
         format: [pw, ph],
       });
+      /* fundo da página igual ao da captura: nada de moldura branca */
+      pdf.setFillColor(fr, fg, fb);
+      pdf.rect(0, 0, pw, ph, "F");
+
       pdf.setFont("helvetica", "bold");
       pdf.setFontSize(12);
-      pdf.text(`${grade.curso} — mapa da grade · POLI/UPE · matriz ${grade.sigla}`, M, M + 4);
+      /* tom do texto conforme a luminância do fundo: tinta no papel,
+         papel na planta */
+      const tit = claro ? [26, 32, 42] : [232, 238, 244];
+      pdf.setTextColor(tit[0]!, tit[1]!, tit[2]!);
+      pdf.text(`${grade.curso} — mapa da grade · POLI/UPE · matriz ${grade.matriz}`, M, M + 4);
       pdf.setFont("helvetica", "normal");
       pdf.setFontSize(8.5);
+      const sub = claro ? [90, 100, 111] : [157, 176, 189];
+      pdf.setTextColor(sub[0]!, sub[1]!, sub[2]!);
       pdf.text(
         semProgresso
           ? "Mapa completo · seta contínua = pré-requisito · tracejada = co-requisito"
@@ -267,6 +293,8 @@ export function ligarGrade() {
     } catch (e) {
       window.alert(`Não consegui gerar o PDF.\n\n${(e as Error).message}`);
     } finally {
+      if (temaAntes === null) document.documentElement.removeAttribute("data-theme");
+      else document.documentElement.setAttribute("data-theme", temaAntes);
       raiz.classList.remove("sem-estado");
       quadro.style.transform = escalaAntes;
       if (modoAntes && modoAntes !== "quadro") definirModo(modoAntes as "lista");

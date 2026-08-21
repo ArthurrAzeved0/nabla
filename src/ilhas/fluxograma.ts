@@ -46,6 +46,8 @@ export interface Disciplina {
 export interface Grade {
   curso: string;
   sigla: string;
+  /** Ano.semestre da matriz curricular, como "2021.1". */
+  matriz: string;
   chTotalCurso: number;
   estagioFracao: number;
   disciplinas: Disciplina[];
