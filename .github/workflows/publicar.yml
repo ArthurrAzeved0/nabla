@@ -17,7 +17,7 @@
 # tudo para Workers), então não há integração com Git para ligar por lá. O
 # projeto foi criado pela CLI e a publicação vem daqui.
 #
-# O endereço é o motivo da escolha: nabla.pages.dev, sem o subdomínio da
+# O endereço é o motivo da escolha: nabla-poli.pages.dev, sem o subdomínio da
 # conta no meio, que é o que o Workers imporia.
 #
 # Segredos necessários (Settings > Secrets and variables > Actions):
@@ -75,8 +75,8 @@ jobs:
       - name: Verificar cabeçalhos de autoria
         run: npm run cabecalhos
 
-      # main    -> nabla.pages.dev
-      # develop -> <hash>-nabla.pages.dev (pré-visualização)
+      # main    -> nabla-poli.pages.dev
+      # develop -> <hash>-nabla-poli.pages.dev (pré-visualização)
       #
       # `pages deploy` NÃO cria o projeto: erra se ele não existir. Como a
       # Cloudflare tirou a criação do painel, ela é feita aqui na primeira
@@ -89,11 +89,11 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          if ! npx wrangler pages project list | grep -qE '(^|[[:space:]])nabla([[:space:]]|$)'; then
-            echo "projeto 'nabla' não existe: criando"
-            npx wrangler pages project create nabla --production-branch=main
+          if ! npx wrangler pages project list | grep -qE '(^|[[:space:]])nabla-poli([[:space:]]|$)'; then
+            echo "projeto 'nabla-poli' não existe: criando"
+            npx wrangler pages project create nabla-poli --production-branch=main
           fi
           npx wrangler pages deploy dist \
-            --project-name=nabla \
+            --project-name=nabla-poli \
             --branch="$GITHUB_REF_NAME" \
             --commit-dirty=true
