@@ -16,6 +16,11 @@
    dele é eliminar erro de TRANSCRIÇÃO (fórmula digitada errado), que é o
    risco real de converter 147 questões na mão.
 
+   FERRAMENTA DE MIGRAÇÃO, guardada como registro. Os arquivos de entrada
+   (questoes/<cadeira>/<prova>/qNN.html) foram aposentados na Fase 5, mas
+   continuam no histórico: `git show v1.0.0:<caminho>` os recupera. Serve se
+   for preciso reconverter algo e comparar com o resultado atual.
+
    Uso: node scripts/converter-questao.mjs <arquivo.html> [--stdout]
 */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";

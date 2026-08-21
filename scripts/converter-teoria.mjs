@@ -16,6 +16,11 @@
    entidades HTML na matemática, cerca de $$ sozinha na linha, chaves
    literais escapadas, comentários HTML -> JSX, tokens de cor renomeados.
 
+   FERRAMENTA DE MIGRAÇÃO, guardada como registro. Os arquivos de entrada
+   (conteudo/<cadeira>.html) foram aposentados na Fase 5, mas
+   continuam no histórico: `git show v1.0.0:<caminho>` os recupera. Serve se
+   for preciso reconverter algo e comparar com o resultado atual.
+
    Uso: node scripts/converter-teoria.mjs <cadeira>
 */
 import { readFileSync, writeFileSync } from "node:fs";

@@ -1,210 +1,147 @@
-# Responde Aí — Poli
+<!-- **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                               README.md *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** -->
+# Nabla
 
-Site de estudos com conteúdo teórico e banco de questões resolvidas, feito para as cadeiras da POLI/UPE.
+**Guia do aluno da POLI/UPE**: teoria na ordem da ementa, banco de questões de
+provas reais com resolução passo a passo, e o mapa da grade curricular.
 
-Feito por **Arthur Azevedo**, aluno de Eng. de Controle e Automação.
+No ar em <https://arthurrazeved0.github.io/RespondeAi-Poli/>
 
-## Estrutura do projeto
+> Software proprietário. O repositório é público para consulta e portfólio;
+> isso **não** concede licença de uso. Ver [`LICENSE`](LICENSE).
 
-```
-Responde Ai - Poli/
-├── index.html              # Página inicial (lista de cursos)
-├── curso.html              # Template único de curso (usa ?curso=<id>)
-├── css/
-│   └── style.css           # Estilos + temas claro/escuro (variáveis CSS)
-├── js/
-│   ├── theme.js            # Alternância de tema (salvo em localStorage)
-│   ├── cursos.js            # REGISTRO CENTRAL de cursos (window.CURSOS)
-│   ├── home.js             # Monta os cards da página inicial
-│   ├── curso.js            # Lógica da página de curso (abas, fetch de conteúdo e questões)
-│   └── estudo.js           # Ferramentas de estudo (marcação, estatísticas, cronômetro, simulado)
-├── conteudo/
-│   ├── _modelo-conteudo.html # Modelo comentado para a teoria de um novo curso
-│   ├── calculo3.html       # Teoria completa de Cálculo 3 (fragmento HTML)
-│   ├── eqdiferenciais.html # Teoria completa de Cálculo 4 / Eq. Diferenciais
-│   └── eletromag.html      # Teoria completa de Eletromag (fragmento HTML)
-└── questoes/
-    ├── manifest.js         # REGISTRO CENTRAL de questões (window.QUESTOES_MANIFEST)
-    ├── _modelo-questao.html # Modelo comentado para criar novas questões
-    ├── calculo3/           # 1ee/ 2ee/ final/, cada uma com qNN.html
-    ├── eqdiferenciais/     # (idem)
-    └── eletromag/          # (idem)
-```
+---
 
-## Ferramentas de estudo (js/estudo.js)
+## O que tem aqui
 
-Na aba **Questões** de cada curso existem ferramentas de apoio, todas salvas em
-`localStorage` na chave `ra-progresso` (só no navegador do aluno):
+| | |
+|---|---|
+| **3 cadeiras** | Cálculo Vetorial, Equações Diferenciais, Fundamentos do Eletromagnetismo |
+| **147 questões** | provas reais e listas (1º EE, 2º EE, Final), com gabarito e passo a passo |
+| **43 seções de teoria** | na ordem da ementa oficial, com 107 fórmulas nomeadas e 49 figuras |
+| **1 mapa de grade** | Engenharia Civil, matriz 2021.1: 65 disciplinas e 61 requisitos |
 
-- **Marcação Acertei / Errei / Revisar** — botões em cada questão; clicar de novo
-  desmarca. A borda esquerda do cartão muda de cor conforme o status.
-- **Filtros por status** — chips "Todas / Acertei / Errei / Revisar / Não feitas"
-  acima da lista.
-- **Estatísticas de progresso** — barra de progresso e contagem por prova, com
-  botão "Limpar progresso".
-- **Cronômetro por questão** — botão de relógio em cada questão; o tempo fica
-  registrado junto ao status.
-- **Modo simulado** — sorteia N questões, esconde gabaritos, roda um cronômetro
-  de prova regressivo e ao encerrar mostra a nota (10 × acertos / total).
-- **Contadores nos chips** — cada chip de prova mostra o total de questões e cada
-  chip de status mostra quantas questões da prova atual têm aquele status.
-- **Link direto por questão** — clicar em "Questão N" copia o endereço da questão
-  (`curso.html?curso=<id>#<data-id>`); abrir esse link já rola e destaca a questão.
-- **Voltar ao topo** — botão flutuante que aparece após rolar a página.
+Ferramentas de estudo: marcar acertei/errei/revisar, cronômetro por questão,
+filtro por status, progresso e modo simulado com nota. Tudo guardado no
+navegador — não há conta, servidor nem rastreador.
 
-A integração é feita pelo hook `ESTUDO.aoRenderizar(cursoId, prova, listaEl)`,
-chamado por `curso.js` sempre que a lista de questões é renderizada.
-
-### Ligação teoria ↔ questões
-
-Cada questão tem um `data-tema`, e cada cadeira tem em `js/cursos.js` um mapa
-`teoria` que liga esse `data-tema` ao id de uma seção do conteúdo teórico:
-
-```js
-teoria: { "integrais-duplas": "c3-multiplas", ... }  // data-tema -> id da seção
-```
-
-Com isso, sem editar nenhum arquivo de questão, o site cria dois atalhos:
-
-- **"Ver material"** — botão em cada questão que abre a seção da teoria em nova guia;
-- **"Praticar este assunto"** — botão no fim de cada seção da teoria que pula para
-  a primeira questão daquele tema (troque de prova se não houver na atual).
-
-## Rodando localmente
-
-O site usa `fetch()` para carregar conteúdo e questões, o que **não funciona abrindo o arquivo direto** (`file://`). Rode um servidor local na pasta do projeto:
+## Rodar
 
 ```bash
-cd "Responde Ai - Poli"
-python -m http.server 8000
+npm install
+npm run dev          # localhost:4321
+npm run dev:rede     # também acessível na rede local (testar no celular)
 ```
 
-E abra `http://localhost:8000` no navegador.
-
-## Publicando no GitHub Pages
-
-1. Crie um repositório no GitHub e envie o conteúdo desta pasta (a pasta em si deve ser a raiz do repositório).
-2. No repositório: **Settings → Pages → Source: Deploy from a branch → branch `main`, pasta `/ (root)`**.
-3. O site ficará disponível em `https://<seu-usuario>.github.io/<nome-do-repo>/`.
-
-Nada precisa ser compilado — é um site 100% estático.
-
-## Como adicionar uma NOVA QUESTÃO
-
-1. **Copie o modelo** `questoes/_modelo-questao.html` para a pasta certa, seguindo o padrão de nomes:
-
-   ```
-   questoes/<idDoCurso>/<prova>/qNN.html
-   ```
-
-   onde `<prova>` é `1ee`, `2ee` ou `final`, e `NN` é o próximo número (ex.: `q05.html`).
-
-2. **Preencha o bloco** — a estrutura obrigatória é:
-
-   ```html
-   <article class="questao" data-id="<curso>-<prova>-<NN>" data-tema="<tema-em-kebab-case>">
-     <div class="q-topo">
-       <span class="q-id">Questão NN</span>
-       <span class="q-tag">1º EE · 2025.2</span>   <!-- origem da questão -->
-       <span class="q-tag">Tema da questão</span>
-       <span class="q-tag">2,5 pts</span>
-     </div>
-     <div class="q-enunciado">
-       <p>Enunciado com LaTeX inline \(x^2\) e em destaque $$x^2$$ ...</p>
-     </div>
-     <details class="q-gabarito">
-       <summary>Gabarito</summary>
-       <div><p><span class="q-resposta-final">Resposta final.</span></p></div>
-     </details>
-     <details class="q-passos">
-       <summary>Passo a passo</summary>
-       <div>
-         <p><strong>Passo 1 —</strong> ...</p>
-         $$formula$$
-       </div>
-     </details>
-   </article>
-   ```
-
-3. **Registre no manifest** (`questoes/manifest.js`): adicione o nome do arquivo na lista da prova correspondente:
-
-   ```js
-   calculo3: {
-     "1ee":   ["q01.html", "q02.html", "q03.html", "q04.html", "q05.html"], // <- novo
-     ...
-   }
-   ```
-
-   A ordem da lista é a ordem de exibição no site. Pronto — nenhum outro arquivo precisa ser alterado.
-
-> **Dica:** para os botões "Ver material" e "Praticar este assunto" funcionarem, o
-> `data-tema` da questão precisa ser uma chave do mapa `teoria` da cadeira em
-> `js/cursos.js`. Se for um tema novo, adicione a chave lá apontando para o id da
-> seção correspondente em `conteudo/<curso>.html`.
-
-### Dicas de LaTeX
-
-- Matemática inline: `\( ... \)` — ex.: `\(\vec F = q\vec E\)`
-- Matemática em destaque (linha própria): `$$ ... $$`
-- Resposta em caixa: `$$\boxed{...}$$`
-
-## Como adicionar um NOVO CURSO
-
-Exemplo: adicionar "Física 4" com id `fisica4`.
-
-1. **Registre o curso** em `js/cursos.js`, adicionando um objeto ao array `window.CURSOS` (há um modelo comentado no próprio arquivo):
-
-   ```js
-   {
-     id: "fisica4",                    // usado na URL: curso.html?curso=fisica4
-     nome: "Física 4",
-     codigo: "Código da disciplina",
-     descricao: "Descrição curta exibida no card da home.",
-     icone: "<svg ...>...</svg>",      // ícone SVG desenhado à mão (sem emojis)
-     teoria: {                         // data-tema da questão -> id da seção da teoria
-       "tema-da-questao": "f4-tema1"
-     }
-   }
-   ```
-
-2. **Crie o conteúdo teórico** em `conteudo/fisica4.html` copiando o modelo comentado
-   `conteudo/_modelo-conteudo.html`. É um *fragmento* HTML (sem `<html>`/`<head>`), com a estrutura:
-
-   ```html
-   <nav class="sumario"> ... links para as seções ... </nav>
-   <section class="topico" id="f4-tema1">   <!-- id deve bater com o mapa teoria -->
-     <h2><span class="num">01</span> Nome do tema</h2>
-     <p><strong>A ideia.</strong> Explicação em linguagem simples...</p>
-     <div class="formula"><span class="rotulo">Nome da fórmula</span> $$ ... $$</div>
-     <div class="macete">Truque que sempre cai...</div>
-     <div class="exemplo"><div class="rotulo">Exemplo rápido</div><p>...</p></div>
-   </section>
-   ```
-
-3. **Crie as pastas de questões**: `questoes/fisica4/1ee/`, `questoes/fisica4/2ee/`, `questoes/fisica4/final/` e adicione os arquivos `qNN.html` (ver seção anterior).
-
-4. **Registre no manifest** (`questoes/manifest.js`):
-
-   ```js
-   fisica4: {
-     "1ee":   ["q01.html"],
-     "2ee":   [],
-     "final": []
-   }
-   ```
-
-Pronto: o card aparece na home e a página do curso funciona automaticamente — o template `curso.html` serve todos os cursos.
-
-## Classes CSS úteis (conteúdo teórico)
-
-| Classe | Uso |
+| comando | o que faz |
 |---|---|
-| `.sumario` | Índice de navegação no topo do conteúdo |
-| `.topico` | Cada seção da ementa |
-| `.formula` | Bloco de fórmula com borda de destaque; use `<span class="rotulo">` para o nome |
-| `.macete` | Callout "Macete" (rótulo automático via CSS) |
-| `.macete.dica` | Callout "Dica de prova" |
+| `npm run build` | compila para `dist/` (caminho base na raiz) |
+| `npm run build:ghpages` | compila para publicar no GitHub Pages (subpasta) |
+| `npm test` | testa progresso, regras da matriz, roteamento das setas e a ponte de endereços |
+| `npm run verificar` | confere o conteúdo do `dist/`: links de teoria, LaTeX cru, falhas do KaTeX |
+| `npm run cabecalhos` | confere o cabeçalho de autoria em todo arquivo |
+| `npm run check` | tipos (`astro check`) |
 
-## Tema claro/escuro
+## Como está organizado
 
-O tema padrão segue a preferência do sistema (`prefers-color-scheme`) e pode ser alternado pelo botão na barra superior. A escolha fica salva no `localStorage` (chave `ra-tema`). As cores são variáveis CSS em `css/style.css` (`:root` = escuro, `[data-theme="light"]` = claro) — para ajustar a paleta, basta editar as variáveis.
+```
+src/
+  content/            o que se escreve — validado por schema no build
+    cadeiras/         registro das cadeiras + mapa tema -> seção da teoria
+    teoria/<id>.mdx   uma cadeira por arquivo, seções em <Topico>
+    questoes/<cadeira>/<prova>/qNN.mdx
+    grade/<curso>.yaml   disciplinas, pré e co-requisitos
+  components/         Questao, Topico, Formula, Caixa, Figura, MapaGrade...
+  ilhas/              o que interage: progresso, ferramentas, painel, grade
+  pages/              rotas — geradas do conteúdo, sem manifesto à mão
+  styles/             tokens.css (o sistema visual) e base.css
+scripts/              conversores, gerador de cabeçalho, verificador
+testes/               rodam com node, sem navegador
+```
+
+O **`content.config.ts`** é o contrato. Questão sem procedência, tema fora do
+mapa da teoria, prova fora de `{1ee,2ee,final}` ou pré-requisito apontando
+para disciplina inexistente **param o build** — não viram bug silencioso.
+
+## Acrescentar conteúdo
+
+### Uma questão
+
+Crie `src/content/questoes/<cadeira>/<prova>/qNN.mdx`:
+
+```mdx
+---
+origem: "2025.1"          # ou: Banco · 2026.1 / Revisão · Prof. X / Baseada em 2024.1
+tema: Integral dupla · polares
+temaId: integrais-duplas-polares   # CHAVE do mapa `teoria` da cadeira
+pontos: 2,0 pts
+# estiloDeProva: true     # questão prevista, sem prova de origem
+---
+
+Enunciado, com fórmula em linha $x^2+y^2$ e em destaque:
+
+$$
+\iint_D f\,dA
+$$
+
+<Gabarito>
+$4\pi$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** ...
+</Passos>
+```
+
+`cadeira`, `prova` e o número saem do **caminho do arquivo** — não se digita
+de novo. Toda questão precisa de `origem` **ou** `estiloDeProva`: o leitor tem
+de saber se está resolvendo prova real ou previsão.
+
+### Uma seção de teoria
+
+Em `src/content/teoria/<cadeira>.mdx`, um `<Topico>` por seção. O `id` tem de
+bater com o valor no mapa `teoria` da cadeira — é isso que faz o "Ver material"
+da questão cair no lugar certo, e `npm run verificar` confere.
+
+Convenção didática: começar com **A ideia** em linguagem simples, usar
+`<Caixa tipo="simbolos">` por fórmula, `<Caixa tipo="exemplo">` resolvido com
+números e `<Caixa tipo="macete">` para atalho de prova.
+
+### Um curso na grade
+
+Um arquivo em `src/content/grade/<sigla>.yaml`. A rota `/grade/<sigla>` nasce
+sozinha; não há código novo a escrever.
+
+## Detalhes que têm motivo
+
+- **Fórmulas renderizam no build** (KaTeX), não no navegador. `$$` precisa da
+  cerca sozinha na linha, senão sai fórmula *em linha* — silenciosamente.
+- **Fontes auto-hospedadas**, não Google Fonts: o `humans.txt` declara "sem
+  rastreadores", e a folha do Google entregaria o IP de cada visitante.
+- **O progresso usa a chave `ra-progresso`** e o mesmo formato do site 1.x, de
+  propósito: quem estudava antes não perdeu as marcações.
+- **As libs de PDF são importadas sob demanda.** Quem só olha o mapa da grade
+  não baixa os 391 KB do jsPDF.
+- **`public/curso.html`** traduz os endereços do site 1.x, que circularam em
+  conversas. Não é lixo: é o que evita quebrar link já compartilhado.
+- **Um cabeçalho de autoria em todo arquivo**, gerado por
+  `scripts/cabecalho.mjs`. Os conversores o emitem, então sobrevive a uma
+  reconversão.
+
+## Histórico
+
+A série **1.x** foi o site original, "Responde Aí" — HTML, CSS e JS sem build.
+A **2.x** é o Nabla: reescrita sobre Astro e TypeScript. O caminho está em
+[`CHANGELOG.md`](CHANGELOG.md), uma versão por fase da migração.
+
+Dependências de terceiros e suas licenças: [`THIRD-PARTY.md`](THIRD-PARTY.md).
