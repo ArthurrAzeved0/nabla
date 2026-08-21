@@ -1,0 +1,73 @@
+---
+origem: "Lista · Hibbeler 12.23"
+tema: "Queda com arrasto · Velocidade terminal"
+temaId: aceleracao-funcao-velocidade
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Levando em conta os efeitos da resistência atmosférica, um corpo em queda livre tem aceleração definida por $a = 9{,}81\left[1 - v^2\left(10^{-4}\right)\right]\ \mathrm{m/s^2}$, com $v$ em $\mathrm{m/s}$ e o sentido positivo para baixo. Se o corpo é solto a partir do repouso a uma **grande altitude**, determine:
+
+<ol type="a">
+<li>a velocidade quando $t = 5\ \mathrm{s}$;</li>
+<li>a maior velocidade atingível — a velocidade terminal, quando $t \to \infty$.</li>
+</ol>
+
+<Gabarito>
+a) $v = 45{,}5\ \mathrm{m/s}$.    b) $v_{\max} = 100\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — comece pelo item (b), que é uma linha.** A velocidade terminal é onde a aceleração se anula: o arrasto empatou com o peso.
+
+$$
+1 - v_{\max}^2\left(10^{-4}\right) = 0
+\quad\Longrightarrow\quad
+v_{\max} = \sqrt{10^{4}} = 100\ \mathrm{m/s}
+$$
+
+Fazer isso primeiro dá o número para o qual o item (a) tem de convergir — é conferência de graça.
+
+**Passo 2 — item (a): separe as variáveis.** Aceleração em função de $v$, pergunta com **tempo**, então $a = dv/dt$:
+
+$$
+\frac{dv}{1 - v^2/10^4} = 9{,}81\,dt
+$$
+
+**Passo 3 — a integral do lado esquerdo.** Com $u = v/100$:
+
+$$
+\int_0^{v}\frac{dv}{1 - (v/100)^2} = 100\operatorname{artanh}\!\left(\frac{v}{100}\right)
+$$
+
+(Se preferir sem função hiperbólica, é a integral de frações parciais: $\tfrac{100}{2}\ln\left|\dfrac{100+v}{100-v}\right|$ — dá o mesmo.)
+
+**Passo 4 — iguale e isole $v$:**
+
+$$
+100\operatorname{artanh}\!\left(\frac{v}{100}\right) = 9{,}81\,t
+\quad\Longrightarrow\quad
+v = 100\tanh\left(0{,}0981\,t\right)
+$$
+
+**Passo 5 — em $t = 5\ \mathrm{s}$:**
+
+$$
+v = 100\tanh(0{,}4905) = 100\,(0{,}4547) = 45{,}5\ \mathrm{m/s}
+$$
+
+**A leitura da resposta.** Em queda livre sem ar, depois de $5\ \mathrm{s}$ o corpo estaria a $49{,}1\ \mathrm{m/s}$ — o arrasto já tirou $7\%$. E ele nunca passa dos $100\ \mathrm{m/s}$: a $\tanh$ satura. Vale notar que "grande altitude" no enunciado é o que autoriza tratar $g$ e a densidade do ar como constantes por todo o percurso.
+
+**Cuidado.** Não use $v = at$: a aceleração começa em $9{,}81$ e cai continuamente. E o $10^{-4}$ tem unidade escondida ($\mathrm{s^2/m^2}$) — é ele que faz o parêntese ser adimensional.
+</Passos>

@@ -1,0 +1,76 @@
+---
+origem: "Lista · Hibbeler 14.18"
+tema: "Anel numa barra curva · Trabalho de força de direção variável"
+temaId: trabalho
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma corda é submetida a uma força constante de $F = 300\ \mathrm{N}$ e passa por uma polia em $C$, no alto de uma haste. A outra ponta está presa a um anel liso de $15\ \mathrm{kg}$, que corre por uma barra curva de $A$ (embaixo) até $B$ (em cima). Sabendo que o anel parte do repouso em $A$, determine sua velocidade quando chega ao ponto $B$. Despreze o tamanho da polia.
+
+**Geometria:** com origem em $C$, o ponto $A$ está a $0{,}7\ \mathrm{m}$ na horizontal e $0{,}4\ \mathrm{m}$ abaixo; o ponto $B$ está a $0{,}2\ \mathrm{m}$ na horizontal e $0{,}2\ \mathrm{m}$ abaixo. De $A$ para $B$ o anel sobe $0{,}5\ \mathrm{m}$ na vertical.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$v_B = 3{,}34\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o truque da questão: o trabalho de $F$ não depende do caminho do anel.** A corda tem tração constante $300\ \mathrm{N}$ e passa por uma polia fixa em $C$. Então o trabalho de $F$ é a força vezes **o quanto a corda foi recolhida**, isto é, a variação da distância $\overline{AC} \to \overline{BC}$:
+
+$$
+\overline{AC} = \sqrt{0{,}7^2 + 0{,}4^2} = 0{,}8062\ \mathrm{m}
+$$
+
+$$
+\overline{BC} = \sqrt{0{,}2^2 + 0{,}2^2} = 0{,}2828\ \mathrm{m}
+$$
+
+$$
+s = \overline{AC} - \overline{BC} = 0{,}5234\ \mathrm{m}
+$$
+
+$$
+U_F = 300\,(0{,}5234) = +157{,}0\ \mathrm{J}
+$$
+
+**Positivo**, porque a corda encurtou: a força puxou no sentido do movimento.
+
+**Passo 2 — o trabalho do peso.** O anel **subiu** $0{,}5\ \mathrm{m}$, então:
+
+$$
+U_W = -15(9{,}81)(0{,}5) = -73{,}6\ \mathrm{J}
+$$
+
+**Passo 3 — a normal da barra não trabalha.** O anel é liso e a barra o guia: a reação é sempre perpendicular ao movimento. É por isso que a forma curva da barra é irrelevante.
+
+**Passo 4 — trabalho e energia**, partindo do repouso:
+
+$$
+0 + 157{,}0 - 73{,}6 = \tfrac{1}{2}(15)\,v_B^2
+$$
+
+$$
+v_B^2 = \frac{83{,}4}{7{,}5} = 11{,}12
+\quad\Longrightarrow\quad
+v_B = 3{,}34\ \mathrm{m/s}
+$$
+
+**Por que essa questão é boa.** Ela junta os três tipos de força numa só conta: uma que trabalha e **não** é conservativa (a corda), uma conservativa (o peso) e uma que **nunca** trabalha (a normal do guia). E mostra o atalho que vale sempre para corda de tração constante sobre polia: **trabalho = tração × encurtamento**, sem integrar a direção variável da força.
+
+**Cuidado — o erro caro.** Tentar calcular $\int \vec{F}\cdot d\vec{r}$ ao longo da barra curva, projetando $F$ na tangente ponto a ponto. Dá o mesmo resultado, mas exige a equação da barra (que o enunciado não dá) e é inviável na prova. O comprimento da corda é o que substitui a integral.
+
+E não confunda o **encurtamento da corda** ($0{,}523\ \mathrm{m}$) com o **deslocamento do anel** ao longo da barra, que é maior e não entra em lugar nenhum.
+</Passos>

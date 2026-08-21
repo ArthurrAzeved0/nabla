@@ -1,0 +1,74 @@
+---
+origem: "Lista · Hibbeler 14.85"
+tema: "Caixa que sobe a curva e para · Normal no ponto de parada"
+temaId: conservacao-energia
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q33.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Quando a caixa de $5\ \mathrm{kg}$ atinge o ponto $A$, no chão, ela tem velocidade escalar $v_A = 10\ \mathrm{m/s}$ e passa a subir uma superfície **lisa** de equação $\sqrt{x} + \sqrt{y} = 3$ (em metros). Determine onde ela para e a força normal que ela exerce sobre a superfície nesse ponto. Despreze o atrito e a dimensão da caixa.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+Para em $y = 5{,}10\ \mathrm{m}$ (com $x = 0{,}551\ \mathrm{m}$), e ali $N = 15{,}3\ \mathrm{N}$, com aceleração $a = 9{,}32\ \mathrm{m/s^2}$ descendo a superfície.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a altura de parada, pela energia.** Superfície lisa, referência no eixo $x$:
+
+$$
+\tfrac{1}{2}(5)(10)^2 + 0 = 0 + 5(9{,}81)\,y
+$$
+
+$$
+y = \frac{250}{49{,}05} = 5{,}097\ \mathrm{m} \approx 5{,}10\ \mathrm{m}
+$$
+
+**Passo 2 — a abscissa correspondente**, na curva:
+
+$$
+\sqrt{x} = 3 - \sqrt{5{,}097} = 3 - 2{,}2577 = 0{,}7423
+\quad\Longrightarrow\quad
+x = 0{,}551\ \mathrm{m}
+$$
+
+**Passo 3 — a inclinação ali.** De $y = \left(3 - \sqrt{x}\right)^2$:
+
+$$
+\frac{dy}{dx} = -\frac{3 - \sqrt{x}}{\sqrt{x}} = 1 - \frac{3}{\sqrt{x}} = 1 - \frac{3}{0{,}7423} = -3{,}041
+$$
+
+$$
+\theta = \arctan 3{,}041 = 71{,}8^\circ
+$$
+
+Uma parede quase vertical — faz sentido, porque a curva $\sqrt{x}+\sqrt{y}=3$ fica muito íngreme perto do eixo $y$.
+
+**Passo 4 — a normal, com a mesma observação de sempre.** No ponto de parada $v = 0$, logo $a_n = 0$ e o termo centrípeto desaparece:
+
+$$
+N = m\,g\cos\theta = 5(9{,}81)\cos 71{,}8^\circ = 49{,}05\,(0{,}3126) = 15{,}3\ \mathrm{N}
+$$
+
+**Passo 5 — a aceleração**, toda tangencial:
+
+$$
+a = g\operatorname{sen}\theta = 9{,}81\,(0{,}9499) = 9{,}32\ \mathrm{m/s^2}
+$$
+
+**A leitura da resposta.** $N = 15{,}3\ \mathrm{N}$ é só $31\%$ do peso ($49{,}1\ \mathrm{N}$), e a aceleração é $95\%$ de $g$. Não é coincidência: perto da vertical a superfície quase não sustenta nada, e a caixa está praticamente em queda livre rasante. No limite $\theta \to 90^\circ$, $N \to 0$ e $a \to g$.
+
+**Sobre o enunciado.** O texto impresso pede a normal "no ponto $B$", e a figura marca $B$ na diagonal $y = x$ — mas a resolução da lista localiza o ponto **pela energia** (onde a caixa para) e é dela que sai o $15{,}3\ \mathrm{N}$. Segui a resolução. Se a pergunta fosse no cruzamento com $y = x$ ($x = y = 2{,}25\ \mathrm{m}$), a caixa ainda estaria a $7{,}47\ \mathrm{m/s}$, a tangente estaria a $45^\circ$ e o termo $mv^2/\rho$ **não** poderia ser desprezado.
+</Passos>

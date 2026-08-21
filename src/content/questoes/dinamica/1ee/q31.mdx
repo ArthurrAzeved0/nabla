@@ -1,0 +1,112 @@
+---
+origem: "Lista · Hibbeler 12.86"
+tema: "Arremesso de basquete · Velocidade inicial e na cesta"
+temaId: movimento-projetil
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Desconsiderando o tamanho da bola de basquete, determine a intensidade $v_A$ da velocidade inicial da bola e a sua velocidade quando ela passa pela cesta. A bola sai da mão em $A$, a $2\ \mathrm{m}$ do chão, fazendo $30^\circ$ com a horizontal; a cesta $B$ está a $3\ \mathrm{m}$ do chão e a $10\ \mathrm{m}$ de distância horizontal.
+
+<Figura>
+  <svg viewBox="0 0 300 170" role="img" aria-label="Bola lançada de A a 2 m de altura num ângulo de 30 graus, atingindo a cesta B a 3 m de altura e 10 m de distância">
+    {/* chão */}
+    <line x1="20" y1="146" x2="288" y2="146" stroke="var(--ink-2)" stroke-width="1.8"/>
+    {/* trajetória */}
+    <path d="M 52 108 Q 150 22 240 92" fill="none" stroke="var(--line-2)" stroke-width="1.4" stroke-dasharray="4 3"/>
+    {/* A */}
+    <circle cx="52" cy="108" r="5" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="40" y="104" font-size="11" fill="var(--accent)">A</text>
+    {/* velocidade inicial a 30 graus */}
+    <line x1="57" y1="105" x2="90" y2="86" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="95,83 86,84 90,91" fill="var(--accent)"/>
+    <text x="66" y="80" font-size="10" fill="var(--accent)">v<tspan font-size="8" dy="2.5">A</tspan></text>
+    <line x1="57" y1="108" x2="96" y2="108" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 2"/>
+    <path d="M 84 108 A 27 27 0 0 0 82 100" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+    <text x="86" y="102" font-size="9" fill="var(--accent)">30°</text>
+    {/* poste e cesta */}
+    <line x1="252" y1="40" x2="252" y2="146" stroke="var(--ink-3)" stroke-width="3"/>
+    <circle cx="240" cy="92" r="4.5" fill="var(--warn)"/>
+    <text x="228" y="86" font-size="11" fill="var(--warn)">B</text>
+    <line x1="240" y1="92" x2="252" y2="92" stroke="var(--warn)" stroke-width="2"/>
+    {/* cotas */}
+    <line x1="36" y1="108" x2="36" y2="146" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="10" y="130" font-size="9" fill="var(--ink-3)">2 m</text>
+    <line x1="268" y1="92" x2="268" y2="146" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="272" y="122" font-size="9" fill="var(--ink-3)">3 m</text>
+    <line x1="52" y1="160" x2="240" y2="160" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="146" y="169" font-size="9" fill="var(--ink-3)" text-anchor="middle">10 m</text>
+  </svg>
+  <figcaption>
+
+O que se conhece é a **geometria** do lance: $\Delta x = 10\ \mathrm{m}$ e $\Delta y = +1\ \mathrm{m}$. O ângulo é dado, e é isso que permite eliminar o tempo entre as duas equações.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$v_A = 11{,}7\ \mathrm{m/s}$ e $v_B = 10{,}8\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas equações do projétil.** Com origem em $A$, $\Delta x = 10$ e $\Delta y = 3 - 2 = 1\ \mathrm{m}$:
+
+$$
+x:\quad 10 = v_A\cos 30^\circ\,t
+\quad\Longrightarrow\quad
+t = \frac{11{,}547}{v_A} \tag{1}
+$$
+
+$$
+y:\quad 1 = v_A\operatorname{sen} 30^\circ\,t - 4{,}905\,t^2 \tag{2}
+$$
+
+**Passo 2 — elimine o tempo.** Levando (1) em (2), o primeiro termo perde o $v_A$ e o segundo ganha $1/v_A^2$:
+
+$$
+1 = 0{,}5\,(11{,}547) - 4{,}905\frac{(11{,}547)^2}{v_A^2} = 5{,}7735 - \frac{654{,}1}{v_A^2}
+$$
+
+$$
+\frac{654{,}1}{v_A^2} = 4{,}7735
+\quad\Longrightarrow\quad
+v_A^2 = 137{,}0
+\quad\Longrightarrow\quad
+v_A = 11{,}7\ \mathrm{m/s}
+$$
+
+**Passo 3 — o tempo de voo**, de (1):
+
+$$
+t = \frac{11{,}547}{11{,}71} = 0{,}986\ \mathrm{s}
+$$
+
+**Passo 4 — as componentes na cesta.** A horizontal não muda; a vertical perde $g t$:
+
+$$
+v_{Bx} = 11{,}71\cos 30^\circ = 10{,}14\ \mathrm{m/s}
+$$
+
+$$
+v_{By} = 11{,}71\operatorname{sen} 30^\circ - 9{,}81(0{,}986) = 5{,}86 - 9{,}67 = -3{,}82\ \mathrm{m/s}
+$$
+
+$$
+v_B = \sqrt{10{,}14^2 + 3{,}82^2} = 10{,}8\ \mathrm{m/s}
+$$
+
+**A leitura da resposta.** A bola chega **descendo** ($v_{By} \lt 0$), a $20{,}6^\circ$ abaixo da horizontal — o que é exatamente o que se quer num arremesso: entrar na cesta de cima. E chega mais **lenta** que saiu ($10{,}8$ contra $11{,}7$), porque subiu $1\ \mathrm{m}$ no líquido: pela energia, $v_B^2 = v_A^2 - 2g(1) = 137{,}0 - 19{,}6 = 117{,}4$, e $\sqrt{117{,}4} = 10{,}8$. ✔ Essa conferência por energia é uma linha e vale sempre em projétil.
+
+**Cuidado.** $\Delta y = +1\ \mathrm{m}$, não $3\ \mathrm{m}$ nem $-1$. A bola sai a $2\ \mathrm{m}$ e chega a $3\ \mathrm{m}$: ela **sobe** no saldo. Trocar o sinal dá $v_A = 9{,}83\ \mathrm{m/s}$.
+</Passos>

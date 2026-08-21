@@ -1,0 +1,80 @@
+---
+origem: "Lista · Hibbeler 13.76"
+tema: "Caixote na rampa parabólica · Normal e taxa de aumento da velocidade"
+temaId: componentes-normal-tangencial
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q38.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O caixote de $35\ \mathrm{kg}$ tem velocidade escalar de $2\ \mathrm{m/s}$ quando está no ponto $A$ ($x = 0$) de uma rampa **lisa** com a forma da parábola $y = \left(4 - \dfrac{1}{9}x^2\right)\ \mathrm{m}$. Determine a força normal sobre o caixote no instante em que $x = 3\ \mathrm{m}$. Além disso, qual é a taxa de aumento em sua velocidade nesse instante?
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$N = 180\ \mathrm{N}$ e $\dot{v} = 5{,}44\ \mathrm{m/s^2}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a velocidade em $x = 3$, pela energia.** A rampa é lisa e a normal não trabalha. A altura caiu de $y(0) = 4$ para $y(3) = 4 - 1 = 3\ \mathrm{m}$, ou seja $1\ \mathrm{m}$:
+
+$$
+v^2 = 2^2 + 2(9{,}81)(1) = 23{,}62\ \mathrm{m^2/s^2}
+\quad\Longrightarrow\quad
+v = 4{,}86\ \mathrm{m/s}
+$$
+
+**Passo 2 — a geometria em $x = 3$.**
+
+$$
+y' = -\frac{2x}{9} = -0{,}6667
+\qquad
+y'' = -\frac{2}{9}
+$$
+
+$$
+\theta = \arctan 0{,}6667 = 33{,}69^\circ
+\qquad
+\rho = \frac{\left[1 + 0{,}4444\right]^{3/2}}{2/9} = \frac{1{,}7361}{0{,}2222} = 7{,}813\ \mathrm{m}
+$$
+
+**Passo 3 — a taxa de aumento da velocidade é a componente TANGENCIAL.** Rampa lisa: a única força com componente tangencial é o peso.
+
+$$
+\dot{v} = a_t = g\operatorname{sen}\theta = 9{,}81\,(0{,}5547) = 5{,}44\ \mathrm{m/s^2}
+$$
+
+Note que isso **não depende da massa nem da velocidade** — e é a resposta mais rápida da questão, então vale escrevê-la primeiro.
+
+**Passo 4 — a normal, pela direção normal.** A parábola é côncava para baixo e o caixote desliza por cima: o centro de curvatura está **abaixo**, então $a_n$ aponta para baixo, e nessa direção o peso empurra para dentro e a normal, para fora:
+
+$$
+m\,g\cos\theta - N = m\,\frac{v^2}{\rho}
+$$
+
+$$
+N = 35\left(9{,}81\cos 33{,}69^\circ - \frac{23{,}62}{7{,}813}\right) = 35\,(8{,}163 - 3{,}023) = 180\ \mathrm{N}
+$$
+
+**A leitura da resposta.** O peso do caixote é $343\ \mathrm{N}$, e a normal em $x = 3$ é só $180\ \mathrm{N}$ — pouco mais da metade. Duas coisas a reduzem: a inclinação (o $\cos\theta$) e a curvatura (o $v^2/\rho$). Se o caixote fosse mais rápido, a normal cairia mais, e em
+
+$$
+v^2 = \rho\,g\cos\theta = 7{,}813\,(8{,}163) = 63{,}8
+\quad\Longrightarrow\quad
+v = 7{,}99\ \mathrm{m/s}
+$$
+
+ele **descolaria** da rampa em $x = 3\ \mathrm{m}$. É a pergunta gêmea desta, e a conta é a mesma com $N = 0$.
+
+**Cuidado com os dois "$g$".** A componente tangencial usa $\operatorname{sen}\theta$ e a normal usa $\cos\theta$ — trocá-los dá $\dot{v} = 8{,}16\ \mathrm{m/s^2}$ e $N = 84{,}7\ \mathrm{N}$. O jeito de não confundir: no plano horizontal ($\theta = 0$) a tangencial tem de ser zero, e só o seno faz isso.
+</Passos>

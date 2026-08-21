@@ -1,0 +1,80 @@
+---
+origem: "Lista · Hibbeler 13.68"
+tema: "Demonstração · A trajetória lisa não importa"
+temaId: trabalho-energia
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Prove que, se o bloco for solto do repouso no ponto $B$ de uma trajetória **lisa de formato arbitrário**, a velocidade escalar a que ele chega quando atinge o ponto $A$ é igual à velocidade que ele atinge quando cai livremente através de uma distância $h$; ou seja,
+
+$$
+v = \sqrt{2\,g\,h}
+$$
+
+<Gabarito>
+Demonstrado abaixo. O resultado independe da forma da trajetória — só da diferença de altura.
+</Gabarito>
+
+<Passos>
+**Passo 1 — escreva a 2ª lei na direção tangencial.** Num ponto genérico onde a tangente faz ângulo $\theta$ com a horizontal, as forças são o peso e a normal. **A normal é perpendicular à tangente**, então não aparece:
+
+$$
+\sum F_t = m\,a_t
+\quad\Longrightarrow\quad
+m\,g\operatorname{sen}\theta = m\,a_t
+\quad\Longrightarrow\quad
+a_t = g\operatorname{sen}\theta
+$$
+
+Note que $\theta$ **varia** ao longo do caminho — é justamente isso que "formato arbitrário" significa, e é o obstáculo aparente da demonstração.
+
+**Passo 2 — troque o tempo pelo espaço.** Use a relação que dispensa $t$:
+
+$$
+v\,dv = a_t\,ds = g\operatorname{sen}\theta\,ds
+$$
+
+**Passo 3 — a jogada que fecha tudo.** Ao percorrer um trecho $ds$ da trajetória, a **queda vertical** correspondente é
+
+$$
+dy = ds\operatorname{sen}\theta
+$$
+
+Substituindo, o $\theta$ desaparece:
+
+$$
+v\,dv = g\,dy
+$$
+
+Esta é a linha inteira da demonstração: a componente tangencial do peso vezes o comprimento de arco é *sempre* o peso vezes a queda vertical, qualquer que seja a inclinação.
+
+**Passo 4 — integre do repouso em $B$ até $A$**, com queda total $h$:
+
+$$
+\int_0^{v} v\,dv = \int_0^{h} g\,dy
+\quad\Longrightarrow\quad
+\frac{v^2}{2} = g\,h
+$$
+
+$$
+\boxed{v = \sqrt{2\,g\,h}}
+$$
+
+**Por que essa demonstração vale mais que o resultado.** Ela é a **origem** do teorema do trabalho e energia para o peso: o trabalho $\int mg\operatorname{sen}\theta\,ds$ colapsa em $mgh$ porque $\operatorname{sen}\theta\,ds = dy$. É por isso que, em todas as questões da cadeira, o peso "só olha a altura" e o caminho é irrelevante — a rampa reta, a parábola do esquiador, o arco de circunferência, o loop.
+
+**E o que a demonstração NÃO diz.** Nada sobre o **tempo** de percurso, que depende fortemente da forma (é o problema da braquistócrona). E nada sobre a **normal**, que varia com a curvatura e é justamente o que muda de um caminho para outro. A velocidade final é a única coisa que a forma não afeta.
+
+**O que quebraria o resultado:** atrito (aí $\int \mu N\,ds$ depende do comprimento e da curvatura, não só de $h$) ou uma trajetória que exija a normal apontar para o lado errado — um bloco solto não faz curva convexa fechada sem descolar.
+</Passos>

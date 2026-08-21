@@ -1,0 +1,113 @@
+---
+origem: "Lista · Hibbeler 12.47"
+tema: "Gráfico a–t do trem-bala · Instante de parada e distância"
+temaId: deslocamento-distancia
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O gráfico $a$–$t$ de um trem-bala é dado pela figura: a aceleração cresce como $a = 0{,}1\,t$ até $t = 30\ \mathrm{s}$, e depois decai como $a = -\tfrac{1}{15}t + 5$. Se o trem parte do repouso, determine o instante $t'$ em que ele volta ao repouso e a **distância total percorrida** nesse intervalo. Trace os gráficos $v$–$t$ e $s$–$t$.
+
+<Figura>
+  <svg viewBox="0 0 300 170" role="img" aria-label="Gráfico da aceleração contra o tempo: sobe de zero a 3 em 30 s, depois cai atravessando o eixo em 75 s">
+    {/* eixos */}
+    <line x1="34" y1="20" x2="34" y2="150" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="34" y1="96" x2="288" y2="96" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="18" y="18" font-size="10" fill="var(--ink-3)">a (m/s²)</text>
+    <text x="276" y="112" font-size="10" fill="var(--ink-3)">t (s)</text>
+    {/* trecho 1: a = 0,1 t, de (0,0) a (30,3) */}
+    <line x1="34" y1="96" x2="104" y2="40" stroke="var(--accent)" stroke-width="2.2"/>
+    {/* trecho 2: a = -t/15 + 5, de (30,3) até cruzar o zero em t=75 e seguir */}
+    <line x1="104" y1="40" x2="216" y2="96" stroke="var(--accent)" stroke-width="2.2"/>
+    <line x1="216" y1="96" x2="272" y2="124" stroke="var(--accent)" stroke-width="2.2"/>
+    {/* marcas */}
+    <line x1="30" y1="40" x2="38" y2="40" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="18" y="44" font-size="10" fill="var(--ink-3)">3</text>
+    <line x1="104" y1="92" x2="104" y2="100" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="104" y="112" font-size="10" fill="var(--ink-3)" text-anchor="middle">30</text>
+    <line x1="216" y1="92" x2="216" y2="100" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="216" y="112" font-size="10" fill="var(--ink-3)" text-anchor="middle">75</text>
+    <text x="118" y="34" font-size="9" fill="var(--accent)">a = 0,1 t</text>
+    <text x="188" y="66" font-size="9" fill="var(--accent)">a = −t/15 + 5</text>
+    {/* t' */}
+    <text x="252" y="140" font-size="10" fill="var(--warn)">t′</text>
+  </svg>
+  <figcaption>
+
+Repare que a aceleração **troca de sinal** em $t = 75\ \mathrm{s}$ e continua negativa depois — o trem só para bem além disso, em $t' = 133\ \mathrm{s}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$t' = 133\ \mathrm{s}$ e $s_T = 8{,}86\ \mathrm{km}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — primeiro trecho, $0 \le t \le 30$.** Integrando $a = 0{,}1t$ do repouso:
+
+$$
+v = 0{,}05\,t^2
+\quad\Longrightarrow\quad
+v(30) = 45\ \mathrm{m/s}
+$$
+
+$$
+s = \frac{t^3}{60}
+\quad\Longrightarrow\quad
+s(30) = 450\ \mathrm{m}
+$$
+
+**Passo 2 — segundo trecho, $t \ge 30$.** Integrando $a = -t/15 + 5$ a partir de $v(30) = 45$:
+
+$$
+v = 45 + \left[-\frac{\tau^2}{30} + 5\tau\right]_{30}^{t} = -\frac{t^2}{30} + 5t - 75
+$$
+
+Confira em $t = 30$: $-30 + 150 - 75 = 45$. ✔
+
+**Passo 3 — quando o trem para.** $v = 0$:
+
+$$
+t^2 - 150\,t + 2250 = 0
+\quad\Longrightarrow\quad
+t = \frac{150 \pm \sqrt{13\,500}}{2} = \{16{,}9;\ 133{,}1\}
+$$
+
+A raiz $16{,}9\ \mathrm{s}$ é descartada: ela está **fora** do domínio deste trecho (que começa em $30\ \mathrm{s}$). Logo
+
+$$
+t' = 133\ \mathrm{s}
+$$
+
+**Passo 4 — a distância do segundo trecho**, integrando $v$:
+
+$$
+\Delta s = \int_{30}^{133{,}09}\left(-\frac{t^2}{30} + 5t - 75\right)dt = \left[-\frac{t^3}{90} + 2{,}5t^2 - 75t\right]_{30}^{133{,}09}
+$$
+
+$$
+\Delta s = 8107{,}5 - (-300) = 8407{,}5\ \mathrm{m}
+$$
+
+**Passo 5 — total.** O trem só andou para frente (a velocidade nunca ficou negativa antes de $t'$), então distância é deslocamento:
+
+$$
+s_T = 450 + 8407{,}5 = 8858\ \mathrm{m} \approx 8{,}86\ \mathrm{km}
+$$
+
+**Os gráficos, em palavras.** O $v$–$t$ é uma parábola crescente até $t = 30$, depois uma parábola de boca para baixo que atinge o **máximo em $t = 75\ \mathrm{s}$** — exatamente onde $a$ cruza o zero — e volta a zero em $t' = 133\ \mathrm{s}$. O $s$–$t$ cresce sempre, com a concavidade virando de cima para baixo em $t = 75$, e termina em $8{,}86\ \mathrm{km}$ com tangente horizontal.
+
+**O ponto que a questão testa.** É fácil confundir "$a = 0$" com "parou". Em $t = 75\ \mathrm{s}$ a aceleração é nula e o trem está na sua **velocidade máxima**, $v = 112{,}5\ \mathrm{m/s}$ — o oposto de parar. Quem responde $t' = 75\ \mathrm{s}$ perde os dois itens.
+</Passos>

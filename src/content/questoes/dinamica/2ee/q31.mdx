@@ -1,0 +1,74 @@
+---
+origem: "Lista · Hibbeler 14.30"
+tema: "Mola de disparo e pista circular · Recuo necessário"
+temaId: energia-elastica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A bola de $0{,}5\ \mathrm{kg}$ é lançada para cima numa pista circular vertical **lisa** de raio $1{,}5\ \mathrm{m}$, usando um pistão com mola de $k = 500\ \mathrm{N/m}$. O pistão mantém a mola comprimida $0{,}08\ \mathrm{m}$ quando $s = 0$. Determine até que distância $s$ ele deve ser puxado para trás e solto, de maneira que a bola comece a deixar a pista quando $\theta = 135^\circ$.
+
+O ângulo $\theta$ é medido a partir da horizontal do lançamento, que fica no ponto mais baixo da pista; o centro da pista está $1{,}5\ \mathrm{m}$ acima dele.
+
+<Gabarito>
+$s = 179\ \mathrm{mm}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a condição de deixar a pista, em $\theta = 135^\circ$.** Passando de $90^\circ$, a bola está acima do nível do centro e a componente radial do peso vale $mg\operatorname{sen}(\theta - 90^\circ)$. Com $N = 0$:
+
+$$
+m\,g\operatorname{sen}(\theta - 90^\circ) = m\,\frac{v^2}{r}
+$$
+
+$$
+v^2 = 9{,}81\,(1{,}5)\operatorname{sen} 45^\circ = 14{,}715\,(0{,}7071) = 10{,}41\ \mathrm{m^2/s^2}
+$$
+
+**Passo 2 — a altura subida.** A bola sai do ponto mais baixo da pista, $1{,}5\ \mathrm{m}$ abaixo do centro, e chega a $1{,}5\operatorname{sen} 45^\circ$ **acima** dele:
+
+$$
+\Delta h = 1{,}5 + 1{,}5\operatorname{sen} 45^\circ = 1{,}5\,(1{,}7071) = 2{,}561\ \mathrm{m}
+$$
+
+**Passo 3 — o que a mola entrega.** Aqui está a sutileza: a mola **não** relaxa até o comprimento natural. Ela vai da compressão $(s + 0{,}08)$ de volta a $0{,}08$, porque o pistão para em $s = 0$. Então a energia liberada é a **diferença**:
+
+$$
+\Delta V_e = \tfrac{1}{2}k\left[(s + 0{,}08)^2 - (0{,}08)^2\right]
+$$
+
+**Passo 4 — conservação da energia**, do repouso até $\theta = 135^\circ$:
+
+$$
+\tfrac{1}{2}(500)\left[(s+0{,}08)^2 - 0{,}0064\right] = \tfrac{1}{2}(0{,}5)(10{,}41) + 0{,}5(9{,}81)(2{,}561)
+$$
+
+$$
+250\left[(s+0{,}08)^2 - 0{,}0064\right] = 2{,}60 + 12{,}56 = 15{,}16
+$$
+
+$$
+(s+0{,}08)^2 = 0{,}0064 + 0{,}06065 = 0{,}06705
+\quad\Longrightarrow\quad
+s + 0{,}08 = 0{,}2589
+$$
+
+$$
+s = 0{,}179\ \mathrm{m} = 179\ \mathrm{mm}
+$$
+
+**A questão inversa também caiu.** Com $s = 100\ \mathrm{mm}$ e uma bola de $0{,}3\ \mathrm{kg}$ numa pista de $1{,}5\ \mathrm{m}$ com $k = 1500\ \mathrm{N/m}$ (Hibbeler 13.84), a pergunta é o **ângulo máximo** que a bola atinge sem sair da pista, e a resposta é $\theta = 118^\circ$. É o mesmo par de equações resolvido na outra ordem: a de Newton com $N = 0$ dá $v^2$ em função de $\theta$, a da energia dá $v^2$ em função de $\theta$ também, e igualar as duas isola o $\operatorname{sen}(\theta - 90^\circ)$.
+
+**Cuidado com os $0{,}08\ \mathrm{m}$.** Eles entram **duas vezes**: na compressão inicial $(s + 0{,}08)$ e na compressão final $(0{,}08)$. Quem usa só $\tfrac12 k s^2$ acha $s = 0{,}246\ \mathrm{m}$ — bem diferente. A pergunta "onde a mola para de empurrar?" é a que revela o termo esquecido.
+</Passos>

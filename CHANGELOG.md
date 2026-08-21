@@ -86,6 +86,27 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   Maciel), 2024.1 e 2024.2 (Prof. Paulo Roberto), 2025.1, 2025.2 (Prof.
   Leonardo), a 2ª chamada, a prova em branco sem data, o simulado da final e
   as listas de energia.
+- **Mais 23 questões, agora das listas de exercícios** — as que são problemas
+  do **Hibbeler 14ª ed.**, com o número do problema na procedência de cada
+  uma. O enunciado foi reescrito com todos os dados no texto (não só na
+  figura), e cada resolução foi feita e conferida do zero. São **79 questões**
+  de Dinâmica no total.
+  - Cinemática (Cap. 12): os quatro tipos de aceleração variável em forma
+    canônica, o gráfico $a$–$t$ do trem-bala, a trajetória helicoidal — que
+    tem velocidade escalar constante e aceleração não nula — e o arremesso de
+    basquete.
+  - Cinética (Cap. 13): a caixa que desliza no carrinho preso pela corda (onde
+    a massa do carrinho é distrator), o bloco sobre placa com dois atritos e
+    deslocamento relativo, a força $100\,t^{3/2}$ que só vence o atrito
+    estático em $t = 1{,}57\ \mathrm{s}$, o bloco na bandeja com mola, o carro
+    no morro parabólico, o bloco no cone e o caixote na rampa parabólica.
+  - Trabalho e energia (Cap. 14): a demonstração de que $v = \sqrt{2gh}$ em
+    trajetória lisa de forma **arbitrária** — que é a origem de todo o resto
+    da unidade —, a força $50\sqrt{s}$ com atrito, a caixa no semicilindro, o
+    anel com corda de tração constante (trabalho = tração × encurtamento), a
+    mola de disparo na pista circular, o ciclista, a caixa que sobe e para, o
+    *Raptor* de trilho externo (que explica por que existe o cinto) e o
+    cilindro entre duas molas.
 
 ### Corrigido no material-fonte
 
@@ -100,9 +121,10 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   de "disco" e depois de "esfera" — adotei disco, que é o que está declarado
   com a massa, e registrei o outro resultado.
 - As listas dos Profs. Paulo Roberto e Leonardo são **páginas escaneadas do
-  Hibbeler**, então não foram transcritas: livro com direito autoral. As três
-  questões de energia que entraram vêm das listas de banca brasileira, não do
-  livro.
+  Hibbeler**. Elas entraram com o número do problema declarado na procedência
+  ("Lista · Hibbeler 13.76"), enunciado reescrito e resolução própria — não
+  cópia do livro nem do manual de soluções. As três questões de energia que
+  também entraram vêm de listas de banca brasileira, não do livro.
 
 ### Corrigido
 

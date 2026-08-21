@@ -1,0 +1,112 @@
+---
+origem: "Lista · Hibbeler 14.94"
+tema: "Cilindro entre duas molas · Deformação pela geometria"
+temaId: energia-elastica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O cilindro tem massa de $20\ \mathrm{kg}$ e é solto do repouso quando $h = 0$. Determine sua velocidade quando $h = 3\ \mathrm{m}$. Cada mola tem rigidez $k = 40\ \mathrm{N/m}$ e comprimento não deformado de $2\ \mathrm{m}$; as duas estão ancoradas em paredes a $2\ \mathrm{m}$ de cada lado do cilindro, na horizontal, quando $h = 0$.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 280 170" role="img" aria-label="Cilindro entre duas molas horizontais ancoradas nas paredes, descendo uma altura h">
+    {/* paredes */}
+    <rect x="16" y="26" width="10" height="34" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    <rect x="254" y="26" width="10" height="34" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    {/* molas na posição h = 0 (horizontais, tracejadas) */}
+    <path d="M 26 43 l 12 -6 l 12 12 l 12 -12 l 12 12 l 12 -12 l 12 12 l 12 -12 l 12 6" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+    <path d="M 254 43 l -12 -6 l -12 12 l -12 -12 l -12 12 l -12 -12 l -12 12 l -12 -12 l -12 6" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+    {/* cilindro em h = 0 */}
+    <rect x="132" y="34" width="16" height="20" fill="var(--surface-2)" stroke="var(--line-2)" stroke-width="1.3"/>
+    {/* molas na posição h = 3 (inclinadas) */}
+    <line x1="26" y1="43" x2="132" y2="124" stroke="var(--accent)" stroke-width="1.8"/>
+    <line x1="254" y1="43" x2="148" y2="124" stroke="var(--accent)" stroke-width="1.8"/>
+    {/* cilindro em h = 3 */}
+    <rect x="130" y="118" width="20" height="30" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.7"/>
+    <text x="140" y="162" font-size="10" fill="var(--warn)" text-anchor="middle">20 kg</text>
+    {/* cotas */}
+    <line x1="26" y1="16" x2="140" y2="16" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="80" y="12" font-size="9" fill="var(--ink-3)" text-anchor="middle">2 m</text>
+    <line x1="140" y1="16" x2="254" y2="16" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="198" y="12" font-size="9" fill="var(--ink-3)" text-anchor="middle">2 m</text>
+    <line x1="168" y1="43" x2="168" y2="124" stroke="var(--ok)" stroke-width="0.9"/>
+    <text x="172" y="88" font-size="10" fill="var(--ok)">h</text>
+    <text x="60" y="96" font-size="9" fill="var(--accent)">k = 40 N/m</text>
+  </svg>
+  <figcaption>
+
+Em $h = 0$ as molas estão **horizontais e no comprimento natural**: não guardam energia nenhuma. Descendo, elas viram as hipotenusas de dois triângulos $2$–$h$ — e é aí que a deformação aparece.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$v = 6{,}97\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o estado inicial não guarda energia elástica.** Em $h = 0$ cada mola mede $2\ \mathrm{m}$, que é o comprimento natural:
+
+$$
+s_1 = 0
+\quad\Longrightarrow\quad
+(V_e)_1 = 0
+$$
+
+**Passo 2 — a deformação em $h = 3\ \mathrm{m}$, por Pitágoras.** Cada mola passa a ser a hipotenusa de um triângulo de catetos $2$ e $3$:
+
+$$
+L = \sqrt{2^2 + 3^2} = \sqrt{13} = 3{,}606\ \mathrm{m}
+$$
+
+$$
+s_2 = 3{,}606 - 2 = 1{,}606\ \mathrm{m}
+$$
+
+**Passo 3 — a energia elástica das DUAS molas.**
+
+$$
+(V_e)_2 = 2\left[\tfrac{1}{2}(40)(1{,}606)^2\right] = 40\,(2{,}578) = 103{,}1\ \mathrm{J}
+$$
+
+**Passo 4 — conservação da energia.** O peso libera $mgh$; parte vira cinética, parte fica guardada nas molas:
+
+$$
+m\,g\,h = \tfrac{1}{2}m\,v^2 + (V_e)_2
+$$
+
+$$
+20(9{,}81)(3) = \tfrac{1}{2}(20)\,v^2 + 103{,}1
+$$
+
+$$
+588{,}6 - 103{,}1 = 10\,v^2
+\quad\Longrightarrow\quad
+v^2 = 48{,}55
+\quad\Longrightarrow\quad
+v = 6{,}97\ \mathrm{m/s}
+$$
+
+**A leitura da resposta.** Sem as molas o cilindro chegaria a $\sqrt{2(9{,}81)(3)} = 7{,}67\ \mathrm{m/s}$. As molas roubaram $103\ \mathrm{J}$ dos $589\ \mathrm{J}$ disponíveis — $17\%$ da energia —, e a velocidade caiu $9\%$ (porque vai com a raiz).
+
+**Por que não se usa a componente vertical da força da mola.** É tentador projetar $k s$ na vertical e integrar em $h$. Dá o mesmo, mas exige uma integral com raiz dentro; a energia potencial elástica só olha a **deformação**, e a deformação sai de Pitágoras em uma linha. Esse é o ganho do método da energia.
+
+**Cuidado — três erros nesta questão:**
+
+1. Esquecer o fator $2$: são **duas** molas. Daria $v = 7{,}32\ \mathrm{m/s}$.
+2. Usar $s = 3\ \mathrm{m}$ (a queda) como deformação, em vez de $\sqrt{13} - 2 = 1{,}61\ \mathrm{m}$. A mola não estica o que o cilindro desce — ela estica a diferença de hipotenusa.
+3. Somar a energia elástica ao invés de subtrair. A mola **guarda**, ela não empurra o cilindro para baixo.
+</Passos>
