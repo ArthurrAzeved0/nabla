@@ -12,8 +12,8 @@
    * Contato: arthur_azevedo05@hotmail.com                                  *
    ************************************************************************** */
 /* Mapa da grade de um curso. Uma rota por arquivo em src/content/grade —
-   por enquanto só Engenharia Civil; os outros cursos entram depois da
-   Fase 5, e não exigem código novo: só mais um YAML. */
+   Civil e Controle e Automação hoje. Curso novo não exige código novo: só
+   mais um YAML, e ele aparece aqui e no índice em /grade/. */
 import { getCollection } from "astro:content";
 import Base from "~/layouts/Base.astro";
 import MapaGrade from "~/components/MapaGrade.astro";
@@ -33,6 +33,11 @@ const { grade, comPagina } = Astro.props;
 const g = grade.data;
 
 const chMatriz = g.disciplinas.reduce((s, d) => s + d.teorica + d.pratica, 0);
+/* Em Automação a matriz cobre a CH inteira do curso — eletivas e atividades
+   complementares inclusive. Em Civil ela não cobre, e aí a comparação entre
+   as duas cargas informa algo. Quando são iguais, dizer "3600h de um curso
+   de 3600h" só faz o leitor reler a frase. */
+const chIgual = chMatriz === g.chTotalCurso;
 const ligadas = g.disciplinas.filter((d) => {
   const id = typeof d.cadeira === "string" ? d.cadeira : d.cadeira?.id;
   return id && comPagina.has(id);
@@ -48,8 +53,9 @@ const ligadas = g.disciplinas.filter((d) => {
   <h1>{g.curso}</h1>
   <p class="prosa abre">
     Mapa de pré-requisitos das <strong>{g.disciplinas.length} disciplinas</strong> da matriz
-    ({chMatriz}h de um curso de {g.chTotalCurso}h). Marque o que já concluiu para ver o que
-    está liberado — o progresso fica salvo neste navegador.
+    ({chIgual ? `${chMatriz}h, a carga horária inteira do curso` : `${chMatriz}h de um curso de ${g.chTotalCurso}h`}).
+    Marque o que já concluiu para ver o que está liberado — o progresso fica salvo neste
+    navegador.
     {
       ligadas > 0 && (
         <>

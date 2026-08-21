@@ -21,7 +21,34 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
-## [Não publicado]
+## [2.1.0] — 2026-08-21
+
+**A grade de Automação.** A segunda grade do site — e a primeira montada a
+partir de um PPC em PDF, não de um mapa que já existia.
+
+### Adicionado
+
+- **Mapa da grade de Engenharia de Controle e Automação**, matriz 2021.1: 64
+  disciplinas e 71 requisitos, montado a partir do PPC do curso. É a segunda
+  grade do site, e não exigiu código novo — só o YAML.
+- `scripts/extrair-grade-ppc.mjs`, que gera a grade a partir da matriz
+  transcrita do PPC e **confere a transcrição contra os totais que o próprio
+  PPC publica**: CH por núcleo (1425h / 705h / 1470h), carga de extensão
+  (510h), total das obrigatórias (3300h), e a coerência do grafo — requisito
+  inexistente, requisito em período posterior, co-requisito recíproco. Se
+  alguma conta não fecha, ele aborta sem gravar. Um erro de digitação numa
+  carga horária deixa de ser um número errado no site.
+- Índice dos mapas em **`/grade/`**. Com um curso só, a aba "Grade" no topo
+  podia apontar direto para Civil; com dois, esse atalho passaria a esconder
+  um deles.
+
+### Alterado
+
+- A aba "Grade" no topo agora vai para `/grade/`, não para `/grade/civil/`.
+- No cabeçalho do mapa, a carga horária da matriz só é comparada à do curso
+  quando as duas diferem. Em Automação a matriz cobre o curso inteiro, e
+  "3600h de um curso de 3600h" só fazia reler a frase.
+
 
 ## [2.0.0] — 2026-08-21
 
@@ -461,6 +488,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.1.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.1.0
 [2.0.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0
 [2.0.0-alpha.7]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.7
 [2.0.0-alpha.6]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.6
