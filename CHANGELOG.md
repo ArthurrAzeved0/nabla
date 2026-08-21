@@ -18,13 +18,72 @@ Todas as mudanças relevantes deste projeto. O formato segue
 
 A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A série
 **2.x** é o **Nabla**: reescrita sobre Astro + TypeScript, com nome e identidade
-novos. Enquanto o Nabla não substituir o site no ar, a 2.0.0 fica em
-pré-lançamento — uma tag por fase concluída da migração.
+novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
+é a virada, quando o Nabla passou a ser o site no ar.
 
 ## [Não publicado]
 
-Fase 5 — a virada: o Nabla no lugar do site 1.x. Depois dela, mais cadeiras e
-as grades dos outros cursos.
+## [2.0.0] — 2026-08-21
+
+**A virada.** O Nabla substituiu o site 1.x e está no ar em
+<https://nabla-poli.pages.dev>. Esta é a primeira versão da série 2 que não é
+pré-lançamento.
+
+O que mudou, em uma frase: o site saiu de HTML escrito à mão, servido da raiz
+de um repositório, para conteúdo tipado e validado no build, compilado e
+publicado a cada push.
+
+### Adicionado
+
+- **Publicação no Cloudflare Pages** pelo GitHub Actions, com `astro check`,
+  os testes, o build e `npm run verificar` rodando antes. Conteúdo com link de
+  teoria apontando para o vazio, ou fórmula que o KaTeX não lê, não chega ao ar.
+- `public/curso.html`, que traduz os endereços do formato antigo
+  (`curso.html?curso=calculo3#calculo3-1ee-01`) para a rota atual, preservando
+  a âncora — links guardados por alguém continuam chegando na questão certa.
+- Página **404** com as cadeiras, as provas de cada uma e as grades: quem cai
+  ali veio de link antigo ou digitou errado, e precisa de um caminho.
+- Ícones do site: `favicon.svg`, `.ico` de reserva, `apple-touch-icon` e os
+  192/512 para a tela inicial do celular.
+- `npm run formulas`, que procura LaTeX que compila mas renderiza apertado.
+
+### Alterado
+
+- Nome, endereço e casa: **Responde Aí** → **Nabla**, de
+  `arthurrazeved0.github.io/RespondeAi-Poli/` para `nabla-poli.pages.dev`,
+  do GitHub Pages servindo a raiz do repositório para o Cloudflare compilando
+  o `dist/`. Isso também tirou o código-fonte do ar: no modo antigo o Pages
+  entregava a árvore inteira, `src/` e `package.json` inclusive.
+- Os 162 arquivos do site 1.x foram aposentados. A tag `v1.0.0` guarda todos.
+- `trailingSlash: "always"`, para o que o site gera ser o que o host serve — sem
+  isso cada navegação gastava um redirecionamento 308.
+
+### Corrigido
+
+Achados testando no aparelho, depois da virada:
+
+- **O favicon nunca funcionou.** O gerador de cabeçalho escrevia uma linha de
+  hífens, e comentário XML não pode conter `--`: o SVG era mal formado e o
+  navegador se recusava a renderizá-lo, desde a Fase 0.
+- **As setas do mapa não apareciam**, e depois **sobrava barra de rolagem com o
+  mapa já ajustado.** A segunda era `transform: scale()`, que afeta só a
+  pintura — o mapa continuava ocupando os ~2100px originais no layout.
+- **A página passava da largura da janela** na grade. Contido por limite duplo:
+  a escala do mapa passa a considerar também `documentElement.clientWidth`, que
+  não depende de ancestral nenhum.
+- **Fórmulas que compilavam e saíam apertadas**: `\frac` com expoente nos dois
+  termos, rótulo largo sobre `=`, e 16 fórmulas longas em linha que estouravam
+  a coluna porque matemática em linha não quebra.
+- O rodapé parava no meio da tela em página curta.
+- A home repetia a grade, que já tem aba própria.
+- Química entrou como pré-requisito de Fundamentos de Geologia: o PPC cita um
+  código que não existe na matriz, e a disciplina aparecia liberada desde o
+  primeiro período.
+
+### O que fica para depois
+
+Mais cadeiras, e as grades dos outros cursos da POLI — a collection já é
+plural, então cada curso novo é um arquivo, sem código.
 
 ## [2.0.0-alpha.7] — 2026-08-21
 
@@ -402,11 +461,12 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
-[2.0.0-alpha.7]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.7
-[2.0.0-alpha.6]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.6
-[2.0.0-alpha.5]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.5
-[2.0.0-alpha.4]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.4
-[2.0.0-alpha.3]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.3
-[2.0.0-alpha.2]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.2
-[2.0.0-alpha.1]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.1
-[1.0.0]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v1.0.0
+[2.0.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0
+[2.0.0-alpha.7]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.7
+[2.0.0-alpha.6]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.6
+[2.0.0-alpha.5]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.5
+[2.0.0-alpha.4]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.4
+[2.0.0-alpha.3]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.3
+[2.0.0-alpha.2]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.2
+[2.0.0-alpha.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.1
+[1.0.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v1.0.0
