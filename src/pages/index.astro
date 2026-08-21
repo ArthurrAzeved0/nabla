@@ -30,6 +30,7 @@ const cards = cadeiras.map((c) => ({
   ),
 }));
 const totalGeral = cards.reduce((s, c) => s + c.total, 0);
+const grades = (await getCollection("grade")).sort((a, b) => a.data.curso.localeCompare(b.data.curso));
 ---
 
 <Base
@@ -63,13 +64,34 @@ const totalGeral = cards.reduce((s, c) => s + c.total, 0);
       ))
     }
   </div>
+
+  <Regua rotulo="grade" />
+
+  <div class="grade-links">
+    {
+      grades.map((g) => (
+        <a class="card mapa" href={`${base}grade/${g.data.sigla}`}>
+          <span class="cod">matriz {g.data.matriz}</span>
+          <h2>{g.data.curso}</h2>
+          <p>
+            Mapa de pré-requisitos das {g.data.disciplinas.length} disciplinas: marque o que já
+            concluiu e veja o que está liberado.
+          </p>
+          <span class="conta">
+            {g.data.disciplinas.length} disciplinas<em>{g.data.chTotalCurso}h</em>
+          </span>
+        </a>
+      ))
+    }
+  </div>
 </Base>
 
 <style>
   .abre {
     font-size: var(--t-md);
   }
-  .grade {
+  .grade,
+  .grade-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--e-4);

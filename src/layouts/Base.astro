@@ -38,6 +38,11 @@ interface Props {
 const { titulo, descricao } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const ano = new Date().getFullYear();
+
+/* Seção atual, para marcar a navegação. Comparar pelo começo do caminho
+   funciona tanto na raiz (Cloudflare) quanto em subpasta (GitHub Pages). */
+const caminho = Astro.url.pathname;
+const naGrade = caminho.includes("/grade/");
 ---
 
 <!doctype html>
@@ -73,7 +78,10 @@ const ano = new Date().getFullYear();
     <header class="topo">
       <div class="pagina faixa">
         <a class="link-marca" href={base}><Marca /></a>
-        <span class="sub">guia do aluno · poli/upe</span>
+        <nav class="nav-topo" aria-label="Seções">
+          <a href={base} aria-current={naGrade ? undefined : "page"}>Cadeiras</a>
+          <a href={`${base}grade/civil`} aria-current={naGrade ? "page" : undefined}>Grade</a>
+        </nav>
         <BotaoTema />
       </div>
     </header>
@@ -136,12 +144,27 @@ const ano = new Date().getFullYear();
   .link-marca {
     text-decoration: none;
   }
-  .sub {
+  .nav-topo {
+    display: flex;
+    gap: var(--e-3);
+  }
+  .nav-topo a {
     font-family: var(--f-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.11em;
+    font-size: 11px;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--ink-3);
+    text-decoration: none;
+    padding: 3px 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-topo a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .nav-topo a[aria-current="page"] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
   }
   .faixa :global(.btn-tema) {
     margin-left: auto;
