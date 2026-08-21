@@ -1,0 +1,18 @@
+{
+  "name": "Nabla — Guia do aluno POLI/UPE",
+  "short_name": "Nabla",
+  "description": "Teoria na ordem da ementa, banco de questões de provas reais e o mapa da grade dos cursos da POLI/UPE.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#10212c",
+  "theme_color": "#0f6c86",
+  "icons": [
+    { "src": "/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icone-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

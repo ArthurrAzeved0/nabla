@@ -68,6 +68,10 @@ const naGrade = caminho.includes("/grade/");
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
     <link rel="icon" href={`${base}favicon.ico`} sizes="32x32" />
     <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+    {/* Sem o manifesto, icone-192 e icone-512 eram arquivo morto: o Android
+        precisa dele para oferecer "adicionar à tela inicial" e para saber com
+        que cor pintar a tela enquanto o site abre. */}
+    <link rel="manifest" href={`${base}manifest.webmanifest`} />
     <meta name="theme-color" content="#0f6c86" />
     {/* Convenção humanstxt.org: as pessoas por trás do site. */}
     <link rel="author" href={`${base}humans.txt`} />
