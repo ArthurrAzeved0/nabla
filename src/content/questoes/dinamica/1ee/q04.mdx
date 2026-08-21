@@ -1,0 +1,76 @@
+---
+origem: "2ª chamada"
+tema: "Movimento dependente · Blocos e polias"
+temaId: blocos-cabos-polias
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx                 *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dois blocos $A$ e $B$ ($B$ à direita de $A$) estão apoiados na horizontal. De um pino preso ao chão, entre eles, parte uma corda tensionada para a direita, que passa por uma polia presa em $B$, volta para a esquerda passando por uma polia presa em $A$ e retorna para $B$, onde a extremidade é fixada.
+
+O bloco $A$ parte do repouso para a esquerda com aceleração constante. $B$ adquire $0{,}48\ \mathrm{m/s}$ após mover-se $0{,}96\ \mathrm{m}$. Determine:
+
+<ol type="a">
+<li>as acelerações de $A$ e de $B$;</li>
+<li>a velocidade de $A$ após $5{,}0\ \mathrm{s}$.</li>
+</ol>
+
+<Gabarito>
+a) $a_A = 0{,}18\ \mathrm{m/s^2}$ e $a_B = 0{,}12\ \mathrm{m/s^2}$, ambas para a esquerda.    b) $v_A = 0{,}90\ \mathrm{m/s}$ para a esquerda.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Adote o sentido positivo para a direita, com origem no pino. Seguindo a corda, um trecho vai do pino até $B$ e dois trechos ligam $B$ a $A$:
+
+$$
+L = x_B + 2\,(x_B - x_A)
+$$
+
+**Passo 2 —** Derive uma vez e depois outra:
+
+$$
+3v_B - 2v_A = 0 \;\Rightarrow\; v_A = 1{,}5\,v_B
+\qquad\text{e}\qquad
+a_A = 1{,}5\,a_B
+$$
+
+Como $a_A$ é constante, $a_B$ também é.
+
+**Passo 3 —** Os dois partem do repouso, e como $A$ vai para a esquerda, $B$ também vai — as duas velocidades são negativas no eixo adotado:
+
+$$
+(-0{,}48)^2 = 0^2 + 2\,a_B\,(-0{,}96)
+\quad\Longrightarrow\quad
+a_B = -0{,}12\ \mathrm{m/s^2}
+$$
+
+**Passo 4 —** Pela relação do Passo 2:
+
+$$
+a_A = 1{,}5\,(-0{,}12) = -0{,}18\ \mathrm{m/s^2}
+$$
+
+ou seja, $a_A = 0{,}18\ \mathrm{m/s^2}$ e $a_B = 0{,}12\ \mathrm{m/s^2}$, ambas para a esquerda.
+
+**Passo 5 —** Item (b):
+
+$$
+v_A(5{,}0) = 0 + (-0{,}18)(5{,}0) = -0{,}90
+\quad\Longrightarrow\quad
+v_A = 0{,}90\ \mathrm{m/s}\ \text{para a esquerda}
+$$
+
+**Compare com a questão da 1ª chamada.** Lá o cabo dava $v_B = 1{,}5\,v_A$; aqui dá $v_A = 1{,}5\,v_B$. A montagem é parecida, a relação é **invertida** — é exatamente o tipo de detalhe que a prova troca de uma chamada para a outra.
+</Passos>

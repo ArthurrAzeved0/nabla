@@ -1,0 +1,61 @@
+---
+origem: "2ª chamada"
+tema: "Movimento retilíneo · Distância percorrida"
+temaId: deslocamento-distancia
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx                 *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O movimento do ponto material é dado por $x = 2t^3 - 5t^2 + 4t + 24$, com $x$ em metros e $t$ em segundos. Determine:
+
+<ol type="a">
+<li>os instantes para os quais a velocidade se anula;</li>
+<li>a distância total percorrida de $0$ a $4{,}00\ \mathrm{s}$.</li>
+</ol>
+
+<Gabarito>
+a) $t_1 = 2/3\ \mathrm{s}$ e $t_2 = 1{,}00\ \mathrm{s}$.    b) $s_T = 64{,}1\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Derive:
+
+$$
+v = 6t^2 - 10t + 4 = 2\,(3t^2 - 5t + 2)
+$$
+
+**Passo 2 —** Anule a velocidade:
+
+$$
+t = \frac{5 \pm \sqrt{25 - 24}}{6}
+\quad\Longrightarrow\quad
+t_1 = \frac{2}{3}\ \mathrm{s}, \qquad t_2 = 1{,}00\ \mathrm{s}
+$$
+
+**Passo 3 —** O movimento inverte o sentido **duas vezes**, então a distância se parte em três trechos. As posições:
+
+$$
+x(0) = 24, \qquad x\!\left(\tfrac{2}{3}\right) = \tfrac{676}{27}, \qquad x(1) = 25, \qquad x(4) = 88
+$$
+
+**Passo 4 —** Some em módulo:
+
+$$
+s_T = \left|\tfrac{676}{27} - 24\right| + \left|25 - \tfrac{676}{27}\right| + |88 - 25|
+= \tfrac{28}{27} + \tfrac{1}{27} + 63 = \tfrac{1730}{27} = 64{,}1\ \mathrm{m}
+$$
+
+**Cuidado.** As duas raízes são próximas ($0{,}67$ e $1{,}00$), e os dois primeiros trechos somam pouco mais de 1 m. É tentador arredondar e ignorá-los — mas a questão pede a distância, e quem pula direto de $x(0)$ a $x(4)$ responde 64 m por sorte, com o raciocínio errado.
+</Passos>

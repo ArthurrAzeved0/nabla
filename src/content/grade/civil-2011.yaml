@@ -227,6 +227,7 @@ disciplinas:
     categoria: basico
     pre: [MEC01]
     co: []
+    cadeira: dinamica
   - id: MAT08
     codigo: MAT08
     nome: Probabilidade e Estatística

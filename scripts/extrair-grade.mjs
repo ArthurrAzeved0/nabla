@@ -61,6 +61,7 @@ const LIGACAO = {
   MAT20: "calculo3",
   MAT21: "eqdiferenciais",
   FIS12: "eletromag",
+  FIS08: "dinamica",
 };
 
 const esc = (s) => (/[:#{}[\],&*?|>=!%@`"']|^\s|\s$/.test(s) ? JSON.stringify(s) : s);

@@ -249,6 +249,7 @@ disciplinas:
     pre: [FISC0012]
     co: []
     nota: "A Tabela 18 dá como pré-requisito Física 2, e não Mecânica Geral 1, que seria o encadeamento esperado. Fica como está escrito: é código válido desta matriz."
+    cadeira: dinamica
   - id: FISC0017
     codigo: FISC0017
     nome: Mecânica dos Fluidos

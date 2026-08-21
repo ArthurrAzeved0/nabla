@@ -299,6 +299,7 @@ disciplinas:
     pre: [ESTATICA]
     co: [EQDIF]
     nota: "No perfil vigente: Mecânica 2."
+    cadeira: dinamica
   - id: FENTR
     codigo: —
     nome: Fenômenos do Transporte

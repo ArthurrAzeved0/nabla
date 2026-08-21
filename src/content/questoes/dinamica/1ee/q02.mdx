@@ -1,0 +1,70 @@
+---
+origem: "2022.1"
+tema: "Movimento dependente · Blocos e polias"
+temaId: movimento-dependente
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx                 *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dois blocos estão ligados por uma corda que passa por polias, conforme a montagem em que o comprimento do cabo dá $L = 2(C - x_A) + (x_B - x_A) + x_B$. O bloco $A$ (à esquerda) parte do repouso para a esquerda com aceleração constante. O bloco $B$ (à direita) adquire $0{,}30\ \mathrm{m/s}$ após mover-se $0{,}60\ \mathrm{m}$. Determine:
+
+<ol type="a">
+<li>as acelerações de $A$ e de $B$;</li>
+<li>a velocidade de $A$ após $5{,}0\ \mathrm{s}$.</li>
+</ol>
+
+<Gabarito>
+a) $a_B = 0{,}075\ \mathrm{m/s^2}$ e $a_A = 0{,}050\ \mathrm{m/s^2}$, ambas para a esquerda.    b) $v_A = 0{,}25\ \mathrm{m/s}$ para a esquerda.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Adote o eixo $x$ para a direita, com origem na fixação da esquerda, e escreva o comprimento do cabo:
+
+$$
+L = 2(C - x_A) + (x_B - x_A) + x_B
+$$
+
+**Passo 2 —** Derive em relação ao tempo. As constantes $L$ e $C$ desaparecem:
+
+$$
+0 = -3v_A + 2v_B
+\quad\Longrightarrow\quad
+v_B = 1{,}5\,v_A
+\quad\text{e}\quad
+a_B = 1{,}5\,a_A
+$$
+
+**Passo 3 —** Como $a_A$ é constante, $a_B$ também é — e só então vale usar a fórmula de aceleração constante. Para o bloco $B$, com $v_0 = 0$:
+
+$$
+0{,}30^2 = 0^2 + 2\,a_B\,(0{,}60)
+\quad\Longrightarrow\quad
+a_B = 0{,}075\ \mathrm{m/s^2}
+$$
+
+**Passo 4 —** Volte à relação do Passo 2:
+
+$$
+a_A = \frac{a_B}{1{,}5} = 0{,}050\ \mathrm{m/s^2}
+$$
+
+**Passo 5 —** Para o item (b), movimento uniformemente acelerado a partir do repouso:
+
+$$
+v_A(5{,}0) = 0 + (0{,}050)(5{,}0) = 0{,}25\ \mathrm{m/s}
+$$
+
+**Cuidado.** O fator $1{,}5$ não é chute: ele sai do **número de trechos de cabo** que aparecem na conta do comprimento. Contar trecho errado é o erro que decide essa questão, e nenhuma conta posterior salva.
+</Passos>

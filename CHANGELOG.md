@@ -21,6 +21,37 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.10.0] — 2026-08-21
+
+**Dinâmica entra no site.** Quarta cadeira, e a primeira que acende nós em
+**oito** dos dez mapas de grade.
+
+### Adicionado
+
+- **Cadeira `dinamica` — Dinâmica (Mecânica Geral 2), MEC02.** Registrada com
+  19 temas apontando para as seções da teoria.
+- **Teoria da 1ª unidade**, sete seções na ordem da ementa oficial do MEC02:
+  análise vetorial, movimento retilíneo, aceleração variável nos três casos
+  (`a = f(t)`, `a = f(v)`, `a = f(s)`), movimento dependente por cabos,
+  movimento relativo, movimento curvilíneo em coordenadas retangulares e
+  movimento de projétil.
+- **Quatro questões do 1º EE**, das provas de 2022.1 e da 2ª chamada, com
+  gabarito e resolução passo a passo — as que a teoria já publicada cobre.
+- **Ligação com as grades.** Dinâmica (ou Mecânica Geral 2, o nome antigo)
+  existe em oito das dez matrizes mapeadas, e agora todas elas abrem a página
+  da cadeira a partir do nó: Civil 2021 e 2011, Automação 2021 e 2010,
+  Mecânica 2021 e 2012, Elétrica Eletrônica 2020 e Telecomunicações 2021.
+- `public/curso.html` passa a conhecer a cadeira nova, e o teste da ponte
+  cobre isso: cadeira no conteúdo sem entrada na ponte quebra o `npm test`.
+
+### Em andamento
+
+O material que ele mandou tem 25 PDFs e 11 imagens. Nove arquivos têm texto
+extraível; **catorze são escaneados ou foto — cerca de 70 páginas** que só se
+leem como imagem, incluindo gabaritos manuscritos e provas fotografadas.
+Faltam a teoria da 2ª unidade (cinética, energia, corpos rígidos) e as
+questões dos 2º EE, da final e das listas.
+
 ## [2.9.0] — 2026-08-21
 
 ### Adicionado
@@ -810,6 +841,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.10.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.10.0
 [2.9.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.9.0
 [2.8.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.8.0
 [2.7.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.7.0
