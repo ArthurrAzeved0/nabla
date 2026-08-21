@@ -1,16 +1,23 @@
 ---
 cadeira: dinamica
-titulo: "Dinâmica (Mecânica Geral 2)"
+titulo: "Dinâmica"
 unidades:
-  - nome: "1ª Unidade"
+  - nome: "Cinemática do ponto material"
     secoes:
-      - { id: din-vetores, titulo: "Análise vetorial: o que fica do Cálculo e da Estática" }
+      - { id: din-vetores, titulo: "Cinemática vetorial: o que fica do Cálculo e da Estática" }
       - { id: din-retilineo, titulo: "Movimento retilíneo: posição, velocidade e aceleração" }
       - { id: din-aceleracao-variavel, titulo: "Aceleração variável: a = f(t), a = f(v), a = f(s)" }
       - { id: din-dependente, titulo: "Movimento dependente: blocos, cabos e polias" }
       - { id: din-relativo, titulo: "Movimento relativo entre duas partículas" }
       - { id: din-curvilineo, titulo: "Movimento curvilíneo em coordenadas retangulares" }
       - { id: din-projetil, titulo: "Movimento de projétil" }
+      - { id: din-normal-tangencial, titulo: "Componentes normal e tangencial: raio de curvatura" }
+      - { id: din-polares, titulo: "Coordenadas polares: componentes radial e transversal" }
+  - nome: "Dinâmica do ponto material"
+    secoes:
+      - { id: din-equacoes-movimento, titulo: "Equações do movimento: a 2ª lei de Newton" }
+      - { id: din-vinculos-atrito, titulo: "Forças de vínculo e atrito" }
+      - { id: din-circular, titulo: "Movimento circular: a força que curva a trajetória" }
 ---
 
 {/* **************************************************************************
@@ -26,7 +33,7 @@ unidades:
      * Contato: arthur_azevedo05@hotmail.com                                  *
      ************************************************************************** */}
 
-<Topico id="din-vetores" num="01" titulo="Análise vetorial: o que fica do Cálculo e da Estática">
+<Topico id="din-vetores" num="01" titulo="Cinemática vetorial: o que fica do Cálculo e da Estática">
 
 **A ideia.** A Estática (Mecânica Geral 1) tratava de corpos que **não** se movem: a soma das forças era zero e você resolvia sistemas de equações. A Dinâmica solta o corpo. Agora posição, velocidade e aceleração mudam com o tempo, e a ferramenta que amarra as três é a **derivada**. Antes de qualquer coisa, vale arrumar a linguagem vetorial — porque daqui para frente quase toda grandeza tem direção, e errar um sinal de componente é o jeito mais comum de perder a questão inteira.
 
@@ -343,6 +350,237 @@ $$
 $$
 
 Levando esse tempo para a horizontal: $x = 3(0{,}505) = 1{,}51\text{ m}$. Note que a velocidade de saída não entrou na conta do tempo — a bola cai no mesmo tempo que cairia se fosse solta parada. É o mesmo tempo, alcance diferente.
+
+</Caixa>
+
+</Topico>
+
+
+<Topico id="din-normal-tangencial" num="08" titulo="Componentes normal e tangencial: raio de curvatura">
+
+**A ideia.** Coordenadas retangulares resolvem o projétil, mas escondem o que interessa numa curva. Aqui os eixos passam a **andar com a partícula**: um deles aponta para onde ela vai (tangente), o outro para o centro da curva (normal). A recompensa é a aceleração se separar em duas parcelas com significado físico: uma muda a **rapidez**, a outra muda a **direção**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mathbf{u}_t$ — versor **tangente**, no sentido do movimento;
+- $\mathbf{u}_n$ — versor **normal**, sempre apontando para o lado **côncavo** (o centro da curva);
+- $a_t = \dot{v}$ — aceleração tangencial: muda o módulo da velocidade;
+- $a_n = v^2/\rho$ — aceleração normal (centrípeta): muda a direção;
+- $\rho$ — **raio de curvatura**: o raio do círculo que melhor encosta na trajetória naquele ponto.
+
+</Caixa>
+
+$$
+\mathbf{a} = a_t\,\mathbf{u}_t + a_n\,\mathbf{u}_n
+\qquad\text{com}\qquad
+a_t = \frac{dv}{dt} = v\frac{dv}{ds}, \qquad a_n = \frac{v^2}{\rho}
+$$
+
+Para uma trajetória dada por $y = f(x)$, o raio de curvatura sai da fórmula do Cálculo:
+
+$$
+\rho = \frac{\left[1 + (dy/dx)^2\right]^{3/2}}{\left|d^2y/dx^2\right|}
+$$
+
+<Caixa tipo="macete">
+
+**Velocidade constante em módulo não é aceleração zero.** Se a partícula anda numa curva com rapidez constante, $a_t = 0$ mas $a_n = v^2/\rho \neq 0$ — e é essa aceleração que exige força. É a pergunta que separa quem entendeu de quem decorou.
+
+E o **sinal de $\mathbf{u}_n$** não se escolhe: ele aponta para o centro da curva, sempre. Não existe aceleração normal "para fora".
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — jato d'água com aclive 6/8">
+
+Um jato sai do bico com aclive de 6 cm na vertical para cada 8 cm na horizontal, e o raio de curvatura inicial é $\rho_0 = 3{,}8\ \mathrm{m}$. Ache a velocidade de saída.
+
+O aclive dá $\tan\theta = 6/8$, logo $\sin\theta = 3/5$ e $\cos\theta = 4/5$. Depois de sair do bico a única aceleração é $g$, para baixo; a componente dela **normal à trajetória** é $a_n = g\cos\theta = \tfrac{4}{5}g$. Então
+
+$$
+\frac{4}{5}g = \frac{v_0^2}{\rho_0}
+\quad\Longrightarrow\quad
+v_0 = \sqrt{\tfrac{4}{5}\,g\,\rho_0} = \sqrt{0{,}8 \times 9{,}81 \times 3{,}8} = 5{,}5\ \mathrm{m/s}
+$$
+
+**No ponto de altura máxima** a velocidade é horizontal, então $g$ é inteiramente normal: $a_n = g = v_h^2/\rho_M$ com $v_h = v_0\cos\theta$. Isso dá $\rho_M = (4/5)^3\rho_0 = 1{,}9\ \mathrm{m}$ — a curva fecha, e é por isso que o topo da parábola parece mais "apertado".
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-polares" num="09" titulo="Coordenadas polares: componentes radial e transversal">
+
+**A ideia.** Quando o movimento é descrito por um raio que gira — um braço mecânico, uma haste com um anel deslizando, um satélite —, o par natural não é $(x,y)$ e sim $(r,\theta)$. E aqui aparece a diferença que a 1ª unidade avisou: os versores **giram junto com a partícula**, então derivá-los não dá zero. É de onde saem os termos extras que ninguém adivinha.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $r$ — distância da origem à partícula; $\theta$ — ângulo do raio;
+- $\mathbf{u}_r$ — versor **radial**, no sentido de $r$ crescente; $\mathbf{u}_\theta$ — **transversal**, perpendicular, no sentido de $\theta$ crescente;
+- $\dot{\theta}$ — velocidade angular (rad/s); $\ddot{\theta}$ — aceleração angular;
+- $\dot{r}$ — quão rápido a partícula se afasta da origem.
+
+</Caixa>
+
+$$
+\mathbf{v} = \dot{r}\,\mathbf{u}_r + r\dot{\theta}\,\mathbf{u}_\theta
+$$
+
+$$
+\mathbf{a} = \left(\ddot{r} - r\dot{\theta}^2\right)\mathbf{u}_r
++ \left(r\ddot{\theta} + 2\dot{r}\dot{\theta}\right)\mathbf{u}_\theta
+$$
+
+<Caixa tipo="macete">
+
+**Os dois termos "estranhos" têm nome e motivo.** O $-r\dot{\theta}^2$ é a parcela centrípeta: mesmo com $r$ constante, girar exige aceleração para dentro. O $2\dot{r}\dot{\theta}$ é a aceleração de **Coriolis**, e só aparece quando a partícula se afasta *enquanto* gira — o anel subindo pela haste que roda. Numa questão em que $r$ é constante, os dois termos com $\dot{r}$ somem e a conta encurta; se $\dot{\theta}$ é constante, somem os com $\ddot{\theta}$. **Escreva as duas equações completas e só depois risque o que é zero** — cortar antes é como se perde o Coriolis.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-equacoes-movimento" num="10" titulo="Equações do movimento: a 2ª lei de Newton">
+
+**A ideia.** Até aqui a cinemática descrevia **como** a partícula se move, sem perguntar por quê. A dinâmica fecha o circuito: a causa do movimento é a força resultante, e a ponte entre as duas é uma única equação. O procedimento nunca muda — desenhar o diagrama de corpo livre, escolher os eixos, projetar, resolver.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\sum\mathbf{F}$ — resultante de **todas** as forças externas sobre a partícula;
+- $m$ — massa (constante, em toda esta cadeira);
+- $\mathbf{a}$ — aceleração, **no referencial inercial**;
+- DCL — diagrama de corpo livre: o desenho do corpo isolado, com todas as forças que agem nele e nada mais.
+
+</Caixa>
+
+$$
+\sum \mathbf{F} = m\,\mathbf{a}
+$$
+
+Projetada, ela vira duas ou três equações escalares. E a escolha dos eixos é livre — é aí que se ganha tempo:
+
+$$
+\sum F_x = m a_x, \quad \sum F_y = m a_y
+\qquad\text{ou}\qquad
+\sum F_t = m a_t, \quad \sum F_n = m \frac{v^2}{\rho}
+$$
+
+<Caixa tipo="macete">
+
+**O DCL é a questão.** Erro de DCL não tem conta que corrija. Três regras que resolvem quase tudo:
+
+1. Só entram forças que **outros corpos** fazem no corpo isolado. "Força centrífuga" e "$m\mathbf{a}$" não são forças e não entram no desenho.
+2. Se há dois corpos, faça **dois** DCLs. A tração que aparece nos dois é a mesma (cabo ideal), e é ela que amarra as equações.
+3. Escolha os eixos **na direção da aceleração**. Num plano inclinado, use eixos inclinados: a aceleração fica só num deles e a outra equação vira a da normal.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — dois corpos, uma tração">
+
+Um bloco $B$ de 8,0 kg sobre um carrinho $A$ de 12 kg, sem atrito entre $A$ e o piso, é arrastado por um cabo ligado a um corpo $C$ que pende. Com o conjunto todo acelerando junto de $a$:
+
+Isolando $C$: $\;m_C a = m_C g - T$. Isolando $A+B$ na horizontal: $\;T = (m_A + m_B)a$. Somando as duas, a tração sai da conta:
+
+$$
+(m_A + m_B + m_C)\,a = m_C\,g
+$$
+
+que é o resultado esperado — a força que move o sistema é o peso de $C$, e a massa que ela tem de mover é a de todos. Escrever essa equação global **depois** dos DCLs é conferência; escrever ela **em vez** dos DCLs é sorte.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-vinculos-atrito" num="11" titulo="Forças de vínculo e atrito">
+
+**A ideia.** O conteúdo programático fala em "forças de vínculo", e é o nome certo: normal, tração e atrito não são dadas no enunciado — elas **se ajustam** para que o corpo obedeça à restrição de estar apoiado, preso ou encostado. Achá-las é metade das questões de dinâmica. E o atrito tem um detalhe que decide questão: ele tem dois regimes.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $N$ — força **normal**: perpendicular à superfície, sempre de compressão;
+- $T$ — **tração** no cabo: só puxa, nunca empurra;
+- $\mu_e$ — coeficiente de atrito **estático**: vale enquanto não escorrega;
+- $\mu_c$ — coeficiente **cinético**: vale escorregando, e $\mu_c \lt \mu_e$;
+- $F_{at}$ — a força de atrito.
+
+</Caixa>
+
+$$
+F_{at} \leq \mu_e N \quad (\text{parado}),
+\qquad
+F_{at} = \mu_c N \quad (\text{escorregando})
+$$
+
+<Caixa tipo="macete">
+
+**Parado, o atrito é uma incógnita; escorregando, é um dado.** Enquanto não há escorregamento, $F_{at}$ vale o que precisar valer para segurar — você a acha pelas equações, e $\mu_e N$ é só o **limite** dela. Quando escorrega, $F_{at} = \mu_c N$ está determinada e vai para a equação como número.
+
+Perguntas do tipo "a maior massa para **não** escorregar" são exatamente o caso limite: use $F_{at} = \mu_e N$, que é o instante em que o atrito chegou ao seu máximo. E cuidado com o **sentido**: o atrito se opõe ao escorregamento *relativo* entre as superfícies, não ao movimento visto do chão.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a rampa que muda de inclinação">
+
+Um bloco escorrega por uma rampa a $30{,}0^\circ$ com aceleração de $3{,}00\ \mathrm{m/s^2}$. Qual a nova inclinação para que ele passe a descer com velocidade constante?
+
+Com eixos na rampa: ao longo dela, $mg\sin\theta - \mu_c N = ma$; perpendicular, $N = mg\cos\theta$. Logo
+
+$$
+a = g\,(\sin\theta - \mu_c\cos\theta)
+$$
+
+A massa não aparece. Com os dados da primeira rampa, isolando o coeficiente:
+
+$$
+\mu_c = \tan 30{,}0^\circ - \frac{3{,}00}{9{,}81\cos 30{,}0^\circ} = 0{,}2242
+$$
+
+Velocidade constante significa $a = 0$, então $\tan\theta' = \mu_c$ e $\theta' = 12{,}6^\circ$. Esse é o **ângulo de repouso**: a inclinação em que o atrito cinético empata exatamente com a componente do peso.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-circular" num="12" titulo="Movimento circular: a força que curva a trajetória">
+
+**A ideia.** Caso mais pedido da 2ª lei, porque junta as duas metades da cadeira: a cinemática diz que curvar exige aceleração $v^2/\rho$ para o centro, e a dinâmica pergunta **quem** faz essa força. A resposta é sempre uma força real — tração, normal, atrito, peso ou a soma delas.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $r$ — raio da circunferência (é o $\rho$ da seção 08, agora constante);
+- $a_n = v^2/r$ — aceleração centrípeta, apontando para o centro;
+- $\sum F_n$ — soma das forças **na direção do centro**;
+- $\omega = v/r$ — velocidade angular.
+
+</Caixa>
+
+$$
+\sum F_n = m\,\frac{v^2}{r}
+$$
+
+<Caixa tipo="macete">
+
+**Não existe "força centrífuga" no DCL.** A sensação de ser jogado para fora é inércia, não força. No diagrama entram apenas as forças reais, e a resultante delas aponta **para dentro**.
+
+O caso clássico é o **limite**: "qual a velocidade mínima no topo para o fio não afrouxar?". Fio afrouxando é $T = 0$, e aí só o peso sustenta a curva:
+
+$$
+mg = m\frac{v^2}{r} \quad\Longrightarrow\quad v_{\min} = \sqrt{gr}
+$$
+
+Sempre que a questão disser "mínima", "máxima" ou "no limite", traduza para **qual força vai a zero** — é ela que dá a equação que falta.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a bola na circunferência vertical">
+
+Uma bola presa a uma corda descreve uma circunferência vertical de raio $1{,}25\ \mathrm{m}$. Qual a velocidade mínima no topo para a corda permanecer esticada?
+
+No topo, peso e tração apontam ambos para baixo — isto é, para o centro. Então $mg + T = mv^2/r$. A corda no limite de afrouxar tem $T = 0$:
+
+$$
+v_{\min} = \sqrt{g\,r} = \sqrt{9{,}81 \times 1{,}25} = 3{,}50\ \mathrm{m/s}
+$$
+
+Abaixo disso a corda precisaria **empurrar** para manter o raio — e corda não empurra: a bola sai da trajetória circular antes de chegar ao topo.
 
 </Caixa>
 

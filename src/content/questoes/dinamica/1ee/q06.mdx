@@ -1,0 +1,72 @@
+---
+origem: "2022.1"
+tema: "Atrito · Bloco sobre suporte móvel"
+temaId: atrito
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx                 *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um bloco $B$ de $8{,}0\ \mathrm{kg}$ repousa sobre um suporte móvel $A$ de $12\ \mathrm{kg}$. Os coeficientes de atrito entre o bloco e o suporte são $\mu_e = 0{,}40$ e $\mu_c = 0{,}30$. Não há atrito entre o suporte e o piso. Um corpo $C$ pende de um cabo que arrasta o conjunto. Determine:
+
+<ol type="a">
+<li>a maior massa de $C$ para que o bloco $B$ não escorregue sobre a plataforma $A$;</li>
+<li>a aceleração correspondente.</li>
+</ol>
+
+<Gabarito>
+a) $m_C = 2{,}6\ \mathrm{kg}$.    b) $a = 1{,}1\ \mathrm{m/s^2}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Três corpos, três diagramas. Isolando $C$, que desce:
+
+$$
+m_C\,a = m_C\,g - T \tag{1}
+$$
+
+**Passo 2 —** Isolando o conjunto $A + B$ na horizontal — os dois andam juntos enquanto $B$ não escorrega, e o piso não tem atrito:
+
+$$
+T = (m_A + m_B)\,a \tag{2}
+$$
+
+**Passo 3 —** Substituindo (2) em (1), a tração sai da conta:
+
+$$
+(m_A + m_B + m_C)\,a = m_C\,g \tag{1'}
+$$
+
+**Passo 4 —** Agora o ponto da questão: **quem acelera o bloco $B$ é o atrito**. Ele é a única força horizontal sobre $B$. No limite de escorregar, o atrito está no seu máximo estático, $F_{at} = \mu_e m_B g$:
+
+$$
+m_B\,a = \mu_e\,m_B\,g - T
+\quad\xrightarrow{\ (2)\ }\quad
+(m_A + 2m_B)\,a = \mu_e\,m_B\,g \tag{3'}
+$$
+
+**Passo 5 —** Divida (3') por (1') para eliminar $a$ e isolar $m_C$:
+
+$$
+m_C = \mu_e m_B\,\frac{m_A + m_B}{m_A + (2 - \mu_e)m_B} = 2{,}58 \approx 2{,}6\ \mathrm{kg}
+$$
+
+**Passo 6 —** Item (b), direto de (3'):
+
+$$
+a = \mu_e\,\frac{m_B}{m_A + 2m_B}\,g = 0{,}40 \times \frac{8}{12 + 16} \times 9{,}81 = 1{,}1\ \mathrm{m/s^2}
+$$
+
+**Cuidado.** Use $\mu_e$, não $\mu_c$: a pergunta é sobre o limite para **não** escorregar, e nesse instante ainda não há escorregamento. O $\mu_c = 0{,}30$ do enunciado é distrator — só entraria se a questão pedisse o que acontece *depois* de escorregar.
+</Passos>

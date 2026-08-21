@@ -1,0 +1,51 @@
+---
+origem: "2022.1"
+tema: "Movimento circular · Velocidade mínima no topo"
+temaId: movimento-circular
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx                 *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma bola presa a uma corda descreve uma circunferência vertical cujo raio mede $1{,}25\ \mathrm{m}$. Determine a velocidade mínima da bola no topo da circunferência para que a corda permaneça esticada.
+
+<Gabarito>
+$v_{\min} = 3{,}50\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Faça o diagrama de corpo livre **no topo**. Há duas forças: o peso $mg$, para baixo, e a tração $T$ na corda, também para baixo — porque no topo a corda tira a bola para o centro, que está embaixo.
+
+**Passo 2 —** Escreva a 2ª lei na direção normal, com o sentido positivo **para o centro**:
+
+$$
+mg + T = m\,\frac{v^2}{r}
+$$
+
+**Passo 3 —** Traduza "a corda permanece esticada" para uma condição sobre $T$. A corda só puxa, nunca empurra: o limite é $T = 0$. Abaixo dessa velocidade ela precisaria empurrar, e a bola sai da trajetória circular.
+
+$$
+mg = m\,\frac{v_{\min}^2}{r}
+\quad\Longrightarrow\quad
+v_{\min} = \sqrt{g\,r}
+$$
+
+**Passo 4 —** Substitua:
+
+$$
+v_{\min} = \sqrt{9{,}81 \times 1{,}25} = 3{,}50\ \mathrm{m/s}
+$$
+
+**Cuidado.** A massa não aparece na resposta — se ela sobrou na sua conta, algo foi projetado errado. E não existe "força centrífuga" neste diagrama: as duas forças apontam para o centro, e é a resultante delas que curva a trajetória.
+</Passos>

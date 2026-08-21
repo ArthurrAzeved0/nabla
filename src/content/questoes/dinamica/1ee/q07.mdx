@@ -1,0 +1,61 @@
+---
+origem: "2ª chamada"
+tema: "Atrito · Ângulo de repouso na rampa"
+temaId: plano-inclinado
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx                 *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um bloco escorrega por uma rampa a $30{,}0^\circ$ com aceleração de $3{,}00\ \mathrm{m/s^2}$. O coeficiente de atrito cinético entre o bloco e a rampa é constante. Em seguida, a rampa sofre uma mudança de declividade. Determine o novo ângulo de inclinação para que o bloco passe a escorregar com **velocidade constante**.
+
+<Gabarito>
+$\theta' = 12{,}6^\circ$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Escolha os eixos **na rampa**: um ao longo dela, outro perpendicular. Assim a aceleração fica só num eixo. Perpendicularmente não há aceleração, então
+
+$$
+N = m\,g\cos\theta
+$$
+
+**Passo 2 —** Ao longo da rampa, o peso puxa para baixo com $mg\sin\theta$ e o atrito cinético resiste com $\mu_c N$:
+
+$$
+m\,g\sin\theta - \mu_c\,m\,g\cos\theta = m\,a
+\quad\Longrightarrow\quad
+a = g\,(\sin\theta - \mu_c\cos\theta)
+$$
+
+A massa desaparece — guarde isso, é a conferência da questão.
+
+**Passo 3 —** Com os dados da primeira rampa, isole o coeficiente:
+
+$$
+\mu_c = \tan 30{,}0^\circ - \frac{3{,}00}{9{,}81\,\cos 30{,}0^\circ} = 0{,}5774 - 0{,}3532 = 0{,}2242
+$$
+
+**Passo 4 —** "Velocidade constante" significa $a = 0$. Na nova inclinação $\theta'$:
+
+$$
+0 = g\,(\sin\theta' - \mu_c\cos\theta')
+\quad\Longrightarrow\quad
+\tan\theta' = \mu_c = 0{,}2242
+\quad\Longrightarrow\quad
+\theta' = 12{,}6^\circ
+$$
+
+**O que esse resultado significa.** $\arctan\mu_c$ é o **ângulo de repouso**: a inclinação em que o atrito cinético empata exatamente com a componente do peso. Mais inclinado que isso, o bloco acelera; menos, ele desacelera até parar. E note que o coeficiente é o mesmo nas duas rampas — é o que permite usar a primeira situação para descobri-lo.
+</Passos>
