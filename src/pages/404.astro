@@ -36,11 +36,11 @@ const grades = await getCollection("grade");
     {
       cadeiras.map((c) => (
         <li>
-          <a href={`${base}cadeiras/${c.data.id}`}>{c.data.nome}</a>
+          <a href={`${base}cadeiras/${c.data.id}/`}>{c.data.nome}</a>
           <span class="provas">
-            <a href={`${base}cadeiras/${c.data.id}/1ee`}>1º EE</a>
-            <a href={`${base}cadeiras/${c.data.id}/2ee`}>2º EE</a>
-            <a href={`${base}cadeiras/${c.data.id}/final`}>Final</a>
+            <a href={`${base}cadeiras/${c.data.id}/1ee/`}>1º EE</a>
+            <a href={`${base}cadeiras/${c.data.id}/2ee/`}>2º EE</a>
+            <a href={`${base}cadeiras/${c.data.id}/final/`}>Final</a>
           </span>
         </li>
       ))
@@ -52,7 +52,7 @@ const grades = await getCollection("grade");
     {
       grades.map((g) => (
         <li>
-          <a href={`${base}grade/${g.data.sigla}`}>{g.data.curso}</a>
+          <a href={`${base}grade/${g.data.sigla}/`}>{g.data.curso}</a>
         </li>
       ))
     }

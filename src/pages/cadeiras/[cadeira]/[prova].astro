@@ -107,7 +107,7 @@ const MDX = { Gabarito, Passos, Figura, Caixa };
             tema={q.entry.data.tema}
             pontos={q.entry.data.pontos}
             estiloDeProva={q.entry.data.estiloDeProva}
-            material={secao ? `${base}cadeiras/${cadeira.data.id}#${secao}` : undefined}
+            material={secao ? `${base}cadeiras/${cadeira.data.id}/#${secao}` : undefined}
           >
             <Conteudo components={MDX} />
           </Questao>
