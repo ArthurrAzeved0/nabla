@@ -185,12 +185,30 @@ function caminhoArredondado(pts: { x: number; y: number }[], r = 7): string {
   return `${d} L ${L.x} ${L.y}`;
 }
 
+/* Quantos tons a paleta tem (--fio-1 .. --fio-N em tokens.css). */
+const TONS = 12;
+
+/* Uma cor por disciplina de ORIGEM, como no fluxograma original: é o que
+   permite seguir uma linha específica no meio de dezenas. Duas origens
+   distantes podem repetir o tom, mas vizinhas na leitura não. */
+function tomPorOrigem(g: Grade): Map<string, number> {
+  const tom = new Map<string, number>();
+  let i = 0;
+  for (const d of g.disciplinas) {
+    for (const alvo of [...d.pre, ...d.co]) {
+      if (!tom.has(alvo)) tom.set(alvo, (i++ % TONS) + 1);
+    }
+  }
+  return tom;
+}
+
 export function desenharSetas(
   g: Grade,
   svg: SVGSVGElement,
   cartao: (id: string) => HTMLElement | undefined,
   corredor: number,
 ) {
+  const tom = tomPorOrigem(g);
   const geo = (id: string): Caixa | null => {
     const el = cartao(id);
     if (!el) return null;
@@ -239,7 +257,7 @@ export function desenharSetas(
   const iEntrada = new Map<string, number>();
 
   const partes: string[] = [];
-  const marcadores = new Set<string>();
+  const tonsUsados = new Set<number>();
 
   for (const a of arestas) {
     const A = geo(a.de);
@@ -280,17 +298,27 @@ export function desenharSetas(
     }
     if (Math.abs(pts[1]!.y - pts[2]!.y) < 1) pts = [pts[0]!, pts[3]!];
 
-    marcadores.add(a.de);
+    const t = tom.get(a.de) ?? 1;
+    tonsUsados.add(t);
+    /* a cor vai no atributo `style`: presentation attribute não aceita var()
+       de forma confiável em todos os navegadores, style aceita */
     partes.push(
-      `<path d="${caminhoArredondado(pts)}" class="fio ${a.tipo === "co" ? "fio-co" : ""}" ` +
-        `data-de="${a.de}" data-para="${a.para}" fill="none" stroke="currentColor" ` +
-        `stroke-width="1.7"${a.tipo === "co" ? ' stroke-dasharray="5 4"' : ""} ` +
-        `marker-end="url(#ponta)" />`,
+      `<path d="${caminhoArredondado(pts)}" class="fio${a.tipo === "co" ? " fio-co" : ""}" ` +
+        `data-de="${a.de}" data-para="${a.para}" fill="none" ` +
+        `style="stroke:var(--fio-${t})" stroke-width="1.5"` +
+        `${a.tipo === "co" ? ' stroke-dasharray="5 4"' : ""} ` +
+        `marker-end="url(#ponta-${t})" />`,
     );
   }
 
-  svg.innerHTML =
-    `<defs><marker id="ponta" markerWidth="6.5" markerHeight="6.5" refX="5.8" refY="3.25" ` +
-    `orient="auto"><path d="M0,0 L6.5,3.25 L0,6.5 Z" fill="currentColor"/></marker></defs>` +
-    partes.join("");
+  /* Um marcador por tom usado: a ponta da seta tem de ter a cor da linha, e
+     marcador não herda o stroke de quem o referencia. */
+  const defs = [...tonsUsados]
+    .map(
+      (t) =>
+        `<marker id="ponta-${t}" markerWidth="6.5" markerHeight="6.5" refX="5.8" refY="3.25" ` +
+        `orient="auto"><path d="M0,0 L6.5,3.25 L0,6.5 Z" style="fill:var(--fio-${t})"/></marker>`,
+    )
+    .join("");
+  svg.innerHTML = `<defs>${defs}</defs>${partes.join("")}`;
 }

@@ -88,12 +88,19 @@ const href = (d: (typeof g.disciplinas)[number]) => {
     }
     <span class="lg"><i class="sw est-feita" />concluída</span>
     <span class="lg"><i class="sw est-livre" />pode cursar</span>
-    <span class="lg sep">seta contínua = pré-requisito · tracejada = co-requisito</span>
+    <span class="lg sep">
+      seta contínua = pré-requisito · tracejada = co-requisito · a cor é da disciplina de origem
+    </span>
   </div>
 
   <p class="ajuda">
-    Clique numa disciplina para marcá-la como concluída. Passe o mouse para ver a cadeia de
-    requisitos dela. As em azul têm questões e teoria aqui no site.
+    Clique numa disciplina para marcá-la como concluída. Passe o mouse para ver só a cadeia de
+    requisitos dela — em repouso as setas ficam de fundo de propósito, porque 61 delas em peso
+    cheio viram rabisco. As em azul têm questões e teoria aqui no site.
+    <span class="so-toque">
+      No celular, o <strong>modo lista</strong> mostra os requisitos escritos, que lê melhor que o
+      mapa numa tela estreita.
+    </span>
   </p>
 
   {/* ------------------------------- quadro ------------------------------- */}
@@ -342,6 +349,15 @@ const href = (d: (typeof g.disciplinas)[number]) => {
     font-size: var(--t-sm);
     margin-bottom: var(--e-4);
   }
+  /* o hover não existe no toque: quem está no celular precisa do outro caminho */
+  .so-toque {
+    display: none;
+  }
+  @media (hover: none) {
+    .so-toque {
+      display: inline;
+    }
+  }
 
   /* categorias — tom claro de fundo, borda no tom cheio */
   .cat-basico {
@@ -422,16 +438,22 @@ const href = (d: (typeof g.disciplinas)[number]) => {
     overflow: visible;
     color: var(--ink-3);
   }
+  /* Em repouso as setas são ESTRUTURA DE FUNDO, não a informação principal:
+     61 arestas em peso cheio viram rabisco. A leitura de uma cadeia
+     específica é feita passando o mouse, onde ela acende. */
   .fios :global(.fio) {
-    opacity: 0.75;
+    opacity: 0.34;
   }
   .grade.tracando .fios :global(.fio) {
-    opacity: 0.07;
+    opacity: 0.05;
   }
   .grade.tracando .fios :global(.fio-forte) {
     opacity: 1;
     stroke-width: 2.6;
-    color: var(--accent);
+  }
+  /* no PDF do mapa completo elas voltam ao peso cheio: no papel não há hover */
+  .grade.sem-estado .fios :global(.fio) {
+    opacity: 0.85;
   }
 
   .cartao {

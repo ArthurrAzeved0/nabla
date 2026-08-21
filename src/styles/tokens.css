@@ -72,6 +72,23 @@
      Assinatura da identidade. Fina de 8px com reforço a cada 48px.
      CSS puro (gradientes empilhados): nada para baixar, escala em
      qualquer tela e muda de cor junto com o tema.                       */
+  /* ---------------- paleta das setas do fluxograma ----------------
+     Uma cor por disciplina de ORIGEM, como no fluxograma original: é o que
+     permite seguir uma linha específica no meio de 61 arestas. Doze tons
+     bem separados em matiz, escolhidos para funcionar sobre o papel. */
+  --fio-1: #1f6fb2;
+  --fio-2: #c2401c;
+  --fio-3: #0f8a5f;
+  --fio-4: #7c3aed;
+  --fio-5: #b45309;
+  --fio-6: #0e7490;
+  --fio-7: #be185d;
+  --fio-8: #4d7c0f;
+  --fio-9: #9f1239;
+  --fio-10: #5b21b6;
+  --fio-11: #a16207;
+  --fio-12: #0369a1;
+
   --grid-1: rgba(15, 108, 134, 0.05); /* fina: passa atrás do texto */
   --grid-2: rgba(15, 108, 134, 0.15); /* forte: mantém a assinatura */
   --grid-fina: 8px;
@@ -150,6 +167,20 @@
     --warn: #e0b25a;
     --warn-soft: #2f2716;
 
+    /* setas: mesmos matizes, claros o suficiente para a planta escura */
+    --fio-1: #6db3e8;
+    --fio-2: #f08a63;
+    --fio-3: #4fd0a0;
+    --fio-4: #b79bf5;
+    --fio-5: #e0a860;
+    --fio-6: #5ec2d8;
+    --fio-7: #f086b0;
+    --fio-8: #a8cf6a;
+    --fio-9: #f0899c;
+    --fio-10: #a996f0;
+    --fio-11: #ddb45e;
+    --fio-12: #6fb6e0;
+
     --grid-1: rgba(150, 215, 235, 0.035);
     --grid-2: rgba(150, 215, 235, 0.11);
 
@@ -183,6 +214,20 @@
 
   --warn: #e0b25a;
   --warn-soft: #2f2716;
+
+  /* setas: mesmos matizes, claros o suficiente para a planta escura */
+  --fio-1: #6db3e8;
+  --fio-2: #f08a63;
+  --fio-3: #4fd0a0;
+  --fio-4: #b79bf5;
+  --fio-5: #e0a860;
+  --fio-6: #5ec2d8;
+  --fio-7: #f086b0;
+  --fio-8: #a8cf6a;
+  --fio-9: #f0899c;
+  --fio-10: #a996f0;
+  --fio-11: #ddb45e;
+  --fio-12: #6fb6e0;
 
   --grid-1: rgba(150, 215, 235, 0.035);
   --grid-2: rgba(150, 215, 235, 0.11);

@@ -53,7 +53,23 @@ const teste = (nome, cond, extra = "") => {
 const html = svg.innerHTML;
 const paths = [...html.matchAll(/<path d="([^"]+)"([^>]*)>/g)].filter((m) => m[2].includes("data-de"));
 teste("desenhou uma seta por aresta", paths.length === 4, `veio ${paths.length}`);
-teste("tem o marcador de ponta", html.includes('<marker id="ponta"'));
+/* Um marcador por tom usado: a ponta tem de ter a cor da linha, e marcador
+   não herda o stroke de quem o referencia. */
+const marcadores = [...html.matchAll(/<marker id="ponta-(\d+)"/g)].map((m) => m[1]);
+teste("tem marcador por tom", marcadores.length > 0, `veio ${marcadores.length}`);
+const referenciados = [...html.matchAll(/marker-end="url\(#ponta-(\d+)\)"/g)].map((m) => m[1]);
+teste(
+  "todo marcador referenciado existe nos defs",
+  referenciados.every((r) => marcadores.includes(r)),
+  `refs ${[...new Set(referenciados)]} vs defs ${marcadores}`,
+);
+teste(
+  "cada seta tem cor de origem (var --fio-N)",
+  paths.every((m) => /style="stroke:var\(--fio-\d+\)"/.test(m[2])),
+);
+/* setas de origens diferentes não podem ter o mesmo tom quando são poucas */
+const tomDe = (de) => /--fio-(\d+)/.exec(paths.find((m) => m[2].includes(`data-de="${de}"`))[2])[1];
+teste("origens diferentes, tons diferentes", tomDe("A") !== tomDe("B"), `A=${tomDe("A")} B=${tomDe("B")}`);
 
 const nums = (d) => [...d.matchAll(/-?\d+(?:\.\d+)?/g)].map((x) => Number(x[0]));
 for (const [, d, attrs] of paths) {
