@@ -33,9 +33,13 @@ import BotaoTema from "~/components/BotaoTema.astro";
 interface Props {
   titulo: string;
   descricao?: string;
+  /** "leitura" (padrão) limita a coluna; "ampla" usa a janela toda.
+      O mapa da grade é ferramenta, não texto: preso na coluna de leitura,
+      o cabeçalho ficava minúsculo no meio de uma página vazia. */
+  largura?: "leitura" | "ampla";
 }
 
-const { titulo, descricao } = Astro.props;
+const { titulo, descricao, largura = "leitura" } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const ano = new Date().getFullYear();
 
@@ -86,7 +90,7 @@ const naGrade = caminho.includes("/grade/");
       </div>
     </header>
 
-    <main id="conteudo" class="pagina corpo">
+    <main id="conteudo" class:list={["pagina", "corpo", largura]}>
       <slot />
     </main>
 
@@ -173,6 +177,12 @@ const naGrade = caminho.includes("/grade/");
   .corpo {
     padding-top: var(--e-7);
     padding-bottom: var(--e-8);
+    /* empurra o rodapé para o fim da janela em página curta — sem isto ele
+       parava no meio da tela, com o papel continuando embaixo */
+    flex: 1;
+  }
+  .corpo.ampla {
+    max-width: none;
   }
 
   .rodape {
