@@ -23,8 +23,55 @@ pré-lançamento — uma tag por fase concluída da migração.
 
 ## [Não publicado]
 
-Fase 3 — ilhas de interatividade: marcar acertei/errei/revisar, cronômetro,
-filtro por status, barra de progresso e modo simulado.
+Fase 4 — o fluxograma da grade para dentro do site, multi-curso.
+
+## [2.0.0-alpha.5] — 2026-08-21
+
+**Fase 3 da migração: ilhas de interatividade.** As ferramentas de estudo
+voltaram — e o que estava por trás delas mudou de forma importante.
+
+### Adicionado
+
+- `src/ilhas/progresso.ts`: a memória de estudo, com **chave e formato
+  idênticos aos do site 1.x** (`ra-progresso`, `{ s, t }` por id de questão).
+  Quem já estuda pelo site antigo não perde as marcações na virada. É por isso
+  que esta parte veio antes de qualquer interface.
+- Marcar **acertei / errei / revisar** por questão. Marcar o mesmo status de
+  novo desmarca, como antes; e marcar encerra a contagem do cronômetro.
+- **Cronômetro por questão**, com o tempo preservado ao sair da página.
+- **Filtro por status** com contadores, e **barra de progresso** empilhada: a
+  proporção de acertadas, erradas e a revisar visível de relance.
+- **Modo simulado**: sorteia N questões, esconde os gabaritos, roda cronômetro
+  regressivo e calcula a nota na correção.
+- `npm test`: 16 casos que travam a compatibilidade do formato de progresso.
+  Rodam fora do navegador com `localStorage` simulado, transpilando o TS com
+  esbuild — sem dependência de teste nova.
+
+### Alterado
+
+- **O simulado não refaz mais a lista.** No site 1.x ele buscava as questões
+  sorteadas por `fetch` e trocava o `innerHTML`. Como agora as questões já
+  vêm do build, ele apenas esconde o que não sorteou: nada de rede, nada de
+  perder o que estava renderizado, e sair do simulado não recarrega a página.
+- Durante o simulado, gabarito e passo a passo saem do DOM visível
+  (`display:none`) em vez de ficarem apenas fechados — fechado, bastava um
+  clique para espiar. A regra sai do `<body>`, então uma linha de CSS governa
+  a página inteira.
+- Um **único listener delegado** para toda a página, em vez de um conjunto por
+  questão: a final de Eletromag tem 38.
+- O visual dos botões de status é pintado a partir do `aria-pressed`, não de
+  uma classe paralela: um estado só, não um para os olhos e outro para o
+  leitor de tela.
+
+### Corrigido
+
+- Marcar numa aba não atualizava outra aba aberta na mesma prova. O módulo
+  ouve o evento `storage`, então as abas ficam em sincronia.
+- Cronômetro rodando perdia o tempo ao sair. Agora salva em `beforeunload` e
+  também em `visibilitychange`, porque no celular trocar de app muitas vezes
+  não dispara o primeiro.
+- `import { z } from "astro:content"` está depreciado e sai no Astro 7
+  (8 avisos no `astro check`). Passou a vir de `astro/zod`.
 
 ## [2.0.0-alpha.4] — 2026-08-21
 
@@ -279,6 +326,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.0.0-alpha.5]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.5
 [2.0.0-alpha.4]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.4
 [2.0.0-alpha.3]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.3
 [2.0.0-alpha.2]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.2
