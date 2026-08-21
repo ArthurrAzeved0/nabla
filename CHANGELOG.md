@@ -51,6 +51,18 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 - As unidades da teoria passam a ter o nome do conteúdo programático —
   "Cinemática do ponto material" e "Dinâmica do ponto material" — em vez de
   "1ª/2ª Unidade".
+- **A teoria de Dinâmica ficou completa: 29 seções**, cobrindo os cinco itens
+  do conteúdo programático. As 17 novas vêm em três unidades:
+  - *Trabalho e energia* — trabalho de uma força (constante, peso, mola e
+    força variável), princípio do trabalho e energia cinética, energia
+    potencial, conservação da energia mecânica e potência com eficiência.
+  - *Impulso e momento linear* — impulso e momento, conservação num sistema de
+    partículas, colisão central direta com coeficiente de restituição,
+    colisão oblíqua na linha de impacto, e momento angular sob força central.
+  - *Movimento plano do corpo rígido* — translação e rotação de eixo fixo,
+    análise de velocidade relativa, centro instantâneo de rotação, análise de
+    aceleração relativa, momento de inércia com eixos paralelos, equações do
+    movimento plano e o teorema da energia com a parcela de rotação.
 
 ## [2.11.0] — 2026-08-21
 
