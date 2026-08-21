@@ -164,10 +164,20 @@ export function ligarGrade() {
   function ajuste() {
     const estilo = getComputedStyle(rolagem);
     const padding = parseFloat(estilo.paddingLeft) + parseFloat(estilo.paddingRight);
-    const disponivel = rolagem.clientWidth - padding;
+
+    /* LIMITE DUPLO, e o segundo é o que importa: além da caixa do contêiner,
+       a largura da JANELA. Se algum ancestral for esticado — o que já
+       aconteceu, por causa de `min-width: auto` numa coluna flex —,
+       clientWidth passa a reportar a largura do conteúdo e o mapa "cabe" em
+       escala 1, ficando cortado. documentElement.clientWidth é a viewport
+       menos a barra de rolagem: essa medida não mente. */
+    const janela = document.documentElement.clientWidth;
+    const respiro = 2 * 24; /* mesma margem lateral da página */
+    const disponivel = Math.min(rolagem.clientWidth, janela - respiro) - padding;
+
     /* sem o teto de 1 o mapa esticaria além do tamanho natural em tela
        larga, e os cartões ficariam borrados — melhor sobrar margem */
-    return Math.min(1, disponivel / Math.max(1, medirNatural()));
+    return Math.min(1, Math.max(0.2, disponivel) / Math.max(1, medirNatural()));
   }
 
   function aplicarEscala() {
