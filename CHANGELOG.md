@@ -21,6 +21,37 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [Não publicado]
+
+### Corrigido
+
+- **A cadeira de Dinâmica estava montada da ementa errada.** Eu usei a de
+  *Mecânica Geral 2 (MEC02)*, do curso de Mecânica Industrial — o documento
+  cujo rodapé ainda diz "MEC01". A ementa vigente é a de **DINÂMICA**:
+  pré-requisito Estática, co-requisito Equações Diferenciais (que é
+  exatamente o que os nós das matrizes de 2021 dizem), e bibliografia com o
+  Hibbeler 14ª ed. A cadeira passa a se chamar só **Dinâmica**, com a
+  descrição e a estrutura tiradas do documento certo.
+- Isso também **resolveu a divergência** que eu tinha registrado entre ementa
+  e prova. O conteúdo programático real tem cinco itens, e o **item 2 é
+  "dinâmica de um ponto material: equações de movimento e forças de
+  vínculo"**, logo depois da cinemática — leis de Newton *são* matéria do
+  1º EE. Não era a prova fugindo da ementa; era eu com a ementa antiga.
+
+### Adicionado
+
+- **Cinco seções de teoria**, fechando os dois primeiros itens do conteúdo
+  programático: componentes normal e tangencial (com raio de curvatura),
+  coordenadas polares, equações do movimento e a 2ª lei, forças de vínculo e
+  atrito, e movimento circular.
+- **Quatro questões do 1º EE** que a teoria nova destravou: velocidade mínima
+  no topo da circunferência, bloco sobre suporte móvel com atrito, ângulo de
+  repouso na rampa e raio de curvatura do jato d'água. São **8 questões** de
+  Dinâmica agora.
+- As unidades da teoria passam a ter o nome do conteúdo programático —
+  "Cinemática do ponto material" e "Dinâmica do ponto material" — em vez de
+  "1ª/2ª Unidade".
+
 ## [2.11.0] — 2026-08-21
 
 ### Alterado

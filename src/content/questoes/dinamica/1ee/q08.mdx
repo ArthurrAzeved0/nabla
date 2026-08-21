@@ -1,0 +1,68 @@
+---
+origem: "2ª chamada"
+tema: "Componentes normal e tangencial · Raio de curvatura"
+temaId: raio-de-curvatura
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx                 *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O jato d'água sai do bico da mangueira com aclive de $6{,}0\ \mathrm{cm}$ na vertical para cada $8{,}0\ \mathrm{cm}$ na horizontal, com raio de curvatura inicial de $3{,}8\ \mathrm{m}$. Determine:
+
+<ol type="a">
+<li>a velocidade inicial do jato;</li>
+<li>o raio de curvatura no ponto de altura máxima.</li>
+</ol>
+
+<Gabarito>
+a) $v_0 = 5{,}5\ \mathrm{m/s}$.    b) $\rho_M = 1{,}9\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** O aclive dá o ângulo de saída: $\tan\theta = 6{,}0/8{,}0$, o triângulo 3-4-5. Logo
+
+$$
+\sin\theta = \tfrac{3}{5} = 0{,}6, \qquad \cos\theta = \tfrac{4}{5} = 0{,}8
+$$
+
+**Passo 2 —** Depois de sair do bico, a única aceleração do jato é $g$, para baixo. Projete-a na direção **normal** à trajetória. Como a velocidade faz ângulo $\theta$ com a horizontal, a normal faz $\theta$ com a vertical:
+
+$$
+a_n = g\cos\theta = \tfrac{4}{5}\,g
+$$
+
+**Passo 3 —** Use a definição de aceleração normal no ponto de saída:
+
+$$
+a_n = \frac{v_0^2}{\rho_0}
+\quad\Longrightarrow\quad
+v_0 = \sqrt{\tfrac{4}{5}\,g\,\rho_0} = \sqrt{0{,}8 \times 9{,}81 \times 3{,}8} = 5{,}46 \approx 5{,}5\ \mathrm{m/s}
+$$
+
+**Passo 4 —** No ponto de **altura máxima** a velocidade é horizontal, então $g$ é inteiramente normal: $a_n = g$. E na horizontal o movimento é uniforme desde a saída, logo a velocidade ali é $v_h = v_0\cos\theta$:
+
+$$
+g = \frac{(v_0\cos\theta)^2}{\rho_M}
+\quad\Longrightarrow\quad
+\rho_M = \frac{v_0^2\cos^2\theta}{g}
+$$
+
+**Passo 5 —** Substituindo $v_0^2 = \tfrac{4}{5}g\rho_0$ do Passo 3, o $g$ cancela e sobra uma relação limpa:
+
+$$
+\rho_M = \tfrac{4}{5}\rho_0\cos^2\theta = \left(\tfrac{4}{5}\right)^3\rho_0 = 0{,}512 \times 3{,}8 = 1{,}9\ \mathrm{m}
+$$
+
+**A leitura física.** O raio **diminui** no topo: a curva fecha. Faz sentido — ali a velocidade é a menor de todo o percurso e a aceleração normal é a maior ($g$ inteiro), e $\rho = v^2/a_n$ cai duas vezes por isso.
+</Passos>
