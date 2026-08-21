@@ -13,7 +13,7 @@
     "build:ghpages": "DEPLOY_TARGET=ghpages astro build",
     "verificar": "node scripts/verificar-conteudo.mjs",
     "cabecalhos": "node scripts/cabecalho.mjs --check src public scripts astro.config.mjs CHANGELOG.md THIRD-PARTY.md",
-    "test": "esbuild src/ilhas/progresso.ts --format=esm --target=es2022 --outfile=.tmp-teste/progresso.mjs --log-level=error && node testes/progresso.test.mjs"
+    "test": "esbuild src/ilhas/progresso.ts src/ilhas/fluxograma.ts --format=esm --target=es2022 --outdir=.tmp-teste --out-extension:.js=.mjs --log-level=error && node testes/progresso.test.mjs && node testes/grade.test.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -23,12 +23,15 @@
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource/archivo-narrow": "^5.3.0",
     "astro": "^7.2.4",
+    "html-to-image": "^1.11.13",
+    "jspdf": "^4.2.1",
     "katex": "^0.18.4",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "typescript": "^6.0.3"
   },
   "allowScripts": {
-    "esbuild@0.28.2": true
+    "esbuild@0.28.2": true,
+    "core-js": false
   }
 }
