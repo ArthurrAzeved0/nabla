@@ -171,6 +171,12 @@ próprio curso.
   nela. É a mesma imagem que serve de prévia do repositório no GitHub e de
   `og:image` do site. Para regerar, o comando está no comentário do arquivo.
 
+  Os números do cartão são escritos à mão, e ficaram meses errados por isso —
+  ele dizia "147 questões" com o site já em 226. Hoje o `npm run verificar`
+  **compara** os três números do cartão com a contagem real e falha se
+  divergirem, e também exige que o PNG seja mais novo que o HTML. Ou seja: um
+  cartão desatualizado não passa mais pelo CI.
+
 ## Publicação
 
 O **GitHub Actions** compila e publica no Cloudflare Pages a cada push na
