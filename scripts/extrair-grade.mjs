@@ -40,6 +40,21 @@ const chTotal = Number(
 );
 const fracao = Number((html.match(/CH_TOTAL_CURSO\s*\*\s*([\d.]+)/) ?? [, "0.6"])[1]);
 
+/* CORREÇÕES sobre o que o fluxograma 1.x trazia. Ficam aqui, não no YAML:
+   o YAML é gerado, então uma correção feita nele se perderia na próxima
+   extração.
+
+   GEO03: o PPC cita "FIS02" como pré-requisito, código que não existe na
+   matriz — por isso a disciplina aparecia sem requisito nenhum. O
+   pré-requisito real é Química (QUI02). */
+const CORRECOES = {
+  GEO03: {
+    pre: ["QUI02"],
+    /* o campo no fluxograma 1.x se chama `note` */
+    note: "O PPC cita FIS02, código que não existe na matriz; o pré-requisito real é Química.",
+  },
+};
+
 /* Cadeiras que já existem no site: o nó vira link. Editar aqui ao migrar
    uma cadeira nova. */
 const LIGACAO = {
@@ -100,7 +115,9 @@ L.push(`matriz: ${JSON.stringify(matriz)}`);
 L.push(`chTotalCurso: ${chTotal}`);
 L.push(`estagioFracao: ${fracao}`);
 L.push("disciplinas:");
-for (const c of COURSES) {
+const DISCIPLINAS = COURSES.map((c) => ({ ...c, ...(CORRECOES[c.id] ?? {}) }));
+
+for (const c of DISCIPLINAS) {
   L.push(`  - id: ${c.id}`);
   L.push(`    codigo: ${esc(c.code)}`);
   L.push(`    nome: ${esc(c.name)}`);
@@ -119,8 +136,9 @@ for (const c of COURSES) {
 const destino = `src/content/grade/${sigla}.yaml`;
 writeFileSync(destino, L.join("\n") + "\n");
 console.log(
-  `  ${destino}: ${COURSES.length} disciplinas, ` +
-    `${COURSES.reduce((s, c) => s + c.pre.length, 0)} pré + ` +
-    `${COURSES.reduce((s, c) => s + c.co.length, 0)} co, ` +
-    `${COURSES.reduce((s, c) => s + c.t + c.p, 0)}h na matriz`,
+  `  ${destino}: ${DISCIPLINAS.length} disciplinas, ` +
+    `${DISCIPLINAS.reduce((s, c) => s + c.pre.length, 0)} pré + ` +
+    `${DISCIPLINAS.reduce((s, c) => s + c.co.length, 0)} co, ` +
+    `${DISCIPLINAS.reduce((s, c) => s + c.t + c.p, 0)}h na matriz` +
+    (Object.keys(CORRECOES).length ? `, ${Object.keys(CORRECOES).length} corrigida(s)` : ""),
 );
