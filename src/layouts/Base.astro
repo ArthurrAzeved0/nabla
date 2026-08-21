@@ -57,7 +57,13 @@ const naGrade = caminho.includes("/grade/");
     <title>{titulo} — Nabla</title>
     {descricao && <meta name="description" content={descricao} />}
     <meta name="color-scheme" content="light dark" />
+    {/* SVG primeiro (escala em qualquer densidade); .ico como reserva para
+        navegador que não o suporta; apple-touch-icon para quando alguém
+        adiciona o site à tela inicial do celular. */}
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="icon" href={`${base}favicon.ico`} sizes="32x32" />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+    <meta name="theme-color" content="#0f6c86" />
     {/* Convenção humanstxt.org: as pessoas por trás do site. */}
     <link rel="author" href={`${base}humans.txt`} />
 
@@ -100,8 +106,9 @@ const naGrade = caminho.includes("/grade/");
           © {ano} Nabla — feito por <strong>Arthur Azevedo</strong>, aluno de Eng. de Controle e
           Automação na POLI/UPE.
         </p>
-        {/* Porta discreta para o humans.txt: sem rótulo, só o glifo. Quem
-            repara, chega; quem não repara, não perde nada. */}
+        {/* Porta discreta para o humans.txt: sem rótulo, só o glifo. Fica ao
+            lado do texto, não jogado na outra ponta — assim parece parte da
+            assinatura, que é o que ele é. */}
         <a
           class="glifo-rodape"
           href={`${base}humans.txt`}
@@ -207,7 +214,9 @@ const naGrade = caminho.includes("/grade/");
   .faixa-rodape {
     display: flex;
     align-items: baseline;
-    gap: var(--e-4);
+    justify-content: center;
+    gap: var(--e-3);
+    flex-wrap: wrap;
   }
   .rodape p {
     font-size: var(--t-sm);
@@ -218,7 +227,6 @@ const naGrade = caminho.includes("/grade/");
   /* Discreto de propósito: mesma cor do texto do rodapé, sem sublinhado.
      Só ganha destaque no hover e no foco pelo teclado. */
   .glifo-rodape {
-    margin-left: auto;
     flex: none;
     font-size: var(--t-md);
     line-height: 1;
