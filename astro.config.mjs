@@ -18,9 +18,10 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 /* Publicado no Cloudflare Pages, que serve na RAIZ — daí não haver `base`.
-   `site` alimenta as URLs absolutas (canonical, sitemap). */
+   `site` alimenta as URLs absolutas (canonical, sitemap): se estiver errado,
+   o Google indexa um endereço que não existe. */
 export default defineConfig({
-  site: "https://nabla-poli.pages.dev",
+  site: "https://nabla.pages.dev",
   trailingSlash: "ignore",
 
   /* Barra de ferramentas do Astro no `dev`. Nunca vai para o site
