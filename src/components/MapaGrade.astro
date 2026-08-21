@@ -68,10 +68,6 @@ const href = (d: (typeof g.disciplinas)[number]) => {
       <button type="button" class="bt" data-modo aria-pressed="false">Modo lista</button>
       <button type="button" class="bt" data-pdf-progresso>PDF com meu progresso</button>
       <button type="button" class="bt" data-pdf-limpo>PDF do mapa</button>
-      <label class="opcao" title="Gera o PDF em fundo claro, que imprime sem encher a página de tinta">
-        <input type="checkbox" data-pdf-claro checked />
-        PDF claro
-      </label>
       <button type="button" class="bt risco" data-limpar-grade>Limpar</button>
       <span class="zoom">
         <button type="button" class="bt z" data-zoom-menos aria-label="Reduzir">−</button>
@@ -297,17 +293,6 @@ const href = (d: (typeof g.disciplinas)[number]) => {
   .bt.risco:hover {
     border-color: var(--err);
     color: var(--err);
-  }
-  .opcao {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: var(--t-sm);
-    color: var(--ink-2);
-    cursor: pointer;
-  }
-  .opcao input {
-    accent-color: var(--accent);
   }
   .zoom {
     display: inline-flex;

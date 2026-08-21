@@ -214,11 +214,6 @@ export function ligarGrade() {
     btn.textContent = "Gerando PDF…";
     const escalaAntes = quadro.style.transform;
     const modoAntes = raiz.dataset.modoAtual;
-    /* Fundo escuro no papel gasta tinta e sai ruim. O tema do PDF é uma
-       escolha própria, independente do tema da tela: força-se `light` na
-       raiz durante a captura e devolve-se depois. */
-    const querClaro = raiz.querySelector<HTMLInputElement>("[data-pdf-claro]")?.checked ?? false;
-    const temaAntes = document.documentElement.getAttribute("data-theme");
     try {
       const [{ toJpeg }, { jsPDF }] = await Promise.all([
         import("html-to-image"),
@@ -226,15 +221,14 @@ export function ligarGrade() {
       ]);
       if (modoAntes !== "quadro") definirModo("quadro");
       if (semProgresso) raiz.classList.add("sem-estado");
-      if (querClaro) document.documentElement.setAttribute("data-theme", "light");
       quadro.style.transform = "none";
       desenharSetas(grade, svg, cartao, CORREDOR);
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
 
-      /* A página do PDF nasce branca. Como o mapa é capturado com o fundo do
-         tema atual, sobrava uma moldura branca em volta. Pinta-se a página
-         com a MESMA cor e escolhe-se o tom do texto pela luminância dela. */
-      /* lido DEPOIS de trocar o tema, senão pegaria a cor antiga */
+      /* O PDF sai no tema em que a pessoa está — o que ela vê é o que ela
+         leva. A página do jsPDF nasce branca, então é pintada com a MESMA
+         cor da captura (senão sobra moldura branca em volta) e o tom do
+         texto do cabeçalho vem da luminância dela. */
       const fundoCss = getComputedStyle(document.body).backgroundColor;
       const [fr, fg, fb] = (fundoCss.match(/\d+(?:\.\d+)?/g) ?? ["255", "255", "255"])
         .slice(0, 3)
@@ -293,8 +287,6 @@ export function ligarGrade() {
     } catch (e) {
       window.alert(`Não consegui gerar o PDF.\n\n${(e as Error).message}`);
     } finally {
-      if (temaAntes === null) document.documentElement.removeAttribute("data-theme");
-      else document.documentElement.setAttribute("data-theme", temaAntes);
       raiz.classList.remove("sem-estado");
       quadro.style.transform = escalaAntes;
       if (modoAntes && modoAntes !== "quadro") definirModo(modoAntes as "lista");
