@@ -37,7 +37,7 @@ chTotalCurso: 3600
 estagioFracao: 0.8
 disciplinas:
   - id: QUIM
-    codigo: —
+    codigo: QUIM0002
     nome: Química
     periodo: 1
     teorica: 30
@@ -46,7 +46,7 @@ disciplinas:
     pre: []
     co: []
   - id: PORT
-    codigo: —
+    codigo: LETR0001
     nome: Português Instrumental
     periodo: 1
     teorica: 30
@@ -55,7 +55,7 @@ disciplinas:
     pre: []
     co: []
   - id: CALC1
-    codigo: —
+    codigo: MATM0018
     nome: Cálc. Dif. e Integral em uma Variável
     periodo: 1
     teorica: 60
@@ -64,7 +64,7 @@ disciplinas:
     pre: []
     co: []
   - id: GEOAN
-    codigo: —
+    codigo: MATM0007
     nome: Geometria Analítica
     periodo: 1
     teorica: 60
@@ -73,7 +73,7 @@ disciplinas:
     pre: []
     co: []
   - id: PROG
-    codigo: —
+    codigo: CCMP0094
     nome: Introdução à Programação
     periodo: 1
     teorica: 45
@@ -82,7 +82,7 @@ disciplinas:
     pre: []
     co: []
   - id: SOCIO
-    codigo: —
+    codigo: SOCL0002
     nome: "Sociologia, Meio Amb. e Contexto Social"
     periodo: 1
     teorica: 15
@@ -92,7 +92,7 @@ disciplinas:
     co: []
     dcext: true
   - id: INTROMEC
-    codigo: —
+    codigo: ENGE0002
     nome: Introdução à Engenharia Mecânica
     periodo: 1
     teorica: 30
@@ -101,7 +101,7 @@ disciplinas:
     pre: []
     co: []
   - id: ALGLIN
-    codigo: —
+    codigo: MATM0001
     nome: Álgebra Linear
     periodo: 2
     teorica: 60
@@ -110,7 +110,7 @@ disciplinas:
     pre: [GEOAN]
     co: []
   - id: CALC2
-    codigo: —
+    codigo: MATM0019
     nome: Cálc. Dif. e Integral em Várias Variáveis
     periodo: 2
     teorica: 60
@@ -119,7 +119,7 @@ disciplinas:
     pre: [CALC1]
     co: []
   - id: FUNDMEC
-    codigo: —
+    codigo: FISC0011
     nome: Fundamentos da Mecânica
     periodo: 2
     teorica: 60
@@ -128,7 +128,7 @@ disciplinas:
     pre: [CALC1]
     co: []
   - id: PROBEST
-    codigo: —
+    codigo: PRBE0002
     nome: Probabilidade e Estatística
     periodo: 2
     teorica: 60
@@ -137,7 +137,7 @@ disciplinas:
     pre: [CALC1]
     co: []
   - id: EXPGR1
-    codigo: —
+    codigo: ARTE0001
     nome: Expressão Gráfica 1
     periodo: 2
     teorica: 45
@@ -146,7 +146,7 @@ disciplinas:
     pre: []
     co: []
   - id: CALCVET
-    codigo: —
+    codigo: MATM0020
     nome: Cálc. Dif. e Integral Vetorial
     periodo: 3
     teorica: 60
@@ -157,7 +157,7 @@ disciplinas:
     nota: A Tabela 7 põe esta disciplina como correquisito de si mesma; o correquisito foi descartado.
     cadeira: calculo3
   - id: CALCNUM
-    codigo: —
+    codigo: CCMP0096
     nome: Cálculo Numérico
     periodo: 3
     teorica: 60
@@ -166,7 +166,7 @@ disciplinas:
     pre: [CALC2]
     co: []
   - id: ESTATICA
-    codigo: —
+    codigo: FISC0007
     nome: Estática
     periodo: 3
     teorica: 60
@@ -175,7 +175,7 @@ disciplinas:
     pre: [GEOAN, FUNDMEC]
     co: []
   - id: FUNDEM
-    codigo: —
+    codigo: FISC0012
     nome: Fundamentos do Eletromagnetismo
     periodo: 3
     teorica: 60
@@ -195,7 +195,7 @@ disciplinas:
     co: []
     dcext: true
   - id: CIENCMAT
-    codigo: —
+    codigo: MECN0004
     nome: Ciências dos Materiais
     periodo: 3
     teorica: 60
@@ -204,7 +204,7 @@ disciplinas:
     pre: [QUIM]
     co: []
   - id: METROL
-    codigo: —
+    codigo: METR0001
     nome: Metrologia
     periodo: 3
     teorica: 30
@@ -214,7 +214,7 @@ disciplinas:
     co: []
     nota: "O PPC escreve o pré-requisito como \"Probabilidade e estática\", sem o \"ti\"."
   - id: ONDTERM
-    codigo: —
+    codigo: FISC0013
     nome: Fund. da Ondulatória e Termodinâmica
     periodo: 4
     teorica: 60
@@ -232,7 +232,7 @@ disciplinas:
     pre: [FUNDMEC]
     co: [ONDTERM]
   - id: DINAM
-    codigo: —
+    codigo: FISC0008
     nome: Dinâmica
     periodo: 4
     teorica: 60
@@ -241,7 +241,7 @@ disciplinas:
     pre: [ESTATICA]
     co: [EQDIF]
   - id: EQDIF
-    codigo: —
+    codigo: MATM0021
     nome: Equações Diferenciais
     periodo: 4
     teorica: 60
@@ -251,7 +251,7 @@ disciplinas:
     co: []
     cadeira: eqdiferenciais
   - id: COMPMAT
-    codigo: —
+    codigo: MATM0006
     nome: Complementos de Matemática
     periodo: 4
     teorica: 60
@@ -260,7 +260,7 @@ disciplinas:
     pre: [CALCVET]
     co: [EQDIF]
   - id: MECFLU
-    codigo: —
+    codigo: FISC0017
     nome: Mecânica dos Fluidos
     periodo: 4
     teorica: 60
@@ -269,7 +269,7 @@ disciplinas:
     pre: [CALC2]
     co: [ONDTERM]
   - id: MATCONSTR
-    codigo: —
+    codigo: MECN0039
     nome: Materiais de Construção Mecânica
     periodo: 4
     teorica: 30
@@ -278,7 +278,7 @@ disciplinas:
     pre: [CIENCMAT]
     co: []
   - id: INSTELE
-    codigo: —
+    codigo: IEIN0001
     nome: Instalações Elétricas Industriais
     periodo: 5
     teorica: 60
@@ -287,7 +287,7 @@ disciplinas:
     pre: [FUNDEM]
     co: []
   - id: MAQHID
-    codigo: —
+    codigo: MAQH0001
     nome: Máquinas Hidráulicas
     periodo: 5
     teorica: 60
@@ -333,7 +333,7 @@ disciplinas:
     co: []
     dcext: true
   - id: RESMAT1
-    codigo: —
+    codigo: RMAT0001
     nome: Resistência dos Materiais 1
     periodo: 5
     teorica: 60
@@ -342,7 +342,7 @@ disciplinas:
     pre: [ESTATICA]
     co: []
   - id: TRANSCAL
-    codigo: —
+    codigo: TCAL0001
     nome: Transmissão de Calor
     periodo: 6
     teorica: 60
@@ -351,7 +351,7 @@ disciplinas:
     pre: [ONDTERM]
     co: []
   - id: TERMO1
-    codigo: —
+    codigo: TERM0001
     nome: Termodinâmica 1
     periodo: 6
     teorica: 60
@@ -360,7 +360,7 @@ disciplinas:
     pre: []
     co: [TRANSCAL]
   - id: QUALID
-    codigo: —
+    codigo: QUAL0001
     nome: Gestão da Qualidade
     periodo: 6
     teorica: 30
@@ -396,7 +396,7 @@ disciplinas:
     pre: [PROCFAB1]
     co: []
   - id: RESMAT2
-    codigo: —
+    codigo: RMAT0002
     nome: Resistência dos Materiais 2
     periodo: 6
     teorica: 60
@@ -414,7 +414,7 @@ disciplinas:
     pre: [DESTEC1]
     co: [PROCFAB2]
   - id: INSTRCTRL
-    codigo: —
+    codigo: MECN0027
     nome: Instrumentação e Controle
     periodo: 7
     teorica: 45
@@ -423,7 +423,7 @@ disciplinas:
     pre: [INSTELE]
     co: []
   - id: TERMO2
-    codigo: —
+    codigo: TERM0002
     nome: Termodinâmica 2
     periodo: 7
     teorica: 60
@@ -432,7 +432,7 @@ disciplinas:
     pre: [TERMO1]
     co: []
   - id: DIREITO
-    codigo: —
+    codigo: DIRE0001
     nome: Direito para Engenheiros
     periodo: 7
     teorica: 30
@@ -451,7 +451,7 @@ disciplinas:
     co: []
     nota: "A matriz sequencial dá um pré-requisito (Gestão da qualidade); a Tabela 7 dá três, somando Resistência dos Materiais 2 e Desenho Técnico Mecânico 2. Ficou o da sequencial, que é a matriz em execução."
   - id: SOLDA
-    codigo: —
+    codigo: SOLD0001
     nome: Soldagem
     periodo: 7
     teorica: 45
@@ -460,7 +460,7 @@ disciplinas:
     pre: [MATCONSTR]
     co: [ENSAIOS]
   - id: ENSAIOS
-    codigo: —
+    codigo: ENSM0001
     nome: Ensaios Mecânicos
     periodo: 7
     teorica: 45
@@ -469,7 +469,7 @@ disciplinas:
     pre: [RESMAT2, PROCFAB2]
     co: []
   - id: VIBRA
-    codigo: —
+    codigo: VIBM0001
     nome: Vibrações Mecânicas
     periodo: 7
     teorica: 60
@@ -478,7 +478,7 @@ disciplinas:
     pre: [MECANISM]
     co: []
   - id: ELEMAQ1
-    codigo: —
+    codigo: EMAQ0001
     nome: Elementos de Máquinas 1
     periodo: 7
     teorica: 60
@@ -487,7 +487,7 @@ disciplinas:
     pre: [MECANISM, RESMAT2]
     co: []
   - id: ESTAGIO
-    codigo: —
+    codigo: ESTG0001
     nome: Estágio Supervisionado
     periodo: 7
     teorica: 30
@@ -497,7 +497,7 @@ disciplinas:
     co: []
     nota: "Liberado por pré-requisito: neste curso a regra de carga horária é do PFC, não do estágio. A matriz sequencial divide a CH em 20+180, que soma 200; a divisão de 30+150 da Tabela 7 é a que fecha as 180h."
   - id: MAQTERM1
-    codigo: —
+    codigo: MAQT0001
     nome: Máquinas Térmicas 1
     periodo: 8
     teorica: 30
@@ -506,7 +506,7 @@ disciplinas:
     pre: [TERMO2]
     co: []
   - id: HIDPNEU
-    codigo: —
+    codigo: SHPN0001
     nome: Sistemas Hidráulicos e Pneumáticos
     periodo: 8
     teorica: 30
@@ -525,7 +525,7 @@ disciplinas:
     pre: [GESTFIN]
     co: []
   - id: PRATOF
-    codigo: —
+    codigo: PRFB0003
     nome: Prática de Oficina
     periodo: 8
     teorica: 15
@@ -543,7 +543,7 @@ disciplinas:
     pre: [GESTPROJ]
     co: [PRATOF, ELEMAQ2]
   - id: MAQELEV
-    codigo: —
+    codigo: MELT0001
     nome: Máquina de Elevação e Transporte
     periodo: 8
     teorica: 60
@@ -615,7 +615,7 @@ disciplinas:
     dcext: true
     nota: "Eletiva de extensão: a CH conta nas 360h de extensão do curso. O PPC não divide teórica e prática."
   - id: PFC
-    codigo: —
+    codigo: PFC00001
     nome: Projeto Final de Curso
     periodo: 10
     teorica: 0

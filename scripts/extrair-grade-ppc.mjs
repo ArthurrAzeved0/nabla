@@ -1136,6 +1136,9 @@ const GRADES = [
        horária total do curso integralizado". */
     estagioFracao: 0.6,
     disciplinas: AUTOMACAO_2021,
+    /* Também herda: o PPC de 2021 não dá código às disciplinas que nasceram
+       nele, e algumas existem noutro curso. */
+    herdarCodigos: true,
     /* Totais do PPC: por período (matriz sequencial "A EXECUTAR") */
     porPeriodo: [330, 405, 360, 390, 390, 345, 330, 330, 300, 420],
     contas: (c) => [
@@ -1257,6 +1260,8 @@ const GRADES = [
        carga horária do curso". O estágio aqui sai por pré-requisito. */
     estagioFracao: 0.8,
     disciplinas: MECANICA_2021,
+    /* O PPC não publica código; herda por nome de quem publica. */
+    herdarCodigos: true,
     /* Subtotais da matriz sequencial (§3.6.4). O do 10º inclui as 60h de
        atividades complementares, que não têm linha própria lá. */
     porPeriodo: [330, 315, 390, 360, 390, 405, 630, 360, 240, 180],
@@ -1328,13 +1333,119 @@ const GRADES = [
 ];
 
 /* ==========================================================================
+   REGISTRO COMPARTILHADO DE CÓDIGOS
+
+   Um PPC pode não publicar código nenhum — o de Engenharia Mecânica de 2021
+   diz que "os códigos das disciplinas são gerados automaticamente pelo
+   sistema de gestão acadêmica - Siga" e não os lista. Mas a mesma disciplina
+   costuma aparecer noutro curso, e lá o código está escrito: Química é
+   QUIM0002 tanto em Automação quanto em Mecânica Industrial.
+
+   Então o registro é montado a partir das grades que TÊM código, e as que não
+   têm herdam por nome. Duas regras impedem que isso vire chute:
+
+   1. Só o formato atual da UPE (AAAA9999). Os códigos curtos dos PPCs antigos
+      (MAT01, ECA01, INF01) são locais de cada curso e de cada época — MAT01
+      quer dizer coisas diferentes em documentos diferentes.
+   2. Se um nome aparece com códigos DIFERENTES em cursos diferentes, ninguém
+      herda nada. Isso acontece de verdade, e é informação, não ruído: cada
+      pleno registra o seu próprio componente para várias disciplinas
+      (Resistência dos Materiais é MCTR0005 em Automação e RMAT0001 em
+      Mecânica). Só o que é unânime passa.
+
+   Além disso, o código da OUTRA MATRIZ DO MESMO CURSO tem prioridade sobre o
+   de outro curso: é a mesma disciplina, do mesmo pleno, só de outra época.
+   ========================================================================== */
+/* Quatro dígitos ou mais é o que separa o registro atual dos códigos curtos
+   dos PPCs antigos: MATM0018 e PFC00001 entram, MAT01 e ECA10 não. Os curtos
+   são locais de cada curso e de cada época — MAT01 quer dizer coisas
+   diferentes em documentos diferentes, e herdar por ali seria chute. */
+const CODIGO_ATUAL = /^[A-Z]{3,4}\d{4,5}$/;
+
+/* Nome vira chave: sem acento, sem as abreviações que eu uso nas tabelas, sem
+   as palavras de ligação — para "Complementos de Matemática" e "Complementos
+   da Matemática" caírem na mesma chave. */
+function chaveNome(nome) {
+  return nome
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\bcalc\.?\b/g, "calculo")
+    .replace(/\bdif\.?\b/g, "diferencial")
+    .replace(/\bfund\.?\b/g, "fundamentos")
+    .replace(/\bamb\.?\b/g, "ambiente")
+    .replace(/\blab\.?\b/g, "laboratorio")
+    .replace(/\bcomp\.?\b/g, "computacionais")
+    .replace(/\bp\//g, "para ")
+    .replace(/\bdcext\b/g, " ")
+    .replace(/\b(da|de|do|das|dos|e|em|a|o)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    /* Singular e plural na mesma chave: "Máquina de Elevação" e "Máquinas de
+       Elevação" são a mesma disciplina. O corte do "s" final é aplicado dos
+       dois lados, então não importa se o radical fica torto ("materiais" ->
+       "materiai") — importa que fique igual. */
+    .split(" ")
+    .map((w) => (w.length > 4 && w.endsWith("s") ? w.slice(0, -1) : w))
+    .join(" ");
+}
+
+/* nome -> {codigos: Set, cursos: Map<curso, Set>} */
+function montarRegistro(grades) {
+  const reg = new Map();
+  for (const g of grades) {
+    for (const d of g.disciplinas) {
+      if (!CODIGO_ATUAL.test(d.codigo)) continue;
+      const k = chaveNome(d.nome);
+      if (!reg.has(k)) reg.set(k, { codigos: new Set(), porCurso: new Map() });
+      const e = reg.get(k);
+      e.codigos.add(d.codigo);
+      if (!e.porCurso.has(g.curso)) e.porCurso.set(g.curso, new Set());
+      e.porCurso.get(g.curso).add(d.codigo);
+    }
+  }
+  return reg;
+}
+
+/* Devolve o código herdado, ou undefined quando não há um só candidato.
+
+   `soDoCurso` para os componentes administrativos — estágio, PFC, atividades
+   complementares. Esses cada pleno registra por conta própria, então o código
+   de outro curso não diz nada sobre este; já o da outra matriz DO MESMO curso
+   diz. */
+function herdar(reg, curso, nome, soDoCurso = false) {
+  const e = reg.get(chaveNome(nome));
+  if (!e) return undefined;
+  const doCurso = e.porCurso.get(curso);
+  if (doCurso?.size === 1) return [...doCurso][0];
+  if (soDoCurso) return undefined;
+  return e.codigos.size === 1 ? [...e.codigos][0] : undefined;
+}
+
+/* ==========================================================================
    Conferência e emissão. Nada é gravado se alguma conta não fechar.
    ========================================================================== */
 const esc = (s) => (/[:#{}[\],&*?|>=!%@`"']|^\s|\s$/.test(s) ? JSON.stringify(s) : s);
 
-function gerar(g) {
+function gerar(g, registro) {
   const erros = [];
   const ds = g.disciplinas.map((d) => ({ pre: [], co: [], dcext: false, estagio: false, ...d }));
+
+  /* Herança de código, só onde a grade pede e o campo está vazio. */
+  const herdados = [];
+  const semCodigo = [];
+  if (g.herdarCodigos) {
+    for (const d of ds) {
+      if (d.codigo !== "—") continue;
+      const c = herdar(registro, g.curso, d.nome, d.categoria === "compl");
+      if (c) {
+        d.codigo = c;
+        herdados.push(`${c} ${d.nome}`);
+      } else if (d.categoria !== "eletiva") {
+        semCodigo.push(d.nome);
+      }
+    }
+  }
   const porId = new Map(ds.map((d) => [d.id, d]));
   const chDe = (d) => d.teorica + d.pratica;
   const ch = (lista) => lista.reduce((s, d) => s + chDe(d), 0);
@@ -1461,6 +1572,15 @@ function gerar(g) {
       `${ds.reduce((s, d) => s + d.co.length, 0)} co, ` +
       `${ch(ds)}h — ${contas.length + g.porPeriodo.length} contas do PPC conferidas`,
   );
+  if (g.herdarCodigos) {
+    console.log(
+      `    códigos herdados por nome: ${herdados.length}` +
+        (semCodigo.length ? `; ${semCodigo.length} sem código` : ""),
+    );
+    /* Quem ficou sem código fica DITO, não escondido: a lista é o que sobra
+       para conferir à mão se um dia aparecer a fonte. */
+    for (const n of semCodigo) console.log(`      — ${n}`);
+  }
   return true;
 }
 
@@ -1471,4 +1591,7 @@ if (!alvos.length) {
   console.error(`grade "${pedido}" não existe. Há: ${GRADES.map((g) => g.sigla).join(", ")}`);
   process.exit(1);
 }
-if (!alvos.map(gerar).every(Boolean)) process.exit(1);
+/* O registro sai de TODAS as grades, mesmo quando só uma é gerada: o código
+   de Mecânica 2021 vem de Automação, que pode não estar sendo regerada. */
+const registro = montarRegistro(GRADES);
+if (!alvos.map((g) => gerar(g, registro)).every(Boolean)) process.exit(1);
