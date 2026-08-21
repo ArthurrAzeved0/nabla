@@ -1,0 +1,137 @@
+---
+origem: "2024.1"
+tema: "Esquiador na parábola · Trabalho, velocidade e normal no fundo"
+temaId: trabalho-energia
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um esquiador desliza **sem atrito** ao longo da trajetória de equação $y = \dfrac{x^2}{40} - 10$ (em metros). Ele tem massa $m = 40\ \mathrm{kg}$ e parte do repouso no ponto $A$, de coordenada vertical $y_A = 5\ \mathrm{m}$. Seja $B$ o ponto mais baixo da trajetória. Com $g = 9{,}81\ \mathrm{m/s^2}$ apontando verticalmente para baixo, determine:
+
+<ol type="a">
+<li>o trabalho da força gravitacional entre $A$ e $B$;</li>
+<li>o módulo da velocidade do esquiador em $B$;</li>
+<li>as componentes tangencial e normal da aceleração em $B$;</li>
+<li>o módulo da força normal sobre o esquiador em $B$.</li>
+</ol>
+
+<Figura>
+  <svg viewBox="0 0 280 170" role="img" aria-label="Trajetória parabólica em forma de vale, com o esquiador partindo do ponto A na borda e B no fundo">
+    {/* eixos */}
+    <line x1="30" y1="46" x2="266" y2="46" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="269" y="49" font-size="10" fill="var(--ink-3)">x</text>
+    <line x1="148" y1="14" x2="148" y2="150" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="152" y="20" font-size="10" fill="var(--ink-3)">y</text>
+    {/* parábola (vale) */}
+    <path d="M 56 20 Q 148 178 240 20" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+    {/* ponto A na borda direita */}
+    <circle cx="228" cy="34" r="5" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="234" y="30" font-size="11" fill="var(--warn)">A</text>
+    {/* ponto B no fundo */}
+    <circle cx="148" cy="124" r="5" fill="var(--ok)"/>
+    <text x="152" y="140" font-size="11" fill="var(--ok)">B</text>
+    {/* cotas */}
+    <line x1="228" y1="34" x2="228" y2="46" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <text x="232" y="44" font-size="9" fill="var(--ink-3)">5 m</text>
+    <line x1="100" y1="46" x2="100" y2="124" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="66" y="90" font-size="9" fill="var(--ink-3)">15 m</text>
+    <text x="176" y="70" font-size="9" fill="var(--accent)">y = x²/40 − 10</text>
+  </svg>
+  <figcaption>
+
+No **fundo** da parábola a tangente é horizontal — e isso simplifica tudo: a componente tangencial do peso é nula e a normal aponta direto para cima.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+a) $U_{A\to B} = 5{,}89\ \mathrm{kJ}$.    b) $v_B = 17{,}2\ \mathrm{m/s}$.
+
+c) $a_t = 0$ e $a_n = 14{,}7\ \mathrm{m/s^2}$.    d) $N = 981\ \mathrm{N}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — localize os dois pontos.** O fundo da parábola é $x = 0$, logo
+
+$$
+y_B = -10\ \mathrm{m}
+$$
+
+e o esquiador desce, de $y_A = 5$ até $y_B = -10$, uma altura de
+
+$$
+h = 5 - (-10) = 15\ \mathrm{m}
+$$
+
+(Se quiser a abscissa de $A$: $5 = x^2/40 - 10 \Rightarrow x_A = \sqrt{600} = 24{,}5\ \mathrm{m}$ — mas ela não entra em nada.)
+
+**Passo 2 — item (a).** O trabalho do peso só depende da altura, nunca do caminho:
+
+$$
+U_{A\to B} = m\,g\,h = 40(9{,}81)(15) = 5886\ \mathrm{J} = 5{,}89\ \mathrm{kJ}
+$$
+
+Positivo, porque desceu.
+
+**Passo 3 — item (b), trabalho e energia.** Sem atrito, e a normal não trabalha (é perpendicular ao movimento). Partindo do repouso:
+
+$$
+0 + 5886 = \tfrac{1}{2}(40)\,v_B^2
+\quad\Longrightarrow\quad
+v_B^2 = 294{,}3
+\quad\Longrightarrow\quad
+v_B = 17{,}2\ \mathrm{m/s}
+$$
+
+**Passo 4 — item (c).** No fundo, $y' = x/20 = 0$: a tangente é **horizontal**. Então o peso é todo normal e nada tangencial:
+
+$$
+a_t = g\sin\theta = 0
+$$
+
+Para a normal, precisa do raio de curvatura em $x = 0$, com $y'' = 1/20$:
+
+$$
+\rho = \frac{\left[1 + (y')^2\right]^{3/2}}{|y''|} = \frac{1}{1/20} = 20\ \mathrm{m}
+$$
+
+$$
+a_n = \frac{v_B^2}{\rho} = \frac{294{,}3}{20} = 14{,}7\ \mathrm{m/s^2}
+$$
+
+Uma aceleração de $1{,}5\,g$, toda apontando **para cima** (para o centro de curvatura, que está acima do fundo do vale).
+
+**Passo 5 — item (d), a 2ª lei na direção normal.** No fundo, a normal aponta para cima e o peso para baixo; a resultante tem de ser $m\,a_n$ para cima:
+
+$$
+N - m\,g = m\,\frac{v_B^2}{\rho}
+$$
+
+$$
+N = 40(9{,}81) + 40(14{,}7) = 392{,}4 + 588{,}6 = 981\ \mathrm{N}
+$$
+
+**A leitura da resposta.** $N = 981\ \mathrm{N}$ é exatamente $2{,}5$ vezes o peso ($392\ \mathrm{N}$) — é isso que o esquiador **sente** no fundo do vale. E o número redondo não é coincidência: com $h = 15$ e $\rho = 20$,
+
+$$
+\frac{N}{mg} = 1 + \frac{2h}{\rho} = 1 + \frac{30}{20} = 2{,}5
+$$
+
+Essa fórmula vale para qualquer descida sem atrito até o fundo de uma curva, e é o jeito mais rápido de conferir o resultado.
+
+**A mesma questão, outros números.** Ela reapareceu com $y = \dfrac{x^2}{20} - 5$, $m = 52\ \mathrm{kg}$ e $A(10;\,0)$. Ali $h = 5\ \mathrm{m}$, $\rho = 10\ \mathrm{m}$, e a razão $2h/\rho$ dá exatamente 1: $a_n = g = 9{,}81\ \mathrm{m/s^2}$, $v_B = 9{,}90\ \mathrm{m/s}$ e $N = 2mg = 1{,}02\ \mathrm{kN}$.
+
+**Cuidado com a altura.** $y_A = 5$ é a **coordenada**, não a altura de queda. Quem usa $h = 5$ acha $v_B = 9{,}9$ e erra três dos quatro itens. O fundo da parábola está em $y = -10$, e é a diferença que conta.
+</Passos>

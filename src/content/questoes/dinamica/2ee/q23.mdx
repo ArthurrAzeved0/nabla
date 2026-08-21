@@ -1,0 +1,121 @@
+---
+origem: "2024.1"
+tema: "Corrente que escorrega do tubo · Energia com centro de massa"
+temaId: trabalho
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um tubo com um quarto de circunferência $AB$ e raio médio $r$ contém uma corrente lisa que possui massa por comprimento unitário $m_0$. O tubo vai de $A$ — na extremidade superior, no nível do centro $O$ — até $B$, na extremidade inferior, e a corrente o preenche completamente. Se a corrente for solta do repouso a partir da posição mostrada, determine a velocidade quando ela aparecer completamente fora do tubo, esticada sobre o plano horizontal que passa por $B$.
+
+<Figura>
+  <svg viewBox="0 0 240 190" role="img" aria-label="Tubo em quarto de circunferência de A no nível do centro O até B embaixo, cheio de corrente" >
+    {/* nível de O e A */}
+    <line x1="20" y1="40" x2="220" y2="40" stroke="var(--ink-3)" stroke-width="1.4"/>
+    {/* centro O */}
+    <circle cx="70" cy="40" r="3" fill="var(--ink-2)"/>
+    <text x="56" y="34" font-size="11" fill="var(--ink-2)">O</text>
+    {/* A */}
+    <circle cx="170" cy="40" r="4" fill="var(--accent)"/>
+    <text x="168" y="30" font-size="11" fill="var(--accent)">A</text>
+    {/* raio OA */}
+    <line x1="70" y1="40" x2="170" y2="40" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 2"/>
+    <text x="116" y="54" font-size="10" fill="var(--ink-3)">r</text>
+    {/* raio OB */}
+    <line x1="70" y1="40" x2="70" y2="140" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 2"/>
+    {/* arco A->B (o tubo) */}
+    <path d="M 170 40 A 100 100 0 0 1 70 140" fill="none" stroke="var(--accent)" stroke-width="5"/>
+    {/* B */}
+    <circle cx="70" cy="140" r="4" fill="var(--accent)"/>
+    <text x="54" y="146" font-size="11" fill="var(--accent)">B</text>
+    {/* plano horizontal por B */}
+    <line x1="14" y1="140" x2="220" y2="140" stroke="var(--ink-2)" stroke-width="1.8"/>
+    {/* corrente final, esticada no plano */}
+    <path d="M 66 152 l 6 -4 l 6 4 l 6 -4 l 6 4 l 6 -4 l 6 4 l 6 -4 l 6 4 l 6 -4 l 6 4 l 6 -4 l 6 4" fill="none" stroke="var(--ok)" stroke-width="1.6"/>
+    <text x="146" y="166" font-size="9" fill="var(--ok)">posição final</text>
+  </svg>
+  <figcaption>
+
+Como a corrente muda de forma, não existe "a altura do corpo": o que desce é o **centro de massa**. Achá-lo no arco é a única conta séria da questão.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v = \sqrt{2\,g\,r\left(1 - \tfrac{2}{\pi}\right)} \approx 0{,}853\,\sqrt{g\,r}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que energia, e por que centro de massa.** O tubo é liso (não dissipa) e todos os elos da corrente têm o **mesmo** módulo de velocidade em cada instante — é uma corrente inextensível. Então
+
+$$
+T = \tfrac{1}{2}M\,v^2
+$$
+
+com $M$ a massa total, exatamente como se fosse uma partícula. O que **não** é como uma partícula é a energia potencial: a corrente muda de forma, e o único jeito de contabilizar altura é pelo **centro de massa**.
+
+$$
+M = m_0\,\frac{\pi r}{2}
+$$
+
+**Passo 2 — a altura do CM no arco.** Tome o nível de $B$ como referência. Parametrize o arco pelo ângulo $\varphi$ medido em $O$ a partir de $OB$: um ponto do arco está em
+
+$$
+y(\varphi) = r\,(1 - \cos\varphi)
+\qquad
+\varphi \in \left[0,\ \tfrac{\pi}{2}\right]
+$$
+
+(Confira os extremos: $\varphi=0$ dá $y=0$, que é $B$; $\varphi=\pi/2$ dá $y=r$, que é $A$. ✔)
+
+A média ao longo do arco, com comprimento total $\pi r/2$ e elemento $ds = r\,d\varphi$:
+
+$$
+\bar{y}_i = \frac{1}{\pi/2}\int_0^{\pi/2}(1-\cos\varphi)\,r\,d\varphi
+= \frac{2r}{\pi}\Big[\varphi - \sin\varphi\Big]_0^{\pi/2}
+= \frac{2r}{\pi}\left(\frac{\pi}{2} - 1\right)
+$$
+
+$$
+\bar{y}_i = r\left(1 - \frac{2}{\pi}\right) = 0{,}3634\,r
+$$
+
+**Passo 3 — a altura final.** Esticada no plano por $B$, a corrente inteira está em $y = 0$:
+
+$$
+\bar{y}_f = 0
+$$
+
+**Passo 4 — conservação da energia.**
+
+$$
+M\,g\,\bar{y}_i = \tfrac{1}{2}M\,v^2
+\quad\Longrightarrow\quad
+v = \sqrt{2\,g\,\bar{y}_i}
+$$
+
+$$
+v = \sqrt{2\,g\,r\left(1 - \frac{2}{\pi}\right)} = \sqrt{0{,}7268\,g\,r} = 0{,}853\,\sqrt{g\,r}
+$$
+
+**O $m_0$ não sobrevive** — e não podia: ele multiplica a energia disponível e a inércia na mesma proporção. O enunciado o dá justamente para ver se você percebe isso. Compare com a queda livre de uma partícula da altura $\bar{y}_i$: é literalmente o mesmo número, e é assim que se confere a resposta.
+
+**Cuidado — dois erros de altura:**
+
+1. Usar $r$ como a queda do CM. O CM do arco não está em $A$ nem no meio geométrico da corda: está a $0{,}363\,r$ acima de $B$, bem mais **baixo** que a metade.
+2. Esquecer que a posição final também tem um CM. Aqui ele deu zero porque a corrente ficou toda no nível de $B$; se ela caísse pendurada, haveria um $\bar{y}_f$ negativo e a velocidade seria maior.
+</Passos>

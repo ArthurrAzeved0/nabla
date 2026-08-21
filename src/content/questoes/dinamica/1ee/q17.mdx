@@ -1,0 +1,81 @@
+---
+origem: "2023.1"
+tema: "Raio de curvatura no lançamento e em outro ponto"
+temaId: raio-de-curvatura
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma criança lança de $1{,}50\ \mathrm{m}$ de altura uma bola com velocidade de $18{,}0\ \mathrm{m/s}$ fazendo $30{,}0^\circ$ com a horizontal. Determine a velocidade da bola nos pontos de sua trajetória em que o raio de curvatura é $2/3$ do valor no ponto de lançamento.
+
+<Gabarito>
+$v_P = 15{,}7\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a única força é o peso.** Então a aceleração é $g$ para baixo, sempre. Sua **componente normal** à trajetória, em um ponto onde a velocidade faz ângulo $\theta$ com a horizontal, é
+
+$$
+a_n = g\cos\theta = \frac{v^2}{\rho}
+\quad\Longrightarrow\quad
+\rho = \frac{v^2}{g\cos\theta} \tag{1}
+$$
+
+Essa é a relação que carrega toda a questão: a normal do peso é $g\cos\theta$, e não $g$ nem $g\sin\theta$.
+
+**Passo 2 — escreva os dois pontos por (1).** No lançamento ($L$), $\theta_L = 30^\circ$; no ponto pedido ($P$), $\theta_P$ é incógnito:
+
+$$
+\rho_L = \frac{v_L^2}{g\cos 30^\circ}
+\qquad
+\rho_P = \frac{v_P^2}{g\cos\theta_P}
+$$
+
+A condição do enunciado é $\rho_P = \tfrac{2}{3}\rho_L$:
+
+$$
+\frac{v_P^2}{\cos\theta_P} = \frac{2}{3}\cdot\frac{v_L^2}{\cos 30^\circ} \tag{2}
+$$
+
+**Passo 3 — a segunda relação, que elimina $\theta_P$.** No lançamento de projétil, a **componente horizontal da velocidade é constante**:
+
+$$
+v_L\cos 30^\circ = v_P\cos\theta_P
+\quad\Longrightarrow\quad
+\cos\theta_P = \frac{v_L\cos 30^\circ}{v_P} \tag{3}
+$$
+
+É esse o passo que faz a questão funcionar — sem ele, sobram duas incógnitas e uma equação.
+
+**Passo 4 — substitua (3) em (2).** Os cossenos de $30^\circ$ cancelam:
+
+$$
+\frac{v_P^2\,v_P}{v_L\cos 30^\circ} = \frac{2}{3}\cdot\frac{v_L^2}{\cos 30^\circ}
+\quad\Longrightarrow\quad
+v_P^3 = \frac{2}{3}\,v_L^3
+$$
+
+**Passo 5 — a raiz é cúbica, não quadrada.**
+
+$$
+v_P = \sqrt[3]{\tfrac{2}{3}}\;v_L = 0{,}8736\,(18{,}0) = 15{,}7\ \mathrm{m/s}
+$$
+
+**A leitura da resposta.** A relação $\rho \propto v^3$ (juntando (1) e (3)) é elegante e vale para **qualquer** projétil: o raio de curvatura é proporcional ao cubo da velocidade. Menos $2/3$ de raio custa só $13\%$ de velocidade.
+
+E note o que **não** foi usado: a altura de $1{,}50\ \mathrm{m}$. Ela é distrator puro — a resposta não depende de onde a bola foi lançada. Existem **dois** pontos com esse raio, um na subida e um na descida, e é por isso que o enunciado diz "nos pontos", no plural.
+
+**Cuidado com a raiz.** $v_P^3 = \tfrac23 v_L^3$ dá $v_P = (2/3)^{1/3}v_L = 15{,}7$. Escrever $\sqrt{2/3}\,(18) = 14{,}7$ é o erro mais provável — e a diferença de $1\ \mathrm{m/s}$ é grande o bastante para custar a questão.
+</Passos>

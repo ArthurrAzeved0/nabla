@@ -1,0 +1,73 @@
+---
+origem: "2024.2"
+tema: "Arrasto quadrático · A bola de boliche no lago"
+temaId: aceleracao-funcao-velocidade
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma bola de boliche é solta de um barco e atinge a superfície de um lago com velocidade de $8\ \mathrm{m/s}$. Considerando que dentro da água a bola experimenta uma aceleração $a = 10 - 0{,}9\,v^2$ (SI), determine a velocidade da bola quando ela atinge o fundo do lago, a $10\ \mathrm{m}$ de profundidade.
+
+<Gabarito>
+$v = 3{,}33\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a relação sem tempo.** O dado é a **profundidade**, então:
+
+$$
+a = v\frac{dv}{dx} = 10 - 0{,}9v^2
+\quad\Longrightarrow\quad
+\int_{8}^{v}\frac{v\,dv}{10 - 0{,}9v^2} = \int_0^{10} dx \tag{I}
+$$
+
+**Passo 2 — a integral da esquerda, por substituição.** Com $u = 10 - 0{,}9v^2$ tem-se $du = -1{,}8\,v\,dv$, ou seja $v\,dv = -du/1{,}8$:
+
+$$
+\int \frac{v\,dv}{10-0{,}9v^2} = -\frac{1}{1{,}8}\int\frac{du}{u} = -\frac{1}{1{,}8}\ln u
+$$
+
+**Passo 3 — avalie.** Em $v = 8$: $u_0 = 10 - 0{,}9(64) = -47{,}6$. Levando em (I):
+
+$$
+-\frac{1}{1{,}8}\ln\!\left[\frac{10 - 0{,}9v^2}{-47{,}6}\right] = 10
+\quad\Longrightarrow\quad
+\ln\!\left[\frac{10 - 0{,}9v^2}{-47{,}6}\right] = -18
+$$
+
+$$
+10 - 0{,}9v^2 = -47{,}6\,e^{-18}
+\quad\Longrightarrow\quad
+v = \sqrt{\frac{10 + 47{,}6\,e^{-18}}{0{,}9}}
+$$
+
+$$
+v = 3{,}33\ \mathrm{m/s}
+$$
+
+**Passo 4 — a leitura, que vale mais que a conta.** $e^{-18} = 1{,}5\times10^{-8}$: o termo exponencial é numericamente **irrelevante**. Isso significa que a bola já chegou à sua **velocidade terminal** muito antes dos $10\ \mathrm{m}$ — e a velocidade terminal é onde a aceleração se anula:
+
+$$
+10 - 0{,}9\,v_t^2 = 0
+\quad\Longrightarrow\quad
+v_t = \sqrt{\frac{10}{0{,}9}} = 3{,}33\ \mathrm{m/s}
+$$
+
+Exatamente a resposta. A bola entrou na água a $8\ \mathrm{m/s}$, **acima** da terminal, e o arrasto a freou até $3{,}33$ em poucos centímetros.
+
+**O que fazer com isso na prova.** Calcule $v_t$ **primeiro**, em uma linha: ele te diz para onde o resultado tem de convergir e serve de conferência. Mas apresente a integral — o enunciado desta prova avisa que "questões com cálculos parciais ou sem justificativa implicarão na anulação total".
+
+**Cuidado com o sinal do $u$.** Como a bola entra mais rápido que a terminal, $10 - 0{,}9v^2$ é **negativo** durante todo o percurso. O argumento do logaritmo é uma razão de dois negativos — positivo, e o log existe. Quem "corrige" o sinal na mão perde o resultado.
+</Passos>

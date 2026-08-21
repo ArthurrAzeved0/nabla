@@ -1,0 +1,66 @@
+---
+origem: "2024.2"
+tema: "Trem de engrenagens · Relação de transmissão composta"
+temaId: engrenagens
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um motor gira a engrenagem $A$ ($r_A = 40\ \mathrm{mm}$) com aceleração angular $\alpha_A = 2\ \mathrm{rad/s^2}$, quando sua velocidade angular é $\omega_A = 20\ \mathrm{rad/s}$. A engrenagem $A$ engrena com $B$ ($r_B = 100\ \mathrm{mm}$); a engrenagem $C$ ($r_C = 50\ \mathrm{mm}$) está montada **no mesmo eixo** de $B$; e $C$ engrena com $D$ ($r_D = 100\ \mathrm{mm}$). Determine a aceleração angular e a velocidade angular da engrenagem $D$.
+
+<Gabarito>
+$\omega_D = 4{,}0\ \mathrm{rad/s}$ e $\alpha_D = 0{,}40\ \mathrm{rad/s^2}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas regras do trem de engrenagens.** Só existem duas, e a questão é saber qual usar em cada par:
+
+- **engrenadas** (dentes em contato): mesma velocidade **do ponto de contato**, logo $\omega_1 r_1 = \omega_2 r_2$;
+- **no mesmo eixo**: mesma velocidade **angular**, $\omega_1 = \omega_2$, independentemente dos raios.
+
+**Passo 2 — de $A$ para $B$** (engrenadas):
+
+$$
+\omega_B = \frac{r_A}{r_B}\,\omega_A = \frac{40}{100}(20) = 8{,}0\ \mathrm{rad/s}
+$$
+
+**Passo 3 — de $B$ para $C$** (mesmo eixo). É de graça:
+
+$$
+\omega_C = \omega_B = 8{,}0\ \mathrm{rad/s}
+$$
+
+**Passo 4 — de $C$ para $D$** (engrenadas):
+
+$$
+\omega_D = \frac{r_C}{r_D}\,\omega_C = \frac{50}{100}(8{,}0) = 4{,}0\ \mathrm{rad/s}
+$$
+
+**Passo 5 — a aceleração angular segue a MESMA razão.** Derive a relação $\omega_D = (r_A r_C)/(r_B r_D)\,\omega_A$ no tempo: os raios são constantes, então
+
+$$
+\alpha_D = \frac{r_A\,r_C}{r_B\,r_D}\,\alpha_A = \frac{40 \times 50}{100 \times 100}(2) = 0{,}20 \times 2 = 0{,}40\ \mathrm{rad/s^2}
+$$
+
+**O número que resume o mecanismo.** A razão de transmissão total é
+
+$$
+\frac{\omega_D}{\omega_A} = \frac{r_A\,r_C}{r_B\,r_D} = \frac{1}{5}
+$$
+
+um redutor de $5{:}1$ — e ele vale para $\omega$, para $\alpha$ e para o ângulo girado, todos na mesma proporção. Em contrapartida, o **torque** é multiplicado por 5: é para isso que existe caixa de redução.
+
+**Cuidado.** Não multiplique as razões erradas. Confundir "mesmo eixo" com "engrenadas" no par $B$–$C$ introduziria um fator $100/50 = 2$ e a resposta sairia dobrada. Antes de escrever qualquer conta, marque no desenho quais pares têm **dente em contato** e quais compartilham **eixo**.
+</Passos>

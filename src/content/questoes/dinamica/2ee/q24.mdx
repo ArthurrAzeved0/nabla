@@ -1,0 +1,122 @@
+---
+origem: "2025.2"
+tema: "Atrito, colisão e mola em sequência"
+temaId: coeficiente-restituicao
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O bloco $A$, de $15\ \mathrm{kg}$, desliza sobre a superfície para a qual $\mu_k = 0{,}3$. O bloco tem velocidade $v = 10\ \mathrm{m/s}$ quando está a $s = 4\ \mathrm{m}$ do bloco $B$, de $10\ \mathrm{kg}$. Se a mola não deformada tem rigidez $k = 1000\ \mathrm{N/m}$, determine a compressão máxima da mola decorrente da colisão. Considere $e = 0{,}6$. Só existe atrito na superfície na região $s$ mostrada na figura.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 280 140" role="img" aria-label="Bloco B encostado numa mola presa à parede e bloco A chegando pela direita a 10 metros por segundo, com atrito só no trecho s" >
+    {/* parede */}
+    <rect x="18" y="24" width="9" height="86" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    {/* solo */}
+    <line x1="18" y1="110" x2="270" y2="110" stroke="var(--ink-2)" stroke-width="1.8"/>
+    {/* mola */}
+    <path d="M 27 84 l 7 -8 l 7 8 l 7 -8 l 7 8 l 7 -8 l 7 8" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="30" y="66" font-size="9" fill="var(--accent)">k = 1000 N/m</text>
+    {/* bloco B */}
+    <rect x="76" y="72" width="46" height="38" fill="var(--ok)" fill-opacity="0.18" stroke="var(--ok)" stroke-width="1.6"/>
+    <text x="99" y="96" font-size="11" fill="var(--ok)" text-anchor="middle">B</text>
+    <text x="99" y="64" font-size="9" fill="var(--ok)" text-anchor="middle">10 kg</text>
+    {/* trecho com atrito */}
+    <path d="M 122 112 l 6 4 l 6 -4 l 6 4 l 6 -4 l 6 4 l 6 -4 l 6 4 l 6 -4 l 6 4 l 6 -4" fill="none" stroke="var(--warn)" stroke-width="1.6"/>
+    <line x1="122" y1="126" x2="182" y2="126" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="152" y="137" font-size="9" fill="var(--ink-3)" text-anchor="middle">s = 4 m</text>
+    {/* bloco A */}
+    <rect x="182" y="66" width="52" height="44" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="208" y="92" font-size="11" fill="var(--warn)" text-anchor="middle">A</text>
+    <text x="208" y="58" font-size="9" fill="var(--warn)" text-anchor="middle">15 kg</text>
+    {/* velocidade de A */}
+    <line x1="264" y1="46" x2="240" y2="46" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="235,46 243,42 243,50" fill="var(--warn)"/>
+    <text x="238" y="38" font-size="9" fill="var(--warn)">10 m/s</text>
+  </svg>
+  <figcaption>
+
+Três trechos, três ferramentas: **atrito** nos $4\ \mathrm{m}$, **colisão** no contato, **mola** depois. Nenhuma delas serve para outro trecho.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$x_{\max} = 0{,}839\ \mathrm{m}$ (com $v_A = 8{,}74\ \mathrm{m/s}$ na chegada e $v_B' = 8{,}39\ \mathrm{m/s}$ após o choque).
+</Gabarito>
+
+<Passos>
+**Passo 1 — o trecho com atrito.** Trabalho e energia nos $4\ \mathrm{m}$:
+
+$$
+\tfrac{1}{2}m_A v_A^2 = \tfrac{1}{2}m_A(10)^2 - \mu_k\,m_A\,g\,(4)
+$$
+
+$$
+v_A^2 = 100 - 2(0{,}3)(9{,}81)(4) = 100 - 23{,}54 = 76{,}46
+\quad\Longrightarrow\quad
+v_A = 8{,}74\ \mathrm{m/s}
+$$
+
+**Passo 2 — a colisão.** Momento linear, com $B$ parado:
+
+$$
+15(8{,}74) = 15\,v_A' + 10\,v_B'
+\quad\Longrightarrow\quad
+131{,}2 = 15v_A' + 10v_B' \tag{1}
+$$
+
+Restituição:
+
+$$
+0{,}6 = \frac{v_B' - v_A'}{8{,}74}
+\quad\Longrightarrow\quad
+v_B' - v_A' = 5{,}25 \tag{2}
+$$
+
+**Passo 3 — resolva.** De (2), $v_B' = v_A' + 5{,}25$; em (1):
+
+$$
+131{,}2 = 25\,v_A' + 52{,}5
+\quad\Longrightarrow\quad
+v_A' = 3{,}15\ \mathrm{m/s}
+\qquad
+v_B' = 8{,}39\ \mathrm{m/s}
+$$
+
+Os dois seguem para a esquerda; $A$ vai atrás, mais devagar, e não alcança $B$ antes de a mola atingir o máximo.
+
+**Passo 4 — a mola.** $B$ está **fora** da região com atrito, então nada dissipa. Deflexão máxima é onde $B$ para:
+
+$$
+\tfrac{1}{2}(10)(8{,}39)^2 = \tfrac{1}{2}(1000)\,x_{\max}^2
+$$
+
+$$
+x_{\max} = 8{,}39\sqrt{\frac{10}{1000}} = 0{,}839\ \mathrm{m}
+$$
+
+**Por que ler "só existe atrito na região $s$" com atenção.** É a frase que autoriza o Passo 4 sem termo dissipativo. Se houvesse atrito sob $B$, a compressão viria de uma equação do 2º grau em $x$ (com o trabalho do atrito $-\mu_k m_B g\,x$ dentro), e não de uma raiz simples.
+
+**Confira quanto se perdeu no choque.**
+
+$$
+\Delta T = \tfrac{1}{2}(15)(76{,}46) - \left[\tfrac{1}{2}(15)(3{,}15)^2 + \tfrac{1}{2}(10)(8{,}39)^2\right] = 573{,}5 - 426{,}0 = 148\ \mathrm{J}
+$$
+
+ou seja $26\%$ da energia que sobrou depois do atrito. Com $e = 0{,}6$ isso é esperado — e é bom sinal quando a perda dá positiva e menor que a energia total: se der negativa, há erro de sinal em (1) ou (2).
+</Passos>

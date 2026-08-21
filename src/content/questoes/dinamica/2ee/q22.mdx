@@ -1,0 +1,104 @@
+---
+origem: "1ª avaliação"
+tema: "Prancha articulada com mola · Energia e lançamento"
+temaId: energia-elastica
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma haste de massa desprezível tem um apoio articulado em uma extremidade. A outra extremidade possui um recipiente apoiado em uma mola e amarrado ao solo por um fio. A haste é mantida na posição horizontal e a mola, comprimida. Uma bola é colocada nesse recipiente e, após o corte do fio, o sistema é liberado com distensão instantânea da mola. A haste gira, e quando ela está **perpendicular ao solo** a bola é lançada.
+
+Qual deve ser a constante elástica da mola, em $\mathrm{N/m}$, para que a bola acerte o cesto?
+
+**Dados:** comprimento da prancha $1\ \mathrm{m}$; distância do apoio ao cesto $5\ \mathrm{m}$; massa da bola $200\ \mathrm{g}$; deformação inicial da mola $10\ \mathrm{cm}$; $g = 10\ \mathrm{m/s^2}$. Despreze as dimensões da bola.
+
+<Figura>
+  <svg viewBox="0 0 280 170" role="img" aria-label="Haste articulada no meio, com o cesto à esquerda no solo e a mola com a bola na extremidade direita; a haste gira até a vertical e lança a bola" >
+    {/* solo */}
+    <line x1="14" y1="140" x2="272" y2="140" stroke="var(--ink-2)" stroke-width="1.8"/>
+    {/* apoio articulado */}
+    <circle cx="150" cy="140" r="4.5" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+    <text x="140" y="158" font-size="9" fill="var(--ink-3)">apoio</text>
+    {/* haste na horizontal (posição inicial) */}
+    <line x1="150" y1="138" x2="230" y2="138" stroke="var(--ink-3)" stroke-width="3.4"/>
+    {/* mola + recipiente na ponta */}
+    <path d="M 218 138 l 3 -5 l 4 5 l 4 -5 l 4 5" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <circle cx="230" cy="126" r="6" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.5"/>
+    <text x="238" y="124" font-size="9" fill="var(--warn)">bola</text>
+    {/* haste na vertical (posição de lançamento) */}
+    <line x1="150" y1="138" x2="150" y2="58" stroke="var(--ok)" stroke-width="2.4" stroke-dasharray="5 3"/>
+    <circle cx="150" cy="58" r="5" fill="var(--ok)"/>
+    <text x="156" y="54" font-size="9" fill="var(--ok)">lançamento (h = 1 m)</text>
+    {/* seta de rotação */}
+    <path d="M 206 118 A 60 60 0 0 0 166 66" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="164,62 163,71 171,68" fill="var(--ink-3)"/>
+    {/* trajetória e cesto */}
+    <path d="M 150 58 Q 106 44 40 138" fill="none" stroke="var(--line-2)" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <path d="M 30 132 l 4 10 h 14 l 4 -10 z" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="24" y="128" font-size="9" fill="var(--ink-2)">cesto</text>
+    {/* cota 5 m */}
+    <line x1="40" y1="156" x2="150" y2="156" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="95" y="166" font-size="9" fill="var(--ink-3)" text-anchor="middle">5 m</text>
+  </svg>
+  <figcaption>
+
+Três etapas: a mola entrega energia; a haste sobe a bola $1\ \mathrm{m}$ e a joga na **horizontal**; a bola cai como projétil. O lançamento acontece **exatamente sobre o apoio**, e é daí que se conta os $5\ \mathrm{m}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$k = 2900\ \mathrm{N/m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — de trás para frente: o lançamento.** Quando a haste chega à vertical, a bola está a $1\ \mathrm{m}$ de altura, **diretamente acima do apoio**, e sua velocidade é tangente à trajetória circular — ou seja, **horizontal**, apontando para o cesto.
+
+**Passo 2 — a queda, como projétil.** De $h = 1\ \mathrm{m}$, sem velocidade vertical inicial:
+
+$$
+t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2(1)}{10}} = 0{,}4472\ \mathrm{s}
+$$
+
+Na horizontal, o alcance tem de ser os $5\ \mathrm{m}$ que separam o apoio do cesto:
+
+$$
+v = \frac{5}{0{,}4472} = 11{,}18\ \mathrm{m/s}
+\quad\Longrightarrow\quad
+v^2 = 125\ \mathrm{m^2/s^2}
+$$
+
+**Passo 3 — agora a energia, de trás para frente também.** A mola entrega toda a sua energia à bola. Parte vira altura ($1\ \mathrm{m}$), parte vira velocidade:
+
+$$
+\tfrac{1}{2}k\,x^2 = \tfrac{1}{2}m\,v^2 + m\,g\,h
+$$
+
+$$
+\tfrac{1}{2}k\,(0{,}10)^2 = \tfrac{1}{2}(0{,}2)(125) + (0{,}2)(10)(1)
+$$
+
+$$
+0{,}005\,k = 12{,}5 + 2{,}0 = 14{,}5
+\quad\Longrightarrow\quad
+k = 2900\ \mathrm{N/m}
+$$
+
+**Por que a haste não aparece na conta.** Massa desprezível: ela não guarda energia cinética de rotação nem energia potencial (o centro de massa de uma haste sem massa não pesa nada). Ela é apenas o **mecanismo** que transporta a bola de altura $0$ até altura $1\ \mathrm{m}$ e gira a velocidade de vertical para horizontal. Se a haste tivesse massa, entraria um termo $\tfrac12 I_O\omega^2$ e a resposta subiria.
+
+**Cuidado com os $5\ \mathrm{m}$.** É a distância **do apoio** ao cesto, e o lançamento acontece na vertical do apoio. Se você medir a partir da ponta original da haste, some ou subtraia $1\ \mathrm{m}$ e a resposta muda de $2900$ para $2000$ ou $4000\ \mathrm{N/m}$ — todas erradas.
+
+**E o $1\ \mathrm{m}$ de altura.** Ele entra **duas vezes**: no tempo de queda (Passo 2) e na energia potencial (Passo 3). Esquecer o segundo uso dá $k = 2500\ \mathrm{N/m}$ — o erro mais comum nesta questão.
+</Passos>

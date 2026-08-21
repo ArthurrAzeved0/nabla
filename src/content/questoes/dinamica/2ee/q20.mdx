@@ -1,0 +1,55 @@
+---
+origem: "2024.2"
+tema: "Impulso com força motriz e atrito, ambos variáveis"
+temaId: impulso
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q20.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma força de intensidade $F = 2t^2$ é aplicada sobre um bloco de massa $M = 5\ \mathrm{kg}$ no instante em que sua velocidade é igual a $2\ \mathrm{m/s}$. Sabendo que existe uma força contrária ao movimento de intensidade $F_{at} = 3t$, calcule a velocidade do bloco no instante $t = 2\ \mathrm{s}$. As forças estão em newtons e $t$ em segundos.
+
+<Gabarito>
+$v = 1{,}87\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o teorema, com as duas forças.** A soma dos impulsos é o que conta, cada um com seu sinal:
+
+$$
+M v_1 + \int_0^{2}\! F\,dt - \int_0^{2}\! F_{at}\,dt = M v_2
+$$
+
+**Passo 2 — as duas integrais, ambas elementares.**
+
+$$
+\int_0^{2} 2t^2\,dt = \left.\frac{2t^3}{3}\right|_0^{2} = \frac{16}{3} = 5{,}33\ \mathrm{N\cdot s}
+$$
+
+$$
+\int_0^{2} 3t\,dt = \left.\frac{3t^2}{2}\right|_0^{2} = 6{,}00\ \mathrm{N\cdot s}
+$$
+
+**Passo 3 — substitua.**
+
+$$
+5(2) + 5{,}33 - 6{,}00 = 5\,v_2
+\quad\Longrightarrow\quad
+v_2 = \frac{9{,}33}{5} = 1{,}87\ \mathrm{m/s}
+$$
+
+**A leitura da resposta.** O bloco **desacelerou**: saiu de $2{,}0$ e chegou a $1{,}87\ \mathrm{m/s}$. Faz sentido, porque nos primeiros dois segundos o atrito foi maior que a força motriz — as duas se cruzam onde $2t^2 = 3t$, isto é, em $t = 1{,}5\ \mathrm{s}$. Antes disso o bloco perde velocidade; depois, ganha. Em $t = 2\ \mathrm{s}$ ele acabou de virar a curva e ainda está abaixo de onde começou.
+
+**Cuidado com o "atrito" deste enunciado.** Ele é dado como $3t$, uma função explícita do tempo — **não** é $\mu N$. Isso é ficção conveniente do enunciado (atrito de verdade não cresce com o relógio), mas é o que está escrito, e o teorema do impulso aceita qualquer $F(t)$. Não tente achar $\mu$ nem $N$: não há dados para isso, e não é o que se pede.
+</Passos>

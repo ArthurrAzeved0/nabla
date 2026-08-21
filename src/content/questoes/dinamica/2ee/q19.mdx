@@ -1,0 +1,79 @@
+---
+origem: "2024.2"
+tema: "Disco que rola e colide elasticamente · Altura de retorno"
+temaId: colisao
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O disco $A$, ao ser abandonado de uma altura $H = 20\ \mathrm{m}$, desce a rampa **rotacionando** (sem deslizar) até sofrer uma colisão **perfeitamente elástica** com o disco $B$, que possui o **dobro** da massa de $A$ e se encontra inicialmente em repouso. Após essa colisão, $B$ entra em movimento e $A$ retorna, subindo a rampa. Determine a altura que $A$ atinge.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$h' = 2{,}22\ \mathrm{m}$ (com $v_A = 16{,}17\ \mathrm{m/s}$ e $v_A' = 5{,}39\ \mathrm{m/s}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 — a descida, com a parcela de rotação.** Disco rolando: $I_G = \tfrac12 m r^2$ e $v = \omega r$, então
+
+$$
+m g H = \tfrac{1}{2}m v_A^2 + \tfrac{1}{2}\!\left(\tfrac{1}{2}m r^2\right)\!\frac{v_A^2}{r^2} = \tfrac{3}{4}m v_A^2
+$$
+
+$$
+v_A = \sqrt{\frac{4gH}{3}} = \sqrt{\frac{4(9{,}81)(20)}{3}} = 16{,}17\ \mathrm{m/s}
+$$
+
+**Passo 2 — a colisão, com $m_B = 2m_A$ e $e = 1$.** Momento linear, adotando positivo o sentido da descida e já **antecipando** que $A$ volta (sinal negativo em $v_A'$):
+
+$$
+m_A v_A = -m_A v_A' + 2m_A v_B'
+\quad\Longrightarrow\quad
+16{,}17 = -v_A' + 2v_B' \tag{I}
+$$
+
+Restituição com $e = 1$, também já com $A$ voltando:
+
+$$
+1 = \frac{v_B' - (-v_A')}{v_A - 0}
+\quad\Longrightarrow\quad
+v_A' + v_B' = 16{,}17 \tag{II}
+$$
+
+**Passo 3 — resolva.** De (II), $v_B' = 16{,}17 - v_A'$; em (I):
+
+$$
+16{,}17 = -v_A' + 2(16{,}17 - v_A') = 32{,}34 - 3v_A'
+$$
+
+$$
+v_A' = 5{,}39\ \mathrm{m/s}\ (\text{voltando})
+\qquad
+v_B' = 10{,}78\ \mathrm{m/s}
+$$
+
+Confere com a fórmula fechada da colisão elástica: $v_A' = v_A\dfrac{m_A - m_B}{m_A + m_B} = -\dfrac{v_A}{3}$, e é exatamente $-5{,}39$. Bater um resultado contra a fórmula fechada é o melhor uso de trinta segundos numa prova.
+
+**Passo 4 — a subida, com a mesma conta do Passo 1 de volta:**
+
+$$
+h' = \frac{3\,v_A'^2}{4g} = \frac{3(5{,}39)^2}{4(9{,}81)} = 2{,}22\ \mathrm{m}
+$$
+
+**A leitura da resposta.** $A$ volta com um terço da velocidade, logo a um **nono** da altura: $20/9 = 2{,}22\ \mathrm{m}$. Bate exatamente, e é o jeito mais rápido de conferir o resultado inteiro sem refazer nada.
+
+**Uma ressalva honesta.** A resolução (e o gabarito da prova) supõe que $A$ continua **rolando** depois da colisão, com $v_A' = \omega_A' r$. Fisicamente, um impacto liso não inverte a rotação: $A$ sairia transladando para trás enquanto ainda gira para frente, e só depois de escorregar um trecho voltaria a rolar — dissipando energia nesse escorregamento. O modelo da prova ignora isso, e é o que se espera na resposta; mas vale saber que a altura real seria um pouco menor.
+</Passos>

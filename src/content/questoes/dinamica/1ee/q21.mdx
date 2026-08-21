@@ -1,0 +1,109 @@
+---
+origem: "2021.2"
+tema: "Anel em barra girando · Mola inclinada e força centrípeta"
+temaId: forca-centripeta
+pontos: 3,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Se a posição do anel $C$, de $3\ \mathrm{kg}$, na barra lisa $AB$ é mantida em $r = 720\ \mathrm{mm}$, determine a velocidade angular constante $\dot\theta$ na qual o mecanismo está girando em torno do eixo vertical. A mola, de $k = 200\ \mathrm{N/m}$, tem comprimento não deformado de $400\ \mathrm{mm}$ e está presa a um ponto $D$ do eixo, $300\ \mathrm{mm}$ abaixo da barra. Despreze a massa da barra e a dimensão do anel.
+
+<Figura>
+  <svg viewBox="0 0 250 190" role="img" aria-label="Barra horizontal girando em torno de um eixo vertical, com um anel C a 720 mm do eixo ligado por uma mola a um ponto D do eixo, 300 mm abaixo">
+    {/* eixo vertical */}
+    <rect x="52" y="24" width="10" height="150" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="34" y1="174" x2="80" y2="174" stroke="var(--ink-3)" stroke-width="2.4"/>
+    {/* seta de rotação */}
+    <path d="M 44 30 A 14 6 0 1 0 70 30" fill="none" stroke="var(--ok)" stroke-width="1.4"/>
+    <polygon points="70,30 64,26 65,34" fill="var(--ok)"/>
+    <text x="30" y="24" font-size="11" fill="var(--ok)">θ̇</text>
+    {/* barra horizontal AB */}
+    <line x1="57" y1="62" x2="228" y2="62" stroke="var(--ink-2)" stroke-width="5" stroke-linecap="round"/>
+    <text x="66" y="78" font-size="11" fill="var(--ink-2)">A</text>
+    <text x="230" y="58" font-size="11" fill="var(--ink-2)">B</text>
+    {/* anel C */}
+    <rect x="168" y="53" width="16" height="18" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="176" y="48" font-size="11" fill="var(--warn)" text-anchor="middle">C</text>
+    {/* mola de C até D */}
+    <line x1="172" y1="71" x2="60" y2="140" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="5 3"/>
+    <circle cx="58" cy="141" r="3.5" fill="var(--ink-2)"/>
+    <text x="42" y="152" font-size="11" fill="var(--ink-2)">D</text>
+    <text x="104" y="122" font-size="9" fill="var(--accent)">k = 200 N/m</text>
+    {/* cotas */}
+    <line x1="57" y1="40" x2="176" y2="40" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="116" y="34" font-size="9" fill="var(--ink-3)" text-anchor="middle">r = 720 mm</text>
+    <line x1="34" y1="62" x2="34" y2="141" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="4" y="106" font-size="9" fill="var(--ink-3)">300 mm</text>
+  </svg>
+  <figcaption>
+
+A mola é **inclinada**: só a sua componente horizontal produz a força centrípeta. A componente vertical é equilibrada pela barra, que é lisa mas segura o anel na vertical.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\dot\theta = 5{,}70\ \mathrm{rad/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o comprimento e a deformação da mola.** O triângulo $DCA$ é retângulo em $A$, com cateto horizontal $r = 0{,}72\ \mathrm{m}$ e cateto vertical $0{,}30\ \mathrm{m}$:
+
+$$
+L = \sqrt{0{,}72^2 + 0{,}30^2} = \sqrt{0{,}6084} = 0{,}78\ \mathrm{m}
+$$
+
+$$
+s = L - L_0 = 0{,}78 - 0{,}40 = 0{,}38\ \mathrm{m}
+$$
+
+**Passo 2 — a força da mola.**
+
+$$
+F_s = k\,s = 200\,(0{,}38) = 76{,}0\ \mathrm{N}
+$$
+
+Ela é de **tração** (a mola está esticada), e portanto puxa o anel **para dentro**, na direção de $D$.
+
+**Passo 3 — a componente radial.** Só a parte horizontal da força da mola aponta para o eixo, e ela é $F_s$ vezes o cosseno do ângulo com a horizontal — ou seja, vezes $r/L$:
+
+$$
+F_r = F_s\,\frac{r}{L} = 76{,}0\,\frac{0{,}72}{0{,}78} = 70{,}2\ \mathrm{N}
+$$
+
+**Passo 4 — a equação radial em coordenadas polares.** Aqui está o ponto da questão: $r$ é **mantido constante**, então $\dot r = \ddot r = 0$, e a aceleração radial se reduz ao termo centrípeto:
+
+$$
+a_r = \ddot r - r\dot\theta^2 = -\,r\,\dot\theta^2
+$$
+
+Somando as forças na direção radial (para fora positiva), só a mola aparece, e ela aponta para dentro:
+
+$$
+-F_r = m\left(-r\,\dot\theta^2\right)
+\quad\Longrightarrow\quad
+70{,}2 = 3\,(0{,}72)\,\dot\theta^2
+$$
+
+$$
+\dot\theta^2 = \frac{70{,}2}{2{,}16} = 32{,}5
+\quad\Longrightarrow\quad
+\dot\theta = 5{,}70\ \mathrm{rad/s}
+$$
+
+**O que a barra lisa faz e o que não faz.** "Lisa" mata o atrito ao longo da barra — que é a direção radial. Mas a barra ainda exerce força **perpendicular** a si mesma: é ela que equilibra a componente vertical da mola ($76{,}0 \times 0{,}30/0{,}78 = 29{,}2\ \mathrm{N}$) e o peso ($29{,}4\ \mathrm{N}$). Essas duas quase se cancelam aqui, por coincidência dos números — mas nenhuma das duas entra na equação radial, e é por isso que nem $g$ é necessário.
+
+**Cuidado com a projeção.** É tentador usar $F_s$ inteiro como força centrípeta. Isso daria $\dot\theta = 5{,}93\ \mathrm{rad/s}$ — perto o bastante para parecer certo, e errado. A componente é o passo que a questão está cobrando.
+</Passos>

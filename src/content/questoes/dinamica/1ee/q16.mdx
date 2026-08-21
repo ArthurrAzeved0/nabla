@@ -1,0 +1,123 @@
+---
+origem: "2025.2"
+tema: "Roldanas com três cabos sobre a carga · Velocidade em 5 s"
+temaId: movimento-dependente
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Os dois blocos mostrados na figura estão originalmente em repouso. Desprezando as massas das roldanas e o efeito do atrito nessas roldanas e entre o bloco $A$ e a superfície horizontal, determine a velocidade do bloco $B$ no instante $5$ segundos.
+
+$m_A = 30\ \mathrm{kg}$, $m_B = 25\ \mathrm{kg}$, $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 280 200" role="img" aria-label="Bloco A na mesa ligado por cabo a uma roldana móvel no bloco B, com três trechos verticais de cabo sustentando B">
+    {/* parede direita */}
+    <rect x="248" y="12" width="10" height="180" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    {/* mesa */}
+    <line x1="14" y1="72" x2="150" y2="72" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="150" y1="72" x2="150" y2="192" stroke="var(--ink-2)" stroke-width="1.4"/>
+    {/* bloco A */}
+    <rect x="44" y="50" width="30" height="22" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="59" y="66" font-size="11" fill="var(--accent)" text-anchor="middle">A</text>
+    <text x="59" y="44" font-size="9" fill="var(--accent)" text-anchor="middle">30 kg</text>
+    {/* polia D no canto */}
+    <circle cx="162" cy="62" r="7" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+    <text x="156" y="52" font-size="10" fill="var(--ink-2)">D</text>
+    {/* cabo A -> D */}
+    <line x1="74" y1="61" x2="155" y2="61" stroke="var(--accent)" stroke-width="1.6"/>
+    {/* polia fixa no topo da parede */}
+    <circle cx="228" cy="30" r="7" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+    {/* trecho 1: D -> roldana de B */}
+    <line x1="162" y1="69" x2="192" y2="132" stroke="var(--accent)" stroke-width="1.6"/>
+    {/* roldana móvel de B */}
+    <circle cx="198" cy="138" r="8" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    {/* trecho 2: roldana de B -> polia do topo */}
+    <line x1="205" y1="133" x2="222" y2="37" stroke="var(--accent)" stroke-width="1.6"/>
+    {/* trecho 3: polia do topo -> corpo de B */}
+    <line x1="234" y1="35" x2="234" y2="152" stroke="var(--accent)" stroke-width="1.6"/>
+    {/* bloco B */}
+    <rect x="176" y="152" width="62" height="34" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="207" y="168" font-size="11" fill="var(--warn)" text-anchor="middle">B</text>
+    <text x="207" y="180" font-size="9" fill="var(--warn)" text-anchor="middle">25 kg</text>
+    <line x1="198" y1="146" x2="198" y2="152" stroke="var(--warn)" stroke-width="1.6"/>
+    {/* rótulos dos trechos */}
+    <text x="170" y="106" font-size="9" fill="var(--ok)">1</text>
+    <text x="212" y="92" font-size="9" fill="var(--ok)">2</text>
+    <text x="240" y="100" font-size="9" fill="var(--ok)">3</text>
+  </svg>
+  <figcaption>
+
+**Conte os trechos verticais.** São **três** entre o alto e $B$ — dois na roldana móvel e um preso direto no corpo de $B$. É esse número, e só ele, que fixa a razão do vínculo e a força que sustenta $B$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$a_B = 0{,}831\ \mathrm{m/s^2}$ e $v_B = 4{,}16\ \mathrm{m/s}$ (com $a_A = 2{,}49\ \mathrm{m/s^2}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 — o vínculo, contando os trechos.** Medindo $s_B$ para baixo a partir do nível das polias fixas, os três trechos verticais têm comprimento $s_B$ cada, e o trecho horizontal vale $s_A$:
+
+$$
+s_A + 3\,s_B = L = \text{const.}
+\quad\Longrightarrow\quad
+v_A = -3\,v_B
+\quad\Longrightarrow\quad
+|a_A| = 3\,|a_B| \tag{1}
+$$
+
+**Passo 2 — a 2ª lei para $A$.** Superfície e roldanas sem atrito, então a única força horizontal é a tração:
+
+$$
+T = m_A\,a_A = 30\,(3\,a_B) = 90\,a_B \tag{2}
+$$
+
+**Passo 3 — a 2ª lei para $B$.** Aqui está o segundo uso do "três": são **três** trechos de cabo tirando $B$ para cima, cada um com a mesma tração $T$ (roldanas ideais):
+
+$$
+m_B\,g - 3T = m_B\,a_B \tag{3}
+$$
+
+**Passo 4 — junte (2) em (3).**
+
+$$
+25(9{,}81) - 3(90\,a_B) = 25\,a_B
+$$
+
+$$
+245{,}25 = 295\,a_B
+\quad\Longrightarrow\quad
+a_B = 0{,}831\ \mathrm{m/s^2}
+$$
+
+**Passo 5 — cinemática.** Partiu do repouso e a aceleração é constante:
+
+$$
+v_B = a_B\,t = 0{,}831(5) = 4{,}16\ \mathrm{m/s}
+$$
+
+E, por (1), $A$ desliza a $v_A = 12{,}5\ \mathrm{m/s}$ — três vezes mais rápido.
+
+**Onde essa questão é perdida.** O "3" aparece **duas vezes**, e nos dois lugares tem de ser o mesmo número:
+
+- na cinemática, $a_A = 3a_B$ (o bloco leve anda três vezes mais);
+- na dinâmica, $3T$ sustenta $B$.
+
+Se você usar 3 num lugar e 2 no outro, a conta fecha e a resposta sai errada — sem nenhum aviso. Conte os trechos **no desenho**, marque cada um, e só então escreva as equações.
+
+**Confira pela energia.** É a melhor apólice contra erro de vínculo: a potência que $B$ entrega ao cabo tem de ser a que $A$ recebe. $3T\,v_B = T\,v_A$, e de fato $3v_B = v_A$. ✔
+</Passos>

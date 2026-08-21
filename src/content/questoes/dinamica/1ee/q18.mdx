@@ -1,0 +1,82 @@
+---
+origem: "2024.1"
+tema: "Projétil · Ângulo que maximiza a área da trajetória"
+temaId: movimento-projetil
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um projétil é lançado obliquamente no vácuo com velocidade inicial $V_0$ formando um ângulo $\alpha$ com o eixo horizontal, no plano $XY$. Considerando a aceleração da gravidade local igual a $g$ e desprezando todas as formas de dissipação de energia, encontre o ângulo de lançamento para que a **área da trajetória** tenha valor máximo.
+
+<Gabarito>
+$\alpha = 60^\circ$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas grandezas da parábola.** Do lançamento de projétil:
+
+$$
+R = \frac{V_0^2\sin 2\alpha}{g}
+\qquad
+h_{\max} = \frac{V_0^2\sin^2\alpha}{2g}
+$$
+
+**Passo 2 — a área sob uma parábola.** O segmento parabólico de base $R$ e altura $h$ tem área
+
+$$
+A = \tfrac{2}{3}\,R\,h
+$$
+
+Esse $2/3$ é de Arquimedes, e vale a pena guardar — é a área entre a parábola e a sua corda, e aparece em toda questão desse tipo. (Se você não lembrar, é uma integral de duas linhas: $\int_0^R\left(x\tan\alpha - \frac{g x^2}{2V_0^2\cos^2\alpha}\right)dx$ dá o mesmo.)
+
+**Passo 3 — monte $A(\alpha)$.**
+
+$$
+A = \frac{2}{3}\cdot\frac{V_0^2\sin 2\alpha}{g}\cdot\frac{V_0^2\sin^2\alpha}{2g}
+= \frac{V_0^4}{3g^2}\,\sin 2\alpha\,\sin^2\alpha
+$$
+
+Abrindo $\sin 2\alpha = 2\sin\alpha\cos\alpha$:
+
+$$
+A = \frac{2V_0^4}{3g^2}\,\sin^3\alpha\,\cos\alpha
+$$
+
+**Passo 4 — maximize.** Só o fator $f(\alpha) = \sin^3\alpha\cos\alpha$ depende de $\alpha$:
+
+$$
+f'(\alpha) = 3\sin^2\alpha\cos^2\alpha - \sin^4\alpha = \sin^2\alpha\left(3\cos^2\alpha - \sin^2\alpha\right)
+$$
+
+Anulando (e descartando $\alpha = 0$, que dá área nula):
+
+$$
+\tan^2\alpha = 3
+\quad\Longrightarrow\quad
+\tan\alpha = \sqrt{3}
+\quad\Longrightarrow\quad
+\boxed{\alpha = 60^\circ}
+$$
+
+**Passo 5 — a área máxima**, se a questão pedir o valor:
+
+$$
+A_{\max} = \frac{2V_0^4}{3g^2}\left(\frac{\sqrt3}{2}\right)^{\!3}\!\left(\frac{1}{2}\right) = \frac{\sqrt3\,V_0^4}{8g^2}
+$$
+
+**A leitura da resposta.** $45^\circ$ maximiza o **alcance**; $90^\circ$ maximiza a **altura**; $60^\circ$ maximiza a **área**. Faz sentido que o ângulo da área fique entre os dois, e mais perto da altura — porque na fórmula $A \propto \sin^3\alpha\cos\alpha$ o seno entra ao cubo e o cosseno na primeira potência: a altura "pesa" três vezes mais.
+
+**Cuidado.** Nem $V_0$ nem $g$ aparecem na resposta, e isso é esperado: eles multiplicam a área inteira sem mexer no lugar do máximo. Se o seu $\alpha$ depender de $V_0$, algo foi derivado errado.
+</Passos>

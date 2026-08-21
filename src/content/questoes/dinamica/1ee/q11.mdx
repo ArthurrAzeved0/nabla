@@ -1,0 +1,90 @@
+---
+origem: "2023.1"
+tema: "Aceleração linear no tempo · Distância total percorrida"
+temaId: aceleracao-funcao-tempo
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A aceleração de uma partícula é diretamente proporcional ao tempo $t$. Sabendo que $v(t = 1{,}00\ \mathrm{s}) = 19{,}0\ \mathrm{m/s}$, $v(t = 3{,}00\ \mathrm{s}) = 17{,}0\ \mathrm{m/s}$ e $x(t = 3{,}00\ \mathrm{s}) = 22{,}0\ \mathrm{m}$, determine a **distância total percorrida** $S_{if}$ entre $t_i = 0$ e $t_f = 12{,}0\ \mathrm{s}$.
+
+<Gabarito>
+$S_{if} = 138\ \mathrm{m}$ (com $k = -\tfrac12\ \mathrm{m/s^3}$ e inversão de sentido em $t^\ast = \sqrt{77} = 8{,}77\ \mathrm{s}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 — traduza "diretamente proporcional".**
+
+$$
+a = k\,t
+$$
+
+com $k$ desconhecido — e são os dois valores de velocidade que o determinam.
+
+**Passo 2 — integre $a$ entre os dois instantes conhecidos:**
+
+$$
+\int_{19}^{17} dv = k\int_{1}^{3} t\,dt
+\quad\Longrightarrow\quad
+17 - 19 = \frac{k}{2}\,(3^2 - 1^2) = 4k
+$$
+
+$$
+k = -\tfrac{1}{2}\ \mathrm{m/s^3}
+$$
+
+**Passo 3 — a lei da velocidade.** Integrando de $t = 1$ até $t$ genérico:
+
+$$
+v = 19 - \tfrac{1}{4}(t^2 - 1)
+\quad\Longrightarrow\quad
+v(t) = \frac{77 - t^2}{4}
+$$
+
+**Passo 4 — a partícula inverte o sentido.** $v = 0$ em
+
+$$
+t^\ast = \sqrt{77} = 8{,}775\ \mathrm{s}
+$$
+
+e $8{,}775 \lt 12$: **o instante de inversão está dentro do intervalo pedido.** É aqui que a questão é ganha ou perdida — "distância total percorrida" não é $|x(12) - x(0)|$.
+
+**Passo 5 — a lei da posição.** Integrando $v$ a partir de $x(3) = 22$:
+
+$$
+x(t) = 22 + \frac{1}{4}\left[77(t - 3) - \frac{t^3 - 27}{3}\right]
+= -\frac{t^3}{12} + \frac{77\,t}{4} - \frac{67}{2}
+$$
+
+Confira: $x(3) = -2{,}25 + 57{,}75 - 33{,}5 = 22$. ✔
+
+**Passo 6 — os três valores que importam:**
+
+$$
+x(0) = -33{,}5
+\qquad
+x(t^\ast) = \frac{77\sqrt{77}}{6} - \frac{67}{2} = 79{,}1
+\qquad
+x(12) = -144 + 231 - 33{,}5 = 53{,}5
+$$
+
+**Passo 7 — some os dois trechos, cada um em módulo:**
+
+$$
+S_{if} = \underbrace{|x(t^\ast) - x(0)|}_{112{,}6} + \underbrace{|x(12) - x(t^\ast)|}_{25{,}6} = 138\ \mathrm{m}
+$$
+
+**O erro que a questão está caçando.** O **deslocamento** é $x(12) - x(0) = 87{,}0\ \mathrm{m}$; a **distância percorrida** é $138\ \mathrm{m}$. A diferença de $51\ \mathrm{m}$ é o ir-e-voltar depois de $t^\ast$. Sempre que a aceleração troca de sinal — ou aqui, sempre que $v$ troca de sinal — procure a raiz de $v(t) = 0$ **antes** de calcular qualquer distância.
+</Passos>
