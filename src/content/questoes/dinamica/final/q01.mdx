@@ -1,0 +1,110 @@
+---
+origem: "Final 2024"
+tema: "Bobina e bloco · Equações do movimento com raio de giração"
+temaId: equacoes-movimento-plano
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A bobina tem massa de $20\ \mathrm{kg}$, raio externo de $200\ \mathrm{mm}$ e raio de giração $k_O = 160\ \mathrm{mm}$ em relação ao eixo fixo $O$. Um cabo enrolado no seu raio externo sustenta um bloco $A$ de $15\ \mathrm{kg}$. Se o bloco é liberado do repouso, determine a sua velocidade quando ele desce $600\ \mathrm{mm}$.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 220 210" role="img" aria-label="Bobina girando em torno do eixo fixo O com um cabo que sustenta o bloco A">
+    {/* suporte */}
+    <rect x="96" y="8" width="28" height="12" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    {/* bobina */}
+    <circle cx="110" cy="60" r="40" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.8"/>
+    <circle cx="110" cy="60" r="16" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.2"/>
+    <circle cx="110" cy="60" r="3.5" fill="var(--accent)"/>
+    <text x="96" y="52" font-size="11" fill="var(--accent)">O</text>
+    {/* cota do raio */}
+    <line x1="110" y1="60" x2="150" y2="60" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="124" y="54" font-size="9" fill="var(--accent)">200 mm</text>
+    {/* cabo */}
+    <line x1="150" y1="60" x2="150" y2="140" stroke="var(--ink-2)" stroke-width="1.6"/>
+    {/* bloco A */}
+    <rect x="132" y="140" width="36" height="30" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="150" y="160" font-size="12" fill="var(--warn)" text-anchor="middle">A</text>
+    {/* descida */}
+    <line x1="192" y1="140" x2="192" y2="186" stroke="var(--ok)" stroke-width="1.4"/>
+    <polygon points="192,192 188,184 196,184" fill="var(--ok)"/>
+    <text x="196" y="170" font-size="9" fill="var(--ok)">600 mm</text>
+  </svg>
+  <figcaption>
+
+O raio de giração é o único jeito de a questão dar $I_O$ sem dizer de que material é a bobina: $I_O = m\,k_O^2$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$v_A = 2{,}52\ \mathrm{m/s}$ (com $a = 5{,}29\ \mathrm{m/s^2}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 — o momento de inércia.** É o que o raio de giração significa, por definição:
+
+$$
+I_O = m\,k_O^2 = 20\,(0{,}160)^2 = 0{,}512\ \mathrm{kg\cdot m^2}
+$$
+
+**Passo 2 — o bloco, pela 2ª lei.** Ele só translada:
+
+$$
+m_A\,g - T = m_A\,a \tag{I}
+$$
+
+**Passo 3 — a bobina, pela equação de momentos.** Ela gira em torno do eixo **fixo** $O$, e a única força com braço em relação a $O$ é a tração:
+
+$$
+T\,r = I_O\,\alpha = m\,k_O^2\,\alpha
+$$
+
+**Passo 4 — o vínculo do cabo.** O cabo é inextensível e sai do raio externo, então $a = \alpha r$, ou $\alpha = a/r$:
+
+$$
+T = \frac{m\,k_O^2}{r^2}\,a \tag{II}
+$$
+
+**Passo 5 — junte (II) em (I)** e isole a aceleração:
+
+$$
+m_A\,g = \left(m_A + \frac{m\,k_O^2}{r^2}\right)a
+$$
+
+$$
+a = \frac{15(9{,}81)}{15 + \dfrac{20(0{,}160)^2}{(0{,}200)^2}} = \frac{147{,}15}{15 + 12{,}8} = 5{,}29\ \mathrm{m/s^2}
+$$
+
+**Passo 6 — cinemática.** A aceleração é constante, então vale Torricelli:
+
+$$
+v_A = \sqrt{2\,a\,\Delta s} = \sqrt{2(5{,}29)(0{,}600)} = 2{,}52\ \mathrm{m/s}
+$$
+
+**O atalho pela energia.** Dá o mesmo, em menos linhas — mas só porque a questão não pede a tração:
+
+$$
+m_A g(0{,}6) = \tfrac{1}{2}m_A v_A^2 + \tfrac{1}{2}I_O\left(\frac{v_A}{r}\right)^{\!2}
+\quad\Longrightarrow\quad
+88{,}29 = 0{,}556\,v_A^2
+\quad\Longrightarrow\quad
+v_A = 2{,}52\ \mathrm{m/s}
+$$
+
+**Cuidado.** A parcela $m k_O^2/r^2 = 12{,}8\ \mathrm{kg}$ funciona como uma **massa extra** de quase o dobro do bloco: sem ela, a aceleração seria $g$. É a inércia de rotação da bobina disfarçada de massa — e é o que faz o bloco cair muito mais devagar que em queda livre.
+</Passos>

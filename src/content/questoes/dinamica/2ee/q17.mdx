@@ -1,0 +1,92 @@
+---
+origem: "2ª avaliação"
+tema: "Disco rolando no loop · Normal fora do ponto mais alto"
+temaId: energia-corpo-rigido
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um disco de massa $M = 2\ \mathrm{kg}$ desce a rampa **rotacionando**, a partir do repouso, de uma altura de $40\ \mathrm{m}$. Ao chegar ao plano horizontal, entra numa pista circular de raio $10\ \mathrm{m}$ apoiada no solo. Calcule a intensidade da força normal sobre o disco no ponto $B$, situado a $30^\circ$ acima da horizontal que passa pelo centro da pista.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 280 180" role="img" aria-label="Rampa de 40 metros descendo até um plano horizontal com uma pista circular de raio 10 metros, com o ponto B a 30 graus acima da horizontal">
+    {/* solo */}
+    <line x1="20" y1="140" x2="270" y2="140" stroke="var(--ink-2)" stroke-width="1.6"/>
+    {/* rampa */}
+    <line x1="45" y1="30" x2="120" y2="140" stroke="var(--accent)" stroke-width="2"/>
+    <circle cx="45" cy="30" r="7" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="53" y="26" font-size="11" fill="var(--accent)">A</text>
+    {/* cota 40 m */}
+    <line x1="30" y1="30" x2="30" y2="140" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 3"/>
+    <text x="6" y="90" font-size="10" fill="var(--ink-3)">40 m</text>
+    {/* pista circular tangente ao solo */}
+    <circle cx="200" cy="94" r="46" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    <circle cx="200" cy="94" r="3" fill="var(--warn)"/>
+    {/* raio horizontal e raio até B (30 graus acima) */}
+    <line x1="200" y1="94" x2="246" y2="94" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 2"/>
+    <line x1="200" y1="94" x2="240" y2="71" stroke="var(--ok)" stroke-width="1.4"/>
+    <path d="M 226 94 A 26 26 0 0 0 222 81" fill="none" stroke="var(--ok)" stroke-width="1.1"/>
+    <text x="222" y="106" font-size="10" fill="var(--ok)">30°</text>
+    <circle cx="240" cy="71" r="5" fill="var(--ok)"/>
+    <text x="246" y="66" font-size="11" fill="var(--ok)">B</text>
+    <text x="206" y="88" font-size="9" fill="var(--warn)">10 m</text>
+  </svg>
+  <figcaption>
+
+A pista é tangente ao solo, então o centro está a $10\ \mathrm{m}$ de altura, e $B$ está a $10 + 10\sin 30^\circ = 15\ \mathrm{m}$. Só a **queda líquida** de $25\ \mathrm{m}$ entra na energia.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$N = 55{,}6\ \mathrm{N}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a altura de $B$.** A pista de raio $10\ \mathrm{m}$ é tangente ao solo, então o centro está a $10\ \mathrm{m}$. O ponto $B$, a $30^\circ$ acima da horizontal do centro:
+
+$$
+h_B = 10 + 10\sin 30^\circ = 15\ \mathrm{m}
+$$
+
+**Passo 2 — energia, com a parcela de rotação.** O disco rola: $I_G = \tfrac12 MR^2$ e $v = \omega R$, então $T = \tfrac{3}{4}Mv^2$. Da altura inicial até $B$, caiu $40 - 15 = 25\ \mathrm{m}$:
+
+$$
+Mg(25) = \tfrac{3}{4}Mv^2
+\quad\Longrightarrow\quad
+v^2 = \frac{4(9{,}81)(25)}{3} = 327\ \mathrm{m^2/s^2}
+$$
+
+**Passo 3 — Newton na direção radial.** O disco corre pela face **interna** da pista, então a normal aponta **para o centro**. Em $B$, o raio faz $30^\circ$ com a horizontal, e a componente do peso na direção do centro vale $Mg\sin 30^\circ$:
+
+$$
+N + Mg\sin 30^\circ = M\,\frac{v^2}{R}
+$$
+
+$$
+N = 2{,}0\left(\frac{327}{10} - 9{,}81\times 0{,}5\right) = 2{,}0\,(32{,}7 - 4{,}91) = 55{,}6\ \mathrm{N}
+$$
+
+**A leitura da resposta.** $N$ é quase três vezes o peso do disco ($19{,}6\ \mathrm{N}$) — e ainda assim está longe do limite: mesmo no ponto mais alto da pista sobraria normal de sobra, porque com $40\ \mathrm{m}$ de queda a velocidade é enorme para um raio de só $10\ \mathrm{m}$.
+
+**Duas armadilhas:**
+
+1. **A parcela de rotação.** Ignorá-la dá $v^2 = 490$ e $N = 88{,}2\ \mathrm{N}$ — quase $60\%$ a mais. "Desce rotacionando" é o aviso do enunciado.
+2. **O sinal da componente do peso.** Em $B$ o peso ajuda a curvar (aponta parcialmente para o centro), então ele **alivia** a normal. No ponto mais baixo da pista o peso aponta para fora do centro e a normal fica maior que $Mv^2/R$.
+
+**Sobre o enunciado.** Ele chama o corpo de "disco" na primeira linha e de "esfera" na pergunta. Adotei **disco** ($I_G = \tfrac12 MR^2$), que é o que está declarado com a massa. Com esfera ($\tfrac25 MR^2$) daria $v^2 = 2g(25)/1{,}4 = 350{,}4$ e $N = 60{,}3\ \mathrm{N}$.
+</Passos>

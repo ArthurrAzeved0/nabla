@@ -1,0 +1,57 @@
+---
+origem: "2ª avaliação"
+tema: "Momento angular de um sólido · Semiesfera"
+temaId: momento-de-inercia
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma semiesfera de raio $r = 2\ \mathrm{cm}$ e massa $m = 10\ \mathrm{g}$ gira em relação ao eixo $z$, o seu eixo de simetria, com velocidade angular $\omega = 5\ \mathrm{rad/s}$. Determine o momento angular em relação ao eixo citado.
+
+<Gabarito>
+$H_z = 8{,}0\times10^{-6}\ \mathrm{kg\cdot m^2/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — converta as unidades antes de tudo.** É onde essa questão pega:
+
+$$
+r = 2\ \mathrm{cm} = 0{,}02\ \mathrm{m}
+\qquad
+m = 10\ \mathrm{g} = 0{,}010\ \mathrm{kg}
+$$
+
+**Passo 2 — o momento de inércia da semiesfera em torno do eixo de simetria.** É o mesmo da esfera cheia:
+
+$$
+I_z = \tfrac{2}{5}m r^2
+$$
+
+E o motivo vale entender, porque é a única ideia da questão: $I_z = \int (x^2+y^2)\,dm$ só olha a distância **ao eixo**. Cortar a esfera pelo plano equatorial tira metade da massa **e** metade da integral, na mesma proporção — então a razão $I/m$ não muda. Cortar por um plano que **contém** o eixo daria o mesmo resultado, e pela mesma razão.
+
+$$
+I_z = \tfrac{2}{5}(0{,}010)(0{,}02)^2 = 1{,}6\times10^{-6}\ \mathrm{kg\cdot m^2}
+$$
+
+**Passo 3 — o momento angular.**
+
+$$
+H_z = I_z\,\omega = (1{,}6\times10^{-6})(5) = 8{,}0\times10^{-6}\ \mathrm{kg\cdot m^2/s}
+$$
+
+**Cuidado.** Não confunda com o $I$ da **casca** semiesférica (superfície, sem massa dentro), que é $\tfrac{2}{3}mr^2$. O enunciado diz "semiesfera", corpo maciço.
+
+E não use o teorema dos eixos paralelos aqui: o centro de massa da semiesfera está a $3r/8$ do plano de corte, mas isso é medido **ao longo** do eixo $z$ — não afasta a massa do eixo. Eixos paralelos só entra quando o eixo pedido é **paralelo e deslocado** do que passa por $G$, e aqui é o mesmo eixo.
+</Passos>

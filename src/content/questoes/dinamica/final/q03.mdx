@@ -1,0 +1,81 @@
+---
+origem: "Final 2024"
+tema: "Impulso de força variável · Integração por partes"
+temaId: impulso
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma força de intensidade $F = 5^{t}\,t^{2}$, com $t$ em segundos e $F$ em newtons, é aplicada sobre um bloco de massa $M = 5\ \mathrm{kg}$. No instante $t = 0$ sua velocidade é igual a $2\ \mathrm{m/s}$ e não existe força contrária ao movimento. Calcule a velocidade do bloco no instante $t = 2\ \mathrm{s}$.
+
+<Gabarito>
+$v = 9{,}0\ \mathrm{m/s}$ (impulso $I = 35{,}0\ \mathrm{N\cdot s}$).
+</Gabarito>
+
+<Passos>
+**Passo 0 — sim, é $5^t$ mesmo.** A força é uma exponencial de base 5 multiplicada por $t^2$, não "$5t^2$". O gabarito da prova confirma: a solução manuscrita integra por partes **duas vezes** e carrega $\ln 5$ até o fim. Se fosse $5t^2$ a questão valeria meio ponto, não três.
+
+**Passo 1 — o teorema do impulso e momento linear.** É a única ferramenta que serve: força dada em função do **tempo**, pergunta sobre velocidade num instante.
+
+$$
+M v_0 + \int_0^{2} F\,dt = M v
+\quad\Longrightarrow\quad
+5(v - 2) = \int_0^{2} 5^{t}\,t^{2}\,dt
+$$
+
+**Passo 2 — a primeira integração por partes.** Com $u = t^2$ e $dv = 5^t dt$, de onde $v = 5^t/\ln 5$:
+
+$$
+\int 5^{t}t^{2}\,dt = \frac{t^{2}5^{t}}{\ln 5} - \frac{2}{\ln 5}\int 5^{t}\,t\,dt
+$$
+
+**Passo 3 — a segunda.** Agora $u = t$ e $dv = 5^t dt$:
+
+$$
+\int 5^{t}\,t\,dt = \frac{t\,5^{t}}{\ln 5} - \frac{1}{\ln 5}\int 5^{t}dt = \frac{t\,5^{t}}{\ln 5} - \frac{5^{t}}{\ln^{2} 5}
+$$
+
+**Passo 4 — junte tudo.** A primitiva completa é
+
+$$
+\int 5^{t}t^{2}\,dt = 5^{t}\left(\frac{t^{2}}{\ln 5} - \frac{2t}{\ln^{2} 5} + \frac{2}{\ln^{3} 5}\right)
+$$
+
+Vale reconhecer o padrão: a cada parte, o grau do polinômio cai um e aparece um $\ln 5$ a mais no denominador, com o sinal alternando. É o mesmo esqueleto de $\int x^n e^{ax}dx$.
+
+**Passo 5 — avalie de $0$ a $2$**, com $\ln 5 = 1{,}6094$:
+
+$$
+t = 2:\quad 25\left(\frac{4}{1{,}6094} - \frac{4}{2{,}5903} + \frac{2}{4{,}1685}\right) = 25\,(1{,}4211) = 35{,}53
+$$
+
+$$
+t = 0:\quad 1\left(0 - 0 + \frac{2}{4{,}1685}\right) = 0{,}480
+$$
+
+$$
+I = 35{,}53 - 0{,}480 = 35{,}05\ \mathrm{N\cdot s}
+$$
+
+**Passo 6 — de volta ao teorema:**
+
+$$
+5(v - 2) = 35{,}05
+\quad\Longrightarrow\quad
+v = 2 + 7{,}01 = 9{,}0\ \mathrm{m/s}
+$$
+
+**Cuidado com o termo de $t = 0$.** $5^0 = 1$, não zero: o limite inferior contribui com $2/\ln^3 5 = 0{,}48\ \mathrm{N\cdot s}$. É pouco, mas quem descarta por reflexo (como se fosse $e^{-t}$ em $\infty$) já perdeu o hábito de avaliar os dois limites.
+</Passos>
