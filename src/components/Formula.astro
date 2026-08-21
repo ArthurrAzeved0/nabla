@@ -1,0 +1,48 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                           Formula.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Fórmula NOMEADA — o padrão mais usado da teoria (108 ocorrências no site
+   1.x). O rótulo diz o que a fórmula é, e é isso que permite procurá-la
+   depois: "aquela do plano tangente". */
+interface Props {
+  rotulo?: string;
+}
+
+const { rotulo } = Astro.props;
+---
+
+<div class="formula">
+  {rotulo && <span class="rot">{rotulo}</span>}
+  <slot />
+</div>
+
+<style>
+  .formula {
+    margin: var(--e-4) 0;
+  }
+  .rot {
+    display: block;
+    margin-bottom: calc(var(--e-2) * -1);
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  /* a fórmula em si já é uma caixa (.katex-display em base.css); aqui só
+     encostamos o rótulo nela */
+  .formula :global(.katex-display) {
+    margin-top: var(--e-2);
+  }
+</style>
