@@ -34,9 +34,9 @@
   },
   {
     "id": "dinamica",
-    "nome": "Dinâmica (Mecânica Geral 2)",
-    "codigo": "MEC02 · 60h",
-    "descricao": "Cinemática da partícula: movimento retilíneo com aceleração variável, movimento dependente por cabos, movimento relativo, movimento curvilíneo e projétil. Depois, cinética e corpos rígidos.",
+    "nome": "Dinâmica",
+    "codigo": "FIS08 · 60h",
+    "descricao": "Cinemática vetorial, leis de Newton, teorema do trabalho e energia, conservação da energia mecânica, dinâmica sob forças centrais, e conservação do momento linear e angular. (Contrução do curso em andamento)",
     "teoria": {
       "analise-vetorial": "din-vetores",
       "produto-escalar": "din-vetores",
@@ -56,7 +56,19 @@
       "coordenadas-retangulares": "din-curvilineo",
       "movimento-projetil": "din-projetil",
       "alcance-altura-maxima": "din-projetil",
-      "equacao-trajetoria": "din-projetil"
+      "equacao-trajetoria": "din-projetil",
+      "componentes-normal-tangencial": "din-normal-tangencial",
+      "raio-de-curvatura": "din-normal-tangencial",
+      "coordenadas-polares": "din-polares",
+      "componentes-radial-transversal": "din-polares",
+      "equacoes-do-movimento": "din-equacoes-movimento",
+      "segunda-lei-newton": "din-equacoes-movimento",
+      "diagrama-corpo-livre": "din-equacoes-movimento",
+      "forcas-de-vinculo": "din-vinculos-atrito",
+      "atrito": "din-vinculos-atrito",
+      "plano-inclinado": "din-vinculos-atrito",
+      "movimento-circular": "din-circular",
+      "forca-centripeta": "din-circular"
     }
   },
   {
