@@ -17,12 +17,15 @@
      neutra -> dado seco (pontuação) */
 interface Props {
   tom?: "info" | "alerta" | "neutra";
+  /** Vira o title: útil quando a etiqueta sozinha é ambígua. É o caso da
+      procedência — 6 questões vivem numa prova e vieram de outra. */
+  titulo?: string;
 }
 
-const { tom = "info" } = Astro.props;
+const { tom = "info", titulo } = Astro.props;
 ---
 
-<span class:list={["etiqueta", tom]}><slot /></span>
+<span class:list={["etiqueta", tom]} title={titulo}><slot /></span>
 
 <style>
   .etiqueta {

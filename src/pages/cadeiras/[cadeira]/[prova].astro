@@ -1,0 +1,109 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                           [prova].astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Questões de uma avaliação. Uma rota por prova: URL própria, então dá para
+   compartilhar e favoritar "as questões do 2º EE de Cálculo 3".
+
+   As FERRAMENTAS de estudo (marcar acertei/errei, cronômetro, filtro,
+   progresso e simulado) entram na FASE 3 como ilhas interativas. Aqui a
+   página é estática de propósito — melhor sem botão do que com botão morto. */
+import { getCollection, render } from "astro:content";
+import Base from "~/layouts/Base.astro";
+import ChipsProva from "~/components/ChipsProva.astro";
+import Questao from "~/components/Questao.astro";
+import Gabarito from "~/components/Gabarito.astro";
+import Passos from "~/components/Passos.astro";
+import Figura from "~/components/Figura.astro";
+import Caixa from "~/components/Caixa.astro";
+
+const ROTULO = { "1ee": "1º EE", "2ee": "2º EE", final: "Prova Final" } as const;
+
+export async function getStaticPaths() {
+  const cadeiras = await getCollection("cadeiras");
+  const questoes = await getCollection("questoes");
+  const provas = ["1ee", "2ee", "final"] as const;
+
+  return cadeiras.flatMap((c) => {
+    const contagem = Object.fromEntries(
+      provas.map((p) => [p, questoes.filter((q) => q.id.startsWith(`${c.data.id}/${p}/`)).length]),
+    );
+    return provas.map((prova) => ({
+      params: { cadeira: c.data.id, prova },
+      props: {
+        cadeira: c,
+        prova,
+        contagem,
+        itens: questoes
+          .filter((q) => q.id.startsWith(`${c.data.id}/${prova}/`))
+          .map((q) => ({ entry: q, numero: Number(q.id.split("/")[2]!.replace(/\D/g, "")) }))
+          .sort((a, b) => a.numero - b.numero),
+      },
+    }));
+  });
+}
+
+const { cadeira, prova, itens, contagem } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const rotulo = ROTULO[prova as keyof typeof ROTULO];
+
+const renderizadas = await Promise.all(
+  itens.map(async (q) => ({ ...q, Conteudo: (await render(q.entry)).Content })),
+);
+const MDX = { Gabarito, Passos, Figura, Caixa };
+---
+
+<Base
+  titulo={`${rotulo} · ${cadeira.data.nome}`}
+  descricao={`Questões do ${rotulo} de ${cadeira.data.nome}, com gabarito e resolução passo a passo.`}
+>
+  <span class="rotulo">{cadeira.data.codigo}</span>
+  <h1>{cadeira.data.nome}</h1>
+
+  <ChipsProva cadeira={cadeira.data.id} atual={prova} contagem={contagem} />
+
+  {
+    renderizadas.length === 0 ? (
+      <p class="vazio">Ainda não há questões cadastradas para esta avaliação.</p>
+    ) : (
+      renderizadas.map((q) => {
+        const secao = cadeira.data.teoria[q.entry.data.temaId];
+        const Conteudo = q.Conteudo;
+        return (
+          <Questao
+            id={`${cadeira.data.id}-${prova}-${String(q.numero).padStart(2, "0")}`}
+            numero={q.numero}
+            prova={rotulo}
+            origem={q.entry.data.origem}
+            tema={q.entry.data.tema}
+            pontos={q.entry.data.pontos}
+            estiloDeProva={q.entry.data.estiloDeProva}
+            material={secao ? `${base}cadeiras/${cadeira.data.id}#${secao}` : undefined}
+          >
+            <Conteudo components={MDX} />
+          </Questao>
+        );
+      })
+    )
+  }
+</Base>
+
+<style>
+  .vazio {
+    padding: var(--e-5);
+    background: var(--surface);
+    border: 1px dashed var(--line-2);
+    border-radius: var(--r-caixa);
+    text-align: center;
+    color: var(--ink-3);
+  }
+</style>

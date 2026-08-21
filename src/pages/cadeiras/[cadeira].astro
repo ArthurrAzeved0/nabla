@@ -1,0 +1,92 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                         [cadeira].astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Conteúdo teórico da cadeira: sumário + seções, na ordem da ementa.
+   As questões ficam nas rotas /cadeiras/<id>/<prova>. */
+import { getCollection, render } from "astro:content";
+import Base from "~/layouts/Base.astro";
+import ChipsProva from "~/components/ChipsProva.astro";
+import Sumario from "~/components/Sumario.astro";
+import Topico from "~/components/Topico.astro";
+import Formula from "~/components/Formula.astro";
+import Caixa from "~/components/Caixa.astro";
+import Figura from "~/components/Figura.astro";
+import FigPar from "~/components/FigPar.astro";
+
+export async function getStaticPaths() {
+  const cadeiras = await getCollection("cadeiras");
+  const questoes = await getCollection("questoes");
+  const teorias = await getCollection("teoria");
+  const provas = ["1ee", "2ee", "final"] as const;
+
+  return cadeiras
+    .sort((a, b) => a.data.ordem - b.data.ordem)
+    .map((c) => ({
+      params: { cadeira: c.data.id },
+      props: {
+        cadeira: c,
+        teoria: teorias.find((t) => t.id === c.data.id) ?? null,
+        contagem: Object.fromEntries(
+          provas.map((p) => [
+            p,
+            questoes.filter((q) => q.id.startsWith(`${c.data.id}/${p}/`)).length,
+          ]),
+        ),
+      },
+    }));
+}
+
+const { cadeira, teoria, contagem } = Astro.props;
+const Conteudo = teoria ? (await render(teoria)).Content : null;
+const MDX = { Topico, Formula, Caixa, Figura, FigPar };
+---
+
+<Base titulo={cadeira.data.nome} descricao={cadeira.data.descricao}>
+  <span class="rotulo">{cadeira.data.codigo}</span>
+  <h1>{cadeira.data.nome}</h1>
+  <p class="prosa abre">{cadeira.data.descricao}</p>
+
+  <ChipsProva cadeira={cadeira.data.id} contagem={contagem} />
+
+  {teoria?.data.unidades && <Sumario unidades={teoria.data.unidades} />}
+
+  {
+    Conteudo ? (
+      <div class="teoria">
+        <Conteudo components={MDX} />
+      </div>
+    ) : (
+      <p class="vazio">A teoria desta cadeira ainda não foi migrada.</p>
+    )
+  }
+</Base>
+
+<style>
+  .abre {
+    font-size: var(--t-md);
+  }
+  /* a teoria é texto para ler: coluna estreita, exceto figuras e fórmulas */
+  .teoria :global(p),
+  .teoria :global(ul),
+  .teoria :global(ol) {
+    max-width: var(--largura-texto);
+  }
+  .vazio {
+    padding: var(--e-5);
+    background: var(--surface);
+    border: 1px dashed var(--line-2);
+    border-radius: var(--r-caixa);
+    text-align: center;
+    color: var(--ink-3);
+  }
+</style>
