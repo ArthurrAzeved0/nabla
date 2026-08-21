@@ -21,7 +21,10 @@
 // Publicar à mão:  npx wrangler deploy   (depois de npm run build)
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "nabla-poli",
+  // Tem de bater com o nome do Worker que o painel criou ao conectar o
+  // repositório (ele usa o nome do repo). Se divergir, o deploy cria um
+  // Worker novo em vez de atualizar o que existe.
+  "name": "nabla",
   "compatibility_date": "2026-08-21",
 
   "assets": {
