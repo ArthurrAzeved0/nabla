@@ -1,0 +1,57 @@
+---
+origem: Banco
+tema: "Momento dipolar · Torque"
+temaId: torque-momento-dipolar
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma espira tem momento de dipolo magnético $\vec\mu = 2\,\hat\imath + 3\,\hat k\ (\text{A}\cdot\text{m}^2)$ e está imersa num campo magnético uniforme $\vec B = \hat\imath + \hat\jmath + 2\,\hat k\ (\text{T})$.
+
+(a) Determine o torque vetorial $\vec\tau = \vec\mu\times\vec B$.
+
+(b) Determine o módulo do torque $|\vec\tau|$.
+
+(c) Determine o módulo do momento de dipolo $|\vec\mu|$.
+
+<Gabarito>
+(a) $\vec\tau = -3\,\hat\imath - \hat\jmath + 2\,\hat k\ (\text{N}\cdot\text{m})$  ·  (b) $|\vec\tau| = \sqrt{14} \approx 3{,}74\ \text{N}\cdot\text{m}$  ·  (c) $|\vec\mu| = \sqrt{13} \approx 3{,}61\ \text{A}\cdot\text{m}^2$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Torque sobre um dipolo magnético num campo: $\vec\tau = \vec\mu\times\vec B$. Com $\vec\mu = (2,0,3)$ e $\vec B = (1,1,2)$, monte o determinante:
+
+$$
+\vec\tau = \begin{vmatrix}\hat\imath & \hat\jmath & \hat k\\ 2 & 0 & 3\\ 1 & 1 & 2\end{vmatrix}
+$$
+
+**Passo 2 —** Expandindo:
+
+$$
+\vec\tau = \hat\imath(0\cdot2 - 3\cdot1) - \hat\jmath(2\cdot2 - 3\cdot1) + \hat k(2\cdot1 - 0\cdot1) = \boxed{-3\,\hat\imath - \hat\jmath + 2\,\hat k}
+$$
+
+**Passo 3 —** Módulo do torque:
+
+$$
+|\vec\tau| = \sqrt{(-3)^2 + (-1)^2 + 2^2} = \sqrt{14} \approx \boxed{3{,}74\ \text{N}\cdot\text{m}}
+$$
+
+**Passo 4 —** Módulo do momento de dipolo:
+
+$$
+|\vec\mu| = \sqrt{2^2 + 0^2 + 3^2} = \sqrt{13} \approx \boxed{3{,}61\ \text{A}\cdot\text{m}^2}
+$$
+</Passos>

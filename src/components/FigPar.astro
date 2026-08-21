@@ -1,0 +1,34 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                            FigPar.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Duas figuras lado a lado — usado quando o par só faz sentido junto
+   (perfil + vista de cima, antes + depois). Empilha no celular. */
+---
+<div class="fig-par"><slot /></div>
+
+<style>
+  .fig-par {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--e-4);
+    margin: var(--e-4) 0;
+  }
+  @media (max-width: 640px) {
+    .fig-par {
+      grid-template-columns: 1fr;
+    }
+  }
+  .fig-par :global(figure) {
+    margin: 0;
+  }
+</style>

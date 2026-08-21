@@ -1,0 +1,57 @@
+---
+tema: "Teorema de Stokes"
+temaId: teorema-de-stokes
+pontos: 2,0 pts
+estiloDeProva: true
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Use o Teorema de Stokes para calcular $\displaystyle\iint_S (\nabla\times\vec F)\cdot d\vec S$, onde
+
+$$
+\vec F(x,y,z) = (y,\, z,\, x)
+$$
+
+e $S$ é o hemisfério superior $x^2 + y^2 + z^2 = 1$, $z \ge 0$, orientado para cima.
+
+<Gabarito>
+$\displaystyle\iint_S (\nabla\times\vec F)\cdot d\vec S = -\pi$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** O Teorema de Stokes diz que o fluxo do rotacional pela superfície é igual à circulação na borda:
+
+$$
+\iint_S (\nabla\times\vec F)\cdot d\vec S = \oint_C \vec F\cdot d\vec r
+$$
+
+A borda $C$ do hemisfério é a circunferência $x^2+y^2 = 1$ no plano $z=0$.
+
+**Passo 2 —** Parametrize $C$ no sentido positivo (compatível com normal para cima): $\vec r(t) = (\cos t,\ \operatorname{sen} t,\ 0)$, $0\le t\le 2\pi$. Então $\vec r\,'(t) = (-\operatorname{sen} t,\ \cos t,\ 0)$.
+
+**Passo 3 —** Sobre $C$ (onde $z=0$): $\vec F = (y,z,x) = (\operatorname{sen} t,\ 0,\ \cos t)$. O produto escalar:
+
+$$
+\vec F\cdot\vec r\,' = \operatorname{sen} t\,(-\operatorname{sen} t) + 0\cdot\cos t + \cos t\cdot 0 = -\operatorname{sen}^2 t
+$$
+
+**Passo 4 —** Integre:
+
+$$
+\oint_C \vec F\cdot d\vec r = \int_0^{2\pi} -\operatorname{sen}^2 t\,dt = -\pi
+$$
+
+Alternativa: $\nabla\times\vec F = (-1,-1,-1)$; pela borda plana, só a componente $z$ importa ($\vec n = \vec k$ no disco), dando $\iint_D (-1)\,dA = -\pi$ — mesma resposta.
+</Passos>

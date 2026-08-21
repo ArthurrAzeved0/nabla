@@ -1,0 +1,270 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                           Questao.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Cartão de questão — o "registro de trabalho" do Nabla.
+   Na Fase 1 é só a casca visual: as ferramentas (marcar, cronometrar,
+   filtrar) viram uma ilha interativa na Fase 3. Os botões aqui são
+   estáticos de propósito.
+
+   O `estado` pinta a barra lateral com a cor semântica, para dar para ler
+   a situação da questão sem interpretar nada. */
+import Etiqueta from "./Etiqueta.astro";
+import FerramentasQuestao from "./FerramentasQuestao.astro";
+
+interface Props {
+  /** Igual ao data-id do site 1.x: <curso>-<prova>-<NN>. Vira a âncora. */
+  id: string;
+  numero: number;
+  /** Rótulo da avaliação, DERIVADO da pasta — nunca digitado por questão.
+      É o que garante que "1º EE" não vire "1ª Avaliação" em algum arquivo. */
+  prova: string;
+  /** Procedência: "2023.2", "Banco", "Revisão · Prof. César". Ausente nas
+      questões inventadas (que se identificam por estiloDeProva). */
+  origem?: string;
+  tema: string;
+  pontos?: string;
+  /** Questão inventada/prevista, sem prova antiga confirmada. */
+  estiloDeProva?: boolean;
+  /** Link para a seção da teoria correspondente. */
+  material?: string;
+  /** Marcação do aluno. A interação vem na Fase 3; aqui só pinta a barra. */
+  estado?: "nenhum" | "acertei" | "errei" | "revisar";
+}
+
+const {
+  id,
+  numero,
+  prova,
+  origem,
+  tema,
+  pontos,
+  estiloDeProva = false,
+  material,
+  estado = "nenhum",
+} = Astro.props;
+
+const rotulo = String(numero).padStart(2, "0");
+---
+
+<article class:list={["questao", `st-${estado}`]} id={id}>
+  <div class="topo">
+    <a class="qid" href={`#${id}`} title="Copiar o link direto desta questão">Questão {rotulo}</a>
+    <Etiqueta>{prova}</Etiqueta>
+    {origem && <Etiqueta tom="neutra" titulo="Procedência">{origem}</Etiqueta>}
+    <Etiqueta>{tema}</Etiqueta>
+    {estiloDeProva && <Etiqueta tom="alerta">Estilo de prova</Etiqueta>}
+    {pontos && <Etiqueta tom="neutra">{pontos}</Etiqueta>}
+    {
+      material && (
+        <a class="material" href={material}>
+          <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false">
+            <path
+              d="M5 4h9l4 4v12H5z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"></path>
+            <path
+              d="M13 4v5h5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"></path>
+          </svg>
+          Ver material
+        </a>
+      )
+    }
+  </div>
+
+  <div class="enunciado"><slot /></div>
+
+  <FerramentasQuestao id={id} />
+
+</article>
+
+<script>
+  /* Copiar o link direto da questão. Um listener delegado no document: o
+     Astro empacota este script uma única vez, mesmo com 38 questões na
+     página. */
+
+  /* navigator.clipboard só existe em contexto seguro (HTTPS ou localhost).
+     Testando pela rede local em http://192.168.x.x ele NÃO existe — daí o
+     plano B com textarea, e o plano C de só deixar o link na barra de
+     endereço, que o usuário copia à mão. */
+  async function copiar(texto: string): Promise<boolean> {
+    try {
+      if (window.isSecureContext && navigator.clipboard) {
+        await navigator.clipboard.writeText(texto);
+        return true;
+      }
+    } catch {
+      /* segue para o plano B */
+    }
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = texto;
+      ta.setAttribute("readonly", "");
+      ta.style.cssText = "position:fixed;top:-9999px;opacity:0";
+      document.body.appendChild(ta);
+      ta.select();
+      /* execCommand é depreciado, mas é o ÚNICO caminho fora de contexto
+         seguro — e aqui ele é justamente o plano B para esse caso. */
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+
+  const aviso = document.createElement("div");
+  aviso.className = "aviso-copia";
+  aviso.setAttribute("role", "status");
+  aviso.setAttribute("aria-live", "polite");
+  document.body.appendChild(aviso);
+  let sumir: number | undefined;
+
+  function anunciar(texto: string) {
+    aviso.textContent = texto;
+    aviso.classList.add("visivel");
+    window.clearTimeout(sumir);
+    sumir = window.setTimeout(() => aviso.classList.remove("visivel"), 2400);
+  }
+
+  document.addEventListener("click", async (ev) => {
+    const alvo = (ev.target as HTMLElement | null)?.closest<HTMLAnchorElement>("a.qid");
+    if (!alvo) return;
+    ev.preventDefault();
+
+    const questao = alvo.closest<HTMLElement>(".questao");
+    const id = questao?.id;
+    if (!id) return;
+
+    /* replaceState em vez de deixar o link navegar: atualiza o endereço sem
+       empilhar histórico nem dar o salto brusco de âncora. */
+    const url = new URL(window.location.href);
+    url.hash = id;
+    history.replaceState(null, "", url.toString());
+
+    questao.classList.remove("destaque");
+    void questao.offsetWidth; /* reinicia a animação se clicar de novo */
+    questao.classList.add("destaque");
+    window.setTimeout(() => questao.classList.remove("destaque"), 2200);
+
+    anunciar((await copiar(url.toString())) ? "Link copiado" : "Link na barra de endereço");
+  });
+</script>
+
+<style>
+  .questao {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: var(--r-cartao);
+    padding: var(--e-4) var(--e-5);
+    margin: var(--e-4) 0;
+    box-shadow: var(--sombra-1);
+    scroll-margin-top: var(--e-7);
+  }
+
+  /* piscada de confirmação ao copiar o link, ou ao chegar por deep-link */
+  .questao.destaque {
+    animation: destacar 2.2s ease-out;
+  }
+  @keyframes destacar {
+    0%,
+    18% {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    100% {
+      border-color: var(--line);
+      box-shadow: var(--sombra-1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .questao.destaque {
+      animation: none;
+      border-color: var(--accent);
+    }
+  }
+
+  .st-acertei {
+    border-left-color: var(--ok);
+  }
+  .st-errei {
+    border-left-color: var(--err);
+  }
+  .st-revisar {
+    border-left-color: var(--rev);
+  }
+
+  .topo {
+    display: flex;
+    align-items: center;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+    margin-bottom: var(--e-3);
+  }
+
+  .qid {
+    font-family: var(--f-mono);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .qid:hover {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .material {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--t-sm);
+    color: var(--accent);
+    text-decoration: none;
+    background: var(--accent-soft);
+    border: 1px solid transparent;
+    padding: 4px 10px;
+    border-radius: var(--r-pilula);
+  }
+  .material:hover {
+    border-color: var(--accent);
+  }
+
+  .enunciado {
+    color: var(--ink);
+  }
+  .enunciado :global(> :last-child) {
+    margin-bottom: 0;
+  }
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+</style>

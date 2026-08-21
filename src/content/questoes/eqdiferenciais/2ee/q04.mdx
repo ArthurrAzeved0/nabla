@@ -1,0 +1,57 @@
+---
+origem: Revisão · Prof. César
+tema: "Sistema · autovalor repetido"
+temaId: sistemas-autovalor-repetido
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução geral do sistema de equações diferenciais abaixo:
+
+$$
+\begin{cases} x' = 2x + y \\ y' = -x + 4y \end{cases}
+$$
+
+<Gabarito>
+$\lambda = 3$ (duplo), $K = \begin{pmatrix}1\\1\end{pmatrix}$, $W = \begin{pmatrix}0\\1\end{pmatrix}$;   $X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{3t} + c_2\left[\begin{pmatrix}1\\1\end{pmatrix}t + \begin{pmatrix}0\\1\end{pmatrix}\right]e^{3t}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** $X' = \begin{pmatrix} 2 & 1 \\ -1 & 4 \end{pmatrix}X$. Autovalores:
+
+$$
+\det(A-\lambda I) = \lambda^2 - 6\lambda + 9 = (\lambda - 3)^2 = 0 \;\Rightarrow\; \lambda = 3 \text{ (multiplicidade 2)}
+$$
+
+**Passo 2 —** Autovetor:
+
+$$
+\begin{pmatrix} -1 & 1 \\ -1 & 1 \end{pmatrix}K = 0 \;\Rightarrow\; k_1 = k_2 \;\Rightarrow\; K = \begin{pmatrix}1\\1\end{pmatrix}
+$$
+
+Só há UM autovetor independente — precisamos do autovetor generalizado.
+
+**Passo 3 —** Autovetor generalizado $W$, resolvendo $(A - 3I)W = K$:
+
+$$
+\begin{pmatrix} -1 & 1 \\ -1 & 1 \end{pmatrix}W = \begin{pmatrix}1\\1\end{pmatrix} \;\Rightarrow\; -w_1 + w_2 = 1 \;\Rightarrow\; W = \begin{pmatrix}0\\1\end{pmatrix}
+$$
+
+**Passo 4 —** A segunda solução é $X_2 = (Kt + W)e^{3t}$. Solução geral:
+
+$$
+\boxed{X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{3t} + c_2\left[\begin{pmatrix}1\\1\end{pmatrix}t + \begin{pmatrix}0\\1\end{pmatrix}\right]e^{3t}}
+$$
+</Passos>

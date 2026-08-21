@@ -1,0 +1,90 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                           Sumario.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Sumário do conteúdo, montado a partir do frontmatter da teoria.
+
+   No site 1.x o sumário era HTML escrito à mão, ao lado das seções — duas
+   listas para manter em sincronia. Agora é dado, e há uma verificação de
+   build que garante que todo item aponta para uma seção existente. */
+interface Secao {
+  id: string;
+  titulo: string;
+}
+interface Unidade {
+  nome: string;
+  secoes: Secao[];
+}
+interface Props {
+  unidades: Unidade[];
+}
+
+const { unidades } = Astro.props;
+---
+
+<nav class="sumario" aria-label="Sumário do conteúdo">
+  {
+    unidades.map((u) => (
+      <div class="unidade">
+        <h2>{u.nome}</h2>
+        <ol>
+          {u.secoes.map((s) => (
+            <li>
+              <a href={`#${s.id}`}>{s.titulo}</a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))
+  }
+</nav>
+
+<style>
+  .sumario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--e-5);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-caixa);
+    padding: var(--e-5);
+    margin: var(--e-5) 0 var(--e-7);
+  }
+  h2 {
+    font-size: var(--t-sm);
+    font-family: var(--f-mono);
+    font-weight: 500;
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 var(--e-3);
+  }
+  ol {
+    margin: 0;
+    padding-left: var(--e-5);
+    font-size: var(--t-sm);
+  }
+  li {
+    margin-bottom: var(--e-2);
+  }
+  li::marker {
+    font-family: var(--f-mono);
+    color: var(--ink-3);
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

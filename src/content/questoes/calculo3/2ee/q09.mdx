@@ -1,0 +1,55 @@
+---
+origem: "2022.2"
+tema: "Teorema de Green"
+temaId: teorema-de-green
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Use o Teorema de Green para calcular a integral de linha
+
+$$
+\oint_C \left(3y - e^{\sin x}\right)dx + \left(7x + \sqrt{y^4+1}\right)dy
+$$
+
+onde $C$ é a circunferência $x^2 + y^2 = 4$, orientada no sentido anti-horário.
+
+<Gabarito>
+$\displaystyle\oint_C \vec F\cdot d\vec r = 16\pi$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** O Teorema de Green troca a integral de linha por uma integral dupla sobre a região $D$ cercada por $C$:
+
+$$
+\oint_C P\,dx + Q\,dy = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dA
+$$
+
+Aqui $P = 3y - e^{\sin x}$ e $Q = 7x + \sqrt{y^4+1}$.
+
+**Passo 2 —** Repare que as parcelas feias $e^{\sin x}$ e $\sqrt{y^4+1}$ somem nas derivadas certas:
+
+$$
+\frac{\partial Q}{\partial x} = 7,\qquad \frac{\partial P}{\partial y} = 3 \quad\Rightarrow\quad \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 7 - 3 = 4
+$$
+
+**Passo 3 —** A integral dupla vira uma constante vezes a área do disco $D$ de raio $2$:
+
+$$
+\iint_D 4\,dA = 4\cdot\text{área}(D) = 4\cdot\pi(2)^2 = 4\cdot 4\pi = 16\pi
+$$
+
+Moral: quando o rotacional escalar $Q_x - P_y$ é constante, a integral de linha é só essa constante vezes a área cercada.
+</Passos>

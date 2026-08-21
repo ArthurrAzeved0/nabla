@@ -1,0 +1,67 @@
+---
+origem: "2023.1"
+tema: "Pontos críticos · Hessiana"
+temaId: pontos-criticos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os pontos críticos da função $f(x,y) = 3xy + x^2 - 3x$ e interprete se são máximos e/ou mínimos locais, ou ponto de sela.
+
+<Figura>
+  <svg viewBox="0 0 230 180" role="img" aria-label="Superfície em forma de sela: sobe numa direção e desce na outra a partir do ponto crítico">
+    {/* retalho de sela */}
+    <path d="M 40 70 Q 115 30 190 70 Q 115 110 40 70 Z" fill="var(--accent-soft)" stroke="none"/>
+    {/* curva que desce (vale) */}
+    <path d="M 40 70 Q 115 120 190 70" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    {/* curva que sobe (crista) */}
+    <path d="M 55 130 Q 115 55 175 130" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    {/* linhas de grade da sela */}
+    <path d="M 70 55 Q 115 95 160 55" fill="none" stroke="var(--line-2)" stroke-width="1"/>
+    <path d="M 70 90 Q 115 55 160 90" fill="none" stroke="var(--line-2)" stroke-width="1"/>
+    {/* ponto de sela */}
+    <circle cx="115" cy="80" r="4" fill="var(--ink-2)"/>
+    <text x="120" y="76" font-size="10" fill="var(--ink-2)">ponto crítico</text>
+    <text x="150" y="128" font-size="10" fill="var(--warn)">sobe</text>
+    <text x="150" y="86" font-size="10" fill="var(--accent)">desce</text>
+  </svg>
+  <figcaption>
+
+Quando o Hessiano $D\lt 0$, o ponto crítico é uma **sela**: numa direção a função sobe, na outra desce — não é máximo nem mínimo, como o centro de uma sela de cavalo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Único ponto crítico: $(0, 1)$, que é ponto de sela ($D = -9 \lt  0$).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Calcule e zere as parciais:
+
+$$
+f_x = 3y + 2x - 3 = 0 \qquad\quad f_y = 3x = 0
+$$
+
+**Passo 2 —** Da segunda equação, $x = 0$. Substituindo na primeira: $3y - 3 = 0 \Rightarrow y = 1$. Ponto crítico: $(0, 1)$.
+
+**Passo 3 —** Segundas derivadas: $f_{xx} = 2$, $f_{yy} = 0$, $f_{xy} = 3$. Determinante Hessiano:
+
+$$
+D = f_{xx}f_{yy} - (f_{xy})^2 = (2)(0) - 3^2 = -9
+$$
+
+**Passo 4 —** Como $D = -9 \lt  0$, o ponto $(0,1)$ é **ponto de sela** — não é máximo nem mínimo local.
+</Passos>

@@ -1,0 +1,1589 @@
+---
+cadeira: eletromag
+titulo: "Fundamentos do Eletromagnetismo"
+unidades:
+  - nome: "1ª Unidade"
+    secoes:
+      - { id: em-carga, titulo: "Carga elétrica e Lei de Coulomb" }
+      - { id: em-campo, titulo: "Campo elétrico" }
+      - { id: em-gauss, titulo: "Lei de Gauss" }
+      - { id: em-potencial, titulo: "Potencial elétrico" }
+      - { id: em-capacitancia, titulo: "Capacitância" }
+      - { id: em-corrente, titulo: "Corrente e resistência elétrica" }
+      - { id: em-circuitos, titulo: "Circuitos de corrente contínua" }
+  - nome: "2ª Unidade"
+    secoes:
+      - { id: em-magnetico, titulo: "Campos magnéticos e força magnética" }
+      - { id: em-fontes, titulo: "Fontes de campo: Biot-Savart e Ampère" }
+      - { id: em-inducao, titulo: "Indução: Lei de Faraday e Lei de Lenz" }
+      - { id: em-indutancia, titulo: "Indutância e circuitos RL" }
+      - { id: em-oscilacoes, titulo: "Oscilações LC/RLC e corrente alternada" }
+      - { id: em-maxwell, titulo: "Equações de Maxwell" }
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                           eletromag.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+<Topico id="em-carga" num="01" titulo="Carga elétrica e Lei de Coulomb">
+
+### A ideia
+
+Tudo no eletromagnetismo começa com uma pergunta simples: **por que as coisas se atraem ou se repelem eletricamente?** A resposta é a **carga elétrica** — uma propriedade da matéria, assim como a massa. A diferença é que existe só um tipo de massa, mas existem **dois tipos de carga**: positiva (prótons) e negativa (elétrons). A regra do jogo:
+
+- Cargas de **mesmo sinal** se **repelem**;
+- Cargas de **sinais opostos** se **atraem**.
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 260 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duas cargas positivas se repelindo">
+  <circle cx="80" cy="45" r="14" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <text x="80" y="50" font-size="14" text-anchor="middle" fill="var(--accent)">+q</text>
+  <circle cx="180" cy="45" r="14" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <text x="180" y="50" font-size="14" text-anchor="middle" fill="var(--accent)">+q</text>
+  <g stroke="var(--warn)" stroke-width="2.5" fill="var(--warn)">
+  <line x1="62" y1="45" x2="30" y2="45"/><polygon points="30,45 40,40 40,50"/>
+  <line x1="198" y1="45" x2="230" y2="45"/><polygon points="230,45 220,40 220,50"/>
+  </g>
+  <text x="34" y="32" font-size="11" fill="var(--warn)">F</text>
+  <text x="222" y="32" font-size="11" fill="var(--warn)">F</text>
+  </svg>
+  <figcaption>
+
+  Mesmo sinal: forças de **repulsão** (para fora).
+
+  </figcaption>
+  </Figura>
+
+  <Figura>
+  <svg viewBox="0 0 260 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cargas de sinais opostos se atraindo">
+  <circle cx="80" cy="45" r="14" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <text x="80" y="50" font-size="14" text-anchor="middle" fill="var(--accent)">+q</text>
+  <circle cx="180" cy="45" r="14" fill="none" stroke="var(--ok)" stroke-width="2"/>
+  <text x="180" y="50" font-size="14" text-anchor="middle" fill="var(--ok)">−q</text>
+  <g stroke="var(--warn)" stroke-width="2.5" fill="var(--warn)">
+  <line x1="98" y1="45" x2="126" y2="45"/><polygon points="126,45 116,40 116,50"/>
+  <line x1="162" y1="45" x2="134" y2="45"/><polygon points="134,45 144,40 144,50"/>
+  </g>
+  <text x="112" y="32" font-size="11" fill="var(--warn)">F</text>
+  <text x="140" y="66" font-size="11" fill="var(--warn)">F</text>
+  </svg>
+  <figcaption>
+
+  Sinais opostos: forças de **atração** (uma para a outra).
+
+  </figcaption>
+  </Figura>
+</FigPar>
+
+### Três propriedades que caem em prova
+
+- **Quantização:** a carga não vem em qualquer valor — é sempre um múltiplo inteiro da carga do elétron: $q = n\,e$, com $e = 1{,}6\times 10^{-19}\,\mathrm{C}$. Não existe "meia carga elementar";
+- **Conservação:** carga não se cria nem se destrói — ao atritar um balão no cabelo, a carga apenas *passa* de um para o outro;
+- **Condutores × isolantes:** nos **condutores** (metais) os elétrons se movem livremente; nos **isolantes/dielétricos** (borracha, vidro), não. Num condutor em equilíbrio eletrostático, todo o excesso de carga vai para a **superfície** e o campo elétrico **dentro dele é zero**.
+
+### A Lei de Coulomb — o "quanto" da força
+
+<Formula rotulo="Lei de Coulomb">
+
+$$
+F = k_0 \frac{|q_1||q_2|}{d^2}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $F$ — módulo da força entre as cargas, em newtons (N);
+- $q_1,\,q_2$ — valores das duas cargas, em coulombs (C);
+- $d$ — distância entre as cargas, em metros (m);
+- $k_0 = \dfrac{1}{4\pi\epsilon_0} = 9\times10^9\ \tfrac{\mathrm{N\,m^2}}{\mathrm{C^2}}$ — constante eletrostática;
+- $\epsilon_0 = 8{,}85\times10^{-12}\ \tfrac{\mathrm{C^2}}{\mathrm{N\,m^2}}$ — permissividade do vácuo.
+
+</Caixa>
+
+Leia a fórmula assim: a força **cresce com o produto das cargas** e **cai com o quadrado da distância** — dobrou a distância, a força cai para 1/4. O sinal das cargas não entra na conta do módulo; ele só decide se é atração ou repulsão (por isso o módulo $|q|$). A força atua na **linha reta que une as duas cargas**.
+
+<Caixa tipo="exemplo">
+
+Duas cargas de $q_1 = q_2 = 2\,\mu\mathrm{C}$ ($= 2\times10^{-6}$ C) estão separadas por $d = 3$ cm ($= 0{,}03$ m). Qual a força entre elas?
+
+$$
+F = 9\times10^9 \cdot \frac{(2\times10^{-6})(2\times10^{-6})}{(0{,}03)^2} = 9\times10^9\cdot\frac{4\times10^{-12}}{9\times10^{-4}} = 40\ \mathrm{N}
+$$
+
+Como as duas são positivas, é uma força de **repulsão** de 40 N em cada uma. Repare no passo mais importante: **converter tudo para unidades do SI** (μC → C, cm → m) antes de substituir.
+
+</Caixa>
+
+**E com mais de duas cargas?** Vale o **princípio da superposição**: a força total sobre uma carga é a **soma vetorial** das forças que cada outra carga faz sobre ela, calculadas uma a uma como se as demais não existissem.
+
+<Caixa tipo="macete">
+Monte SEMPRE o diagrama de forças antes de somar. Decomponha em x e y; por simetria, muitas componentes se cancelam — enxergar a simetria primeiro corta a conta pela metade.
+</Caixa>
+
+</Topico>
+
+<Topico id="em-campo" num="02" titulo="Campo elétrico">
+
+### A ideia
+
+A Lei de Coulomb exige duas cargas. Mas e se eu quiser descrever a influência de *uma* carga sozinha no espaço ao redor dela? Essa é a ideia de **campo elétrico**: uma carga $q$ modifica o espaço à sua volta, criando em cada ponto um "vetor de instrução" $\vec E$ que diz *qual força uma carga de prova sentiria se fosse colocada ali*. Pense no campo como um **mapa de forças** preenchendo o espaço.
+
+<Formula rotulo="Definição de campo e campo de uma carga pontual">
+
+$$
+\vec E = \frac{\vec F}{q_0} \qquad\qquad E = k_0\frac{|q|}{r^2} \qquad\qquad \vec F = q\,\vec E
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\vec E$ — campo elétrico no ponto, em N/C (ou V/m — é a mesma coisa);
+- $q_0$ — carga de prova (a carga "de teste" colocada no ponto);
+- $q$ — carga que **cria** o campo;
+- $r$ — distância da carga $q$ até o ponto onde se quer o campo (m);
+- $\vec F = q\vec E$ — força que o campo aplica numa carga $q$ imersa nele.
+
+</Caixa>
+
+Sentido do campo: carga **positiva** cria campo apontando **para fora** (afastando-se dela); carga **negativa**, **para dentro**. As **linhas de campo** desenham esse mapa: saem das positivas, chegam nas negativas, nunca se cruzam, e onde estão mais juntas o campo é mais intenso.
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Linhas de campo saindo de carga positiva">
+  <g stroke="var(--accent)" stroke-width="1.8" fill="var(--accent)">
+  <line x1="80" y1="62" x2="80" y2="22"/><polygon points="80,18 75,28 85,28"/>
+  <line x1="80" y1="98" x2="80" y2="138"/><polygon points="80,142 75,132 85,132"/>
+  <line x1="62" y1="80" x2="22" y2="80"/><polygon points="18,80 28,75 28,85"/>
+  <line x1="98" y1="80" x2="138" y2="80"/><polygon points="142,80 132,75 132,85"/>
+  <line x1="93" y1="67" x2="121" y2="39"/><polygon points="124,36 113,40 120,47"/>
+  <line x1="67" y1="67" x2="39" y2="39"/><polygon points="36,36 40,47 47,40"/>
+  <line x1="93" y1="93" x2="121" y2="121"/><polygon points="124,124 120,113 113,120"/>
+  <line x1="67" y1="93" x2="39" y2="121"/><polygon points="36,124 47,120 40,113"/>
+  </g>
+  <circle cx="80" cy="80" r="15" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="80" y="85" font-size="15" text-anchor="middle" fill="var(--accent)">+</text>
+  </svg>
+  <figcaption>
+
+  Carga positiva: linhas **saem** (campo para fora).
+
+  </figcaption>
+  </Figura>
+
+  <Figura>
+  <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Linhas de campo entrando em carga negativa">
+  <g stroke="var(--ok)" stroke-width="1.8" fill="var(--ok)">
+  <line x1="80" y1="22" x2="80" y2="58"/><polygon points="80,62 75,52 85,52"/>
+  <line x1="80" y1="138" x2="80" y2="102"/><polygon points="80,98 75,108 85,108"/>
+  <line x1="22" y1="80" x2="58" y2="80"/><polygon points="62,80 52,75 52,85"/>
+  <line x1="138" y1="80" x2="102" y2="80"/><polygon points="98,80 108,75 108,85"/>
+  <line x1="121" y1="39" x2="95" y2="65"/><polygon points="92,68 103,64 96,57"/>
+  <line x1="39" y1="39" x2="65" y2="65"/><polygon points="68,68 64,57 57,64"/>
+  <line x1="121" y1="121" x2="95" y2="95"/><polygon points="92,92 96,103 103,96"/>
+  <line x1="39" y1="121" x2="65" y2="95"/><polygon points="68,92 57,96 64,103"/>
+  </g>
+  <circle cx="80" cy="80" r="15" fill="var(--surface)" stroke="var(--ok)" stroke-width="2"/>
+  <text x="80" y="85" font-size="15" text-anchor="middle" fill="var(--ok)">−</text>
+  </svg>
+  <figcaption>
+
+  Carga negativa: linhas **chegam** (campo para dentro).
+
+  </figcaption>
+  </Figura>
+</FigPar>
+
+<Caixa tipo="exemplo">
+
+Uma carga $q = 5\,\mu\mathrm{C}$ está na origem. Qual o campo a $r = 30$ cm dela? E que força esse campo faz numa carga $q' = 2\,\mu\mathrm{C}$ colocada nesse ponto?
+
+$$
+E = 9\times10^9\cdot\frac{5\times10^{-6}}{(0{,}3)^2} = 5\times10^5\ \mathrm{N/C}
+    \qquad\qquad F = q'E = (2\times10^{-6})(5\times10^5) = 1{,}0\ \mathrm{N}
+$$
+
+Fluxo de raciocínio de toda questão de campo: **quem cria o campo** usa $E = k_0 q/r^2$; **quem sofre a força** usa $F = qE$.
+
+</Caixa>
+
+### Superposição: o problema clássico das duas cargas
+
+Campo também soma **vetorialmente**. O exemplo mais cobrado em prova: duas cargas positivas iguais no eixo $y$, e queremos o campo num ponto $P$ do eixo perpendicular. Cada carga gera seu $\vec E_1$ e $\vec E_2$ apontando para longe de si; as componentes verticais são opostas e se **cancelam**, e as horizontais se **somam**:
+
+<Figura>
+  <svg viewBox="0 0 310 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duas cargas no eixo y e campo resultante no ponto P do eixo z">
+    <line x1="60" y1="10" x2="60" y2="180" stroke="var(--line-2)" stroke-width="1.2"/>
+    <line x1="20" y1="95" x2="290" y2="95" stroke="var(--line-2)" stroke-width="1.2"/>
+    <text x="52" y="20" font-size="11" fill="var(--ink-3)">y</text>
+    <text x="282" y="110" font-size="11" fill="var(--ink-3)">z</text>
+    <circle cx="60" cy="45" r="11" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+    <text x="60" y="50" font-size="12" text-anchor="middle" fill="var(--accent)">+q</text>
+    <circle cx="60" cy="145" r="11" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+    <text x="60" y="150" font-size="12" text-anchor="middle" fill="var(--accent)">+q</text>
+    <text x="34" y="99" font-size="10" fill="var(--ink-3)">d/2</text>
+    <line x1="71" y1="49" x2="195" y2="93" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="71" y1="141" x2="195" y2="97" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="4 3"/>
+    <circle cx="200" cy="95" r="3.5" fill="var(--ink)"/>
+    <text x="198" y="118" font-size="12" fill="var(--ink)">P</text>
+    <g stroke="var(--accent)" stroke-width="2" fill="var(--accent)">
+      <line x1="200" y1="95" x2="248" y2="112"/><polygon points="252,113 242,107 240,116"/>
+      <line x1="200" y1="95" x2="248" y2="78"/><polygon points="252,77 240,74 242,83"/>
+    </g>
+    <text x="252" y="128" font-size="11" fill="var(--accent)">E₁</text>
+    <text x="252" y="70" font-size="11" fill="var(--accent)">E₂</text>
+    <g stroke="var(--warn)" stroke-width="2.6" fill="var(--warn)">
+      <line x1="200" y1="95" x2="272" y2="95"/><polygon points="278,95 268,90 268,100"/>
+    </g>
+    <text x="262" y="88" font-size="11" fill="var(--warn)">E res</text>
+  </svg>
+  <figcaption>
+
+As componentes em $y$ se cancelam por simetria; sobra $E = 2E_1\cos\theta$ ao longo do eixo.
+
+  </figcaption>
+</Figura>
+
+### Distribuições contínuas de carga
+
+Quando a carga está espalhada num fio, anel ou placa, não dá para somar carga por carga — a soma vira uma **integral**: divida o objeto em pedacinhos $dq$, escreva $dE = k_0\,dq/r^2$ e integre (a simetria elimina componentes). Para descrever "quanta carga tem em cada pedaço", usamos as densidades:
+
+<Formula rotulo="Densidades de carga">
+
+$$
+\lambda = \frac{q}{L} \;(\text{linear}), \qquad \sigma = \frac{q}{A} \;(\text{superficial}), \qquad \rho = \frac{q}{V} \;(\text{volumétrica})
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\lambda$ — carga por comprimento (C/m): fios e anéis;
+- $\sigma$ — carga por área (C/m²): placas e cascas;
+- $\rho$ — carga por volume (C/m³): esferas e cilindros maciços;
+- $L,\,A,\,V$ — comprimento, área e volume do objeto carregado.
+
+</Caixa>
+
+<Formula rotulo="Resultados clássicos (decorar!)">
+
+$$
+\text{Anel (eixo): } E = \frac{k_0 q z}{(z^2+R^2)^{3/2}} \qquad
+      \text{Fio infinito: } E = \frac{\lambda}{2\pi\epsilon_0 r} \qquad
+      \text{Plano infinito: } E = \frac{\sigma}{2\epsilon_0}
+$$
+
+</Formula>
+
+O **dipolo elétrico** (par $+q$, $-q$ separado por $d$) tem momento $p = qd$ e, num campo externo, sofre torque $\vec\tau = \vec p \times \vec E$ que tende a alinhá-lo ao campo.
+
+<Caixa tipo="dica">
+Questão típica de 1º EE (2025.2): campo de duas cargas iguais num ponto do eixo de simetria (a figura acima!). As componentes se cancelam e sobra $E = 2\,E_1\cos\theta$ com $\cos\theta = z/r$ e $r = \sqrt{z^2 + (d/2)^2}$. Analise os limites: $z=0$ (campo nulo) e $z \gg d$ (vira carga pontual $2q$) — os itens (b) quase sempre pedem esses limites.
+</Caixa>
+
+</Topico>
+
+<Topico id="em-gauss" num="03" titulo="Lei de Gauss">
+
+### A ideia
+
+Calcular campo por integração direta (seção anterior) pode ser trabalhoso. A **Lei de Gauss** é o atalho: quando o problema tem **simetria** (esfera, cilindro, plano), ela entrega o campo em três linhas. A ferramenta central é o **fluxo elétrico** $\Phi_E$ — imagine as linhas de campo como "água escoando": o fluxo mede *quantas linhas atravessam uma superfície*.
+
+<Formula rotulo="Lei de Gauss">
+
+$$
+\Phi_E = \oint_S \vec E \cdot d\vec A = \frac{q_{int}}{\epsilon_0}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\Phi_E$ — fluxo elétrico através da superfície fechada (N·m²/C);
+- $\oint_S$ — integral sobre uma superfície **fechada** $S$ (a "gaussiana");
+- $d\vec A$ — vetorzinho de área, sempre **perpendicular** à superfície, apontando para fora;
+- $\vec E \cdot d\vec A$ — produto escalar: só conta a parte do campo que **atravessa** a superfície;
+- $q_{int}$ — carga total **dentro** da superfície (as de fora não entram!).
+
+</Caixa>
+
+Em palavras: **o fluxo total que sai de uma superfície fechada só depende da carga que está dentro dela** — não importa a forma da superfície nem onde a carga está lá dentro.
+
+<Caixa tipo="exemplo">
+
+Uma carga $q = 1\,\mu\mathrm{C}$ está dentro de uma caixa de sapato. Qual o fluxo elétrico total pelas paredes da caixa?
+
+$$
+\Phi_E = \frac{q_{int}}{\epsilon_0} = \frac{1\times10^{-6}}{8{,}85\times10^{-12}} \approx 1{,}13\times10^{5}\ \mathrm{N\,m^2/C}
+$$
+
+Não precisei saber nada da geometria da caixa — essa é a força da Lei de Gauss. Se a carga fosse negativa, o fluxo seria negativo (mais linhas **entrando** que saindo).
+
+</Caixa>
+
+### Como usar para calcular campo
+
+A estratégia: escolha uma **superfície gaussiana imaginária** que copie a simetria do problema, de modo que $E$ seja constante sobre ela e o produto escalar fique simples. Aí $\oint \vec E\cdot d\vec A = E\cdot(\text{área})$ e é só isolar $E$:
+
+- **Simetria esférica** (carga pontual, esfera): gaussiana = esfera de raio $r$ → $E \cdot 4\pi r^2 = q_{int}/\epsilon_0$;
+- **Simetria cilíndrica** (fio, cilindro longo): gaussiana = cilindro de raio $r$ e comprimento $L$ → $E \cdot 2\pi r L = q_{int}/\epsilon_0$;
+- **Simetria planar** (placa infinita): gaussiana = caixinha ("pillbox") atravessando a placa → $E \cdot 2A = \sigma A/\epsilon_0$.
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esfera carregada com superfície gaussiana">
+  <circle cx="100" cy="90" r="38" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+  <circle cx="100" cy="90" r="70" fill="none" stroke="var(--warn)" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <line x1="100" y1="90" x2="138" y2="90" stroke="var(--ink-3)" stroke-width="1.4"/>
+  <text x="115" y="84" font-size="11" fill="var(--ink-3)">R</text>
+  <line x1="100" y1="90" x2="149" y2="40" stroke="var(--warn)" stroke-width="1.4"/>
+  <text x="130" y="56" font-size="11" fill="var(--warn)">r</text>
+  <text x="66" y="96" font-size="11" fill="var(--accent)">carga Q</text>
+  <text x="120" y="170" font-size="10.5" fill="var(--warn)">gaussiana</text>
+  <g stroke="var(--accent)" stroke-width="1.8" fill="var(--accent)">
+  <line x1="170" y1="90" x2="192" y2="90"/><polygon points="196,90 187,86 187,94"/>
+  </g>
+  <text x="178" y="80" font-size="11" fill="var(--accent)">E</text>
+  </svg>
+  <figcaption>
+
+  A gaussiana (tracejada) copia a simetria: $E$ tem o mesmo valor em todos os pontos dela.
+
+  </figcaption>
+  </Figura>
+
+  <Figura>
+  <svg viewBox="0 0 230 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico do campo da esfera: cresce linear dentro, cai com 1 sobre r ao quadrado fora">
+  <line x1="35" y1="150" x2="215" y2="150" stroke="var(--ink-3)" stroke-width="1.3"/>
+  <line x1="35" y1="150" x2="35" y2="20" stroke="var(--ink-3)" stroke-width="1.3"/>
+  <text x="207" y="165" font-size="11" fill="var(--ink-3)">r</text>
+  <text x="20" y="30" font-size="11" fill="var(--ink-3)">E</text>
+  <line x1="95" y1="150" x2="95" y2="45" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="91" y="164" font-size="11" fill="var(--ink-2)">R</text>
+  <path d="M35,150 L95,45" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
+  <path d="M95,45 Q120,95 150,120 T210,140" fill="none" stroke="var(--warn)" stroke-width="2.4"/>
+  <text x="45" y="105" font-size="10.5" fill="var(--accent)">∝ r (dentro)</text>
+  <text x="135" y="105" font-size="10.5" fill="var(--warn)">∝ 1/r² (fora)</text>
+  </svg>
+  <figcaption>
+
+  O gráfico "montanha": máximo na superfície $r = R$.
+
+  </figcaption>
+  </Figura>
+</FigPar>
+
+<Formula rotulo="Esfera isolante uniformemente carregada (raio R, carga Q)">
+
+$$
+E_{dentro}(r) = \frac{k_0 Q\, r}{R^3} \;\; (r \le R) \qquad\qquad E_{fora}(r) = \frac{k_0 Q}{r^2} \;\;(r \ge R)
+$$
+
+</Formula>
+
+Por que dentro só vale $r$? Porque a gaussiana de raio $r \lt  R$ só envolve a **fração** da carga proporcional ao volume: $q_{int} = Q\,r^3/R^3$. Fora, envolve $Q$ inteira e a esfera se comporta como carga pontual.
+
+<Formula rotulo="Condutor em equilíbrio (campo na superfície)">
+
+$$
+E_{dentro} = 0 \qquad\qquad E_{superfície} = \frac{\sigma}{\epsilon_0}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- Num condutor toda a carga vai para a superfície e o campo interno é **zero**;
+- $E = \sigma/\epsilon_0$ — campo logo fora da superfície do condutor. Cuidado: é o **dobro** do plano isolante ($\sigma/2\epsilon_0$), porque no condutor toda a carga fica de um lado só.
+
+</Caixa>
+
+<Caixa tipo="macete">
+Dentro cresce linear com $r$, fora cai com $1/r^2$, com máximo na superfície — o gráfico "montanha" acima é figurinha repetida de prova. Para CONDUTOR, o campo interno é ZERO e toda a carga está na superfície.
+</Caixa>
+
+<Caixa tipo="dica">
+Questões conceituais tipo "cargas dentro de um avião" (Final 2025.1): o fluxo total é apenas $\sum q_{int}/\epsilon_0$, não importa a forma da superfície. Fluxo negativo significa mais linhas entrando do que saindo.
+</Caixa>
+
+</Topico>
+
+<Topico id="em-potencial" num="04" titulo="Potencial elétrico">
+
+### A ideia
+
+Força e campo são **vetores** — somar vetores dá trabalho. O **potencial elétrico** $V$ descreve a mesma física pelo lado da **energia**, e energia é um **escalar** (um número com sinal, sem direção). A analogia boa é **altitude**: assim como uma bola desce a ladeira do ponto alto para o baixo, uma carga positiva "desce" do potencial alto para o baixo. O campo $\vec E$ é a "inclinação da ladeira": aponta na direção em que $V$ cai mais rápido.
+
+<Formula rotulo="Relação entre potencial e campo">
+
+$$
+\Delta V = V_B - V_A = -\int_A^B \vec E \cdot d\vec \ell
+    \qquad\text{e, no sentido inverso,}\qquad
+    \vec E = -\nabla V = -\left(\frac{\partial V}{\partial x}, \frac{\partial V}{\partial y}, \frac{\partial V}{\partial z}\right)
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $V$ — potencial elétrico, em volts (V = J/C): energia por unidade de carga;
+- $\Delta V$ — diferença de potencial (d.d.p.) entre dois pontos;
+- $d\vec\ell$ — pedacinho do caminho de $A$ até $B$;
+- $\nabla V$ — gradiente: vetor das derivadas de $V$; o sinal de menos diz que $\vec E$ aponta "ladeira abaixo";
+- $U = qV$ — energia potencial de uma carga $q$ num ponto de potencial $V$, em joules (J).
+
+</Caixa>
+
+<Formula rotulo="Potencial de carga pontual (referência no infinito)">
+
+$$
+V = \frac{k_0\, q}{r} \qquad\qquad V_{total} = \sum_i \frac{k_0 q_i}{r_i} \;\;(\text{soma escalar, com sinal!})
+$$
+
+</Formula>
+
+Repare na diferença para o campo: aqui é $r$ (não $r^2$) e a soma de várias cargas é **soma comum de números** — carga negativa entra com sinal negativo, e pronto. Por isso, sempre que a questão permitir, resolva pela via do potencial.
+
+<Figura>
+  <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Equipotenciais concêntricas e linhas de campo radiais">
+    <circle cx="120" cy="100" r="30" fill="none" stroke="var(--ok)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <circle cx="120" cy="100" r="55" fill="none" stroke="var(--ok)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <circle cx="120" cy="100" r="80" fill="none" stroke="var(--ok)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <g stroke="var(--accent)" stroke-width="1.8" fill="var(--accent)">
+      <line x1="133" y1="100" x2="205" y2="100"/><polygon points="210,100 200,95 200,105"/>
+      <line x1="107" y1="100" x2="35" y2="100"/><polygon points="30,100 40,95 40,105"/>
+      <line x1="120" y1="87" x2="120" y2="15"/><polygon points="120,10 115,20 125,20"/>
+      <line x1="120" y1="113" x2="120" y2="185"/><polygon points="120,190 115,180 125,180"/>
+    </g>
+    <circle cx="120" cy="100" r="12" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+    <text x="120" y="105" font-size="13" text-anchor="middle" fill="var(--accent)">+</text>
+    <text x="152" y="80" font-size="10" fill="var(--ok)">V₁</text>
+    <text x="176" y="66" font-size="10" fill="var(--ok)">V₂</text>
+    <text x="200" y="52" font-size="10" fill="var(--ok)">V₃</text>
+    <text x="184" y="92" font-size="11" fill="var(--accent)">E</text>
+  </svg>
+  <figcaption>
+
+Equipotenciais (tracejadas, $V_1 \gt  V_2 \gt  V_3$): $\vec E$ é sempre **perpendicular** a elas, apontando do maior para o menor potencial.
+
+  </figcaption>
+</Figura>
+
+### Trabalho e energia potencial
+
+<Formula>
+
+$$
+U = \frac{k_0 q_1 q_2}{d} \qquad W_{campo} = -\Delta U = q\,(V_A - V_B)
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $U$ — energia potencial do par de cargas (J); sinal vem dos sinais das cargas;
+- $W_{campo}$ — trabalho que o campo elétrico realiza quando a carga vai de $A$ para $B$;
+- $V_A,\,V_B$ — potenciais no ponto de partida e de chegada.
+
+</Caixa>
+
+Para um sistema de várias cargas, $U_{total}$ é a soma de $k_0 q_i q_j / d_{ij}$ sobre **todos os pares**. Se uma carga é trazida do infinito em equilíbrio (velocidade constante), o trabalho do agente externo é $W_{ext} = q\,V_{final}$ e o do campo é $W_{campo} = -q\,V_{final}$.
+
+<Caixa tipo="exemplo">
+
+Qual o potencial a 30 cm de uma carga de $2\,\mu$C? E o trabalho para trazer uma carga de $1\,\mu$C do infinito até lá?
+
+$$
+V = \frac{9\times10^9 \cdot 2\times10^{-6}}{0{,}3} = 6\times10^4\ \mathrm{V}
+    \qquad\qquad W_{ext} = qV = (1\times10^{-6})(6\times10^4) = 0{,}06\ \mathrm{J}
+$$
+
+Nenhum vetor foi decomposto — potencial é escalar. Esse é o padrão da questão de "trabalho para montar/trazer cargas".
+
+</Caixa>
+
+**Superfícies equipotenciais** são perpendiculares às linhas de campo; mover carga sobre uma equipotencial não custa trabalho. Num condutor em equilíbrio, todo o volume é um equipotencial.
+
+<Caixa tipo="dica">
+Questão 3 do 1º EE 2025.2 é o modelo clássico: quatro cargas nos vértices de um quadrado, trabalho para trazer uma quinta carga até um ponto P. Receita: calcule $V(P) = \sum k_0 q_i / r_i$ (escalar, com sinais), depois $W = q\,V(P)$. Nada de vetores aqui!
+</Caixa>
+
+</Topico>
+
+<Topico id="em-capacitancia" num="05" titulo="Capacitância">
+
+### A ideia
+
+Um **capacitor** é um "tanque de carga": dois condutores separados (as placas), um com $+q$ e o outro com $-q$, mantendo entre si uma diferença de potencial $V$. A **capacitância** $C$ mede o tamanho desse tanque — quanta carga ele guarda *por volt* aplicado. Ela só depende da **geometria** (formato, área, distância) e do material entre as placas, nunca de $q$ ou $V$ individualmente.
+
+<Figura>
+  <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Capacitor de placas paralelas com campo uniforme entre elas">
+    <rect x="70" y="30" width="12" height="130" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+    <rect x="218" y="30" width="12" height="130" fill="var(--ok-soft)" stroke="var(--ok)" stroke-width="2"/>
+    <text x="76" y="22" font-size="12" text-anchor="middle" fill="var(--accent)">+q</text>
+    <text x="224" y="22" font-size="12" text-anchor="middle" fill="var(--ok)">−q</text>
+    <g stroke="var(--accent)" stroke-width="1.6" fill="var(--accent)">
+      <line x1="88" y1="55" x2="206" y2="55"/><polygon points="212,55 202,50 202,60"/>
+      <line x1="88" y1="95" x2="206" y2="95"/><polygon points="212,95 202,90 202,100"/>
+      <line x1="88" y1="135" x2="206" y2="135"/><polygon points="212,135 202,130 202,140"/>
+    </g>
+    <text x="142" y="85" font-size="11" fill="var(--accent)">E uniforme</text>
+    <g stroke="var(--ink-3)" stroke-width="1.2" fill="var(--ink-3)">
+      <line x1="76" y1="175" x2="224" y2="175"/>
+      <line x1="76" y1="170" x2="76" y2="180"/><line x1="224" y1="170" x2="224" y2="180"/>
+    </g>
+    <text x="146" y="188" font-size="11" fill="var(--ink-2)">d</text>
+    <text x="40" y="100" font-size="11" fill="var(--ink-2)">área A</text>
+  </svg>
+  <figcaption>
+
+Placas paralelas: campo praticamente uniforme entre elas, $V = E\,d$.
+
+  </figcaption>
+</Figura>
+
+<Formula rotulo="Capacitância e geometrias clássicas">
+
+$$
+C = \frac{q}{V} \;\;[\mathrm{F}] \qquad\qquad C_{placas} = \frac{\epsilon_0 A}{d} \qquad C_{esf} = 4\pi\epsilon_0\frac{ab}{b-a} \qquad C_{cil} = \frac{2\pi\epsilon_0 L}{\ln(b/a)}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $C$ — capacitância, em farads (F = C/V); na prática usa-se μF, nF, pF;
+- $q$ — módulo da carga em **cada** placa (C);
+- $V$ — diferença de potencial entre as placas (V);
+- $A$ — área de cada placa (m²); $d$ — distância entre elas (m);
+- $a,\,b$ — raios interno e externo (capacitores esférico e cilíndrico); $L$ — comprimento do cilindro.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Um capacitor de placas paralelas tem $A = 1\ \mathrm{cm^2} = 10^{-4}\ \mathrm{m^2}$ e $d = 1$ mm. Qual sua capacitância? Ligado a 10 V, quanta carga guarda?
+
+$$
+C = \frac{\epsilon_0 A}{d} = \frac{(8{,}85\times10^{-12})(10^{-4})}{10^{-3}} \approx 0{,}89\ \mathrm{pF}
+    \qquad\qquad q = CV = 8{,}9\times10^{-12}\ \mathrm{C}
+$$
+
+Note como o farad é uma unidade gigante — capacitores reais vivem nos "pico" e "micro".
+
+</Caixa>
+
+### Associações
+
+<Formula>
+
+$$
+\text{Paralelo (mesma d.d.p.): } C_{eq} = C_1 + C_2 + \cdots \qquad\quad
+      \text{Série (mesma carga): } \frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2} + \cdots
+$$
+
+</Formula>
+
+<Caixa tipo="macete">
+Capacitor soma no PARALELO e "inverte" na série — o CONTRÁRIO dos resistores. Em série todos os capacitores carregam a MESMA carga q; em paralelo, todos têm a MESMA tensão V.
+</Caixa>
+
+### Energia armazenada e dielétricos
+
+<Formula>
+
+$$
+U = \frac{q^2}{2C} = \frac{1}{2}CV^2 = \frac{1}{2}qV \qquad\qquad u = \frac{\epsilon_0 E^2}{2} \;(\text{densidade de energia do campo})
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $U$ — energia total armazenada no capacitor (J);
+- $u$ — energia por unidade de volume do campo elétrico (J/m³);
+- Use a versão de $U$ que tiver as duas grandezas que você conhece ($q$ e $C$, $C$ e $V$, ou $q$ e $V$).
+
+</Caixa>
+
+Inserir um **dielétrico** (isolante) de constante $\kappa$ multiplica a capacitância: $C = \kappa\, C_0$. O detalhe que decide a questão é o que fica constante:
+
+- Capacitor **desconectado** da bateria: $q$ constante → $V = q/C$ **cai**;
+- Capacitor **conectado** à bateria: $V$ constante → $q = CV$ **aumenta**.
+
+</Topico>
+
+<Topico id="em-corrente" num="06" titulo="Corrente e resistência elétrica">
+
+### A ideia
+
+Até aqui as cargas estavam paradas (eletrostática). Agora elas **fluem**: a **corrente elétrica** é a vazão de carga num fio, como litros por segundo numa mangueira. E todo material real oferece uma **resistência** a esse fluxo — os elétrons "trombam" na rede do material e dissipam energia (por isso fio esquenta).
+
+<Formula rotulo="Corrente e densidade de corrente">
+
+$$
+i = \frac{dq}{dt}\;[\mathrm{A}] \qquad\qquad J = \frac{i}{A} = n\,e\,v_d
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $i$ — corrente, em ampères (A = C/s): carga que passa por segundo;
+- $J$ — densidade de corrente (A/m²): corrente por área da seção do fio;
+- $n$ — número de portadores de carga por volume (m⁻³);
+- $e$ — carga elementar; $v_d$ — velocidade de deriva (a velocidade média minúscula, ~mm/s, com que os elétrons avançam).
+
+</Caixa>
+
+<Figura>
+  <svg viewBox="0 0 320 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Resistor cilíndrico de comprimento L e seção A">
+    <ellipse cx="70" cy="65" rx="16" ry="34" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+    <line x1="70" y1="31" x2="240" y2="31" stroke="var(--accent)" stroke-width="2"/>
+    <line x1="70" y1="99" x2="240" y2="99" stroke="var(--accent)" stroke-width="2"/>
+    <ellipse cx="240" cy="65" rx="16" ry="34" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <g stroke="var(--ok)" stroke-width="2.2" fill="var(--ok)">
+      <line x1="120" y1="65" x2="185" y2="65"/><polygon points="192,65 181,60 181,70"/>
+    </g>
+    <text x="148" y="56" font-size="12" fill="var(--ok)">i</text>
+    <g stroke="var(--ink-3)" stroke-width="1.2">
+      <line x1="70" y1="115" x2="240" y2="115"/>
+      <line x1="70" y1="110" x2="70" y2="120"/><line x1="240" y1="110" x2="240" y2="120"/>
+    </g>
+    <text x="150" y="128" font-size="11" fill="var(--ink-2)">L</text>
+    <text x="28" y="68" font-size="11" fill="var(--ink-2)">área A</text>
+    <text x="262" y="68" font-size="11" fill="var(--ink-2)">ρ do</text>
+    <text x="262" y="82" font-size="11" fill="var(--ink-2)">material</text>
+  </svg>
+  <figcaption>
+
+Fio mais **longo** resiste mais ($R \propto L$); fio mais **grosso** resiste menos ($R \propto 1/A$).
+
+  </figcaption>
+</Figura>
+
+<Formula rotulo="Lei de Ohm, resistência e resistividade">
+
+$$
+V = R\,i \qquad\qquad R = \rho\frac{L}{A} \qquad\qquad \rho(T) = \rho_0[1 + \alpha(T - T_0)]
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $V$ — tensão (d.d.p.) aplicada no resistor (V);
+- $R$ — resistência, em ohms (Ω): depende do material E da geometria;
+- $\rho$ — resistividade (Ω·m): propriedade só do material;
+- $L$ — comprimento do fio; $A$ — área da seção transversal;
+- $\alpha$ — coeficiente de temperatura: metais aquecidos resistem mais.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Um fio de cobre ($\rho = 1{,}7\times10^{-8}\ \Omega$·m) tem $L = 10$ m e seção $A = 1\ \mathrm{mm^2} = 10^{-6}\ \mathrm{m^2}$:
+
+$$
+R = \rho\frac{L}{A} = (1{,}7\times10^{-8})\cdot\frac{10}{10^{-6}} = 0{,}17\ \Omega
+$$
+
+Ligado a uma d.d.p. de 0,34 V, passa $i = V/R = 2$ A por ele.
+
+</Caixa>
+
+### Potência elétrica
+
+<Formula>
+
+$$
+P = V\,i = R\,i^2 = \frac{V^2}{R}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $P$ — potência dissipada em calor, em watts (W = J/s);
+- As três formas são a mesma coisa combinada com $V = Ri$ — escolha pela dupla que você conhece.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Um chuveiro de $R = 10\ \Omega$ ligado em 220 V dissipa $P = V^2/R = 220^2/10 = 4840$ W. É por isso que chuveiro esquenta: quase 5 kJ por segundo viram calor.
+
+</Caixa>
+
+<Caixa tipo="macete">
+Qual fórmula de potência usar? A que tiver as duas grandezas que você CONHECE do elemento. Resistores em série: mesma corrente $\Rightarrow$ maior R dissipa mais. Em paralelo: mesma tensão $\Rightarrow$ menor R dissipa mais.
+</Caixa>
+
+</Topico>
+
+<Topico id="em-circuitos" num="07" titulo="Circuitos de corrente contínua">
+
+### A ideia
+
+Um circuito é um caminho fechado por onde a corrente circula, empurrada por uma fonte de **força eletromotriz** $\varepsilon$ (a "bomba d'água" do circuito — uma bateria, por exemplo). Resolver um circuito é descobrir a corrente e a tensão em cada elemento. As ferramentas: associação de resistores e as duas Leis de Kirchhoff.
+
+### Associação de resistores
+
+<Formula>
+
+$$
+\text{Série: } R_{eq} = R_1 + R_2 + \cdots \qquad\qquad \text{Paralelo: } \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots
+$$
+
+</Formula>
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois resistores em série">
+  <line x1="20" y1="55" x2="60" y2="55" stroke="var(--ink-2)" stroke-width="2"/>
+  <path d="M60,55 l6,-12 l10,24 l10,-24 l10,24 l6,-12" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <line x1="102" y1="55" x2="150" y2="55" stroke="var(--ink-2)" stroke-width="2"/>
+  <path d="M150,55 l6,-12 l10,24 l10,-24 l10,24 l6,-12" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <line x1="192" y1="55" x2="240" y2="55" stroke="var(--ink-2)" stroke-width="2"/>
+  <text x="80" y="30" font-size="12" fill="var(--ink-2)">R₁</text>
+  <text x="170" y="30" font-size="12" fill="var(--ink-2)">R₂</text>
+  <g stroke="var(--ok)" stroke-width="2" fill="var(--ok)">
+  <line x1="112" y1="80" x2="136" y2="80"/><polygon points="142,80 132,75 132,85"/>
+  </g>
+  <text x="118" y="100" font-size="11" fill="var(--ok)">mesma i</text>
+  </svg>
+  <figcaption>
+
+  **Série:** mesma corrente; as tensões se dividem.
+
+  </figcaption>
+  </Figura>
+
+  <Figura>
+  <svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois resistores em paralelo">
+  <line x1="30" y1="65" x2="70" y2="65" stroke="var(--ink-2)" stroke-width="2"/>
+  <line x1="70" y1="25" x2="70" y2="105" stroke="var(--ink-2)" stroke-width="2"/>
+  <path d="M70,25 h30 l6,-10 l10,20 l10,-20 l10,20 l6,-10 h30" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <path d="M70,105 h30 l6,-10 l10,20 l10,-20 l10,20 l6,-10 h30" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <line x1="172" y1="25" x2="172" y2="105" stroke="var(--ink-2)" stroke-width="2"/>
+  <line x1="172" y1="65" x2="212" y2="65" stroke="var(--ink-2)" stroke-width="2"/>
+  <text x="118" y="12" font-size="12" fill="var(--ink-2)">R₁</text>
+  <text x="118" y="128" font-size="12" fill="var(--ink-2)">R₂</text>
+  <text x="222" y="69" font-size="11" fill="var(--ok)">mesma V</text>
+  </svg>
+  <figcaption>
+
+  **Paralelo:** mesma tensão; as correntes se dividem.
+
+  </figcaption>
+  </Figura>
+</FigPar>
+
+### Leis de Kirchhoff
+
+- **Lei dos nós:** a soma das correntes que entram num nó é igual à soma das que saem — a carga não some nem se acumula (conservação de carga);
+- **Lei das malhas:** dando uma volta completa em qualquer malha fechada, a soma das variações de potencial é zero — voltar ao mesmo ponto é voltar ao mesmo potencial (conservação de energia).
+
+Convenções ao percorrer a malha: atravessar resistor **no sentido da corrente** $\Rightarrow -Ri$ (potencial cai); contra a corrente $\Rightarrow +Ri$; atravessar fonte do terminal − para o + $\Rightarrow +\varepsilon$.
+
+<Caixa tipo="exemplo">
+
+Fonte de $\varepsilon = 12$ V com $R_1 = 4\ \Omega$ e $R_2 = 2\ \Omega$ em série: $R_{eq} = 6\ \Omega$, então $i = 12/6 = 2$ A. As tensões: $V_1 = 4\cdot2 = 8$ V e $V_2 = 2\cdot2 = 4$ V. Confere: $8 + 4 = 12$ V — a malha "fecha". ✓
+
+</Caixa>
+
+<Caixa tipo="dica">
+Questões tipo "dado $i_6$, ache a fem" (1º EE 2025.2): trabalhe DE TRÁS PARA FRENTE. Ache a tensão no resistor conhecido, propague pelos paralelos (mesma tensão) e séries (mesma corrente) até chegar à fonte. É conta de padaria bem organizada — organize numa tabela $R$, $i$, $V$ por resistor.
+</Caixa>
+
+### Circuito RC
+
+Ligue um resistor e um capacitor em série com uma fonte: o capacitor não carrega instantaneamente — a carga sobe numa curva exponencial cujo "relógio" é a constante de tempo $\tau = RC$:
+
+<Formula rotulo="Carga e descarga do capacitor (constante de tempo τ = RC)">
+
+$$
+q(t) = C\varepsilon\left(1 - e^{-t/RC}\right) \;\;(\text{carga}) \qquad\qquad q(t) = q_0\, e^{-t/RC} \;\;(\text{descarga})
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\tau = RC$ — constante de tempo (s): em $t = \tau$, o capacitor atinge ~63% da carga final;
+- $C\varepsilon$ — carga máxima (quando totalmente carregado);
+- $q_0$ — carga inicial na descarga.
+
+</Caixa>
+
+Os dois extremos que resolvem quase toda questão conceitual: no instante inicial o capacitor descarregado age como **fio** (curto-circuito); após muito tempo, age como **chave aberta** (corrente zero no seu ramo).
+
+</Topico>
+
+<Topico id="em-magnetico" num="08" titulo="Campos magnéticos e força magnética">
+
+### A ideia
+
+O campo magnético $\vec B$ é o "primo" do campo elétrico, mas com uma personalidade bem diferente: ele só faz força em carga **em movimento**, e essa força é sempre **perpendicular** à velocidade e ao próprio campo (é um produto vetorial). Aqui a visão espacial é tudo — por isso as provas usam os símbolos **⊙** (vetor **saindo** do papel, como a ponta de uma flecha vindo em você) e **⊗** (vetor **entrando** no papel, como o rabo da flecha).
+
+<Formula rotulo="Força magnética sobre carga e sobre corrente">
+
+$$
+\vec F = q\,\vec v \times \vec B \qquad\qquad \vec F = i\,\vec L \times \vec B \qquad (F = qvB\sin\theta,\;\; F = BiL\sin\theta)
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\vec B$ — campo magnético, em teslas (T);
+- $q$ — carga da partícula (C); $\vec v$ — velocidade dela (m/s);
+- $i$ — corrente no fio (A); $\vec L$ — vetor do comprimento do fio, no sentido da corrente (m);
+- $\theta$ — ângulo entre $\vec v$ (ou $\vec L$) e $\vec B$: força máxima a 90°, nula quando paralelos;
+- $\times$ — produto vetorial: o resultado é perpendicular aos dois vetores (regra da mão direita).
+
+</Caixa>
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 240 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carga positiva com velocidade para a direita em campo entrando na página sofre força para cima">
+  <g fill="none" stroke="var(--ink-3)" stroke-width="1.4">
+  <circle cx="40" cy="40" r="7"/><circle cx="110" cy="40" r="7"/><circle cx="180" cy="40" r="7"/>
+  <circle cx="40" cy="110" r="7"/><circle cx="180" cy="110" r="7"/>
+  <circle cx="40" cy="165" r="7"/><circle cx="110" cy="165" r="7"/><circle cx="180" cy="165" r="7"/>
+  </g>
+  <g stroke="var(--ink-3)" stroke-width="1.4">
+  <line x1="35" y1="35" x2="45" y2="45"/><line x1="45" y1="35" x2="35" y2="45"/>
+  <line x1="105" y1="35" x2="115" y2="45"/><line x1="115" y1="35" x2="105" y2="45"/>
+  <line x1="175" y1="35" x2="185" y2="45"/><line x1="185" y1="35" x2="175" y2="45"/>
+  <line x1="35" y1="105" x2="45" y2="115"/><line x1="45" y1="105" x2="35" y2="115"/>
+  <line x1="175" y1="105" x2="185" y2="115"/><line x1="185" y1="105" x2="175" y2="115"/>
+  <line x1="35" y1="160" x2="45" y2="170"/><line x1="45" y1="160" x2="35" y2="170"/>
+  <line x1="105" y1="160" x2="115" y2="170"/><line x1="115" y1="160" x2="105" y2="170"/>
+  <line x1="175" y1="160" x2="185" y2="170"/><line x1="185" y1="160" x2="175" y2="170"/>
+  </g>
+  <text x="205" y="180" font-size="11" fill="var(--ink-3)">B ⊗</text>
+  <circle cx="110" cy="110" r="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="110" y="114" font-size="11" text-anchor="middle" fill="var(--accent)">+</text>
+  <g stroke="var(--ok)" stroke-width="2.4" fill="var(--ok)">
+  <line x1="122" y1="110" x2="160" y2="110"/><polygon points="166,110 156,105 156,115"/>
+  </g>
+  <text x="146" y="126" font-size="12" fill="var(--ok)">v</text>
+  <g stroke="var(--warn)" stroke-width="2.4" fill="var(--warn)">
+  <line x1="110" y1="98" x2="110" y2="66"/><polygon points="110,60 105,70 115,70"/>
+  </g>
+  <text x="120" y="72" font-size="12" fill="var(--warn)">F</text>
+  </svg>
+  <figcaption>
+
+  $\vec B$ entrando (⊗), $\vec v$ para a direita → $\vec F = q\vec v\times\vec B$ para **cima** (carga +).
+
+  </figcaption>
+  </Figura>
+
+  <Figura>
+  <svg viewBox="0 0 220 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Movimento circular de carga em campo magnético">
+  <circle cx="110" cy="100" r="58" fill="none" stroke="var(--line-2)" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <circle cx="168" cy="100" r="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="168" y="104" font-size="10" text-anchor="middle" fill="var(--accent)">+</text>
+  <g stroke="var(--ok)" stroke-width="2.2" fill="var(--ok)">
+  <line x1="168" y1="88" x2="168" y2="56"/><polygon points="168,50 163,60 173,60"/>
+  </g>
+  <text x="176" y="62" font-size="11" fill="var(--ok)">v</text>
+  <g stroke="var(--warn)" stroke-width="2.2" fill="var(--warn)">
+  <line x1="156" y1="100" x2="128" y2="100"/><polygon points="122,100 132,95 132,105"/>
+  </g>
+  <text x="132" y="90" font-size="11" fill="var(--warn)">F</text>
+  <line x1="110" y1="100" x2="152" y2="142" stroke="var(--ink-3)" stroke-width="1.2"/>
+  <text x="124" y="132" font-size="11" fill="var(--ink-3)">r</text>
+  <text x="30" y="30" font-size="11" fill="var(--ink-3)">B ⊙ (saindo)</text>
+  </svg>
+  <figcaption>
+
+  Força sempre ⊥ à velocidade → trajetória **circular** de raio $r = mv/|q|B$.
+
+  </figcaption>
+  </Figura>
+</FigPar>
+
+Como a força é sempre perpendicular ao movimento, ela **não realiza trabalho**: não muda o módulo da velocidade, só a direção. Resultado: a partícula descreve um **círculo**.
+
+<Formula rotulo="Movimento circular no campo">
+
+$$
+r = \frac{mv}{|q|B} \qquad\qquad \omega = \frac{|q|B}{m} \;(\text{frequência de cíclotron, independe de } v)
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $r$ — raio da órbita (m); $m$ — massa da partícula (kg);
+- $\omega$ — velocidade angular (rad/s): note que $v$ cancelou — partícula rápida faz círculo maior no mesmo tempo.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Um próton ($m = 1{,}67\times10^{-27}$ kg, $q = 1{,}6\times10^{-19}$ C) entra com $v = 10^6$ m/s perpendicular a um campo $B = 0{,}5$ T:
+
+$$
+F = qvB = (1{,}6\times10^{-19})(10^6)(0{,}5) = 8\times10^{-14}\ \mathrm{N}
+    \qquad r = \frac{mv}{qB} = \frac{(1{,}67\times10^{-27})(10^6)}{(1{,}6\times10^{-19})(0{,}5)} \approx 2{,}1\ \mathrm{cm}
+$$
+
+</Caixa>
+
+### Espira de corrente: torque e momento de dipolo
+
+<Formula>
+
+$$
+\mu = N\,i\,A \qquad\qquad \vec\tau = \vec\mu \times \vec B \qquad\qquad U = -\vec\mu\cdot\vec B
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\mu$ — momento de dipolo magnético (A·m²); direção pela mão direita: dedos no sentido da corrente, polegar dá $\vec\mu$;
+- $N$ — número de voltas da bobina; $A$ — área da espira (m²);
+- $\vec\tau$ — torque que tende a alinhar $\vec\mu$ com $\vec B$ (é o princípio do motor elétrico);
+- $U$ — energia de orientação: mínima quando $\vec\mu \parallel \vec B$.
+
+</Caixa>
+
+O **efeito Hall** permite medir o sinal e a densidade dos portadores: o campo empurra portadores para um lado da fita, criando a tensão Hall $V_H = B i /(n e t)$.
+
+<Caixa tipo="macete">
+Regra da mão direita "tapa": dedos apontam $\vec v$, dobram para $\vec B$, o polegar (ou a palma empurrando) dá $\vec F$ para carga positiva. Para carga NEGATIVA, inverta o resultado. Treine com os símbolos ⊙ (saindo do papel) e ⊗ (entrando no papel) — as provas usam esses símbolos o tempo todo.
+</Caixa>
+
+</Topico>
+
+<Topico id="em-fontes" num="09" titulo="Fontes de campo magnético: Biot-Savart e Ampère">
+
+### A ideia
+
+Se campo magnético faz força em corrente, quem *cria* campo magnético? Resposta: **a própria corrente**. Todo fio percorrido por corrente gera ao seu redor um campo $\vec B$ que circula em **anéis** em torno do fio. O sentido vem da **regra da mão direita**: polegar no sentido da corrente, os dedos se curvam no sentido de $\vec B$.
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corrente saindo da página gera campo anti-horário">
+  <circle cx="100" cy="80" r="55" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <circle cx="100" cy="80" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/>
+  <circle cx="100" cy="80" r="2.5" fill="var(--ink)"/>
+  <g stroke="var(--accent)" stroke-width="2" fill="var(--accent)">
+  <path d="M155,80 a55,55 0 0,0 -8,-30" fill="none"/>
+  <polygon points="155,80 150,72 160,73"/>
+  <path d="M45,80 a55,55 0 0,0 8,30" fill="none"/>
+  <polygon points="45,80 40,88 50,87"/>
+  </g>
+  <text x="112" y="78" font-size="12" fill="var(--ink-2)">i ⊙</text>
+  <text x="150" y="30" font-size="11" fill="var(--accent)">B</text>
+  </svg>
+  <figcaption>
+
+  Corrente **saindo** da página (⊙): $\vec B$ gira **anti-horário**.
+
+  </figcaption>
+  </Figura>
+
+  <Figura>
+  <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corrente entrando na página gera campo horário">
+  <circle cx="100" cy="80" r="55" fill="none" stroke="var(--warn)" stroke-width="2"/>
+  <circle cx="100" cy="80" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/>
+  <line x1="94" y1="74" x2="106" y2="86" stroke="var(--ink)" stroke-width="2"/>
+  <line x1="106" y1="74" x2="94" y2="86" stroke="var(--ink)" stroke-width="2"/>
+  <g stroke="var(--warn)" stroke-width="2" fill="var(--warn)">
+  <path d="M155,80 a55,55 0 0,1 -8,30" fill="none"/>
+  <polygon points="155,80 150,88 160,87"/>
+  <path d="M45,80 a55,55 0 0,1 8,-30" fill="none"/>
+  <polygon points="45,80 40,72 50,73"/>
+  </g>
+  <text x="112" y="78" font-size="12" fill="var(--ink-2)">i ⊗</text>
+  <text x="150" y="140" font-size="11" fill="var(--warn)">B</text>
+  </svg>
+  <figcaption>
+
+  Corrente **entrando** na página (⊗): $\vec B$ gira **horário**.
+
+  </figcaption>
+  </Figura>
+</FigPar>
+
+### Lei de Biot-Savart
+
+É a "Lei de Coulomb do magnetismo": diz o campo que cada pedacinho de fio gera, para depois integrar:
+
+<Formula>
+
+$$
+d\vec B = \frac{\mu_0\, i}{4\pi} \frac{d\vec s \times \hat r}{r^2}, \qquad \mu_0 = 4\pi\times10^{-7}\;\mathrm{T\,m/A}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $d\vec B$ — pedacinho de campo gerado por um pedacinho do fio;
+- $d\vec s$ — elemento de comprimento do fio, no sentido da corrente;
+- $\hat r$ — versor (vetor unitário) do elemento de fio até o ponto onde se quer o campo;
+- $r$ — distância do elemento até o ponto;
+- $\mu_0$ — permeabilidade magnética do vácuo (o "$\epsilon_0$ do magnetismo").
+
+</Caixa>
+
+Roteiro da demonstração pedida na 2ª EE 2025.2 (fio finito/infinito): escreva $|d\vec s \times \hat r| = dx\sin\theta$, use $r^2 = x^2 + a^2$ e $\sin\theta = a/\sqrt{x^2+a^2}$, e integre com $\displaystyle\int\frac{dx}{(x^2+a^2)^{3/2}} = \frac{x}{a^2\sqrt{x^2+a^2}}$.
+
+<Formula rotulo="Resultados que valem ouro">
+
+$$
+\text{Fio infinito: } B = \frac{\mu_0 i}{2\pi a} \qquad
+      \text{Centro de espira: } B = \frac{\mu_0 i}{2R} \qquad
+      \text{Arco de ângulo } \phi: B = \frac{\mu_0 i \phi}{4\pi R}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $a$ — distância do ponto ao fio (m); $R$ — raio da espira/arco;
+- $\phi$ — ângulo do arco **em radianos** (o arco completo $2\pi$ recupera a espira).
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Um fio reto muito longo conduz $i = 10$ A. O campo a $a = 5$ cm dele:
+
+$$
+B = \frac{\mu_0 i}{2\pi a} = \frac{(4\pi\times10^{-7})(10)}{2\pi(0{,}05)} = \frac{(2\times10^{-7})(10)}{0{,}05} = 4\times10^{-5}\ \mathrm{T}
+$$
+
+Atalho que agiliza a prova: $\mu_0/2\pi = 2\times10^{-7}$ em unidades do SI.
+
+</Caixa>
+
+### Força entre fios paralelos
+
+Junte as duas ideias: o fio 1 cria campo onde está o fio 2, e esse campo faz força na corrente do fio 2:
+
+<Formula>
+
+$$
+\frac{F}{L} = \frac{\mu_0\, i_1 i_2}{2\pi d} \qquad \text{correntes no mesmo sentido se ATRAEM; opostas se repelem}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $F/L$ — força por metro de fio (N/m);
+- $i_1,\,i_2$ — as duas correntes (A); $d$ — distância entre os fios (m).
+
+</Caixa>
+
+### Lei de Ampère
+
+É a "Lei de Gauss do magnetismo": em problemas com simetria cilíndrica, a circulação de $\vec B$ ao longo de uma curva fechada (a **amperiana**) só depende da corrente que passa por dentro dela:
+
+<Formula>
+
+$$
+\oint \vec B \cdot d\vec \ell = \mu_0\, i_{env}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\oint$ — integral ao longo de uma **curva fechada** (geralmente um círculo de raio $r$);
+- $d\vec\ell$ — pedacinho da curva;
+- $i_{env}$ — corrente total que **atravessa** a área delimitada pela curva;
+- Com amperiana circular e simetria: $\oint \vec B\cdot d\vec\ell = B\cdot 2\pi r$.
+
+</Caixa>
+
+Para fio grosso de raio $a$ com corrente uniforme (questão clássica), a amperiana interna só envolve a fração de corrente proporcional à área:
+
+<Formula>
+
+$$
+B_{dentro}(r) = \frac{\mu_0 i_0\, r}{2\pi a^2} \;\;(r \le a) \qquad\qquad B_{fora}(r) = \frac{\mu_0 i_0}{2\pi r} \;\;(r \ge a)
+$$
+
+</Formula>
+
+<Figura>
+  <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico do campo magnético de fio grosso: cresce linear dentro, cai com 1 sobre r fora">
+    <line x1="35" y1="150" x2="225" y2="150" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <line x1="35" y1="150" x2="35" y2="20" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <text x="217" y="165" font-size="11" fill="var(--ink-3)">r</text>
+    <text x="20" y="30" font-size="11" fill="var(--ink-3)">B</text>
+    <line x1="100" y1="150" x2="100" y2="45" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="96" y="164" font-size="11" fill="var(--ink-2)">a</text>
+    <path d="M35,150 L100,45" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
+    <path d="M100,45 Q130,95 160,115 T220,138" fill="none" stroke="var(--warn)" stroke-width="2.4"/>
+    <text x="42" y="100" font-size="10.5" fill="var(--accent)">∝ r (dentro)</text>
+    <text x="145" y="95" font-size="10.5" fill="var(--warn)">∝ 1/r (fora)</text>
+  </svg>
+  <figcaption>
+
+Mesma "montanha" da esfera de Gauss, com máximo em $r = a$.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="macete">
+A fração de corrente envolvida vem da razão de áreas: $i_{env} = i_0\, r^2/a^2$. Solenoide ideal: $B = \mu_0 n i$ dentro, zero fora ($n$ = voltas por metro); toroide: $B = \mu_0 N i / (2\pi r)$.
+</Caixa>
+
+</Topico>
+
+<Topico id="em-inducao" num="10" titulo="Indução: Lei de Faraday e Lei de Lenz">
+
+### A ideia
+
+Até agora: carga cria $\vec E$, corrente cria $\vec B$. Faraday descobriu o caminho de volta: **campo magnético VARIANDO cria corrente**. Se o **fluxo magnético** que atravessa uma espira mudar com o tempo — porque $B$ mudou, a área mudou, ou a espira girou — aparece nela uma **força eletromotriz induzida** $\mathcal{E}$, como se uma bateria invisível tivesse sido ligada. É o princípio do gerador, do transformador e do carregador sem fio.
+
+<Formula rotulo="Fluxo magnético e Lei de Faraday">
+
+$$
+\Phi_B = \int \vec B \cdot d\vec A \qquad\qquad \mathcal{E} = -\frac{d\Phi_B}{dt} \qquad (\text{com } N \text{ espiras: } \mathcal{E} = -N\frac{d\Phi_B}{dt})
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\Phi_B$ — fluxo magnético, em webers (Wb = T·m²): "quantas linhas de $\vec B$ atravessam a espira";
+- $d\vec A$ — vetor de área da espira (perpendicular ao plano dela);
+- $\mathcal{E}$ — fem induzida, em volts;
+- $N$ — número de voltas da bobina (cada volta "sente" a variação);
+- O sinal de menos é a Lei de Lenz (abaixo). A corrente induzida é $i = |\mathcal{E}|/R$.
+
+</Caixa>
+
+Se $\vec B$ é uniforme e faz ângulo $\theta$ com a normal da espira: $\Phi_B = B\,A\cos\theta$. Três jeitos de variar o fluxo = três tipos de questão: mudar $B(t)$, mudar a área (barra deslizando) ou girar a espira (gerador).
+
+### Lei de Lenz (o sinal de menos)
+
+A natureza "não gosta" de variação de fluxo: a corrente induzida circula no sentido que cria um campo **oposto à variação** — se o fluxo está caindo, ela tenta "segurá-lo"; se está crescendo, ela tenta "frear". Receita visual: (1) qual o sentido de $\vec B$ na espira? (2) o fluxo está aumentando ou diminuindo? (3) a corrente induzida cria campo para compensar — sentido pela mão direita.
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 230 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Espira em campo entrando na página que diminui: corrente induzida horária">
+  <g stroke="var(--ink-3)" stroke-width="1.3">
+  <line x1="60" y1="55" x2="70" y2="65"/><line x1="70" y1="55" x2="60" y2="65"/>
+  <line x1="115" y1="55" x2="125" y2="65"/><line x1="125" y1="55" x2="115" y2="65"/>
+  <line x1="170" y1="55" x2="180" y2="65"/><line x1="180" y1="55" x2="170" y2="65"/>
+  <line x1="60" y1="110" x2="70" y2="120"/><line x1="70" y1="110" x2="60" y2="120"/>
+  <line x1="115" y1="110" x2="125" y2="120"/><line x1="125" y1="110" x2="115" y2="120"/>
+  <line x1="170" y1="110" x2="180" y2="120"/><line x1="180" y1="110" x2="170" y2="120"/>
+  </g>
+  <circle cx="120" cy="90" r="62" fill="none" stroke="var(--warn)" stroke-width="2.6"/>
+  <g stroke="var(--warn)" stroke-width="2.6" fill="var(--warn)">
+  <polygon points="182,86 176,97 188,97"/>
+  </g>
+  <text x="192" y="80" font-size="11" fill="var(--warn)">i induzida</text>
+  <text x="20" y="26" font-size="11" fill="var(--ink-3)">B ⊗ diminuindo</text>
+  <text x="86" y="165" font-size="10.5" fill="var(--ink-2)">i horária "segura" o fluxo</text>
+  </svg>
+  <figcaption>
+
+  $B$ entrando e **diminuindo** → a corrente induzida gira no sentido **horário** para repor o fluxo que está sumindo.
+
+  </figcaption>
+  </Figura>
+
+  <Figura>
+  <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Barra condutora deslizando sobre trilhos em campo magnético">
+  <line x1="30" y1="45" x2="230" y2="45" stroke="var(--ink-2)" stroke-width="2.4"/>
+  <line x1="30" y1="135" x2="230" y2="135" stroke="var(--ink-2)" stroke-width="2.4"/>
+  <line x1="30" y1="45" x2="30" y2="135" stroke="var(--ink-2)" stroke-width="2.4"/>
+  <rect x="146" y="40" width="9" height="100" rx="3" fill="var(--accent)" stroke="none"/>
+  <g stroke="var(--ok)" stroke-width="2.4" fill="var(--ok)">
+  <line x1="162" y1="90" x2="200" y2="90"/><polygon points="206,90 196,85 196,95"/>
+  </g>
+  <text x="184" y="80" font-size="12" fill="var(--ok)">v</text>
+  <g stroke="var(--ink-3)" stroke-width="1.3">
+  <line x1="60" y1="70" x2="70" y2="80"/><line x1="70" y1="70" x2="60" y2="80"/>
+  <line x1="100" y1="70" x2="110" y2="80"/><line x1="110" y1="70" x2="100" y2="80"/>
+  <line x1="60" y1="105" x2="70" y2="115"/><line x1="70" y1="105" x2="60" y2="115"/>
+  <line x1="100" y1="105" x2="110" y2="115"/><line x1="110" y1="105" x2="100" y2="115"/>
+  </g>
+  <text x="52" y="34" font-size="11" fill="var(--ink-3)">B ⊗</text>
+  <text x="60" y="160" font-size="11" fill="var(--ink-2)">ℓ = distância entre trilhos</text>
+  </svg>
+  <figcaption>
+
+  Barra deslizando: a área do circuito cresce → fem $\mathcal{E} = B\ell v$.
+
+  </figcaption>
+  </Figura>
+</FigPar>
+
+<Caixa tipo="exemplo">
+
+Uma espira de área $A = 0{,}01\ \mathrm{m^2}$ e resistência $R = 0{,}1\ \Omega$ está num campo perpendicular que cai de $0{,}5$ T a zero em $0{,}1$ s (taxa constante):
+
+$$
+|\mathcal{E}| = \frac{\Delta\Phi_B}{\Delta t} = \frac{(0{,}5)(0{,}01)}{0{,}1} = 0{,}05\ \mathrm{V}
+    \qquad\qquad i = \frac{|\mathcal{E}|}{R} = 0{,}5\ \mathrm{A}
+$$
+
+O sentido vem da Lei de Lenz: o fluxo está diminuindo, então a corrente circula de modo a **manter** o campo original dentro da espira.
+
+</Caixa>
+
+### Fem de movimento e campo elétrico induzido
+
+<Formula>
+
+$$
+\mathcal{E} = B\ell v \;\;(\text{barra deslizando}) \qquad\qquad \oint \vec E \cdot d\vec\ell = -\frac{d\Phi_B}{dt} \;(\text{E induzido, não conservativo})
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\ell$ — comprimento da barra (distância entre os trilhos);
+- $v$ — velocidade da barra;
+- A segunda equação diz que fluxo variável cria um campo elétrico que **circula** — é a Faraday na forma "de campo".
+
+</Caixa>
+
+<Caixa tipo="dica">
+Questão padrão das provas (2ª EE 2025.2 e Final 2025.1): campo não uniforme $B(x,t)$ sobre espira retangular. Receita: (1) fatie a espira em tiras $dA = a\,dx$; (2) $\Phi = \int B\, dA$ integrando em x; (3) $\mathcal{E} = -d\Phi/dt$; (4) sentido pela Lei de Lenz; (5) se pedirem energia dissipada: $P = \mathcal{E}^2/R$ e $E = \int_0^t P\,dt$.
+</Caixa>
+
+</Topico>
+
+<Topico id="em-indutancia" num="11" titulo="Indutância e circuitos RL">
+
+### A ideia
+
+Uma bobina percorrida por corrente cria campo que atravessa *ela mesma*. Se a corrente varia, o fluxo próprio varia — e, por Faraday, a bobina induz fem **em si mesma**, sempre se opondo à mudança. Esse "efeito inércia" da corrente é a **autoindutância** $L$: o indutor é para a corrente o que a massa é para a velocidade — resiste a variações bruscas.
+
+<Formula rotulo="Indutância e fem auto-induzida">
+
+$$
+L = \frac{N\Phi_B}{i}\;[\mathrm{H}] \qquad\qquad \mathcal{E}_L = -L\frac{di}{dt} \qquad\qquad L_{solenoide} = \mu_0 n^2 A \ell
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $L$ — indutância, em henrys (H): só depende da geometria da bobina;
+- $N\Phi_B$ — fluxo total concatenado (fluxo × número de voltas);
+- $\mathcal{E}_L$ — fem autoinduzida: aparece só quando $di/dt \ne 0$;
+- $n$ — voltas por metro do solenoide; $A$ — área da seção; $\ell$ — comprimento.
+
+</Caixa>
+
+### Circuito RL
+
+Ligue fonte + resistor + indutor em série: a corrente não salta para o valor final — ela **cresce suavemente**, freada pelo indutor, com constante de tempo $\tau_L = L/R$:
+
+<Formula rotulo="Crescimento e decaimento da corrente (τ = L/R)">
+
+$$
+i(t) = \frac{\varepsilon}{R}\left(1 - e^{-t/\tau_L}\right) \qquad\qquad i(t) = i_0\, e^{-t/\tau_L} \qquad \tau_L = \frac{L}{R}
+$$
+
+</Formula>
+
+<FigPar>
+  <Figura>
+  <svg viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circuito RL série com fonte">
+  <rect x="30" y="30" width="200" height="90" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+  <line x1="52" y1="20" x2="52" y2="42" stroke="var(--surface-2)" stroke-width="6"/>
+  <line x1="44" y1="30" x2="60" y2="30" stroke="var(--ink-2)" stroke-width="2.6"/>
+  <line x1="47" y1="37" x2="57" y2="37" stroke="var(--ink-2)" stroke-width="2"/>
+  <text x="34" y="20" font-size="12" fill="var(--ink-2)">ε</text>
+  <path d="M105,30 l5,-9 l8,18 l8,-18 l8,18 l5,-9" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <text x="118" y="12" font-size="12" fill="var(--accent)">R</text>
+  <path d="M160,120 a8,10 0 0,1 16,0 a8,10 0 0,1 16,0 a8,10 0 0,1 16,0" fill="none" stroke="var(--warn)" stroke-width="2"/>
+  <text x="180" y="145" font-size="12" fill="var(--warn)">L</text>
+  <g stroke="var(--ok)" stroke-width="2" fill="var(--ok)">
+  <line x1="70" y1="120" x2="96" y2="120"/><polygon points="102,120 92,115 92,125"/>
+  </g>
+  <text x="76" y="110" font-size="11" fill="var(--ok)">i(t)</text>
+  </svg>
+  <figcaption>
+
+  Circuito RL série.
+
+  </figcaption>
+  </Figura>
+
+  <Figura>
+  <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curva de crescimento da corrente no RL">
+  <line x1="35" y1="130" x2="245" y2="130" stroke="var(--ink-3)" stroke-width="1.3"/>
+  <line x1="35" y1="130" x2="35" y2="20" stroke="var(--ink-3)" stroke-width="1.3"/>
+  <text x="237" y="145" font-size="11" fill="var(--ink-3)">t</text>
+  <text x="18" y="30" font-size="11" fill="var(--ink-3)">i</text>
+  <line x1="35" y1="40" x2="245" y2="40" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="180" y="34" font-size="10.5" fill="var(--ink-2)">i final = ε/R</text>
+  <path d="M35,130 C75,55 115,45 235,41" fill="none" stroke="var(--ok)" stroke-width="2.4"/>
+  <line x1="95" y1="130" x2="95" y2="72" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="88" y="145" font-size="10.5" fill="var(--ink-2)">τ = L/R</text>
+  <text x="102" y="90" font-size="10" fill="var(--ink-2)">63%</text>
+  </svg>
+  <figcaption>
+
+  Em $t = \tau$ a corrente já atingiu ~63% do valor final.
+
+  </figcaption>
+  </Figura>
+</FigPar>
+
+Os dois extremos para resolver questões conceituais: em $t = 0$ o indutor bloqueia a variação e age como **chave aberta** (corrente nula, toda a fem cai nele: $V_L = \varepsilon$). Após muito tempo, age como **fio** e $i = \varepsilon/R$. Compare com o capacitor — é o comportamento *invertido*.
+
+<Caixa tipo="exemplo">
+
+$\varepsilon = 12$ V, $R = 4\ \Omega$, $L = 2$ H: $\tau = L/R = 0{,}5$ s e $i_{final} = 12/4 = 3$ A. Em $t = 0$: $i = 0$ e $V_L = 12$ V. Em $t = 0{,}5$ s: $i \approx 0{,}63\times3 \approx 1{,}9$ A.
+
+</Caixa>
+
+<Caixa tipo="dica">
+Questão 4 da Final 2025.1: "em t=0, $V_L = 20$ V e $di/dt = 2{,}5$ A/s". Em t=0 a corrente é nula $\Rightarrow \varepsilon = V_L$. E $V_L = L\,di/dt$ dá o L. Guarde: $di/dt = (\varepsilon/L)e^{-t/\tau}$.
+</Caixa>
+
+### Energia no indutor e no campo magnético
+
+<Formula>
+
+$$
+U_L = \frac{1}{2}L\,i^2 \qquad\qquad u_B = \frac{B^2}{2\mu_0} \;(\text{densidade de energia})
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $U_L$ — energia guardada no campo magnético do indutor (J) — compare com $\frac12 CV^2$ do capacitor;
+- $u_B$ — energia por volume do campo $B$ (J/m³) — compare com $\epsilon_0E^2/2$.
+
+</Caixa>
+
+**Indutância mútua:** $\mathcal{E}_2 = -M\, di_1/dt$ — a variação de corrente numa bobina induz fem na vizinha (princípio do transformador).
+
+</Topico>
+
+<Topico id="em-oscilacoes" num="12" titulo="Oscilações LC/RLC e corrente alternada">
+
+### Oscilador LC — a ideia
+
+Ligue um capacitor carregado num indutor: o capacitor descarrega pelo indutor, que devolve a energia carregando o capacitor ao contrário, e assim por diante. A energia fica **balançando** entre o campo elétrico do capacitor ($q^2/2C$) e o campo magnético do indutor ($Li^2/2$) — é o análogo elétrico exato do **massa-mola**: $q$ faz papel de posição, $i$ de velocidade, $L$ de massa e $1/C$ de constante da mola.
+
+<Formula>
+
+$$
+q(t) = Q\cos(\omega_0 t + \phi), \qquad \omega_0 = \frac{1}{\sqrt{LC}}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $Q$ — carga máxima (amplitude da oscilação);
+- $\omega_0$ — frequência angular natural (rad/s); a frequência em Hz é $f = \omega_0/2\pi$;
+- $\phi$ — fase inicial (depende de como o circuito começou);
+- Repare: $R$ não aparece — a frequência natural só depende de $L$ e $C$.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+$L = 1$ mH e $C = 10\ \mu$F: $\omega_0 = 1/\sqrt{(10^{-3})(10^{-5})} = 1/\sqrt{10^{-8}} = 10^4$ rad/s, ou seja $f = \omega_0/2\pi \approx 1{,}6$ kHz.
+
+</Caixa>
+
+Com resistência (RLC), parte da energia vira calor a cada ciclo e a oscilação é **amortecida**: $q(t) = Q\,e^{-Rt/2L}\cos(\omega' t + \phi)$.
+
+### Corrente alternada: reatâncias e impedância
+
+Agora force o circuito RLC com uma fonte senoidal de frequência $\omega_d$. A fonte impõe uma tensão que varia no tempo — é justamente a expressão que aparece nos enunciados de prova:
+
+<Formula rotulo="Tensão da fonte alternada">
+
+$$
+\mathcal{E}(t) = \mathcal{E}_m\,\sin(\omega_d t) \qquad \omega_d = 2\pi f
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\mathcal{E}_m$ — amplitude (valor de pico) da fem, em volts;
+- $\omega_d$ — frequência angular da fonte (rad/s); $f$ — frequência em Hz;
+- Cuidado: quando o enunciado dá $\mathcal{E}(t) = 10\,\text{sen}(200\pi t)$, leia $\mathcal{E}_m = 10\ \text{V}$ e $\omega_d = 200\pi\ \text{rad/s}$ (logo $f = 100\ \text{Hz}$).
+
+</Caixa>
+
+Cada elemento "atrapalha" a corrente de um jeito: o resistor dissipa, o indutor odeia frequências altas ($X_L$ cresce com $\omega$), o capacitor odeia frequências baixas ($X_C$ cresce quando $\omega$ cai). O efeito conjunto é a **impedância** $Z$ — a "resistência generalizada" do circuito:
+
+<Formula>
+
+$$
+X_L = \omega_d L \qquad X_C = \frac{1}{\omega_d C} \qquad Z = \sqrt{R^2 + (X_L - X_C)^2} \qquad I = \frac{\mathcal{E}_m}{Z}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\omega_d$ — frequência angular da **fonte** (quem manda no circuito forçado);
+- $X_L$ — reatância indutiva (Ω); $X_C$ — reatância capacitiva (Ω);
+- $Z$ — impedância (Ω); $\mathcal{E}_m$ — amplitude da fem da fonte;
+- $I$ — amplitude da corrente.
+
+</Caixa>
+
+<Formula rotulo="Tensão em cada elemento (amplitudes)">
+
+$$
+V_R = I R \qquad V_L = I X_L \qquad V_C = I X_C \qquad \mathcal{E}_m = \sqrt{V_R^2 + (V_L - V_C)^2}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $V_R, V_L, V_C$ — amplitudes de tensão em cada elemento (V); a corrente $I$ é a mesma nos três (circuito série);
+- Atenção: as tensões NÃO se somam diretamente — $V_R$ está em fase com a corrente, $V_L$ adianta 90° e $V_C$ atrasa 90°. Por isso a soma é "vetorial" (fasorial), como no teorema de Pitágoras acima.
+
+</Caixa>
+
+<Formula rotulo="Fase e potência média">
+
+$$
+\tan\phi = \frac{X_L - X_C}{R} \qquad\quad i(t) = I\sin(\omega_d t - \phi) \qquad\quad \cos\phi = \frac{R}{Z}
+$$
+
+$$
+P_{med} = I_{rms}^2 R = \frac{I^2}{2}R = \frac{1}{2}\mathcal{E}_m I\cos\phi, \qquad I_{rms} = \frac{I}{\sqrt2}, \quad \mathcal{E}_{rms} = \frac{\mathcal{E}_m}{\sqrt2}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\phi$ — ângulo de fase entre corrente e fem; $\phi\gt 0$ circuito indutivo ($X_L\gt X_C$), $\phi\lt 0$ capacitivo;
+- $\cos\phi = R/Z$ — **fator de potência**; só o resistor dissipa energia, por isso $P_{med}\propto R$;
+- $I_{rms}, \mathcal{E}_{rms}$ — valores eficazes (RMS), que os multímetros medem; em ressonância $\cos\phi=1$ e a potência é máxima.
+
+</Caixa>
+
+### Ressonância
+
+Quando $\omega_d = \omega_0 = 1/\sqrt{LC}$: $X_L = X_C$ e as reatâncias se cancelam. A impedância vira $Z = R$ (mínima), a corrente é **máxima** e $\phi = 0$ (circuito puramente resistivo). É o mesmo fenômeno de empurrar um balanço na frequência certa.
+
+<Figura>
+  <svg viewBox="0 0 280 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curva de ressonância: corrente máxima quando a frequência da fonte iguala a natural">
+    <line x1="35" y1="140" x2="265" y2="140" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <line x1="35" y1="140" x2="35" y2="20" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <text x="250" y="155" font-size="11" fill="var(--ink-3)">ω_d</text>
+    <text x="18" y="30" font-size="11" fill="var(--ink-3)">I</text>
+    <path d="M40,132 C90,125 115,110 140,38 C165,110 195,125 258,132" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
+    <line x1="140" y1="140" x2="140" y2="38" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="126" y="155" font-size="11" fill="var(--ink-2)">ω₀</text>
+    <text x="152" y="45" font-size="10.5" fill="var(--accent)">I máx = ε/R</text>
+  </svg>
+  <figcaption>
+
+Ressonância: pico de corrente em $\omega_d = \omega_0 = 1/\sqrt{LC}$.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="dica">
+Perguntas conceituais da 2ª EE 2025.2: (i) trocar resistores NÃO muda $\omega_0$ (não há R na fórmula); (ii) acrescentar capacitor em PARALELO aumenta $C_{eq}$ e DIMINUI $\omega_0$; em série, diminui $C_{eq}$ e aumenta $\omega_0$. Justifique sempre com $\omega_0 = 1/\sqrt{LC}$.
+</Caixa>
+
+</Topico>
+
+<Topico id="em-maxwell" num="13" titulo="Equações de Maxwell">
+
+### A ideia
+
+Chegou a hora de juntar tudo. As quatro Equações de Maxwell são o "resumo executivo" da cadeira inteira — cada uma é um capítulo que você já estudou:
+
+<Formula rotulo="Forma integral">
+
+$$
+\oint \vec E \cdot d\vec A = \frac{q_{int}}{\epsilon_0} \qquad\qquad \oint \vec B \cdot d\vec A = 0
+$$
+
+$$
+\oint \vec E \cdot d\vec\ell = -\frac{d\Phi_B}{dt} \qquad\qquad \oint \vec B \cdot d\vec\ell = \mu_0\, i_{env} + \mu_0\epsilon_0 \frac{d\Phi_E}{dt}
+$$
+
+</Formula>
+
+1. **Gauss (E):** cargas criam campo elétrico divergente — é a seção 03;
+2. **Gauss (B):** o fluxo de $\vec B$ por qualquer superfície fechada é zero — **não existem monopolos magnéticos**; as linhas de $\vec B$ sempre se fecham em anéis;
+3. **Faraday:** fluxo magnético variável induz campo elétrico circulante — é a seção 10;
+4. **Ampère–Maxwell:** correntes E fluxo elétrico variável criam campo magnético. O termo novo $i_d = \epsilon_0\, d\Phi_E/dt$ é a **corrente de deslocamento** — a correção de Maxwell, que explica o campo magnético entre as placas de um capacitor carregando (onde não passa corrente de verdade, mas o campo $\vec E$ está variando).
+
+<Caixa tipo="macete">
+A corrente de deslocamento entre as placas de um capacitor é numericamente IGUAL à corrente de condução no fio: $i_d = i$. É o que fecha a continuidade da Lei de Ampère — pergunta teórica recorrente.
+</Caixa>
+
+### Ondas eletromagnéticas
+
+Combine Faraday com Ampère–Maxwell: $\vec B$ variando cria $\vec E$, que variando cria $\vec B$… essa realimentação se propaga sozinha pelo espaço como **onda eletromagnética** — luz, rádio, wi-fi:
+
+<Figura>
+  <svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Onda eletromagnética: E vertical e B horizontal, perpendiculares, propagando-se">
+    <line x1="20" y1="90" x2="290" y2="90" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <g stroke="var(--ok)" stroke-width="2" fill="var(--ok)">
+      <line x1="290" y1="90" x2="308" y2="90"/><polygon points="314,90 304,85 304,95"/>
+    </g>
+    <text x="296" y="78" font-size="11" fill="var(--ok)">c</text>
+    <path d="M20,90 C35,38 55,38 70,90 C85,142 105,142 120,90 C135,38 155,38 170,90 C185,142 205,142 220,90 C235,38 255,38 270,90" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+    <g stroke="var(--accent)" stroke-width="1.6" fill="var(--accent)">
+      <line x1="45" y1="90" x2="45" y2="52"/><polygon points="45,47 41,56 49,56"/>
+      <line x1="95" y1="90" x2="95" y2="128"/><polygon points="95,133 91,124 99,124"/>
+      <line x1="145" y1="90" x2="145" y2="52"/><polygon points="145,47 141,56 149,56"/>
+      <line x1="195" y1="90" x2="195" y2="128"/><polygon points="195,133 191,124 199,124"/>
+    </g>
+    <text x="26" y="40" font-size="12" fill="var(--accent)">E (vertical)</text>
+    <g stroke="var(--warn)" stroke-width="1.8" fill="none">
+      <ellipse cx="45" cy="90" rx="22" ry="7"/>
+      <ellipse cx="145" cy="90" rx="22" ry="7"/>
+      <ellipse cx="245" cy="90" rx="22" ry="7"/>
+    </g>
+    <text x="216" y="120" font-size="12" fill="var(--warn)">B (horizontal, ⊥ a E)</text>
+  </svg>
+  <figcaption>
+
+$\vec E \perp \vec B$, ambos perpendiculares à direção de propagação, com $E = cB$.
+
+  </figcaption>
+</Figura>
+
+A velocidade sai das próprias constantes do eletromagnetismo: $c = 1/\sqrt{\mu_0\epsilon_0} \approx 3\times10^8$ m/s — foi assim que Maxwell descobriu que **luz é onda eletromagnética**.
+
+<Caixa tipo="exemplo">
+
+Um capacitor está carregando com corrente $i = 2$ A no fio. Qual a corrente de deslocamento entre as placas? Resposta direta: $i_d = i = 2$ A — é exatamente isso que a Ampère–Maxwell garante.
+
+</Caixa>
+
+</Topico>

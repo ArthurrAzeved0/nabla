@@ -1,0 +1,66 @@
+---
+origem: "2023.1"
+tema: "Integral dupla · polares"
+temaId: integrais-duplas-polares
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, convertendo para coordenadas polares, a integral
+
+$$
+\int_{-2}^{2}\int_{0}^{\sqrt{4-x^2}} \left(x^2 + y^2\right)\,dy\,dx
+$$
+
+<Figura>
+  <svg viewBox="0 0 220 200" role="img" aria-label="Semidisco superior de raio 2">
+    <line x1="20" y1="150" x2="200" y2="150" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="110" y1="170" x2="110" y2="30" stroke="var(--ink-3)" stroke-width="1"/>
+    <path d="M40 150 A70 70 0 0 1 180 150 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="182" y="164" fill="var(--ink-2)" font-size="11">2</text>
+    <text x="30" y="164" fill="var(--ink-2)" font-size="11">-2</text>
+  </svg>
+  <figcaption>
+
+Região: semidisco superior $x^2+y^2\le 4,\ y\ge 0$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\displaystyle\int_{-2}^{2}\int_{0}^{\sqrt{4-x^2}}(x^2+y^2)\,dy\,dx = 4\pi$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Identifique a região. O limite superior $y = \sqrt{4 - x^2}$ é a semicircunferência de cima ($y\ge 0$) de raio $2$, com $x$ indo de $-2$ a $2$. É o **semidisco superior**.
+
+**Passo 2 —** Em polares: $x^2 + y^2 = r^2$ e $dA = r\,dr\,d\theta$. O semidisco superior é
+
+$$
+0 \le r \le 2,\qquad 0 \le \theta \le \pi
+$$
+
+**Passo 3 —** Reescreva o integrando $(x^2+y^2) = r^2$ e monte a integral:
+
+$$
+\int_0^{\pi}\!\!\int_0^{2} r^2\cdot r\,dr\,d\theta = \int_0^{\pi}\!\!\int_0^{2} r^3\,dr\,d\theta
+$$
+
+**Passo 4 —** Resolva:
+
+$$
+\int_0^{2} r^3\,dr = \left[\frac{r^4}{4}\right]_0^2 = 4,\qquad \int_0^{\pi} 4\,d\theta = 4\pi
+$$
+</Passos>

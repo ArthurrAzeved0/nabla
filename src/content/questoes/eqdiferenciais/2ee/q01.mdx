@@ -1,0 +1,67 @@
+---
+origem: Revisão · Prof. César
+tema: "Sistema · autovalores reais"
+temaId: sistemas-autovalores-reais
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o sistema de equações diferenciais abaixo:
+
+$$
+\begin{cases} x' = -2x - y \\ y' = 2x - 5y \end{cases}
+$$
+
+a) Escreva o sistema na forma de operador diferencial;<br />
+       b) Calcule os autovalores e autovetores da matriz do sistema;<br />
+       c) Resolva o sistema de EDOs.
+
+<Gabarito>
+$\lambda_1 = -3$, $K_1 = \begin{pmatrix}1\\1\end{pmatrix}$; $\lambda_2 = -4$, $K_2 = \begin{pmatrix}1\\2\end{pmatrix}$; $X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{-3t} + c_2\begin{pmatrix}1\\2\end{pmatrix}e^{-4t}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Com o operador $D = \dfrac{d}{dt}$:
+
+$$
+(D+2)x + y = 0, \qquad -2x + (D+5)y = 0
+$$
+
+Na forma vetorial: $X' = \begin{pmatrix} -2 & -1 \\ 2 & -5 \end{pmatrix}X$.
+
+**Passo 2 (b) —** Autovalores:
+
+$$
+\det(A - \lambda I) = \begin{vmatrix} -2-\lambda & -1 \\ 2 & -5-\lambda \end{vmatrix} = \lambda^2 + 7\lambda + 12 = 0 \;\Rightarrow\; \lambda_1 = -3,\ \lambda_2 = -4
+$$
+
+**Passo 3 —** Autovetores, $(A - \lambda I)K = 0$. Para $\lambda_1 = -3$:
+
+$$
+\begin{pmatrix} 1 & -1 \\ 2 & -2 \end{pmatrix}\begin{pmatrix} k_1 \\ k_2\end{pmatrix} = 0 \;\Rightarrow\; k_1 = k_2 \;\Rightarrow\; K_1 = \begin{pmatrix}1\\1\end{pmatrix}
+$$
+
+Para $\lambda_2 = -4$:
+
+$$
+\begin{pmatrix} 2 & -1 \\ 2 & -1 \end{pmatrix}K = 0 \;\Rightarrow\; 2k_1 = k_2 \;\Rightarrow\; K_2 = \begin{pmatrix}1\\2\end{pmatrix}
+$$
+
+**Passo 4 (c) —** Solução geral:
+
+$$
+\boxed{X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{-3t} + c_2\begin{pmatrix}1\\2\end{pmatrix}e^{-4t}}
+$$
+</Passos>

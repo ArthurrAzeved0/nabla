@@ -1,0 +1,211 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                              Base.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* ==========================================================================
+   Base.astro — casca de todas as páginas.
+   ========================================================================== */
+
+/* Fontes auto-hospedadas. Não usamos Google Fonts de propósito: o
+   humans.txt declara "sem rastreadores", e a folha do Google entregaria o
+   IP de cada visitante a um terceiro. Assim também funciona offline. */
+import "@fontsource-variable/archivo";
+import "@fontsource/archivo-narrow/600.css";
+import "@fontsource/archivo-narrow/700.css";
+import "@fontsource-variable/jetbrains-mono";
+
+import "katex/dist/katex.min.css";
+import "~/styles/tokens.css";
+import "~/styles/base.css";
+
+import Marca from "~/components/Marca.astro";
+import BotaoTema from "~/components/BotaoTema.astro";
+
+interface Props {
+  titulo: string;
+  descricao?: string;
+}
+
+const { titulo, descricao } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const ano = new Date().getFullYear();
+
+/* Seção atual, para marcar a navegação. Comparar pelo começo do caminho
+   funciona tanto na raiz (Cloudflare) quanto em subpasta (GitHub Pages). */
+const caminho = Astro.url.pathname;
+const naGrade = caminho.includes("/grade/");
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo} — Nabla</title>
+    {descricao && <meta name="description" content={descricao} />}
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    {/* Convenção humanstxt.org: as pessoas por trás do site. */}
+    <link rel="author" href={`${base}humans.txt`} />
+
+    {/* Aplica o tema salvo ANTES da primeira pintura, senão a página pisca
+        no tema errado por um instante. Precisa ser inline e sem defer. */}
+    <script is:inline>
+      try {
+        var t = localStorage.getItem("nabla-tema");
+        if (t === "light" || t === "dark") {
+          document.documentElement.setAttribute("data-theme", t);
+        }
+        document.documentElement.dataset.temaEscolha = t === "light" || t === "dark" ? t : "auto";
+      } catch (e) {
+        /* sem storage: segue o sistema */
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="topo">
+      <div class="pagina faixa">
+        <a class="link-marca" href={base}><Marca /></a>
+        <nav class="nav-topo" aria-label="Seções">
+          <a href={base} aria-current={naGrade ? undefined : "page"}>Cadeiras</a>
+          <a href={`${base}grade/civil`} aria-current={naGrade ? "page" : undefined}>Grade</a>
+        </nav>
+        <BotaoTema />
+      </div>
+    </header>
+
+    <main id="conteudo" class="pagina corpo">
+      <slot />
+    </main>
+
+    <footer class="rodape">
+      <div class="pagina faixa-rodape">
+        <p>
+          © {ano} Nabla — feito por <strong>Arthur Azevedo</strong>, aluno de Eng. de Controle e
+          Automação na POLI/UPE.
+        </p>
+        {/* Porta discreta para o humans.txt: sem rótulo, só o glifo. Quem
+            repara, chega; quem não repara, não perde nada. */}
+        <a
+          class="glifo-rodape"
+          href={`${base}humans.txt`}
+          title="Sobre quem fez este site"
+          aria-label="Sobre quem fez este site">∇</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .pular {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10;
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-botao);
+    padding: var(--e-2) var(--e-3);
+    font-size: var(--t-sm);
+  }
+  .pular:focus {
+    left: var(--e-3);
+    top: var(--e-3);
+  }
+
+  .topo {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  .faixa {
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+    flex-wrap: wrap;
+    padding-top: var(--e-3);
+    padding-bottom: var(--e-3);
+  }
+  .link-marca {
+    text-decoration: none;
+  }
+  .nav-topo {
+    display: flex;
+    gap: var(--e-3);
+  }
+  .nav-topo a {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-decoration: none;
+    padding: 3px 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-topo a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .nav-topo a[aria-current="page"] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+  .faixa :global(.btn-tema) {
+    margin-left: auto;
+  }
+
+  .corpo {
+    padding-top: var(--e-7);
+    padding-bottom: var(--e-8);
+  }
+
+  .rodape {
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    padding: var(--e-5) 0 var(--e-6);
+  }
+  .faixa-rodape {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-4);
+  }
+  .rodape p {
+    font-size: var(--t-sm);
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  /* Discreto de propósito: mesma cor do texto do rodapé, sem sublinhado.
+     Só ganha destaque no hover e no foco pelo teclado. */
+  .glifo-rodape {
+    margin-left: auto;
+    flex: none;
+    font-size: var(--t-md);
+    line-height: 1;
+    color: var(--ink-3);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.15s, color 0.15s;
+  }
+  .glifo-rodape:hover,
+  .glifo-rodape:focus-visible {
+    opacity: 1;
+    color: var(--accent);
+  }
+</style>

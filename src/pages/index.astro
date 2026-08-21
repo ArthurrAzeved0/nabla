@@ -1,0 +1,144 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                             index.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Home: as cadeiras e as grades, a partir das collections. */
+import { getCollection } from "astro:content";
+import Base from "~/layouts/Base.astro";
+import Regua from "~/components/Regua.astro";
+
+const base = import.meta.env.BASE_URL;
+const cadeiras = (await getCollection("cadeiras")).sort((a, b) => a.data.ordem - b.data.ordem);
+const questoes = await getCollection("questoes");
+const provas = ["1ee", "2ee", "final"] as const;
+
+const cards = cadeiras.map((c) => ({
+  ...c.data,
+  total: questoes.filter((q) => q.id.startsWith(`${c.data.id}/`)).length,
+  porProva: Object.fromEntries(
+    provas.map((p) => [p, questoes.filter((q) => q.id.startsWith(`${c.data.id}/${p}/`)).length]),
+  ),
+}));
+const totalGeral = cards.reduce((s, c) => s + c.total, 0);
+const grades = (await getCollection("grade")).sort((a, b) => a.data.curso.localeCompare(b.data.curso));
+---
+
+<Base
+  titulo="Guia do aluno"
+  descricao="Nabla — teoria, banco de questões e mapa da grade das cadeiras da POLI/UPE."
+>
+  <span class="rotulo">POLI/UPE</span>
+  <h1>Estude pelas provas.<br />Aprenda pela ementa.</h1>
+  <p class="prosa abre">
+    Teoria completa na ordem da ementa de cada cadeira e um banco de <strong
+      >{totalGeral} questões</strong
+    > de provas reais, todas com gabarito e resolução passo a passo.
+  </p>
+
+  <Regua rotulo="cadeiras" />
+
+  <div class="grade">
+    {
+      cards.map((c) => (
+        <a class="card" href={`${base}cadeiras/${c.id}`}>
+          <span class="cod">{c.codigo}</span>
+          <h2>{c.nome}</h2>
+          <p>{c.descricao}</p>
+          <span class="conta">
+            {c.total} questões
+            <em>
+              {c.porProva["1ee"]} · {c.porProva["2ee"]} · {c.porProva.final}
+            </em>
+          </span>
+        </a>
+      ))
+    }
+  </div>
+
+  <Regua rotulo="grade" />
+
+  <div class="grade-links">
+    {
+      grades.map((g) => (
+        <a class="card mapa" href={`${base}grade/${g.data.sigla}`}>
+          <span class="cod">matriz {g.data.matriz}</span>
+          <h2>{g.data.curso}</h2>
+          <p>
+            Mapa de pré-requisitos das {g.data.disciplinas.length} disciplinas: marque o que já
+            concluiu e veja o que está liberado.
+          </p>
+          <span class="conta">
+            {g.data.disciplinas.length} disciplinas<em>{g.data.chTotalCurso}h</em>
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</Base>
+
+<style>
+  .abre {
+    font-size: var(--t-md);
+  }
+  .grade,
+  .grade-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--e-4);
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-2);
+    padding: var(--e-4) var(--e-5) var(--e-5);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-cartao);
+    box-shadow: var(--sombra-1);
+    text-decoration: none;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--sombra-2);
+  }
+  .cod {
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .card h2 {
+    font-size: var(--t-lg);
+    margin: 0;
+  }
+  .card p {
+    font-size: var(--t-sm);
+    margin: 0;
+    flex: 1;
+  }
+  .conta {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-2);
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    color: var(--ink-2);
+    padding-top: var(--e-2);
+    border-top: 1px solid var(--line);
+  }
+  .conta em {
+    font-style: normal;
+    color: var(--ink-3);
+    margin-left: auto;
+  }
+</style>

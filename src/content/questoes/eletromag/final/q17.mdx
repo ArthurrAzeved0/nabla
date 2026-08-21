@@ -1,0 +1,74 @@
+---
+origem: Banco
+tema: "Lei de Ampère · Cabo coaxial"
+temaId: lei-de-ampere-cabo-coaxial
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um cabo coaxial tem um fio central de raio $a = 1{,}0\ \text{cm}$ conduzindo $i_0 = 2{,}0\ \text{A}$ (uniformemente distribuída, **saindo** da página) e uma casca cilíndrica condutora de raio $b = 3{,}0\ \text{cm}$ conduzindo $3\,i_0$ (**entrando** na página).
+
+Determine o módulo do campo magnético $B(r)$ nas três regiões: $r \lt  a$, $a \lt  r \lt  b$ e $r \gt  b$.
+
+<Figura>
+  <svg viewBox="0 0 220 200" role="img" aria-label="Cabo coaxial: fio central saindo e casca entrando, com amperiana circular">
+    {/* casca externa */}
+    <circle cx="110" cy="100" r="72" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+    <text x="110" y="20" font-size="9" fill="var(--accent)" text-anchor="middle">casca: 3i₀ (⊗)</text>
+    {/* fio central */}
+    <circle cx="110" cy="100" r="20" fill="var(--warn)" opacity="0.25" stroke="var(--warn)" stroke-width="2"/>
+    <circle cx="110" cy="100" r="2.2" fill="var(--warn)"/>
+    <text x="110" y="130" font-size="9" fill="var(--warn)" text-anchor="middle">i₀ (⊙)</text>
+    {/* raios a e b */}
+    <line x1="110" y1="100" x2="130" y2="100" stroke="var(--warn)" stroke-width="1"/>
+    <text x="120" y="96" font-size="9" fill="var(--warn)">a</text>
+    <line x1="110" y1="100" x2="182" y2="100" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="2 2"/>
+    <text x="170" y="96" font-size="9" fill="var(--ink-3)">b</text>
+    {/* amperiana */}
+    <circle cx="110" cy="100" r="45" fill="none" stroke="var(--ok)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="110" y="55" font-size="8.5" fill="var(--ok)" text-anchor="middle">amperiana (raio r)</text>
+  </svg>
+  <figcaption>
+
+A cada região a Lei de Ampère $\oint\vec B\cdot d\vec\ell = \mu_0 i_{\text{env}}$ só "vê" a corrente dentro do raio $r$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$r \lt  a$: $B = \dfrac{\mu_0 i_0\, r}{2\pi a^2}$  ·  $a \lt  r \lt  b$: $B = \dfrac{\mu_0 i_0}{2\pi r}$  ·  $r \gt  b$: $B = \dfrac{\mu_0(-2i_0)}{2\pi r}$ (sentido invertido). Valores: $B(a/2)=20\ \mu\text{T}$, $B\big(\tfrac{a+b}{2}\big)=20\ \mu\text{T}$, $B(2b)\approx -13{,}3\ \mu\text{T}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** *Dentro do fio* ($r \lt  a$): a amperiana envolve só a fração de $i_0$ proporcional à área, $i_{\text{env}} = i_0\,r^2/a^2$:
+
+$$
+B\cdot 2\pi r = \mu_0\, i_0\frac{r^2}{a^2} \;\Rightarrow\; B = \frac{\mu_0 i_0\, r}{2\pi a^2}, \quad B(a/2) = 20\ \mu\text{T}
+$$
+
+**Passo 2 —** *Entre o fio e a casca* ($a \lt  r \lt  b$): a amperiana envolve toda a corrente central $i_0$:
+
+$$
+B = \frac{\mu_0 i_0}{2\pi r}, \quad B\Big(\tfrac{a+b}{2}=2\,\text{cm}\Big) = 20\ \mu\text{T}
+$$
+
+**Passo 3 —** *Fora de tudo* ($r \gt  b$): a amperiana envolve $i_0$ (saindo) e $3i_0$ (entrando), corrente líquida $i_0 - 3i_0 = -2i_0$:
+
+$$
+B = \frac{\mu_0(-2i_0)}{2\pi r}, \quad B(2b = 6\,\text{cm}) \approx \boxed{-13{,}3\ \mu\text{T}}
+$$
+
+O sinal negativo indica que, fora do cabo, o campo circula no **sentido oposto** (dominado pela casca, que leva mais corrente).
+</Passos>

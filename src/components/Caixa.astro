@@ -1,0 +1,98 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                             Caixa.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Caixa didática — o padrão que a teoria do Nabla usa desde o site 1.x:
+     simbolos -> "O que é cada símbolo", uma linha por símbolo da fórmula
+     exemplo  -> "Exemplo rápido", resolvido com números
+     macete   -> atalho de prova
+   A cor da barra lateral diz o tipo sem precisar ler o rótulo. */
+type Tipo = "simbolos" | "exemplo" | "macete" | "dica";
+
+interface Props {
+  tipo?: Tipo;
+  /** Sobrescreve o rótulo padrão do tipo. */
+  rotulo?: string;
+}
+
+const PADRAO: Record<Tipo, string | null> = {
+  simbolos: "O que é cada símbolo",
+  exemplo: "Exemplo rápido",
+  macete: "Macete de prova",
+  /* "dica" é o macete curto, de uma frase: não leva rótulo. */
+  dica: null,
+};
+
+const { tipo = "simbolos", rotulo }: Props = Astro.props;
+const texto = rotulo ?? PADRAO[tipo];
+---
+
+<aside class:list={["caixa", tipo]}>
+  {texto && <span class="rot">{texto}</span>}
+  <div class="corpo"><slot /></div>
+</aside>
+
+<style>
+  .caixa {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line-2);
+    border-radius: var(--r-caixa);
+    padding: var(--e-3) var(--e-4);
+    margin: var(--e-4) 0;
+  }
+  .rot {
+    display: block;
+    margin-bottom: var(--e-2);
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+  }
+
+  .simbolos {
+    border-left-color: var(--accent);
+  }
+  .simbolos .rot {
+    color: var(--accent);
+  }
+
+  .exemplo {
+    border-left-color: var(--ok);
+  }
+  .exemplo .rot {
+    color: var(--ok);
+  }
+
+  .macete {
+    border-left-color: var(--action);
+  }
+  .macete .rot {
+    color: var(--action);
+  }
+
+  /* dica: mesma cor do macete, sem rótulo — o texto já é o recado */
+  .dica {
+    border-left-color: var(--action);
+    background: var(--action-soft);
+  }
+
+  /* último parágrafo sem margem sobrando no fim da caixa */
+  .corpo :global(> :last-child) {
+    margin-bottom: 0;
+  }
+  .corpo :global(ul),
+  .corpo :global(ol) {
+    padding-left: var(--e-4);
+  }
+</style>

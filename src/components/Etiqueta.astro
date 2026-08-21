@@ -1,0 +1,53 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                          Etiqueta.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Etiqueta (pílula) usada no topo das questões: prova, tema, pontuação.
+     info   -> identidade (prova, tema)
+     alerta -> chama atenção ("Estilo de prova")
+     neutra -> dado seco (pontuação) */
+interface Props {
+  tom?: "info" | "alerta" | "neutra";
+  /** Vira o title: útil quando a etiqueta sozinha é ambígua. É o caso da
+      procedência — 6 questões vivem numa prova e vieram de outra. */
+  titulo?: string;
+}
+
+const { tom = "info", titulo } = Astro.props;
+---
+
+<span class:list={["etiqueta", tom]} title={titulo}><slot /></span>
+
+<style>
+  .etiqueta {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    line-height: 1.5;
+    padding: 3px 9px;
+    border-radius: var(--r-pilula);
+    white-space: nowrap;
+  }
+  .info {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .alerta {
+    background: var(--action-soft);
+    color: var(--action);
+  }
+  .neutra {
+    background: var(--surface-2);
+    color: var(--ink-3);
+    border: 1px solid var(--line);
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+origem: Banco
+tema: "Indução · Campo exponencial"
+temaId: inducao-campo-exponencial
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma espira circular de raio $r = 0{,}50\ \text{m}$ está num campo magnético perpendicular ao seu plano que decai no tempo: $B(t) = 1{,}5\,e^{-5t}\ \text{T}$. A resistência da espira é $R = 10\ \Omega$.
+
+Determine $\varepsilon(t)$, $i(t)$ e a potência $P(t)$, avaliando nos instantes $t = 0$, $t = 0{,}05\ \text{s}$ e $t = 1\ \text{s}$.
+
+<Figura>
+  <svg viewBox="0 0 220 160" role="img" aria-label="Espira circular com campo saindo da tela que decai no tempo">
+    <circle cx="90" cy="80" r="52" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+    <g stroke="var(--accent)" fill="var(--accent)">
+      <circle cx="72" cy="62" r="5" fill="none" stroke-width="1.3"/><circle cx="72" cy="62" r="1.3"/>
+      <circle cx="108" cy="62" r="5" fill="none" stroke-width="1.3"/><circle cx="108" cy="62" r="1.3"/>
+      <circle cx="72" cy="98" r="5" fill="none" stroke-width="1.3"/><circle cx="72" cy="98" r="1.3"/>
+      <circle cx="108" cy="98" r="5" fill="none" stroke-width="1.3"/><circle cx="108" cy="98" r="1.3"/>
+    </g>
+    <text x="90" y="148" font-size="10" fill="var(--warn)" text-anchor="middle">r = 0,50 m</text>
+    <text x="175" y="70" font-size="10" fill="var(--accent)" text-anchor="middle">B(t)</text>
+    <text x="175" y="85" font-size="9" fill="var(--ink-3)" text-anchor="middle">decai</text>
+  </svg>
+  <figcaption>
+
+O campo sai da tela e diminui com o tempo; a espira reage induzindo corrente que tenta manter o fluxo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\varepsilon(t) = 5{,}89\,e^{-5t}\ \text{V}$  ·  $i(t) = 0{,}589\,e^{-5t}\ \text{A}$  ·  $P(t) = 3{,}47\,e^{-10t}\ \text{W}$. Em $t=0$: $\varepsilon=5{,}89\ \text{V}$, $i=0{,}589\ \text{A}$; em $t=1\,\text{s}$: $\varepsilon\approx0{,}040\ \text{V}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Área da espira (constante):
+
+$$
+A = \pi r^2 = \pi(0{,}50)^2 \approx 0{,}785\ \text{m}^2
+$$
+
+**Passo 2 —** Só $B$ varia, então $\varepsilon = -A\,dB/dt$. Derivando $B(t)=1{,}5\,e^{-5t}$: $dB/dt = -7{,}5\,e^{-5t}$, logo:
+
+$$
+\varepsilon(t) = A\cdot 7{,}5\,e^{-5t} = 0{,}785\cdot 7{,}5\,e^{-5t} \approx \boxed{5{,}89\,e^{-5t}\ \text{V}}
+$$
+
+**Passo 3 —** Corrente e potência:
+
+$$
+i(t) = \frac{\varepsilon}{R} = 0{,}589\,e^{-5t}\ \text{A} \qquad P(t) = \frac{\varepsilon^2}{R} = 3{,}47\,e^{-10t}\ \text{W}
+$$
+
+**Passo 4 —** Avaliando:
+
+- $t = 0$: $\varepsilon = 5{,}89\ \text{V}$, $i = 0{,}589\ \text{A}$, $P = 3{,}47\ \text{W}$.
+- $t = 0{,}05\,\text{s}$: $e^{-0{,}25}\approx0{,}779\Rightarrow \varepsilon\approx4{,}59\ \text{V}$, $i\approx0{,}459\ \text{A}$.
+- $t = 1\,\text{s}$: $e^{-5}\approx6{,}7\times10^{-3}\Rightarrow \varepsilon\approx\boxed{0{,}040\ \text{V}}$ (praticamente nulo).
+</Passos>

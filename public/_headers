@@ -1,0 +1,25 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                                _headers *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+
+# Cabeçalhos HTTP. Formato lido pelo Cloudflare Pages (e pela Netlify).
+# O GitHub Pages IGNORA este arquivo — por isso o humans.txt também carrega
+# um BOM UTF-8, que faz o navegador detectar o encoding sem depender daqui.
+
+/humans.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# Os assets com hash no nome podem ser guardados para sempre: quando o
+# conteúdo muda, o nome muda.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

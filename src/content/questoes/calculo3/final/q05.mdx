@@ -1,0 +1,55 @@
+---
+origem: "2023.1"
+tema: "Campo conservativo · Potencial"
+temaId: campos-conservativos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine se o campo vetorial $\vec F(x,y) = \dfrac{y}{x^2}\,\vec i - \dfrac{1}{x}\,\vec j$ é conservativo. Se sim, existe uma função potencial: encontre-a.
+
+<Gabarito>
+É conservativo ($P_y = Q_x = \tfrac{1}{x^2}$) e uma função potencial é $\varphi(x,y) = -\dfrac{y}{x}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Teste de conservatividade, com $P = \tfrac{y}{x^2}$ e $Q = -\tfrac{1}{x}$:
+
+$$
+\frac{\partial P}{\partial y} = \frac{1}{x^2} \qquad\quad \frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}\left(-x^{-1}\right) = \frac{1}{x^2}
+$$
+
+Iguais (no domínio $x \neq 0$) $\Rightarrow$ o campo é conservativo.
+
+**Passo 2 —** Integre $P$ em relação a $x$:
+
+$$
+\varphi = \int \frac{y}{x^2}\, dx = -\frac{y}{x} + g(y)
+$$
+
+**Passo 3 —** Derive em $y$ e compare com $Q$:
+
+$$
+\frac{\partial \varphi}{\partial y} = -\frac{1}{x} + g'(y) \overset{!}{=} -\frac{1}{x} \;\Rightarrow\; g'(y) = 0 \;\Rightarrow\; g(y) = c
+$$
+
+**Passo 4 —** Tomando $c = 0$, uma função potencial é
+
+$$
+\boxed{\varphi(x,y) = -\frac{y}{x}}
+$$
+
+Verificação rápida: $\nabla\varphi = \left(\tfrac{y}{x^2},\, -\tfrac1x\right) = \vec F$ ✓
+</Passos>

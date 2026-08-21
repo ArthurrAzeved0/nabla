@@ -1,0 +1,66 @@
+---
+origem: "2024.1"
+tema: "Eq. característica · Cauchy-Euler"
+temaId: equacao-caracteristica
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva as seguintes equações diferenciais:
+
+a) (0,5) $2y'' - 5y' + 3y = 0$<br />
+       b) (0,5) $x^2y'' + xy' - y = 0$<br />
+       c) (0,5) $y'' + 4y' + 7y = 0$<br />
+       d) (1,0) $y'' - 10y' + 25y = 3e^{2t}$
+
+<Gabarito>
+a) $y = c_1e^{3t/2} + c_2e^{t}$;  b) $y = c_1x + \dfrac{c_2}{x}$;  c) $y = e^{-2t}\big(c_1\operatorname{sen}(\sqrt3\,t) + c_2\cos(\sqrt3\,t)\big)$;  d) $y = c_1e^{5t} + c_2te^{5t} + \tfrac13 e^{2t}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Característica $2r^2 - 5r + 3 = 0$, $\Delta = 25 - 24 = 1$:
+
+$$
+r_1 = \frac{5+1}{4} = \frac32, \quad r_2 = \frac{5-1}{4} = 1 \;\Rightarrow\; y = c_1e^{3t/2} + c_2e^{t}
+$$
+
+**Passo 2 (b) —** É Cauchy-Euler: com $y = x^m$, $m(m-1) + m - 1 = m^2 - 1 = 0$:
+
+$$
+m = \pm 1 \;\Rightarrow\; y = c_1x + \frac{c_2}{x}
+$$
+
+**Passo 3 (c) —** $r^2 + 4r + 7 = 0$, $\Delta = 16 - 28 = -12$:
+
+$$
+r = -2 \pm \sqrt3\,i \;\Rightarrow\; y = e^{-2t}\big(c_1\operatorname{sen}(\sqrt3\,t) + c_2\cos(\sqrt3\,t)\big)
+$$
+
+**Passo 4 (d) —** Homogênea: $r^2 - 10r + 25 = (r-5)^2 = 0$, raiz dupla $r = 5$:
+
+$$
+y_h = c_1e^{5t} + c_2te^{5t}
+$$
+
+**Passo 5 (d) —** Particular por coeficientes indeterminados, chute $Y = Ae^{2t}$ ($2$ não é raiz):
+
+$$
+4Ae^{2t} - 20Ae^{2t} + 25Ae^{2t} = 3e^{2t} \;\Rightarrow\; 9A = 3 \;\Rightarrow\; A = \frac13
+$$
+
+$$
+\boxed{y = c_1e^{5t} + c_2te^{5t} + \tfrac13 e^{2t}}
+$$
+</Passos>

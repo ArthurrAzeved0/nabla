@@ -1,0 +1,85 @@
+---
+origem: "2024.1"
+tema: "Potencial elétrico · Trabalho"
+temaId: potencial-eletrico
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Quatro cargas de $3\ \mu\text{C}$ estão fixas nos vértices de um quadrado de lado $3\ \text{cm}$.
+
+Calcule o trabalho realizado pela força elétrica para trazer uma carga $q_0 = 10\ \mu\text{C}$ do infinito até o **ponto médio de um dos lados** do quadrado.
+
+<Figura>
+  <svg viewBox="0 0 300 200" role="img" aria-label="Quadrado de cargas com ponto P no meio de um lado e carga q0 vinda do infinito">
+    <rect x="80" y="30" width="110" height="110" fill="none" stroke="var(--line-2)" stroke-width="1.5"/>
+    <circle cx="80" cy="30" r="8" fill="var(--warn)"/><text x="80" y="34" font-size="11" fill="#fff" text-anchor="middle">+</text>
+    <circle cx="190" cy="30" r="8" fill="var(--warn)"/><text x="190" y="34" font-size="11" fill="#fff" text-anchor="middle">+</text>
+    <circle cx="80" cy="140" r="8" fill="var(--warn)"/><text x="80" y="144" font-size="11" fill="#fff" text-anchor="middle">+</text>
+    <circle cx="190" cy="140" r="8" fill="var(--warn)"/><text x="190" y="144" font-size="11" fill="#fff" text-anchor="middle">+</text>
+    <text x="135" y="24" font-size="11" fill="var(--ink-3)" text-anchor="middle">L = 3 cm</text>
+    <circle cx="135" cy="140" r="4" fill="var(--accent)"/>
+    <text x="135" y="160" font-size="12" fill="var(--accent)" text-anchor="middle">P</text>
+    <line x1="80" y1="30" x2="135" y2="140" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <line x1="190" y1="30" x2="135" y2="140" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4"/>
+    {/* q0 vindo do infinito */}
+    <circle cx="262" cy="175" r="8" fill="var(--ok)"/>
+    <text x="262" y="179" font-size="11" fill="#fff" text-anchor="middle">+</text>
+    <text x="262" y="196" font-size="11" fill="var(--ok)" text-anchor="middle">q₀</text>
+    <line x1="250" y1="168" x2="160" y2="148" stroke="var(--ok)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <polygon points="160,148 170,146 168,153" fill="var(--ok)"/>
+  </svg>
+  <figcaption>
+
+$q_0$ é trazida do infinito até $P$, no meio de um lado; a força elétrica das quatro cargas positivas resiste à aproximação.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$V \approx 5{,}20\times10^{6}\ \text{V}$ no ponto; trabalho da força elétrica $W = -q_0 V \approx -52{,}0\ \text{J}$ (o agente externo realiza $+52{,}0\ \text{J}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Distâncias de cada vértice ao ponto médio de um lado. As duas cargas desse lado estão a
+
+$$
+r_1 = \frac{L}{2} = 1{,}5\ \text{cm} = 0{,}015\ \text{m}
+$$
+
+e as duas cargas do lado oposto estão a
+
+$$
+r_2 = \sqrt{L^2 + (L/2)^2} = \sqrt{(0{,}03)^2 + (0{,}015)^2} \approx 0{,}0335\ \text{m}
+$$
+
+**Passo 2 —** Potencial é escalar — basta somar as quatro contribuições:
+
+$$
+V = kq\left(\frac{2}{r_1} + \frac{2}{r_2}\right) = (8{,}99\times10^9)(3\times10^{-6})\left(\frac{2}{0{,}015} + \frac{2}{0{,}0335}\right)
+$$
+
+$$
+V \approx 2{,}70\times10^{4}\,(133{,}3 + 59{,}6) \approx \boxed{5{,}20\times10^{6}\ \text{V}}
+$$
+
+**Passo 3 —** Trabalho da força elétrica ao trazer $q_0$ do infinito (onde $V=0$):
+
+$$
+W_{\text{elé}} = -q_0\,\Delta V = -q_0(V - 0) = -(10\times10^{-6})(5{,}20\times10^{6}) \approx \boxed{-52{,}0\ \text{J}}
+$$
+
+O sinal negativo indica que a força elétrica *resiste* à aproximação (todas as cargas são positivas); o agente externo precisa fornecer $+52{,}0\ \text{J}$.
+</Passos>

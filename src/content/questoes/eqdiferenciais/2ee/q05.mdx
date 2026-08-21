@@ -1,0 +1,49 @@
+---
+origem: Revisão · Prof. César
+tema: "Sistema · análise qualitativa"
+temaId: sistemas-analise-qualitativa
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o sistema com parâmetro real $a$:
+
+$$
+\begin{cases} x' = -3x + ay \\ y' = ax - 2y \end{cases}
+$$
+
+Existe algum valor de $a$ para o qual o sistema apresenta órbitas periódicas (ciclos fechados)? Justifique.
+
+<Gabarito>
+Não. Como $\operatorname{tr}A = -5$ para qualquer $a$, a soma dos autovalores é sempre $-5 \neq 0$, logo nunca ocorrem autovalores imaginários puros — condição necessária para órbitas periódicas.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** $A = \begin{pmatrix} -3 & a \\ a & -2 \end{pmatrix}$. O polinômio característico é:
+
+$$
+\det(A - \lambda I) = \lambda^2 - (\operatorname{tr}A)\lambda + \det A = \lambda^2 + 5\lambda + (6 - a^2)
+$$
+
+**Passo 2 —** Órbitas periódicas (soluções fechadas, centro) exigem autovalores imaginários puros, $\lambda = \pm i\beta$, o que só ocorre quando $\operatorname{tr}A = \lambda_1 + \lambda_2 = 0$.
+
+**Passo 3 —** Aqui $\operatorname{tr}A = -3 - 2 = -5$ *independentemente* de $a$. Se os autovalores forem complexos, $\operatorname{Re}\lambda = -\tfrac52 \lt  0$ (espiral estável); se forem reais, a soma é $-5$ (nó ou sela).
+
+**Passo 4 —** Conclusão:
+
+$$
+\boxed{\text{Não existe } a \text{ com órbitas periódicas, pois } \operatorname{tr}A = -5 \neq 0 \text{ para todo } a.}
+$$
+</Passos>

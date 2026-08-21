@@ -1,0 +1,96 @@
+---
+origem: "2025.2"
+tema: "Potencial elétrico · Trabalho"
+temaId: potencial-eletrico-trabalho
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Quatro cargas pontuais idênticas de $q = 3\ \mu\text{C}$ ocupam os vértices de um quadrado de lado $L = 20\ \text{cm}$.
+
+(a) Calcule o potencial elétrico no ponto médio de um dos lados do quadrado.
+
+(b) Determine o trabalho realizado pelo campo elétrico para trazer uma carga $q_0 = 10\ \mu\text{C}$ do infinito até esse ponto.
+
+<Figura>
+  <svg viewBox="0 0 300 210" role="img" aria-label="Quadrado com quatro cargas e ponto P no meio de um lado">
+    {/* quadrado */}
+    <rect x="90" y="35" width="120" height="120" fill="none" stroke="var(--line-2)" stroke-width="1.5"/>
+    {/* cargas nos vértices */}
+    <circle cx="90" cy="35" r="9" fill="var(--warn)"/><text x="90" y="39" font-size="12" fill="#fff" text-anchor="middle">+</text>
+    <circle cx="210" cy="35" r="9" fill="var(--warn)"/><text x="210" y="39" font-size="12" fill="#fff" text-anchor="middle">+</text>
+    <circle cx="90" cy="155" r="9" fill="var(--warn)"/><text x="90" y="159" font-size="12" fill="#fff" text-anchor="middle">+</text>
+    <circle cx="210" cy="155" r="9" fill="var(--warn)"/><text x="210" y="159" font-size="12" fill="#fff" text-anchor="middle">+</text>
+    <text x="66" y="28" font-size="11" fill="var(--ink-2)">q</text>
+    <text x="228" y="28" font-size="11" fill="var(--ink-2)">q</text>
+    <text x="66" y="170" font-size="11" fill="var(--ink-2)">q</text>
+    <text x="228" y="170" font-size="11" fill="var(--ink-2)">q</text>
+    <text x="150" y="28" font-size="11" fill="var(--ink-3)" text-anchor="middle">L</text>
+    {/* ponto P no meio do lado de baixo */}
+    <circle cx="150" cy="155" r="4" fill="var(--accent)"/>
+    <text x="150" y="176" font-size="12" fill="var(--accent)" text-anchor="middle">P</text>
+    {/* distâncias */}
+    <line x1="90" y1="155" x2="150" y2="155" stroke="var(--ok)" stroke-width="1.5"/>
+    <text x="118" y="148" font-size="11" fill="var(--ok)">r₁ = L/2</text>
+    <line x1="90" y1="35" x2="150" y2="155" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <line x1="210" y1="35" x2="150" y2="155" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <text x="176" y="90" font-size="11" fill="var(--accent)">r₂</text>
+  </svg>
+  <figcaption>
+
+Duas cargas estão a $r_1 = L/2$ de $P$ e as outras duas a $r_2 = \sqrt{L^2 + (L/2)^2}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $V \approx 7{,}8 \times 10^{5}\ \text{V}$  ·  (b) $W_{\text{campo}} = -q_0 V \approx -7{,}8\ \text{J}$ (trabalho negativo: o campo se opõe à aproximação da carga positiva).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Posicione o quadrado e o ponto $P$ no meio de um lado. As duas cargas desse lado estão a uma distância
+
+$$
+r_1 = \frac{L}{2} = 0{,}1\ \text{m}
+$$
+
+As duas cargas do lado oposto estão a
+
+$$
+r_2 = \sqrt{L^2 + \left(\frac{L}{2}\right)^2} = \sqrt{(0{,}2)^2 + (0{,}1)^2} = \sqrt{0{,}05} \approx 0{,}2236\ \text{m}
+$$
+
+**Passo 2 —** O potencial é escalar — basta somar as quatro contribuições:
+
+$$
+V = kq\left(\frac{2}{r_1} + \frac{2}{r_2}\right) = 2kq\left(\frac{1}{0{,}1} + \frac{1}{0{,}2236}\right)
+$$
+
+$$
+V = 2(9\times10^9)(3\times10^{-6})(10 + 4{,}47) \approx \boxed{7{,}8\times10^{5}\ \text{V}}
+$$
+
+**Passo 3 —** Trabalho do campo ao trazer $q_0$ do infinito ($V_\infty = 0$) até $P$:
+
+$$
+W_{\text{campo}} = -\Delta U = -q_0\,(V_P - V_\infty) = -q_0 V_P
+$$
+
+$$
+W_{\text{campo}} = -(10\times10^{-6})(7{,}8\times10^{5}) \approx \boxed{-7{,}8\ \text{J}}
+$$
+
+**Passo 4 —** Interpretação: como todas as cargas são positivas, o campo "empurra" $q_0$ para longe; para aproximá-la, um agente externo faz trabalho $+7{,}8\ \text{J}$ e o campo faz $-7{,}8\ \text{J}$.
+</Passos>

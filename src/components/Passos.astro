@@ -1,0 +1,54 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                            Passos.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Resolução passo a passo, recolhida — a ideia é tentar antes de abrir.
+   Mesma mecânica do Gabarito, mas em azul de identidade em vez do verde
+   de "resposta certa". */
+---
+<details class="passos">
+  <summary>Passo a passo</summary>
+  <div class="corpo"><slot /></div>
+</details>
+
+<style>
+  .passos {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-caixa);
+    margin: var(--e-3) 0;
+  }
+  summary {
+    cursor: pointer;
+    padding: var(--e-2) var(--e-4);
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+    color: var(--accent);
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: var(--e-2);
+    transition: transform 0.15s;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+  .corpo {
+    padding: var(--e-3) var(--e-4) var(--e-3);
+    border-top: 1px solid var(--line);
+  }
+  .corpo :global(> :last-child) { margin-bottom: 0; }
+</style>

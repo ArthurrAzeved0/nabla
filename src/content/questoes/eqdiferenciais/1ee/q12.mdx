@@ -1,0 +1,63 @@
+---
+origem: "2025.1"
+tema: "Redução de ordem"
+temaId: reducao-de-ordem
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que $y_1 = e^x$ é uma solução da equação diferencial
+
+$$
+(x-1)\,y'' - x\,y' + y = 0
+$$
+
+encontre uma segunda solução linearmente independente pelo método de redução de ordem e escreva a solução geral.
+
+<Gabarito>
+$y_2 = x$; solução geral $y = C_1e^x + C_2x$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Suponha $y = u(x)\,y_1 = u\,e^x$. Então:
+
+$$
+y' = u'e^x + ue^x, \qquad y'' = u''e^x + 2u'e^x + ue^x
+$$
+
+**Passo 2 —** Substituindo na EDO $(x-1)y'' - xy' + y = 0$ e simplificando (os termos em $u$ se cancelam, pois $e^x$ é solução):
+
+$$
+u''(x-1) + u'(x-2) = 0
+$$
+
+**Passo 3 —** Faça $w = u'$ (queda de ordem):
+
+$$
+\frac{dw}{w} = -\frac{x-2}{x-1}\,dx = \left(\frac{1}{x-1} - 1\right)dx \;\Rightarrow\; w = (x-1)\,e^{-x}
+$$
+
+**Passo 4 —** Integre $u' = (x-1)e^{-x}$ por partes:
+
+$$
+u = -C_1\,x\,e^{-x} + C_2
+$$
+
+**Passo 5 —** Logo $y = u\,e^x = -C_1x + C_2e^x$. A segunda solução independente é
+
+$$
+\boxed{y_2 = x \qquad\Rightarrow\qquad y = C_1e^x + C_2x}
+$$
+</Passos>

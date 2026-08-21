@@ -1,0 +1,79 @@
+---
+origem: "2023.2"
+tema: "Campos conservativos"
+temaId: campos-conservativos
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o campo vetorial $\vec F(x,y) = (x^2 + y^2)\,\vec i + (2xy + y^3 + 1)\,\vec j$.
+
+<ol type="a">
+<li>
+
+(1,0 pt) Mostre que o campo é conservativo;
+
+</li>
+<li>
+
+(1,5 pt) Encontre o campo escalar $\varphi(x,y)$ tal que $\nabla\varphi = \vec F$;
+
+</li>
+<li>
+
+(1,5 pt) Calcule $\displaystyle\int_\varphi \vec F \cdot d\vec s$ ao longo do caminho $x = y^2$ entre os pontos $C(1,-1)$ e $D(1,1)$.
+
+</li>
+</ol>
+
+<Gabarito>
+a) $P_y = Q_x = 2y$ ✓   b) $\varphi = \dfrac{x^3}{3} + xy^2 + \dfrac{y^4}{4} + y$   c) $\varphi(1,1) - \varphi(1,-1) = 2$
+</Gabarito>
+
+<Passos>
+**Item (a) —** Com $P = x^2 + y^2$ e $Q = 2xy + y^3 + 1$:
+
+$$
+\frac{\partial P}{\partial y} = 2y \qquad\text{e}\qquad \frac{\partial Q}{\partial x} = 2y
+$$
+
+Como $P_y = Q_x$ em todo o plano (que é simplesmente conexo), $\vec F$ é conservativo.
+
+**Item (b)**
+
+**Passo 1 —** Integre $P$ em $x$:
+
+$$
+\varphi = \int (x^2 + y^2)\, dx = \frac{x^3}{3} + xy^2 + g(y)
+$$
+
+**Passo 2 —** Derive em $y$ e iguale a $Q$:
+
+$$
+\frac{\partial \varphi}{\partial y} = 2xy + g'(y) = 2xy + y^3 + 1 \;\Rightarrow\; g'(y) = y^3 + 1 \;\Rightarrow\; g(y) = \frac{y^4}{4} + y
+$$
+
+**Passo 3 —** Potencial completo:
+
+$$
+\varphi(x,y) = \frac{x^3}{3} + xy^2 + \frac{y^4}{4} + y
+$$
+
+**Item (c) —** Campo conservativo $\Rightarrow$ Teorema Fundamental (o caminho $x = y^2$ é irrelevante):
+
+$$
+\int_C^D \vec F \cdot d\vec s = \varphi(1,1) - \varphi(1,-1) = \left(\tfrac13 + 1 + \tfrac14 + 1\right) - \left(\tfrac13 + 1 + \tfrac14 - 1\right) = \boxed{2}
+$$
+</Passos>

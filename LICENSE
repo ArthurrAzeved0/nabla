@@ -1,0 +1,65 @@
+Nabla — Guia do aluno da POLI/UPE
+Copyright (c) 2026 Arthur Epifanio de Azevedo. Todos os direitos reservados.
+
+SOFTWARE PROPRIETÁRIO — TODOS OS DIREITOS RESERVADOS
+
+
+1. TITULARIDADE
+
+   Este software, seu código-fonte, sua identidade visual e todo o conteúdo
+   didático nele contido (textos de teoria, enunciados, gabaritos, resoluções,
+   figuras e o mapa de grade curricular) são obra de autoria de Arthur Epifanio
+   de Azevedo, doravante "o Autor", e estão protegidos pela Lei nº 9.610/1998
+   (Direitos Autorais) e pela Lei nº 9.609/1998 (Programa de Computador).
+
+2. RESERVA DE DIREITOS
+
+   Nenhuma licença, expressa ou implícita, é concedida. A disponibilização
+   pública do repositório tem finalidade exclusiva de portfólio e consulta
+   visual, e NÃO constitui autorização de uso.
+
+   É vedado, sem autorização prévia e por escrito do Autor:
+
+     a) copiar, reproduzir ou armazenar o código-fonte, total ou parcialmente;
+     b) modificar, adaptar, traduzir ou criar obras derivadas;
+     c) distribuir, sublicenciar, vender, alugar ou ceder;
+     d) executar em ambiente próprio ou de terceiros, inclusive interno;
+     e) usar o conteúdo didático em cursos, apostilas, plataformas ou
+        materiais de terceiros, gratuitos ou pagos;
+     f) usar o nome "Nabla", o logotipo ou a identidade visual do projeto;
+     g) empregar o código ou o conteúdo como dado de treinamento de modelos
+        de aprendizado de máquina.
+
+3. USO PESSOAL PERMITIDO
+
+   É permitido a qualquer estudante acessar o site publicado e usá-lo para
+   estudo individual, bem como imprimir ou salvar material para uso próprio e
+   não comercial. Essa permissão alcança o site publicado — não o código-fonte.
+
+4. COMPONENTES DE TERCEIROS
+
+   Este software incorpora bibliotecas de terceiros sob licenças permissivas,
+   relacionadas em THIRD-PARTY.md, cada uma regida por sua própria licença.
+   Os termos acima aplicam-se apenas às partes de autoria do Autor.
+
+5. AUSÊNCIA DE GARANTIA
+
+   O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER NATUREZA,
+   EXPRESSA OU IMPLÍCITA. O CONTEÚDO DIDÁTICO É MATERIAL DE ESTUDO E PODE
+   CONTER ERROS; NÃO SUBSTITUI AULAS, BIBLIOGRAFIA OFICIAL NEM ORIENTAÇÃO
+   DOCENTE. O AUTOR NÃO RESPONDE POR DESEMPENHO ACADÊMICO, DECISÕES TOMADAS
+   COM BASE NO MATERIAL, NEM POR QUALQUER DANO DECORRENTE DO USO.
+
+6. NOTA SOBRE VERSÕES ANTERIORES
+
+   Versões anteriores de partes deste software — em especial o fluxograma de
+   grade curricular — circularam com cabeçalho GNU GPL v2. O Autor, titular
+   único dos direitos patrimoniais sobre aquele código, relicenciou a obra nos
+   termos deste documento. Cópias eventualmente obtidas sob a GPL v2 seguem
+   regidas por aquela licença; toda distribuição a partir desta versão observa
+   os termos aqui estabelecidos.
+
+7. CONTATO PARA AUTORIZAÇÕES
+
+   Arthur Epifanio de Azevedo
+   github.com/ArthurrAzeved0

@@ -1,0 +1,61 @@
+---
+origem: "2023.1"
+tema: "Plano tangente · superfície parametrizada"
+temaId: plano-tangente-superficie-parametrizada
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a superfície parametrizada
+
+$$
+\vec r(u,v) = (u+v,\; 3u^2,\; u-v)
+$$
+
+Determine a equação do plano tangente à superfície no ponto $(2,3,0)$.
+
+<Gabarito>
+$3x - y + 3z = 3$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Ache os parâmetros $(u,v)$ do ponto. Igualando $\vec r(u,v) = (2,3,0)$:
+
+$$
+u+v = 2,\qquad 3u^2 = 3 \;\Rightarrow\; u = 1,\qquad u - v = 0 \;\Rightarrow\; v = 1
+$$
+
+Confere: $u+v = 1+1 = 2$. Logo $(u,v) = (1,1)$.
+
+**Passo 2 —** O vetor normal ao plano tangente é $\vec r_u \times \vec r_v$. Calcule as derivadas parciais:
+
+$$
+\vec r_u = (1,\, 6u,\, 1) \xrightarrow{u=1} (1,6,1),\qquad \vec r_v = (1,\, 0,\, -1)
+$$
+
+**Passo 3 —** Produto vetorial:
+
+$$
+\vec r_u \times \vec r_v = \begin{vmatrix} \vec i & \vec j & \vec k \\ 1 & 6 & 1 \\ 1 & 0 & -1 \end{vmatrix} = \big(6(-1)-1\cdot 0,\; -(1(-1)-1\cdot 1),\; 1\cdot 0 - 6\cdot 1\big) = (-6,\, 2,\, -6)
+$$
+
+**Passo 4 —** Plano por $(2,3,0)$ com normal $(-6,2,-6)$:
+
+$$
+-6(x-2) + 2(y-3) - 6(z-0) = 0 \;\Rightarrow\; -6x + 2y - 6z + 6 = 0
+$$
+
+Dividindo por $-2$: $\;3x - y + 3z - 3 = 0$, ou seja $\;3x - y + 3z = 3$.
+</Passos>

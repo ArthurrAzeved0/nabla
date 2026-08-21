@@ -1,0 +1,96 @@
+---
+origem: Banco
+tema: "RLC · Associação + ressonância"
+temaId: rlc-componentes-associados
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um circuito tem **dois resistores iguais** $R = 40{,}0\ \Omega$ em paralelo, em série com **dois capacitores iguais** $C = 8{,}0\ \mu\text{F}$ em série, excitado por $\varepsilon(t) = 8{,}0\,\text{sen}(160\pi t)\ \text{V}$.
+
+(a) Determine a resistência e a capacitância equivalentes.
+
+(b) Determine a impedância $Z$ do circuito (só $R$ e $C$, ainda sem indutor).
+
+(c) Determine a amplitude da corrente $I$.
+
+(d) Determine o valor do indutor que, adicionado em série, levaria a frequência de excitação usada à ressonância.
+
+<Figura>
+  <svg viewBox="0 0 260 150" role="img" aria-label="Fonte AC ligada a dois resistores em paralelo em série com dois capacitores em série">
+    {/* fonte */}
+    <circle cx="35" cy="80" r="15" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <path d="M 27 80 q 4 -7 8 0 q 4 7 8 0" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="35" y="115" font-size="9" fill="var(--ink-2)" text-anchor="middle">E(t)</text>
+    <line x1="35" y1="65" x2="35" y2="35"/>
+    <line x1="35" y1="35" x2="80" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
+    {/* dois R em paralelo */}
+    <line x1="80" y1="35" x2="80" y2="20" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <rect x="80" y="12" width="40" height="12" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.3"/>
+    <line x1="80" y1="35" x2="80" y2="50" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <rect x="80" y="44" width="40" height="12" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="100" y="8" font-size="9" fill="var(--accent)" text-anchor="middle">R ∥ R</text>
+    <line x1="120" y1="20" x2="135" y2="20" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <line x1="120" y1="50" x2="135" y2="50" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <line x1="135" y1="20" x2="135" y2="50" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <line x1="135" y1="35" x2="160" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
+    {/* dois C em série */}
+    <line x1="165" y1="29" x2="165" y2="41" stroke="var(--warn)" stroke-width="2"/>
+    <line x1="171" y1="29" x2="171" y2="41" stroke="var(--warn)" stroke-width="2"/>
+    <line x1="171" y1="35" x2="185" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <line x1="189" y1="29" x2="189" y2="41" stroke="var(--warn)" stroke-width="2"/>
+    <line x1="195" y1="29" x2="195" y2="41" stroke="var(--warn)" stroke-width="2"/>
+    <text x="180" y="18" font-size="9" fill="var(--warn)" text-anchor="middle">C — C</text>
+    <line x1="195" y1="35" x2="225" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <line x1="225" y1="35" x2="225" y2="125" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <line x1="35" y1="95" x2="35" y2="125" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <line x1="35" y1="125" x2="225" y2="125" stroke="var(--ink-2)" stroke-width="1.5"/>
+  </svg>
+  <figcaption>
+
+Cuidado: resistores em paralelo somam como capacitores em série (e vice-versa).
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $R_{\text{eq}} = 20{,}0\ \Omega$, $C_{\text{eq}} = 4{,}0\ \mu\text{F}$  ·  (b) $Z \approx 497{,}8\ \Omega$  ·  (c) $I \approx 16{,}1\ \text{mA}$  ·  (d) $L \approx 989\ \text{mH}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Resistores em *paralelo* e capacitores em *série* se reduzem à metade (é o oposto do que a intuição sugere):
+
+$$
+R_{\text{eq}} = \frac{R}{2} = \boxed{20{,}0\ \Omega} \qquad C_{\text{eq}} = \frac{C}{2} = \boxed{4{,}0\ \mu\text{F}}
+$$
+
+**Passo 2 —** Sem indutor, a reatância é só capacitiva ($\omega_d = 160\pi \approx 502{,}7\ \text{rad/s}$):
+
+$$
+X_C = \frac{1}{\omega_d C_{\text{eq}}} \approx 497{,}4\ \Omega \quad\Rightarrow\quad Z = \sqrt{R_{\text{eq}}^2 + X_C^2} \approx \boxed{497{,}8\ \Omega}
+$$
+
+**Passo 3 —** Amplitude da corrente:
+
+$$
+I = \frac{\varepsilon_m}{Z} = \frac{8{,}0}{497{,}8} \approx \boxed{16{,}1\ \text{mA}}
+$$
+
+**Passo 4 —** Para ressonância na *mesma* $\omega_d$, precisamos de $X_L = X_C$ (não se calcula um novo $\omega_0$ — a frequência de excitação está fixa; o que se ajusta é $L$):
+
+$$
+\omega_d L = \frac{1}{\omega_d C_{\text{eq}}} \;\Rightarrow\; L = \frac{1}{\omega_d^2\, C_{\text{eq}}} \approx \boxed{989\ \text{mH}}
+$$
+</Passos>

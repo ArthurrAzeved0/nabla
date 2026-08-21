@@ -1,0 +1,75 @@
+﻿                     _     _
+                    | |   | |
+  _ __    __ _  ___ | |__ | | __ _
+ | '_ \  / _` |/ _ \| '_ \| |/ _` |
+ | | | || (_| | (_) | |_) | | (_| |
+ |_| |_| \__,_|\___/|_.__/|_|\__,_|
+
+ Guia do aluno — POLI/UPE
+ humanstxt.org — nós somos pessoas, não máquinas
+
+
+/* AUTORIA */
+
+  Autor .......... Arthur Epifanio de Azevedo
+  Curso .......... Engenharia de Controle e Automação
+  Instituição .... Escola Politécnica de Pernambuco (POLI/UPE)
+  GitHub ......... github.com/ArthurrAzeved0
+  Local .......... Recife, Pernambuco, Brasil
+
+
+/* DEDICATÓRIA */
+
+  Se você se atentar ao histórico de commits, vai
+  perceber que a ordem das coisas aqui não faz sentido.
+
+  O primeiro mapa de grade que eu desenhei foi o de
+  Engenharia Civil. Não é o meu curso.
+
+  Não foi desorganização. Foi escolha — e não tinha
+  lógica nenhuma.
+
+        pra que serve tantos códigos
+        se a vida não é programada
+        e as melhores coisas
+        não têm lógica?
+
+  Juntar as anotações, garimpar as provas antigas,
+  organizar o conteúdo que estava espalhado e
+  transformar isso em algo que se estuda de verdade —
+  esse trabalho foi por ela. As madrugadas foram por
+  ela. Tudo isto começou por ela.
+
+  Eu não podia falar. Então cada página daqui foi a
+  minha forma de dizer eu te amo sem poder dizer isso.
+
+  Ela nunca pediu nada. Nunca soube o quanto era por
+  ela. E hoje o que nasceu de uma pessoa só ajuda gente
+  que eu nunca vou conhecer. Essa é a parte mais bonita:
+  ela foi a inspiração, e o resto foi consequência.
+
+  Nada disso tinha lógica. E foi a melhor coisa que eu
+  já construí.
+
+  Se um dia você chegar até aqui e desconfiar que é
+  sobre você: é. Sempre foi.
+
+  Obrigado por ter me feito querer construir algo.
+
+
+/* TECNOLOGIA */
+
+  Padrões ........ HTML5, CSS3, ES2022
+  Linguagem ...... TypeScript
+  Componentes .... Astro, MDX, KaTeX
+  Tipografia ..... Archivo, Archivo Narrow, JetBrains Mono
+  Entrega ........ site estático, sem servidor de aplicação
+  Privacidade .... sem rastreadores, sem anúncios, sem cadastro
+                   nenhuma requisição a terceiros
+
+
+/* AVISO */
+
+  Software proprietário — ver LICENSE.
+  O conteúdo é material de estudo e pode conter erros;
+  não substitui aula, bibliografia nem professor.

@@ -1,0 +1,61 @@
+---
+origem: 2024.1 · 2ª chamada
+tema: "Fator integrante p/ exata"
+temaId: fator-integrante-exatas
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a EDO $\;y^2\,dx + (xy + 1)\,dy = 0$.
+
+a) (0,5) Mostre que não é uma equação exata;<br />
+       b) (1,0) Encontre um fator integrante que resulte em uma EDO exata;<br />
+       c) (1,0) Encontre a solução geral.
+
+<Gabarito>
+a) $M_y = 2y \ne y = N_x$; b) $\mu = \dfrac{1}{y}$; c) $xy + \ln y = C$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** $M = y^2$, $N = xy + 1$:
+
+$$
+\frac{\partial M}{\partial y} = 2y \qquad\text{e}\qquad \frac{\partial N}{\partial x} = y \qquad\Rightarrow\qquad M_y \ne N_x,\ \text{não é exata.}
+$$
+
+**Passo 2 (b) —** Teste o fator que depende só de $y$:
+
+$$
+g(y) = \frac{N_x - M_y}{M} = \frac{y - 2y}{y^2} = -\frac{1}{y} \qquad\Rightarrow\qquad \mu = e^{\int -\frac1y dy} = e^{-\ln y} = \frac{1}{y}
+$$
+
+**Passo 3 —** Multiplicando a EDO por $\mu = 1/y$:
+
+$$
+y\,dx + \left(x + \frac{1}{y}\right)dy = 0 \qquad\Rightarrow\qquad M_y = 1 = N_x\ \checkmark\ \text{(exata)}
+$$
+
+**Passo 4 (c) —** Integre $M = y$ em $x$: $f(x,y) = xy + g(y)$. Derivando em $y$:
+
+$$
+f_y = x + g'(y) = x + \frac{1}{y} \;\Rightarrow\; g'(y) = \frac1y \;\Rightarrow\; g(y) = \ln y
+$$
+
+**Passo 5 —** Solução geral:
+
+$$
+\boxed{xy + \ln y = C}
+$$
+</Passos>

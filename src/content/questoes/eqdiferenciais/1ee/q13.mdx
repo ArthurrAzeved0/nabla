@@ -1,0 +1,64 @@
+---
+origem: "2023.2"
+tema: "Variação de parâmetros"
+temaId: variacao-de-parametros
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a equação diferencial
+
+$$
+(1-x)\,y'' + x\,y' - y = 1 - x
+$$
+
+a) Verifique se $y_1 = e^x$ e $y_2 = x$ são soluções da equação homogênea correspondente;<br />
+       b) Determine a solução geral da equação não homogênea.
+
+<Gabarito>
+a) Sim, ambas satisfazem a homogênea. b) $y = c_1e^x + c_2x - 1 + e^x\!\int\!\frac{e^{-x}}{1-x}dx - x\ln(1-x)$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Substituindo $y_1 = e^x$: $(1-x)e^x + xe^x - e^x = 0$ ✓. Substituindo $y_2 = x$: $(1-x)\cdot 0 + x\cdot 1 - x = 0$ ✓.
+
+**Passo 2 (b) —** Forma padrão (divida por $1-x$): o termo não homogêneo vira $f(x) = \dfrac{1-x}{1-x} = 1$. Wronskiano:
+
+$$
+W = \begin{vmatrix} e^x & x \\ e^x & 1 \end{vmatrix} = e^x - xe^x = (1-x)e^x
+$$
+
+**Passo 3 —** Variação de parâmetros, $y_p = u_1y_1 + u_2y_2$:
+
+$$
+u_1' = \frac{-y_2 f}{W} = \frac{-x}{(1-x)e^x} = e^{-x} - \frac{e^{-x}}{1-x} \qquad\Rightarrow\qquad u_1 = -e^{-x} + \int \frac{e^{-x}}{1-x}dx
+$$
+
+$$
+u_2' = \frac{y_1 f}{W} = \frac{e^x}{(1-x)e^x} = \frac{1}{1-x} \qquad\Rightarrow\qquad u_2 = -\ln(1-x)
+$$
+
+**Passo 4 —** Montando $y_p$:
+
+$$
+y_p = \left(-e^{-x} + \int \frac{e^{-x}}{1-x}dx\right)e^x - x\ln(1-x) = -1 + e^x\!\int\!\frac{e^{-x}}{1-x}dx - x\ln(1-x)
+$$
+
+**Passo 5 —** Solução geral:
+
+$$
+\boxed{y = c_1e^x + c_2x - 1 + e^x\!\int\!\frac{e^{-x}}{1-x}dx - x\ln(1-x)}
+$$
+</Passos>

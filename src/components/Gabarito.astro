@@ -1,0 +1,56 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                          Gabarito.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Gabarito recolhido. A resposta final vive no CORPO do MDX, não no
+   frontmatter: LaTeX em frontmatter não passa pelo KaTeX. */
+---
+<details class="gabarito">
+  <summary>Gabarito</summary>
+  <div class="corpo"><slot /></div>
+</details>
+
+<style>
+  .gabarito {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-caixa);
+    margin: var(--e-3) 0;
+  }
+  summary {
+    cursor: pointer;
+    padding: var(--e-2) var(--e-4);
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+    color: var(--ok);
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: var(--e-2);
+    transition: transform 0.15s;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+  .corpo {
+    padding: 0 var(--e-4) var(--e-3);
+    border-top: 1px solid var(--line);
+    padding-top: var(--e-3);
+  }
+  .corpo :global(> :last-child) { margin-bottom: 0; }
+  /* a resposta final ganha destaque dentro do gabarito */
+  .corpo :global(strong:first-child) { color: var(--ok); }
+</style>

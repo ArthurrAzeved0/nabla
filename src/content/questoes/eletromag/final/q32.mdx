@@ -1,0 +1,78 @@
+---
+origem: Banco · 2026.1
+tema: "Resistividade · Integração"
+temaId: resistencia-cilindro-oco
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um resistor de carbono tem formato de fio cilíndrico **oco**, de comprimento $L$, raio interno $a$ e raio externo $b$. A corrente flui ao longo do eixo (axial).
+
+(a) Mostre que a resistividade é $\rho = \dfrac{\pi R(b^2 - a^2)}{L}$, com $R$ a resistência medida.
+
+(b) Calcule a condutividade, dado $L = 1{,}20\ \text{mm}$, diâmetros $0{,}30\ \text{mm}$ e $0{,}50\ \text{mm}$, e $R = 0{,}5\ \Omega$.
+
+<Figura>
+  <svg viewBox="0 0 240 130" role="img" aria-label="Fio cilíndrico oco visto em perspectiva com corrente axial">
+    <ellipse cx="60" cy="65" rx="14" ry="34" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.8"/>
+    <ellipse cx="60" cy="65" rx="7" ry="17" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.3"/>
+    <line x1="60" y1="31" x2="180" y2="31" stroke="var(--accent)" stroke-width="1.8"/>
+    <line x1="60" y1="99" x2="180" y2="99" stroke="var(--accent)" stroke-width="1.8"/>
+    <ellipse cx="180" cy="65" rx="14" ry="34" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+    <ellipse cx="180" cy="65" rx="7" ry="17" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="196" y="52" font-size="9" fill="var(--accent)">b</text>
+    <text x="180" y="70" font-size="9" fill="var(--accent)" text-anchor="middle">a</text>
+    {/* corrente axial */}
+    <line x1="90" y1="115" x2="150" y2="115" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="150,115 140,110 140,120" fill="var(--ok)"/>
+    <text x="120" y="128" font-size="9" fill="var(--ok)" text-anchor="middle">i (axial)</text>
+    <text x="120" y="18" font-size="9" fill="var(--ink-3)" text-anchor="middle">L</text>
+  </svg>
+  <figcaption>
+
+Corrente axial: a área atravessada é a seção anular $A = \pi(b^2 - a^2)$, *constante* ao longo de $L$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $\rho = \dfrac{\pi R(b^2 - a^2)}{L}$  ·  (b) $\sigma = 1/\rho \approx 1{,}91\times10^{4}\ \text{S/m}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** A corrente percorre o resistor no sentido **axial** (ao longo de $L$), então a área atravessada é sempre a mesma seção transversal anular:
+
+$$
+A = \pi(b^2 - a^2)\quad(\text{não varia ao longo do percurso})
+$$
+
+**Passo 2 —** Como $A$ é constante, vale a fórmula direta $R = \rho L/A$, sem integrar. Isolando $\rho$:
+
+$$
+R = \frac{\rho L}{\pi(b^2 - a^2)} \;\Rightarrow\; \boxed{\rho = \frac{\pi R(b^2 - a^2)}{L}}
+$$
+
+**Passo 3 —** Com raios $a = 0{,}15\ \text{mm}$, $b = 0{,}25\ \text{mm}$ e $L = 1{,}20\ \text{mm}$:
+
+$$
+\rho = \frac{\pi(0{,}5)\big[(2{,}5\times10^{-4})^2 - (1{,}5\times10^{-4})^2\big]}{1{,}2\times10^{-3}} \approx 5{,}24\times10^{-5}\ \Omega\cdot\text{m}
+$$
+
+**Passo 4 —** Condutividade:
+
+$$
+\sigma = \frac{1}{\rho} \approx \boxed{1{,}91\times10^{4}\ \text{S/m}}
+$$
+</Passos>

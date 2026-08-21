@@ -1,0 +1,55 @@
+---
+origem: "2025.1"
+tema: "Integral de linha (escalar)"
+temaId: integrais-de-linha
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considerando $C$ o segmento de reta do ponto $(0,0,0)$ ao ponto $(1,2,3)$, calcule a integral de linha
+
+$$
+\int_C x\,e^{yz}\,ds
+$$
+
+<Gabarito>
+$\displaystyle\int_C x\,e^{yz}\,ds = \frac{\sqrt{14}}{12}\left(e^{6}-1\right)$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Parametrize o segmento. Saindo da origem, $\vec r(t) = (t,\,2t,\,3t)$ com $0 \le t \le 1$ (em $t=0$ estamos em $(0,0,0)$; em $t=1$, em $(1,2,3)$).
+
+**Passo 2 —** O elemento de arco é $ds = |\vec r\,'(t)|\,dt$. Como $\vec r\,'(t) = (1,2,3)$:
+
+$$
+|\vec r\,'(t)| = \sqrt{1^2 + 2^2 + 3^2} = \sqrt{14} \quad\Rightarrow\quad ds = \sqrt{14}\,dt
+$$
+
+**Passo 3 —** Substitua $x = t$, $y = 2t$, $z = 3t$ no integrando: $yz = (2t)(3t) = 6t^2$, então $x\,e^{yz} = t\,e^{6t^2}$.
+
+**Passo 4 —** Monte a integral em $t$:
+
+$$
+\int_C x\,e^{yz}\,ds = \int_0^1 t\,e^{6t^2}\,\sqrt{14}\,dt
+$$
+
+**Passo 5 —** Substituição $u = 6t^2$, $du = 12t\,dt\Rightarrow t\,dt = \tfrac{du}{12}$:
+
+$$
+\sqrt{14}\int_0^1 t\,e^{6t^2}\,dt = \frac{\sqrt{14}}{12}\int_0^{6} e^{u}\,du = \frac{\sqrt{14}}{12}\Big[e^{u}\Big]_0^{6} = \frac{\sqrt{14}}{12}\left(e^{6}-1\right)
+$$
+
+Repare: na integral de linha *escalar* ($ds$) o que importa é o comprimento — por isso aparece $|\vec r\,'|$, e o sentido de percurso não altera o resultado.
+</Passos>

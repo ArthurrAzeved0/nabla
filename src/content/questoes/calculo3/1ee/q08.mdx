@@ -1,0 +1,82 @@
+---
+origem: Final 2022.2
+tema: "Derivada direcional · Aplicação"
+temaId: gradiente-derivada-direcional
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Se $V(x,y,z)$ volts é o potencial elétrico no ponto $(x,y,z)$ e
+
+$$
+V(x,y,z) = \frac{1}{\sqrt{x^2 + y^2 + z^2}}
+$$
+
+ache a taxa de variação de $V$ no ponto $(2,\ 2,\ -1)$, na direção do vetor $\vec v = 2\vec i - 3\vec j + 6\vec k$.
+
+<Figura>
+  <svg viewBox="0 0 240 200" role="img" aria-label="Superfícies equipotenciais concêntricas com o gradiente apontando para o centro">
+    <circle cx="120" cy="100" r="80" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+    <circle cx="120" cy="100" r="55" fill="none" stroke="var(--line-2)" stroke-width="1.3"/>
+    <circle cx="120" cy="100" r="30" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <circle cx="120" cy="100" r="3" fill="var(--warn)"/>
+    <text x="126" y="98" font-size="9" fill="var(--ink-3)">V grande</text>
+    <text x="150" y="180" font-size="9" fill="var(--ink-3)">V pequeno</text>
+    {/* ponto P na esfera r=3 */}
+    <circle cx="176" cy="66" r="4.5" fill="var(--ok)"/>
+    <text x="182" y="62" font-size="11" fill="var(--ok)">P</text>
+    {/* gradiente aponta para o centro (V cresce para dentro) */}
+    <line x1="176" y1="66" x2="140" y2="90" stroke="var(--accent)" stroke-width="2.6"/>
+    <polygon points="140,90 152,88 146,80" fill="var(--accent)"/>
+    <text x="150" y="112" font-size="11" fill="var(--accent)">∇V</text>
+  </svg>
+  <figcaption>
+
+As equipotenciais de $V = 1/r$ são esferas concêntricas; o gradiente aponta para onde $V$ cresce (rumo ao centro) e é perpendicular a elas.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$D_{\vec u}V = \dfrac{8}{189} \approx 0{,}0423$ volt por unidade de distância (o potencial cresce nesse sentido).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Vetor unitário: $|\vec v| = \sqrt{4 + 9 + 36} = 7$:
+
+$$
+\vec u = \left(\tfrac{2}{7},\ -\tfrac{3}{7},\ \tfrac{6}{7}\right)
+$$
+
+**Passo 2 —** Com $r = \sqrt{x^2+y^2+z^2}$, temos $V = r^{-1}$ e
+
+$$
+\nabla V = -\frac{(x,\ y,\ z)}{\left(x^2+y^2+z^2\right)^{3/2}}
+$$
+
+**Passo 3 —** No ponto $(2, 2, -1)$: $r = \sqrt{4+4+1} = 3$, logo $r^3 = 27$:
+
+$$
+\nabla V\big|_P = \left(-\tfrac{2}{27},\ -\tfrac{2}{27},\ \tfrac{1}{27}\right)
+$$
+
+**Passo 4 —** Derivada direcional:
+
+$$
+D_{\vec u}V = \nabla V\cdot\vec u = \frac{-4 + 6 + 6}{27\cdot 7} = \boxed{\frac{8}{189} \approx 0{,}0423\ \text{volt/unidade}}
+$$
+
+Como é positiva, o potencial é *crescente* nessa direção e sentido.
+</Passos>

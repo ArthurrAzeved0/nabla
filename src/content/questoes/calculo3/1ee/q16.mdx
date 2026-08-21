@@ -1,0 +1,57 @@
+---
+origem: "2023.1"
+tema: "Área de superfície"
+temaId: area-de-superficie
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule a área da parte do paraboloide hiperbólico $z = y^2 - x^2$ que está entre os cilindros $x^2 + y^2 = 1$ e $x^2 + y^2 = 4$.
+
+<Gabarito>
+$\displaystyle A = \frac{\pi}{6}\left(17\sqrt{17} - 5\sqrt{5}\right)$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** A área de $z = f(x,y)$ sobre $D$ é $\displaystyle A = \iint_D \sqrt{1 + f_x^2 + f_y^2}\,dA$. Com $f = y^2 - x^2$: $f_x = -2x$, $f_y = 2y$, então
+
+$$
+\sqrt{1 + 4x^2 + 4y^2}
+$$
+
+**Passo 2 —** A região $D$ entre os cilindros é o anel $1 \le x^2 + y^2 \le 4$. Em polares ($x^2+y^2 = r^2$, $dA = r\,dr\,d\theta$):
+
+$$
+1 \le r \le 2,\qquad 0 \le \theta \le 2\pi,\qquad \sqrt{1 + 4r^2}
+$$
+
+**Passo 3 —** Monte a integral:
+
+$$
+A = \int_0^{2\pi}\!\!\int_1^{2} \sqrt{1 + 4r^2}\,r\,dr\,d\theta = 2\pi\int_1^{2} r\sqrt{1+4r^2}\,dr
+$$
+
+**Passo 4 —** Substituição $u = 1 + 4r^2$, $du = 8r\,dr \Rightarrow r\,dr = \tfrac{du}{8}$. Para $r:1\to 2$, $u:5\to 17$:
+
+$$
+A = 2\pi\cdot\frac18\int_5^{17}\sqrt{u}\,du = \frac{\pi}{4}\cdot\frac23\,u^{3/2}\Big|_5^{17} = \frac{\pi}{6}\left(17^{3/2} - 5^{3/2}\right)
+$$
+
+**Passo 5 —** Como $17^{3/2} = 17\sqrt{17}$ e $5^{3/2} = 5\sqrt{5}$:
+
+$$
+A = \frac{\pi}{6}\left(17\sqrt{17} - 5\sqrt{5}\right)
+$$
+</Passos>

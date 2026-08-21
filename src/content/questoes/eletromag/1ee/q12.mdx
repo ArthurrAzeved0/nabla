@@ -1,0 +1,122 @@
+---
+origem: "2024.2"
+tema: "Circuitos · Leis de Kirchhoff"
+temaId: circuitos-kirchhoff
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Entre dois nós $A$ e $B$ há três ramos em paralelo: **ramo 1** com a bateria $\varepsilon_1 = 4\ \text{V}$ em série com $R_1 = 1\ \Omega$; **ramo 2** com a bateria $\varepsilon_2 = 3\ \text{V}$ em série com $R_2 = 2\ \Omega$ (as duas baterias "empurram" corrente para o nó $A$); e **ramo 3** com uma chave $S$ em série com $R_3 = 1\ \Omega$.
+
+(a) Com $S$ **aberta**, calcule a corrente no circuito e diga qual bateria está sendo carregada.
+
+(b) Com $S$ **fechada**, calcule as correntes $i_1$, $i_2$ e $i_3$ nos três ramos.
+
+(c) Calcule a potência dissipada em $R_3$ com $S$ fechada.
+
+<Figura>
+  <svg viewBox="0 0 360 210" role="img" aria-label="Três ramos em paralelo entre os nós A e B: duas baterias com resistores e uma chave com resistor">
+    {/* nós */}
+    <line x1="40" y1="40" x2="320" y2="40" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="40" y1="180" x2="320" y2="180" stroke="var(--ink-2)" stroke-width="2"/>
+    <circle cx="180" cy="40" r="4" fill="var(--ink-2)"/>
+    <text x="180" y="28" font-size="13" fill="var(--ink-2)" text-anchor="middle">A</text>
+    <circle cx="180" cy="180" r="4" fill="var(--ink-2)"/>
+    <text x="180" y="200" font-size="13" fill="var(--ink-2)" text-anchor="middle">B</text>
+    {/* ramo 1 */}
+    <line x1="70" y1="40" x2="70" y2="60" stroke="var(--ink-2)" stroke-width="2"/>
+    <rect x="62" y="60" width="16" height="34" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="48" y="80" font-size="11" fill="var(--accent)" text-anchor="end">R₁</text>
+    <line x1="70" y1="94" x2="70" y2="118" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="58" y1="118" x2="82" y2="118" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <line x1="64" y1="128" x2="76" y2="128" stroke="var(--ink-2)" stroke-width="2"/>
+    <text x="46" y="128" font-size="12" fill="var(--ink-2)" text-anchor="end">ε₁</text>
+    <line x1="70" y1="128" x2="70" y2="180" stroke="var(--ink-2)" stroke-width="2"/>
+    {/* ramo 2 */}
+    <line x1="180" y1="40" x2="180" y2="60" stroke="var(--ink-2)" stroke-width="2"/>
+    <rect x="172" y="60" width="16" height="34" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="158" y="80" font-size="11" fill="var(--accent)" text-anchor="end">R₂</text>
+    <line x1="180" y1="94" x2="180" y2="118" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="168" y1="118" x2="192" y2="118" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <line x1="174" y1="128" x2="186" y2="128" stroke="var(--ink-2)" stroke-width="2"/>
+    <text x="156" y="128" font-size="12" fill="var(--ink-2)" text-anchor="end">ε₂</text>
+    <line x1="180" y1="128" x2="180" y2="180" stroke="var(--ink-2)" stroke-width="2"/>
+    {/* ramo 3: chave + R3 */}
+    <line x1="290" y1="40" x2="290" y2="62" stroke="var(--ink-2)" stroke-width="2"/>
+    <circle cx="290" cy="64" r="2.5" fill="var(--ink-2)"/>
+    <line x1="290" y1="64" x2="304" y2="86" stroke="var(--warn)" stroke-width="2"/>
+    <circle cx="290" cy="90" r="2.5" fill="var(--ink-2)"/>
+    <text x="312" y="76" font-size="11" fill="var(--warn)">S</text>
+    <line x1="290" y1="90" x2="290" y2="108" stroke="var(--ink-2)" stroke-width="2"/>
+    <rect x="282" y="108" width="16" height="34" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="308" y="128" font-size="11" fill="var(--accent)">R₃</text>
+    <line x1="290" y1="142" x2="290" y2="180" stroke="var(--ink-2)" stroke-width="2"/>
+    {/* setas de corrente */}
+    <line x1="96" y1="52" x2="96" y2="72" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="96,52 91,62 101,62" fill="var(--ok)"/>
+    <text x="102" y="66" font-size="10" fill="var(--ok)">i₁</text>
+    <line x1="206" y1="52" x2="206" y2="72" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="206,52 201,62 211,62" fill="var(--ok)"/>
+    <text x="212" y="66" font-size="10" fill="var(--ok)">i₂</text>
+    <line x1="264" y1="52" x2="264" y2="72" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="264,72 259,62 269,62" fill="var(--ok)"/>
+    <text x="248" y="66" font-size="10" fill="var(--ok)">i₃</text>
+  </svg>
+  <figcaption>
+
+Três ramos entre $A$ e $B$: as baterias empurram corrente para o nó $A$; com $S$ fechada, $i_1 + i_2 = i_3$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $i \approx 0{,}33\ \text{A}$, carregando $\varepsilon_2$  ·  (b) $i_1 = 1{,}80\ \text{A}$, $i_2 = 0{,}40\ \text{A}$, $i_3 = 2{,}20\ \text{A}$  ·  (c) $P_{R_3} \approx 4{,}84\ \text{W}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** $S$ aberta: só existe a malha formada pelos ramos 1 e 2. Como $\varepsilon_1 \gt  \varepsilon_2$, a bateria 1 domina e força corrente "contra" $\varepsilon_2$:
+
+$$
+i = \frac{\varepsilon_1 - \varepsilon_2}{R_1 + R_2} = \frac{4 - 3}{1 + 2} \approx \boxed{0{,}33\ \text{A}}
+$$
+
+A corrente entra pelo terminal $+$ de $\varepsilon_2$: a bateria 2 está sendo **carregada**.
+
+**Passo 2 —** $S$ fechada: chame $V$ a tensão do nó $A$ em relação a $B$. Correntes que chegam ao nó pelos ramos 1 e 2 e saem pelo ramo 3:
+
+$$
+i_1 = \frac{\varepsilon_1 - V}{R_1} = \frac{4 - V}{1}, \qquad i_2 = \frac{\varepsilon_2 - V}{R_2} = \frac{3 - V}{2}, \qquad i_3 = \frac{V}{R_3} = \frac{V}{1}
+$$
+
+**Passo 3 —** Lei dos nós, $i_1 + i_2 = i_3$:
+
+$$
+(4 - V) + \frac{3 - V}{2} = V \;\Rightarrow\; 8 - 2V + 3 - V = 2V \;\Rightarrow\; V = \frac{11}{5} = 2{,}2\ \text{V}
+$$
+
+**Passo 4 —** Substituindo:
+
+$$
+i_1 = 4 - 2{,}2 = \boxed{1{,}80\ \text{A}} \qquad i_2 = \frac{3 - 2{,}2}{2} = \boxed{0{,}40\ \text{A}} \qquad i_3 = \boxed{2{,}20\ \text{A}}
+$$
+
+Agora as *duas* baterias fornecem corrente (com $S$ fechada, $V = 2{,}2\ \text{V} \lt  \varepsilon_2$).
+
+**Passo 5 —** Potência em $R_3$:
+
+$$
+P_{R_3} = i_3^2 R_3 = (2{,}2)^2 \cdot 1 \approx \boxed{4{,}84\ \text{W}}
+$$
+</Passos>

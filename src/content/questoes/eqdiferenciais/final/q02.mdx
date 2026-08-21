@@ -1,0 +1,55 @@
+---
+origem: "2025.1"
+tema: "Sistema · autovalores reais"
+temaId: sistemas-autovalores-reais
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução geral do sistema de equações:
+
+$$
+X' = \begin{pmatrix} -2 & 1 \\ -5 & 4 \end{pmatrix}X
+$$
+
+<Gabarito>
+$\lambda_1 = 3$, $K_1 = \begin{pmatrix}1\\5\end{pmatrix}$; $\lambda_2 = -1$, $K_2 = \begin{pmatrix}1\\1\end{pmatrix}$;   $X(t) = c_1\begin{pmatrix}1\\5\end{pmatrix}e^{3t} + c_2\begin{pmatrix}1\\1\end{pmatrix}e^{-t}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Autovalores:
+
+$$
+\det(A - \lambda I) = \begin{vmatrix} -2-\lambda & 1 \\ -5 & 4-\lambda \end{vmatrix} = \lambda^2 - 2\lambda - 3 = 0 \;\Rightarrow\; \lambda_1 = 3,\ \lambda_2 = -1
+$$
+
+**Passo 2 —** Autovetor para $\lambda_1 = 3$:
+
+$$
+\begin{pmatrix} -5 & 1 \\ -5 & 1 \end{pmatrix}K = 0 \;\Rightarrow\; k_2 = 5k_1 \;\Rightarrow\; K_1 = \begin{pmatrix}1\\5\end{pmatrix}
+$$
+
+**Passo 3 —** Autovetor para $\lambda_2 = -1$:
+
+$$
+\begin{pmatrix} -1 & 1 \\ -5 & 5 \end{pmatrix}K = 0 \;\Rightarrow\; k_1 = k_2 \;\Rightarrow\; K_2 = \begin{pmatrix}1\\1\end{pmatrix}
+$$
+
+**Passo 4 —** Solução geral (ponto de sela, pois os autovalores têm sinais opostos):
+
+$$
+\boxed{X(t) = c_1\begin{pmatrix}1\\5\end{pmatrix}e^{3t} + c_2\begin{pmatrix}1\\1\end{pmatrix}e^{-t}}
+$$
+</Passos>

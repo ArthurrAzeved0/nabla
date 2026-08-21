@@ -1,0 +1,24 @@
+# dependências
+node_modules/
+
+# saída do build Astro
+dist/
+.astro/
+
+# transpilação temporária dos testes
+.tmp-teste/
+
+# ambiente
+.env
+.env.production
+
+# configuração local de ferramentas (por máquina, não do projeto)
+.claude/settings.local.json
+.claude/launch.json
+
+# logs
+npm-debug.log*
+*.log
+
+# sistema
+.DS_Store

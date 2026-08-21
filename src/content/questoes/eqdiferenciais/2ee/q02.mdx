@@ -1,0 +1,57 @@
+---
+origem: Revisão · Prof. César
+tema: "Sistema · autovalores fracionários"
+temaId: sistemas-autovalores-reais
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a solução geral $X(t)$ para o sistema a seguir:
+
+$$
+\begin{cases} x' = -\tfrac32 x + \tfrac12 y \\ y' = x - y \end{cases}
+$$
+
+<Gabarito>
+$X(t) = c_1\begin{pmatrix}1\\2\end{pmatrix}e^{-t/2} + c_2\begin{pmatrix}1\\-1\end{pmatrix}e^{-2t}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Forma vetorial: $X' = \begin{pmatrix} -3/2 & 1/2 \\ 1 & -1 \end{pmatrix}X$. Autovalores:
+
+$$
+\det(A-\lambda I) = \lambda^2 + \frac52\lambda + 1 = 0 \;\Longleftrightarrow\; 2\lambda^2 + 5\lambda + 2 = 0
+$$
+
+**Passo 2 —** Raízes: $\lambda_1 = -\tfrac12$ e $\lambda_2 = -2$ (confira: soma $= -\tfrac52 = \operatorname{tr}A$ ✓).
+
+**Passo 3 —** Autovetor para $\lambda_1 = -\tfrac12$:
+
+$$
+\begin{pmatrix} -1 & 1/2 \\ 1 & -1/2 \end{pmatrix}K = 0 \;\Rightarrow\; k_2 = 2k_1 \;\Rightarrow\; K_1 = \begin{pmatrix}1\\2\end{pmatrix}
+$$
+
+**Passo 4 —** Autovetor para $\lambda_2 = -2$:
+
+$$
+\begin{pmatrix} 1/2 & 1/2 \\ 1 & 1 \end{pmatrix}K = 0 \;\Rightarrow\; k_1 = -k_2 \;\Rightarrow\; K_2 = \begin{pmatrix}1\\-1\end{pmatrix}
+$$
+
+**Passo 5 —** Solução geral:
+
+$$
+\boxed{X(t) = c_1\begin{pmatrix}1\\2\end{pmatrix}e^{-t/2} + c_2\begin{pmatrix}1\\-1\end{pmatrix}e^{-2t}}
+$$
+</Passos>

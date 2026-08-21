@@ -1,0 +1,95 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                        ChipsProva.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Seletor de avaliação — os chips do site 1.x. Aqui são LINKS, não filtro
+   em JavaScript: cada prova ganha URL própria, então dá para compartilhar
+   e favoritar "as questões do 2º EE de Cálculo 3". */
+interface Props {
+  cadeira: string;
+  /** Prova ativa; ausente na página de conteúdo. */
+  atual?: string;
+  /** Quantas questões cada prova tem: vira o contador no chip. */
+  contagem: Record<string, number>;
+}
+
+const { cadeira, atual, contagem } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const PROVAS = [
+  { id: "1ee", rotulo: "1º EE" },
+  { id: "2ee", rotulo: "2º EE" },
+  { id: "final", rotulo: "Final" },
+] as const;
+---
+
+<nav class="chips" aria-label="Escolher avaliação">
+  <a class:list={["chip", { ativo: atual === undefined }]} href={`${base}cadeiras/${cadeira}`}>
+    Conteúdo
+  </a>
+  {
+    PROVAS.map((p) => (
+      <a
+        class:list={["chip", { ativo: atual === p.id }]}
+        href={`${base}cadeiras/${cadeira}/${p.id}`}
+        aria-current={atual === p.id ? "page" : undefined}
+      >
+        {p.rotulo}
+        <span class="num">{contagem[p.id] ?? 0}</span>
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .chips {
+    display: flex;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+    margin: var(--e-5) 0 var(--e-6);
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: var(--r-pilula);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .chip.ativo {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .num {
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    font-variant-numeric: tabular-nums;
+    padding: 1px 6px;
+    border-radius: var(--r-pilula);
+    background: var(--surface-2);
+    color: var(--ink-3);
+  }
+  .chip.ativo .num {
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+  }
+</style>

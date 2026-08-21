@@ -1,0 +1,626 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                              civil.yaml *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+# ************************************************************************
+# Grade de Engenharia Civil — POLI/UPE, matriz 2021.1.
+#
+# GERADO por scripts/extrair-grade.mjs. Editar à mão é possível, mas o
+# schema valida o grafo no build: requisito apontando para código
+# inexistente é erro, não seta que simplesmente não aparece.
+#
+# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `cadeira` liga o nó à página da cadeira no site, quando ela existe.
+# ************************************************************************
+curso: Engenharia Civil
+sigla: civil
+matriz: "2021.1"
+chTotalCurso: 4350
+estagioFracao: 0.6
+disciplinas:
+  - id: MAT07
+    codigo: MAT07
+    nome: Geometria Analítica
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MAT18
+    codigo: MAT18
+    nome: Cálc. Dif. e Integral em uma Variável
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: CCM94
+    codigo: CCM94
+    nome: Introdução à Programação
+    periodo: 1
+    teorica: 30
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: SOC02
+    codigo: SOC02
+    nome: "Sociologia, Meio Amb. e Contexto Social"
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+    dcext: true
+  - id: ENG02
+    codigo: ENG02
+    nome: Introdução à Engenharia
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: QUI02
+    codigo: QUI02
+    nome: Química
+    periodo: 1
+    teorica: 30
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: LET01
+    codigo: LET01
+    nome: Português Instrumental
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MAT01
+    codigo: MAT01
+    nome: Álgebra Linear
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT07]
+    co: []
+  - id: MAT19
+    codigo: MAT19
+    nome: Cálc. Dif. e Integral em Várias Variáveis
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT18]
+    co: []
+  - id: FIS11
+    codigo: FIS11
+    nome: Fundamentos da Mecânica
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT18]
+    co: []
+  - id: ART01
+    codigo: ART01
+    nome: Expressão Gráfica 1
+    periodo: 2
+    teorica: 30
+    pratica: 45
+    categoria: prof
+    pre: []
+    co: []
+  - id: PRB05
+    codigo: PRB05
+    nome: Probabilidade e Estatística
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT18]
+    co: [MAT19]
+  - id: MAT20
+    codigo: MAT20
+    nome: Cálc. Dif. e Integral Vetorial
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT19]
+    co: []
+    cadeira: calculo3
+  - id: FIS12
+    codigo: FIS12
+    nome: Fundamentos do Eletromagnetismo
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS11]
+    co: [MAT20]
+    cadeira: eletromag
+  - id: ART02
+    codigo: ART02
+    nome: Expressão Gráfica 2
+    periodo: 3
+    teorica: 0
+    pratica: 45
+    categoria: prof
+    pre: [ART01]
+    co: []
+  - id: FIS07
+    codigo: FIS07
+    nome: Estática
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS11, MAT07]
+    co: []
+  - id: CCM96
+    codigo: CCM96
+    nome: Cálculo Numérico
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CCM94, MAT19]
+    co: []
+  - id: DUA01
+    codigo: DCExt
+    nome: Desenho Universal e Acessibilidade
+    periodo: 3
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: [ART01]
+    co: []
+    dcext: true
+  - id: ELD1
+    codigo: —
+    nome: DCExt Eletiva 1
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    dcext: true
+  - id: MAT21
+    codigo: MAT21
+    nome: Equações Diferenciais
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT20]
+    co: []
+    cadeira: eqdiferenciais
+  - id: FIS01
+    codigo: FIS01
+    nome: Fenômenos de Transporte
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT20]
+    co: [FIS13]
+  - id: FIS13
+    codigo: FIS13
+    nome: Fund. da Ondulatória e Termodinâmica
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS11]
+    co: [MAT21]
+  - id: FIS15
+    codigo: FIS15
+    nome: Laboratório de Física Básica
+    periodo: 4
+    teorica: 0
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: [FIS13]
+  - id: FIS08
+    codigo: FIS08
+    nome: Dinâmica
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS07]
+    co: []
+  - id: ELD2
+    codigo: —
+    nome: DCExt Eletiva 2
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    dcext: true
+  - id: CIVL30
+    codigo: CIVL30
+    nome: Materiais de Construção 1
+    periodo: 5
+    teorica: 45
+    pratica: 30
+    categoria: espec
+    pre: []
+    co: [CIVL41, GEO03]
+  - id: CIVL52
+    codigo: CIVL52
+    nome: Topografia 1
+    periodo: 5
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: []
+    co: [CIVL11]
+  - id: CIVL11
+    codigo: CIVL11
+    nome: Desenho Técnico
+    periodo: 5
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: [ART02]
+    co: []
+  - id: CIVL41
+    codigo: CIVL41
+    nome: Resistência dos Materiais 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [FIS08]
+    co: []
+  - id: GEO03
+    codigo: GEO03
+    nome: Fundamentos de Geologia
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: []
+    nota: PPC cita “FIS02” (código inexistente na matriz)
+  - id: CIVL75
+    codigo: CIVL75
+    nome: Hidráulica
+    periodo: 5
+    teorica: 60
+    pratica: 30
+    categoria: prof
+    pre: [FIS01]
+    co: []
+  - id: CIVL53
+    codigo: CIVL53
+    nome: Topografia 2
+    periodo: 6
+    teorica: 60
+    pratica: 30
+    categoria: prof
+    pre: [CIVL52]
+    co: []
+  - id: ARQ01
+    codigo: ARQ01
+    nome: Arquitetura
+    periodo: 6
+    teorica: 30
+    pratica: 30
+    categoria: espec
+    pre: [CIVL52]
+    co: []
+  - id: CIVL42
+    codigo: CIVL42
+    nome: Resistência dos Materiais 2
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [CIVL41]
+    co: []
+  - id: CIVL26
+    codigo: CIVL26
+    nome: Hidrologia Aplicada
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [CIVL75]
+    co: []
+  - id: CIVL32
+    codigo: CIVL32
+    nome: Mecânica dos Solos 1
+    periodo: 6
+    teorica: 60
+    pratica: 30
+    categoria: espec
+    pre: [GEO03]
+    co: [CIVL41]
+  - id: CIVL31
+    codigo: CIVL31
+    nome: Materiais de Construção 2
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL30]
+    co: []
+  - id: CIVL05
+    codigo: CIVL05
+    nome: Concreto 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL42]
+    co: []
+  - id: CIVL19
+    codigo: CIVL19
+    nome: Estradas 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL53]
+    co: []
+  - id: CIVL76
+    codigo: CIVL76
+    nome: Saneamento 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL75]
+    co: []
+  - id: CIVL33
+    codigo: CIVL33
+    nome: Mecânica dos Solos 2
+    periodo: 7
+    teorica: 30
+    pratica: 30
+    categoria: espec
+    pre: [CIVL32]
+    co: []
+  - id: CIVL47
+    codigo: CIVL47
+    nome: Teoria das Estruturas 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL42]
+    co: []
+    dcext: true
+  - id: CIVL45
+    codigo: CIVL45
+    nome: Engenharia de Transportes
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL53]
+    co: []
+  - id: CIVL58
+    codigo: CIVL58
+    nome: Engenharia de Segurança
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL31]
+    co: []
+  - id: CIVL06
+    codigo: CIVL06
+    nome: Concreto 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL05]
+    co: []
+  - id: CIVL97
+    codigo: CIVL97
+    nome: Saneamento 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL76]
+    co: []
+  - id: CIVL20
+    codigo: CIVL20
+    nome: Estradas 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL19, CIVL32]
+    co: []
+  - id: CIVL23
+    codigo: CIVL23
+    nome: Fundações
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL33]
+    co: []
+  - id: CIVL77
+    codigo: CIVL77
+    nome: Construção Civil 1
+    periodo: 8
+    teorica: 60
+    pratica: 30
+    categoria: espec
+    pre: [CIVL31]
+    co: []
+  - id: CIVL18
+    codigo: CIVL18
+    nome: Estágio Supervisionado
+    periodo: 8
+    teorica: 20
+    pratica: 160
+    categoria: compl
+    pre: [CIVL58]
+    co: []
+    estagio: true
+  - id: CIVL79
+    codigo: CIVL79
+    nome: Metodologia da Pesquisa
+    periodo: 8
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: [CIVL18]
+  - id: CIVL10
+    codigo: CIVL10
+    nome: Construção Civil 2
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL77]
+    co: []
+    dcext: true
+  - id: CIVL73
+    codigo: CIVL73
+    nome: Gestão e Controle Ambiental
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL76]
+    co: []
+  - id: CIVL78
+    codigo: CIVL78
+    nome: Gestão da Construção Civil 1
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL77]
+    co: []
+  - id: CIVL82
+    codigo: CIVL82
+    nome: Projeto Final de Curso
+    periodo: 9
+    teorica: 0
+    pratica: 30
+    categoria: compl
+    pre: [CIVL79]
+    co: []
+  - id: CIVL08
+    codigo: CIVL08
+    nome: Construção de Aço e Madeira
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL06]
+    co: []
+  - id: CIVL07
+    codigo: CIVL07
+    nome: Concreto Protendido
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL06]
+    co: []
+  - id: ELD3
+    codigo: —
+    nome: DCExt Eletiva 3
+    periodo: 9
+    teorica: 30
+    pratica: 30
+    categoria: eletiva
+    pre: []
+    co: []
+    dcext: true
+  - id: CIVL36
+    codigo: CIVL36
+    nome: Pontes 1
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL07]
+    co: []
+  - id: CIVL38
+    codigo: CIVL38
+    nome: Portos 1
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL42, CIVL75]
+    co: []
+  - id: CIVL28
+    codigo: CIVL28
+    nome: Instalações Prediais
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL77]
+    co: []
+  - id: CIVL80
+    codigo: CIVL80
+    nome: Gestão da Construção Civil 2
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CIVL78]
+    co: []
+  - id: DIR06
+    codigo: DIR06
+    nome: Direito para Engenheiro
+    periodo: 10
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: [SOC02]
+    co: []
+  - id: ELD4
+    codigo: —
+    nome: DCExt Eletiva 4
+    periodo: 10
+    teorica: 30
+    pratica: 30
+    categoria: eletiva
+    pre: []
+    co: []
+    dcext: true
+  - id: EL1
+    codigo: —
+    nome: Eletiva 1
+    periodo: 10
+    teorica: 30
+    pratica: 30
+    categoria: eletiva
+    pre: []
+    co: []

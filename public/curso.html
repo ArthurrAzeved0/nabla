@@ -1,0 +1,111 @@
+<!doctype html>
+<!-- **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                              curso.html *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** -->
+<!--
+  PONTE DE ENDEREÇOS ANTIGOS.
+
+  O site 1.x publicava links assim, e eles circularam em conversas e grupos:
+
+      curso.html?curso=calculo3                    (a cadeira)
+      curso.html?curso=calculo3#calculo3-1ee-01    (uma questão)
+      curso.html?curso=calculo3#c3-multiplas       (uma seção da teoria)
+
+  Nenhum deles existe mais. Esta página os traduz para os endereços novos
+  em vez de deixar quem clicou cair num 404 — o custo de manter um arquivo
+  é menor que o de quebrar um link que já foi compartilhado.
+
+  A distinção entre questão e seção de teoria é feita pelo formato da
+  âncora: questão é sempre <cadeira>-<prova>-<NN>.
+-->
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecionando… — Nabla</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font: 15px/1.6 system-ui, sans-serif;
+        background: #eef1f1;
+        color: #16212a;
+        text-align: center;
+        padding: 24px;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #10212c;
+          color: #e7eff4;
+        }
+      }
+      a {
+        color: #0f6c86;
+      }
+      @media (prefers-color-scheme: dark) {
+        a {
+          color: #5cbdda;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>O endereço desta página mudou. Levando você para o lugar certo…</p>
+      <p><a id="destino" href="./">Se nada acontecer, clique aqui.</a></p>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var PROVAS = ["1ee", "2ee", "final"];
+        /* Ajustar se algum id de cadeira mudar. */
+        var CADEIRAS = ["calculo3", "eqdiferenciais", "eletromag"];
+
+        var params = new URLSearchParams(location.search);
+        var cadeira = params.get("curso") || "";
+        var hash = (location.hash || "").replace(/^#/, "");
+
+        /* a ponte vive na raiz do site, então "./" é a raiz */
+        var destino = "./";
+
+        if (CADEIRAS.indexOf(cadeira) !== -1) {
+          var partes = hash.split("-");
+          var ehQuestao =
+            partes.length >= 3 && partes[0] === cadeira && PROVAS.indexOf(partes[1]) !== -1;
+
+          if (ehQuestao) {
+            /* questão: vai para a página da prova, na âncora dela */
+            destino = "cadeiras/" + cadeira + "/" + partes[1] + "#" + hash;
+          } else if (hash) {
+            /* qualquer outra âncora era seção da teoria */
+            destino = "cadeiras/" + cadeira + "#" + hash;
+          } else {
+            destino = "cadeiras/" + cadeira;
+          }
+        }
+
+        var link = document.getElementById("destino");
+        if (link) link.setAttribute("href", destino);
+        /* replace, não assign: não deixa a ponte no histórico do navegador */
+        location.replace(destino);
+      })();
+    </script>
+  </body>
+</html>

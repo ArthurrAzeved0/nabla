@@ -1,0 +1,67 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                             Regua.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Régua de cota — a citação direta da prancha técnica: linha fina com
+   marcas nas extremidades e um rótulo que interrompe o traço no meio. */
+interface Props {
+  /** Rótulo no meio da régua. Sem ele, é só a linha com as marcas. */
+  rotulo?: string;
+}
+
+const { rotulo } = Astro.props;
+---
+
+<div class="regua" role="separator">
+  {rotulo && <span>{rotulo}</span>}
+</div>
+
+<style>
+  .regua {
+    position: relative;
+    height: 1px;
+    background: var(--line);
+    margin: var(--e-6) 0;
+  }
+  /* as marcas de extremidade, como numa cota de desenho */
+  .regua::before,
+  .regua::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    width: 1px;
+    height: 9px;
+    background: var(--line-2);
+  }
+  .regua::before {
+    left: 0;
+  }
+  .regua::after {
+    right: 0;
+  }
+  .regua span {
+    position: absolute;
+    left: 50%;
+    top: -9px;
+    transform: translateX(-50%);
+    /* mascara o traço, como um rótulo sobre a linha de cota */
+    background: var(--paper);
+    padding: 0 var(--e-3);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+</style>

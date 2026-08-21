@@ -1,0 +1,61 @@
+---
+origem: "2025.2"
+tema: "Sistema · verificação de solução particular"
+temaId: sistemas-verificacao
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Verifique que o vetor
+
+$$
+X_p = \begin{pmatrix}\operatorname{sen} 3t\\ 0\\ \cos 3t\end{pmatrix}
+$$
+
+é uma solução particular do sistema:
+
+$$
+X' = \begin{pmatrix} 1 & 2 & 3 \\ -4 & 2 & 0 \\ -6 & 1 & 0 \end{pmatrix}X + \begin{pmatrix}-1\\4\\3\end{pmatrix}\operatorname{sen} 3t
+$$
+
+<Gabarito>
+Substituindo, $AX_p + F(t) = \begin{pmatrix}3\cos 3t\\ 0\\ -3\operatorname{sen} 3t\end{pmatrix} = X_p'$ ✓ — logo $X_p$ é solução particular.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Derivamos o candidato:
+
+$$
+X_p' = \begin{pmatrix}3\cos 3t\\ 0\\ -3\operatorname{sen} 3t\end{pmatrix}
+$$
+
+**Passo 2 —** Calculamos $AX_p$:
+
+$$
+AX_p = \begin{pmatrix} 1 & 2 & 3 \\ -4 & 2 & 0 \\ -6 & 1 & 0 \end{pmatrix}\begin{pmatrix}\operatorname{sen} 3t\\ 0\\ \cos 3t\end{pmatrix} = \begin{pmatrix}\operatorname{sen} 3t + 3\cos 3t\\ -4\operatorname{sen} 3t\\ -6\operatorname{sen} 3t\end{pmatrix}
+$$
+
+**Passo 3 —** Somamos o termo não homogêneo:
+
+$$
+AX_p + \begin{pmatrix}-1\\4\\3\end{pmatrix}\operatorname{sen} 3t = \begin{pmatrix}\operatorname{sen} 3t + 3\cos 3t - \operatorname{sen} 3t\\ -4\operatorname{sen} 3t + 4\operatorname{sen} 3t\\ -6\operatorname{sen} 3t + 3\operatorname{sen} 3t\end{pmatrix} = \begin{pmatrix}3\cos 3t\\ 0\\ -3\operatorname{sen} 3t\end{pmatrix}
+$$
+
+**Passo 4 —** Comparando com o Passo 1: os dois lados coincidem. *Atenção ao detalhe:* na 3ª componente, $-6\operatorname{sen} 3t + 3\operatorname{sen} 3t = -3\operatorname{sen} 3t$, que é exatamente $(\cos 3t)' = -3\operatorname{sen} 3t$.
+
+$$
+\boxed{X_p' = AX_p + F(t) \quad\Rightarrow\quad X_p \text{ é solução particular do sistema.}}
+$$
+</Passos>

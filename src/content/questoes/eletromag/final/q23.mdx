@@ -1,0 +1,72 @@
+---
+origem: Banco
+tema: "Indução · Campo invertido"
+temaId: inducao-campo-invertido
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma bobina de $N = 100$ espiras e diâmetro $D = 2{,}0\ \text{cm}$ está num campo magnético $B = 1{,}0\ \text{T}$ perpendicular ao seu plano. O campo é **invertido** (passa a apontar no sentido oposto, mantendo o módulo) num intervalo $\Delta t = 0{,}1\ \text{s}$. Com $R = 50\ \Omega$, determine a fem média induzida e a corrente.
+
+<Figura>
+  <svg viewBox="0 0 240 130" role="img" aria-label="Campo saindo da tela antes e entrando depois, ilustrando a inversão">
+    <text x="60" y="24" font-size="10" fill="var(--ink-2)" text-anchor="middle">antes</text>
+    <circle cx="60" cy="70" r="30" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    <g stroke="var(--accent)" fill="var(--accent)">
+      <circle cx="50" cy="62" r="4" fill="none" stroke-width="1.2"/><circle cx="50" cy="62" r="1.1"/>
+      <circle cx="70" cy="62" r="4" fill="none" stroke-width="1.2"/><circle cx="70" cy="62" r="1.1"/>
+      <circle cx="60" cy="80" r="4" fill="none" stroke-width="1.2"/><circle cx="60" cy="80" r="1.1"/>
+    </g>
+    <text x="60" y="115" font-size="9" fill="var(--accent)" text-anchor="middle">+B (sai)</text>
+    <text x="120" y="74" font-size="16" fill="var(--ink-3)" text-anchor="middle">→</text>
+    <text x="180" y="24" font-size="10" fill="var(--ink-2)" text-anchor="middle">depois</text>
+    <circle cx="180" cy="70" r="30" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    <g stroke="var(--accent)" stroke-width="1.4">
+      <line x1="166" y1="58" x2="176" y2="68"/><line x1="176" y1="58" x2="166" y2="68"/>
+      <line x1="186" y1="58" x2="196" y2="68"/><line x1="196" y1="58" x2="186" y2="68"/>
+      <line x1="176" y1="76" x2="186" y2="86"/><line x1="186" y1="76" x2="176" y2="86"/>
+    </g>
+    <text x="180" y="115" font-size="9" fill="var(--accent)" text-anchor="middle">−B (entra)</text>
+  </svg>
+  <figcaption>
+
+Inverter o campo faz o fluxo ir de $+BA$ a $-BA$: a variação é $\Delta\Phi = 2BA$, não $BA$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\varepsilon = \dfrac{N\cdot 2BA}{\Delta t} \approx 0{,}628\ \text{V}$  ·  $i \approx 12{,}6\ \text{mA}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** A "pegadinha": o campo **inverte**, então o fluxo vai de $+BA$ para $-BA$. A variação é o *dobro*:
+
+$$
+\Delta\Phi = BA - (-BA) = 2BA, \qquad A = \pi\left(\frac{D}{2}\right)^2 = \pi(0{,}01)^2 \approx 3{,}14\times10^{-4}\ \text{m}^2
+$$
+
+**Passo 2 —** Fem média pela Lei de Faraday (com $N$ espiras):
+
+$$
+\varepsilon = N\frac{\Delta\Phi}{\Delta t} = \frac{100\cdot 2(1{,}0)(3{,}14\times10^{-4})}{0{,}1} \approx \boxed{0{,}628\ \text{V}}
+$$
+
+**Passo 3 —** Corrente pela lei de Ohm:
+
+$$
+i = \frac{\varepsilon}{R} = \frac{0{,}628}{50} \approx \boxed{12{,}6\ \text{mA}}
+$$
+</Passos>

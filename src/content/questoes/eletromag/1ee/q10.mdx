@@ -1,0 +1,85 @@
+---
+origem: "2024.2"
+tema: "Lei de Gauss · Densidade não uniforme"
+temaId: lei-de-gauss-esfera
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma esfera *não condutora* de raio $R$ possui densidade volumétrica de carga que varia com o raio: $\rho(r) = \dfrac{A}{r}$, onde $A$ é constante.
+
+(a) Determine a carga total da esfera.
+
+(b) Calcule o campo elétrico no interior ($r \lt  R$).
+
+(c) Calcule o campo elétrico no exterior ($r \gt  R$).
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Gráfico do campo: constante dentro da esfera e decaindo com 1 sobre r ao quadrado fora">
+    <line x1="50" y1="150" x2="320" y2="150" stroke="var(--ink-3)" stroke-width="1.5"/>
+    <polygon points="320,150 310,146 310,154" fill="var(--ink-3)"/>
+    <text x="312" y="140" font-size="11" fill="var(--ink-3)">r</text>
+    <line x1="50" y1="150" x2="50" y2="20" stroke="var(--ink-3)" stroke-width="1.5"/>
+    <polygon points="50,20 46,30 54,30" fill="var(--ink-3)"/>
+    <text x="30" y="30" font-size="11" fill="var(--ink-3)">E</text>
+    {/* patamar constante */}
+    <line x1="50" y1="55" x2="150" y2="55" stroke="var(--accent)" stroke-width="2.5"/>
+    <text x="72" y="45" font-size="11" fill="var(--accent)">A/2ε₀ (constante!)</text>
+    {/* decaimento */}
+    <path d="M 150 55 Q 200 110 250 128 T 315 140" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+    <text x="228" y="100" font-size="11" fill="var(--ok)">∝ 1/r²</text>
+    <line x1="150" y1="150" x2="150" y2="55" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+    <text x="150" y="166" font-size="12" fill="var(--ink-2)" text-anchor="middle">R</text>
+  </svg>
+  <figcaption>
+
+Com $\rho = A/r$, o campo interno sai *uniforme em módulo*; fora da esfera decai como carga pontual.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $Q = 2\pi A R^2$  ·  (b) $E_{\text{int}} = \dfrac{A}{2\varepsilon_0}$ (constante!)  ·  (c) $E_{\text{ext}} = \dfrac{A R^2}{2\varepsilon_0 r^2}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Como $\rho$ depende de $r$, a carga é obtida integrando em cascas esféricas $dV = 4\pi r'^2\,dr'$:
+
+$$
+q(r) = \int_0^{r} \frac{A}{r'}\,4\pi r'^2\,dr' = 4\pi A \int_0^{r} r'\,dr' = 2\pi A r^2
+$$
+
+**Passo 2 —** A carga total é $q(R)$:
+
+$$
+\boxed{Q = 2\pi A R^2}
+$$
+
+**Passo 3 —** Interior: gaussiana de raio $r \lt  R$ envolve $q(r) = 2\pi A r^2$:
+
+$$
+E\cdot 4\pi r^2 = \frac{2\pi A r^2}{\varepsilon_0} \;\Rightarrow\; \boxed{E_{\text{int}} = \frac{A}{2\varepsilon_0}}
+$$
+
+O $r^2$ cancela: o campo interno é *uniforme em módulo* — resultado curioso e clássico dessa distribuição.
+
+**Passo 4 —** Exterior: a gaussiana envolve toda a carga $Q = 2\pi A R^2$:
+
+$$
+E\cdot 4\pi r^2 = \frac{2\pi A R^2}{\varepsilon_0} \;\Rightarrow\; \boxed{E_{\text{ext}} = \frac{A R^2}{2\varepsilon_0 r^2}}
+$$
+
+Em $r = R$ as duas expressões coincidem ($A/2\varepsilon_0$) ✓
+</Passos>

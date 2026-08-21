@@ -1,0 +1,58 @@
+---
+tema: "Funções de várias variáveis"
+temaId: funcoes-varias-variaveis
+pontos: 2,0 pts
+estiloDeProva: true
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a função $f(x,y) = 4x^2 + y^2 + 1$.
+
+<ol type="a">
+<li>
+
+Determine o domínio e a imagem de $f$ e diga que tipo de superfície é o gráfico $z = f(x,y)$.
+
+</li>
+<li>
+
+Verifique se existe o limite $\displaystyle\lim_{(x,y)\to(0,0)} \frac{2x^2 y}{x^4 + y^2}$.
+
+</li>
+</ol>
+
+<Gabarito>
+(a) Domínio $\mathbb R^2$; imagem $[1,+\infty)$; paraboloide elíptico. (b) O limite **não existe**.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Não há divisão nem raiz: $f$ está definida para todo $(x,y)$, logo o domínio é $\mathbb R^2$.
+
+**Passo 2 —** Como $4x^2 \ge 0$ e $y^2 \ge 0$, temos $f \ge 1$, com igualdade em $(0,0)$. A imagem é $[1,+\infty)$. O gráfico $z = 4x^2 + y^2 + 1$ é um **paraboloide elíptico** com vértice em $(0,0,1)$, abrindo para cima.
+
+**Passo 3 (b) —** Teste caminhos diferentes chegando à origem. Ao longo do eixo $x$ ($y = 0$):
+
+$$
+\frac{2x^2\cdot 0}{x^4 + 0} = 0 \;\Rightarrow\; \text{limite } 0
+$$
+
+**Passo 4 —** Ao longo da parábola $y = x^2$:
+
+$$
+\frac{2x^2\cdot x^2}{x^4 + (x^2)^2} = \frac{2x^4}{x^4 + x^4} = \frac{2x^4}{2x^4} = 1 \;\Rightarrow\; \text{limite } 1
+$$
+
+**Passo 5 —** Dois caminhos dão valores diferentes ($0 \ne 1$). Logo o limite **não existe**.
+</Passos>

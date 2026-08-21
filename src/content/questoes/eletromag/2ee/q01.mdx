@@ -1,0 +1,93 @@
+---
+origem: "2025.2"
+tema: "Lei de Biot-Savart · Fio reto"
+temaId: biot-savart-fio-reto
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Utilizando a Lei de Biot-Savart, deduza a expressão do campo magnético gerado por um fio reto *infinito*, percorrido por corrente $i$, em um ponto situado a uma distância $a$ do fio.
+
+<Figura>
+  <svg viewBox="0 0 340 200" role="img" aria-label="Geometria da Lei de Biot-Savart para fio reto infinito">
+    {/* fio ao longo de x */}
+    <line x1="20" y1="150" x2="320" y2="150" stroke="var(--ink-2)" stroke-width="3"/>
+    <polygon points="320,150 308,145 308,155" fill="var(--ink-2)"/>
+    <text x="300" y="138" font-size="12" fill="var(--ink-2)">i</text>
+    {/* elemento ds */}
+    <line x1="110" y1="150" x2="140" y2="150" stroke="var(--warn)" stroke-width="5"/>
+    <text x="118" y="172" font-size="11" fill="var(--warn)">ds (em x)</text>
+    {/* ponto P */}
+    <circle cx="230" cy="50" r="4" fill="var(--accent)"/>
+    <text x="240" y="46" font-size="12" fill="var(--accent)">P</text>
+    {/* distância a */}
+    <line x1="230" y1="150" x2="230" y2="54" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+    <text x="236" y="105" font-size="11" fill="var(--ink-3)">a</text>
+    {/* r do elemento até P */}
+    <line x1="125" y1="150" x2="226" y2="53" stroke="var(--ok)" stroke-width="1.5"/>
+    <polygon points="226,53 216,56 221,63" fill="var(--ok)"/>
+    <text x="160" y="95" font-size="11" fill="var(--ok)">r</text>
+    {/* ângulo θ */}
+    <path d="M 150 150 A 25 25 0 0 0 143 133" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="152" y="132" font-size="11" fill="var(--ink-3)">θ</text>
+    {/* dB saindo do plano */}
+    <circle cx="285" cy="50" r="9" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+    <circle cx="285" cy="50" r="2" fill="var(--accent)"/>
+    <text x="298" y="55" font-size="11" fill="var(--accent)">dB (sai da tela)</text>
+  </svg>
+  <figcaption>
+
+Cada elemento $d\vec s$ contribui com $d\vec B \propto \dfrac{d\vec s\times\hat r}{r^2}$; em $P$, todos os $d\vec B$ saem da tela e se somam.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$B = \dfrac{\mu_0\, i}{2\pi a}$, com direção dada pela regra da mão direita (circunda o fio).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Coloque o fio ao longo do eixo $x$ e o ponto $P$ a uma distância $a$ sobre a perpendicular. A Lei de Biot-Savart para um elemento $d\vec s = dx\,\hat x$:
+
+$$
+d\vec B = \frac{\mu_0 i}{4\pi}\,\frac{d\vec s \times \hat r}{r^2}
+$$
+
+**Passo 2 —** O módulo do produto vetorial é $|d\vec s \times \hat r| = dx\,\sin\theta$, onde $\theta$ é o ângulo entre $d\vec s$ e a linha até $P$. Todos os $d\vec B$ apontam na mesma direção (saindo/entrando no plano), então basta integrar módulos:
+
+$$
+B = \frac{\mu_0 i}{4\pi}\int_{-\infty}^{+\infty} \frac{\sin\theta\; dx}{r^2}
+$$
+
+**Passo 3 —** Da geometria: $r = \sqrt{x^2 + a^2}$ e $\sin\theta = \dfrac{a}{\sqrt{x^2+a^2}}$. Logo:
+
+$$
+B = \frac{\mu_0 i}{4\pi}\int_{-\infty}^{+\infty} \frac{a\; dx}{(x^2+a^2)^{3/2}}
+$$
+
+**Passo 4 —** Integral tabelada (ou substituição $x = a\tan\varphi$):
+
+$$
+\int_{-\infty}^{+\infty} \frac{dx}{(x^2+a^2)^{3/2}} = \left[\frac{x}{a^2\sqrt{x^2+a^2}}\right]_{-\infty}^{+\infty} = \frac{1}{a^2} - \left(-\frac{1}{a^2}\right) = \frac{2}{a^2}
+$$
+
+**Passo 5 —** Substitua:
+
+$$
+B = \frac{\mu_0 i}{4\pi}\cdot a \cdot \frac{2}{a^2} = \boxed{\frac{\mu_0 i}{2\pi a}}
+$$
+
+A direção é tangente a círculos centrados no fio, no sentido dado pela regra da mão direita (polegar na corrente, dedos indicam $\vec B$).
+</Passos>

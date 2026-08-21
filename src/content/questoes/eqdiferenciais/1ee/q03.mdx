@@ -1,0 +1,57 @@
+---
+origem: "2023.2"
+tema: "Arrefecimento de Newton"
+temaId: arrefecimento-de-newton
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+De acordo com a lei do arrefecimento de Newton, a taxa de resfriamento de uma substância em uma corrente de ar é proporcional à diferença entre a temperatura da substância e a do ar:
+
+$$
+\frac{dT}{dt} = -k\,(T_s - T_{ar})
+$$
+
+Sendo $k$ a constante de proporcionalidade, $t$ o tempo e $T_s$, $T_{ar}$ as temperaturas da substância e do ar, respectivamente. Se a temperatura do ar for de 30° e sabendo que o resfriamento da substância de 100° para 70° leva 15 minutos, determine o momento em que a temperatura será de 40°. Considere $\ln 7 = 1{,}95$ e $\ln 4 = 1{,}39$.
+
+<Gabarito>
+$t = \dfrac{15\ln 7}{\ln 7 - \ln 4} = \dfrac{15 \cdot 1{,}95}{0{,}56} \approx 52$ minutos.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Com $T_{ar} = 30$, a equação é separável:
+
+$$
+\frac{dT}{T - 30} = -k\,dt
+$$
+
+**Passo 2 —** Integrando entre $t = 0,\,T = 100$ e $t = 15,\,T = 70$:
+
+$$
+\int_{100}^{70} \frac{dT}{T-30} = -k\int_0^{15} dt \;\Rightarrow\; \ln 40 - \ln 70 = -15k \;\Rightarrow\; 15k = \ln\frac{7}{4} = \ln 7 - \ln 4 = 0{,}56
+$$
+
+**Passo 3 —** Integrando agora entre $t = 0,\,T = 100$ e $t = t_1,\,T = 40$:
+
+$$
+\int_{100}^{40} \frac{dT}{T-30} = -k\int_0^{t_1} dt \;\Rightarrow\; \ln 10 - \ln 70 = -k\,t_1 \;\Rightarrow\; k\,t_1 = \ln 7
+$$
+
+**Passo 4 —** Dividindo $k t_1 = \ln 7$ por $15k = 0{,}56$:
+
+$$
+\frac{t_1}{15} = \frac{\ln 7}{0{,}56} \;\Rightarrow\; t_1 = \frac{15\ln 7}{0{,}56} = \frac{15 \cdot 1{,}95}{0{,}56} \;\Rightarrow\; \boxed{t_1 \approx 52 \text{ min}}
+$$
+</Passos>

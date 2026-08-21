@@ -1,0 +1,684 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                         MapaGrade.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Mapa da grade: quadro (fluxograma) + modo lista, a partir da collection.
+
+   Os dois modos renderizam TODAS as disciplinas: assim o filtro, a marcação
+   e a busca funcionam igual nos dois, e trocar de modo não recarrega nada. */
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  grade: CollectionEntry<"grade">;
+  /** siglas das cadeiras que têm página no site */
+  comPagina: Set<string>;
+}
+const { grade, comPagina } = Astro.props;
+const g = grade.data;
+const base = import.meta.env.BASE_URL;
+
+const CATEGORIA = {
+  basico: "Núcleo básico",
+  prof: "Profissionalizante",
+  espec: "Específico obrigatório",
+  eletiva: "Eletiva",
+  compl: "Complementar obrigatória",
+} as const;
+
+const ch = (d: (typeof g.disciplinas)[number]) => d.teorica + d.pratica;
+const periodos = [...new Set(g.disciplinas.map((d) => d.periodo))].sort((a, b) => a - b);
+const chPeriodo = (p: number) =>
+  g.disciplinas.filter((d) => d.periodo === p).reduce((s, d) => s + ch(d), 0);
+
+/* o dado vai para a ilha num único atributo, já validado no build */
+const paraIlha = JSON.stringify({
+  curso: g.curso,
+  sigla: g.sigla,
+  matriz: g.matriz,
+  chTotalCurso: g.chTotalCurso,
+  estagioFracao: g.estagioFracao,
+  disciplinas: g.disciplinas,
+});
+
+const href = (d: (typeof g.disciplinas)[number]) => {
+  const id = typeof d.cadeira === "string" ? d.cadeira : d.cadeira?.id;
+  return id && comPagina.has(id) ? `${base}cadeiras/${id}` : undefined;
+};
+---
+
+<div class="grade" data-grade data-grade-json={paraIlha} data-modo-atual="quadro">
+  <div class="painel">
+    <div class="numeros">
+      <span>Concluídas <b data-feitas>0</b>/<span data-total>0</span></span>
+      <span>CH <b data-ch>0h</b> (<span data-pct>0%</span>)</span>
+      <span>Liberadas agora <b data-liberadas>0</b></span>
+      <span class="flag" data-flag-estagio></span>
+    </div>
+    <div class="barra"><i data-barra></i></div>
+    <div class="controles">
+      <button type="button" class="bt" data-modo aria-pressed="false">Modo lista</button>
+      <button type="button" class="bt" data-pdf-progresso>PDF com meu progresso</button>
+      <button type="button" class="bt" data-pdf-limpo>PDF do mapa</button>
+      <button type="button" class="bt risco" data-limpar-grade>Limpar</button>
+      <span class="zoom">
+        <button type="button" class="bt z" data-zoom-menos aria-label="Reduzir">−</button>
+        <span class="zval" data-zoom>100%</span>
+        <button type="button" class="bt z" data-zoom-mais aria-label="Ampliar">+</button>
+        <button type="button" class="bt z" data-zoom-ajustar aria-label="Ajustar à tela">⤢</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="legenda">
+    {
+      (Object.keys(CATEGORIA) as (keyof typeof CATEGORIA)[]).map((k) => (
+        <span class="lg">
+          <i class:list={["sw", `cat-${k}`]} />
+          {CATEGORIA[k]}
+        </span>
+      ))
+    }
+    <span class="lg"><i class="sw est-feita" />concluída</span>
+    <span class="lg"><i class="sw est-livre" />pode cursar</span>
+    <span class="lg sep">
+      seta contínua = pré-requisito · tracejada = co-requisito · a cor é da disciplina de origem
+    </span>
+  </div>
+
+  <p class="ajuda">
+    Clique numa disciplina para marcá-la como concluída. Passe o mouse para ver só a cadeia de
+    requisitos dela — em repouso as setas ficam de fundo de propósito, porque 61 delas em peso
+    cheio viram rabisco. As em azul têm questões e teoria aqui no site.
+    <span class="so-toque">
+      No celular, o <strong>modo lista</strong> mostra os requisitos escritos, que lê melhor que o
+      mapa numa tela estreita.
+    </span>
+  </p>
+
+  {/* ------------------------------- quadro ------------------------------- */}
+  <div class="rolagem" data-rolagem>
+    <div class="quadro" data-quadro>
+      <svg class="fios" data-fios aria-hidden="true"></svg>
+      <div class="colunas">
+        {
+          periodos.map((p) => (
+            <div class="coluna">
+              <div class="cab">
+                {p}º período<small>{chPeriodo(p)}h</small>
+              </div>
+              {g.disciplinas
+                .filter((d) => d.periodo === p)
+                .map((d) => (
+                  <button
+                    type="button"
+                    class:list={["cartao", `cat-${d.categoria}`]}
+                    data-disciplina={d.id}
+                    aria-pressed="false"
+                    title={d.nota}
+                  >
+                    {d.dcext && <span class="selo">DCExt</span>}
+                    <span class="cod">{d.codigo}</span>
+                    <span class="nome">{d.nome}</span>
+                    <span class="ch">
+                      <span>
+                        <b>{d.teorica}</b>teór.
+                      </span>
+                      <span>
+                        <b>{d.pratica}</b>prát.
+                      </span>
+                      <span>
+                        <b>{ch(d)}</b>total
+                      </span>
+                    </span>
+                    {d.estagio && <span class="estagio" data-estagio />}
+                    {
+                      href(d) && (
+                        <a class="ir" href={href(d)}>
+                          ver no site ↗
+                        </a>
+                      )
+                    }
+                  </button>
+                ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {/* -------------------------------- lista ------------------------------- */}
+  <div class="lista">
+    {
+      periodos.map((p) => (
+        <section class="lp">
+          <h2>
+            {p}º período<small>{chPeriodo(p)}h</small>
+          </h2>
+          {g.disciplinas
+            .filter((d) => d.periodo === p)
+            .map((d) => (
+              <button
+                type="button"
+                class:list={["lcartao", `cat-${d.categoria}`]}
+                data-disciplina={d.id}
+                aria-pressed="false"
+              >
+                <span class="topo">
+                  <span class="cod">
+                    {d.codigo}
+                    {d.dcext ? " · DCExt" : ""}
+                  </span>
+                  <span class="chp">{ch(d)}h</span>
+                </span>
+                <span class="nome">{d.nome}</span>
+                {(d.pre.length > 0 || d.co.length > 0) && (
+                  <span class="reqs">
+                    Requisitos:
+                    {d.pre.map((r) => (
+                      <span class="chip" data-ir={r}>
+                        {g.disciplinas.find((x) => x.id === r)?.codigo ?? r}
+                      </span>
+                    ))}
+                    {d.co.map((r) => (
+                      <span class="chip co" data-ir={r}>
+                        {g.disciplinas.find((x) => x.id === r)?.codigo ?? r} (co)
+                      </span>
+                    ))}
+                  </span>
+                )}
+                {d.estagio && <span class="estagio" data-estagio />}
+                {d.nota && <span class="nota">Obs.: {d.nota}</span>}
+                {
+                  href(d) && (
+                    <a class="ir" href={href(d)}>
+                      ver no site ↗
+                    </a>
+                  )
+                }
+              </button>
+            ))}
+        </section>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  /* --------------------------------------------------------------- painel */
+  .grade {
+    --corredor: 40px; /* precisa casar com CORREDOR em grade-ui.ts */
+    --cartao-w: 172px;
+  }
+  .painel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-cartao);
+    padding: var(--e-4) var(--e-5);
+    margin-bottom: var(--e-4);
+  }
+  .numeros {
+    display: flex;
+    gap: var(--e-4);
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+  }
+  .numeros b {
+    color: var(--ink);
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .flag {
+    margin-left: auto;
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    padding: 3px 10px;
+    border-radius: var(--r-pilula);
+    border: 1px solid var(--line-2);
+    color: var(--ink-3);
+  }
+  .flag.ok {
+    border-color: var(--ok);
+    color: var(--ok);
+  }
+  .barra {
+    height: 8px;
+    border-radius: var(--r-pilula);
+    background: var(--surface-2);
+    overflow: hidden;
+    margin: var(--e-3) 0;
+  }
+  .barra i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--ok));
+    transition: width 0.3s;
+  }
+  .controles {
+    display: flex;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .bt {
+    padding: 6px 12px;
+    border-radius: var(--r-botao);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    font-family: var(--f-texto);
+    font-size: var(--t-sm);
+    cursor: pointer;
+  }
+  .bt:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .bt:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+  .bt.risco:hover {
+    border-color: var(--err);
+    color: var(--err);
+  }
+  .zoom {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
+  }
+  .bt.z {
+    min-width: 32px;
+    text-align: center;
+  }
+  .zval {
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    color: var(--ink-3);
+    min-width: 4ch;
+    text-align: center;
+  }
+
+  /* -------------------------------------------------------------- legenda */
+  .legenda {
+    display: flex;
+    gap: var(--e-3) var(--e-4);
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    color: var(--ink-3);
+    margin-bottom: var(--e-3);
+  }
+  .lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .sw {
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    border: 1px solid var(--line-2);
+    flex: none;
+  }
+  .est-feita {
+    background: var(--ok);
+    border-color: var(--ok);
+  }
+  .est-livre {
+    background: transparent;
+    border: 2px solid var(--action);
+  }
+  .sep {
+    margin-left: auto;
+  }
+  .ajuda {
+    font-size: var(--t-sm);
+    margin-bottom: var(--e-4);
+  }
+  /* o hover não existe no toque: quem está no celular precisa do outro caminho */
+  .so-toque {
+    display: none;
+  }
+  @media (hover: none) {
+    .so-toque {
+      display: inline;
+    }
+  }
+
+  /* categorias — tom claro de fundo, borda no tom cheio */
+  .cat-basico {
+    background: color-mix(in srgb, var(--warn) 12%, var(--surface));
+    border-color: var(--warn);
+  }
+  .cat-prof {
+    background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+    border-color: var(--accent);
+  }
+  .cat-espec {
+    background: color-mix(in srgb, var(--rev) 14%, var(--surface));
+    border-color: var(--rev);
+  }
+  .cat-eletiva {
+    background: color-mix(in srgb, var(--ok) 12%, var(--surface));
+    border-color: var(--ok);
+  }
+  .cat-compl {
+    background: color-mix(in srgb, var(--ok) 32%, var(--surface));
+    border-color: var(--ok);
+  }
+  .sw.cat-basico,
+  .sw.cat-prof,
+  .sw.cat-espec,
+  .sw.cat-eletiva,
+  .sw.cat-compl {
+    border-width: 2px;
+  }
+
+  /* --------------------------------------------------------------- quadro */
+  .rolagem {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: var(--e-2) 0 var(--e-4);
+  }
+  .quadro {
+    position: relative;
+    width: max-content;
+    padding: 2px 2px var(--e-4);
+  }
+  .colunas {
+    display: flex;
+    gap: var(--corredor);
+    width: max-content;
+  }
+  .coluna {
+    width: var(--cartao-w);
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .cab {
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    border-radius: var(--r-botao);
+    padding: 6px 4px 5px;
+    font-family: var(--f-titulo);
+    font-weight: 600;
+    font-size: var(--t-sm);
+  }
+  .cab small {
+    display: block;
+    font-weight: 400;
+    font-size: 10px;
+    opacity: 0.85;
+  }
+
+  .fios {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+    color: var(--ink-3);
+  }
+  /* Em repouso as setas são ESTRUTURA DE FUNDO, não a informação principal:
+     61 arestas em peso cheio viram rabisco. A leitura de uma cadeia
+     específica é feita passando o mouse, onde ela acende. */
+  .fios :global(.fio) {
+    opacity: 0.34;
+  }
+  .grade.tracando .fios :global(.fio) {
+    opacity: 0.05;
+  }
+  .grade.tracando .fios :global(.fio-forte) {
+    opacity: 1;
+    stroke-width: 2.6;
+  }
+  /* no PDF do mapa completo elas voltam ao peso cheio: no papel não há hover */
+  .grade.sem-estado .fios :global(.fio) {
+    opacity: 0.85;
+  }
+
+  .cartao {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+    padding: 8px 9px 7px;
+    border: 2px solid;
+    border-radius: var(--r-botao);
+    cursor: pointer;
+    font-family: var(--f-texto);
+    color: var(--ink);
+    box-shadow: var(--sombra-1);
+  }
+  .cartao .cod {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
+  }
+  .cartao .nome {
+    font-family: var(--f-titulo);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .ch {
+    display: flex;
+    border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+    padding-top: 4px;
+    margin-top: 3px;
+    font-size: 9.5px;
+    text-align: center;
+  }
+  .ch > span {
+    flex: 1;
+  }
+  .ch b {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 11px;
+  }
+  .selo {
+    position: absolute;
+    top: -8px;
+    right: 6px;
+    font-family: var(--f-mono);
+    font-size: 8.5px;
+    background: var(--accent);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: var(--r-pilula);
+  }
+  .estagio {
+    font-size: 9.5px;
+    line-height: 1.3;
+    color: var(--ink-2);
+  }
+  .ir {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .ir:hover {
+    text-decoration: underline;
+  }
+
+  /* estados */
+  .feita {
+    outline: 2px solid var(--ok);
+    outline-offset: 1px;
+  }
+  .feita::after {
+    content: "✓";
+    position: absolute;
+    top: -9px;
+    left: -8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ok);
+    color: #fff;
+    font-size: 11px;
+    line-height: 18px;
+    text-align: center;
+  }
+  .livre {
+    outline: 2px dashed var(--action);
+    outline-offset: 2px;
+  }
+  .livre::before {
+    content: "pode cursar";
+    position: absolute;
+    top: -9px;
+    left: 6px;
+    z-index: 3;
+    font-family: var(--f-mono);
+    font-size: 8.5px;
+    background: var(--action);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: var(--r-pilula);
+  }
+  .travada {
+    opacity: 0.42;
+  }
+  .grade.tracando .cartao,
+  .grade.tracando .lcartao {
+    opacity: 0.12;
+  }
+  .grade.tracando .traco {
+    opacity: 1;
+  }
+  .grade.tracando .traco-eu {
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+  /* no PDF "limpo" o progresso não aparece */
+  .grade.sem-estado .feita,
+  .grade.sem-estado .livre,
+  .grade.sem-estado .travada {
+    outline: none;
+    opacity: 1;
+  }
+  .grade.sem-estado .feita::after,
+  .grade.sem-estado .livre::before {
+    display: none;
+  }
+
+  /* ---------------------------------------------------------------- lista */
+  .lista {
+    display: none;
+  }
+  .grade[data-modo-atual="lista"] .rolagem {
+    display: none;
+  }
+  .grade[data-modo-atual="lista"] .lista {
+    display: block;
+  }
+  .lp {
+    margin-bottom: var(--e-5);
+  }
+  .lp h2 {
+    display: flex;
+    justify-content: space-between;
+    background: var(--accent);
+    color: #fff;
+    font-size: var(--t-sm);
+    padding: 7px 12px;
+    border-radius: var(--r-botao);
+    margin: 0 0 var(--e-2);
+  }
+  .lp h2 small {
+    font-weight: 400;
+    opacity: 0.85;
+  }
+  .lcartao {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    margin-bottom: var(--e-2);
+    border: 2px solid;
+    border-radius: var(--r-caixa);
+    cursor: pointer;
+    position: relative;
+    font-family: var(--f-texto);
+    color: var(--ink);
+  }
+  .lcartao .topo {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--e-2);
+  }
+  .lcartao .cod,
+  .lcartao .chp {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    opacity: 0.75;
+  }
+  .lcartao .nome {
+    font-family: var(--f-titulo);
+    font-size: var(--t-base);
+    font-weight: 600;
+  }
+  .reqs {
+    font-size: 11px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .chip {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    border: 1px solid currentColor;
+    border-radius: var(--r-pilula);
+    padding: 1px 7px;
+  }
+  .chip.co {
+    border-style: dashed;
+  }
+  .nota {
+    font-size: 10.5px;
+    opacity: 0.8;
+  }
+  .apontada {
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+
+  @media (max-width: 840px) {
+    .zoom {
+      display: none;
+    }
+  }
+  @media print {
+    .painel,
+    .ajuda {
+      display: none;
+    }
+  }
+</style>

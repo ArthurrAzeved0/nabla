@@ -1,0 +1,61 @@
+---
+origem: "2025.1"
+tema: "Máximos e mínimos"
+temaId: maximos-e-minimos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre e classifique todos os pontos críticos de
+
+$$
+f(x,y) = x^4 + y^4 - 4xy + 2
+$$
+
+<Gabarito>
+$(0,0)$ é ponto de sela; $(1,1)$ e $(-1,-1)$ são mínimos locais, ambos com $f = 0$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Iguale o gradiente a zero:
+
+$$
+f_x = 4x^3 - 4y = 0 \;\Rightarrow\; y = x^3,\qquad f_y = 4y^3 - 4x = 0 \;\Rightarrow\; x = y^3
+$$
+
+**Passo 2 —** Substituindo $y = x^3$ em $x = y^3$: $x = x^9 \Rightarrow x^9 - x = 0 \Rightarrow x(x^8 - 1) = 0$, logo $x = 0,\ 1,\ -1$. Os pontos críticos são $(0,0)$, $(1,1)$, $(-1,-1)$.
+
+**Passo 3 —** Monte a matriz Hessiana. $f_{xx} = 12x^2$, $f_{yy} = 12y^2$, $f_{xy} = -4$:
+
+$$
+D = f_{xx}f_{yy} - (f_{xy})^2 = 144x^2 y^2 - 16
+$$
+
+**Passo 4 —** Avalie em cada ponto:
+
+$$
+(0,0):\ D = -16 \lt  0 \;\Rightarrow\; \textbf{sela}
+$$
+
+$$
+(1,1):\ D = 144 - 16 = 128 \gt  0,\ f_{xx} = 12 \gt  0 \;\Rightarrow\; \textbf{mínimo local}
+$$
+
+$$
+(-1,-1):\ D = 128 \gt  0,\ f_{xx} = 12 \gt  0 \;\Rightarrow\; \textbf{mínimo local}
+$$
+
+**Passo 5 —** Valores nos mínimos: $f(1,1) = 1 + 1 - 4 + 2 = 0$ e $f(-1,-1) = 1 + 1 - 4 + 2 = 0$.
+</Passos>

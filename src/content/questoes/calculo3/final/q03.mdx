@@ -1,0 +1,88 @@
+---
+origem: "2023.1"
+tema: "Teorema de Green"
+temaId: teorema-de-green
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Use o Teorema de Green para calcular a integral de linha $\displaystyle\oint_C -y^2\,dx + x^2\,dy$ da curva com sentido anti-horário formada no primeiro quadrante do círculo $x^2 + y^2 = 4$.
+
+<Figura>
+  <svg viewBox="0 0 210 200" role="img" aria-label="Quarto de disco de raio 2 no primeiro quadrante fechado pelos eixos, percorrido no sentido anti-horário">
+    {/* eixos */}
+    <line x1="40" y1="160" x2="200" y2="160" stroke="var(--line-2)" stroke-width="1"/>
+    <line x1="50" y1="170" x2="50" y2="20" stroke="var(--line-2)" stroke-width="1"/>
+    <text x="192" y="175" font-size="10" fill="var(--ink-3)">x</text>
+    <text x="36" y="28" font-size="10" fill="var(--ink-3)">y</text>
+    {/* quarto de disco preenchido */}
+    <path d="M 50 160 L 170 160 A 120 120 0 0 0 50 40 Z" fill="var(--accent-soft)" stroke="none"/>
+    {/* arco C */}
+    <path d="M 170 160 A 120 120 0 0 0 50 40" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <text x="150" y="70" font-size="10" fill="var(--accent)">arco C (x²+y²=4)</text>
+    {/* segmentos de fechamento (eixos) */}
+    <line x1="50" y1="40" x2="50" y2="160" stroke="var(--ink-3)" stroke-width="1.6" stroke-dasharray="4 3"/>
+    <line x1="50" y1="160" x2="170" y2="160" stroke="var(--ink-3)" stroke-width="1.6" stroke-dasharray="4 3"/>
+    {/* setas anti-horário */}
+    <polygon points="120,160 110,155 110,165" fill="var(--ink-3)"/>
+    <polygon points="50,90 45,100 55,100" fill="var(--ink-3)"/>
+    {/* pontos */}
+    <circle cx="170" cy="160" r="3.5" fill="var(--warn)"/><text x="158" y="176" font-size="10" fill="var(--warn)">(2,0)</text>
+    <circle cx="50" cy="40" r="3.5" fill="var(--warn)"/><text x="10" y="44" font-size="10" fill="var(--warn)">(0,2)</text>
+  </svg>
+  <figcaption>
+
+Para usar Green é preciso *fechar* a curva: soma-se ao arco os dois segmentos dos eixos (tracejados). Nesses segmentos a integral dá zero, então sobra só o arco pedido.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\dfrac{32}{3}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Feche a região: o quarto de círculo no 1º quadrante é delimitado pelo arco $C$, pelo segmento do eixo $y$ (descendo de $(0,2)$ à origem) e pelo segmento do eixo $x$ (da origem até $(2,0)$). Chame o contorno completo de $C'$.
+
+**Passo 2 —** Aplique Green em $C'$, com $P = -y^2$ e $Q = x^2$:
+
+$$
+\oint_{C'} -y^2\,dx + x^2\,dy = \iint_A \left(\frac{\partial}{\partial x}(x^2) - \frac{\partial}{\partial y}(-y^2)\right) dA = \iint_A (2x + 2y)\, dA
+$$
+
+**Passo 3 —** Passe para polares ($0 \le r \le 2$, $0 \le \theta \le \pi/2$):
+
+$$
+2\int_0^{\pi/2}\!\!\int_0^2 r(r\cos\theta + r\sin\theta)\, dr\, d\theta = 2\int_0^{\pi/2}(\cos\theta + \sin\theta)\,d\theta \cdot \int_0^2 r^2\, dr
+$$
+
+**Passo 4 —** Calcule cada fator:
+
+$$
+\int_0^{\pi/2}(\cos\theta+\sin\theta)\,d\theta = \big[\sin\theta - \cos\theta\big]_0^{\pi/2} = 1 - (-1) = 2, \qquad \int_0^2 r^2\,dr = \frac{8}{3}
+$$
+
+$$
+\oint_{C'} = 2\cdot 2 \cdot \frac{8}{3} = \frac{32}{3}
+$$
+
+**Passo 5 —** Desconte os trechos dos eixos. No eixo $y$ ($x=0$, $\vec r(t) = (0, 2-t)$): $\vec F = (-(2-t)^2, 0)$ e $\vec r\,' = (0,-1)$, produto escalar nulo $\Rightarrow$ integral 0. No eixo $x$ ($y=0$, $\vec r(t) = (t,0)$): $\vec F = (0, t^2)$ e $\vec r\,' = (1,0)$, produto nulo $\Rightarrow$ integral 0.
+
+**Passo 6 —** Logo a integral no arco pedido é
+
+$$
+\oint_C -y^2\,dx + x^2\,dy = \frac{32}{3} - 0 - 0 = \boxed{\frac{32}{3}}
+$$
+</Passos>

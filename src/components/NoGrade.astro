@@ -1,0 +1,98 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                           NoGrade.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Nó do fluxograma da grade. Na Fase 1 é só a peça visual; o grafo, o
+   roteamento das setas e a interação vêm na Fase 4, quando o fluxograma
+   que já existe for portado para dentro do site.
+
+   Estados (a cor diz o que é sem precisar de legenda):
+     feito    -> concluída            (verde, semântico)
+     pode     -> liberada pelos requisitos (laranja: é uma ação disponível)
+     tem      -> tem questões no site  (azul: identidade, e vira link)
+     bloqueada-> requisitos pendentes  (apagada) */
+interface Props {
+  codigo: string;
+  nome: string;
+  estado?: "bloqueada" | "feito" | "pode" | "tem";
+  /** Presente quando a cadeira tem página no site. */
+  href?: string;
+}
+
+const { codigo, nome, estado = "bloqueada", href } = Astro.props;
+const Tag = href ? "a" : "span";
+---
+
+<Tag class:list={["no", estado]} href={href}>
+  <span class="cd">{codigo}</span>
+  <span class="nm">{nome}{href ? " ↗" : ""}</span>
+</Tag>
+
+<style>
+  .no {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 118px;
+    padding: var(--e-2) var(--e-3);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-caixa);
+    text-decoration: none;
+  }
+  .cd {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    color: var(--ink-3);
+  }
+  .nm {
+    font-family: var(--f-titulo);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .feito {
+    border-color: var(--ok);
+  }
+  .feito .cd {
+    color: var(--ok);
+  }
+  .feito .nm {
+    color: var(--ink);
+  }
+
+  .pode {
+    border-color: var(--action);
+    border-width: 2px;
+  }
+  .pode .cd {
+    color: var(--action);
+  }
+  .pode .nm {
+    color: var(--ink);
+  }
+
+  .tem {
+    border-color: var(--accent);
+  }
+  .tem .cd {
+    color: var(--accent);
+  }
+  .tem .nm {
+    color: var(--accent);
+  }
+  a.tem:hover {
+    background: var(--accent-soft);
+  }
+</style>

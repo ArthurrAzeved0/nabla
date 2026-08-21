@@ -1,0 +1,61 @@
+---
+origem: "2025.1"
+tema: "Sistema 3×3 · autovalores reais"
+temaId: sistemas-3x3
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução geral do sistema de três equações:
+
+$$
+\begin{cases} x_1' = 3x_1 + 3x_2 - 6x_3 \\ x_2' = x_1 - x_2 \\ x_3' = x_1 - 2x_2 + x_3 \end{cases}
+$$
+
+<Gabarito>
+$\lambda = 0, 1, 2$;   $x_1 = c_1 + 12c_2e^{t} + 3c_3e^{2t}$, $x_2 = c_1 + 6c_2e^{t} + c_3e^{2t}$, $x_3 = c_1 + 7c_2e^{t} + c_3e^{2t}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** $A = \begin{pmatrix} 3 & 3 & -6 \\ 1 & -1 & 0 \\ 1 & -2 & 1 \end{pmatrix}$. Polinômio característico:
+
+$$
+\det(A - \lambda I) = -\lambda(\lambda^2 - 3\lambda + 2) = -\lambda(\lambda - 1)(\lambda - 2) = 0 \;\Rightarrow\; \lambda_1 = 0,\ \lambda_2 = 1,\ \lambda_3 = 2
+$$
+
+**Passo 2 —** Autovetor para $\lambda_1 = 0$, $AV = 0$: da 2ª linha $v_1 = v_2$; da 3ª $v_1 - 2v_2 + v_3 = 0 \Rightarrow v_3 = v_1$. Logo
+
+$$
+V_1 = \begin{pmatrix}1\\1\\1\end{pmatrix}
+$$
+
+**Passo 3 —** Para $\lambda_2 = 1$, $(A - I)V = 0$: da 2ª linha $v_1 = 2v_2$; da 3ª $v_1 - 2v_2 + 0\cdot v_3$… usando a 1ª linha $2v_1 + 3v_2 - 6v_3 = 0$. Com $v_2 = 6$: $v_1 = 12$, $v_3 = \tfrac{2(12) + 3(6)}{6} = 7$. Logo
+
+$$
+V_2 = \begin{pmatrix}12\\6\\7\end{pmatrix}
+$$
+
+**Passo 4 —** Para $\lambda_3 = 2$, $(A - 2I)V = 0$: da 2ª linha $v_1 = 3v_2$; da 3ª $v_1 - 2v_2 - v_3 = 0 \Rightarrow v_3 = v_2$. Com $v_2 = 1$:
+
+$$
+V_3 = \begin{pmatrix}3\\1\\1\end{pmatrix}
+$$
+
+**Passo 5 —** Solução geral $X = c_1V_1e^{0t} + c_2V_2e^{t} + c_3V_3e^{2t}$, ou componente a componente:
+
+$$
+\boxed{\begin{aligned} x_1 &= c_1 + 12c_2e^{t} + 3c_3e^{2t} \\ x_2 &= c_1 + 6c_2e^{t} + c_3e^{2t} \\ x_3 &= c_1 + 7c_2e^{t} + c_3e^{2t} \end{aligned}}
+$$
+</Passos>

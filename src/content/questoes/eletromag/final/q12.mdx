@@ -1,0 +1,75 @@
+---
+origem: "2024.1"
+tema: "Circuito RLC · Corrente alternada"
+temaId: circuito-rlc
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um circuito RLC em série tem $R = 5\ \Omega$, $L = 100\ \text{mH}$ e $C = 1\ \text{mF}$, alimentado por $\varepsilon(t) = 10\,\text{sen}(50t)\ \text{V}$.
+
+(a) Calcule a impedância, a constante de fase e escreva $i(t)$. O circuito é indutivo ou capacitivo?
+
+(b) Calcule as amplitudes de tensão $V_R$, $V_L$ e $V_C$.
+
+(c) Em que frequência ocorre a ressonância e qual seria a amplitude da corrente nela? Para que valores de $L$ (mantendo o resto) o circuito seria indutivo em $\omega_d = 50\ \text{rad/s}$?
+
+<Gabarito>
+(a) $Z \approx 15{,}8\ \Omega$, $\varphi \approx -71{,}6° \approx -1{,}25\ \text{rad}$, $i(t) = 0{,}63\,\text{sen}(50t + 1{,}25)\ \text{A}$ — capacitivo  ·  (b) $V_R \approx 3{,}15\ \text{V}$, $V_L \approx 3{,}15\ \text{V}$, $V_C \approx 12{,}6\ \text{V}$  ·  (c) $\omega_0 = 100\ \text{rad/s}$, $I = 2{,}0\ \text{A}$; indutivo para $L \gt  400\ \text{mH}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Reatâncias em $\omega_d = 50\ \text{rad/s}$:
+
+$$
+X_L = \omega_d L = 50(0{,}1) = 5\ \Omega \qquad X_C = \frac{1}{\omega_d C} = \frac{1}{50(10^{-3})} = 20\ \Omega
+$$
+
+**Passo 2 —** Impedância e fase:
+
+$$
+Z = \sqrt{R^2 + (X_L - X_C)^2} = \sqrt{25 + 225} \approx 15{,}8\ \Omega
+$$
+
+$$
+\tan\varphi = \frac{X_L - X_C}{R} = \frac{5 - 20}{5} = -3 \;\Rightarrow\; \varphi \approx -71{,}6° \approx -1{,}25\ \text{rad}
+$$
+
+**Passo 3 —** Amplitude da corrente e expressão de $i(t)$ (corrente adiantada — circuito **capacitivo**, pois $X_C \gt  X_L$):
+
+$$
+I = \frac{\varepsilon_m}{Z} = \frac{10}{15{,}8} \approx 0{,}63\ \text{A} \qquad \boxed{i(t) = 0{,}63\,\text{sen}(50t + 1{,}25)\ \text{A}}
+$$
+
+**Passo 4 —** Amplitudes de tensão em cada elemento:
+
+$$
+V_R = IR \approx 3{,}15\ \text{V} \qquad V_L = I X_L \approx 3{,}15\ \text{V} \qquad V_C = I X_C \approx 12{,}6\ \text{V}
+$$
+
+Note que $V_C \gt  \varepsilon_m$: em RLC isso é normal, pois as tensões somam *fasorialmente*, não algebricamente.
+
+**Passo 5 —** Ressonância:
+
+$$
+\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{(0{,}1)(10^{-3})}} = \boxed{100\ \text{rad/s}} \qquad I = \frac{\varepsilon_m}{R} = \frac{10}{5} = \boxed{2{,}0\ \text{A}}
+$$
+
+**Passo 6 —** Indutivo exige $X_L \gt  X_C$ em $\omega_d = 50$:
+
+$$
+\omega_d L \gt  \frac{1}{\omega_d C} \;\Rightarrow\; L \gt  \frac{1}{\omega_d^2 C} = \frac{1}{(50)^2(10^{-3})} = \boxed{0{,}4\ \text{H} = 400\ \text{mH}}
+$$
+</Passos>

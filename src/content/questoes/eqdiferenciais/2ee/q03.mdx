@@ -1,0 +1,61 @@
+---
+origem: Revisão · Prof. César
+tema: "Sistema · autovalores complexos"
+temaId: sistemas-autovalores-complexos
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o sistema:
+
+$$
+\begin{cases} x' = -2x - 3y \\ y' = 3x - 2y \end{cases}
+$$
+
+Escreva o sistema na forma vetorial $X' = AX$ e obtenha a sua solução geral.
+
+<Gabarito>
+$\lambda = -2 \pm 3i$;   $X(t) = c_1e^{-2t}\begin{pmatrix}\cos 3t\\ \operatorname{sen} 3t\end{pmatrix} + c_2e^{-2t}\begin{pmatrix}\operatorname{sen} 3t\\ -\cos 3t\end{pmatrix}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** $X' = \begin{pmatrix} -2 & -3 \\ 3 & -2 \end{pmatrix}X$. Autovalores:
+
+$$
+\det(A-\lambda I) = (\lambda+2)^2 + 9 = 0 \;\Rightarrow\; \lambda = -2 \pm 3i
+$$
+
+**Passo 2 —** Autovetor para $\lambda_1 = -2 + 3i$:
+
+$$
+\begin{pmatrix} -3i & -3 \\ 3 & -3i \end{pmatrix}K = 0 \;\Rightarrow\; k_1 = ik_2 \;\Rightarrow\; K_1 = \begin{pmatrix}1\\-i\end{pmatrix} = \underbrace{\begin{pmatrix}1\\0\end{pmatrix}}_{B_1} + i\underbrace{\begin{pmatrix}0\\-1\end{pmatrix}}_{B_2}
+$$
+
+**Passo 3 —** Com $\alpha = -2$ e $\beta = 3$, as duas soluções reais são:
+
+$$
+X_1 = e^{-2t}\big(B_1\cos 3t - B_2\operatorname{sen} 3t\big) = e^{-2t}\begin{pmatrix}\cos 3t\\ \operatorname{sen} 3t\end{pmatrix}
+$$
+
+$$
+X_2 = e^{-2t}\big(B_2\cos 3t + B_1\operatorname{sen} 3t\big) = e^{-2t}\begin{pmatrix}\operatorname{sen} 3t\\ -\cos 3t\end{pmatrix}
+$$
+
+**Passo 4 —** Solução geral (uma espiral estável, pois $\operatorname{Re}\lambda = -2 \lt  0$):
+
+$$
+\boxed{X(t) = c_1e^{-2t}\begin{pmatrix}\cos 3t\\ \operatorname{sen} 3t\end{pmatrix} + c_2e^{-2t}\begin{pmatrix}\operatorname{sen} 3t\\ -\cos 3t\end{pmatrix}}
+$$
+</Passos>

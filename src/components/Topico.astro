@@ -1,0 +1,58 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                            Topico.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Seção da teoria. O `id` é o mesmo que o mapa `teoria` da cadeira aponta —
+   é ele que faz o "Ver material" da questão cair no lugar certo, e o
+   "Praticar este assunto" voltar. Se divergir, o link morre; por isso o id
+   é prop obrigatória e não algo gerado do título. */
+interface Props {
+  id: string;
+  /** Número da seção na ementa, como "01". */
+  num: string;
+  titulo: string;
+}
+
+const { id, num, titulo } = Astro.props;
+---
+
+<section class="topico" id={id}>
+  <h2><span class="num">{num}</span> {titulo}</h2>
+  <slot />
+</section>
+
+<style>
+  .topico {
+    scroll-margin-top: var(--e-7);
+    padding-top: var(--e-2);
+  }
+  .topico + :global(.topico) {
+    margin-top: var(--e-8);
+    border-top: 1px solid var(--line);
+  }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-3);
+    margin-top: var(--e-6);
+  }
+  .num {
+    font-family: var(--f-mono);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: var(--r-botao);
+    flex: none;
+  }
+</style>

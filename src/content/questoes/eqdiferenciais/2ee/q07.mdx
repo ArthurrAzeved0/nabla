@@ -1,0 +1,71 @@
+---
+origem: Revisão · Prof. César
+tema: "Sistema · matriz fundamental + PVI"
+temaId: sistemas-matriz-fundamental
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva o problema de valor inicial:
+
+$$
+X' = \begin{pmatrix} 3 & -1 \\ 1 & 1 \end{pmatrix}X + \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \qquad X(0) = \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+$$
+
+usando a matriz fundamental e variação de parâmetros.
+
+<Gabarito>
+$\lambda = 2$ (duplo), $K = \begin{pmatrix}1\\1\end{pmatrix}$, $W = \begin{pmatrix}1\\0\end{pmatrix}$, $X_p = \begin{pmatrix}-1/4\\1/4\end{pmatrix}$;   $X(t) = \tfrac74\begin{pmatrix}1\\1\end{pmatrix}e^{2t} - \tfrac12\left[\begin{pmatrix}1\\1\end{pmatrix}t + \begin{pmatrix}1\\0\end{pmatrix}\right]e^{2t} + \begin{pmatrix}-1/4\\1/4\end{pmatrix}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Autovalores: $\det(A-\lambda I) = \lambda^2 - 4\lambda + 4 = (\lambda - 2)^2 = 0 \Rightarrow \lambda = 2$ (multiplicidade 2).
+
+**Passo 2 —** Autovetor: $\begin{pmatrix}1&-1\\1&-1\end{pmatrix}K = 0 \Rightarrow K = \begin{pmatrix}1\\1\end{pmatrix}$. Autovetor generalizado $(A-2I)W = K$: $w_1 - w_2 = 1 \Rightarrow W = \begin{pmatrix}1\\0\end{pmatrix}$.
+
+**Passo 3 —** Soluções homogêneas $X_1 = Ke^{2t}$, $X_2 = (Kt+W)e^{2t}$. Matriz fundamental:
+
+$$
+\Psi(t) = \begin{pmatrix} 1 & t+1 \\ 1 & t \end{pmatrix}e^{2t}, \qquad \det\Psi = -e^{4t}
+$$
+
+**Passo 4 —** Inversa:
+
+$$
+\Psi^{-1}(t) = -e^{-4t}\begin{pmatrix} t & -(t+1) \\ -1 & 1 \end{pmatrix}e^{2t} = \begin{pmatrix} -t & t+1 \\ 1 & -1 \end{pmatrix}e^{-2t}
+$$
+
+**Passo 5 —** Variação de parâmetros, $X_p = \Psi\displaystyle\int \Psi^{-1}F\,dt$ com $F = \begin{pmatrix}1\\0\end{pmatrix}$:
+
+$$
+\Psi^{-1}F = \begin{pmatrix}-t\\1\end{pmatrix}e^{-2t} \;\Rightarrow\; \int \Psi^{-1}F\,dt = \begin{pmatrix} \tfrac{t}{2}e^{-2t} + \tfrac14 e^{-2t} \\[2pt] -\tfrac12 e^{-2t} \end{pmatrix}
+$$
+
+$$
+X_p = \Psi(t)\begin{pmatrix} (\tfrac{t}{2} + \tfrac14)e^{-2t} \\ -\tfrac12 e^{-2t} \end{pmatrix} = \begin{pmatrix} -1/4 \\ 1/4 \end{pmatrix}
+$$
+
+**Passo 6 —** Solução geral e PVI:
+
+$$
+X(t) = c_1\begin{pmatrix}1\\1\end{pmatrix}e^{2t} + c_2\left[\begin{pmatrix}1\\1\end{pmatrix}t + \begin{pmatrix}1\\0\end{pmatrix}\right]e^{2t} + \begin{pmatrix}-1/4\\1/4\end{pmatrix}
+$$
+
+Em $t=0$: $c_1 + c_2 - \tfrac14 = 1$ e $c_1 + \tfrac14 = 2$, logo $c_1 = \tfrac74$ e $c_2 = -\tfrac12$.
+
+$$
+\boxed{X(t) = \tfrac74\begin{pmatrix}1\\1\end{pmatrix}e^{2t} - \tfrac12\left[\begin{pmatrix}1\\1\end{pmatrix}t + \begin{pmatrix}1\\0\end{pmatrix}\right]e^{2t} + \begin{pmatrix}-1/4\\1/4\end{pmatrix}}
+$$
+</Passos>

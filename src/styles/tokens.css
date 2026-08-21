@@ -1,0 +1,237 @@
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                              tokens.css *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* ==========================================================================
+   tokens.css — o sistema visual do Nabla.
+
+   Uma identidade, DOIS MATERIAIS:
+     claro  = papel milimetrado (grafite sobre papel)
+     escuro = planta de engenharia (traço claro sobre azul)
+
+   O escuro não é o claro invertido: planta de verdade é traço claro sobre
+   azul, e é isso que ele imita. Mesma grade, mesma estrutura, outro suporte.
+
+   TRÊS ESTADOS DE TEMA, e a ordem importa:
+     1. :root                       -> paleta clara COMPLETA (padrão)
+     2. @media (prefers-color-scheme: dark) :root:not([data-theme="light"])
+                                    -> escuro por preferência do sistema,
+                                       mas uma escolha explícita por "claro" vence
+     3. :root[data-theme="dark"]    -> escolha explícita por escuro vence o SO
+
+   REGRA: nenhuma cor é declarada só dentro de @media ou [data-theme]. Todo
+   componente usa token; assim os três estados sempre resolvem.
+   ========================================================================== */
+
+:root {
+  /* ---------------- superfícies e tinta ---------------- */
+  --paper: #eef1f1; /* o papel: fundo da página, recebe a grade */
+  --surface: #ffffff; /* onde o conteúdo pousa */
+  --surface-2: #f6f8f8; /* caixas didáticas, botões em repouso */
+  --ink: #16212a;
+  --ink-2: #404c56; /* 7.75:1 sobre o papel — o texto corrido */
+  --ink-3: #5b6873; /* 5.03:1 — era 2.75 e reprovava AA */
+  --line: #ccd6db;
+  --line-2: #b3c1c8;
+
+  /* ---------------- acentos, com papéis FIXOS ----------------
+     Nunca invertem de função: se trocarem, a cor perde significado.
+       accent -> identidade: marca, rótulo de seção, link, "tem questões"
+       action -> ação e atenção: botão principal, "pode cursar"          */
+  --accent: #0f6c86;
+  --accent-soft: #e2eff3;
+  --action: #b34518; /* 4.89:1 sobre o papel — era 4.00 e reprovava */
+  --action-soft: #fbeae2;
+
+  /* ---------------- estado, FORA da paleta de marca ----------------
+     Acertei / errei / revisar. Separados de propósito, para dar para ler
+     o estado de uma questão sem interpretar a identidade visual.        */
+  --ok: #1a7a56;
+  --ok-soft: #e2f2ec;
+  --err: #ab3737;
+  --err-soft: #f8e8e8;
+  --rev: #92661c;
+  --rev-soft: #f6eeda;
+
+  /* ---------------- destaque de diagrama ----------------
+     Terceira cor das figuras SVG, ao lado de --accent (região) e --ok
+     (resultado). NÃO é o --rev: aquele é estado de questão, este é
+     semântica de desenho (eixo destacado, cota, ponto de sela). */
+  --warn: #9a6b1f;
+  --warn-soft: #f6eeda;
+
+  /* ---------------- a grade ----------------
+     Assinatura da identidade. Fina de 8px com reforço a cada 48px.
+     CSS puro (gradientes empilhados): nada para baixar, escala em
+     qualquer tela e muda de cor junto com o tema.                       */
+  /* ---------------- paleta das setas do fluxograma ----------------
+     Uma cor por disciplina de ORIGEM, como no fluxograma original: é o que
+     permite seguir uma linha específica no meio de 61 arestas. Doze tons
+     bem separados em matiz, escolhidos para funcionar sobre o papel. */
+  --fio-1: #1f6fb2;
+  --fio-2: #c2401c;
+  --fio-3: #0f8a5f;
+  --fio-4: #7c3aed;
+  --fio-5: #b45309;
+  --fio-6: #0e7490;
+  --fio-7: #be185d;
+  --fio-8: #4d7c0f;
+  --fio-9: #9f1239;
+  --fio-10: #5b21b6;
+  --fio-11: #a16207;
+  --fio-12: #0369a1;
+
+  --grid-1: rgba(15, 108, 134, 0.05); /* fina: passa atrás do texto */
+  --grid-2: rgba(15, 108, 134, 0.15); /* forte: mantém a assinatura */
+  --grid-fina: 8px;
+  --grid-forte: 48px;
+
+  /* ---------------- tipografia ---------------- */
+  --f-titulo: "Archivo Narrow Variable", "Archivo Narrow", "Archivo", system-ui, sans-serif;
+  --f-texto: "Archivo Variable", "Archivo", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* escala de tipo (proporção ~1.22, ancorada em 16px) */
+  --t-xs: 0.688rem; /* 11px  — rótulo em monoespaçada */
+  --t-sm: 0.813rem; /* 13px  — botão, legenda */
+  --t-base: 0.938rem; /* 15px  — texto corrido */
+  --t-md: 1.063rem; /* 17px  — subtítulo */
+  --t-lg: 1.375rem; /* 22px  — h3 */
+  --t-xl: 1.75rem; /* 28px  — h2 */
+  --t-2xl: 2.25rem; /* 36px  — h1 */
+  --t-3xl: 3rem; /* 48px  — herói */
+
+  --lh-apertada: 1.15;
+  --lh-titulo: 1.22;
+  --lh-texto: 1.62;
+  --tr-titulo: 0.002em;
+  --tr-rotulo: 0.13em;
+
+  /* ---------------- espaço, raio, sombra ---------------- */
+  --e-1: 4px;
+  --e-2: 8px;
+  --e-3: 12px;
+  --e-4: 16px;
+  --e-5: 24px;
+  --e-6: 32px;
+  --e-7: 48px;
+  --e-8: 64px;
+
+  --r-cartao: 12px;
+  --r-caixa: 10px;
+  --r-botao: 8px;
+  --r-pilula: 999px;
+
+  --sombra-1: 0 1px 2px rgba(22, 33, 42, 0.05);
+  --sombra-2: 0 2px 4px rgba(22, 33, 42, 0.06), 0 10px 24px -16px rgba(22, 33, 42, 0.18);
+
+  /* ---------------- medidas ---------------- */
+  --largura-texto: 68ch; /* coluna de leitura */
+  --largura-pagina: 940px;
+}
+
+/* ======================= 2. escuro pelo sistema ==========================
+   Guardado por :not([data-theme="light"]) para que uma escolha explícita
+   por claro vença um sistema operacional em escuro.                       */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10212c;
+    --surface: #172934;
+    --surface-2: #1d3340;
+    --ink: #e7eff4;
+    --ink-2: #b6c7d3; /* 9.48:1 sobre a planta */
+    --ink-3: #8a9eac; /* 5.93:1 — era 4.12 e reprovava AA */
+    --line: #26404e;
+    --line-2: #315060;
+
+    --accent: #5cbdda;
+    --accent-soft: #143543;
+    --action: #ff7f4a;
+    --action-soft: #33231b;
+
+    --ok: #3ed09b;
+    --ok-soft: #10312a;
+    --err: #f2807f;
+    --err-soft: #331c1e;
+    --rev: #e2b45e;
+    --rev-soft: #2f2716;
+
+    --warn: #e0b25a;
+    --warn-soft: #2f2716;
+
+    /* setas: mesmos matizes, claros o suficiente para a planta escura */
+    --fio-1: #6db3e8;
+    --fio-2: #f08a63;
+    --fio-3: #4fd0a0;
+    --fio-4: #b79bf5;
+    --fio-5: #e0a860;
+    --fio-6: #5ec2d8;
+    --fio-7: #f086b0;
+    --fio-8: #a8cf6a;
+    --fio-9: #f0899c;
+    --fio-10: #a996f0;
+    --fio-11: #ddb45e;
+    --fio-12: #6fb6e0;
+
+    --grid-1: rgba(150, 215, 235, 0.035);
+    --grid-2: rgba(150, 215, 235, 0.11);
+
+    --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --sombra-2: 0 2px 4px rgba(0, 0, 0, 0.4), 0 12px 28px -18px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* ================ 3. escuro por escolha explícita ======================== */
+:root[data-theme="dark"] {
+  --paper: #10212c;
+  --surface: #172934;
+  --surface-2: #1d3340;
+  --ink: #e7eff4;
+  --ink-2: #b6c7d3; /* 9.48:1 sobre a planta */
+  --ink-3: #8a9eac; /* 5.93:1 — era 4.12 e reprovava AA */
+  --line: #26404e;
+  --line-2: #315060;
+
+  --accent: #5cbdda;
+  --accent-soft: #143543;
+  --action: #ff7f4a;
+  --action-soft: #33231b;
+
+  --ok: #3ed09b;
+  --ok-soft: #10312a;
+  --err: #f2807f;
+  --err-soft: #331c1e;
+  --rev: #e2b45e;
+  --rev-soft: #2f2716;
+
+  --warn: #e0b25a;
+  --warn-soft: #2f2716;
+
+  /* setas: mesmos matizes, claros o suficiente para a planta escura */
+  --fio-1: #6db3e8;
+  --fio-2: #f08a63;
+  --fio-3: #4fd0a0;
+  --fio-4: #b79bf5;
+  --fio-5: #e0a860;
+  --fio-6: #5ec2d8;
+  --fio-7: #f086b0;
+  --fio-8: #a8cf6a;
+  --fio-9: #f0899c;
+  --fio-10: #a996f0;
+  --fio-11: #ddb45e;
+  --fio-12: #6fb6e0;
+
+  --grid-1: rgba(150, 215, 235, 0.035);
+  --grid-2: rgba(150, 215, 235, 0.11);
+
+  --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --sombra-2: 0 2px 4px rgba(0, 0, 0, 0.4), 0 12px 28px -18px rgba(0, 0, 0, 0.7);
+}
