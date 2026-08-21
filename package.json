@@ -31,6 +31,10 @@
   },
   "allowScripts": {
     "esbuild@0.28.2": true,
-    "core-js": false
+    "core-js": false,
+    "workerd@1.20260820.1": true
+  },
+  "devDependencies": {
+    "wrangler": "^4.125.0"
   }
 }

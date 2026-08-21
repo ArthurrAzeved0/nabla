@@ -1,0 +1,86 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                               404.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Página de caminho inexistente. A Cloudflare a entrega quando a rota não
+   existe (not_found_handling no wrangler.jsonc), então ela vem com a casca e
+   a navegação do site em vez do erro cru do servidor. */
+import { getCollection } from "astro:content";
+import Base from "~/layouts/Base.astro";
+import Regua from "~/components/Regua.astro";
+
+const base = import.meta.env.BASE_URL;
+const cadeiras = (await getCollection("cadeiras")).sort((a, b) => a.data.ordem - b.data.ordem);
+const grades = await getCollection("grade");
+---
+
+<Base titulo="Página não encontrada" descricao="O endereço pedido não existe no Nabla.">
+  <span class="rotulo">Erro 404</span>
+  <h1>Este endereço não existe</h1>
+  <p class="prosa abre">
+    Pode ser link antigo, endereço digitado errado, ou algo que ainda não foi publicado. Os
+    caminhos que existem estão abaixo.
+  </p>
+
+  <Regua rotulo="cadeiras" />
+  <ul class="lista">
+    {
+      cadeiras.map((c) => (
+        <li>
+          <a href={`${base}cadeiras/${c.data.id}`}>{c.data.nome}</a>
+          <span class="provas">
+            <a href={`${base}cadeiras/${c.data.id}/1ee`}>1º EE</a>
+            <a href={`${base}cadeiras/${c.data.id}/2ee`}>2º EE</a>
+            <a href={`${base}cadeiras/${c.data.id}/final`}>Final</a>
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <Regua rotulo="grade" />
+  <ul class="lista">
+    {
+      grades.map((g) => (
+        <li>
+          <a href={`${base}grade/${g.data.sigla}`}>{g.data.curso}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  .abre {
+    font-size: var(--t-md);
+  }
+  .lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .lista li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-3);
+    flex-wrap: wrap;
+    padding: var(--e-2) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .provas {
+    margin-left: auto;
+    display: flex;
+    gap: var(--e-3);
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+  }
+</style>

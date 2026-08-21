@@ -139,13 +139,23 @@ sozinha; não há código novo a escrever.
 
 ## Publicação
 
-O Cloudflare Pages compila a cada push na `main`:
+A Cloudflare compila e publica a cada push na `main`. É um deploy **só de
+assets**: `wrangler.jsonc` não declara `main`, então nenhum código roda no
+servidor — a Cloudflare serve os arquivos de `dist/` e nada mais.
 
-| | |
+| campo no painel | valor |
 |---|---|
-| comando de build | `npm run build` |
-| pasta de saída | `dist` |
-| versão do Node | 22 ou superior |
+| build command | `npm run build` |
+| deploy command | `npx wrangler deploy` |
+| `NODE_VERSION` | `22` |
+
+Publicar à mão, se precisar: `npm run build && npx wrangler deploy`.
+
+`wrangler.jsonc` cuida de dois detalhes que dariam dor de cabeça:
+`html_handling: auto-trailing-slash`, porque o Astro gera uma pasta com
+`index.html` por rota; e `not_found_handling: 404-page`, para um caminho
+inexistente cair na página 404 do site — com casca e navegação — em vez do
+erro cru do servidor.
 
 `public/_headers` declara o `charset` do `humans.txt` e marca os assets de
 `/_astro/` como `immutable` — eles têm hash no nome, então podem ser

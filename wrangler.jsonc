@@ -1,0 +1,45 @@
+// **************************************************************************
+// * Nabla — Guia do aluno POLI/UPE                          wrangler.jsonc *
+// *------------------------------------------------------------------------*
+// * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+// * Todos os direitos reservados.                                          *
+// *                                                                        *
+// * Software proprietário — ver arquivo LICENSE.                           *
+// *                                                                        *
+// * Autor:   Arthur Epifanio De Azevedo                                    *
+// * Página:  https://github.com/ArthurrAzeved0                             *
+// * Contato: arthur_azevedo05@hotmail.com                                  *
+// **************************************************************************
+
+// Publicação na Cloudflare.
+//
+// O site é 100% estático: não há `main`, ou seja, nenhum código roda no
+// servidor. Isto é um deploy SÓ DE ASSETS — a Cloudflare serve os arquivos
+// de dist/ e nada mais. É o mesmo resultado do Pages clássico, pelo fluxo
+// de Workers, que é o que o painel oferece hoje.
+//
+// Publicar à mão:  npx wrangler deploy   (depois de npm run build)
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nabla-poli",
+  "compatibility_date": "2026-08-21",
+
+  "assets": {
+    "directory": "./dist",
+
+    // O Astro gera pasta com index.html por rota (/cadeiras/calculo3/index.html).
+    // "auto-trailing-slash" resolve tanto /cadeiras/calculo3 quanto a versão
+    // com barra no fim, sem redirecionamento visível.
+    "html_handling": "auto-trailing-slash",
+
+    // Caminho que não existe entrega a página 404 do próprio site, com a
+    // casca e a navegação — em vez do erro cru da Cloudflare.
+    "not_found_handling": "404-page"
+  },
+
+  // Sem observabilidade: não há código de servidor para observar, e o
+  // humans.txt promete "sem rastreadores".
+  "observability": {
+    "enabled": false
+  }
+}
