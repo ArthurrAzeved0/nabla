@@ -23,7 +23,46 @@ pré-lançamento — uma tag por fase concluída da migração.
 
 ## [Não publicado]
 
-Fase 4 — o fluxograma da grade para dentro do site, multi-curso.
+Fase 5 — a virada: nome, marca e o Nabla no lugar do site 1.x. Depois dela,
+mais cadeiras e as grades dos outros cursos.
+
+## [2.0.0-alpha.6] — 2026-08-21
+
+**Fase 4 da migração: o mapa da grade dentro do site.** Por ora só
+Engenharia Civil; os outros cursos entram depois da Fase 5 e não pedem código
+novo, só mais um arquivo.
+
+### Adicionado
+
+- Collection `grade`, com **o grafo validado no build**. Um pré-requisito
+  apontando para código inexistente era, antes, uma seta que simplesmente não
+  aparecia — sem erro, sem aviso. Agora para o build e diz qual disciplina
+  aponta para o quê. Também pega disciplina que é requisito de si mesma.
+- Rota `/grade/civil`: as 65 disciplinas em 10 colunas de período, com
+  roteamento das setas em ângulo reto (cada uma na sua pista, como no mapa do
+  PPC), modo lista para telas estreitas, marcar concluída, destaque da cadeia
+  no hover, zoom e exportação em PDF.
+- Campo `cadeira` na grade: **a ligação que o fluxograma solto não tinha.** O
+  nó da disciplina abre a página dela aqui no site quando ela existe — hoje
+  MAT20, MAT21 e FIS12.
+- `scripts/extrair-grade.mjs`, para não transcrever 65 disciplinas e 61
+  arestas à mão. Emite o cabeçalho de autoria, então sobrevive a uma
+  reextração quando o PPC mudar.
+- 18 casos em `npm test` cobrindo as regras da matriz (pré, co-requisito,
+  regra de CH do estágio, cadeia). Errar o "pode cursar" é pior que não ter o
+  mapa, porque o aluno confia na resposta.
+- Navegação entre **Cadeiras** e **Grade** no topo, com a seção atual marcada.
+
+### Alterado
+
+- **As libs de PDF viraram import dinâmico.** No arquivo solto, html-to-image
+  e jsPDF vinham embutidas: 400 dos 416 KB. Agora a página do mapa carrega
+  **9,9 KB** de JavaScript, e os 391 KB do jsPDF só chegam se alguém clicar
+  em exportar.
+- `style.zoom` virou `transform: scale()`. O Firefox só passou a suportar
+  `zoom` recentemente; transform é o caminho previsível em todo navegador.
+- Os dois modos (quadro e lista) renderizam todas as disciplinas, então
+  trocar de modo não recarrega nada e a marcação vale nos dois.
 
 ## [2.0.0-alpha.5] — 2026-08-21
 
@@ -326,6 +365,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.0.0-alpha.6]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.6
 [2.0.0-alpha.5]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.5
 [2.0.0-alpha.4]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.4
 [2.0.0-alpha.3]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.3
