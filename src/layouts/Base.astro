@@ -72,6 +72,23 @@ const naGrade = caminho.includes("/grade/");
     {/* Convenção humanstxt.org: as pessoas por trás do site. */}
     <link rel="author" href={`${base}humans.txt`} />
 
+    {/* Prévia dos links compartilhados: WhatsApp, Telegram, Discord, Twitter.
+        A URL tem de ser ABSOLUTA — caminho relativo é ignorado por todos —,
+        e é por isso que `site` no astro.config.mjs não é decoração. A imagem
+        é gerada de arte/social-card.html; é a mesma que o GitHub usa como
+        prévia do repositório. */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nabla" />
+    <meta property="og:title" content={`${titulo} — Nabla`} />
+    {descricao && <meta property="og:description" content={descricao} />}
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={new URL("social-card.png", Astro.site).href} />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:alt" content="Nabla — guia do aluno da POLI/UPE" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     {/* Aplica o tema salvo ANTES da primeira pintura, senão a página pisca
         no tema errado por um instante. Precisa ser inline e sem defer. */}
     <script is:inline>

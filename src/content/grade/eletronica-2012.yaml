@@ -57,7 +57,7 @@ disciplinas:
     pre: []
     co: []
   - id: QUIM
-    codigo: QUIM0002
+    codigo: —
     nome: Química Geral
     periodo: 1
     teorica: 45
@@ -84,7 +84,7 @@ disciplinas:
     pre: []
     co: []
   - id: INTROENG
-    codigo: —
+    codigo: ENGE0002
     nome: Introdução à Engenharia
     periodo: 1
     teorica: 30
@@ -340,7 +340,7 @@ disciplinas:
     pre: []
     co: []
   - id: ELMAG2
-    codigo: —
+    codigo: ELET0031
     nome: Eletromagnetismo 2
     periodo: 6
     teorica: 60
@@ -349,7 +349,7 @@ disciplinas:
     pre: [ELMAG1, COMPMAT]
     co: []
   - id: ELET2
-    codigo: —
+    codigo: ELET0034
     nome: Eletrônica 2
     periodo: 6
     teorica: 60
@@ -367,7 +367,7 @@ disciplinas:
     pre: [ELET1]
     co: []
   - id: LABELET2
-    codigo: —
+    codigo: ELET0048
     nome: Laboratório de Eletrônica 2
     periodo: 6
     teorica: 0
@@ -376,7 +376,7 @@ disciplinas:
     pre: []
     co: [ELET2]
   - id: SISTDIG
-    codigo: —
+    codigo: ELET0078
     nome: Sistemas Digitais
     periodo: 6
     teorica: 60
@@ -421,7 +421,7 @@ disciplinas:
     pre: [ELMAG2, CIRC1]
     co: []
   - id: PROCESTOC
-    codigo: —
+    codigo: ELET0104
     nome: Processos Estocásticos
     periodo: 7
     teorica: 60
@@ -448,7 +448,7 @@ disciplinas:
     pre: [SISTDIG]
     co: []
   - id: MICROPROC
-    codigo: —
+    codigo: ELET0058
     nome: Microprocessadores
     periodo: 7
     teorica: 60
@@ -475,7 +475,7 @@ disciplinas:
     pre: [SISCTRL1]
     co: []
   - id: ADMIN
-    codigo: —
+    codigo: ADMT0001
     nome: Administração
     periodo: 8
     teorica: 30
@@ -493,7 +493,7 @@ disciplinas:
     pre: [SISTDIG, PROG]
     co: []
   - id: INSTRUM
-    codigo: —
+    codigo: ELET0046
     nome: Instrumentação
     periodo: 8
     teorica: 60
@@ -502,7 +502,7 @@ disciplinas:
     pre: [ELETANA, SISTDIG, ELET2]
     co: []
   - id: REDES1
-    codigo: —
+    codigo: ELET0070
     nome: Redes de Computadores 1
     periodo: 8
     teorica: 60
@@ -520,7 +520,7 @@ disciplinas:
     pre: [MICROPROC]
     co: []
   - id: PDS
-    codigo: —
+    codigo: ELET0102
     nome: Processamento Digital de Sinais
     periodo: 8
     teorica: 60
@@ -529,7 +529,7 @@ disciplinas:
     pre: [PRINCCOM]
     co: []
   - id: ELETPOT
-    codigo: —
+    codigo: ELET0036
     nome: Eletrônica de Potência
     periodo: 8
     teorica: 60
@@ -547,7 +547,7 @@ disciplinas:
     pre: [PORT]
     co: []
   - id: ADMMANUT
-    codigo: —
+    codigo: ELET0002
     nome: Administração da Manutenção
     periodo: 9
     teorica: 60
@@ -556,7 +556,7 @@ disciplinas:
     pre: [PROBEST]
     co: []
   - id: CTRLPROC
-    codigo: —
+    codigo: ELET0024
     nome: Controle de Processos
     periodo: 9
     teorica: 60

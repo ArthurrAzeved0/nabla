@@ -1531,6 +1531,489 @@ const ELETRONICA_2020 = [
     nota: "Sem linha na Tabela 6: as 60h estão só na Tabela 1, e podem ser feitas em qualquer período." },
 ];
 
+
+/* ==========================================================================
+   ENGENHARIA DE TELECOMUNICAÇÕES — matriz 2010
+
+   Fonte: "TL011_PPC Telecomunicações_com_Ementas.pdf", POLI/UPE, 276 páginas
+   (o PPC antigo do curso; os dados dele param em 2009). A **Tabela 15** é a
+   matriz por período, com código, tipo, pré e co-requisito e CH. Ciclos na
+   Tabela 10 e nas 11 a 14.
+
+   É O PPC QUE MAIS FECHA de todos os lidos até aqui: os três ciclos resolvem
+   sem ambiguidade nenhuma, cada área das Tabelas 11 e 12 casando exatamente
+   com as disciplinas pelo nome.
+
+     Básico     1320 = 1140 (científica) + 180 (humanística)
+     Essencial  1005 — e aqui a área "Circuitos Elétricos, 240h" fecha com
+                quatro disciplinas: Circuitos 1 e 2, Instalações Elétricas e
+                Medidas Elétricas. Em Eletrônica 2012, a mesma área ficou
+                faltando uma; aqui não.
+     Específico  720 obrigatórias + 360 eletivas
+     Complementar 240 = estágio 180 + PFC 60
+     Total      3645h
+
+   Códigos no formato curto da época (MAT01, ELE01), como o PPC os imprime —
+   os mesmos do registro de Civil 2011 e Automação 2010. Não são herdados nem
+   herdam: código curto é local de cada curso e de cada época.
+
+   NOTA SOBRE O PERFIL DO SIGA: ele também mandou uma consulta do SIGA ao
+   perfil "EL03-1 — Engenharia Elétrica de Telecomunicações" (emitida em
+   11/05/2020), com 4155h. É OUTRA matriz, não esta: tem disciplinas que aqui
+   não existem (Desenho, Métodos Computacionais 1 e 2, Filtros e Circuitos de
+   Acoplamento, Eletromagnetismo Computacional) e uma CH bem maior. Serve
+   como fonte de CÓDIGOS no formato atual, e é para isso que está usada.
+
+   Colunas: id, codigo, nome, período, teórica, prática, categoria, pre, co
+   ========================================================================== */
+const NOTA_ELETIVA_TL =
+  "São 360h de eletivas, escolhidas nas listas do 9º e do 10º período da Tabela 15.";
+
+const TELECOM_2010 = [
+  /* ------------------------------------------------------------ 1º período */
+  { id: "MAT01", codigo: "MAT01", nome: "Geometria Analítica",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "MAT02", codigo: "MAT02", nome: "Cálculo Diferencial e Integral 1",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "INF01", codigo: "INF01", nome: "Introdução à Programação",
+    periodo: 1, teorica: 30, pratica: 30, categoria: "basico" },
+  { id: "SMA01", codigo: "SMA01", nome: "Sociologia e Meio Ambiente",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "basico" },
+  { id: "IEE01", codigo: "IEE01", nome: "Introdução à Engenharia",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "prof" },
+  { id: "QUI01", codigo: "QUI01", nome: "Química Geral",
+    periodo: 1, teorica: 45, pratica: 30, categoria: "basico" },
+
+  /* ------------------------------------------------------------ 2º período */
+  { id: "MAT06", codigo: "MAT06", nome: "Álgebra Linear",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT01"] },
+  { id: "MAT03", codigo: "MAT03", nome: "Cálculo Diferencial e Integral 2",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT02"] },
+  { id: "FIS01", codigo: "FIS01", nome: "Física 1",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT02"] },
+  { id: "EXP01", codigo: "EXP01", nome: "Expressão Gráfica 1",
+    periodo: 2, teorica: 30, pratica: 45, categoria: "basico" },
+  { id: "POR01", codigo: "POR01", nome: "Português Instrumental",
+    periodo: 2, teorica: 30, pratica: 0, categoria: "basico" },
+  { id: "ECN01", codigo: "ECN01", nome: "Engenharia Econômica",
+    periodo: 2, teorica: 30, pratica: 0, categoria: "basico", pre: ["SMA01"] },
+
+  /* ------------------------------------------------------------ 3º período */
+  { id: "MAT04", codigo: "MAT04", nome: "Cálculo Diferencial e Integral 3",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT03"],
+    cadeira: "calculo3" },
+  { id: "FIS02", codigo: "FIS02", nome: "Física 2",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["FIS01"], co: ["MAT04"],
+    cadeira: "eletromag",
+    nota: "É a física do eletromagnetismo: Eletricidade Aplicada é co-requisito dela, e Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como pré." },
+  { id: "FIS03", codigo: "FIS03", nome: "Eletricidade Aplicada",
+    periodo: 3, teorica: 0, pratica: 30, categoria: "basico", co: ["FIS02"] },
+  { id: "MEC01", codigo: "MEC01", nome: "Mecânica Geral 1",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["FIS01", "MAT01", "EXP01"] },
+  { id: "MAT07", codigo: "MAT07", nome: "Cálculo Numérico",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT03", "INF01"] },
+  { id: "TEC01", codigo: "TEC01", nome: "Tecnologia dos Materiais",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["QUI01"] },
+
+  /* ------------------------------------------------------------ 4º período */
+  { id: "MAT05", codigo: "MAT05", nome: "Cálculo Diferencial e Integral 4",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT04"],
+    cadeira: "eqdiferenciais" },
+  { id: "FEN01", codigo: "FEN01", nome: "Fenômenos de Transporte",
+    periodo: 4, teorica: 30, pratica: 0, categoria: "basico", pre: ["MAT03"], co: ["FIS04"] },
+  { id: "FIS04", codigo: "FIS04", nome: "Física 3",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["FIS02"] },
+  { id: "FIS05", codigo: "FIS05", nome: "Física Experimental",
+    periodo: 4, teorica: 0, pratica: 30, categoria: "basico", co: ["FIS04"] },
+  { id: "MAT08", codigo: "MAT08", nome: "Probabilidade e Estatística",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT03"] },
+  { id: "MAT09", codigo: "MAT09", nome: "Complementos de Matemática",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT04"] },
+  { id: "ELE01", codigo: "ELE01", nome: "Circuitos Elétricos 1",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FIS02"], co: ["MAT05"] },
+
+  /* ------------------------------------------------------------ 5º período */
+  { id: "EMG01", codigo: "EMG01", nome: "Eletromagnetismo 1",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["MAT05", "FIS02"] },
+  { id: "ELN01", codigo: "ELN01", nome: "Eletrônica 1",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELE01"] },
+  { id: "ELN02", codigo: "ELN02", nome: "Laboratório de Eletrônica 1",
+    periodo: 5, teorica: 0, pratica: 30, categoria: "prof", co: ["ELN01"] },
+  { id: "ELE03", codigo: "ELE03", nome: "Instalações Elétricas",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELE01"] },
+  { id: "ADM01", codigo: "ADM01", nome: "Administração",
+    periodo: 5, teorica: 30, pratica: 0, categoria: "basico", pre: ["ECN01"] },
+  { id: "DIR01", codigo: "DIR01", nome: "Direito para Engenheiros",
+    periodo: 5, teorica: 30, pratica: 0, categoria: "basico", pre: ["ECN01"] },
+  { id: "ELE02", codigo: "ELE02", nome: "Circuitos Elétricos 2",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELE01"] },
+
+  /* ------------------------------------------------------------ 6º período */
+  { id: "EMG02", codigo: "EMG02", nome: "Eletromagnetismo 2",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["EMG01", "MAT09"] },
+  { id: "ELE04", codigo: "ELE04", nome: "Conversão Eletromecânica de Energia",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["EMG01", "ELE01"] },
+  { id: "DIG01", codigo: "DIG01", nome: "Eletrônica Digital",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELN01"] },
+  { id: "ELN03", codigo: "ELN03", nome: "Eletrônica 2",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELN01"] },
+  { id: "SSI01", codigo: "SSI01", nome: "Sinais e Sistemas",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "espec", pre: ["MAT09", "MAT05"] },
+  { id: "ELN04", codigo: "ELN04", nome: "Eletrônica Analógica",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELN01"] },
+  { id: "ELN05", codigo: "ELN05", nome: "Laboratório de Eletrônica 2",
+    periodo: 6, teorica: 0, pratica: 30, categoria: "prof", pre: ["ELN02"],
+    co: ["ELN03", "ELN04"] },
+
+  /* ------------------------------------------------------------ 7º período */
+  { id: "ELE05", codigo: "ELE05", nome: "Medidas Elétricas",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELE02"] },
+  { id: "EMG03", codigo: "EMG03", nome: "Antenas",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "espec", pre: ["EMG02"] },
+  { id: "EST01", codigo: "EST01", nome: "Processos Estocásticos",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "espec", pre: ["MAT08"] },
+  { id: "COM01", codigo: "COM01", nome: "Princípios de Comunicações",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["SSI01"] },
+  { id: "DIG02", codigo: "DIG02", nome: "Sistemas Digitais",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["DIG01"] },
+  { id: "DIG03", codigo: "DIG03", nome: "Laboratório de Sistemas Digitais",
+    periodo: 7, teorica: 0, pratica: 30, categoria: "prof", co: ["DIG02"] },
+  { id: "SEG01", codigo: "SEG01", nome: "Engenharia de Segurança do Trabalho",
+    periodo: 7, teorica: 45, pratica: 0, categoria: "prof", pre: ["DIR01", "ADM01"] },
+
+  /* ------------------------------------------------------------ 8º período */
+  { id: "EMG04", codigo: "EMG04", nome: "Propagação Eletromagnética",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["EMG03"] },
+  { id: "RED01", codigo: "RED01", nome: "Redes de Computadores 1",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["COM01"] },
+  { id: "TEL01", codigo: "TEL01", nome: "Sistemas Telefônicos",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["COM01"] },
+  { id: "COM02", codigo: "COM02", nome: "Comunicação Digital",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["COM01", "EST01"] },
+  { id: "COM03", codigo: "COM03", nome: "Processamento Digital de Sinais",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["COM01"] },
+  { id: "MET01", codigo: "MET01", nome: "Metodologia Científica",
+    periodo: 8, teorica: 30, pratica: 0, categoria: "basico", pre: ["POR01"] },
+  { id: "CON01", codigo: "CON01", nome: "Sistemas de Controle 1",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "prof", pre: ["SSI01"] },
+
+  /* ------------------------------------------------------------ 9º período */
+  { id: "ESU01", codigo: "ESU01", nome: "Estágio Curricular Supervisionado",
+    periodo: 9, teorica: 45, pratica: 135, categoria: "compl", co: ["SEG01"], estagio: true,
+    nota: "A Tabela 15 põe \"60% curso\" no lugar do pré-requisito, e Engenharia de Segurança do Trabalho como co-requisito." },
+  { id: "PFC01", codigo: "PFC01", nome: "Projeto Final de Curso",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "compl", pre: ["MET01"] },
+  { id: "RED02", codigo: "RED02", nome: "Redes de Computadores 2",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "espec", pre: ["RED01"] },
+  { id: "COM04", codigo: "COM04", nome: "Comunicações Ópticas",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "espec", pre: ["COM02", "EMG02"] },
+  { id: "COM05", codigo: "COM05", nome: "Comunicações Móveis e sem Fio",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "espec", pre: ["COM02"] },
+  { id: "RED03", codigo: "RED03", nome: "Redes de Faixa Larga",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "espec", pre: ["COM02", "TEL01"] },
+  { id: "EL1", codigo: "—", nome: "Eletiva 1", periodo: 9,
+    teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_ELETIVA_TL },
+
+  /* ---------------------------------------------------------- 10º período */
+  { id: "EL2", codigo: "—", nome: "Eletiva 2", periodo: 10,
+    teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_ELETIVA_TL },
+  { id: "EL3", codigo: "—", nome: "Eletiva 3", periodo: 10,
+    teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_ELETIVA_TL },
+  { id: "EL4", codigo: "—", nome: "Eletiva 4", periodo: 10,
+    teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_ELETIVA_TL },
+  { id: "EL5", codigo: "—", nome: "Eletiva 5", periodo: 10,
+    teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_ELETIVA_TL },
+  { id: "EL6", codigo: "—", nome: "Eletiva 6", periodo: 10,
+    teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_ELETIVA_TL },
+];
+
+
+/* ==========================================================================
+   ENGENHARIA ELÉTRICA DE TELECOMUNICAÇÕES — matriz 2021
+
+   Fonte: "TL21_PPC_Telecomunicações_com_Ementas.pdf", POLI/UPE, 304 páginas.
+   A **Tabela 7** (§7.2, "Matriz Curricular a executar") é a matriz nova, no
+   mesmo formato do PPC de Eletrônica 2020: pré e co por nome em linhas
+   próprias, com as colunas de **Núcleo** e de **dimensão** (ENS/EXT).
+
+   O curso mudou de nome: o PPC antigo é de "Engenharia de Telecomunicações",
+   este é de "Engenharia Elétrica de Telecomunicações". As duas grades usam o
+   nome novo para o índice agrupá-las.
+
+   AS CONTAS DA TABELA 1: NCB 1335, NCP 825, NCE 960, NFC 240, componentes de
+   extensão 390 — 3750h. Quatro delas fecham exato com a soma das componentes
+   marcadas na coluna Núcleo:
+
+     NCB   1335  ✓
+     NCE    960  ✓ (só as obrigatórias; o PFC está dentro)
+     Ext    390  ✓ (as 4 DCEXT obrigatórias + as 3 DCEXT eletivas)
+     NFC    240  ✓ (as 4 "Atividade Complementar / Eletiva de Ensino")
+
+   **A quinta não fecha:** somando as componentes marcadas NCP dá 855h, e a
+   Tabela 1 imprime 825h. São 30h que o documento não conta duas vezes em
+   lugar nenhum — o candidato natural é Gestão Organizacional para
+   Engenheiros, a única NCP de 30h e a única de gestão no meio de eletrônica,
+   mas nada no PPC diz isso. Ficou como está marcado, e a divergência está
+   registrada aqui em vez de resolvida por palpite.
+
+   SEM CÓDIGOS na Tabela 7 — mas ele mandou, para ajudar, uma consulta do SIGA
+   ao perfil **EL03-1** do mesmo curso (emitida em 11/05/2020), com código,
+   CH e período de cada componente. Aquele perfil é uma matriz diferente desta
+   (4155h contra 3750h), então não serve como grade; serve como **fonte de
+   códigos**, e é dali que vêm os códigos que aparecem neste mapa.
+
+   O QUE O DOCUMENTO DEIXA EM ABERTO:
+
+   1. Sistemas de Controle 1 (7º) tem Circuitos Elétricos 2 (5º) como
+      CO-requisito, e não como pré. Ficou como está escrito.
+   2. Metodologia Científica (9º) tem como co-requisito Redes de
+      Telecomunicações 2, do mesmo período.
+   3. O estágio não tem núcleo na tabela, e não há piso de CH para ele: sai
+      por pré-requisito (Engenharia de Segurança do Trabalho).
+
+   Colunas: id, codigo, nome, período, teórica, prática, categoria, pre, co
+   ========================================================================== */
+const NOTA_EL_EXT_TL =
+  "Eletiva de extensão: a CH conta nas 390h de extensão do curso.";
+const NOTA_EL_NFC =
+  "Eletiva de ensino ou atividade complementar, do Núcleo de Formação Complementar: são quatro, 240h.";
+
+const TELECOM_2021 = [
+  /* ------------------------------------------------------------ 1º período */
+  { id: "CALC1", codigo: "—", nome: "Cálc. Dif. e Integral em uma Variável",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "PROG", codigo: "—", nome: "Introdução à Programação",
+    periodo: 1, teorica: 45, pratica: 15, categoria: "basico" },
+  { id: "QUIM", codigo: "—", nome: "Química",
+    periodo: 1, teorica: 30, pratica: 30, categoria: "basico" },
+  { id: "GEOAN", codigo: "—", nome: "Geometria Analítica",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "PORT", codigo: "—", nome: "Português Instrumental",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "basico" },
+  { id: "SOCIO", codigo: "—", nome: "Sociologia, Meio Amb. e Contexto Social",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "basico", dcext: true },
+  { id: "FUNDTEL", codigo: "—", nome: "Fundamentos de Telecomunicações",
+    periodo: 1, teorica: 20, pratica: 10, categoria: "espec", dcext: true },
+
+  /* ------------------------------------------------------------ 2º período */
+  { id: "CALC2", codigo: "—", nome: "Cálc. Dif. e Integral em Várias Variáveis",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC1"] },
+  { id: "FUNDMEC", codigo: "—", nome: "Fundamentos da Mecânica",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC1"] },
+  { id: "ECON", codigo: "—", nome: "Engenharia Econômica",
+    periodo: 2, teorica: 30, pratica: 0, categoria: "basico", pre: ["SOCIO"] },
+  { id: "ALGLIN", codigo: "—", nome: "Álgebra Linear",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["GEOAN"] },
+  { id: "EXPGR1", codigo: "—", nome: "Expressão Gráfica 1",
+    periodo: 2, teorica: 45, pratica: 30, categoria: "basico" },
+  { id: "PROBEST", codigo: "—", nome: "Probabilidade e Estatística",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC1"] },
+  { id: "ESTRDADOS", codigo: "—", nome: "Programação e Estrutura de Dados",
+    periodo: 2, teorica: 45, pratica: 15, categoria: "basico", pre: ["PROG"] },
+
+  /* ------------------------------------------------------------ 3º período */
+  { id: "CALCVET", codigo: "—", nome: "Cálc. Dif. e Integral Vetorial",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC2"],
+    cadeira: "calculo3" },
+  { id: "FUNDEM", codigo: "—", nome: "Fundamentos do Eletromagnetismo",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["FUNDMEC"],
+    cadeira: "eletromag" },
+  { id: "CALCNUM", codigo: "—", nome: "Cálculo Numérico",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["PROG", "CALC2"],
+    co: ["CALCVET"] },
+  { id: "ESTATICA", codigo: "—", nome: "Estática",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["GEOAN", "FUNDMEC"] },
+  { id: "DUA", codigo: "—", nome: "Desenho Universal e Acessibilidade",
+    periodo: 3, teorica: 30, pratica: 0, categoria: "basico", dcext: true, pre: ["EXPGR1"] },
+  { id: "MATEL", codigo: "—", nome: "Materiais Elétricos",
+    periodo: 3, teorica: 30, pratica: 0, categoria: "basico", pre: ["QUIM"] },
+  { id: "FERRENG", codigo: "—", nome: "Ferramentas Comp. para Engenharia",
+    periodo: 3, teorica: 30, pratica: 30, categoria: "espec", dcext: true, pre: ["ESTRDADOS"] },
+
+  /* ------------------------------------------------------------ 4º período */
+  { id: "EQDIF", codigo: "—", nome: "Equações Diferenciais",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALCVET"],
+    cadeira: "eqdiferenciais" },
+  { id: "ONDTERM", codigo: "—", nome: "Fund. de Ondulatória e Termodinâmica",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["FUNDEM"] },
+  { id: "COMPMAT", codigo: "—", nome: "Complementos de Matemática",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALCVET"], co: ["EQDIF"] },
+  { id: "DINAM", codigo: "—", nome: "Dinâmica",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["ESTATICA"], co: ["EQDIF"] },
+  { id: "LABFIS", codigo: "—", nome: "Laboratório de Física Básica",
+    periodo: 4, teorica: 0, pratica: 30, categoria: "basico", pre: ["FUNDEM"], co: ["ONDTERM"] },
+  { id: "FENTR", codigo: "—", nome: "Introdução aos Fenômenos de Transporte",
+    periodo: 4, teorica: 30, pratica: 0, categoria: "basico", pre: ["FUNDMEC", "CALCVET"],
+    co: ["EQDIF", "ONDTERM"] },
+  { id: "ELMAG1", codigo: "—", nome: "Eletromagnetismo 1",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"] },
+  { id: "CIRC1", codigo: "—", nome: "Circuitos Elétricos 1",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"] },
+
+  /* ------------------------------------------------------------ 5º período */
+  { id: "ELMAG2", codigo: "—", nome: "Eletromagnetismo 2",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELMAG1", "COMPMAT"] },
+  { id: "ELET1", codigo: "—", nome: "Eletrônica 1",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["CIRC1"] },
+  { id: "CIRC2", codigo: "—", nome: "Circuitos Elétricos 2",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["CIRC1"] },
+  { id: "ELETDIG", codigo: "—", nome: "Eletrônica Digital",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["CIRC1"] },
+  { id: "PROCESTOC", codigo: "—", nome: "Processos Estocásticos",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["PROBEST"] },
+  { id: "SINSIS", codigo: "—", nome: "Sinais e Sistemas",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["COMPMAT"] },
+
+  /* ------------------------------------------------------------ 6º período */
+  { id: "ELETANA", codigo: "—", nome: "Eletrônica Analógica",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELET1"] },
+  { id: "LABELET1", codigo: "—", nome: "Laboratório de Eletrônica 1",
+    periodo: 6, teorica: 0, pratica: 30, categoria: "prof", pre: ["ELET1"] },
+  { id: "SISTDIG", codigo: "—", nome: "Sistemas Digitais",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELETDIG"] },
+  { id: "CONVEL", codigo: "—", nome: "Conversão Eletromecânica de Energia",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["CIRC2", "ELMAG2"] },
+  { id: "PRINCCOM", codigo: "—", nome: "Princípios de Comunicações",
+    periodo: 6, teorica: 50, pratica: 10, categoria: "espec", pre: ["SINSIS"] },
+  { id: "REDES1", codigo: "—", nome: "Redes de Computadores 1",
+    periodo: 6, teorica: 50, pratica: 10, categoria: "espec", pre: ["SINSIS"] },
+  { id: "ENGSEG", codigo: "—", nome: "Engenharia de Segurança do Trabalho",
+    periodo: 6, teorica: 45, pratica: 0, categoria: "prof", pre: ["CIRC2"] },
+
+  /* ------------------------------------------------------------ 7º período */
+  { id: "LABANADIG", codigo: "—", nome: "Lab. de Eletrônica Analógica e Digital",
+    periodo: 7, teorica: 0, pratica: 30, categoria: "prof", pre: ["ELETDIG", "ELETANA"] },
+  { id: "SISCTRL1", codigo: "—", nome: "Sistemas de Controle 1",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["EQDIF", "COMPMAT"],
+    co: ["CIRC2"],
+    nota: "A Tabela 7 põe Circuitos Elétricos 2, do 5º período, como CO-requisito desta — e não como pré." },
+  { id: "COMDIG", codigo: "—", nome: "Comunicação Digital",
+    periodo: 7, teorica: 50, pratica: 10, categoria: "espec", pre: ["PRINCCOM", "PROCESTOC"] },
+  { id: "ANTENAS", codigo: "—", nome: "Antenas",
+    periodo: 7, teorica: 50, pratica: 10, categoria: "espec", pre: ["ELMAG2"] },
+  { id: "INFRATEL", codigo: "—", nome: "Infraestrutura de Telecomunicações",
+    periodo: 7, teorica: 40, pratica: 20, categoria: "espec", dcext: true, pre: ["CIRC2"] },
+  { id: "DIREITO", codigo: "—", nome: "Direito para Engenheiros",
+    periodo: 7, teorica: 30, pratica: 0, categoria: "basico", pre: ["ECON"] },
+  { id: "REDES2", codigo: "—", nome: "Redes de Computadores 2",
+    periodo: 7, teorica: 50, pratica: 10, categoria: "espec", pre: ["REDES1"] },
+
+  /* ------------------------------------------------------------ 8º período */
+  { id: "TEORINFO", codigo: "—", nome: "Teoria da Informação",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["PROBEST", "PRINCCOM"] },
+  { id: "PROPAGEM", codigo: "—", nome: "Propagação Eletromagnética",
+    periodo: 8, teorica: 50, pratica: 10, categoria: "espec", pre: ["ANTENAS"] },
+  { id: "PDS", codigo: "—", nome: "Processamento Digital de Sinais",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["PRINCCOM"] },
+  { id: "REDTEL1", codigo: "—", nome: "Redes de Telecomunicações 1",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["PRINCCOM"] },
+  { id: "COMMOV", codigo: "—", nome: "Comunicações Móveis e sem Fio",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["COMDIG"] },
+  { id: "GESTORG", codigo: "—", nome: "Gestão Organizacional para Engenheiros",
+    periodo: 8, teorica: 30, pratica: 0, categoria: "prof", pre: ["SOCIO"],
+    nota: "A soma das componentes marcadas NCP dá 855h e a Tabela 1 imprime 825h. Esta é a única NCP de 30h, o candidato natural para a diferença — mas nada no PPC diz isso, então ficou como está marcado." },
+  { id: "ELEXT1", codigo: "—", nome: "Eletiva de Extensão 1",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "eletiva", dcext: true, nota: NOTA_EL_EXT_TL },
+
+  /* ------------------------------------------------------------ 9º período */
+  { id: "COMOPT", codigo: "—", nome: "Comunicações Ópticas",
+    periodo: 9, teorica: 55, pratica: 5, categoria: "espec", pre: ["COMDIG", "ELMAG2"] },
+  { id: "REDTEL2", codigo: "—", nome: "Redes de Telecomunicações 2",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "espec", pre: ["REDTEL1"] },
+  { id: "METCIENT", codigo: "—", nome: "Metodologia Científica",
+    periodo: 9, teorica: 30, pratica: 0, categoria: "espec", pre: ["PORT"], co: ["REDTEL2"] },
+  { id: "ESTAGIO", codigo: "—", nome: "Estágio Curricular Obrigatório",
+    periodo: 9, teorica: 20, pratica: 160, categoria: "compl", pre: ["ENGSEG"], estagio: true,
+    nota: "A Tabela 7 não dá núcleo ao estágio, e não há piso de carga horária: ele sai por pré-requisito." },
+  { id: "ELNFC1", codigo: "—", nome: "Eletiva de Ensino 1",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_EL_NFC },
+
+  /* ---------------------------------------------------------- 10º período */
+  { id: "PFC", codigo: "—", nome: "Projeto Final de Curso em Telecomunicações",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "compl", pre: ["METCIENT"] },
+  { id: "ELEXT2", codigo: "—", nome: "Eletiva de Extensão 2",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "eletiva", dcext: true, nota: NOTA_EL_EXT_TL },
+  { id: "ELEXT3", codigo: "—", nome: "Eletiva de Extensão 3",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "eletiva", dcext: true, nota: NOTA_EL_EXT_TL },
+  { id: "ELNFC2", codigo: "—", nome: "Eletiva de Ensino 2",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_EL_NFC },
+  { id: "ELNFC3", codigo: "—", nome: "Eletiva de Ensino 3",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_EL_NFC },
+  { id: "ELNFC4", codigo: "—", nome: "Eletiva de Ensino 4",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_EL_NFC },
+];
+
+/* ==========================================================================
+   CÓDIGOS DO SIGA — perfil EL03-1, Engenharia Elétrica de Telecomunicações
+
+   Ele mandou uma consulta do SIGA a este perfil (emitida em 11/05/2020) "para
+   auxiliar". Aquela matriz não é nenhuma das duas mapeadas aqui — tem 4155h,
+   e disciplinas que não existem em nenhuma delas (Desenho, Métodos
+   Computacionais 1 e 2, Filtros e Circuitos de Acoplamento, Eletromagnetismo
+   Computacional via Elementos Finitos) — então não vira grade. Vira FONTE DE
+   CÓDIGOS: entra no registro compartilhado e alimenta a herança por nome,
+   com prioridade para as grades deste mesmo curso.
+
+   Só os componentes cujo nome é reconhecível estão aqui; os do perfil que não
+   têm correspondente em nenhuma grade mapeada foram deixados de fora.
+   ========================================================================== */
+const CODIGOS_SIGA_TELECOM = {
+  curso: "Engenharia Elétrica de Telecomunicações",
+  disciplinas: [
+    { codigo: "MATM0007", nome: "Geometria Analítica" },
+    { codigo: "LETR0001", nome: "Português Instrumental" },
+    { codigo: "MATM0001", nome: "Álgebra Linear" },
+    { codigo: "MATM0006", nome: "Complementos de Matemática" },
+    { codigo: "ENGE0002", nome: "Introdução à Engenharia" },
+    { codigo: "QUIM0001", nome: "Química Geral" },
+    { codigo: "SOCL0001", nome: "Sociologia" },
+    { codigo: "ELET0013", nome: "Circuitos Elétricos 1" },
+    { codigo: "ELET0014", nome: "Circuitos Elétricos 2" },
+    { codigo: "ELET0030", nome: "Eletromagnetismo 1" },
+    { codigo: "ELET0031", nome: "Eletromagnetismo 2" },
+    { codigo: "ELET0033", nome: "Eletrônica 1" },
+    { codigo: "ELET0034", nome: "Eletrônica 2" },
+    { codigo: "ELET0035", nome: "Eletrônica Analógica" },
+    { codigo: "ELET0037", nome: "Eletrônica Digital" },
+    { codigo: "ELET0047", nome: "Laboratório de Eletrônica 1" },
+    { codigo: "ELET0048", nome: "Laboratório de Eletrônica 2" },
+    { codigo: "ELET0049", nome: "Laboratório de Eletrônica Digital" },
+    { codigo: "ELET0053", nome: "Materiais Elétricos" },
+    { codigo: "ELET0074", nome: "Resistência dos Materiais" },
+    { codigo: "ELET0025", nome: "Conversão Eletromecânica de Energia" },
+    { codigo: "ELET0036", nome: "Eletrônica de Potência" },
+    { codigo: "ELET0045", nome: "Instalações Elétricas Industriais" },
+    { codigo: "ELET0054", nome: "Medidas Elétricas" },
+    { codigo: "ELET0075", nome: "Sistemas de Controle 1" },
+    { codigo: "ELET0076", nome: "Sistemas de Controle 2" },
+    { codigo: "ELET0078", nome: "Sistemas Digitais" },
+    { codigo: "DIRT0001", nome: "Direito para Engenheiros" },
+    { codigo: "ELET0046", nome: "Instrumentação" },
+    { codigo: "ELET0058", nome: "Microprocessadores" },
+    { codigo: "ELET0061", nome: "Princípios de Telecomunicações" },
+    { codigo: "ELET0104", nome: "Processos Estocásticos" },
+    { codigo: "ADMT0001", nome: "Administração" },
+    { codigo: "ELET0024", nome: "Controle de Processos" },
+    { codigo: "ENGE0001", nome: "Engenharia de Segurança" },
+    { codigo: "ECON0001", nome: "Engenharia Econômica" },
+    { codigo: "ELET0041", nome: "Estágio Curricular Obrigatório" },
+    { codigo: "ELET0050", nome: "Linhas de Transmissão" },
+    { codigo: "ELET0066", nome: "Propagação Eletromagnética" },
+    { codigo: "ELET0018", nome: "Comunicação Digital" },
+    { codigo: "ELET0021", nome: "Comunicações Móveis e sem Fio" },
+    { codigo: "ELET0022", nome: "Comunicações Ópticas" },
+    { codigo: "ELET0063", nome: "Projeto Final de Curso" },
+    { codigo: "ELET0070", nome: "Redes de Computadores 1" },
+    { codigo: "ELET0071", nome: "Redes de Computadores 2" },
+    { codigo: "ELET0002", nome: "Administração da Manutenção" },
+    { codigo: "ELET0102", nome: "Processamento Digital de Sinais" },
+    { codigo: "ELET0006", nome: "Antenas" },
+    { codigo: "ELET0105", nome: "Teoria da Informação" },
+    { codigo: "ELET0082", nome: "Telefonia 1" },
+    { codigo: "ECOL0001", nome: "Engenharia Ambiental" },
+  ],
+};
+
 /* ==========================================================================
    As grades e as contas que cada PPC publica — é contra elas que a
    transcrição é conferida. `esperado` sai do documento; `real` sai da tabela.
@@ -1821,6 +2304,80 @@ const GRADES = [
       "das outras grades.",
     ],
   },
+  {
+    sigla: "telecom-2010",
+    /* O curso foi renomeado: o PPC antigo é de "Engenharia de
+       Telecomunicações", o de 2021 é de "Engenharia Elétrica de
+       Telecomunicações". Mesmo curso, e as duas grades declaram o nome novo
+       para o índice agrupá-las. */
+    curso: "Engenharia Elétrica de Telecomunicações",
+    matriz: "2010",
+    observacao:
+      "Perfil antigo, de quando o curso se chamava apenas Engenharia de Telecomunicações. A matriz nova é a de 2021.",
+    chTotalCurso: 3645,
+    /* Tabela 15: o estágio pede "60% curso". */
+    estagioFracao: 0.6,
+    disciplinas: TELECOM_2010,
+    porPeriodo: [315, 315, 330, 360, 330, 390, 375, 390, 540, 300],
+    contas: (c) => [
+      ["Ciclo Básico (Tabelas 10 e 11)", 1320, c.chDaCategoria("basico")],
+      ["Ciclo Profissional Essencial (Tabelas 10 e 12)", 1005, c.chDaCategoria("prof")],
+      ["Específico, obrigatórias (Tabelas 10 e 13)", 720, c.chDaCategoria("espec")],
+      ["eletivas (Tabelas 10 e 13)", 360, c.chDaCategoria("eletiva")],
+      ["Ciclo Complementar (Tabelas 10 e 14)", 240, c.chDaCategoria("compl")],
+      ["currículo pleno (§7.4)", 3645, c.ch(c.ds)],
+    ],
+    notas: [
+      "Perfil antigo, do PPC anterior à revisão de 2021.",
+      "",
+      "É o PPC que mais fecha de todos: os três ciclos resolvem sem",
+      "ambiguidade, cada área das Tabelas 11 e 12 casando exatamente com as",
+      "disciplinas pelo nome. Inclusive a área \"Circuitos Elétricos, 240h\",",
+      "que em Eletrônica 2012 ficou faltando uma disciplina — aqui fecha com",
+      "Circuitos 1 e 2, Instalações Elétricas e Medidas Elétricas.",
+      "",
+      "Códigos no formato curto da época, como o PPC os imprime.",
+    ],
+  },
+  {
+    sigla: "telecom",
+    curso: "Engenharia Elétrica de Telecomunicações",
+    matriz: "2021",
+    observacao:
+      "Matriz a executar, da revisão de 2021 do projeto pedagógico. Quem entrou antes segue a de 2010.",
+    chTotalCurso: 3750,
+    /* Sem `estagioFracao`: não há piso de CH; o estágio sai por
+       pré-requisito. */
+    disciplinas: TELECOM_2021,
+    herdarCodigos: true,
+    porPeriodo: [330, 405, 360, 420, 360, 375, 360, 390, 390, 360],
+    contas: (c) => [
+      ["NCB (Tabela 1)", 1335, c.chDaCategoria("basico")],
+      /* A Tabela 1 imprime 825 aqui, e a soma das componentes marcadas NCP dá
+         855. São 30h que o documento não realoca em lugar nenhum — ver a nota
+         em Gestão Organizacional. O valor conferido é o da transcrição, que
+         trava a digitação mesmo sem resolver a divergência. */
+      ["NCP pela coluna Núcleo (a Tabela 1 imprime 825)", 855, c.chDaCategoria("prof")],
+      /* NCE 960 das obrigatórias + 180 do estágio e do PFC. */
+      ["NCE + estágio (Tabela 1)", 1140, c.chDaCategoria("espec", "compl")],
+      ["eletivas: 240h do NFC + 180h de extensão (Tabela 1)", 420, c.chDaCategoria("eletiva")],
+      ["componentes de extensão (Tabela 1)", 390, c.ch(c.ds.filter((d) => d.dcext))],
+      ["carga horária total (Tabela 1)", 3750, c.ch(c.ds)],
+    ],
+    notas: [
+      "Matriz a executar, da revisão de 2021. A anterior, de 2010, está em",
+      "telecom-2010.yaml — e naquela época o curso chamava-se apenas",
+      "Engenharia de Telecomunicações. São o mesmo curso, renomeado.",
+      "",
+      "Quatro contas da Tabela 1 fecham exato com a coluna Núcleo: NCB 1335,",
+      "NCE 960, extensão 390 e NFC 240. A quinta não: somando as componentes",
+      "marcadas NCP dá 855h e a Tabela 1 imprime 825h. As 30h de diferença",
+      "ficaram registradas em nota, não resolvidas por palpite.",
+      "",
+      "A Tabela 7 não tem coluna de código. Os que aparecem no mapa vieram da",
+      "consulta do SIGA ao perfil EL03-1 do mesmo curso, por nome.",
+    ],
+  },
 ];
 
 /* ==========================================================================
@@ -2084,5 +2641,5 @@ if (!alvos.length) {
 }
 /* O registro sai de TODAS as grades, mesmo quando só uma é gerada: o código
    de Mecânica 2021 vem de Automação, que pode não estar sendo regerada. */
-const registro = montarRegistro(GRADES);
+const registro = montarRegistro([...GRADES, CODIGOS_SIGA_TELECOM]);
 if (!alvos.map((g) => gerar(g, registro)).every(Boolean)) process.exit(1);
