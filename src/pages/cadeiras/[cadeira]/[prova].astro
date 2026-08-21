@@ -20,6 +20,7 @@
 import { getCollection, render } from "astro:content";
 import Base from "~/layouts/Base.astro";
 import ChipsProva from "~/components/ChipsProva.astro";
+import PainelEstudo from "~/components/PainelEstudo.astro";
 import Questao from "~/components/Questao.astro";
 import Gabarito from "~/components/Gabarito.astro";
 import Passos from "~/components/Passos.astro";
@@ -56,6 +57,14 @@ const { cadeira, prova, itens, contagem } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const rotulo = ROTULO[prova as keyof typeof ROTULO];
 
+/* ids na ordem de exibição: o painel usa isto como universo do filtro,
+   do progresso e do sorteio do simulado. */
+const ids = itens.map(
+  (q: { numero: number }) =>
+    `${cadeira.data.id}-${prova}-${String(q.numero).padStart(2, "0")}`,
+);
+const totalCadeira = Object.values(contagem).reduce((s: number, n) => s + (n as number), 0);
+
 const renderizadas = await Promise.all(
   itens.map(async (q) => ({ ...q, Conteudo: (await render(q.entry)).Content })),
 );
@@ -70,6 +79,17 @@ const MDX = { Gabarito, Passos, Figura, Caixa };
   <h1>{cadeira.data.nome}</h1>
 
   <ChipsProva cadeira={cadeira.data.id} atual={prova} contagem={contagem} />
+
+  {
+    renderizadas.length > 0 && (
+      <PainelEstudo
+        cadeira={cadeira.data.id}
+        prova={prova}
+        ids={ids}
+        totalCadeira={totalCadeira}
+      />
+    )
+  }
 
   {
     renderizadas.length === 0 ? (
@@ -96,6 +116,10 @@ const MDX = { Gabarito, Passos, Figura, Caixa };
     )
   }
 </Base>
+
+<script>
+  import "~/ilhas/entrada";
+</script>
 
 <style>
   .vazio {

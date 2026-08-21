@@ -1,0 +1,359 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                      PainelEstudo.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Painel de estudo da prova: progresso, filtro por status e simulado.
+   Fica acima da lista de questões. A ilha em painel.ts liga tudo. */
+interface Props {
+  cadeira: string;
+  prova: string;
+  /** ids das questões desta prova, na ordem de exibição */
+  ids: string[];
+  /** total de questões da cadeira inteira, para a barra de progresso */
+  totalCadeira: number;
+}
+const { cadeira, prova, ids, totalCadeira } = Astro.props;
+---
+
+<section
+  class="painel"
+  data-painel
+  data-cadeira={cadeira}
+  data-prova={prova}
+  data-ids={ids.join(",")}
+  data-total-cadeira={totalCadeira}
+  aria-label="Ferramentas de estudo"
+>
+  <div class="progresso">
+    <div class="linha">
+      <span class="rot">Seu progresso nesta cadeira</span>
+      <span class="resumo" data-resumo>—</span>
+      <button type="button" class="btn-txt" data-limpar>Limpar progresso</button>
+    </div>
+    <div class="barra">
+      <i class="fatia ok" data-fatia="a"></i>
+      <i class="fatia err" data-fatia="e"></i>
+      <i class="fatia rev" data-fatia="r"></i>
+    </div>
+    <div class="numeros">
+      <span class="n na"><b data-n="a">0</b> acertadas</span>
+      <span class="n ne"><b data-n="e">0</b> erradas</span>
+      <span class="n nr"><b data-n="r">0</b> para revisar</span>
+    </div>
+  </div>
+
+  <div class="filtros" role="group" aria-label="Filtrar por status">
+    <button type="button" class="chip-f ativo" data-filtro="todas">
+      Todas <span class="num" data-c="todas">0</span>
+    </button>
+    <button type="button" class="chip-f" data-filtro="nao">
+      Não feitas <span class="num" data-c="nao">0</span>
+    </button>
+    <button type="button" class="chip-f" data-filtro="a">
+      Acertei <span class="num" data-c="a">0</span>
+    </button>
+    <button type="button" class="chip-f" data-filtro="e">
+      Errei <span class="num" data-c="e">0</span>
+    </button>
+    <button type="button" class="chip-f" data-filtro="r">
+      Revisar <span class="num" data-c="r">0</span>
+    </button>
+    <button type="button" class="btn-sim" data-abrir-simulado>
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2"></circle>
+        <path
+          d="M12 9v4l2.5 2.5M9.5 2.5h5"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          fill="none"></path>
+      </svg>
+      Modo simulado
+    </button>
+  </div>
+
+  <p class="aviso-vazio oculto" data-vazio>Nenhuma questão neste filtro.</p>
+
+  <form class="config-sim oculto" data-config-simulado>
+    <p class="explica">
+      Sorteia questões desta prova, esconde os gabaritos e roda um cronômetro. No fim, você
+      corrige e vê a nota.
+    </p>
+    <label>
+      Questões
+      <input type="number" name="n" value="4" min="1" max={ids.length} data-sim-n />
+    </label>
+    <label>
+      Minutos
+      <input type="number" name="min" value="100" min="1" max="300" data-sim-min />
+    </label>
+    <button type="submit" class="btn-sim primario">Começar</button>
+    <button type="button" class="btn-txt" data-cancelar-simulado>Cancelar</button>
+  </form>
+</section>
+
+<div class="barra-sim oculto" data-barra-simulado>
+  <div class="pagina interna">
+    <span class="cron" data-sim-tempo>00:00</span>
+    <span class="info" data-sim-info></span>
+    <span class="nota" data-sim-nota></span>
+    <button type="button" class="btn-sim" data-encerrar-simulado>Encerrar e corrigir</button>
+    <button type="button" class="btn-sim oculto" data-sair-simulado>Sair do simulado</button>
+  </div>
+</div>
+
+<style>
+  .painel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-cartao);
+    padding: var(--e-4) var(--e-5);
+    margin-bottom: var(--e-5);
+    box-shadow: var(--sombra-1);
+  }
+
+  .linha {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-3);
+    flex-wrap: wrap;
+  }
+  .rot {
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .resumo {
+    font-size: var(--t-sm);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .btn-txt {
+    margin-left: auto;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: var(--f-texto);
+    font-size: var(--t-sm);
+    color: var(--ink-3);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .btn-txt:hover {
+    color: var(--err);
+  }
+
+  /* barra empilhada: a proporção de cada estado é visível de relance */
+  .barra {
+    display: flex;
+    height: 8px;
+    border-radius: var(--r-pilula);
+    overflow: hidden;
+    background: var(--surface-2);
+    margin: var(--e-3) 0 var(--e-2);
+  }
+  .fatia {
+    display: block;
+    width: 0;
+    transition: width 0.3s;
+  }
+  .fatia.ok {
+    background: var(--ok);
+  }
+  .fatia.err {
+    background: var(--err);
+  }
+  .fatia.rev {
+    background: var(--rev);
+  }
+
+  .numeros {
+    display: flex;
+    gap: var(--e-4);
+    flex-wrap: wrap;
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+  }
+  .numeros b {
+    font-variant-numeric: tabular-nums;
+  }
+  .na b {
+    color: var(--ok);
+  }
+  .ne b {
+    color: var(--err);
+  }
+  .nr b {
+    color: var(--rev);
+  }
+
+  .filtros {
+    display: flex;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+    margin-top: var(--e-4);
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--line);
+  }
+  .chip-f {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--r-pilula);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    font-family: var(--f-texto);
+    font-size: var(--t-sm);
+    cursor: pointer;
+  }
+  .chip-f:hover {
+    border-color: var(--accent);
+  }
+  .chip-f.ativo {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .num {
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    font-variant-numeric: tabular-nums;
+    padding: 1px 6px;
+    border-radius: var(--r-pilula);
+    background: var(--surface);
+    color: var(--ink-3);
+  }
+  .chip-f.ativo .num {
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+  }
+
+  .btn-sim {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    padding: 6px 13px;
+    border-radius: var(--r-botao);
+    background: var(--surface-2);
+    border: 1px solid var(--line-2);
+    color: var(--ink);
+    font-family: var(--f-texto);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .btn-sim:hover {
+    border-color: var(--action);
+    color: var(--action);
+  }
+  .btn-sim.primario {
+    background: var(--action);
+    border-color: var(--action);
+    color: #fff;
+    margin-left: 0;
+  }
+  .btn-sim.primario:hover {
+    color: #fff;
+    filter: brightness(1.08);
+  }
+
+  .aviso-vazio {
+    margin: var(--e-3) 0 0;
+    font-size: var(--t-sm);
+    color: var(--ink-3);
+  }
+
+  .config-sim {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--e-3);
+    flex-wrap: wrap;
+    margin-top: var(--e-4);
+    padding-top: var(--e-3);
+    border-top: 1px dashed var(--line-2);
+  }
+  .config-sim .explica {
+    flex: 1 1 100%;
+    margin: 0;
+    font-size: var(--t-sm);
+  }
+  .config-sim label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: var(--t-xs);
+    font-family: var(--f-mono);
+    letter-spacing: var(--tr-rotulo);
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .config-sim input {
+    width: 6rem;
+    padding: 6px 9px;
+    border-radius: var(--r-botao);
+    border: 1px solid var(--line-2);
+    background: var(--surface-2);
+    color: var(--ink);
+    font-family: var(--f-mono);
+    font-size: var(--t-sm);
+  }
+
+  /* barra fixa do simulado em andamento */
+  .barra-sim {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 15;
+    background: var(--surface);
+    border-top: 1px solid var(--action);
+    box-shadow: var(--sombra-2);
+  }
+  .interna {
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+    flex-wrap: wrap;
+    padding-top: var(--e-3);
+    padding-bottom: var(--e-3);
+  }
+  .cron {
+    font-family: var(--f-mono);
+    font-size: var(--t-md);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--action);
+  }
+  .cron[data-apertado] {
+    color: var(--err);
+  }
+  .info,
+  .nota {
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+  }
+  .nota {
+    font-family: var(--f-mono);
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .barra-sim .btn-sim {
+    margin-left: auto;
+  }
+</style>

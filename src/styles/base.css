@@ -302,3 +302,28 @@ th {
 .questao:target {
   border-color: var(--accent);
 }
+
+/* -------------------------- modo simulado -------------------------------
+   Enquanto o simulado corre, gabarito e passo a passo ficam FORA DO DOM
+   visível (display:none), não só fechados: fechado, bastava clicar para
+   espiar. Na correção eles voltam.
+
+   O seletor sai do <body>, então uma regra só governa a página inteira em
+   vez de cada questão saber do simulado. */
+
+body[data-simulado="ativo"] .gabarito,
+body[data-simulado="ativo"] .passos {
+  display: none;
+}
+
+/* Espaço no fim da página para a barra fixa do simulado não cobrir a
+   última questão. */
+body[data-simulado] .corpo {
+  padding-bottom: calc(var(--e-8) * 2);
+}
+
+/* Na correção, o gabarito volta já aberto: a essa altura o aluno quer
+   comparar, não caçar cliques. */
+body[data-simulado="corrigindo"] .gabarito {
+  border-color: var(--ok);
+}
