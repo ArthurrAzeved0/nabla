@@ -21,6 +21,40 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.8.0] — 2026-08-21
+
+**Telecomunicações, as duas matrizes, e o cartão de prévia.** Dez mapas no ar,
+cinco cursos — 645 disciplinas e 646 requisitos.
+
+### Adicionado
+
+- **Mapa da grade de Engenharia Elétrica de Telecomunicações, matriz 2021**:
+  67 componentes e 72 requisitos, da revisão de 2021 do projeto pedagógico.
+- **Mapa da grade de Engenharia de Telecomunicações, matriz 2010**: 65
+  disciplinas e 67 requisitos. **É o PPC que mais fecha de todos os dez
+  lidos**: os três ciclos resolvem sem ambiguidade nenhuma, cada área das
+  tabelas casando exatamente com as disciplinas pelo nome — inclusive a área
+  "Circuitos Elétricos, 240h", que em Eletrônica 2012 ficou faltando uma.
+- **Consulta do SIGA como fonte de códigos.** Ele mandou uma consulta ao
+  perfil `EL03-1`, com código, CH e período de cada componente. Aquela matriz
+  não é nenhuma das duas mapeadas — tem 4155h — mas serve de fonte para o
+  registro compartilhado, e rendeu bem mais que Telecom: **Eletrônica 2012
+  saiu de 31 para 44 códigos**, Eletrônica 2020 de 31 para 39, e Telecom 2021
+  nasceu com 45.
+- **Cartão de prévia dos links**, `public/social-card.png`, 1280×640 gerado de
+  `arte/social-card.html` pelo Chrome headless. Serve de prévia do
+  repositório no GitHub e de `og:image` do site — agora todo link
+  compartilhado no WhatsApp, Telegram, Discord ou Twitter abre com cartão.
+  As fontes vão embutidas em base64, então o cartão sai igual em qualquer
+  máquina, sem depender do que está instalado nela.
+- `og:` e `twitter:card` no `Base.astro`. A URL da imagem tem de ser
+  absoluta — caminho relativo é ignorado por todos —, e é para isso que
+  `site` existe no `astro.config.mjs`.
+
+### Alterado
+
+- `npm run cabecalhos` passa a conferir `arte/` e o `README.md` também.
+
 ## [2.7.0] — 2026-08-21
 
 **Engenharia Elétrica Eletrônica, as duas matrizes.** Oito mapas no ar, quatro
@@ -750,6 +784,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.8.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.8.0
 [2.7.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.7.0
 [2.6.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.6.0
 [2.5.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.5.0

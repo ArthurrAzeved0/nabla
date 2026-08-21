@@ -1,5 +1,5 @@
 # **************************************************************************
-# * Nabla — Guia do aluno POLI/UPE                         eletronica.yaml *
+# * Nabla — Guia do aluno POLI/UPE                            telecom.yaml *
 # *------------------------------------------------------------------------*
 # * Copyright © 2026  Arthur Epifanio De Azevedo                           *
 # * Todos os direitos reservados.                                          *
@@ -11,31 +11,31 @@
 # * Contato: arthur_azevedo05@hotmail.com                                  *
 # **************************************************************************
 # ************************************************************************
-# Grade de Engenharia Elétrica Eletrônica — POLI/UPE, matriz 2020.
+# Grade de Engenharia Elétrica de Telecomunicações — POLI/UPE, matriz 2021.
 #
 # GERADO por scripts/extrair-grade-ppc.mjs, a partir do PPC do curso.
 # Editar à mão se perde na próxima geração: a correção vai no script.
 #
-# Matriz de 2020. A anterior, de 2012, está em eletronica-2012.yaml — e
-# naquela época o curso chamava-se apenas Engenharia Eletrônica. São o
-# mesmo curso, renomeado.
+# Matriz a executar, da revisão de 2021. A anterior, de 2010, está em
+# telecom-2010.yaml — e naquela época o curso chamava-se apenas
+# Engenharia de Telecomunicações. São o mesmo curso, renomeado.
 #
-# A Tabela 6 marca cada componente com o NÚCLEO e com a dimensão (ENS de
-# ensino, EXT de extensão). A CH das EXT sai do núcleo e vai para o balde
-# da Extensão da Tabela 1 — é por isso que as contas por núcleo aqui
-# somam as EXT de volta.
+# Quatro contas da Tabela 1 fecham exato com a coluna Núcleo: NCB 1335,
+# NCE 960, extensão 390 e NFC 240. A quinta não: somando as componentes
+# marcadas NCP dá 855h e a Tabela 1 imprime 825h. As 30h de diferença
+# ficaram registradas em nota, não resolvidas por palpite.
 #
-# Sem coluna de código: os que aparecem no mapa foram herdados por nome
-# das outras grades.
+# A Tabela 7 não tem coluna de código. Os que aparecem no mapa vieram da
+# consulta do SIGA ao perfil EL03-1 do mesmo curso, por nome.
 #
 # `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
-curso: Engenharia Elétrica Eletrônica
-sigla: eletronica
-matriz: "2020"
-observacao: "Matriz de 2020. Quem entrou antes segue a de 2012, de quando o curso se chamava Engenharia Eletrônica."
-chTotalCurso: 3720
+curso: Engenharia Elétrica de Telecomunicações
+sigla: telecom
+matriz: "2021"
+observacao: "Matriz a executar, da revisão de 2021 do projeto pedagógico. Quem entrou antes segue a de 2010."
+chTotalCurso: 3750
 disciplinas:
   - id: CALC1
     codigo: MATM0018
@@ -92,9 +92,9 @@ disciplinas:
     pre: []
     co: []
     dcext: true
-  - id: FUNDELE
+  - id: FUNDTEL
     codigo: —
-    nome: Fundamentos de Engenharia Eletrônica
+    nome: Fundamentos de Telecomunicações
     periodo: 1
     teorica: 20
     pratica: 10
@@ -162,7 +162,7 @@ disciplinas:
     periodo: 2
     teorica: 45
     pratica: 15
-    categoria: prof
+    categoria: basico
     pre: [PROG]
     co: []
   - id: CALCVET
@@ -213,18 +213,18 @@ disciplinas:
     pre: [EXPGR1]
     co: []
     dcext: true
-  - id: CIENCMAT
-    codigo: MECN0004
-    nome: Ciência dos Materiais
+  - id: MATEL
+    codigo: ELET0053
+    nome: Materiais Elétricos
     periodo: 3
     teorica: 30
     pratica: 0
     categoria: basico
     pre: [QUIM]
     co: []
-  - id: FERRTELE
+  - id: FERRENG
     codigo: —
-    nome: Ferramentas Comp. para Telecomunicações
+    nome: Ferramentas Comp. para Engenharia
     periodo: 3
     teorica: 30
     pratica: 30
@@ -341,44 +341,24 @@ disciplinas:
     categoria: prof
     pre: [CIRC1]
     co: []
-  - id: SISCTRL1
-    codigo: ELET0075
-    nome: Sistemas de Controle 1
+  - id: PROCESTOC
+    codigo: ELET0104
+    nome: Processos Estocásticos
     periodo: 5
     teorica: 60
     pratica: 0
     categoria: prof
-    pre: [EQDIF, COMPMAT]
+    pre: [PROBEST]
     co: []
-  - id: METCIENT
-    codigo: LETR0009
-    nome: Metodologia Científica
-    periodo: 5
-    teorica: 60
-    pratica: 0
-    categoria: prof
-    pre: [PORT]
-    co: []
-    nota: "A Tabela 6 escreve o pré-requisito como \"Port\", truncado — é Português Instrumental. A CH dobrou de 30h para 60h em relação à matriz de 2012."
-  - id: LABELET1
-    codigo: ELET0047
-    nome: Laboratório de Eletrônica 1
-    periodo: 5
-    teorica: 0
-    pratica: 30
-    categoria: prof
-    pre: []
-    co: [ELET1]
-  - id: ENGSEG
+  - id: SINSIS
     codigo: —
-    nome: Engenharia de Segurança no Trabalho
-    periodo: 6
-    teorica: 45
+    nome: Sinais e Sistemas
+    periodo: 5
+    teorica: 60
     pratica: 0
     categoria: prof
-    pre: [CIRC2, ELET1]
+    pre: [COMPMAT]
     co: []
-    nota: "A Tabela 6 lista \"Circuitos Elétricos 2 Eletrônica 1\" sem separador: são dois pré-requisitos."
   - id: ELETANA
     codigo: ELET0035
     nome: Eletrônica Analógica
@@ -388,32 +368,14 @@ disciplinas:
     categoria: prof
     pre: [ELET1]
     co: []
-  - id: CONVEL
-    codigo: ELET0025
-    nome: Conversão Eletromecânica de Energia
+  - id: LABELET1
+    codigo: ELET0047
+    nome: Laboratório de Eletrônica 1
     periodo: 6
-    teorica: 60
-    pratica: 0
-    categoria: prof
-    pre: [CIRC2, ELMAG2]
-    co: []
-  - id: ELET2
-    codigo: ELET0034
-    nome: Eletrônica 2
-    periodo: 6
-    teorica: 60
-    pratica: 0
+    teorica: 0
+    pratica: 30
     categoria: prof
     pre: [ELET1]
-    co: []
-  - id: SISCTRL2
-    codigo: ELET0076
-    nome: Sistemas de Controle 2
-    periodo: 6
-    teorica: 60
-    pratica: 0
-    categoria: prof
-    pre: [SISCTRL1]
     co: []
   - id: SISTDIG
     codigo: ELET0078
@@ -424,73 +386,91 @@ disciplinas:
     categoria: prof
     pre: [ELETDIG]
     co: []
-  - id: LABANA
-    codigo: —
-    nome: Laboratório de Eletrônica Analógica
+  - id: CONVEL
+    codigo: ELET0025
+    nome: Conversão Eletromecânica de Energia
     periodo: 6
-    teorica: 0
-    pratica: 30
-    categoria: prof
-    pre: [ELET1]
-    co: [ELET2, ELETANA]
-  - id: LABSISTDIG
-    codigo: —
-    nome: Laboratório de Sistemas Digitais
-    periodo: 6
-    teorica: 0
-    pratica: 30
-    categoria: prof
-    pre: [ELETDIG]
-    co: [SISTDIG]
-  - id: SINSIS
-    codigo: —
-    nome: Sinais e Sistemas
-    periodo: 7
     teorica: 60
     pratica: 0
     categoria: prof
-    pre: [COMPMAT]
+    pre: [CIRC2, ELMAG2]
     co: []
-  - id: PROCESTOC
-    codigo: ELET0104
-    nome: Processos Estocásticos
-    periodo: 7
-    teorica: 60
-    pratica: 0
+  - id: PRINCCOM
+    codigo: —
+    nome: Princípios de Comunicações
+    periodo: 6
+    teorica: 50
+    pratica: 10
     categoria: espec
-    pre: [PROBEST]
+    pre: [SINSIS]
     co: []
-  - id: INSTELE
+  - id: REDES1
+    codigo: ELET0070
+    nome: Redes de Computadores 1
+    periodo: 6
+    teorica: 50
+    pratica: 10
+    categoria: espec
+    pre: [SINSIS]
+    co: []
+  - id: ENGSEG
     codigo: —
-    nome: Instalações Elétricas
+    nome: Engenharia de Segurança do Trabalho
+    periodo: 6
+    teorica: 45
+    pratica: 0
+    categoria: prof
+    pre: [CIRC2]
+    co: []
+  - id: LABANADIG
+    codigo: MCTR0004
+    nome: Lab. de Eletrônica Analógica e Digital
     periodo: 7
-    teorica: 30
+    teorica: 0
     pratica: 30
+    categoria: prof
+    pre: [ELETDIG, ELETANA]
+    co: []
+  - id: SISCTRL1
+    codigo: ELET0075
+    nome: Sistemas de Controle 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [EQDIF, COMPMAT]
+    co: [CIRC2]
+    nota: "A Tabela 7 põe Circuitos Elétricos 2, do 5º período, como CO-requisito desta — e não como pré."
+  - id: COMDIG
+    codigo: ELET0018
+    nome: Comunicação Digital
+    periodo: 7
+    teorica: 50
+    pratica: 10
+    categoria: espec
+    pre: [PRINCCOM, PROCESTOC]
+    co: []
+  - id: ANTENAS
+    codigo: ELET0006
+    nome: Antenas
+    periodo: 7
+    teorica: 50
+    pratica: 10
+    categoria: espec
+    pre: [ELMAG2]
+    co: []
+  - id: INFRATEL
+    codigo: —
+    nome: Infraestrutura de Telecomunicações
+    periodo: 7
+    teorica: 40
+    pratica: 20
     categoria: espec
     pre: [CIRC2]
     co: []
     dcext: true
-    nota: "A Tabela 6 pede \"Circuitos 2\"; o nome na matriz é Circuitos Elétricos 2."
-  - id: ELETIND
-    codigo: —
-    nome: Eletrônica Industrial
-    periodo: 7
-    teorica: 30
-    pratica: 30
-    categoria: espec
-    pre: [ELMAG2]
-    co: []
-  - id: ADMMANUT
-    codigo: ELET0002
-    nome: Administração da Manutenção
-    periodo: 7
-    teorica: 60
-    pratica: 0
-    categoria: espec
-    pre: [CIRC2]
-    co: [SISCTRL1]
   - id: DIREITO
-    codigo: —
+    codigo: DIRT0001
     nome: Direito para Engenheiros
     periodo: 7
     teorica: 30
@@ -498,113 +478,138 @@ disciplinas:
     categoria: basico
     pre: [ECON]
     co: []
+  - id: REDES2
+    codigo: ELET0071
+    nome: Redes de Computadores 2
+    periodo: 7
+    teorica: 50
+    pratica: 10
+    categoria: espec
+    pre: [REDES1]
+    co: []
+  - id: TEORINFO
+    codigo: ELET0105
+    nome: Teoria da Informação
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [PROBEST, PRINCCOM]
+    co: []
+  - id: PROPAGEM
+    codigo: ELET0066
+    nome: Propagação Eletromagnética
+    periodo: 8
+    teorica: 50
+    pratica: 10
+    categoria: espec
+    pre: [ANTENAS]
+    co: []
+  - id: PDS
+    codigo: ELET0102
+    nome: Processamento Digital de Sinais
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [PRINCCOM]
+    co: []
+  - id: REDTEL1
+    codigo: —
+    nome: Redes de Telecomunicações 1
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [PRINCCOM]
+    co: []
+  - id: COMMOV
+    codigo: ELET0021
+    nome: Comunicações Móveis e sem Fio
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [COMDIG]
+    co: []
   - id: GESTORG
     codigo: —
     nome: Gestão Organizacional para Engenheiros
     periodo: 8
-    teorica: 60
-    pratica: 0
-    categoria: espec
-    pre: []
-    co: []
-    dcext: true
-  - id: PRINCCOM
-    codigo: —
-    nome: Princípios de Comunicações
-    periodo: 8
-    teorica: 60
-    pratica: 0
-    categoria: espec
-    pre: []
-    co: []
-    nota: "A Tabela 6 dá a esta componente o pré-requisito \"Antenas\", que é uma ELETIVA: obrigatória não pode depender de eletiva, e a aresta apontaria para fora da matriz. Descartada."
-  - id: REDES1
-    codigo: ELET0070
-    nome: Redes de Computadores 1
-    periodo: 8
-    teorica: 60
-    pratica: 0
-    categoria: espec
-    pre: [SINSIS]
-    co: []
-  - id: MICROCTRL
-    codigo: —
-    nome: Microcontroladores
-    periodo: 8
     teorica: 30
-    pratica: 30
-    categoria: espec
-    pre: [SISTDIG]
-    co: []
-  - id: ELETPOT
-    codigo: ELET0036
-    nome: Eletrônica de Potência
-    periodo: 8
-    teorica: 60
     pratica: 0
-    categoria: espec
-    pre: [ELETIND]
+    categoria: prof
+    pre: [SOCIO]
     co: []
-  - id: ESTAGIO
-    codigo: —
-    nome: Estágio Curricular Obrigatório
-    periodo: 8
-    teorica: 20
-    pratica: 160
-    categoria: compl
-    pre: []
-    co: []
-    estagio: true
-    nota: "A Tabela 6 não dá requisito ao estágio, e este PPC não publica piso de carga horária para ele."
-  - id: PFC
-    codigo: —
-    nome: Projeto Final de Curso
-    periodo: 9
-    teorica: 60
-    pratica: 0
-    categoria: compl
-    pre: [METCIENT]
-    co: []
-  - id: AUTREDES
-    codigo: —
-    nome: Automação de Redes Industriais
-    periodo: 9
-    teorica: 60
-    pratica: 0
-    categoria: espec
-    pre: [REDES1]
-    co: []
-  - id: AUTMAQ
-    codigo: —
-    nome: Automação de Máquinas
-    periodo: 9
-    teorica: 60
-    pratica: 0
-    categoria: espec
-    pre: []
-    co: []
-    nota: A Tabela 6 não dá requisito a esta componente.
-  - id: INSTRUM
-    codigo: ELET0046
-    nome: Instrumentação
-    periodo: 9
-    teorica: 60
-    pratica: 0
-    categoria: espec
-    pre: []
-    co: []
-    nota: A Tabela 6 não dá requisito a esta componente.
+    nota: "A soma das componentes marcadas NCP dá 855h e a Tabela 1 imprime 825h. Esta é a única NCP de 30h, o candidato natural para a diferença — mas nada no PPC diz isso, então ficou como está marcado."
   - id: ELEXT1
     codigo: —
     nome: Eletiva de Extensão 1
-    periodo: 10
+    periodo: 8
     teorica: 60
     pratica: 0
     categoria: eletiva
     pre: []
     co: []
     dcext: true
-    nota: "São duas eletivas exclusivamente de extensão, 120h, mais três de ensino, 180h."
+    nota: "Eletiva de extensão: a CH conta nas 390h de extensão do curso."
+  - id: COMOPT
+    codigo: ELET0022
+    nome: Comunicações Ópticas
+    periodo: 9
+    teorica: 55
+    pratica: 5
+    categoria: espec
+    pre: [COMDIG, ELMAG2]
+    co: []
+  - id: REDTEL2
+    codigo: —
+    nome: Redes de Telecomunicações 2
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [REDTEL1]
+    co: []
+  - id: METCIENT
+    codigo: LETR0009
+    nome: Metodologia Científica
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: espec
+    pre: [PORT]
+    co: [REDTEL2]
+  - id: ESTAGIO
+    codigo: ELET0041
+    nome: Estágio Curricular Obrigatório
+    periodo: 9
+    teorica: 20
+    pratica: 160
+    categoria: compl
+    pre: [ENGSEG]
+    co: []
+    estagio: true
+    nota: "A Tabela 7 não dá núcleo ao estágio, e não há piso de carga horária: ele sai por pré-requisito."
+  - id: ELNFC1
+    codigo: —
+    nome: Eletiva de Ensino 1
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "Eletiva de ensino ou atividade complementar, do Núcleo de Formação Complementar: são quatro, 240h."
+  - id: PFC
+    codigo: —
+    nome: Projeto Final de Curso em Telecomunicações
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: compl
+    pre: [METCIENT]
+    co: []
   - id: ELEXT2
     codigo: —
     nome: Eletiva de Extensão 2
@@ -615,44 +620,45 @@ disciplinas:
     pre: []
     co: []
     dcext: true
-    nota: "São duas eletivas exclusivamente de extensão, 120h, mais três de ensino, 180h."
-  - id: EL3
+    nota: "Eletiva de extensão: a CH conta nas 390h de extensão do curso."
+  - id: ELEXT3
     codigo: —
-    nome: Eletiva 3
+    nome: Eletiva de Extensão 3
     periodo: 10
     teorica: 60
     pratica: 0
     categoria: eletiva
     pre: []
     co: []
-    nota: "Eletiva da dimensão ensino: são três, 180h, do Núcleo de Formação Complementar."
-  - id: EL4
+    dcext: true
+    nota: "Eletiva de extensão: a CH conta nas 390h de extensão do curso."
+  - id: ELNFC2
     codigo: —
-    nome: Eletiva 4
+    nome: Eletiva de Ensino 2
     periodo: 10
     teorica: 60
     pratica: 0
     categoria: eletiva
     pre: []
     co: []
-    nota: "Eletiva da dimensão ensino: são três, 180h, do Núcleo de Formação Complementar."
-  - id: EL5
+    nota: "Eletiva de ensino ou atividade complementar, do Núcleo de Formação Complementar: são quatro, 240h."
+  - id: ELNFC3
     codigo: —
-    nome: Eletiva 5
+    nome: Eletiva de Ensino 3
     periodo: 10
     teorica: 60
     pratica: 0
     categoria: eletiva
     pre: []
     co: []
-    nota: "Eletiva da dimensão ensino: são três, 180h, do Núcleo de Formação Complementar."
-  - id: ATCOMP
+    nota: "Eletiva de ensino ou atividade complementar, do Núcleo de Formação Complementar: são quatro, 240h."
+  - id: ELNFC4
     codigo: —
-    nome: Atividades Complementares
+    nome: Eletiva de Ensino 4
     periodo: 10
-    teorica: 0
-    pratica: 60
-    categoria: compl
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
     pre: []
     co: []
-    nota: "Sem linha na Tabela 6: as 60h estão só na Tabela 1, e podem ser feitas em qualquer período."
+    nota: "Eletiva de ensino ou atividade complementar, do Núcleo de Formação Complementar: são quatro, 240h."
