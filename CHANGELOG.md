@@ -24,7 +24,27 @@ pré-lançamento — uma tag por fase concluída da migração.
 ## [Não publicado]
 
 Fase 3 — ilhas de interatividade: marcar acertei/errei/revisar, cronômetro,
-filtro por status, barra de progresso, modo simulado e copiar link da questão.
+filtro por status, barra de progresso e modo simulado.
+
+### Adicionado
+
+- **Copiar o link da questão** ao clicar no número, como no site 1.x, com
+  confirmação visível ("Link copiado") anunciada também por `aria-live`. Um
+  único listener delegado: o script é empacotado uma vez, não 38 vezes numa
+  página de 38 questões.
+- A questão pisca ao copiar, e quem chega por deep-link a vê destacada via
+  `:target` — sem JavaScript nenhum. Ambos respeitam `prefers-reduced-motion`.
+
+### Corrigido
+
+- Copiar o link falhava **silenciosamente** fora de contexto seguro. O
+  `navigator.clipboard` só existe em HTTPS ou localhost; testando pela rede
+  local em `http://192.168.x.x` o clique não copiava e não avisava — problema
+  que o site 1.x também tinha. Agora há três níveis: `navigator.clipboard`,
+  `textarea` + `execCommand`, e por último deixar o link na barra de endereço,
+  dizendo isso ao usuário.
+- `devToolbar` do Astro desligada: só aparecia no `dev`, mas cobria o canto do
+  rodapé.
 
 ## [2.0.0-alpha.3] — 2026-08-20
 

@@ -38,6 +38,12 @@ export default defineConfig({
   site: alvo.site,
   base: alvo.base,
   trailingSlash: "ignore",
+
+  /* Barra de ferramentas do Astro no `dev`. Nunca vai para o site
+     publicado; desligada porque atrapalhava ver o rodapé.
+     Para reativar só na sua máquina, sem mexer aqui:
+       npx astro preferences enable devToolbar */
+  devToolbar: { enabled: false },
   integrations: [mdx()],
   markdown: {
     /* O processador padrão do Astro 7 é o Sätteri, que não tem remark/rehype.

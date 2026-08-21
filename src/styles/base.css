@@ -263,3 +263,42 @@ th {
 .katex {
   font-size: 1.04em;
 }
+
+/* ---------------------- aviso de cópia (transiente) ---------------------
+   Criado por script, então mora no CSS global. Fica fora do fluxo e não
+   rouba foco: é só confirmação, e a mesma mensagem vai para leitores de
+   tela por aria-live. */
+
+.aviso-copia {
+  position: fixed;
+  left: 50%;
+  bottom: var(--e-5);
+  transform: translate(-50%, 12px);
+  z-index: 20;
+  padding: var(--e-2) var(--e-4);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--r-pilula);
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  box-shadow: var(--sombra-2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s, transform 0.16s;
+}
+
+.aviso-copia.visivel {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aviso-copia {
+    transition: none;
+  }
+}
+
+/* Deep-link: a questão apontada pelo endereço acende ao abrir a página. */
+.questao:target {
+  border-color: var(--accent);
+}

@@ -57,7 +57,7 @@ const rotulo = String(numero).padStart(2, "0");
 
 <article class:list={["questao", `st-${estado}`]} id={id}>
   <div class="topo">
-    <a class="qid" href={`#${id}`} title="Link direto para esta questão">Questão {rotulo}</a>
+    <a class="qid" href={`#${id}`} title="Copiar o link direto desta questão">Questão {rotulo}</a>
     <Etiqueta>{prova}</Etiqueta>
     {origem && <Etiqueta tom="neutra" titulo="Procedência">{origem}</Etiqueta>}
     <Etiqueta>{tema}</Etiqueta>
@@ -90,6 +90,77 @@ const rotulo = String(numero).padStart(2, "0");
 
 </article>
 
+<script>
+  /* Copiar o link direto da questão. Um listener delegado no document: o
+     Astro empacota este script uma única vez, mesmo com 38 questões na
+     página. */
+
+  /* navigator.clipboard só existe em contexto seguro (HTTPS ou localhost).
+     Testando pela rede local em http://192.168.x.x ele NÃO existe — daí o
+     plano B com textarea, e o plano C de só deixar o link na barra de
+     endereço, que o usuário copia à mão. */
+  async function copiar(texto: string): Promise<boolean> {
+    try {
+      if (window.isSecureContext && navigator.clipboard) {
+        await navigator.clipboard.writeText(texto);
+        return true;
+      }
+    } catch {
+      /* segue para o plano B */
+    }
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = texto;
+      ta.setAttribute("readonly", "");
+      ta.style.cssText = "position:fixed;top:-9999px;opacity:0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+
+  const aviso = document.createElement("div");
+  aviso.className = "aviso-copia";
+  aviso.setAttribute("role", "status");
+  aviso.setAttribute("aria-live", "polite");
+  document.body.appendChild(aviso);
+  let sumir: number | undefined;
+
+  function anunciar(texto: string) {
+    aviso.textContent = texto;
+    aviso.classList.add("visivel");
+    window.clearTimeout(sumir);
+    sumir = window.setTimeout(() => aviso.classList.remove("visivel"), 2400);
+  }
+
+  document.addEventListener("click", async (ev) => {
+    const alvo = (ev.target as HTMLElement | null)?.closest<HTMLAnchorElement>("a.qid");
+    if (!alvo) return;
+    ev.preventDefault();
+
+    const questao = alvo.closest<HTMLElement>(".questao");
+    const id = questao?.id;
+    if (!id) return;
+
+    /* replaceState em vez de deixar o link navegar: atualiza o endereço sem
+       empilhar histórico nem dar o salto brusco de âncora. */
+    const url = new URL(window.location.href);
+    url.hash = id;
+    history.replaceState(null, "", url.toString());
+
+    questao.classList.remove("destaque");
+    void questao.offsetWidth; /* reinicia a animação se clicar de novo */
+    questao.classList.add("destaque");
+    window.setTimeout(() => questao.classList.remove("destaque"), 2200);
+
+    anunciar((await copiar(url.toString())) ? "Link copiado" : "Link na barra de endereço");
+  });
+</script>
+
 <style>
   .questao {
     background: var(--surface);
@@ -100,6 +171,28 @@ const rotulo = String(numero).padStart(2, "0");
     margin: var(--e-4) 0;
     box-shadow: var(--sombra-1);
     scroll-margin-top: var(--e-7);
+  }
+
+  /* piscada de confirmação ao copiar o link, ou ao chegar por deep-link */
+  .questao.destaque {
+    animation: destacar 2.2s ease-out;
+  }
+  @keyframes destacar {
+    0%,
+    18% {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    100% {
+      border-color: var(--line);
+      box-shadow: var(--sombra-1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .questao.destaque {
+      animation: none;
+      border-color: var(--accent);
+    }
   }
 
   .st-acertei {
