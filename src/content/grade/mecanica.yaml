@@ -1,0 +1,637 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                           mecanica.yaml *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+# ************************************************************************
+# Grade de Engenharia Mecânica — POLI/UPE, matriz 2021.1.
+#
+# GERADO por scripts/extrair-grade-ppc.mjs, a partir do PPC do curso.
+# Editar à mão se perde na próxima geração: a correção vai no script.
+#
+# Matriz em execução desde 2021.1. A anterior, de 2012, está em
+# mecanica-2012.yaml — e naquela época o curso chamava-se Engenharia
+# Mecânica INDUSTRIAL. São o mesmo curso, renomeado.
+#
+# Sem código: o PPC diz que "os códigos das disciplinas são gerados
+# automaticamente pelo sistema de gestão acadêmica - Siga".
+#
+# A regra de carga horária deste curso é do PFC (80% integralizados), e
+# não do estágio — por isso `estagio: true` está no Projeto Final.
+#
+# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `cadeira` liga o nó à página da cadeira no site, quando ela existe.
+# ************************************************************************
+curso: Engenharia Mecânica
+sigla: mecanica
+matriz: "2021.1"
+observacao: "Matriz em execução desde 2021.1. Quem entrou antes segue a matriz de 2012, de quando o curso se chamava Engenharia Mecânica Industrial."
+chTotalCurso: 3600
+estagioFracao: 0.8
+disciplinas:
+  - id: QUIM
+    codigo: —
+    nome: Química
+    periodo: 1
+    teorica: 30
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: PORT
+    codigo: —
+    nome: Português Instrumental
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: CALC1
+    codigo: —
+    nome: Cálc. Dif. e Integral em uma Variável
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: GEOAN
+    codigo: —
+    nome: Geometria Analítica
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: PROG
+    codigo: —
+    nome: Introdução à Programação
+    periodo: 1
+    teorica: 45
+    pratica: 15
+    categoria: basico
+    pre: []
+    co: []
+  - id: SOCIO
+    codigo: —
+    nome: "Sociologia, Meio Amb. e Contexto Social"
+    periodo: 1
+    teorica: 15
+    pratica: 15
+    categoria: basico
+    pre: []
+    co: []
+    dcext: true
+  - id: INTROMEC
+    codigo: —
+    nome: Introdução à Engenharia Mecânica
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: []
+  - id: ALGLIN
+    codigo: —
+    nome: Álgebra Linear
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [GEOAN]
+    co: []
+  - id: CALC2
+    codigo: —
+    nome: Cálc. Dif. e Integral em Várias Variáveis
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC1]
+    co: []
+  - id: FUNDMEC
+    codigo: —
+    nome: Fundamentos da Mecânica
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC1]
+    co: []
+  - id: PROBEST
+    codigo: —
+    nome: Probabilidade e Estatística
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC1]
+    co: []
+  - id: EXPGR1
+    codigo: —
+    nome: Expressão Gráfica 1
+    periodo: 2
+    teorica: 45
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: CALCVET
+    codigo: —
+    nome: Cálc. Dif. e Integral Vetorial
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC2]
+    co: []
+    nota: A Tabela 7 põe esta disciplina como correquisito de si mesma; o correquisito foi descartado.
+    cadeira: calculo3
+  - id: CALCNUM
+    codigo: —
+    nome: Cálculo Numérico
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC2]
+    co: []
+  - id: ESTATICA
+    codigo: —
+    nome: Estática
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [GEOAN, FUNDMEC]
+    co: []
+  - id: FUNDEM
+    codigo: —
+    nome: Fundamentos do Eletromagnetismo
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FUNDMEC]
+    co: [CALCVET]
+    cadeira: eletromag
+  - id: DUA
+    codigo: —
+    nome: Desenho Universal e Acessibilidade
+    periodo: 3
+    teorica: 15
+    pratica: 15
+    categoria: basico
+    pre: [EXPGR1]
+    co: []
+    dcext: true
+  - id: CIENCMAT
+    codigo: —
+    nome: Ciências dos Materiais
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [QUIM]
+    co: []
+  - id: METROL
+    codigo: —
+    nome: Metrologia
+    periodo: 3
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: [PROBEST]
+    co: []
+    nota: "O PPC escreve o pré-requisito como \"Probabilidade e estática\", sem o \"ti\"."
+  - id: ONDTERM
+    codigo: —
+    nome: Fund. da Ondulatória e Termodinâmica
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FUNDEM]
+    co: []
+  - id: LABFIS
+    codigo: —
+    nome: Laboratório de Física Básica
+    periodo: 4
+    teorica: 0
+    pratica: 30
+    categoria: basico
+    pre: [FUNDMEC]
+    co: [ONDTERM]
+  - id: DINAM
+    codigo: —
+    nome: Dinâmica
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [ESTATICA]
+    co: [EQDIF]
+  - id: EQDIF
+    codigo: —
+    nome: Equações Diferenciais
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALCVET]
+    co: []
+    cadeira: eqdiferenciais
+  - id: COMPMAT
+    codigo: —
+    nome: Complementos de Matemática
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALCVET]
+    co: [EQDIF]
+  - id: MECFLU
+    codigo: —
+    nome: Mecânica dos Fluidos
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC2]
+    co: [ONDTERM]
+  - id: MATCONSTR
+    codigo: —
+    nome: Materiais de Construção Mecânica
+    periodo: 4
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: [CIENCMAT]
+    co: []
+  - id: INSTELE
+    codigo: —
+    nome: Instalações Elétricas Industriais
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [FUNDEM]
+    co: []
+  - id: MAQHID
+    codigo: —
+    nome: Máquinas Hidráulicas
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MECFLU]
+    co: []
+  - id: GESTPROJ
+    codigo: —
+    nome: Gestão de Projetos
+    periodo: 5
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: [EQDIF]
+    co: []
+  - id: DESTEC1
+    codigo: —
+    nome: Desenho Técnico Mecânico 1
+    periodo: 5
+    teorica: 15
+    pratica: 45
+    categoria: prof
+    pre: [EXPGR1, METROL]
+    co: []
+  - id: PROCFAB1
+    codigo: —
+    nome: Processos de Fabricação 1
+    periodo: 5
+    teorica: 45
+    pratica: 15
+    categoria: prof
+    pre: [METROL, MATCONSTR]
+    co: []
+  - id: MECANISM
+    codigo: —
+    nome: Mecanismos
+    periodo: 5
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: [DINAM, CALCNUM]
+    co: []
+    dcext: true
+  - id: RESMAT1
+    codigo: —
+    nome: Resistência dos Materiais 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ESTATICA]
+    co: []
+  - id: TRANSCAL
+    codigo: —
+    nome: Transmissão de Calor
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ONDTERM]
+    co: []
+  - id: TERMO1
+    codigo: —
+    nome: Termodinâmica 1
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: [TRANSCAL]
+  - id: QUALID
+    codigo: —
+    nome: Gestão da Qualidade
+    periodo: 6
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: [PROBEST]
+    co: []
+  - id: MANUT
+    codigo: —
+    nome: Gestão da Manutenção
+    periodo: 6
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: [PROBEST, GESTPROJ]
+    co: []
+  - id: ENGSEG
+    codigo: —
+    nome: Engenharia de Segurança do Trabalho
+    periodo: 6
+    teorica: 45
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: [QUALID]
+  - id: PROCFAB2
+    codigo: —
+    nome: Processos de Fabricação 2
+    periodo: 6
+    teorica: 45
+    pratica: 15
+    categoria: prof
+    pre: [PROCFAB1]
+    co: []
+  - id: RESMAT2
+    codigo: —
+    nome: Resistência dos Materiais 2
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [RESMAT1]
+    co: []
+  - id: DESTEC2
+    codigo: —
+    nome: Desenho Técnico Mecânico 2
+    periodo: 6
+    teorica: 15
+    pratica: 45
+    categoria: prof
+    pre: [DESTEC1]
+    co: [PROCFAB2]
+  - id: INSTRCTRL
+    codigo: —
+    nome: Instrumentação e Controle
+    periodo: 7
+    teorica: 45
+    pratica: 15
+    categoria: prof
+    pre: [INSTELE]
+    co: []
+  - id: TERMO2
+    codigo: —
+    nome: Termodinâmica 2
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [TERMO1]
+    co: []
+  - id: DIREITO
+    codigo: —
+    nome: Direito para Engenheiros
+    periodo: 7
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: [GESTFIN]
+  - id: GESTFIN
+    codigo: —
+    nome: Gestão Financeira e de Custos
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [QUALID]
+    co: []
+    nota: "A matriz sequencial dá um pré-requisito (Gestão da qualidade); a Tabela 7 dá três, somando Resistência dos Materiais 2 e Desenho Técnico Mecânico 2. Ficou o da sequencial, que é a matriz em execução."
+  - id: SOLDA
+    codigo: —
+    nome: Soldagem
+    periodo: 7
+    teorica: 45
+    pratica: 15
+    categoria: prof
+    pre: [MATCONSTR]
+    co: [ENSAIOS]
+  - id: ENSAIOS
+    codigo: —
+    nome: Ensaios Mecânicos
+    periodo: 7
+    teorica: 45
+    pratica: 15
+    categoria: prof
+    pre: [RESMAT2, PROCFAB2]
+    co: []
+  - id: VIBRA
+    codigo: —
+    nome: Vibrações Mecânicas
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MECANISM]
+    co: []
+  - id: ELEMAQ1
+    codigo: —
+    nome: Elementos de Máquinas 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MECANISM, RESMAT2]
+    co: []
+  - id: ESTAGIO
+    codigo: —
+    nome: Estágio Supervisionado
+    periodo: 7
+    teorica: 30
+    pratica: 150
+    categoria: compl
+    pre: [ENGSEG]
+    co: []
+    nota: "Liberado por pré-requisito: neste curso a regra de carga horária é do PFC, não do estágio. A matriz sequencial divide a CH em 20+180, que soma 200; a divisão de 30+150 da Tabela 7 é a que fecha as 180h."
+  - id: MAQTERM1
+    codigo: —
+    nome: Máquinas Térmicas 1
+    periodo: 8
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: [TERMO2]
+    co: []
+  - id: HIDPNEU
+    codigo: —
+    nome: Sistemas Hidráulicos e Pneumáticos
+    periodo: 8
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: [MAQHID]
+    co: []
+    dcext: true
+  - id: GESTEMP
+    codigo: —
+    nome: Gestão e Planejamento Empresarial
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [GESTFIN]
+    co: []
+  - id: PRATOF
+    codigo: —
+    nome: Prática de Oficina
+    periodo: 8
+    teorica: 15
+    pratica: 45
+    categoria: prof
+    pre: [DESTEC2, ENSAIOS]
+    co: []
+  - id: PROJINT
+    codigo: —
+    nome: Projeto Integrado
+    periodo: 8
+    teorica: 0
+    pratica: 30
+    categoria: basico
+    pre: [GESTPROJ]
+    co: [PRATOF, ELEMAQ2]
+  - id: MAQELEV
+    codigo: —
+    nome: Máquina de Elevação e Transporte
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: [ELEMAQ2]
+  - id: ELEMAQ2
+    codigo: —
+    nome: Elementos de Máquinas 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELEMAQ1]
+    co: []
+    nota: "A matriz sequencial dá a esta disciplina o pré-requisito \"Elementos de máquinas 2\" — ela mesma; a Tabela 7 diz Elementos de máquinas 1, que é o encadeamento real."
+  - id: EL1
+    codigo: —
+    nome: Eletiva 1
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: A matriz sequencial não divide CH teórica e prática das eletivas; o total é 60h.
+  - id: EL2
+    codigo: —
+    nome: Eletiva 2
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: A matriz sequencial não divide CH teórica e prática das eletivas; o total é 60h.
+  - id: ELEXT1
+    codigo: —
+    nome: Eletiva de Extensão 1
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    dcext: true
+    nota: "Eletiva de extensão: a CH conta nas 360h de extensão do curso. O PPC não divide teórica e prática."
+  - id: ELEXT2
+    codigo: —
+    nome: Eletiva de Extensão 2
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    dcext: true
+    nota: "Eletiva de extensão: a CH conta nas 360h de extensão do curso. O PPC não divide teórica e prática."
+  - id: ELEXT3
+    codigo: —
+    nome: Eletiva de Extensão 3
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    dcext: true
+    nota: "Eletiva de extensão: a CH conta nas 360h de extensão do curso. O PPC não divide teórica e prática."
+  - id: PFC
+    codigo: —
+    nome: Projeto Final de Curso
+    periodo: 10
+    teorica: 0
+    pratica: 60
+    categoria: compl
+    pre: []
+    co: []
+    estagio: true
+    nota: "O pré-requisito não é disciplina: é ter integralizado 80% da carga horária do curso, 2.880h das 3.600h."
+  - id: ATCOMP
+    codigo: —
+    nome: Atividades Complementares
+    periodo: 10
+    teorica: 0
+    pratica: 60
+    categoria: compl
+    pre: []
+    co: []
+    nota: "Sem período na Tabela 7 e sem linha na matriz sequencial, mas as 60h entram no subtotal do 10º período."

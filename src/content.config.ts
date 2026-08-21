@@ -129,8 +129,12 @@ const grade = defineCollection({
       observacao: z.string().optional(),
       /* CH total do curso, incluindo o que não é disciplina da matriz. */
       chTotalCurso: z.number().int().positive(),
-      /* Fração da CH do curso exigida para o estágio (0.6 = 60%). */
-      estagioFracao: z.number().min(0).max(1),
+      /* Fração da CH do curso exigida para o estágio (0.6 = 60%). OPCIONAL:
+         nem todo PPC publica a regra. O de Mecânica Industrial, por exemplo,
+         não põe piso de carga horária — o estágio é liberado por
+         pré-requisito, e nesses casos o mapa não mostra a régua dos %. Pôr
+         0.6 "por analogia" ali inventaria uma exigência que não existe. */
+      estagioFracao: z.number().min(0).max(1).optional(),
       disciplinas: z
         .array(
           z.object({

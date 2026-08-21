@@ -21,6 +21,52 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.5.0] — 2026-08-21
+
+**Engenharia Mecânica, as duas matrizes.** Seis mapas no ar, três cursos.
+
+### Adicionado
+
+- **Mapa da grade de Engenharia Mecânica, matriz 2021.1**: 64 disciplinas e
+  66 requisitos. É o PPC de melhor estrutura dos cinco lidos até aqui — a
+  Tabela 7 traz área, pré, correquisito, tipo, período e CH de uma vez, e a
+  matriz sequencial repete tudo com uma coluna a mais, o **núcleo** de cada
+  disciplina, o que dispensa reconstruir a categoria a partir de somas.
+- **Mapa da grade de Engenharia Mecânica, matriz 2012**: 64 disciplinas e 53
+  requisitos, de quando o curso se chamava **Engenharia Mecânica
+  Industrial**. As duas aparecem juntas sob "Engenharia Mecânica": é o mesmo
+  curso, renomeado.
+- Nesse PPC de 2012 a Tabela 18 diz o ciclo de cada disciplina **pela cor da
+  célula** — laranja é básico, verde é específico, o resto é essencial. Cor
+  não sai no `pdftotext`; foi preciso ler as páginas como imagem. As três
+  cores somam 1515h, 1200h e 885h, exatamente o que a Tabela 13 declara.
+- Conferência da **CH que libera o PFC**: o PPC de 2021 imprime a conta feita
+  (80% de 3.600h = 2.880h), então ela é checada como as outras.
+
+### Alterado
+
+- **`estagioFracao` virou opcional.** O PPC de Mecânica Industrial não publica
+  piso de carga horária para o estágio: ele é liberado por pré-requisito. Onde
+  não há regra, o mapa não mostra régua de porcentagem — pôr 0.6 "por
+  analogia" com os outros cursos inventaria uma exigência que não existe.
+- **O rótulo da régua de CH segue a disciplina marcada**, em vez de dizer
+  sempre "Estágio". Em Engenharia Mecânica quem exige 80% do curso
+  integralizado é o **Projeto Final de Curso**, e é isso que o mapa diz.
+- O gerador aceita declarar um **co-requisito recíproco** esperado. Ele é
+  quase sempre erro de transcrição, e a checagem continua valendo para todos
+  — mas em Mecânica Industrial, Economia Empresarial e Gestão da Qualidade
+  são co-requisito uma da outra de propósito, e as duas linhas do PPC dizem
+  isso.
+
+### Corrigido
+
+- No PPC de Mecânica Industrial, Física 2 e Mecânica Geral 1 apontam para
+  "FIS01", código do registro antigo da UPE que não existe naquela matriz; o
+  real é FISC0011, Física 1.
+- No de 2021, Cálculo Vetorial aparece como correquisito de si mesma, e
+  Elementos de Máquinas 2 como pré-requisito de si mesma na sequencial (a
+  Tabela 7 diz Elementos de Máquinas 1, que é o encadeamento real).
+
 ## [2.4.0] — 2026-08-21
 
 **A página larga passou a ser larga de verdade.** O `largura="ampla"` nunca
@@ -629,6 +675,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.5.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.5.0
 [2.4.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.4.0
 [2.3.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.3.0
 [2.2.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.2.1

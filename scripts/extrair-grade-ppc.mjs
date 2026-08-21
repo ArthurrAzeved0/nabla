@@ -696,6 +696,431 @@ const CIVIL_2011 = [
 ];
 
 /* ==========================================================================
+   ENGENHARIA MECÂNICA INDUSTRIAL — matriz 2012
+
+   Fonte: "01A Projeto pedagógico vs. 09.2011.pdf", POLI/UPE, 39 páginas,
+   datado de agosto de 2012. A **Tabela 18** (§7.4, p. 24-28) é a matriz
+   completa. Ciclos na Tabela 13 e nas Tabelas 14 a 17.
+
+   O QUE ESTE PPC TEM DE DIFERENTE: a Tabela 18 diz o ciclo de cada
+   disciplina **pela cor da célula** — "as disciplinas destacadas em laranja
+   pertencem ao ciclo básico, as destacadas em verde são do ciclo profissional
+   específico e as demais do ciclo profissional essencial". Cor não sai no
+   `pdftotext`; foi preciso ler as páginas como imagem. Valeu a pena, porque
+   as três cores somam exatamente o que a Tabela 13 declara:
+
+     laranja  1515h = Ciclo Básico
+     branco   1200h = Ciclo Profissional Essencial
+     verde     885h = Ciclo Profissional Específico
+                      (525h obrigatórias + 120h eletivas + PFC 60h + estágio 180h)
+     + 60h de Atividade Complementar (Ciclo Complementar) = 3660h
+
+   ESTÁGIO SEM PISO DE CARGA HORÁRIA. Este PPC não publica regra de %: o
+   estágio está no 7º período e é liberado por pré-requisito (Engenharia de
+   Segurança), como qualquer outra disciplina. Daí `estagioFracao` ficar
+   ausente aqui — e não 0.6 por analogia com os outros cursos. Emprestar os
+   60% inventaria uma exigência que este curso não faz, e ainda por cima
+   impossível: 60% de 3660h são 2196h, e até o fim do 6º período o aluno
+   acumulou 2190h.
+
+   O QUE O DOCUMENTO DEIXA EM ABERTO, registrado em `nota` na disciplina:
+
+   1. Física 2 e Mecânica Geral 1 têm pré-requisito "FIS01", código do
+      registro ANTIGO da UPE, que não existe nesta matriz. O que existe é
+      FISC0011, Física 1 — e é o pré-requisito real das duas.
+   2. Mecânica Geral 2 aparece com pré-requisito Física 2 (FISC0012), e não
+      Mecânica Geral 1. Ficou como está escrito: é código válido desta matriz,
+      então não há erro a corrigir, só uma escolha estranha a registrar.
+   3. Mecanismos vem com o código "ECA10", que é do registro do PPC de
+      Automação de 2010 — sobra de recorta-e-cola. O código real desta
+      disciplina não está publicado.
+   4. "EMAQ0001" aparece duas vezes, em Elementos de Máquinas 1 e 2.
+   5. Economia Empresarial e Gestão da Qualidade são co-requisito UMA DA
+      OUTRA. As duas linhas estão escritas assim, então é de propósito: têm
+      de ser cursadas juntas.
+   6. A Atividade Complementar (60h) não aparece na Tabela 18, só na 13 e na
+      17. Entra aqui num nó só, fora da conferência por período.
+
+   Colunas: id, codigo, nome, período, teórica, prática, categoria, pre, co
+   ========================================================================== */
+const NOTA_FIS01 =
+  "A Tabela 18 cita \"FIS01\" como pré-requisito, código do registro antigo da UPE que não existe nesta matriz; o real é FISC0011, Física 1.";
+
+const MECANICA_2012 = [
+  /* ------------------------------------------------------------ 1º período */
+  { id: "MATM0018", codigo: "MATM0018", nome: "Cálculo Diferencial e Integral 1",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "MATM0007", codigo: "MATM0007", nome: "Geometria Analítica",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "QUIM0002", codigo: "QUIM0002", nome: "Química Geral",
+    periodo: 1, teorica: 45, pratica: 30, categoria: "basico" },
+  { id: "SOCL0002", codigo: "SOCL0002", nome: "Sociologia e Meio Ambiente",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "basico" },
+  { id: "CCMP0094", codigo: "CCMP0094", nome: "Introdução à Programação",
+    periodo: 1, teorica: 30, pratica: 30, categoria: "basico" },
+  { id: "ENGE0002", codigo: "ENGE0002", nome: "Introdução à Engenharia Mecânica",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "basico" },
+
+  /* ------------------------------------------------------------ 2º período */
+  { id: "MATM0001", codigo: "MATM0001", nome: "Álgebra Linear",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MATM0007"] },
+  { id: "MATM0019", codigo: "MATM0019", nome: "Cálculo Diferencial e Integral 2",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MATM0018"] },
+  { id: "LETR0001", codigo: "LETR0001", nome: "Expressão em Língua Portuguesa",
+    periodo: 2, teorica: 30, pratica: 0, categoria: "basico" },
+  { id: "ARTE0001", codigo: "ARTE0001", nome: "Expressão Gráfica 1",
+    periodo: 2, teorica: 30, pratica: 45, categoria: "basico" },
+  { id: "FISC0011", codigo: "FISC0011", nome: "Física 1",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MATM0018"] },
+
+  /* ------------------------------------------------------------ 3º período */
+  { id: "MATM0020", codigo: "MATM0020", nome: "Cálculo Diferencial e Integral 3",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["MATM0019"],
+    cadeira: "calculo3" },
+  { id: "CCMP0096", codigo: "CCMP0096", nome: "Cálculo Numérico",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["CCMP0094"] },
+  { id: "FISC0016", codigo: "FISC0016", nome: "Eletricidade Aplicada",
+    periodo: 3, teorica: 0, pratica: 30, categoria: "basico", co: ["FISC0012"] },
+  { id: "FISC0012", codigo: "FISC0012", nome: "Física 2",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["FISC0011"],
+    cadeira: "eletromag",
+    nota: NOTA_FIS01 + " É a física do eletromagnetismo." },
+  { id: "FISC0007", codigo: "FISC0007", nome: "Mecânica Geral 1",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["FISC0011"],
+    nota: NOTA_FIS01 },
+  { id: "FISC0009", codigo: "FISC0009", nome: "Eletricidade Básica",
+    periodo: 3, teorica: 45, pratica: 0, categoria: "basico", co: ["FISC0016"] },
+  { id: "MECN0004", codigo: "MECN0004", nome: "Ciências dos Materiais",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico" },
+
+  /* ------------------------------------------------------------ 4º período */
+  { id: "MATM0021", codigo: "MATM0021", nome: "Cálculo Diferencial e Integral 4",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MATM0020"],
+    cadeira: "eqdiferenciais" },
+  { id: "FISC0013", codigo: "FISC0013", nome: "Física 3",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["FISC0012"] },
+  { id: "FISC0018", codigo: "FISC0018", nome: "Física Experimental",
+    periodo: 4, teorica: 0, pratica: 30, categoria: "basico", pre: ["FISC0012"] },
+  { id: "MECN0039", codigo: "MECN0039", nome: "Materiais de Construção Mecânica",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MECN0004"] },
+  { id: "FISC0008", codigo: "FISC0008", nome: "Mecânica Geral 2",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["FISC0012"],
+    nota: "A Tabela 18 dá como pré-requisito Física 2, e não Mecânica Geral 1, que seria o encadeamento esperado. Fica como está escrito: é código válido desta matriz." },
+  { id: "FISC0017", codigo: "FISC0017", nome: "Mecânica dos Fluidos",
+    periodo: 4, teorica: 45, pratica: 15, categoria: "basico", pre: ["MATM0020"] },
+  { id: "PRBE0002", codigo: "PRBE0002", nome: "Probabilidade e Estatística",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MATM0020"] },
+
+  /* ------------------------------------------------------------ 5º período */
+  { id: "DSTC0001", codigo: "DSTC0001", nome: "Desenho Técnico Fundamental",
+    periodo: 5, teorica: 15, pratica: 45, categoria: "prof", pre: ["ARTE0001"] },
+  { id: "MAQH0001", codigo: "MAQH0001", nome: "Máquinas Hidráulicas",
+    periodo: 5, teorica: 45, pratica: 15, categoria: "prof", pre: ["FISC0017"] },
+  { id: "RMAT0001", codigo: "RMAT0001", nome: "Resistência dos Materiais 1",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["FISC0008"] },
+  { id: "METR0001", codigo: "METR0001", nome: "Metrologia",
+    periodo: 5, teorica: 15, pratica: 45, categoria: "prof" },
+  { id: "MECA0001", codigo: "MECA0001", nome: "Mecânica Aplicada",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["FISC0008"] },
+  { id: "TERM0001", codigo: "TERM0001", nome: "Termodinâmica 1",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["FISC0013"] },
+  { id: "ENGS0001", codigo: "ENGS0001", nome: "Engenharia de Segurança",
+    periodo: 5, teorica: 45, pratica: 0, categoria: "prof" },
+
+  /* ------------------------------------------------------------ 6º período */
+  { id: "DSTC0002", codigo: "DSTC0002", nome: "Desenho Técnico Mecânico",
+    periodo: 6, teorica: 15, pratica: 75, categoria: "prof", pre: ["DSTC0001"] },
+  { id: "IEIN0001", codigo: "IEIN0001", nome: "Instalações Elétricas Industriais",
+    periodo: 6, teorica: 45, pratica: 0, categoria: "espec", pre: ["FISC0009"] },
+  { id: "RMAT0002", codigo: "RMAT0002", nome: "Resistência dos Materiais 2",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["RMAT0001"] },
+  { id: "TERM0002", codigo: "TERM0002", nome: "Termodinâmica 2",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["TERM0001"] },
+  { id: "TCAL0001", codigo: "TCAL0001", nome: "Transmissão de Calor",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["TERM0001"], co: ["TERM0002"] },
+  { id: "ENSM0001", codigo: "ENSM0001", nome: "Ensaios Mecânicos",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["METR0001", "MECN0039"] },
+  { id: "ECA10", codigo: "ECA10", nome: "Mecanismos",
+    periodo: 6, teorica: 45, pratica: 0, categoria: "prof", pre: ["MECA0001"],
+    nota: "O código \"ECA10\" é do registro do PPC de Automação de 2010, não do formato desta matriz — sobra de recorta-e-cola. O código real desta disciplina não está publicado." },
+
+  /* ------------------------------------------------------------ 7º período */
+  { id: "DSTC0003", codigo: "DSTC0003", nome: "Desenho Técnico Mecânico em Computador",
+    periodo: 7, teorica: 0, pratica: 45, categoria: "prof", pre: ["DSTC0002"] },
+  { id: "EMAQ0001", codigo: "EMAQ0001", nome: "Elementos de Máquinas 1",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["RMAT0002"] },
+  { id: "INID0001", codigo: "INID0001", nome: "Instrumentação Industrial",
+    periodo: 7, teorica: 15, pratica: 15, categoria: "espec" },
+  { id: "SHPN0001", codigo: "SHPN0001", nome: "Sistemas Hidráulicos e Pneumáticos",
+    periodo: 7, teorica: 60, pratica: 30, categoria: "espec", pre: ["FISC0017"] },
+  { id: "SOLD0001", codigo: "SOLD0001", nome: "Soldagem",
+    periodo: 7, teorica: 30, pratica: 30, categoria: "espec", pre: ["FISC0016"] },
+  { id: "ESTG0001", codigo: "ESTG0001", nome: "Estágio Supervisionado",
+    periodo: 7, teorica: 0, pratica: 180, categoria: "compl", pre: ["ENGS0001"], estagio: true,
+    nota: "Liberado por pré-requisito, e não por carga horária: este PPC não publica piso de CH para o estágio." },
+  { id: "VIBM0001", codigo: "VIBM0001", nome: "Vibrações Mecânicas",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["MATM0020", "MECA0001"] },
+
+  /* ------------------------------------------------------------ 8º período */
+  { id: "EMAQ0002", codigo: "—", nome: "Elementos de Máquinas 2",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "prof", pre: ["RMAT0002"],
+    nota: "A Tabela 18 repete o código EMAQ0001, já usado por Elementos de Máquinas 1; o código desta não está publicado." },
+  { id: "PRFB0001", codigo: "PRFB0001", nome: "Processos de Usinagem",
+    periodo: 8, teorica: 45, pratica: 15, categoria: "espec", pre: ["MECN0039"] },
+  { id: "INID0002", codigo: "INID0002", nome: "Instalações Industriais",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["RMAT0002"] },
+  { id: "PRFB0002", codigo: "PRFB0002", nome: "Processos de Conformação",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["MECN0039"] },
+  { id: "MAQT0001", codigo: "MAQT0001", nome: "Máquinas Térmicas 1",
+    periodo: 8, teorica: 45, pratica: 15, categoria: "prof", pre: ["TERM0002"] },
+  { id: "PRFB0003", codigo: "PRFB0003", nome: "Prática de Oficina",
+    periodo: 8, teorica: 15, pratica: 45, categoria: "prof", pre: ["ENGS0001", "SOLD0001"] },
+
+  /* ------------------------------------------------------------ 9º período */
+  { id: "ECON0001", codigo: "ECON0001", nome: "Economia Empresarial",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "basico", co: ["QUAL0001"] },
+  { id: "DIRE0001", codigo: "DIRE0001", nome: "Direito para Engenheiros",
+    periodo: 9, teorica: 30, pratica: 0, categoria: "basico", pre: ["LETR0001"] },
+  { id: "MAQT0002", codigo: "MAQT0002", nome: "Máquinas Térmicas 2",
+    periodo: 9, teorica: 30, pratica: 0, categoria: "prof", pre: ["TERM0002"] },
+  { id: "QUAL0001", codigo: "QUAL0001", nome: "Gestão da Qualidade",
+    periodo: 9, teorica: 45, pratica: 0, categoria: "prof", co: ["ECON0001"],
+    nota: "Economia Empresarial e Gestão da Qualidade são co-requisito uma da outra na Tabela 18: têm de ser cursadas juntas." },
+  { id: "REFR0001", codigo: "REFR0001", nome: "Refrigeração",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "espec", pre: ["TCAL0001", "TERM0002"] },
+  { id: "EL1", codigo: "—", nome: "Eletiva 1",
+    periodo: 9, teorica: 30, pratica: 0, categoria: "eletiva",
+    nota: "São 120h de eletivas no total: duas de 30h no 9º período e uma de 60h no 10º." },
+  { id: "EL2", codigo: "—", nome: "Eletiva 2",
+    periodo: 9, teorica: 30, pratica: 0, categoria: "eletiva",
+    nota: "São 120h de eletivas no total: duas de 30h no 9º período e uma de 60h no 10º." },
+
+  /* ----------------------------------------------------------- 10º período */
+  { id: "ADMI0001", codigo: "ADMI0001", nome: "Administração Industrial",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "basico", pre: ["ECON0001"] },
+  { id: "MELT0001", codigo: "MELT0001", nome: "Máquinas de Elevação e Transporte",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "espec", pre: ["INID0002"] },
+  { id: "EL3", codigo: "—", nome: "Eletiva 3",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "eletiva",
+    nota: "São 120h de eletivas no total: duas de 30h no 9º período e uma de 60h no 10º." },
+  { id: "PFC00001", codigo: "PFC00001", nome: "Projeto Final de Curso",
+    periodo: 10, teorica: 0, pratica: 60, categoria: "compl", pre: ["QUAL0001"] },
+  { id: "ATCOMP", codigo: "—", nome: "Atividade Complementar",
+    periodo: 10, teorica: 0, pratica: 60, categoria: "compl",
+    nota: "Não aparece na Tabela 18, só nas Tabelas 13 e 17: são 60h, o Ciclo Complementar inteiro." },
+];
+
+/* ==========================================================================
+   ENGENHARIA MECÂNICA — matriz 2021.1
+
+   Fonte: "Engenharia-Mecânica_PPC_Revisão_2021_FINAL_12_01_2022.pdf",
+   POLI/UPE, 284 páginas. É o PPC de melhor estrutura dos cinco lidos até
+   aqui: a **Tabela 7** (§3.6.3) traz área, disciplina, pré, correquisito,
+   tipo, período e CH de uma vez, e a **matriz sequencial** (§3.6.4) repete
+   tudo com uma coluna a mais, o **Núcleo** de cada disciplina — o que
+   dispensa reconstruir a categoria a partir de somas.
+
+   Note o nome: em 2012 o curso chamava-se Engenharia Mecânica INDUSTRIAL.
+   As duas grades aparecem juntas no site sob "Engenharia Mecânica" porque
+   são o mesmo curso, renomeado.
+
+   O QUE ESTE CURSO FAZ DIFERENTE DOS OUTROS: a regra de carga horária não é
+   do estágio, é do **PFC** — "ter integralizado 80% da carga horária do
+   curso". O estágio aqui é liberado por pré-requisito (Engenharia de
+   segurança do trabalho), como qualquer disciplina. Por isso `estagio: true`
+   está no PFC, e o rótulo do mapa segue o nome da disciplina marcada.
+
+   SEM CÓDIGOS. O próprio PPC explica: "os códigos das disciplinas são
+   gerados automaticamente pelo sistema de gestão acadêmica - Siga". Não
+   emprestei os da matriz de 2012 porque seria cruzar dois documentos de
+   cursos com nomes diferentes, e onde a disciplina foi renomeada (Processos
+   de Usinagem virou Processos de fabricação 1?) o palpite não se sustenta.
+
+   O QUE O DOCUMENTO DEIXA EM ABERTO, registrado em `nota` na disciplina:
+
+   1. Cálculo diferencial e integral vetorial aparece na Tabela 7 como
+      correquisito DE SI MESMA.
+   2. Na matriz sequencial, Elementos de máquinas 2 aparece com
+      pré-requisito Elementos de máquinas 2. A Tabela 7 diz Elementos de
+      máquinas 1, que é o encadeamento óbvio, e é o que ficou.
+   3. Gestão financeira e de custos tem um pré-requisito na sequencial
+      (Gestão da qualidade) e três na Tabela 7. Ficou o da sequencial, que é
+      a matriz em execução.
+   4. O estágio tem CH 180 nas duas tabelas, mas a sequencial divide 20+180 —
+      que soma 200. A divisão de 30+150 da Tabela 7 é a que fecha.
+   5. Metrologia tem pré-requisito "Probabilidade e estática", sem o "ti".
+   6. As atividades complementares não têm período na Tabela 7, e não têm
+      linha na sequencial — mas as 60h estão no subtotal do 10º período.
+
+   Colunas: id, codigo, nome, período, teórica, prática, categoria, pre, co
+   ========================================================================== */
+const NOTA_ELETIVA_MEC =
+  "A matriz sequencial não divide CH teórica e prática das eletivas; o total é 60h.";
+const NOTA_EXTENSAO =
+  "Eletiva de extensão: a CH conta nas 360h de extensão do curso. O PPC não divide teórica e prática.";
+
+const MECANICA_2021 = [
+  /* ------------------------------------------------------------ 1º período */
+  { id: "QUIM", codigo: "—", nome: "Química",
+    periodo: 1, teorica: 30, pratica: 30, categoria: "basico" },
+  { id: "PORT", codigo: "—", nome: "Português Instrumental",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "basico" },
+  { id: "CALC1", codigo: "—", nome: "Cálc. Dif. e Integral em uma Variável",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "GEOAN", codigo: "—", nome: "Geometria Analítica",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "PROG", codigo: "—", nome: "Introdução à Programação",
+    periodo: 1, teorica: 45, pratica: 15, categoria: "basico" },
+  { id: "SOCIO", codigo: "—", nome: "Sociologia, Meio Amb. e Contexto Social",
+    periodo: 1, teorica: 15, pratica: 15, categoria: "basico", dcext: true },
+  { id: "INTROMEC", codigo: "—", nome: "Introdução à Engenharia Mecânica",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "prof" },
+
+  /* ------------------------------------------------------------ 2º período */
+  { id: "ALGLIN", codigo: "—", nome: "Álgebra Linear",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["GEOAN"] },
+  { id: "CALC2", codigo: "—", nome: "Cálc. Dif. e Integral em Várias Variáveis",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC1"] },
+  { id: "FUNDMEC", codigo: "—", nome: "Fundamentos da Mecânica",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC1"] },
+  { id: "PROBEST", codigo: "—", nome: "Probabilidade e Estatística",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC1"] },
+  { id: "EXPGR1", codigo: "—", nome: "Expressão Gráfica 1",
+    periodo: 2, teorica: 45, pratica: 30, categoria: "basico" },
+
+  /* ------------------------------------------------------------ 3º período */
+  { id: "CALCVET", codigo: "—", nome: "Cálc. Dif. e Integral Vetorial",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC2"],
+    cadeira: "calculo3",
+    nota: "A Tabela 7 põe esta disciplina como correquisito de si mesma; o correquisito foi descartado." },
+  { id: "CALCNUM", codigo: "—", nome: "Cálculo Numérico",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC2"] },
+  { id: "ESTATICA", codigo: "—", nome: "Estática",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["GEOAN", "FUNDMEC"] },
+  { id: "FUNDEM", codigo: "—", nome: "Fundamentos do Eletromagnetismo",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["FUNDMEC"], co: ["CALCVET"],
+    cadeira: "eletromag" },
+  { id: "DUA", codigo: "—", nome: "Desenho Universal e Acessibilidade",
+    periodo: 3, teorica: 15, pratica: 15, categoria: "basico", dcext: true, pre: ["EXPGR1"] },
+  { id: "CIENCMAT", codigo: "—", nome: "Ciências dos Materiais",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["QUIM"] },
+  { id: "METROL", codigo: "—", nome: "Metrologia",
+    periodo: 3, teorica: 30, pratica: 30, categoria: "prof", pre: ["PROBEST"],
+    nota: "O PPC escreve o pré-requisito como \"Probabilidade e estática\", sem o \"ti\"." },
+
+  /* ------------------------------------------------------------ 4º período */
+  { id: "ONDTERM", codigo: "—", nome: "Fund. da Ondulatória e Termodinâmica",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["FUNDEM"] },
+  { id: "LABFIS", codigo: "—", nome: "Laboratório de Física Básica",
+    periodo: 4, teorica: 0, pratica: 30, categoria: "basico", pre: ["FUNDMEC"], co: ["ONDTERM"] },
+  { id: "DINAM", codigo: "—", nome: "Dinâmica",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["ESTATICA"], co: ["EQDIF"] },
+  { id: "EQDIF", codigo: "—", nome: "Equações Diferenciais",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALCVET"],
+    cadeira: "eqdiferenciais" },
+  { id: "COMPMAT", codigo: "—", nome: "Complementos de Matemática",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALCVET"], co: ["EQDIF"] },
+  { id: "MECFLU", codigo: "—", nome: "Mecânica dos Fluidos",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["CALC2"], co: ["ONDTERM"] },
+  { id: "MATCONSTR", codigo: "—", nome: "Materiais de Construção Mecânica",
+    periodo: 4, teorica: 30, pratica: 0, categoria: "prof", pre: ["CIENCMAT"] },
+
+  /* ------------------------------------------------------------ 5º período */
+  { id: "INSTELE", codigo: "—", nome: "Instalações Elétricas Industriais",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"] },
+  { id: "MAQHID", codigo: "—", nome: "Máquinas Hidráulicas",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["MECFLU"] },
+  { id: "GESTPROJ", codigo: "—", nome: "Gestão de Projetos",
+    periodo: 5, teorica: 30, pratica: 0, categoria: "prof", pre: ["EQDIF"] },
+  { id: "DESTEC1", codigo: "—", nome: "Desenho Técnico Mecânico 1",
+    periodo: 5, teorica: 15, pratica: 45, categoria: "prof", pre: ["EXPGR1", "METROL"] },
+  { id: "PROCFAB1", codigo: "—", nome: "Processos de Fabricação 1",
+    periodo: 5, teorica: 45, pratica: 15, categoria: "prof", pre: ["METROL", "MATCONSTR"] },
+  { id: "MECANISM", codigo: "—", nome: "Mecanismos",
+    periodo: 5, teorica: 30, pratica: 30, categoria: "prof", dcext: true, pre: ["DINAM", "CALCNUM"] },
+  { id: "RESMAT1", codigo: "—", nome: "Resistência dos Materiais 1",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["ESTATICA"] },
+
+  /* ------------------------------------------------------------ 6º período */
+  { id: "TRANSCAL", codigo: "—", nome: "Transmissão de Calor",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["ONDTERM"] },
+  { id: "TERMO1", codigo: "—", nome: "Termodinâmica 1",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", co: ["TRANSCAL"] },
+  { id: "QUALID", codigo: "—", nome: "Gestão da Qualidade",
+    periodo: 6, teorica: 30, pratica: 0, categoria: "prof", pre: ["PROBEST"] },
+  { id: "MANUT", codigo: "—", nome: "Gestão da Manutenção",
+    periodo: 6, teorica: 30, pratica: 0, categoria: "prof", pre: ["PROBEST", "GESTPROJ"] },
+  { id: "ENGSEG", codigo: "—", nome: "Engenharia de Segurança do Trabalho",
+    periodo: 6, teorica: 45, pratica: 0, categoria: "prof", co: ["QUALID"] },
+  { id: "PROCFAB2", codigo: "—", nome: "Processos de Fabricação 2",
+    periodo: 6, teorica: 45, pratica: 15, categoria: "prof", pre: ["PROCFAB1"] },
+  { id: "RESMAT2", codigo: "—", nome: "Resistência dos Materiais 2",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["RESMAT1"] },
+  { id: "DESTEC2", codigo: "—", nome: "Desenho Técnico Mecânico 2",
+    periodo: 6, teorica: 15, pratica: 45, categoria: "prof", pre: ["DESTEC1"], co: ["PROCFAB2"] },
+
+  /* ------------------------------------------------------------ 7º período */
+  { id: "INSTRCTRL", codigo: "—", nome: "Instrumentação e Controle",
+    periodo: 7, teorica: 45, pratica: 15, categoria: "prof", pre: ["INSTELE"] },
+  { id: "TERMO2", codigo: "—", nome: "Termodinâmica 2",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["TERMO1"] },
+  { id: "DIREITO", codigo: "—", nome: "Direito para Engenheiros",
+    periodo: 7, teorica: 30, pratica: 0, categoria: "basico", co: ["GESTFIN"] },
+  { id: "GESTFIN", codigo: "—", nome: "Gestão Financeira e de Custos",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "basico", pre: ["QUALID"],
+    nota: "A matriz sequencial dá um pré-requisito (Gestão da qualidade); a Tabela 7 dá três, somando Resistência dos Materiais 2 e Desenho Técnico Mecânico 2. Ficou o da sequencial, que é a matriz em execução." },
+  { id: "SOLDA", codigo: "—", nome: "Soldagem",
+    periodo: 7, teorica: 45, pratica: 15, categoria: "prof", pre: ["MATCONSTR"], co: ["ENSAIOS"] },
+  { id: "ENSAIOS", codigo: "—", nome: "Ensaios Mecânicos",
+    periodo: 7, teorica: 45, pratica: 15, categoria: "prof", pre: ["RESMAT2", "PROCFAB2"] },
+  { id: "VIBRA", codigo: "—", nome: "Vibrações Mecânicas",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["MECANISM"] },
+  { id: "ELEMAQ1", codigo: "—", nome: "Elementos de Máquinas 1",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["MECANISM", "RESMAT2"] },
+  { id: "ESTAGIO", codigo: "—", nome: "Estágio Supervisionado",
+    periodo: 7, teorica: 30, pratica: 150, categoria: "compl", pre: ["ENGSEG"],
+    nota: "Liberado por pré-requisito: neste curso a regra de carga horária é do PFC, não do estágio. A matriz sequencial divide a CH em 20+180, que soma 200; a divisão de 30+150 da Tabela 7 é a que fecha as 180h." },
+
+  /* ------------------------------------------------------------ 8º período */
+  { id: "MAQTERM1", codigo: "—", nome: "Máquinas Térmicas 1",
+    periodo: 8, teorica: 30, pratica: 0, categoria: "prof", pre: ["TERMO2"] },
+  { id: "HIDPNEU", codigo: "—", nome: "Sistemas Hidráulicos e Pneumáticos",
+    periodo: 8, teorica: 30, pratica: 30, categoria: "prof", dcext: true, pre: ["MAQHID"] },
+  { id: "GESTEMP", codigo: "—", nome: "Gestão e Planejamento Empresarial",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "basico", pre: ["GESTFIN"] },
+  { id: "PRATOF", codigo: "—", nome: "Prática de Oficina",
+    periodo: 8, teorica: 15, pratica: 45, categoria: "prof", pre: ["DESTEC2", "ENSAIOS"] },
+  { id: "PROJINT", codigo: "—", nome: "Projeto Integrado",
+    periodo: 8, teorica: 0, pratica: 30, categoria: "basico", pre: ["GESTPROJ"],
+    co: ["PRATOF", "ELEMAQ2"] },
+  { id: "MAQELEV", codigo: "—", nome: "Máquina de Elevação e Transporte",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "prof", co: ["ELEMAQ2"] },
+  { id: "ELEMAQ2", codigo: "—", nome: "Elementos de Máquinas 2",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "prof", pre: ["ELEMAQ1"],
+    nota: "A matriz sequencial dá a esta disciplina o pré-requisito \"Elementos de máquinas 2\" — ela mesma; a Tabela 7 diz Elementos de máquinas 1, que é o encadeamento real." },
+
+  /* ------------------------------------------------------------ 9º período */
+  { id: "EL1", codigo: "—", nome: "Eletiva 1", periodo: 9,
+    teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_ELETIVA_MEC },
+  { id: "EL2", codigo: "—", nome: "Eletiva 2", periodo: 9,
+    teorica: 60, pratica: 0, categoria: "eletiva", nota: NOTA_ELETIVA_MEC },
+  { id: "ELEXT1", codigo: "—", nome: "Eletiva de Extensão 1", periodo: 9,
+    teorica: 60, pratica: 0, categoria: "eletiva", dcext: true, nota: NOTA_EXTENSAO },
+  { id: "ELEXT2", codigo: "—", nome: "Eletiva de Extensão 2", periodo: 9,
+    teorica: 60, pratica: 0, categoria: "eletiva", dcext: true, nota: NOTA_EXTENSAO },
+
+  /* ----------------------------------------------------------- 10º período */
+  { id: "ELEXT3", codigo: "—", nome: "Eletiva de Extensão 3", periodo: 10,
+    teorica: 60, pratica: 0, categoria: "eletiva", dcext: true, nota: NOTA_EXTENSAO },
+  { id: "PFC", codigo: "—", nome: "Projeto Final de Curso",
+    periodo: 10, teorica: 0, pratica: 60, categoria: "compl", estagio: true,
+    nota: "O pré-requisito não é disciplina: é ter integralizado 80% da carga horária do curso, 2.880h das 3.600h." },
+  { id: "ATCOMP", codigo: "—", nome: "Atividades Complementares",
+    periodo: 10, teorica: 0, pratica: 60, categoria: "compl",
+    nota: "Sem período na Tabela 7 e sem linha na matriz sequencial, mas as 60h entram no subtotal do 10º período." },
+];
+
+/* ==========================================================================
    As grades e as contas que cada PPC publica — é contra elas que a
    transcrição é conferida. `esperado` sai do documento; `real` sai da tabela.
    ========================================================================== */
@@ -821,6 +1246,85 @@ const GRADES = [
       "o PDF centraliza a célula na vertical.",
     ],
   },
+  {
+    sigla: "mecanica",
+    curso: "Engenharia Mecânica",
+    matriz: "2021.1",
+    observacao:
+      "Matriz em execução desde 2021.1. Quem entrou antes segue a matriz de 2012, de quando o curso se chamava Engenharia Mecânica Industrial.",
+    chTotalCurso: 3600,
+    /* 80%, e a regra é do PFC, não do estágio: "ter integralizado 80% da
+       carga horária do curso". O estágio aqui sai por pré-requisito. */
+    estagioFracao: 0.8,
+    disciplinas: MECANICA_2021,
+    /* Subtotais da matriz sequencial (§3.6.4). O do 10º inclui as 60h de
+       atividades complementares, que não têm linha própria lá. */
+    porPeriodo: [330, 315, 390, 360, 390, 405, 630, 360, 240, 180],
+    contas: (c) => [
+      ["NCB, núcleo básico (Tabela 2)", 1455, c.chDaCategoria("basico")],
+      /* A Tabela 2 dá 1.365h ao NCP, e a soma das disciplinas marcadas NCP na
+         sequencial dá 1.545h. A diferença de 180h são as quatro DCExt
+         obrigatórias, que o quadro de EIXOS FORMATIVOS conta no balde
+         "Extensão" em vez de no núcleo. 1365 + 180 é o que se confere. */
+      ["NCP + as DCExt obrigatórias (Tabela 2 + eixos)", 1545, c.chDaCategoria("prof")],
+      ["eletivas, com as de extensão (eixos)", 300, c.chDaCategoria("eletiva")],
+      ["estágio + PFC + complementares", 300, c.chDaCategoria("compl")],
+      ["extensão: 4 DCExt + 3 eletivas de extensão (eixos)", 360, c.ch(c.ds.filter((d) => d.dcext))],
+      ["carga horária total do curso (Tabela 2)", 3600, c.ch(c.ds)],
+      /* O PPC faz a conta dos 80% do PFC: 2.880h. */
+      ["CH que libera o PFC (Tabela 7)", 2880, Math.round(3600 * 0.8)],
+    ],
+    notas: [
+      "Matriz em execução desde 2021.1. A anterior, de 2012, está em",
+      "mecanica-2012.yaml — e naquela época o curso chamava-se Engenharia",
+      "Mecânica INDUSTRIAL. São o mesmo curso, renomeado.",
+      "",
+      "Sem código: o PPC diz que \"os códigos das disciplinas são gerados",
+      "automaticamente pelo sistema de gestão acadêmica - Siga\".",
+      "",
+      "A regra de carga horária deste curso é do PFC (80% integralizados), e",
+      "não do estágio — por isso `estagio: true` está no Projeto Final.",
+    ],
+  },
+  {
+    sigla: "mecanica-2012",
+    curso: "Engenharia Mecânica",
+    matriz: "2012",
+    observacao:
+      "Perfil antigo, de quando o curso se chamava Engenharia Mecânica Industrial. A matriz em execução é a 2021.1.",
+    chTotalCurso: 3660,
+    /* Sem `estagioFracao`: este PPC não publica piso de CH para o estágio. */
+    disciplinas: MECANICA_2012,
+    porPeriodo: [315, 285, 375, 390, 405, 420, 525, 360, 285, 240],
+    /* A Atividade Complementar não está na Tabela 18, só nas 13 e 17. */
+    foraDoPeriodo: ["ATCOMP"],
+    /* Economia Empresarial e Gestão da Qualidade são co-requisito uma da
+       outra, e as duas linhas estão escritas assim: é de propósito. */
+    coReciproco: [["ECON0001", "QUAL0001"]],
+    contas: (c) => [
+      /* As três cores da Tabela 18. Laranja: */
+      ["Ciclo Básico, o laranja (Tabela 13)", 1515, c.chDaCategoria("basico")],
+      /* Branco: */
+      ["Ciclo Profissional Essencial, o branco (Tabela 13)", 1200, c.chDaCategoria("prof")],
+      /* Verde, que a Tabela 13 abre em quatro linhas: */
+      ["Específico, obrigatórias do verde (Tabela 13)", 525, c.chDaCategoria("espec")],
+      ["eletivas do verde (Tabela 13)", 120, c.chDaCategoria("eletiva")],
+      ["estágio + PFC + complementar", 300, c.chDaCategoria("compl")],
+      ["currículo pleno (§7.4)", 3660, c.ch(c.ds)],
+    ],
+    notas: [
+      "Perfil ANTIGO, do PPC de 2012, de quando o curso se chamava Engenharia",
+      "Mecânica INDUSTRIAL. A matriz em execução é a 2021.1, em",
+      "mecanica.yaml — é o mesmo curso, renomeado.",
+      "",
+      "A Tabela 18 deste PPC diz o ciclo de cada disciplina PELA COR da",
+      "célula: laranja é básico, verde é específico, o resto é essencial. Cor",
+      "não sai no pdftotext; foi preciso ler as páginas como imagem.",
+      "",
+      "Este PPC não publica piso de CH para o estágio: ele é liberado por",
+      "pré-requisito, e por isso o mapa não mostra régua de porcentagem.",
+    ],
+  },
 ];
 
 /* ==========================================================================
@@ -863,10 +1367,14 @@ function gerar(g) {
     }
   }
   /* ciclo: com pré-requisito sempre em período anterior o grafo já é
-     acíclico, mas o co-requisito recíproco (A co B, B co A) passaria. */
+     acíclico, mas o co-requisito recíproco (A co B, B co A) passaria. Ele é
+     quase sempre erro de transcrição — quase: há PPC que exige duas
+     disciplinas juntas de propósito, e aí a grade declara o par em
+     `coReciproco` para o par passar sem afrouxar a checagem para os outros. */
+  const combinado = new Set((g.coReciproco ?? []).map(([a, b]) => [a, b].sort().join("+")));
   for (const d of ds) {
     for (const alvo of d.co) {
-      if (porId.get(alvo)?.co.includes(d.id)) {
+      if (porId.get(alvo)?.co.includes(d.id) && !combinado.has([d.id, alvo].sort().join("+"))) {
         erros.push(`${d.id} e ${alvo} são co-requisito um do outro`);
       }
     }
@@ -925,7 +1433,8 @@ function gerar(g) {
   L.push(`matriz: ${JSON.stringify(g.matriz)}`);
   L.push(`observacao: ${esc(g.observacao)}`);
   L.push(`chTotalCurso: ${g.chTotalCurso}`);
-  L.push(`estagioFracao: ${g.estagioFracao}`);
+  /* Ausente quando o PPC não publica piso de CH para o estágio. */
+  if (g.estagioFracao !== undefined) L.push(`estagioFracao: ${g.estagioFracao}`);
   L.push("disciplinas:");
   for (const d of ds) {
     L.push(`  - id: ${d.id}`);
