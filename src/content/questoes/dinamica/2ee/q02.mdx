@@ -1,0 +1,106 @@
+---
+origem: "2022.2"
+tema: "Conservação da energia · Corda que se rompe"
+temaId: conservacao-energia
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma bola presa a uma corda de comprimento $l = 2{,}00\ \mathrm{m}$ passa pela posição $A$, no mesmo nível do ponto fixo $O$, com velocidade $v_A = 5{,}00\ \mathrm{m/s}$ dirigida para baixo. A corda suporta uma força máxima igual ao **dobro** do peso da bola. Determine o ângulo $\theta$ (medido abaixo da horizontal $OA$) no qual a corda se parte.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 260 200" role="img" aria-label="Bola presa por corda a um ponto fixo O, girando de A para baixo com ângulo teta">
+    {/* ponto fixo O */}
+    <circle cx="200" cy="60" r="4" fill="var(--ink-2)"/>
+    <text x="207" y="57" font-size="11" fill="var(--ink-2)">O</text>
+    {/* trajetória circular tracejada */}
+    <circle cx="200" cy="60" r="90" fill="none" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="4 3"/>
+    {/* corda em A (horizontal) */}
+    <line x1="200" y1="60" x2="110" y2="60" stroke="var(--ink-3)" stroke-width="1.6"/>
+    <circle cx="110" cy="60" r="6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="100" y="52" font-size="11" fill="var(--accent)">A</text>
+    <text x="150" y="53" font-size="11" fill="var(--ink-3)" text-anchor="middle">l</text>
+    {/* velocidade em A, para baixo */}
+    <line x1="110" y1="68" x2="110" y2="100" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="110,106 106,98 114,98" fill="var(--accent)"/>
+    <text x="86" y="92" font-size="11" fill="var(--accent)">v<tspan font-size="8" dy="2.5">A</tspan></text>
+    {/* corda na posição teta (abaixo da horizontal) */}
+    <line x1="200" y1="60" x2="132" y2="119" stroke="var(--warn)" stroke-width="1.8"/>
+    <circle cx="132" cy="119" r="6" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.5"/>
+    {/* arco do ângulo */}
+    <path d="M 165 60 A 35 35 0 0 0 173 82" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="163" y="80" font-size="11" fill="var(--warn)">θ</text>
+    {/* tração e peso na posição teta */}
+    <line x1="132" y1="119" x2="160" y2="95" stroke="var(--ok)" stroke-width="1.6"/>
+    <polygon points="165,91 157,92 161,99" fill="var(--ok)"/>
+    <text x="166" y="106" font-size="10" fill="var(--ok)">T</text>
+    <line x1="132" y1="127" x2="132" y2="155" stroke="var(--ink-3)" stroke-width="1.6"/>
+    <polygon points="132,161 128,153 136,153" fill="var(--ink-3)"/>
+    <text x="112" y="152" font-size="10" fill="var(--ink-3)">mg</text>
+  </svg>
+  <figcaption>
+
+Descendo de $A$ até o ângulo $\theta$, a bola desce $l\sin\theta$ — é isso que a energia converte em velocidade. Na direção radial, quem sobra contra a tração é a componente $mg\sin\theta$ do peso.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\theta = 14{,}0^\circ$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — energia, de $A$ até $\theta$.** A corda é radial: não trabalha. Só o peso trabalha, e a bola desceu $l\sin\theta$:
+
+$$
+\tfrac{1}{2}mv_\theta^2 = \tfrac{1}{2}mv_A^2 + mg\,l\sin\theta
+\quad\Longrightarrow\quad
+v_\theta^2 = v_A^2 + 2g\,l\sin\theta \tag{1}
+$$
+
+**Passo 2 — Newton na direção radial.** A tração aponta para $O$; a componente do peso ao longo da corda, para **fora**, vale $mg\sin\theta$. A resultante centrípeta é
+
+$$
+T - mg\sin\theta = m\,\frac{v_\theta^2}{l} \tag{2}
+$$
+
+**Passo 3 — a condição de ruptura** é $T = 2mg$. Levando (1) em (2) com esse $T$, a massa corta:
+
+$$
+2g - g\sin\theta = \frac{v_A^2 + 2g\,l\sin\theta}{l}
+$$
+
+$$
+2gl - gl\sin\theta = v_A^2 + 2gl\sin\theta
+\quad\Longrightarrow\quad
+3gl\sin\theta = 2gl - v_A^2
+$$
+
+**Passo 4 — isole $\theta$:**
+
+$$
+\sin\theta = \frac{2}{3} - \frac{v_A^2}{3gl}
+= \frac{2}{3} - \frac{(5{,}00)^2}{3(9{,}81)(2{,}00)}
+= 0{,}6667 - 0{,}4247 = 0{,}2419
+$$
+
+$$
+\theta = \arcsin(0{,}2419) = 14{,}0^\circ
+$$
+
+**A leitura da resposta.** Quanto **maior** a velocidade em $A$, **menor** o ângulo de ruptura: a bola chega tensionada e a corda não aguenta descer muito. Com $v_A^2 \ge 2gl$ a corda arrebentaria já em $A$ — e é um bom teste de sanidade da fórmula.
+</Passos>

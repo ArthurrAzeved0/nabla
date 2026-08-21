@@ -1,0 +1,80 @@
+---
+origem: "2ª chamada"
+tema: "Pêndulos que colidem · Coeficiente de restituição"
+temaId: coeficiente-restituicao
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A esfera $A$, de $0{,}907\ \mathrm{kg}$, parte do repouso com $\theta_A = 73{,}0^\circ$ e colide com a esfera $B$, de $1{,}814\ \mathrm{kg}$, inicialmente em repouso. As duas pendem de fios de mesmo comprimento $L$ do mesmo ponto. Sabendo que a velocidade de $A$ **se anula** após o choque, determine:
+
+<ol type="a">
+<li>o coeficiente de restituição;</li>
+<li>o ângulo $\theta_B$ da máxima altura de $B$.</li>
+</ol>
+
+<Gabarito>
+a) $e = 1/2$.    b) $\theta_B = 34{,}6^\circ$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — repare na razão das massas.** $1{,}814 / 0{,}907 = 2$ exatamente: $m_B = 2m_A$. O enunciado deu os números em quilogramas só para disfarçar — nenhum dos dois aparece na resposta.
+
+**Passo 2 — item (a).** Chame $v_A$ a velocidade de $A$ ao chegar. Momento linear, com $v_A' = 0$ (dado):
+
+$$
+m_A v_A = m_A(0) + 2m_A v_B'
+\quad\Longrightarrow\quad
+v_B' = \frac{v_A}{2}
+$$
+
+Restituição:
+
+$$
+e = \frac{v_B' - v_A'}{v_A - 0} = \frac{v_A/2}{v_A}
+\quad\Longrightarrow\quad
+\boxed{e = \tfrac{1}{2}}
+$$
+
+Nem a massa nem $L$ nem $\theta_A$ entraram: "$A$ para" com "$m_B = 2m_A$" já determina $e$.
+
+**Passo 3 — item (b), a energia antes do choque.** $A$ desceu $L(1 - \cos\theta_A)$:
+
+$$
+v_A^2 = 2gL(1 - \cos 73{,}0^\circ) \tag{1}
+$$
+
+**Passo 4 — a energia depois do choque.** $B$ sobe até parar, a uma altura $h_B$:
+
+$$
+h_B = \frac{v_B'^2}{2g} = \frac{(v_A/2)^2}{2g} = \frac{v_A^2}{8g} \tag{2}
+$$
+
+**Passo 5 — junte (1) e (2)**, e escreva $h_B = L(1 - \cos\theta_B)$. O $L$ e o $g$ cortam:
+
+$$
+1 - \cos\theta_B = \frac{1 - \cos 73{,}0^\circ}{4}
+\quad\Longrightarrow\quad
+\cos\theta_B = \frac{3 + \cos 73{,}0^\circ}{4}
+$$
+
+$$
+\cos\theta_B = \frac{3 + 0{,}2924}{4} = 0{,}8231
+\quad\Longrightarrow\quad
+\theta_B = 34{,}6^\circ
+$$
+
+**Cuidado com a tentação da proporção.** A altura de $B$ é **um quarto** da de $A$ (porque $v_B' = v_A/2$), mas o ângulo **não** é a metade nem um quarto de $73^\circ$: a relação entre altura e ângulo é o cosseno, não linear. Aqui deu $34{,}6^\circ$, que por coincidência é perto de $73/2 = 36{,}5^\circ$ — e é justo essa quase-coincidência que faz o atalho errado passar despercebido.
+</Passos>

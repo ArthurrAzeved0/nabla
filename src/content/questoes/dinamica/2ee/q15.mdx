@@ -1,0 +1,92 @@
+---
+origem: "2025.1"
+tema: "Cilindro rolando · Energia com rotação e normal na curva"
+temaId: energia-corpo-rigido
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um cilindro de massa igual a $2\ \mathrm{kg}$, inicialmente em repouso, desce uma rampa de altura igual a $20\ \mathrm{m}$ e, ao atingir a parte plana, segue **rolando** até subir uma outra ladeira que obedece à função $y = 0{,}2\,x^2$, com $x$ e $y$ em metros. Determine a intensidade da reação normal sobre o cilindro na posição $x = 5\ \mathrm{m}$.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$N = 22{,}8\ \mathrm{N}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — energia dá velocidade, Newton dá força.** Duas etapas, nesta ordem. A pergunta é sobre força, mas a força depende de $v^2$, então a energia vem primeiro.
+
+**Passo 2 — a energia cinética de um cilindro que rola tem duas parcelas.** Com $I_G = \tfrac12 mR^2$ e $v_G = \omega R$:
+
+$$
+T = \tfrac{1}{2}mv_G^2 + \tfrac{1}{2}\left(\tfrac{1}{2}mR^2\right)\!\left(\frac{v_G}{R}\right)^{\!2}
+= \tfrac{1}{2}mv_G^2\left(1 + \tfrac{1}{2}\right) = \tfrac{3}{4}mv_G^2
+$$
+
+O raio desapareceu, e é por isso que o enunciado não precisa dar $R$.
+
+**Passo 3 — a altura líquida da queda.** Em $x = 5$, a ladeira já subiu
+
+$$
+y = 0{,}2(5)^2 = 5{,}0\ \mathrm{m}
+$$
+
+Então, do início até ali, o cilindro desceu $20 - 5 = 15\ \mathrm{m}$ de altura líquida.
+
+**Passo 4 — o atrito de rolamento não trabalha**, então a energia se conserva:
+
+$$
+mg(15) = \tfrac{3}{4}mv_G^2
+\quad\Longrightarrow\quad
+v_G^2 = \frac{4(9{,}81)(15)}{3} = 196{,}2\ \mathrm{m^2/s^2}
+$$
+
+$$
+v_G = 14{,}0\ \mathrm{m/s}
+$$
+
+**Passo 5 — a geometria da curva em $x = 5$.** Derivadas da parábola:
+
+$$
+y' = 0{,}4x = 2{,}0
+\qquad
+y'' = 0{,}4
+$$
+
+A tangente faz $\theta = \arctan 2{,}0 = 63{,}4^\circ$ com a horizontal, e o raio de curvatura é
+
+$$
+\rho = \frac{\left[1 + (y')^2\right]^{3/2}}{|y''|} = \frac{(1+4)^{3/2}}{0{,}4} = \frac{11{,}18}{0{,}4} = 27{,}95\ \mathrm{m}
+$$
+
+**Passo 6 — Newton na direção normal.** A parábola é **côncava para cima** e o cilindro anda por cima dela: o centro de curvatura está acima da pista, logo a aceleração centrípeta aponta para cima. Nessa direção, a normal empurra para cima e a componente do peso, para baixo:
+
+$$
+N - mg\cos\theta = m\,\frac{v_G^2}{\rho}
+$$
+
+$$
+N = 2{,}0\left(9{,}81\cos 63{,}4^\circ + \frac{196{,}2}{27{,}95}\right)
+= 2{,}0\,(4{,}39 + 7{,}02) = 22{,}8\ \mathrm{N}
+$$
+
+**A leitura da resposta.** $N = 22{,}8\ \mathrm{N}$ é **maior** que o peso, $19{,}6\ \mathrm{N}$: além de sustentar o cilindro contra a componente do peso, a pista ainda o obriga a curvar para cima. Numa lombada (concavidade para baixo) o termo $mv^2/\rho$ trocaria de lado e a pergunta interessante passaria a ser em que ponto $N$ chega a zero.
+
+**Cuidado — dois erros clássicos:**
+
+1. Esquecer a parcela de rotação e usar $v_G^2 = 2gh$. Daria $v_G^2 = 294{,}3$ e $N = 29{,}9\ \mathrm{N}$: um cilindro que rola chega **mais lento** que um bloco que escorrega, porque parte da energia foi para o giro.
+2. Usar a altura total, $20\ \mathrm{m}$, em vez da líquida, $15\ \mathrm{m}$. Em $x = 5$ o cilindro já subiu $5\ \mathrm{m}$ de volta.
+</Passos>

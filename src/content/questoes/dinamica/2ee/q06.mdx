@@ -1,0 +1,132 @@
+---
+origem: "2025.1"
+tema: "Colisão com atrito antes e depois · Posição final"
+temaId: colisao
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Duas partículas, $A$ e $B$, de massas $4m$ e $m$, movimentam-se sobre uma superfície plana e horizontal ao longo de uma mesma trajetória. O coeficiente de atrito cinético entre a superfície e cada partícula é o mesmo, $\mu_A = \mu_B = 0{,}1$.
+
+No instante $t_0 = 0$, $A$ está em $S = -100\ \mathrm{m}$ com velocidade $+40\ \mathrm{m/s}$ e $B$ está em $S = +125\ \mathrm{m}$ com velocidade $-10\ \mathrm{m/s}$.
+
+A partir desse instante as duas partículas estão sujeitas, na direção do movimento, apenas à força de atrito. Em dado momento elas colidem, com choque parcialmente elástico de $e = 0{,}25$. Durante essa rápida colisão o sistema é considerado isolado e, logo após, as partículas voltam a ter sobre elas apenas o atrito, em movimento uniformemente variado até pararem.
+
+Nessas condições, ao atingir o repouso, a partícula $A$ estará na posição $S_A$, em metros, igual a quanto?
+
+<Figura>
+  <svg viewBox="0 0 280 90" role="img" aria-label="Eixo S com a partícula A em menos cem indo para a direita e a partícula B em cento e vinte e cinco indo para a esquerda">
+    {/* eixo */}
+    <line x1="20" y1="55" x2="262" y2="55" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <polygon points="268,55 258,51 258,59" fill="var(--ink-2)"/>
+    <text x="248" y="76" font-size="10" fill="var(--ink-3)">S (m)</text>
+    {/* marcas */}
+    <line x1="60" y1="51" x2="60" y2="59" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="60" y="72" font-size="10" fill="var(--ink-3)" text-anchor="middle">−100</text>
+    <line x1="150" y1="51" x2="150" y2="59" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="150" y="72" font-size="10" fill="var(--ink-3)" text-anchor="middle">0</text>
+    <line x1="205" y1="51" x2="205" y2="59" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="205" y="72" font-size="10" fill="var(--ink-3)" text-anchor="middle">125</text>
+    {/* partícula A */}
+    <circle cx="60" cy="41" r="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="60" y="24" font-size="11" fill="var(--accent)" text-anchor="middle">A</text>
+    <line x1="70" y1="41" x2="96" y2="41" stroke="var(--accent)" stroke-width="1.6"/>
+    <polygon points="101,41 93,37 93,45" fill="var(--accent)"/>
+    <text x="103" y="38" font-size="9" fill="var(--accent)">40</text>
+    {/* partícula B */}
+    <circle cx="205" cy="41" r="7" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.5"/>
+    <text x="205" y="24" font-size="11" fill="var(--warn)" text-anchor="middle">B</text>
+    <line x1="196" y1="41" x2="176" y2="41" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="171,41 179,37 179,45" fill="var(--warn)"/>
+    <text x="156" y="38" font-size="9" fill="var(--warn)">10</text>
+  </svg>
+  <figcaption>
+
+Três trechos em sequência, e nenhum deles pode ser saltado: atrito até o encontro, colisão, atrito até parar.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$S_A = 400\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 0 — o valor de $g$.** O enunciado não diz. As contas fecham em números redondos com $g = 10\ \mathrm{m/s^2}$, que é o que essa questão pede; com $9{,}81$ a resposta cai em $S_A \approx 398\ \mathrm{m}$ — mesma física, número feio.
+
+**Passo 1 — as acelerações.** O atrito é a única força na direção do movimento, e vale $\mu g$ em módulo para **qualquer** massa:
+
+$$
+|a| = \mu g = (0{,}1)(10) = 1{,}0\ \mathrm{m/s^2}
+$$
+
+$A$ vai para $+x$, então $a_A = -1{,}0$. $B$ vai para $-x$, então $a_B = +1{,}0$. O atrito **sempre** se opõe ao movimento — os sinais são opostos porque os movimentos são opostos.
+
+**Passo 2 — quando elas se encontram.** Igualando as posições:
+
+$$
+-100 + 40t - 0{,}5t^2 = 125 - 10t + 0{,}5t^2
+$$
+
+$$
+t^2 - 50t + 225 = 0
+\quad\Longrightarrow\quad
+t = 5{,}0\ \mathrm{s}\ \ \text{(a outra raiz, }45\ \mathrm{s},\text{ não é física)}
+$$
+
+**Passo 3 — o estado no instante do choque.**
+
+$$
+v_A = 40 - 5 = 35\ \mathrm{m/s}
+\qquad
+v_B = -10 + 5 = -5{,}0\ \mathrm{m/s}
+$$
+
+$$
+S_{\text{choque}} = -100 + 40(5) - 0{,}5(25) = 87{,}5\ \mathrm{m}
+$$
+
+Vale conferir que nenhuma das duas parou antes: $A$ pararia em $t = 40\ \mathrm{s}$ e $B$ em $t = 10\ \mathrm{s}$ — as duas ainda estavam andando em $t = 5\ \mathrm{s}$. **Essa verificação é obrigatória**; se $B$ tivesse parado, o atrito sobre ela viraria estático e a equação do Passo 2 estaria errada.
+
+**Passo 4 — a colisão.** Momento, com $4m$ e $m$:
+
+$$
+4(35) + 1(-5) = 4v_A' + v_B'
+\quad\Longrightarrow\quad
+4v_A' + v_B' = 135 \tag{1}
+$$
+
+Restituição:
+
+$$
+0{,}25 = \frac{v_B' - v_A'}{35 - (-5)}
+\quad\Longrightarrow\quad
+v_B' - v_A' = 10 \tag{2}
+$$
+
+De (2) em (1): $5v_A' = 125 \Rightarrow v_A' = 25\ \mathrm{m/s}$ e $v_B' = 35\ \mathrm{m/s}$. Ambas para a **direita**: a partícula leve foi arremessada para frente e a pesada seguiu, mais lenta.
+
+**Passo 5 — o trecho final.** De $25\ \mathrm{m/s}$ até parar, com $1{,}0\ \mathrm{m/s^2}$ de desaceleração:
+
+$$
+\Delta S = \frac{v_A'^2}{2|a|} = \frac{625}{2} = 312{,}5\ \mathrm{m}
+$$
+
+$$
+S_A = 87{,}5 + 312{,}5 = 400\ \mathrm{m}
+$$
+
+**A pegadinha da questão.** O $4m$ e o $m$ **não** cancelam na conta do momento, mas cancelam na do atrito. Quem tenta usar "a partícula pesada freia menos" erra: a desaceleração por atrito é $\mu g$, independente da massa.
+</Passos>

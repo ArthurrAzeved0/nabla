@@ -1,0 +1,76 @@
+---
+origem: "2023.1"
+tema: "Colisão + mola · Deflexão máxima"
+temaId: coeficiente-restituicao
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dois blocos $A$ e $B$ têm massas iguais a $2{,}0\ \mathrm{kg}$ e repousam sobre uma mesa horizontal **sem atrito**. O bloco $B$ está parado no lado direito da mesa, encostado numa mola horizontal de $k = 60\ \mathrm{N/m}$ cuja outra extremidade está presa a um suporte vertical. O bloco $A$ se dirige da esquerda para a direita com velocidade de $4{,}0\ \mathrm{m/s}$, no mesmo alinhamento da mola, até colidir com $B$, com $e = 0{,}7$. Determine:
+
+<ol type="a">
+<li>a deflexão máxima da mola;</li>
+<li>a velocidade final de $A$.</li>
+</ol>
+
+<Gabarito>
+a) $x_{\max} \approx 0{,}62\ \mathrm{m}$.    b) $v_A' = 0{,}60\ \mathrm{m/s}$ (→).
+</Gabarito>
+
+<Passos>
+**Passo 1 — a colisão, com $(\rightarrow +)$.** Momento linear, com as massas iguais cortando:
+
+$$
+(2{,}0)(4{,}0) = (2{,}0)v_A' + (2{,}0)v_B'
+\quad\Longrightarrow\quad
+v_A' + v_B' = 4{,}0 \tag{1}
+$$
+
+**Passo 2 — restituição.** Velocidade relativa de afastamento sobre a de aproximação:
+
+$$
+e = \frac{v_B' - v_A'}{v_A - v_B} = \frac{v_B' - v_A'}{4{,}0 - 0} = 0{,}7
+\quad\Longrightarrow\quad
+v_B' - v_A' = 2{,}8 \tag{2}
+$$
+
+**Passo 3 — resolva o sistema.** Somando (1) e (2), e depois subtraindo:
+
+$$
+v_B' = 3{,}4\ \mathrm{m/s}\ (\rightarrow)
+\qquad
+v_A' = 0{,}60\ \mathrm{m/s}\ (\rightarrow)
+$$
+
+Note que $A$ **continua andando para a direita**, atrás de $B$ — o que é coerente, porque o choque não foi elástico o suficiente para pará-lo, mas $v_A' \lt v_B'$ e portanto ele não alcança $B$ de novo.
+
+**Passo 4 — item (a): agora, e só agora, energia.** Depois do choque, $B$ comprime a mola sozinho, e nesse trecho não há dissipação. Deflexão máxima é onde $B$ para:
+
+$$
+\tfrac{1}{2}(2{,}0)(3{,}4)^2 = \tfrac{1}{2}(60)\,x_{\max}^2
+$$
+
+$$
+x_{\max} = 3{,}4\sqrt{\frac{2{,}0}{60}} = \frac{3{,}4}{\sqrt{30}} = 0{,}62\ \mathrm{m}
+$$
+
+**A ordem é tudo.** Energia **não** vale durante a colisão — de fato, aqui se perderam
+
+$$
+\Delta T = \tfrac{1}{2}(2)(4)^2 - \left[\tfrac{1}{2}(2)(0{,}6)^2 + \tfrac{1}{2}(2)(3{,}4)^2\right] = 16 - 11{,}9 = 4{,}1\ \mathrm{J}
+$$
+
+ou seja, $26\%$ da energia inicial virou calor e deformação. Quem aplica conservação de energia direto de "$A$ chegando" até "mola comprimida" acha $0{,}73\ \mathrm{m}$ e erra.
+</Passos>

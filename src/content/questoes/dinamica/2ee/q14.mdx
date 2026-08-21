@@ -1,0 +1,121 @@
+---
+origem: "2ª chamada"
+tema: "Haste com cursor · Velocidade relativa em corpo rígido"
+temaId: mecanismos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O cursor $B$ se move para cima num guia vertical com velocidade constante de $1{,}80\ \mathrm{m/s}$. A haste $AB$, de $1{,}20\ \mathrm{m}$, tem a extremidade $A$ apoiada num plano inclinado a $25^\circ$. No instante em que a haste faz $\theta = 33{,}4^\circ$ com a vertical, determine:
+
+<ol type="a">
+<li>a velocidade angular da haste $AB$;</li>
+<li>a velocidade da sua extremidade $A$.</li>
+</ol>
+
+<Figura>
+  <svg viewBox="0 0 280 180" role="img" aria-label="Haste AB com a extremidade B num guia vertical e a extremidade A apoiada num plano inclinado a 25 graus">
+    {/* guia vertical */}
+    <line x1="222" y1="20" x2="222" y2="150" stroke="var(--ink-3)" stroke-width="4"/>
+    {/* plano inclinado a 25 graus */}
+    <line x1="40" y1="150" x2="222" y2="65" stroke="var(--ink-3)" stroke-width="2.4"/>
+    <path d="M 76 150 A 36 36 0 0 0 73 133" fill="none" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <text x="82" y="145" font-size="10" fill="var(--ink-3)">25°</text>
+    <line x1="40" y1="150" x2="240" y2="150" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="3 3"/>
+    {/* cursor B no guia */}
+    <rect x="212" y="96" width="20" height="16" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="236" y="106" font-size="11" fill="var(--warn)">B</text>
+    <line x1="222" y1="92" x2="222" y2="66" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="222,60 218,68 226,68" fill="var(--warn)"/>
+    <text x="228" y="76" font-size="9" fill="var(--warn)">1,80</text>
+    {/* haste AB */}
+    <line x1="120" y1="112" x2="222" y2="104" stroke="var(--accent)" stroke-width="3.4"/>
+    <circle cx="120" cy="112" r="5" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="108" y="106" font-size="11" fill="var(--accent)">A</text>
+    <text x="160" y="98" font-size="10" fill="var(--accent)">1,20 m</text>
+    {/* velocidade de A ao longo do plano */}
+    <line x1="114" y1="115" x2="82" y2="130" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="76,133 85,133 82,126" fill="var(--accent)"/>
+    <text x="82" y="122" font-size="10" fill="var(--accent)">v<tspan font-size="8" dy="2.5">A</tspan></text>
+    {/* ângulo teta com a vertical */}
+    <line x1="222" y1="104" x2="222" y2="140" stroke="var(--ok)" stroke-width="0.9" stroke-dasharray="3 2"/>
+    <path d="M 222 134 A 30 30 0 0 1 196 124" fill="none" stroke="var(--ok)" stroke-width="1.1"/>
+    <text x="196" y="138" font-size="11" fill="var(--ok)">θ</text>
+  </svg>
+  <figcaption>
+
+Duas direções conhecidas e dois módulos incógnitos: $\vec{v}_B$ é vertical e dada, $\vec{v}_A$ é **paralela ao plano** e tem módulo desconhecido. Com $\omega_{AB}$, são duas incógnitas — e a equação vetorial dá duas equações.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+a) $\omega_{AB} = 1{,}60\ \mathrm{rad/s}$.    b) $v_A = 1{,}76\ \mathrm{m/s}$, subindo o plano.
+</Gabarito>
+
+<Passos>
+**Passo 1 — escreva os três vetores.** As direções vêm dos vínculos: $A$ só pode andar **ao longo do plano** de $25^\circ$, e $B$ só pode andar **na vertical**.
+
+$$
+\vec{v}_A = v_A(\cos 25^\circ\,\mathbf{i} + \sin 25^\circ\,\mathbf{j})
+\qquad
+\vec{v}_B = 1{,}80\,\mathbf{j}
+\qquad
+\vec{\omega}_{AB} = \omega_{AB}\,\mathbf{k}
+$$
+
+E a posição relativa, com a haste a $\theta = 33{,}4^\circ$ da vertical, $A$ abaixo e à esquerda de $B$:
+
+$$
+\vec{r}_{AB} = 1{,}20\,(-\sin 33{,}4^\circ\,\mathbf{i} - \cos 33{,}4^\circ\,\mathbf{j})
+$$
+
+**Passo 2 — a equação de velocidade relativa**, $\vec{v}_A = \vec{v}_B + \vec{\omega}_{AB}\times\vec{r}_{AB}$. Usando $\mathbf{k}\times\mathbf{i} = \mathbf{j}$ e $\mathbf{k}\times\mathbf{j} = -\mathbf{i}$:
+
+$$
+\vec{\omega}_{AB}\times\vec{r}_{AB} = 1{,}20\,\omega_{AB}\left(\cos 33{,}4^\circ\,\mathbf{i} - \sin 33{,}4^\circ\,\mathbf{j}\right)
+$$
+
+**Passo 3 — separe as componentes.**
+
+$$
+x:\quad v_A\cos 25^\circ = 1{,}20\,\omega_{AB}\cos 33{,}4^\circ \tag{1}
+$$
+
+$$
+y:\quad v_A\sin 25^\circ = 1{,}80 - 1{,}20\,\omega_{AB}\sin 33{,}4^\circ \tag{2}
+$$
+
+**Passo 4 — elimine $\omega_{AB}$.** De (1), $1{,}20\,\omega_{AB} = v_A\cos 25^\circ/\cos 33{,}4^\circ$. Levando em (2):
+
+$$
+v_A\sin 25^\circ = 1{,}80 - v_A\cos 25^\circ\,\tan 33{,}4^\circ
+$$
+
+$$
+v_A = \frac{1{,}80}{\sin 25^\circ + \cos 25^\circ\tan 33{,}4^\circ}
+= \frac{1{,}80}{0{,}4226 + 0{,}5982} = 1{,}76\ \mathrm{m/s}
+$$
+
+**Passo 5 — volte a (1)** para o item (a):
+
+$$
+\omega_{AB} = \frac{v_A\cos 25^\circ}{1{,}20\cos 33{,}4^\circ} = \frac{1{,}76(0{,}9063)}{1{,}20(0{,}8348)} = 1{,}60\ \mathrm{rad/s}
+$$
+
+**O padrão que se repete.** Nunca tente resolver este tipo de questão por triângulos de velocidade "no olho". O roteiro é sempre: **direções pelos vínculos → uma equação vetorial → duas equações escalares → sistema**. O que muda de prova para prova é só a geometria dos vínculos.
+
+**Cuidado.** "$\theta$ com a vertical" — o enunciado diz isso, e a haste é curta o suficiente para o desenho enganar. Se você tratar $33{,}4^\circ$ como ângulo com a horizontal, os senos e cossenos trocam de lugar e $v_A$ sai $1{,}00\ \mathrm{m/s}$.
+</Passos>

@@ -1,0 +1,100 @@
+---
+origem: "2023.1"
+tema: "Cremalheira sobre engrenagem · Dedução da expressão"
+temaId: velocidade-relativa-cr
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma cremalheira reta repousa sobre uma engrenagem de raio $r$ e está presa ao bloco $B$, que desliza num guia horizontal. Chamando $\omega_D$ a velocidade angular **anti-horária** da engrenagem $D$, o eixo $x$ positivo orientado para a direita e $\theta$ (horário) o ângulo entre a cremalheira e a horizontal, deduza uma expressão para a velocidade do bloco $B$ em função de $r$, $\theta$ e $\omega_D$.
+
+<Figura>
+  <svg viewBox="0 0 280 170" role="img" aria-label="Engrenagem de centro D com uma cremalheira inclinada apoiada nela e presa ao bloco B num guia horizontal">
+    {/* engrenagem */}
+    <circle cx="80" cy="100" r="46" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.8"/>
+    <circle cx="80" cy="100" r="3.5" fill="var(--accent)"/>
+    <text x="70" y="116" font-size="11" fill="var(--accent)">D</text>
+    {/* raio DC perpendicular à cremalheira */}
+    <line x1="80" y1="100" x2="105" y2="61" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="84" y="80" font-size="10" fill="var(--accent)">r</text>
+    <circle cx="105" cy="61" r="3.5" fill="var(--ok)"/>
+    <text x="98" y="52" font-size="10" fill="var(--ok)">C</text>
+    {/* cremalheira (tangente em C), indo até o bloco B à direita */}
+    <line x1="70" y1="83" x2="242" y2="118" stroke="var(--ink-2)" stroke-width="3"/>
+    {/* guia horizontal e bloco B */}
+    <line x1="200" y1="140" x2="270" y2="140" stroke="var(--ink-3)" stroke-width="1.6"/>
+    <rect x="228" y="112" width="20" height="26" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="252" y="126" font-size="11" fill="var(--warn)">B</text>
+    {/* ângulo teta com a horizontal */}
+    <line x1="180" y1="105" x2="250" y2="105" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 2"/>
+    <path d="M 214 105 A 34 34 0 0 0 213 112" fill="none" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <text x="206" y="102" font-size="11" fill="var(--ink-3)">θ</text>
+    {/* velocidade de B */}
+    <line x1="250" y1="125" x2="272" y2="125" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="277,125 268,121 268,129" fill="var(--warn)"/>
+    <text x="256" y="150" font-size="10" fill="var(--warn)">v<tspan font-size="8" dy="2.5">B</tspan></text>
+  </svg>
+  <figcaption>
+
+O raio $DC$ é **perpendicular** à cremalheira, porque ela é tangente à engrenagem no contato. E o ângulo entre $\vec{v}_B$ (horizontal) e a cremalheira é o mesmo $\theta$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v_B = -\,\frac{r\,\omega_D}{\cos\theta}
+$$
+
+atendendo às convenções $(\rightarrow +)$ e (anti-horário $+$).
+</Gabarito>
+
+<Passos>
+**Passo 1 — a cremalheira translada.** Ela está presa ao bloco $B$, que corre num guia horizontal; o ângulo $\theta$ é fixo. Corpo rígido sem rotação: **todos** os pontos da cremalheira têm a mesma velocidade,
+
+$$
+\vec{v}_{\text{qualquer ponto}} = \vec{v}_B = v_B\,\mathbf{i}
+$$
+
+Isso já mata o problema — não há sistema para resolver, e é por isso que a questão pede "deduza uma expressão" e não um número.
+
+**Passo 2 — o vínculo no contato.** Chame $C$ o ponto de contato. Como a cremalheira é **tangente** à engrenagem em $C$, o raio $DC$ é perpendicular a ela: o triângulo $DBC$ é retângulo em $C$.
+
+Engrenar significa não escorregar, e a condição de não escorregar é: **a componente da velocidade ao longo da tangente comum é a mesma nos dois corpos**.
+
+**Passo 3 — os dois lados do vínculo.** Na engrenagem, o ponto material em $C$ está a $r$ do centro fixo $D$, e sua velocidade é tangencial, de módulo
+
+$$
+v_C^{\text{(engrenagem)}} = \omega_D\,r
+$$
+
+Na cremalheira, o ponto em $C$ tem velocidade $v_B\,\mathbf{i}$, e sua componente ao longo da cremalheira — que faz $\theta$ com a horizontal — é
+
+$$
+v_C^{\text{(cremalheira)}} = v_B\cos\theta
+$$
+
+**Passo 4 — iguale.**
+
+$$
+v_B\cos\theta = -\,r\,\omega_D
+\quad\Longrightarrow\quad
+v_B = -\,\frac{r\,\omega_D}{\cos\theta}
+$$
+
+**De onde vem o sinal.** Com $\omega_D \gt 0$ (anti-horário) e o contato **acima** do centro $D$, o dente em $C$ arrasta a cremalheira no sentido $-x$; logo $v_B \lt 0$. O módulo é o que a física dá; o sinal é consequência exclusiva das convenções que o enunciado declarou, e por isso vale reescrevê-las na folha antes de começar.
+
+**A leitura da resposta.** O $\cos\theta$ no denominador diz que **quanto mais inclinada a cremalheira, mais rápido o bloco anda** para a mesma rotação da engrenagem — o mecanismo é um amplificador de velocidade. E no limite $\theta \to 90^\circ$ a expressão explode: cremalheira vertical não pode estar presa a um bloco de guia horizontal, e a álgebra denuncia isso sozinha.
+</Passos>
