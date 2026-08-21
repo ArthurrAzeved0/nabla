@@ -17,10 +17,6 @@ provas reais com resolução passo a passo, e o mapa da grade curricular.
 
 No ar em <https://nabla-poli.pages.dev>
 
-O endereço antigo (`arthurrazeved0.github.io/RespondeAi-Poli/`) redireciona
-para cá, preservando âncora de questão e de seção — os links que já
-circularam continuam funcionando.
-
 > Software proprietário. O repositório é público para consulta e portfólio;
 > isso **não** concede licença de uso. Ver [`LICENSE`](LICENSE).
 
@@ -50,7 +46,6 @@ npm run dev:rede     # também acessível na rede local (testar no celular)
 | comando | o que faz |
 |---|---|
 | `npm run build` | compila para `dist/` — é o que o Cloudflare Pages roda |
-| `npm run build:ghpages` | mesma coisa com caminho base em subpasta, se um dia voltar ao GitHub Pages |
 | `npm test` | testa progresso, regras da matriz, roteamento das setas e a ponte de endereços |
 | `npm run verificar` | confere o conteúdo do `dist/`: links de teoria, LaTeX cru, falhas do KaTeX |
 | `npm run cabecalhos` | confere o cabeçalho de autoria em todo arquivo |
@@ -136,8 +131,8 @@ sozinha; não há código novo a escrever.
   propósito: quem estudava antes não perdeu as marcações.
 - **As libs de PDF são importadas sob demanda.** Quem só olha o mapa da grade
   não baixa os 391 KB do jsPDF.
-- **`public/curso.html`** traduz os endereços do site 1.x, que circularam em
-  conversas. Não é lixo: é o que evita quebrar link já compartilhado.
+- **`public/curso.html`** traduz os endereços do formato antigo. Não é lixo:
+  é o que faz um link guardado por alguém ainda chegar na questão certa.
 - **Um cabeçalho de autoria em todo arquivo**, gerado por
   `scripts/cabecalho.mjs`. Os conversores o emitem, então sobrevive a uma
   reconversão.
@@ -156,9 +151,9 @@ O Cloudflare Pages compila a cada push na `main`:
 `/_astro/` como `immutable` — eles têm hash no nome, então podem ser
 guardados para sempre. Isso substitui o `?v=N` manual do site 1.x.
 
-Os dois HTML na raiz do repositório (`index.html` e `curso.html`) **não fazem
-parte do site**: são redirecionadores do endereço antigo, servidos pelo
-GitHub Pages. O Astro compila de `src/` e os ignora.
+`public/curso.html` traduz os endereços do formato antigo
+(`curso.html?curso=calculo3#calculo3-1ee-01`) para a rota atual, preservando
+a âncora. Serve para links do site 1.x que alguém tenha guardado.
 
 ## Histórico
 

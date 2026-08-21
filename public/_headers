@@ -11,9 +11,11 @@
 # * Contato: arthur_azevedo05@hotmail.com                                  *
 # **************************************************************************
 
-# Cabeçalhos HTTP. Formato lido pelo Cloudflare Pages (e pela Netlify).
-# O GitHub Pages IGNORA este arquivo — por isso o humans.txt também carrega
-# um BOM UTF-8, que faz o navegador detectar o encoding sem depender daqui.
+# Cabeçalhos HTTP, no formato que o Cloudflare Pages lê.
+#
+# O humans.txt também carrega um BOM UTF-8. É redundante com o charset
+# declarado abaixo, e de propósito: se este arquivo deixar de ser lido, os
+# acentos continuam certos em vez de virarem "Ã§Ã£o".
 
 /humans.txt
   Content-Type: text/plain; charset=utf-8
