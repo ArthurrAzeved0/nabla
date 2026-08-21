@@ -23,8 +23,45 @@ pré-lançamento — uma tag por fase concluída da migração.
 
 ## [Não publicado]
 
-Fase 5 — a virada: nome, marca e o Nabla no lugar do site 1.x. Depois dela,
-mais cadeiras e as grades dos outros cursos.
+Fase 5 — a virada: o Nabla no lugar do site 1.x. Depois dela, mais cadeiras e
+as grades dos outros cursos.
+
+## [2.0.0-alpha.7] — 2026-08-21
+
+Correções do mapa da grade, todas encontradas testando no aparelho.
+
+### Corrigido
+
+- **As setas não apareciam.** O mapa de cartões era montado com
+  `raiz.querySelectorAll`, que pega os do quadro *e* os da lista. A lista vem
+  depois no DOM e sobrescrevia as entradas; estando `display:none`, devolvia
+  offset zero, e as 61 setas eram desenhadas de `(0,0)` a `(0,0)`. Sem erro no
+  console, sem nada apontando a causa.
+- **Setas voltaram a ter a cor da disciplina de origem**, como no fluxograma
+  original. Era o que permitia seguir uma linha específica no meio de 61, e eu
+  tinha reduzido tudo a uma cor só. Paleta de 12 tons com valores próprios
+  para o papel e para a planta escura; um marcador de ponta por tom, porque
+  marcador não herda o `stroke` de quem o referencia.
+- Peso das setas em repouso baixado para 0,34 de opacidade: a informação
+  principal do mapa são os cartões, e 61 arestas em peso cheio viram rabisco.
+  No hover a cadeia acende e o resto quase desaparece. No PDF elas voltam ao
+  peso cheio, porque no papel não há hover.
+- **Moldura branca no PDF.** A página do jsPDF nasce branca e a imagem escura
+  era colada com margem. Agora a página é pintada com a mesma cor da captura,
+  e o tom do texto do cabeçalho vem da luminância dela.
+- Cabeçalho do PDF dizia "matriz civil": passava-se a sigla no lugar do campo
+  `matriz`, que faltava na interface `Grade` — por isso não aparecia como erro
+  de tipo.
+
+### Adicionado
+
+- `testes/setas.test.mjs`: injeta o `cartao()` e verifica a geometria de
+  verdade — que cada caminho sai da borda direita da origem, encosta na
+  esquerda do destino, que nenhum colapsa em zero, que o co-requisito sai
+  tracejado e que dois caminhos do mesmo cartão saem em alturas diferentes. É
+  a checagem que teria pegado o primeiro bug sozinha.
+- Aviso, só em telas de toque, de que o modo lista mostra os requisitos
+  escritos: no celular ele lê melhor que o mapa, e lá o hover não existe.
 
 ## [2.0.0-alpha.6] — 2026-08-21
 
@@ -365,6 +402,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.0.0-alpha.7]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.7
 [2.0.0-alpha.6]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.6
 [2.0.0-alpha.5]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.5
 [2.0.0-alpha.4]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.4
