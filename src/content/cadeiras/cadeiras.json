@@ -71,7 +71,7 @@
   {
     "id": "eletromag",
     "nome": "Fundamentos do Eletromagnetismo",
-    "codigo": "FÍSICA 3 · 60h",
+    "codigo": "FÍSICA 2 · 60h",
     "descricao": "Carga e campo elétrico, Lei de Gauss, potencial, capacitância, circuitos CC, campos magnéticos, Biot-Savart e Ampère, indução, circuitos RL/RLC e Equações de Maxwell.",
     "ordem": 3,
     "teoria": {

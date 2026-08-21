@@ -21,6 +21,16 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.2.1] — 2026-08-21
+
+### Corrigido
+
+- A cadeira **Fundamentos do Eletromagnetismo** estava rotulada "FÍSICA 3";
+  é **Física 2**. Apareceu ao mapear a matriz de 2010, onde o grafo não
+  deixa dúvida: o laboratório de Eletricidade Aplicada é co-requisito de
+  Física 2, e Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como
+  pré-requisito. Física 3, nas duas matrizes, é ondulatória e termodinâmica.
+
 ## [2.2.0] — 2026-08-21
 
 **A matriz de 2010 de Automação**, o perfil antigo, que ainda vale para quem
@@ -549,6 +559,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.2.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.2.1
 [2.2.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.2.0
 [2.1.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.1.1
 [2.1.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.1.0
