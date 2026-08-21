@@ -104,6 +104,26 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   questões de energia que entraram vêm das listas de banca brasileira, não do
   livro.
 
+### Corrigido
+
+- **A etiqueta do tema transbordava o cartão no celular.** Ela é uma frase
+  ("Bobina e bloco · Equações do movimento com raio de giração") dentro de uma
+  pílula com `white-space: nowrap`, então esticava a linha e vazava pela
+  direita. O `nowrap` continua sendo o certo para as pílulas curtas — "1º EE",
+  "2,5 pts" ficariam ridículas quebradas —, então o tema ganhou uma classe
+  própria que quebra em várias linhas.
+- **Matemática em linha rachava no meio.** `$I_O$` virava "I" numa linha e "O"
+  na outra. A causa é o espaço de largura zero que o KaTeX põe dentro da pilha
+  de subíndice: para o navegador, é oportunidade de quebra. O `nowrap` agora
+  vai no `.katex .base` — o átomo é indivisível, e as quebras que o KaTeX cria
+  de propósito (depois de relação ou operador) continuam valendo. Pôr no
+  `.katex` inteiro também resolvia, mas aí cinco fórmulas longas passavam a
+  estourar a janela; foi medido antes de decidir.
+- **Onze rótulos de figura estavam cortados pela borda do `viewBox`** — em
+  Cálculo 3, Eletromagnetismo, EDOs e Dinâmica. Achados medindo o `getBBox()`
+  de cada `<text>` no navegador, nas 18 páginas e em cinco larguras de janela
+  (320 a 1366 px). Hoje não sobra nenhum.
+
 ### Alterado
 
 - `scripts/cabecalho.mjs` passou a olhar os primeiros 8.000 caracteres, e não

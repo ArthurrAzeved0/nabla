@@ -279,6 +279,25 @@ th {
   color: var(--ink);
 }
 
+/* Onde a fórmula em linha PODE quebrar.
+   O katex.min.css só põe `white-space: nowrap` no modo display. No modo em
+   linha o KaTeX quebra a fórmula em vários `.base` de propósito, nos pontos
+   onde a quebra é legítima (depois de relação ou de operador binário), e o
+   espaço entre eles no DOM é a oportunidade de quebra.
+
+   O problema é a quebra DENTRO de um `.base`, que não é intencional: `$I_O$`
+   virava "I" numa linha e "O" na outra, e `$I_O = m\,k_O^2$` rachava depois do
+   "m k". Aparecia primeiro nas legendas de figura — a coluna mais estreita do
+   site — e no celular.
+
+   Então o `nowrap` vai no `.base`, não no `.katex`: átomo é indivisível,
+   fórmula longa continua podendo quebrar nos pontos certos. Pôr no `.katex`
+   também resolve a legenda, mas aí cinco fórmulas longas passam a estourar a
+   janela e a página ganha rolagem horizontal — medido. */
+.katex .base {
+  white-space: nowrap;
+}
+
 /* Sem aumentar a fórmula: o KaTeX já a desenha em 1.21em, calibrado para
    casar com o texto ao redor. O +4% que havia aqui era cosmético e só
    aumentava a chance de expoente encostar na linha de cima. */

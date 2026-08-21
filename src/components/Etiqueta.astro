@@ -20,12 +20,16 @@ interface Props {
   /** Vira o title: útil quando a etiqueta sozinha é ambígua. É o caso da
       procedência — 6 questões vivem numa prova e vieram de outra. */
   titulo?: string;
+  /** Deixa o texto quebrar em várias linhas. Só o `tema` precisa: ele é uma
+      frase ("Bobina e bloco · Equações do movimento com raio de giração"),
+      e com `nowrap` a pílula transbordava o cartão no celular. */
+  quebra?: boolean;
 }
 
-const { tom = "info", titulo } = Astro.props;
+const { tom = "info", titulo, quebra = false } = Astro.props;
 ---
 
-<span class:list={["etiqueta", tom]} title={titulo}><slot /></span>
+<span class:list={["etiqueta", tom, { quebra }]} title={titulo}><slot /></span>
 
 <style>
   .etiqueta {
@@ -35,7 +39,22 @@ const { tom = "info", titulo } = Astro.props;
     line-height: 1.5;
     padding: 3px 9px;
     border-radius: var(--r-pilula);
+    /* `nowrap` é o certo para as pílulas curtas — "1º EE", "2,5 pts" —, que
+       ficariam ridículas quebradas no meio. O tema pede o contrário, e é o
+       que a classe `quebra` faz. */
     white-space: nowrap;
+    /* Filho de flex nasce com min-width: auto e não encolhe abaixo do
+       conteúdo. Sem isto, mesmo podendo quebrar, a pílula longa esticava a
+       linha e vazava o cartão. */
+    min-width: 0;
+    max-width: 100%;
+  }
+  .quebra {
+    white-space: normal;
+    /* quebra nos espaços; só parte palavra se ela sozinha não couber */
+    overflow-wrap: break-word;
+    /* o raio de pílula fica estranho em bloco de 3 linhas */
+    border-radius: var(--r-botao);
   }
   .info {
     background: var(--accent-soft);

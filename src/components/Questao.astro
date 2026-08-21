@@ -61,7 +61,7 @@ const rotulo = String(numero).padStart(2, "0");
     <a class="qid" href={`#${id}`} title="Copiar o link direto desta questão">Questão {rotulo}</a>
     <Etiqueta>{prova}</Etiqueta>
     {origem && <Etiqueta tom="neutra" titulo="Procedência">{origem}</Etiqueta>}
-    <Etiqueta>{tema}</Etiqueta>
+    <Etiqueta quebra>{tema}</Etiqueta>
     {estiloDeProva && <Etiqueta tom="alerta">Estilo de prova</Etiqueta>}
     {pontos && <Etiqueta tom="neutra">{pontos}</Etiqueta>}
     {
@@ -213,10 +213,14 @@ const rotulo = String(numero).padStart(2, "0");
 
   .topo {
     display: flex;
-    align-items: center;
+    /* baseline, não center: com o tema quebrando em duas ou três linhas, o
+       `center` empurrava as pílulas curtas para o meio da altura dele */
+    align-items: baseline;
     gap: var(--e-2);
     flex-wrap: wrap;
     margin-bottom: var(--e-3);
+    /* o cartão manda; nada aqui dentro pode alargar a linha */
+    min-width: 0;
   }
 
   .qid {
