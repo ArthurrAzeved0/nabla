@@ -15,7 +15,7 @@
 **Guia do aluno da POLI/UPE**: teoria na ordem da ementa, banco de questões de
 provas reais com resolução passo a passo, e o mapa da grade curricular.
 
-No ar em <https://nabla-poli.pages.dev>
+No ar em <https://nabla.pages.dev>
 
 > Software proprietário. O repositório é público para consulta e portfólio;
 > isso **não** concede licença de uso. Ver [`LICENSE`](LICENSE).
