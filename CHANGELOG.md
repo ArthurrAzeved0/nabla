@@ -23,7 +23,88 @@ pré-lançamento — uma tag por fase concluída da migração.
 
 ## [Não publicado]
 
-Fase 2 — conteúdo tipado: schemas e migração da teoria e das 146 questões.
+Fase 3 — ilhas de interatividade: marcar acertei/errei/revisar, cronômetro,
+filtro por status, barra de progresso, modo simulado e copiar link da questão.
+
+## [2.0.0-alpha.3] — 2026-08-20
+
+**Fase 2 da migração: conteúdo tipado.** As 147 questões e a teoria das 3
+cadeiras saíram de HTML escrito à mão para **MDX validado por schema**. O que
+antes era convenção combinada em comentário virou contrato verificado no build.
+
+### Adicionado
+
+- `src/content.config.ts` com três collections (`cadeiras`, `teoria`,
+  `questoes`) e schemas em zod. Erros que antes passavam calados agora param o
+  build: questão sem procedência, tema fora do mapa da teoria, prova fora de
+  `{1ee, 2ee, final}`.
+- **Uma rota por avaliação** — `/cadeiras/<id>/<prova>`. No site 1.x os chips
+  eram filtro em JavaScript, sem endereço; agora dá para compartilhar e
+  favoritar "as questões do 2º EE de Cálculo 3". Os contadores continuam nos
+  chips.
+- Página de conteúdo por cadeira, com sumário gerado do frontmatter — no site
+  1.x o sumário era HTML à mão, ao lado das seções: duas listas para manter em
+  sincronia.
+- Componentes de teoria: `Topico`, `Formula` (fórmula nomeada, 107 no total),
+  `FigPar`, e o tipo `dica` na `Caixa`.
+- `scripts/converter-questao.mjs` e `scripts/converter-teoria.mjs`: conversores
+  HTML → MDX. Validados comparando a saída com 16 questões convertidas à mão.
+- `scripts/verificar-conteudo.mjs` (`npm run verificar`): confere o que o
+  schema não alcança — se os 147 links de "Ver material" caem numa seção que
+  existe, se o sumário aponta para seção existente, se sobrou LaTeX cru e se o
+  KaTeX falhou em alguma fórmula. Sai com código 1, então serve de passo de CI.
+- Home montada da collection, no lugar do `js/home.js` que remontava os
+  cartões no navegador a cada visita.
+
+### Alterado
+
+- **Etiquetas padronizadas.** O rótulo da avaliação saiu dos dados: agora é
+  derivado da pasta, por uma constante única — não há como digitar "1ª
+  Avaliação" num arquivo e "1º EE" noutro. As 26 variantes que existiam viraram
+  6 padrões de procedência (`2023.2`, `2024.1 · 2ª chamada`, `Banco`,
+  `Banco · 2026.1`, `Revisão · Prof. César`, `Baseada em 2024.1`).
+- Numeração das seções da teoria padronizada em dois dígitos. `calculo3` e
+  `eletromag` usavam `<span class="num">01</span>`; `eqdiferenciais` usava `1.`
+  embutido no título.
+- `\text{sen}` virou `\operatorname{sen}` (33 ocorrências): é nome de função,
+  não texto, e o `\operatorname` dá o espaçamento correto.
+
+### Corrigido
+
+- **67 fórmulas que não renderizavam.** O HTML do site 1.x escrevia `&gt;` e
+  `&lt;` dentro da matemática, e o KaTeX não decodifica entidade HTML.
+  Convertidos para `\gt` e `\lt` — de propósito, não para `>` e `<`: numa
+  fonte MDX, `r<a` seria lido como abertura de tag JSX.
+- Chave literal na prosa (`bloco {R_2 em série}`) era lida como expressão
+  JavaScript pelo MDX e derrubava o build. Agora é escapada, protegendo o que
+  legitimamente usa chave (matemática, comentário JSX, tags).
+- Comentários HTML dentro dos SVGs (265 em 65 questões) convertidos para
+  `{/* */}`: `<!-- -->` é inválido em JSX.
+- Indentação de 4 espaços herdada do HTML virava **bloco de código** em
+  Markdown. As figuras são reindentadas em 2 espaços.
+- LaTeX em rótulo de fórmula e em nome de tema aparecia literal na tela, porque
+  ali o texto vira atributo e não passa pelo KaTeX. Traduzido para Unicode
+  (`Δ`, `λ`, `x₀`, `x⁹`, `μ`), com aviso no console para o que não estiver na
+  tabela.
+- Token `--warn` (e `--warn-soft`) faltava no sistema visual — **187 usos** nas
+  figuras. Adicionado como cor de destaque de diagrama, separado do `--rev`,
+  que é estado de questão.
+- `--card` e `--card-2`, nomes do site 1.x, convertidos para `--surface` e
+  `--surface-2`.
+- `<b>` e `<i>` (54 ocorrências) não eram convertidos e sobravam como JSX cru.
+- Barra de ferramentas falsa no cartão de questão: os botões "Gabarito" e
+  "Passo a passo" duplicavam os `<details>` reais e não faziam nada. Removida —
+  as ferramentas de verdade chegam na Fase 3. O número da questão voltou a ser
+  link para a própria âncora, sem depender de JavaScript.
+
+### Notas
+
+O conversor foi validado comparando sua saída com 16 questões que eu havia
+convertido à mão: as únicas divergências eram melhorias editoriais minhas, não
+erros dele. Também há 6 questões cuja procedência é de uma avaliação diferente
+da pasta onde moram — isso é correto, não erro: a pasta diz **que unidade a
+questão treina**, a procedência diz **de onde ela veio**. A etiqueta ganhou
+`title="Procedência"` para não ficar ambíguo.
 
 ## [2.0.0-alpha.2] — 2026-08-20
 
@@ -173,6 +254,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.0.0-alpha.3]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.3
 [2.0.0-alpha.2]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.2
 [2.0.0-alpha.1]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.1
 [1.0.0]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v1.0.0
