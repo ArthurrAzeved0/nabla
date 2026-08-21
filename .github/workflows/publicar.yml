@@ -75,11 +75,25 @@ jobs:
       - name: Verificar cabeçalhos de autoria
         run: npm run cabecalhos
 
-      # main -> nabla.pages.dev
+      # main    -> nabla.pages.dev
       # develop -> <hash>-nabla.pages.dev (pré-visualização)
+      #
+      # `pages deploy` NÃO cria o projeto: erra se ele não existir. Como a
+      # Cloudflare tirou a criação do painel, ela é feita aqui na primeira
+      # vez — e a checagem antes evita depender de "falhar quando já existe".
+      #
+      # O wrangler lê o token e a conta do ambiente, então não é preciso
+      # action de terceiro para isso.
       - name: Publicar
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=nabla --branch=${{ github.ref_name }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if ! npx wrangler pages project list | grep -qE '(^|[[:space:]])nabla([[:space:]]|$)'; then
+            echo "projeto 'nabla' não existe: criando"
+            npx wrangler pages project create nabla --production-branch=main
+          fi
+          npx wrangler pages deploy dist \
+            --project-name=nabla \
+            --branch="$GITHUB_REF_NAME" \
+            --commit-dirty=true
