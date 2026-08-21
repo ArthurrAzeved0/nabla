@@ -21,6 +21,43 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.6.0] — 2026-08-21
+
+**Cruzamento de códigos entre os cursos.** A matriz de Mecânica 2021 saiu de
+nenhum código para 44.
+
+### Adicionado
+
+- **Registro compartilhado de códigos.** Um PPC pode não publicar código
+  nenhum — o de Mecânica 2021 diz que eles "são gerados automaticamente pelo
+  sistema de gestão acadêmica - Siga" e não os lista. Mas a mesma disciplina
+  aparece noutro curso, e lá o código está escrito: Química é `QUIM0002` tanto
+  em Automação quanto em Mecânica Industrial. Agora as grades sem código
+  herdam por nome das que têm, e **44 das 59 disciplinas** de Mecânica 2021
+  ganharam código de verdade.
+
+  Três regras impedem que isso vire chute:
+
+  1. **Só o registro atual da UPE.** `MATM0018` e `PFC00001` entram; os
+     códigos curtos dos PPCs antigos (`MAT01`, `ECA10`, `INF01`) não — são
+     locais de cada curso e de cada época, e `MAT01` quer dizer coisas
+     diferentes em documentos diferentes.
+  2. **Nome com códigos divergentes não herda nada.** Isso acontece de
+     verdade: Resistência dos Materiais é `MCTR0005` em Automação e
+     `RMAT0001` em Mecânica, porque cada pleno registra o seu componente. Só o
+     que é unânime passa — e o código da **outra matriz do mesmo curso** tem
+     prioridade sobre o de outro curso.
+  3. **Estágio, PFC e atividades complementares só herdam do próprio curso.**
+     São componentes administrativos, registrados por pleno. Foi essa regra
+     que impediu o PFC de Mecânica de receber o código do PFC de Automação.
+
+- Singular e plural caem na mesma chave, e as abreviações das tabelas também:
+  "Máquina de Elevação" acha "Máquinas de Elevação", e "Complementos de
+  Matemática" acha "Complementos da Matemática".
+- O gerador **lista quem ficou sem código**, em vez de só contar. São 15 em
+  Mecânica 2021 e 15 em Automação 2021 — as que nasceram no perfil novo e não
+  existem em nenhum outro curso mapeado.
+
 ## [2.5.0] — 2026-08-21
 
 **Engenharia Mecânica, as duas matrizes.** Seis mapas no ar, três cursos.
@@ -675,6 +712,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.6.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.6.0
 [2.5.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.5.0
 [2.4.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.4.0
 [2.3.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.3.0
