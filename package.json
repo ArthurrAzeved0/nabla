@@ -16,7 +16,8 @@
     "verificar": "node scripts/verificar-conteudo.mjs",
     "cabecalhos": "node scripts/cabecalho.mjs --check src public scripts astro.config.mjs CHANGELOG.md THIRD-PARTY.md",
     "test": "esbuild src/ilhas/progresso.ts src/ilhas/fluxograma.ts --format=esm --target=es2022 --outdir=.tmp-teste --out-extension:.js=.mjs --log-level=error && node testes/progresso.test.mjs && node testes/grade.test.mjs && node testes/setas.test.mjs && node testes/ponte.test.mjs",
-    "publicar": "npm run build && wrangler pages deploy dist --project-name=nabla-poli"
+    "publicar": "npm run build && wrangler pages deploy dist --project-name=nabla-poli",
+    "formulas": "node scripts/auditar-formulas.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

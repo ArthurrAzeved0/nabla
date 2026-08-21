@@ -276,6 +276,21 @@ th {
   font-size: 1.04em;
 }
 
+/* Matemática em linha NÃO QUEBRA: uma fórmula longa demais empurraria a
+   coluna para fora da tela. Aqui ela ganha rolagem própria em vez de
+   arrastar o texto — o defeito fica visível e contido, não escondido.
+   Só vale para a que está EM LINHA: a de destaque já rola pela .katex-display. */
+p .katex:not(.katex-display .katex),
+li .katex:not(.katex-display .katex) {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* inline-block é o que permite max-width e rolagem num elemento em linha;
+     o baseline é preservado por vertical-align */
+  display: inline-block;
+  vertical-align: baseline;
+}
+
 /* ---------------------- aviso de cópia (transiente) ---------------------
    Criado por script, então mora no CSS global. Fica fora do fluxo e não
    rouba foco: é só confirmação, e a mesma mensagem vai para leitores de
