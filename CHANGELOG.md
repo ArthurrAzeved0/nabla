@@ -21,6 +21,22 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [Não publicado]
+
+### Corrigido
+
+- **O cartão de prévia dos links estava desatualizado — e era o que aparecia
+  no WhatsApp.** Ele dizia "147 questões de prova" e "43 seções de teoria",
+  números de antes de Dinâmica entrar; o site já tinha **226** e **72**. O
+  cartão foi regerado, e agora bate.
+- O motivo de ter passado meses errado é que **nada obrigava** o cartão a
+  acompanhar o conteúdo: os números são escritos à mão no
+  `arte/social-card.html`. Então o `npm run verificar` passou a **comparar** os
+  três números do cartão com a contagem real do site e a falhar se divergirem
+  — e a exigir que o PNG seja mais novo que o HTML, senão o número está certo
+  na fonte e errado na imagem, que é justamente a que circula. Como o
+  `verificar` é passo do CI, um cartão desatualizado não chega mais ao ar.
+
 ## [2.12.0] — 2026-08-21
 
 ### Corrigido

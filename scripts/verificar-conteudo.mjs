@@ -13,12 +13,13 @@
 /* Verificação de integridade do conteúdo. Roda depois do build.
 
    Confere o que o schema não alcança: se os links entre teoria e questões
-   resolvem, se sobrou LaTeX cru, se o KaTeX falhou em alguma fórmula. Sai
-   com código 1 se achar problema, para poder virar passo de CI.
+   resolvem, se sobrou LaTeX cru, se o KaTeX falhou em alguma fórmula, e se os
+   números do cartão social ainda batem com o site. Sai com código 1 se achar
+   problema, para poder virar passo de CI.
 
    Uso: node scripts/verificar-conteudo.mjs
 */
-import { readFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 
 const DIST = "dist/cadeiras";
 if (!existsSync(DIST)) {
@@ -86,6 +87,56 @@ for (const cad of cadeiras) {
     if (katexErr) erro(`${cad}/${prova}: ${katexErr} fórmula(s) que o KaTeX não conseguiu ler`);
     if (cru.includes("$") || cru.includes("\\(")) erro(`${cad}/${prova}: sobrou LaTeX cru no texto`);
     if (quebrados.length) erro(`${cad}/${prova}: "Ver material" aponta para o vazio: ${quebrados.join(", ")}`);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   O cartão social (arte/social-card.html -> public/social-card.png) tem os
+   números do site escritos à mão. Ele é a PRIMEIRA coisa que alguém vê quando
+   o link é mandado no WhatsApp, e ficou meses dizendo "147 questões" enquanto
+   o site já tinha 226 — porque nada o obrigava a acompanhar.
+
+   Aqui a contagem real é comparada com a do cartão. Se divergir, é ERRO: o
+   conserto é editar o arte/social-card.html e gerar o PNG de novo (o comando
+   está no README).                                                          */
+console.log("\n== cartão social ==");
+{
+  const ARTE = "arte/social-card.html";
+  const PNG = "public/social-card.png";
+  if (!existsSync(ARTE)) {
+    erro(`${ARTE} não existe`);
+  } else {
+    const card = readFileSync(ARTE, "utf8");
+    const secoesReais = Object.values(secoesPor).reduce((t, s) => t + s.size, 0);
+    const grades = existsSync("dist/grade")
+      ? readdirSync("dist/grade").filter((d) => existsSync(`dist/grade/${d}/index.html`)).length
+      : null;
+
+    const declarado = (rotulo) => {
+      const m = card.match(new RegExp(`<b>(\\d+)</b><span>${rotulo}</span>`));
+      return m ? Number(m[1]) : null;
+    };
+    const conferir = (rotulo, real) => {
+      const dito = declarado(rotulo);
+      if (dito === null) return erro(`cartão social: não achei o número de "${rotulo}"`);
+      if (real !== null && dito !== real) {
+        erro(`cartão social diz ${dito} ${rotulo}, mas o site tem ${real} — atualize ${ARTE} e regere o PNG`);
+      } else {
+        console.log(`  ${rotulo.padEnd(20)} ${dito} ✓`);
+      }
+    };
+
+    conferir("questões de prova", totalQ);
+    conferir("seções de teoria", secoesReais);
+    conferir("mapas de grade", grades);
+
+    /* O PNG tem de ser mais novo que o HTML: senão o número está certo na
+       fonte e errado na imagem, que é o que de fato circula. */
+    if (!existsSync(PNG)) {
+      erro(`${PNG} não existe`);
+    } else if (statSync(PNG).mtimeMs < statSync(ARTE).mtimeMs - 1000) {
+      erro(`${PNG} é mais antigo que ${ARTE}: regere o PNG`);
+    }
   }
 }
 
