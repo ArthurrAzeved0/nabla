@@ -49,7 +49,7 @@ export interface Grade {
   /** Ano.semestre da matriz curricular, como "2021.1". */
   matriz: string;
   chTotalCurso: number;
-  estagioFracao: number;
+  estagioFracao?: number;
   disciplinas: Disciplina[];
 }
 
@@ -82,7 +82,10 @@ export function criarMapa(g: Grade) {
   const por = new Map(g.disciplinas.map((d) => [d.id, d]));
   const ch = (d: Disciplina) => d.teorica + d.pratica;
   const chMatriz = g.disciplinas.reduce((s, d) => s + ch(d), 0);
-  const chEstagio = Math.round(g.chTotalCurso * g.estagioFracao);
+  /* undefined quando o PPC não publica a regra: aí o estágio depende só dos
+     pré-requisitos, como qualquer outra disciplina. */
+  const chEstagio =
+    g.estagioFracao === undefined ? undefined : Math.round(g.chTotalCurso * g.estagioFracao);
 
   let feitas = lerConcluidas(g.sigla);
 
@@ -100,7 +103,7 @@ export function criarMapa(g: Grade) {
     if (feitas.has(d.id)) return false;
     if (!d.pre.every((p) => feitas.has(p))) return false;
     if (!d.co.every(coOk)) return false;
-    if (d.estagio && chFeita() < chEstagio) return false;
+    if (d.estagio && chEstagio !== undefined && chFeita() < chEstagio) return false;
     return true;
   };
 
@@ -127,6 +130,10 @@ export function criarMapa(g: Grade) {
     ch,
     chMatriz,
     chEstagio,
+    /* Nome da disciplina que carrega a regra de CH, para o rótulo não dizer
+       "Estágio" onde a regra é de outra coisa: em Engenharia Mecânica quem
+       exige 80% do curso integralizado é o Projeto Final. */
+    nomeRegraCh: g.disciplinas.find((d) => d.estagio)?.nome,
     chFeita,
     liberada,
     cadeia,

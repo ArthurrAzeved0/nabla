@@ -1,0 +1,629 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                      mecanica-2012.yaml *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+# ************************************************************************
+# Grade de Engenharia Mecânica — POLI/UPE, matriz 2012.
+#
+# GERADO por scripts/extrair-grade-ppc.mjs, a partir do PPC do curso.
+# Editar à mão se perde na próxima geração: a correção vai no script.
+#
+# Perfil ANTIGO, do PPC de 2012, de quando o curso se chamava Engenharia
+# Mecânica INDUSTRIAL. A matriz em execução é a 2021.1, em
+# mecanica.yaml — é o mesmo curso, renomeado.
+#
+# A Tabela 18 deste PPC diz o ciclo de cada disciplina PELA COR da
+# célula: laranja é básico, verde é específico, o resto é essencial. Cor
+# não sai no pdftotext; foi preciso ler as páginas como imagem.
+#
+# Este PPC não publica piso de CH para o estágio: ele é liberado por
+# pré-requisito, e por isso o mapa não mostra régua de porcentagem.
+#
+# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `cadeira` liga o nó à página da cadeira no site, quando ela existe.
+# ************************************************************************
+curso: Engenharia Mecânica
+sigla: mecanica-2012
+matriz: "2012"
+observacao: "Perfil antigo, de quando o curso se chamava Engenharia Mecânica Industrial. A matriz em execução é a 2021.1."
+chTotalCurso: 3660
+disciplinas:
+  - id: MATM0018
+    codigo: MATM0018
+    nome: Cálculo Diferencial e Integral 1
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MATM0007
+    codigo: MATM0007
+    nome: Geometria Analítica
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: QUIM0002
+    codigo: QUIM0002
+    nome: Química Geral
+    periodo: 1
+    teorica: 45
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: SOCL0002
+    codigo: SOCL0002
+    nome: Sociologia e Meio Ambiente
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: CCMP0094
+    codigo: CCMP0094
+    nome: Introdução à Programação
+    periodo: 1
+    teorica: 30
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: ENGE0002
+    codigo: ENGE0002
+    nome: Introdução à Engenharia Mecânica
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MATM0001
+    codigo: MATM0001
+    nome: Álgebra Linear
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MATM0007]
+    co: []
+  - id: MATM0019
+    codigo: MATM0019
+    nome: Cálculo Diferencial e Integral 2
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MATM0018]
+    co: []
+  - id: LETR0001
+    codigo: LETR0001
+    nome: Expressão em Língua Portuguesa
+    periodo: 2
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: ARTE0001
+    codigo: ARTE0001
+    nome: Expressão Gráfica 1
+    periodo: 2
+    teorica: 30
+    pratica: 45
+    categoria: basico
+    pre: []
+    co: []
+  - id: FISC0011
+    codigo: FISC0011
+    nome: Física 1
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MATM0018]
+    co: []
+  - id: MATM0020
+    codigo: MATM0020
+    nome: Cálculo Diferencial e Integral 3
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MATM0019]
+    co: []
+    cadeira: calculo3
+  - id: CCMP0096
+    codigo: CCMP0096
+    nome: Cálculo Numérico
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CCMP0094]
+    co: []
+  - id: FISC0016
+    codigo: FISC0016
+    nome: Eletricidade Aplicada
+    periodo: 3
+    teorica: 0
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: [FISC0012]
+  - id: FISC0012
+    codigo: FISC0012
+    nome: Física 2
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FISC0011]
+    co: []
+    nota: "A Tabela 18 cita \"FIS01\" como pré-requisito, código do registro antigo da UPE que não existe nesta matriz; o real é FISC0011, Física 1. É a física do eletromagnetismo."
+    cadeira: eletromag
+  - id: FISC0007
+    codigo: FISC0007
+    nome: Mecânica Geral 1
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FISC0011]
+    co: []
+    nota: "A Tabela 18 cita \"FIS01\" como pré-requisito, código do registro antigo da UPE que não existe nesta matriz; o real é FISC0011, Física 1."
+  - id: FISC0009
+    codigo: FISC0009
+    nome: Eletricidade Básica
+    periodo: 3
+    teorica: 45
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: [FISC0016]
+  - id: MECN0004
+    codigo: MECN0004
+    nome: Ciências dos Materiais
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MATM0021
+    codigo: MATM0021
+    nome: Cálculo Diferencial e Integral 4
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MATM0020]
+    co: []
+    cadeira: eqdiferenciais
+  - id: FISC0013
+    codigo: FISC0013
+    nome: Física 3
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FISC0012]
+    co: []
+  - id: FISC0018
+    codigo: FISC0018
+    nome: Física Experimental
+    periodo: 4
+    teorica: 0
+    pratica: 30
+    categoria: basico
+    pre: [FISC0012]
+    co: []
+  - id: MECN0039
+    codigo: MECN0039
+    nome: Materiais de Construção Mecânica
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MECN0004]
+    co: []
+  - id: FISC0008
+    codigo: FISC0008
+    nome: Mecânica Geral 2
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FISC0012]
+    co: []
+    nota: "A Tabela 18 dá como pré-requisito Física 2, e não Mecânica Geral 1, que seria o encadeamento esperado. Fica como está escrito: é código válido desta matriz."
+  - id: FISC0017
+    codigo: FISC0017
+    nome: Mecânica dos Fluidos
+    periodo: 4
+    teorica: 45
+    pratica: 15
+    categoria: basico
+    pre: [MATM0020]
+    co: []
+  - id: PRBE0002
+    codigo: PRBE0002
+    nome: Probabilidade e Estatística
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MATM0020]
+    co: []
+  - id: DSTC0001
+    codigo: DSTC0001
+    nome: Desenho Técnico Fundamental
+    periodo: 5
+    teorica: 15
+    pratica: 45
+    categoria: prof
+    pre: [ARTE0001]
+    co: []
+  - id: MAQH0001
+    codigo: MAQH0001
+    nome: Máquinas Hidráulicas
+    periodo: 5
+    teorica: 45
+    pratica: 15
+    categoria: prof
+    pre: [FISC0017]
+    co: []
+  - id: RMAT0001
+    codigo: RMAT0001
+    nome: Resistência dos Materiais 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [FISC0008]
+    co: []
+  - id: METR0001
+    codigo: METR0001
+    nome: Metrologia
+    periodo: 5
+    teorica: 15
+    pratica: 45
+    categoria: prof
+    pre: []
+    co: []
+  - id: MECA0001
+    codigo: MECA0001
+    nome: Mecânica Aplicada
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [FISC0008]
+    co: []
+  - id: TERM0001
+    codigo: TERM0001
+    nome: Termodinâmica 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [FISC0013]
+    co: []
+  - id: ENGS0001
+    codigo: ENGS0001
+    nome: Engenharia de Segurança
+    periodo: 5
+    teorica: 45
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: []
+  - id: DSTC0002
+    codigo: DSTC0002
+    nome: Desenho Técnico Mecânico
+    periodo: 6
+    teorica: 15
+    pratica: 75
+    categoria: prof
+    pre: [DSTC0001]
+    co: []
+  - id: IEIN0001
+    codigo: IEIN0001
+    nome: Instalações Elétricas Industriais
+    periodo: 6
+    teorica: 45
+    pratica: 0
+    categoria: espec
+    pre: [FISC0009]
+    co: []
+  - id: RMAT0002
+    codigo: RMAT0002
+    nome: Resistência dos Materiais 2
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [RMAT0001]
+    co: []
+  - id: TERM0002
+    codigo: TERM0002
+    nome: Termodinâmica 2
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [TERM0001]
+    co: []
+  - id: TCAL0001
+    codigo: TCAL0001
+    nome: Transmissão de Calor
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [TERM0001]
+    co: [TERM0002]
+  - id: ENSM0001
+    codigo: ENSM0001
+    nome: Ensaios Mecânicos
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [METR0001, MECN0039]
+    co: []
+  - id: ECA10
+    codigo: ECA10
+    nome: Mecanismos
+    periodo: 6
+    teorica: 45
+    pratica: 0
+    categoria: prof
+    pre: [MECA0001]
+    co: []
+    nota: "O código \"ECA10\" é do registro do PPC de Automação de 2010, não do formato desta matriz — sobra de recorta-e-cola. O código real desta disciplina não está publicado."
+  - id: DSTC0003
+    codigo: DSTC0003
+    nome: Desenho Técnico Mecânico em Computador
+    periodo: 7
+    teorica: 0
+    pratica: 45
+    categoria: prof
+    pre: [DSTC0002]
+    co: []
+  - id: EMAQ0001
+    codigo: EMAQ0001
+    nome: Elementos de Máquinas 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [RMAT0002]
+    co: []
+  - id: INID0001
+    codigo: INID0001
+    nome: Instrumentação Industrial
+    periodo: 7
+    teorica: 15
+    pratica: 15
+    categoria: espec
+    pre: []
+    co: []
+  - id: SHPN0001
+    codigo: SHPN0001
+    nome: Sistemas Hidráulicos e Pneumáticos
+    periodo: 7
+    teorica: 60
+    pratica: 30
+    categoria: espec
+    pre: [FISC0017]
+    co: []
+  - id: SOLD0001
+    codigo: SOLD0001
+    nome: Soldagem
+    periodo: 7
+    teorica: 30
+    pratica: 30
+    categoria: espec
+    pre: [FISC0016]
+    co: []
+  - id: ESTG0001
+    codigo: ESTG0001
+    nome: Estágio Supervisionado
+    periodo: 7
+    teorica: 0
+    pratica: 180
+    categoria: compl
+    pre: [ENGS0001]
+    co: []
+    estagio: true
+    nota: "Liberado por pré-requisito, e não por carga horária: este PPC não publica piso de CH para o estágio."
+  - id: VIBM0001
+    codigo: VIBM0001
+    nome: Vibrações Mecânicas
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MATM0020, MECA0001]
+    co: []
+  - id: EMAQ0002
+    codigo: —
+    nome: Elementos de Máquinas 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [RMAT0002]
+    co: []
+    nota: "A Tabela 18 repete o código EMAQ0001, já usado por Elementos de Máquinas 1; o código desta não está publicado."
+  - id: PRFB0001
+    codigo: PRFB0001
+    nome: Processos de Usinagem
+    periodo: 8
+    teorica: 45
+    pratica: 15
+    categoria: espec
+    pre: [MECN0039]
+    co: []
+  - id: INID0002
+    codigo: INID0002
+    nome: Instalações Industriais
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [RMAT0002]
+    co: []
+  - id: PRFB0002
+    codigo: PRFB0002
+    nome: Processos de Conformação
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [MECN0039]
+    co: []
+  - id: MAQT0001
+    codigo: MAQT0001
+    nome: Máquinas Térmicas 1
+    periodo: 8
+    teorica: 45
+    pratica: 15
+    categoria: prof
+    pre: [TERM0002]
+    co: []
+  - id: PRFB0003
+    codigo: PRFB0003
+    nome: Prática de Oficina
+    periodo: 8
+    teorica: 15
+    pratica: 45
+    categoria: prof
+    pre: [ENGS0001, SOLD0001]
+    co: []
+  - id: ECON0001
+    codigo: ECON0001
+    nome: Economia Empresarial
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: [QUAL0001]
+  - id: DIRE0001
+    codigo: DIRE0001
+    nome: Direito para Engenheiros
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: [LETR0001]
+    co: []
+  - id: MAQT0002
+    codigo: MAQT0002
+    nome: Máquinas Térmicas 2
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: [TERM0002]
+    co: []
+  - id: QUAL0001
+    codigo: QUAL0001
+    nome: Gestão da Qualidade
+    periodo: 9
+    teorica: 45
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: [ECON0001]
+    nota: "Economia Empresarial e Gestão da Qualidade são co-requisito uma da outra na Tabela 18: têm de ser cursadas juntas."
+  - id: REFR0001
+    codigo: REFR0001
+    nome: Refrigeração
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [TCAL0001, TERM0002]
+    co: []
+  - id: EL1
+    codigo: —
+    nome: Eletiva 1
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 120h de eletivas no total: duas de 30h no 9º período e uma de 60h no 10º."
+  - id: EL2
+    codigo: —
+    nome: Eletiva 2
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 120h de eletivas no total: duas de 30h no 9º período e uma de 60h no 10º."
+  - id: ADMI0001
+    codigo: ADMI0001
+    nome: Administração Industrial
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [ECON0001]
+    co: []
+  - id: MELT0001
+    codigo: MELT0001
+    nome: Máquinas de Elevação e Transporte
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [INID0002]
+    co: []
+  - id: EL3
+    codigo: —
+    nome: Eletiva 3
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 120h de eletivas no total: duas de 30h no 9º período e uma de 60h no 10º."
+  - id: PFC00001
+    codigo: PFC00001
+    nome: Projeto Final de Curso
+    periodo: 10
+    teorica: 0
+    pratica: 60
+    categoria: compl
+    pre: [QUAL0001]
+    co: []
+  - id: ATCOMP
+    codigo: —
+    nome: Atividade Complementar
+    periodo: 10
+    teorica: 0
+    pratica: 60
+    categoria: compl
+    pre: []
+    co: []
+    nota: "Não aparece na Tabela 18, só nas Tabelas 13 e 17: são 60h, o Ciclo Complementar inteiro."

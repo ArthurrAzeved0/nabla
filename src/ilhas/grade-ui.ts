@@ -66,12 +66,16 @@ export function ligarGrade() {
         el.setAttribute("aria-pressed", String(feita));
 
         const est = el.querySelector<HTMLElement>("[data-estagio]");
-        if (est) {
+        /* Sem regra publicada não há nada a dizer: o selo some em vez de
+           anunciar "0%", que soaria como exigência cumprida. */
+        if (est && mapa.chEstagio !== undefined && grade.estagioFracao !== undefined) {
           const falta = Math.max(0, mapa.chEstagio - chFeita);
           est.textContent =
             falta > 0
               ? `Regra ${Math.round(grade.estagioFracao * 100)}%: ${chFeita}h de ${mapa.chEstagio}h — faltam ${falta}h`
               : `Regra ${Math.round(grade.estagioFracao * 100)}% cumprida (${chFeita}h)`;
+        } else if (est) {
+          est.remove();
         }
       }
     }
@@ -90,13 +94,16 @@ export function ligarGrade() {
     if (barra) barra.style.width = `${pct}%`;
 
     const flag = raiz.querySelector<HTMLElement>("[data-flag-estagio]");
-    if (flag) {
+    if (flag && mapa.chEstagio !== undefined && grade.estagioFracao !== undefined) {
       const falta = mapa.chEstagio - chFeita;
+      const quem = mapa.nomeRegraCh ?? "Estágio";
       flag.textContent =
         falta > 0
-          ? `Estágio: faltam ${falta}h para os ${Math.round(grade.estagioFracao * 100)}%`
-          : `Estágio: ${Math.round(grade.estagioFracao * 100)}% da CH cumprida`;
+          ? `${quem}: faltam ${falta}h para os ${Math.round(grade.estagioFracao * 100)}%`
+          : `${quem}: ${Math.round(grade.estagioFracao * 100)}% da CH cumprida`;
       flag.classList.toggle("ok", falta <= 0);
+    } else if (flag) {
+      flag.hidden = true;
     }
   }
 
