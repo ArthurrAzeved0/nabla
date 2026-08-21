@@ -1,0 +1,86 @@
+---
+origem: Final 2022.2
+tema: "Multiplicadores de Lagrange"
+temaId: multiplicadores-lagrange
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Utilize os multiplicadores de Lagrange para determinar os valores extremos da função
+
+$$
+f(x,y) = x^2 + y^2
+$$
+
+sujeita à restrição $xy = 1$.
+
+<Figura>
+  <svg viewBox="0 0 240 200" role="img" aria-label="Círculos de nível de x²+y² tangentes à hipérbole xy=1 nos pontos (1,1) e (-1,-1)">
+    {/* eixos */}
+    <line x1="20" y1="100" x2="220" y2="100" stroke="var(--line-2)" stroke-width="1"/>
+    <line x1="120" y1="10" x2="120" y2="190" stroke="var(--line-2)" stroke-width="1"/>
+    {/* hipérbole xy=1 (ramos) */}
+    <path d="M 135 40 Q 150 70 210 90" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <path d="M 105 160 Q 90 130 30 110" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <text x="196" y="82" font-size="10" fill="var(--ink-2)">xy = 1</text>
+    {/* círculo de nível mínimo r=√2 (tangente) */}
+    <circle cx="120" cy="100" r="42" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+    {/* círculo menor (não alcança a restrição) */}
+    <circle cx="120" cy="100" r="24" fill="none" stroke="var(--line-2)" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <text x="123" y="94" font-size="9" fill="var(--ink-3)">f menor</text>
+    {/* pontos de tangência */}
+    <circle cx="150" cy="70" r="4" fill="var(--warn)"/>
+    <text x="155" y="66" font-size="10" fill="var(--warn)">(1, 1)</text>
+    <circle cx="90" cy="130" r="4" fill="var(--warn)"/>
+    <text x="46" y="144" font-size="10" fill="var(--warn)">(-1, -1)</text>
+  </svg>
+  <figcaption>
+
+No mínimo, o círculo de nível $x^2+y^2=c$ apenas *toca* a hipérbole $xy=1$: os gradientes ficam paralelos ($\nabla f = \lambda\nabla g$). O menor círculo que alcança a restrição tem raio $\sqrt2$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Pontos críticos $(1, 1)$ e $(-1, -1)$, com $f = 2$ em ambos — é o valor **mínimo**. Não há máximo (sobre $xy = 1$, $f \to \infty$).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Monte o sistema $\nabla f = \lambda\,\nabla g$ com $g(x,y) = xy - 1 = 0$:
+
+$$
+\nabla f = (2x,\ 2y) \qquad \nabla g = (y,\ x)
+$$
+
+$$
+\begin{cases} 2x = \lambda y \\ 2y = \lambda x \\ xy = 1 \end{cases}
+$$
+
+**Passo 2 —** Da primeira equação, $\lambda = 2x/y$ (note $y \neq 0$ pois $xy = 1$). Substituindo na segunda:
+
+$$
+2y = \frac{2x}{y}\cdot x \;\Rightarrow\; y^2 = x^2 \;\Rightarrow\; x = \pm y
+$$
+
+**Passo 3 —** Combine com a restrição $xy = 1$. Se $x = -y$, então $xy = -y^2 = 1$, impossível. Logo $x = y$, e $x^2 = 1$:
+
+$$
+\boxed{(1,\ 1) \quad\text{e}\quad (-1,\ -1)}
+$$
+
+**Passo 4 —** Avaliando: $f(1,1) = f(-1,-1) = 2$.
+
+**Passo 5 —** Interpretação: sobre a hipérbole $xy = 1$, quando $x \to \infty$ temos $f \to \infty$, então *não existe máximo*. O valor $f = 2$ é o **mínimo**: os pontos da hipérbole mais próximos da origem estão à distância $\sqrt 2$.
+</Passos>

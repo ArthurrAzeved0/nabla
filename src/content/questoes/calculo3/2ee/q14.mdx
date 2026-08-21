@@ -1,0 +1,63 @@
+---
+origem: "2023.1"
+tema: "Fluxo · Teorema da divergência"
+temaId: teorema-da-divergencia
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Use o Teorema da Divergência (Gauss) para calcular o fluxo $\displaystyle\iint_S \vec F\cdot d\vec S$ do campo
+
+$$
+\vec F(x,y,z) = \left(xy\,e^{z},\; xy^2 z^3,\; -y\,e^{z}\right)
+$$
+
+através da superfície $S$ da caixa $[0,3]\times[0,2]\times[0,1]$, orientada para fora.
+
+<Gabarito>
+$\displaystyle\iint_S \vec F\cdot d\vec S = \frac{9}{2}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** O Teorema da Divergência troca o fluxo por uma integral tripla do divergente:
+
+$$
+\iint_S \vec F\cdot d\vec S = \iiint_E \operatorname{div}\vec F\,dV
+$$
+
+**Passo 2 —** Calcule o divergente. Com $P = xy\,e^z$, $Q = xy^2 z^3$, $R = -y\,e^z$:
+
+$$
+\operatorname{div}\vec F = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} = y\,e^z + 2xy z^3 + (-y\,e^z) = 2xy z^3
+$$
+
+Repare: os termos $y\,e^z$ se cancelam — sobra só $2xyz^3$.
+
+**Passo 3 —** A caixa é um domínio-retângulo, então a integral tripla separa em produto de integrais simples:
+
+$$
+\iiint_E 2xy z^3\,dV = 2\int_0^3 x\,dx \int_0^2 y\,dy \int_0^1 z^3\,dz
+$$
+
+**Passo 4 —** Cada fator:
+
+$$
+\int_0^3 x\,dx = \frac92,\qquad \int_0^2 y\,dy = 2,\qquad \int_0^1 z^3\,dz = \frac14
+$$
+
+$$
+\iint_S \vec F\cdot d\vec S = 2\cdot\frac92\cdot 2\cdot\frac14 = \frac{9}{2}
+$$
+</Passos>

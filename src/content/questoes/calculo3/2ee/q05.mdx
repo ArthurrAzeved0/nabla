@@ -1,0 +1,53 @@
+---
+origem: 1º EE 2024.2
+tema: "Integrais duplas · Coordenadas polares"
+temaId: integrais-duplas-polares
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Usando integrais duplas em coordenadas polares, calcule
+
+$$
+\iint_R e^{-(x^2+y^2)}\; dx\,dy
+$$
+
+onde $R$ é o disco definido por $x^2 + y^2 \le 4$.
+
+<Gabarito>
+$\displaystyle\iint_R e^{-(x^2+y^2)}\,dA = \pi\left(1 - \frac{1}{e^4}\right)$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Em polares, $x^2 + y^2 = r^2$ e $dA = r\,dr\,d\theta$. O disco vira $0 \le r \le 2$, $0 \le \theta \le 2\pi$:
+
+$$
+\int_0^{2\pi}\!\!\int_0^{2} e^{-r^2}\, r\,dr\,d\theta
+$$
+
+Repare: sem o jacobiano $r$, a integral de $e^{-x^2-y^2}$ não teria primitiva elementar — é o $r$ que salva a conta.
+
+**Passo 2 —** Substituição $u = -r^2$, $du = -2r\,dr$:
+
+$$
+\int_0^{2} e^{-r^2}\,r\,dr = -\frac{1}{2}\,e^{-r^2}\bigg|_0^2 = \frac{1}{2}\left(1 - e^{-4}\right)
+$$
+
+**Passo 3 —** A integral em $\theta$ só multiplica por $2\pi$:
+
+$$
+\int_0^{2\pi} \frac{1}{2}\left(1 - e^{-4}\right)d\theta = \boxed{\pi\left(1 - \frac{1}{e^4}\right)}
+$$
+</Passos>

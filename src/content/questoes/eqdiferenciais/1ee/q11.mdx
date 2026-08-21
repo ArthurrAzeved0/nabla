@@ -1,0 +1,75 @@
+---
+origem: "2025.2"
+tema: "Coef. indeterminados · Abel"
+temaId: coeficientes-indeterminados
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+a) (1,5) Encontre a solução geral da EDO de segunda ordem
+
+$$
+y'' - 3y' + 2y = e^{3x}(1 + x)
+$$
+
+b) (1,0) Encontre o Wronskiano de duas soluções da EDO $\;e^x y'' + (e^x\cos x)\,y' - xy = 0$, explicitando se estas soluções serão linearmente independentes ou não.
+
+<Gabarito>
+a) $y = C_1e^{x} + C_2e^{2x} + e^{3x}\left(\tfrac12 x - \tfrac14\right)$;  b) $W = Ce^{-\operatorname{sen} x} \ne 0$ — soluções linearmente independentes.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Homogênea: $m^2 - 3m + 2 = 0 \Rightarrow m_1 = 1,\ m_2 = 2$:
+
+$$
+y_h = C_1e^{x} + C_2e^{2x}
+$$
+
+**Passo 2 —** Como $3$ não é raiz da característica, chute $y_p = e^{3x}(A_1x + A_0)$. Derivando:
+
+$$
+y_p' = e^{3x}\big(3A_1x + (A_1 + 3A_0)\big), \qquad y_p'' = e^{3x}\big(9A_1x + (6A_1 + 9A_0)\big)
+$$
+
+**Passo 3 —** Substituindo em $y'' - 3y' + 2y$:
+
+$$
+e^{3x}\Big[\big(9A_1 - 9A_1 + 2A_1\big)x + \big(6A_1 + 9A_0 - 3A_1 - 9A_0 + 2A_0\big)\Big] = e^{3x}(x + 1)
+$$
+
+$$
+2A_1 = 1 \Rightarrow A_1 = \tfrac12; \qquad 3A_1 + 2A_0 = 1 \Rightarrow A_0 = -\tfrac14
+$$
+
+**Passo 4 —** Solução geral do item (a):
+
+$$
+\boxed{y = C_1e^{x} + C_2e^{2x} + e^{3x}\left(\tfrac12 x - \tfrac14\right)}
+$$
+
+**Passo 5 (b) —** Coloque na forma padrão dividindo por $e^x$:
+
+$$
+y'' + (\cos x)\,y' - \frac{x}{e^x}\,y = 0 \qquad\Rightarrow\qquad p(x) = \cos x
+$$
+
+**Passo 6 —** Pela fórmula de Abel:
+
+$$
+W(y_1,y_2)(x) = Ce^{-\int \cos x\,dx} = Ce^{-\operatorname{sen} x}
+$$
+
+Como $e^{-\operatorname{sen} x} \ne 0$ para todo $x$, o Wronskiano nunca se anula (para $C \ne 0$) e as soluções são **linearmente independentes**.
+</Passos>

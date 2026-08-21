@@ -1,0 +1,73 @@
+---
+origem: "2025.1"
+tema: "Ordem superior · variação de parâmetros"
+temaId: ordem-superior
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a equação diferencial de terceira ordem
+
+$$
+y''' + y' = \sec x
+$$
+
+a) Encontre a solução da equação homogênea associada;<br />
+       b) Encontre uma solução particular pelo método de variação de parâmetros;<br />
+       c) Escreva a solução geral.
+
+<Gabarito>
+$y = C_1 + C_2\cos x + C_3\operatorname{sen} x + \ln|\sec x + \operatorname{tg} x| - x\cos x + \operatorname{sen} x\,\ln|\cos x|$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Característica: $r^3 + r = r(r^2+1) = 0 \Rightarrow r = 0,\ \pm i$:
+
+$$
+y_h = C_1 + C_2\cos x + C_3\operatorname{sen} x
+$$
+
+**Passo 2 (b) —** Variação de parâmetros com $y_1 = 1$, $y_2 = \cos x$, $y_3 = \operatorname{sen} x$ e $g(x) = \sec x$. O Wronskiano $3\times3$:
+
+$$
+W = \begin{vmatrix} 1 & \cos x & \operatorname{sen} x \\ 0 & -\operatorname{sen} x & \cos x \\ 0 & -\cos x & -\operatorname{sen} x \end{vmatrix} = \operatorname{sen}^2 x + \cos^2 x = 1
+$$
+
+**Passo 3 —** Pela regra de Cramer (substituindo cada coluna por $(0,0,g)$):
+
+$$
+u_1' = \sec x \Rightarrow u_1 = \ln|\sec x + \operatorname{tg} x|
+$$
+
+$$
+u_2' = -1 \Rightarrow u_2 = -x
+$$
+
+$$
+u_3' = -\operatorname{tg} x \Rightarrow u_3 = \ln|\cos x|
+$$
+
+**Passo 4 —** Solução particular:
+
+$$
+y_p = u_1y_1 + u_2y_2 + u_3y_3 = \ln|\sec x + \operatorname{tg} x| - x\cos x + \operatorname{sen} x\,\ln|\cos x|
+$$
+
+**Passo 5 (c) —** Solução geral:
+
+$$
+\boxed{y = C_1 + C_2\cos x + C_3\operatorname{sen} x + \ln|\sec x + \operatorname{tg} x| - x\cos x + \operatorname{sen} x\,\ln|\cos x|}
+$$
+</Passos>

@@ -1,0 +1,68 @@
+---
+origem: "2025.2"
+tema: "Cauchy-Euler"
+temaId: cauchy-euler
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a equação de Cauchy-Euler, com $p \neq 0$ constante:
+
+$$
+x^2y'' + xy' - p^2y = 0, \qquad x \gt  0
+$$
+
+a) Encontre a solução geral;<br />
+       b) Verifique, por substituição direta, que a solução encontrada de fato satisfaz a equação.
+
+<Gabarito>
+$r^2 - p^2 = 0 \Rightarrow r = \pm p$;   $y = c_1x^{p} + c_2x^{-p}$, $x \gt  0$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Para Cauchy-Euler, tentamos $y = x^r$. Então $y' = rx^{r-1}$ e $y'' = r(r-1)x^{r-2}$. Substituindo:
+
+$$
+x^2\,r(r-1)x^{r-2} + x\,rx^{r-1} - p^2x^r = \big[r(r-1) + r - p^2\big]x^r = 0
+$$
+
+**Passo 2 —** Equação auxiliar:
+
+$$
+r^2 - r + r - p^2 = r^2 - p^2 = 0 \;\Rightarrow\; r_1 = p, \quad r_2 = -p
+$$
+
+Como $p \neq 0$, as raízes são reais e distintas.
+
+**Passo 3 —** Solução geral (raízes reais distintas):
+
+$$
+\boxed{y = c_1x^{p} + c_2x^{-p}, \qquad x \gt  0}
+$$
+
+**Passo 4 (b) —** Verificação com $y_1 = x^p$: $y_1' = px^{p-1}$, $y_1'' = p(p-1)x^{p-2}$. Substituindo:
+
+$$
+x^2p(p-1)x^{p-2} + x\,px^{p-1} - p^2x^p = \big[p^2 - p + p - p^2\big]x^p = 0 \checkmark
+$$
+
+Com $y_2 = x^{-p}$: $y_2' = -px^{-p-1}$, $y_2'' = p(p+1)x^{-p-2}$. Substituindo:
+
+$$
+x^2p(p+1)x^{-p-2} - x\,px^{-p-1} - p^2x^{-p} = \big[p^2 + p - p - p^2\big]x^{-p} = 0 \checkmark
+$$
+
+Ambas satisfazem a equação, e como $x^p$ e $x^{-p}$ são LI (Wronskiano $= -2p\,x^{-1} \neq 0$), a combinação é a solução geral.
+</Passos>

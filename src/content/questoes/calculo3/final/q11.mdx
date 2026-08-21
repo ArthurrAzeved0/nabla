@@ -1,0 +1,49 @@
+---
+tema: "Multiplicadores de Lagrange"
+temaId: multiplicadores-lagrange
+pontos: 2,0 pts
+estiloDeProva: true
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma caixa retangular tem as arestas paralelas aos eixos e um vértice na origem; o vértice oposto $(x,y,z)$, com $x,y,z\gt 0$, está sobre a esfera $x^2 + y^2 + z^2 = 1$. Use multiplicadores de Lagrange para determinar o volume máximo dessa caixa.
+
+<Gabarito>
+$V_{\max} = \dfrac{1}{3\sqrt{3}} = \dfrac{\sqrt{3}}{9}$, em $x=y=z=\dfrac{1}{\sqrt{3}}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Maximize $V = xyz$ sujeito a $g = x^2 + y^2 + z^2 = 1$. O sistema $\nabla V = \lambda\nabla g$:
+
+$$
+yz = 2\lambda x,\qquad xz = 2\lambda y,\qquad xy = 2\lambda z
+$$
+
+**Passo 2 —** Multiplique por $x, y, z$ respectivamente — cada lado vira $xyz$:
+
+$$
+xyz = 2\lambda x^2 = 2\lambda y^2 = 2\lambda z^2
+$$
+
+**Passo 3 —** Com $\lambda\ne 0$ (senão $V=0$), obtemos $x^2 = y^2 = z^2$. Como $x,y,z\gt 0$, $x=y=z$.
+
+**Passo 4 —** Na restrição: $3x^2 = 1 \Rightarrow x = \dfrac{1}{\sqrt3}$. Assim $x=y=z=\dfrac{1}{\sqrt3}$.
+
+**Passo 5 —** Volume máximo:
+
+$$
+V_{\max} = \left(\frac{1}{\sqrt3}\right)^3 = \frac{1}{3\sqrt3} = \frac{\sqrt3}{9}
+$$
+</Passos>

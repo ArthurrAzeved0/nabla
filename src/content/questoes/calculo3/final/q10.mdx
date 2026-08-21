@@ -1,0 +1,63 @@
+---
+tema: "Fluxo · integral de superfície (direto)"
+temaId: fluxo-integral-de-superficie
+pontos: 2,0 pts
+estiloDeProva: true
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule **diretamente** (sem usar o Teorema da Divergência) o fluxo
+
+$$
+\iint_S \vec F\cdot d\vec S,\qquad \vec F(x,y,z) = (x,\, y,\, z)
+$$
+
+onde $S$ é a parte do paraboloide $z = 4 - x^2 - y^2$ com $z \ge 0$, orientada para cima.
+
+<Gabarito>
+$\displaystyle\iint_S \vec F\cdot d\vec S = 24\pi$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Para uma superfície gráfico $z = g(x,y)$ com orientação para cima, o vetor de área é
+
+$$
+d\vec S = (-g_x,\, -g_y,\, 1)\,dA
+$$
+
+Com $g = 4 - x^2 - y^2$: $g_x = -2x$, $g_y = -2y$, logo $d\vec S = (2x,\, 2y,\, 1)\,dA$.
+
+**Passo 2 —** Faça $\vec F\cdot d\vec S$, lembrando que na superfície $z = 4 - x^2 - y^2$:
+
+$$
+\vec F\cdot d\vec S = \big[x(2x) + y(2y) + z(1)\big]dA = \big[2x^2 + 2y^2 + (4 - x^2 - y^2)\big]dA = (x^2 + y^2 + 4)\,dA
+$$
+
+**Passo 3 —** A projeção no plano $xy$ é o disco onde $z\ge 0$: $4 - x^2 - y^2 \ge 0 \Rightarrow x^2+y^2 \le 4$. Em polares ($0\le r\le 2$, $0\le\theta\le 2\pi$):
+
+$$
+\iint_S \vec F\cdot d\vec S = \int_0^{2\pi}\!\!\int_0^{2} (r^2 + 4)\,r\,dr\,d\theta
+$$
+
+**Passo 4 —** Resolva:
+
+$$
+\int_0^2 (r^3 + 4r)\,dr = \left[\frac{r^4}{4} + 2r^2\right]_0^2 = 4 + 8 = 12
+$$
+
+$$
+\iint_S \vec F\cdot d\vec S = 2\pi\cdot 12 = 24\pi
+$$
+</Passos>

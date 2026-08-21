@@ -1,0 +1,78 @@
+---
+origem: "2023.2"
+tema: "Lei de Gauss · Cilindro"
+temaId: lei-de-gauss-cilindro
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um cilindro muito longo de raio $a$ possui densidade volumétrica de carga que cresce com o raio: $\rho(r) = \rho_0\,\dfrac{r}{a}$.
+
+Determine o campo elétrico para $r \lt  a$ (interior) e $r \gt  a$ (exterior).
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Cilindro carregado com gaussiana cilíndrica coaxial e campo radial">
+    {/* cilindro carregado em perspectiva */}
+    <rect x="60" y="60" width="180" height="70" fill="var(--warn)" opacity="0.2" stroke="none"/>
+    <ellipse cx="60" cy="95" rx="16" ry="35" fill="var(--warn)" opacity="0.25" stroke="var(--warn)" stroke-width="2"/>
+    <ellipse cx="240" cy="95" rx="16" ry="35" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    <line x1="60" y1="60" x2="240" y2="60" stroke="var(--warn)" stroke-width="2"/>
+    <line x1="60" y1="130" x2="240" y2="130" stroke="var(--warn)" stroke-width="2"/>
+    <text x="150" y="100" font-size="11" fill="var(--ink-2)" text-anchor="middle">ρ(r) = ρ₀ r/a</text>
+    <line x1="240" y1="95" x2="240" y2="60" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="248" y="76" font-size="10" fill="var(--ink-2)">a</text>
+    {/* gaussiana coaxial */}
+    <ellipse cx="150" cy="95" rx="22" ry="58" fill="none" stroke="var(--ok)" stroke-width="2" stroke-dasharray="6 5"/>
+    <text x="150" y="26" font-size="10" fill="var(--ok)" text-anchor="middle">gaussiana coaxial (raio r)</text>
+    {/* E radial */}
+    <line x1="150" y1="153" x2="150" y2="182" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="150,182 145,172 155,172" fill="var(--accent)"/>
+    <text x="160" y="176" font-size="11" fill="var(--accent)">E (radial)</text>
+    <line x1="290" y1="95" x2="322" y2="95" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="322,95 312,90 312,100" fill="var(--accent)"/>
+    <text x="298" y="84" font-size="11" fill="var(--accent)">E</text>
+  </svg>
+  <figcaption>
+
+Por simetria, $\vec E$ é radial; só a superfície lateral $2\pi r\ell$ da gaussiana tem fluxo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$E_{\text{int}} = \dfrac{\rho_0\,r^2}{3\varepsilon_0\,a}$  ·  $E_{\text{ext}} = \dfrac{\rho_0\,a^2}{3\varepsilon_0\,r}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Como $\rho$ varia com $r$, integre em cascas cilíndricas $dV = 2\pi r' \ell\,dr'$ (comprimento $\ell$):
+
+$$
+q(r) = \int_0^{r} \rho_0\frac{r'}{a}\,2\pi r' \ell\,dr' = \frac{2\pi\rho_0 \ell}{a}\int_0^{r} r'^2\,dr' = \frac{2\pi\rho_0 \ell\,r^3}{3a}
+$$
+
+**Passo 2 —** Gaussiana cilíndrica de raio $r \lt  a$: por simetria, o fluxo só passa pela superfície lateral, $\Phi = E\cdot 2\pi r \ell$:
+
+$$
+E\cdot 2\pi r \ell = \frac{q(r)}{\varepsilon_0} = \frac{2\pi\rho_0 \ell\,r^3}{3a\,\varepsilon_0} \;\Rightarrow\; \boxed{E_{\text{int}} = \frac{\rho_0\,r^2}{3\varepsilon_0\,a}}
+$$
+
+**Passo 3 —** Para $r \gt  a$, a carga envolvida é a total no trecho $\ell$, ou seja $q(a) = \frac{2\pi\rho_0 \ell\,a^2}{3}$:
+
+$$
+E\cdot 2\pi r \ell = \frac{2\pi\rho_0 \ell\,a^2}{3\varepsilon_0} \;\Rightarrow\; \boxed{E_{\text{ext}} = \frac{\rho_0\,a^2}{3\varepsilon_0\,r}}
+$$
+
+**Passo 4 —** Verificação: em $r = a$ as duas expressões dão $E = \rho_0 a/3\varepsilon_0$ ✓. Dentro o campo cresce como $r^2$; fora decai como $1/r$, típico de simetria cilíndrica.
+</Passos>

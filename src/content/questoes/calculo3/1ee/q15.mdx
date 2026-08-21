@@ -1,0 +1,65 @@
+---
+tema: "Multiplicadores de Lagrange"
+temaId: multiplicadores-lagrange
+pontos: 2,0 pts
+estiloDeProva: true
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Usando multiplicadores de Lagrange, encontre os valores máximo e mínimo de $f(x,y,z) = xyz$ sujeitos à restrição
+
+$$
+x^2 + 2y^2 + 3z^2 = 6
+$$
+
+<Gabarito>
+$f_{\max} = \dfrac{2\sqrt{3}}{3}$ e $f_{\min} = -\dfrac{2\sqrt{3}}{3}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Com $g = x^2 + 2y^2 + 3z^2 - 6$, o sistema $\nabla f = \lambda\nabla g$ dá
+
+$$
+yz = 2\lambda x,\qquad xz = 4\lambda y,\qquad xy = 6\lambda z
+$$
+
+**Passo 2 —** Multiplique cada equação por $x, y, z$ respectivamente. Todas ficam iguais a $xyz$:
+
+$$
+xyz = 2\lambda x^2 = 4\lambda y^2 = 6\lambda z^2
+$$
+
+**Passo 3 —** Para um extremo com $\lambda \ne 0$, cancele $\lambda$: $\;2x^2 = 4y^2 = 6z^2$. Daí
+
+$$
+x^2 = 2y^2,\qquad z^2 = \frac{2y^2}{3}
+$$
+
+**Passo 4 —** Leve à restrição:
+
+$$
+x^2 + 2y^2 + 3z^2 = 2y^2 + 2y^2 + 3\cdot\frac{2y^2}{3} = 6y^2 = 6 \;\Rightarrow\; y^2 = 1
+$$
+
+Logo $y^2 = 1$, $x^2 = 2$, $z^2 = \tfrac23$.
+
+**Passo 5 —** O valor de $|f| = |xyz|$ é o mesmo em todos esses pontos:
+
+$$
+|f| = \sqrt{2}\cdot 1\cdot\sqrt{\tfrac23} = \sqrt{2}\cdot\frac{\sqrt{2}}{\sqrt{3}} = \frac{2}{\sqrt{3}} = \frac{2\sqrt{3}}{3}
+$$
+
+Escolhendo os sinais adequados, $f_{\max} = \dfrac{2\sqrt{3}}{3}$ e $f_{\min} = -\dfrac{2\sqrt{3}}{3}$.
+</Passos>

@@ -1,0 +1,61 @@
+---
+origem: "2024.1"
+tema: "Equação de Bernoulli"
+temaId: bernoulli
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução da EDO
+
+$$
+y' + 4y = 3e^{2x}\,y^2
+$$
+
+<Gabarito>
+$y = \dfrac{2e^{-4x}}{3e^{-2x} + C}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** É uma Bernoulli com $n = 2$, $P(x) = 4$, $Q(x) = 3e^{2x}$. Substituição:
+
+$$
+z = y^{1-n} = y^{-1} = \frac1y
+$$
+
+**Passo 2 —** A equação em $z$ é $z' + (1-n)P\,z = (1-n)Q$:
+
+$$
+z' - 4z = -3e^{2x}
+$$
+
+**Passo 3 —** Linear em $z$; fator integrante $\mu = e^{\int -4\,dx} = e^{-4x}$:
+
+$$
+\big(e^{-4x}z\big)' = -3e^{2x}e^{-4x} = -3e^{-2x}
+$$
+
+**Passo 4 —** Integrando:
+
+$$
+e^{-4x}z = -3\int e^{-2x}dx = \frac{3}{2}e^{-2x} + \frac{C}{2} \;\Rightarrow\; z = \frac{3e^{-2x} + C}{2e^{-4x}}
+$$
+
+**Passo 5 —** Voltando para $y = 1/z$:
+
+$$
+\boxed{y = \frac{2e^{-4x}}{3e^{-2x} + C}}
+$$
+</Passos>

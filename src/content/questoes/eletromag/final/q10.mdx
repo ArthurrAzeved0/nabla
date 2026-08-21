@@ -1,0 +1,53 @@
+---
+origem: "2024.1"
+tema: "Condutores · Lei de Gauss"
+temaId: lei-de-gauss-condutor
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um satélite esférico condutor de $1{,}5\ \text{m}$ de diâmetro acumula uma carga de $2{,}5\ \mu\text{C}$ uniformemente distribuída em sua superfície.
+
+(a) Calcule a densidade superficial de carga $\sigma$.
+
+(b) Calcule o campo elétrico imediatamente acima da superfície.
+
+<Gabarito>
+(a) $\sigma \approx 3{,}54\times10^{-7}\ \text{C/m}^2$  ·  (b) $E = \sigma/\varepsilon_0 \approx 4{,}0\times10^{4}\ \text{N/C}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Raio: $R = 1{,}5/2 = 0{,}75\ \text{m}$. Densidade superficial:
+
+$$
+\sigma = \frac{Q}{4\pi R^2} = \frac{2{,}5\times10^{-6}}{4\pi (0{,}75)^2} = \frac{2{,}5\times10^{-6}}{7{,}07} \approx \boxed{3{,}54\times10^{-7}\ \text{C/m}^2}
+$$
+
+**Passo 2 —** Campo junto à superfície de um condutor: use uma gaussiana cilíndrica pequena atravessando a superfície. Dentro do condutor $E = 0$, então só a tampa externa tem fluxo:
+
+$$
+EA = \frac{\sigma A}{\varepsilon_0} \;\Rightarrow\; E = \frac{\sigma}{\varepsilon_0}
+$$
+
+(Note: é o *dobro* do plano infinito de carga, justamente porque o condutor "empurra" todo o campo para fora.)
+
+**Passo 3 —** Substituindo:
+
+$$
+E = \frac{3{,}54\times10^{-7}}{8{,}85\times10^{-12}} \approx \boxed{4{,}0\times10^{4}\ \text{N/C}}
+$$
+
+Conferindo como carga pontual em $r = R$: $E = kQ/R^2 = (8{,}99\times10^9)(2{,}5\times10^{-6})/0{,}5625 \approx 4{,}0\times10^4\ \text{N/C}$ ✓
+</Passos>

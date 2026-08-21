@@ -1,0 +1,71 @@
+---
+origem: Banco
+tema: "Capacitor · Força entre placas"
+temaId: forca-entre-placas-capacitor
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q36.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A placa $a$ de um capacitor (área $A = 500\ \text{cm}^2$) está presa a uma mola de constante $k = 100\ \text{N/m}$; a placa $b$ é fixa. A placa $a$ tem carga $+Q = 2{,}0\ \mu\text{C}$ e a $b$ tem $-Q$. De quanto a mola se distende?
+
+<Figura>
+  <svg viewBox="0 0 250 130" role="img" aria-label="Placa presa a uma mola atraída por placa fixa carregada">
+    {/* parede */}
+    <line x1="20" y1="30" x2="20" y2="100" stroke="var(--ink-2)" stroke-width="3"/>
+    <g stroke="var(--ink-2)" stroke-width="1"><line x1="20" y1="35" x2="13" y2="42"/><line x1="20" y1="50" x2="13" y2="57"/><line x1="20" y1="65" x2="13" y2="72"/><line x1="20" y1="80" x2="13" y2="87"/></g>
+    {/* mola */}
+    <path d="M 20 65 h 12 l 6 -9 l 10 18 l 10 -18 l 10 18 l 10 -18 l 6 9 h 12" fill="none" stroke="var(--ok)" stroke-width="1.6"/>
+    <text x="60" y="45" font-size="9" fill="var(--ok)" text-anchor="middle">k</text>
+    {/* placa a (móvel, +Q) */}
+    <line x1="110" y1="35" x2="110" y2="95" stroke="var(--accent)" stroke-width="3"/>
+    <text x="110" y="110" font-size="9" fill="var(--accent)" text-anchor="middle">+Q</text>
+    {/* placa b (fixa, -Q) */}
+    <line x1="160" y1="35" x2="160" y2="95" stroke="var(--warn)" stroke-width="3"/>
+    <text x="160" y="110" font-size="9" fill="var(--warn)" text-anchor="middle">−Q (fixa)</text>
+    {/* força de atração */}
+    <line x1="120" y1="65" x2="150" y2="65" stroke="var(--ink-3)" stroke-width="1.8"/>
+    <polygon points="150,65 140,60 140,70" fill="var(--ink-3)"/>
+    <text x="135" y="58" font-size="9" fill="var(--ink-3)">F</text>
+  </svg>
+  <figcaption>
+
+As placas com cargas opostas se atraem; essa força estica a mola até o equilíbrio $F = kx$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$F = \dfrac{Q^2}{2\varepsilon_0 A} \approx 4{,}52\ \text{N}$  ·  $x = F/k \approx 4{,}52\times10^{-2}\ \text{m} = 45{,}2\ \text{mm}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** A força de atração entre as placas de um capacitor é $F = QE_{\text{placa}}$, onde o campo criado por *uma* placa é $E = \sigma/(2\varepsilon_0) = Q/(2\varepsilon_0 A)$. Logo:
+
+$$
+F = \frac{Q^2}{2\varepsilon_0 A}
+$$
+
+**Passo 2 —** Substituindo $A = 0{,}05\ \text{m}^2$:
+
+$$
+F = \frac{(2{,}0\times10^{-6})^2}{2(8{,}85\times10^{-12})(0{,}05)} \approx \boxed{4{,}52\ \text{N}}
+$$
+
+**Passo 3 —** No equilíbrio a mola faz força igual e oposta, $F = kx$:
+
+$$
+x = \frac{F}{k} = \frac{4{,}52}{100} \approx \boxed{4{,}52\times10^{-2}\ \text{m} = 45{,}2\ \text{mm}}
+$$
+</Passos>

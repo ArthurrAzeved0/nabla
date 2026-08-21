@@ -1,0 +1,84 @@
+---
+origem: "2024.1"
+tema: "Indução · Lei de Faraday"
+temaId: inducao-faraday
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma espira circular de raio $5\ \text{cm}$ e resistência $R = 0{,}4\ \Omega$ está em um campo magnético perpendicular ao seu plano, que cresce à taxa constante $dB/dt = 40\ \text{mT/s}$.
+
+Calcule: (a) a fem induzida; (b) a corrente induzida; (c) a potência dissipada na espira.
+
+<Figura>
+  <svg viewBox="0 0 300 180" role="img" aria-label="Espira circular com campo crescente saindo da tela e corrente induzida horária">
+    {/* espira */}
+    <circle cx="130" cy="90" r="60" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+    {/* B saindo da tela */}
+    <g stroke="var(--accent)" fill="var(--accent)">
+      <circle cx="110" cy="70" r="6" fill="none" stroke-width="1.5"/><circle cx="110" cy="70" r="1.6"/>
+      <circle cx="150" cy="70" r="6" fill="none" stroke-width="1.5"/><circle cx="150" cy="70" r="1.6"/>
+      <circle cx="110" cy="110" r="6" fill="none" stroke-width="1.5"/><circle cx="110" cy="110" r="1.6"/>
+      <circle cx="150" cy="110" r="6" fill="none" stroke-width="1.5"/><circle cx="150" cy="110" r="1.6"/>
+    </g>
+    <text x="228" y="60" font-size="11" fill="var(--accent)">B crescente</text>
+    <text x="228" y="75" font-size="10" fill="var(--ink-3)">(sai da tela,</text>
+    <text x="228" y="89" font-size="10" fill="var(--ink-3)">dB/dt &gt; 0)</text>
+    {/* corrente induzida horária */}
+    <path d="M 95 33 A 68 68 0 0 1 168 35" fill="none" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="168,35 157,32 160,41" fill="var(--ok)"/>
+    <text x="130" y="18" font-size="10" fill="var(--ok)" text-anchor="middle">i induzida (horária — Lenz)</text>
+    <text x="130" y="168" font-size="11" fill="var(--ink-2)" text-anchor="middle">r = 5 cm</text>
+  </svg>
+  <figcaption>
+
+Fluxo crescendo para fora da tela → a corrente induzida circula no sentido horário para se opor (Lei de Lenz).
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $\varepsilon \approx 314\ \mu\text{V}$  ·  (b) $i \approx 785\ \mu\text{A}$  ·  (c) $P \approx 0{,}25\ \mu\text{W}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Área da espira:
+
+$$
+A = \pi r^2 = \pi (0{,}05)^2 \approx 7{,}85\times10^{-3}\ \text{m}^2
+$$
+
+**Passo 2 —** Lei de Faraday com área constante e $B$ variando:
+
+$$
+|\varepsilon| = \left|\frac{d\Phi}{dt}\right| = A\,\frac{dB}{dt} = (7{,}85\times10^{-3})(0{,}040) \approx \boxed{3{,}14\times10^{-4}\ \text{V} = 314\ \mu\text{V}}
+$$
+
+**Passo 3 —** Corrente induzida (lei de Ohm):
+
+$$
+i = \frac{\varepsilon}{R} = \frac{314\times10^{-6}}{0{,}4} \approx \boxed{785\ \mu\text{A}}
+$$
+
+Pela lei de Lenz, a corrente circula de modo a se opor ao *crescimento* do fluxo (sentido que gera campo contrário a $\vec B$ dentro da espira).
+
+**Passo 4 —** Potência dissipada:
+
+$$
+P = R\,i^2 = (0{,}4)(7{,}85\times10^{-4})^2 \approx \boxed{0{,}25\ \mu\text{W}}
+$$
+
+(Equivalente a $P = \varepsilon\,i = \varepsilon^2/R$ ✓)
+</Passos>

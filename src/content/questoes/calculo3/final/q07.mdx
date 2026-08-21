@@ -1,0 +1,63 @@
+---
+tema: "Integral tripla · esféricas"
+temaId: integrais-triplas-esfericas
+pontos: 2,0 pts
+estiloDeProva: true
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Usando coordenadas esféricas, calcule
+
+$$
+\iiint_E \sqrt{x^2 + y^2 + z^2}\,dV
+$$
+
+onde $E$ é a bola $x^2 + y^2 + z^2 \le 9$.
+
+<Gabarito>
+$\displaystyle\iiint_E \sqrt{x^2+y^2+z^2}\,dV = 81\pi$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Em coordenadas esféricas: $x^2+y^2+z^2 = \rho^2$, o integrando $\sqrt{x^2+y^2+z^2} = \rho$, e o elemento de volume é
+
+$$
+dV = \rho^2\operatorname{sen}\varphi\,d\rho\,d\varphi\,d\theta
+$$
+
+**Passo 2 —** Limites da bola inteira de raio $3$:
+
+$$
+0 \le \rho \le 3,\qquad 0 \le \varphi \le \pi,\qquad 0 \le \theta \le 2\pi
+$$
+
+**Passo 3 —** Monte a integral (integrando $\rho\cdot\rho^2\operatorname{sen}\varphi = \rho^3\operatorname{sen}\varphi$). Como as variáveis separam:
+
+$$
+\iiint_E \rho\,dV = \int_0^{2\pi} d\theta \int_0^{\pi}\operatorname{sen}\varphi\,d\varphi \int_0^{3}\rho^3\,d\rho
+$$
+
+**Passo 4 —** Cada fator:
+
+$$
+\int_0^{2\pi} d\theta = 2\pi,\quad \int_0^{\pi}\operatorname{sen}\varphi\,d\varphi = 2,\quad \int_0^{3}\rho^3\,d\rho = \frac{81}{4}
+$$
+
+$$
+\iiint_E \sqrt{x^2+y^2+z^2}\,dV = 2\pi\cdot 2\cdot\frac{81}{4} = 81\pi
+$$
+
+Dica de limites: bola completa $\Rightarrow \varphi$ percorre $0$ a $\pi$ (polo norte ao sul) e $\theta$ toda a volta $0$ a $2\pi$.
+</Passos>

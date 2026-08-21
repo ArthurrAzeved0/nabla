@@ -1,0 +1,103 @@
+---
+origem: "2023.2"
+tema: "Máximos e mínimos · Plano tangente"
+temaId: pontos-criticos
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a função $f(x,y) = x^3 + y^3 - 3x - 12y + 20$.
+
+<ol type="a">
+<li>
+
+Encontre e classifique os pontos críticos de $f$;
+
+</li>
+<li>
+
+Encontre o plano tangente a $f(x,y)$ no ponto $P(-1, 1)$.
+
+</li>
+</ol>
+
+<Figura>
+  <svg viewBox="0 0 300 220" role="img" aria-label="Os quatro pontos críticos no plano xy classificados como mínimo, máximo e selas">
+    <line x1="30" y1="110" x2="280" y2="110" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="280,110 271,106 271,114" fill="var(--ink-3)"/>
+    <text x="284" y="114" font-size="11" fill="var(--ink-3)">x</text>
+    <line x1="150" y1="205" x2="150" y2="15" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="150,15 146,24 154,24" fill="var(--ink-3)"/>
+    <text x="156" y="22" font-size="11" fill="var(--ink-3)">y</text>
+    {/* mínimo (1,2) */}
+    <circle cx="200" cy="40" r="6" fill="var(--ok)"/>
+    <text x="208" y="38" font-size="11" fill="var(--ok)">(1, 2) mín</text>
+    {/* sela (-1,2) */}
+    <circle cx="100" cy="40" r="6" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+    <text x="16" y="38" font-size="11" fill="var(--warn)">(−1, 2) sela</text>
+    {/* sela (1,-2) */}
+    <circle cx="200" cy="180" r="6" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+    <text x="208" y="184" font-size="11" fill="var(--warn)">(1, −2) sela</text>
+    {/* máximo (-1,-2) */}
+    <circle cx="100" cy="180" r="6" fill="var(--accent)"/>
+    <text x="10" y="184" font-size="11" fill="var(--accent)">(−1, −2) máx</text>
+  </svg>
+  <figcaption>
+
+Os quatro pontos críticos: o sinal de $D = 36xy$ alterna pelos quadrantes — daí um mínimo, um máximo e duas selas em diagonal.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+a) $(1,2)$: mínimo local; $(-1,-2)$: máximo local; $(1,-2)$ e $(-1,2)$: pontos de sela.   b) $z = -9y + 20$.
+</Gabarito>
+
+<Passos>
+**Item (a)**
+
+**Passo 1 —** Zere o gradiente:
+
+$$
+f_x = 3x^2 - 3 = 0 \Rightarrow x = \pm 1 \qquad\quad f_y = 3y^2 - 12 = 0 \Rightarrow y = \pm 2
+$$
+
+Pontos críticos: $(1,2),\; (1,-2),\; (-1,2),\; (-1,-2)$.
+
+**Passo 2 —** Monte a Hessiana: $f_{xx} = 6x$, $f_{yy} = 6y$, $f_{xy} = 0$, logo $D = f_{xx}f_{yy} - f_{xy}^2 = 36xy$.
+
+**Passo 3 —** Classifique cada ponto:
+
+- $(1,2)$: $D = 72 \gt 0$ e $f_{xx} = 6 \gt 0$ $\Rightarrow$ **mínimo local** ($f = 2$);
+- $(1,-2)$: $D = -72 \lt 0$ $\Rightarrow$ **sela**;
+- $(-1,2)$: $D = -72 \lt 0$ $\Rightarrow$ **sela**;
+- $(-1,-2)$: $D = 72 \gt 0$ e $f_{xx} = -6 \lt 0$ $\Rightarrow$ **máximo local** ($f = 38$).
+
+**Item (b)**
+
+**Passo 1 —** Calcule a cota do ponto: $f(-1,1) = -1 + 1 + 3 - 12 + 20 = 11$.
+
+**Passo 2 —** Avalie as parciais em $(-1,1)$:
+
+$$
+f_x(-1,1) = 3(1) - 3 = 0 \qquad f_y(-1,1) = 3(1) - 12 = -9
+$$
+
+**Passo 3 —** Use a equação do plano tangente ao gráfico:
+
+$$
+z - 11 = 0\,(x+1) - 9\,(y-1) \;\;\Longrightarrow\;\; \boxed{z = -9y + 20}
+$$
+</Passos>

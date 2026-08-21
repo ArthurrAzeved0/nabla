@@ -1,0 +1,82 @@
+---
+origem: Banco
+tema: "RL (CA) · Fasores"
+temaId: rlc-sem-capacitor-fasores
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um circuito RLC teve o **capacitor removido**, restando $R = 180\ \Omega$ e $L = 280\ \text{mH}$, com $f = 55{,}0\ \text{Hz}$ e $\varepsilon_m = 30{,}0\ \text{V}$.
+
+(a) Determine $Z$ e a constante de fase $\varphi$.
+
+(b) Escreva explicitamente $\varepsilon(t)$ e $i(t)$ como funções seno.
+
+(c) Desenhe o diagrama fasorial (posição relativa de $\vec V_R$, $\vec V_L$ e $\vec E$).
+
+(d) Determine a potência média dissipada no resistor.
+
+<Figura>
+  <svg viewBox="0 0 200 170" role="img" aria-label="Diagrama fasorial com VR horizontal, VL vertical e E na diagonal">
+    <line x1="30" y1="140" x2="185" y2="140" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="30" y1="140" x2="30" y2="20" stroke="var(--ink-3)" stroke-width="1"/>
+    {/* VR (horizontal, ref) */}
+    <line x1="30" y1="140" x2="140" y2="140" stroke="var(--accent)" stroke-width="2.5"/>
+    <polygon points="140,140 130,135 130,145" fill="var(--accent)"/>
+    <text x="95" y="155" font-size="10" fill="var(--accent)">V_R (∥ I)</text>
+    {/* VL (vertical) */}
+    <line x1="30" y1="140" x2="30" y2="80" stroke="var(--ok)" stroke-width="2.5"/>
+    <polygon points="30,80 25,90 35,90" fill="var(--ok)"/>
+    <text x="38" y="95" font-size="10" fill="var(--ok)">V_L</text>
+    {/* E (diagonal, soma) */}
+    <line x1="30" y1="140" x2="140" y2="80" stroke="var(--warn)" stroke-width="2.5"/>
+    <polygon points="140,80 129,80 134,89" fill="var(--warn)"/>
+    <text x="120" y="72" font-size="10" fill="var(--warn)">E</text>
+    {/* ângulo φ */}
+    <path d="M 60 140 A 30 30 0 0 0 55 124" fill="none" stroke="var(--ink-2)" stroke-width="1"/>
+    <text x="66" y="130" font-size="9" fill="var(--ink-2)">φ</text>
+  </svg>
+  <figcaption>
+
+$\vec V_R$ alinhado com a corrente; $\vec V_L$ adiantado 90°; $\vec E$ é a soma vetorial, formando o triângulo de impedância.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $Z \approx 204{,}4\ \Omega$, $\varphi \approx 28{,}3°$  ·  (b) $\varepsilon(t) = 30{,}0\,\text{sen}(345{,}6\,t)$, $i(t) = 0{,}1468\,\text{sen}(345{,}6\,t - 28{,}3°)$  ·  (d) $P_{\text{med}} \approx 1{,}94\ \text{W}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Sem capacitor, $Z = \sqrt{R^2 + X_L^2}$. Com $\omega = 2\pi f \approx 345{,}6\ \text{rad/s}$, $X_L = \omega L \approx 96{,}8\ \Omega$:
+
+$$
+Z = \sqrt{180^2 + 96{,}8^2} \approx \boxed{204{,}4\ \Omega} \qquad \varphi = \arctan\frac{X_L}{R} \approx \boxed{28{,}3°}
+$$
+
+**Passo 2 —** Amplitude da corrente: $I = \varepsilon_m/Z \approx 146{,}8\ \text{mA}$. Como o circuito é **indutivo**, a corrente *atrasa* em relação à tensão:
+
+$$
+\varepsilon(t) = 30{,}0\,\text{sen}(345{,}6\,t)\ \text{V} \qquad \boxed{i(t) = 0{,}1468\,\text{sen}(345{,}6\,t - 28{,}3°)\ \text{A}}
+$$
+
+**Passo 3 —** No diagrama fasorial: $\vec V_R$ fica alinhado com $\vec I$ (eixo horizontal, referência); $\vec V_L$ fica 90° adiantado (para cima); a soma $\vec E = \vec V_R + \vec V_L$ forma ângulo $\varphi = 28{,}3°$ acima de $\vec I$ — é o triângulo retângulo de catetos $R$ e $X_L$ e hipotenusa $Z$.
+
+**Passo 4 —** Potência média (só o resistor dissipa):
+
+$$
+P_{\text{med}} = \frac{1}{2}I^2 R = \frac{1}{2}(0{,}1468)^2(180) \approx \boxed{1{,}94\ \text{W}}
+$$
+</Passos>

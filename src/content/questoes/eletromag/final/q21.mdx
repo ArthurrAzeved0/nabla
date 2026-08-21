@@ -1,0 +1,78 @@
+---
+origem: Banco
+tema: "Campo magnético · Fios num quadrado"
+temaId: campo-magnetico-tres-fios
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Três fios longos estão em três cantos de um quadrado de lado $L = 2{,}0\ \text{cm}$, todos com $i = 3{,}0\ \text{A}$ **entrando** na página. Calcule o módulo do campo magnético resultante no **quarto vértice** (vazio) do quadrado.
+
+<Figura>
+  <svg viewBox="0 0 210 200" role="img" aria-label="Três fios em três cantos de um quadrado e ponto P no quarto canto vazio">
+    {/* quadrado */}
+    <rect x="50" y="45" width="110" height="110" fill="none" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="4 4"/>
+    {/* fios (3 cantos, entrando) */}
+    <g stroke="var(--accent)" stroke-width="1.8">
+      <circle cx="50" cy="45" r="8" fill="none"/>
+      <line x1="45" y1="40" x2="55" y2="50"/><line x1="55" y1="40" x2="45" y2="50"/>
+      <circle cx="160" cy="45" r="8" fill="none"/>
+      <line x1="155" y1="40" x2="165" y2="50"/><line x1="165" y1="40" x2="155" y2="50"/>
+      <circle cx="160" cy="155" r="8" fill="none"/>
+      <line x1="155" y1="150" x2="165" y2="160"/><line x1="165" y1="150" x2="155" y2="160"/>
+    </g>
+    <text x="105" y="30" font-size="9" fill="var(--accent)" text-anchor="middle">i (⊗ entrando)</text>
+    {/* P no vértice vazio */}
+    <circle cx="50" cy="155" r="4" fill="var(--ink-2)"/>
+    <text x="38" y="160" font-size="11" fill="var(--ink-2)" text-anchor="end">P</text>
+    {/* distâncias */}
+    <text x="35" y="103" font-size="9" fill="var(--ink-3)" text-anchor="end">L</text>
+    <line x1="50" y1="155" x2="160" y2="45" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="2 2"/>
+    <text x="118" y="112" font-size="8.5" fill="var(--ink-3)">L√2</text>
+  </svg>
+  <figcaption>
+
+Dois fios estão a $L$ de $P$; o da diagonal está a $L\sqrt2$, contribuindo com $B_0/\sqrt2$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$B_R = \dfrac{3\sqrt2}{2}\,B_0 \approx 63{,}6\ \mu\text{T}$, com $B_0 = \dfrac{\mu_0 i}{2\pi L} = 30{,}0\ \mu\text{T}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Dois fios estão adjacentes a $P$ (distância $L$); o terceiro está na diagonal (distância $L\sqrt2$). Campo dos dois adjacentes:
+
+$$
+B_0 = \frac{\mu_0 i}{2\pi L} = \frac{2\times10^{-7}\cdot 3}{0{,}02} = 30{,}0\ \mu\text{T}
+$$
+
+**Passo 2 —** Os dois campos dos fios adjacentes são perpendiculares entre si e cada um tem módulo $B_0$; somando, apontam ao longo da diagonal com módulo:
+
+$$
+B_{\text{adj}} = \sqrt{B_0^2 + B_0^2} = B_0\sqrt2
+$$
+
+**Passo 3 —** O fio da diagonal está a $L\sqrt2$, então seu campo vale $B_{\text{diag}} = \dfrac{\mu_0 i}{2\pi (L\sqrt2)} = \dfrac{B_0}{\sqrt2}$, e aponta na *mesma* direção diagonal — logo soma direto:
+
+$$
+B_R = B_0\sqrt2 + \frac{B_0}{\sqrt2} = \frac{2B_0 + B_0}{\sqrt2} = \frac{3B_0}{\sqrt2} = \frac{3\sqrt2}{2}B_0
+$$
+
+$$
+B_R = \frac{3\sqrt2}{2}\cdot 30{,}0 \approx \boxed{63{,}6\ \mu\text{T}}
+$$
+</Passos>

@@ -1,0 +1,78 @@
+---
+origem: "2025.1"
+tema: "Exatas · fator integrante μ(y)"
+temaId: fator-integrante-exatas
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a equação diferencial:
+
+$$
+xy\,dx + (2x^2 + 3y^2 - 20)\,dy = 0
+$$
+
+a) Encontre um fator integrante (1,0 pt);<br />
+       b) Encontre a sua solução geral (1,5 pts).
+
+<Gabarito>
+$\mu = y^3$;   $\dfrac{x^2y^4}{2} + \dfrac{y^6}{2} - 5y^4 = C$, ou seja, $x^2y^4 + y^6 - 10y^4 = C$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Com $M = xy$ e $N = 2x^2 + 3y^2 - 20$:
+
+$$
+M_y = x \quad\text{e}\quad N_x = 4x \;\Rightarrow\; M_y \neq N_x \text{ (não exata)}
+$$
+
+**Passo 2 —** Testamos fator integrante que depende só de $y$:
+
+$$
+\frac{N_x - M_y}{M} = \frac{3x}{xy} = \frac{3}{y} \;\Rightarrow\; \mu = e^{\int \frac{3}{y}dy} = e^{3\ln y} = y^3
+$$
+
+(Depende só de $y$ ✓, então o fator serve.)
+
+**Passo 3 (b) —** Multiplicando tudo por $y^3$:
+
+$$
+xy^4\,dx + (2x^2y^3 + 3y^5 - 20y^3)\,dy = 0
+$$
+
+Agora $M_y = 4xy^3 = N_x$ — exata ✓.
+
+**Passo 4 —** Integramos $M$ em $x$:
+
+$$
+f(x,y) = \int xy^4\,dx = \frac{x^2}{2}y^4 + g(y)
+$$
+
+**Passo 5 —** Derivando em $y$ e comparando com $N$:
+
+$$
+f_y = 2x^2y^3 + g'(y) = 2x^2y^3 + 3y^5 - 20y^3 \;\Rightarrow\; g'(y) = 3y^5 - 20y^3
+$$
+
+$$
+g(y) = \frac{y^6}{2} - 5y^4
+$$
+
+**Passo 6 —** Solução implícita (multiplicando por 2):
+
+$$
+\boxed{x^2y^4 + y^6 - 10y^4 = C}
+$$
+</Passos>

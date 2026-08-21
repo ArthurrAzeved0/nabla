@@ -1,0 +1,114 @@
+---
+origem: "2024.1"
+tema: "Campo elétrico · Soma vetorial"
+temaId: campo-eletrico-vetorial
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma carga $q_1 = 5\ \mu\text{C}$ está localizada no ponto $(1,\ 3)\ \text{m}$ e uma carga $q_2 = -4\ \mu\text{C}$ está no ponto $(2,\ -2)\ \text{m}$.
+
+Determine o campo elétrico resultante (componentes, módulo e sentido) no ponto $P(-3,\ 1)\ \text{m}$.
+
+<Figura>
+  <svg viewBox="0 0 320 220" role="img" aria-label="Plano xy com as cargas q1, q2 e o ponto P">
+    {/* eixos */}
+    <line x1="20" y1="120" x2="300" y2="120" stroke="var(--ink-3)" stroke-width="1.5"/>
+    <polygon points="300,120 290,116 290,124" fill="var(--ink-3)"/>
+    <text x="292" y="110" font-size="11" fill="var(--ink-3)">x</text>
+    <line x1="160" y1="210" x2="160" y2="15" stroke="var(--ink-3)" stroke-width="1.5"/>
+    <polygon points="160,15 156,25 164,25" fill="var(--ink-3)"/>
+    <text x="168" y="24" font-size="11" fill="var(--ink-3)">y</text>
+    {/* q1 em (1,3) → (185,45) escala 25px */}
+    <circle cx="185" cy="45" r="9" fill="var(--warn)"/>
+    <text x="185" y="49" font-size="12" fill="#fff" text-anchor="middle">+</text>
+    <text x="198" y="42" font-size="11" fill="var(--ink-2)">q₁ (1, 3)</text>
+    {/* q2 em (2,-2) → (210,170) */}
+    <circle cx="210" cy="170" r="9" fill="var(--accent)"/>
+    <text x="210" y="174" font-size="12" fill="#fff" text-anchor="middle">−</text>
+    <text x="223" y="168" font-size="11" fill="var(--ink-2)">q₂ (2, −2)</text>
+    {/* P em (-3,1) → (85,95) */}
+    <circle cx="85" cy="95" r="4" fill="var(--ink-2)"/>
+    <text x="62" y="88" font-size="12" fill="var(--ink-2)">P (−3, 1)</text>
+    {/* vetores r */}
+    <line x1="185" y1="45" x2="85" y2="95" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+    <line x1="210" y1="170" x2="85" y2="95" stroke="var(--line-2)" stroke-dasharray="4 4"/>
+    {/* E1: afasta de q1, direção (-4,-2)/4.47 → svg (-0.89,+0.45)*38 */}
+    <line x1="85" y1="95" x2="51" y2="112" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="51,112 61,111 58,104" fill="var(--warn)"/>
+    <text x="34" y="112" font-size="11" fill="var(--warn)">E₁</text>
+    {/* E2: aponta para q2, direção (5,-3)/5.83 → svg (+0.86,+0.51)*32 */}
+    <line x1="85" y1="95" x2="113" y2="112" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="113,112 104,111 107,104" fill="var(--accent)"/>
+    <text x="118" y="118" font-size="11" fill="var(--accent)">E₂</text>
+    {/* resultante (-1.10,-1.55)/1.90 → svg (-0.58,+0.82)*42 */}
+    <line x1="85" y1="95" x2="61" y2="129" stroke="var(--ok)" stroke-width="2.5"/>
+    <polygon points="61,129 64,119 71,124" fill="var(--ok)"/>
+    <text x="42" y="140" font-size="11" fill="var(--ok)">E</text>
+  </svg>
+  <figcaption>
+
+Em $P$: $\vec E_1$ aponta *para longe* de $q_1$ (positiva) e $\vec E_2$ aponta *para* $q_2$ (negativa).
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\vec E \approx (-1{,}10\,\hat i - 1{,}55\,\hat j)\times 10^{3}\ \text{N/C}$, com módulo $|\vec E| \approx 1{,}90\times 10^{3}\ \text{N/C}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Vetores que vão de cada carga até $P$:
+
+$$
+\vec r_1 = P - (1,3) = (-4,\ -2)\ \text{m}, \qquad r_1 = \sqrt{16+4} = \sqrt{20} \approx 4{,}47\ \text{m}
+$$
+
+$$
+\vec r_2 = P - (2,-2) = (-5,\ 3)\ \text{m}, \qquad r_2 = \sqrt{25+9} = \sqrt{34} \approx 5{,}83\ \text{m}
+$$
+
+**Passo 2 —** Módulos dos campos:
+
+$$
+E_1 = \frac{k|q_1|}{r_1^2} = \frac{(8{,}99\times10^9)(5\times10^{-6})}{20} \approx 2{,}25\times10^{3}\ \text{N/C}
+$$
+
+$$
+E_2 = \frac{k|q_2|}{r_2^2} = \frac{(8{,}99\times10^9)(4\times10^{-6})}{34} \approx 1{,}06\times10^{3}\ \text{N/C}
+$$
+
+**Passo 3 —** Direções: $q_1 \gt  0$ → o campo em $P$ *aponta para longe* de $q_1$ (na direção de $\hat r_1$); $q_2 \lt  0$ → o campo *aponta para* $q_2$ (sentido oposto a $\hat r_2$):
+
+$$
+\vec E_1 = E_1\,\hat r_1 = 2{,}25\times10^3 \cdot \frac{(-4,-2)}{4{,}47} \approx (-2{,}01,\ -1{,}00)\times10^{3}\ \text{N/C}
+$$
+
+$$
+\vec E_2 = -E_2\,\hat r_2 = 1{,}06\times10^3 \cdot \frac{(5,-3)}{5{,}83} \approx (0{,}91,\ -0{,}54)\times10^{3}\ \text{N/C}
+$$
+
+**Passo 4 —** Somando componente a componente:
+
+$$
+\vec E = \vec E_1 + \vec E_2 \approx \boxed{(-1{,}10\,\hat i - 1{,}55\,\hat j)\times10^{3}\ \text{N/C}}
+$$
+
+$$
+|\vec E| = \sqrt{(1{,}10)^2 + (1{,}55)^2}\times10^3 \approx \boxed{1{,}90\times10^{3}\ \text{N/C}}
+$$
+
+O campo aponta para o 3º quadrante (esquerda e para baixo).
+</Passos>

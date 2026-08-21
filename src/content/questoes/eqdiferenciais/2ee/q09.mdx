@@ -1,0 +1,65 @@
+---
+origem: "2025.2"
+tema: "Sistema · autovalores complexos"
+temaId: sistemas-autovalores-complexos
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a solução geral do sistema:
+
+$$
+\begin{cases} \dfrac{dx}{dt} = 4x + 5y \\[4pt] \dfrac{dy}{dt} = -2x + 6y \end{cases}
+$$
+
+<Gabarito>
+$\lambda = 5 \pm 3i$;   $X(t) = c_1e^{5t}\begin{pmatrix}\cos 3t + 3\operatorname{sen} 3t\\ 2\cos 3t\end{pmatrix} + c_2e^{5t}\begin{pmatrix}-3\cos 3t + \operatorname{sen} 3t\\ 2\operatorname{sen} 3t\end{pmatrix}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** $A = \begin{pmatrix} 4 & 5 \\ -2 & 6 \end{pmatrix}$. Autovalores:
+
+$$
+\det(A - \lambda I) = \lambda^2 - 10\lambda + 34 = 0 \;\Rightarrow\; \lambda = \frac{10 \pm \sqrt{100 - 136}}{2} = 5 \pm 3i
+$$
+
+**Passo 2 —** Autovetor para $\lambda_1 = 5 + 3i$:
+
+$$
+\begin{pmatrix} -1-3i & 5 \\ -2 & 1-3i \end{pmatrix}K = 0 \;\Rightarrow\; 2k_1 = (1-3i)k_2
+$$
+
+Com $k_2 = 2$: $k_1 = 1 - 3i$, então
+
+$$
+K_1 = \begin{pmatrix}1-3i\\2\end{pmatrix} = \underbrace{\begin{pmatrix}1\\2\end{pmatrix}}_{B_1} + i\underbrace{\begin{pmatrix}-3\\0\end{pmatrix}}_{B_2}
+$$
+
+**Passo 3 —** Com $\alpha = 5$ e $\beta = 3$, as soluções reais são:
+
+$$
+X_1 = e^{5t}\big(B_1\cos 3t - B_2\operatorname{sen} 3t\big) = e^{5t}\begin{pmatrix}\cos 3t + 3\operatorname{sen} 3t\\ 2\cos 3t\end{pmatrix}
+$$
+
+$$
+X_2 = e^{5t}\big(B_2\cos 3t + B_1\operatorname{sen} 3t\big) = e^{5t}\begin{pmatrix}-3\cos 3t + \operatorname{sen} 3t\\ 2\operatorname{sen} 3t\end{pmatrix}
+$$
+
+**Passo 4 —** Solução geral (espiral instável, pois $\operatorname{Re}\lambda = 5 \gt  0$):
+
+$$
+\boxed{X(t) = c_1e^{5t}\begin{pmatrix}\cos 3t + 3\operatorname{sen} 3t\\ 2\cos 3t\end{pmatrix} + c_2e^{5t}\begin{pmatrix}-3\cos 3t + \operatorname{sen} 3t\\ 2\operatorname{sen} 3t\end{pmatrix}}
+$$
+</Passos>

@@ -1,0 +1,86 @@
+---
+origem: Banco
+tema: "Indução · fem de movimento"
+temaId: inducao-barra-em-V
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dois trilhos retilíneos formam um ângulo reto (em "V"). Uma barra parte do vértice em $t = 0$ com velocidade constante $v = 5{,}20\ \text{m/s}$, movendo-se ao longo da bissetriz entre os trilhos. Há um campo $B = 0{,}350\ \text{T}$ para fora da página em toda a região.
+
+(a) Determine o fluxo através do triângulo formado em $t = 3{,}00\ \text{s}$.
+
+(b) Determine a fem nesse instante.
+
+(c) Se $\varepsilon = a\,t^n$, qual o valor de $n$?
+
+<Figura>
+  <svg viewBox="0 0 220 190" role="img" aria-label="Trilhos em V com barra horizontal e campo saindo da tela, área triangular crescendo">
+    {/* campo saindo */}
+    <g stroke="var(--ink-3)" fill="var(--ink-3)">
+      <circle cx="55" cy="55" r="3.5" fill="none" stroke-width="1"/><circle cx="55" cy="55" r="1"/>
+      <circle cx="165" cy="55" r="3.5" fill="none" stroke-width="1"/><circle cx="165" cy="55" r="1"/>
+      <circle cx="110" cy="45" r="3.5" fill="none" stroke-width="1"/><circle cx="110" cy="45" r="1"/>
+    </g>
+    {/* trilhos em V (vértice embaixo) */}
+    <line x1="110" y1="165" x2="45" y2="40" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <line x1="110" y1="165" x2="175" y2="40" stroke="var(--ink-2)" stroke-width="2.5"/>
+    {/* área triangular preenchida */}
+    <polygon points="110,165 72,92 148,92" fill="var(--accent)" opacity="0.15"/>
+    {/* barra */}
+    <line x1="72" y1="92" x2="148" y2="92" stroke="var(--accent)" stroke-width="4"/>
+    <text x="110" y="84" font-size="10" fill="var(--accent)" text-anchor="middle">barra</text>
+    {/* velocidade */}
+    <line x1="110" y1="120" x2="110" y2="98" stroke="var(--ok)" stroke-width="2.2"/>
+    <polygon points="110,98 105,108 115,108" fill="var(--ok)"/>
+    <text x="120" y="115" font-size="10" fill="var(--ok)">v</text>
+    <text x="55" y="182" font-size="9" fill="var(--ink-3)" text-anchor="middle">B (sai da tela)</text>
+  </svg>
+  <figcaption>
+
+A área do triângulo cresce com $t^2$; por isso a fem cresce linearmente com $t$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $\Phi(3) = B\,v^2 t^2 \approx 85{,}2\ \text{Wb}$  ·  (b) $\varepsilon(3) = 2B\,v^2 t \approx 56{,}8\ \text{V}$  ·  (c) $n = 1$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Geometria do "V" a 90°: cada trilho faz 45° com a bissetriz. Em $t$, a barra percorreu $x = vt$ e o triângulo tem base $2x\tan45° = 2x$ e altura $x$. Área:
+
+$$
+A = \frac{1}{2}(2x)(x) = x^2 = v^2 t^2
+$$
+
+**Passo 2 —** Fluxo:
+
+$$
+\Phi(t) = B\,A = B\,v^2 t^2 \;\Rightarrow\; \Phi(3) = 0{,}350(5{,}20)^2(3)^2 \approx \boxed{85{,}2\ \text{Wb}}
+$$
+
+**Passo 3 —** Fem pela Lei de Faraday:
+
+$$
+\varepsilon = \frac{d\Phi}{dt} = 2B\,v^2 t \;\Rightarrow\; \varepsilon(3) = 2(0{,}350)(5{,}20)^2(3) \approx \boxed{56{,}8\ \text{V}}
+$$
+
+**Passo 4 —** Como $\varepsilon \propto t^1$, comparando com $\varepsilon = a\,t^n$:
+
+$$
+\boxed{n = 1}
+$$
+</Passos>

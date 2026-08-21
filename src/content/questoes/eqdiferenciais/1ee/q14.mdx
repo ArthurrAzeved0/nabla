@@ -1,0 +1,64 @@
+---
+origem: "2024.1"
+tema: "Circuito RLC"
+temaId: circuito-rlc
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja o circuito elétrico composto por um resistor $R$, um indutor $L$ e um capacitor $C$ conectados em série com uma fonte de tensão $V(t)$. A EDO que modela o circuito é $V(t) = R\,Q' + L\,Q'' + \dfrac{Q}{C}$, que na forma canônica se resume a
+
+$$
+Q'' + \frac{R}{L}Q' + \frac{1}{LC}Q = V
+$$
+
+Considerando $R = 2\,\Omega$, $L = 1\,H$, $C = 1\,F$, $V(t) = 10\operatorname{sen}(t)$ e condições $Q(0) = 0$ e $Q'(0) = 0$, encontre a solução da EDO em termos da carga $Q$:<br />
+    a) (0,5) solução da homogênea;  b) (1,0) solução da não homogênea;  c) (1,0) solução final.
+
+<Gabarito>
+a) $Q_h = C_1e^{-t} + C_2te^{-t}$;  b) $Q_p = -5\cos t$;  c) $Q(t) = 5\big(e^{-t} + te^{-t} - \cos t\big)$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** A equação é $Q'' + 2Q' + Q = 10\operatorname{sen} t$. Característica:
+
+$$
+m^2 + 2m + 1 = (m+1)^2 = 0 \;\Rightarrow\; m = -1 \text{ (dupla)} \;\Rightarrow\; Q_h = C_1e^{-t} + C_2te^{-t}
+$$
+
+**Passo 2 (b) —** Chute $Q_p = R_0\operatorname{sen} t + S_0\cos t$. Substituindo e agrupando:
+
+$$
+(-R_0 - 2S_0 + R_0)\operatorname{sen} t + (-S_0 + 2R_0 + S_0)\cos t = 10\operatorname{sen} t
+$$
+
+$$
+\Rightarrow\; -2S_0 = 10 \;\text{e}\; 2R_0 = 0 \;\Rightarrow\; R_0 = 0,\; S_0 = -5 \;\Rightarrow\; Q_p = -5\cos t
+$$
+
+**Passo 3 —** Solução geral: $Q(t) = C_1e^{-t} + C_2te^{-t} - 5\cos t$.
+
+**Passo 4 (c) —** Condições iniciais: $Q(0) = C_1 - 5 = 0 \Rightarrow C_1 = 5$. E
+
+$$
+Q'(t) = -C_1e^{-t} + C_2e^{-t} - C_2te^{-t} + 5\operatorname{sen} t \;\Rightarrow\; Q'(0) = -C_1 + C_2 = 0 \Rightarrow C_2 = 5
+$$
+
+**Passo 5 —** Solução final:
+
+$$
+\boxed{Q(t) = 5\big(e^{-t} + te^{-t} - \cos t\big)}
+$$
+</Passos>

@@ -1,0 +1,61 @@
+---
+origem: "2023.2"
+tema: "Oscilador amortecido"
+temaId: oscilador-amortecido
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+As equações diferenciais que representam um movimento harmônico amortecido e não forçado têm a forma
+
+$$
+\frac{d^2y}{dt^2} + b\,\frac{dy}{dt} + \frac{k}{m}\,y = 0
+$$
+
+onde $b$ é a constante de amortecimento, $k$ a constante elástica da mola e $m$ a massa. Encontre a solução geral para:
+
+A) $b = 10$, $k = 20$, $m = 0{,}5$;   B) $b = 10$, $k = 40$, $m = 2$;   C) $b = 10$, $k = 50$, $m = 2$.
+
+<Gabarito>
+A) $y = e^{-5t}\big(A\cos\sqrt{15}\,t + B\operatorname{sen}\sqrt{15}\,t\big)$ (subamortecido);  B) $y = Ae^{(-5+\sqrt5)t} + Be^{(-5-\sqrt5)t}$ (superamortecido);  C) $y = (A + Bt)\,e^{-5t}$ (crítico).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** A característica é $\lambda^2 + b\lambda + \dfrac{k}{m} = 0$, com $\Delta = b^2 - 4\dfrac{k}{m}$.
+
+**Passo 2 (A) —** $b = 10$, $k/m = 40$: $\Delta = 100 - 160 = -60 \lt  0$. Raízes complexas:
+
+$$
+\lambda = -5 \pm \sqrt{15}\,i \;\Rightarrow\; y = e^{-5t}\big(A\cos\sqrt{15}\,t + B\operatorname{sen}\sqrt{15}\,t\big)
+$$
+
+Movimento *subamortecido*: oscila com amplitude decaindo.
+
+**Passo 3 (B) —** $k/m = 20$: $\Delta = 100 - 80 = 20 \gt  0$. Raízes reais distintas:
+
+$$
+\lambda = -5 \pm \sqrt5 \;\Rightarrow\; y = Ae^{(-5+\sqrt5)t} + Be^{(-5-\sqrt5)t}
+$$
+
+Movimento *superamortecido*: retorna ao equilíbrio sem oscilar.
+
+**Passo 4 (C) —** $k/m = 25$: $\Delta = 100 - 100 = 0$. Raiz real dupla:
+
+$$
+\lambda_1 = \lambda_2 = -5 \;\Rightarrow\; \boxed{y = (A + Bt)\,e^{-5t}}
+$$
+
+Movimento *criticamente amortecido*: o retorno mais rápido possível sem oscilação.
+</Passos>

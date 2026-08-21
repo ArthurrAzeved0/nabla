@@ -1,0 +1,51 @@
+---
+origem: "2023.1"
+tema: "Derivada direcional"
+temaId: derivada-direcional
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O escoamento de fluido por um canal pode ser representado pela função $f(x,y,z) = (x + 2y + 3z)^{1/2}$. A taxa de variação da pressão aplicada no fluido pode ser calculada a partir da derivada direcional. Determine a taxa de variação da pressão no ponto $(1, 1, 2)$, na direção do vetor $\vec v = \vec i - \vec k$.
+
+<Gabarito>
+$D_{\hat v} f(1,1,2) = -\dfrac{\sqrt2}{6}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Normalize o vetor direção $\vec v = (1, 0, -1)$:
+
+$$
+\hat v = \frac{(1,0,-1)}{\sqrt{1+1}} = \left(\frac{1}{\sqrt2},\; 0,\; -\frac{1}{\sqrt2}\right)
+$$
+
+**Passo 2 —** Calcule o gradiente. Com $u = x + 2y + 3z$, $f = u^{1/2}$:
+
+$$
+f_x = \frac{1}{2\sqrt{u}}, \qquad f_y = \frac{2}{2\sqrt{u}} = \frac{1}{\sqrt u}, \qquad f_z = \frac{3}{2\sqrt{u}}
+$$
+
+**Passo 3 —** Avalie em $(1,1,2)$: $u = 1 + 2 + 6 = 9$, $\sqrt u = 3$:
+
+$$
+\nabla f(1,1,2) = \left(\frac{1}{6},\; \frac{1}{3},\; \frac{1}{2}\right)
+$$
+
+**Passo 4 —** Produto escalar com a direção unitária:
+
+$$
+D_{\hat v}f = \left(\frac16, \frac13, \frac12\right)\cdot\left(\frac{1}{\sqrt2}, 0, -\frac{1}{\sqrt2}\right) = \frac{1}{6\sqrt2} - \frac{1}{2\sqrt2} = \frac{1 - 3}{6\sqrt2} = -\frac{2}{6\sqrt2} = \boxed{-\frac{\sqrt2}{6}}
+$$
+</Passos>

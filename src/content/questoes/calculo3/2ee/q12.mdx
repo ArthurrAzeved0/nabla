@@ -1,0 +1,88 @@
+---
+origem: "2025.1"
+tema: "Integral de superfície · cone"
+temaId: integral-de-superficie
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule a integral de superfície
+
+$$
+\iint_S x^2 z^2\,dS
+$$
+
+onde $S$ é a parte do cone $z^2 = x^2 + y^2$ que está entre os planos $z=1$ e $z=3$.
+
+<Figura>
+  <svg viewBox="0 0 220 200" role="img" aria-label="Cone entre z=1 e z=3">
+    <ellipse cx="110" cy="60" rx="60" ry="16" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <ellipse cx="110" cy="140" rx="24" ry="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="50" y1="60" x2="86" y2="140" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="170" y1="60" x2="134" y2="140" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="110" y1="175" x2="110" y2="30" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="118" y="36" fill="var(--ink-2)" font-size="11">z=3</text>
+    <text x="118" y="150" fill="var(--ink-2)" font-size="11">z=1</text>
+  </svg>
+  <figcaption>
+
+Faixa do cone $z=\sqrt{x^2+y^2}$ com $1\le z\le 3$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\displaystyle\iint_S x^2 z^2\,dS = \frac{364\sqrt{2}\,\pi}{3}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Escreva o cone como gráfico $z = f(x,y) = \sqrt{x^2+y^2}$. O elemento de área é
+
+$$
+dS = \sqrt{1 + z_x^2 + z_y^2}\,dA,\qquad z_x = \frac{x}{\sqrt{x^2+y^2}},\; z_y = \frac{y}{\sqrt{x^2+y^2}}
+$$
+
+$$
+z_x^2 + z_y^2 = \frac{x^2+y^2}{x^2+y^2} = 1 \quad\Rightarrow\quad dS = \sqrt{2}\,dA
+$$
+
+**Passo 2 —** No cone, $z^2 = x^2+y^2$, então o integrando fica
+
+$$
+x^2 z^2 = x^2(x^2+y^2)
+$$
+
+**Passo 3 —** Passe para polares: $x = r\cos\theta$, $x^2+y^2 = r^2$. Como $z = r$, a faixa $1\le z\le 3$ vira $1\le r\le 3$, com $0\le\theta\le 2\pi$. O integrando:
+
+$$
+x^2(x^2+y^2) = (r^2\cos^2\theta)(r^2) = r^4\cos^2\theta
+$$
+
+**Passo 4 —** Monte a integral (lembrando $dA = r\,dr\,d\theta$ e o fator $\sqrt{2}$):
+
+$$
+\iint_S x^2 z^2\,dS = \sqrt{2}\int_0^{2\pi}\!\!\int_1^3 r^4\cos^2\theta\cdot r\,dr\,d\theta = \sqrt{2}\int_0^{2\pi}\cos^2\theta\,d\theta\int_1^3 r^5\,dr
+$$
+
+**Passo 5 —** As duas integrais:
+
+$$
+\int_0^{2\pi}\cos^2\theta\,d\theta = \pi,\qquad \int_1^3 r^5\,dr = \left[\frac{r^6}{6}\right]_1^3 = \frac{729-1}{6} = \frac{364}{3}
+$$
+
+$$
+\iint_S x^2 z^2\,dS = \sqrt{2}\cdot\pi\cdot\frac{364}{3} = \frac{364\sqrt{2}\,\pi}{3}
+$$
+</Passos>

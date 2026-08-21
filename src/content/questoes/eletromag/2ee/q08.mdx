@@ -1,0 +1,106 @@
+---
+origem: "2024.1"
+tema: "Circuito RLC · Corrente alternada"
+temaId: circuito-rlc
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um circuito RLC em série tem $R = 3\ \Omega$, $L = 2\ \text{H}$ e $C = 15\ \mu\text{F}$, alimentado por $\varepsilon(t) = 15\,\text{sen}(100t)\ \text{V}$.
+
+(a) Calcule as reatâncias, a impedância, a amplitude da corrente e a constante de fase. Escreva $i(t)$. O circuito é indutivo ou capacitivo?
+
+(b) Determine a frequência angular de ressonância $\omega_0$ e a amplitude da corrente caso a fonte operasse em $\omega_0$.
+
+<Figura>
+  <svg viewBox="0 0 320 200" role="img" aria-label="Triângulo de impedância do circuito capacitivo">
+    {/* eixos */}
+    <line x1="60" y1="100" x2="290" y2="100" stroke="var(--ink-3)" stroke-width="1.5"/>
+    <line x1="70" y1="185" x2="70" y2="15" stroke="var(--ink-3)" stroke-width="1.5"/>
+    {/* R no eixo horizontal */}
+    <line x1="70" y1="100" x2="130" y2="100" stroke="var(--warn)" stroke-width="3"/>
+    <text x="100" y="90" font-size="11" fill="var(--warn)" text-anchor="middle">R</text>
+    {/* XL para cima */}
+    <line x1="70" y1="100" x2="70" y2="70" stroke="var(--accent)" stroke-width="3"/>
+    <polygon points="70,70 65,80 75,80" fill="var(--accent)"/>
+    <text x="52" y="80" font-size="11" fill="var(--accent)">X_L</text>
+    {/* XC para baixo (maior) */}
+    <line x1="82" y1="100" x2="82" y2="178" stroke="var(--ok)" stroke-width="3"/>
+    <polygon points="82,178 77,168 87,168" fill="var(--ok)"/>
+    <text x="94" y="150" font-size="11" fill="var(--ok)">X_C</text>
+    {/* Z resultante */}
+    <line x1="70" y1="100" x2="130" y2="172" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <polygon points="130,172 121,167 127,161" fill="var(--ink-2)"/>
+    <text x="138" y="176" font-size="11" fill="var(--ink-2)">Z</text>
+    {/* ângulo φ */}
+    <path d="M 100 100 A 30 30 0 0 1 92 126" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="106" y="122" font-size="11" fill="var(--ink-3)">φ &lt; 0</text>
+    <text x="185" y="40" font-size="11" fill="var(--ink-2)">X_C ≫ X_L → capacitivo:</text>
+    <text x="185" y="56" font-size="11" fill="var(--ink-2)">corrente adiantada da fem</text>
+  </svg>
+  <figcaption>
+
+Como $X_C \gg X_L$, a reatância líquida aponta "para baixo": $\varphi \approx -90°$ e o circuito é capacitivo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $X_L = 200\ \Omega$, $X_C \approx 666{,}7\ \Omega$, $Z \approx 466{,}7\ \Omega$, $I \approx 0{,}032\ \text{A}$, $\varphi \approx -89{,}6° \approx -1{,}56\ \text{rad}$; $i(t) = 0{,}032\,\text{sen}(100t + 1{,}56)\ \text{A}$ — capacitivo  ·  (b) $\omega_0 \approx 182{,}6\ \text{rad/s}$ e $I = \varepsilon_m/R = 5{,}0\ \text{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Reatâncias em $\omega_d = 100\ \text{rad/s}$:
+
+$$
+X_L = \omega_d L = 100\cdot 2 = 200\ \Omega \qquad X_C = \frac{1}{\omega_d C} = \frac{1}{100\cdot 15\times10^{-6}} \approx 666{,}7\ \Omega
+$$
+
+**Passo 2 —** Impedância e amplitude da corrente:
+
+$$
+Z = \sqrt{R^2 + (X_L - X_C)^2} = \sqrt{3^2 + (-466{,}7)^2} \approx 466{,}7\ \Omega
+$$
+
+$$
+I = \frac{\varepsilon_m}{Z} = \frac{15}{466{,}7} \approx \boxed{0{,}032\ \text{A}}
+$$
+
+**Passo 3 —** Constante de fase:
+
+$$
+\tan\varphi = \frac{X_L - X_C}{R} = \frac{-466{,}7}{3} \;\Rightarrow\; \varphi \approx -89{,}6° \approx -1{,}56\ \text{rad}
+$$
+
+Como $X_C \gt  X_L$, o circuito é **capacitivo** e a corrente está *adiantada* em relação à fem:
+
+$$
+\boxed{i(t) = 0{,}032\,\text{sen}(100t + 1{,}56)\ \text{A}}
+$$
+
+**Passo 4 —** Ressonância ($X_L = X_C$):
+
+$$
+\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{2\cdot 15\times10^{-6}}} \approx \boxed{182{,}6\ \text{rad/s}}
+$$
+
+**Passo 5 —** Na ressonância $Z = R = 3\ \Omega$, então:
+
+$$
+I = \frac{15}{3} = \boxed{5{,}0\ \text{A}}
+$$
+
+Repare no salto: de 32 mA para 5 A — a ressonância maximiza a corrente.
+</Passos>

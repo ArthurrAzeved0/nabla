@@ -1,0 +1,51 @@
+---
+origem: "2024.1"
+tema: "Crescimento populacional"
+temaId: crescimento-exponencial
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabe-se que a população $P$ de uma determinada cidade cresce a uma taxa proporcional ao número de habitantes existentes $\left(\dfrac{dP}{dt} = -k\,P(t)\right)$. Se, após 10 anos, a população triplica, e após 20 anos é de 150.000 habitantes, determine a população inicial. Sendo $k$ a constante de proporcionalidade, $P(t)$ a quantidade total da população após $t$ anos e $P_0$ a quantidade inicial da população.
+
+<Gabarito>
+$P_0 = \dfrac{150.000}{9} \approx 16.667$ habitantes.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Separando as variáveis e integrando:
+
+$$
+\int \frac{dP}{P} = \int -k\,dt \;\Rightarrow\; \ln P = -kt + c \;\Rightarrow\; P(t) = P_0\,e^{-kt}
+$$
+
+**Passo 2 —** "Após 10 anos a população triplica": $P(10) = 3P_0$.
+
+$$
+3P_0 = P_0\,e^{-10k} \;\Rightarrow\; \ln 3 = -10k \;\Rightarrow\; k = -\frac{\ln 3}{10}
+$$
+
+**Passo 3 —** Logo $P(t) = P_0\,e^{\frac{\ln 3}{10}t}$. Usando $P(20) = 150.000$:
+
+$$
+150.000 = P_0\,e^{\frac{\ln 3}{10}\cdot 20} = P_0\,e^{2\ln 3}
+$$
+
+**Passo 4 —** Como $e^{2\ln 3} = e^{\ln 3^2} = 9$:
+
+$$
+\boxed{P_0 = \frac{150.000}{9} \approx 16.667 \text{ habitantes}}
+$$
+</Passos>

@@ -1,0 +1,61 @@
+---
+origem: "2025.1"
+tema: "PVI · fator integrante"
+temaId: fator-integrante
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva o problema de valor inicial
+
+$$
+\frac{1}{x}\,\frac{dy}{dx} - \frac{2y}{x^2} = x\cos x, \qquad y(\pi) = \pi^3
+$$
+
+<Gabarito>
+$y(x) = x^2\operatorname{sen} x + \pi x^2$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Multiplique tudo por $x$ para chegar à forma padrão:
+
+$$
+\frac{dy}{dx} - \frac{2}{x}\,y = x^2\cos x \qquad\Rightarrow\qquad P(x) = -\frac{2}{x}
+$$
+
+**Passo 2 —** Fator integrante:
+
+$$
+\mu(x) = e^{\int -\frac{2}{x}dx} = e^{-2\ln x} = \frac{1}{x^2}
+$$
+
+**Passo 3 —** Multiplicando por $\mu$:
+
+$$
+\frac{d}{dx}\left(\frac{y}{x^2}\right) = \frac{1}{x^2}\cdot x^2\cos x = \cos x
+$$
+
+**Passo 4 —** Integrando em relação a $x$:
+
+$$
+\frac{y}{x^2} = \operatorname{sen} x + C \;\Rightarrow\; y = x^2\operatorname{sen} x + Cx^2
+$$
+
+**Passo 5 —** Condição inicial $y(\pi) = \pi^3$: como $\operatorname{sen}\pi = 0$,
+
+$$
+C\pi^2 = \pi^3 \;\Rightarrow\; C = \pi \qquad\Rightarrow\qquad \boxed{y = x^2\operatorname{sen} x + \pi x^2}
+$$
+</Passos>

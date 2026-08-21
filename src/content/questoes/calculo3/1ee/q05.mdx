@@ -1,0 +1,91 @@
+---
+origem: "2024.2"
+tema: "Limites · Teste dos dois caminhos"
+temaId: limites
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Mostre que os limites abaixo **não existem**:
+
+(a) $\displaystyle\lim_{(x,y)\to(0,0)} \frac{3xy}{x^2 + 2y^2}$
+
+(b) $\displaystyle\lim_{(x,y)\to(0,0)} \frac{\operatorname{sen} y}{x}$
+
+<Figura>
+  <svg viewBox="0 0 260 200" role="img" aria-label="Dois caminhos aproximando-se da origem por direções diferentes">
+    <line x1="20" y1="150" x2="240" y2="150" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="240,150 231,146 231,154" fill="var(--ink-3)"/>
+    <text x="232" y="164" font-size="10" fill="var(--ink-3)">x</text>
+    <line x1="130" y1="185" x2="130" y2="20" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="130,20 126,29 134,29" fill="var(--ink-3)"/>
+    <text x="136" y="28" font-size="10" fill="var(--ink-3)">y</text>
+    <circle cx="130" cy="150" r="4" fill="var(--warn)"/>
+    <text x="112" y="168" font-size="10" fill="var(--warn)">(0,0)</text>
+    {/* caminho eixo x */}
+    <line x1="228" y1="150" x2="140" y2="150" stroke="var(--ok)" stroke-width="2.5"/>
+    <polygon points="140,150 150,146 150,154" fill="var(--ok)"/>
+    <text x="176" y="142" font-size="10" fill="var(--ok)">y = 0 → 0</text>
+    {/* caminho reta y=x */}
+    <line x1="215" y1="35" x2="138" y2="142" stroke="var(--accent)" stroke-width="2.5"/>
+    <polygon points="138,142 148,140 143,132" fill="var(--accent)"/>
+    <text x="150" y="55" font-size="10" fill="var(--accent)">y = x → 1</text>
+  </svg>
+  <figcaption>
+
+Dois caminhos rumo à origem dando limites distintos ($0 \neq 1$) já provam que o limite não existe — nenhuma conta a mais é necessária.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) pelos eixos o limite dá $0$, mas pela reta $x = y$ dá $1$ — não existe. (b) por $y = 0$ dá $0$, por $x = y$ dá $1$ — não existe.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** (a) Aproxime pelo eixo $y$ ($x = 0$):
+
+$$
+\lim_{y\to 0} \frac{0}{2y^2} = 0
+$$
+
+**Passo 2 —** Aproxime pelo eixo $x$ ($y = 0$):
+
+$$
+\lim_{x\to 0} \frac{0}{x^2} = 0
+$$
+
+**Passo 3 —** Aproxime pela reta $y = x$:
+
+$$
+\lim_{x\to 0} \frac{3x^2}{x^2 + 2x^2} = \frac{3x^2}{3x^2} = 1
+$$
+
+Caminhos diferentes deram valores diferentes ($0 \neq 1$); pelo teste dos dois caminhos, **o limite não existe**.
+
+**Passo 4 —** (b) Por $y = 0$:
+
+$$
+\lim_{x\to 0} \frac{\operatorname{sen} 0}{x} = 0
+$$
+
+**Passo 5 —** Por $x = y$, caindo no limite fundamental:
+
+$$
+\lim_{x\to 0} \frac{\operatorname{sen} x}{x} = 1
+$$
+
+De novo $0 \neq 1$: **o limite não existe**.
+</Passos>

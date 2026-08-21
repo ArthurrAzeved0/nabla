@@ -1,0 +1,93 @@
+---
+origem: "2024.1"
+tema: "Força magnética em fio"
+temaId: forca-magnetica
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um fio horizontal de comprimento $L = 50\ \text{cm}$ e massa $m = 25\ \text{g}$ está imerso em um campo magnético horizontal, perpendicular ao fio.
+
+(a) Quando o fio conduz $i = 0{,}98\ \text{A}$, a força magnética equilibra exatamente o peso. Calcule o módulo de $B$.
+
+(b) Agora o fio está suspenso por **dois fios verticais** ideais e conduz $i = 0{,}49\ \text{A}$ em um campo $B = 0{,}6\ \text{T}$, com a força magnética apontando *para baixo*. Calcule a tração em cada fio de suspensão. (Use $g = 9{,}8\ \text{m/s}^2$.)
+
+<Figura>
+  <svg viewBox="0 0 320 210" role="img" aria-label="Fio horizontal suspenso por dois fios com as forças peso, magnética e trações">
+    {/* teto */}
+    <line x1="60" y1="30" x2="260" y2="30" stroke="var(--ink-2)" stroke-width="3"/>
+    <g stroke="var(--ink-3)" stroke-width="1">
+      <line x1="70" y1="30" x2="60" y2="20"/><line x1="100" y1="30" x2="90" y2="20"/><line x1="130" y1="30" x2="120" y2="20"/><line x1="160" y1="30" x2="150" y2="20"/><line x1="190" y1="30" x2="180" y2="20"/><line x1="220" y1="30" x2="210" y2="20"/><line x1="250" y1="30" x2="240" y2="20"/>
+    </g>
+    {/* fios de suspensão */}
+    <line x1="90" y1="30" x2="90" y2="110" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="230" y1="30" x2="230" y2="110" stroke="var(--ink-2)" stroke-width="1.6"/>
+    {/* trações */}
+    <line x1="102" y1="100" x2="102" y2="60" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="102,60 97,70 107,70" fill="var(--ok)"/>
+    <text x="110" y="72" font-size="11" fill="var(--ok)">T</text>
+    <line x1="218" y1="100" x2="218" y2="60" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="218,60 213,70 223,70" fill="var(--ok)"/>
+    <text x="198" y="72" font-size="11" fill="var(--ok)">T</text>
+    {/* fio condutor */}
+    <line x1="70" y1="110" x2="250" y2="110" stroke="var(--warn)" stroke-width="4"/>
+    <polygon points="185,110 173,105 173,115" fill="var(--warn)"/>
+    <text x="256" y="114" font-size="11" fill="var(--warn)">i</text>
+    {/* B saindo da tela */}
+    <circle cx="60" cy="150" r="8" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <circle cx="60" cy="150" r="2" fill="var(--accent)"/>
+    <text x="74" y="155" font-size="11" fill="var(--accent)">B (sai da tela)</text>
+    {/* forças para baixo */}
+    <line x1="150" y1="115" x2="150" y2="165" stroke="var(--ink-2)" stroke-width="2"/>
+    <polygon points="150,165 145,155 155,155" fill="var(--ink-2)"/>
+    <text x="132" y="180" font-size="11" fill="var(--ink-2)">P = mg</text>
+    <line x1="190" y1="115" x2="190" y2="165" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="190,165 185,155 195,155" fill="var(--accent)"/>
+    <text x="198" y="180" font-size="11" fill="var(--accent)">F = BiL</text>
+  </svg>
+  <figcaption>
+
+Item (b): as duas trações para cima equilibram o peso e a força magnética, ambos para baixo: $2T = P + F$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $B = 0{,}5\ \text{T}$  ·  (b) $F_{\text{mag}} = 147\ \text{mN}$, $P = 245\ \text{mN}$ e $T = 196\ \text{mN}$ em cada fio.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** A força magnética sobre um fio reto é $F = BiL$ (campo perpendicular ao fio). Para equilibrar o peso:
+
+$$
+BiL = mg \;\Rightarrow\; B = \frac{mg}{iL} = \frac{(0{,}025)(9{,}8)}{(0{,}98)(0{,}5)} = \boxed{0{,}5\ \text{T}}
+$$
+
+**Passo 2 —** No item (b), calcule as forças envolvidas:
+
+$$
+F_{\text{mag}} = BiL = (0{,}6)(0{,}49)(0{,}5) = 0{,}147\ \text{N} = \boxed{147\ \text{mN}}
+$$
+
+$$
+P = mg = (0{,}025)(9{,}8) = 0{,}245\ \text{N} = \boxed{245\ \text{mN}}
+$$
+
+**Passo 3 —** Equilíbrio na vertical: as duas trações para cima equilibram o peso *e* a força magnética (ambos para baixo):
+
+$$
+2T = P + F_{\text{mag}} = 245 + 147 = 392\ \text{mN} \;\Rightarrow\; \boxed{T = 196\ \text{mN}}
+$$
+</Passos>

@@ -1,0 +1,90 @@
+---
+origem: Banco · 2026.1
+tema: "Lei de Gauss · Potencial"
+temaId: lei-de-gauss-esfera-nao-uniforme
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma esfera dielétrica de raio $R = 8{,}0\ \text{cm}$ possui densidade volumétrica de carga **não uniforme** $\rho(r) = k\,r$, com $k = 6\times10^{-6}\ \text{C/m}^4$.
+
+(a) Determine a carga contida num raio $r_1 = 3{,}0\ \text{cm}$.
+
+(b) Determine o campo elétrico em $r_2 = 12{,}0\ \text{cm}$ (fora da esfera).
+
+(c) Determine a diferença de potencial $V(r_2) - V(r_1)$.
+
+<Figura>
+  <svg viewBox="0 0 240 200" role="img" aria-label="Esfera com densidade crescente com r, gaussiana interna em r1 e ponto externo r2">
+    <defs>
+      <radialGradient id="rho-cresce" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="var(--warn)" stop-opacity="0.05"/>
+        <stop offset="100%" stop-color="var(--warn)" stop-opacity="0.4"/>
+      </radialGradient>
+    </defs>
+    <circle cx="120" cy="100" r="55" fill="url(#rho-cresce)" stroke="var(--warn)" stroke-width="2"/>
+    <text x="120" y="150" font-size="10" fill="var(--ink-2)" text-anchor="middle">ρ = k r</text>
+    <line x1="120" y1="100" x2="175" y2="100" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="150" y="94" font-size="10" fill="var(--warn)">R</text>
+    {/* gaussiana r1 */}
+    <circle cx="120" cy="100" r="22" fill="none" stroke="var(--ok)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="120" y="86" font-size="9" fill="var(--ok)" text-anchor="middle">r₁</text>
+    {/* ponto externo r2 */}
+    <circle cx="120" cy="100" r="82" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="3 4"/>
+    <circle cx="202" cy="100" r="3.5" fill="var(--accent)"/>
+    <text x="200" y="118" font-size="9" fill="var(--accent)" text-anchor="middle">r₂</text>
+  </svg>
+  <figcaption>
+
+Como $\rho$ cresce com $r$, a carga se concentra na borda; para $V$ integra-se $E$ de $r_1$ até $r_2$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $Q(r_1) = \pi k\,r_1^4 \approx 1{,}53\times10^{-11}\ \text{C}$  ·  (b) $E(r_2) \approx 482\ \text{N/C}$  ·  (c) $V(r_2) - V(r_1) \approx -56{,}3\ \text{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Como $\rho$ varia com $r$, integre em cascas esféricas $dV = 4\pi r'^2\,dr'$:
+
+$$
+Q(r) = \int_0^{r} k\,r'\cdot 4\pi r'^2\,dr' = 4\pi k\int_0^r r'^3\,dr' = \pi k\,r^4
+$$
+
+$$
+Q(r_1) = \pi(6\times10^{-6})(0{,}03)^4 \approx \boxed{1{,}53\times10^{-11}\ \text{C}}
+$$
+
+**Passo 2 —** Fora ($r_2 \gt  R$) a gaussiana envolve a carga total $Q_{\text{tot}} = \pi k R^4$; campo de carga pontual:
+
+$$
+E(r_2) = \frac{Q_{\text{tot}}}{4\pi\varepsilon_0\, r_2^2} = \frac{\pi k R^4}{4\pi\varepsilon_0\, r_2^2} \approx \boxed{482\ \text{N/C}}
+$$
+
+**Passo 3 —** Dentro ($r \le R$), $E\cdot 4\pi r^2 = \pi k r^4/\varepsilon_0$, logo $E_{\text{in}}(r) = \dfrac{k\,r^2}{4\varepsilon_0}$. O potencial vem de $V(r_2)-V(r_1) = -\displaystyle\int_{r_1}^{r_2} E\,dr$, quebrado em dois trechos (dentro até $R$, fora de $R$ até $r_2$):
+
+$$
+V(r_2)-V(r_1) = -\int_{r_1}^{R}\frac{k r^2}{4\varepsilon_0}\,dr \;-\; \int_{R}^{r_2}\frac{k R^4}{4\varepsilon_0\, r^2}\,dr
+$$
+
+**Passo 4 —** Resolvendo as duas integrais:
+
+$$
+V(r_2)-V(r_1) = -\frac{k}{12\varepsilon_0}\big(R^3 - r_1^3\big) \;-\; \frac{k R^4}{4\varepsilon_0}\left(\frac{1}{R}-\frac{1}{r_2}\right) \approx \boxed{-56{,}3\ \text{V}}
+$$
+
+O sinal negativo era esperado: caminhamos *a favor* do campo (de dentro para fora), então o potencial cai.
+</Passos>

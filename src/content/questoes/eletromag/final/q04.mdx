@@ -1,0 +1,71 @@
+---
+origem: "2025.1"
+tema: "Circuito RL · Transitório"
+temaId: circuito-rl
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Em um circuito RL série com resistor $R = 5\ \Omega$, a corrente evolui segundo
+
+$$
+i(t) = 4\left(1 - e^{-0{,}625\,t}\right)\ \text{A}
+$$
+
+(a) Determine a f.e.m. $\varepsilon$ da fonte e a indutância $L$.
+
+(b) Calcule a taxa de variação da corrente $di/dt$.
+
+(c) Determine a corrente em $t = 2\ \text{s}$ e a potência dissipada no resistor nesse instante.
+
+<Gabarito>
+(a) $\varepsilon = 20\ \text{V}$, $L = 8\ \text{H}$  ·  (b) $\dfrac{di}{dt} = 2{,}5\,e^{-0{,}625\,t}\ \text{A/s}$  ·  (c) $i(2) \approx 2{,}85\ \text{A}$, $P \approx 40{,}7\ \text{W}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Compare com a forma padrão do circuito RL:
+
+$$
+i(t) = \frac{\varepsilon}{R}\left(1 - e^{-t/\tau}\right), \qquad \tau = \frac{L}{R}
+$$
+
+**Passo 2 —** Da corrente máxima: $\dfrac{\varepsilon}{R} = 4 \Rightarrow \varepsilon = 4\cdot5 = \boxed{20\ \text{V}}$.
+
+Do expoente: $\dfrac{1}{\tau} = 0{,}625 \Rightarrow \tau = 1{,}6\ \text{s}$, logo
+
+$$
+L = \tau R = 1{,}6\cdot 5 = \boxed{8\ \text{H}}
+$$
+
+**Passo 3 —** Derive a corrente:
+
+$$
+\frac{di}{dt} = 4\cdot 0{,}625\, e^{-0{,}625\,t} = \boxed{2{,}5\, e^{-0{,}625\,t}\ \text{A/s}}
+$$
+
+(Em $t=0$: $di/dt = 2{,}5 = \varepsilon/L = 20/8$ ✓)
+
+**Passo 4 —** Corrente em $t = 2\ \text{s}$:
+
+$$
+i(2) = 4\left(1 - e^{-1{,}25}\right) = 4(1 - 0{,}2865) \approx \boxed{2{,}85\ \text{A}}
+$$
+
+**Passo 5 —** Potência dissipada no resistor:
+
+$$
+P = R\,i^2 = 5\,(2{,}85)^2 \approx \boxed{40{,}7\ \text{W}}
+$$
+</Passos>

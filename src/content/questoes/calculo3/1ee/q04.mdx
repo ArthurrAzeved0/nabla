@@ -1,0 +1,77 @@
+---
+origem: "2023.2"
+tema: "Integrais duplas · Polares"
+temaId: integrais-duplas-polares
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o domínio $D$ do plano $Oxy$ limitado por $1 \le x^2 + y^2 \le 16$. Calcule
+
+$$
+\iint_D \frac{x}{(x^2+y^2)^3}\; dA
+$$
+
+<Figura>
+  <svg viewBox="0 0 240 220" role="img" aria-label="Domínio anular entre os círculos de raio 1 e raio 4">
+    <line x1="20" y1="110" x2="220" y2="110" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="220,110 211,106 211,114" fill="var(--ink-3)"/>
+    <text x="212" y="124" font-size="10" fill="var(--ink-3)">x</text>
+    <line x1="120" y1="205" x2="120" y2="15" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="120,15 116,24 124,24" fill="var(--ink-3)"/>
+    <text x="126" y="22" font-size="10" fill="var(--ink-3)">y</text>
+    <path d="M 120 14 A 96 96 0 1 0 120.1 14 Z M 120 86 A 24 24 0 1 1 119.9 86 Z" fill="var(--accent-soft)" fill-rule="evenodd" stroke="none"/>
+    <circle cx="120" cy="110" r="96" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <circle cx="120" cy="110" r="24" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <line x1="120" y1="110" x2="120" y2="14" stroke="var(--ink-2)" stroke-dasharray="4 3"/>
+    <text x="124" y="58" font-size="10" fill="var(--ink-2)">r = 4</text>
+    <line x1="120" y1="110" x2="144" y2="110" stroke="var(--warn)" stroke-width="2"/>
+    <text x="128" y="102" font-size="10" fill="var(--warn)">r = 1</text>
+    <text x="120" y="180" font-size="12" fill="var(--accent)" text-anchor="middle">D</text>
+  </svg>
+  <figcaption>
+
+$D$ é a coroa circular entre os raios $r = 1$ e $r = 4$: pede polares, com $1 \le r \le 4$ e $0 \le \theta \le 2\pi$. A simetria em $x$ já antecipa que a integral zera.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+A integral vale 0 (a integral em $\theta$ de $\cos\theta$ sobre uma volta completa é nula).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** O domínio é um anel (coroa circular) com $1 \le r \le 4$ e $0 \le \theta \le 2\pi$. Região circular + integrando com $x^2+y^2$ $\Rightarrow$ coordenadas polares:
+
+$$
+x = r\cos\theta, \qquad x^2 + y^2 = r^2, \qquad dA = r\, dr\, d\theta
+$$
+
+**Passo 2 —** Substitua:
+
+$$
+\iint_D \frac{x}{(x^2+y^2)^3}\,dA = \int_0^{2\pi}\!\!\int_1^4 \frac{r\cos\theta}{r^6}\; r\, dr\, d\theta = \int_0^{2\pi}\cos\theta\; d\theta \cdot \int_1^4 r^{-4}\, dr
+$$
+
+**Passo 3 —** A integral angular zera:
+
+$$
+\int_0^{2\pi} \cos\theta\; d\theta = \big[\sin\theta\big]_0^{2\pi} = 0
+$$
+
+**Passo 4 —** Como o produto tem um fator nulo, a integral vale **0**.
+
+*Interpretação:* o integrando é ímpar em $x$ e o anel é simétrico em relação ao eixo $y$ — as contribuições de $x\gt 0$ e $x\lt 0$ se cancelam exatamente. Perceber a simetria já responde a questão; a conta em polares confirma.
+</Passos>

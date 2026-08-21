@@ -1,0 +1,74 @@
+---
+origem: "2025.1"
+tema: "2ª ordem · coeficientes indeterminados"
+temaId: coeficientes-indeterminados
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a equação diferencial de segunda ordem:
+
+$$
+y'' + 2y' + 5y = 3\operatorname{sen} 2x
+$$
+
+a) Encontre a solução da equação homogênea (1,0 pt);<br />
+       b) Encontre a solução geral da equação diferencial (1,5 pts).
+
+<Gabarito>
+$y(x) = e^{-x}(c_1\cos 2x + c_2\operatorname{sen} 2x) + \dfrac{3}{17}\operatorname{sen} 2x - \dfrac{12}{17}\cos 2x$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Equação característica da homogênea:
+
+$$
+r^2 + 2r + 5 = 0 \;\Rightarrow\; r = \frac{-2 \pm \sqrt{4 - 20}}{2} = -1 \pm 2i
+$$
+
+Raízes complexas com $\alpha = -1$, $\beta = 2$:
+
+$$
+y_h = e^{-x}\big(c_1\cos 2x + c_2\operatorname{sen} 2x\big)
+$$
+
+**Passo 2 (b) —** Como $2i$ não é raiz da característica, tentamos:
+
+$$
+y_p = A\operatorname{sen} 2x + B\cos 2x
+$$
+
+**Passo 3 —** Derivando e substituindo ($y_p'' = -4y_p$):
+
+$$
+(-4A - 4B + 5A)\operatorname{sen} 2x + (-4B + 4A + 5B)\cos 2x = 3\operatorname{sen} 2x
+$$
+
+$$
+\begin{cases} A - 4B = 3 \\ B + 4A = 0 \end{cases}
+$$
+
+**Passo 4 —** Da 2ª equação, $B = -4A$. Substituindo: $A + 16A = 3$, logo
+
+$$
+A = \frac{3}{17}, \qquad B = -\frac{12}{17}
+$$
+
+**Passo 5 —** Solução geral:
+
+$$
+\boxed{y(x) = e^{-x}\big(c_1\cos 2x + c_2\operatorname{sen} 2x\big) + \frac{3}{17}\operatorname{sen} 2x - \frac{12}{17}\cos 2x}
+$$
+</Passos>

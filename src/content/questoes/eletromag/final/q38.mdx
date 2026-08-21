@@ -1,0 +1,68 @@
+---
+origem: Banco
+tema: "Efeito Hall"
+temaId: efeito-hall
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q38.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma fita condutora de largura $d = 2{,}0\ \text{cm}$ conduz corrente com velocidade de deriva $v_d = 8{,}0\times10^{-5}\ \text{m/s}$, num campo $B = 0{,}60\ \text{T}$ perpendicular à fita. Calcule a tensão Hall.
+
+<Figura>
+  <svg viewBox="0 0 230 140" role="img" aria-label="Fita condutora com corrente, campo saindo da tela e tensão Hall entre as bordas">
+    <rect x="40" y="45" width="150" height="50" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.5"/>
+    {/* corrente / deriva */}
+    <line x1="70" y1="70" x2="120" y2="70" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="120,70 110,65 110,75" fill="var(--ok)"/>
+    <text x="95" y="62" font-size="9" fill="var(--ok)">v_d</text>
+    {/* B saindo */}
+    <g stroke="var(--accent)" fill="var(--accent)">
+      <circle cx="150" cy="60" r="4.5" fill="none" stroke-width="1.3"/><circle cx="150" cy="60" r="1.2"/>
+      <circle cx="150" cy="82" r="4.5" fill="none" stroke-width="1.3"/><circle cx="150" cy="82" r="1.2"/>
+    </g>
+    <text x="150" y="115" font-size="9" fill="var(--accent)" text-anchor="middle">B (sai)</text>
+    {/* largura d */}
+    <line x1="205" y1="45" x2="205" y2="95" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="213" y="73" font-size="9" fill="var(--warn)">d</text>
+    {/* V_H */}
+    <text x="30" y="42" font-size="9" fill="var(--ink-3)">+</text>
+    <text x="30" y="105" font-size="9" fill="var(--ink-3)">−</text>
+  </svg>
+  <figcaption>
+
+O campo desvia os portadores para uma borda, criando uma tensão transversal $V_H = v_d B d$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$V_H = v_d B d \approx 0{,}96\ \mu\text{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** No equilíbrio Hall, a força elétrica transversal equilibra a força magnética sobre os portadores: $qE_H = qv_d B$, logo $E_H = v_d B$. A tensão é o campo vezes a largura:
+
+$$
+V_H = E_H\, d = v_d\, B\, d
+$$
+
+**Passo 2 —** Substituindo:
+
+$$
+V_H = (8{,}0\times10^{-5})(0{,}60)(0{,}02) \approx \boxed{0{,}96\ \mu\text{V}}
+$$
+
+A tensão Hall é pequena porque a velocidade de deriva é baixa — por isso o efeito só é mensurável com instrumentos sensíveis.
+</Passos>

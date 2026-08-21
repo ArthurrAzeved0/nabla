@@ -1,0 +1,83 @@
+---
+origem: "2024.2"
+tema: "Derivada direcional"
+temaId: gradiente-derivada-direcional
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a derivada direcional de
+
+$$
+g(x,y,z) = (x + 2y + 3z)^{3/2}
+$$
+
+no ponto $(1,\ 1,\ 2)$, no sentido do vetor $\vec v = 2\vec j - \vec k$.
+
+<Figura>
+  <svg viewBox="0 0 280 180" role="img" aria-label="Derivada direcional como projeção do gradiente sobre a direção unitária u">
+    <circle cx="90" cy="120" r="4.5" fill="var(--warn)"/>
+    <text x="72" y="138" font-size="10" fill="var(--warn)">P</text>
+    {/* gradiente */}
+    <line x1="90" y1="120" x2="210" y2="40" stroke="var(--accent)" stroke-width="2.6"/>
+    <polygon points="210,40 198,42 204,51" fill="var(--accent)"/>
+    <text x="214" y="40" font-size="12" fill="var(--accent)">∇g</text>
+    {/* direção u */}
+    <line x1="90" y1="120" x2="200" y2="120" stroke="var(--ok)" stroke-width="2.6"/>
+    <polygon points="200,120 189,116 189,124" fill="var(--ok)"/>
+    <text x="150" y="136" font-size="12" fill="var(--ok)">u (unitário)</text>
+    {/* projeção */}
+    <line x1="210" y1="40" x2="210" y2="120" stroke="var(--line-2)" stroke-dasharray="4 3"/>
+    <line x1="90" y1="120" x2="210" y2="120" stroke="var(--warn)" stroke-width="3.5" opacity="0.5"/>
+    <text x="120" y="156" font-size="10" fill="var(--ink-2)">Dᵤg = ∇g · u (a projeção)</text>
+  </svg>
+  <figcaption>
+
+A derivada direcional é a *projeção* do gradiente na direção $\vec u$: por isso normalizamos $\vec v$ primeiro e depois fazemos $\nabla g\cdot\vec u$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$D_{\vec u}\,g = \dfrac{9}{2\sqrt{5}} = \dfrac{9\sqrt 5}{10} \approx 2{,}01$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Normalize a direção: $\vec v = (0, 2, -1)$, $|\vec v| = \sqrt{4 + 1} = \sqrt 5$:
+
+$$
+\vec u = \left(0,\ \tfrac{2}{\sqrt 5},\ -\tfrac{1}{\sqrt 5}\right)
+$$
+
+**Passo 2 —** Gradiente pela regra da cadeia, com $w = x + 2y + 3z$:
+
+$$
+\nabla g = \tfrac{3}{2}\,w^{1/2}\,(1,\ 2,\ 3)
+$$
+
+**Passo 3 —** No ponto $(1,1,2)$: $w = 1 + 2 + 6 = 9$, então $w^{1/2} = 3$:
+
+$$
+\nabla g\big|_P = \tfrac{3}{2}\cdot 3\,(1, 2, 3) = \left(\tfrac{9}{2},\ 9,\ \tfrac{27}{2}\right)
+$$
+
+**Passo 4 —** Derivada direcional = produto escalar:
+
+$$
+D_{\vec u}\,g = \nabla g\cdot \vec u = 0 + \frac{18}{\sqrt 5} - \frac{27}{2\sqrt 5} = \frac{36 - 27}{2\sqrt 5} = \boxed{\frac{9}{2\sqrt 5} = \frac{9\sqrt 5}{10}}
+$$
+
+Positiva: $g$ cresce nesse sentido.
+</Passos>

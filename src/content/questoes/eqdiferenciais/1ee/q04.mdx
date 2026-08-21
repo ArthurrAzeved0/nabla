@@ -1,0 +1,61 @@
+---
+origem: "2025.2"
+tema: "Linear · fator integrante"
+temaId: fator-integrante
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Para $x \ne -1$, resolva a equação diferencial
+
+$$
+(x+1)\,y' + 2y = 12\,(x+1)^4
+$$
+
+<Gabarito>
+$(x+1)^2\,y = 2(x+1)^6 + C$, ou seja, $y = 2(x+1)^4 + \dfrac{C}{(x+1)^2}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Coloque na forma padrão dividindo por $(x+1)$:
+
+$$
+y' + \frac{2}{x+1}\,y = 12(x+1)^3 \qquad\Rightarrow\qquad P(x) = \frac{2}{x+1}
+$$
+
+**Passo 2 —** Fator integrante:
+
+$$
+\mu(x) = e^{\int \frac{2}{x+1}dx} = e^{2\ln|x+1|} = (x+1)^2
+$$
+
+**Passo 3 —** Multiplicando a forma padrão por $\mu$, o lado esquerdo vira derivada de produto:
+
+$$
+\big[(x+1)^2\,y\big]' = (x+1)^2 \cdot 12(x+1)^3 = 12(x+1)^5
+$$
+
+**Passo 4 —** Integrando os dois lados:
+
+$$
+(x+1)^2\,y = \int 12(x+1)^5\,dx = 2(x+1)^6 + C
+$$
+
+**Passo 5 —** Isolando $y$:
+
+$$
+\boxed{y = 2(x+1)^4 + \frac{C}{(x+1)^2}}
+$$
+</Passos>

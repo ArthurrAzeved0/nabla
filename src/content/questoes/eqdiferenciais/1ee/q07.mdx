@@ -1,0 +1,57 @@
+---
+origem: "2023.2"
+tema: "Equação exata"
+temaId: equacoes-exatas
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução geral da equação diferencial
+
+$$
+(1 + y\operatorname{sen} x)\,dx + (1 - \cos x)\,dy = 0
+$$
+
+<Gabarito>
+$x - y\cos x + y = C$  (explicitando: $y = \dfrac{C - x}{1 - \cos x}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Com $M = 1 + y\operatorname{sen} x$ e $N = 1 - \cos x$:
+
+$$
+M_y = \operatorname{sen} x \qquad\text{e}\qquad N_x = \operatorname{sen} x \qquad\Rightarrow\qquad \text{exata.}
+$$
+
+**Passo 2 —** Integre $M$ em relação a $x$:
+
+$$
+f(x,y) = \int (1 + y\operatorname{sen} x)\,dx = x - y\cos x + g(y)
+$$
+
+**Passo 3 —** Derive em relação a $y$ e compare com $N$:
+
+$$
+f_y = -\cos x + g'(y) = 1 - \cos x \;\Rightarrow\; g'(y) = 1 \;\Rightarrow\; g(y) = y
+$$
+
+**Passo 4 —** Solução geral:
+
+$$
+\boxed{x - y\cos x + y = C}
+$$
+
+Se quiser a forma explícita, isole $y$: $y(1 - \cos x) = C - x \Rightarrow y = \dfrac{C-x}{1-\cos x}$.
+</Passos>

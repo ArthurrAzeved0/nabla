@@ -1,0 +1,53 @@
+---
+origem: "2023.2"
+tema: "4ª ordem · raízes complexas repetidas"
+temaId: ordem-superior
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Ache a solução geral da equação diferencial:
+
+$$
+\frac{d^4y}{dx^4} + 2\frac{d^2y}{dx^2} + y = 0
+$$
+
+<Gabarito>
+$y = c_1\cos x + c_2\operatorname{sen} x + x\big(c_3\cos x + c_4\operatorname{sen} x\big)$.
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Equação auxiliar:
+
+$$
+m^4 + 2m^2 + 1 = (m^2 + 1)^2 = 0
+$$
+
+**Passo 2 —** As raízes são $m = \pm i$, cada uma com *multiplicidade 2*: $m_1 = m_2 = i$, $m_3 = m_4 = -i$.
+
+**Passo 3 —** Para raízes complexas $\alpha \pm \beta i$ repetidas, o par de soluções repete multiplicado por $x$ (mesma regra do caso real repetido). Com $\alpha = 0$, $\beta = 1$:
+
+$$
+y_1 = \cos x, \quad y_2 = \operatorname{sen} x, \quad y_3 = x\cos x, \quad y_4 = x\operatorname{sen} x
+$$
+
+**Passo 4 —** Solução geral:
+
+$$
+\boxed{y = c_1\cos x + c_2\operatorname{sen} x + x\big(c_3\cos x + c_4\operatorname{sen} x\big)}
+$$
+
+*Observação:* pela fórmula de Euler, $c_1e^{ix} + c_2e^{-ix}$ e $x(c_3e^{ix} + c_4e^{-ix})$ se reescrevem exatamente nessa forma real.
+</Passos>

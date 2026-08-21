@@ -1,0 +1,73 @@
+---
+origem: "2025.1"
+tema: "Frobenius · ponto singular regular"
+temaId: frobenius
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a equação diferencial:
+
+$$
+2xy'' + y' + xy = 0
+$$
+
+a) Mostre que $x_0 = 0$ é um ponto singular regular;<br />
+       b) Encontre a equação indicial e suas raízes;<br />
+       c) Para a maior organização, obtenha os primeiros termos de uma solução de Frobenius correspondente a $r = 0$.
+
+<Gabarito>
+Singular regular; $r(2r-1) = 0 \Rightarrow r_1 = \tfrac12,\ r_2 = 0$; para $r = 0$: $y_1 = 1 - \dfrac{x^2}{6} + \dfrac{x^4}{168} - \cdots$
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Forma padrão: $y'' + \dfrac{1}{2x}y' + \dfrac{1}{2}y = 0$, então $P(x) = \dfrac{1}{2x}$ e $Q(x) = \dfrac12$. Testamos:
+
+$$
+\lim_{x\to 0} x\,P(x) = \frac12 \quad\text{e}\quad \lim_{x\to 0} x^2\,Q(x) = 0
+$$
+
+Ambos finitos (funções analíticas em $0$) $\Rightarrow$ $x_0 = 0$ é *ponto singular regular*.
+
+**Passo 2 (b) —** Frobenius: $y = \displaystyle\sum_{n=0}^{\infty} c_nx^{n+r}$, $c_0 \neq 0$. Substituindo em $2xy'' + y' + xy = 0$:
+
+$$
+\sum 2(n+r)(n+r-1)c_nx^{n+r-1} + \sum (n+r)c_nx^{n+r-1} + \sum c_nx^{n+r+1} = 0
+$$
+
+O menor expoente ($x^{r-1}$, termo $n=0$) dá a **equação indicial**:
+
+$$
+\big[2r(r-1) + r\big]c_0 = 0 \;\Rightarrow\; r(2r - 1) = 0 \;\Rightarrow\; \boxed{r_1 = \tfrac12, \quad r_2 = 0}
+$$
+
+**Passo 3 —** O termo $x^r$ ($n=1$) dá $(r+1)(2r+1)c_1 = 0 \Rightarrow c_1 = 0$ (para ambas as raízes). Para $n \ge 2$:
+
+$$
+c_n = \frac{-c_{n-2}}{(n+r)(2n+2r-1)}
+$$
+
+**Passo 4 (c) —** Para $r = 0$: $c_n = \dfrac{-c_{n-2}}{n(2n-1)}$. Como $c_1 = 0$, os ímpares somem. Com $c_0 = 1$:
+
+$$
+c_2 = \frac{-1}{2\cdot 3} = -\frac16, \qquad c_4 = \frac{-c_2}{4\cdot 7} = \frac{1}{168}
+$$
+
+$$
+\boxed{y_1(x) = 1 - \frac{x^2}{6} + \frac{x^4}{168} - \cdots}
+$$
+
+(A segunda solução, com $r = \tfrac12$, tem a forma $y_2 = x^{1/2}\big(1 - \tfrac{x^2}{10} + \cdots\big)$.)
+</Passos>
