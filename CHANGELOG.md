@@ -23,13 +23,16 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ## [2.2.1] — 2026-08-21
 
-### Corrigido
+### Alterado
 
-- A cadeira **Fundamentos do Eletromagnetismo** estava rotulada "FÍSICA 3";
-  é **Física 2**. Apareceu ao mapear a matriz de 2010, onde o grafo não
-  deixa dúvida: o laboratório de Eletricidade Aplicada é co-requisito de
-  Física 2, e Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como
-  pré-requisito. Física 3, nas duas matrizes, é ondulatória e termodinâmica.
+- A cadeira **Fundamentos do Eletromagnetismo** passa a ser rotulada
+  **"FÍSICA 2"**, que é como ela se chamava antes de a matriz de 2021 lhe dar
+  o nome atual. Não era erro o rótulo anterior — é que "Física 2" é o nome
+  pelo qual ela circula, e é o que aparece nos dois mapas de grade de
+  Automação. O grafo da matriz de 2010 confirma qual é qual: o laboratório de
+  Eletricidade Aplicada é co-requisito de Física 2, e Circuitos Elétricos 1 e
+  Eletromagnetismo 1 a têm como pré-requisito. Física 3, nas duas matrizes, é
+  ondulatória e termodinâmica.
 
 ## [2.2.0] — 2026-08-21
 
