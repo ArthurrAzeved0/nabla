@@ -53,7 +53,6 @@ const cursos = [...new Set(matrizes.map((m) => m.curso))]
   .sort((a, b) => a.localeCompare(b, "pt-BR"))
   .map((curso) => ({ curso, matrizes: matrizes.filter((m) => m.curso === curso) }));
 
-const total = matrizes.length;
 ---
 
 <Base
@@ -64,23 +63,14 @@ const total = matrizes.length;
   <span class="rotulo">POLI/UPE</span>
   <h1>Mapas da grade</h1>
   <p class="prosa abre">
-    O mapa de pré-requisitos de cada curso, montado a partir do projeto pedagógico. Marque o que
-    você já concluiu e veja o que está liberado para o próximo período — o progresso fica salvo no
-    seu navegador, e cada mapa sai em PDF.
-    {
-      total > cursos.length && (
-        <>
-          {" "}
-          Onde há mais de uma matriz, a <strong>atual</strong> vale para quem entrou por último e a{" "}
-          <strong>anterior</strong> continua valendo para os veteranos.
-        </>
-      )
-    }
+    Marque o que já concluiu e veja o que está liberado para o próximo período. O progresso fica
+    salvo neste navegador, e cada mapa sai em PDF.
   </p>
 
   <Regua rotulo={cursos.length > 1 ? "cursos" : "curso"} />
 
-  {
+  <div class="cursos">
+    {
     cursos.map(({ curso, matrizes: ms }) => (
       <section class="curso">
         <h2>{curso}</h2>
@@ -107,7 +97,8 @@ const total = matrizes.length;
         </div>
       </section>
     ))
-  }
+    }
+  </div>
 </Base>
 
 <style>
@@ -120,21 +111,26 @@ const total = matrizes.length;
     max-width: var(--largura-texto);
   }
 
-  .curso + .curso {
-    margin-top: var(--e-7);
+  /* Dois níveis de grade, e é o que faz a página larga valer a pena: os
+     CURSOS lado a lado, e dentro de cada um as suas MATRIZES lado a lado.
+     Com dois cursos de duas matrizes dá um bloco 2x2 que enche a linha, em
+     vez de uma coluna de quatro cartões no meio da tela. Curso novo entra na
+     próxima célula. */
+  .cursos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr));
+    gap: var(--e-7) var(--e-6);
   }
   .curso h2 {
     font-size: var(--t-lg);
     margin: 0 0 var(--e-3);
+    padding-bottom: var(--e-2);
+    border-bottom: 1px solid var(--line);
   }
 
-  /* `auto-fill`, e não `auto-fit`: com dois cartões numa tela larga, o fit
-     esticaria os dois até a borda e cada um ficaria um painel. O fill mantém
-     a largura de cartão e alinha à esquerda, no mesmo eixo do título — e a
-     fileira vai enchendo à medida que entram matrizes. */
   .cartoes {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 340px));
+    grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
     gap: var(--e-4);
   }
 
