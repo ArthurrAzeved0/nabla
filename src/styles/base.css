@@ -271,25 +271,22 @@ th {
   color: var(--ink);
 }
 
-/* fórmula em linha não deve empurrar a entrelinha do parágrafo */
-.katex {
-  font-size: 1.04em;
-}
+/* Sem aumentar a fórmula: o KaTeX já a desenha em 1.21em, calibrado para
+   casar com o texto ao redor. O +4% que havia aqui era cosmético e só
+   aumentava a chance de expoente encostar na linha de cima. */
 
-/* Matemática em linha NÃO QUEBRA: uma fórmula longa demais empurraria a
-   coluna para fora da tela. Aqui ela ganha rolagem própria em vez de
-   arrastar o texto — o defeito fica visível e contido, não escondido.
-   Só vale para a que está EM LINHA: a de destaque já rola pela .katex-display. */
-p .katex:not(.katex-display .katex),
-li .katex:not(.katex-display .katex) {
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* inline-block é o que permite max-width e rolagem num elemento em linha;
-     o baseline é preservado por vertical-align */
-  display: inline-block;
-  vertical-align: baseline;
-}
+/* NÃO envolver matemática em linha num contêiner de rolagem.
+   Tentei isso como rede de segurança para fórmula longa e o resultado foi
+   pior que o problema, em toda fórmula em linha do site:
+
+     - `overflow-y: hidden` CORTA o topo, porque expoente e acento sobem
+       acima da caixa da fórmula;
+     - `display: inline-block` com overflow diferente de visible muda o
+       baseline para a borda INFERIOR da caixa — a fórmula sobe e desalinha
+       do texto ao lado.
+
+   A correção certa para fórmula que estoura é na fonte: transformar em
+   destaque, que é o que foi feito nas 16 linhas de gabarito longas. */
 
 /* ---------------------- aviso de cópia (transiente) ---------------------
    Criado por script, então mora no CSS global. Fica fora do fluxo e não
