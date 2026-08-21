@@ -26,6 +26,11 @@ pré-lançamento — uma tag por fase concluída da migração.
 Fase 3 — ilhas de interatividade: marcar acertei/errei/revisar, cronômetro,
 filtro por status, barra de progresso e modo simulado.
 
+## [2.0.0-alpha.4] — 2026-08-21
+
+Primeira ferramenta de estudo de volta, antecipada da Fase 3 porque é
+independente do resto: não depende de `localStorage`, progresso nem simulado.
+
 ### Adicionado
 
 - **Copiar o link da questão** ao clicar no número, como no site 1.x, com
@@ -274,6 +279,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.0.0-alpha.4]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.4
 [2.0.0-alpha.3]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.3
 [2.0.0-alpha.2]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.2
 [2.0.0-alpha.1]: https://github.com/ArthurrAzeved0/RespondeAi-Poli/releases/tag/v2.0.0-alpha.1
