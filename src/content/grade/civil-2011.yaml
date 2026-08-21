@@ -1,0 +1,586 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                         civil-2011.yaml *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+# ************************************************************************
+# Grade de Engenharia Civil — POLI/UPE, matriz 2011.
+#
+# GERADO por scripts/extrair-grade-ppc.mjs, a partir do PPC do curso.
+# Editar à mão se perde na próxima geração: a correção vai no script.
+#
+# Perfil ANTIGO, do projeto pedagógico de 2011. A matriz atual do curso
+# é a 2021.1, em civil.yaml — que veio do fluxograma do site 1.x, por
+# scripts/extrair-grade.mjs, e não deste PPC.
+#
+# Cuidado ao reler a Tabela 18: célula de requisito com mais de um código
+# quebra em linhas que caem ACIMA e ABAIXO da linha da disciplina, porque
+# o PDF centraliza a célula na vertical.
+#
+# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `cadeira` liga o nó à página da cadeira no site, quando ela existe.
+# ************************************************************************
+curso: Engenharia Civil
+sigla: civil-2011
+matriz: "2011"
+observacao: "Perfil antigo, do projeto pedagógico de 2011. A matriz atual do curso é a 2021.1."
+chTotalCurso: 3870
+estagioFracao: 0.6
+disciplinas:
+  - id: MAT01
+    codigo: MAT01
+    nome: Geometria Analítica
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MAT02
+    codigo: MAT02
+    nome: Cálculo Diferencial e Integral 1
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: INF01
+    codigo: INF01
+    nome: Introdução à Programação
+    periodo: 1
+    teorica: 30
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: SMA01
+    codigo: SMA01
+    nome: Sociologia e Meio Ambiente
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: IEC01
+    codigo: IEC01
+    nome: Introdução à Engenharia Civil
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: QUI01
+    codigo: QUI01
+    nome: Química Geral
+    periodo: 1
+    teorica: 45
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: MAT06
+    codigo: MAT06
+    nome: Álgebra Linear
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT01]
+    co: []
+  - id: MAT03
+    codigo: MAT03
+    nome: Cálculo Diferencial e Integral 2
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT02]
+    co: []
+  - id: FIS01
+    codigo: FIS01
+    nome: Física 1
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT02]
+    co: []
+  - id: EXP01
+    codigo: EXP01
+    nome: Expressão Gráfica 1
+    periodo: 2
+    teorica: 30
+    pratica: 45
+    categoria: basico
+    pre: []
+    co: []
+  - id: POR01
+    codigo: POR01
+    nome: Português Instrumental
+    periodo: 2
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MAT04
+    codigo: MAT04
+    nome: Cálculo Diferencial e Integral 3
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT03]
+    co: []
+    cadeira: calculo3
+  - id: FIS02
+    codigo: FIS02
+    nome: Física 2
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS01]
+    co: [MAT04]
+    nota: É a física do eletromagnetismo — o mesmo lugar que a matriz de 2021 chama de Fundamentos do Eletromagnetismo.
+    cadeira: eletromag
+  - id: EXP02
+    codigo: EXP02
+    nome: Expressão Gráfica 2
+    periodo: 3
+    teorica: 0
+    pratica: 45
+    categoria: basico
+    pre: [EXP01]
+    co: []
+  - id: MEC01
+    codigo: MEC01
+    nome: Mecânica Geral 1
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS01, MAT01, EXP01]
+    co: []
+  - id: MAT07
+    codigo: MAT07
+    nome: Cálculo Numérico
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT03, INF01]
+    co: []
+  - id: MAT05
+    codigo: MAT05
+    nome: Cálculo Diferencial e Integral 4
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT04]
+    co: []
+    cadeira: eqdiferenciais
+  - id: FEN02
+    codigo: FEN02
+    nome: Fenômenos de Transporte 2
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT03]
+    co: [FIS04]
+  - id: FIS04
+    codigo: FIS04
+    nome: Física 3
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS02]
+    co: []
+  - id: FIS05
+    codigo: FIS05
+    nome: Física Experimental
+    periodo: 4
+    teorica: 0
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: [FIS04]
+  - id: MEC02
+    codigo: MEC02
+    nome: Mecânica Geral 2
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MEC01]
+    co: []
+  - id: MAT08
+    codigo: MAT08
+    nome: Probabilidade e Estatística
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT04, MAT06]
+    co: []
+    nota: "A Tabela 18 imprime o código como \"MAT8\"; os demais códigos da matriz têm dois dígitos."
+  - id: EXP03
+    codigo: EXP03
+    nome: Desenho Técnico
+    periodo: 4
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: [EXP02]
+    co: []
+  - id: MCC01
+    codigo: MCC01
+    nome: Materiais de Construção 1
+    periodo: 5
+    teorica: 45
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: [GEO01, RMA01]
+  - id: TOP01
+    codigo: TOP01
+    nome: Topografia 1
+    periodo: 5
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: [EXP03]
+    co: []
+  - id: GEO01
+    codigo: GEO01
+    nome: Fundamentos de Geologia
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [QUI01]
+    co: []
+    nota: "Aqui o pré-requisito está escrito: Química Geral. No PPC de 2021 esta mesma disciplina aparece com \"FIS02\", código que não existe naquela matriz."
+  - id: RMA01
+    codigo: RMA01
+    nome: Resistência dos Materiais 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MEC02]
+    co: []
+  - id: HID01
+    codigo: HID01
+    nome: Hidráulica
+    periodo: 5
+    teorica: 60
+    pratica: 30
+    categoria: prof
+    pre: [FEN02]
+    co: []
+  - id: TOP02
+    codigo: TOP02
+    nome: Topografia 2
+    periodo: 6
+    teorica: 60
+    pratica: 30
+    categoria: prof
+    pre: [TOP01]
+    co: []
+  - id: MCC02
+    codigo: MCC02
+    nome: Materiais de Construção 2
+    periodo: 6
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: [MCC01]
+    co: []
+  - id: RMA02
+    codigo: RMA02
+    nome: Resistência dos Materiais 2
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [RMA01]
+    co: []
+  - id: HID02
+    codigo: HID02
+    nome: Hidrologia Aplicada
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [HID01]
+    co: []
+  - id: SOL01
+    codigo: SOL01
+    nome: Mecânica dos Solos 1
+    periodo: 6
+    teorica: 60
+    pratica: 30
+    categoria: prof
+    pre: [GEO01]
+    co: [RMA01]
+  - id: ARQ01
+    codigo: ARQ01
+    nome: Arquitetura
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [TOP01]
+    co: []
+  - id: CON01
+    codigo: CON01
+    nome: Concreto 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [RMA02]
+    co: []
+  - id: EST01
+    codigo: EST01
+    nome: Estradas 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [TOP02]
+    co: []
+  - id: SAN01
+    codigo: SAN01
+    nome: Saneamento 1
+    periodo: 7
+    teorica: 60
+    pratica: 30
+    categoria: prof
+    pre: [HID01]
+    co: []
+  - id: SOL02
+    codigo: SOL02
+    nome: Mecânica dos Solos 2
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [SOL01]
+    co: []
+  - id: SHT01
+    codigo: SHT01
+    nome: Engenharia de Segurança do Trabalho
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MCC02]
+    co: [SMA01]
+  - id: TES01
+    codigo: TES01
+    nome: Teoria das Estruturas 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [RMA02]
+    co: []
+  - id: CON02
+    codigo: CON02
+    nome: Concreto 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CON01]
+    co: []
+  - id: TES02
+    codigo: TES02
+    nome: Teoria das Estruturas 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [TES01]
+    co: []
+  - id: CCI01
+    codigo: CCI01
+    nome: Construção Civil 1
+    periodo: 8
+    teorica: 60
+    pratica: 30
+    categoria: prof
+    pre: [MCC02]
+    co: []
+  - id: EST02
+    codigo: EST02
+    nome: Estradas 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [EST01, SOL01]
+    co: []
+  - id: FUN01
+    codigo: FUN01
+    nome: Fundações 1
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [SOL02]
+    co: []
+  - id: SAN02
+    codigo: SAN02
+    nome: Saneamento 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [SAN01]
+    co: []
+  - id: ESS01
+    codigo: ESS01
+    nome: Estágio Supervisionado
+    periodo: 8
+    teorica: 45
+    pratica: 135
+    categoria: compl
+    pre: []
+    co: []
+    estagio: true
+    nota: "A Tabela 18 põe \"60%CH\" no lugar do pré-requisito: são 2.322h das 3.870h do curso."
+  - id: CCI02
+    codigo: CCI02
+    nome: Construção Civil 2
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [CCI01]
+    co: []
+  - id: GCA01
+    codigo: GCA01
+    nome: Gestão e Controle Ambiental
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [SAN01]
+    co: []
+  - id: TRA01
+    codigo: TRA01
+    nome: Técnica e Economia dos Transportes
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [EST02]
+    co: []
+  - id: GCC01
+    codigo: GCC01
+    nome: Gestão da Construção Civil 1
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CCI01]
+    co: []
+  - id: PON01
+    codigo: PON01
+    nome: Pontes 1
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CON02]
+    co: []
+  - id: MET01
+    codigo: MET01
+    nome: Metodologia da Pesquisa
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: [ESS01]
+  - id: CAM01
+    codigo: CAM01
+    nome: Construção de Aço e Madeira
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [TES02]
+    co: []
+  - id: GCC02
+    codigo: GCC02
+    nome: Gestão da Construção Civil 2
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [GCC01]
+    co: []
+  - id: INS01
+    codigo: INS01
+    nome: Instalações Prediais
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CCI01]
+    co: []
+  - id: PTO01
+    codigo: PTO01
+    nome: Portos 1
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [HID01, RMA02]
+    co: []
+  - id: LEG01
+    codigo: LEG01
+    nome: Legislação e Exercício Profissional
+    periodo: 10
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+    nota: "A Tabela 18 dá a esta disciplina o co-requisito \"CC02\", que não é código desta matriz; os candidatos são CCI02 e GCC02, e com dois plausíveis a seta ficou de fora."
+  - id: PFC01
+    codigo: PFC01
+    nome: Projeto Final de Curso
+    periodo: 10
+    teorica: 0
+    pratica: 30
+    categoria: compl
+    pre: [MET01]
+    co: []
+  - id: ATCOMP
+    codigo: —
+    nome: Atividades Complementares
+    periodo: 10
+    teorica: 0
+    pratica: 240
+    categoria: compl
+    pre: []
+    co: []
+    nota: "Aparecem em todos os dez períodos com CH \"var\"; são 240h no total, e o PPC não as divide em teórica e prática."

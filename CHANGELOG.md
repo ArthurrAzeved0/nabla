@@ -21,6 +21,34 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.3.0] — 2026-08-21
+
+**O perfil antigo de Civil**, e o índice das grades passando a usar a página
+inteira.
+
+### Adicionado
+
+- **Mapa da grade de Engenharia Civil, matriz 2011**: 60 disciplinas e 60
+  requisitos, do projeto pedagógico de 2011. São quatro mapas no ar agora —
+  dois cursos, cada um com o perfil atual e o anterior.
+- Conferência da **CH que libera o estágio**: este PPC imprime a conta feita
+  ("60% da carga horária total do curso, ou seja, 2.322 horas"), então o
+  script confere que o total e a fração transcritos dão o mesmo número.
+
+### Alterado
+
+- **O índice em `/grade/` usa a largura da página**, como os mapas já usavam.
+  Estava preso na coluna de leitura, com os cartões apertados no meio e a
+  tela vazia dos dois lados.
+- **Índice agrupado por curso**, com um bloco por curso e um cartão por
+  matriz. Numa lista solta o nome do curso aparecia duas vezes e a matriz —
+  a única diferença entre os dois cartões — era a última coisa que se lia.
+  Agora o cartão começa pelo selo **atual**/**anterior** e pelo número de
+  disciplinas, que é o que se compara.
+- Na página de uma matriz, o link para a **matriz irmã** aparece mesmo quando
+  a grade não tem observação escrita: quem cai no perfil errado precisa da
+  porta para o outro de qualquer jeito.
+
 ## [2.2.1] — 2026-08-21
 
 ### Alterado
@@ -562,6 +590,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.3.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.3.0
 [2.2.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.2.1
 [2.2.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.2.0
 [2.1.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.1.1

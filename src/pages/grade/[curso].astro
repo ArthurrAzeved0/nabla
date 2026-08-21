@@ -78,16 +78,17 @@ const ligadas = g.disciplinas.filter((d) => {
   </p>
 
   {
-    /* A observação diz a quem esta matriz se aplica. Só existe onde há mais de
-       um perfil no ar do mesmo curso, ou algo que o PPC deixa em aberto — daí
-       ser opcional no schema. */
-    g.observacao && (
+    /* A observação diz a quem esta matriz se aplica; é opcional, porque num
+       curso de matriz única não há o que esclarecer. O link para a matriz irmã
+       aparece independente dela: quem cai no perfil errado precisa de uma
+       porta para o outro, e nem toda grade tem observação escrita. */
+    (g.observacao || irmas.length > 0) && (
       <p class="aviso">
         {g.observacao}
         {irmas.map((o) => (
           <>
-            {" "}
-            <a href={`${base}grade/${o.sigla}/`}>Ver a matriz {o.matriz}</a>.
+            {g.observacao ? " " : ""}
+            <a href={`${base}grade/${o.sigla}/`}>Ver a matriz {o.matriz} deste curso</a>.
           </>
         ))}
       </p>

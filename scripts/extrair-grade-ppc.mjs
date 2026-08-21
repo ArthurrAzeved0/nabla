@@ -505,6 +505,197 @@ const AUTOMACAO_2010 = [
 ];
 
 /* ==========================================================================
+   ENGENHARIA CIVIL — matriz 2011 (perfil antigo)
+
+   Fonte: "01 - PROJETO PEDAGÓGICO DE CIVIL - VERSÃO 12092011.pdf",
+   POLI/UPE, 36 páginas. A **Tabela 18** (§7.5) é a matriz completa: código,
+   nome, tipo, pré-requisito, co-requisito e CH por período. Os núcleos vêm
+   das Tabelas 14 (básicos), 15 (profissionalizantes) e 16 (específicos), que
+   marcam com asterisco a disciplina contada em mais de um inciso — então dá
+   para somar sem contar duas vezes.
+
+   As três somam 1470h + 1470h + 480h = 3420h, que é exatamente a CH das
+   obrigatórias declarada em §7.4. Com estágio (180h), PFC (30h) e atividades
+   complementares (240h) fecha as 3870h do currículo pleno. Nenhuma conta
+   deste PPC briga com outra — o de Automação de 2010 não teve essa sorte.
+
+   O ESTÁGIO tem a regra escrita, e com a conta feita: "somente poderá ser
+   feito após o aluno ter concluído pelo menos 60% da carga horária total do
+   curso, ou seja, 2.322 horas". 60% de 3870 é 2322 — é o `estagioFracao`
+   confirmado pelo próprio documento, e o script confere isso.
+
+   ATENÇÃO à leitura da Tabela 18: as células de requisito com mais de um
+   código quebram em linhas que caem ACIMA e ABAIXO da linha da disciplina,
+   porque o PDF centraliza a célula na vertical. No 3º período, o que está
+   escrito como três linhas soltas entre Expressão Gráfica 2 e Cálculo
+   Numérico é uma célula de 3 linhas (FIS01, MAT01, EXP01) pertencente a
+   Mecânica Geral 1, e uma de 2 (MAT03, INF01) pertencente a Cálculo
+   Numérico — que é a leitura em que os dois requisitos fazem sentido.
+
+   O QUE O DOCUMENTO DEIXA EM ABERTO, registrado em `nota` na disciplina:
+
+   1. LEG01 tem co-requisito "CC02", que não é código desta matriz. Os
+      candidatos são CCI02 (Construção Civil 2) e GCC02 (Gestão da Construção
+      Civil 2, um G a menos). Com dois candidatos plausíveis, a aresta ficou
+      de fora: seta faltando é lacuna, seta errada é mentira.
+   2. MAT08 aparece como "MAT8". Os outros códigos da matriz têm dois dígitos.
+   3. As atividades complementares aparecem em TODOS os períodos com CH
+      "var". São 240h no total (§7.4), aqui num nó só.
+
+   Colunas: id, codigo, nome, período, teórica, prática, categoria, pre, co
+   ========================================================================== */
+const CIVIL_2011 = [
+  /* ------------------------------------------------------------ 1º período */
+  { id: "MAT01", codigo: "MAT01", nome: "Geometria Analítica",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "MAT02", codigo: "MAT02", nome: "Cálculo Diferencial e Integral 1",
+    periodo: 1, teorica: 60, pratica: 0, categoria: "basico" },
+  { id: "INF01", codigo: "INF01", nome: "Introdução à Programação",
+    periodo: 1, teorica: 30, pratica: 30, categoria: "basico" },
+  { id: "SMA01", codigo: "SMA01", nome: "Sociologia e Meio Ambiente",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "basico" },
+  { id: "IEC01", codigo: "IEC01", nome: "Introdução à Engenharia Civil",
+    periodo: 1, teorica: 30, pratica: 0, categoria: "basico" },
+  { id: "QUI01", codigo: "QUI01", nome: "Química Geral",
+    periodo: 1, teorica: 45, pratica: 30, categoria: "basico" },
+
+  /* ------------------------------------------------------------ 2º período */
+  { id: "MAT06", codigo: "MAT06", nome: "Álgebra Linear",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT01"] },
+  { id: "MAT03", codigo: "MAT03", nome: "Cálculo Diferencial e Integral 2",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT02"] },
+  { id: "FIS01", codigo: "FIS01", nome: "Física 1",
+    periodo: 2, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT02"] },
+  { id: "EXP01", codigo: "EXP01", nome: "Expressão Gráfica 1",
+    periodo: 2, teorica: 30, pratica: 45, categoria: "basico" },
+  { id: "POR01", codigo: "POR01", nome: "Português Instrumental",
+    periodo: 2, teorica: 30, pratica: 0, categoria: "basico" },
+
+  /* ------------------------------------------------------------ 3º período */
+  { id: "MAT04", codigo: "MAT04", nome: "Cálculo Diferencial e Integral 3",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT03"],
+    cadeira: "calculo3" },
+  { id: "FIS02", codigo: "FIS02", nome: "Física 2",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["FIS01"], co: ["MAT04"],
+    cadeira: "eletromag",
+    nota: "É a física do eletromagnetismo — o mesmo lugar que a matriz de 2021 chama de Fundamentos do Eletromagnetismo." },
+  { id: "EXP02", codigo: "EXP02", nome: "Expressão Gráfica 2",
+    periodo: 3, teorica: 0, pratica: 45, categoria: "basico", pre: ["EXP01"] },
+  { id: "MEC01", codigo: "MEC01", nome: "Mecânica Geral 1",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["FIS01", "MAT01", "EXP01"] },
+  { id: "MAT07", codigo: "MAT07", nome: "Cálculo Numérico",
+    periodo: 3, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT03", "INF01"] },
+
+  /* ------------------------------------------------------------ 4º período */
+  { id: "MAT05", codigo: "MAT05", nome: "Cálculo Diferencial e Integral 4",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT04"],
+    cadeira: "eqdiferenciais" },
+  { id: "FEN02", codigo: "FEN02", nome: "Fenômenos de Transporte 2",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT03"], co: ["FIS04"] },
+  { id: "FIS04", codigo: "FIS04", nome: "Física 3",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["FIS02"] },
+  { id: "FIS05", codigo: "FIS05", nome: "Física Experimental",
+    periodo: 4, teorica: 0, pratica: 30, categoria: "basico", co: ["FIS04"] },
+  { id: "MEC02", codigo: "MEC02", nome: "Mecânica Geral 2",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MEC01"] },
+  { id: "MAT08", codigo: "MAT08", nome: "Probabilidade e Estatística",
+    periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT04", "MAT06"],
+    nota: "A Tabela 18 imprime o código como \"MAT8\"; os demais códigos da matriz têm dois dígitos." },
+  { id: "EXP03", codigo: "EXP03", nome: "Desenho Técnico",
+    periodo: 4, teorica: 30, pratica: 30, categoria: "prof", pre: ["EXP02"] },
+
+  /* ------------------------------------------------------------ 5º período */
+  { id: "MCC01", codigo: "MCC01", nome: "Materiais de Construção 1",
+    periodo: 5, teorica: 45, pratica: 30, categoria: "basico", co: ["GEO01", "RMA01"] },
+  { id: "TOP01", codigo: "TOP01", nome: "Topografia 1",
+    periodo: 5, teorica: 30, pratica: 30, categoria: "prof", pre: ["EXP03"] },
+  { id: "GEO01", codigo: "GEO01", nome: "Fundamentos de Geologia",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["QUI01"],
+    nota: "Aqui o pré-requisito está escrito: Química Geral. No PPC de 2021 esta mesma disciplina aparece com \"FIS02\", código que não existe naquela matriz." },
+  { id: "RMA01", codigo: "RMA01", nome: "Resistência dos Materiais 1",
+    periodo: 5, teorica: 60, pratica: 0, categoria: "prof", pre: ["MEC02"] },
+  { id: "HID01", codigo: "HID01", nome: "Hidráulica",
+    periodo: 5, teorica: 60, pratica: 30, categoria: "prof", pre: ["FEN02"] },
+
+  /* ------------------------------------------------------------ 6º período */
+  { id: "TOP02", codigo: "TOP02", nome: "Topografia 2",
+    periodo: 6, teorica: 60, pratica: 30, categoria: "prof", pre: ["TOP01"] },
+  { id: "MCC02", codigo: "MCC02", nome: "Materiais de Construção 2",
+    periodo: 6, teorica: 30, pratica: 30, categoria: "prof", pre: ["MCC01"] },
+  { id: "RMA02", codigo: "RMA02", nome: "Resistência dos Materiais 2",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["RMA01"] },
+  { id: "HID02", codigo: "HID02", nome: "Hidrologia Aplicada",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["HID01"] },
+  { id: "SOL01", codigo: "SOL01", nome: "Mecânica dos Solos 1",
+    periodo: 6, teorica: 60, pratica: 30, categoria: "prof", pre: ["GEO01"], co: ["RMA01"] },
+  { id: "ARQ01", codigo: "ARQ01", nome: "Arquitetura",
+    periodo: 6, teorica: 60, pratica: 0, categoria: "prof", pre: ["TOP01"] },
+
+  /* ------------------------------------------------------------ 7º período */
+  { id: "CON01", codigo: "CON01", nome: "Concreto 1",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "espec", pre: ["RMA02"] },
+  { id: "EST01", codigo: "EST01", nome: "Estradas 1",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "espec", pre: ["TOP02"] },
+  { id: "SAN01", codigo: "SAN01", nome: "Saneamento 1",
+    periodo: 7, teorica: 60, pratica: 30, categoria: "prof", pre: ["HID01"] },
+  { id: "SOL02", codigo: "SOL02", nome: "Mecânica dos Solos 2",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["SOL01"] },
+  { id: "SHT01", codigo: "SHT01", nome: "Engenharia de Segurança do Trabalho",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["MCC02"], co: ["SMA01"] },
+  { id: "TES01", codigo: "TES01", nome: "Teoria das Estruturas 1",
+    periodo: 7, teorica: 60, pratica: 0, categoria: "prof", pre: ["RMA02"] },
+
+  /* ------------------------------------------------------------ 8º período */
+  { id: "CON02", codigo: "CON02", nome: "Concreto 2",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["CON01"] },
+  { id: "TES02", codigo: "TES02", nome: "Teoria das Estruturas 2",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "prof", pre: ["TES01"] },
+  { id: "CCI01", codigo: "CCI01", nome: "Construção Civil 1",
+    periodo: 8, teorica: 60, pratica: 30, categoria: "prof", pre: ["MCC02"] },
+  { id: "EST02", codigo: "EST02", nome: "Estradas 2",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["EST01", "SOL01"] },
+  { id: "FUN01", codigo: "FUN01", nome: "Fundações 1",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "espec", pre: ["SOL02"] },
+  { id: "SAN02", codigo: "SAN02", nome: "Saneamento 2",
+    periodo: 8, teorica: 60, pratica: 0, categoria: "prof", pre: ["SAN01"] },
+  { id: "ESS01", codigo: "ESS01", nome: "Estágio Supervisionado",
+    periodo: 8, teorica: 45, pratica: 135, categoria: "compl", estagio: true,
+    nota: "A Tabela 18 põe \"60%CH\" no lugar do pré-requisito: são 2.322h das 3.870h do curso." },
+
+  /* ------------------------------------------------------------ 9º período */
+  { id: "CCI02", codigo: "CCI02", nome: "Construção Civil 2",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "prof", pre: ["CCI01"] },
+  { id: "GCA01", codigo: "GCA01", nome: "Gestão e Controle Ambiental",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "prof", pre: ["SAN01"] },
+  { id: "TRA01", codigo: "TRA01", nome: "Técnica e Economia dos Transportes",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "prof", pre: ["EST02"] },
+  { id: "GCC01", codigo: "GCC01", nome: "Gestão da Construção Civil 1",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "basico", pre: ["CCI01"] },
+  { id: "PON01", codigo: "PON01", nome: "Pontes 1",
+    periodo: 9, teorica: 60, pratica: 0, categoria: "espec", pre: ["CON02"] },
+  { id: "MET01", codigo: "MET01", nome: "Metodologia da Pesquisa",
+    periodo: 9, teorica: 30, pratica: 0, categoria: "basico", co: ["ESS01"] },
+
+  /* ----------------------------------------------------------- 10º período */
+  { id: "CAM01", codigo: "CAM01", nome: "Construção de Aço e Madeira",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "espec", pre: ["TES02"] },
+  { id: "GCC02", codigo: "GCC02", nome: "Gestão da Construção Civil 2",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "prof", pre: ["GCC01"] },
+  { id: "INS01", codigo: "INS01", nome: "Instalações Prediais",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "basico", pre: ["CCI01"] },
+  { id: "PTO01", codigo: "PTO01", nome: "Portos 1",
+    periodo: 10, teorica: 60, pratica: 0, categoria: "espec", pre: ["HID01", "RMA02"] },
+  { id: "LEG01", codigo: "LEG01", nome: "Legislação e Exercício Profissional",
+    periodo: 10, teorica: 30, pratica: 0, categoria: "basico",
+    nota: "A Tabela 18 dá a esta disciplina o co-requisito \"CC02\", que não é código desta matriz; os candidatos são CCI02 e GCC02, e com dois plausíveis a seta ficou de fora." },
+  { id: "PFC01", codigo: "PFC01", nome: "Projeto Final de Curso",
+    periodo: 10, teorica: 0, pratica: 30, categoria: "compl", pre: ["MET01"] },
+  { id: "ATCOMP", codigo: "—", nome: "Atividades Complementares",
+    periodo: 10, teorica: 0, pratica: 240, categoria: "compl",
+    nota: "Aparecem em todos os dez períodos com CH \"var\"; são 240h no total, e o PPC não as divide em teórica e prática." },
+];
+
+/* ==========================================================================
    As grades e as contas que cada PPC publica — é contra elas que a
    transcrição é conferida. `esperado` sai do documento; `real` sai da tabela.
    ========================================================================== */
@@ -589,6 +780,47 @@ const GRADES = [
       "da norma da UPE, que é o que o PPC de 2021 exige no mesmo curso.",
     ],
   },
+  {
+    sigla: "civil-2011",
+    curso: "Engenharia Civil",
+    matriz: "2011",
+    observacao:
+      "Perfil antigo, do projeto pedagógico de 2011. A matriz atual do curso é a 2021.1.",
+    chTotalCurso: 3870,
+    /* §7.5, com a conta feita no próprio texto: o estágio "somente poderá ser
+       feito após o aluno ter concluído pelo menos 60% da carga horária total
+       do curso, ou seja, 2.322 horas". */
+    estagioFracao: 0.6,
+    disciplinas: CIVIL_2011,
+    porPeriodo: [315, 285, 285, 390, 345, 420, 390, 570, 330, 300],
+    /* As atividades complementares não pertencem a um período: aparecem em
+       todos os dez com CH "var", e por isso não entram em nenhum dos totais
+       impressos. Ficam num nó só, no 10º, e fora desta conferência. */
+    foraDoPeriodo: ["ATCOMP"],
+    contas: (c) => [
+      ["Núcleo de Conteúdos Básicos (Tabela 14)", 1470, c.chDaCategoria("basico")],
+      ["Núcleo Profissionalizante (Tabela 15)", 1470, c.chDaCategoria("prof")],
+      ["Núcleo Prof. Específico (Tabela 16)", 480, c.chDaCategoria("espec")],
+      /* §7.4: "3.420 horas das disciplinas obrigatórias, 180 horas para o
+         estágio, 30 horas para o PFC e 240 horas para as atividades
+         complementares". As obrigatórias são só os três núcleos. */
+      ["obrigatórias (§7.4)", 3420, c.chDaCategoria("basico", "prof", "espec")],
+      ["estágio + PFC + complementares (§7.4)", 450, c.chDaCategoria("compl")],
+      ["currículo pleno (§7.4)", 3870, c.ch(c.ds)],
+      /* A CH que libera o estágio está impressa: confere se o total e a
+         fração que eu registrei dão o mesmo número que o PPC calculou. */
+      ["CH que libera o estágio (§7.5)", 2322, Math.round(3870 * 0.6)],
+    ],
+    notas: [
+      "Perfil ANTIGO, do projeto pedagógico de 2011. A matriz atual do curso",
+      "é a 2021.1, em civil.yaml — que veio do fluxograma do site 1.x, por",
+      "scripts/extrair-grade.mjs, e não deste PPC.",
+      "",
+      "Cuidado ao reler a Tabela 18: célula de requisito com mais de um código",
+      "quebra em linhas que caem ACIMA e ABAIXO da linha da disciplina, porque",
+      "o PDF centraliza a célula na vertical.",
+    ],
+  },
 ];
 
 /* ==========================================================================
@@ -652,9 +884,10 @@ function gerar(g) {
   }
   /* Por período: é a conferência mais forte que existe aqui, porque uma CH
      digitada errada aparece na soma do período dela e em nenhuma outra. */
+  const contaNoPeriodo = ds.filter((d) => !(g.foraDoPeriodo ?? []).includes(d.id));
   g.porPeriodo.forEach((esperado, i) => {
     const p = i + 1;
-    const real = ch(ds.filter((d) => d.periodo === p));
+    const real = ch(contaNoPeriodo.filter((d) => d.periodo === p));
     if (real !== esperado) erros.push(`${p}º período: transcrição dá ${real}h, o PPC diz ${esperado}h`);
   });
 
