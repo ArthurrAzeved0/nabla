@@ -1,5 +1,5 @@
 <!-- **************************************************************************
-     * Nabla — Guia do aluno POLI/UPE                             favicon.svg *
+     * Nabla — Guia do aluno POLI/UPE                            icone-app.svg *
      *========================================================================*
      * Copyright © 2026  Arthur Epifanio De Azevedo                           *
      * Todos os direitos reservados.                                          *
@@ -10,29 +10,18 @@
      * Página:  https://github.com/ArthurrAzeved0                             *
      * Contato: arthur_azevedo05@hotmail.com                                  *
      ************************************************************************** -->
+<!-- Fonte dos ícones de tela inicial, e o único lugar onde a placa colorida
+     sobreviveu. Motivo: o iOS não respeita transparência em apple-touch-icon
+     — o que for vazado ele preenche de preto. Aqui o fundo é parte do ícone,
+     não recurso de contraste, e o ∇ tem a mesma espessura fina do favicon,
+     só recuado para não encostar no canto arredondado. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Nabla">
   <title>Nabla</title>
-  <!-- Sem placa: o ∇ pousa direto na barra de guias. Como não há mais fundo
-       próprio para garantir contraste, a cor acompanha o tema do SISTEMA (não
-       o do site: a guia é do navegador, não da página). Os dois valores são os
-       mesmos tokens de destaque do tema claro e do escuro.
-
-       O `stroke` fica também como atributo, e não só no CSS: renderizador de
-       ícone que ignore a folha de estilo ainda desenha o traço, em vez de
-       mostrar uma guia vazia. O CSS ganha do atributo, então o tema escuro
-       continua funcionando onde há suporte. -->
-  <style>
-    @media (prefers-color-scheme: dark) {
-      .glifo {
-        stroke: #5cbdda;
-      }
-    }
-  </style>
+  <rect width="32" height="32" rx="7" fill="#0f6c86" />
   <path
-    class="glifo"
-    d="M3 5h26L16 26z"
+    d="M4.5 6.8h23L16 24.4z"
     fill="none"
-    stroke="#0f6c86"
+    stroke="#eef1f1"
     stroke-width="2.6"
     stroke-linejoin="round"
   />

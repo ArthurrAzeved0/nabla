@@ -21,6 +21,26 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.1.1] — 2026-08-21
+
+### Alterado
+
+- **O ícone da guia perdeu a placa colorida e o traço afinou** de 4,2 para 2,6
+  (em 32 de viewBox). Na fileira de guias, o que se via antes era um quadrado
+  azul, não o nabla. Sem placa o traço pode afinar, porque não precisa mais
+  vencer um fundo próprio — e 2,6 é exatamente o peso do ∇ do cabeçalho
+  (2 em 24), então a guia e a marca do site passaram a ser o mesmo desenho.
+  A 16px o traço antigo cobria 29,2% do quadro; o novo cobre 18,6%, com o
+  vazado bem aberto.
+- Sem placa, o contraste passa a depender da barra de guias: a cor do ícone
+  agora segue `prefers-color-scheme` — o destaque do tema claro numa barra
+  clara, o do escuro numa escura. É o tema do **sistema**, não o do site: a
+  guia é do navegador, não da página.
+- `public/icone-app.svg` passa a ser a fonte dos ícones de tela inicial, e é o
+  único lugar onde a placa sobreviveu — ali ela não é recurso de contraste: o
+  iOS não respeita transparência em `apple-touch-icon` e preenche de preto o
+  que for vazado. O ∇ deles também afinou.
+
 ## [2.1.0] — 2026-08-21
 
 **A grade de Automação.** A segunda grade do site — e a primeira montada a
@@ -488,6 +508,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.1.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.1.1
 [2.1.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.1.0
 [2.0.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0
 [2.0.0-alpha.7]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0-alpha.7
