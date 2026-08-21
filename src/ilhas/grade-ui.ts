@@ -39,8 +39,12 @@ export function ligarGrade() {
   const quadro = raiz.querySelector<HTMLElement>("[data-quadro]")!;
   const rolagem = raiz.querySelector<HTMLElement>("[data-rolagem]")!;
   const svg = raiz.querySelector<SVGSVGElement>("[data-fios]")!;
+  /* Só os cartões DO QUADRO entram no mapa de geometria. O mesmo
+     data-disciplina existe também na lista, e como a lista vem depois no
+     DOM ela sobrescrevia as entradas — estando `display:none`, devolvia
+     offset zero e todas as setas degeneravam num ponto. */
   const cartoes = new Map<string, HTMLElement>();
-  for (const el of raiz.querySelectorAll<HTMLElement>("[data-disciplina]")) {
+  for (const el of quadro.querySelectorAll<HTMLElement>("[data-disciplina]")) {
     cartoes.set(el.dataset.disciplina!, el);
   }
   const cartao = (id: string) => cartoes.get(id);
@@ -121,7 +125,10 @@ export function ligarGrade() {
       fio.classList.toggle("fio-forte", !!set?.has(de) && !!set.has(para));
     }
   }
-  for (const [id, el] of cartoes) {
+  /* o destaque da cadeia vale nos dois modos, então escuta em todos os
+     cartões — não só nos do quadro */
+  for (const el of raiz.querySelectorAll<HTMLElement>("[data-disciplina]")) {
+    const id = el.dataset.disciplina!;
     el.addEventListener("mouseenter", () => traco(id));
     el.addEventListener("mouseleave", () => traco(null));
     el.addEventListener("focus", () => traco(id));
