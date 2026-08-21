@@ -1,0 +1,646 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                    eletronica-2012.yaml *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+# ************************************************************************
+# Grade de Engenharia Elétrica Eletrônica — POLI/UPE, matriz 2012.
+#
+# GERADO por scripts/extrair-grade-ppc.mjs, a partir do PPC do curso.
+# Editar à mão se perde na próxima geração: a correção vai no script.
+#
+# Perfil de 2012, de quando o curso se chamava apenas Engenharia
+# Eletrônica — é o mesmo curso da matriz de 2020, renomeado. A Tabela 11
+# escreve pré e co-requisito POR NOME em
+# linhas próprias — o formato mais legível dos seis PPCs lidos — e não
+# tem coluna de código: os códigos aqui foram herdados por nome das
+# outras grades.
+#
+# A Tabela 8 não fecha sozinha: a área "Circuitos Elétricos, 240h" pede
+# quatro disciplinas de 60h e só três se encaixam pelo nome. Por isso o
+# script confere Essencial + Específico somados, e não cada um.
+#
+# Este PPC não publica piso de CH para o estágio.
+#
+# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `cadeira` liga o nó à página da cadeira no site, quando ela existe.
+# ************************************************************************
+curso: Engenharia Elétrica Eletrônica
+sigla: eletronica-2012
+matriz: "2012"
+observacao: "Perfil de 2012, de quando o curso se chamava apenas Engenharia Eletrônica. A matriz mais recente é a de 2020."
+chTotalCurso: 3705
+disciplinas:
+  - id: CALC1
+    codigo: MATM0018
+    nome: Cálculo Diferencial e Integral 1
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: PROG
+    codigo: CCMP0094
+    nome: Introdução à Programação
+    periodo: 1
+    teorica: 30
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: QUIM
+    codigo: QUIM0002
+    nome: Química Geral
+    periodo: 1
+    teorica: 45
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: GEOAN
+    codigo: MATM0007
+    nome: Geometria Analítica
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: SOCIO
+    codigo: SOCL0002
+    nome: Sociologia e Meio Ambiente
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: INTROENG
+    codigo: —
+    nome: Introdução à Engenharia
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: []
+  - id: CALC2
+    codigo: MATM0019
+    nome: Cálculo Diferencial e Integral 2
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC1]
+    co: []
+  - id: FIS1
+    codigo: FISC0011
+    nome: Física 1
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC1]
+    co: []
+  - id: EXPGR1
+    codigo: ARTE0001
+    nome: Expressão Gráfica 1
+    periodo: 2
+    teorica: 30
+    pratica: 45
+    categoria: basico
+    pre: []
+    co: []
+  - id: ALGLIN
+    codigo: MATM0001
+    nome: Álgebra Linear
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [GEOAN]
+    co: []
+  - id: PORT
+    codigo: LETR0001
+    nome: Português Instrumental
+    periodo: 2
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: ECON
+    codigo: ECON0001
+    nome: Engenharia Econômica
+    periodo: 2
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: CALC3
+    codigo: MATM0020
+    nome: Cálculo Diferencial e Integral 3
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC2]
+    co: []
+    cadeira: calculo3
+  - id: FIS2
+    codigo: FISC0012
+    nome: Física 2
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS1]
+    co: [CALC3]
+    nota: "É a física do eletromagnetismo: Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como pré-requisito."
+    cadeira: eletromag
+  - id: ELETRAP
+    codigo: FISC0016
+    nome: Eletricidade Aplicada
+    periodo: 3
+    teorica: 0
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: [FIS2]
+  - id: MECGER1
+    codigo: FISC0007
+    nome: Mecânica Geral 1
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS1, GEOAN, EXPGR1]
+    co: []
+  - id: CALCNUM
+    codigo: CCMP0096
+    nome: Cálculo Numérico
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC2, PROG]
+    co: []
+  - id: PROBEST
+    codigo: —
+    nome: Probabilidade e Estatística
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC2]
+    co: []
+  - id: CALC4
+    codigo: MATM0021
+    nome: Cálculo Diferencial e Integral 4
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC3]
+    co: []
+    cadeira: eqdiferenciais
+  - id: FIS3
+    codigo: FISC0013
+    nome: Física 3
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS2]
+    co: []
+  - id: CIRC1
+    codigo: ELET0013
+    nome: Circuitos Elétricos 1
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [FIS2]
+    co: [CALC4]
+  - id: FISEXP
+    codigo: FISC0018
+    nome: Física Experimental
+    periodo: 4
+    teorica: 0
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: [FIS3]
+  - id: SEMICOND
+    codigo: —
+    nome: Teoria dos Dispositivos Semicondutores
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [FIS2]
+    co: [CALC4]
+  - id: COMPMAT
+    codigo: MATM0006
+    nome: Complementos de Matemática
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [CALC3]
+    co: []
+  - id: FENTR
+    codigo: —
+    nome: Fenômeno de Transporte
+    periodo: 4
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: [CALC2]
+    co: [FIS3]
+  - id: ELMAG1
+    codigo: ELET0030
+    nome: Eletromagnetismo 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [CALC4, FIS2]
+    co: []
+  - id: ELET1
+    codigo: ELET0033
+    nome: Eletrônica 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [CIRC1, SEMICOND]
+    co: []
+  - id: CIRC2
+    codigo: ELET0014
+    nome: Circuitos Elétricos 2
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [CIRC1]
+    co: []
+  - id: LABELET1
+    codigo: ELET0047
+    nome: Laboratório de Eletrônica 1
+    periodo: 5
+    teorica: 0
+    pratica: 30
+    categoria: prof
+    pre: []
+    co: [ELET1]
+  - id: ELETDIG
+    codigo: ELET0037
+    nome: Eletrônica Digital
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [SEMICOND]
+    co: [ELET1]
+  - id: INSTELE
+    codigo: —
+    nome: Instalações Elétricas
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: [CIRC2]
+  - id: ENGSEG
+    codigo: —
+    nome: Engenharia de Segurança do Trabalho
+    periodo: 5
+    teorica: 45
+    pratica: 0
+    categoria: prof
+    pre: []
+    co: [INSTELE]
+  - id: DIREITO
+    codigo: —
+    nome: Direito para Engenheiros
+    periodo: 5
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: ELMAG2
+    codigo: —
+    nome: Eletromagnetismo 2
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELMAG1, COMPMAT]
+    co: []
+  - id: ELET2
+    codigo: —
+    nome: Eletrônica 2
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELET1]
+    co: []
+  - id: ELETANA
+    codigo: ELET0035
+    nome: Eletrônica Analógica
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELET1]
+    co: []
+  - id: LABELET2
+    codigo: —
+    nome: Laboratório de Eletrônica 2
+    periodo: 6
+    teorica: 0
+    pratica: 30
+    categoria: prof
+    pre: []
+    co: [ELET2]
+  - id: SISTDIG
+    codigo: —
+    nome: Sistemas Digitais
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELETDIG]
+    co: []
+  - id: SINSIS
+    codigo: —
+    nome: Sinais e Sistemas
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [CALC4, COMPMAT]
+    co: []
+  - id: SISCTRL1
+    codigo: ELET0075
+    nome: Sistemas de Controle 1
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [CALC4, COMPMAT]
+    co: []
+  - id: LABSISTDIG
+    codigo: —
+    nome: Laboratório de Sistemas Digitais
+    periodo: 6
+    teorica: 0
+    pratica: 30
+    categoria: prof
+    pre: []
+    co: [SISTDIG]
+  - id: CONVEL
+    codigo: ELET0025
+    nome: Conversão Eletromecânica de Energia
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELMAG2, CIRC1]
+    co: []
+  - id: PROCESTOC
+    codigo: —
+    nome: Processos Estocásticos
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [PROBEST, CALC4]
+    co: []
+  - id: ELETIND
+    codigo: —
+    nome: Eletrônica Industrial
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ELETANA, ELETDIG]
+    co: []
+  - id: MICROCTRL
+    codigo: —
+    nome: Microcontroladores
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [SISTDIG]
+    co: []
+  - id: MICROPROC
+    codigo: —
+    nome: Microprocessadores
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [SISTDIG, PROG]
+    co: []
+  - id: PRINCCOM
+    codigo: —
+    nome: Princípios de Comunicações
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [SINSIS]
+    co: []
+  - id: SISCTRL2
+    codigo: ELET0076
+    nome: Sistemas de Controle 2
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [SISCTRL1]
+    co: []
+  - id: ADMIN
+    codigo: —
+    nome: Administração
+    periodo: 8
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: PROTOTIP
+    codigo: —
+    nome: Prototipação de Circuitos Digitais
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [SISTDIG, PROG]
+    co: []
+  - id: INSTRUM
+    codigo: —
+    nome: Instrumentação
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ELETANA, SISTDIG, ELET2]
+    co: []
+  - id: REDES1
+    codigo: —
+    nome: Redes de Computadores 1
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [PRINCCOM]
+    co: []
+  - id: ORGARQ
+    codigo: —
+    nome: Organização e Arquitetura de Computadores
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [MICROPROC]
+    co: []
+  - id: PDS
+    codigo: —
+    nome: Processamento Digital de Sinais
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [PRINCCOM]
+    co: []
+  - id: ELETPOT
+    codigo: —
+    nome: Eletrônica de Potência
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ELETIND]
+    co: []
+  - id: METCIENT
+    codigo: LETR0009
+    nome: Metodologia Científica
+    periodo: 8
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: [PORT]
+    co: []
+  - id: ADMMANUT
+    codigo: —
+    nome: Administração da Manutenção
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [PROBEST]
+    co: []
+  - id: CTRLPROC
+    codigo: —
+    nome: Controle de Processos
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [INSTRUM]
+    co: []
+  - id: ESTAGIO
+    codigo: —
+    nome: Estágio Curricular Supervisionado
+    periodo: 9
+    teorica: 45
+    pratica: 135
+    categoria: compl
+    pre: [ENGSEG]
+    co: []
+    estagio: true
+    nota: "Liberado por pré-requisito: este PPC não publica piso de CH para o estágio."
+  - id: PFC
+    codigo: —
+    nome: Projeto Final de Curso
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: compl
+    pre: [METCIENT]
+    co: []
+  - id: EL1
+    codigo: —
+    nome: Eletiva 1
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 360h de eletivas, escolhidas na lista do 10º período da Tabela 11."
+  - id: EL2
+    codigo: —
+    nome: Eletiva 2
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 360h de eletivas, escolhidas na lista do 10º período da Tabela 11."
+  - id: EL3
+    codigo: —
+    nome: Eletiva 3
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 360h de eletivas, escolhidas na lista do 10º período da Tabela 11."
+  - id: EL4
+    codigo: —
+    nome: Eletiva 4
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 360h de eletivas, escolhidas na lista do 10º período da Tabela 11."
+  - id: EL5
+    codigo: —
+    nome: Eletiva 5
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 360h de eletivas, escolhidas na lista do 10º período da Tabela 11."
+  - id: EL6
+    codigo: —
+    nome: Eletiva 6
+    periodo: 10
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "São 360h de eletivas, escolhidas na lista do 10º período da Tabela 11."

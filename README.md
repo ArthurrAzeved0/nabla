@@ -29,7 +29,7 @@ No ar em <https://nabla-poli.pages.dev>
 | **3 cadeiras** | Cálculo Vetorial, Equações Diferenciais, Fundamentos do Eletromagnetismo |
 | **147 questões** | provas reais e listas (1º EE, 2º EE, Final), com gabarito e passo a passo |
 | **43 seções de teoria** | na ordem da ementa oficial, com 107 fórmulas nomeadas e 49 figuras |
-| **1 mapa de grade** | Engenharia Civil, matriz 2021.1: 65 disciplinas e 61 requisitos |
+| **8 mapas de grade** | 4 cursos, o perfil atual e o anterior de cada: 513 disciplinas e 507 requisitos |
 
 Ferramentas de estudo: marcar acertei/errei/revisar, cronômetro por questão,
 filtro por status, progresso e modo simulado com nota. Tudo guardado no
@@ -119,7 +119,36 @@ números e `<Caixa tipo="macete">` para atalho de prova.
 ### Um curso na grade
 
 Um arquivo em `src/content/grade/<sigla>.yaml`. A rota `/grade/<sigla>` nasce
-sozinha; não há código novo a escrever.
+sozinha, e o índice em `/grade/` também: ele agrupa por curso, então duas
+matrizes do mesmo curso caem no mesmo bloco com selo **atual**/**anterior**.
+Não há código novo a escrever.
+
+Editar o YAML à mão funciona, mas se perde na próxima geração. As grades
+vindas de PPC são **transcritas em `scripts/extrair-grade-ppc.mjs`**, e é lá
+que vai a correção. O script não é um extrator: num PDF a tabela de
+requisitos sai com as células quebradas em várias linhas, e parser de linha
+não resolve isso sem inventar. Ele faz o que máquina faz melhor que gente —
+**conferir**:
+
+```bash
+node scripts/extrair-grade-ppc.mjs            # todas
+node scripts/extrair-grade-ppc.mjs mecanica   # uma
+```
+
+Antes de gravar, cada grade é checada contra os números que o **próprio PPC
+publica** — carga horária por núcleo ou ciclo, total das obrigatórias,
+subtotal de cada período — e contra a coerência do grafo: requisito que não
+existe, requisito num período posterior, co-requisito recíproco, CH zero. Se
+alguma conta não fecha, ele aborta sem escrever nada. Um erro de digitação
+numa CH deixa de ser um número errado no site e passa a ser um script que não
+roda.
+
+Onde o documento se contradiz ou cala, a informação vira `nota` no nó — não
+palpite. E onde o PPC não publica código de disciplina (acontece: "os códigos
+são gerados automaticamente pelo Siga"), a grade herda por nome das que
+publicam, com três travas: só o formato atual da UPE, nada de nome com
+códigos divergentes entre cursos, e componente administrativo só herda do
+próprio curso.
 
 ## Detalhes que têm motivo
 
@@ -139,28 +168,30 @@ sozinha; não há código novo a escrever.
 
 ## Publicação
 
-A Cloudflare compila e publica a cada push na `main`. É um deploy **só de
-assets**: `wrangler.jsonc` não declara `main`, então nenhum código roda no
-servidor — a Cloudflare serve os arquivos de `dist/` e nada mais.
+O **GitHub Actions** compila e publica no Cloudflare Pages a cada push na
+`main` e na `develop` (`.github/workflows/publicar.yml`). Antes de publicar,
+o workflow roda `astro check`, `npm test`, o build, `npm run verificar` e
+`npm run cabecalhos` — conteúdo com link de teoria apontando para o vazio,
+fórmula que o KaTeX não lê ou arquivo sem cabeçalho de autoria não chega ao ar.
 
-| campo no painel | valor |
+É um deploy **só de assets**: a Cloudflare serve os arquivos de `dist/` e
+nada mais, sem código no servidor. O projeto Pages foi criado pela CLI, e não
+pelo painel — a Cloudflare tirou a criação de projetos Pages do painel
+enquanto migra tudo para Workers. Daí a publicação vir do Actions em vez de
+uma integração com o Git.
+
+Segredos necessários em *Settings → Secrets and variables → Actions*:
+
+| segredo | o que é |
 |---|---|
-| build command | `npm run build` |
-| deploy command | `npx wrangler deploy` |
-| deploy command (outras branches) | `npx wrangler versions upload` |
-| path | `/` |
+| `CLOUDFLARE_API_TOKEN` | token com permissão *Cloudflare Pages: Edit* |
+| `CLOUDFLARE_ACCOUNT_ID` | o Account ID que aparece no painel |
 
 A versão do Node vem de `.node-version` e de `engines` no `package.json`, não
 de variável no painel: configuração de build pertence ao repositório, onde
 fica versionada junto com o que ela constrói.
 
-Publicar à mão, se precisar: `npm run build && npx wrangler deploy`.
-
-`wrangler.jsonc` cuida de dois detalhes que dariam dor de cabeça:
-`html_handling: auto-trailing-slash`, porque o Astro gera uma pasta com
-`index.html` por rota; e `not_found_handling: 404-page`, para um caminho
-inexistente cair na página 404 do site — com casca e navegação — em vez do
-erro cru do servidor.
+Publicar à mão, se precisar: `npm run publicar`.
 
 `public/_headers` declara o `charset` do `humans.txt` e marca os assets de
 `/_astro/` como `immutable` — eles têm hash no nome, então podem ser
@@ -174,6 +205,7 @@ a âncora. Serve para links do site 1.x que alguém tenha guardado.
 
 A série **1.x** foi o site original, "Responde Aí" — HTML, CSS e JS sem build.
 A **2.x** é o Nabla: reescrita sobre Astro e TypeScript. O caminho está em
-[`CHANGELOG.md`](CHANGELOG.md), uma versão por fase da migração.
+[`CHANGELOG.md`](CHANGELOG.md): uma versão por fase da migração até a 2.0.0, e
+depois uma por grade, correção ou ajuste.
 
 Dependências de terceiros e suas licenças: [`THIRD-PARTY.md`](THIRD-PARTY.md).

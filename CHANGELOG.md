@@ -21,6 +21,44 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.7.0] — 2026-08-21
+
+**Engenharia Elétrica Eletrônica, as duas matrizes.** Oito mapas no ar, quatro
+cursos — 513 disciplinas e 507 requisitos.
+
+### Adicionado
+
+- **Mapa da grade de Engenharia Elétrica Eletrônica, matriz 2020**: 66
+  componentes e 66 requisitos. A Tabela 6 desse PPC marca cada componente com
+  o **núcleo** e com a **dimensão** (ensino ou extensão), e é aí que está a
+  pegadinha das contas: a CH das componentes de extensão sai do núcleo e vai
+  para o balde da Extensão. Somando as EXT de volta, os três núcleos fecham
+  nos números da Tabela 1.
+- **Mapa da grade de Engenharia Eletrônica, matriz 2012**: 66 componentes e 69
+  requisitos, de quando o curso se chamava só **Engenharia Eletrônica**. As
+  duas aparecem juntas sob o nome novo, como as de Mecânica.
+- A Tabela 11 do PPC de 2012 tem o formato mais legível dos oito documentos
+  lidos: cada disciplina traz `Pré-req:` e `Co-req:` escritos **por nome**, em
+  linhas próprias, sem coluna estreita para quebrar.
+
+### Alterado
+
+- **README atualizado.** Dizia "1 mapa de grade" e descrevia a publicação pelo
+  painel da Cloudflare com `wrangler deploy`, que saiu na 2.0.0 — agora
+  descreve o GitHub Actions, os segredos que ele usa, e ganhou uma seção sobre
+  o gerador das grades: que ele confere a transcrição contra os números do
+  próprio PPC e aborta sem gravar se alguma conta não fecha, e como funciona a
+  herança de códigos por nome.
+
+### Corrigido
+
+- No PPC de 2020, Princípios de Comunicações tem como pré-requisito
+  **Antenas**, que é uma *eletiva*: componente obrigatória não pode depender de
+  eletiva, e a aresta apontaria para fora da matriz. Descartada, com nota no nó.
+- Ainda nele: Metodologia Científica pede "Port" (truncado, é Português
+  Instrumental), Engenharia de Segurança lista dois pré-requisitos sem
+  separador, e Instalações Elétricas pede "Circuitos 2".
+
 ## [2.6.0] — 2026-08-21
 
 **Cruzamento de códigos entre os cursos.** A matriz de Mecânica 2021 saiu de
@@ -712,6 +750,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.7.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.7.0
 [2.6.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.6.0
 [2.5.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.5.0
 [2.4.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.4.0
