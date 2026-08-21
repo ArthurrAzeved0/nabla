@@ -105,6 +105,79 @@ const questoes = defineCollection({
     }),
 });
 
-export const collections = { cadeiras, teoria, questoes };
+/* -------------------------------------------------------------------- grade
+   O fluxograma da matriz. Nasce PLURAL: um arquivo por curso, mesma engine.
+   No site 1.x era um `const COURSES = [...]` cravado num HTML de 416 KB, só
+   de Engenharia Civil.
+
+   O ganho de virar dado validado: pré-requisito apontando para código
+   inexistente passa a ser ERRO DE BUILD. Antes era uma seta que simplesmente
+   não aparecia, sem ninguém notar. */
+const grade = defineCollection({
+  loader: glob({ base: "src/content/grade", pattern: "**/*.yaml" }),
+  schema: z
+    .object({
+      curso: z.string(),
+      sigla: z.string().regex(/^[a-z0-9]+$/),
+      matriz: z.string(),
+      /* CH total do curso, incluindo o que não é disciplina da matriz. */
+      chTotalCurso: z.number().int().positive(),
+      /* Fração da CH do curso exigida para o estágio (0.6 = 60%). */
+      estagioFracao: z.number().min(0).max(1),
+      disciplinas: z
+        .array(
+          z.object({
+            id: z.string(),
+            codigo: z.string(),
+            nome: z.string(),
+            periodo: z.number().int().min(1).max(12),
+            teorica: z.number().int().min(0),
+            pratica: z.number().int().min(0),
+            categoria: z.enum(["basico", "prof", "espec", "eletiva", "compl"]),
+            /* pré-requisito: seta contínua. co-requisito: tracejada. */
+            pre: z.array(z.string()).default([]),
+            co: z.array(z.string()).default([]),
+            /* disciplina de curricularização da extensão */
+            dcext: z.boolean().default(false),
+            /* sujeita à regra de CH mínima do estágio */
+            estagio: z.boolean().default(false),
+            nota: z.string().optional(),
+            /* liga o nó à página da cadeira no site, quando ela existe */
+            cadeira: reference("cadeiras").optional(),
+          }),
+        )
+        .min(1),
+    })
+    /* O grafo tem de fechar: no site 1.x, um pré-requisito com código errado
+       virava uma seta que não aparecia, e ninguém notava. Agora para o build. */
+    .superRefine((g, ctx) => {
+      const ids = new Set(g.disciplinas.map((d) => d.id));
+      for (const d of g.disciplinas) {
+        for (const [campo, lista] of [
+          ["pre", d.pre],
+          ["co", d.co],
+        ] as const) {
+          for (const alvo of lista) {
+            if (!ids.has(alvo)) {
+              ctx.addIssue({
+                code: "custom",
+                message: `${d.id}: ${campo} aponta para "${alvo}", que não existe nesta grade`,
+                path: ["disciplinas"],
+              });
+            }
+          }
+        }
+        if (d.pre.includes(d.id) || d.co.includes(d.id)) {
+          ctx.addIssue({
+            code: "custom",
+            message: `${d.id} é requisito de si mesma`,
+            path: ["disciplinas"],
+          });
+        }
+      }
+    }),
+});
+
+export const collections = { cadeiras, teoria, questoes, grade };
 export { PROVAS };
 export type Prova = (typeof PROVAS)[number];
