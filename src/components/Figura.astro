@@ -1,0 +1,43 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                            Figura.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Figura de questão: SVG do diagrama + legenda.
+
+   CUIDADO (bug real do site 1.x): NUNCA usar seletor descendente para
+   estilizar svg aqui. O KaTeX gera um <svg> para cada fórmula, inclusive
+   na legenda — um `.figura svg` inchava esses glifos e deixava "bolinhas"
+   no lugar do texto. Só filho direto: `.figura > svg`. */
+---
+<figure class="figura"><slot /></figure>
+
+<style>
+  .figura {
+    margin: var(--e-4) 0;
+    text-align: center;
+  }
+  /* filho DIRETO — não pega os <svg> que o KaTeX cria na legenda */
+  .figura > :global(svg) {
+    max-width: 100%;
+    height: auto;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-caixa);
+    padding: var(--e-2);
+  }
+  .figura :global(figcaption) {
+    margin-top: var(--e-2);
+    font-size: var(--t-sm);
+    color: var(--ink-3);
+    text-align: center;
+  }
+</style>

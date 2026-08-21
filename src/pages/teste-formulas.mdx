@@ -118,3 +118,41 @@ verificação da Fase 2 deve contar `katex-display` no HTML gerado — não bast
 
 `\operatorname{sen}`, `\dfrac`, `\displaystyle`, `\iiint`, `\mathbb`, `\begin{pmatrix}`,
 `\begin{vmatrix}`, `\left\langle`, `\partial`, `\qquad`, `\Phi`, `\varepsilon` e `\mu_0`.
+
+---
+
+## Comandos que o banco de questões usa
+
+Levantados por varredura nas 147 questões do site 1.x. Se algum falhar aqui,
+falha na migração.
+
+`\boxed` (226 usos), `\operatorname` (161), `\begin{pmatrix}` (142), `\text{}` (717),
+`\tfrac` (95), `\big`/`\Big` (111), `\begin{cases}` (10), `\begin{vmatrix}` (9),
+`\begin{aligned}` (2), `\lVert` (1), `\overset` (1), `\xrightarrow` (1).
+
+$$
+\boxed{z = -9y + 20} \qquad \operatorname{sen}\varphi \qquad \tfrac{1}{2} \qquad \lVert \vec u \rVert
+$$
+
+$$
+\big[\sin\theta\big]_0^{2\pi} \qquad \Big(\frac{a}{b}\Big) \qquad
+\overset{\text{def}}{=} \qquad A \xrightarrow{\;f\;} B
+$$
+
+$$
+\begin{cases}
+x' = 3x - 2y \\
+y' = 2x - 2y
+\end{cases}
+\qquad
+\begin{vmatrix} 3-\lambda & -2 \\ 2 & -2-\lambda \end{vmatrix} = 0
+$$
+
+$$
+\boxed{\begin{aligned}
+x_1 &= c_1 + 12c_2e^{t} + 3c_3e^{2t} \\
+x_2 &= c_1 + 6c_2e^{t} + c_3e^{2t}
+\end{aligned}}
+$$
+
+Texto com $\text{sen}\,y$ e $\text{cos}\,x$ em linha, e $D_{\hat u}f(P) = -\dfrac{\sqrt6}{3}$.

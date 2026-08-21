@@ -83,11 +83,19 @@ const ano = new Date().getFullYear();
     </main>
 
     <footer class="rodape">
-      <div class="pagina">
+      <div class="pagina faixa-rodape">
         <p>
           © {ano} Nabla — feito por <strong>Arthur Azevedo</strong>, aluno de Eng. de Controle e
           Automação na POLI/UPE.
         </p>
+        {/* Porta discreta para o humans.txt: sem rótulo, só o glifo. Quem
+            repara, chega; quem não repara, não perde nada. */}
+        <a
+          class="glifo-rodape"
+          href={`${base}humans.txt`}
+          title="Sobre quem fez este site"
+          aria-label="Sobre quem fez este site">∇</a
+        >
       </div>
     </footer>
   </body>
@@ -149,9 +157,32 @@ const ano = new Date().getFullYear();
     background: var(--surface);
     padding: var(--e-5) 0 var(--e-6);
   }
+  .faixa-rodape {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-4);
+  }
   .rodape p {
     font-size: var(--t-sm);
     color: var(--ink-3);
     margin: 0;
+  }
+
+  /* Discreto de propósito: mesma cor do texto do rodapé, sem sublinhado.
+     Só ganha destaque no hover e no foco pelo teclado. */
+  .glifo-rodape {
+    margin-left: auto;
+    flex: none;
+    font-size: var(--t-md);
+    line-height: 1;
+    color: var(--ink-3);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.15s, color 0.15s;
+  }
+  .glifo-rodape:hover,
+  .glifo-rodape:focus-visible {
+    opacity: 1;
+    color: var(--accent);
   }
 </style>
