@@ -301,9 +301,9 @@ disciplinas:
     teorica: 60
     pratica: 0
     categoria: prof
-    pre: []
+    pre: [QUI02]
     co: []
-    nota: PPC cita “FIS02” (código inexistente na matriz)
+    nota: "O PPC cita FIS02, código que não existe na matriz; o pré-requisito real é Química."
   - id: CIVL75
     codigo: CIVL75
     nome: Hidráulica
