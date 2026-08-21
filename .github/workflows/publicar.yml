@@ -1,0 +1,88 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                            publicar.yml *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+
+# Publica o site no GitHub Pages.
+#
+# O Pages no modo antigo servia os arquivos da raiz do repositório, o que
+# funcionava para o site 1.x (HTML estático) mas não para o Nabla, que
+# precisa de um passo de build. Este workflow compila e publica só o dist/.
+#
+# Consequência boa: o código-fonte deixa de ser servido. No modo antigo o
+# Pages entregava a árvore inteira — src/, package.json, tudo.
+
+name: Publicar
+
+on:
+  push:
+    branches: [main]
+  # permite publicar à mão pela aba Actions, sem precisar de um commit
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Uma publicação por vez, sem cancelar a que está em andamento: cancelar no
+# meio pode deixar o Pages num estado intermediário.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Verificar tipos
+        run: npx astro check
+
+      - name: Testes
+        run: npm test
+
+      # DEPLOY_TARGET=ghpages ajusta o caminho base: o Pages serve o site
+      # numa subpasta com o nome do repositório, não na raiz.
+      - name: Construir
+        run: npm run build:ghpages
+
+      # Confere o que o schema não alcança: links de teoria que apontam para
+      # o vazio, LaTeX cru e falhas do KaTeX. Roda DEPOIS do build, sobre o
+      # HTML gerado.
+      - name: Verificar integridade do conteúdo
+        run: npm run verificar
+
+      - name: Verificar cabeçalhos de autoria
+        run: npm run cabecalhos
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  publicar:
+    needs: construir
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
