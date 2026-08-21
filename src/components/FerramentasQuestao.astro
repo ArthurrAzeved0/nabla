@@ -1,0 +1,150 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                FerramentasQuestao.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Barra de ferramentas de uma questão: status + cronômetro.
+
+   Renderiza estática (o HTML já sai do build) e a ilha em ferramentas.ts
+   liga o comportamento. O estado inicial é aplicado por script antes da
+   primeira pintura pelo mesmo motivo do tema: sem isso a questão apareceria
+   "não feita" por um instante e piscaria para verde. */
+interface Props {
+  /** id da questão: <cadeira>-<prova>-<NN> */
+  id: string;
+}
+const { id } = Astro.props;
+---
+
+<div class="ferramentas" data-ferramentas={id}>
+  <button type="button" class="btn cron" data-cron aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+      <circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2"></circle>
+      <path
+        d="M12 9v4l2.5 2.5M9.5 2.5h5"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        fill="none"></path>
+    </svg>
+    <span data-cron-rotulo>Cronometrar</span>
+  </button>
+  <span class="tempo" data-tempo>00:00</span>
+
+  <div class="marcacao" role="group" aria-label="Como você foi nesta questão">
+    <button type="button" class="btn st-a" data-status="a" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <path
+          d="M4 12.5l5 5L20 6.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      Acertei
+    </button>
+    <button type="button" class="btn st-e" data-status="e" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+        ></path>
+      </svg>
+      Errei
+    </button>
+    <button type="button" class="btn st-r" data-status="r" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <path
+          d="M20 8a8 8 0 1 0 2 5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"></path>
+        <path
+          d="M20 3v5h-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      Revisar
+    </button>
+  </div>
+</div>
+
+<style>
+  .ferramentas {
+    display: flex;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: var(--e-4);
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--line);
+  }
+  .marcacao {
+    display: flex;
+    gap: var(--e-2);
+    flex-wrap: wrap;
+    margin-left: auto;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-texto);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    padding: 7px 13px;
+    border-radius: var(--r-botao);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .btn:hover {
+    border-color: var(--ink-3);
+    color: var(--ink);
+  }
+
+  /* aria-pressed é a fonte da verdade do visual: um estado só, não dois */
+  .cron[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .st-a[aria-pressed="true"] {
+    background: var(--ok);
+    border-color: var(--ok);
+    color: #fff;
+  }
+  .st-e[aria-pressed="true"] {
+    background: var(--err);
+    border-color: var(--err);
+    color: #fff;
+  }
+  .st-r[aria-pressed="true"] {
+    background: var(--rev);
+    border-color: var(--rev);
+    color: #fff;
+  }
+
+  .tempo {
+    font-family: var(--f-mono);
+    font-size: var(--t-sm);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+    min-width: 5ch;
+  }
+  .tempo[data-rodando] {
+    color: var(--accent);
+  }
+</style>

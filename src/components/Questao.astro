@@ -19,6 +19,7 @@
    O `estado` pinta a barra lateral com a cor semântica, para dar para ler
    a situação da questão sem interpretar nada. */
 import Etiqueta from "./Etiqueta.astro";
+import FerramentasQuestao from "./FerramentasQuestao.astro";
 
 interface Props {
   /** Igual ao data-id do site 1.x: <curso>-<prova>-<NN>. Vira a âncora. */
@@ -88,6 +89,8 @@ const rotulo = String(numero).padStart(2, "0");
 
   <div class="enunciado"><slot /></div>
 
+  <FerramentasQuestao id={id} />
+
 </article>
 
 <script>
@@ -115,6 +118,9 @@ const rotulo = String(numero).padStart(2, "0");
       ta.style.cssText = "position:fixed;top:-9999px;opacity:0";
       document.body.appendChild(ta);
       ta.select();
+      /* execCommand é depreciado, mas é o ÚNICO caminho fora de contexto
+         seguro — e aqui ele é justamente o plano B para esse caso. */
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const ok = document.execCommand("copy");
       ta.remove();
       return ok;
