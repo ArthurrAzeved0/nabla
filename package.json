@@ -1,6 +1,6 @@
 {
   "name": "nabla",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "type": "module",
   "private": true,
   "description": "Nabla — guia do aluno da POLI/UPE: teoria, banco de questões e mapa da grade.",

@@ -18,7 +18,8 @@
 #
 # O PPC traz DUAS matrizes. Esta é a "A EXECUTAR", o perfil que entrou
 # em 2021.1 — a única que a Tabela 5 descreve com pré e co-requisito. O
-# perfil vigente desde 2013.1 é outra matriz, e não vem mapeada aqui.
+# perfil de 2010, que ainda vale para quem entrou até 2020, está em
+# automacao-2010.yaml.
 #
 # `codigo` é o do perfil vigente onde a disciplina é a mesma, mesmo
 # renomeada; `—` onde ela nasceu em 2021 e ainda não tem código.
@@ -29,6 +30,7 @@
 curso: Engenharia de Controle e Automação
 sigla: automacao
 matriz: "2021.1"
+observacao: "Perfil que entrou em vigência em 2021.1. Quem ingressou até 2020 segue o perfil antigo, que também está aqui no site."
 chTotalCurso: 3600
 estagioFracao: 0.6
 disciplinas:

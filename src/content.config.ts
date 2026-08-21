@@ -118,8 +118,15 @@ const grade = defineCollection({
   schema: z
     .object({
       curso: z.string(),
-      sigla: z.string().regex(/^[a-z0-9]+$/),
+      /* Vira a URL. Aceita hífen porque um curso pode ter mais de uma matriz
+         no ar ao mesmo tempo — /grade/automacao/ é a de 2021, e
+         /grade/automacao-2010/ é o perfil antigo, que ainda vale para quem
+         entrou até 2020. */
+      sigla: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
       matriz: z.string(),
+      /* Uma linha sobre a matriz, mostrada abaixo do título: a quem ela se
+         aplica, ou o que o PPC deixa em aberto. Só onde há o que dizer. */
+      observacao: z.string().optional(),
       /* CH total do curso, incluindo o que não é disciplina da matriz. */
       chTotalCurso: z.number().int().positive(),
       /* Fração da CH do curso exigida para o estágio (0.6 = 60%). */
