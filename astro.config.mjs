@@ -21,7 +21,7 @@ import rehypeKatex from "rehype-katex";
    `site` alimenta as URLs absolutas (canonical, sitemap): se estiver errado,
    o Google indexa um endereço que não existe. */
 export default defineConfig({
-  site: "https://nabla.pages.dev",
+  site: "https://nabla-poli.pages.dev",
   trailingSlash: "ignore",
 
   /* Barra de ferramentas do Astro no `dev`. Nunca vai para o site
