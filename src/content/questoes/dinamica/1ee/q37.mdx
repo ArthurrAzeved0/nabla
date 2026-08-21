@@ -1,0 +1,110 @@
+---
+origem: "Lista · Hibbeler 13.74"
+tema: "Bloco na superfície de um cone · Tração e reação"
+temaId: movimento-circular
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q37.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O bloco $B$, com massa de $0{,}2\ \mathrm{kg}$, está ligado ao vértice $A$ de um cone circular reto por uma corda leve de $200\ \mathrm{mm}$. O cone tem altura $400\ \mathrm{mm}$ e raio da base $300\ \mathrm{mm}$, e gira com velocidade angular constante em torno do eixo $z$, de modo que o bloco alcança uma velocidade escalar de $0{,}5\ \mathrm{m/s}$. Nessa velocidade, determine a tração na corda e a reação que o cone exerce sobre o bloco. Despreze a dimensão do bloco e o efeito do atrito.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 240 190" role="img" aria-label="Cone reto girando em torno do eixo z, com um bloco na superfície ligado ao vértice por uma corda de 200 mm">
+    {/* eixo z */}
+    <line x1="120" y1="16" x2="120" y2="176" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="4 3"/>
+    <text x="124" y="22" font-size="10" fill="var(--ink-3)">z</text>
+    {/* cone: vértice em cima */}
+    <path d="M 120 34 L 46 150 L 194 150 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+    <ellipse cx="120" cy="150" rx="74" ry="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+    <circle cx="120" cy="34" r="3.5" fill="var(--ink-2)"/>
+    <text x="126" y="32" font-size="11" fill="var(--ink-2)">A</text>
+    {/* corda até o bloco, na geratriz esquerda */}
+    <line x1="120" y1="34" x2="90" y2="81" stroke="var(--ok)" stroke-width="1.8"/>
+    <rect x="80" y="79" width="15" height="12" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.5" transform="rotate(-32 87 85)"/>
+    <text x="60" y="78" font-size="11" fill="var(--warn)">B</text>
+    <text x="88" y="56" font-size="9" fill="var(--ok)">200 mm</text>
+    {/* cotas */}
+    <line x1="210" y1="34" x2="210" y2="150" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="214" y="96" font-size="9" fill="var(--ink-3)">400</text>
+    <line x1="120" y1="168" x2="194" y2="168" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="152" y="180" font-size="9" fill="var(--ink-3)" text-anchor="middle">300 mm</text>
+    {/* seta de rotação */}
+    <path d="M 96 162 A 30 10 0 0 0 146 162" fill="none" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="148,162 141,158 141,166" fill="var(--ok)"/>
+  </svg>
+  <figcaption>
+
+Cone $3$–$4$–$5$: a geratriz mede $500\ \mathrm{mm}$, e por semelhança de triângulos o bloco a $200\ \mathrm{mm}$ do vértice está a um raio de $120\ \mathrm{mm}$ do eixo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$T = 1{,}82\ \mathrm{N}$ e $N_B = 0{,}844\ \mathrm{N}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o raio da trajetória, por semelhança.** A geratriz do cone mede $\sqrt{300^2 + 400^2} = 500\ \mathrm{mm}$ — é um triângulo $3$–$4$–$5$, e daí saem todos os senos e cossenos sem calculadora. O bloco está a $200\ \mathrm{mm}$ do vértice ao longo da geratriz, então
+
+$$
+\frac{\rho}{200} = \frac{300}{500}
+\quad\Longrightarrow\quad
+\rho = 120\ \mathrm{mm} = 0{,}120\ \mathrm{m}
+$$
+
+**Passo 2 — a aceleração é puramente centrípeta.** Velocidade angular constante e raio constante: nada de tangencial, nada de vertical.
+
+$$
+a_n = \frac{v^2}{\rho} = \frac{(0{,}5)^2}{0{,}120} = 2{,}083\ \mathrm{m/s^2}
+$$
+
+apontando **horizontalmente para o eixo**.
+
+**Passo 3 — os eixos inteligentes.** Use os eixos alinhados com a **geratriz**: um paralelo a ela (onde estão a corda e o peso) e outro perpendicular (onde está a normal do cone). Do triângulo $3$–$4$–$5$, a geratriz faz com a vertical um ângulo cujo seno é $3/5$ e cosseno é $4/5$.
+
+**Ao longo da geratriz** (a corda tira para cima, o peso e parte da centrípeta atuam):
+
+$$
+T - 0{,}2(9{,}81)\left(\tfrac{4}{5}\right) = \left[0{,}2\,(2{,}083)\right]\!\left(\tfrac{3}{5}\right)
+$$
+
+$$
+T = 1{,}570 + 0{,}250 = 1{,}82\ \mathrm{N}
+$$
+
+**Perpendicular à geratriz** (a normal do cone contra o peso e a centrípeta):
+
+$$
+N_B - 0{,}2(9{,}81)\left(\tfrac{3}{5}\right) = -\left[0{,}2\,(2{,}083)\right]\!\left(\tfrac{4}{5}\right)
+$$
+
+$$
+N_B = 1{,}177 - 0{,}333 = 0{,}844\ \mathrm{N}
+$$
+
+**Conferência pelos eixos horizontal/vertical.** Vale fazer, porque é fácil trocar um $3/5$ por $4/5$:
+
+$$
+\text{vertical:}\quad T\left(\tfrac{4}{5}\right) + N_B\left(\tfrac{3}{5}\right) - 0{,}2(9{,}81) = 0
+\ \Rightarrow\ 1{,}456 + 0{,}506 = 1{,}962\ ✔
+$$
+
+$$
+\text{radial:}\quad T\left(\tfrac{3}{5}\right) - N_B\left(\tfrac{4}{5}\right) = 1{,}092 - 0{,}675 = 0{,}417 = 0{,}2\,(2{,}083)\ ✔
+$$
+
+**A leitura da resposta.** $N_B \gt 0$: o bloco continua **encostado** no cone. Se a rotação aumentasse, a centrípeta exigida cresceria, $N_B$ cairia e em algum momento o bloco descolaria da superfície — e aí a corda passaria a fazer um ângulo diferente da geratriz, mudando o problema inteiro. Essa é a pergunta natural do item seguinte, e $N_B = 0$ é sempre a condição-limite.
+</Passos>

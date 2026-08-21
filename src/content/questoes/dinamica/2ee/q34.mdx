@@ -1,0 +1,70 @@
+---
+origem: "Lista · Hibbeler 14.92"
+tema: "Montanha-russa de trilho externo · Por que existe o cinto"
+temaId: loop-vertical
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q34.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O *Raptor* é uma montanha-russa de **trilho externo**, em que os passageiros são presos a assentos semelhantes a cadeiras de teleférico, pendurados do lado de fora do trilho. Se os carrinhos viajam a $v_0 = 4\ \mathrm{m/s}$ quando estão no topo da estrutura, a $h = 12\ \mathrm{m}$, determine a sua velocidade quando estão no **topo do loop**, de raio $r = 5\ \mathrm{m}$, e a reação que o assento exerce sobre um passageiro de $70\ \mathrm{kg}$ nesse instante. O carrinho tem massa de $50\ \mathrm{kg}$. Despreze o atrito e as dimensões.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$v = 7{,}43\ \mathrm{m/s}$ e $N = 86{,}7\ \mathrm{N}$ — o assento **puxa** o passageiro para dentro, isto é, o cinto está trabalhando.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a queda até o topo do loop.** O loop tem raio $5\ \mathrm{m}$ e está apoiado no chão, então o seu ponto mais alto está a $2r = 10\ \mathrm{m}$. Saindo de $12\ \mathrm{m}$, o carrinho desceu $2\ \mathrm{m}$:
+
+$$
+v^2 = v_0^2 + 2g\,\Delta h = 16 + 2(9{,}81)(2) = 55{,}24
+\quad\Longrightarrow\quad
+v = 7{,}43\ \mathrm{m/s}
+$$
+
+Note que as massas não entram: sem atrito, todo mundo desce igual.
+
+**Passo 2 — a aceleração centrípeta exigida no topo.**
+
+$$
+a_n = \frac{v^2}{r} = \frac{55{,}24}{5} = 11{,}05\ \mathrm{m/s^2}
+$$
+
+Compare com $g = 9{,}81$: a curva exige **mais** aceleração para baixo do que a gravidade sozinha fornece. Guarde isso — é a resposta inteira.
+
+**Passo 3 — o diagrama do passageiro.** Isole **só o passageiro** de $70\ \mathrm{kg}$; a massa do carrinho não entra nesta equação (ela entraria na força que o trilho faz). No topo do loop, com trilho externo, o passageiro está do lado de fora e o centro do loop está **abaixo** dele. Tomando o sentido para baixo (para o centro) como positivo:
+
+$$
+m\,g + N_{\downarrow} = m\,a_n
+$$
+
+$$
+N_{\downarrow} = 70\,(11{,}05 - 9{,}81) = 70\,(1{,}238) = 86{,}7\ \mathrm{N}
+$$
+
+**Passo 4 — o que esse sinal significa fisicamente.** $N_{\downarrow}$ deu **positivo**: o assento tem de empurrar o passageiro **para baixo**, na direção do centro. Mas um assento só sabe empurrar para **cima** — o que puxa para baixo é o **cinto**.
+
+É exatamente por isso que o enunciado se dá o trabalho de dizer que "os passageiros são presos a assentos": sem o cinto, nessa velocidade o passageiro se separaria do assento no topo do loop. Ele está numa situação de $g$ efetiva **negativa** — a sensação de flutuar, com o cinto segurando.
+
+**A conta que fecha o raciocínio.** A velocidade-limite para o passageiro não precisar do cinto é a que faz $a_n = g$:
+
+$$
+v_{\lim} = \sqrt{g\,r} = \sqrt{9{,}81(5)} = 7{,}00\ \mathrm{m/s}
+$$
+
+O carrinho chega a $7{,}43\ \mathrm{m/s}$, acima disso — daí o cinto. Se a estrutura fosse $0{,}5\ \mathrm{m}$ mais baixa, o assento sozinho já daria conta.
+
+**Cuidado.** Não some as massas ($50 + 70 = 120\ \mathrm{kg}$) nesta pergunta. Pede-se a reação **do assento sobre o passageiro**, então o corpo isolado é o passageiro. A massa do carrinho serviria para achar a força que o **trilho** exerce, que é outra conta.
+</Passos>

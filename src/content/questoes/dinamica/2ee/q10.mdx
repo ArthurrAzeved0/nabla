@@ -1,0 +1,86 @@
+---
+origem: "2ª chamada"
+tema: "Colisão perfeitamente inelástica em 2D · Flecha e pássaro"
+temaId: colisao-inelastica
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um arqueiro atinge um pássaro que voa horizontalmente em linha reta, a $11{,}0\ \mathrm{m}$ acima do solo, com uma flecha de $28{,}0\ \mathrm{g}$. Sabendo que a flecha atinge o pássaro **por trás**, com velocidade de $108\ \mathrm{m/s}$ num ângulo de $35{,}0^\circ$ com a vertical, e que o pássaro cai no solo $1{,}85\ \mathrm{s}$ depois e $16{,}4\ \mathrm{m}$ além do ponto onde foi atingido, determine:
+
+<ol type="a">
+<li>a massa do pássaro;</li>
+<li>a velocidade com que ele voava quando foi atingido.</li>
+</ol>
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+a) $m_p = 764\ \mathrm{g}$.    b) $V_p = 6{,}92\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a estratégia, de trás para frente.** O que se conhece é o **depois**: a queda. Dela sai a velocidade do conjunto flecha+pássaro logo após o choque. Só então a conservação do momento devolve o **antes**.
+
+**Passo 2 — a queda é um lançamento de projétil.** Chame $\vec{V}_0 = V_{0x}\mathbf{i} + V_{0y}\mathbf{j}$ a velocidade do conjunto logo depois do impacto. Na vertical, partindo de $11{,}0\ \mathrm{m}$ e chegando ao solo em $1{,}85\ \mathrm{s}$:
+
+$$
+0 = 11{,}0 + V_{0y}(1{,}85) - \tfrac{1}{2}(9{,}81)(1{,}85)^2
+\quad\Longrightarrow\quad
+V_{0y} = 3{,}128\ \mathrm{m/s}
+$$
+
+Na horizontal, movimento uniforme:
+
+$$
+16{,}4 = V_{0x}(1{,}85)
+\quad\Longrightarrow\quad
+V_{0x} = 8{,}865\ \mathrm{m/s}
+$$
+
+**Passo 3 — as componentes da flecha.** O ângulo é com a **vertical**, então é o seno que dá a horizontal:
+
+$$
+V_{fx} = 108\sin 35{,}0^\circ = 61{,}95
+\qquad
+V_{fy} = 108\cos 35{,}0^\circ = 88{,}47\ \mathrm{m/s}
+$$
+
+**Passo 4 — momento na vertical.** O pássaro voava **horizontalmente**: não tem componente vertical. Essa é a equação que isola a massa:
+
+$$
+(0{,}028)(88{,}47) = (m_p + 0{,}028)(3{,}128)
+$$
+
+$$
+m_p + 0{,}028 = \frac{2{,}477}{3{,}128} = 0{,}7920
+\quad\Longrightarrow\quad
+m_p = 0{,}764\ \mathrm{kg} = 764\ \mathrm{g}
+$$
+
+**Passo 5 — momento na horizontal**, agora com $m_p$ conhecido:
+
+$$
+(0{,}028)(61{,}95) + (0{,}764)V_p = (0{,}7920)(8{,}865) = 7{,}021
+$$
+
+$$
+V_p = \frac{7{,}021 - 1{,}735}{0{,}764} = 6{,}92\ \mathrm{m/s}
+$$
+
+**Por que escolher a vertical primeiro.** As duas equações têm duas incógnitas ($m_p$ e $V_p$), mas a vertical tem **só uma** — porque o pássaro não tinha velocidade vertical. Procurar a equação com uma incógnita só, em vez de montar o sistema $2\times2$, economiza metade do tempo de prova.
+
+**Cuidado com o ângulo.** $35{,}0^\circ$ **com a vertical**, não com a horizontal. Trocar seno por cosseno aqui dá $m_p = 527\ \mathrm{g}$ e derruba os dois itens.
+</Passos>

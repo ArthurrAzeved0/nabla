@@ -1,0 +1,124 @@
+---
+origem: "2024.2"
+tema: "Onde o corpo abandona a superfície curva"
+temaId: movimento-circular
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma caixa de $6{,}0\ \mathrm{kg}$ desliza por uma superfície lisa (sem atrito) na forma de uma rampa retilínea com inclinação de $20^\circ$ com a horizontal até o ponto $A$, no qual a caixa desenvolve uma velocidade $v_A = 2\ \mathrm{m/s}$. A partir do ponto $A$ a superfície tem um perfil de arco circular de raio $1{,}2\ \mathrm{m}$. Sendo $B$ o ponto onde a caixa **abandona a superfície**, determine o ângulo $\theta$ medido a partir de $A$, ao longo do arco.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 280 190" role="img" aria-label="Rampa a 20 graus que continua num arco circular de raio 1,2 m, com a caixa deixando a superfície no ponto B" >
+    {/* solo */}
+    <line x1="20" y1="168" x2="270" y2="168" stroke="var(--ink-2)" stroke-width="1.8"/>
+    {/* rampa reta a 20 graus */}
+    <line x1="40" y1="42" x2="118" y2="70" stroke="var(--ink-3)" stroke-width="2.4"/>
+    <path d="M 66 52 A 26 26 0 0 0 66 62" fill="none" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <text x="48" y="64" font-size="10" fill="var(--ink-3)">20°</text>
+    {/* arco circular: centro no ponto O */}
+    <path d="M 118 70 A 100 100 0 0 1 194 168" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
+    {/* centro do arco */}
+    <circle cx="94" cy="168" r="3" fill="var(--ink-3)"/>
+    <text x="80" y="182" font-size="10" fill="var(--ink-3)">O</text>
+    {/* raios */}
+    <line x1="94" y1="168" x2="118" y2="70" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 2"/>
+    <line x1="94" y1="168" x2="152" y2="87" stroke="var(--ok)" stroke-width="1.3"/>
+    <text x="120" y="126" font-size="9" fill="var(--ok)">1,2 m</text>
+    <path d="M 106 128 A 42 42 0 0 1 122 121" fill="none" stroke="var(--ok)" stroke-width="1.2"/>
+    <text x="106" y="118" font-size="10" fill="var(--ok)">θ</text>
+    {/* caixa em A */}
+    <rect x="110" y="58" width="16" height="12" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.5" transform="rotate(20 118 64)"/>
+    <text x="100" y="52" font-size="11" fill="var(--warn)">A</text>
+    <line x1="130" y1="60" x2="152" y2="68" stroke="var(--warn)" stroke-width="1.5"/>
+    <polygon points="157,70 148,70 152,63" fill="var(--warn)"/>
+    <text x="140" y="54" font-size="9" fill="var(--warn)">2 m/s</text>
+    {/* ponto B */}
+    <circle cx="152" cy="87" r="4.5" fill="var(--ok)"/>
+    <text x="158" y="84" font-size="11" fill="var(--ok)">B</text>
+    {/* cota h */}
+    <line x1="240" y1="70" x2="240" y2="87" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="244" y="82" font-size="9" fill="var(--ink-3)">h</text>
+  </svg>
+  <figcaption>
+
+O ângulo $\theta$ é medido no centro $O$, a partir do raio que passa por $A$. Como a rampa faz $20^\circ$ com a horizontal, o raio até $B$ faz $\theta + 20^\circ$ com a **vertical**.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\theta = 22{,}3^\circ$ (com $v_B = 2{,}95\ \mathrm{m/s}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 — traduza "abandona a superfície".** Perder contato é a normal chegar a zero. Com $N = 0$, quem faz a curva é só a componente radial do peso. Em $B$, o raio $OB$ faz $\theta + 20^\circ$ com a vertical, então essa componente é $mg\cos(\theta + 20^\circ)$:
+
+$$
+m\,g\cos(\theta + 20^\circ) = m\,\frac{v_B^2}{\rho}
+\quad\Longrightarrow\quad
+v_B^2 = 1{,}2\,g\cos(\theta + 20^\circ) \tag{I}
+$$
+
+**Passo 2 — a altura descida de $A$ até $B$.** Ambos estão no arco de raio $1{,}2$. A altura de um ponto do arco abaixo do centro é $\rho\cos(\text{ângulo com a vertical})$, então
+
+$$
+h = 1{,}2\cos 20^\circ - 1{,}2\cos(\theta + 20^\circ) = 1{,}128 - 1{,}2\cos(\theta+20^\circ)
+$$
+
+**Passo 3 — conservação da energia** (superfície lisa, normal não trabalha):
+
+$$
+g\,h + \frac{v_A^2}{2} = \frac{v_B^2}{2}
+$$
+
+$$
+9{,}81\left[1{,}128 - 1{,}2\cos(\theta+20^\circ)\right] + 2 = \frac{v_B^2}{2}
+$$
+
+$$
+11{,}062 - \underbrace{1{,}2\,g\cos(\theta+20^\circ)}_{=\;v_B^2\ \text{por (I)}} + 2 = \frac{v_B^2}{2} \tag{II}
+$$
+
+**Passo 4 — o truque da questão.** Aquele termo em (II) é **exatamente** $v_B^2$, pela equação (I). Substituindo, o cosseno desaparece e sobra uma equação só em $v_B$:
+
+$$
+13{,}062 - v_B^2 = \frac{v_B^2}{2}
+\quad\Longrightarrow\quad
+v_B^2 = \frac{2(13{,}062)}{3} = 8{,}708
+\quad\Longrightarrow\quad
+v_B = 2{,}95\ \mathrm{m/s}
+$$
+
+**Passo 5 — volte a (I)** para achar o ângulo:
+
+$$
+\cos(\theta + 20^\circ) = \frac{8{,}708}{1{,}2(9{,}81)} = 0{,}7397
+\quad\Longrightarrow\quad
+\theta + 20^\circ = 42{,}3^\circ
+$$
+
+$$
+\theta = 22{,}3^\circ
+$$
+
+**Por que esse par de equações é o esqueleto da questão.** Toda pergunta do tipo "onde ele descola?" tem a mesma estrutura: **Newton com $N=0$** dá uma relação entre $v$ e o ângulo; **energia** dá outra. Duas equações, duas incógnitas. E quase sempre o termo $\rho g\cos\phi$ aparece nas duas, o que permite eliminar o ângulo antes de tocar em qualquer arco-cosseno — foi isso que o Passo 4 fez.
+
+**Cuidado com a referência do ângulo.** O $\theta$ do enunciado é contado **de $A$**, não da vertical. Quem resolve para o ângulo com a vertical acha $42{,}3^\circ$ e entrega o número errado, tendo feito toda a física certa. Leia a figura antes de escrever a resposta final.
+
+**A massa de $6{,}0\ \mathrm{kg}$ não entrou em nada** — como sempre em questão de "onde descola", porque $N = 0$ elimina a única força que dependia dela. Se ela aparecer na sua resposta, algo se perdeu.
+</Passos>

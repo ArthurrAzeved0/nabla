@@ -1,0 +1,78 @@
+---
+origem: "Simulado da final 2025"
+tema: "Colisão de veículos · Impulso e energia dissipada"
+temaId: momento-linear
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um veículo $A$, de massa $3.200\ \mathrm{kg}$, percorria um trecho retilíneo, plano e horizontal com velocidade constante $v_A = 10\ \mathrm{m/s}$. Um veículo $B$, de massa $800\ \mathrm{kg}$ e velocidade constante $v_B = 20\ \mathrm{m/s}$, se aproximava por trás e colidiu com a traseira de $A$. Após a colisão os veículos permaneceram unidos, movendo-se a $12\ \mathrm{m/s}$ no mesmo sentido de antes. Determine:
+
+<ol type="a">
+<li>a quantidade de movimento de $A$ antes da colisão e a intensidade do impulso recebido por $A$ na colisão;</li>
+<li>a energia cinética de $A$ antes da colisão e o valor absoluto da energia cinética do sistema dissipada na colisão.</li>
+</ol>
+
+<Gabarito>
+a) $Q_A = 3{,}2\times10^{4}\ \mathrm{kg\cdot m/s}$ e $I_A = 6{,}4\times10^{3}\ \mathrm{N\cdot s}$.
+
+b) $E_{cA} = 1{,}6\times10^{5}\ \mathrm{J}$ e $|\Delta E_c| = 3{,}2\times10^{4}\ \mathrm{J}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — item (a), a quantidade de movimento.** Direto da definição:
+
+$$
+Q_A = m_A\,v_A = 3200(10) = 3{,}2\times10^{4}\ \mathrm{kg\cdot m/s}
+$$
+
+**Passo 2 — o impulso sobre $A$.** Pelo teorema do impulso, o impulso recebido por um corpo **é** a sua variação de momento linear:
+
+$$
+I_A = |\Delta Q_A| = m_A\,|v' - v_A| = 3200\,|12 - 10| = 6{,}4\times10^{3}\ \mathrm{N\cdot s}
+$$
+
+Note que a velocidade final $12\ \mathrm{m/s}$ **foi dada**, mas era dedutível: pela conservação do momento,
+
+$$
+3200(10) + 800(20) = (4000)v' \Rightarrow v' = \frac{48\,000}{4000} = 12\ \mathrm{m/s}
+$$
+
+Vale fazer essa conferência: se o valor não fechasse, o enunciado estaria inconsistente.
+
+**Passo 3 — item (b), a cinética de $A$ antes:**
+
+$$
+E_{cA} = \frac{m_A v_A^2}{2} = \frac{3200(10)^2}{2} = 1{,}6\times10^{5}\ \mathrm{J}
+$$
+
+**Passo 4 — a energia dissipada** é a diferença entre o total antes e o total depois:
+
+$$
+E_c^{\text{antes}} = \frac{3200(10)^2}{2} + \frac{800(20)^2}{2} = 1{,}6\times10^{5} + 1{,}6\times10^{5} = 3{,}2\times10^{5}\ \mathrm{J}
+$$
+
+$$
+E_c^{\text{depois}} = \frac{(3200+800)(12)^2}{2} = 2{,}88\times10^{5}\ \mathrm{J}
+$$
+
+$$
+|\Delta E_c| = 3{,}20\times10^{5} - 2{,}88\times10^{5} = 3{,}2\times10^{4}\ \mathrm{J}
+$$
+
+**A leitura da resposta.** Só $10\%$ da energia se perdeu, e isso é típico de colisão totalmente inelástica entre corpos de velocidades **próximas e no mesmo sentido**. Se $B$ viesse de frente a $20\ \mathrm{m/s}$, a perda passaria de $80\%$ — é a velocidade **relativa** que se converte em amassado, não a absoluta. Daí a diferença entre uma batida traseira e uma colisão frontal.
+
+**Cuidado.** "Impulso recebido por $A$" é a variação do momento **de $A$**, não do sistema. O do sistema é zero (não há força externa horizontal); o de cada corpo é igual e oposto ao do outro — confira: $800|12 - 20| = 6{,}4\times10^{3}\ \mathrm{N\cdot s}$, o mesmo número.
+</Passos>

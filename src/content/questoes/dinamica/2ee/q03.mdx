@@ -1,0 +1,100 @@
+---
+origem: "2025.1"
+tema: "Loop vertical · Colisão inelástica antes da volta"
+temaId: loop-vertical
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um bloco 1 de massa $m$ é liberado do repouso de uma altura $H$ sobre um trilho que tem um trecho circular de raio $R$. Na base do trilho existe um bloco 2, **idêntico** ao bloco 1 e em repouso. De que altura mínima o bloco 1 deve ser abandonado para que, após uma colisão **totalmente inelástica** com o bloco 2, os dois consigam percorrer toda a extensão da circunferência sem se desprenderem dos trilhos?
+
+Não há forças dissipativas. Considere os blocos com dimensões desprezíveis.
+
+<Figura>
+  <svg viewBox="0 0 280 180" role="img" aria-label="Rampa de altura H que desce até um plano com um loop circular de raio R">
+    {/* piso */}
+    <line x1="20" y1="150" x2="270" y2="150" stroke="var(--ink-3)" stroke-width="1.6"/>
+    {/* rampa curva */}
+    <path d="M 45 40 C 45 100 70 150 110 150" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    {/* cota H */}
+    <line x1="30" y1="40" x2="30" y2="150" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="18" y="98" font-size="11" fill="var(--ink-3)">H</text>
+    {/* bloco 1 no topo */}
+    <rect x="38" y="30" width="14" height="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.4"/>
+    <text x="56" y="32" font-size="10" fill="var(--accent)">1</text>
+    {/* loop */}
+    <circle cx="185" cy="108" r="42" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    <line x1="185" y1="108" x2="215" y2="80" stroke="var(--warn)" stroke-width="1"/>
+    <text x="200" y="98" font-size="11" fill="var(--warn)">R</text>
+    {/* bloco 2 na base */}
+    <rect x="178" y="140" width="14" height="10" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.4"/>
+    <text x="196" y="147" font-size="10" fill="var(--warn)">2</text>
+  </svg>
+  <figcaption>
+
+Três etapas em sequência: energia na descida, **colisão** na base, energia na subida do loop. A condição do loop é a que fecha a conta — e ela é Newton, não energia.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$H_{\min} = 10R$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a condição no topo do loop (Newton, não energia).** Não se desprender do trilho, no limite, é a normal chegar a zero. No topo, só o peso curva a trajetória:
+
+$$
+(2m)g = (2m)\frac{v_{\text{topo}}^2}{R}
+\quad\Longrightarrow\quad
+v_{\text{topo}}^2 = gR \tag{1}
+$$
+
+**Passo 2 — energia da base até o topo**, já com os dois blocos juntos (massa $2m$) e velocidade $v'$ logo depois do choque. O topo está a $2R$:
+
+$$
+\tfrac{1}{2}(2m)v'^2 = \tfrac{1}{2}(2m)v_{\text{topo}}^2 + (2m)g(2R)
+$$
+
+$$
+v'^2 = gR + 4gR = 5gR
+\quad\Longrightarrow\quad
+v' = \sqrt{5gR} \tag{2}
+$$
+
+**Passo 3 — a colisão.** Totalmente inelástica: os blocos saem juntos. A energia **não** se conserva aqui, mas o momento sim:
+
+$$
+m\,v_1 = (2m)\,v'
+\quad\Longrightarrow\quad
+v_1 = 2v' = 2\sqrt{5gR} \tag{3}
+$$
+
+**Passo 4 — energia na descida da rampa**, do repouso em $H$ até a base:
+
+$$
+\tfrac{1}{2}m v_1^2 = m\,g\,H
+\quad\Longrightarrow\quad
+H = \frac{v_1^2}{2g} = \frac{4(5gR)}{2g}
+$$
+
+$$
+\boxed{H_{\min} = 10R}
+$$
+
+**A leitura da resposta.** Sem a colisão, a altura mínima seria o clássico $H = 2{,}5R$. A colisão inelástica **quadruplica** essa exigência: metade da velocidade sobrevive ao choque, e a altura vai com o quadrado dela. O bloco 2, parado, custou $75\%$ da energia útil.
+
+**Cuidado.** É tentador escrever conservação de energia da altura $H$ direto até o topo do loop. Não vale: há uma colisão inelástica no meio, e ela **dissipa** energia. Momento no choque, energia nos trechos entre choques — nunca os dois no mesmo trecho.
+</Passos>

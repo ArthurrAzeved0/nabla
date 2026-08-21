@@ -1,0 +1,74 @@
+---
+origem: "Final 2024"
+tema: "Ginasta · Conservação do momento angular"
+temaId: momento-angular
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um ginasta de $75\ \mathrm{kg}$ solta a barra horizontal na posição completamente estendida $A$, girando com velocidade angular $\omega_A = 3\ \mathrm{rad/s}$ em torno do seu centro de massa. Determine:
+
+<ol type="a">
+<li>seu momento angular na posição esticada $A$;</li>
+<li>a velocidade angular quando ele assume a posição encolhida $B$.</li>
+</ol>
+
+Considere o ginasta na posição $A$ como uma **haste delgada uniforme** de $1{,}75\ \mathrm{m}$ e na posição $B$ como um **disco circular uniforme** de $750\ \mathrm{mm}$ de diâmetro.
+
+<Gabarito>
+a) $H_A = 57{,}4\ \mathrm{kg\cdot m^2/s}$.    b) $\omega_B = 10{,}9\ \mathrm{rad/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — item (a), o momento de inércia da haste.** Ele gira em torno do próprio centro de massa, então é o $I_G$ da tabela:
+
+$$
+I_A = \tfrac{1}{12}m L^2 = \tfrac{1}{12}(75)(1{,}75)^2 = 19{,}14\ \mathrm{kg\cdot m^2}
+$$
+
+$$
+H_A = I_A\,\omega_A = 19{,}14 \times 3 = 57{,}4\ \mathrm{kg\cdot m^2/s}
+$$
+
+**Passo 2 — por que o momento angular se conserva.** No ar, a única força sobre o ginasta é o **peso**, e ele age no centro de massa: braço nulo em relação a $G$, momento nulo. Logo $H_G$ é constante durante todo o voo, **por mais que ele mude de forma**.
+
+$$
+\sum M_G = 0 \quad\Longrightarrow\quad H_A = H_B
+$$
+
+**Passo 3 — o momento de inércia na posição encolhida.** Disco de raio $R = 0{,}375\ \mathrm{m}$:
+
+$$
+I_B = \tfrac{1}{2}m R^2 = \tfrac{1}{2}(75)(0{,}375)^2 = 5{,}273\ \mathrm{kg\cdot m^2}
+$$
+
+**Passo 4 — item (b).**
+
+$$
+\omega_B = \frac{H_A}{I_B} = \frac{57{,}4}{5{,}273} = 10{,}9\ \mathrm{rad/s}
+$$
+
+**A leitura da resposta.** Encolhendo, o ginasta reduziu $I$ a $28\%$ do valor esticado e por isso girou $3{,}6$ vezes mais rápido. E a energia cinética de rotação **cresceu**:
+
+$$
+T_A = \tfrac{1}{2}(19{,}14)(3)^2 = 86{,}1\ \mathrm{J}
+\qquad
+T_B = \tfrac{1}{2}(5{,}273)(10{,}9)^2 = 313\ \mathrm{J}
+$$
+
+Não é energia do nada: os músculos do ginasta fizeram esse trabalho ao dobrar o corpo contra a "força centrífuga" aparente. Momento angular conserva; energia, não. É o mesmo mecanismo da bailarina que fecha os braços — e da patinadora, e do gato que cai de pé.
+
+**Cuidado com o diâmetro.** O enunciado dá $750\ \mathrm{mm}$ de **diâmetro**; usar isso como raio dá $I_B = 21{,}1$ e $\omega_B = 2{,}7\ \mathrm{rad/s}$ — mais lento que no início, o que é absurdo. Quando o resultado contradiz a intuição física, desconfie da leitura do enunciado antes de desconfiar da conta.
+</Passos>

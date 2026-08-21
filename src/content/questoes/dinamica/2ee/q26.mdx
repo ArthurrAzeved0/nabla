@@ -1,0 +1,86 @@
+---
+origem: "Lista de energia"
+tema: "Rampa, atrito e loop · O maior raio possível"
+temaId: loop-vertical
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um corpo de massa $300\ \mathrm{kg}$ é abandonado, a partir do repouso, no ponto $A$ de uma rampa a $40\ \mathrm{m}$ de altura, e desliza **sem atrito** até o ponto $B$. Ao terminar a rampa $AB$, percorre $40\ \mathrm{m}$ de um trecho plano e horizontal $BC$ com coeficiente de atrito dinâmico $0{,}25$ e, em seguida, uma pista circular de raio $R$, **sem atrito**. O maior raio $R$ que a pista pode ter, para que o corpo faça todo o trajeto sem perder o contato com ela, é:
+
+<ol type="a">
+<li>$8\ \mathrm{m}$</li>
+<li>$10\ \mathrm{m}$</li>
+<li>$12\ \mathrm{m}$</li>
+<li>$16\ \mathrm{m}$</li>
+<li>$20\ \mathrm{m}$</li>
+</ol>
+
+Adote $g = 10\ \mathrm{m/s^2}$.
+
+<Gabarito>
+Alternativa **(c)**: $R = 12\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — de $A$ até $C$: energia com atrito.** A descida é lisa e o trecho $BC$ tem atrito, com $N = mg$ no plano horizontal. Do repouso em $A$ ($h = 40\ \mathrm{m}$) até $C$:
+
+$$
+\tfrac{1}{2}m\,v_C^2 = m\,g\,h - \mu\,m\,g\,d
+$$
+
+A massa corta — os $300\ \mathrm{kg}$ são distrator:
+
+$$
+v_C^2 = 2g\,(h - \mu\,d) = 2(10)\left[40 - 0{,}25(40)\right] = 2(10)(30) = 600\ \mathrm{m^2/s^2}
+$$
+
+**Passo 2 — a condição crítica é no TOPO do loop.** Perder contato é $N = 0$, e é lá que a normal é menor, porque o peso aponta para o centro:
+
+$$
+m\,g = m\,\frac{v_{topo}^2}{R}
+\quad\Longrightarrow\quad
+v_{topo}^2 = g\,R
+$$
+
+**Passo 3 — de $C$ ao topo, sem atrito.** O topo está a $2R$:
+
+$$
+v_C^2 = v_{topo}^2 + 2g\,(2R) = gR + 4gR = 5\,gR
+$$
+
+**Passo 4 — junte.**
+
+$$
+600 = 5(10)\,R
+\quad\Longrightarrow\quad
+R = 12\ \mathrm{m}
+$$
+
+**Por que "o maior" raio.** Quanto **maior** o loop, mais alto o topo e mais energia ele exige. Com $R \gt 12\ \mathrm{m}$ o corpo chegaria ao topo devagar demais e descolaria antes; com $R \lt 12$ ele passa com sobra. O limite é exatamente onde $N = 0$ no topo — e por isso a resposta é "o maior".
+
+**A relação que vale decorar.** Para completar um loop de raio $R$ partindo do repouso a uma altura $h$, sem atrito, é preciso
+
+$$
+h \ge \tfrac{5}{2}R
+$$
+
+Aqui, o atrito no trecho $BC$ "consumiu" $10\ \mathrm{m}$ dos $40$, deixando $30\ \mathrm{m}$ de altura útil — e $30 = \tfrac{5}{2}(12)$. Fazer essa conferência em uma linha vale mais que refazer tudo.
+
+**Cuidado — dois erros clássicos:**
+
+1. Usar $v_{topo} = 0$. O corpo **não** pode parar no topo: sem velocidade, não há força centrípeta e ele cai. Isso daria $R = 15\ \mathrm{m}$, que nem está entre as alternativas — bom sinal de que a banca previu o erro.
+2. Esquecer que o topo está a $2R$, não a $R$. Daria $R = 20\ \mathrm{m}$, que **está** entre as alternativas. Essa é a armadilha de verdade.
+</Passos>

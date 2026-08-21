@@ -1,0 +1,88 @@
+---
+origem: "Lista · Hibbeler 12.82"
+tema: "Trajetória helicoidal · Módulos de v e a"
+temaId: movimento-curvilineo
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um carrinho de montanha-russa desloca-se para baixo em uma trajetória **helicoidal** com velocidade escalar constante, de tal maneira que as equações paramétricas que definem sua posição são
+
+$$
+x = c\operatorname{sen} kt
+\qquad
+y = c\cos kt
+\qquad
+z = h - b\,t
+$$
+
+em que $c$, $h$, $b$ e $k$ são constantes. Determine as intensidades da sua velocidade e da sua aceleração.
+
+<Gabarito>
+$$
+v = \sqrt{c^2k^2 + b^2}
+\qquad\qquad
+a = c\,k^2
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — derive componente por componente.** Em coordenadas retangulares os versores são fixos, então é derivada simples:
+
+$$
+\dot{x} = c\,k\cos kt
+\qquad
+\dot{y} = -c\,k\operatorname{sen} kt
+\qquad
+\dot{z} = -b
+$$
+
+**Passo 2 — o módulo da velocidade.** Aqui entra a identidade que faz a questão fechar, $\cos^2 + \operatorname{sen}^2 = 1$:
+
+$$
+v = \sqrt{c^2k^2\cos^2 kt + c^2k^2\operatorname{sen}^2 kt + b^2} = \sqrt{c^2k^2 + b^2}
+$$
+
+**Constante** — o que confirma a afirmação do enunciado ("velocidade escalar constante") em vez de apenas aceitá-la.
+
+**Passo 3 — derive outra vez.**
+
+$$
+\ddot{x} = -c\,k^2\operatorname{sen} kt
+\qquad
+\ddot{y} = -c\,k^2\cos kt
+\qquad
+\ddot{z} = 0
+$$
+
+$$
+a = \sqrt{c^2k^4\operatorname{sen}^2 kt + c^2k^4\cos^2 kt} = c\,k^2
+$$
+
+**A leitura da resposta, que é a moral da questão.** A velocidade escalar é constante e **a aceleração não é zero**. Ela vale $ck^2$, é puramente horizontal (a componente $z$ zerou) e aponta sempre para o eixo da hélice:
+
+$$
+\ddot{x}\,\mathbf{i} + \ddot{y}\,\mathbf{j} = -k^2\left(x\,\mathbf{i} + y\,\mathbf{j}\right)
+$$
+
+Ou seja: é **puramente centrípeta**. Faz todo sentido — em módulo a velocidade não muda ($a_t = 0$), só a direção, e curvar exige aceleração. É o mesmo conteúdo da afirmativa 2 do verdadeiro-ou-falso de 2025.2, aqui em três dimensões.
+
+**Conferência pelo raio de curvatura.** Se $a = a_n = v^2/\rho$, então
+
+$$
+\rho = \frac{v^2}{a} = \frac{c^2k^2 + b^2}{c\,k^2}
+$$
+
+Com $b = 0$ (hélice achatada num círculo) isso dá $\rho = c$, o raio do círculo. ✔ E com $b \ne 0$ o raio de curvatura é **maior** que $c$: a hélice é mais "aberta" que a circunferência da sua projeção.
+</Passos>

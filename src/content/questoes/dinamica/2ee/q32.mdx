@@ -1,0 +1,80 @@
+---
+origem: "Lista · Hibbeler 14.33"
+tema: "Ciclista na superfície curva · Altura, normal e aceleração no repouso"
+temaId: conservacao-energia
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O ciclista pedala até o ponto $A$ alcançando uma velocidade $v_A = 4\ \mathrm{m/s}$. Depois, ele se desloca livremente pela superfície curva de equação $\sqrt{x} + \sqrt{y} = 2$ (em metros). Determine a altura que ele atinge antes de parar. Além disso, quais são a força normal resultante na superfície nesse ponto e a sua aceleração? A massa total da bicicleta e do homem é $75\ \mathrm{kg}$. Despreze o atrito, a massa das rodas e a dimensão da bicicleta.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$h = 0{,}816\ \mathrm{m}$, $N = 568\ \mathrm{N}$ e $a = 6{,}23\ \mathrm{m/s^2}$ (tangencial, descendo).
+</Gabarito>
+
+<Passos>
+**Passo 1 — a altura, pela energia.** Superfície lisa, então toda a cinética vira potencial. A massa corta:
+
+$$
+\tfrac{1}{2}m\,v_A^2 = m\,g\,h
+\quad\Longrightarrow\quad
+h = \frac{v_A^2}{2g} = \frac{16}{2(9{,}81)} = 0{,}816\ \mathrm{m}
+$$
+
+Não faz diferença nenhuma que a superfície seja essa curva esquisita: para a **altura**, só a energia importa (é o resultado do Hibbeler 13.68).
+
+**Passo 2 — onde ele para, na curva.** Agora a forma importa. Com $y = 0{,}8155$:
+
+$$
+\sqrt{x} = 2 - \sqrt{0{,}8155} = 2 - 0{,}9031 = 1{,}0969
+\quad\Longrightarrow\quad
+x = 1{,}203\ \mathrm{m}
+$$
+
+**Passo 3 — a inclinação nesse ponto.** De $y = \left(2 - \sqrt{x}\right)^2$:
+
+$$
+\frac{dy}{dx} = -\frac{2 - \sqrt{x}}{\sqrt{x}} = -\frac{0{,}9031}{1{,}0969} = -0{,}8233
+$$
+
+$$
+\theta = \arctan 0{,}8233 = 39{,}5^\circ
+$$
+
+**Passo 4 — a normal, com a observação que resolve tudo.** No ponto mais alto ele está **em repouso**: $v = 0$, logo
+
+$$
+a_n = \frac{v^2}{\rho} = 0
+$$
+
+O raio de curvatura nem precisa ser calculado. Sobra o equilíbrio na direção normal:
+
+$$
+N = m\,g\cos\theta = 75(9{,}81)\cos 39{,}5^\circ = 735{,}8\,(0{,}7716) = 568\ \mathrm{N}
+$$
+
+**Passo 5 — a aceleração.** Sem componente normal, a aceleração é toda tangencial, e no ponto de repouso quem a produz é só o peso:
+
+$$
+a = a_t = g\operatorname{sen}\theta = 9{,}81\,(0{,}6363) = 6{,}23\ \mathrm{m/s^2}
+$$
+
+apontando **para baixo ao longo da superfície** — ele já está voltando.
+
+**A leitura da resposta.** Velocidade zero e aceleração $6{,}23\ \mathrm{m/s^2}$: o ponto mais alto é o de maior aceleração tangencial de todo o percurso, e é justamente onde a velocidade é mínima. É o mesmo comportamento de um pêndulo nos extremos — parado e com aceleração máxima —, e é a resposta à afirmativa 3 do verdadeiro-ou-falso de 2025.2 pelo avesso: aqui a velocidade é nula e a aceleração não.
+
+**Cuidado.** $N = mg\cos\theta$ **só** porque $v = 0$ ali. Em qualquer outro ponto da subida haveria o termo $mv^2/\rho$, e aí sim seria preciso a segunda derivada da curva.
+</Passos>

@@ -1,0 +1,130 @@
+---
+origem: "2ª chamada"
+tema: "Energia elástica · Corda como estilingue"
+temaId: energia-elastica
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma corda elástica está presa aos pontos fixos $A$ e $B$, separados verticalmente por $0{,}304\ \mathrm{m}$. **Quando esticada em linha reta** entre $A$ e $B$, sua tração é de $20{,}0\ \mathrm{N}$. A corda é então puxada lateralmente até o ponto $C'$, a $0{,}114\ \mathrm{m}$ do ponto médio $C$, por uma força de $133\ \mathrm{N}$. Um objeto de $5{,}00\ \mathrm{g}$ é colocado em $C'$ e a corda é solta. Determine a velocidade do objeto quando ele atinge $C$.
+
+Tudo ocorre no plano horizontal. Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 290 180" role="img" aria-label="Corda elástica entre A e B, puxada lateralmente até C linha por uma força de 133 N">
+    {/* apoios A e B */}
+    <circle cx="200" cy="35" r="4" fill="var(--ink-2)"/>
+    <text x="207" y="33" font-size="11" fill="var(--ink-2)">A</text>
+    <circle cx="200" cy="145" r="4" fill="var(--ink-2)"/>
+    <text x="207" y="149" font-size="11" fill="var(--ink-2)">B</text>
+    {/* posição reta (tracejada) */}
+    <line x1="200" y1="35" x2="200" y2="145" stroke="var(--line-2)" stroke-width="1.4" stroke-dasharray="4 3"/>
+    <circle cx="200" cy="90" r="3.5" fill="var(--line-2)"/>
+    <text x="207" y="94" font-size="11" fill="var(--ink-3)">C</text>
+    {/* corda esticada até C' */}
+    <line x1="200" y1="35" x2="118" y2="90" stroke="var(--accent)" stroke-width="1.8"/>
+    <line x1="200" y1="145" x2="118" y2="90" stroke="var(--accent)" stroke-width="1.8"/>
+    <circle cx="118" cy="90" r="5" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="106" y="82" font-size="11" fill="var(--accent)">C′</text>
+    {/* força aplicada */}
+    <line x1="112" y1="90" x2="64" y2="90" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="58,90 66,86 66,94" fill="var(--warn)"/>
+    <text x="62" y="82" font-size="10" fill="var(--warn)">133 N</text>
+    {/* cotas */}
+    <line x1="238" y1="35" x2="238" y2="90" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <line x1="238" y1="90" x2="238" y2="145" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="242" y="64" font-size="9" fill="var(--ink-3)">0,152</text>
+    <text x="242" y="120" font-size="9" fill="var(--ink-3)">0,152</text>
+    <line x1="118" y1="164" x2="200" y2="164" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="140" y="176" font-size="9" fill="var(--ink-3)">0,114</text>
+  </svg>
+  <figcaption>
+
+Duas incógnitas escondidas — a constante $k$ e o comprimento natural $L_0$ — e duas informações para achá-las: a tração de $20{,}0\ \mathrm{N}$ na posição reta e a força de $133\ \mathrm{N}$ na posição puxada.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$v_C = 44{,}7\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a posição reta dá a primeira equação.** Esticada em linha reta, a corda mede $L = 2(0{,}152) = 0{,}304\ \mathrm{m}$, com tração $20{,}0\ \mathrm{N}$:
+
+$$
+20{,}0 = k\,(0{,}304 - L_0)
+\quad\Longrightarrow\quad
+L_0 = 0{,}304 - \frac{20{,}0}{k} \tag{1}
+$$
+
+**Passo 2 — equilíbrio em $C'$ dá a segunda.** A corda faz, com a direção da força, o ângulo
+
+$$
+\alpha = \arctan\frac{0{,}152}{0{,}114} = 53{,}13^\circ
+$$
+
+Os dois ramos tracionam simetricamente, e suas componentes ao longo de $C'C$ equilibram os $133\ \mathrm{N}$:
+
+$$
+2\,T'\cos 53{,}13^\circ = 133
+\quad\Longrightarrow\quad
+T' = \frac{133}{2(0{,}600)} = 110{,}8\ \mathrm{N}
+$$
+
+**Passo 3 — o comprimento em $C'$**, pelos dois ramos:
+
+$$
+L' = 2\sqrt{0{,}152^2 + 0{,}114^2} = 2(0{,}190) = 0{,}380\ \mathrm{m}
+$$
+
+$$
+110{,}8 = k\,(0{,}380 - L_0) \tag{2}
+$$
+
+**Passo 4 — resolva o sistema.** Substituindo (1) em (2):
+
+$$
+110{,}8 = k\,(0{,}380 - 0{,}304) + 20{,}0 = 0{,}076\,k + 20{,}0
+$$
+
+$$
+k = \frac{90{,}8}{0{,}076} = 1{,}195\times10^{3}\ \mathrm{N/m}
+\qquad
+L_0 = 0{,}304 - \frac{20{,}0}{1195} = 0{,}287\ \mathrm{m}
+$$
+
+**Passo 5 — conservação da energia de $C'$ até $C$.** É plano horizontal: sem peso na conta. A energia elástica que sobra em $C$ (a corda ainda está esticada de $0{,}304 - 0{,}287$) **não** vira velocidade:
+
+$$
+\tfrac{1}{2}k(L' - L_0)^2 = \tfrac{1}{2}m\,v_C^2 + \tfrac{1}{2}k(L - L_0)^2
+$$
+
+$$
+\tfrac{1}{2}(1195)(0{,}093)^2 = \tfrac{1}{2}(5{,}00\times10^{-3})v_C^2 + \tfrac{1}{2}(1195)(0{,}017)^2
+$$
+
+$$
+5{,}168 = 2{,}50\times10^{-3}\,v_C^2 + 0{,}173
+\quad\Longrightarrow\quad
+v_C^2 = 1{,}998\times10^{3}
+$$
+
+$$
+v_C = 44{,}7\ \mathrm{m/s}
+$$
+
+**Cuidado.** Se você esquecer o termo elástico do estado final, acha $45{,}5\ \mathrm{m/s}$. Em $C$ a corda **não** está no comprimento natural — o enunciado diz que ali ela tem $20{,}0\ \mathrm{N}$ de tração, o que é justamente a informação de que sobrou energia guardada.
+</Passos>

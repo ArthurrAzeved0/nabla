@@ -1,0 +1,84 @@
+---
+origem: "Lista · Hibbeler 13.43"
+tema: "Força crescente no tempo · Quando o caixote começa a andar"
+temaId: atrito
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q34.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A força exercida sobre o cabo $AB$ por um motor é $F = (100\,t^{3/2})\ \mathrm{N}$, com $t$ em segundos, e é horizontal. Determine a velocidade do caixote de $50\ \mathrm{kg}$ quando $t = 5\ \mathrm{s}$. Os coeficientes de atrito estático e cinético entre o caixote e o solo são $\mu_s = 0{,}4$ e $\mu_k = 0{,}3$. Inicialmente o caixote está em repouso.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$v = 32{,}2\ \mathrm{m/s}$ (o caixote só começa a andar em $t_1 = 1{,}57\ \mathrm{s}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 — o caixote não sai do lugar na hora.** Enquanto $F$ é menor que o atrito estático máximo, nada acontece. A normal é o peso:
+
+$$
+N = 50(9{,}81) = 490{,}5\ \mathrm{N}
+\qquad
+F_{s,\max} = 0{,}4(490{,}5) = 196{,}2\ \mathrm{N}
+$$
+
+**Passo 2 — o instante em que ele arranca.**
+
+$$
+100\,t_1^{3/2} = 196{,}2
+\quad\Longrightarrow\quad
+t_1 = (1{,}962)^{2/3} = 1{,}567\ \mathrm{s}
+$$
+
+**É esse passo que a questão está cobrando.** Ignorá-lo e integrar desde $t = 0$ é o erro clássico: nos primeiros $1{,}57\ \mathrm{s}$ a força existe mas **não produz impulso útil**, porque o atrito estático a cancela integralmente.
+
+**Passo 3 — daí em diante o atrito é cinético**, e constante:
+
+$$
+F_k = 0{,}3(490{,}5) = 147{,}15\ \mathrm{N}
+$$
+
+**Passo 4 — teorema do impulso e momento linear**, de $t_1$ a $5\ \mathrm{s}$, partindo do repouso:
+
+$$
+\int_{t_1}^{5}100\,t^{3/2}dt - F_k\,(5 - t_1) = 50\,v
+$$
+
+A integral da força motriz:
+
+$$
+\int 100\,t^{3/2}dt = 40\,t^{5/2}
+\quad\Longrightarrow\quad
+40\left(5^{5/2} - 1{,}567^{5/2}\right) = 40\,(55{,}90 - 3{,}07) = 2113\ \mathrm{N\cdot s}
+$$
+
+O impulso do atrito:
+
+$$
+147{,}15\,(5 - 1{,}567) = 505{,}1\ \mathrm{N\cdot s}
+$$
+
+**Passo 5 — resolva:**
+
+$$
+50\,v = 2113 - 505 = 1608
+\quad\Longrightarrow\quad
+v = 32{,}2\ \mathrm{m/s}
+$$
+
+**A leitura da resposta.** O $\mu_s \gt \mu_k$ do enunciado não é decoração: é o que cria as **duas fases**. O $\mu_s$ define *quando* começa; o $\mu_k$ define *quanto* freia depois. Sempre que uma questão dá os dois coeficientes, procure a transição.
+
+**Cuidado com o expoente fracionário.** $\int t^{3/2}dt = \tfrac{2}{5}t^{5/2}$, então o $100$ vira $40$. E $5^{5/2} = 25\sqrt5 = 55{,}90$ — não $5^{2{,}5}$ feito à mão errado. Integrar desde $t = 0$ daria $v = 30{,}0\ \mathrm{m/s}$: perto o bastante para passar despercebido, e errado.
+</Passos>

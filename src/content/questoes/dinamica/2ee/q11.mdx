@@ -1,0 +1,124 @@
+---
+origem: "2022.2"
+tema: "Colisão oblíqua · Achar a linha de impacto pela geometria"
+temaId: colisao-obliqua
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+As bolas $A$ e $B$ têm $60\ \mathrm{mm}$ de diâmetro e colidem com $e = 0{,}90$. Antes da colisão, $A$ se movia com $1{,}0\ \mathrm{m/s}$ na direção $\theta$ (medida da horizontal) enquanto $B$ estava parada. A distância horizontal inicial entre os centros é de $6{,}0\ \mathrm{in}$ e a vertical, de $10\ \mathrm{in}$. Após a colisão, $B$ passou a se mover com velocidade **horizontal**. Determine:
+
+<ol type="a">
+<li>o ângulo $\theta$;</li>
+<li>$v_B'$.</li>
+</ol>
+
+Adote $1{,}0\ \mathrm{in} = 25\ \mathrm{mm}$.
+
+<Figura>
+  <svg viewBox="0 0 280 190" role="img" aria-label="Bola A embaixo à esquerda movendo-se no ângulo teta até tocar a bola B, acima e à direita, que sai horizontalmente">
+    {/* eixo horizontal de referência */}
+    <line x1="30" y1="150" x2="255" y2="150" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* bola A na posição inicial */}
+    <circle cx="70" cy="150" r="13" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="52" y="168" font-size="11" fill="var(--accent)">A</text>
+    {/* bola B */}
+    <circle cx="195" cy="55" r="13" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="182" y="38" font-size="11" fill="var(--warn)">B</text>
+    {/* velocidade de A na direção teta */}
+    <line x1="70" y1="150" x2="118" y2="90" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="123,84 114,86 119,93" fill="var(--accent)"/>
+    <text x="92" y="106" font-size="10" fill="var(--accent)">v<tspan font-size="8" dy="2.5">A</tspan></text>
+    {/* arco do ângulo teta */}
+    <path d="M 108 150 A 38 38 0 0 0 96 122" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+    <text x="100" y="140" font-size="11" fill="var(--accent)">θ</text>
+    {/* posição de A no instante do contato: centro na mesma altura de B */}
+    <circle cx="169" cy="55" r="13" fill="none" stroke="var(--line-2)" stroke-width="1.4" stroke-dasharray="3 3"/>
+    {/* linha de impacto horizontal */}
+    <line x1="150" y1="55" x2="240" y2="55" stroke="var(--ok)" stroke-width="1.2" stroke-dasharray="5 3"/>
+    <text x="220" y="48" font-size="9" fill="var(--ok)">LI</text>
+    {/* velocidade de B após, horizontal */}
+    <line x1="209" y1="55" x2="245" y2="55" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="250,55 241,51 241,59" fill="var(--warn)"/>
+    <text x="222" y="72" font-size="10" fill="var(--warn)">v<tspan font-size="8" dy="2.5">B</tspan><tspan dy="-2.5">′</tspan></text>
+    {/* cotas */}
+    <line x1="70" y1="172" x2="195" y2="172" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="120" y="185" font-size="9" fill="var(--ink-3)">6,0 in</text>
+    <line x1="262" y1="55" x2="262" y2="150" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="240" y="112" font-size="9" fill="var(--ink-3)">10 in</text>
+  </svg>
+  <figcaption>
+
+A chave é a bola tracejada: no instante do contato, $A$ tem de estar com o centro **na mesma altura** de $B$, senão $B$ não sairia na horizontal. Isso fixa a subida ($10\ \mathrm{in}$) e o avanço ($6{,}0$ menos a soma dos raios).
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+a) $\theta = 70^\circ$.    b) $v_B' = 0{,}32\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — bola parada sai na linha de impacto.** $B$ estava em repouso, e na direção tangencial não há impulso: sua velocidade depois só pode ser ao longo da **linha de impacto**. Como o enunciado diz que ela sai horizontal, **a linha de impacto é horizontal** — e portanto, no instante do contato, os dois centros estão na mesma altura.
+
+**Passo 2 — a geometria do trajeto de $A$.** Do início até o contato, o centro de $A$:
+
+- **sobe** exatamente a diferença de altura entre os centros: $10\ \mathrm{in}$;
+- **avança** a distância horizontal menos a soma dos raios, porque no contato as superfícies se tocam. Cada raio vale $30\ \mathrm{mm} = 30/25 = 1{,}2\ \mathrm{in}$, e a soma é $2{,}4\ \mathrm{in}$:
+
+$$
+\Delta x = 6{,}0 - 2{,}4 = 3{,}6\ \mathrm{in}
+$$
+
+$$
+\theta = \arctan\frac{10}{3{,}6} = 70{,}2^\circ \approx 70^\circ
+$$
+
+**Passo 3 — decomponha $v_A$ na linha de impacto.** Com a linha de impacto horizontal, "normal" é $x$ e "tangencial" é $y$:
+
+$$
+v_{An} = 1{,}0\cos 70^\circ = 0{,}342\ \mathrm{m/s}
+\qquad
+v_{At} = 1{,}0\sin 70^\circ = 0{,}940\ \mathrm{m/s}
+$$
+
+**Passo 4 — as duas equações na normal.** Massas iguais (bolas idênticas), então elas cortam. Momento:
+
+$$
+v_{An} = v_{An}' + v_B' \tag{1}
+$$
+
+Restituição:
+
+$$
+e = \frac{v_B' - v_{An}'}{v_{An} - 0} = 0{,}90
+\quad\Longrightarrow\quad
+v_B' - v_{An}' = 0{,}90\,v_{An} \tag{2}
+$$
+
+**Passo 5 — resolva.** Somando (1) e (2):
+
+$$
+2v_B' = 1{,}90\,v_{An}
+\quad\Longrightarrow\quad
+v_B' = 0{,}95\,v_{An} = 0{,}95(0{,}342) = 0{,}32\ \mathrm{m/s}
+$$
+
+e, de (1), $v_{An}' = 0{,}05\,v_{An} = 0{,}017\ \mathrm{m/s}$ — $A$ praticamente para na direção normal.
+
+**Passo 6 — e a tangencial de $A$?** Intacta: $v_{At}' = 0{,}940\ \mathrm{m/s}$. Então $A$ sai quase na vertical, a $89^\circ$ da horizontal, enquanto $B$ sai na horizontal. **É isso que o choque quase-elástico entre massas iguais faz:** troca a componente normal e não mexe na tangencial.
+
+**Cuidado com as unidades.** As distâncias vêm em polegadas, os diâmetros em milímetros, e a conversão do enunciado é $1{,}0\ \mathrm{in} = 25\ \mathrm{mm}$ (não os $25{,}4$ de verdade). Use a do enunciado — e note que nada disso afeta $v_B'$ em $\mathrm{m/s}$, porque a geometria só entra pelo ângulo.
+</Passos>

@@ -1,0 +1,65 @@
+---
+origem: "1ª avaliação"
+tema: "Aceleração em função da velocidade · a = −2v³"
+temaId: aceleracao-funcao-velocidade
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma partícula está se movendo com velocidade $20\ \mathrm{m/s}$ quando $s = 0$ e $t = 0$. Se a partícula está sujeita a uma desaceleração $a = -2v^{3}$ (com $a$ em $\mathrm{m/s^2}$ e $v$ em $\mathrm{m/s}$), determine sua velocidade quando o tempo for $3$ segundos.
+
+<Gabarito>
+$v = 0{,}289\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — escolha a definição certa de aceleração.** A pergunta relaciona **velocidade e tempo**, então a forma útil é $a = dv/dt$ — e não $a\,ds = v\,dv$, que serviria se a pergunta fosse sobre posição.
+
+$$
+\frac{dv}{dt} = -2v^{3}
+\quad\Longrightarrow\quad
+\frac{dv}{v^{3}} = -2\,dt
+$$
+
+**Passo 2 — separe e integre**, de $v_0 = 20$ em $t = 0$ até $v$ em $t$:
+
+$$
+\int_{20}^{v} v^{-3}\,dv = -2\int_0^{t} dt
+\quad\Longrightarrow\quad
+\left[-\frac{1}{2v^{2}}\right]_{20}^{v} = -2t
+$$
+
+$$
+-\frac{1}{2v^{2}} + \frac{1}{2(20)^{2}} = -2t
+\quad\Longrightarrow\quad
+\frac{1}{2v^{2}} = 2t + \frac{1}{800}
+$$
+
+**Passo 3 — isole $v$.**
+
+$$
+v = \frac{1}{\sqrt{4t + \dfrac{1}{400}}}
+$$
+
+**Passo 4 — em $t = 3{,}00\ \mathrm{s}$:**
+
+$$
+v = \frac{1}{\sqrt{12 + 0{,}0025}} = \frac{1}{3{,}4644} = 0{,}289\ \mathrm{m/s}
+$$
+
+**A leitura da resposta.** A desaceleração é proporcional a $v^3$: enorme no começo (com $v = 20$, $a = -16\,000\ \mathrm{m/s^2}$) e praticamente nula no fim. O resultado é que a partícula perde $98\%$ da velocidade quase instantaneamente e depois "arrasta" o resto por muito tempo — a velocidade cai como $1/\sqrt{t}$ e **nunca** chega a zero. Isso é a assinatura de arrasto de alta ordem, e é por isso que o $1/400$ do Passo 3 mal importa em $t = 3\ \mathrm{s}$, mas é ele que impede a fórmula de explodir em $t = 0$.
+
+**Cuidado.** Não use $v = v_0 + at$: a aceleração não é constante. E não caia na tentação de escrever $a = -2v^3$ com $v$ "médio" — não existe atalho aqui, a integral é obrigatória.
+</Passos>

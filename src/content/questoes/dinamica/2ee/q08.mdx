@@ -1,0 +1,63 @@
+---
+origem: "2022.2"
+tema: "Explosão em pleno voo · Conservação do momento em 3D"
+temaId: explosao-fragmentos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um projétil de $15\ \mathrm{kg}$ passa pela origem $O$ com velocidade $\vec{V}_0 = (40\ \mathrm{m/s})\,\mathbf{i}$ quando explode em dois fragmentos $A$ e $B$, de $6{,}0\ \mathrm{kg}$ e $9{,}0\ \mathrm{kg}$ respectivamente. Sabendo que $3{,}0\ \mathrm{s}$ depois a posição do fragmento $A$ é $(120;\ 18{,}0;\ -21{,}0)\ \mathrm{m}$, determine a posição do fragmento $B$ no mesmo instante. Despreze a gravidade.
+
+<Gabarito>
+$\vec{R}_B' = (120;\ -12;\ 14)\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — sem gravidade, cada fragmento vai em linha reta.** Então a velocidade de $A$ sai direto da posição dividida pelo tempo:
+
+$$
+\vec{V}_A' = \frac{\vec{R}_A'}{3{,}0} = \frac{(120;\ 18{,}0;\ -21{,}0)}{3{,}0} = (40;\ 6{,}0;\ -7{,}0)\ \mathrm{m/s}
+$$
+
+**Passo 2 — conservação do momento na explosão.** A força da explosão é interna: o momento total é o mesmo antes e depois, **componente por componente**:
+
+$$
+(15)(40;\ 0;\ 0) = (6{,}0)(40;\ 6{,}0;\ -7{,}0) + (9{,}0)(V_{Bx}';\ V_{By}';\ V_{Bz}')
+$$
+
+**Passo 3 — resolva as três componentes.**
+
+$$
+x:\quad 600 = 240 + 9V_{Bx}' \Rightarrow V_{Bx}' = 40{,}0
+$$
+
+$$
+y:\quad 0 = 36 + 9V_{By}' \Rightarrow V_{By}' = -4{,}0
+$$
+
+$$
+z:\quad 0 = -42 + 9V_{Bz}' \Rightarrow V_{Bz}' = 4{,}67
+$$
+
+**Passo 4 — a posição, também em linha reta:**
+
+$$
+\vec{R}_B' = \vec{V}_B'\,(3{,}0) = (120;\ -12;\ 14)\ \mathrm{m}
+$$
+
+**A leitura da resposta.** A componente $x$ dos dois fragmentos ficou igual a $40\ \mathrm{m/s}$ — a explosão foi puramente transversal. E as componentes $y$ e $z$ saíram com **sinais opostos** às de $A$: os fragmentos se abriram para lados contrários da trajetória original, como tinham de fazer para o momento transversal continuar nulo.
+
+**Cuidado.** "Despreze a gravidade" é o que autoriza dividir posição por tempo. Com gravidade, $\vec{R} = \vec{V}t + \tfrac12\vec{g}t^2$ e o termo quadrático teria de sair primeiro — mas o momento continuaria conservado durante a explosão, porque ela é instantânea.
+</Passos>

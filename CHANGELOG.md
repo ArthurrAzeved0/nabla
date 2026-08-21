@@ -21,7 +21,7 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
-## [Não publicado]
+## [2.12.0] — 2026-08-21
 
 ### Corrigido
 
@@ -51,6 +51,106 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 - As unidades da teoria passam a ter o nome do conteúdo programático —
   "Cinemática do ponto material" e "Dinâmica do ponto material" — em vez de
   "1ª/2ª Unidade".
+- **A teoria de Dinâmica ficou completa: 29 seções**, cobrindo os cinco itens
+  do conteúdo programático. As 17 novas vêm em três unidades:
+  - *Trabalho e energia* — trabalho de uma força (constante, peso, mola e
+    força variável), princípio do trabalho e energia cinética, energia
+    potencial, conservação da energia mecânica e potência com eficiência.
+  - *Impulso e momento linear* — impulso e momento, conservação num sistema de
+    partículas, colisão central direta com coeficiente de restituição,
+    colisão oblíqua na linha de impacto, e momento angular sob força central.
+  - *Movimento plano do corpo rígido* — translação e rotação de eixo fixo,
+    análise de velocidade relativa, centro instantâneo de rotação, análise de
+    aceleração relativa, momento de inércia com eixos paralelos, equações do
+    movimento plano e o teorema da energia com a parcela de rotação.
+- **A cadeira de Dinâmica ficou completa: 56 questões**, nas três provas.
+  Saíram de todo o material que eu tinha — inclusive as fotos, os PDFs
+  escaneados e os gabaritos manuscritos, que só se leem como imagem.
+  - **1º EE (24 questões)**: os quatro tipos de aceleração variável
+    ($a = -2v^3$, $-k/x$, $kt$ e $10 - 0,9v^2$), quatro vínculos por cabo —
+    duas delas com o trator, em que a corda cresce como raiz —, raio de
+    curvatura, o ângulo que maximiza a **área** da trajetória, o esquiador na
+    parábola, o anel na barra girando, onde a caixa abandona o arco, a
+    resultante em módulo $\sqrt5\,mg$ no movimento circular, e as dez
+    afirmativas de verdadeiro-ou-falso de 2025.2.
+  - **2º EE (26 questões)**: trabalho e energia com força variável, os dois
+    tipos de colisão (direta e oblíqua), explosão de projétil, momento
+    angular, três questões de corpo rígido (engrenagem planetária,
+    cremalheira e haste com cursor), o cilindro que rola na parábola, a
+    corrente que escorrega do tubo (a única em que a altura é a do **centro de
+    massa** de um arco) e a prancha articulada que lança a bola no cesto.
+  - **Final (6 questões)**: bobina com raio de giração, o ginasta e a
+    conservação do momento angular, o impulso de $F = 5^t t^2$, e as três do
+    simulado de 2025.
+- Fontes: 2021.2 (Prof. Rogério), 2022.1 e 2022.2, 2023.1 (Profs. Osmundo e
+  Maciel), 2024.1 e 2024.2 (Prof. Paulo Roberto), 2025.1, 2025.2 (Prof.
+  Leonardo), a 2ª chamada, a prova em branco sem data, o simulado da final e
+  as listas de energia.
+- **Mais 23 questões, agora das listas de exercícios** — as que são problemas
+  do **Hibbeler 14ª ed.**, com o número do problema na procedência de cada
+  uma. O enunciado foi reescrito com todos os dados no texto (não só na
+  figura), e cada resolução foi feita e conferida do zero. São **79 questões**
+  de Dinâmica no total.
+  - Cinemática (Cap. 12): os quatro tipos de aceleração variável em forma
+    canônica, o gráfico $a$–$t$ do trem-bala, a trajetória helicoidal — que
+    tem velocidade escalar constante e aceleração não nula — e o arremesso de
+    basquete.
+  - Cinética (Cap. 13): a caixa que desliza no carrinho preso pela corda (onde
+    a massa do carrinho é distrator), o bloco sobre placa com dois atritos e
+    deslocamento relativo, a força $100\,t^{3/2}$ que só vence o atrito
+    estático em $t = 1{,}57\ \mathrm{s}$, o bloco na bandeja com mola, o carro
+    no morro parabólico, o bloco no cone e o caixote na rampa parabólica.
+  - Trabalho e energia (Cap. 14): a demonstração de que $v = \sqrt{2gh}$ em
+    trajetória lisa de forma **arbitrária** — que é a origem de todo o resto
+    da unidade —, a força $50\sqrt{s}$ com atrito, a caixa no semicilindro, o
+    anel com corda de tração constante (trabalho = tração × encurtamento), a
+    mola de disparo na pista circular, o ciclista, a caixa que sobe e para, o
+    *Raptor* de trilho externo (que explica por que existe o cinto) e o
+    cilindro entre duas molas.
+
+### Corrigido no material-fonte
+
+- Dois arquivos do zip estavam na pasta errada, e a alocação no site segue o
+  **conteúdo**, não o nome do arquivo: o "2024.1 — Gabarito manuscrito" é o
+  gabarito da prova de **2024.2**, e as páginas 3 e 4 das fotos da final são
+  de uma **2ª Avaliação** (o cabeçalho diz isso).
+- A força da Q3 da final de 2024 é mesmo $F = 5^{t}\,t^{2}$, e não $5t^2$: eu
+  ia tratar como erro de digitação, mas o gabarito manuscrito integra por
+  partes duas vezes e carrega $\ln 5$ até o fim.
+- Onde a prova se contradiz, a nota fica na questão: a de 2024.2 chama o corpo
+  de "disco" e depois de "esfera" — adotei disco, que é o que está declarado
+  com a massa, e registrei o outro resultado.
+- As listas dos Profs. Paulo Roberto e Leonardo são **páginas escaneadas do
+  Hibbeler**. Elas entraram com o número do problema declarado na procedência
+  ("Lista · Hibbeler 13.76"), enunciado reescrito e resolução própria — não
+  cópia do livro nem do manual de soluções. As três questões de energia que
+  também entraram vêm de listas de banca brasileira, não do livro.
+
+### Corrigido
+
+- **A etiqueta do tema transbordava o cartão no celular.** Ela é uma frase
+  ("Bobina e bloco · Equações do movimento com raio de giração") dentro de uma
+  pílula com `white-space: nowrap`, então esticava a linha e vazava pela
+  direita. O `nowrap` continua sendo o certo para as pílulas curtas — "1º EE",
+  "2,5 pts" ficariam ridículas quebradas —, então o tema ganhou uma classe
+  própria que quebra em várias linhas.
+- **Matemática em linha rachava no meio.** `$I_O$` virava "I" numa linha e "O"
+  na outra. A causa é o espaço de largura zero que o KaTeX põe dentro da pilha
+  de subíndice: para o navegador, é oportunidade de quebra. O `nowrap` agora
+  vai no `.katex .base` — o átomo é indivisível, e as quebras que o KaTeX cria
+  de propósito (depois de relação ou operador) continuam valendo. Pôr no
+  `.katex` inteiro também resolvia, mas aí cinco fórmulas longas passavam a
+  estourar a janela; foi medido antes de decidir.
+- **Onze rótulos de figura estavam cortados pela borda do `viewBox`** — em
+  Cálculo 3, Eletromagnetismo, EDOs e Dinâmica. Achados medindo o `getBBox()`
+  de cada `<text>` no navegador, nas 18 páginas e em cinco larguras de janela
+  (320 a 1366 px). Hoje não sobra nenhum.
+
+### Alterado
+
+- `scripts/cabecalho.mjs` passou a olhar os primeiros 8.000 caracteres, e não
+  2.000, para decidir se um arquivo já tem cabeçalho. Em `.mdx` o cabeçalho vem
+  **depois** do frontmatter, e o da teoria de Dinâmica agora lista 29 seções.
 
 ## [2.11.0] — 2026-08-21
 
@@ -891,6 +991,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.12.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.12.0
 [2.11.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.11.0
 [2.10.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.10.0
 [2.9.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.9.0

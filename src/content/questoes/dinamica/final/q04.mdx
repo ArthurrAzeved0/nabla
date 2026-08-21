@@ -1,0 +1,84 @@
+---
+origem: "Simulado da final 2025"
+tema: "Curva compensada · Raio pelos dois limites de atrito"
+temaId: forca-centripeta
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma curva de rodovia é inclinada de um ângulo $\theta$. Com a pista molhada, o atrito estático entre a pista e os pneus é tal que: um carro **em repouso** está na iminência de deslizar **para dentro** da curva, e um carro se movendo com velocidade $v$ está na iminência de derrapar **para fora**. Sendo $g$ a aceleração da gravidade, qual é o raio de curvatura da curva?
+
+<ol type="a">
+<li>$\dfrac{v^2}{g}\cot\theta$</li>
+<li>$\dfrac{v^2}{2g}\cot\theta$</li>
+<li>$\dfrac{v^2}{g}\tan\theta$</li>
+<li>$\dfrac{v^2}{g}\cot 2\theta$</li>
+<li>$\dfrac{v^2}{2g}\cot 2\theta$</li>
+</ol>
+
+<Gabarito>
+Alternativa **(d)**: $\ r = \dfrac{v^2}{g}\cot 2\theta$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a primeira condição determina $\mu$.** Carro **parado** na iminência de escorregar para dentro (isto é, descendo a rampa): é o problema do ângulo de repouso, e nele o atrito está no máximo, subindo o plano.
+
+$$
+P\sin\theta = F_{at} = \mu\,P\cos\theta
+\quad\Longrightarrow\quad
+\mu = \tan\theta
+$$
+
+Essa é a chave da questão: o enunciado não deu $\mu$, mas deu uma condição que o **define**.
+
+**Passo 2 — a segunda condição, com o carro em movimento.** Agora ele está na iminência de derrapar para **fora**, então o atrito aponta para dentro, ou seja, **descendo** o plano. Decompondo nas direções horizontal e vertical (a aceleração é horizontal, apontando para o centro da curva):
+
+$$
+\text{vertical:}\quad N\cos\theta = \mu N\sin\theta + mg
+$$
+
+$$
+\text{horizontal:}\quad N\sin\theta + \mu N\cos\theta = \frac{mv^2}{r}
+$$
+
+**Passo 3 — divida uma pela outra** para eliminar $N$ e $m$ de uma vez:
+
+$$
+\frac{mg}{\cos\theta - \mu\sin\theta} = N = \frac{mv^2}{(\sin\theta + \mu\cos\theta)\,r}
+$$
+
+$$
+r = \frac{v^2}{g}\cdot\frac{\cos\theta - \mu\sin\theta}{\sin\theta + \mu\cos\theta}
+$$
+
+**Passo 4 — substitua $\mu = \tan\theta$.** É aqui que a expressão desaba numa identidade bonita:
+
+$$
+r = \frac{v^2}{g}\cdot\frac{\cos\theta - \dfrac{\sin^2\theta}{\cos\theta}}{\sin\theta + \sin\theta}
+= \frac{v^2}{g}\cdot\frac{\dfrac{\cos^2\theta - \sin^2\theta}{\cos\theta}}{2\sin\theta}
+$$
+
+Reconheça $\cos^2\theta - \sin^2\theta = \cos 2\theta$ e $2\sin\theta\cos\theta = \sin 2\theta$:
+
+$$
+r = \frac{v^2}{g}\cdot\frac{\cos 2\theta}{2\sin\theta\cos\theta} = \frac{v^2}{g}\cdot\frac{\cos 2\theta}{\sin 2\theta}
+$$
+
+$$
+\boxed{r = \frac{v^2}{g}\cot 2\theta}
+$$
+
+**O sinal de que é a alternativa certa.** Repare que $r \to 0$ quando $\theta \to 45^\circ$: com $\mu = \tan 45^\circ = 1$, o atrito já basta para qualquer curva e a inclinação deixa de fazer sentido físico. As alternativas com $\cot\theta$ não têm esse comportamento — e testar o caso-limite é mais rápido que refazer a conta.
+</Passos>

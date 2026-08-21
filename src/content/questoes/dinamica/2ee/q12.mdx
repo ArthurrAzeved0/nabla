@@ -1,0 +1,115 @@
+---
+origem: "2022.2"
+tema: "Engrenagem planetária · Velocidade angular e velocidade de um dente"
+temaId: engrenagens
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O braço $AB$ gira em torno do pino fixo $A$ com $\omega_{AB} = 20\ \mathrm{rad/s}$ no sentido anti-horário, com $\overline{AB} = 120\ \mathrm{mm}$. Na sua extremidade $B$ está montada uma engrenagem de raio $50\ \mathrm{mm}$, que engrena com uma coroa **fixa** $C$. Determine:
+
+<ol type="a">
+<li>a velocidade angular da engrenagem $B$;</li>
+<li>a velocidade do dente $D$, no topo da engrenagem.</li>
+</ol>
+
+<Figura>
+  <svg viewBox="0 0 320 190" role="img" aria-label="Braço AB girando em torno de A com uma engrenagem em B engrenada numa coroa fixa C">
+    {/* coroa fixa C (arco à direita) */}
+    <path d="M 175 20 A 105 105 0 0 1 175 170" fill="none" stroke="var(--ink-3)" stroke-width="5" stroke-linecap="round"/>
+    <text x="252" y="150" font-size="11" fill="var(--ink-3)">C (fixa)</text>
+    {/* pino A */}
+    <rect x="18" y="82" width="12" height="26" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    <circle cx="34" cy="95" r="4" fill="var(--ink-2)"/>
+    <text x="26" y="76" font-size="11" fill="var(--ink-2)">A</text>
+    {/* braço AB */}
+    <line x1="34" y1="95" x2="130" y2="95" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+    <text x="72" y="88" font-size="10" fill="var(--accent)">120 mm</text>
+    {/* engrenagem B */}
+    <circle cx="130" cy="95" r="40" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.8"/>
+    <circle cx="130" cy="95" r="3.5" fill="var(--warn)"/>
+    <text x="136" y="110" font-size="11" fill="var(--warn)">B</text>
+    <line x1="130" y1="95" x2="170" y2="95" stroke="var(--warn)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="138" y="90" font-size="9" fill="var(--warn)">50</text>
+    {/* dente D no topo */}
+    <circle cx="130" cy="55" r="4" fill="var(--ok)"/>
+    <text x="118" y="47" font-size="11" fill="var(--ok)">D</text>
+    {/* ponto de contato = centro instantâneo */}
+    <circle cx="170" cy="95" r="4" fill="var(--ink-2)"/>
+    <text x="176" y="92" font-size="10" fill="var(--ink-2)">CI</text>
+  </svg>
+  <figcaption>
+
+A coroa é fixa, então o ponto de contato da engrenagem com ela tem velocidade nula: **é o centro instantâneo** da engrenagem $B$. Todo o resto sai daí.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+a) $\vec{\omega}_B = (-48\ \mathrm{rad/s})\,\mathbf{k}$ — isto é, $48\ \mathrm{rad/s}$ no sentido **horário**.
+
+b) $\vec{v}_D = (2{,}400\ \mathrm{mm/s})\,\mathbf{i} + (2{,}400\ \mathrm{mm/s})\,\mathbf{j}$, ou seja $3{,}39\ \mathrm{m/s}$ a $45^\circ$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a velocidade do centro $B$.** $B$ é ponto do braço, que gira em torno do pino fixo $A$. Com $\vec{\omega}_{AB} = 20\,\mathbf{k}$ e $\vec{r}_{AB} = 120\,\mathbf{i}$:
+
+$$
+\vec{v}_B = \vec{\omega}_{AB} \times \vec{r}_{AB} = (20\,\mathbf{k}) \times (120\,\mathbf{i}) = 2{,}400\,\mathbf{j}\ \mathrm{mm/s}
+$$
+
+**Passo 2 — item (a), pelo centro instantâneo.** A coroa está fixa, então o ponto de contato $CI$ não tem velocidade. Ele está a $50\ \mathrm{mm}$ à direita de $B$, ou seja $\vec{r}_{CI \to B} = -50\,\mathbf{i}$. Como $B$ também é ponto da engrenagem:
+
+$$
+\vec{v}_B = \vec{\omega}_B \times \vec{r}_{CI \to B}
+\quad\Longrightarrow\quad
+2{,}400\,\mathbf{j} = (\omega_B\,\mathbf{k}) \times (-50\,\mathbf{i}) = -50\,\omega_B\,\mathbf{j}
+$$
+
+$$
+\omega_B = -48\ \mathrm{rad/s}
+\quad\Longrightarrow\quad
+\vec{\omega}_B = (-48\ \mathrm{rad/s})\,\mathbf{k}
+$$
+
+Sinal negativo: a engrenagem gira **em sentido contrário** ao braço. Faz sentido — ela rola pela face interna de uma coroa parada.
+
+**Passo 3 — item (b), o dente $D$.** $D$ está no topo da engrenagem, $\vec{r}_{BD} = 50\,\mathbf{j}$. Use velocidade relativa a partir de $B$:
+
+$$
+\vec{v}_D = \vec{v}_B + \vec{\omega}_B \times \vec{r}_{BD}
+= 2{,}400\,\mathbf{j} + (-48\,\mathbf{k}) \times (50\,\mathbf{j})
+$$
+
+Com $\mathbf{k}\times\mathbf{j} = -\mathbf{i}$:
+
+$$
+\vec{v}_D = 2{,}400\,\mathbf{j} + 2{,}400\,\mathbf{i}\ \mathrm{mm/s}
+$$
+
+$$
+|\vec{v}_D| = 2{,}400\sqrt{2} = 3{,}39\times10^{3}\ \mathrm{mm/s} = 3{,}39\ \mathrm{m/s}
+$$
+
+**Confira pelo $CI$.** A distância de $D$ ao centro instantâneo é a diagonal $\sqrt{50^2 + 50^2} = 70{,}7\ \mathrm{mm}$, e
+
+$$
+v_D = |\omega_B|\,r_{D/CI} = 48 \times 70{,}7 = 3{,}39\times10^{3}\ \mathrm{mm/s}
+$$
+
+Bate. Fazer os dois caminhos custa dez segundos e é a melhor apólice contra erro de sinal em produto vetorial.
+
+**Cuidado.** $\vec{r}_{CI \to B}$ aponta **do centro instantâneo para o ponto**, nunca ao contrário. Inverter troca o sinal de $\omega_B$ e leva o item (b) junto.
+</Passos>

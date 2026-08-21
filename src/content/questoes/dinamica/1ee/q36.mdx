@@ -1,0 +1,78 @@
+---
+origem: "Lista · Hibbeler 13.73"
+tema: "Carro no alto de um morro parabólico · Normal e atrito"
+temaId: componentes-normal-tangencial
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q36.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um carro de $0{,}8\ \mathrm{Mg}$ desloca-se sobre um monte com formato de parábola, de equação $y = 20\left(1 - \dfrac{x^2}{6400}\right)$ metros. Quando o carro está no ponto $A$ ($x = 80\ \mathrm{m}$), ele está se deslocando a $9\ \mathrm{m/s}$ e aumentando sua velocidade a $3\ \mathrm{m/s^2}$. Determine a **força normal resultante** e a **força de atrito resultante** que todas as rodas exercem sobre a estrada nesse instante. Despreze a dimensão do carro.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$N = 6{,}73\ \mathrm{kN}$ e $F = 1{,}11\ \mathrm{kN}$ (freando, contra o movimento).
+</Gabarito>
+
+<Passos>
+**Passo 1 — a geometria em $x = 80\ \mathrm{m}$.**
+
+$$
+y' = -\frac{x}{160} = -0{,}500
+\qquad
+y'' = -\frac{1}{160}
+$$
+
+$$
+\theta = \arctan 0{,}500 = 26{,}57^\circ
+\qquad
+\rho = \frac{\left[1 + 0{,}25\right]^{3/2}}{1/160} = \frac{1{,}3975}{0{,}00625} = 223{,}6\ \mathrm{m}
+$$
+
+E vale notar: em $x = 80$, $y = 0$ — o carro está no **pé** do morro, não no topo.
+
+**Passo 2 — as duas componentes da aceleração.** A tangencial é dada; a normal sai do raio de curvatura:
+
+$$
+a_t = 3{,}00\ \mathrm{m/s^2}
+\qquad
+a_n = \frac{v^2}{\rho} = \frac{81}{223{,}6} = 0{,}362\ \mathrm{m/s^2}
+$$
+
+**Passo 3 — a normal.** A parábola é **côncava para baixo** e o carro anda por cima: o centro de curvatura está **abaixo** da pista, então $a_n$ aponta para baixo. Nessa direção, a componente do peso empurra para o centro e a normal, para fora:
+
+$$
+m\,g\cos\theta - N = m\,a_n
+$$
+
+$$
+N = 800\,(9{,}81\cos 26{,}57^\circ - 0{,}362) = 800\,(8{,}774 - 0{,}362) = 6{,}73\times10^{3}\ \mathrm{N}
+$$
+
+**Passo 4 — o atrito.** Na direção tangencial, o carro está **descendo** o morro, então a componente do peso ajuda o movimento:
+
+$$
+m\,g\operatorname{sen}\theta + F = m\,a_t
+$$
+
+$$
+F = 800(3{,}00) - 800(9{,}81)\operatorname{sen} 26{,}57^\circ = 2400 - 3509 = -1{,}11\times10^{3}\ \mathrm{N}
+$$
+
+O sinal negativo diz o que interessa: o atrito aponta **contra** o movimento, com $1{,}11\ \mathrm{kN}$. O carro está acelerando a $3\ \mathrm{m/s^2}$, mas a gravidade sozinha o aceleraria a $4{,}39\ \mathrm{m/s^2}$ — então as rodas estão **freando**, não tracionando.
+
+**A leitura da resposta.** $N = 6{,}73\ \mathrm{kN}$ contra um peso de $7{,}85\ \mathrm{kN}$: o carro está $14\%$ mais "leve" que parado, porque a lombada tira parte da normal. É a mesma física da sensação de flutuar ao passar rápido por uma elevação — e o limite disso é $N = 0$, quando o carro decola.
+
+**Cuidado com o sinal do termo $a_n$.** Concavidade para baixo com o corpo em cima **subtrai** da normal; concavidade para cima (um vale) **soma**. Errar isso troca $6{,}73$ por $7{,}44\ \mathrm{kN}$ — e o jeito de nunca errar é desenhar a seta de $a_n$ apontando para o centro de curvatura antes de escrever a equação.
+</Passos>

@@ -18,6 +18,29 @@ unidades:
       - { id: din-equacoes-movimento, titulo: "Equações do movimento: a 2ª lei de Newton" }
       - { id: din-vinculos-atrito, titulo: "Forças de vínculo e atrito" }
       - { id: din-circular, titulo: "Movimento circular: a força que curva a trajetória" }
+  - nome: "Trabalho e energia"
+    secoes:
+      - { id: din-trabalho, titulo: "Trabalho de uma força" }
+      - { id: din-trabalho-energia, titulo: "Princípio do trabalho e energia cinética" }
+      - { id: din-energia-potencial, titulo: "Energia potencial: peso e mola" }
+      - { id: din-conservacao-energia, titulo: "Conservação da energia mecânica" }
+      - { id: din-potencia, titulo: "Potência e eficiência" }
+  - nome: "Impulso e momento linear"
+    secoes:
+      - { id: din-impulso-momento, titulo: "Impulso e momento linear" }
+      - { id: din-conservacao-momento, titulo: "Conservação do momento linear em um sistema de partículas" }
+      - { id: din-colisoes, titulo: "Colisão central direta: o coeficiente de restituição" }
+      - { id: din-colisao-obliqua, titulo: "Colisão oblíqua: separar na linha de impacto" }
+      - { id: din-momento-angular, titulo: "Momento angular e forças centrais" }
+  - nome: "Movimento plano do corpo rígido"
+    secoes:
+      - { id: din-cr-tipos, titulo: "Do ponto material ao corpo rígido: translação e rotação" }
+      - { id: din-cr-velocidade-relativa, titulo: "Análise de velocidade relativa: a equação que resolve todo mecanismo" }
+      - { id: din-cr-cir, titulo: "Centro instantâneo de rotação" }
+      - { id: din-cr-aceleracao-relativa, titulo: "Análise de aceleração relativa" }
+      - { id: din-cr-inercia, titulo: "Momento de inércia" }
+      - { id: din-cr-equacoes, titulo: "Equações do movimento plano" }
+      - { id: din-cr-energia, titulo: "Trabalho e energia no corpo rígido" }
 ---
 
 {/* **************************************************************************
@@ -581,6 +604,993 @@ v_{\min} = \sqrt{g\,r} = \sqrt{9{,}81 \times 1{,}25} = 3{,}50\ \mathrm{m/s}
 $$
 
 Abaixo disso a corda precisaria **empurrar** para manter o raio — e corda não empurra: a bola sai da trajetória circular antes de chegar ao topo.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-trabalho" num="13" titulo="Trabalho de uma força">
+
+**A ideia.** Até aqui, todo problema saía da 2ª lei: monta o diagrama, escreve $\sum F = ma$, integra. Funciona sempre — e às vezes dá muito trabalho, porque exige conhecer a aceleração **em cada instante**. O método da energia troca esse detalhe por uma pergunta mais barata: *quanto* a força empurrou ao longo do caminho, e o que isso fez com a velocidade. Some **posição inicial e final** — o meio do trajeto some da conta. O preço é que você perde a informação de tempo: energia não responde "quando".
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $U_{1\to2}$ — **trabalho** da força entre as posições 1 e 2, em joules ($1\ \mathrm{J} = 1\ \mathrm{N\cdot m}$);
+- $d\mathbf{r}$ — deslocamento infinitesimal **ao longo da trajetória**;
+- $\theta$ — ângulo entre a força e o deslocamento;
+- $s$ — comprimento percorrido medido sobre a trajetória.
+
+</Caixa>
+
+$$
+U_{1\to2} = \int_{\mathbf{r}_1}^{\mathbf{r}_2} \mathbf{F}\cdot d\mathbf{r} = \int_{s_1}^{s_2} F\cos\theta\ ds
+$$
+
+O produto escalar é o coração da definição: **só a componente da força na direção do movimento trabalha**. Componente perpendicular dá zero.
+
+<Caixa tipo="dica" rotulo="Quem nunca trabalha">
+
+Três forças aparecem em quase toda questão e, na maioria das vezes, dão trabalho **nulo**:
+
+- a **normal** de uma superfície, quando o corpo desliza sobre ela — é perpendicular ao movimento;
+- a **tração** de um cabo ideal na direção radial de um movimento circular;
+- o **atrito estático** no ponto de contato de uma roda que rola sem escorregar — o ponto de aplicação não desliza, então não há deslocamento relativo para a força percorrer.
+
+Reconhecer isso antes de montar a equação é o que faz o método valer a pena.
+
+</Caixa>
+
+### Os três trabalhos que caem em prova
+
+**Força constante** ao longo de um deslocamento reto de módulo $s$:
+
+$$
+U_{1\to2} = F\,s\cos\theta
+$$
+
+**Peso**, em um deslocamento vertical $\Delta y = y_2 - y_1$ (com $y$ para cima):
+
+$$
+U_{1\to2} = -W\,\Delta y = -mg\,(y_2 - y_1)
+$$
+
+O sinal é a parte que se erra: **descer é trabalho positivo**, subir é negativo. E note que só a altura importa — o caminho horizontal, a forma da rampa e o comprimento do trajeto não entram.
+
+**Mola linear**, deformada de $s_1$ a $s_2$ a partir do comprimento natural:
+
+$$
+U_{1\to2} = -\left(\tfrac{1}{2}k s_2^2 - \tfrac{1}{2}k s_1^2\right)
+$$
+
+O sinal negativo diz que a mola resiste: comprimir ou esticar é trabalho negativo sobre o corpo, soltar é positivo.
+
+<Caixa tipo="macete">
+
+**Força variável exige integral, e a prova cobra isso.** Quando o enunciado dá $F$ em função de $x$ — ou quando você mesmo escreve a resultante como $F(x)$ —, não existe atalho:
+
+$$
+U_{1\to2} = \int_{x_1}^{x_2} F(x)\,dx
+$$
+
+Foi exatamente o que a Q1 do 2º EE de 2023.1 pediu, com $F(x) = 5g - 50x$ do peso contra a mola. Quem tentou usar "força × distância" errou.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — trabalho contra a mola">
+
+Uma mola de $k = 200\ \mathrm{N/m}$ está comprimida $0{,}10\ \mathrm{m}$. Um bloco a empurra até comprimir $0{,}25\ \mathrm{m}$. Qual o trabalho da mola sobre o bloco?
+
+$$
+U_{1\to2} = -\left(\tfrac{1}{2}(200)(0{,}25)^2 - \tfrac{1}{2}(200)(0{,}10)^2\right) = -(6{,}25 - 1{,}00) = -5{,}25\ \mathrm{J}
+$$
+
+Negativo, como tinha de ser: a mola empurrou contra o movimento. Se o bloco fosse solto e a mola voltasse de $0{,}25$ para $0{,}10$, o trabalho seria $+5{,}25\ \mathrm{J}$ — a mesma conta com os limites trocados.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-trabalho-energia" num="14" titulo="Princípio do trabalho e energia cinética">
+
+**A ideia.** Integre $\sum F = m\,a$ ao longo da trajetória, usando $a\,ds = v\,dv$ — o mesmo truque da seção 03 —, e a 2ª lei vira uma equação escalar sem aceleração nenhuma dentro. É o teorema mais rentável da cadeira: **uma equação, uma incógnita, sem decompor vetor**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $T = \tfrac{1}{2}mv^2$ — **energia cinética**, sempre positiva, sempre escalar;
+- $T_1$, $T_2$ — energia cinética no início e no fim do trecho;
+- $\sum U_{1\to2}$ — soma dos trabalhos de **todas** as forças, cada um com seu sinal.
+
+</Caixa>
+
+$$
+T_1 + \sum U_{1\to2} = T_2
+$$
+
+<Caixa tipo="macete">
+
+**Quando usar energia e quando usar Newton.** A regra prática:
+
+- o enunciado relaciona **velocidade e posição** (ou distância, ou altura) e **não** menciona tempo → energia;
+- o enunciado pede **aceleração**, **força**, **normal**, **tração**, ou envolve **tempo** → 2ª lei;
+- pede as duas coisas → energia para achar $v$, depois Newton naquele ponto para achar a força.
+
+Esse último caso é o mais comum em prova de 2º EE: "determine a velocidade no ponto B **e** a força que o trilho exerce ali". Nunca tente tirar força do teorema da energia direto.
+
+</Caixa>
+
+### Atrito cinético entra como trabalho negativo
+
+$$
+U_{at} = -\mu_c N\,s
+$$
+
+com $s$ o **comprimento do caminho percorrido**, não o deslocamento. Ir e voltar não cancela: o atrito tira energia nas duas idas. É por isso que atrito não tem energia potencial associada — depende do caminho, e não só dos extremos.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — bloco que desce e freia">
+
+Um bloco de $10\ \mathrm{kg}$ é solto do repouso no topo de uma rampa lisa de $2{,}0\ \mathrm{m}$ de altura. Ao chegar ao plano horizontal, percorre um trecho com $\mu_c = 0{,}25$. Qual a distância até parar?
+
+Da posição inicial ao repouso final, $T_1 = T_2 = 0$, e a soma dos trabalhos tem de ser zero:
+
+$$
+\underbrace{mg\,h}_{\text{peso, descida}} - \underbrace{\mu_c\,mg\,d}_{\text{atrito}} = 0
+\quad\Longrightarrow\quad
+d = \frac{h}{\mu_c} = \frac{2{,}0}{0{,}25} = 8{,}0\ \mathrm{m}
+$$
+
+A massa cortou e a forma da rampa nunca entrou na conta. Com Newton, esse mesmo problema exigiria decompor o peso, achar a aceleração na rampa, achar $v$ no pé e depois desacelerar — três etapas para chegar ao mesmo número.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-energia-potencial" num="15" titulo="Energia potencial: peso e mola">
+
+**A ideia.** Peso e mola têm uma propriedade especial: o trabalho delas depende **só das posições inicial e final**, nunca do caminho. Força assim se chama **conservativa**, e para ela vale a pena guardar o trabalho numa "conta poupança" — a energia potencial — em vez de recalcular a integral a cada problema.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $V_g = mgy$ — **energia potencial gravitacional**, com $y$ medido para cima a partir de um **nível de referência que você escolhe**;
+- $V_e = \tfrac{1}{2}ks^2$ — **energia potencial elástica**, com $s$ a deformação a partir do comprimento natural;
+- $V = V_g + V_e$ — potencial total;
+- a relação com o trabalho: $U_{1\to2} = V_1 - V_2 = -\Delta V$.
+
+</Caixa>
+
+$$
+V_g = m g y \qquad\qquad V_e = \tfrac{1}{2}k s^2
+$$
+
+<Caixa tipo="dica">
+
+Duas armadilhas de sinal, nesta ordem de frequência em prova:
+
+1. **$V_g$ é negativo abaixo da referência.** Se você põe o zero no topo, tudo abaixo tem $y \lt 0$ e $V_g \lt 0$. Não há erro nisso — o erro é escolher a referência e depois esquecer qual foi. Marque o nível no desenho antes de escrever a primeira equação.
+2. **$V_e$ é sempre positivo**, esticada ou comprimida, porque $s$ está ao quadrado. Mola nunca "devolve" energia negativa. E $s$ é medido do **comprimento natural**, não da posição de equilíbrio com o peso pendurado — confundir os dois é o erro clássico das questões de bloco sobre mola.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a deformação estática não é o zero da mola">
+
+Um bloco de $5{,}0\ \mathrm{kg}$ repousa sobre uma mola vertical de $k = 500\ \mathrm{N/m}$. A mola está comprimida de
+
+$$
+s_{eq} = \frac{mg}{k} = \frac{5 \times 9{,}81}{500} = 0{,}0981\ \mathrm{m}
+$$
+
+Se agora o bloco for empurrado $0{,}050\ \mathrm{m}$ **além** disso, a energia elástica armazenada não é $\tfrac12 k (0{,}050)^2$, e sim
+
+$$
+V_e = \tfrac{1}{2}(500)(0{,}0981 + 0{,}050)^2 = 5{,}49\ \mathrm{J}
+$$
+
+contra os $2{,}40\ \mathrm{J}$ que já estavam guardados no equilíbrio. A diferença é o que a mão fez.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-conservacao-energia" num="16" titulo="Conservação da energia mecânica">
+
+**A ideia.** Se **todas** as forças que trabalham são conservativas, o teorema do trabalho e energia se reduz à forma mais enxuta da mecânica: a soma de cinética e potencial não muda. É a equação que resolve montanha-russa, pêndulo, bloco-mola e loop vertical em uma linha.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $T + V$ — **energia mecânica** total;
+- $\sum U_{1\to2}^{\text{não-cons.}}$ — trabalho das forças **não** conservativas (atrito, motor, mão, resistência do ar).
+
+</Caixa>
+
+$$
+T_1 + V_1 = T_2 + V_2
+$$
+
+E quando há atrito ou uma força externa qualquer, a versão geral — a que serve para todo problema:
+
+$$
+T_1 + V_1 + \sum U_{1\to2}^{\text{não-cons.}} = T_2 + V_2
+$$
+
+<Caixa tipo="macete">
+
+**O loop vertical: dois teoremas, nesta ordem.** A questão típica diz "de que altura mínima soltar para completar a volta sem descolar do trilho". A solução tem duas partes e quem mistura as duas erra:
+
+1. No **topo do loop**, a condição de não descolar é a 2ª lei com $N = 0$ — só o peso curva a trajetória: $mg = mv_{topo}^2/R$, ou seja, $v_{topo}^2 = gR$. Isto é Newton, não energia.
+2. **Só então** a conservação da energia liga esse $v_{topo}$ à altura de partida.
+
+Do repouso a uma altura $h$ até o topo, que está a $2R$:
+
+$$
+mgh = \tfrac{1}{2}m(gR) + mg(2R)
+\quad\Longrightarrow\quad
+h = \tfrac{5}{2}R
+$$
+
+Guardar "$h = 2{,}5R$" decorado não serve: a Q2 do 2º EE de 2025.1 põe uma colisão inelástica no meio do caminho, e o número muda.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — velocidade máxima do bloco sobre a mola">
+
+Este é o esqueleto da Q1 do 2º EE de 2023.1. Um bloco de massa $m$ está sobre uma mola de constante $k$, comprimida da deformação de equilíbrio de **dois** blocos, $s_1 = 2mg/k$. O bloco de cima é retirado de repente. Onde a velocidade é máxima?
+
+A resultante sobre o bloco que sobrou é $F = k s - mg$, que **diminui** conforme a mola relaxa. Ela se anula quando $s = mg/k$ — e é exatamente ali que a velocidade é máxima, porque depois desse ponto a força passa a frear.
+
+Ou seja: a resposta não vem de derivar a energia, vem de perceber que **velocidade máxima é onde a força resultante troca de sinal**. Só depois se usa energia entre $s_1$ e esse ponto para achar o valor de $v_{\max}$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-potencia" num="17" titulo="Potência e eficiência">
+
+**A ideia.** Trabalho não diz nada sobre pressa. Potência é a taxa: o mesmo trabalho feito em metade do tempo exige o dobro de potência. É o que dimensiona motor, guincho e elevador — e o que aparece em prova como um item (c) curto no fim de uma questão de energia.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $P$ — **potência**, em watts ($1\ \mathrm{W} = 1\ \mathrm{J/s}$);
+- $\varepsilon$ — **eficiência**, adimensional, sempre $\lt 1$;
+- $1\ \mathrm{hp} = 746\ \mathrm{W}$ — conversão que o Hibbeler usa e as provas às vezes cobram.
+
+</Caixa>
+
+$$
+P = \frac{dU}{dt} = \mathbf{F}\cdot\mathbf{v}
+\qquad\qquad
+\varepsilon = \frac{P_{\text{saída}}}{P_{\text{entrada}}} = \frac{U_{\text{saída}}}{U_{\text{entrada}}}
+$$
+
+A forma $P = \mathbf{F}\cdot\mathbf{v}$ é a útil: é ela que permite calcular potência **num instante**, sem integrar nada.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o guincho">
+
+Um guincho iça uma carga de $400\ \mathrm{kg}$ a velocidade constante de $1{,}5\ \mathrm{m/s}$. Se o conjunto motor-cabo tem eficiência de $0{,}80$, qual a potência que o motor consome?
+
+A velocidade é constante, então a tração iguala o peso, e a potência entregue à carga é
+
+$$
+P_{\text{saída}} = T v = (400)(9{,}81)(1{,}5) = 5{,}89\ \mathrm{kW}
+$$
+
+$$
+P_{\text{entrada}} = \frac{5{,}89}{0{,}80} = 7{,}36\ \mathrm{kW} \approx 9{,}9\ \mathrm{hp}
+$$
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-impulso-momento" num="18" titulo="Impulso e momento linear">
+
+**A ideia.** A unidade anterior integrou a 2ª lei no **espaço** e obteve energia. Agora integre no **tempo**, e sai o outro grande teorema da cadeira. A diferença prática: energia é escalar e perde a informação de tempo; momento linear é **vetorial** e é justamente o que serve quando o enunciado fala de duração, de choque ou de dois corpos que interagem.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mathbf{L} = m\mathbf{v}$ — **momento linear** (ou quantidade de movimento), em $\mathrm{kg\cdot m/s}$;
+- $\displaystyle\int \mathbf{F}\,dt$ — **impulso** da força, em $\mathrm{N\cdot s}$ — mesma unidade, e não é coincidência;
+- $\mathbf{F}_{\text{méd}}$ — força média durante o intervalo, quando não se conhece $\mathbf{F}(t)$.
+
+</Caixa>
+
+$$
+m\mathbf{v}_1 + \sum \int_{t_1}^{t_2} \mathbf{F}\,dt = m\mathbf{v}_2
+$$
+
+Sendo vetorial, essa equação vale **componente por componente** — e é assim que se usa: uma equação em $x$, outra em $y$. Perceber que uma das componentes tem impulso nulo (nenhuma força naquela direção) é o que resolve metade das questões.
+
+<Caixa tipo="dica">
+
+Área embaixo do gráfico $F$ vs. $t$ **é** o impulso. Quando a prova dá o gráfico em vez da expressão, a conta é geometria: soma de triângulos e retângulos. Não tente ajustar uma função.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a força média do chute">
+
+Uma bola de $0{,}42\ \mathrm{kg}$ chega a $12\ \mathrm{m/s}$ e sai na direção oposta a $18\ \mathrm{m/s}$. O contato dura $8{,}0\ \mathrm{ms}$. Qual a força média?
+
+Adotando positivo o sentido de saída, $v_1 = -12$ e $v_2 = +18$:
+
+$$
+F_{\text{méd}} = \frac{m(v_2 - v_1)}{\Delta t} = \frac{0{,}42\,(18 - (-12))}{0{,}0080} = 1{,}6\ \mathrm{kN}
+$$
+
+O sinal de $v_1$ é toda a questão: quem soma em vez de subtrair acha $315\ \mathrm{N}$ e erra por um fator 5.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-conservacao-momento" num="19" titulo="Conservação do momento linear em um sistema de partículas">
+
+**A ideia.** Some a equação do impulso para **todas** as partículas de um sistema. Pela 3ª lei, as forças que elas exercem umas nas outras aparecem em pares opostos e se cancelam aos pares. Sobra só o impulso das forças **externas** — e se ele for nulo numa direção, o momento total naquela direção é o mesmo antes e depois. Não importa o que aconteceu no meio: explosão, choque, mola liberada, corda que se parte.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\sum m_i \mathbf{v}_i$ — momento **total** do sistema;
+- linha ($'$) — grandeza **depois** do evento, notação das provas da POLI;
+- $\mathbf{v}_G$ — velocidade do **centro de massa** do sistema.
+
+</Caixa>
+
+$$
+\sum m_i (\mathbf{v}_i)_1 = \sum m_i (\mathbf{v}_i)_2
+\qquad\text{se}\qquad
+\sum \int \mathbf{F}_{\text{ext}}\,dt = \mathbf{0}
+$$
+
+<Caixa tipo="macete">
+
+**Conserva mesmo com peso e atrito atuando?** Sim — desde que o evento seja **rápido**. Durante o milissegundo de um choque, a força de contato é enorme e o peso é desprezível diante dela: $\int W\,dt \approx 0$. É essa a licença que o enunciado dá quando diz "durante essa rápida colisão, o sistema é considerado isolado" (a Q1 do 2º EE de 2025.1 escreve exatamente isso).
+
+Fora do instante do choque, o atrito volta a valer normalmente. A questão fica em três etapas: cinemática com atrito até o encontro → conservação no choque → cinemática com atrito até parar.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O centro de massa não sabe que houve explosão">
+
+Se o impulso externo é nulo, $\mathbf{v}_G$ não muda. Um projétil que explode em pleno ar tem os fragmentos voando para todo lado, mas o centro de massa deles continua na parábola original. Isso resolve na hora as questões de "determine a posição do fragmento B" — foi a Q3 do 2º EE de 2022.2.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a mola entre os dois blocos">
+
+Dois blocos, $2{,}0$ e $3{,}0\ \mathrm{kg}$, em repouso sobre uma mesa lisa, com uma mola comprimida entre eles guardando $60\ \mathrm{J}$. A mola é solta. Quais as velocidades?
+
+Momento inicial nulo, logo o final também:
+
+$$
+0 = 2v_A' + 3v_B' \quad\Longrightarrow\quad v_A' = -1{,}5\,v_B'
+$$
+
+e a energia da mola vai toda para as cinéticas:
+
+$$
+60 = \tfrac{1}{2}(2)(1{,}5v_B')^2 + \tfrac{1}{2}(3)(v_B')^2 = 3{,}75\,(v_B')^2
+$$
+
+$$
+v_B' = 4{,}0\ \mathrm{m/s} \qquad v_A' = -6{,}0\ \mathrm{m/s}
+$$
+
+O bloco leve sai mais rápido, na razão inversa das massas. É o mesmo esqueleto da Q3 do 2º EE de 2023.1, com os dois hemisférios.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-colisoes" num="20" titulo="Colisão central direta: o coeficiente de restituição">
+
+**A ideia.** Numa colisão, o momento se conserva, mas a energia **não** — parte dela vira calor e deformação permanente. Falta então uma segunda equação, e ela não sai da física básica: é uma medida experimental de quanto os corpos "devolvem". Esse número é o coeficiente de restituição, e ele é o que fecha o sistema de duas incógnitas.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $e$ — **coeficiente de restituição**, $0 \le e \le 1$;
+- $e = 1$ — colisão **perfeitamente elástica**: energia cinética também se conserva;
+- $e = 0$ — colisão **perfeitamente inelástica** (ou plástica): os corpos saem **juntos**, com a mesma velocidade;
+- **linha de impacto** — a reta que une os centros no instante do contato; é ao longo dela que $e$ vale.
+
+</Caixa>
+
+$$
+m_A v_A + m_B v_B = m_A v_A' + m_B v_B'
+\qquad\qquad
+e = \frac{v_B' - v_A'}{v_A - v_B}
+$$
+
+<Caixa tipo="dica">
+
+A definição de $e$ é **velocidade relativa de afastamento sobre velocidade relativa de aproximação**. Escrita assim, com o numerador "depois" e o denominador "antes", ela nunca fica com o sinal trocado — desde que você fixe um sentido positivo e mantenha os sinais de $v_A$ e $v_B$ nele.
+
+O erro de sinal aqui é o mais caro da unidade: derruba as duas incógnitas de uma vez.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+**Inelástica ($e = 0$) tem atalho.** Os corpos saem juntos, então basta a conservação do momento com uma única incógnita:
+
+$$
+v' = \frac{m_A v_A + m_B v_B}{m_A + m_B}
+$$
+
+E a energia perdida é a diferença entre as cinéticas, que você calcula depois — nunca antes. Perda de energia é **resultado**, não dado.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — bloco contra bloco preso a uma mola">
+
+Este é o esqueleto da Q2 do 2º EE de 2023.1. Blocos $A$ e $B$ de $2{,}0\ \mathrm{kg}$ cada, mesa lisa, $B$ parado contra uma mola de $k = 60\ \mathrm{N/m}$. $A$ chega a $4{,}0\ \mathrm{m/s}$ e colide com $e = 0{,}7$.
+
+Momento (massas iguais cortam):
+
+$$
+4{,}0 = v_A' + v_B'
+$$
+
+Restituição:
+
+$$
+0{,}7 = \frac{v_B' - v_A'}{4{,}0} \quad\Longrightarrow\quad v_B' - v_A' = 2{,}8
+$$
+
+Somando: $v_B' = 3{,}4\ \mathrm{m/s}$ e $v_A' = 0{,}60\ \mathrm{m/s}$, ambos para a direita. **Só agora** entra a energia, e só para o bloco $B$ depois do choque:
+
+$$
+\tfrac{1}{2}(2{,}0)(3{,}4)^2 = \tfrac{1}{2}(60)\,x^2
+\quad\Longrightarrow\quad
+x = 0{,}62\ \mathrm{m}
+$$
+
+A ordem importa: energia **não** vale durante a colisão, vale depois dela.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-colisao-obliqua" num="21" titulo="Colisão oblíqua: separar na linha de impacto">
+
+**A ideia.** Quando as velocidades não estão alinhadas com a reta que une os centros, a colisão tem duas direções, e cada uma obedece a uma regra diferente. Todo o método é: achar a linha de impacto, girar os eixos para ela, e tratar as duas direções separadamente.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $n$ — direção **normal**, ao longo da linha de impacto;
+- $t$ — direção **tangencial**, perpendicular à linha de impacto;
+- $\theta$ — ângulo entre a velocidade e a linha de impacto.
+
+</Caixa>
+
+Na direção $n$ valem as duas equações da seção anterior:
+
+$$
+m_A (v_{An}) + m_B (v_{Bn}) = m_A (v_{An}') + m_B (v_{Bn}')
+\qquad
+e = \frac{v_{Bn}' - v_{An}'}{v_{An} - v_{Bn}}
+$$
+
+Na direção $t$, para esferas lisas, **não há força de impulso**, e portanto o momento de **cada corpo separadamente** se conserva:
+
+$$
+(v_{At}) = (v_{At}') \qquad\qquad (v_{Bt}) = (v_{Bt}')
+$$
+
+<Caixa tipo="macete">
+
+**Quatro equações, quatro incógnitas** — sempre, em toda colisão oblíqua de esferas lisas. Duas na normal (momento do sistema e restituição) e uma por corpo na tangencial. Se você não achou quatro, faltou escrever alguma.
+
+E a parte que a prova esconde: **descobrir a direção da linha de impacto pela geometria**. Na Q2 do 2º EE de 2022.2, o enunciado diz que $B$ sai na horizontal — e como $B$ estava parada, sua velocidade de saída é forçosamente ao longo da linha de impacto, o que fixa a geometria toda. Bola parada que é atingida **sai sempre na direção da linha de impacto**: esse é o gancho.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — bola contra parede">
+
+Uma bola chega a uma parede lisa a $10\ \mathrm{m/s}$, fazendo $30^\circ$ com a parede, e $e = 0{,}80$. Qual a velocidade de saída e o ângulo?
+
+A linha de impacto é perpendicular à parede. Componentes de chegada: $v_n = 10\sin 30^\circ = 5{,}0$ (contra a parede) e $v_t = 10\cos 30^\circ = 8{,}66$.
+
+A parede tem massa infinita, então a conservação do momento não dá nada útil — sobra só a restituição, e ela se reduz a $v_n' = e\,v_n$:
+
+$$
+v_n' = 0{,}80 \times 5{,}0 = 4{,}0 \qquad v_t' = 8{,}66\ \ \text{(intacta)}
+$$
+
+$$
+v' = \sqrt{4{,}0^2 + 8{,}66^2} = 9{,}5\ \mathrm{m/s}
+\qquad
+\theta' = \arctan\frac{4{,}0}{8{,}66} = 24{,}8^\circ
+$$
+
+O ângulo de saída é **menor** que o de chegada: só a componente normal foi amortecida. Por isso bola quicando em rampa "escorrega" para frente a cada quique.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-momento-angular" num="22" titulo="Momento angular e forças centrais">
+
+**A ideia.** Existe uma terceira quantidade conservada, e ela é a que serve para movimento em torno de um ponto: satélite, haste girando, partícula amarrada a um fio que passa por um furo. Se a força passa **pelo** ponto de referência, ela não tem braço, não produz momento — e o momento angular em relação a ele fica constante.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mathbf{H}_O = \mathbf{r} \times m\mathbf{v}$ — **momento angular** em relação ao ponto $O$;
+- $\sum \mathbf{M}_O$ — soma dos momentos das forças em relação a $O$;
+- **força central** — força cuja linha de ação passa sempre por um ponto fixo.
+
+</Caixa>
+
+$$
+\sum \mathbf{M}_O = \dot{\mathbf{H}}_O
+\qquad\qquad
+(H_O)_1 + \sum\int_{t_1}^{t_2} M_O\,dt = (H_O)_2
+$$
+
+Para movimento plano, o módulo tem a forma que se usa na prática:
+
+$$
+H_O = m\,v\,d = m\,r^2\dot\theta
+$$
+
+com $d$ a **distância perpendicular** de $O$ à linha da velocidade. A segunda forma, com $r^2\dot\theta$, é a que casa com as coordenadas polares da seção 09.
+
+<Caixa tipo="macete">
+
+**Como reconhecer que é problema de momento angular:** o enunciado tem um ponto fixo, a força aponta para ele (ou o fio passa por ele), e a pergunta relaciona **duas distâncias diferentes ao centro**. Se o raio muda e a velocidade tangencial também, é $H_O$ constante:
+
+$$
+m v_1 d_1 = m v_2 d_2
+$$
+
+A bailarina que fecha os braços e gira mais rápido é isso; o fio que é puxado por um furo na mesa é isso; a órbita elíptica é isso.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o fio puxado pelo furo">
+
+Uma esfera de $0{,}50\ \mathrm{kg}$ gira sobre uma mesa lisa a $r_1 = 0{,}60\ \mathrm{m}$ com $v_1 = 3{,}0\ \mathrm{m/s}$, presa a um fio que passa por um furo no centro. O fio é puxado até $r_2 = 0{,}20\ \mathrm{m}$. Qual a nova velocidade?
+
+A tração do fio é radial: passa pelo furo, momento nulo em relação a ele. Logo $H_O$ se conserva:
+
+$$
+v_2 = v_1\frac{r_1}{r_2} = 3{,}0 \times \frac{0{,}60}{0{,}20} = 9{,}0\ \mathrm{m/s}
+$$
+
+A energia cinética passou de $2{,}25\ \mathrm{J}$ para $20{,}3\ \mathrm{J}$ — e não há contradição: quem puxou o fio fez esse trabalho. Momento angular conserva, energia não.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-cr-tipos" num="23" titulo="Do ponto material ao corpo rígido: translação e rotação">
+
+**A ideia.** Até aqui todo corpo era um ponto: tinha massa e posição, e pronto. Um corpo rígido tem **tamanho** e **orientação** — pode girar. E girando, cada ponto dele tem uma velocidade diferente. A boa notícia é que a orientação de um corpo rígido no plano se descreve com **um único número**, o ângulo $\theta$, e por isso todo o movimento plano cabe em três coordenadas: $x_G$, $y_G$ e $\theta$.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\boldsymbol{\omega} = \dot\theta\,\mathbf{k}$ — **velocidade angular**, em $\mathrm{rad/s}$; é a mesma para **todos** os pontos do corpo;
+- $\boldsymbol{\alpha} = \ddot\theta\,\mathbf{k}$ — **aceleração angular**, em $\mathrm{rad/s^2}$;
+- $G$ — centro de massa;
+- $\mathbf{r}_{B/A}$ — vetor posição de $B$ **em relação a** $A$, ambos pontos do mesmo corpo.
+
+</Caixa>
+
+### Os três movimentos planos
+
+**Translação** — $\omega = 0$: todos os pontos têm a mesma velocidade e a mesma aceleração. O corpo é, para todos os efeitos, um ponto material. Nada de novo.
+
+**Rotação em torno de eixo fixo** — existe um ponto do corpo que não se move. Para um ponto $P$ a uma distância $r$ do eixo:
+
+$$
+v = \omega r
+\qquad
+a_t = \alpha r
+\qquad
+a_n = \omega^2 r
+$$
+
+**Movimento plano geral** — a soma dos dois: o corpo translada e gira ao mesmo tempo. Biela, cremalheira, roda que rola, escada escorregando na parede. É o caso das provas.
+
+<Caixa tipo="dica">
+
+As fórmulas da rotação de eixo fixo são as **mesmas** três da seção 08 (componentes normal e tangencial), reescritas com $\omega$ em vez de $v$. Não é analogia: um ponto de corpo em rotação descreve uma circunferência de raio $r$, então $a_n = v^2/r = (\omega r)^2/r = \omega^2 r$. Nada novo foi inventado.
+
+E as equações de $\theta(t)$ com $\alpha$ constante são as três da cinemática retilínea com as letras trocadas:
+
+$$
+\omega = \omega_0 + \alpha t
+\qquad
+\theta = \theta_0 + \omega_0 t + \tfrac{1}{2}\alpha t^2
+\qquad
+\omega^2 = \omega_0^2 + 2\alpha(\theta - \theta_0)
+$$
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — engrenagens em contato">
+
+Duas engrenagens em contato têm o **mesmo** $v$ no ponto de contato — se não tivessem, os dentes escorregariam. Daí sai a relação de transmissão:
+
+$$
+\omega_A r_A = \omega_B r_B
+$$
+
+É o que resolve a Q4 do 2º EE de 2022.2: com $\omega_{AB} = 20\ \mathrm{rad/s}$ e os raios $120$ e $50\ \mathrm{mm}$,
+
+$$
+\omega_B = 20 \times \frac{120}{50} = 48\ \mathrm{rad/s}
+$$
+
+e o sinal se inverte, porque as engrenagens giram em sentidos opostos: $\boldsymbol{\omega}_B = -48\,\mathbf{k}$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-cr-velocidade-relativa" num="24" titulo="Análise de velocidade relativa: a equação que resolve todo mecanismo">
+
+**A ideia.** Pegue dois pontos do **mesmo** corpo rígido. A distância entre eles não muda — é isso que "rígido" significa. Logo, visto de $A$, o ponto $B$ só pode fazer uma coisa: girar em volta dele. Essa observação é a equação mais importante da unidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mathbf{v}_A$, $\mathbf{v}_B$ — velocidades **absolutas** de dois pontos do mesmo corpo;
+- $\boldsymbol{\omega} \times \mathbf{r}_{B/A}$ — a parcela de rotação: perpendicular a $\mathbf{r}_{B/A}$, de módulo $\omega\,r_{B/A}$.
+
+</Caixa>
+
+$$
+\mathbf{v}_B = \mathbf{v}_A + \boldsymbol{\omega} \times \mathbf{r}_{B/A}
+$$
+
+<Caixa tipo="macete">
+
+**O roteiro, sempre o mesmo — e é vetorial, não escalar.** Escreva cada vetor em componentes, iguale $x$ com $x$ e $y$ com $y$, e resolva o sistema $2\times2$. Duas equações, duas incógnitas.
+
+O que a prova cobra é a etapa anterior: **descobrir a direção de cada velocidade pela geometria do vínculo.**
+
+- pino num trilho, guia ou cursor → a velocidade é **ao longo do trilho**;
+- pino fixo → velocidade **nula**;
+- roda que rola sem escorregar → o ponto de contato tem velocidade **nula**;
+- extremidade encostada numa parede → velocidade **paralela à parede**.
+
+Na Q4 da 2ª chamada do 2º EE, a haste $AB$ tem $B$ num cursor vertical ($\mathbf{v}_B$ vertical, dada) e $A$ num plano a $25^\circ$ ($\mathbf{v}_A$ com direção conhecida, módulo incógnito). Com $\omega_{AB}$ como segunda incógnita, o sistema fecha.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A ordem do produto vetorial">
+
+$\boldsymbol{\omega} \times \mathbf{r}_{B/A}$, **nunca** $\mathbf{r}_{B/A} \times \boldsymbol{\omega}$ — inverter troca o sinal e a resposta inteira. E $\mathbf{r}_{B/A}$ vai **de $A$ para $B$** (o de baixo é a origem da flecha).
+
+Com $\boldsymbol{\omega} = \omega\mathbf{k}$ e $\mathbf{r} = x\mathbf{i} + y\mathbf{j}$, o produto sai direto:
+
+$$
+\omega\mathbf{k} \times (x\mathbf{i} + y\mathbf{j}) = \omega x\,\mathbf{j} - \omega y\,\mathbf{i}
+$$
+
+Vale memorizar nessa forma: economiza montar o determinante em cada item.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a escada escorregando">
+
+Uma escada de $4{,}0\ \mathrm{m}$ tem o topo $B$ apoiado numa parede vertical e o pé $A$ no chão. O pé desliza a $2{,}0\ \mathrm{m/s}$, afastando-se da parede, no instante em que a escada faz $60^\circ$ com o chão. Determine $\omega$ e $v_B$.
+
+Ponha a origem no pé da parede, com $x$ para a direita (o sentido em que $A$ vai). Então $A$ está em $(4\cos 60^\circ,\,0) = (2{,}0;\,0)$ e $B$ em $(0;\,4\sin 60^\circ) = (0;\,3{,}46)$, de modo que
+
+$$
+\mathbf{r}_{B/A} = -2{,}0\,\mathbf{i} + 3{,}46\,\mathbf{j}
+$$
+
+Os vínculos dão as direções: $\mathbf{v}_A = 2{,}0\,\mathbf{i}$ (chão) e $\mathbf{v}_B = v_B\,\mathbf{j}$ (parede). Substituindo:
+
+$$
+v_B\,\mathbf{j} = 2{,}0\,\mathbf{i} + \omega\mathbf{k}\times(-2{,}0\,\mathbf{i} + 3{,}46\,\mathbf{j})
+= (2{,}0 - 3{,}46\,\omega)\,\mathbf{i} - 2{,}0\,\omega\,\mathbf{j}
+$$
+
+Em $x$: $0 = 2{,}0 - 3{,}46\,\omega \Rightarrow \omega = 0{,}577\ \mathrm{rad/s}$.
+Em $y$: $v_B = -2{,}0 \times 0{,}577 = -1{,}15\ \mathrm{m/s}$ — negativo, isto é, **o topo desce** a $1{,}15\ \mathrm{m/s}$, que é o que a física manda.
+
+O sinal saiu certo porque os eixos foram fixados **antes** da álgebra. Trocar o lado da parede sem trocar $\mathbf{r}_{B/A}$ inverte $v_B$ e faz o topo subir: é o erro mais comum da unidade.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-cr-cir" num="25" titulo="Centro instantâneo de rotação">
+
+**A ideia.** Todo corpo em movimento plano tem, **em cada instante**, um ponto com velocidade nula — real ou imaginário, dentro ou fora do corpo. Se você achar esse ponto, o movimento naquele instante é rotação pura em volta dele, e a equação de velocidade relativa colapsa para $v = \omega r$. Some o sistema linear: sobra uma multiplicação.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $CI$ — **centro instantâneo** de velocidade nula;
+- $r_{P/CI}$ — distância do ponto $P$ ao centro instantâneo;
+- "instantâneo" é literal: o $CI$ **muda de lugar** a cada instante.
+
+</Caixa>
+
+$$
+v_P = \omega\,r_{P/CI}
+$$
+
+<Caixa tipo="macete">
+
+**Como achar o $CI$:** a velocidade de qualquer ponto é perpendicular à reta que o liga ao $CI$. Então trace, de dois pontos com direção de velocidade conhecida, as **perpendiculares** às suas velocidades. O cruzamento é o $CI$.
+
+Três casos de uma vez:
+
+- **roda que rola sem escorregar** → o $CI$ é o **ponto de contato com o chão**. Daí sai $v_G = \omega R$ e, para o ponto mais alto, $v = 2\omega R$ — o topo de um pneu anda o dobro do carro;
+- **duas velocidades paralelas e de mesmo sentido** → o $CI$ está fora do segmento, achado por semelhança de triângulos;
+- **duas velocidades paralelas e de sentidos opostos** → o $CI$ está **entre** os pontos.
+
+Se as duas perpendiculares saem paralelas, o $CI$ está no infinito: é translação, $\omega = 0$.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+O $CI$ serve **só para velocidade**. A aceleração daquele ponto **não** é zero, e usar $a = \alpha r_{P/CI}$ é errado. Para aceleração, volte à análise relativa da seção 26.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a mesma escada, em uma linha">
+
+Escada de $4{,}0\ \mathrm{m}$ a $60^\circ$, pé a $2{,}0\ \mathrm{m/s}$. O pé anda na horizontal, então a perpendicular é vertical; o topo anda na vertical, então a perpendicular é horizontal. Cruzam no canto oposto, formando um retângulo com a escada como diagonal.
+
+A distância do pé ao $CI$ é a altura da parede, $4\sin 60^\circ = 3{,}46\ \mathrm{m}$:
+
+$$
+\omega = \frac{v_A}{r_{A/CI}} = \frac{2{,}0}{3{,}46} = 0{,}577\ \mathrm{rad/s}
+$$
+
+$$
+v_B = \omega\,r_{B/CI} = 0{,}577 \times 4\cos 60^\circ = 1{,}15\ \mathrm{m/s}
+$$
+
+Mesma resposta do exemplo anterior, sem sistema nenhum, sem produto vetorial e sem risco de erro de sinal. Quando a questão pede **só velocidade**, é por aqui.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-cr-aceleracao-relativa" num="26" titulo="Análise de aceleração relativa">
+
+**A ideia.** Derive a equação de velocidade relativa no tempo. Aparece um termo a mais que ninguém adivinha: além da parcela tangencial com $\alpha$, existe a **centrípeta** $-\omega^2\mathbf{r}$, que existe mesmo quando $\alpha = 0$. Corpo girando a velocidade angular constante tem aceleração — apontando para o centro.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\boldsymbol{\alpha} \times \mathbf{r}_{B/A}$ — parcela **tangencial**, perpendicular a $\mathbf{r}_{B/A}$, módulo $\alpha r$;
+- $-\omega^2\mathbf{r}_{B/A}$ — parcela **normal**, apontando de $B$ **para** $A$, módulo $\omega^2 r$.
+
+</Caixa>
+
+$$
+\mathbf{a}_B = \mathbf{a}_A + \boldsymbol{\alpha} \times \mathbf{r}_{B/A} - \omega^2\,\mathbf{r}_{B/A}
+$$
+
+<Caixa tipo="macete">
+
+**Sempre resolva a velocidade primeiro.** A equação de aceleração traz $\omega^2$ dentro, então ela é inútil enquanto você não souber $\omega$. O roteiro é fixo:
+
+1. análise de velocidade (relativa ou $CI$) → acha $\omega$ e as velocidades;
+2. análise de aceleração com aquele $\omega$ → acha $\alpha$ e as acelerações.
+
+E cuidado com o ponto de contato da roda que rola: sua **velocidade** é nula, mas sua aceleração é $\omega^2 R$ para cima. É o contraexemplo que a prova adora.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a roda que rola e acelera">
+
+Uma roda de raio $R = 0{,}30\ \mathrm{m}$ rola sem escorregar; o centro $G$ anda a $4{,}0\ \mathrm{m/s}$ e acelera a $2{,}0\ \mathrm{m/s^2}$. Quais $\omega$ e $\alpha$?
+
+Rolamento sem escorregamento dá as duas relações de uma vez, derivando uma da outra:
+
+$$
+\omega = \frac{v_G}{R} = \frac{4{,}0}{0{,}30} = 13{,}3\ \mathrm{rad/s}
+\qquad
+\alpha = \frac{a_G}{R} = \frac{2{,}0}{0{,}30} = 6{,}67\ \mathrm{rad/s^2}
+$$
+
+Agora a aceleração do ponto de contato $C$, com $\mathbf{r}_{C/G} = -R\mathbf{j}$ e $\mathbf{a}_G = 2{,}0\,\mathbf{i}$:
+
+$$
+\mathbf{a}_C = 2{,}0\,\mathbf{i} + (-6{,}67\,\mathbf{k})\times(-0{,}30\,\mathbf{j}) - (13{,}3)^2(-0{,}30\,\mathbf{j})
+$$
+
+O termo tangencial dá $-2{,}0\,\mathbf{i}$, que **cancela** exatamente $\mathbf{a}_G$ — como tinha de ser, já que a velocidade do contato é sempre nula. Sobra a parcela normal:
+
+$$
+\mathbf{a}_C = 53{,}3\,\mathbf{j}\ \mathrm{m/s^2}
+$$
+
+Apontando para o centro da roda. Velocidade zero, aceleração de mais de 5 g.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-cr-inercia" num="27" titulo="Momento de inércia">
+
+**A ideia.** Massa mede a resistência de um corpo a ser acelerado em linha reta. Girar tem o seu equivalente, e ele depende não só de **quanta** massa existe, mas de **quão longe do eixo** ela está — porque a massa distante precisa percorrer mais caminho para o mesmo ângulo. Esse é o momento de inércia, e é a única grandeza nova da dinâmica do corpo rígido.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $I$ — **momento de inércia**, em $\mathrm{kg\cdot m^2}$;
+- $I_G$ — momento de inércia em relação a um eixo **pelo centro de massa**;
+- $k$ — **raio de giração**: $I = mk^2$, a distância a que toda a massa daria o mesmo $I$;
+- $d$ — distância entre o eixo pedido e o eixo paralelo por $G$.
+
+</Caixa>
+
+$$
+I = \int r^2\,dm
+\qquad\qquad
+I = I_G + m d^2
+$$
+
+A segunda é o **teorema dos eixos paralelos**, e é a fórmula que a prova usa de verdade: a tabela dá $I_G$, o problema pede em relação a outro ponto.
+
+<Caixa tipo="dica" rotulo="Os quatro da tabela que resolvem tudo">
+
+- **anel / casca cilíndrica** (massa na borda): $I_G = m R^2$;
+- **disco / cilindro cheio**: $I_G = \tfrac{1}{2}m R^2$;
+- **esfera cheia**: $I_G = \tfrac{2}{5}m R^2$;
+- **barra fina de comprimento $L$, eixo pelo centro**: $I_G = \tfrac{1}{12}m L^2$ — e pela extremidade, $\tfrac{1}{3}m L^2$, que é o teorema dos eixos paralelos com $d = L/2$.
+
+Todos têm a forma $I = \beta m R^2$ com $\beta \le 1$. Quanto **mais** massa perto do eixo, **menor** o $\beta$: é por isso que um cilindro cheio desce uma rampa mais rápido que um tubo de mesma massa e raio.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+**Corpo composto: some, não misture.** Peça por peça, leve cada $I_G$ ao eixo pedido com $+m d^2$ e some. Buraco conta como massa **negativa** — mesmo $I_G$, mesmo $d^2$, sinal trocado.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o pêndulo de barra">
+
+Uma barra uniforme de $3{,}0\ \mathrm{kg}$ e $1{,}2\ \mathrm{m}$ gira em torno de um pino numa extremidade. Qual $I$ em relação ao pino?
+
+Pela tabela, $I_G = \tfrac{1}{12}(3{,}0)(1{,}2)^2 = 0{,}36\ \mathrm{kg\cdot m^2}$, com $G$ no meio, a $d = 0{,}60\ \mathrm{m}$ do pino:
+
+$$
+I_O = 0{,}36 + (3{,}0)(0{,}60)^2 = 1{,}44\ \mathrm{kg\cdot m^2}
+$$
+
+que é o $\tfrac{1}{3}mL^2 = \tfrac{1}{3}(3{,}0)(1{,}44) = 1{,}44$ da tabela. O teorema dos eixos paralelos e a linha da tabela são a mesma coisa — e é exatamente por isso que decorar as duas linhas é desperdício.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-cr-equacoes" num="28" titulo="Equações do movimento plano">
+
+**A ideia.** A 2ª lei de Newton, para um corpo com tamanho, vira **três** equações: duas de força, que dizem como o centro de massa translada, e uma de momento, que diz como o corpo gira. E o ponto que confunde todo mundo é este: as duas primeiras usam $G$, não o ponto onde a força é aplicada.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mathbf{a}_G$ — aceleração do **centro de massa**;
+- $\sum M_G$ — soma dos momentos das forças **em relação a $G$**;
+- $I_G\alpha$ — o análogo rotacional de $m a$.
+
+</Caixa>
+
+$$
+\sum F_x = m\,(a_G)_x
+\qquad
+\sum F_y = m\,(a_G)_y
+\qquad
+\sum M_G = I_G\,\alpha
+$$
+
+<Caixa tipo="macete">
+
+**Três equações, e a incógnita a mais vem do vínculo.** Quase sempre aparecem quatro incógnitas (duas reações, $a_G$ e $\alpha$), e a quarta equação é a **cinemática do vínculo**:
+
+- roda que **rola sem escorregar**: $a_G = \alpha R$ — e o atrito é **estático**, de valor desconhecido, limitado por $\mu_e N$;
+- roda que **escorrega**: $a_G$ e $\alpha$ são independentes, mas agora o atrito é conhecido: $F = \mu_c N$;
+- corpo pendurado num pino: $a_G = \alpha\,\overline{OG}$, com o pino como centro.
+
+Escolher errado entre "rola" e "escorrega" é o erro que zera a questão. O teste: resolva **supondo** que rola, ache o atrito necessário, e compare com $\mu_e N$. Se passou do limite, refaça supondo que escorrega.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+$\sum M_A = I_G\alpha + m\,a_G\,d$ para um ponto $A$ qualquer, com $d$ o braço de $m\mathbf{a}_G$ em relação a $A$. Tomar momentos num ponto onde passa uma reação **elimina** aquela reação da equação — o mesmo truque da Estática, e vale a pena sempre.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o cilindro que rola pela rampa">
+
+Um cilindro cheio de massa $m$ e raio $R$ rola sem escorregar por uma rampa de inclinação $\theta$. Qual a aceleração do centro?
+
+Ao longo da rampa: $mg\sin\theta - F = m a_G$. Momentos em $G$, onde só o atrito tem braço: $F R = I_G \alpha = \tfrac{1}{2}mR^2\alpha$. E o vínculo: $a_G = \alpha R$.
+
+Da segunda com a terceira, $F = \tfrac{1}{2}m a_G$. Substituindo na primeira:
+
+$$
+a_G = \frac{g\sin\theta}{1 + \tfrac{1}{2}} = \tfrac{2}{3}\,g\sin\theta
+$$
+
+Menos que o $g\sin\theta$ de um bloco deslizando sem atrito — parte do "empurrão" do peso foi gasta em pôr o cilindro a girar. Um anel, com $I_G = mR^2$, desceria a $\tfrac{1}{2}g\sin\theta$: mais lento ainda, e independente da massa e do raio nos dois casos.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="din-cr-energia" num="29" titulo="Trabalho e energia no corpo rígido">
+
+**A ideia.** Os dois teoremas da 3ª e da 4ª unidade valem para corpo rígido sem mudança nenhuma de estrutura — só ganham um termo. A energia cinética passa a ter duas parcelas: a de **transladar** o centro de massa e a de **girar** em volta dele. E é esse termo extra que faz a questão de rampa com cilindro dar um número diferente do bloco.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\tfrac{1}{2}m v_G^2$ — parcela de **translação**;
+- $\tfrac{1}{2}I_G \omega^2$ — parcela de **rotação**;
+- $M\theta$ — trabalho de um **momento** constante, com $\theta$ em radianos.
+
+</Caixa>
+
+$$
+T = \tfrac{1}{2}m v_G^2 + \tfrac{1}{2}I_G \omega^2
+\qquad\qquad
+U_{1\to2}^{M} = \int_{\theta_1}^{\theta_2} M\,d\theta
+$$
+
+E o teorema, idêntico ao da seção 14:
+
+$$
+T_1 + \sum U_{1\to2} = T_2
+$$
+
+<Caixa tipo="macete">
+
+**Rolamento sem escorregamento tem forma fechada.** Com $v_G = \omega R$ e $I_G = \beta m R^2$:
+
+$$
+T = \tfrac{1}{2}m v_G^2 (1 + \beta)
+$$
+
+Então descer uma altura $h$ dá
+
+$$
+v_G = \sqrt{\frac{2gh}{1 + \beta}}
+$$
+
+Cilindro cheio ($\beta = \tfrac12$): $v_G = \sqrt{4gh/3}$. Anel ($\beta = 1$): $v_G = \sqrt{gh}$. Bloco sem atrito ($\beta = 0$): $v_G = \sqrt{2gh}$. Essa fórmula é o atalho da última questão de prova — e lembre que o atrito estático do rolamento **não** aparece nela, porque não trabalha.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — cilindro na rampa e a normal na curva">
+
+Este é o esqueleto da Q3 do 2º EE de 2025.1. Um cilindro de $2{,}0\ \mathrm{kg}$ parte do repouso e desce rolando de $h = 20\ \mathrm{m}$; depois sobe uma ladeira de perfil $y = 0{,}2x^2$. Qual a normal em $x = 5\ \mathrm{m}$?
+
+**Energia** primeiro, para achar a velocidade ali. A altura em $x = 5$ é $y = 0{,}2(25) = 5{,}0\ \mathrm{m}$, então caiu $15\ \mathrm{m}$ no total:
+
+$$
+v_G^2 = \frac{2g(20 - 5)}{1 + \tfrac12} = \frac{2(9{,}81)(15)}{1{,}5} = 196{,}2 \quad\Longrightarrow\quad v_G = 14{,}0\ \mathrm{m/s}
+$$
+
+**Newton** depois, na direção normal à trajetória. Da geometria da parábola, $y' = 0{,}4x = 2{,}0$ em $x = 5$, logo a tangente faz $\theta = \arctan 2{,}0 = 63{,}4^\circ$; e o raio de curvatura, pela fórmula da seção 08:
+
+$$
+\rho = \frac{\left[1 + (y')^2\right]^{3/2}}{|y''|} = \frac{(1 + 4)^{3/2}}{0{,}4} = 27{,}95\ \mathrm{m}
+$$
+
+A parábola é **côncava para cima** e o cilindro anda por cima dela: o centro de curvatura está acima da pista, então a aceleração centrípeta aponta para cima. Nessa direção, a normal empurra para cima e a componente do peso, para baixo:
+
+$$
+N - mg\cos\theta = m\frac{v_G^2}{\rho}
+$$
+
+$$
+N = 2{,}0\left(9{,}81\cos 63{,}4^\circ + \frac{196{,}2}{27{,}95}\right) = 2{,}0\,(4{,}39 + 7{,}02) = 22{,}8\ \mathrm{N}
+$$
+
+Maior que o peso ($19{,}6\ \mathrm{N}$), e tinha de ser: além de sustentar o cilindro, a pista ainda o obriga a curvar para cima. Se a concavidade fosse para baixo — uma lombada —, o sinal do termo $v^2/\rho$ trocaria, e a pergunta interessante passaria a ser *em que ponto $N$ chega a zero*.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Energia dá velocidade; Newton dá força. Sempre nessa ordem, e nunca uma tentando fazer o serviço da outra. Se você guardar uma única frase da cadeira, que seja esta.
 
 </Caixa>
 

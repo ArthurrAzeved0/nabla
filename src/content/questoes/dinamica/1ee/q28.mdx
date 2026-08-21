@@ -1,0 +1,70 @@
+---
+origem: "Lista · Hibbeler 12.25"
+tema: "a = −2v · Decaimento exponencial"
+temaId: aceleracao-funcao-velocidade
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma partícula se move ao longo de uma linha reta com aceleração $a = (-2v)\ \mathrm{m/s^2}$, com $v$ em metros por segundo. Se $v = 20\ \mathrm{m/s}$ quando $s = 0$ e $t = 0$, determine a posição, a velocidade e a aceleração **em função do tempo**.
+
+<Gabarito>
+$$
+v = 20\,e^{-2t}\ \mathrm{m/s}
+\qquad
+s = 10\left(1 - e^{-2t}\right)\ \mathrm{m}
+\qquad
+a = -40\,e^{-2t}\ \mathrm{m/s^2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a velocidade.** Aceleração proporcional à própria velocidade é a assinatura do decaimento exponencial:
+
+$$
+\frac{dv}{dt} = -2v
+\quad\Longrightarrow\quad
+\int_{20}^{v}\frac{dv}{v} = -2\int_0^{t}dt
+\quad\Longrightarrow\quad
+\ln\frac{v}{20} = -2t
+$$
+
+$$
+v = 20\,e^{-2t}\ \mathrm{m/s}
+$$
+
+**Passo 2 — a posição**, integrando $v$ de $0$ a $t$ com $s(0) = 0$:
+
+$$
+s = \int_0^{t}20\,e^{-2\tau}d\tau = 20\left[\frac{e^{-2\tau}}{-2}\right]_0^{t} = 10\left(1 - e^{-2t}\right)\ \mathrm{m}
+$$
+
+**Passo 3 — a aceleração**, que sai de graça de duas maneiras. Derivando $v$:
+
+$$
+a = \frac{dv}{dt} = -40\,e^{-2t}\ \mathrm{m/s^2}
+$$
+
+ou simplesmente aplicando a definição dada, $a = -2v = -2(20e^{-2t})$. As duas concordam — e conferir por dois caminhos custa cinco segundos.
+
+**A leitura da resposta, que é o ponto da questão.** A partícula **nunca para** ($v \gt 0$ para todo $t$), mas percorre uma distância **finita**:
+
+$$
+s_\infty = \lim_{t\to\infty} 10\left(1 - e^{-2t}\right) = 10\ \mathrm{m}
+$$
+
+Ela se aproxima de $10\ \mathrm{m}$ e nunca chega. Esse par "movimento eterno, alcance finito" é a marca de $a \propto -v$, e é o modelo de arrasto viscoso (a baixa velocidade) — diferente do arrasto quadrático $a \propto -v^2$, que tem velocidade terminal em vez de alcance finito.
+
+**Cuidado com a constante de integração.** O limite inferior $v = 20$ e $t = 0$ tem de entrar na integral, não depois. Quem integra indefinido e esquece o $C$ acha $v = e^{-2t}$ e erra os três itens.
+</Passos>

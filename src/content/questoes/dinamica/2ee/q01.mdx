@@ -1,0 +1,82 @@
+---
+origem: "2023.1"
+tema: "Trabalho e energia · Força variável da mola"
+temaId: trabalho-forca-variavel
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um bloco cilíndrico de $3{,}0\ \mathrm{kg}$ repousa sobre outro bloco cilíndrico de $2{,}0\ \mathrm{kg}$, que comprime verticalmente uma mola de $k = 50\ \mathrm{N/m}$. O conjunto está inserido num tubo de diâmetro ligeiramente maior do que o dos blocos, para evitar tombamento. Quando o bloco de cima é subitamente retirado, determine a **velocidade máxima** alcançada pelo bloco de baixo.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$v_{\max} \approx 2{,}9\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a deformação inicial.** No repouso, a mola sustenta os dois blocos:
+
+$$
+k\,x_0 = (m_1 + m_2)\,g = 5{,}0\,g
+\quad\Longrightarrow\quad
+x_0 = \frac{5{,}0\,g}{50} = \frac{g}{10}
+$$
+
+Meça $x$ **para cima** a partir dessa posição inicial: quando o bloco sobe $x$, a mola ainda está comprimida de $x_0 - x$.
+
+**Passo 2 — a resultante é função da posição.** Retirado o bloco de cima, sobram a força da mola (para cima) e o peso de $2{,}0\ \mathrm{kg}$ (para baixo):
+
+$$
+F(x) = k(x_0 - x) - 2{,}0\,g = 5{,}0\,g - 50x - 2{,}0\,g = 3{,}0\,g - 50x
+$$
+
+Força que **varia com $x$**: não existe "força × distância" aqui, tem de ser integral.
+
+**Passo 3 — o trabalho até a posição $x$.**
+
+$$
+U_{1\to2} = \int_0^x (3{,}0\,g - 50\xi)\,d\xi = 3{,}0\,g\,x - 25x^2
+$$
+
+**Passo 4 — trabalho e energia**, com $T_1 = 0$ (partiu do repouso) e $m = 2{,}0\ \mathrm{kg}$:
+
+$$
+0 + 3{,}0\,g\,x - 25x^2 = \tfrac{1}{2}(2{,}0)\,v^2 = v^2 \tag{I}
+$$
+
+**Passo 5 — onde $v$ é máxima.** Derive (I) em relação a $x$ e imponha $dv/dx = 0$:
+
+$$
+2v\frac{dv}{dx} = 3{,}0\,g - 50x = 0
+\quad\Longrightarrow\quad
+x^\ast = \frac{3{,}0\,g}{50} \tag{II}
+$$
+
+Ou seja: a velocidade é máxima exatamente onde a **força resultante se anula** — o que faz sentido, porque a partir dali a mola já não vence o peso e passa a frear.
+
+**Passo 6 — substitua (II) em (I):**
+
+$$
+v_{\max}^2 = 3{,}0\,g\!\left(\frac{3{,}0\,g}{50}\right) - 25\!\left(\frac{3{,}0\,g}{50}\right)^{\!2}
+= \frac{9g^2}{50} - \frac{9g^2}{100} = \frac{9g^2}{100}
+$$
+
+$$
+v_{\max} = \frac{3}{10}\,g = \frac{3}{10}(9{,}81) = 2{,}9\ \mathrm{m/s}
+$$
+
+**Cuidado.** O $x$ da conta é medido da posição de repouso **dos dois blocos**, não do comprimento natural da mola. Quem começa a integral do comprimento natural acha outro número — e o enunciado nem dá o comprimento natural, o que já é a dica.
+</Passos>

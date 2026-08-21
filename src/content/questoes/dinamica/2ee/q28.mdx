@@ -1,0 +1,78 @@
+---
+origem: "Lista · Hibbeler 14.11"
+tema: "Força variável com a posição · Distância até atingir 15 m/s"
+temaId: trabalho-forca-variavel
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A força $F$, atuando em uma direção constante e **horizontal** sobre o bloco de $20\ \mathrm{kg}$, tem intensidade que varia com a posição $s$ do bloco segundo $F = \left(50\sqrt{s}\right)\ \mathrm{N}$, com $s$ em metros. Determine a distância que o bloco desliza antes que sua velocidade se torne $15\ \mathrm{m/s}$. Quando $s = 0$, o bloco está se deslocando para a direita a $v = 6\ \mathrm{m/s}$. O coeficiente de atrito cinético entre o bloco e a superfície é $\mu_k = 0{,}3$.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+$s = 20{,}5\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a normal e o atrito.** A força é horizontal, então não mexe na normal:
+
+$$
+N = 20(9{,}81) = 196{,}2\ \mathrm{N}
+\qquad
+F_{at} = 0{,}3\,(196{,}2) = 58{,}86\ \mathrm{N}
+$$
+
+**Passo 2 — o trabalho da força variável.** Não existe "força × distância" aqui: $F$ depende de $s$.
+
+$$
+U_F = \int_0^{s} 50\,\xi^{1/2}\,d\xi = 50\cdot\frac{2}{3}\,s^{3/2} = \frac{100}{3}\,s^{3/2}
+$$
+
+**Passo 3 — o trabalho do atrito**, que é constante e **negativo**:
+
+$$
+U_{at} = -58{,}86\,s
+$$
+
+O peso e a normal não trabalham: são perpendiculares ao movimento.
+
+**Passo 4 — trabalho e energia**, de $6$ a $15\ \mathrm{m/s}$:
+
+$$
+\tfrac{1}{2}(20)(6)^2 + \frac{100}{3}s^{3/2} - 58{,}86\,s = \tfrac{1}{2}(20)(15)^2
+$$
+
+$$
+\frac{100}{3}s^{3/2} - 58{,}86\,s - 1890 = 0
+$$
+
+**Passo 5 — resolva numericamente.** É uma equação em $s^{1/2}$ que não fatora bonito; substitua $u = \sqrt{s}$:
+
+$$
+33{,}33\,u^3 - 58{,}86\,u^2 - 1890 = 0
+$$
+
+Testando: $u = 4{,}5 \Rightarrow 3037 - 1192 - 1890 = -45$; $u = 4{,}53 \Rightarrow 3098 - 1208 - 1890 = 0$. Logo
+
+$$
+u = 4{,}53
+\quad\Longrightarrow\quad
+s = u^2 = 20{,}5\ \mathrm{m}
+$$
+
+**Como chutar o primeiro valor.** Ignore o atrito por um instante: $\tfrac{100}{3}s^{3/2} = 1890$ dá $s = 14{,}3\ \mathrm{m}$. Com atrito o bloco precisa de **mais** distância, então a resposta está acima disso — e duas iterações chegam nos $20{,}5$. Numa prova sem calculadora gráfica, é assim que se faz.
+
+**Cuidado.** $\int\sqrt{s}\,ds = \tfrac{2}{3}s^{3/2}$, então o $50$ vira $100/3$, não $50\cdot\tfrac{3}{2}$. E o trabalho do atrito cresce **linearmente** com $s$ enquanto o da força cresce com $s^{3/2}$: por isso, para $s$ grande, a força sempre ganha — o bloco não tem velocidade-limite aqui.
+</Passos>

@@ -98,8 +98,12 @@ function montarCabecalho(nomeArquivo, estilo) {
 
 /* ------------------------------------------------------------- inserção --- */
 
+/* A janela é generosa de propósito: em .mdx o cabeçalho vem DEPOIS do
+   frontmatter, e o frontmatter da teoria de Dinâmica tem 29 seções listadas —
+   com 2.000 caracteres, o cabeçalho caía fora da janela e o arquivo era
+   reportado como "sem cabeçalho" mesmo tendo um. */
 function jaTem(txt) {
-  return txt.slice(0, 2000).includes(MARCA);
+  return txt.slice(0, 8000).includes(MARCA);
 }
 
 function inserir(conteudo, cabecalho, posicao) {

@@ -1,0 +1,68 @@
+---
+origem: "Lista · Hibbeler 12.15"
+tema: "v = f(x) · Passar de posição para tempo"
+temaId: aceleracao-funcao-posicao
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma partícula se move ao longo de uma linha reta de modo que sua velocidade é $v = (-4x^2)\ \mathrm{m/s}$, com $x$ em metros. Se $x = 2\ \mathrm{m}$ quando $t = 0$, determine a velocidade e a aceleração **em função do tempo**.
+
+<Gabarito>
+$$
+v = -\frac{16}{(8t+1)^2}\ \mathrm{m/s}
+\qquad
+a = \frac{256}{(8t+1)^3}\ \mathrm{m/s^2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o pedido tem uma pegadinha de forma.** A velocidade é dada em função de **$x$**, e a resposta é pedida em função de **$t$**. Então o primeiro trabalho não é derivar nada: é achar $x(t)$.
+
+$$
+\frac{dx}{dt} = -4x^2
+\quad\Longrightarrow\quad
+\frac{dx}{x^2} = -4\,dt
+$$
+
+**Passo 2 — integre com a condição inicial** $x = 2$ em $t = 0$:
+
+$$
+\int_2^{x}\frac{dx}{x^2} = -4\int_0^{t}dt
+\quad\Longrightarrow\quad
+-\frac{1}{x} + \frac{1}{2} = -4t
+$$
+
+$$
+\frac{1}{x} = 4t + \frac{1}{2}
+\quad\Longrightarrow\quad
+x = \frac{2}{8t+1}\ \mathrm{m}
+$$
+
+**Passo 3 — a velocidade.** Agora basta levar $x(t)$ na expressão dada:
+
+$$
+v = -4x^2 = -4\left(\frac{2}{8t+1}\right)^{\!2} = -\frac{16}{(8t+1)^2}\ \mathrm{m/s}
+$$
+
+**Passo 4 — a aceleração, derivando no tempo:**
+
+$$
+a = \frac{dv}{dt} = -16\cdot(-2)(8t+1)^{-3}\cdot 8 = \frac{256}{(8t+1)^3}\ \mathrm{m/s^2}
+$$
+
+**A leitura da resposta.** $v \lt 0$ e $a \gt 0$: a partícula anda para $-x$ e está **freando** (aceleração oposta à velocidade). E como $x \to 0$ quando $t \to \infty$, ela se aproxima da origem cada vez mais devagar, sem nunca chegar. Confira em $t = 0$: $v = -16\ \mathrm{m/s}$, que é $-4(2)^2$. ✔
+
+**Cuidado com o atalho errado.** É tentador escrever $a = v\,dv/dx = (-4x^2)(-8x) = 32x^3$ e parar. Está certo — mas é $a$ em função de **$x$**, não de $t$, e não é o que se pediu. Só serve como conferência: substituindo $x = 2/(8t+1)$ em $32x^3$ dá $256/(8t+1)^3$. ✔
+</Passos>

@@ -1,0 +1,122 @@
+---
+origem: "2023.1"
+tema: "Esfera em cone com dois fios · Movimento circular"
+temaId: movimento-circular
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q20.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um único fio $ACB$ passa por um anel em $C$, preso a uma esfera de $1{,}2\ \mathrm{kg}$ que roda com velocidade escalar constante $v$ no círculo mostrado na figura. O ponto $A$ está acima de $B$, ambos no eixo vertical, separados por $d = 0{,}88\ \mathrm{m}$. Sabendo que $\theta_1 = 56^\circ$ (ângulo do trecho $BC$ com o eixo) e que a tração ao longo do fio é $9{,}0\ \mathrm{N}$, determine:
+
+<ol type="a">
+<li>o ângulo $\theta_2$;</li>
+<li>a velocidade escalar $v$.</li>
+</ol>
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 240 200" role="img" aria-label="Eixo vertical com os pontos A acima e B abaixo, ligados por um fio à esfera em C que descreve um círculo horizontal">
+    {/* eixo/poste */}
+    <rect x="106" y="26" width="8" height="150" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    {/* base */}
+    <line x1="86" y1="180" x2="134" y2="180" stroke="var(--ink-3)" stroke-width="2.4"/>
+    {/* A e B */}
+    <circle cx="110" cy="34" r="3.5" fill="var(--ink-2)"/>
+    <text x="94" y="32" font-size="11" fill="var(--ink-2)">A</text>
+    <circle cx="110" cy="84" r="3.5" fill="var(--ink-2)"/>
+    <text x="94" y="88" font-size="11" fill="var(--ink-2)">B</text>
+    {/* cota d */}
+    <line x1="88" y1="34" x2="88" y2="84" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="62" y="62" font-size="10" fill="var(--ink-3)">d</text>
+    {/* círculo (elipse em perspectiva) */}
+    <ellipse cx="110" cy="120" rx="76" ry="20" fill="none" stroke="var(--line-2)" stroke-width="1.2" stroke-dasharray="4 3"/>
+    {/* esfera em C */}
+    <circle cx="186" cy="120" r="7" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="194" y="118" font-size="11" fill="var(--warn)">C</text>
+    {/* fios */}
+    <line x1="110" y1="34" x2="180" y2="118" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="110" y1="84" x2="180" y2="120" stroke="var(--accent)" stroke-width="1.6"/>
+    {/* ângulos */}
+    <path d="M 110 60 A 26 26 0 0 0 129 52" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+    <text x="116" y="58" font-size="10" fill="var(--accent)">θ₂</text>
+    <path d="M 110 104 A 20 20 0 0 0 128 98" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+    <text x="116" y="104" font-size="10" fill="var(--accent)">θ₁</text>
+    {/* velocidade */}
+    <line x1="188" y1="130" x2="188" y2="156" stroke="var(--ok)" stroke-width="1.6"/>
+    <polygon points="188,162 184,154 192,154" fill="var(--ok)"/>
+    <text x="194" y="150" font-size="10" fill="var(--ok)">v</text>
+  </svg>
+  <figcaption>
+
+**Fio único passando por um anel** significa tração **igual** nos dois trechos. É essa a informação que transforma duas incógnitas em uma.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+a) $\theta_2 = 41{,}5^\circ$.    b) $v = 4{,}65\ \mathrm{m/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que "fio único por um anel" garante.** O anel é liso: o fio corre livremente, então a tração é a **mesma** nos trechos $CA$ e $CB$, e vale os $9{,}0\ \mathrm{N}$ dados. Sem essa observação, o problema tem duas trações incógnitas e não fecha.
+
+**Passo 2 — item (a): equilíbrio vertical.** A esfera anda em círculo **horizontal**, logo não tem aceleração vertical. As duas trações apontam para cima (uma para $A$, outra para $B$), com componentes verticais $T\cos\theta_2$ e $T\cos\theta_1$:
+
+$$
+T\left(\cos\theta_1 + \cos\theta_2\right) = m\,g
+$$
+
+$$
+\cos\theta_2 = \frac{m\,g}{T} - \cos\theta_1 = \frac{1{,}2(9{,}81)}{9{,}0} - \cos 56^\circ = 1{,}308 - 0{,}559 = 0{,}749
+$$
+
+$$
+\theta_2 = 41{,}5^\circ
+$$
+
+**Passo 3 — o raio, pela geometria.** Os dois trechos partem do **mesmo** ponto $C$, a uma distância $R$ do eixo, e chegam a pontos separados por $d$ no eixo. As distâncias verticais de $C$ até $B$ e até $A$ são $R/\tan\theta_1$ e $R/\tan\theta_2$:
+
+$$
+d = \frac{R}{\tan\theta_2} - \frac{R}{\tan\theta_1}
+= R\left(\frac{1}{\tan 41{,}5^\circ} - \frac{1}{\tan 56^\circ}\right)
+$$
+
+$$
+0{,}88 = R\,(1{,}130 - 0{,}675) = 0{,}456\,R
+\quad\Longrightarrow\quad
+R = 1{,}93\ \mathrm{m}
+$$
+
+**Passo 4 — item (b): a 2ª lei na direção radial.** Agora as duas trações têm componentes horizontais **no mesmo sentido**, apontando para o eixo — e é essa soma que faz a esfera curvar:
+
+$$
+T\left(\sin\theta_1 + \sin\theta_2\right) = m\,\frac{v^2}{R}
+$$
+
+$$
+9{,}0\,(0{,}829 + 0{,}663) = 13{,}42\ \mathrm{N}
+$$
+
+$$
+v^2 = \frac{13{,}42\,(1{,}93)}{1{,}2} = 21{,}6
+\quad\Longrightarrow\quad
+v = 4{,}65\ \mathrm{m/s}
+$$
+
+**O roteiro, em uma frase.** Vertical primeiro (dá o ângulo que falta), geometria depois (dá o raio), radial no fim (dá a velocidade). Tentar as três juntas num sistema é possível, mas o caminho em cascata é bem mais curto — e cada etapa confere sozinha.
+
+**Cuidado.** $\theta_2 \lt \theta_1$: o trecho de cima é **mais** próximo do eixo, o que combina com $A$ estar mais longe verticalmente. Se der $\theta_2 \gt \theta_1$, o $d$ do Passo 3 sai negativo e a geometria denuncia o erro.
+</Passos>

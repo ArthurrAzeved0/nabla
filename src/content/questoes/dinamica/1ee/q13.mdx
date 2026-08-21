@@ -1,0 +1,106 @@
+---
+origem: "2023.1"
+tema: "Movimento dependente · Três cabos e quatro corpos"
+temaId: movimento-dependente
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Na figura dada, o bloco $A$ parte do repouso para a esquerda com aceleração constante. Depois de $4{,}00\ \mathrm{s}$, $B$ adquire velocidade de $400\ \mathrm{mm/s}$. Determine:
+
+<ol type="a">
+<li>as acelerações de $A$ e $B$;</li>
+<li>a velocidade de $D$ em relação a $A$ após $B$ se deslocar $450\ \mathrm{mm}$.</li>
+</ol>
+
+**O que a figura fornece.** Com o eixo $x$ positivo para a direita e a origem na parede, os dois cabos do arranjo dão as relações de comprimento
+
+$$
+L = x_B + (x_B - x_A) + 2\,(C - x_A) = \text{const.}
+\qquad
+L' = (C - x_D) + (C - x_A) = \text{const.}
+$$
+
+em que $C$ é a posição (fixa) da polia da direita.
+
+<Gabarito>
+a) $a_A = 66{,}7\ \mathrm{mm/s^2}$ (←) e $a_B = 100\ \mathrm{mm/s^2}$ (←).
+
+b) $v_{D/A} = 400\ \mathrm{mm/s}$ (→).
+</Gabarito>
+
+<Passos>
+**Passo 1 — derive o primeiro vínculo.** O comprimento é constante, então a soma das derivadas é zero:
+
+$$
+v_B + (v_B - v_A) + 2(-v_A) = 0
+\quad\Longrightarrow\quad
+2v_B = 3v_A
+\quad\Longrightarrow\quad
+v_B = 1{,}5\,v_A \tag{1}
+$$
+
+Derivando de novo, $a_B = 1{,}5\,a_A$. E como $a_A$ é **constante** por enunciado, $a_B$ também é: os dois movimentos são uniformemente variados, e valem as três fórmulas de aceleração constante.
+
+**Passo 2 — item (a).** Os dois partem do repouso (de (1), $v_B = 0$ quando $v_A = 0$) e vão para a **esquerda**, ou seja, com sinal negativo:
+
+$$
+v_A(4) = \frac{v_B(4)}{1{,}5} = \frac{-400}{1{,}5} = -267\ \mathrm{mm/s}
+$$
+
+$$
+a_A = \frac{v_A(4) - 0}{4{,}00} = -66{,}7\ \mathrm{mm/s^2}
+\qquad
+a_B = 1{,}5(-66{,}7) = -100\ \mathrm{mm/s^2}
+$$
+
+Em módulo e sentido: $a_A = 66{,}7\ \mathrm{mm/s^2}$ (←) e $a_B = 100\ \mathrm{mm/s^2}$ (←).
+
+**Passo 3 — o segundo vínculo, para achar $D$.** Derivando $L'$:
+
+$$
+-v_D - v_A = 0
+\quad\Longrightarrow\quad
+v_D = -v_A
+$$
+
+$D$ anda **em sentido oposto** a $A$, com o mesmo módulo. Logo a velocidade relativa é
+
+$$
+v_{D/A} = v_D - v_A = -2v_A \tag{2}
+$$
+
+**Passo 4 — a velocidade de $B$ após andar $450\ \mathrm{mm}$** (para a esquerda, $\Delta x_B = -450$), por Torricelli:
+
+$$
+v_B^2 = 0 + 2\,a_B\,\Delta x_B = 2(-100)(-450) = 9{,}0\times10^{4}
+\quad\Longrightarrow\quad
+v_B = -300\ \mathrm{mm/s}
+$$
+
+**Passo 5 — desça a cadeia** até a resposta, por (1) e (2):
+
+$$
+v_A = \frac{-300}{1{,}5} = -200\ \mathrm{mm/s}
+\qquad
+v_{D/A} = -2(-200) = +400\ \mathrm{mm/s}\ (\rightarrow)
+$$
+
+**O método, que é o mesmo em toda questão de cabos.** Escreva o comprimento total como soma de segmentos em função das coordenadas; derive uma vez para velocidades, duas para acelerações. Nunca tente adivinhar a razão "por quantas cordas seguram o bloco" quando há mais de um cabo: aqui, a razão $1{,}5$ não é nenhum dos "2" ou "3" óbvios do desenho.
+
+**Cuidado com o sinal na raiz.** Torricelli dá $v_B^2$; **você** escolhe o sinal, pelo sentido físico. $B$ está indo para a esquerda, então $v_B = -300$, não $+300$ — e trocar isso inverte a resposta do item (b).
+
+**O mesmo arranjo já caiu antes.** O primeiro vínculo desta questão é exatamente o de 2022.1/2022.2 — $L = 2(C-x_A) + (x_B - x_A) + x_B$, que dá $v_B = 1{,}5\,v_A$. O que 2023.1 acrescentou foi o **segundo cabo**, com o corpo $D$, e a pergunta em velocidade **relativa**. Se você já treinou a versão de 2022, metade desta estava feita.
+</Passos>

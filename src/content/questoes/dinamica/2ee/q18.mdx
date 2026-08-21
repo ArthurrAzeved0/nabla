@@ -1,0 +1,67 @@
+---
+origem: "2ª avaliação"
+tema: "Pneu que rola pela rampa · Resposta simbólica"
+temaId: rolamento
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um pneu de automóvel tem massa $m$ e raio de giração $k_G$ em relação ao seu centro. Ele é solto do repouso no ponto $A$ de uma inclinação, cujo centro está a uma altura $h$ acima do nível que o centro terá no plano horizontal. O pneu **rola sem deslizar**. Determine sua velocidade angular quando atinge o plano horizontal, em termos de $m$, $g$, $h$, $r$ e $k_G$.
+
+<Gabarito>
+$$
+\omega = \sqrt{\frac{2\,g\,h}{k_G^2 + r^2}}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que energia, e não Newton.** O enunciado dá **altura** e pede **velocidade**, sem falar de tempo nem de força. E há um detalhe que torna a 2ª lei inviável aqui: o ângulo $\theta$ da rampa não é dado. Pela energia, ele não precisa ser — só a diferença de altura importa.
+
+**Passo 2 — o momento de inércia, pelo raio de giração.**
+
+$$
+I_G = m\,k_G^2
+$$
+
+O pneu não é disco nem anel: tem borracha na borda e aro no meio. É exatamente por isso que o enunciado dá $k_G$ em vez de uma forma geométrica.
+
+**Passo 3 — a energia cinética, com as duas parcelas.** Rolando sem deslizar, $v_G = \omega r$:
+
+$$
+T = \tfrac{1}{2}m\,v_G^2 + \tfrac{1}{2}I_G\,\omega^2
+= \tfrac{1}{2}m\,\omega^2 r^2 + \tfrac{1}{2}m\,k_G^2\,\omega^2
+= \tfrac{1}{2}m\,\omega^2\left(r^2 + k_G^2\right)
+$$
+
+**Passo 4 — conservação da energia.** O atrito estático do rolamento **não trabalha** (o ponto de contato não desliza), então nada se dissipa:
+
+$$
+m\,g\,h = \tfrac{1}{2}m\,\omega^2\left(k_G^2 + r^2\right)
+$$
+
+$$
+\omega = \sqrt{\frac{2\,g\,h}{k_G^2 + r^2}}
+$$
+
+**A massa cortou** — e tinha de cortar, porque tanto a energia disponível quanto a inércia são proporcionais a ela. O enunciado listou $m$ entre as variáveis da resposta, mas ela não sobrevive; dizer isso explicitamente na folha vale ponto.
+
+**Testes de sanidade que valem fazer sempre numa resposta simbólica:**
+
+- **Unidades:** $g h$ tem $\mathrm{m^2/s^2}$, dividido por $\mathrm{m^2}$ dá $\mathrm{s^{-2}}$, e a raiz dá $\mathrm{rad/s}$. Confere.
+- **Caso-limite $k_G \to 0$** (toda a massa no eixo, nada gira): $\omega = \sqrt{2gh}/r$, ou seja $v_G = \sqrt{2gh}$ — a queda livre em altura, como num bloco sem atrito. Confere.
+- **$k_G$ grande** (massa toda na borda): $\omega$ cai. Faz sentido: mais inércia de rotação, menos velocidade para a mesma altura.
+
+**Cuidado com a altura.** Na figura da prova, $h$ é a queda do **centro** do pneu, e a cota $r$ aparece separada justamente para deixar isso claro. Usar a altura do ponto de contato ou a do topo do pneu introduz um erro de $\pm r$ que a resposta simbólica não perdoa.
+</Passos>

@@ -1,0 +1,68 @@
+---
+origem: "Lista · Hibbeler 13.51"
+tema: "Bloco na bandeja sobre mola · Onde a normal se anula"
+temaId: equacoes-do-movimento
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O bloco $A$ tem massa $m_A$ e se apoia sobre a bandeja $B$, de massa $m_B$. Ambos são apoiados por uma mola de rigidez $k$, presa ao fundo da bandeja e ao solo. Determine a distância $d$ que a bandeja deverá ser empurrada **para baixo** a partir da posição de equilíbrio e depois largada, de modo que haja **separação** entre o bloco e a superfície da bandeja no instante em que a mola não estiver esticada.
+
+<Gabarito>
+$$
+d = \frac{(m_A + m_B)\,g}{k}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a deformação de equilíbrio.** Em repouso, a mola sustenta os dois:
+
+$$
+k\,y_{eq} = (m_A + m_B)\,g
+\quad\Longrightarrow\quad
+y_{eq} = \frac{(m_A + m_B)\,g}{k}
+$$
+
+**Passo 2 — traduza "separação".** O bloco e a bandeja se separam quando a força que a bandeja faz no bloco chega a zero, isto é, $N = 0$. Nesse instante, a única força no bloco é o peso:
+
+$$
+-m_A\,g + N = m_A\,a
+\quad\xrightarrow{\;N=0\;}\quad
+a = -g
+$$
+
+**Os dois estão em queda livre no instante da separação** — é essa a leitura que resolve a questão. Não é preciso saber nada sobre a oscilação.
+
+**Passo 3 — a equação do conjunto**, medindo $y$ para baixo a partir do equilíbrio. Com a mola comprimida de $(y_{eq} + y)$:
+
+$$
+-(m_A + m_B)\,g + k\,(y_{eq} + y) = (m_A + m_B)\,a
+$$
+
+**Passo 4 — imponha $a = -g$** (e o $k\,y_{eq}$ cancela o peso, pelo Passo 1):
+
+$$
+k\,y = -(m_A + m_B)\,g
+$$
+
+Como $y$ é medido para baixo e a resposta $d$ é a distância que se empurra para baixo, o módulo é
+
+$$
+d = \frac{(m_A + m_B)\,g}{k}
+$$
+
+**A leitura da resposta, que é bonita.** $d = y_{eq}$: empurrar exatamente a **própria deformação de equilíbrio**. E não é coincidência — significa que a bandeja é levada até o ponto onde a mola está no comprimento **natural**, que é justamente onde o enunciado pede a separação. A mola, solta desse ponto, devolve o sistema com aceleração para baixo de módulo $g$ na outra extremidade do movimento.
+
+**Cuidado.** O ponto de separação é onde $N = 0$, não onde a velocidade é máxima nem onde a mola está no meio do curso. E note que a resposta usa a soma $m_A + m_B$ — não só $m_A$: quem sobe a bandeja é a mola, que sente as duas massas.
+</Passos>

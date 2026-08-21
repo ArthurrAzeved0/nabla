@@ -1,0 +1,86 @@
+---
+origem: "2025.2"
+tema: "Verdadeiro ou falso · As dez armadilhas conceituais"
+temaId: equacoes-do-movimento
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Marque **V** se a afirmativa for verdadeira e **F** se for falsa.
+
+<ol>
+<li>A aceleração média de uma partícula é sempre igual à derivada temporal da sua velocidade instantânea.</li>
+<li>Se a velocidade escalar de uma partícula é constante, sua aceleração é nula.</li>
+<li>É possível que um corpo tenha aceleração nula e, ainda assim, esteja em movimento.</li>
+<li>Se a força resultante sobre um corpo é nula, ele deve estar em repouso.</li>
+<li>A força de atrito estático realiza trabalho dissipativo, reduzindo a energia mecânica do sistema.</li>
+<li>A energia mecânica de um sistema é sempre conservada, independentemente das forças atuantes.</li>
+<li>Em uma colisão inelástica, a energia mecânica e a quantidade de movimento linear são conservadas.</li>
+<li>Em uma colisão perfeitamente inelástica, a quantidade de movimento linear não se conserva.</li>
+<li>Se a energia cinética não é conservada em uma colisão, necessariamente a quantidade de movimento também não é.</li>
+<li>A terceira lei de Newton afirma que para toda ação existe uma reação de mesma intensidade, mesmo sentido e direção oposta, atuando em corpos diferentes.</li>
+</ol>
+
+<Gabarito>
+**1-F  2-F  3-V  4-F  5-F  6-F  7-F  8-F  9-F  10-F**
+
+Só a afirmativa **3** é verdadeira.
+</Gabarito>
+
+<Passos>
+**1. Falso.** A derivada temporal da velocidade instantânea é a aceleração **instantânea**. A média é a razão de diferenças finitas:
+
+$$
+a_{\text{méd}} = \frac{\Delta v}{\Delta t}
+\qquad
+a = \frac{dv}{dt}
+$$
+
+As duas coincidem só quando a aceleração é constante.
+
+**2. Falso.** "Velocidade escalar constante" é só o **módulo** que não muda. Num movimento circular uniforme a direção muda a cada instante, e isso é aceleração:
+
+$$
+a_n = \frac{v^2}{\rho} \ne 0
+$$
+
+Aceleração nula exige o **vetor** velocidade constante — módulo *e* direção.
+
+**3. Verdadeiro.** É a única verdadeira da lista. Movimento retilíneo uniforme: $\mathbf{v}$ constante e não nula, $\mathbf{a} = \mathbf{0}$. É a 1ª lei de Newton.
+
+**4. Falso.** Força resultante nula significa aceleração nula, e isso inclui **repouso ou velocidade constante**. Confundir "equilíbrio" com "parado" é o erro conceitual mais antigo da mecânica — é literalmente o que Newton corrigiu em Aristóteles.
+
+**5. Falso.** Atrito **estático** atua onde não há escorregamento relativo, então o ponto de aplicação não se desloca em relação à superfície e o trabalho é **nulo**. É o atrito **cinético** que dissipa. Consequência prática: uma roda que rola sem escorregar não perde energia pelo atrito no contato — é o que autoriza usar conservação da energia nas questões de rolamento.
+
+**6. Falso.** A energia mecânica se conserva **somente** se todas as forças que trabalham são conservativas (peso, mola). Com atrito, arrasto ou uma força externa qualquer, ela não se conserva:
+
+$$
+T_1 + V_1 + \sum U^{\text{não-cons.}} = T_2 + V_2
+$$
+
+**7. Falso.** O momento linear se conserva (não há impulso externo), mas a energia mecânica **não** — é exatamente essa a definição de colisão inelástica. A afirmativa acerta metade e por isso é a mais perigosa da lista.
+
+**8. Falso.** Perfeitamente inelástica é o caso $e = 0$: os corpos saem **juntos**. É o caso em que se perde a **máxima** energia possível — mas a quantidade de movimento se conserva, como em toda colisão sem impulso externo. Aliás, é justamente por ela se conservar que a velocidade final se calcula:
+
+$$
+v' = \frac{m_A v_A + m_B v_B}{m_A + m_B}
+$$
+
+**9. Falso.** As duas conservações são **independentes**. O momento se conserva em toda colisão em que o impulso externo é desprezível — seja ela elástica, parcialmente elástica ou plástica. A energia cinética se conserva só quando $e = 1$. Ou seja: a energia não se conservar é a regra, e o momento se conservar continua valendo.
+
+**10. Falso.** A pegadinha está em "**mesmo sentido e direção oposta**", que inverte os dois termos. O correto é **mesma direção** (a mesma linha de ação) e **sentidos opostos**. O resto da afirmativa está certo, inclusive a parte mais importante: as duas forças atuam em **corpos diferentes**, e é por isso que nunca se cancelam no diagrama de um só corpo.
+
+**O que essa questão está testando de verdade.** Nove das dez são falsas, e a distribuição não é acidente: cada uma é uma confusão que aparece nas contas do semestre. Vale ler a lista de novo antes da prova, porque as afirmativas 2, 4 e 9 são as que mais passam por verdadeiras — na folha corrigida que serviu de fonte para esta questão, foram exatamente essas três que o aluno errou.
+</Passos>

@@ -1,0 +1,54 @@
+---
+origem: "Lista · Hibbeler 13.31"
+tema: "Caixa deslizando no carrinho · Tração que segura o conjunto"
+temaId: equacoes-do-movimento
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A caixa $B$ tem massa $m$ e parte do repouso quando está no topo do carrinho $A$, que tem massa $3m$ e roda livremente. Determine a tração na corda $CD$ necessária para **impedir que o carrinho se mova** enquanto $B$ está deslizando para baixo sobre $A$. Desconsidere o atrito. A face inclinada de $A$ faz ângulo $\theta$ com a horizontal, e a corda $CD$ é horizontal.
+
+<Gabarito>
+$$
+T = m\,g\operatorname{sen}\theta\cos\theta = \tfrac{1}{2}m\,g\operatorname{sen} 2\theta
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — isole a caixa $B$.** Sem atrito, as únicas forças são o peso e a normal da rampa. Como a rampa está **parada** (é o que a corda garante), $B$ desce a rampa com a aceleração clássica $a_B = g\operatorname{sen}\theta$, e a normal vale
+
+$$
+N = m\,g\cos\theta
+$$
+
+**Passo 2 — isole o carrinho $A$.** Sobre ele agem: o peso, a normal do piso, a reação da caixa (que é $N$, apontando **para dentro** da face inclinada) e a tração $T$ da corda.
+
+A reação $N$ é perpendicular à face, então faz ângulo $\theta$ com a vertical: sua componente **horizontal** vale $N\operatorname{sen}\theta$.
+
+**Passo 3 — equilíbrio horizontal de $A$.** O carrinho não se move, então a soma das forças horizontais é zero:
+
+$$
+T = N\operatorname{sen}\theta = m\,g\cos\theta\operatorname{sen}\theta
+$$
+
+$$
+\boxed{T = \tfrac{1}{2}m\,g\operatorname{sen} 2\theta}
+$$
+
+**Onde está a graça da questão: a massa $3m$ não entra.** É distrator puro, e a razão é conceitual — o carrinho está em **equilíbrio**, então a segunda lei aplicada a ele é $\sum F = 0$, e a massa multiplica uma aceleração nula. A massa de $A$ só importaria se ele se movesse (e aí a questão seria bem mais longa).
+
+**A leitura da resposta.** $T$ é máxima em $\theta = 45^\circ$, valendo $mg/2$; e vai a zero nos dois extremos — com $\theta = 0$ nada desliza, e com $\theta = 90^\circ$ a caixa cai livre sem empurrar a face. O $\operatorname{sen} 2\theta$ captura os dois limites de uma vez, e é um bom teste de sanidade.
+
+**Cuidado.** A componente horizontal é $N\operatorname{sen}\theta$, não $N\cos\theta$. A normal é perpendicular à **face inclinada**, e por isso ela faz $\theta$ com a **vertical**, não com a horizontal. Desenhar a normal antes de projetar é o que evita esse erro.
+</Passos>

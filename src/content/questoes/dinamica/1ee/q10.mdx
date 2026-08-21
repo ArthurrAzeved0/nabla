@@ -1,0 +1,67 @@
+---
+origem: "2025.2"
+tema: "Aceleração em função da posição · a = −k/x"
+temaId: aceleracao-funcao-posicao
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A aceleração de uma partícula é definida pela relação $a = -k/x$. Ela foi determinada experimentalmente: $v = 15\ \mathrm{m/s}$ quando $x = 0{,}6\ \mathrm{m}$, e $v = 9\ \mathrm{m/s}$ quando $x = 1{,}2\ \mathrm{m}$. Determine a posição da partícula em que a velocidade é zero.
+
+<Gabarito>
+$k = 103{,}9\ \mathrm{m^2/s^2}$ e $x_f = 1{,}77\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a relação sem tempo.** A aceleração é dada em função de $x$ e a pergunta é sobre $x$: nada de tempo na conta. A ponte é
+
+$$
+a = v\frac{dv}{dx}
+\quad\Longrightarrow\quad
+v\,dv = -\frac{k}{x}\,dx
+$$
+
+**Passo 2 — integre entre os dois pontos medidos** para descobrir $k$:
+
+$$
+\int_{15}^{9} v\,dv = -k\int_{0{,}6}^{1{,}2}\frac{dx}{x}
+\quad\Longrightarrow\quad
+\frac{9^2 - 15^2}{2} = -k\,\ln\!\frac{1{,}2}{0{,}6}
+$$
+
+$$
+-72 = -k\,\ln 2
+\quad\Longrightarrow\quad
+k = \frac{72}{0{,}6931} = 103{,}9\ \mathrm{m^2/s^2}
+$$
+
+**Passo 3 — agora integre de um ponto conhecido até $v = 0$.** Use o par $(9\ \mathrm{m/s};\ 1{,}2\ \mathrm{m})$, que dá números menores:
+
+$$
+\int_{9}^{0} v\,dv = -k\int_{1{,}2}^{x_f}\frac{dx}{x}
+\quad\Longrightarrow\quad
+-\frac{81}{2} = -103{,}9\,\ln\!\frac{x_f}{1{,}2}
+$$
+
+$$
+\ln\!\frac{x_f}{1{,}2} = \frac{40{,}5}{103{,}9} = 0{,}3899
+\quad\Longrightarrow\quad
+x_f = 1{,}2\,e^{0{,}3899} = 1{,}77\ \mathrm{m}
+$$
+
+**Por que integrar duas vezes, e não uma.** A primeira integral usa os **dois** dados experimentais para calibrar a constante desconhecida do modelo; a segunda usa a constante calibrada para prever algo novo. É o roteiro de toda questão que dá "determinado experimentalmente" — sempre há uma constante escondida, e ela vem antes da resposta.
+
+**Cuidado com o sinal.** A partícula está **desacelerando** ($a \lt 0$ para $x \gt 0$), então ela avança até parar em $x_f = 1{,}77\ \mathrm{m}$. Se você achar $x_f \lt 1{,}2$, o sinal do logaritmo se inverteu em algum lugar.
+</Passos>

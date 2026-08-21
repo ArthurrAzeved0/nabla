@@ -1,0 +1,64 @@
+---
+origem: "Lista · Hibbeler 12.13"
+tema: "a = f(t) · Velocidade, posição e distância total"
+temaId: aceleracao-funcao-tempo
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A aceleração de uma partícula movendo-se ao longo de uma linha reta é $a = (2t - 1)\ \mathrm{m/s^2}$, com $t$ em segundos. Se $s = 1\ \mathrm{m}$ e $v = 2\ \mathrm{m/s}$ quando $t = 0$, determine a velocidade e a posição da partícula quando $t = 6\ \mathrm{s}$. Determine também a **distância total** percorrida nesse período.
+
+<Gabarito>
+$v = 32\ \mathrm{m/s}$, $s = 67\ \mathrm{m}$ e $s_T = 66\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — integre a aceleração.** $a$ é função só de $t$, então é integrar duas vezes e usar as condições iniciais:
+
+$$
+v = 2 + \int_0^{t}(2\tau - 1)\,d\tau = 2 + t^2 - t
+$$
+
+**Passo 2 — integre a velocidade.**
+
+$$
+s = 1 + \int_0^{t}\left(2 + \tau^2 - \tau\right)d\tau = 1 + 2t + \frac{t^3}{3} - \frac{t^2}{2}
+$$
+
+**Passo 3 — em $t = 6\ \mathrm{s}$:**
+
+$$
+v = 2 + 36 - 6 = 32\ \mathrm{m/s}
+$$
+
+$$
+s = 1 + 12 + 72 - 18 = 67\ \mathrm{m}
+$$
+
+**Passo 4 — a distância total exige um teste.** Ela só difere do deslocamento se a partícula **inverter o sentido**, ou seja, se $v = 0$ em algum instante do intervalo:
+
+$$
+t^2 - t + 2 = 0
+\quad\Longrightarrow\quad
+\Delta = 1 - 8 = -7 \lt 0
+$$
+
+Sem raiz real: $v$ **nunca** se anula, e como $v(0) = 2 \gt 0$, a partícula anda sempre para frente. Logo
+
+$$
+s_T = s(6) - s(0) = 67 - 1 = 66\ \mathrm{m}
+$$
+
+**Cuidado.** Note que $s(6) = 67\ \mathrm{m}$ é a **posição**, e $s_T = 66\ \mathrm{m}$ é a distância percorrida — a diferença é o $1\ \mathrm{m}$ da posição inicial. E o teste do Passo 4 não é opcional: nesta questão ele deu negativo, mas na de 2023.1 do 1º EE (com $a = kt$) ele deu raiz **dentro** do intervalo, e a resposta mudou de $87$ para $138\ \mathrm{m}$.
+</Passos>

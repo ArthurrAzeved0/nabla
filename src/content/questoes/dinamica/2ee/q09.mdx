@@ -1,0 +1,84 @@
+---
+origem: "2023.1"
+tema: "Mola entre dois corpos · Momento no referencial do centro de massa"
+temaId: conservacao-momento
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dois hemisférios idênticos $A$ e $B$ são mantidos unidos por uma corda alinhada ao eixo de simetria, ortogonal ao plano de separação dos hemisférios. O polo norte (hemisfério $A$) faz um ângulo de $+120^\circ$ com o eixo $x$, orientado para a direita. Entre as faces planas existe uma mola comprimida, com energia potencial de $100\ \mathrm{J}$. Sabendo que o conjunto se desloca para a direita com velocidade de $7{,}00\ \mathrm{m/s}$, determine as velocidades vetoriais dos dois hemisférios (em função de $\mathbf{i}$ e $\mathbf{j}$) assim que a corda se parte.
+
+<Gabarito>
+Com $m$ a massa de **cada** hemisfério:
+
+$$
+\vec{v}_A = \left(7{,}00 - \frac{5{,}00}{\sqrt{m}}\right)\mathbf{i} + \frac{8{,}66}{\sqrt{m}}\,\mathbf{j}
+\qquad
+\vec{v}_B = \left(7{,}00 + \frac{5{,}00}{\sqrt{m}}\right)\mathbf{i} - \frac{8{,}66}{\sqrt{m}}\,\mathbf{j}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o centro de massa não sente a mola.** A mola é interna, a corda é interna: não há impulso externo. Então $\vec{v}_G = 7{,}00\,\mathbf{i}$ **antes e depois**. Esse é o gancho da questão: resolva no referencial do centro de massa e depois some $\vec{v}_G$ de volta.
+
+**Passo 2 — no referencial do CM, o momento total é nulo.** Massas iguais, logo velocidades iguais e opostas:
+
+$$
+0 = m\,\vec{u}_A + m\,\vec{u}_B
+\quad\Longrightarrow\quad
+\vec{u}_A = -\vec{u}_B
+\quad\Longrightarrow\quad
+u_A = u_B \equiv u
+$$
+
+**Passo 3 — a energia da mola vira as duas cinéticas.**
+
+$$
+100 = \tfrac{1}{2}m\,u^2 + \tfrac{1}{2}m\,u^2 = m\,u^2
+\quad\Longrightarrow\quad
+u = \frac{10{,}0}{\sqrt{m}}\ \mathrm{m/s}
+$$
+
+**Passo 4 — as direções.** A mola empurra ao longo do eixo de simetria. O polo de $A$ aponta a $+120^\circ$, então $A$ sai nessa direção e $B$ na oposta, a $-60^\circ$:
+
+$$
+\vec{u}_A = u\,(\cos 120^\circ\,\mathbf{i} + \sin 120^\circ\,\mathbf{j}) = u\,(-0{,}500\,\mathbf{i} + 0{,}866\,\mathbf{j})
+$$
+
+$$
+\vec{u}_B = -\vec{u}_A = u\,(0{,}500\,\mathbf{i} - 0{,}866\,\mathbf{j})
+$$
+
+**Passo 5 — volte ao referencial do solo**, somando $\vec{v}_G$:
+
+$$
+\vec{v}_A = 7{,}00\,\mathbf{i} + \frac{10{,}0}{\sqrt{m}}(-0{,}500\,\mathbf{i} + 0{,}866\,\mathbf{j})
+= \left(7{,}00 - \frac{5{,}00}{\sqrt{m}}\right)\mathbf{i} + \frac{8{,}66}{\sqrt{m}}\,\mathbf{j}
+$$
+
+$$
+\vec{v}_B = \left(7{,}00 + \frac{5{,}00}{\sqrt{m}}\right)\mathbf{i} - \frac{8{,}66}{\sqrt{m}}\,\mathbf{j}
+$$
+
+**Sobre o $\sqrt{m}$ na resposta.** O enunciado **não dá a massa**, então ela sobrevive no resultado — não é erro de conta. Se o hemisfério tivesse, digamos, $4{,}00\ \mathrm{kg}$, ficaria $u = 5{,}00\ \mathrm{m/s}$ e
+
+$$
+\vec{v}_A = 4{,}50\,\mathbf{i} + 4{,}33\,\mathbf{j}
+\qquad
+\vec{v}_B = 9{,}50\,\mathbf{i} - 4{,}33\,\mathbf{j}
+$$
+
+E o teste de sanidade que sempre vale: a média das duas, ponderada pelas massas iguais, tem de dar $7{,}00\,\mathbf{i}$ — e dá.
+</Passos>

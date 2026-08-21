@@ -1,0 +1,155 @@
+---
+origem: "Simulado da final 2025"
+tema: "Energia, atrito e projétil · Dois caminhos comparados"
+temaId: trabalho-energia
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A figura mostra dois caminhos. As partes iniciais de ambos são horizontais e lisas, e nos dois casos os blocos $A$ e $B$ partem com a mesma velocidade $v = 8\ \mathrm{m/s}$ da mesma posição de referência.
+
+No instante $t_1$, o bloco $A$ começa a subir uma rampa lisa de $3\ \mathrm{m}$ de altura e $4\ \mathrm{m}$ de base, lançando-se ao final dela. Nesse mesmo instante $t_1$, o bloco $B$ passa a percorrer um trecho rugoso de comprimento igual ao da base da rampa ($4\ \mathrm{m}$). Após esse trecho, o caminho 2 volta a ser liso.
+
+Sabendo que, imediatamente após o lançamento do bloco $A$, as **velocidades horizontais** dos dois blocos são iguais, e que $B$ já passou o trecho rugoso, determine:
+
+<ol type="a">
+<li>o coeficiente de atrito do trecho rugoso do caminho 2;</li>
+<li>a distância horizontal entre os blocos imediatamente após o lançamento de $A$;</li>
+<li>o tempo total que $A$ leva desde o início da subida até atingir o solo horizontal.</li>
+</ol>
+
+Adote $g = 10\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 280 180" role="img" aria-label="Caminho 1 com bloco A subindo uma rampa de 3 metros e caminho 2 com bloco B atravessando um trecho rugoso">
+    {/* caminho 1 */}
+    <text x="10" y="46" font-size="9" fill="var(--ink-3)">caminho 1</text>
+    <line x1="58" y1="58" x2="130" y2="58" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="130" y1="58" x2="196" y2="22" stroke="var(--accent)" stroke-width="2"/>
+    <line x1="196" y1="22" x2="196" y2="58" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="196" y1="58" x2="266" y2="58" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <rect x="66" y="48" width="14" height="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="73" y="45" font-size="9" fill="var(--accent)" text-anchor="middle">A</text>
+    <line x1="84" y1="42" x2="102" y2="42" stroke="var(--accent)" stroke-width="1.4"/>
+    <polygon points="106,42 99,39 99,45" fill="var(--accent)"/>
+    <text x="88" y="37" font-size="9" fill="var(--accent)">v</text>
+    <line x1="212" y1="22" x2="212" y2="58" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <text x="216" y="43" font-size="9" fill="var(--ink-3)">3 m</text>
+    <line x1="130" y1="70" x2="196" y2="70" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <text x="163" y="80" font-size="9" fill="var(--ink-3)" text-anchor="middle">4 m</text>
+    {/* caminho 2 */}
+    <text x="10" y="130" font-size="9" fill="var(--ink-3)">caminho 2</text>
+    <line x1="58" y1="142" x2="130" y2="142" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <path d="M 130 142 l 6 -5 l 6 5 l 6 -5 l 6 5 l 6 -5 l 6 5 l 6 -5 l 6 5 l 6 -5 l 6 5 l 6 -5" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
+    <line x1="196" y1="142" x2="266" y2="142" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <rect x="66" y="132" width="14" height="10" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.3"/>
+    <text x="73" y="129" font-size="9" fill="var(--warn)" text-anchor="middle">B</text>
+    <line x1="84" y1="126" x2="102" y2="126" stroke="var(--warn)" stroke-width="1.4"/>
+    <polygon points="106,126 99,123 99,129" fill="var(--warn)"/>
+    <text x="88" y="121" font-size="9" fill="var(--warn)">v</text>
+    <line x1="130" y1="156" x2="130" y2="166" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <text x="130" y="176" font-size="9" fill="var(--ink-3)" text-anchor="middle">t₁</text>
+  </svg>
+  <figcaption>
+
+A rampa de $3$ por $4$ tem hipotenusa $5$: $\sin\theta = 3/5$ e $\cos\theta = 4/5$, sem precisar de calculadora. É por isso que os números do enunciado são esses.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+a) $\mu = 0{,}768$.    b) $D \approx 0{,}27\ \mathrm{m}$.    c) $\Delta t = 1{,}9\ \mathrm{s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a velocidade de $A$ no alto da rampa.** Rampa lisa, então conservação da energia:
+
+$$
+\frac{v^2}{2} = g\,h + \frac{u^2}{2}
+\quad\Longrightarrow\quad
+8^2 = 2(10)(3) + u^2
+\quad\Longrightarrow\quad
+u = 2\ \mathrm{m/s}
+$$
+
+**Passo 2 — a componente horizontal do lançamento.** $A$ sai da rampa **na direção da rampa**, com $\cos\theta = 4/5$:
+
+$$
+u_x = u\cos\theta = 2\left(\tfrac{4}{5}\right) = 1{,}6\ \mathrm{m/s}
+\qquad
+u_y = u\sin\theta = 1{,}2\ \mathrm{m/s}
+$$
+
+**Passo 3 — item (a).** O enunciado diz que a velocidade horizontal de $B$ nesse instante é a mesma, $1{,}6\ \mathrm{m/s}$. Aplique trabalho e energia no trecho rugoso de $d = 4\ \mathrm{m}$:
+
+$$
+-\mu\,m\,g\,d = \frac{m\,u_x^2}{2} - \frac{m\,v^2}{2}
+\quad\Longrightarrow\quad
+-2\mu(10)(4) = 1{,}6^2 - 8^2
+$$
+
+$$
+-80\mu = -61{,}44
+\quad\Longrightarrow\quad
+\mu = 0{,}768
+$$
+
+**Passo 4 — item (b): quem chega primeiro.** Os dois blocos partiram juntos, mas gastaram tempos diferentes nos $4\ \mathrm{m}$.
+
+Para $A$ na rampa, $a_A = -g\sin\theta = -10(3/5) = -6\ \mathrm{m/s^2}$:
+
+$$
+u = v + a_A t_A
+\quad\Longrightarrow\quad
+2 = 8 - 6t_A
+\quad\Longrightarrow\quad
+t_A = 1{,}0\ \mathrm{s}
+$$
+
+Para $B$ no trecho rugoso, $a_B = -\mu g = -7{,}68\ \mathrm{m/s^2}$, percorrendo $4\ \mathrm{m}$:
+
+$$
+4 = 8t_B - \frac{7{,}68\,t_B^2}{2}
+\quad\Longrightarrow\quad
+3{,}84\,t_B^2 - 8t_B + 4 = 0
+$$
+
+$$
+t_B = 0{,}83\ \mathrm{s}
+\quad\text{(a raiz }1{,}25\ \mathrm{s}\text{ não convém: já seria a volta)}
+$$
+
+**Passo 5 — a vantagem de $B$.** Ele saiu do trecho rugoso $\Delta t = 1{,}0 - 0{,}83 = 0{,}17\ \mathrm{s}$ antes, e nesse tempo andou no liso a $1{,}6\ \mathrm{m/s}$:
+
+$$
+D = u_x\,\Delta t = 1{,}6(0{,}17) = 0{,}27\ \mathrm{m}
+$$
+
+**Passo 6 — item (c): a queda de $A$.** Lançado de $3\ \mathrm{m}$ de altura com $u_y = 1{,}2\ \mathrm{m/s}$ **para cima**. Tomando o eixo para baixo:
+
+$$
+3 = -1{,}2\,t_q + 5\,t_q^2
+\quad\Longrightarrow\quad
+5t_q^2 - 1{,}2t_q - 3 = 0
+\quad\Longrightarrow\quad
+t_q = 0{,}9\ \mathrm{s}
+$$
+
+$$
+\Delta t_{\text{total}} = t_A + t_q = 1{,}0 + 0{,}9 = 1{,}9\ \mathrm{s}
+$$
+
+**Por que essa questão é boa para o fim do semestre.** Ela usa quatro assuntos diferentes em sequência: conservação da energia, trabalho do atrito, cinemática com aceleração constante e lançamento de projétil. E cada item depende do anterior — errar o $u = 2\ \mathrm{m/s}$ do Passo 1 derruba os três itens.
+</Passos>
