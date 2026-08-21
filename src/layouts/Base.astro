@@ -80,7 +80,7 @@ const naGrade = caminho.includes("/grade/");
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="topo">
-      <div class="pagina faixa">
+      <div class:list={["pagina", "faixa", largura]}>
         <a class="link-marca" href={base}><Marca /></a>
         <nav class="nav-topo" aria-label="Seções">
           <a href={base} aria-current={naGrade ? undefined : "page"}>Cadeiras</a>
@@ -95,7 +95,7 @@ const naGrade = caminho.includes("/grade/");
     </main>
 
     <footer class="rodape">
-      <div class="pagina faixa-rodape">
+      <div class:list={["pagina", "faixa-rodape", largura]}>
         <p>
           © {ano} Nabla — feito por <strong>Arthur Azevedo</strong>, aluno de Eng. de Controle e
           Automação na POLI/UPE.
@@ -174,6 +174,17 @@ const naGrade = caminho.includes("/grade/");
     margin-left: auto;
   }
 
+  /* Filho de coluna flex nasce com `min-width: auto`, que o impede de ficar
+     mais estreito que o próprio conteúdo. Com o mapa de ~2100px dentro, o
+     <main> esticava e a PÁGINA INTEIRA passava da largura da janela. Zerar o
+     mínimo devolve a rolagem para dentro do contêiner do mapa, que é onde
+     ela pertence. */
+  .topo,
+  .corpo,
+  .rodape {
+    min-width: 0;
+  }
+
   .corpo {
     padding-top: var(--e-7);
     padding-bottom: var(--e-8);
@@ -181,7 +192,10 @@ const naGrade = caminho.includes("/grade/");
        parava no meio da tela, com o papel continuando embaixo */
     flex: 1;
   }
-  .corpo.ampla {
+
+  /* página larga: o contêiner solta o limite de leitura, mas o texto dentro
+     dele continua parando em 68 caracteres (ver as regras de cada página) */
+  .ampla {
     max-width: none;
   }
 
