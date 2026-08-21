@@ -17,26 +17,10 @@ import { unified } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
-/* ==========================================================================
-   Alvo de publicação.
-
-   O caminho base muda conforme o host:
-     - Cloudflare Pages serve na RAIZ            -> base "/"
-     - GitHub Pages serve em SUBPASTA do repo    -> base "/RespondeAi-Poli"
-
-   Padrão: cloudflare. Para gerar a versão do GitHub Pages:
-       npm run build:ghpages
-   ========================================================================== */
-const ALVOS = {
-  cloudflare: { site: "https://nabla-poli.pages.dev", base: "/" },
-  ghpages: { site: "https://arthurrazeved0.github.io", base: "/RespondeAi-Poli" },
-};
-
-const alvo = ALVOS[process.env.DEPLOY_TARGET ?? "cloudflare"] ?? ALVOS.cloudflare;
-
+/* Publicado no Cloudflare Pages, que serve na RAIZ — daí não haver `base`.
+   `site` alimenta as URLs absolutas (canonical, sitemap). */
 export default defineConfig({
-  site: alvo.site,
-  base: alvo.base,
+  site: "https://nabla-poli.pages.dev",
   trailingSlash: "ignore",
 
   /* Barra de ferramentas do Astro no `dev`. Nunca vai para o site
