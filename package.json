@@ -1,6 +1,6 @@
 {
   "name": "nabla",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "type": "module",
   "private": true,
   "description": "Nabla — guia do aluno da POLI/UPE: teoria, banco de questões e mapa da grade.",
@@ -10,7 +10,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "build:ghpages": "DEPLOY_TARGET=ghpages astro build"
+    "build:ghpages": "DEPLOY_TARGET=ghpages astro build",
+    "verificar": "node scripts/verificar-conteudo.mjs",
+    "cabecalhos": "node scripts/cabecalho.mjs --check src public scripts astro.config.mjs CHANGELOG.md THIRD-PARTY.md"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

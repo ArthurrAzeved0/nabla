@@ -61,6 +61,13 @@
   --rev: #92661c;
   --rev-soft: #f6eeda;
 
+  /* ---------------- destaque de diagrama ----------------
+     Terceira cor das figuras SVG, ao lado de --accent (região) e --ok
+     (resultado). NÃO é o --rev: aquele é estado de questão, este é
+     semântica de desenho (eixo destacado, cota, ponto de sela). */
+  --warn: #9a6b1f;
+  --warn-soft: #f6eeda;
+
   /* ---------------- a grade ----------------
      Assinatura da identidade. Fina de 8px com reforço a cada 48px.
      CSS puro (gradientes empilhados): nada para baixar, escala em
@@ -140,6 +147,9 @@
     --rev: #e2b45e;
     --rev-soft: #2f2716;
 
+    --warn: #e0b25a;
+    --warn-soft: #2f2716;
+
     --grid-1: rgba(150, 215, 235, 0.035);
     --grid-2: rgba(150, 215, 235, 0.11);
 
@@ -170,6 +180,9 @@
   --err-soft: #331c1e;
   --rev: #e2b45e;
   --rev-soft: #2f2716;
+
+  --warn: #e0b25a;
+  --warn-soft: #2f2716;
 
   --grid-1: rgba(150, 215, 235, 0.035);
   --grid-2: rgba(150, 215, 235, 0.11);
