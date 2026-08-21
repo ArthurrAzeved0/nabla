@@ -1,5 +1,5 @@
 <!-- **************************************************************************
-     * Nabla — Guia do aluno POLI/UPE                            icone-app.svg *
+     * Nabla — Guia do aluno POLI/UPE                          icone-app.svg *
      *========================================================================*
      * Copyright © 2026  Arthur Epifanio De Azevedo                           *
      * Todos os direitos reservados.                                          *
@@ -10,18 +10,27 @@
      * Página:  https://github.com/ArthurrAzeved0                             *
      * Contato: arthur_azevedo05@hotmail.com                                  *
      ************************************************************************** -->
-<!-- Fonte dos ícones de tela inicial, e o único lugar onde a placa colorida
-     sobreviveu. Motivo: o iOS não respeita transparência em apple-touch-icon
-     — o que for vazado ele preenche de preto. Aqui o fundo é parte do ícone,
-     não recurso de contraste, e o ∇ tem a mesma espessura fina do favicon,
-     só recuado para não encostar no canto arredondado. -->
+<!-- Fonte dos ícones de tela inicial (apple-touch-icon, icone-192, icone-512).
+
+     POR QUE ESTE TEM FUNDO E O DA GUIA NÃO. Ícone de lançador cai sobre um
+     fundo que ninguém controla: papel de parede qualquer, e o iOS ainda
+     preenche de PRETO o que for vazado em apple-touch-icon. Sem fundo
+     próprio, o traço fino desaparece metade das vezes.
+
+     O que mudou: o fundo deixou de ser a placa azul de destaque e passou a
+     ser o PAPEL ESCURO do site (o mesmo do tema escuro, token paper), com o nabla
+     no tom claro de destaque. Assim o ícone da tela inicial é o site, e não
+     uma etiqueta azul que não aparece em lugar nenhum.
+
+     Sem canto arredondado: iOS e Android aplicam a máscara deles. Desenhar a
+     minha por baixo só produzia canto duplo. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Nabla">
   <title>Nabla</title>
-  <rect width="32" height="32" rx="7" fill="#0f6c86" />
+  <rect width="32" height="32" fill="#10212c" />
   <path
-    d="M4.5 6.8h23L16 24.4z"
+    d="M4 7.4h24L16 25.6z"
     fill="none"
-    stroke="#eef1f1"
+    stroke="#5cbdda"
     stroke-width="2.6"
     stroke-linejoin="round"
   />

@@ -21,6 +21,12 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=3600
 
+# O tipo do manifesto não é adivinhado por todo servidor, e sem ele o
+# navegador ignora o arquivo em silêncio.
+/manifest.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 # Os assets com hash no nome podem ser guardados para sempre: quando o
 # conteúdo muda, o nome muda.
 /_astro/*

@@ -68,6 +68,24 @@
         padding: 64px 72px;
       }
 
+      /* Moldura fina, e ela tem função: o cartão é escuro, e no painel do
+         GitHub em tema escuro (ou num app de mensagem em tema escuro) um
+         retângulo escuro sem borda parece uma caixa VAZIA. A linha garante
+         que a imagem sempre tenha um limite visível. O brilho no canto
+         superior esquerdo dá a mesma pista sem pesar. */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        border: 1px solid rgba(150, 215, 235, 0.22);
+        background: radial-gradient(
+          900px 420px at 8% -10%,
+          rgba(92, 189, 218, 0.11),
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
       .marca { display: flex; align-items: center; gap: 18px; }
       .marca svg { flex: none; }
       .marca b {

@@ -15,7 +15,7 @@
 Duas fontes, e cada uma manda num conjunto de arquivos:
 
 - **`favicon.svg`** — a guia do navegador. Fundo transparente, traço fino.
-- **`icone-app.svg`** — a tela inicial do celular. Placa colorida, mesmo traço.
+- **`icone-app.svg`** — a tela inicial do celular. Fundo escuro, mesmo traço.
 
 ```bash
 mkdir -p /tmp/ico
@@ -33,7 +33,7 @@ cp /tmp/ico/512.png public/icone-512.png
 | `favicon.ico` | `favicon.svg` | reserva para navegador sem suporte a SVG (16 e 32px dentro) |
 | `icone-app.svg` | — | fonte dos três abaixo; não é referenciado por nenhuma página |
 | `apple-touch-icon.png` | `icone-app.svg` | quando alguém adiciona o site à tela inicial do iPhone |
-| `icone-192.png`, `icone-512.png` | `icone-app.svg` | mesma coisa no Android |
+| `icone-192.png`, `icone-512.png` | `icone-app.svg` | mesma coisa no Android, via `manifest.webmanifest` |
 
 ## Três decisões
 
@@ -56,7 +56,19 @@ Sem placa, o contraste passa a depender da barra de guias, então a cor segue
 tokens de destaque dos dois temas. É o tema do **sistema**, não o do site: a
 guia é do navegador, não da página.
 
-**A placa sobreviveu só no ícone de aplicativo**, porque ali ela não é recurso
-de contraste: o iOS não respeita transparência em `apple-touch-icon` e
-preenche de preto o que for vazado. Em `icone-app.svg` o fundo é parte do
-ícone, e o ∇ fica recuado para não encostar no canto arredondado.
+**O ícone de aplicativo tem fundo, e não é por contraste com o tema.** Ícone de
+lançador cai sobre um fundo que ninguém controla — papel de parede qualquer —
+e o iOS ainda preenche de PRETO o que for vazado em `apple-touch-icon`. Sem
+fundo próprio, o traço fino desaparece metade das vezes.
+
+O que mudou: o fundo deixou de ser a placa azul de destaque e passou a ser o
+**papel escuro do site**, com o ∇ no tom claro. O ícone da tela inicial virou
+o site, em vez de uma etiqueta azul que não aparece em lugar nenhum. E saiu o
+canto arredondado: iOS e Android aplicam a máscara deles, e desenhar a nossa
+por baixo só produzia canto duplo.
+
+**`icone-192` e `icone-512` eram arquivo morto** até ganharem o
+`manifest.webmanifest`. É ele que faz o Android oferecer "adicionar à tela
+inicial" e que diz com que cor pintar a tela enquanto o site abre. Os ícones
+são declarados com `purpose` implícito (`any`), e não `maskable`: as pontas do
+∇ ficam fora do círculo de 80% que uma máscara circular preserva.

@@ -21,6 +21,32 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.9.0] — 2026-08-21
+
+### Adicionado
+
+- **`manifest.webmanifest`.** `icone-192.png` e `icone-512.png` eram arquivo
+  morto — ninguém os referenciava. É o manifesto que faz o Android oferecer
+  "adicionar à tela inicial" e que diz com que cor pintar a tela enquanto o
+  site abre. Declarados sem `maskable`: as pontas do ∇ ficam fora do círculo
+  de 80% que uma máscara circular preserva.
+- Content-Type do manifesto no `public/_headers`: sem ele, o navegador ignora
+  o arquivo em silêncio.
+
+### Alterado
+
+- **Os ícones de tela inicial perderam a placa azul.** O traço já tinha
+  afinado na 2.1.1, mas o que se via ainda era a etiqueta azul de destaque.
+  Agora o fundo é o **papel escuro do site**, com o ∇ no tom claro — o ícone
+  da tela inicial virou o site. Fundo continua havendo, e não é por contraste
+  com o tema: ícone de lançador cai sobre papel de parede que ninguém
+  controla, e o iOS ainda preenche de preto o que for vazado em
+  `apple-touch-icon`. Também saiu o canto arredondado, que iOS e Android
+  desenham por cima do nosso.
+- **O cartão de prévia ganhou moldura.** Cartão escuro sem borda, no painel do
+  GitHub em tema escuro, parece uma caixa vazia. A linha fina garante um
+  limite visível em qualquer chrome.
+
 ## [2.8.0] — 2026-08-21
 
 **Telecomunicações, as duas matrizes, e o cartão de prévia.** Dez mapas no ar,
@@ -784,6 +810,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.9.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.9.0
 [2.8.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.8.0
 [2.7.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.7.0
 [2.6.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.6.0
