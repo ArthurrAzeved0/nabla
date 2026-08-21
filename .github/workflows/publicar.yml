@@ -1,0 +1,85 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                            publicar.yml *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+
+# Publica no Cloudflare Pages.
+#
+# A Cloudflare tirou a criação de projetos Pages do painel (está migrando
+# tudo para Workers), então não há integração com Git para ligar por lá. O
+# projeto foi criado pela CLI e a publicação vem daqui.
+#
+# O endereço é o motivo da escolha: nabla.pages.dev, sem o subdomínio da
+# conta no meio, que é o que o Workers imporia.
+#
+# Segredos necessários (Settings > Secrets and variables > Actions):
+#   CLOUDFLARE_API_TOKEN   token com permissão "Cloudflare Pages: Edit"
+#   CLOUDFLARE_ACCOUNT_ID  o Account ID que aparece no painel
+
+name: Publicar
+
+on:
+  push:
+    branches: [main, develop]
+  # permite publicar à mão pela aba Actions, sem precisar de um commit
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+# Uma publicação por vez por branch. Cancelar a anterior é seguro aqui: o
+# que vale é sempre o último commit.
+concurrency:
+  group: publicar-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # a versão vem do repositório, não daqui: um lugar só
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Verificar tipos
+        run: npx astro check
+
+      - name: Testes
+        run: npm test
+
+      - name: Construir
+        run: npm run build
+
+      # Confere o que o schema não alcança: link de teoria apontando para o
+      # vazio, LaTeX cru, fórmula que o KaTeX não leu. Roda sobre o HTML
+      # gerado, então precisa vir depois do build.
+      - name: Verificar integridade do conteúdo
+        run: npm run verificar
+
+      - name: Verificar cabeçalhos de autoria
+        run: npm run cabecalhos
+
+      # main -> nabla.pages.dev
+      # develop -> <hash>-nabla.pages.dev (pré-visualização)
+      - name: Publicar
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=nabla --branch=${{ github.ref_name }}
