@@ -29,9 +29,9 @@ export async function getStaticPaths() {
   const teorias = await getCollection("teoria");
   const provas = ["1ee", "2ee", "final"] as const;
 
-  return cadeiras
-    .sort((a, b) => a.data.ordem - b.data.ordem)
-    .map((c) => ({
+  /* Sem ordenar: aqui a lista só gera rotas, e a ordem em que elas nascem
+     não aparece em lugar nenhum. */
+  return cadeiras.map((c) => ({
       params: { cadeira: c.data.id },
       props: {
         cadeira: c,

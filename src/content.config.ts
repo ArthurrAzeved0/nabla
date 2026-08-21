@@ -36,8 +36,11 @@ const cadeiras = defineCollection({
     nome: z.string(),
     codigo: z.string(),
     descricao: z.string(),
-    /* ordem de exibição na home */
-    ordem: z.number().int(),
+    /* A ordem de exibição NÃO é um campo: é alfabética pelo nome, em toda
+       lista de cadeiras do site. Um número escrito à mão precisaria ser
+       renumerado a cada cadeira nova, e era uma decisão a tomar sem critério
+       — "por que Cálculo 3 antes de Eletromagnetismo?". Alfabético não tem
+       essa dúvida e não tem manutenção. */
     /* Mapa tema -> id da seção da teoria. Alimenta os botões "Ver material"
        (na questão) e "Praticar este assunto" (na teoria). Antes vivia solto
        em js/cursos.js; agora é validado. */

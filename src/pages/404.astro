@@ -19,7 +19,9 @@ import Base from "~/layouts/Base.astro";
 import Regua from "~/components/Regua.astro";
 
 const base = import.meta.env.BASE_URL;
-const cadeiras = (await getCollection("cadeiras")).sort((a, b) => a.data.ordem - b.data.ordem);
+const cadeiras = (await getCollection("cadeiras")).sort((a, b) =>
+  a.data.nome.localeCompare(b.data.nome, "pt-BR"),
+);
 const grades = await getCollection("grade");
 ---
 

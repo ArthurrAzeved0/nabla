@@ -21,6 +21,25 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.11.0] — 2026-08-21
+
+### Alterado
+
+- **A home usa a largura da página**, como os mapas e o índice das grades já
+  usavam. Estava presa na coluna de leitura: quatro cadeiras apertadas no meio
+  da tela, com a quarta caindo sozinha na linha de baixo, e margem vazia dos
+  dois lados. Agora as quatro cabem numa fileira, e a grade de cartões vai
+  enchendo à medida que entram cadeiras.
+- **As cadeiras aparecem em ordem alfabética**, na home e na 404.
+
+### Removido
+
+- **O campo `ordem` da collection `cadeiras`.** Era um número escrito à mão que
+  precisava ser renumerado a cada cadeira nova, e obrigava a uma decisão sem
+  critério — "por que Cálculo 3 antes de Eletromagnetismo?". Alfabético não tem
+  essa dúvida e não tem manutenção. O `getStaticPaths` da página de cadeira
+  também perdeu a ordenação, que não aparecia em lugar nenhum.
+
 ## [2.10.0] — 2026-08-21
 
 **Dinâmica entra no site.** Quarta cadeira, e a primeira que acende nós em
@@ -841,6 +860,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.11.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.11.0
 [2.10.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.10.0
 [2.9.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.9.0
 [2.8.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.8.0
