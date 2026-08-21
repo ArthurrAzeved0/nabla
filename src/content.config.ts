@@ -18,7 +18,10 @@
    no build. Questão sem gabarito, tema que não existe no mapa da teoria ou
    prova fora de {1ee,2ee,final} viram ERRO DE BUILD, não bug silencioso.
    ========================================================================== */
-import { defineCollection, reference, z } from "astro:content";
+/* `z` vem de "astro/zod", não de "astro:content": a reexportação dali está
+   depreciada e sai no Astro 7. */
+import { defineCollection, reference } from "astro:content";
+import { z } from "astro/zod";
 import { glob, file } from "astro/loaders";
 
 const PROVAS = ["1ee", "2ee", "final"] as const;
