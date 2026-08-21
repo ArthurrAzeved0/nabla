@@ -33,14 +33,14 @@ const PROVAS = [
 ---
 
 <nav class="chips" aria-label="Escolher avaliação">
-  <a class:list={["chip", { ativo: atual === undefined }]} href={`${base}cadeiras/${cadeira}`}>
+  <a class:list={["chip", { ativo: atual === undefined }]} href={`${base}cadeiras/${cadeira}/`}>
     Conteúdo
   </a>
   {
     PROVAS.map((p) => (
       <a
         class:list={["chip", { ativo: atual === p.id }]}
-        href={`${base}cadeiras/${cadeira}/${p.id}`}
+        href={`${base}cadeiras/${cadeira}/${p.id}/`}
         aria-current={atual === p.id ? "page" : undefined}
       >
         {p.rotulo}

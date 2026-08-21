@@ -11,7 +11,8 @@
    * Página:  https://github.com/ArthurrAzeved0                             *
    * Contato: arthur_azevedo05@hotmail.com                                  *
    ************************************************************************** */
-/* Home: as cadeiras e as grades, a partir das collections. */
+/* Home: as cadeiras, a partir da collection. A grade tem aba própria no
+   topo, então não se repete aqui. */
 import { getCollection } from "astro:content";
 import Base from "~/layouts/Base.astro";
 import Regua from "~/components/Regua.astro";
@@ -29,7 +30,6 @@ const cards = cadeiras.map((c) => ({
   ),
 }));
 const totalGeral = cards.reduce((s, c) => s + c.total, 0);
-const grades = (await getCollection("grade")).sort((a, b) => a.data.curso.localeCompare(b.data.curso));
 ---
 
 <Base
@@ -46,10 +46,10 @@ const grades = (await getCollection("grade")).sort((a, b) => a.data.curso.locale
 
   <Regua rotulo="cadeiras" />
 
-  <div class="grade">
+  <div class="cartoes">
     {
       cards.map((c) => (
-        <a class="card" href={`${base}cadeiras/${c.id}`}>
+        <a class="card" href={`${base}cadeiras/${c.id}/`}>
           <span class="cod">{c.codigo}</span>
           <h2>{c.nome}</h2>
           <p>{c.descricao}</p>
@@ -64,37 +64,19 @@ const grades = (await getCollection("grade")).sort((a, b) => a.data.curso.locale
     }
   </div>
 
-  <Regua rotulo="grade" />
-
-  <div class="grade-links">
-    {
-      grades.map((g) => (
-        <a class="card mapa" href={`${base}grade/${g.data.sigla}`}>
-          <span class="cod">matriz {g.data.matriz}</span>
-          <h2>{g.data.curso}</h2>
-          <p>
-            Mapa de pré-requisitos das {g.data.disciplinas.length} disciplinas: marque o que já
-            concluiu e veja o que está liberado.
-          </p>
-          <span class="conta">
-            {g.data.disciplinas.length} disciplinas<em>{g.data.chTotalCurso}h</em>
-          </span>
-        </a>
-      ))
-    }
-  </div>
 </Base>
 
 <style>
   .abre {
     font-size: var(--t-md);
   }
-  .grade,
-  .grade-links {
+
+  .cartoes {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--e-4);
   }
+
   .card {
     display: flex;
     flex-direction: column;
@@ -110,6 +92,7 @@ const grades = (await getCollection("grade")).sort((a, b) => a.data.curso.locale
     border-color: var(--accent);
     box-shadow: var(--sombra-2);
   }
+
   .cod {
     font-family: var(--f-mono);
     font-size: var(--t-xs);
@@ -124,8 +107,10 @@ const grades = (await getCollection("grade")).sort((a, b) => a.data.curso.locale
   .card p {
     font-size: var(--t-sm);
     margin: 0;
+    /* empurra a contagem para o pé do cartão, alinhando os três */
     flex: 1;
   }
+
   .conta {
     display: flex;
     align-items: baseline;

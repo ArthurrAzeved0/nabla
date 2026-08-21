@@ -138,9 +138,14 @@ export function ligarGrade() {
   /* ------------------------------------------------------------- desenho */
   let escala: number | null = null; /* null = ajustar à largura */
   function ajuste() {
-    const disponivel = rolagem.clientWidth - 24;
-    const natural = quadro.scrollWidth;
-    return Math.min(1, disponivel / Math.max(1, natural));
+    /* clientWidth já desconta a barra de rolagem; o padding lateral do
+       contêiner é o que sobra a descontar. Sem Math.min(1, ...) o mapa
+       cresceria além do tamanho natural em telas largas, e os cartões
+       ficariam borrados — melhor sobrar margem que esticar. */
+    const estilo = getComputedStyle(rolagem);
+    const padding = parseFloat(estilo.paddingLeft) + parseFloat(estilo.paddingRight);
+    const disponivel = rolagem.clientWidth - padding;
+    return Math.min(1, disponivel / Math.max(1, quadro.scrollWidth));
   }
   function aplicarEscala() {
     const z = escala ?? ajuste();
@@ -148,8 +153,12 @@ export function ligarGrade() {
        recentemente, e transform é o caminho previsível em todo navegador */
     quadro.style.transform = `scale(${z})`;
     quadro.style.transformOrigin = "0 0";
-    /* o pai precisa reservar a altura pós-escala, senão sobra buraco */
-    rolagem.style.height = `${quadro.scrollHeight * z + 24}px`;
+    /* O contêiner precisa reservar a altura PÓS-escala: `transform` não
+       muda o espaço que o elemento ocupa no fluxo, então sem isto sobraria
+       um buraco embaixo (ou o conteúdo seguinte subiria por cima). */
+    const estilo = getComputedStyle(rolagem);
+    const padY = parseFloat(estilo.paddingTop) + parseFloat(estilo.paddingBottom);
+    rolagem.style.height = `${quadro.scrollHeight * z + padY}px`;
     const lbl = raiz.querySelector<HTMLElement>("[data-zoom]");
     if (lbl) lbl.textContent = `${Math.round(z * 100)}%`;
   }

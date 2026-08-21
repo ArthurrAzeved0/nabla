@@ -22,7 +22,10 @@ import rehypeKatex from "rehype-katex";
    o Google indexa um endereço que não existe. */
 export default defineConfig({
   site: "https://nabla-poli.pages.dev",
-  trailingSlash: "ignore",
+  /* A Cloudflare serve /cadeiras/x/ (com barra) e redirecionava 308 quando o
+     link vinha sem — uma ida e volta a mais em CADA navegação. Com "always",
+     o que o site gera e o que o host serve são a mesma coisa. */
+  trailingSlash: "always",
 
   /* Barra de ferramentas do Astro no `dev`. Nunca vai para o site
      publicado; desligada porque atrapalhava ver o rodapé.

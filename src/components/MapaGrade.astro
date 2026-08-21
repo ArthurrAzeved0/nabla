@@ -51,7 +51,7 @@ const paraIlha = JSON.stringify({
 
 const href = (d: (typeof g.disciplinas)[number]) => {
   const id = typeof d.cadeira === "string" ? d.cadeira : d.cadeira?.id;
-  return id && comPagina.has(id) ? `${base}cadeiras/${id}` : undefined;
+  return id && comPagina.has(id) ? `${base}cadeiras/${id}/` : undefined;
 };
 ---
 
@@ -389,11 +389,21 @@ const href = (d: (typeof g.disciplinas)[number]) => {
     border-width: 2px;
   }
 
-  /* --------------------------------------------------------------- quadro */
+  /* --------------------------------------------------------------- quadro
+     LARGURA TOTAL DA JANELA. O mapa tem ~2100px de largura natural; preso na
+     coluna de leitura da página (940px) ele era reduzido a 42% e sobrava
+     margem dos dois lados. Aqui ele rompe o contêiner e usa a viewport
+     inteira, o que sobe a escala para perto de 100% num monitor comum.
+
+     A conta `50% - 50vw` é o truque de sangria: leva a borda esquerda do
+     elemento até a borda da janela, seja qual for a largura do pai. */
   .rolagem {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: var(--e-2) var(--e-4) var(--e-4);
     overflow-x: auto;
     overflow-y: hidden;
-    padding: var(--e-2) 0 var(--e-4);
   }
   .quadro {
     position: relative;
