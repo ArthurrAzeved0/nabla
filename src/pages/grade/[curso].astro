@@ -25,12 +25,23 @@ export async function getStaticPaths() {
   const comPagina = new Set(cadeiras.map((c) => c.data.id));
   return grades.map((g) => ({
     params: { curso: g.data.sigla },
-    props: { grade: g, comPagina },
+    props: {
+      grade: g,
+      comPagina,
+      /* As outras matrizes DO MESMO curso. Automação tem duas no ar, e quem
+         cai na errada precisa de uma porta para a outra — sem ter de voltar
+         ao índice para descobrir que ela existe. */
+      irmas: grades
+        .filter((o) => o.data.curso === g.data.curso && o.data.sigla !== g.data.sigla)
+        .map((o) => ({ sigla: o.data.sigla, matriz: o.data.matriz }))
+        .sort((a, b) => b.matriz.localeCompare(a.matriz)),
+    },
   }));
 }
 
-const { grade, comPagina } = Astro.props;
+const { grade, comPagina, irmas } = Astro.props;
 const g = grade.data;
+const base = import.meta.env.BASE_URL;
 
 const chMatriz = g.disciplinas.reduce((s, d) => s + d.teorica + d.pratica, 0);
 /* Em Automação a matriz cobre a CH inteira do curso — eletivas e atividades
@@ -66,6 +77,23 @@ const ligadas = g.disciplinas.filter((d) => {
     }
   </p>
 
+  {
+    /* A observação diz a quem esta matriz se aplica. Só existe onde há mais de
+       um perfil no ar do mesmo curso, ou algo que o PPC deixa em aberto — daí
+       ser opcional no schema. */
+    g.observacao && (
+      <p class="aviso">
+        {g.observacao}
+        {irmas.map((o) => (
+          <>
+            {" "}
+            <a href={`${base}grade/${o.sigla}/`}>Ver a matriz {o.matriz}</a>.
+          </>
+        ))}
+      </p>
+    )
+  }
+
   <Regua rotulo="mapa" />
 
   <MapaGrade grade={grade} comPagina={comPagina} />
@@ -79,6 +107,16 @@ const ligadas = g.disciplinas.filter((d) => {
 <style>
   .abre {
     font-size: var(--t-md);
+  }
+  /* Nota discreta, não alarme: informa de quem é a matriz, sem competir com o
+     título nem com o mapa. Barra à esquerda em vez de caixa colorida. */
+  .aviso {
+    max-width: var(--largura-texto);
+    margin: calc(-1 * var(--e-3)) 0 var(--e-5);
+    padding-left: var(--e-3);
+    border-left: 2px solid var(--accent);
+    font-size: var(--t-sm);
+    color: var(--ink-2);
   }
   /* o cabeçalho acompanha a largura da página, mas o texto não: título e
      parágrafo alinham à esquerda com o mapa, e a linha para em 68ch */

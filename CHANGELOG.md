@@ -21,6 +21,47 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [2.2.0] — 2026-08-21
+
+**A matriz de 2010 de Automação**, o perfil antigo, que ainda vale para quem
+ingressou até 2020. Dois perfis do mesmo curso no ar ao mesmo tempo.
+
+### Adicionado
+
+- **Mapa da grade de Controle e Automação, matriz 2010.1**: 64 disciplinas e
+  60 requisitos, do PPC de 2010. A fonte é um `.doc`, e sendo tabela de
+  verdade — não linhas de um PDF — a **Tabela 18** dá código, nome, pré e
+  co-requisito e CH por período, tudo de uma vez.
+- Campo opcional `observacao` na collection `grade`: uma linha abaixo do
+  título dizendo a quem a matriz se aplica. É o que faltava para duas
+  matrizes do mesmo curso não se confundirem.
+- Na página de uma matriz, **link para as outras matrizes do mesmo curso**.
+  Quem cai na errada precisa de uma porta para a outra, não de voltar ao
+  índice para descobrir que ela existe.
+- No índice, selo **atual** / **anterior** quando um curso tem mais de uma
+  matriz. Qual é a mais nova sai da ordenação das próprias matrizes do curso,
+  sem campo novo no dado.
+- **Conferência por período** no gerador: a soma de cada período contra o
+  total que o PPC imprime para ele. É a checagem mais forte que existe aqui,
+  porque uma CH digitada errada aparece na soma do período dela e em nenhuma
+  outra. São 10 contas a mais por grade — 17 por grade, no total.
+
+### Alterado
+
+- `sigla` da grade passa a aceitar hífen, para `automacao-2010` poder existir
+  ao lado de `automacao`.
+- `scripts/extrair-grade-ppc.mjs` virou registro de várias grades:
+  `node scripts/extrair-grade-ppc.mjs <sigla>` ou `--todas`. O que cada PPC
+  chama de "obrigatórias" mudou de documento para documento — a Tabela 5 de
+  2021 não lista Atividades Complementares e a Tabela 18 de 2010 lista — então
+  cada grade declara o próprio recorte.
+
+### Corrigido
+
+- No PPC de 2010, Administração tem pré-requisito "ECN01", código que não
+  existe na matriz; o real é ECM01, Engenharia Econômica. Mesmo tipo de erro
+  do `FIS02` de Civil, e registrado do mesmo jeito: no script, com nota no nó.
+
 ## [2.1.1] — 2026-08-21
 
 ### Alterado
@@ -508,6 +549,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.2.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.2.0
 [2.1.1]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.1.1
 [2.1.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.1.0
 [2.0.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.0.0

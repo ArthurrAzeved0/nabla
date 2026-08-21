@@ -1,0 +1,647 @@
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                     automacao-2010.yaml *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+# ************************************************************************
+# Grade de Engenharia de Controle e Automação — POLI/UPE, matriz 2010.1.
+#
+# GERADO por scripts/extrair-grade-ppc.mjs, a partir do PPC do curso.
+# Editar à mão se perde na próxima geração: a correção vai no script.
+#
+# Perfil ANTIGO, do PPC de 2010, ainda válido para quem ingressou até
+# 2020. A matriz de 2021 está em automacao.yaml.
+#
+# Entre os dois houve uma recodificação intermediária: o PPC de 2021
+# descreve um perfil "EM EXECUÇÃO desde 2013.1" com as mesmas
+# disciplinas desta matriz, porém com os códigos no formato novo da UPE
+# (MAT02 virou MATM0018) e com duas delas em período diferente. Os
+# códigos aqui são os que o PPC de 2010 imprime.
+#
+# Este PPC não publica a regra de CH mínima para o estágio; os 60% vêm
+# da norma da UPE, que é o que o PPC de 2021 exige no mesmo curso.
+#
+# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `cadeira` liga o nó à página da cadeira no site, quando ela existe.
+# ************************************************************************
+curso: Engenharia de Controle e Automação
+sigla: automacao-2010
+matriz: "2010.1"
+observacao: "Perfil antigo, ainda válido para quem ingressou até 2020. Quem ingressou de 2021 em diante segue a matriz nova."
+chTotalCurso: 3790
+estagioFracao: 0.6
+disciplinas:
+  - id: MAT02
+    codigo: MAT02
+    nome: Cálculo Diferencial e Integral 1
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MAT01
+    codigo: MAT01
+    nome: Geometria Analítica
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: ECA01
+    codigo: ECA01
+    nome: Informática para Controle e Automação
+    periodo: 1
+    teorica: 30
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: ECA02
+    codigo: ECA02
+    nome: Lógica Matemática
+    periodo: 1
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: []
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: POR01
+    codigo: POR01
+    nome: Português Instrumental
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+    nota: No perfil recodificado de 2013 esta disciplina passa para o 2º período.
+  - id: QUI01
+    codigo: QUI01
+    nome: Química Geral
+    periodo: 1
+    teorica: 45
+    pratica: 30
+    categoria: basico
+    pre: []
+    co: []
+  - id: SMA01
+    codigo: SMA01
+    nome: Sociologia e Meio Ambiente
+    periodo: 1
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: []
+    co: []
+  - id: MAT06
+    codigo: MAT06
+    nome: Álgebra Linear
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT01]
+    co: []
+  - id: MAT03
+    codigo: MAT03
+    nome: Cálculo Diferencial e Integral 2
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT02]
+    co: []
+  - id: ECA04
+    codigo: ECA04
+    nome: Cálculo Numérico para Controle e Automação
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ECA01, MAT02]
+    co: []
+    nota: "No perfil recodificado de 2013 esta disciplina passa para o 3º período. O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ECM01
+    codigo: ECM01
+    nome: Engenharia Econômica
+    periodo: 2
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: [SMA01]
+    co: []
+  - id: EXP01
+    codigo: EXP01
+    nome: Expressão Gráfica 1
+    periodo: 2
+    teorica: 30
+    pratica: 45
+    categoria: basico
+    pre: []
+    co: []
+  - id: FIS01
+    codigo: FIS01
+    nome: Física 1
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT02]
+    co: []
+  - id: ECA03
+    codigo: ECA03
+    nome: Matemática Discreta para Automação
+    periodo: 2
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ECA02]
+    co: []
+  - id: MAT04
+    codigo: MAT04
+    nome: Cálculo Diferencial e Integral 3
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT03]
+    co: []
+    cadeira: calculo3
+  - id: DIR01
+    codigo: DIR01
+    nome: Direito para Engenheiros
+    periodo: 3
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: [ECM01]
+    co: []
+  - id: FIS03
+    codigo: FIS03
+    nome: "Física Experimental: Eletricidade Aplicada"
+    periodo: 3
+    teorica: 0
+    pratica: 60
+    categoria: basico
+    pre: []
+    co: [FIS02]
+  - id: FIS02
+    codigo: FIS02
+    nome: Física 2
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS01]
+    co: []
+    nota: "É a física do eletromagnetismo: o laboratório de Eletricidade Aplicada é co-requisito dela, e Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como pré."
+    cadeira: eletromag
+  - id: MEC01
+    codigo: MEC01
+    nome: Mecânica Geral 1
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS01, MAT01]
+    co: []
+  - id: MAT08
+    codigo: MAT08
+    nome: Probabilidade e Estatística
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT02]
+    co: []
+  - id: ECA05
+    codigo: ECA05
+    nome: Processo de Fabricação
+    periodo: 3
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [QUI01]
+    co: []
+  - id: MAT05
+    codigo: MAT05
+    nome: Cálculo Diferencial e Integral 4
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT04]
+    co: []
+    cadeira: eqdiferenciais
+  - id: ELE01
+    codigo: ELE01
+    nome: Circuitos Elétricos 1
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [FIS02]
+    co: [MAT05]
+  - id: MAT09
+    codigo: MAT09
+    nome: Complementos de Matemática
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MAT04]
+    co: []
+  - id: ECA06
+    codigo: ECA06
+    nome: Desenho de Máquinas
+    periodo: 4
+    teorica: 30
+    pratica: 45
+    categoria: espec
+    pre: [EXP01]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: FIS04
+    codigo: FIS04
+    nome: Física 3
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [FIS02]
+    co: []
+  - id: MEC02
+    codigo: MEC02
+    nome: Mecânica Geral 2
+    periodo: 4
+    teorica: 60
+    pratica: 0
+    categoria: basico
+    pre: [MEC01]
+    co: []
+  - id: ELE02
+    codigo: ELE02
+    nome: Circuitos Elétricos 2
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELE01]
+    co: []
+  - id: EMG01
+    codigo: EMG01
+    nome: Eletromagnetismo 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MAT05, FIS02]
+    co: []
+  - id: ELN01
+    codigo: ELN01
+    nome: Eletrônica 1
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELE01]
+    co: []
+  - id: ELN02
+    codigo: ELN02
+    nome: Laboratório de Eletrônica 1
+    periodo: 5
+    teorica: 0
+    pratica: 30
+    categoria: prof
+    pre: []
+    co: [ELN01]
+  - id: ECA09
+    codigo: ECA09
+    nome: Materiais Elétricos
+    periodo: 5
+    teorica: 30
+    pratica: 30
+    categoria: prof
+    pre: [QUI01]
+    co: []
+    nota: "A Tabela 18 traz só o total de 60h, sem dividir teórica e prática; usadas 30h+30h, como o PPC de 2021 lista a mesma disciplina."
+  - id: ECA07
+    codigo: ECA07
+    nome: Modelagem e Análise de Sistemas
+    periodo: 5
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MAT09, FIS04]
+    co: []
+  - id: ECA08
+    codigo: ECA08
+    nome: Metrologia e Projeto Mecânico Aux. por Computador
+    periodo: 5
+    teorica: 15
+    pratica: 45
+    categoria: espec
+    pre: [MEC01, ECA06]
+    co: []
+    nota: "A Tabela 18 lista MEC01 como pré-requisito E como co-requisito; ficou só como pré. O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ELE04
+    codigo: ELE04
+    nome: Conversão Eletromecânica de Energia
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [EMG01, ELN01]
+    co: []
+  - id: ECA11
+    codigo: ECA11
+    nome: Dinâmica das Máquinas
+    periodo: 6
+    teorica: 60
+    pratica: 30
+    categoria: espec
+    pre: [MAT09]
+    co: [ECA10]
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ELN04
+    codigo: ELN04
+    nome: Eletrônica Analógica
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELN01]
+    co: []
+  - id: DIG01
+    codigo: DIG01
+    nome: Eletrônica Digital
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELN01]
+    co: []
+  - id: ECA12
+    codigo: ECA12
+    nome: Lab. de Eletrônica Analógica e Digital
+    periodo: 6
+    teorica: 0
+    pratica: 30
+    categoria: espec
+    pre: [ELN01]
+    co: [ELN04]
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: SEG01
+    codigo: SEG01
+    nome: Engenharia de Segurança do Trabalho
+    periodo: 6
+    teorica: 45
+    pratica: 0
+    categoria: prof
+    pre: [ECM01]
+    co: []
+  - id: ECA10
+    codigo: ECA10
+    nome: Resistência dos Materiais
+    periodo: 6
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MEC02]
+    co: []
+  - id: ECA13
+    codigo: ECA13
+    nome: Controladores Lógicos Programáveis
+    periodo: 7
+    teorica: 15
+    pratica: 45
+    categoria: espec
+    pre: [ECA07]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ECA14
+    codigo: ECA14
+    nome: Elementos de Máquinas
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ECA10]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: POT01
+    codigo: POT01
+    nome: Eletrônica de Potência
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [ELN04, DIG01]
+    co: []
+  - id: ECA15
+    codigo: ECA15
+    nome: Sistemas de Controle 1
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ECA07]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ECA16
+    codigo: ECA16
+    nome: Sistemas Digitais
+    periodo: 7
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [MAT04, DIG01]
+    co: []
+  - id: ECA17
+    codigo: ECA17
+    nome: Termofluídos
+    periodo: 7
+    teorica: 60
+    pratica: 30
+    categoria: prof
+    pre: []
+    co: []
+    nota: "A Tabela 18 deixa em branco o tipo, o pré e o co-requisito desta disciplina."
+  - id: ECA18
+    codigo: ECA18
+    nome: Elementos de Robótica
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ECA11]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ECA19
+    codigo: ECA19
+    nome: Instrumentação e Controle
+    periodo: 8
+    teorica: 45
+    pratica: 15
+    categoria: espec
+    pre: [ECA13]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ECA20
+    codigo: ECA20
+    nome: Informática Industrial
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ECA13]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ECA21
+    codigo: ECA21
+    nome: Microcontroladores
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ECA16]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ECA22
+    codigo: ECA22
+    nome: Sistemas de Controle 2
+    periodo: 8
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ECA15]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ECA23
+    codigo: ECA23
+    nome: Sistemas Hidráulicos e Pneumáticos
+    periodo: 8
+    teorica: 60
+    pratica: 30
+    categoria: espec
+    pre: [ECA17]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: ADM01
+    codigo: ADM01
+    nome: Administração
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: [ECM01]
+    co: []
+    nota: "A Tabela 18 cita \"ECN01\" como pré-requisito, código que não existe na matriz; o real é ECM01, Engenharia Econômica."
+  - id: ECA24
+    codigo: ECA24
+    nome: Instalações Elétricas Industriais
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: prof
+    pre: [POT01]
+    co: []
+  - id: MET01
+    codigo: MET01
+    nome: Metodologia Científica
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: basico
+    pre: [POR01]
+    co: []
+  - id: ECA25
+    codigo: ECA25
+    nome: Qualidade de Energia
+    periodo: 9
+    teorica: 30
+    pratica: 0
+    categoria: prof
+    pre: [POT01]
+    co: []
+  - id: ECA26
+    codigo: ECA26
+    nome: Sistemas de Controle 3
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: espec
+    pre: [ECA22]
+    co: []
+    nota: "O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+  - id: EL1
+    codigo: —
+    nome: Eletiva 1
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "O 9º período traz uma linha só de eletivas, com a CH embaralhada; o texto da Tabela 18 diz que são 180h no total, aqui modeladas como três de 60h."
+  - id: EL2
+    codigo: —
+    nome: Eletiva 2
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "O 9º período traz uma linha só de eletivas, com a CH embaralhada; o texto da Tabela 18 diz que são 180h no total, aqui modeladas como três de 60h."
+  - id: EL3
+    codigo: —
+    nome: Eletiva 3
+    periodo: 9
+    teorica: 60
+    pratica: 0
+    categoria: eletiva
+    pre: []
+    co: []
+    nota: "O 9º período traz uma linha só de eletivas, com a CH embaralhada; o texto da Tabela 18 diz que são 180h no total, aqui modeladas como três de 60h."
+  - id: ESTAGIO
+    codigo: —
+    nome: Estágio Supervisionado
+    periodo: 10
+    teorica: 0
+    pratica: 160
+    categoria: compl
+    pre: []
+    co: []
+    estagio: true
+    nota: "A Tabela 18 não dá código nem requisito ao estágio, e este PPC não publica a regra de CH mínima."
+  - id: PFC
+    codigo: —
+    nome: Projeto de Final de Curso
+    periodo: 10
+    teorica: 30
+    pratica: 30
+    categoria: compl
+    pre: []
+    co: []
+    nota: A Tabela 18 não dá código nem requisito.
+  - id: ATCOMP
+    codigo: —
+    nome: Atividades Complementares
+    periodo: 10
+    teorica: 0
+    pratica: 60
+    categoria: compl
+    pre: []
+    co: []
+    nota: "A Tabela 18 traz só o total de 60h, sem dividir teórica e prática."

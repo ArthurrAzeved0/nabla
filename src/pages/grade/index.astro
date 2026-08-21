@@ -23,7 +23,23 @@ const base = import.meta.env.BASE_URL;
 const cadeiras = await getCollection("cadeiras");
 const comPagina = new Set(cadeiras.map((c) => c.data.id));
 
-const grades = (await getCollection("grade"))
+const todas = await getCollection("grade");
+
+/* Um curso pode ter mais de uma matriz no ar: Automação tem a de 2021 e a de
+   2010, que ainda vale para quem entrou até 2020. Quando isso acontece, o
+   cartão precisa dizer qual é qual — e a mais nova é a atual, o que se sabe
+   ordenando as matrizes do próprio curso, sem campo novo no dado. */
+const maisNova = new Map();
+for (const g of todas) {
+  const atual = maisNova.get(g.data.curso);
+  if (!atual || g.data.matriz > atual) maisNova.set(g.data.curso, g.data.matriz);
+}
+const quantasMatrizes = new Map();
+for (const g of todas) {
+  quantasMatrizes.set(g.data.curso, (quantasMatrizes.get(g.data.curso) ?? 0) + 1);
+}
+
+const grades = todas
   .map((g) => {
     const d = g.data.disciplinas;
     return {
@@ -35,9 +51,18 @@ const grades = (await getCollection("grade"))
         const id = typeof x.cadeira === "string" ? x.cadeira : x.cadeira?.id;
         return id && comPagina.has(id);
       }).length,
+      /* só marca quando há mais de uma: num curso de matriz única o selo
+         "atual" não informa nada */
+      selo:
+        (quantasMatrizes.get(g.data.curso) ?? 0) > 1
+          ? g.data.matriz === maisNova.get(g.data.curso)
+            ? "atual"
+            : "anterior"
+          : undefined,
     };
   })
-  .sort((a, b) => a.curso.localeCompare(b.curso, "pt-BR"));
+  /* curso em ordem alfabética; dentro do curso, a matriz mais nova primeiro */
+  .sort((a, b) => a.curso.localeCompare(b.curso, "pt-BR") || b.matriz.localeCompare(a.matriz));
 ---
 
 <Base
@@ -58,7 +83,10 @@ const grades = (await getCollection("grade"))
     {
       grades.map((g) => (
         <a class="card" href={`${base}grade/${g.sigla}/`}>
-          <span class="cod">matriz {g.matriz}</span>
+          <span class="cod">
+            matriz {g.matriz}
+            {g.selo && <i class:list={["selo", g.selo]}>{g.selo}</i>}
+          </span>
           <h2>{g.curso}</h2>
           <p>
             {g.quantas} disciplinas e {g.arestas} requisitos,{" "}
@@ -105,11 +133,25 @@ const grades = (await getCollection("grade"))
     box-shadow: var(--sombra-2);
   }
   .cod {
+    display: flex;
+    align-items: center;
+    gap: var(--e-2);
     font-family: var(--f-mono);
     font-size: var(--t-xs);
     letter-spacing: var(--tr-rotulo);
     text-transform: uppercase;
     color: var(--accent);
+  }
+  /* etiqueta do selo: a atual em destaque, a anterior apagada — a diferença
+     entre as duas é o que o leitor está procurando neste cartão */
+  .selo {
+    font-style: normal;
+    padding: 1px 6px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+  }
+  .selo.anterior {
+    color: var(--ink-3);
   }
   .card h2 {
     font-size: var(--t-lg);
