@@ -25,6 +25,11 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: var(--e-7);
+  /* O corpo da página NUNCA rola para o lado: conteúdo largo (mapa, tabela,
+     fórmula) rola dentro do próprio contêiner. Isto é rede de segurança —
+     se algo transbordar por engano, o estrago fica contido em vez de
+     deslocar a página inteira, como já aconteceu com o mapa da grade. */
+  overflow-x: clip;
 }
 
 /* ------------------------------ o papel ---------------------------------
