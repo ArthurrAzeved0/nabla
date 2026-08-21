@@ -4,7 +4,6 @@
     "nome": "Cálculo Diferencial e Integral Vetorial (Cálculo 3)",
     "codigo": "MAT05 · 60h",
     "descricao": "Funções de várias variáveis, limites, derivadas parciais, máximos e mínimos, integrais múltiplas, integrais de linha e de superfície, e os teoremas de Green, Gauss e Stokes.",
-    "ordem": 1,
     "teoria": {
       "funcoes-varias-variaveis": "c3-funcoes",
       "limites": "c3-limites",
@@ -34,11 +33,37 @@
     }
   },
   {
+    "id": "dinamica",
+    "nome": "Dinâmica (Mecânica Geral 2)",
+    "codigo": "MEC02 · 60h",
+    "descricao": "Cinemática da partícula: movimento retilíneo com aceleração variável, movimento dependente por cabos, movimento relativo, movimento curvilíneo e projétil. Depois, cinética e corpos rígidos.",
+    "teoria": {
+      "analise-vetorial": "din-vetores",
+      "produto-escalar": "din-vetores",
+      "produto-vetorial": "din-vetores",
+      "movimento-retilineo": "din-retilineo",
+      "posicao-velocidade-aceleracao": "din-retilineo",
+      "deslocamento-distancia": "din-retilineo",
+      "aceleracao-constante": "din-retilineo",
+      "aceleracao-variavel": "din-aceleracao-variavel",
+      "aceleracao-funcao-tempo": "din-aceleracao-variavel",
+      "aceleracao-funcao-velocidade": "din-aceleracao-variavel",
+      "aceleracao-funcao-posicao": "din-aceleracao-variavel",
+      "movimento-dependente": "din-dependente",
+      "blocos-cabos-polias": "din-dependente",
+      "movimento-relativo": "din-relativo",
+      "movimento-curvilineo": "din-curvilineo",
+      "coordenadas-retangulares": "din-curvilineo",
+      "movimento-projetil": "din-projetil",
+      "alcance-altura-maxima": "din-projetil",
+      "equacao-trajetoria": "din-projetil"
+    }
+  },
+  {
     "id": "eqdiferenciais",
     "nome": "Equações Diferenciais (Cálculo 4)",
     "codigo": "MAT06 · 60h",
     "descricao": "EDOs de 1ª ordem (lineares, separáveis, exatas, Bernoulli), 2ª ordem e ordem superior, aplicações (oscilador, RLC), sistemas lineares por autovalores, séries de potências, Cauchy-Euler e Frobenius.",
-    "ordem": 2,
     "teoria": {
       "crescimento-exponencial": "ed-aplicacoes1",
       "arrefecimento-de-newton": "ed-aplicacoes1",
@@ -73,7 +98,6 @@
     "nome": "Fundamentos do Eletromagnetismo",
     "codigo": "FÍSICA 2 · 60h",
     "descricao": "Carga e campo elétrico, Lei de Gauss, potencial, capacitância, circuitos CC, campos magnéticos, Biot-Savart e Ampère, indução, circuitos RL/RLC e Equações de Maxwell.",
-    "ordem": 3,
     "teoria": {
       "lei-de-coulomb": "em-carga",
       "campo-eletrico": "em-campo",
@@ -126,34 +150,6 @@
       "rlc-capacitores-misto": "em-oscilacoes",
       "rlc-sem-capacitor-fasores": "em-oscilacoes",
       "rlc-componentes-associados": "em-oscilacoes"
-    }
-  },
-  {
-    "id": "dinamica",
-    "nome": "Dinâmica (Mecânica Geral 2)",
-    "codigo": "MEC02 · 60h",
-    "descricao": "Cinemática da partícula: movimento retilíneo com aceleração variável, movimento dependente por cabos, movimento relativo, movimento curvilíneo e projétil. Depois, cinética e corpos rígidos.",
-    "ordem": 4,
-    "teoria": {
-      "analise-vetorial": "din-vetores",
-      "produto-escalar": "din-vetores",
-      "produto-vetorial": "din-vetores",
-      "movimento-retilineo": "din-retilineo",
-      "posicao-velocidade-aceleracao": "din-retilineo",
-      "deslocamento-distancia": "din-retilineo",
-      "aceleracao-constante": "din-retilineo",
-      "aceleracao-variavel": "din-aceleracao-variavel",
-      "aceleracao-funcao-tempo": "din-aceleracao-variavel",
-      "aceleracao-funcao-velocidade": "din-aceleracao-variavel",
-      "aceleracao-funcao-posicao": "din-aceleracao-variavel",
-      "movimento-dependente": "din-dependente",
-      "blocos-cabos-polias": "din-dependente",
-      "movimento-relativo": "din-relativo",
-      "movimento-curvilineo": "din-curvilineo",
-      "coordenadas-retangulares": "din-curvilineo",
-      "movimento-projetil": "din-projetil",
-      "alcance-altura-maxima": "din-projetil",
-      "equacao-trajetoria": "din-projetil"
     }
   }
 ]

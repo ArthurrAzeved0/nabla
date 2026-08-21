@@ -18,7 +18,9 @@ import Base from "~/layouts/Base.astro";
 import Regua from "~/components/Regua.astro";
 
 const base = import.meta.env.BASE_URL;
-const cadeiras = (await getCollection("cadeiras")).sort((a, b) => a.data.ordem - b.data.ordem);
+const cadeiras = (await getCollection("cadeiras")).sort((a, b) =>
+  a.data.nome.localeCompare(b.data.nome, "pt-BR"),
+);
 const questoes = await getCollection("questoes");
 const provas = ["1ee", "2ee", "final"] as const;
 
@@ -33,6 +35,7 @@ const totalGeral = cards.reduce((s, c) => s + c.total, 0);
 ---
 
 <Base
+  largura="ampla"
   titulo="Guia do aluno"
   descricao="Nabla — teoria, banco de questões e mapa da grade das cadeiras da POLI/UPE."
 >
@@ -70,10 +73,19 @@ const totalGeral = cards.reduce((s, c) => s + c.total, 0);
   .abre {
     font-size: var(--t-md);
   }
+  /* O cabeçalho acompanha a largura da página; o texto para em 68ch, como na
+     página do mapa e no índice das grades. */
+  h1 {
+    max-width: var(--largura-texto);
+  }
 
+  /* `auto-fill` e não `auto-fit`: com três cadeiras numa tela larga, o fit
+     esticaria cada cartão até virar um painel. O fill mantém largura de
+     cartão, alinha à esquerda no eixo do título, e a fileira vai enchendo à
+     medida que entram cadeiras. */
   .cartoes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     gap: var(--e-4);
   }
 
