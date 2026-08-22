@@ -25,6 +25,24 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Corrigido
 
+- **O cronômetro de cada questão nunca funcionou.** Clicar em "Cronometrar"
+  não fazia nada. A causa: o `sincronizar()` punha `data-status` no
+  `<article class="questao">`, e o roteamento do clique procurava
+  `[data-status]` **subindo** a árvore. Com o atributo no cartão, ele virava
+  ancestral de tudo lá dentro, casava primeiro e o clique do cronômetro caía
+  no ramo de status — que não achava a barra e voltava sem fazer nada. Os
+  botões "Acertei / Errei / Revisar" continuavam certos porque neles o
+  `closest` casa no próprio botão.
+- Esse atributo no cartão **não era lido por ninguém** (o filtro do painel lê
+  o módulo `progresso`, não o DOM; a barra colorida vem da classe), então era
+  só a armadilha: foi removido. E os seletores de clique passaram a exigir a
+  tag — `button[data-status]`, `button[data-cron]` —, o que impede um
+  contêiner de se passar por controle.
+- Entra com **teste de regressão** (`testes/ferramentas.test.mjs`, 11
+  verificações): um DOM mínimo em que o cartão tem `data-status` de propósito,
+  para provar que o clique do cronômetro chega ao seu ramo mesmo assim.
+  Verifiquei que ele falha se o seletor for afrouxado de volta.
+
 - **O cartão de prévia dos links estava desatualizado — e era o que aparecia
   no WhatsApp.** Ele dizia "147 questões de prova" e "43 seções de teoria",
   números de antes de Dinâmica entrar; o site já tinha **226** e **72**. O

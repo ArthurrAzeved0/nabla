@@ -1,0 +1,162 @@
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                    ferramentas.test.mjs *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Testa o ROTEAMENTO do clique na barra de ferramentas da questão, com um DOM
+   mínimo de mentira.
+
+   O que se está protegendo: o cronômetro ficou morto porque `sincronizar()`
+   punha `data-status` no <article class="questao">. O handler procurava
+   `[data-status]` SUBINDO a árvore, então o cartão virava ancestral de tudo
+   dentro dele, casava primeiro, e o clique do cronômetro nunca chegava ao seu
+   ramo — ele caía no ramo de status, não achava a barra e voltava.
+
+   Aqui o cartão tem `data-status` DE PROPÓSITO: é o cenário da regressão. Se
+   alguém afrouxar o seletor de volta para `[data-status]`, este teste falha.
+
+   Rodar: npm test */
+
+/* ------------------------------------------------------- DOM de mentira --- */
+class El {
+  constructor(tag, attrs = {}) {
+    this.tagName = tag.toUpperCase();
+    this.attrs = { ...attrs };
+    this.filhos = [];
+    this.pai = null;
+    this.textContent = "";
+    this._classes = new Set((attrs.class || "").split(/\s+/).filter(Boolean));
+    const self = this;
+    this.dataset = new Proxy(
+      {},
+      {
+        get: (_, k) => self.attrs["data-" + camelParaTraco(k)],
+        set: (_, k, v) => ((self.attrs["data-" + camelParaTraco(k)] = String(v)), true),
+      },
+    );
+    this.classList = {
+      add: (...c) => c.forEach((x) => self._classes.add(x)),
+      remove: (...c) => c.forEach((x) => self._classes.delete(x)),
+      contains: (c) => self._classes.has(c),
+    };
+  }
+  add(filho) {
+    filho.pai = this;
+    this.filhos.push(filho);
+    return filho;
+  }
+  setAttribute(k, v) { this.attrs[k] = String(v); }
+  getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; }
+  removeAttribute(k) { delete this.attrs[k]; }
+  hasAttribute(k) { return k in this.attrs; }
+  get className() { return [...this._classes].join(" "); }
+  casa(sel) {
+    /* aceita  tag[attr]  |  [attr]  |  .classe  */
+    const m = /^([a-z]*)(?:\[([^\]]+)\])?(?:\.([\w-]+))?$/i.exec(sel);
+    if (!m) throw new Error("seletor não suportado no teste: " + sel);
+    const [, tag, attr, cls] = m;
+    if (tag && this.tagName !== tag.toUpperCase()) return false;
+    if (attr && !(attr in this.attrs)) return false;
+    if (cls && !this._classes.has(cls)) return false;
+    return Boolean(tag || attr || cls);
+  }
+  closest(sel) {
+    let n = this;
+    while (n) { if (n.casa(sel)) return n; n = n.pai; }
+    return null;
+  }
+  *desc() { for (const f of this.filhos) { yield f; yield* f.desc(); } }
+  querySelector(sel) { for (const d of this.desc()) if (d.casa(sel)) return d; return null; }
+  querySelectorAll(sel) { return [...this.desc()].filter((d) => d.casa(sel)); }
+}
+const camelParaTraco = (k) => String(k).replace(/[A-Z]/g, (c) => "-" + c.toLowerCase());
+
+/* ------------------------------------------------------------- ambiente --- */
+const loja = new Map();
+globalThis.localStorage = {
+  getItem: (k) => (loja.has(k) ? loja.get(k) : null),
+  setItem: (k, v) => loja.set(k, v),
+  removeItem: (k) => loja.delete(k),
+};
+globalThis.CustomEvent = class { constructor(t) { this.type = t; } };
+
+/* monta a página: cartão COM data-status (o cenário da regressão) */
+const artigo = new El("article", { class: "questao", "data-status": "" });
+const barra = artigo.add(new El("div", { "data-ferramentas": "din-1ee-01" }));
+const btnCron = barra.add(new El("button", { "data-cron": "", "aria-pressed": "false" }));
+const rotulo = btnCron.add(new El("span", { "data-cron-rotulo": "" }));
+rotulo.textContent = "Cronometrar";
+const mostrador = barra.add(new El("span", { "data-tempo": "" }));
+mostrador.textContent = "00:00";
+const btnAcertei = barra.add(new El("button", { "data-status": "a", "aria-pressed": "false" }));
+
+const raiz = new El("body");
+raiz.add(artigo);
+
+/* O document de mentira precisa DESPACHAR de verdade: `marcar()` emite
+   `nabla:progresso`, e é esse evento que faz a barra se redesenhar. Sem isso o
+   teste falharia por culpa do próprio teste. */
+const ouvintes = new Map();
+globalThis.document = {
+  addEventListener: (t, fn) => {
+    if (!ouvintes.has(t)) ouvintes.set(t, []);
+    ouvintes.get(t).push(fn);
+  },
+  dispatchEvent: (ev) => (ouvintes.get(ev.type) ?? []).forEach((fn) => fn(ev)),
+  querySelectorAll: (sel) => raiz.querySelectorAll(sel),
+  visibilityState: "visible",
+};
+const ouvinteClique = (e) => (ouvintes.get("click") ?? []).forEach((fn) => fn(e));
+globalThis.window = {
+  addEventListener: () => {},
+  setInterval: () => 1,
+  clearInterval: () => {},
+};
+
+const M = await import("../.tmp-teste/ferramentas.mjs");
+M.ligarFerramentas();
+
+/* ---------------------------------------------------------------- testes --- */
+let falhas = 0;
+const teste = (nome, real, esperado) => {
+  const ok = JSON.stringify(real) === JSON.stringify(esperado);
+  console.log(`  ${ok ? "ok  " : "FALHA"} ${nome}`);
+  if (!ok) { console.log(`        esperado ${JSON.stringify(esperado)}, veio ${JSON.stringify(real)}`); falhas++; }
+};
+const clicar = (el) => ouvinteClique({ target: el });
+
+teste("o ouvinte de clique foi registrado", (ouvintes.get("click") ?? []).length, 1);
+
+/* 1) o cartão com data-status NÃO pode engolir o clique do cronômetro */
+clicar(btnCron);
+teste("1 clique inicia o cronômetro", btnCron.getAttribute("aria-pressed"), "true");
+teste("1 clique troca o rótulo para Pausar", rotulo.textContent, "Pausar");
+teste("1 clique marca o mostrador como rodando", mostrador.hasAttribute("data-rodando"), true);
+
+/* 2) o segundo clique pausa */
+clicar(btnCron);
+teste("2 cliques pausam", btnCron.getAttribute("aria-pressed"), "false");
+teste("2 cliques oferecem Retomar", rotulo.textContent, "Retomar");
+teste("2 cliques param o mostrador", mostrador.hasAttribute("data-rodando"), false);
+
+/* 3) clicar no ROTULO (dentro do botão) também conta: closest sobe até o botão */
+clicar(rotulo);
+teste("clique no rótulo retoma", btnCron.getAttribute("aria-pressed"), "true");
+clicar(rotulo);
+
+/* 4) o botão de status continua no seu ramo, e encerra a contagem */
+clicar(btnAcertei);
+teste("Acertei pinta o cartão", artigo.classList.contains("st-acertei"), true);
+teste("Acertei não deixa o cronômetro rodando", btnCron.getAttribute("aria-pressed"), "false");
+teste("Acertei marca o próprio botão", btnAcertei.getAttribute("aria-pressed"), "true");
+
+
+console.log(falhas === 0 ? "\n  ferramentas: todos passaram" : `\n  ferramentas: ${falhas} falha(s)`);
+if (falhas) process.exit(1);
