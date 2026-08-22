@@ -43,6 +43,14 @@ export type Dados = Record<string, Registro>;
 /** Disparado no `document` sempre que algo muda. */
 export const EVENTO = "nabla:progresso";
 
+/** O que aconteceu, quando importa saber. Hoje só o "apagou tudo" precisa se
+    identificar: quem guarda estado em memória (o cronômetro de cada questão)
+    tem de largá-lo, e isso não se deduz olhando o armazenamento. */
+export interface Mudanca {
+  /** id da cadeira cujo progresso foi apagado */
+  limpou?: string;
+}
+
 let cache: Dados | null = null;
 
 function ler(): Dados {
@@ -57,14 +65,14 @@ function ler(): Dados {
   return cache;
 }
 
-function gravar(d: Dados) {
+function gravar(d: Dados, mudanca?: Mudanca) {
   cache = d;
   try {
     localStorage.setItem(CHAVE, JSON.stringify(d));
   } catch {
     /* sem persistência: a sessão continua funcionando, só não sobrevive */
   }
-  document.dispatchEvent(new CustomEvent(EVENTO));
+  document.dispatchEvent(new CustomEvent<Mudanca | undefined>(EVENTO, { detail: mudanca }));
 }
 
 export function registro(id: string): Registro | undefined {
@@ -101,11 +109,16 @@ export function salvarTempo(id: string, segundos: number) {
   gravar(d);
 }
 
-/** Apaga o progresso de uma cadeira (os ids começam com "<cadeira>-"). */
+/** Apaga o progresso de uma cadeira (os ids começam com "<cadeira>-").
+
+    Avisa QUEM foi apagado: o cronômetro de cada questão guarda o tempo em
+    memória enquanto roda, e sem esse aviso ele continuaria contando de onde
+    estava — o "Limpar progresso" zerava o armazenamento e o mostrador seguia
+    marcando o tempo velho. */
 export function limparCadeira(cadeira: string) {
   const d = { ...ler() };
   for (const k of Object.keys(d)) if (k.startsWith(`${cadeira}-`)) delete d[k];
-  gravar(d);
+  gravar(d, { limpou: cadeira });
 }
 
 export interface Contagem {
@@ -132,9 +145,13 @@ export function contar(ids: readonly string[]): Contagem {
   return c;
 }
 
-/** Avisa quando o progresso muda, inclusive em OUTRA aba do navegador. */
-export function aoMudar(fn: () => void): () => void {
-  const local = () => fn();
+/** Avisa quando o progresso muda, inclusive em OUTRA aba do navegador.
+
+    O `fn` recebe a `Mudanca` quando ela existe. Vindo de outra aba não há
+    detalhe (o evento `storage` não carrega um), e é por isso que quem depende
+    disso também precisa se reconciliar com o armazenamento. */
+export function aoMudar(fn: (m?: Mudanca) => void): () => void {
+  const local = (ev: Event) => fn((ev as CustomEvent<Mudanca | undefined>).detail ?? undefined);
   const outraAba = (ev: StorageEvent) => {
     if (ev.key === CHAVE) {
       cache = null; /* a outra aba gravou: o cache local está velho */
