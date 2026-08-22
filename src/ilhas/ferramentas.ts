@@ -85,7 +85,7 @@ function sincronizar(barra: HTMLElement) {
   if (!id) return;
   const s = status(id);
 
-  for (const b of barra.querySelectorAll<HTMLButtonElement>("[data-status]")) {
+  for (const b of barra.querySelectorAll<HTMLButtonElement>("button[data-status]")) {
     b.setAttribute("aria-pressed", String(b.dataset.status === s));
   }
 
