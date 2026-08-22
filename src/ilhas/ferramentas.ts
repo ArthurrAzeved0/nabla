@@ -89,12 +89,17 @@ function sincronizar(barra: HTMLElement) {
     b.setAttribute("aria-pressed", String(b.dataset.status === s));
   }
 
-  /* a barra lateral colorida do cartão vem daqui */
+  /* A barra lateral colorida do cartão vem daqui — pela CLASSE, e só por ela.
+     NÃO voltar a pôr `data-status` no <article>: o seletor de clique abaixo
+     procura `[data-status]` subindo a árvore, então um atributo no cartão
+     virava ancestral de TUDO dentro dele e engolia o clique do cronômetro,
+     que nunca chegava ao seu próprio ramo. O cronômetro ficou morto assim.
+     Ninguém lia esse atributo (o filtro do painel lê o módulo `progresso`,
+     não o DOM), então ele era só a armadilha. */
   const questao = barra.closest<HTMLElement>(".questao");
   if (questao) {
     questao.classList.remove("st-acertei", "st-errei", "st-revisar");
     if (s) questao.classList.add(CLASSE_ESTADO[s]);
-    questao.dataset.status = s ?? "";
   }
 
   /* não sobrescreve o mostrador de um cronômetro em andamento */
@@ -113,7 +118,9 @@ export function ligarFerramentas() {
   document.addEventListener("click", (ev) => {
     const alvo = ev.target as HTMLElement | null;
 
-    const btnStatus = alvo?.closest<HTMLButtonElement>("[data-status]");
+    /* `button[data-status]`, não `[data-status]`: amarrar o seletor à TAG é o
+       que impede um contêiner de se passar por controle. */
+    const btnStatus = alvo?.closest<HTMLButtonElement>("button[data-status]");
     if (btnStatus) {
       const barra = btnStatus.closest<HTMLElement>("[data-ferramentas]");
       const id = barra?.dataset.ferramentas;
@@ -124,7 +131,7 @@ export function ligarFerramentas() {
       return;
     }
 
-    const btnCron = alvo?.closest<HTMLButtonElement>("[data-cron]");
+    const btnCron = alvo?.closest<HTMLButtonElement>("button[data-cron]");
     if (btnCron) {
       const barra = btnCron.closest<HTMLElement>("[data-ferramentas]");
       const id = barra?.dataset.ferramentas;
