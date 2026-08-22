@@ -25,6 +25,23 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Corrigido
 
+- **"Limpar progresso" não apagava o tempo do cronômetro.** O aviso promete
+  "marcações e tempos", e as marcações iam — o tempo ficava. Duas causas, uma
+  para cada estado do cronômetro:
+  - **pausado:** o `sincronizar()` repintava o mostrador com o valor guardado
+    em MEMÓRIA (`c.base`), não com o do armazenamento. Agora, com o cronômetro
+    pausado, o armazenamento manda — o que também acerta o caso de apagar em
+    **outra aba**, que não manda detalhe no evento.
+  - **rodando:** um cronômetro em curso só é gravado ao pausar, então não há
+    como descobrir pelo armazenamento que ele deveria parar. O evento
+    `nabla:progresso` passou a dizer **o que** aconteceu (`{ limpou: cadeira }`)
+    e o cronômetro reage: para o intervalo, zera e volta o rótulo para
+    "Cronometrar" — não "Retomar", porque não há mais nada acumulado.
+- Entram **13 verificações** no `testes/ferramentas.test.mjs`, agora com
+  relógio controlado (sem ele os cliques caíam no mesmo milissegundo e o tempo
+  arredondava para zero, medindo um cenário que não existe usando o site).
+  Conferi que 7 delas falham se a correção for desfeita.
+
 - **O cronômetro de cada questão nunca funcionou.** Clicar em "Cronometrar"
   não fazia nada. A causa: o `sincronizar()` punha `data-status` no
   `<article class="questao">`, e o roteamento do clique procurava

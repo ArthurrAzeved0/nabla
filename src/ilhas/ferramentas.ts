@@ -25,6 +25,7 @@ import {
   tempo,
   aoMudar,
   formatarTempo,
+  type Mudanca,
   type Status,
 } from "./progresso";
 
@@ -79,6 +80,23 @@ function retomar(id: string, barra: HTMLElement) {
   pintarTempo(barra, decorrido(c), true);
 }
 
+/** Larga o cronômetro em memória e devolve o botão ao estado inicial.
+    Usado quando o progresso é APAGADO por fora: sem isto o intervalo continua
+    correndo e o mostrador segue no tempo velho, mesmo com o armazenamento
+    zerado — era o que fazia o "Limpar progresso" não apagar o tempo. */
+function descartar(id: string, barra: HTMLElement) {
+  const c = crons.get(id);
+  if (c) window.clearInterval(c.tique);
+  crons.delete(id);
+
+  const btn = barra.querySelector<HTMLButtonElement>("[data-cron]");
+  btn?.setAttribute("aria-pressed", "false");
+  const rot = barra.querySelector<HTMLElement>("[data-cron-rotulo]");
+  /* "Cronometrar", não "Retomar": não há mais nada acumulado para retomar */
+  if (rot) rot.textContent = "Cronometrar";
+  pintarTempo(barra, 0, false);
+}
+
 /* ------------------------------------------------------- reflete o estado */
 function sincronizar(barra: HTMLElement) {
   const id = barra.dataset.ferramentas;
@@ -102,9 +120,18 @@ function sincronizar(barra: HTMLElement) {
     if (s) questao.classList.add(CLASSE_ESTADO[s]);
   }
 
-  /* não sobrescreve o mostrador de um cronômetro em andamento */
   const c = crons.get(id);
-  if (!c || c.inicio === null) pintarTempo(barra, c ? c.base : tempo(id), false);
+  if (!c) {
+    pintarTempo(barra, tempo(id), false);
+  } else if (c.inicio === null) {
+    /* Pausado: o ARMAZENAMENTO manda, não o que está em memória. É o que faz
+       o mostrador acompanhar quando o tempo é apagado — aqui ou em outra aba,
+       que não manda detalhe no evento. */
+    c.base = tempo(id);
+    pintarTempo(barra, c.base, false);
+    if (c.base === 0) descartar(id, barra);
+  }
+  /* rodando: não sobrescreve — quem pinta é o tique */
 }
 
 function sincronizarTudo() {
@@ -155,5 +182,16 @@ export function ligarFerramentas() {
     if (document.visibilityState === "hidden") salvarTodos();
   });
 
-  aoMudar(sincronizarTudo);
+  aoMudar((m?: Mudanca) => {
+    /* Apagou o progresso da cadeira: para os cronômetros DELA antes de
+       redesenhar. Um que esteja rodando não se descobre pelo armazenamento —
+       ele só é gravado ao pausar —, então o aviso explícito é necessário. */
+    if (m?.limpou) {
+      for (const barra of document.querySelectorAll<HTMLElement>("[data-ferramentas]")) {
+        const id = barra.dataset.ferramentas;
+        if (id && id.startsWith(`${m.limpou}-`)) descartar(id, barra);
+      }
+    }
+    sincronizarTudo();
+  });
 }
