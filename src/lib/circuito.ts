@@ -42,6 +42,7 @@ export type Bipolo =
   | "L" /* indutor             */
   | "V" /* fonte de tensão     */
   | "I" /* fonte de corrente   */
+  | "Vac" /* fonte alternada (círculo com senoide) */
   | "Vd" /* fonte de tensão CONTROLADA (losango)   */
   | "Id" /* fonte de corrente CONTROLADA (losango) */
   | "S"; /* chave */
@@ -120,6 +121,15 @@ function simbolo(t: Bipolo, cor: string): string {
         `<line x1="8" y1="0" x2="${h}" y2="0" stroke="${cor}" stroke-width="1.8"/>` +
         `<circle cx="-8" cy="0" r="2.2" fill="${cor}"/><circle cx="8" cy="0" r="2.2" fill="${cor}"/>`
       );
+    case "Vac": {
+      const r = 12;
+      return (
+        `<circle cx="0" cy="0" r="${r}" fill="none" stroke="${cor}" stroke-width="1.8"/>` +
+        `<line x1="${-h}" y1="0" x2="${-r}" y2="0" stroke="${cor}" stroke-width="1.8"/>` +
+        `<line x1="${r}" y1="0" x2="${h}" y2="0" stroke="${cor}" stroke-width="1.8"/>` +
+        `<path d="M -7 0 q 3.5 -6 7 0 q 3.5 6 7 0" fill="none" stroke="${cor}" stroke-width="1.6"/>`
+      );
+    }
     case "V":
     case "I":
     case "Vd":

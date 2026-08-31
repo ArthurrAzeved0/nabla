@@ -71,6 +71,7 @@ teste("nenhum texto sai, no caso do rótulo longo", textosDentro(largo), true);
 teste("resistor vira um path em zigue-zague", /<path d="M -15 0 L/.test(desenhar([{ t: "R", de: [0, 0], para: [2, 0] }], { alt: "x" })), true);
 teste("capacitor tem as duas placas", (desenhar([{ t: "C", de: [0, 0], para: [2, 0] }], { alt: "x" }).match(/stroke-width="2.2"/g) || []).length, 2);
 teste("fonte independente é círculo", /<circle cx="0" cy="0" r="12"/.test(desenhar([{ t: "V", de: [0, 0], para: [2, 0] }], { alt: "x" })), true);
+teste("fonte alternada tem a senoide", /<path d="M -7 0 q 3.5 -6 7 0/.test(desenhar([{ t: "Vac", de: [0, 0], para: [2, 0] }], { alt: "x" })), true);
 teste("fonte controlada é losango", /<polygon points="0,-12 12,0 0,12 -12,0"/.test(desenhar([{ t: "Vd", de: [0, 0], para: [2, 0] }], { alt: "x" })), true);
 teste("terra desenha as três barras", (desenhar([{ t: "terra", em: [0, 0] }, { t: "fio", pts: [[0, 0], [1, 0]] }], { alt: "x" }).match(/stroke-width="2"/g) || []).length, 3);
 
