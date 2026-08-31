@@ -17,7 +17,12 @@
       "resistencia-equivalente": "ckt-ohm",
       "curto-e-aberto": "ckt-ohm",
       "divisor-de-tensao": "ckt-divisores",
-      "divisor-de-corrente": "ckt-divisores"
+      "divisor-de-corrente": "ckt-divisores",
+      "lkc": "ckt-kirchhoff",
+      "lkt": "ckt-kirchhoff",
+      "leis-de-kirchhoff": "ckt-kirchhoff",
+      "supermalha": "ckt-kirchhoff",
+      "superno": "ckt-kirchhoff"
     }
   },
   {

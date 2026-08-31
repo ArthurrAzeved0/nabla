@@ -8,6 +8,7 @@ unidades:
       - { id: ckt-elementos, titulo: "Elementos passivos e ativos; fontes independentes e controladas" }
       - { id: ckt-ohm, titulo: "Lei de Ohm e associação de resistores" }
       - { id: ckt-divisores, titulo: "Divisor de tensão e divisor de corrente" }
+      - { id: ckt-kirchhoff, titulo: "As leis de Kirchhoff" }
 ---
 
 {/* **************************************************************************
@@ -367,6 +368,94 @@ i_3 = 3\,\frac{R_2}{R_2 + R_3} = 3\,\frac{12}{18} = 2\ \mathrm{A}\ ✔
 $$
 
 O resistor **cruzado** ($R_2$) no numerador — e o resultado bate pelos dois caminhos.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-kirchhoff" num="05" titulo="As leis de Kirchhoff">
+
+**A ideia.** A Lei de Ohm descreve **um** elemento. As leis de Kirchhoff descrevem como os elementos **conversam** — e são elas, não Ohm, que sustentam todo o resto da cadeira: análise nodal, análise de malhas, Thévenin e as equações diferenciais dos transitórios saem todas daqui. São duas, e cada uma é uma lei de conservação disfarçada.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- **LKC** (lei de Kirchhoff das correntes, ou 1ª lei) — conservação da **carga** num nó;
+- **LKT** (lei de Kirchhoff das tensões, ou 2ª lei) — conservação da **energia** num laço;
+- **supernó** — dois nós unidos por uma fonte de tensão, tratados como um só;
+- **supermalha** — duas malhas que compartilham uma fonte de corrente, tratadas como uma só.
+
+</Caixa>
+
+### LKC — no nó, o que entra sai
+
+$$
+\sum_{k} i_k = 0
+\qquad\text{ou}\qquad
+\sum i_{\text{entra}} = \sum i_{\text{sai}}
+$$
+
+Carga não se acumula num nó (um nó é um ponto, não tem capacitância). Vale para **qualquer** nó e também para qualquer **superfície fechada** que envolva parte do circuito — é essa generalização que autoriza o supernó.
+
+### LKT — no laço, a soma das quedas é zero
+
+$$
+\sum_{k} v_k = 0
+$$
+
+Percorra um laço fechado e volte ao ponto de partida: você tem de voltar ao **mesmo potencial**. Se não voltasse, daria para extrair energia dando voltas — e não dá.
+
+<Caixa tipo="macete">
+
+**O sinal, que é onde se perde a questão.** Fixe um sentido de percurso (horário, por exemplo) e use uma regra só, sempre a mesma:
+
+> **entrou pelo $-$ e saiu pelo $+$ → a tensão soma $(+v)$; entrou pelo $+$ → subtrai $(-v)$.**
+
+Para um **resistor**, o $+$ fica no terminal por onde a corrente **entra**. Então, percorrendo **a favor** da corrente, o resistor entra como $-Ri$; **contra** a corrente, como $+Ri$.
+
+Não invente uma regra por questão. A que você escolher tem de valer para o circuito inteiro, e o sinal do resultado no fim é que diz se o seu chute de sentido estava certo.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Quantas equações, e quais">
+
+Um circuito com $n$ nós e $b$ ramos precisa de $b$ equações. Delas:
+
+- **$n - 1$** vêm da LKC (o último nó é combinação linear dos outros — escrever a LKC em todos os $n$ dá uma equação redundante);
+- **$b - n + 1$** vêm da LKT, uma por **malha**.
+
+É por isso que "quantas malhas independentes existem" tem resposta exata, e é o que garante que a análise de malhas nunca fique nem faltando nem sobrando equação.
+
+</Caixa>
+
+<Circuito
+  alt="Nó A com três ramos: 5 A entrando, i1 e 3 A saindo"
+  itens={[
+    { t: "fio", pts: [[0, 1], [2, 1]] },
+    { t: "corrente", de: [0, 1], para: [1, 1], rotulo: "5 A", abaixo: false },
+    { t: "no", em: [2, 1] },
+    { t: "fio", pts: [[2, 1], [4, 1]] },
+    { t: "corrente", de: [2, 1], para: [3.4, 1], rotulo: "3 A", abaixo: false },
+    { t: "fio", pts: [[2, 1], [2, 2.6]] },
+    { t: "corrente", de: [2, 1], para: [2, 2.4], rotulo: "i₁" },
+    { t: "texto", em: [2, 0.6], texto: "A" },
+  ]}
+>
+
+No nó $A$: entra $5\ \mathrm{A}$, saem $3\ \mathrm{A}$ e $i_1$. Logo $i_1 = 5 - 3 = 2\ \mathrm{A}$ — e se o resultado desse negativo, significaria apenas que a corrente vai no sentido oposto ao da seta.
+
+</Circuito>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — uma malha, uma equação">
+
+Uma fonte de $20\ \mathrm{V}$ alimenta $R_1 = 3\ \Omega$ e $R_2 = 7\ \Omega$ em série. Chame de $i$ a corrente no sentido horário e percorra a malha no mesmo sentido, partindo do terminal $-$ da fonte:
+
+$$
++20 - 3i - 7i = 0
+\quad\Longrightarrow\quad
+i = 2\ \mathrm{A}
+$$
+
+A fonte entrou com $+$ (percurso do $-$ para o $+$) e os resistores com $-$ (percurso a favor da corrente). Conferindo pela potência: a fonte fornece $20 \times 2 = 40\ \mathrm{W}$, os resistores absorvem $3(2)^2 + 7(2)^2 = 12 + 28 = 40\ \mathrm{W}$. Soma zero ✔
 
 </Caixa>
 
