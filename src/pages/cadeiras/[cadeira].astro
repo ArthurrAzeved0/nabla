@@ -21,6 +21,7 @@ import Topico from "~/components/Topico.astro";
 import Formula from "~/components/Formula.astro";
 import Caixa from "~/components/Caixa.astro";
 import Figura from "~/components/Figura.astro";
+import Circuito from "~/components/Circuito.astro";
 import FigPar from "~/components/FigPar.astro";
 
 export async function getStaticPaths() {
@@ -48,7 +49,7 @@ export async function getStaticPaths() {
 
 const { cadeira, teoria, contagem } = Astro.props;
 const Conteudo = teoria ? (await render(teoria)).Content : null;
-const MDX = { Topico, Formula, Caixa, Figura, FigPar };
+const MDX = { Topico, Formula, Caixa, Figura, FigPar, Circuito };
 ---
 
 <Base titulo={cadeira.data.nome} descricao={cadeira.data.descricao}>

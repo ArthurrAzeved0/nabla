@@ -25,6 +25,7 @@ import Questao from "~/components/Questao.astro";
 import Gabarito from "~/components/Gabarito.astro";
 import Passos from "~/components/Passos.astro";
 import Figura from "~/components/Figura.astro";
+import Circuito from "~/components/Circuito.astro";
 import Caixa from "~/components/Caixa.astro";
 
 const ROTULO = { "1ee": "1º EE", "2ee": "2º EE", final: "Prova Final" } as const;
@@ -68,7 +69,7 @@ const totalCadeira = Object.values(contagem).reduce((s: number, n) => s + (n as 
 const renderizadas = await Promise.all(
   itens.map(async (q) => ({ ...q, Conteudo: (await render(q.entry)).Content })),
 );
-const MDX = { Gabarito, Passos, Figura, Caixa };
+const MDX = { Gabarito, Passos, Figura, Caixa, Circuito };
 ---
 
 <Base
