@@ -28,42 +28,29 @@ Um circuito tem **dois resistores iguais** $R = 40{,}0\ \Omega$ em paralelo, em 
 
 (d) Determine o valor do indutor que, adicionado em série, levaria a frequência de excitação usada à ressonância.
 
-<Figura>
-  <svg viewBox="0 0 260 150" role="img" aria-label="Fonte AC ligada a dois resistores em paralelo em série com dois capacitores em série">
-    {/* fonte */}
-    <circle cx="35" cy="80" r="15" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <path d="M 27 80 q 4 -7 8 0 q 4 7 8 0" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <text x="35" y="115" font-size="9" fill="var(--ink-2)" text-anchor="middle">E(t)</text>
-    <line x1="35" y1="65" x2="35" y2="35"/>
-    <line x1="35" y1="35" x2="80" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    {/* dois R em paralelo */}
-    <line x1="80" y1="35" x2="80" y2="20" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <rect x="80" y="12" width="40" height="12" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.3"/>
-    <line x1="80" y1="35" x2="80" y2="50" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <rect x="80" y="44" width="40" height="12" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.3"/>
-    <text x="100" y="8" font-size="9" fill="var(--accent)" text-anchor="middle">R ∥ R</text>
-    <line x1="120" y1="20" x2="135" y2="20" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="120" y1="50" x2="135" y2="50" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="135" y1="20" x2="135" y2="50" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="135" y1="35" x2="160" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    {/* dois C em série */}
-    <line x1="165" y1="29" x2="165" y2="41" stroke="var(--warn)" stroke-width="2"/>
-    <line x1="171" y1="29" x2="171" y2="41" stroke="var(--warn)" stroke-width="2"/>
-    <line x1="171" y1="35" x2="185" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <line x1="189" y1="29" x2="189" y2="41" stroke="var(--warn)" stroke-width="2"/>
-    <line x1="195" y1="29" x2="195" y2="41" stroke="var(--warn)" stroke-width="2"/>
-    <text x="180" y="18" font-size="9" fill="var(--warn)" text-anchor="middle">C — C</text>
-    <line x1="195" y1="35" x2="225" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <line x1="225" y1="35" x2="225" y2="125" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <line x1="35" y1="95" x2="35" y2="125" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <line x1="35" y1="125" x2="225" y2="125" stroke="var(--ink-2)" stroke-width="1.5"/>
-  </svg>
-  <figcaption>
+<Circuito
+  alt="Fonte alternada E(t) em série com dois resistores R em paralelo e dois capacitores C em série"
+  itens={[
+    { t: "Vac", de: [0, 2], para: [0, 0], rotulo: "E(t)" },
+    { t: "fio", pts: [[0, 0], [1, 0]] },
+    { t: "no", em: [1, 0] },
+    { t: "fio", pts: [[1, 0], [1, -0.7]] },
+    { t: "R", de: [1, -0.7], para: [3, -0.7], rotulo: "R" },
+    { t: "fio", pts: [[3, -0.7], [3, 0]] },
+    { t: "fio", pts: [[1, 0], [1, 0.7]] },
+    { t: "R", de: [1, 0.7], para: [3, 0.7], rotulo: "R", abaixo: true },
+    { t: "fio", pts: [[3, 0.7], [3, 0]] },
+    { t: "no", em: [3, 0] },
+    { t: "fio", pts: [[3, 0], [3.6, 0]] },
+    { t: "C", de: [3.6, 0], para: [5.1, 0], rotulo: "C" },
+    { t: "C", de: [5.1, 0], para: [6.6, 0], rotulo: "C" },
+    { t: "fio", pts: [[6.6, 0], [7.2, 0], [7.2, 2], [0, 2]] },
+  ]}
+>
 
 Cuidado: resistores em paralelo somam como capacitores em série (e vice-versa).
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 <Gabarito>
 (a) $R_{\text{eq}} = 20{,}0\ \Omega$, $C_{\text{eq}} = 4{,}0\ \mu\text{F}$  ·  (b) $Z \approx 497{,}8\ \Omega$  ·  (c) $I \approx 16{,}1\ \text{mA}$  ·  (d) $L \approx 989\ \text{mH}$
