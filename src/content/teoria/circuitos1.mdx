@@ -6,6 +6,7 @@ unidades:
     secoes:
       - { id: ckt-grandezas, titulo: "Corrente, tensão, potência e energia" }
       - { id: ckt-elementos, titulo: "Elementos passivos e ativos; fontes independentes e controladas" }
+      - { id: ckt-ohm, titulo: "Lei de Ohm e associação de resistores" }
 ---
 
 {/* **************************************************************************
@@ -188,6 +189,96 @@ i_x = i_1 - i_2
 $$
 
 Agora são três equações e três incógnitas ($i_1$, $i_2$, $i_x$) — ou duas, substituindo. Sem essa linha o sistema fica **indeterminado**, e é exatamente aí que a resolução trava.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-ohm" num="03" titulo="Lei de Ohm e associação de resistores">
+
+**A ideia.** O resistor é o único elemento da cadeira em que tensão e corrente se relacionam por um **número**, sem derivada e sem integral. Por isso ele é o mais fácil — e por isso a "revisão de circuitos resistivos" é a primeira unidade: tudo o que vem depois (capacitor, indutor, transitório) é essa mesma análise com uma equação diferencial no lugar de $R$.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $R$ — **resistência**, em ohms ($\Omega$);
+- $G = 1/R$ — **condutância**, em siemens ($\mathrm{S}$); aparece na análise nodal, onde somar condutâncias é mais natural que somar resistências;
+- $R_{eq}$ — resistência equivalente: o valor único que substitui um conjunto **sem que o resto do circuito perceba**.
+
+</Caixa>
+
+$$
+v = R\,i
+\qquad\qquad
+p = v\,i = R\,i^2 = \frac{v^2}{R}
+$$
+
+Note que $p \ge 0$ sempre: resistor **só absorve**. As três formas da potência são a mesma conta — use a que já tem o dado que você conhece, sem passar pela terceira variável.
+
+### As duas associações
+
+<Caixa tipo="dica">
+
+**Série** — mesmo **corrente**, tensões se somam:
+
+$$
+R_{eq} = R_1 + R_2 + \cdots + R_n
+$$
+
+**Paralelo** — mesma **tensão**, correntes se somam:
+
+$$
+\frac{1}{R_{eq}} = \frac{1}{R_1} + \cdots + \frac{1}{R_n}
+\qquad\text{ou}\qquad
+G_{eq} = G_1 + \cdots + G_n
+$$
+
+Para **dois** em paralelo vale o atalho que se usa o tempo todo:
+
+$$
+R_{eq} = \frac{R_1 R_2}{R_1 + R_2}
+$$
+
+E dois casos particulares que resolvem muita coisa de cabeça: $n$ resistores **iguais** em paralelo dão $R/n$; e o paralelo é **sempre menor** que o menor dos dois — se der maior, a conta está errada.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+**O erro nº 1 desta unidade é chamar de série ou paralelo o que não é.** Os critérios são geométricos, não visuais:
+
+- **em série** só se compartilham um nó **e mais nada** chega nesse nó. Se um terceiro ramo toca o ponto do meio, **não é série** — parte da corrente vai por ele.
+- **em paralelo** só se os **dois** terminais estiverem no mesmo par de nós.
+
+O jeito seguro de enxergar: **numere os nós** antes de simplificar, lembrando que fio ideal não separa nós. Dois resistores estão em paralelo se, e só se, os pares de nós forem idênticos.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — simplificar de fora para dentro">
+
+Um circuito tem, entre os terminais $a$ e $b$: $R_1 = 6\ \Omega$ em série com o paralelo de $R_2 = 12\ \Omega$ e $R_3 = 4\ \Omega$.
+
+Comece pelo **mais interno**:
+
+$$
+R_2 \parallel R_3 = \frac{12 \times 4}{12 + 4} = 3\ \Omega
+$$
+
+(menor que $4$, como tinha de ser). Agora a série:
+
+$$
+R_{ab} = 6 + 3 = 9\ \Omega
+$$
+
+**A ordem importa:** simplifique sempre do ponto mais **distante** dos terminais pedidos para o mais próximo. Começar pelo lado dos terminais costuma destruir a informação de que você precisa.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Curto e aberto, os dois casos-limite">
+
+- **curto-circuito** é $R = 0$: mesma tensão nos dois lados ($v = 0$), corrente qualquer. Um resistor **em paralelo com um curto** é irrelevante — o curto leva tudo.
+- **circuito aberto** é $R \to \infty$: corrente nula, tensão qualquer. Um resistor **em série com um aberto** é irrelevante — não passa nada.
+
+Reconhecer esses dois na figura elimina ramos inteiros antes da primeira equação, e é o que transforma um circuito assustador em três resistores.
 
 </Caixa>
 

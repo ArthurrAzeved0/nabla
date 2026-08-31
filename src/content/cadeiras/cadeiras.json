@@ -11,7 +11,11 @@
       "no-ramo-malha": "ckt-elementos",
       "fontes-controladas": "ckt-elementos",
       "fonte-de-tensao": "ckt-elementos",
-      "fonte-de-corrente": "ckt-elementos"
+      "fonte-de-corrente": "ckt-elementos",
+      "lei-de-ohm": "ckt-ohm",
+      "serie-paralelo": "ckt-ohm",
+      "resistencia-equivalente": "ckt-ohm",
+      "curto-e-aberto": "ckt-ohm"
     }
   },
   {
