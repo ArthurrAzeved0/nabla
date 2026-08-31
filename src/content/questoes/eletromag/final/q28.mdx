@@ -28,52 +28,30 @@ Um circuito RLC série tem $R = 25{,}0\ \Omega$ e $L = 50{,}0\ \text{mH}$, excit
 
 (d) Determine a potência média dissipada.
 
-<Figura>
-  <svg viewBox="0 0 260 160" role="img" aria-label="Circuito RLC com R, L e capacitores C1 e C2 em série em paralelo com C3">
-    <circle cx="30" cy="80" r="14" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <path d="M 22 80 q 4 -6 8 0 q 4 6 8 0" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <text x="30" y="112" font-size="9" fill="var(--ink-2)" text-anchor="middle">E(t)</text>
-    <line x1="30" y1="66" x2="30" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <line x1="30" y1="35" x2="55" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    {/* R */}
-    <rect x="55" y="29" width="34" height="12" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.3"/>
-    <text x="72" y="24" font-size="9" fill="var(--accent)" text-anchor="middle">R</text>
-    <line x1="89" y1="35" x2="105" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    {/* L */}
-    <path d="M 105 35 q 5 -8 10 0 q 5 -8 10 0 q 5 -8 10 0" fill="none" stroke="var(--ok)" stroke-width="1.6"/>
-    <text x="120" y="22" font-size="9" fill="var(--ok)" text-anchor="middle">L</text>
-    <line x1="135" y1="35" x2="160" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    {/* C1 e C2 em série (ramo de cima) */}
-    <line x1="160" y1="35" x2="160" y2="22" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="160" y1="22" x2="178" y2="22" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="182" y1="16" x2="182" y2="28" stroke="var(--warn)" stroke-width="2"/>
-    <line x1="187" y1="16" x2="187" y2="28" stroke="var(--warn)" stroke-width="2"/>
-    <text x="184" y="12" font-size="8" fill="var(--warn)" text-anchor="middle">C₁</text>
-    <line x1="187" y1="22" x2="200" y2="22" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="204" y1="16" x2="204" y2="28" stroke="var(--warn)" stroke-width="2"/>
-    <line x1="209" y1="16" x2="209" y2="28" stroke="var(--warn)" stroke-width="2"/>
-    <text x="206" y="12" font-size="8" fill="var(--warn)" text-anchor="middle">C₂</text>
-    <line x1="209" y1="22" x2="225" y2="22" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="225" y1="22" x2="225" y2="35" stroke="var(--ink-2)" stroke-width="1.2"/>
-    {/* C3 em paralelo (ramo de baixo) */}
-    <line x1="160" y1="35" x2="160" y2="52" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="160" y1="52" x2="184" y2="52" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="188" y1="46" x2="188" y2="58" stroke="var(--warn)" stroke-width="2"/>
-    <line x1="193" y1="46" x2="193" y2="58" stroke="var(--warn)" stroke-width="2"/>
-    <text x="190" y="70" font-size="8" fill="var(--warn)" text-anchor="middle">C₃</text>
-    <line x1="193" y1="52" x2="225" y2="52" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="225" y1="52" x2="225" y2="35" stroke="var(--ink-2)" stroke-width="1.2"/>
-    <line x1="225" y1="35" x2="240" y2="35" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <line x1="240" y1="35" x2="240" y2="130" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <line x1="30" y1="94" x2="30" y2="130" stroke="var(--ink-2)" stroke-width="1.5"/>
-    <line x1="30" y1="130" x2="240" y2="130" stroke="var(--ink-2)" stroke-width="1.5"/>
-  </svg>
-  <figcaption>
+<Circuito
+  alt="Fonte alternada em série com R e L, alimentando C1 em série com C2, tudo em paralelo com C3"
+  itens={[
+    { t: "Vac", de: [0, 2.6], para: [0, 0], rotulo: "E(t)" },
+    { t: "fio", pts: [[0, 0], [0.5, 0]] },
+    { t: "R", de: [0.5, 0], para: [2, 0], rotulo: "R" },
+    { t: "L", de: [2, 0], para: [3.5, 0], rotulo: "L" },
+    { t: "fio", pts: [[3.5, 0], [4, 0]] },
+    { t: "no", em: [4, 0] },
+    { t: "fio", pts: [[4, 0], [4, -0.95]] },
+    { t: "C", de: [4, -0.95], para: [5.5, -0.95], rotulo: "C₁" },
+    { t: "C", de: [5.5, -0.95], para: [7, -0.95], rotulo: "C₂" },
+    { t: "fio", pts: [[7, -0.95], [7, 0]] },
+    { t: "fio", pts: [[4, 0], [4, 0.95]] },
+    { t: "C", de: [4, 0.95], para: [7, 0.95], rotulo: "C₃", abaixo: true },
+    { t: "fio", pts: [[7, 0.95], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "fio", pts: [[7, 0], [7.6, 0], [7.6, 2.6], [0, 2.6]] },
+  ]}
+>
 
 Primeiro $C_1$ em série com $C_2$, depois esse resultado em paralelo com $C_3$.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 <Gabarito>
 (a) $C_{\text{eq}} = 6{,}0\ \mu\text{F}$  ·  (b) $X_L \approx 31{,}4\ \Omega$, $X_C \approx 265{,}3\ \Omega$, $Z \approx 235{,}2\ \Omega$  ·  (c) $I \approx 63{,}8\ \text{mA}$  ·  (d) $P_{\text{med}} \approx 50{,}9\ \text{mW}$
