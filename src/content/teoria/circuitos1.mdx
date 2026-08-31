@@ -7,6 +7,7 @@ unidades:
       - { id: ckt-grandezas, titulo: "Corrente, tensão, potência e energia" }
       - { id: ckt-elementos, titulo: "Elementos passivos e ativos; fontes independentes e controladas" }
       - { id: ckt-ohm, titulo: "Lei de Ohm e associação de resistores" }
+      - { id: ckt-divisores, titulo: "Divisor de tensão e divisor de corrente" }
 ---
 
 {/* **************************************************************************
@@ -279,6 +280,93 @@ $$
 - **circuito aberto** é $R \to \infty$: corrente nula, tensão qualquer. Um resistor **em série com um aberto** é irrelevante — não passa nada.
 
 Reconhecer esses dois na figura elimina ramos inteiros antes da primeira equação, e é o que transforma um circuito assustador em três resistores.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-divisores" num="04" titulo="Divisor de tensão e divisor de corrente">
+
+**A ideia.** Os divisores não são fórmulas novas: são a Lei de Ohm aplicada a uma associação, escrita de um jeito que dispensa achar a corrente (ou a tensão) total primeiro. Bem usados, eles resolvem em uma linha o que a análise nodal resolve em um sistema — e é por isso que valem ser reconhecidos de olho.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v_k$, $i_k$ — tensão e corrente **no resistor $k$** do conjunto;
+- $v$ — tensão **sobre a associação em série** (a que se divide);
+- $i$ — corrente **que entra na associação em paralelo** (a que se divide).
+
+</Caixa>
+
+### Divisor de tensão — série
+
+$$
+v_k = v\,\frac{R_k}{R_1 + R_2 + \cdots + R_n}
+$$
+
+A tensão se reparte **proporcionalmente** à resistência: o maior resistor fica com a maior fatia. Faz sentido — mesma corrente em todos, então $v_k = R_k i$.
+
+### Divisor de corrente — paralelo
+
+$$
+i_k = i\,\frac{G_k}{G_1 + \cdots + G_n} = i\,\frac{R_{eq}}{R_k}
+$$
+
+A corrente se reparte **inversamente** à resistência: o menor resistor leva a maior fatia — é o caminho mais fácil. Para **dois** resistores, a forma que se usa na prática:
+
+$$
+i_1 = i\,\frac{R_2}{R_1 + R_2}
+\qquad\qquad
+i_2 = i\,\frac{R_1}{R_1 + R_2}
+$$
+
+<Caixa tipo="macete">
+
+**O erro clássico: o resistor cruzado.** No divisor de **corrente** com dois resistores, a corrente de $R_1$ leva $R_2$ no numerador — o **outro**. No divisor de **tensão**, $v_1$ leva $R_1$, o **próprio**.
+
+O jeito de nunca trocar é conferir pelo caso extremo, em dois segundos:
+
+- se $R_2 \to \infty$ (aberto), **toda** a corrente tem de ir por $R_1$. Na fórmula, $i_1 = i\,R_2/(R_1+R_2) \to i$. ✔ Confere.
+- se você tivesse escrito $i_1 = i\,R_1/(R_1+R_2)$, esse mesmo limite daria $i_1 \to 0$ — absurdo.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Quando o divisor NÃO vale">
+
+O divisor de tensão exige que os resistores estejam **realmente em série** — nenhuma corrente saindo pelo meio. Se um terceiro ramo (ou uma fonte de corrente, ou a entrada de um amp. op. **não** ideal) toca o nó intermediário, a fórmula está errada.
+
+É a armadilha mais comum em circuito com **fonte controlada**: o ramo de controle parece não carregar nada, mas se ele conduz corrente, o divisor deixa de valer.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — os dois na mesma conta">
+
+Uma fonte de $24\ \mathrm{V}$ alimenta $R_1 = 4\ \Omega$ em série com o paralelo de $R_2 = 12\ \Omega$ e $R_3 = 6\ \Omega$. Qual a corrente em $R_3$?
+
+**Passo 1 — colapse o paralelo:**
+
+$$
+R_2 \parallel R_3 = \frac{12 \times 6}{18} = 4\ \Omega
+$$
+
+**Passo 2 — divisor de tensão** para achar a tensão sobre o paralelo:
+
+$$
+v_{p} = 24\,\frac{4}{4 + 4} = 12\ \mathrm{V}
+$$
+
+**Passo 3 — Ohm direto** em $R_3$ (ele tem essa tensão inteira):
+
+$$
+i_3 = \frac{12}{6} = 2\ \mathrm{A}
+$$
+
+**Conferindo pelo divisor de corrente:** a corrente total é $24/8 = 3\ \mathrm{A}$, e
+
+$$
+i_3 = 3\,\frac{R_2}{R_2 + R_3} = 3\,\frac{12}{18} = 2\ \mathrm{A}\ ✔
+$$
+
+O resistor **cruzado** ($R_2$) no numerador — e o resultado bate pelos dois caminhos.
 
 </Caixa>
 

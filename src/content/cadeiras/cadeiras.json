@@ -15,7 +15,9 @@
       "lei-de-ohm": "ckt-ohm",
       "serie-paralelo": "ckt-ohm",
       "resistencia-equivalente": "ckt-ohm",
-      "curto-e-aberto": "ckt-ohm"
+      "curto-e-aberto": "ckt-ohm",
+      "divisor-de-tensao": "ckt-divisores",
+      "divisor-de-corrente": "ckt-divisores"
     }
   },
   {
