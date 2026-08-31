@@ -60,9 +60,15 @@ teste("", "", "./");
 /* âncora com a cara de questão mas de outra cadeira não vira rota de prova */
 teste("?curso=calculo3", "#eletromag-1ee-01", "cadeiras/calculo3#eletromag-1ee-01");
 
-/* as cadeiras da ponte têm de ser as que existem de fato */
-const { readdirSync } = await import("node:fs");
-const reais = readdirSync("src/content/questoes").sort();
+/* As cadeiras da ponte têm de ser as REGISTRADAS, não as que já têm questões.
+   Comparar com src/content/questoes/ funcionava por coincidência — toda cadeira
+   tinha questões — e quebrava numa cadeira em construção, que ganha a teoria
+   antes da primeira questão. O registro é o cadeiras.json: é ele que decide se
+   /cadeiras/<id>/ existe, e é para lá que a ponte manda. */
+const { readFileSync: lerArq } = await import("node:fs");
+const reais = JSON.parse(lerArq("src/content/cadeiras/cadeiras.json", "utf8"))
+  .map((c) => c.id)
+  .sort();
 const naPonte = [...CADEIRAS].sort();
 const ok = JSON.stringify(reais) === JSON.stringify(naPonte);
 console.log(`  ${ok ? "ok  " : "FALHA"} a ponte conhece as cadeiras que existem`);

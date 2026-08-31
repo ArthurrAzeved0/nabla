@@ -1,0 +1,119 @@
+---
+cadeira: circuitos1
+titulo: "Circuitos Elétricos 1"
+unidades:
+  - nome: "Revisão de circuitos resistivos"
+    secoes:
+      - { id: ckt-grandezas, titulo: "Corrente, tensão, potência e energia" }
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                          circuitos1.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+<Topico id="ckt-grandezas" num="01" titulo="Corrente, tensão, potência e energia">
+
+**A ideia.** Circuitos Elétricos 1 é a primeira cadeira em que você **resolve** um circuito em vez de estudar o campo que existe dentro dele. O Eletromagnetismo tratava de $\mathbf{E}$ e $\mathbf{B}$ no espaço; aqui o espaço desaparece e sobra um grafo de elementos ligados por fios ideais. Toda a cadeira se apoia em quatro grandezas e numa convenção de sinal — e é o sinal, não a conta, que derruba prova.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $q$ — **carga**, em coulombs ($\mathrm{C}$);
+- $i = \dfrac{dq}{dt}$ — **corrente**, em ampères ($1\ \mathrm{A} = 1\ \mathrm{C/s}$): carga por unidade de tempo atravessando uma seção;
+- $v = \dfrac{dw}{dq}$ — **tensão** (diferença de potencial), em volts ($1\ \mathrm{V} = 1\ \mathrm{J/C}$): energia por unidade de carga entre dois pontos;
+- $p = \dfrac{dw}{dt} = v\,i$ — **potência**, em watts ($\mathrm{W}$);
+- $w = \displaystyle\int p\,dt$ — **energia**, em joules ($\mathrm{J}$).
+
+</Caixa>
+
+### Corrente é uma taxa; tensão é uma diferença
+
+$$
+i(t) = \frac{dq}{dt}
+\qquad\qquad
+q(t) = q(t_0) + \int_{t_0}^{t} i(\tau)\,d\tau
+$$
+
+Duas leituras que valem para a cadeira inteira:
+
+- **corrente passa por**, **tensão fica entre**. Não existe "a tensão em um ponto" sem um segundo ponto de referência, e não existe "a corrente através de dois pontos". Metade dos erros de enunciado mal lido é isto;
+- corrente é **derivada** de carga, então falar de corrente exige falar de *quando*. Na 3ª e na 4ª unidade, quando $i$ e $v$ passarem a depender do tempo, essa derivada volta como protagonista.
+
+### A convenção passiva de sinal
+
+<Caixa tipo="macete">
+
+**Esta é a regra mais importante da primeira aula, e a que mais custa nota.**
+
+Desenhe a corrente **entrando pelo terminal marcado com $+$** do elemento. Com essa escolha:
+
+$$
+p = +v\,i
+$$
+
+e o sinal do resultado diz o que o elemento está fazendo:
+
+- $p \gt 0$ — o elemento **absorve** potência (resistor, ou uma fonte sendo carregada);
+- $p \lt 0$ — o elemento **fornece** potência (uma fonte alimentando o circuito).
+
+Se a corrente entrar pelo terminal $-$, então $p = -v\,i$. Não existe terceira opção, e não existe "escolher o sinal para dar positivo": você escolhe o **sentido de referência**, e o sinal do número informa se a realidade concorda com a sua escolha.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A conservação que confere tudo">
+
+Num circuito fechado, a soma das potências de **todos** os elementos é zero:
+
+$$
+\sum_k p_k = 0
+$$
+
+O que as fontes fornecem (negativo) é exatamente o que os elementos passivos absorvem (positivo). Esse é o teste de sanidade mais barato da cadeira: terminada a análise, some as potências. Se não der zero, há erro de sinal em algum ramo — e você descobre isso em trinta segundos, sem refazer nada.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — quem alimenta quem">
+
+Um elemento tem $v = 12\ \mathrm{V}$ entre seus terminais e a corrente de $2\ \mathrm{A}$ **entra pelo terminal $+$**. Pela convenção passiva:
+
+$$
+p = +(12)(2) = +24\ \mathrm{W}
+$$
+
+Positivo: ele **absorve** $24\ \mathrm{W}$. É o caso de um resistor.
+
+Agora um segundo elemento, também com $12\ \mathrm{V}$, mas com os mesmos $2\ \mathrm{A}$ **saindo** pelo terminal $+$:
+
+$$
+p = -(12)(2) = -24\ \mathrm{W}
+$$
+
+Negativo: ele **fornece** $24\ \mathrm{W}$ — é a fonte que alimenta o primeiro. E a soma dá zero, como tinha de dar.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+**Múltiplos e submúltiplos aparecem em todo enunciado desta cadeira**, e trocar um deles é erro de três ordens de grandeza: $\mathrm{m}$ ($10^{-3}$), $\mu$ ($10^{-6}$), $\mathrm{n}$ ($10^{-9}$), $\mathrm{p}$ ($10^{-12}$), $\mathrm{k}$ ($10^{3}$), $\mathrm{M}$ ($10^{6}$).
+
+Vale memorizar duas combinações que caem sempre nos transitórios:
+
+$$
+\mathrm{k\Omega} \times \mathrm{\mu F} = \mathrm{ms}
+\qquad\qquad
+\mathrm{\Omega} \times \mathrm{\mu F} = \mathrm{\mu s}
+$$
+
+Com elas, a constante de tempo $\tau = RC$ sai com a unidade certa sem conversão nenhuma.
+
+</Caixa>
+
+</Topico>

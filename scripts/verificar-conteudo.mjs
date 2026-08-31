@@ -116,11 +116,27 @@ console.log("\n== cartão social ==");
       const m = card.match(new RegExp(`<b>(\\d+)</b><span>${rotulo}</span>`));
       return m ? Number(m[1]) : null;
     };
+    /* O cartão é um INSTANTÂNEO, regerado a cada release — não a cada commit.
+       Cobrar igualdade exata obrigaria a regerar um PNG junto de cada seção de
+       teoria nova, o que é atrito sem benefício: "226 questões" com 229 no ar
+       não engana ninguém. O que engana é o que aconteceu de verdade — o cartão
+       dizer 147 com 226 no site, uma defasagem de 35%.
+
+       Então: sempre imprime os dois números, e falha quando o cartão está
+       atrasado além de 5% (ou 3 unidades, para os números pequenos). */
     const conferir = (rotulo, real) => {
       const dito = declarado(rotulo);
       if (dito === null) return erro(`cartão social: não achei o número de "${rotulo}"`);
-      if (real !== null && dito !== real) {
-        erro(`cartão social diz ${dito} ${rotulo}, mas o site tem ${real} — atualize ${ARTE} e regere o PNG`);
+      if (real === null) return console.log(`  ${rotulo.padEnd(20)} ${dito}`);
+      const folga = Math.max(3, Math.round(real * 0.05));
+      const atraso = real - dito;
+      if (atraso > folga) {
+        erro(
+          `cartão social diz ${dito} ${rotulo}, mas o site tem ${real} ` +
+            `(atraso de ${atraso}, limite ${folga}) — regere o PNG de ${ARTE}`,
+        );
+      } else if (dito !== real) {
+        console.log(`  ${rotulo.padEnd(20)} ${dito} (site: ${real}, dentro da folga)`);
       } else {
         console.log(`  ${rotulo.padEnd(20)} ${dito} ✓`);
       }
