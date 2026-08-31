@@ -80,6 +80,12 @@ const colisao = desenhar([{ t: "R", de: [0, 0], para: [2, 0], rotulo: "4 Ω" }, 
 const ys = [...colisao.matchAll(/<text[^>]*y="(\S+?)"[^>]*>(?:4 Ω|i)</g)].map((m) => Number(m[1]));
 teste("rótulo e seta ficam em lados opostos", ys.length === 2 && ys[0] * ys[1] < 0, true);
 
+/* moldura tracejada e elemento variável */
+const cx1 = desenhar([{ t: "R", de: [0, 0], para: [2, 0] }, { t: "caixa", de: [-0.4, -0.6], para: [2.4, 0.6], rotulo: "fonte real" }], { alt: "x" });
+teste("caixa é tracejada", /stroke-dasharray="5 4"/.test(cx1), true);
+teste("rótulo da caixa cabe no viewBox", textosDentro(cx1), true);
+teste("elemento variável ganha a seta", /<polygon points="19,-14 9,-12 14,-5"/.test(desenhar([{ t: "R", de: [0, 0], para: [2, 0], variavel: true }], { alt: "x" })), true);
+
 /* ---------------------------------------------------------------- erros */
 const recusa = (fn, inicio) => {
   try { fn(); return "não recusou"; } catch (e) { return e.message.startsWith(inicio) ? inicio : e.message; }
