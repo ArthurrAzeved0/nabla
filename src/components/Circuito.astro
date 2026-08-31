@@ -1,0 +1,63 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                          Circuito.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Figura de circuito. Casca fina sobre src/lib/circuito.ts: o desenho é
+   gerado em tempo de build, então a página recebe SVG puro — sem script,
+   sem dependência, e acompanhando o tema.
+
+   Uso:
+     <Circuito alt="..." itens={[ { t: "R", de: [0,0], para: [2,0], rotulo: "R₁", valor: "4 Ω" } ]}>
+       legenda opcional em markdown
+     </Circuito> */
+import { desenhar, type Item } from "~/lib/circuito";
+
+interface Props {
+  itens: readonly Item[];
+  alt: string;
+  grade?: number;
+  margem?: number;
+}
+const { itens, alt, grade, margem } = Astro.props;
+const svg = desenhar(itens, { alt, grade, margem });
+const temLegenda = Astro.slots.has("default");
+---
+
+<figure class="figura circuito">
+  <Fragment set:html={svg} />
+  {temLegenda && (
+    <figcaption>
+      <slot />
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .figura {
+    margin: var(--e-4) 0;
+    text-align: center;
+  }
+  .figura > :global(svg) {
+    max-width: 100%;
+    height: auto;
+    background: var(--card-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-caixa);
+    padding: var(--e-3);
+  }
+  .figura :global(figcaption) {
+    margin-top: var(--e-2);
+    font-size: var(--t-sm);
+    color: var(--ink-3);
+    text-align: center;
+  }
+</style>
