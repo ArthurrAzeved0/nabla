@@ -5,6 +5,7 @@ unidades:
   - nome: "Revisão de circuitos resistivos"
     secoes:
       - { id: ckt-grandezas, titulo: "Corrente, tensão, potência e energia" }
+      - { id: ckt-elementos, titulo: "Elementos passivos e ativos; fontes independentes e controladas" }
 ---
 
 {/* **************************************************************************
@@ -113,6 +114,80 @@ $$
 $$
 
 Com elas, a constante de tempo $\tau = RC$ sai com a unidade certa sem conversão nenhuma.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-elementos" num="02" titulo="Elementos passivos e ativos; fontes independentes e controladas">
+
+**A ideia.** Um circuito é um grafo, e todo o vocabulário da cadeira está nos **nós**, nos **ramos** e nas **malhas**. Antes de escrever qualquer equação vale saber ler o desenho — e saber, olhando para cada elemento, se ele **entrega** ou **consome** energia, porque é isso que separa fonte de carga.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- **nó** — ponto de encontro de dois ou mais elementos. Fio ideal não tem resistência, então **tudo que está ligado por fio é o mesmo nó**;
+- **ramo** — um elemento entre dois nós;
+- **laço** — caminho fechado; **malha** é um laço que não contém outro dentro;
+- **nó essencial** — nó onde chegam **três ou mais** ramos. São esses que a análise nodal usa;
+- $\mathrm{GND}$ — o **nó de referência** (terra), a que se atribui $0\ \mathrm{V}$.
+
+</Caixa>
+
+### Passivo e ativo
+
+**Passivo** é o elemento que só consome ou armazena: resistor (dissipa), capacitor e indutor (armazenam e devolvem). Nenhum deles cria energia — no balanço de um ciclo completo, a energia que sai deles nunca é maior que a que entrou.
+
+**Ativo** é o que fornece: as fontes. E é aqui que a cadeira separa dois tipos que se comportam de maneira muito diferente na hora de resolver.
+
+<Caixa tipo="dica" rotulo="Fonte de tensão × fonte de corrente">
+
+- **Fonte de tensão ideal** impõe $v$ e **não controla** $i$: a corrente é o que o resto do circuito pedir. Em curto-circuito ela é uma contradição física.
+- **Fonte de corrente ideal** impõe $i$ e **não controla** $v$: a tensão é o que o resto do circuito impuser. Em circuito aberto ela é uma contradição.
+
+Corolário que economiza muita conta:
+
+- fonte de tensão **em série** com um resistor: o resistor importa;
+- fonte de tensão **em paralelo** com um resistor: o resistor **não afeta** o resto do circuito (mas consome corrente da fonte);
+- fonte de corrente **em série** com um resistor: o resistor **não afeta** o resto;
+- fonte de corrente **em paralelo** com um resistor: o resistor importa.
+
+</Caixa>
+
+### Fontes controladas: o que muda de verdade
+
+Uma fonte **independente** vale um número. Uma fonte **controlada** (ou dependente) vale $k$ vezes uma tensão ou uma corrente **de outro ponto do circuito** — e é isso que a torna trabalhosa: ela acopla partes do circuito que pareciam separadas.
+
+São quatro, e o nome diz a fórmula:
+
+$$
+\begin{array}{ll}
+\textbf{FTCT} & v = \mu\,v_x \quad \text{(tensão controlada por tensão, } \mu \text{ adimensional)}\\[2pt]
+\textbf{FTCC} & v = r\,i_x \quad \text{(tensão controlada por corrente, } r \text{ em } \Omega)\\[2pt]
+\textbf{FCCT} & i = g\,v_x \quad \text{(corrente controlada por tensão, } g \text{ em } \mathrm{S})\\[2pt]
+\textbf{FCCC} & i = \beta\,i_x \quad \text{(corrente controlada por corrente, } \beta \text{ adimensional)}
+\end{array}
+$$
+
+<Caixa tipo="macete">
+
+**A regra de ouro das fontes controladas:** trate a fonte como se fosse independente ao montar as equações, e **acrescente uma equação a mais** — a que define a variável de controle $v_x$ ou $i_x$ em função das incógnitas que você escolheu.
+
+Duas consequências que caem em prova:
+
+1. **Fonte controlada não pode ser "desligada"** na Superposição. Só as **independentes** são zeradas (tensão vira curto, corrente vira aberto); as controladas ficam ligadas em **todos** os casos, porque elas não são uma causa, são um efeito.
+2. Num circuito **só com fontes controladas**, o Thévenin tem $V_{Th} = 0$ e $R_{Th}$ só se acha **injetando** uma fonte de teste. É o caso que a prova usa para separar quem entendeu de quem decorou.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a equação que falta">
+
+Um circuito tem uma fonte $3i_x$ (FTCC) e você escolheu as correntes de malha $i_1$ e $i_2$. Monte as duas equações de malha tratando $3i_x$ como um valor qualquer; depois escreva a **terceira**, que amarra o controle:
+
+$$
+i_x = i_1 - i_2
+$$
+
+Agora são três equações e três incógnitas ($i_1$, $i_2$, $i_x$) — ou duas, substituindo. Sem essa linha o sistema fica **indeterminado**, e é exatamente aí que a resolução trava.
 
 </Caixa>
 
