@@ -146,6 +146,43 @@ console.log("\n== formas invisíveis em SVG ==");
   if (!invisiveis) console.log(`  ${arquivos.length} arquivos varridos, nenhuma forma invisível ✓`);
 }
 
+/* ---------------------------------------------------------------------------
+   var(--token) que não existe é PIOR que um erro: o navegador descarta a
+   declaração e usa o valor inicial da propriedade. Num `fill` de SVG isso é
+   PRETO. Foi assim que o gerador de circuitos saiu com um retângulo preto
+   atrás de cada símbolo — eu usei `--card-2`, que nunca existiu, e o meu
+   preview local não pegou porque eu tinha definido o token no CSS de teste.  */
+console.log("\n== tokens de CSS ==");
+{
+  const definidos = new Set();
+  const colher = (txt) => {
+    for (const m of txt.matchAll(/(--[a-z0-9-]+)\s*:/g)) definidos.add(m[1]);
+  };
+  const arquivos = [];
+  const varrer = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const p = `${dir}/${e.name}`;
+      if (e.isDirectory()) varrer(p);
+      else if (/\.(css|astro|ts|mdx)$/.test(e.name)) arquivos.push(p);
+    }
+  };
+  varrer("src");
+  const textos = arquivos.map((a) => [a, readFileSync(a, "utf8")]);
+  for (const [, txt] of textos) colher(txt);
+  const usados = new Map();
+  for (const [arq, txt] of textos) {
+    for (const m of txt.matchAll(/var\((--[a-z0-9-]+)\s*(,)?/g)) {
+      if (m[2]) continue; /* tem fallback: não quebra */
+      /* nome montado em template — `var(--fio-${n})` — não dá para conferir */
+      if (txt.slice(m.index + m[0].length).startsWith("${")) continue;
+      if (!usados.has(m[1])) usados.set(m[1], arq);
+    }
+  }
+  const orfaos = [...usados].filter(([t]) => !definidos.has(t));
+  for (const [t, arq] of orfaos) erro(`${arq}: var(${t}) não está definido em lugar nenhum`);
+  if (!orfaos.length) console.log(`  ${usados.size} tokens usados, todos definidos ✓`);
+}
+
 console.log("\n== cartão social ==");
 {
   const ARTE = "arte/social-card.html";

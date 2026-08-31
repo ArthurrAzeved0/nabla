@@ -48,10 +48,23 @@ export type Bipolo =
   | "S"; /* chave */
 
 export type Item =
-  | { t: Bipolo; de: Ponto; para: Ponto; rotulo?: string; valor?: string; abaixo?: boolean; destaque?: boolean }
+  | {
+      t: Bipolo;
+      de: Ponto;
+      para: Ponto;
+      rotulo?: string;
+      valor?: string;
+      abaixo?: boolean;
+      destaque?: boolean;
+      /** seta atravessando o símbolo: resistor variável, potenciômetro */
+      variavel?: boolean;
+    }
   | { t: "fio"; pts: readonly Ponto[] }
   | { t: "no"; em: Ponto }
   | { t: "terra"; em: Ponto }
+  /** moldura tracejada em volta de um trecho do circuito: "fonte real",
+      "equivalente de Thévenin", "rede". `de` e `para` são cantos opostos. */
+  | { t: "caixa"; de: Ponto; para: Ponto; rotulo?: string }
   | { t: "texto"; em: Ponto; texto: string; ancora?: "start" | "middle" | "end"; destaque?: boolean }
   /** seta de corrente ao longo de um trecho */
   | { t: "corrente"; de: Ponto; para: Ponto; rotulo?: string; abaixo?: boolean }
@@ -207,6 +220,19 @@ export function desenhar(itens: readonly Item[], op: Opcoes): string {
         out.push(`<circle cx="${num(x)}" cy="${num(y)}" r="3.4" fill="${COR_FIO}"/>`);
         break;
       }
+      case "caixa": {
+        const [ax, ay] = P(it.de);
+        const [bx, by] = P(it.para);
+        const [x, y] = [Math.min(ax, bx), Math.min(ay, by)];
+        const [cw, ch] = [Math.abs(bx - ax), Math.abs(by - ay)];
+        caber(x - 2, y - (it.rotulo ? 18 : 2));
+        caber(x + cw + 2, y + ch + 2);
+        out.push(
+          `<rect x="${num(x)}" y="${num(y)}" width="${num(cw)}" height="${num(ch)}" rx="8" fill="none" stroke="var(--line-2)" stroke-width="1.4" stroke-dasharray="5 4"/>`,
+        );
+        if (it.rotulo) T(x + cw / 2, y - 6, it.rotulo, 11, COR_ROT);
+        break;
+      }
       case "terra": {
         const [x, y] = P(it.em);
         caber(x - 12, y);
@@ -280,10 +306,22 @@ export function desenhar(itens: readonly Item[], op: Opcoes): string {
         /* apaga o fio sob o corpo, para o símbolo não ficar riscado */
         out.push(
           `<g transform="translate(${num(cx)} ${num(cy)}) rotate(${ang})">` +
-            `<rect x="${-CORPO / 2}" y="-13" width="${CORPO}" height="26" fill="var(--card-2)"/>` +
+            `<rect x="${-CORPO / 2}" y="-13" width="${CORPO}" height="26" fill="var(--surface-2)"/>` +
             simbolo(it.t, cor) +
             `</g>`,
         );
+        /* seta de "variável" atravessando o símbolo, em diagonal */
+        if (it.variavel) {
+          out.push(
+            `<g transform="translate(${num(cx)} ${num(cy)}) rotate(${ang})">` +
+              `<line x1="-17" y1="11" x2="15" y2="-11" stroke="${COR_VAL}" stroke-width="1.5"/>` +
+              `<polygon points="19,-14 9,-12 14,-5" fill="${COR_VAL}"/>` +
+              `</g>`,
+          );
+          caber(Math.min(ax, bx) - 20, Math.min(ay, by) - 20);
+          caber(Math.max(ax, bx) + 20, Math.max(ay, by) + 20);
+        }
+
         /* rótulo e valor, perpendiculares ao elemento */
         const s = it.abaixo ? 1 : -1;
         const linhas = [it.rotulo, it.valor].filter(Boolean) as string[];
