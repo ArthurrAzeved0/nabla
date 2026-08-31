@@ -99,6 +99,53 @@ for (const cad of cadeiras) {
    Aqui a contagem real é comparada com a do cartão. Se divergir, é ERRO: o
    conserto é editar o arte/social-card.html e gerar o PNG de novo (o comando
    está no README).                                                          */
+/* ---------------------------------------------------------------------------
+   Forma de SVG que não pinta nada é invisível e ninguém percebe na revisão:
+   o desenho continua "quase certo", só falta um fio. Aconteceu em três
+   questões da final de Eletromagnetismo — o fio da fonte até o barramento
+   saiu sem `stroke` e o circuito ficava aberto na figura.
+
+   O traço pode vir de um <g> ancestral, então a herança tem de ser levada em
+   conta, senão isto vira 300 falsos positivos.                              */
+console.log("\n== formas invisíveis em SVG ==");
+{
+  const FORMAS = ["line", "polyline", "path", "rect", "circle", "ellipse", "polygon"];
+  const tok = new RegExp(`<(/?)(g|svg|${FORMAS.join("|")})\\b([^>]*?)(/?)>`, "g");
+  const arquivos = [];
+  const varrer = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const p = `${dir}/${e.name}`;
+      if (e.isDirectory()) varrer(p);
+      else if (e.name.endsWith(".mdx")) arquivos.push(p);
+    }
+  };
+  varrer("src/content");
+  let invisiveis = 0;
+  for (const arq of arquivos) {
+    const txt = readFileSync(arq, "utf8");
+    for (const bloco of txt.matchAll(/<svg\b[\s\S]*?<\/svg>/g)) {
+      const pilha = [];
+      for (const m of bloco[0].matchAll(tok)) {
+        const [, fecha, tag, attrs, auto] = m;
+        if (tag === "g" || tag === "svg") {
+          if (fecha) pilha.pop();
+          else if (!auto) pilha.push(attrs);
+          continue;
+        }
+        if (fecha) continue;
+        const todos = pilha.join(" ") + " " + attrs;
+        const st = [...todos.matchAll(/stroke="([^"]*)"/g)].pop()?.[1];
+        const fl = [...todos.matchAll(/fill="([^"]*)"/g)].pop()?.[1];
+        if ((!st || st === "none") && (!fl || fl === "none")) {
+          erro(`${arq}: <${tag}> sem stroke nem fill — não desenha nada`);
+          invisiveis++;
+        }
+      }
+    }
+  }
+  if (!invisiveis) console.log(`  ${arquivos.length} arquivos varridos, nenhuma forma invisível ✓`);
+}
+
 console.log("\n== cartão social ==");
 {
   const ARTE = "arte/social-card.html";
