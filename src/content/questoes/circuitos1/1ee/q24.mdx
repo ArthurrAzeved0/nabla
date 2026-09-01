@@ -1,0 +1,106 @@
+---
+origem: "2024.2"
+tema: "Resistência equivalente · Redução de uma rede de sete resistores"
+temaId: resistencia-equivalente
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os valores de $i_1$ e de $i_2$.
+
+<Circuito
+  alt="Fonte de 50 V com 4 Ω, 15 Ω, 6 Ω e 12 Ω em paralelo, 6 Ω e 30 Ω em paralelo, 2 Ω, 32 Ω e 40 Ω"
+  itens={[
+    { t: "V", de: [0, 3.2], para: [0, 1.2], valor: "50 V" },
+    { t: "R", de: [0, 1.2], para: [2, 1.2], valor: "4 Ω" },
+    { t: "corrente", de: [0.15, 1.2], para: [0.95, 1.2], rotulo: "i_1" },
+    { t: "no", em: [2, 1.2] },
+    { t: "fio", pts: [[2, 1.2], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [4, 0], valor: "6 Ω" },
+    { t: "R", de: [2, 1.2], para: [4, 1.2], valor: "12 Ω" },
+    { t: "R", de: [2, 1.2], para: [2, 3.2], valor: "15 Ω" },
+    { t: "no", em: [2, 3.2] },
+    { t: "R", de: [2, 3.2], para: [4, 3.2], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [2.15, 3.2], para: [2.95, 3.2], rotulo: "i_2", abaixo: false },
+    { t: "fio", pts: [[4, 0], [4, 1.8]] },
+    { t: "no", em: [4, 1.2] },
+    { t: "R", de: [4, 1.8], para: [4, 3.2], valor: "6 Ω", abaixo: true },
+    { t: "no", em: [4, 3.2] },
+    { t: "fio", pts: [[4, 0], [5.4, 0], [5.4, 1]] },
+    { t: "R", de: [5.4, 1], para: [5.4, 2.6], valor: "30 Ω", abaixo: true },
+    { t: "fio", pts: [[5.4, 2.6], [5.4, 3.2]] },
+    { t: "fio", pts: [[2, 0], [2, -1.2]] },
+    { t: "R", de: [2, -1.2], para: [6.8, -1.2], valor: "32 Ω" },
+    { t: "fio", pts: [[6.8, -1.2], [6.8, 1]] },
+    { t: "R", de: [6.8, 1], para: [6.8, 2.6], valor: "40 Ω", abaixo: true },
+    { t: "fio", pts: [[6.8, 2.6], [6.8, 3.2]] },
+    { t: "fio", pts: [[0, 3.2], [6.8, 3.2]] },
+  ]}
+>
+
+No original o $30\ \Omega$ está desenhado **na diagonal**; aqui ele aparece na vertical, com as mesmas ligações — vai do nó do $6\ \Omega$ e do $12\ \Omega$ até o fio de baixo, em paralelo com o $6\ \Omega$ vertical.
+
+</Circuito>
+
+<Gabarito>
+$i_1 = 5\ \mathrm{A}$  ·  $i_2 = -3\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — nomeie os quatro nós.** Fio de baixo à esquerda como referência ($D$). O fio vertical da esquerda torna **um só nó** ($B$) o ponto de chegada do $4\ \Omega$, o começo do $6\ \Omega$, o do $12\ \Omega$, o do $32\ \Omega$ e o topo do $15\ \Omega$. Chame $E$ o nó onde chegam o $6\ \Omega$, o $12\ \Omega$ e o $30\ \Omega$, e $F$ o nó do fio de baixo à direita (pé do $6\ \Omega$ vertical, do $30\ \Omega$ e do $40\ \Omega$).
+
+**Passo 2 — os dois paralelos.**
+
+$$
+6 \parallel 12 = 4\ \Omega \quad (B \to E)
+\qquad\qquad
+6 \parallel 30 = 5\ \Omega \quad (E \to F)
+$$
+
+Em série, dão $4 + 5 = 9\ \Omega$ de $B$ até $F$.
+
+**Passo 3 — o caminho longo.** Pelo alto, de $B$ até $F$: $32 + 40 = 72\ \Omega$. Em paralelo com os $9\ \Omega$:
+
+$$
+9 \parallel 72 = \frac{9 \cdot 72}{81} = 8\ \Omega
+$$
+
+**Passo 4 — feche a redução.** De $B$ até a referência há dois caminhos: o $15\ \Omega$ direto, e os $8\ \Omega$ até $F$ mais o $2\ \Omega$:
+
+$$
+8 + 2 = 10\ \Omega
+\qquad\Longrightarrow\qquad
+10 \parallel 15 = 6\ \Omega
+\qquad\Longrightarrow\qquad
+R_{\mathrm{eq}} = 4 + 6 = 10\ \Omega
+$$
+
+**Passo 5 — as correntes:**
+
+$$
+\boxed{i_1 = \frac{50}{10} = 5\ \mathrm{A}}
+\qquad\Longrightarrow\qquad
+v_B = 6 \cdot 5 = 30\ \mathrm{V}
+$$
+
+Em $B$ a corrente se divide: $30/15 = 2\ \mathrm{A}$ pelo $15\ \Omega$ e $30/10 = 3\ \mathrm{A}$ pelo caminho que passa por $F$. Esses $3\ \mathrm{A}$ atravessam o $2\ \Omega$ **de $F$ para $D$**, ou seja, no sentido **oposto** à seta de $i_2$:
+
+$$
+\boxed{i_2 = -3\ \mathrm{A}}
+$$
+
+**Conferência —** $v_F = 2 \cdot 3 = 6\ \mathrm{V}$ e $v_B - v_F = 8 \cdot 3 = 24\ \mathrm{V}$, o que dá $30 - 6 = 24$ ✔ Dos $3\ \mathrm{A}$, $24/9 = 2{,}67\ \mathrm{A}$ vão pelo caminho curto e $24/72 = 0{,}33\ \mathrm{A}$ pelo $32\ \Omega$ ✔ E $i_1 = 2 + 3 = 5\ \mathrm{A}$ ✔
+</Passos>
