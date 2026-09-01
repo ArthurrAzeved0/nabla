@@ -1,0 +1,113 @@
+---
+origem: "2021.1"
+tema: "Condições iniciais · Fonte controlada por tensão e duas chaves"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito a seguir encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $dv/dt$ e $di/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 30 V para 50 V, capacitor de 1/10 F, chave, 2 Ω, fonte controlada v1/2, dois 3 Ω e indutor de 1/2 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "30 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "50 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "C", de: [1.8, 0], para: [4, 0], valor: "1/10 F" },
+    { t: "tensao", de: [4, 0], para: [1.8, 0], rotulo: "v" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v_1", abaixo: true },
+    { t: "S", de: [4, 0], para: [5.6, 0], rotulo: "abre" },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v_1/2 A", abaixo: true },
+    { t: "fio", pts: [[5.6, 0], [7.6, 0]] },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "3 Ω", abaixo: true },
+    { t: "R", de: [7.6, 0], para: [9.6, 0], valor: "3 Ω" },
+    { t: "no", em: [9.6, 0] },
+    { t: "L", de: [9.6, 0], para: [9.6, 3.4], valor: "1/2 H", abaixo: true },
+    { t: "corrente", de: [9.6, 0.4], para: [9.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+  ]}
+>
+
+Mesmo arranjo do 1º quesito de 2021.2, com outros valores e a fonte controlada agora **de corrente**. A chave da esquerda comuta $30\ \mathrm{V} \to 50\ \mathrm{V}$; a do meio **abre**.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v = 30\ \mathrm{V}$, $i = 0$, $dv/dt = 0$, $di/dt = 0$
+·
+Em $0^+$: $v = 30\ \mathrm{V}$, $i = 0$, $dv/dt = 100\ \mathrm{V/s}$, $di/dt = 60\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$** (fonte de $30\ \mathrm{V}$, chave do meio **fechada**; capacitor aberto, indutor em fio).
+
+Com a chave fechada, o $2\ \Omega$ e a fonte controlada ficam no mesmo par de nós. Como a fonte vale $v_1/2$ e a tensão sobre o $2\ \Omega$ é $v_1$, a única solução consistente em regime é
+
+$$
+v_1(0^-) = 0
+$$
+
+Sem tensão ali, a fonte controlada entrega zero e o ramo dos $3\ \Omega$ com o indutor não é alimentado:
+
+$$
+\boxed{i(0^-) = 0}
+\qquad\qquad
+\boxed{v(0^-) = 30 - 0 = 30\ \mathrm{V}}
+$$
+
+E, em regime permanente,
+
+$$
+\boxed{\frac{dv(0^-)}{dt} = 0}
+\qquad\qquad
+\boxed{\frac{di(0^-)}{dt} = 0}
+$$
+
+**Passo 2 — continuidade:** $v(0^+) = 30\ \mathrm{V}$ e $i(0^+) = 0$.
+
+**Passo 3 — circuito em $0^+$.** Fonte de $50\ \mathrm{V}$, chave do meio **aberta**. O capacitor, valendo $30\ \mathrm{V}$, deixa o nó do $2\ \Omega$ em
+
+$$
+v_1(0^+) = 50 - 30 = 20\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\frac{v_1}{2} = 10\ \mathrm{A}
+$$
+
+**Passo 4 — a derivada da tensão.** Com a chave aberta, o nó do $2\ \Omega$ só tem o capacitor e o resistor, então toda a corrente do $2\ \Omega$ vem pelo capacitor:
+
+$$
+i_C(0^+) = \frac{20}{2} = 10\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{10}{1/10} = 100\ \mathrm{V/s}}
+$$
+
+**Passo 5 — a derivada da corrente.** A fonte controlada injeta $10\ \mathrm{A}$; como $i(0^+) = 0$, tudo isso vai para o $3\ \Omega$ vertical, e o $3\ \Omega$ horizontal não cai tensão:
+
+$$
+v_L(0^+) = 3 \cdot 10 = 30\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{30}{1/2} = 60\ \mathrm{A/s}}
+$$
+
+**Conferência —** a LKC no nó da direita fecha: entram $10\ \mathrm{A}$ da controlada, saem $10\ \mathrm{A}$ pelo $3\ \Omega$ vertical e $0$ pelo horizontal ✔ Confere com a resolução da prova.
+</Passos>
