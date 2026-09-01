@@ -12,6 +12,7 @@ unidades:
       - { id: ckt-nodal, titulo: "Análise nodal (análise de nós)" }
       - { id: ckt-malhas, titulo: "Análise de malhas" }
       - { id: ckt-superposicao, titulo: "Princípio da superposição" }
+      - { id: ckt-thevenin, titulo: "Equivalentes de Thévenin e de Norton" }
 
 ---
 
@@ -737,6 +738,103 @@ Para achar potência, **superponha a corrente (ou a tensão) primeiro** e só en
 <Caixa tipo="exemplo" rotulo="Exemplo rápido — o que a prova costuma pedir">
 
 O enunciado típico manda mais que o resultado: *"resolva por superposição; o circuito com a fonte de tensão pela análise de malhas e o com a fonte de corrente pela análise de nós"*. Nesse caso a nota está no **procedimento**, então escreva os dois subcircuitos separadamente, com as fontes desativadas explicitadas, e só some no fim. Somar antes de mostrar as parcelas custa ponto mesmo quando o número final está certo.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-thevenin" num="09" titulo="Equivalentes de Thévenin e de Norton">
+
+**A ideia.** Escolha dois terminais quaisquer de um circuito linear. Do ponto de vista de **quem se liga neles**, tudo que está do outro lado — dez resistores, quatro fontes, o que for — é indistinguível de **uma fonte de tensão em série com um resistor**. Esse é Thévenin. E como fonte de tensão com resistor em série se converte em fonte de corrente com resistor em paralelo, existe a versão dual: Norton. É o teorema que permite resolver um circuito grande uma vez e depois trocar a carga à vontade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $V_{\mathrm{Th}}$ — tensão de Thévenin: a tensão **em aberto** entre os terminais;
+- $I_{N}$ — corrente de Norton: a corrente **em curto** entre os terminais;
+- $R_{\mathrm{Th}} = R_{N}$ — resistência equivalente vista dos terminais, com as fontes **independentes** desativadas;
+- $a$, $b$ — os terminais onde a carga se conecta.
+
+</Caixa>
+
+### As três grandezas, e a relação entre elas
+
+$$
+V_{\mathrm{Th}} = v_{ab}\big|_{\text{em aberto}}
+\qquad
+I_{N} = i_{ab}\big|_{\text{em curto}}
+\qquad
+V_{\mathrm{Th}} = R_{\mathrm{Th}} \, I_{N}
+$$
+
+Basta achar **duas** — a terceira sai da relação. Isso é o atalho mais útil do assunto: quando o circuito tem fonte controlada e $R_{\mathrm{Th}}$ é difícil de ver, calcule $V_{\mathrm{Th}}$ e $I_N$ e divida.
+
+<Circuito
+  alt="Equivalente de Thévenin à esquerda e de Norton à direita, ambos entre os terminais a e b"
+  grade={40}
+  itens={[
+    { t: "fio", pts: [[0, 2.4], [0, 0.6]] },
+    { t: "V", de: [0, 2.4], para: [0, 0.6], rotulo: "Vₜₕ" },
+    { t: "fio", pts: [[0, 0.6], [0, 0], [1.6, 0]] },
+    { t: "R", de: [0, 0], para: [1.6, 0], rotulo: "Rₜₕ" },
+    { t: "fio", pts: [[1.6, 0], [2.4, 0]] },
+    { t: "texto", em: [2.7, 0.15], texto: "a", ancora: "start" },
+    { t: "fio", pts: [[0, 2.4], [2.4, 2.4]] },
+    { t: "texto", em: [2.7, 2.55], texto: "b", ancora: "start" },
+    { t: "texto", em: [1.2, 3.3], texto: "Thévenin" },
+    { t: "fio", pts: [[5, 2.4], [5, 0], [7.4, 0]] },
+    { t: "I", de: [5, 2.4], para: [5, 0], rotulo: "Iₙ" },
+    { t: "R", de: [6.4, 0], para: [6.4, 2.4], rotulo: "Rₙ", abaixo: false },
+    { t: "no", em: [6.4, 0] },
+    { t: "no", em: [6.4, 2.4] },
+    { t: "texto", em: [7.7, 0.15], texto: "a", ancora: "start" },
+    { t: "fio", pts: [[5, 2.4], [7.4, 2.4]] },
+    { t: "texto", em: [7.7, 2.55], texto: "b", ancora: "start" },
+    { t: "texto", em: [6.2, 3.3], texto: "Norton" },
+  ]}
+>
+
+Os dois enxergam a mesma coisa em $a$–$b$, para **qualquer** carga. A conversão é direta: $I_N = V_{\mathrm{Th}}/R_{\mathrm{Th}}$, com $R_N = R_{\mathrm{Th}}$.
+
+</Circuito>
+
+### Como achar $R_{\mathrm{Th}}$ — três casos, em ordem de preferência
+
+1. **Só fontes independentes.** Desative todas (tensão vira fio, corrente vira buraco) e associe série/paralelo olhando de $a$–$b$ para dentro. É conta de aritmética.
+2. **Há fontes controladas.** Não se pode desativá-las. Aplique uma fonte de teste em $a$–$b$ — injete $1\ \mathrm{A}$ e meça $v_{ab}$, ou aplique $1\ \mathrm{V}$ e meça $i$ — com as fontes independentes desativadas:
+   $$
+   R_{\mathrm{Th}} = \frac{v_{\text{teste}}}{i_{\text{teste}}}
+   $$
+3. **O caminho preguiçoso e infalível.** Calcule $V_{\mathrm{Th}}$ (em aberto) e $I_N$ (em curto) com o circuito **completo**, e faça $R_{\mathrm{Th}} = V_{\mathrm{Th}}/I_N$.
+
+<Caixa tipo="macete">
+
+**Onde se perde a questão:** ao calcular $R_{\mathrm{Th}}$, **remova a carga primeiro**. O resistor de carga não faz parte do equivalente — ele é o que se liga nele depois. E ao calcular $V_{\mathrm{Th}}$, os terminais ficam **em aberto**: nenhuma corrente atravessa o resistor que está em série com $a$, então ele **não cai tensão** e some da conta de $V_{\mathrm{Th}}$ — mas continua contando em $R_{\mathrm{Th}}$.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+$R_{\mathrm{Th}}$ pode dar **negativo** quando há fonte controlada — não é erro de conta, é um circuito que entrega energia. Já em circuito puramente passivo com fontes independentes, negativo é sempre erro de sinal.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido">
+
+Uma fonte de $15\ \mathrm{V}$ em série com $10\ \Omega$ alimenta o nó $a$; de $a$ para $b$ há um resistor de $10\ \Omega$, e $b$ é o retorno da fonte.
+
+**$V_{\mathrm{Th}}$** (em aberto, sem carga): divisor entre os dois $10\ \Omega$ →
+
+$$
+V_{\mathrm{Th}} = 15 \cdot \frac{10}{10 + 10} = 7{,}5\ \mathrm{V}
+$$
+
+**$R_{\mathrm{Th}}$**: fonte em curto, os dois $10\ \Omega$ ficam em paralelo →
+
+$$
+R_{\mathrm{Th}} = 10 \parallel 10 = 5\ \Omega
+$$
+
+**$I_N$**: por conversão, $I_N = 7{,}5/5 = 1{,}5\ \mathrm{A}$. Conferindo direto — com $a$–$b$ em curto, o resistor vertical fica curto-circuitado e sobra $15/10 = 1{,}5\ \mathrm{A}$ ✔
 
 </Caixa>
 
