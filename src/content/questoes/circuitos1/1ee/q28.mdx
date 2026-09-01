@@ -1,0 +1,102 @@
+---
+origem: "2025.1"
+tema: "Superposição · Supernó com fonte de tensão controlada"
+temaId: superposicao
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores da tensão $v$ e da corrente $i$ por **superposição**. O circuito com a fonte de tensão deve ser resolvido pela Análise de Malhas e o circuito com a fonte de corrente, pela Análise de Nós.
+
+<Circuito
+  alt="Fonte de 50 V com 10 Ω, 15 Ω com v, fonte controlada 2v em paralelo com 5 Ω, 10 Ω e fonte de 10 A"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "50 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "10 Ω" },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "15 Ω" },
+    { t: "tensao", de: [2, 3], para: [2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[2, 0], [2, -1.3]] },
+    { t: "R", de: [2, -1.3], para: [4.4, -1.3], valor: "5 Ω" },
+    { t: "corrente", de: [2.2, -1.3], para: [3, -1.3], rotulo: "i" },
+    { t: "fio", pts: [[4.4, -1.3], [4.4, 0]] },
+    { t: "Vd", de: [4.4, 0], para: [2, 0], rotulo: "2v V" },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 3], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0]] },
+    { t: "I", de: [6.2, 3], para: [6.2, 0], valor: "10 A", abaixo: true },
+    { t: "fio", pts: [[0, 3], [6.2, 3]] },
+  ]}
+>
+
+A fonte controlada **flutua** entre os dois nós centrais, e o $5\ \Omega$ liga os mesmos dois nós: é um **supernó**, e o $5\ \Omega$ é interno a ele. Note também que a controlada tem o $+$ à esquerda, o que joga o nó da direita para o negativo.
+
+</Circuito>
+
+<Gabarito>
+$v = 225\ \mathrm{V}$  ·  $i = 90\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 0 — convenções.** Fio de baixo como referência. Chame $v_M$ o nó do $15\ \Omega$ (que é a própria variável de controle, $v = v_M$) e $v_N$ o nó do $10\ \Omega$ da direita. A fonte controlada, com o $+$ do lado de $M$, impõe
+
+$$
+v_M - v_N = 2v = 2v_M
+\qquad\Longrightarrow\qquad
+v_N = -v_M
+$$
+
+e daí $i = \dfrac{v_M - v_N}{5} = \dfrac{2 v_M}{5}$.
+
+**Passo 1 — subcircuito da fonte de $50\ \mathrm{V}$** (a de $10\ \mathrm{A}$ vira **circuito aberto**). LKC no supernó $\{M, N\}$ — o $5\ \Omega$ é interno e se cancela:
+
+$$
+\frac{v_M - 50}{10} + \frac{v_M}{15} + \frac{-v_M}{10} = 0
+\qquad\Longrightarrow\qquad
+\frac{v_M}{15} = 5
+$$
+
+$$
+\boxed{v' = 75\ \mathrm{V}}
+\qquad\qquad
+\boxed{i' = \frac{2(75)}{5} = 30\ \mathrm{A}}
+$$
+
+Repare que os termos dos dois resistores de $10\ \Omega$ se cancelam — é a marca de $v_N = -v_M$.
+
+**Passo 2 — subcircuito da fonte de $10\ \mathrm{A}$** (a de $50\ \mathrm{V}$ vira **curto**):
+
+$$
+\frac{v_M}{10} + \frac{v_M}{15} + \frac{-v_M}{10} - 10 = 0
+\qquad\Longrightarrow\qquad
+\frac{v_M}{15} = 10
+$$
+
+$$
+\boxed{v'' = 150\ \mathrm{V}}
+\qquad\qquad
+\boxed{i'' = 60\ \mathrm{A}}
+$$
+
+**Passo 3 — soma:**
+
+$$
+v = 75 + 150 = \boxed{225\ \mathrm{V}}
+\qquad\qquad
+i = 30 + 60 = \boxed{90\ \mathrm{A}}
+$$
+
+**Conferência —** no circuito completo, $v_M = 225\ \mathrm{V}$ e $v_N = -225\ \mathrm{V}$. A LKC no supernó: sai $(225-50)/10 = 17{,}5\ \mathrm{A}$ pelo $10\ \Omega$ da esquerda, $225/15 = 15\ \mathrm{A}$ pelo $15\ \Omega$, entram $22{,}5\ \mathrm{A}$ pelo $10\ \Omega$ da direita e $10\ \mathrm{A}$ da fonte — soma zero ✔ Os valores são grandes porque a fonte controlada, com ganho $2$, **realimenta positivamente** o circuito: o denominador da solução ficou reduzido a $1/15$.
+</Passos>
