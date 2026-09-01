@@ -1,0 +1,123 @@
+---
+origem: "2024.2"
+tema: "Superposição · Três fontes independentes"
+temaId: superposicao
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores da tensão $v$ e da corrente $i$ utilizando o **Princípio da Superposição**.
+
+<Circuito
+  alt="Fonte de 18 V com 6 Ω, fonte de 2 A em paralelo com 6 Ω, 20 Ω, ramo de 5 Ω com 20 V, e 24 Ω"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "18 V" },
+    { t: "R", de: [0, 0], para: [1.8, 0], valor: "6 Ω" },
+    { t: "no", em: [1.8, 0] },
+    { t: "fio", pts: [[1.8, 0], [1.8, -1.4]] },
+    { t: "I", de: [4, -1.4], para: [1.8, -1.4], valor: "2 A" },
+    { t: "fio", pts: [[4, -1.4], [4, 0]] },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "6 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3], valor: "20 Ω", abaixo: true },
+    { t: "corrente", de: [4, 0.5], para: [4, 1.5], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "R", de: [5.6, 0], para: [5.6, 1.4], valor: "5 Ω", abaixo: true },
+    { t: "V", de: [5.6, 3], para: [5.6, 1.4], valor: "20 V" },
+    { t: "fio", pts: [[5.6, 0], [7.2, 0]] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3], valor: "24 Ω", abaixo: true },
+    { t: "tensao", de: [7.2, 3], para: [7.2, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [7.2, 3]] },
+  ]}
+>
+
+Mesmo circuito que o 3º quesito de 2022.1 e de 2023.2 — lá pedia-se Thévenin; aqui, **superposição**, e com $i$ medida no $20\ \Omega$. Três fontes independentes, três subcircuitos.
+
+</Circuito>
+
+<Gabarito>
+$v = 12\ \mathrm{V}$  ·  $i = 0{,}6\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 0 — convenções.** Fio de baixo como referência. Chame $P$ o nó entre os dois $6\ \Omega$ e $N$ o nó que reúne o segundo $6\ \Omega$, o $20\ \Omega$, o ramo do $5\ \Omega$ e o $24\ \Omega$ — todos ligados por fio. Então $v = v_N$ e $i = v_N/20$.
+
+Vale notar de saída que a condutância total que sai de $N$ para a referência, fora do ramo de $P$, é
+
+$$
+\frac{1}{20} + \frac{1}{5} + \frac{1}{24} = \frac{6 + 24 + 5}{120} = \frac{7}{24}\ \mathrm{S}
+$$
+
+**Passo 1 — só a fonte de $18\ \mathrm{V}$** (a de $2\ \mathrm{A}$ aberta, a de $20\ \mathrm{V}$ em curto):
+
+$$
+\text{nó } P:\ \frac{18 - v_P}{6} = \frac{v_P - v_N}{6}
+\quad\Longrightarrow\quad
+v_N = 2v_P - 18
+$$
+
+$$
+\text{nó } N:\ \frac{18 - v_N}{12} = \frac{7 v_N}{24}
+\quad\Longrightarrow\quad
+9 v_N = 36
+\quad\Longrightarrow\quad
+\boxed{v' = 4\ \mathrm{V}}
+$$
+
+**Passo 2 — só a fonte de $2\ \mathrm{A}$** (as duas de tensão em curto):
+
+$$
+\text{nó } P:\ \frac{-v_P}{6} + 2 = \frac{v_P - v_N}{6}
+\quad\Longrightarrow\quad
+v_P = \frac{v_N + 12}{2}
+$$
+
+$$
+\frac{12 - v_N}{12} = 2 + \frac{7 v_N}{24}
+\quad\Longrightarrow\quad
+9 v_N = -24
+\quad\Longrightarrow\quad
+\boxed{v'' = -\frac{8}{3} \approx -2{,}67\ \mathrm{V}}
+$$
+
+**Passo 3 — só a fonte de $20\ \mathrm{V}$** (a de $18\ \mathrm{V}$ em curto, a de $2\ \mathrm{A}$ aberta):
+
+$$
+\text{nó } P:\ \frac{-v_P}{6} = \frac{v_P - v_N}{6}
+\quad\Longrightarrow\quad
+v_P = \frac{v_N}{2}
+$$
+
+$$
+-\frac{v_N}{12} = \frac{7 v_N}{24} - 4
+\quad\Longrightarrow\quad
+9 v_N = 96
+\quad\Longrightarrow\quad
+\boxed{v''' = \frac{32}{3} \approx 10{,}67\ \mathrm{V}}
+$$
+
+**Passo 4 — soma:**
+
+$$
+v = 4 - \frac{8}{3} + \frac{32}{3} = 4 + 8 = \boxed{12\ \mathrm{V}}
+$$
+
+$$
+i = \frac{v}{20} = \boxed{0{,}6\ \mathrm{A}}
+$$
+
+**Conferência —** as três parcelas de $i$ valem $\tfrac{4}{20} = 0{,}2$, $-\tfrac{8/3}{20} = -0{,}133$ e $\tfrac{32/3}{20} = 0{,}533$, somando $0{,}6\ \mathrm{A}$ ✔ E pelo equivalente de Thévenin daquele mesmo circuito ($13{,}5\ \mathrm{V}$ e $3\ \Omega$, do 3º quesito de 2022.1), $v = 13{,}5 \cdot \tfrac{24}{27} = 12\ \mathrm{V}$ ✔ — dois métodos, o mesmo número.
+</Passos>
