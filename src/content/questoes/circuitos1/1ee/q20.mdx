@@ -1,0 +1,110 @@
+---
+origem: "2024.1"
+tema: "Kirchhoff · A mesma escada, outra fonte"
+temaId: leis-de-kirchhoff
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q20.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $i$, $i_1$ e $v$.
+
+<Circuito
+  alt="Fonte de 30 V em série com 2 Ω, alimentando 16 Ω em paralelo com um ramo de 12 Ω, 4 Ω, 3 Ω, 6 Ω e 8 Ω"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "30 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 Ω" },
+    { t: "corrente", de: [0.1, 0], para: [1, 0], rotulo: "i_1" },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "16 Ω" },
+    { t: "R", de: [2, 0], para: [4, 0], valor: "12 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 1.5], valor: "4 Ω", abaixo: true },
+    { t: "no", em: [4, 1.5] },
+    { t: "fio", pts: [[3.2, 1.5], [4.8, 1.5]] },
+    { t: "corrente", de: [4.05, 1.5], para: [4.75, 1.5], rotulo: "i" },
+    { t: "R", de: [3.2, 1.5], para: [3.2, 3], valor: "3 Ω" },
+    { t: "R", de: [4.8, 1.5], para: [4.8, 3], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [4, 0], para: [6, 0], valor: "4 Ω" },
+    { t: "R", de: [6, 0], para: [6, 3], valor: "8 Ω", abaixo: true },
+    { t: "tensao", de: [6, 3], para: [6, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [6, 3]] },
+  ]}
+>
+
+É o **mesmo circuito** do 1º EE de 2020.2, com a fonte trocada de $50\ \mathrm{V}$ para $30\ \mathrm{V}$. A resistência equivalente é a mesma, e todas as correntes ficam multiplicadas por $30/50 = 0{,}6$.
+
+</Circuito>
+
+<Gabarito>
+$i_1 = 3\ \mathrm{A}$  ·  $i = \dfrac{1}{3}\ \mathrm{A} \approx 0{,}333\ \mathrm{A}$  ·  $v = 4\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a redução, de dentro para fora.** Chamando $A$ o nó do $16\ \Omega$, $B$ o do $4\ \Omega$ vertical, $C$ o nó de onde saem $3\ \Omega$ e $6\ \Omega$ e $D$ o do $8\ \Omega$:
+
+$$
+3 \parallel 6 = 2\ \Omega
+\qquad
+\text{ramo } B \to C = 4 + 2 = 6\ \Omega
+\qquad
+\text{ramo } B \to D = 4 + 8 = 12\ \Omega
+$$
+
+$$
+R_B = 6 \parallel 12 = 4\ \Omega
+\qquad
+\text{ramo } A \to B = 12 + 4 = 16\ \Omega
+\qquad
+R_A = 16 \parallel 16 = 8\ \Omega
+$$
+
+$$
+R_{\mathrm{eq}} = 2 + 8 = 10\ \Omega
+$$
+
+**Passo 2 — a corrente da fonte:**
+
+$$
+\boxed{i_1 = \frac{30}{10} = 3\ \mathrm{A}}
+\qquad\Longrightarrow\qquad
+v_A = 8 \cdot 3 = 24\ \mathrm{V}
+$$
+
+**Passo 3 — as divisões.** Em $A$ os dois caminhos valem $16\ \Omega$, então a corrente se divide ao meio: $1{,}5\ \mathrm{A}$ pelo $16\ \Omega$ e $1{,}5\ \mathrm{A}$ pelo $12\ \Omega$. Chegando em $B$:
+
+$$
+v_B = 4 \cdot 1{,}5 = 6\ \mathrm{V}
+$$
+
+$$
+i_{B \to C} = \frac{6}{6} = 1\ \mathrm{A}
+\qquad\qquad
+i_{B \to D} = \frac{6}{12} = 0{,}5\ \mathrm{A}
+$$
+
+**Passo 4 — as duas respostas que faltam:**
+
+$$
+\boxed{v = 8 \cdot 0{,}5 = 4\ \mathrm{V}}
+$$
+
+$$
+\boxed{i = \frac{2}{6}\cdot 1 = \frac{1}{3} \approx 0{,}333\ \mathrm{A}}
+$$
+
+onde $i$ é a parcela do $6\ \Omega$ na divisão do nó $C$.
+
+**Conferência —** $i_1 = 1{,}5 + 1 + 0{,}5 = 3\ \mathrm{A}$ ✔ E comparando com o 2020.2: lá $i_1 = 5\ \mathrm{A}$, $v = 20/3$ e $i = 5/9$; aqui tudo caiu para $0{,}6$ desses valores, exatamente a razão das fontes ✔
+</Passos>
