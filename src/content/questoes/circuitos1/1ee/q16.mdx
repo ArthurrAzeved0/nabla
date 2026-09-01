@@ -1,0 +1,96 @@
+---
+origem: "2023.1"
+tema: "Amp. op. · Não inversor com divisor na entrada"
+temaId: amplificador-operacional
+pontos: 2 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $v$, $i_1$ e $i_2$. Considere o amplificador operacional como **ideal**.
+
+<Circuito
+  alt="Fonte de 9 V com 4 Ω e 8 Ω alimentando a entrada não inversora; 2 Ω e 6 Ω na realimentação e 3 Ω na saída"
+  itens={[
+    { t: "V", de: [0, 4.8], para: [0, 0], valor: "9 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "4 Ω" },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 4.8], valor: "8 Ω" },
+    { t: "fio", pts: [[2, 0], [4, 0]] },
+    { t: "ampop", em: [5, 1], maisEmCima: true },
+    { t: "fio", pts: [[4, 2], [3, 2], [3, 3.4]] },
+    { t: "no", em: [3, 3.4] },
+    { t: "R", de: [3, 3.4], para: [3, 4.8], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [3, 3.5], para: [3, 4.3], rotulo: "i_1", abaixo: false },
+    { t: "R", de: [3, 3.4], para: [5.4, 3.4], valor: "6 Ω" },
+    { t: "tensao", de: [5.4, 3.4], para: [3, 3.4], rotulo: "v" },
+    { t: "fio", pts: [[5.4, 3.4], [6.8, 3.4], [6.8, 1]] },
+    { t: "fio", pts: [[6, 1], [8.4, 1]] },
+    { t: "no", em: [6.8, 1] },
+    { t: "corrente", de: [7.3, 1], para: [8.2, 1], rotulo: "i_2", abaixo: false },
+    { t: "R", de: [8.4, 1], para: [8.4, 4.8], valor: "3 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 4.8], [8.4, 4.8]] },
+    { t: "terra", em: [3, 4.8] },
+  ]}
+>
+
+O sinal entra pela **não inversora**, e o par $2\ \Omega$–$6\ \Omega$ realimenta a inversora: é o amplificador **não inversor**. O divisor de $4\ \Omega$ e $8\ \Omega$ fica descarregado, porque a entrada do amp. op. não puxa corrente.
+
+</Circuito>
+
+<Gabarito>
+$v = -18\ \mathrm{V}$  ·  $i_1 = 3\ \mathrm{A}$  ·  $i_2 = 8\ \mathrm{A}$  (com $v_o = 24\ \mathrm{V}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — a entrada.** A entrada não inversora **não puxa corrente** ($i_+ = 0$), então o divisor de $4\ \Omega$ e $8\ \Omega$ trabalha em vazio:
+
+$$
+v_+ = 9 \cdot \frac{8}{4 + 8} = 6\ \mathrm{V}
+$$
+
+**Passo 2 — o curto virtual.** Com realimentação negativa pelo $6\ \Omega$,
+
+$$
+v_- = v_+ = 6\ \mathrm{V}
+$$
+
+**Passo 3 — $i_1$.** O nó inversor está a $6\ \mathrm{V}$ e o pé do $2\ \Omega$ está no terra:
+
+$$
+\boxed{i_1 = \frac{6 - 0}{2} = 3\ \mathrm{A}}
+$$
+
+**Passo 4 — a saída.** Como $i_- = 0$, esses $3\ \mathrm{A}$ vieram **inteiros** pelo $6\ \Omega$, da saída para o nó inversor. Logo a saída está $6 \times 3 = 18\ \mathrm{V}$ acima:
+
+$$
+v_o = 6 + 18 = 24\ \mathrm{V}
+$$
+
+que confere com a fórmula do não inversor: $v_o = v_+\left(1 + \dfrac{6}{2}\right) = 6 \cdot 4 = 24\ \mathrm{V}$ ✔
+
+**Passo 5 — as duas respostas que faltam.** A tensão $v$ está marcada com o $+$ do lado do nó inversor:
+
+$$
+\boxed{v = v_- - v_o = 6 - 24 = -18\ \mathrm{V}}
+$$
+
+E $i_2$ é a corrente que a saída entrega ao $3\ \Omega$:
+
+$$
+\boxed{i_2 = \frac{v_o}{3} = \frac{24}{3} = 8\ \mathrm{A}}
+$$
+
+**Conferência —** o amp. op. fornece $i_2 + 3 = 11\ \mathrm{A}$ pela saída (os $8\ \mathrm{A}$ da carga mais os $3\ \mathrm{A}$ da realimentação), e nada disso passa pela fonte de $9\ \mathrm{V}$: ela só entrega $9/12 = 0{,}75\ \mathrm{A}$ ao divisor. É exatamente o que um amp. op. faz — **isola** a fonte da carga ✔
+</Passos>
