@@ -1,0 +1,97 @@
+---
+origem: "2023.1"
+tema: "Condições iniciais · Chave que abre e solta o nó"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito está em **regime permanente** em $t = 0^-$. Determine $v(0^+)$, $i(0^+)$, $dv(0^+)/dt$ e $di(0^+)/dt$.
+
+<Circuito
+  alt="Fonte de 5 A, chave para o terra, 8 Ω em paralelo com capacitor de 1/10 F, fonte de 10 V, indutor de 2 H e 2 Ω"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "S", de: [1.6, 0], para: [1.6, 3], rotulo: "abre" },
+    { t: "fio", pts: [[1.6, 0], [1.6, -1.4]] },
+    { t: "R", de: [1.6, -1.4], para: [4, -1.4], valor: "8 Ω" },
+    { t: "fio", pts: [[4, -1.4], [4, 0]] },
+    { t: "C", de: [1.6, 0], para: [4, 0], valor: "1/10 F" },
+    { t: "tensao", de: [4, 0], para: [1.6, 0], rotulo: "v" },
+    { t: "no", em: [4, 0] },
+    { t: "V", de: [4, 3], para: [4, 0], valor: "10 V", abaixo: true },
+    { t: "L", de: [4, 0], para: [6, 0], valor: "2 H" },
+    { t: "corrente", de: [6.1, 0], para: [6.9, 0], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[6, 0], [7.2, 0]] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3], [7.2, 3]] },
+  ]}
+>
+
+A chave é um **ramo para o fio de baixo**: fechada, ela aterra o nó da esquerda. Pela seta ela está **fechada** antes de $t=0$ e **abre** no instante zero, soltando aquele nó. O $8\ \Omega$ e o capacitor ligam o mesmo par de nós.
+
+</Circuito>
+
+<Gabarito>
+$v(0^+) = -10\ \mathrm{V}$  ·  $i(0^+) = 5\ \mathrm{A}$  ·  $\dfrac{dv(0^+)}{dt} = 62{,}5\ \mathrm{V/s}$  ·  $\dfrac{di(0^+)}{dt} = 0$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$** (chave **fechada**, regime permanente: capacitor aberto, indutor em fio). Com a chave fechada o nó da esquerda está em $0\ \mathrm{V}$, e a fonte de $10\ \mathrm{V}$ fixa o nó da direita:
+
+$$
+v(0^-) = 0 - 10 = -10\ \mathrm{V}
+$$
+
+O indutor, sendo fio, põe o nó do $2\ \Omega$ também em $10\ \mathrm{V}$:
+
+$$
+i(0^-) = \frac{10}{2} = 5\ \mathrm{A}
+$$
+
+**Passo 2 — continuidade:**
+
+$$
+\boxed{v(0^+) = -10\ \mathrm{V}}
+\qquad\qquad
+\boxed{i(0^+) = 5\ \mathrm{A}}
+$$
+
+**Passo 3 — circuito em $0^+$.** A chave abre. O capacitor vira **fonte de $-10\ \mathrm{V}$** (com o $+$ à esquerda), o que mantém o nó da esquerda em $10 + (-10) = 0\ \mathrm{V}$; o indutor vira **fonte de $5\ \mathrm{A}$**.
+
+**Passo 4 — a derivada da tensão.** LKC no nó da esquerda, que agora só tem três ramos — a fonte de $5\ \mathrm{A}$, o $8\ \Omega$ e o capacitor:
+
+$$
+5 + \underbrace{\frac{10 - 0}{8}}_{\text{vem pelo }8\ \Omega} = i_C
+\qquad\Longrightarrow\qquad
+i_C(0^+) = 5 + 1{,}25 = 6{,}25\ \mathrm{A}
+$$
+
+$$
+\boxed{\frac{dv(0^+)}{dt} = \frac{i_C}{C} = \frac{6{,}25}{1/10} = 62{,}5\ \mathrm{V/s}}
+$$
+
+**Passo 5 — a derivada da corrente.** O indutor tem $10\ \mathrm{V}$ à esquerda (a fonte) e, à direita, os $5\ \mathrm{A}$ sobre o $2\ \Omega$ dão também $10\ \mathrm{V}$:
+
+$$
+v_L(0^+) = 10 - 10 = 0
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = 0}
+$$
+
+**Conferência —** as duas grandezas de estado não saltam ✔ e as derivadas contam a história: a tensão do capacitor **arranca** (a chave que abriu jogou toda a corrente da fonte para dentro dele), enquanto a corrente do indutor fica **parada** — o ramo dele não sentiu nada, porque a fonte de $10\ \mathrm{V}$ e o $2\ \Omega$ continuam iguais. Confere com a resolução da prova.
+</Passos>
