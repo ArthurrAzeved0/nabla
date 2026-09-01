@@ -1,0 +1,106 @@
+---
+origem: "2022.2"
+tema: "Segunda ordem · Criticamente amortecido com condições dadas"
+temaId: criticamente-amortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$, dado que $i_g(t) = 10\ \mathrm{A}$, $v(0) = 5\ \mathrm{V}$ e $i(0) = 2\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 10 A, 2 Ω, 3 Ω, indutor de 5 H em paralelo com capacitor de 1/20 F"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "i_g = 10 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3], valor: "2 Ω" },
+    { t: "R", de: [1.6, 0], para: [3.6, 0], valor: "3 Ω" },
+    { t: "no", em: [3.6, 0] },
+    { t: "L", de: [3.6, 0], para: [3.6, 3], valor: "5 H", abaixo: true },
+    { t: "corrente", de: [3.6, 0.4], para: [3.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[3.6, 0], [5.4, 0]] },
+    { t: "C", de: [5.4, 0], para: [5.4, 3], valor: "1/20 F" },
+    { t: "tensao", de: [5.4, 3], para: [5.4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3], [5.4, 3]] },
+  ]}
+>
+
+O indutor e o capacitor ficam no **mesmo par de nós** — em paralelo —, e não se associam entre si: circuito de **2ª ordem**. O enunciado já entrega as duas condições iniciais, o que economiza o passo do circuito em $0^+$.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 4 - (2 + 3t)\,e^{-2t}\ \mathrm{A}$  ·  $v(t) = 5\,(1 + 6t)\,e^{-2t}\ \mathrm{V}$, para $t > 0$
+</Gabarito>
+
+<Passos>
+**Passo 1 — simplifique a fonte.** Os $10\ \mathrm{A}$ em paralelo com o $2\ \Omega$ equivalem a $20\ \mathrm{V}$ em série com $2\ \Omega$; somando o $3\ \Omega$, o par $L$–$C$ é alimentado por **$20\ \mathrm{V}$ através de $5\ \Omega$**.
+
+**Passo 2 — a equação.** Com $v = 5\,di/dt$ e $i_C = \tfrac{1}{20}\,dv/dt$, a LKC no nó do capacitor dá
+
+$$
+\frac{20 - v}{5} = i + \frac{1}{20}\frac{dv}{dt}
+$$
+
+Substituindo $v$ e multiplicando por $4$:
+
+$$
+\boxed{\frac{d^2 i}{dt^2} + 4\,\frac{di}{dt} + 4\,i = 16}
+$$
+
+**Passo 3 — as frequências naturais.** $2\alpha = 4$ e $\omega_0^2 = 4$:
+
+$$
+\alpha = \omega_0 = 2
+\qquad\Longrightarrow\qquad
+\text{criticamente amortecido},
+\quad
+s_1 = s_2 = -2
+$$
+
+**Passo 4 — resposta completa.** Forçada $i_f = 16/4 = 4\ \mathrm{A}$:
+
+$$
+i(t) = 4 + (A_1 + A_2 t)\,e^{-2t}
+$$
+
+**Passo 5 — as duas constantes.** De $i(0) = 2$:
+
+$$
+4 + A_1 = 2 \qquad\Longrightarrow\qquad A_1 = -2
+$$
+
+E da derivada, usando $v(0) = 5 = 5\,\dfrac{di(0)}{dt}$, ou seja $di(0)/dt = 1\ \mathrm{A/s}$:
+
+$$
+A_2 - 2A_1 = 1
+\qquad\Longrightarrow\qquad
+A_2 = -3
+$$
+
+$$
+\boxed{i(t) = 4 - (2 + 3t)\,e^{-2t}\ \mathrm{A}}
+$$
+
+**Passo 6 — a tensão:**
+
+$$
+v = 5\,\frac{di}{dt} = 5\big[-3\,e^{-2t} + 2(2 + 3t)\,e^{-2t}\big]
+= \boxed{5\,(1 + 6t)\,e^{-2t}\ \mathrm{V}}
+$$
+
+**Conferência —** $i(0) = 4 - 2 = 2\ \mathrm{A}$ ✔ e $v(0) = 5\ \mathrm{V}$ ✔ Para $t$ grande, o indutor vira fio e o capacitor abre, então toda a corrente equivalente atravessa: $i \to 20/5 = 4\ \mathrm{A}$ e $v \to 0$ ✔ Note que $v$ **sobe** antes de cair — o termo $30t\,e^{-2t}$ tem máximo em $t = 0{,}5\ \mathrm{s}$: é o capacitor sendo carregado enquanto a corrente do indutor ainda não chegou ao valor final. Confere com a resolução da prova.
+</Passos>
