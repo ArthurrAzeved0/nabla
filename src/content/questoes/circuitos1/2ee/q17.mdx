@@ -1,0 +1,104 @@
+---
+origem: "2021.1"
+tema: "Primeira ordem · Divisor de corrente na condição inicial"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ para $t > 0$, sabendo que o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Fonte de 9 A com 6 Ω, chave, fonte de 5 V, 3 Ω, indutor de 1/2 H e 5 Ω"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "9 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3], valor: "6 Ω", abaixo: true },
+    { t: "S", de: [1.6, 0], para: [3, 0], rotulo: "fecha" },
+    { t: "no", em: [3, 0] },
+    { t: "V", de: [3, 3], para: [3, 0], valor: "5 V", abaixo: true },
+    { t: "R", de: [3, 0], para: [5, 0], valor: "3 Ω" },
+    { t: "tensao", de: [5, 0], para: [3, 0], rotulo: "v" },
+    { t: "no", em: [5, 0] },
+    { t: "L", de: [5, 0], para: [5, 3], valor: "1/2 H", abaixo: true },
+    { t: "fio", pts: [[5, 0], [6.6, 0]] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3], [6.6, 3]] },
+  ]}
+>
+
+Antes de $t=0$ manda a fonte de $9\ \mathrm{A}$ com o $6\ \Omega$; a chave, ao **fechar**, põe a fonte de $5\ \mathrm{V}$ no comando. A condição inicial sai de um **divisor de corrente**, porque em regime o indutor é um fio.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 5 + \dfrac{65}{8}\,e^{-15t/4} = 5 + 8{,}125\,e^{-3,75t}\ \mathrm{V}$, para $t > 0$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Com o indutor em fio, o ramo dele vale $3\ \Omega$ e concorre com o $6\ \Omega$. Divisor de corrente:
+
+$$
+i_L(0) = \frac{6}{6+3}\cdot 9 = \frac{2}{3}\cdot 9 = 6\ \mathrm{A}
+$$
+
+**Passo 2 — a equação para $t > 0$.** Com a chave fechada e a fonte de $5\ \mathrm{V}$ no comando, chame $i$ a corrente do $3\ \Omega$, $i_L$ a do indutor e $i_R$ a do $5\ \Omega$. Então
+
+$$
+5 = 3i + v_L,
+\qquad
+i = i_L + i_R,
+\qquad
+v_L = 5\,i_R = \frac{1}{2}\frac{di_L}{dt}
+$$
+
+Substituindo $i_R = v_L/5$:
+
+$$
+3\left(i_L + \frac{v_L}{5}\right) + v_L = 5
+\qquad\xrightarrow{\times 5}\qquad
+15\,i_L + 8\,v_L = 25
+$$
+
+E com $v_L = \tfrac12\,di_L/dt$:
+
+$$
+\boxed{4\,\frac{di_L}{dt} + 15\,i_L = 25}
+$$
+
+**Passo 3 — resolvendo.** Característica $4s + 15 = 0 \Rightarrow s = -3{,}75$, e forçada $i_f = \tfrac{25}{15} = \tfrac53\ \mathrm{A}$:
+
+$$
+i_L(t) = \frac{5}{3} + \left(6 - \frac{5}{3}\right)e^{-3,75t}
+= \frac{5}{3} + \frac{13}{3}\,e^{-3,75t}\ \mathrm{A}
+$$
+
+**Passo 4 — a tensão pedida.** Primeiro a do indutor:
+
+$$
+v_L = \frac{1}{2}\frac{di_L}{dt}
+= \frac{1}{2}\cdot\frac{13}{3}\cdot(-3{,}75)\,e^{-3,75t}
+= -\frac{65}{8}\,e^{-3,75t}\ \mathrm{V}
+$$
+
+e $v$ é o que sobra da fonte:
+
+$$
+\boxed{v = 5 - v_L = 5 + \frac{65}{8}\,e^{-3,75t} = 5 + 8{,}125\,e^{-3,75t}\ \mathrm{V}}
+$$
+
+**Conferência —** em $t=0$: $v = 13{,}125\ \mathrm{V}$, logo $i = v/3 = 4{,}375\ \mathrm{A}$. E de fato $i = i_L + v_L/5 = 6 - 1{,}625 = 4{,}375\ \mathrm{A}$ ✔ Para $t$ grande, $v \to 5\ \mathrm{V}$: o indutor vira fio, o $5\ \Omega$ fica em curto e todo o $5\ \mathrm{V}$ da fonte aparece sobre o $3\ \Omega$… na verdade $v \to 5\ \mathrm{V}$ com $i \to 5/3\ \mathrm{A}$, que é $3 \times \tfrac53 = 5\ \mathrm{V}$ ✔
+</Passos>
