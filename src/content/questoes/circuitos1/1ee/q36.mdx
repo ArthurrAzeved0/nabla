@@ -1,0 +1,119 @@
+---
+origem: "2026.1"
+tema: "Thévenin e Norton · Fonte controlada em paralelo com resistor"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q36.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o circuito equivalente de **Thévenin** e de **Norton** fora dos pontos $a$ e $b$ e utilize um dos dois circuitos para determinar o valor da tensão $v$ entre os pontos $a$ e $b$.
+
+<Circuito
+  alt="Fonte de 50 V com 8 Ω, 10 Ω entre a e b, 6 Ω em paralelo com a controlada 2i, 4 Ω, 5 Ω e fonte de 10 A"
+  itens={[
+    { t: "V", de: [0, 3.2], para: [0, 0], valor: "50 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "8 Ω" },
+    { t: "no", em: [2, 0] },
+    { t: "texto", em: [2, -0.5], texto: "a" },
+    { t: "R", de: [2, 0], para: [2, 3.2], valor: "10 Ω" },
+    { t: "tensao", de: [2, 3.2], para: [2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[2, 0], [2.8, 0]] },
+    { t: "no", em: [2.8, 0] },
+    { t: "fio", pts: [[2.8, 0], [2.8, -1.4], [5.4, -1.4], [5.4, 0]] },
+    { t: "R", de: [3.2, -1.4], para: [5, -1.4], valor: "6 Ω" },
+    { t: "Vd", de: [5.4, 0], para: [2.8, 0], rotulo: "2i V" },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [7.4, 0], valor: "4 Ω" },
+    { t: "no", em: [7.4, 0] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.2], valor: "5 Ω" },
+    { t: "corrente", de: [7.4, 0.4], para: [7.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[7.4, 0], [9, 0]] },
+    { t: "I", de: [9, 3.2], para: [9, 0], valor: "10 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.2], [9, 3.2]] },
+    { t: "no", em: [2, 3.2] },
+    { t: "texto", em: [2, 3.7], texto: "b" },
+  ]}
+>
+
+A fonte controlada de tensão está **em paralelo** com o $6\ \Omega$: ela fixa a diferença de potencial entre os dois nós, e o $6\ \Omega$ é **interno** ao supernó que eles formam — sai das equações.
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = \dfrac{1110}{19} \approx 58{,}42\ \mathrm{V}$, $R_{\mathrm{Th}} = \dfrac{88}{19} \approx 4{,}63\ \Omega$  ·  Norton: $I_N = \dfrac{555}{44} \approx 12{,}61\ \mathrm{A}$  ·  $v = \dfrac{5550}{139} \approx 39{,}93\ \mathrm{V}$ (a resolução da prova arredonda para $40\ \mathrm{V}$)
+</Gabarito>
+
+<Passos>
+**Passo 0 — convenções.** Fio de baixo ($b$) como referência. Chame $v_a$ o terminal $a$, $v_P$ o nó do outro lado da fonte controlada e $v_Q$ o nó do $5\ \Omega$. Então $i = v_Q/5$ e a controlada, com o $+$ do lado de $a$, impõe
+
+$$
+v_a - v_P = 2i = \frac{2 v_Q}{5}
+$$
+
+**Passo 1 — $V_{\mathrm{Th}}$, com o $10\ \Omega$ removido.** LKC no supernó $\{a, P\}$ (o $6\ \Omega$ é interno):
+
+$$
+\frac{v_a - 50}{8} + \frac{v_P - v_Q}{4} = 0
+$$
+
+LKC no nó $Q$, com os $10\ \mathrm{A}$ entrando:
+
+$$
+\frac{v_P - v_Q}{4} + 10 = \frac{v_Q}{5}
+$$
+
+Das duas, com a restrição da fonte: $v_a = 130 - 1{,}6\,v_Q$ e $v_P = 1{,}8\,v_Q - 40$, e daí
+
+$$
+3{,}8\,v_Q = 170
+\qquad\Longrightarrow\qquad
+v_Q = \frac{850}{19}
+\qquad\Longrightarrow\qquad
+\boxed{V_{\mathrm{Th}} = v_a = \frac{1110}{19} \approx 58{,}42\ \mathrm{V}}
+$$
+
+**Passo 2 — $I_N$, com $a$–$b$ em curto** ($v_a = 0$, logo $v_P = -0{,}4\,v_Q$). A LKC em $Q$ dá
+
+$$
+\frac{-1{,}4\,v_Q}{4} + 10 = \frac{v_Q}{5}
+\qquad\Longrightarrow\qquad
+0{,}55\,v_Q = 10
+\qquad\Longrightarrow\qquad
+v_Q = \frac{200}{11}\ \mathrm{V}
+$$
+
+e a LKC no supernó, agora incluindo o curto:
+
+$$
+\boxed{I_N = \frac{50}{8} + \frac{v_Q - v_P}{4} = \frac{25}{4} + \frac{70}{11} = \frac{555}{44} \approx 12{,}61\ \mathrm{A}}
+$$
+
+**Passo 3 — $R_{\mathrm{Th}}$ pela razão**, que é o caminho obrigatório com fonte controlada:
+
+$$
+\boxed{R_{\mathrm{Th}} = \frac{V_{\mathrm{Th}}}{I_N} = \frac{1110/19}{555/44} = \frac{88}{19} \approx 4{,}63\ \Omega}
+$$
+
+**Passo 4 — a tensão na carga:**
+
+$$
+v = V_{\mathrm{Th}} \cdot \frac{10}{R_{\mathrm{Th}} + 10}
+= \frac{1110}{19} \cdot \frac{10}{\tfrac{88}{19} + 10}
+= \frac{11100}{278}
+= \boxed{\frac{5550}{139} \approx 39{,}93\ \mathrm{V}}
+$$
+
+**Conferência —** resolvendo o circuito original **com** o $10\ \Omega$ no lugar, o sistema dá $27{,}8\,v_Q = 1010$ e $v_a = 2{,}2\,v_Q - 40 = 39{,}93\ \mathrm{V}$ ✔ A resolução oficial da prova usa $R_{\mathrm{Th}} = 4{,}63\ \Omega$ arredondado, obtém $i \approx 4\ \mathrm{A}$ e apresenta $v = 40\ \mathrm{V}$ — a diferença de $0{,}07\ \mathrm{V}$ é só do arredondamento.
+</Passos>
