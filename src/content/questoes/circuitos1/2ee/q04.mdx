@@ -1,0 +1,124 @@
+---
+origem: "2024.1"
+tema: "Condições iniciais · Três chaveamentos simultâneos"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito está em **regime permanente** em $t = 0^-$. Determine os valores de $v$, $i$, $dv/dt$ e $di/dt$ em $0^-$ e em $0^+$.
+
+<Circuito
+  alt="Circuito com três chaves: 20 V trocado por 50 V, uma chave no trilho de cima, e 5 A trocado por 10 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "fecha" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", abaixo: true },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "abre", abaixo: true },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "2 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω" },
+    { t: "fio", pts: [[4.2, 0], [5.8, 0]] },
+    { t: "no", em: [5.8, 0] },
+    { t: "C", de: [5.8, 0], para: [5.8, 3.4], valor: "1/2 F" },
+    { t: "tensao", de: [5.8, 3.4], para: [5.8, 0], rotulo: "v", abaixo: true },
+    { t: "S", de: [5.8, 0], para: [7.6, 0], rotulo: "fecha" },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "5 Ω" },
+    { t: "R", de: [7.6, 0], para: [9.8, 0], valor: "5 Ω" },
+    { t: "no", em: [9.8, 0] },
+    { t: "L", de: [9.8, 0], para: [9.8, 3.4], valor: "2 H" },
+    { t: "corrente", de: [9.8, 0.4], para: [9.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[9.8, 0], [11.2, 0]] },
+    { t: "no", em: [11.2, 0] },
+    { t: "I", de: [11.2, 3.4], para: [11.2, 1.4], valor: "5 A" },
+    { t: "S", de: [11.2, 1.4], para: [11.2, 0], rotulo: "abre", abaixo: true },
+    { t: "S", de: [11.2, 0], para: [12.8, 0], rotulo: "fecha" },
+    { t: "I", de: [12.8, 3.4], para: [12.8, 0], valor: "10 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [12.8, 3.4]] },
+  ]}
+>
+
+No original há **três** chaves, duas delas comutadoras. Pela resolução da prova, antes de $t=0$ valem a fonte de $20\ \mathrm{V}$ e a de $5\ \mathrm{A}$, com a chave do trilho **aberta**; depois de $t=0$ valem a de $50\ \mathrm{V}$ e a de $10\ \mathrm{A}$, com a chave do trilho **fechada**.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v = 10\ \mathrm{V}$, $i = 5\ \mathrm{A}$, $dv/dt = 0$, $di/dt = 0$
+·
+Em $0^+$: $v = 10\ \mathrm{V}$, $i = 5\ \mathrm{A}$, $dv/dt = 36\ \mathrm{V/s}$, $di/dt = 17{,}5\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$.** Fonte de $20\ \mathrm{V}$, chave do trilho **aberta**, fonte de $5\ \mathrm{A}$. Regime permanente: **capacitor aberto**, **indutor em fio**. Com a chave do trilho aberta, o circuito se parte em dois pedaços independentes.
+
+*Pedaço da esquerda:* $20\ \mathrm{V}$ em série com $2\ \Omega$, alimentando o $2\ \Omega$ vertical (o capacitor não conduz):
+
+$$
+v(0^-) = 20 \cdot \frac{2}{2+2} = \boxed{10\ \mathrm{V}}
+$$
+
+*Pedaço da direita:* os $5\ \mathrm{A}$ só têm o indutor (que é um fio) para escoar, porque o ramo dos dois $5\ \Omega$ termina no mesmo potencial nos dois lados:
+
+$$
+i(0^-) = \boxed{5\ \mathrm{A}}
+$$
+
+E as duas derivadas em $0^-$ são nulas, porque em regime permanente nada varia:
+
+$$
+i_C(0^-) = 0 \Rightarrow \boxed{\frac{dv(0^-)}{dt} = 0}
+\qquad
+v_L(0^-) = 0 \Rightarrow \boxed{\frac{di(0^-)}{dt} = 0}
+$$
+
+**Passo 2 — continuidade:** $v(0^+) = 10\ \mathrm{V}$ e $i(0^+) = 5\ \mathrm{A}$.
+
+**Passo 3 — circuito em $0^+$.** Agora: $50\ \mathrm{V}$, chave do trilho **fechada**, $10\ \mathrm{A}$. O capacitor vira **fonte de $10\ \mathrm{V}$** e o indutor, **fonte de $5\ \mathrm{A}$**. Com a chave fechada, os dois $5\ \Omega$ e o $2\ \Omega$ passam a compartilhar o mesmo nó de $10\ \mathrm{V}$:
+
+$$
+i_{2\Omega} = \frac{10}{2} = 5\ \mathrm{A}
+\qquad
+i_{5\Omega,\text{vert}} = \frac{10}{5} = 2\ \mathrm{A}
+$$
+
+A fonte de $50\ \mathrm{V}$ entrega, pelo $2\ \Omega$ de cima,
+
+$$
+i_T = \frac{50 - 10}{2} = 20\ \mathrm{A}
+$$
+
+**Passo 4 — a derivada da tensão.** No nó do capacitor: chegam $20\ \mathrm{A}$ da fonte e mais o que vem da direita pelo $5\ \Omega$ horizontal; saem $5\ \mathrm{A}$ pelo $2\ \Omega$, $2\ \mathrm{A}$ pelo $5\ \Omega$ vertical e $i_C$ pelo capacitor.
+
+Do lado direito, o nó do indutor recebe $10\ \mathrm{A}$ da fonte e escoa $5\ \mathrm{A}$ pelo indutor — sobram $5\ \mathrm{A}$, que vêm pelo $5\ \Omega$ horizontal para a esquerda. Logo
+
+$$
+i_C(0^+) = 20 + 5 - 5 - 2 = 18\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{i_C}{C} = \frac{18}{1/2} = 36\ \mathrm{V/s}}
+$$
+
+**Passo 5 — a derivada da corrente.** Os $5\ \mathrm{A}$ atravessam o $5\ \Omega$ horizontal da direita para a esquerda, então o nó do indutor está $5 \times 5 = 25\ \mathrm{V}$ acima do nó do capacitor:
+
+$$
+v_L(0^+) = 10 + 25 = 35\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{35}{2} = 17{,}5\ \mathrm{A/s}}
+$$
+
+**Conferência —** as duas grandezas de estado ($v$ e $i$) **não saltam**, e as duas derivadas **saltam** de zero para valores grandes: é exatamente o que se espera de um circuito que sai do repouso quando três chaves agem ao mesmo tempo ✔ Todos os números conferem com a resolução da prova.
+</Passos>
