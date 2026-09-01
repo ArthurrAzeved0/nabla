@@ -1,0 +1,83 @@
+---
+origem: "2025.2"
+tema: "Thévenin e Norton · A carga é uma fonte de corrente"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os circuitos equivalentes de **Thévenin** e de **Norton** fora dos pontos $a$ e $b$ e use um dos circuitos para determinar a tensão $v$ **na fonte**.
+
+<Circuito
+  alt="Fonte de 8 V com 4 Ω, fonte de 1 A entre a e b, e 12 Ω em paralelo com 6 Ω"
+  itens={[
+    { t: "V", de: [0, 2.8], para: [0, 0], valor: "8 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "4 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "texto", em: [2.4, -0.5], texto: "a" },
+    { t: "I", de: [2.4, 2.8], para: [2.4, 0], valor: "1 A" },
+    { t: "tensao", de: [2.4, 2.8], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [2.4, 2.8] },
+    { t: "texto", em: [2.4, 3.3], texto: "b" },
+    { t: "fio", pts: [[2.4, 0], [5.6, 0]] },
+    { t: "R", de: [4, 0], para: [4, 2.8], valor: "12 Ω", abaixo: true },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [5.6, 0], para: [5.6, 2.8], valor: "6 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 2.8], [5.6, 2.8]] },
+    { t: "no", em: [4, 2.8] },
+  ]}
+>
+
+A **carga** aqui é a fonte de $1\ \mathrm{A}$, e $v$ é a tensão nos terminais dela. Removida a fonte, o que sobra é um divisor simples — e o equivalente de Thévenin faz o resto numa linha.
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = 4\ \mathrm{V}$, $R_{\mathrm{Th}} = 2\ \Omega$  ·  Norton: $I_N = 2\ \mathrm{A}$, $R_N = 2\ \Omega$  ·  $v = 6\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — remova a carga** (a fonte de $1\ \mathrm{A}$) e tome o fio de baixo como referência. Sobram o $4\ \Omega$ vindo da fonte de $8\ \mathrm{V}$ e, do nó $a$ até a referência, o par
+
+$$
+12 \parallel 6 = \frac{12 \cdot 6}{18} = 4\ \Omega
+$$
+
+**Passo 2 — $V_{\mathrm{Th}}$**, por divisor de tensão entre dois $4\ \Omega$ iguais:
+
+$$
+\boxed{V_{\mathrm{Th}} = 8 \cdot \frac{4}{4 + 4} = 4\ \mathrm{V}}
+$$
+
+**Passo 3 — $R_{\mathrm{Th}}$.** A fonte de $8\ \mathrm{V}$ vira **fio**, e de $a$ para dentro ficam dois caminhos de $4\ \Omega$ em paralelo:
+
+$$
+\boxed{R_{\mathrm{Th}} = R_N = 4 \parallel 4 = 2\ \Omega}
+$$
+
+**Passo 4 — Norton:**
+
+$$
+\boxed{I_N = \frac{4}{2} = 2\ \mathrm{A}}
+$$
+
+**Passo 5 — a tensão na fonte de $1\ \mathrm{A}$.** Ligando-a ao equivalente de Thévenin: a fonte injeta $1\ \mathrm{A}$ **entrando** por $a$, então ela levanta o potencial de $a$ acima de $V_{\mathrm{Th}}$:
+
+$$
+v = V_{\mathrm{Th}} + R_{\mathrm{Th}} \cdot 1 = 4 + 2 = \boxed{6\ \mathrm{V}}
+$$
+
+**Conferência —** direto no circuito original, a LKC no nó $a$ dá $1 + \dfrac{8 - v_a}{4} = \dfrac{v_a}{4}$, ou $12 = 2v_a$, logo $v_a = 6\ \mathrm{V}$ ✔ Por Norton, as duas fontes de corrente se somam: $(2 + 1) \times 2 = 6\ \mathrm{V}$ ✔ E note que a fonte de $1\ \mathrm{A}$ **entrega** $6\ \mathrm{W}$ ao circuito.
+</Passos>
