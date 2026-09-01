@@ -9,6 +9,7 @@ unidades:
       - { id: ckt-ohm, titulo: "Lei de Ohm e associação de resistores" }
       - { id: ckt-divisores, titulo: "Divisor de tensão e divisor de corrente" }
       - { id: ckt-kirchhoff, titulo: "As leis de Kirchhoff" }
+      - { id: ckt-nodal, titulo: "Análise nodal (análise de nós)" }
 ---
 
 {/* **************************************************************************
@@ -456,6 +457,107 @@ i = 2\ \mathrm{A}
 $$
 
 A fonte entrou com $+$ (percurso do $-$ para o $+$) e os resistores com $-$ (percurso a favor da corrente). Conferindo pela potência: a fonte fornece $20 \times 2 = 40\ \mathrm{W}$, os resistores absorvem $3(2)^2 + 7(2)^2 = 12 + 28 = 40\ \mathrm{W}$. Soma zero ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-nodal" num="06" titulo="Análise nodal (análise de nós)">
+
+**A ideia.** Kirchhoff dá as equações, mas não diz **quais** escrever. A análise nodal responde isso de um jeito mecânico: eleja um nó como referência, chame de incógnita o **potencial** de cada um dos outros, e escreva a LKC em cada um deles. As correntes dos ramos você nem nomeia — elas viram diferenças de potencial divididas por resistências. Sai um sistema $(n-1) \times (n-1)$, e é o método que a prova pede quando o circuito tem **fontes de corrente**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $n$ — número de **nós** (pontos de encontro de três ou mais ramos);
+- **nó de referência** (terra, $\perp$) — aquele a que se atribui $0\ \mathrm{V}$;
+- $v_1, v_2, \dots$ — potenciais dos demais nós, **medidos em relação à referência**;
+- $G = 1/R$ — condutância, em siemens ($\mathrm{S}$);
+- **supernó** — dois nós amarrados por uma fonte de tensão.
+
+</Caixa>
+
+### O roteiro
+
+1. **Conte os nós** e escolha a referência — sempre o de mais ramos, ou o terminal $-$ da maior fonte de tensão. Uma escolha boa apaga uma incógnita de graça.
+2. **Nomeie** $v_1, \dots, v_{n-1}$ nos demais.
+3. **LKC em cada nó**, com todas as correntes **saindo**. A corrente que sai de $a$ para $b$ por um resistor $R$ é
+   $$
+   i_{a \to b} = \frac{v_a - v_b}{R}
+   $$
+   Sempre "o daqui menos o de lá, sobre a resistência". Fonte de corrente entra como o próprio valor, com o sinal do sentido.
+4. **Resolva** o sistema.
+
+<Caixa tipo="macete">
+
+**Escreva direto na forma matricial e pule a álgebra.** Se o circuito **só tem fontes de corrente**, a equação do nó $k$ é
+
+$$
+\underbrace{\Big(\textstyle\sum G \text{ ligadas a } k\Big)}_{\text{diagonal, sempre } +} v_k
+\;-\; \sum_{j \neq k} \underbrace{G_{kj}}_{\text{entre } k \text{ e } j} v_j
+\;=\; \underbrace{\textstyle\sum i_{\text{entrando em } k}}_{\text{fontes}}
+$$
+
+Ou seja: na diagonal, a **soma** das condutâncias que tocam o nó; fora dela, **menos** a condutância que liga os dois nós; do lado direito, a corrente das fontes que **entram**. A matriz sai simétrica — e se não saiu, você errou um sinal ou existe fonte controlada no circuito.
+
+</Caixa>
+
+### Fonte de tensão entre dois nós: o supernó
+
+Uma fonte de tensão ideal não tem uma corrente própria que você possa escrever, então a LKC trava. Há dois casos:
+
+- **Fonte ligada à referência.** O potencial do outro nó já é conhecido: $v_k = \pm V_s$. Uma incógnita a menos, nem se escreve a LKC ali.
+- **Fonte flutuando entre dois nós $a$ e $b$.** Envolva os dois numa superfície fechada — o **supernó** — e escreva a LKC dessa superfície (as correntes de fora, ignorando a fonte). Isso dá **uma** equação; a segunda é a restrição imposta pela fonte:
+  $$
+  v_a - v_b = V_s
+  $$
+
+Duas incógnitas, duas equações. Nenhuma informação se perde.
+
+<Circuito
+  alt="Fonte de 12 V entre os nós 1 e 2 formando um supernó, com resistores de 4, 6 e 3 ohms"
+  itens={[
+    { t: "fio", pts: [[0, 3], [0, 1], [1, 1]] },
+    { t: "I", de: [0, 3], para: [0, 1], valor: "3 A" },
+    { t: "no", em: [1, 1] },
+    { t: "texto", em: [1, 0.55], texto: "v₁" },
+    { t: "V", de: [1, 1], para: [3, 1], valor: "12 V" },
+    { t: "no", em: [3, 1] },
+    { t: "texto", em: [3, 0.55], texto: "v₂" },
+    { t: "R", de: [1, 1], para: [1, 3], rotulo: "4 Ω" },
+    { t: "R", de: [3, 1], para: [3, 3], rotulo: "6 Ω" },
+    { t: "fio", pts: [[3, 1], [4.4, 1], [4.4, 3]] },
+    { t: "R", de: [4.4, 1], para: [4.4, 3], rotulo: "3 Ω" },
+    { t: "fio", pts: [[0, 3], [4.4, 3]] },
+    { t: "terra", em: [2, 3] },
+    { t: "caixa", de: [0.55, 0.35], para: [3.45, 1.6], rotulo: "supernó" },
+  ]}
+>
+
+A LKC do supernó ignora a fonte e conta só o que atravessa a moldura: $\dfrac{v_1}{4} + \dfrac{v_2}{6} + \dfrac{v_2}{3} = 3$. A segunda equação é a própria fonte: $v_1 - v_2 = 12$.
+
+</Circuito>
+
+<Caixa tipo="dica">
+
+Fonte **controlada** entra normalmente nas equações, mas some uma equação — então acrescente a relação de controle (por exemplo $v_x = v_1 - v_3$) escrita **em função dos potenciais de nó**. Sem isso o sistema fica indeterminado.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — dois nós">
+
+No circuito do desenho acima, com $v_1 = v_2 + 12$:
+
+$$
+\frac{v_2 + 12}{4} + \frac{v_2}{6} + \frac{v_2}{3} = 3
+$$
+
+Multiplicando por $12$: $3v_2 + 36 + 2v_2 + 4v_2 = 36$, ou $9v_2 = 0$, logo
+
+$$
+v_2 = 0\ \mathrm{V}, \qquad v_1 = 12\ \mathrm{V}
+$$
+
+Conferindo: pelo resistor de $4\ \Omega$ saem $12/4 = 3\ \mathrm{A}$, e pelos de $6$ e $3\ \Omega$ não passa nada. A fonte injeta exatamente os $3\ \mathrm{A}$ ✔
 
 </Caixa>
 
