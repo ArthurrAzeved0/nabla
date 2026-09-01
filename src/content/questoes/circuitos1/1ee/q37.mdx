@@ -1,0 +1,96 @@
+---
+origem: "2026.1"
+tema: "Amp. op. · Divisor de realimentação no terminal não inversor"
+temaId: amplificador-operacional
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q37.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores da tensão $v$ e da corrente $i$. *(3º quesito alternativo da prova.)*
+
+<Circuito
+  alt="Amp. op. com 250 Ω e 1000 Ω na entrada não inversora, 200 Ω e fonte de 50 V na inversora, e 100 Ω na saída"
+  itens={[
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "250 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [3.4, 0]] },
+    { t: "ampop", em: [4.4, 1], maisEmCima: true },
+    { t: "fio", pts: [[2.4, 0], [2.4, -1.4]] },
+    { t: "R", de: [2.4, -1.4], para: [6.2, -1.4], valor: "1000 Ω" },
+    { t: "fio", pts: [[6.2, -1.4], [6.2, 1]] },
+    { t: "fio", pts: [[3.4, 2], [2.6, 2]] },
+    { t: "R", de: [2.6, 2], para: [2.6, 3.2], valor: "200 Ω", abaixo: true },
+    { t: "V", de: [2.6, 4.2], para: [2.6, 3.2], valor: "50 V" },
+    { t: "fio", pts: [[5.4, 1], [7, 1]] },
+    { t: "no", em: [6.2, 1] },
+    { t: "corrente", de: [5.5, 1], para: [6.1, 1], rotulo: "i", abaixo: false },
+    { t: "R", de: [7, 1], para: [7, 4.2], valor: "100 Ω", abaixo: true },
+    { t: "tensao", de: [7, 4.2], para: [7, 1], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 0], [0, 4.2]] },
+    { t: "fio", pts: [[0, 4.2], [7, 4.2]] },
+  ]}
+>
+
+Mesma configuração do 4º quesito de 2025.1, com outros valores. O $200\ \Omega$ não conduz nada — a entrada inversora não puxa corrente —, então ela fica presa no potencial da fonte.
+
+</Circuito>
+
+<Gabarito>
+$v = 250\ \mathrm{V}$  ·  $i = 2{,}7\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a entrada inversora.** O $200\ \Omega$ liga a inversora à fonte de $50\ \mathrm{V}$; sem corrente, sem queda:
+
+$$
+v_- = 50\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+v_+ = 50\ \mathrm{V}
+$$
+
+**Passo 2 — a corrente do divisor.** No nó da entrada não inversora chegam o $250\ \Omega$ (que vem do fio de baixo) e o $1000\ \Omega$ (que vem da saída), e a entrada não absorve nada. A corrente que sobe pelo $250\ \Omega$ vale
+
+$$
+i' = \frac{0 - 50}{250} = -0{,}2\ \mathrm{A}
+$$
+
+**Passo 3 — a saída.** Essa mesma $i'$ atravessa o $1000\ \Omega$:
+
+$$
+i' = \frac{v_+ - v}{1000} = -0{,}2
+\qquad\Longrightarrow\qquad
+50 - v = -200
+\qquad\Longrightarrow\qquad
+\boxed{v = 250\ \mathrm{V}}
+$$
+
+**Passo 4 — as duas correntes da saída.** A carga leva
+
+$$
+i_o = \frac{250}{100} = 2{,}5\ \mathrm{A}
+$$
+
+e a LKC no nó de saída dá
+
+$$
+i' + i = i_o
+\qquad\Longrightarrow\qquad
+i = 2{,}5 - (-0{,}2) = \boxed{2{,}7\ \mathrm{A}}
+$$
+
+**Conferência —** o divisor confere: $v_+ = v \cdot \dfrac{250}{1250} = 250 \cdot 0{,}2 = 50\ \mathrm{V}$, igual a $v_-$ ✔ É exatamente o que a resolução da prova apresenta.
+
+**O mesmo cuidado de sempre —** a realimentação chega na entrada **não inversora**, logo é **positiva**. A conta encontra o único ponto com $v_+ = v_-$, que é o que a prova cobra, mas trata-se de um equilíbrio **instável**: num circuito real a saída iria para o limite da alimentação.
+</Passos>
