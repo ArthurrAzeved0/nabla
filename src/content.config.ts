@@ -61,6 +61,10 @@ const teoria = defineCollection({
       .array(
         z.object({
           nome: z.string(),
+          /* Em que avaliação a unidade cai. Não é palpite: sai do que os
+             quesitos das provas do acervo cobram. Ausente quando a divisão
+             já está no nome da unidade ("1ª Unidade"). */
+          prova: z.enum(["1ee", "2ee", "nao-caiu"]).optional(),
           secoes: z.array(z.object({ id: z.string(), titulo: z.string() })),
         }),
       )

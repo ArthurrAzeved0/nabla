@@ -22,8 +22,17 @@ interface Secao {
 }
 interface Unidade {
   nome: string;
+  prova?: "1ee" | "2ee" | "nao-caiu";
   secoes: Secao[];
 }
+
+/* Rótulo e explicação de cada marcação. O texto do `title` guarda de onde a
+   informação vem — é o que impede que ela seja lida como opinião. */
+const ETIQUETA = {
+  "1ee": ["1º EE", "Assunto do 1º Exercício Escolar: é o que os quesitos das provas de 1º EE do acervo cobram."],
+  "2ee": ["2º EE", "Assunto do 2º Exercício Escolar: é o que os quesitos das provas de 2º EE do acervo cobram."],
+  "nao-caiu": ["não caiu", "Está na ementa, mas não aparece em nenhuma prova, 2ª chamada ou final do acervo (2014–2026), nem no capítulo 5 da apostila."],
+} as const;
 interface Props {
   unidades: Unidade[];
 }
@@ -35,7 +44,14 @@ const { unidades } = Astro.props;
   {
     unidades.map((u) => (
       <div class="unidade">
-        <h2>{u.nome}</h2>
+        <h2>
+          {u.nome}
+          {u.prova && (
+            <span class="ee" data-ee={u.prova} title={ETIQUETA[u.prova][1]}>
+              {ETIQUETA[u.prova][0]}
+            </span>
+          )}
+        </h2>
         <ol>
           {u.secoes.map((s) => (
             <li>
@@ -60,6 +76,10 @@ const { unidades } = Astro.props;
     margin: var(--e-5) 0 var(--e-7);
   }
   h2 {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--e-2);
     font-size: var(--t-sm);
     font-family: var(--f-mono);
     font-weight: 500;
@@ -67,6 +87,22 @@ const { unidades } = Astro.props;
     text-transform: uppercase;
     color: var(--ink-3);
     margin: 0 0 var(--e-3);
+  }
+  /* a etiqueta de avaliação: mesma pastilha dos chips de prova */
+  .ee {
+    flex: none;
+    font-size: var(--t-xs);
+    letter-spacing: var(--tr-rotulo);
+    border-radius: var(--r-pilula);
+    padding: 1px 7px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    cursor: help;
+  }
+  .ee[data-ee="nao-caiu"] {
+    background: var(--surface-2);
+    color: var(--ink-3);
+    border: 1px solid var(--line);
   }
   ol {
     margin: 0;
