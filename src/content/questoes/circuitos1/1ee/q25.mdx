@@ -1,0 +1,111 @@
+---
+origem: "2024.2"
+tema: "Supernó · Fonte de tensão flutuando entre dois nós"
+temaId: superno
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os valores de $v$ e $i$ usando **dois métodos quaisquer** de análise de circuitos.
+
+<Circuito
+  alt="Fonte de 17 V invertida, 3 Ω, 2 Ω, 3 Ω por cima, fonte de 6 V, 2 Ω com v e fonte de 2 A"
+  itens={[
+    { t: "V", de: [0, 0], para: [0, 2.6], valor: "17 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "3 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 2.6], valor: "2 Ω" },
+    { t: "fio", pts: [[2.2, 0], [2.2, -1.3]] },
+    { t: "R", de: [2.2, -1.3], para: [4.4, -1.3], valor: "3 Ω" },
+    { t: "fio", pts: [[4.4, -1.3], [4.4, 0]] },
+    { t: "fio", pts: [[2.2, 0], [2.8, 0]] },
+    { t: "corrente", de: [2.3, 0], para: [2.75, 0], rotulo: "i", abaixo: false },
+    { t: "V", de: [2.8, 0], para: [3.8, 0], valor: "6 V" },
+    { t: "fio", pts: [[3.8, 0], [4.4, 0]] },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 2.6], valor: "2 Ω", abaixo: true },
+    { t: "tensao", de: [4.4, 2.6], para: [4.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0]] },
+    { t: "I", de: [6.2, 0], para: [6.2, 2.6], valor: "2 A", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [6.2, 2.6]] },
+  ]}
+>
+
+A fonte de $6\ \mathrm{V}$ **flutua** entre dois nós, e o $3\ \Omega$ de cima liga os mesmos dois nós. É o caso clássico de **supernó**: uma LKC para os dois juntos, e a restrição da fonte como segunda equação. O $3\ \Omega$ interno se cancela.
+
+</Circuito>
+
+<Gabarito>
+$v = -2\ \mathrm{V}$  ·  $i = 3\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — método 1: supernó.** Fio de baixo como referência. A fonte de $17\ \mathrm{V}$ tem o $-$ em cima, então o nó da esquerda está em $-17\ \mathrm{V}$. Chame $v_M$ o nó do $2\ \Omega$ da esquerda e $v_N$ o do $2\ \Omega$ da direita; a fonte de $6\ \mathrm{V}$, com o $-$ à esquerda, impõe
+
+$$
+v_N = v_M + 6
+$$
+
+LKC no supernó $\{M, N\}$ — as correntes que **atravessam** a fronteira, ignorando o $3\ \Omega$ de cima e a própria fonte:
+
+$$
+\underbrace{\frac{v_M + 17}{3}}_{3\ \Omega \text{ da esquerda}}
++ \underbrace{\frac{v_M}{2}}_{2\ \Omega}
++ \underbrace{\frac{v_M + 6}{2}}_{2\ \Omega \text{ da direita}}
++ \underbrace{2}_{\text{fonte de corrente}}
+= 0
+$$
+
+$$
+\times 6:\quad 2v_M + 34 + 3v_M + 3v_M + 18 + 12 = 0
+\qquad\Longrightarrow\qquad
+8v_M = -64
+$$
+
+$$
+v_M = -8\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+v_N = -2\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v = -2\ \mathrm{V}}
+$$
+
+**Passo 2 — a corrente $i$**, que é a do ramo da fonte de $6\ \mathrm{V}$. LKC no nó $M$ isolado, agora que os potenciais são conhecidos:
+
+$$
+\underbrace{\frac{v_N - v_M}{3}}_{\text{chega pelo }3\ \Omega\text{ de cima}}
+= \underbrace{\frac{v_M + 17}{3}}_{\text{sai pelo }3\ \Omega}
++ \underbrace{\frac{v_M}{2}}_{\text{sai pelo }2\ \Omega}
++ i
+$$
+
+$$
+\frac{-2 + 8}{3} = \frac{9}{3} + \frac{-8}{2} + i
+\qquad\Longrightarrow\qquad
+2 = 3 - 4 + i
+\qquad\Longrightarrow\qquad
+\boxed{i = 3\ \mathrm{A}}
+$$
+
+**Passo 3 — método 2: conferência pela LKC no nó $N$.** Chegam $i = 3\ \mathrm{A}$ pela fonte de $6\ \mathrm{V}$; saem $2\ \mathrm{A}$ pelo $3\ \Omega$ de cima (de $N$ para $M$), $-1\ \mathrm{A}$ pelo $2\ \Omega$ e $2\ \mathrm{A}$ pela fonte de corrente:
+
+$$
+2 + (-1) + 2 = 3\ \mathrm{A}
+$$
+
+Fecha ✔
+
+**Conferência de sinais —** $v$ dá negativo porque o nó da direita está **abaixo** da referência, empurrado para lá pela fonte de $2\ \mathrm{A}$ que retira corrente. E o $3\ \Omega$ da esquerda conduz $9/3 = 3\ \mathrm{A}$ **para** o nó da fonte de $17\ \mathrm{V}$, que é a única que entrega energia neste circuito.
+</Passos>
