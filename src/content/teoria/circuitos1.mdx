@@ -23,6 +23,7 @@ unidades:
   - nome: "Circuitos de 1ª ordem"
     secoes:
       - { id: ckt-natural, titulo: "Resposta natural: RC e RL sem excitação" }
+      - { id: ckt-degrau, titulo: "Resposta ao degrau e a fórmula dos três valores" }
 
 ---
 
@@ -1422,6 +1423,115 @@ v_C(t) = 20\,e^{-2t}\ \mathrm{V}
 $$
 
 Em $t = 0{,}5\ \mathrm{s}$: $v_C = 20(0{,}368) = 7{,}36\ \mathrm{V}$. A corrente total é $i = v_C/R_{\mathrm{eq}} = 4\,e^{-2t}\ \mathrm{mA}$, **saindo** do capacitor — e a energia inicial, $\tfrac12(100\mu)(20)^2 = 20\ \mathrm{mJ}$, acaba toda nos dois resistores ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-degrau" num="16" titulo="Resposta ao degrau e a fórmula dos três valores">
+
+**A ideia.** Ligue uma fonte constante em $t=0$. A resposta agora tem duas partes: a **natural**, que é a exponencial da seção anterior morrendo, e a **forçada**, que é o que a fonte impõe depois que o transitório passa. A soma das duas é a resposta completa — e, para excitação constante, ela cabe numa fórmula de três parâmetros que resolve qualquer circuito de 1ª ordem sem escrever equação diferencial nenhuma.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $x(t)$ — a grandeza pedida ($v_C$ ou $i_L$; para as demais, veja o macete);
+- $x(0^+)$ — **valor inicial**, da continuidade;
+- $x(\infty)$ — **valor final**, ou de regime permanente, com o circuito novo já acomodado;
+- $\tau$ — constante de tempo do circuito **novo**;
+- $u(t)$ — degrau unitário: $0$ para $t<0$, $1$ para $t>0$.
+
+</Caixa>
+
+### Resposta natural + resposta forçada
+
+A equação de qualquer circuito de 1ª ordem com excitação constante $X_s$ tem a forma
+
+$$
+\frac{dx}{dt} + \frac{1}{\tau}\,x = \frac{X_s}{\tau}
+$$
+
+A solução geral é a homogênea mais uma particular constante:
+
+$$
+x(t) = \underbrace{A\,e^{-t/\tau}}_{\text{natural (transitória)}} + \underbrace{X_s}_{\text{forçada (permanente)}}
+$$
+
+e $A$ sai de impor $x(0^+)$. Fazendo isso, chega-se à forma que se usa na prática:
+
+$$
+\boxed{\ x(t) = x(\infty) + \big[\,x(0^+) - x(\infty)\,\big]\,e^{-t/\tau}, \qquad t > 0\ }
+$$
+
+**Três valores e acabou:** onde começa, onde termina, e quão rápido vai de um ao outro.
+
+<Caixa tipo="macete">
+
+**A fórmula só vale direto para $v_C$ e $i_L$** — são as únicas grandezas garantidamente contínuas, e as únicas cujo $x(0^+)$ você conhece de graça.
+
+Para qualquer outra grandeza (a corrente de um resistor, a tensão do indutor), há dois caminhos, e o segundo é mais seguro:
+
+1. resolver $v_C$ ou $i_L$ e depois **tirar a grandeza pedida** por Ohm/Kirchhoff;
+2. usar a mesma fórmula, mas com **$x(0^+)$ calculado no circuito de $0^+$** — nunca em $0^-$, porque essas grandezas **saltam**.
+
+</Caixa>
+
+### Os três valores, um a um
+
+- **$x(0^+)$** — pelo roteiro da seção 14: circuito de $0^-$, continuidade, circuito de $0^+$.
+- **$x(\infty)$** — o circuito **depois** do chaveamento, em regime permanente CC: capacitor aberto, indutor em curto. É um circuito resistivo.
+- **$\tau$** — $R_{\mathrm{eq}}C$ ou $L/R_{\mathrm{eq}}$, com $R_{\mathrm{eq}}$ visto pelo elemento **no circuito depois do chaveamento**, fontes independentes desativadas.
+
+<Circuito
+  alt="Fonte de 10 V com chave fechando em t igual a zero sobre um RC série"
+  itens={[
+    { t: "fio", pts: [[0, 2.4], [0, 0], [1, 0]] },
+    { t: "V", de: [0, 2.4], para: [0, 0.8], valor: "10 V" },
+    { t: "S", de: [1, 0], para: [2.4, 0], rotulo: "t = 0" },
+    { t: "R", de: [2.4, 0], para: [4, 0], valor: "2 kΩ" },
+    { t: "C", de: [4, 0], para: [4, 2.4], valor: "1 mF", abaixo: true },
+    { t: "fio", pts: [[0, 2.4], [4, 2.4]] },
+    { t: "tensao", de: [4, 2.4], para: [4, 0], rotulo: "v_C", abaixo: false },
+  ]}
+>
+
+$v_C(0^+) = 0$ (descarregado), $v_C(\infty) = 10\ \mathrm{V}$ (capacitor aberto, sem corrente, sem queda no resistor) e $\tau = (2\,\mathrm{k})(1\,\mathrm{m}) = 2\ \mathrm{s}$. Logo $v_C(t) = 10 - 10\,e^{-t/2}\ \mathrm{V}$.
+
+</Circuito>
+
+<Caixa tipo="dica" rotulo="A leitura dos dois nomes">
+
+A mesma resposta se decompõe de dois jeitos, e a prova usa os dois vocabulários:
+
+- **natural + forçada** — separa pela *origem*: o que vem das condições iniciais e o que vem da fonte;
+- **transitória + permanente** — separa pelo *destino*: o que morre e o que fica.
+
+Para excitação **constante** os dois cortes coincidem. Para excitação senoidal (Circuitos 2) eles deixam de coincidir, e aí a distinção passa a valer.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — indutor, e uma grandeza que salta">
+
+Uma fonte de $12\ \mathrm{V}$ em série com $R = 4\ \Omega$ e $L = 2\ \mathrm{H}$; a chave fecha em $t=0$ com o indutor descarregado.
+
+$$
+i_L(0^+) = 0,
+\qquad
+i_L(\infty) = \frac{12}{4} = 3\ \mathrm{A},
+\qquad
+\tau = \frac{2}{4} = 0{,}5\ \mathrm{s}
+$$
+
+$$
+i_L(t) = 3 + (0 - 3)e^{-2t} = 3\left(1 - e^{-2t}\right)\ \mathrm{A}
+$$
+
+E a tensão no indutor, que **salta** de $0$ para $12\ \mathrm{V}$ em $t=0$:
+
+$$
+v_L = L\,\frac{di_L}{dt} = 2 \cdot 3 \cdot 2\,e^{-2t} = 12\,e^{-2t}\ \mathrm{V}
+$$
+
+Aplicar a fórmula dos três valores em $v_L$ dá o mesmo, desde que se use $v_L(0^+) = 12$ e não $v_L(0^-) = 0$ ✔
 
 </Caixa>
 
