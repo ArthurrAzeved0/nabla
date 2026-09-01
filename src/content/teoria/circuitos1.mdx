@@ -14,6 +14,7 @@ unidades:
       - { id: ckt-superposicao, titulo: "Princípio da superposição" }
       - { id: ckt-thevenin, titulo: "Equivalentes de Thévenin e de Norton" }
       - { id: ckt-maxpot, titulo: "Máxima transferência de potência" }
+      - { id: ckt-ampop, titulo: "Amplificador operacional ideal" }
 
 ---
 
@@ -521,20 +522,20 @@ Duas incógnitas, duas equações. Nenhuma informação se perde.
 <Circuito
   alt="Fonte de 12 V entre os nós 1 e 2 formando um supernó, com resistores de 4, 6 e 3 ohms"
   itens={[
-    { t: "fio", pts: [[0, 3], [0, 1], [1, 1]] },
-    { t: "I", de: [0, 3], para: [0, 1], valor: "3 A" },
+    { t: "fio", pts: [[-0.8, 3], [-0.8, 1], [1, 1]] },
+    { t: "I", de: [-0.8, 3], para: [-0.8, 1], valor: "3 A" },
     { t: "no", em: [1, 1] },
     { t: "texto", em: [1, 0.55], texto: "v₁" },
-    { t: "V", de: [1, 1], para: [3, 1], valor: "12 V" },
+    { t: "V", de: [1, 1], para: [3, 1], valor: "12 V", abaixo: true },
     { t: "no", em: [3, 1] },
     { t: "texto", em: [3, 0.55], texto: "v₂" },
     { t: "R", de: [1, 1], para: [1, 3], rotulo: "4 Ω" },
     { t: "R", de: [3, 1], para: [3, 3], rotulo: "6 Ω" },
     { t: "fio", pts: [[3, 1], [4.4, 1], [4.4, 3]] },
     { t: "R", de: [4.4, 1], para: [4.4, 3], rotulo: "3 Ω" },
-    { t: "fio", pts: [[0, 3], [4.4, 3]] },
+    { t: "fio", pts: [[-0.8, 3], [4.4, 3]] },
     { t: "terra", em: [2, 3] },
-    { t: "caixa", de: [0.55, 0.35], para: [3.45, 1.6], rotulo: "supernó" },
+    { t: "caixa", de: [0.55, 0.15], para: [3.45, 1.75], rotulo: "supernó" },
   ]}
 >
 
@@ -698,7 +699,7 @@ Regra de bolso: **tensão vira fio, corrente vira buraco.**
     { t: "fio", pts: [[2, 0], [4, 0], [4, 2]] },
     { t: "I", de: [4, 2], para: [4, 0], valor: "2 A" },
     { t: "fio", pts: [[0, 2], [4, 2]] },
-    { t: "tensao", de: [2, 0], para: [2, 2], rotulo: "v" },
+    { t: "tensao", de: [2, 2], para: [2, 0], rotulo: "v" },
   ]}
 >
 
@@ -916,6 +917,99 @@ p_{L,\max} = \frac{(7{,}5)^2}{4 \cdot 5} = \frac{56{,}25}{20} = 2{,}81\ \mathrm{
 $$
 
 Conferindo pelo circuito: $i = 7{,}5/(5+5) = 0{,}75\ \mathrm{A}$, e $p_L = 5(0{,}75)^2 = 2{,}81\ \mathrm{W}$ ✔ A fonte de Thévenin fornece $7{,}5 \times 0{,}75 = 5{,}63\ \mathrm{W}$, dos quais metade se perde em $R_{\mathrm{Th}}$ — os $50\%$ previstos.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-ampop" num="11" titulo="Amplificador operacional ideal">
+
+**A ideia.** O amp. op. é o primeiro elemento da cadeira que não é um bipolo: tem duas entradas, uma saída, e amplifica a **diferença** entre as entradas por um ganho enorme. Só que analisar circuito com amp. op. não exige nada disso — exige duas regras, e as duas saem de levar o ganho ao limite. Depois delas, é o mesmo Kirchhoff de sempre.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v_{+}$, $v_{-}$ — tensões nas entradas **não inversora** e **inversora**;
+- $v_o$ — tensão de **saída**, sempre medida em relação ao terra;
+- $A$ — ganho diferencial em malha aberta, $v_o = A\,(v_{+} - v_{-})$, com $A \to \infty$ no ideal;
+- **realimentação negativa** — um caminho da saída de volta à entrada **inversora**;
+- **curto virtual** — o nome da primeira regra abaixo.
+
+</Caixa>
+
+### As duas regras do amp. op. ideal
+
+$$
+\boxed{v_{+} = v_{-}}
+\qquad\qquad
+\boxed{i_{+} = i_{-} = 0}
+$$
+
+A primeira, o **curto virtual**: se $v_o = A(v_+ - v_-)$ é finito e $A \to \infty$, então $v_+ - v_- \to 0$. As entradas ficam no mesmo potencial **sem estarem ligadas** — daí "virtual". Ela só vale com **realimentação negativa**; sem ela o amp. op. satura e a regra não se aplica.
+
+A segunda: a impedância de entrada ideal é infinita, então nenhuma corrente entra pelos terminais de entrada. Toda a corrente que chega ao nó inversor tem de ir para a realimentação.
+
+<Caixa tipo="macete">
+
+**O roteiro é de duas linhas, sempre o mesmo.** Escreva a **LKC no nó da entrada inversora**, usando que ele não recebe corrente do amp. op. ($i_- = 0$) e que o potencial dele é conhecido ($v_- = v_+$). Pronto — a equação já traz $v_o$.
+
+E cuidado com o nó da **saída**: nunca escreva LKC ali. O amp. op. injeta ali a corrente que for preciso, e você não a conhece. A saída é uma **fonte de tensão** para o resto do circuito.
+
+</Caixa>
+
+### Os dois circuitos que caem em prova
+
+<Circuito
+  alt="Amplificador inversor: R1 da fonte ao nó inversor e R2 realimentando da saída"
+  itens={[
+    { t: "fio", pts: [[0, 1], [0.6, 1]] },
+    { t: "V", de: [0, 3], para: [0, 1], rotulo: "vₑ" },
+    { t: "R", de: [0.6, 1], para: [2.4, 1], rotulo: "R₁" },
+    { t: "no", em: [2.4, 1] },
+    { t: "fio", pts: [[2.4, 1], [3, 1]] },
+    { t: "ampop", em: [4, 2] },
+    { t: "fio", pts: [[2.4, 1], [2.4, -0.5], [5.6, -0.5], [5.6, 2]] },
+    { t: "R", de: [3, -0.5], para: [4.8, -0.5], rotulo: "R₂" },
+    { t: "fio", pts: [[5, 2], [6.2, 2]] },
+    { t: "no", em: [5.6, 2] },
+    { t: "texto", em: [6.5, 2.15], texto: "vₒ", ancora: "start" },
+    { t: "fio", pts: [[3, 3], [3, 4]] },
+    { t: "fio", pts: [[0, 3], [0, 4], [3, 4]] },
+    { t: "terra", em: [1.5, 4] },
+  ]}
+>
+
+**Inversor.** O nó inversor está em $0\ \mathrm{V}$ (curto virtual com o terra) — é o **terra virtual**. A LKC ali: $\dfrac{v_e - 0}{R_1} + \dfrac{v_o - 0}{R_2} = 0$, ou seja
+$$
+\frac{v_o}{v_e} = -\frac{R_2}{R_1}
+$$
+
+</Circuito>
+
+Trocando a fonte de lugar — entrando pela não inversora e aterrando a ponta livre de $R_1$ — obtém-se o **não inversor**, com $v_- = v_+ = v_e$ e a mesma LKC:
+
+$$
+\frac{v_o}{v_e} = 1 + \frac{R_2}{R_1}
+$$
+
+que nunca é menor que $1$, e vale exatamente $1$ quando $R_2 = 0$ — o **seguidor de tensão**, cuja função é isolar, não amplificar.
+
+<Caixa tipo="dica" rotulo="Outros três que aparecem">
+
+- **Somador** (várias entradas por resistores no nó inversor): $v_o = -R_2\left(\dfrac{v_a}{R_a} + \dfrac{v_b}{R_b} + \dots\right)$ — a LKC do terra virtual já entrega isso de graça.
+- **Subtrator** ou amp. diferencial: com as quatro resistências casadas, $v_o = \dfrac{R_2}{R_1}(v_b - v_a)$.
+- **Integrador e diferenciador**: é o mesmo terra virtual com um capacitor no lugar de um dos resistores — assunto da última unidade da cadeira.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido">
+
+Inversor com $R_1 = 5\ \mathrm{k\Omega}$, $R_2 = 20\ \mathrm{k\Omega}$ e $v_e = 0{,}4\ \mathrm{V}$:
+
+$$
+v_o = -\frac{20}{5}\,(0{,}4) = -1{,}6\ \mathrm{V}
+$$
+
+A corrente é a mesma nos dois resistores, porque o nó inversor não absorve nada: $i = 0{,}4/5\,\mathrm{k} = 80\ \mathrm{\mu A}$, e de fato $0 - 20\mathrm{k} \times 80\mathrm{\mu} = -1{,}6\ \mathrm{V}$ ✔ Note que a **fonte** enxerga apenas $R_1$: a resistência de entrada do inversor é $R_1$, não $R_1 + R_2$.
 
 </Caixa>
 

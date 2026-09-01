@@ -54,6 +54,10 @@ export type Item =
       para: Ponto;
       rotulo?: string;
       valor?: string;
+      /** Joga rótulo e valor para o outro lado do elemento: abaixo, se o
+          trecho é horizontal; à direita, se é vertical. Só `true` tem efeito —
+          em `corrente` e `tensao` é `false` que inverte, porque lá o padrão já
+          é o lado oposto ao do rótulo do elemento. */
       abaixo?: boolean;
       destaque?: boolean;
       /** seta atravessando o símbolo: resistor variável, potenciômetro */
