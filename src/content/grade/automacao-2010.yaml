@@ -252,6 +252,7 @@ disciplinas:
     categoria: prof
     pre: [FIS02]
     co: [MAT05]
+    cadeira: circuitos1
   - id: MAT09
     codigo: MAT09
     nome: Complementos de Matemática

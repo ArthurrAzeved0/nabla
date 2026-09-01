@@ -306,6 +306,7 @@ disciplinas:
     categoria: prof
     pre: [FUNDEM]
     co: [EQDIF]
+    cadeira: circuitos1
   - id: ELMAG2
     codigo: ELET0031
     nome: Eletromagnetismo 2

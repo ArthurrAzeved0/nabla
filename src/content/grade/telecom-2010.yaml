@@ -265,6 +265,7 @@ disciplinas:
     categoria: prof
     pre: [FIS02]
     co: [MAT05]
+    cadeira: circuitos1
   - id: EMG01
     codigo: EMG01
     nome: Eletromagnetismo 1

@@ -184,7 +184,7 @@ const AUTOMACAO_2021 = [
     periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["FUNDEM"],
     nota: "No perfil vigente: Física 3." },
   { id: "CIRC1", codigo: "ELET0013", nome: "Circuitos Elétricos 1",
-    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"] },
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"], cadeira: "circuitos1" },
   { id: "DINAM", codigo: "FISC0008", nome: "Dinâmica",
     periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["ESTATICA"], co: ["EQDIF"],
     nota: "No perfil vigente: Mecânica 2.", cadeira: "dinamica" },
@@ -387,7 +387,7 @@ const AUTOMACAO_2010 = [
     periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT04"],
     cadeira: "eqdiferenciais" },
   { id: "ELE01", codigo: "ELE01", nome: "Circuitos Elétricos 1",
-    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FIS02"], co: ["MAT05"] },
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FIS02"], co: ["MAT05"], cadeira: "circuitos1" },
   { id: "MAT09", codigo: "MAT09", nome: "Complementos de Matemática",
     periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT04"] },
   { id: "ECA06", codigo: "ECA06", nome: "Desenho de Máquinas",
@@ -1206,7 +1206,7 @@ const ELETRONICA_2012 = [
   { id: "FIS3", codigo: "—", nome: "Física 3",
     periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["FIS2"] },
   { id: "CIRC1", codigo: "—", nome: "Circuitos Elétricos 1",
-    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FIS2"], co: ["CALC4"] },
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FIS2"], co: ["CALC4"], cadeira: "circuitos1" },
   { id: "FISEXP", codigo: "—", nome: "Física Experimental",
     periodo: 4, teorica: 0, pratica: 30, categoria: "basico", co: ["FIS3"] },
   { id: "SEMICOND", codigo: "—", nome: "Teoria dos Dispositivos Semicondutores",
@@ -1428,7 +1428,7 @@ const ELETRONICA_2020 = [
   { id: "ELMAG1", codigo: "—", nome: "Eletromagnetismo 1",
     periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"] },
   { id: "CIRC1", codigo: "—", nome: "Circuitos Elétricos 1",
-    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"] },
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"], cadeira: "circuitos1" },
 
   /* ------------------------------------------------------------ 5º período */
   { id: "ELMAG2", codigo: "—", nome: "Eletromagnetismo 2",
@@ -1630,7 +1630,7 @@ const TELECOM_2010 = [
   { id: "MAT09", codigo: "MAT09", nome: "Complementos de Matemática",
     periodo: 4, teorica: 60, pratica: 0, categoria: "basico", pre: ["MAT04"] },
   { id: "ELE01", codigo: "ELE01", nome: "Circuitos Elétricos 1",
-    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FIS02"], co: ["MAT05"] },
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FIS02"], co: ["MAT05"], cadeira: "circuitos1" },
 
   /* ------------------------------------------------------------ 5º período */
   { id: "EMG01", codigo: "EMG01", nome: "Eletromagnetismo 1",
@@ -1848,7 +1848,7 @@ const TELECOM_2021 = [
   { id: "ELMAG1", codigo: "—", nome: "Eletromagnetismo 1",
     periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"] },
   { id: "CIRC1", codigo: "—", nome: "Circuitos Elétricos 1",
-    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"] },
+    periodo: 4, teorica: 60, pratica: 0, categoria: "prof", pre: ["FUNDEM"], co: ["EQDIF"], cadeira: "circuitos1" },
 
   /* ------------------------------------------------------------ 5º período */
   { id: "ELMAG2", codigo: "—", nome: "Eletromagnetismo 2",

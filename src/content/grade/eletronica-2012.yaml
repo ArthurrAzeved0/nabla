@@ -231,6 +231,7 @@ disciplinas:
     categoria: prof
     pre: [FIS2]
     co: [CALC4]
+    cadeira: circuitos1
   - id: FISEXP
     codigo: FISC0018
     nome: Física Experimental
