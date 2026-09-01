@@ -75,6 +75,13 @@ teste("fonte alternada tem a senoide", /<path d="M -7 0 q 3.5 -6 7 0/.test(desen
 teste("fonte controlada é losango", /<polygon points="0,-12 12,0 0,12 -12,0"/.test(desenhar([{ t: "Vd", de: [0, 0], para: [2, 0] }], { alt: "x" })), true);
 teste("terra desenha as três barras", (desenhar([{ t: "terra", em: [0, 0] }, { t: "fio", pts: [[0, 0], [1, 0]] }], { alt: "x" }).match(/stroke-width="2"/g) || []).length, 3);
 
+/* a polaridade do marcador de tensão segue `de` -> `para`, como nas fontes */
+const polUm = desenhar([{ t: "fio", pts: [[0, 0], [0, 2]] }, { t: "tensao", de: [0, 0], para: [0, 2], rotulo: "v" }], { alt: "x" });
+const polOutro = desenhar([{ t: "fio", pts: [[0, 0], [0, 2]] }, { t: "tensao", de: [0, 2], para: [0, 0], rotulo: "v" }], { alt: "x" });
+const yDe = (svg, sinal) => Number([...svg.matchAll(/<text[^>]*y="(\S+?)"[^>]*>(.)</g)].find((m) => m[2] === sinal)[1]);
+teste("tensão de cima para baixo: − em cima, + embaixo", yDe(polUm, "−") < yDe(polUm, "+"), true);
+teste("tensão de baixo para cima: + em cima, − embaixo", yDe(polOutro, "+") < yDe(polOutro, "−"), true);
+
 /* seta de corrente nasce do lado oposto ao rótulo, para não colidir */
 const colisao = desenhar([{ t: "R", de: [0, 0], para: [2, 0], rotulo: "4 Ω" }, { t: "corrente", de: [0, 0], para: [2, 0], rotulo: "i" }], { alt: "x" });
 const ys = [...colisao.matchAll(/<text[^>]*y="(\S+?)"[^>]*>(?:4 Ω|i)</g)].map((m) => Number(m[1]));

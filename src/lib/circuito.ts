@@ -279,10 +279,15 @@ export function desenhar(itens: readonly Item[], op: Opcoes): string {
         } else {
           const mx = (ax + bx) / 2 + offx;
           const my = (ay + by) / 2 + off;
-          const d1 = horiz ? [-16, 0] : [0, -16];
-          const d2 = horiz ? [16, 0] : [0, 16];
-          T(mx + d1[0], my + d1[1] + 4, "−", 14, COR_SINAL);
-          T(mx + d2[0], my + d2[1] + 4, "+", 12, COR_SINAL);
+          /* A polaridade segue `de` -> `para`: o "−" nasce no terminal `de` e
+             o "+" no `para`, como nas fontes. Fixar "−" sempre em cima daria
+             desenho errado na metade das questões, onde o que se pede é
+             justamente o sinal da tensão. */
+          const dir = horiz ? Math.sign(bx - ax) : Math.sign(by - ay);
+          const dneg = horiz ? [-16 * dir, 0] : [0, -16 * dir];
+          const dpos = horiz ? [16 * dir, 0] : [0, 16 * dir];
+          T(mx + dneg[0], my + dneg[1] + 4, "−", 14, COR_SINAL);
+          T(mx + dpos[0], my + dpos[1] + 4, "+", 12, COR_SINAL);
           if (it.rotulo) T(mx, my + 4, it.rotulo, 12, COR_VAL);
         }
         break;
