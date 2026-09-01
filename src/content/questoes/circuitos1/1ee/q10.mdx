@@ -1,0 +1,97 @@
+---
+origem: "2022.2"
+tema: "Análise nodal · Fonte controlada por outra tensão do circuito"
+temaId: analise-nodal
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os valores de $v$ e $i$ usando **dois métodos quaisquer** de análise de circuitos.
+
+<Circuito
+  alt="Fonte controlada v1/8 alimentando 20 Ω e um ramo de 4 Ω com fonte de 7 A e 2 Ω"
+  itens={[
+    { t: "Id", de: [0, 2.8], para: [0, 0], rotulo: "v_1/8 A" },
+    { t: "fio", pts: [[0, 0], [2.6, 0]] },
+    { t: "no", em: [2.6, 0] },
+    { t: "R", de: [2.6, 0], para: [2.6, 1.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2.6, 0.1], para: [2.6, 1.1], rotulo: "i", abaixo: false },
+    { t: "no", em: [2.6, 1.4] },
+    { t: "fio", pts: [[1.4, 1.4], [3.8, 1.4]] },
+    { t: "I", de: [1.4, 2.8], para: [1.4, 1.4], valor: "7 A" },
+    { t: "R", de: [3.8, 1.4], para: [3.8, 2.8], valor: "2 Ω", abaixo: true },
+    { t: "tensao", de: [3.8, 2.8], para: [3.8, 1.4], rotulo: "v_1", abaixo: false },
+    { t: "fio", pts: [[2.6, 0], [5.6, 0]] },
+    { t: "R", de: [5.6, 0], para: [5.6, 2.8], valor: "20 Ω" },
+    { t: "tensao", de: [5.6, 2.8], para: [5.6, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 2.8], [5.6, 2.8]] },
+  ]}
+>
+
+São só **dois nós** acima do fio de referência: o de cima (onde estão a fonte controlada, o $4\ \Omega$ e o $20\ \Omega$) e o do meio (onde estão o $4\ \Omega$, a fonte de $7\ \mathrm{A}$ e o $2\ \Omega$). Duas equações, e a variável de controle $v_1$ é justamente o potencial do segundo.
+
+</Circuito>
+
+<Gabarito>
+$v = 20\ \mathrm{V}$  ·  $i = 1\ \mathrm{A}$  (e $v_1 = 16\ \mathrm{V}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — método 1: análise nodal.** Fio de baixo como referência. Chame $v_T$ o nó de cima e $v_C$ o nó do meio. Como o $20\ \Omega$ e o $2\ \Omega$ vão direto ao fio de baixo:
+
+$$
+v = v_T
+\qquad\qquad
+v_1 = v_C
+$$
+
+LKC no nó de cima, com a fonte controlada **injetando** $v_1/8$:
+
+$$
+\frac{v_C}{8} = \frac{v_T}{20} + \frac{v_T - v_C}{4}
+\qquad\xrightarrow{\times 40}\qquad
+5v_C = 12v_T - 10v_C
+\qquad\Longrightarrow\qquad
+v_T = \frac{5}{4}\,v_C
+$$
+
+LKC no nó do meio, com os $7\ \mathrm{A}$ entrando:
+
+$$
+7 + \frac{v_T - v_C}{4} = \frac{v_C}{2}
+\qquad\xrightarrow{\times 4}\qquad
+28 + v_T - v_C = 2v_C
+$$
+
+Substituindo $v_T = \tfrac54 v_C$:
+
+$$
+28 = 2v_C + v_C - \frac{5}{4}v_C = \frac{7}{4}\,v_C
+\qquad\Longrightarrow\qquad
+v_C = 16\ \mathrm{V}
+$$
+
+$$
+\boxed{v = v_T = 20\ \mathrm{V}}
+\qquad\qquad
+\boxed{i = \frac{v_T - v_C}{4} = \frac{4}{4} = 1\ \mathrm{A}}
+$$
+
+**Passo 2 — método 2: LKC por inspeção, para conferir.** Com $v_1 = 16\ \mathrm{V}$, a fonte controlada entrega $16/8 = 2\ \mathrm{A}$. Esses $2\ \mathrm{A}$ se dividem no nó de cima: $20/20 = 1\ \mathrm{A}$ pelo $20\ \Omega$ e $1\ \mathrm{A}$ pelo $4\ \Omega$ — que é exatamente $i$.
+
+No nó do meio chegam $7\ \mathrm{A}$ da fonte e $1\ \mathrm{A}$ do $4\ \Omega$, e saem $16/2 = 8\ \mathrm{A}$ pelo $2\ \Omega$ ✔ Fecha.
+
+**Conferência de potência —** a fonte de $7\ \mathrm{A}$ entrega $16 \times 7 = 112\ \mathrm{W}$ e a controlada $20 \times 2 = 40\ \mathrm{W}$, total $152\ \mathrm{W}$. Os resistores absorvem $2(16)^2/... $ — direto: $20\ \Omega$ com $1\ \mathrm{A}$ dá $20\ \mathrm{W}$, $4\ \Omega$ com $1\ \mathrm{A}$ dá $4\ \mathrm{W}$, $2\ \Omega$ com $8\ \mathrm{A}$ dá $128\ \mathrm{W}$ — total $152\ \mathrm{W}$ ✔
+</Passos>
