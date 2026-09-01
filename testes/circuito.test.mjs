@@ -75,6 +75,13 @@ teste("fonte alternada tem a senoide", /<path d="M -7 0 q 3.5 -6 7 0/.test(desen
 teste("fonte controlada é losango", /<polygon points="0,-12 12,0 0,12 -12,0"/.test(desenhar([{ t: "Vd", de: [0, 0], para: [2, 0] }], { alt: "x" })), true);
 teste("terra desenha as três barras", (desenhar([{ t: "terra", em: [0, 0] }, { t: "fio", pts: [[0, 0], [1, 0]] }], { alt: "x" }).match(/stroke-width="2"/g) || []).length, 3);
 
+/* subscrito ao estilo LaTeX nos rótulos */
+const sub1 = desenhar([{ t: "R", de: [0, 0], para: [2, 0], rotulo: "v_C" }], { alt: "x" });
+teste("_C vira tspan", /<text[^>]*>v<tspan font-size="0.72em"[^>]*>C<\/tspan>/.test(sub1), true);
+const sub2 = desenhar([{ t: "R", de: [0, 0], para: [2, 0], rotulo: "V_{Th}" }], { alt: "x" });
+teste("_{Th} vira um tspan só", /<tspan font-size="0.72em"[^>]*>Th<\/tspan>/.test(sub2), true);
+teste("rótulo com subscrito não sai do viewBox", textosDentro(sub2), true);
+
 /* amp. op.: triângulo, os dois sinais, e os terminais na grade inteira */
 const amp = desenhar([{ t: "ampop", em: [2, 2] }, { t: "fio", pts: [[1, 1], [1, 1]] }], { alt: "x" });
 teste("amp. op. é um triângulo", /<polygon points="[^"]+" fill="var\(--surface-2\)"/.test(amp), true);

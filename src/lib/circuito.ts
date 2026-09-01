@@ -104,6 +104,17 @@ const num = (n: number) => (Math.round(n * 100) / 100).toString();
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+/* Subscrito ao estilo LaTeX dentro de um rótulo: `v_C`, `i_L`, `V_{Th}`.
+   Existe porque o Unicode não tem subscrito para C, L, f nem maiúsculas — e
+   metade dos rótulos desta cadeira é exatamente isso. Fora do `_` o texto é
+   literal. */
+const RE_SUB = /_(?:\{([^}]*)\}|(\S))/g;
+const semSub = (t: string) => t.replace(RE_SUB, (_, a, b2) => a ?? b2);
+const comSub = (t: string) =>
+  esc(t).replace(RE_SUB, (_, a, b2) =>
+    `<tspan font-size="0.72em" dy="0.24em">${a ?? b2}</tspan><tspan dy="-0.24em"></tspan>`,
+  );
+
 /** Símbolo desenhado ao longo de +x, centrado na origem, de -CORPO/2 a +CORPO/2. */
 function simbolo(t: Bipolo, cor: string): string {
   const h = CORPO / 2;
@@ -200,7 +211,7 @@ export function desenhar(itens: readonly Item[], op: Opcoes): string {
   };
   /* largura de texto: estimativa por caractere, generosa de propósito */
   const caberTexto = (x: number, y: number, txt: string, fs: number, anc: string) => {
-    const larg = txt.length * fs * 0.62;
+    const larg = semSub(txt).length * fs * 0.62;
     const e = anc === "middle" ? larg / 2 : anc === "end" ? larg : 0;
     const d = anc === "middle" ? larg / 2 : anc === "end" ? 0 : larg;
     caber(x - e, y - fs);
@@ -212,7 +223,7 @@ export function desenhar(itens: readonly Item[], op: Opcoes): string {
   const T = (x: number, y: number, txt: string, fs: number, cor: string, anc = "middle") => {
     caberTexto(x, y, txt, fs, anc);
     out.push(
-      `<text x="${num(x)}" y="${num(y)}" font-size="${fs}" fill="${cor}" text-anchor="${anc}">${esc(txt)}</text>`,
+      `<text x="${num(x)}" y="${num(y)}" font-size="${fs}" fill="${cor}" text-anchor="${anc}">${comSub(txt)}</text>`,
     );
   };
   for (const it of itens) {
@@ -291,7 +302,9 @@ export function desenhar(itens: readonly Item[], op: Opcoes): string {
            resistor toda vez — foi o que aconteceu no primeiro desenho. */
         const s = it.abaixo === false ? -1 : 1;
         const off = horiz ? 15 * s : 0;
-        const offx = horiz ? 0 : 15 * s;
+        /* No trecho vertical o corpo do símbolo é largo (as placas do capacitor
+           medem 22 px), então 15 px encostavam o rótulo no elemento. */
+        const offx = horiz ? 0 : 24 * s;
         if (it.t === "corrente") {
           const mx = (ax + bx) / 2 + offx;
           const my = (ay + by) / 2 + off;
