@@ -1,0 +1,97 @@
+---
+origem: "2024.1"
+tema: "Thévenin e Norton · Duas fontes de corrente e dois resistores"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o circuito equivalente de **Thévenin** e de **Norton** à esquerda dos pontos $a$ e $b$. Em seguida, determine o valor da tensão $v$.
+
+<Circuito
+  alt="Fonte de 5 A entre dois resistores de 2 Ω, fonte de 2 A no ramo de baixo, e 4 Ω entre a e b"
+  itens={[
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 Ω" },
+    { t: "no", em: [2, 0] },
+    { t: "I", de: [2, 1.6], para: [2, 0], valor: "5 A", abaixo: true },
+    { t: "no", em: [2, 1.6] },
+    { t: "R", de: [0, 1.6], para: [2, 1.6], valor: "2 Ω" },
+    { t: "fio", pts: [[0, 0], [0, 3.2]] },
+    { t: "no", em: [0, 1.6] },
+    { t: "I", de: [2, 3.2], para: [0, 3.2], valor: "2 A" },
+    { t: "fio", pts: [[2, 1.6], [2, 3.2]] },
+    { t: "fio", pts: [[2, 0], [4.4, 0]] },
+    { t: "no", em: [3.2, 0] },
+    { t: "texto", em: [3.2, -0.5], texto: "a" },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.2], valor: "4 Ω" },
+    { t: "tensao", de: [4.4, 3.2], para: [4.4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[2, 3.2], [4.4, 3.2]] },
+    { t: "no", em: [3.2, 3.2] },
+    { t: "texto", em: [3.2, 3.7], texto: "b" },
+  ]}
+>
+
+O fio vertical da esquerda liga os três cantos: o topo do primeiro $2\ \Omega$, o nó do segundo $2\ \Omega$ e o terminal da fonte de $2\ \mathrm{A}$ — tudo **um só nó**. E o fio vertical do meio liga o pé da fonte de $5\ \mathrm{A}$ ao fio de baixo, que é o terminal $b$.
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = 24\ \mathrm{V}$, $R_{\mathrm{Th}} = 4\ \Omega$  ·  Norton: $I_N = 6\ \mathrm{A}$, $R_N = 4\ \Omega$  ·  $v = 12\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — leia a topologia.** Tome o fio de baixo (terminal $b$) como referência. O fio vertical do meio o liga ao pé da fonte de $5\ \mathrm{A}$, então esse ponto também está em $0\ \mathrm{V}$. Sobram **dois** nós:
+
+- $A$, o terminal $a$ (topo da fonte de $5\ \mathrm{A}$ e do primeiro $2\ \Omega$);
+- $L$, o nó da esquerda (que reúne o outro terminal dos dois $2\ \Omega$ e o da fonte de $2\ \mathrm{A}$).
+
+Assim: um $2\ \Omega$ liga $L$ a $A$, o outro liga $L$ à referência, a fonte de $5\ \mathrm{A}$ injeta em $A$ e a de $2\ \mathrm{A}$ injeta em $L$.
+
+**Passo 2 — $V_{\mathrm{Th}}$, com a carga fora.** Sem o $4\ \Omega$, os $5\ \mathrm{A}$ só podem sair de $A$ pelo $2\ \Omega$ de cima:
+
+$$
+\frac{v_L - v_A}{2} = -5
+\qquad\Longrightarrow\qquad
+v_L - v_A = -10\ \mathrm{V}
+$$
+
+LKC em $L$:
+
+$$
+2 = \frac{v_L - v_A}{2} + \frac{v_L}{2} = -5 + \frac{v_L}{2}
+\qquad\Longrightarrow\qquad
+v_L = 14\ \mathrm{V}
+$$
+
+$$
+\boxed{V_{\mathrm{Th}} = v_A = 14 + 10 = 24\ \mathrm{V}}
+$$
+
+**Passo 3 — $R_{\mathrm{Th}}$.** As duas fontes são de corrente: desativadas, viram **circuito aberto**. Sobram os dois $2\ \Omega$ em série, de $a$ até $b$ passando por $L$:
+
+$$
+\boxed{R_{\mathrm{Th}} = R_N = 2 + 2 = 4\ \Omega}
+$$
+
+**Passo 4 — Norton e a carga:**
+
+$$
+\boxed{I_N = \frac{24}{4} = 6\ \mathrm{A}}
+\qquad\qquad
+v = 24 \cdot \frac{4}{4 + 4} = \boxed{12\ \mathrm{V}}
+$$
+
+**Conferência —** com o $4\ \Omega$ no lugar, o sistema original dá $v_L = 8\ \mathrm{V}$ e $v_A = 12\ \mathrm{V}$ ✔ Por Norton: $v = 6 \cdot (4 \parallel 4) = 6 \cdot 2 = 12\ \mathrm{V}$ ✔ Como $R_L = R_{\mathrm{Th}}$, esta carga está por acaso no ponto de **máxima transferência**: $p = 12^2/4 = 36\ \mathrm{W}$.
+</Passos>
