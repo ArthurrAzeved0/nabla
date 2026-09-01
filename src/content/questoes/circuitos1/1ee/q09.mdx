@@ -1,0 +1,121 @@
+---
+origem: "2022.1"
+tema: "Thévenin e Norton · Três ramos em paralelo na resistência"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o circuito equivalente de **Thévenin** e de **Norton** à esquerda dos pontos $a$ e $b$ e utilize um dos dois circuitos para determinar o valor da tensão $v$ e da corrente $i$.
+
+<Circuito
+  alt="Fonte de 18 V com 6 Ω, fonte de 2 A em paralelo com outro 6 Ω, 20 Ω, ramo de 5 Ω com fonte de 20 V, e 24 Ω entre a e b"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "18 V" },
+    { t: "R", de: [0, 0], para: [1.8, 0], valor: "6 Ω" },
+    { t: "no", em: [1.8, 0] },
+    { t: "fio", pts: [[1.8, 0], [1.8, -1.4]] },
+    { t: "I", de: [4, -1.4], para: [1.8, -1.4], valor: "2 A" },
+    { t: "fio", pts: [[4, -1.4], [4, 0]] },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "6 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3], valor: "20 Ω" },
+    { t: "fio", pts: [[4, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "R", de: [5.6, 0], para: [5.6, 1.4], valor: "5 Ω" },
+    { t: "V", de: [5.6, 3], para: [5.6, 1.4], valor: "20 V" },
+    { t: "fio", pts: [[5.6, 0], [7.4, 0]] },
+    { t: "no", em: [6.5, 0] },
+    { t: "texto", em: [6.5, -0.5], texto: "a" },
+    { t: "fio", pts: [[7.4, 0], [7.4, 0.6]] },
+    { t: "corrente", de: [7.4, 0], para: [7.4, 0.55], rotulo: "i" },
+    { t: "R", de: [7.4, 0.6], para: [7.4, 2.4], valor: "24 Ω" },
+    { t: "tensao", de: [7.4, 2.4], para: [7.4, 0.6], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[7.4, 2.4], [7.4, 3]] },
+    { t: "fio", pts: [[0, 3], [7.4, 3]] },
+    { t: "no", em: [6.5, 3] },
+    { t: "texto", em: [6.5, 3.5], texto: "b" },
+  ]}
+>
+
+Do nó $a$ para baixo há **três** caminhos: o $20\ \Omega$, o ramo do $5\ \Omega$ com a fonte de $20\ \mathrm{V}$, e o par de $6\ \Omega$ em série que volta pela fonte de $18\ \mathrm{V}$. É essa contagem que dá $R_{\mathrm{Th}}$.
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = 13{,}5\ \mathrm{V}$, $R_{\mathrm{Th}} = 3\ \Omega$  ·  Norton: $I_N = 4{,}5\ \mathrm{A}$, $R_N = 3\ \Omega$  ·  $v = 12\ \mathrm{V}$, $i = 0{,}5\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — remova a carga** ($24\ \Omega$) e tome o fio de baixo como referência. Chame $P$ o nó entre os dois $6\ \Omega$ e $N$ o nó que reúne o segundo $6\ \Omega$, o $20\ \Omega$, o ramo do $5\ \Omega$ e o terminal $a$ — tudo ligado por fio, portanto **um só nó**.
+
+**Passo 2 — $V_{\mathrm{Th}}$.** LKC em $P$, com os $2\ \mathrm{A}$ **entrando** (a seta da fonte aponta para a esquerda):
+
+$$
+\frac{18 - v_P}{6} + 2 = \frac{v_P - v_N}{6}
+\qquad\Longrightarrow\qquad
+2v_P = 30 + v_N
+$$
+
+LKC em $N$, com $a$–$b$ em aberto — note que a fonte de $2\ \mathrm{A}$ **retira** $2\ \mathrm{A}$ deste nó:
+
+$$
+\frac{v_P - v_N}{6} = 2 + \frac{v_N}{20} + \frac{v_N - 20}{5}
+$$
+
+Substituindo $v_P$:
+
+$$
+\frac{15 - \tfrac{v_N}{2}}{6} = -2 + \frac{v_N}{4}
+\qquad\Longrightarrow\qquad
+4v_N = 54
+\qquad\Longrightarrow\qquad
+\boxed{V_{\mathrm{Th}} = v_N = 13{,}5\ \mathrm{V}}
+$$
+
+**Passo 3 — $R_{\mathrm{Th}}$.** Desative as fontes independentes: as de $18\ \mathrm{V}$ e $20\ \mathrm{V}$ viram **fio**, a de $2\ \mathrm{A}$ vira **circuito aberto**. Olhando de $a$ para dentro, três caminhos até o fio de baixo:
+
+$$
+\underbrace{6 + 6 = 12\ \Omega}_{\text{pela fonte de 18 V curto-circuitada}}
+\quad\parallel\quad
+\underbrace{20\ \Omega}_{}
+\quad\parallel\quad
+\underbrace{5\ \Omega}_{\text{fonte de 20 V curto-circuitada}}
+$$
+
+$$
+\frac{1}{R_{\mathrm{Th}}} = \frac{1}{12} + \frac{1}{20} + \frac{1}{5} = \frac{5 + 3 + 12}{60} = \frac{1}{3}
+\qquad\Longrightarrow\qquad
+\boxed{R_{\mathrm{Th}} = 3\ \Omega}
+$$
+
+**Passo 4 — Norton:**
+
+$$
+\boxed{I_N = \frac{13{,}5}{3} = 4{,}5\ \mathrm{A}}
+\qquad
+R_N = 3\ \Omega
+$$
+
+**Passo 5 — a carga.** Religando o $24\ \Omega$:
+
+$$
+i = \frac{13{,}5}{3 + 24} = \boxed{0{,}5\ \mathrm{A}}
+\qquad\qquad
+v = 24 \cdot 0{,}5 = \boxed{12\ \mathrm{V}}
+$$
+
+**Conferência —** por Norton, divisão de corrente: $i = 4{,}5 \cdot \dfrac{3}{3+24} = 0{,}5\ \mathrm{A}$ ✔ E no equivalente, $v = 13{,}5 \cdot \dfrac{24}{27} = 12\ \mathrm{V}$ ✔ Repare que a fonte de $2\ \mathrm{A}$ some de $R_{\mathrm{Th}}$ mas domina $V_{\mathrm{Th}}$ — sem ela, $v_N$ cairia para menos da metade.
+</Passos>
