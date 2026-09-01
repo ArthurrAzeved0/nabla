@@ -1,0 +1,88 @@
+---
+origem: "2022.1"
+tema: "Kirchhoff · Fonte de corrente e associação"
+temaId: leis-de-kirchhoff
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o valor da tensão $v$ e da corrente $i$ no circuito abaixo.
+
+<Circuito
+  alt="8 Ω em paralelo com 24 Ω, em série com 3 Ω até um nó com fonte de 2 A e 18 Ω"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 2.6], valor: "8 Ω" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 2.6], valor: "24 Ω", abaixo: true },
+    { t: "R", de: [1.6, 0], para: [3.6, 0], valor: "3 Ω" },
+    { t: "no", em: [3.6, 0] },
+    { t: "I", de: [3.6, 2.6], para: [3.6, 0], valor: "2 A", abaixo: true },
+    { t: "fio", pts: [[3.6, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 2.6], valor: "18 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 2.6], para: [5.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 2.6], [5.4, 2.6]] },
+    { t: "corrente", de: [0.3, 2.6], para: [1.3, 2.6], rotulo: "i", abaixo: false },
+  ]}
+>
+
+O trecho de fio entre o topo do $8\ \Omega$ e o topo do $24\ \Omega$ os torna o **mesmo nó**: os dois estão em paralelo, e é essa leitura que abre a questão.
+
+</Circuito>
+
+<Gabarito>
+$v = 12\ \mathrm{V}$  ·  $i = 1\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Fio de baixo como referência. Chame de $A$ o nó do $8\ \Omega$ / $24\ \Omega$ e de $B$ o nó da fonte de $2\ \mathrm{A}$ e do $18\ \Omega$ (o fio entre eles faz do topo do $18\ \Omega$ o mesmo nó $B$). Os dois primeiros resistores estão em paralelo:
+
+$$
+8 \parallel 24 = \frac{8 \cdot 24}{32} = 6\ \Omega
+$$
+
+**Passo 2 — LKC no nó $A$**: o que chega pelo $3\ \Omega$ sai pelo paralelo de $6\ \Omega$:
+
+$$
+\frac{v_B - v_A}{3} = \frac{v_A}{6}
+\qquad\Longrightarrow\qquad
+2v_B = 3v_A
+\qquad\Longrightarrow\qquad
+v_A = \frac{2}{3}\,v_B
+$$
+
+**Passo 3 — LKC no nó $B$**: entram $2\ \mathrm{A}$, saem pelo $18\ \Omega$ e pelo $3\ \Omega$:
+
+$$
+2 = \frac{v_B}{18} + \frac{v_B - v_A}{3}
+= \frac{v_B}{18} + \frac{v_B - \tfrac23 v_B}{3}
+= \frac{v_B}{18} + \frac{v_B}{9}
+= \frac{v_B}{6}
+$$
+
+$$
+\boxed{v = v_B = 12\ \mathrm{V}}
+\qquad\Longrightarrow\qquad
+v_A = 8\ \mathrm{V}
+$$
+
+**Passo 4 — a corrente $i$.** Ela é a do fio de baixo, entre o pé do $8\ \Omega$ e o pé do $24\ \Omega$. Toda a corrente que **desce** pelo $8\ \Omega$ chega ao canto inferior esquerdo e não tem outro caminho: segue pelo fio, para a direita.
+
+$$
+i = \frac{v_A}{8} = \frac{8}{8} = \boxed{1\ \mathrm{A}}
+$$
+
+**Conferência —** pelo $24\ \Omega$ descem $8/24 = \tfrac13\ \mathrm{A}$, e pelo $3\ \Omega$ vêm $1 + \tfrac13 = \tfrac43\ \mathrm{A}$, que é exatamente $(12-8)/3$ ✔ No nó $B$: $\tfrac43$ (para o $3\ \Omega$) $+ \ 12/18 = \tfrac23$ (para o $18\ \Omega$) $= 2\ \mathrm{A}$, a corrente da fonte ✔
+</Passos>
