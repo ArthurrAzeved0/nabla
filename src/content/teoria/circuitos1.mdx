@@ -11,6 +11,8 @@ unidades:
       - { id: ckt-kirchhoff, titulo: "As leis de Kirchhoff" }
       - { id: ckt-nodal, titulo: "Análise nodal (análise de nós)" }
       - { id: ckt-malhas, titulo: "Análise de malhas" }
+      - { id: ckt-superposicao, titulo: "Princípio da superposição" }
+
 ---
 
 {/* **************************************************************************
@@ -647,6 +649,94 @@ i_2 = 0{,}545\ \mathrm{A}
 $$
 
 e $i_1 = 2{,}545\ \mathrm{A}$. Conferindo pela potência: a fonte de $10\ \mathrm{V}$ fornece $10 \times 2{,}545 = 25{,}45\ \mathrm{W}$; os resistores absorvem $2(2{,}545)^2 + 9(0{,}545)^2 = 12{,}95 + 2{,}67 = 15{,}62\ \mathrm{W}$. Faltam $9{,}82\ \mathrm{W}$, e são da **fonte de corrente**: tomando o fio de baixo como referência, o nó do meio está em $9(0{,}545) = 4{,}91\ \mathrm{V}$, e os $2\ \mathrm{A}$ atravessam a fonte **do $+$ para o $-$** — ela absorve $4{,}91 \times 2 = 9{,}82\ \mathrm{W}$. Agora fecha: $12{,}95 + 2{,}67 + 9{,}82 = 25{,}44\ \mathrm{W}$ ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-superposicao" num="08" titulo="Princípio da superposição">
+
+**A ideia.** Circuito linear é circuito em que dobrar as fontes dobra todas as respostas. Disso segue algo mais forte e muito útil: a resposta a **várias** fontes é a **soma** das respostas a cada fonte agindo sozinha. Então um circuito com três fontes vira três circuitos com uma fonte cada — cada um mais simples, e cada um resolvido pelo método que for mais conveniente.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- **linearidade** — $v$ e $i$ ligados por relações do tipo $v = Ri$, $i = C\,dv/dt$, $v = L\,di/dt$;
+- **desativar uma fonte** — pôr o valor dela em zero, e **não** removê-la do circuito;
+- fonte de tensão em zero $\Rightarrow$ **curto-circuito** ($v = 0$ entre os terminais);
+- fonte de corrente em zero $\Rightarrow$ **circuito aberto** ($i = 0$ no ramo).
+
+</Caixa>
+
+### O enunciado
+
+$$
+v = v^{(1)} + v^{(2)} + \dots + v^{(m)}
+\qquad
+i = i^{(1)} + i^{(2)} + \dots + i^{(m)}
+$$
+
+onde $v^{(k)}$ é a resposta com a fonte $k$ **ativa** e todas as outras **desativadas**. Com $m$ fontes independentes, $m$ circuitos.
+
+<Caixa tipo="macete">
+
+**Desativar não é apagar.** O erro clássico é sumir com a fonte de tensão e deixar um buraco no lugar — mas fonte de tensão nula é um **fio**, e o resistor que estava "escondido" atrás dela passa a participar da associação. Fonte de corrente nula, ao contrário, **abre** o ramo, e aí sim o resistor em série com ela sai da conta.
+
+Regra de bolso: **tensão vira fio, corrente vira buraco.**
+
+</Caixa>
+
+<Circuito
+  alt="Circuito com uma fonte de tensão de 12 V e uma fonte de corrente de 2 A alimentando resistores de 4 e 6 ohms"
+  itens={[
+    { t: "fio", pts: [[0, 2], [0, 0], [2, 0]] },
+    { t: "V", de: [0, 2], para: [0, 0], valor: "12 V" },
+    { t: "R", de: [0, 0], para: [2, 0], rotulo: "4 Ω" },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 2], rotulo: "6 Ω", abaixo: false },
+    { t: "fio", pts: [[2, 0], [4, 0], [4, 2]] },
+    { t: "I", de: [4, 2], para: [4, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 2], [4, 2]] },
+    { t: "tensao", de: [2, 0], para: [2, 2], rotulo: "v" },
+  ]}
+>
+
+Duas fontes, dois subcircuitos. Note que $v$ é a tensão sobre o resistor de $6\ \Omega$ — é ela que a superposição vai montar em duas parcelas.
+
+</Circuito>
+
+### Os dois subcircuitos da figura
+
+**Só a fonte de tensão** (a de corrente vira circuito aberto). Sobram $12\ \mathrm{V}$ sobre $4\ \Omega$ em série com $6\ \Omega$ — divisor de tensão:
+
+$$
+v^{(1)} = 12 \cdot \frac{6}{4 + 6} = 7{,}2\ \mathrm{V}
+$$
+
+**Só a fonte de corrente** (a de tensão vira curto). Os $2\ \mathrm{A}$ encontram $6\ \Omega$ em paralelo com $4\ \Omega$:
+
+$$
+v^{(2)} = 2 \cdot (6 \parallel 4) = 2 \cdot 2{,}4 = 4{,}8\ \mathrm{V}
+$$
+
+$$
+\boxed{v = 7{,}2 + 4{,}8 = 12\ \mathrm{V}}
+$$
+
+<Caixa tipo="dica" rotulo="O que NÃO se superpõe">
+
+**Potência.** Ela é quadrática ($p = Ri^2$), e o quadrado de uma soma não é a soma dos quadrados:
+
+$$
+R\,(i^{(1)} + i^{(2)})^2 \neq R\,(i^{(1)})^2 + R\,(i^{(2)})^2
+$$
+
+Para achar potência, **superponha a corrente (ou a tensão) primeiro** e só então eleve ao quadrado. Fonte **controlada** também não se desativa: ela não é fonte independente, e fica em todos os subcircuitos, com a relação de controle recalculada em cada um.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o que a prova costuma pedir">
+
+O enunciado típico manda mais que o resultado: *"resolva por superposição; o circuito com a fonte de tensão pela análise de malhas e o com a fonte de corrente pela análise de nós"*. Nesse caso a nota está no **procedimento**, então escreva os dois subcircuitos separadamente, com as fontes desativadas explicitadas, e só some no fim. Somar antes de mostrar as parcelas custa ponto mesmo quando o número final está certo.
 
 </Caixa>
 
