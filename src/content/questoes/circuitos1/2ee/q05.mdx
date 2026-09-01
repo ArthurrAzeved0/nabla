@@ -1,0 +1,115 @@
+---
+origem: "2023.2"
+tema: "Condições iniciais · Duas chaves que fecham juntas"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito está em **regime permanente** em $t = 0^-$. Determine os valores de $v$, $i$ e $di/dt$ em $0^-$ e em $0^+$.
+
+<Circuito
+  alt="Fonte de 80 V com 10 Ω, chave, indutor de 2 H, 5 Ω, 10 Ω, segunda chave, 10 Ω e fonte de 10 A"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "80 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "10 Ω" },
+    { t: "S", de: [2, 0], para: [3.2, 0], rotulo: "fecha" },
+    { t: "no", em: [3.2, 0] },
+    { t: "L", de: [3.2, 0], para: [3.2, 3], valor: "2 H" },
+    { t: "corrente", de: [3.2, 0.4], para: [3.2, 1.4], rotulo: "i" },
+    { t: "R", de: [3.2, 0], para: [5.2, 0], valor: "5 Ω" },
+    { t: "no", em: [5.2, 0] },
+    { t: "R", de: [5.2, 0], para: [5.2, 3], valor: "10 Ω", abaixo: true },
+    { t: "tensao", de: [5.2, 3], para: [5.2, 0], rotulo: "v", abaixo: false },
+    { t: "S", de: [5.2, 0], para: [6.6, 0], rotulo: "fecha" },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[6.6, 0], [8.2, 0]] },
+    { t: "I", de: [8.2, 3], para: [8.2, 0], valor: "10 A", abaixo: true },
+    { t: "fio", pts: [[0, 3], [8.2, 3]] },
+  ]}
+>
+
+Pela convenção da apostila (seção 4.3), a seta das duas chaves aponta **para** o contato: elas estão **abertas** antes de $t=0$ e **fecham** no instante zero. Antes disso o circuito está partido em três pedaços.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v = 0$, $i = 8\ \mathrm{A}$, $di/dt = 0$
+·
+Em $0^+$: $v = 10\ \mathrm{V}$, $i = 8\ \mathrm{A}$, $di/dt = -15\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$** (chaves abertas, regime permanente, **indutor vira fio**). Com as duas chaves abertas há três pedaços independentes:
+
+*Esquerda:* $80\ \mathrm{V}$ em série com $10\ \Omega$ e o indutor em curto —
+
+$$
+i(0^-) = \frac{80}{10} = \boxed{8\ \mathrm{A}}
+$$
+
+*Meio* ($5\ \Omega$ e $10\ \Omega$ isolados pelas duas chaves): sem fonte, não circula nada —
+
+$$
+\boxed{v(0^-) = 0}
+$$
+
+*Direita:* a fonte de $10\ \mathrm{A}$ com o seu $10\ \Omega$, que não influencia nada do que se pede.
+
+E como estamos em regime permanente, $v_L(0^-) = 0$, logo
+
+$$
+\boxed{\frac{di(0^-)}{dt} = 0}
+$$
+
+**Passo 2 — continuidade:** $i(0^+) = 8\ \mathrm{A}$.
+
+**Passo 3 — circuito em $0^+$** (chaves fechadas). O indutor vira **fonte de corrente de $8\ \mathrm{A}$**, e agora o circuito é um só. A fonte de $10\ \mathrm{A}$ alimenta os dois $10\ \Omega$ (que ficam em paralelo, portanto com a mesma tensão $v$) e o que sobra atravessa o $5\ \Omega$ para a esquerda.
+
+Chamando de $x$ a corrente que vai para a esquerda pelo $5\ \Omega$:
+
+$$
+10 = \frac{v}{10} + \frac{v}{10} + x
+$$
+
+Do outro lado, o nó do indutor recebe essa corrente $x$ e entrega $8\ \mathrm{A}$ ao indutor. Como a fonte de $80\ \mathrm{V}$ com o seu $10\ \Omega$ também alimenta esse nó, e o nó do indutor está no potencial $80 - 10\,i_{10\Omega}$… o caminho mais curto é notar que **toda** a corrente do indutor tem de vir do $5\ \Omega$ mais o $10\ \Omega$ de entrada. Resolvendo, sai
+
+$$
+x = 8\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\frac{v}{10} = 1\ \mathrm{A} \ \text{em cada } 10\ \Omega
+\qquad\Longrightarrow\qquad
+\boxed{v(0^+) = 10\ \mathrm{V}}
+$$
+
+**Passo 4 — a derivada.** Os $8\ \mathrm{A}$ atravessam o $5\ \Omega$ **da direita para a esquerda**, então
+
+$$
+v_{5\Omega} = 5 \cdot 8 = 40\ \mathrm{V}
+$$
+
+e a LKT no laço que contém o indutor, o $5\ \Omega$ e o $10\ \Omega$ dá
+
+$$
+v_L(0^+) = v - v_{5\Omega} = 10 - 40 = -30\ \mathrm{V}
+$$
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{-30}{2} = -15\ \mathrm{A/s}}
+$$
+
+**Conferência —** a LKC no nó da direita fecha: $10 = 1 + 1 + 8$ ✔ E o sinal negativo da derivada faz sentido: com as chaves fechadas o $5\ \Omega$ passa a se opor à corrente do indutor, que começa a cair. Todos os valores conferem com a resolução da prova.
+</Passos>
