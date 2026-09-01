@@ -1,0 +1,117 @@
+---
+origem: "2020.1"
+tema: "Superposição · Malhas e nós com fontes controladas"
+temaId: superposicao
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os valores de $v$ e $i$ usando o **Princípio da Superposição**. O circuito com a fonte de tensão deve ser resolvido pela Análise de Malhas e o circuito com a fonte de corrente deve ser resolvido pela Análise de Nós.
+
+<Circuito
+  alt="Circuito com fonte de 18 V, fonte de 4 A, fonte de tensão controlada 4i no ramo de cima e fonte de corrente controlada 3v/2 à direita"
+  itens={[
+    { t: "fio", pts: [[0, -1.2], [7.2, -1.2]] },
+    { t: "Vd", de: [2.7, -1.2], para: [4.5, -1.2], rotulo: "4i V" },
+    { t: "fio", pts: [[0, -1.2], [0, 0]] },
+    { t: "R", de: [0, 0], para: [0, 2.4], valor: "2 Ω" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "V", de: [0.4, 0], para: [2, 0], valor: "18 V" },
+    { t: "fio", pts: [[2, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 2.4], valor: "1 Ω" },
+    { t: "corrente", de: [2.4, 1.9], para: [2.4, 0.9], rotulo: "i" },
+    { t: "I", de: [2.4, 0], para: [4.6, 0], valor: "4 A" },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 2.4], valor: "2 Ω" },
+    { t: "R", de: [4.6, 0], para: [6.4, 0], valor: "1 Ω" },
+    { t: "tensao", de: [6.4, 0], para: [4.6, 0], rotulo: "v" },
+    { t: "fio", pts: [[6.4, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "fio", pts: [[7.2, -1.2], [7.2, 0]] },
+    { t: "Id", de: [7.2, 0], para: [7.2, 2.4], rotulo: "3v/2 A" },
+    { t: "fio", pts: [[0, 2.4], [7.2, 2.4]] },
+  ]}
+>
+
+Duas fontes **independentes** — a de $18\ \mathrm{V}$ e a de $4\ \mathrm{A}$ — e duas **controladas**, que ficam nos dois subcircuitos e não se desativam nunca.
+
+</Circuito>
+
+<Gabarito>
+$v = 9\ \mathrm{V}$  ·  $i = -\dfrac{1}{3}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 0 —** Convenções, antes de qualquer conta. Tomando o fio de baixo como referência, chame de $v_L$ o nó da esquerda, $v_2$ o nó do $1\ \Omega$ vertical, $v_3$ o nó do $2\ \Omega$ vertical e $v_R$ o nó da direita. Como $i$ é a corrente que **sobe** pelo $1\ \Omega$, ela vale
+
+$$
+i = \frac{0 - v_2}{1} = -v_2
+$$
+
+e $v = v_3 - v_R$, com o $+$ do lado do nó $3$.
+
+**Passo 1 — subcircuito da fonte de $18\ \mathrm{V}$** (a de $4\ \mathrm{A}$ vira **circuito aberto**). Sem o ramo dos $4\ \mathrm{A}$, os dois lados só se comunicam pelo fio de cima. As fontes amarram
+
+$$
+v_2' = v_L' + 18,
+\qquad
+v_R' = v_L' + 4i' = v_L' - 4\,(v_L' + 18)
+$$
+
+Escrevendo a LKT da malha externa (que é a supermalha em torno das duas fontes de tensão) e a LKC no nó $3$, chega-se a
+
+$$
+v_L' = -15\ \mathrm{V}
+\quad\Longrightarrow\quad
+i' = -(v_L' + 18) = \boxed{-3\ \mathrm{A}}
+$$
+
+$$
+v_R' = -27\ \mathrm{V},
+\qquad
+v_3' = -18\ \mathrm{V}
+\quad\Longrightarrow\quad
+v' = -18 - (-27) = \boxed{9\ \mathrm{V}}
+$$
+
+**Passo 2 — subcircuito da fonte de $4\ \mathrm{A}$** (a de $18\ \mathrm{V}$ vira **curto-circuito**). Agora $v_L'' = v_2''$, e a análise de nós pede a LKC no supernó que envolve $v_L''$, $v_2''$ e $v_R''$ mais a LKC no nó $3$:
+
+$$
+\underbrace{\frac{v_L''}{2}}_{2\ \Omega} + \underbrace{v_2''}_{1\ \Omega} + \underbrace{4}_{\text{fonte}} - v'' + \underbrace{\tfrac{3}{2}v''}_{\text{controlada}} = 0
+\qquad\qquad
+\frac{v_3''}{2} + v'' - 4 = 0
+$$
+
+Com $v_R'' = v_L'' + 4i'' = -3v_L''$ e $v'' = v_3'' - v_R''$, o sistema dá
+
+$$
+v_L'' = -\frac{8}{3}\ \mathrm{V}
+\quad\Longrightarrow\quad
+i'' = -v_L'' = \boxed{\frac{8}{3}\ \mathrm{A}},
+\qquad
+v'' = \boxed{0\ \mathrm{V}}
+$$
+
+**Passo 3 —** Somando as parcelas:
+
+$$
+v = v' + v'' = 9 + 0 = \boxed{9\ \mathrm{V}}
+\qquad\qquad
+i = i' + i'' = -3 + \frac{8}{3} = \boxed{-\frac{1}{3}\ \mathrm{A}}
+$$
+
+**Conferência —** resolvendo o circuito **completo** de uma vez (com as duas fontes ativas), o supernó dá $v_L = -\tfrac{53}{3}\ \mathrm{V}$, e daí $v_2 = \tfrac13\ \mathrm{V}$, $v_R = -19\ \mathrm{V}$ e $v_3 = -10\ \mathrm{V}$ — logo $v = -10 + 19 = 9\ \mathrm{V}$ e $i = -\tfrac13\ \mathrm{A}$ ✔ O sinal negativo de $i$ significa apenas que a corrente **desce** pelo $1\ \Omega$, ao contrário da seta do enunciado.
+</Passos>
