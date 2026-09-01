@@ -1,0 +1,95 @@
+---
+origem: "2020.2"
+tema: "Thévenin e Norton · Só fontes de corrente"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os circuitos equivalentes de **Thévenin** e de **Norton** fora dos pontos $a$ e $b$. A partir de um desses circuitos, determine o valor da tensão $v$.
+
+<Circuito
+  alt="Fontes de 4 A e 15 A alimentando 8 Ω, com 6 Ω e 2 Ω até os terminais a e b, e 4 Ω em paralelo com uma fonte de 6 A"
+  itens={[
+    { t: "I", de: [0, 1.4], para: [0, 0], valor: "4 A" },
+    { t: "I", de: [0, 2.8], para: [0, 1.4], valor: "15 A" },
+    { t: "no", em: [0, 1.4] },
+    { t: "R", de: [0, 1.4], para: [2, 1.4], valor: "8 Ω" },
+    { t: "no", em: [2, 1.4] },
+    { t: "R", de: [2, 1.4], para: [2, 0], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [2, 1.4], para: [2, 2.8], valor: "2 Ω" },
+    { t: "fio", pts: [[0, 0], [6.4, 0]] },
+    { t: "no", em: [4, 0] },
+    { t: "texto", em: [4, -0.5], texto: "a" },
+    { t: "R", de: [4, 0], para: [4, 2.8], valor: "4 Ω", abaixo: true },
+    { t: "tensao", de: [4, 2.8], para: [4, 0], rotulo: "v", abaixo: false },
+    { t: "I", de: [6.4, 0], para: [6.4, 2.8], valor: "6 A" },
+    { t: "fio", pts: [[0, 2.8], [6.4, 2.8]] },
+    { t: "no", em: [4, 2.8] },
+    { t: "texto", em: [4, 3.3], texto: "b" },
+  ]}
+>
+
+Só fontes de **corrente** independentes, e nenhuma controlada — então $R_{\mathrm{Th}}$ sai por associação direta, desativando as três (fonte de corrente nula é **circuito aberto**).
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = 6\ \mathrm{V}$, $R_{\mathrm{Th}} = 8\ \Omega$  ·  Norton: $I_N = \dfrac{3}{4}\ \mathrm{A}$, $R_N = 8\ \Omega$  ·  $v = 2\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — remova a carga.** O $4\ \Omega$ é a carga entre $a$ e $b$; tudo o mais (as três fontes, o $8\ \Omega$, o $6\ \Omega$ e o $2\ \Omega$) é o que vai virar o equivalente. Tome $b$ como referência, e chame $M$ o nó entre as duas fontes de corrente e $N$ o nó de encontro do $8\ \Omega$, do $6\ \Omega$ e do $2\ \Omega$.
+
+**Passo 2 — $V_{\mathrm{Th}}$, com $a$–$b$ em aberto.** No nó $a$ (que é o fio de cima), entram $4\ \mathrm{A}$ da fonte da esquerda e saem $6\ \mathrm{A}$ pela fonte da direita; a diferença tem de vir pelo $6\ \Omega$:
+
+$$
+4 + \frac{v_N - v_a}{6} - 6 = 0
+\qquad\Longrightarrow\qquad
+v_N - v_a = 12\ \mathrm{V}
+$$
+
+No nó $M$ entram $15\ \mathrm{A}$ e saem $4\ \mathrm{A}$ pela fonte de cima, sobrando $11\ \mathrm{A}$ para o $8\ \Omega$. Logo esses mesmos $11\ \mathrm{A}$ chegam a $N$, onde se dividem entre o $6\ \Omega$ (que leva $2\ \mathrm{A}$, do passo anterior) e o $2\ \Omega$:
+
+$$
+11 = 2 + \frac{v_N}{2}
+\qquad\Longrightarrow\qquad
+v_N = 18\ \mathrm{V}
+$$
+
+$$
+\boxed{V_{\mathrm{Th}} = v_a = 18 - 12 = 6\ \mathrm{V}}
+$$
+
+**Passo 3 — $R_{\mathrm{Th}}$, desativando as fontes.** As três são de corrente, então todas viram **circuito aberto**. Com a fonte de $4\ \mathrm{A}$ e a de $15\ \mathrm{A}$ abertas, o $8\ \Omega$ fica com uma ponta solta e **não conduz** — ele sai da conta. Sobram $6\ \Omega$ e $2\ \Omega$ em série, de $a$ até $b$ passando por $N$:
+
+$$
+\boxed{R_{\mathrm{Th}} = R_N = 6 + 2 = 8\ \Omega}
+$$
+
+**Passo 4 — Norton:**
+
+$$
+\boxed{I_N = \frac{V_{\mathrm{Th}}}{R_{\mathrm{Th}}} = \frac{6}{8} = \frac{3}{4}\ \mathrm{A}}
+$$
+
+**Passo 5 — a tensão na carga.** Religando o $4\ \Omega$ ao equivalente de Thévenin, é um divisor de tensão:
+
+$$
+v = 6 \cdot \frac{4}{8 + 4} = \boxed{2\ \mathrm{V}}
+$$
+
+**Conferência —** por Norton, a corrente se divide entre $R_N = 8\ \Omega$ e a carga de $4\ \Omega$: $i_{4\Omega} = \tfrac34 \cdot \tfrac{8}{12} = 0{,}5\ \mathrm{A}$, e $v = 4(0{,}5) = 2\ \mathrm{V}$ ✔ E resolvendo o circuito original inteiro com o $4\ \Omega$ no lugar, sai $v_a = 2\ \mathrm{V}$ ✔ Note que o $8\ \Omega$, que domina o desenho, não entra em nenhuma das respostas.
+</Passos>
