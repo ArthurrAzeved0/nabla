@@ -1,0 +1,110 @@
+---
+origem: "2020.1"
+tema: "Thévenin e Norton · Fonte controlada nos terminais"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os circuitos equivalentes de **Thévenin** e de **Norton** à esquerda dos pontos $a$ e $b$. A partir de um desses circuitos, determine o valor da corrente $i$.
+
+<Circuito
+  alt="Fonte de 4 A sobre 4 Ω, com 2 Ω em paralelo com uma fonte de corrente controlada v/4 até o terminal a, e 16 Ω entre a e b"
+  itens={[
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "4 A" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "R", de: [1.4, 0], para: [1.4, 2.6], valor: "4 Ω", abaixo: true },
+    { t: "tensao", de: [1.4, 2.6], para: [1.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[1.4, 0], [3, 0]] },
+    { t: "no", em: [3, 0] },
+    { t: "fio", pts: [[3, 0], [3, -1.3], [5.6, -1.3], [5.6, 0]] },
+    { t: "R", de: [3.4, -1.3], para: [5.2, -1.3], valor: "2 Ω" },
+    { t: "fio", pts: [[3, 0], [3, 1.3]] },
+    { t: "fio", pts: [[5.6, 1.3], [5.6, 0]] },
+    { t: "Id", de: [3, 1.3], para: [5.6, 1.3], rotulo: "v/4 A", abaixo: true },
+    { t: "no", em: [5.6, 0] },
+    { t: "fio", pts: [[5.6, 0], [7.2, 0]] },
+    { t: "no", em: [6.4, 0] },
+    { t: "texto", em: [6.4, -0.5], texto: "a" },
+    { t: "R", de: [7.2, 0], para: [7.2, 2.6], valor: "16 Ω", abaixo: true },
+    { t: "corrente", de: [7.2, 0.5], para: [7.2, 1.6], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 2.6], [7.2, 2.6]] },
+    { t: "no", em: [6.4, 2.6] },
+    { t: "texto", em: [6.4, 3.2], texto: "b" },
+  ]}
+>
+
+A fonte controlada depende de $v$, que é a tensão sobre o $4\ \Omega$ — **dentro** da parte que vai ser substituída pelo equivalente. Isso proíbe desativá-la e obriga a usar um dos dois caminhos válidos para $R_{\mathrm{Th}}$.
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = 24\ \mathrm{V}$, $R_{\mathrm{Th}} = 8\ \Omega$  ·  Norton: $I_N = 3\ \mathrm{A}$, $R_N = 8\ \Omega$  ·  $i = 1\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — remova a carga.** O $16\ \Omega$ **não** faz parte do equivalente: ele é o que se liga em $a$–$b$ depois. Com ele fora, e o fio de baixo como referência, chame de $v$ o potencial do nó do $4\ \Omega$ (que é a própria variável de controle) e de $v_a$ o do terminal $a$.
+
+**Passo 2 — $V_{\mathrm{Th}}$, com $a$–$b$ em aberto.** Nenhuma corrente sai por $a$, então tudo o que chega ali pelo $2\ \Omega$ e pela fonte controlada tem de se cancelar:
+
+$$
+\frac{v - v_a}{2} + \frac{v}{4} = 0
+$$
+
+A LKC no nó do $4\ \Omega$, com os $4\ \mathrm{A}$ entrando:
+
+$$
+4 = \frac{v}{4} + \frac{v - v_a}{2} + \frac{v}{4}
+$$
+
+Substituindo a primeira na segunda, os dois termos do meio se cancelam e sobra $4 = v/4$:
+
+$$
+v = 16\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\frac{16 - v_a}{2} = -4
+\qquad\Longrightarrow\qquad
+\boxed{V_{\mathrm{Th}} = v_a = 24\ \mathrm{V}}
+$$
+
+**Passo 3 — $I_N$, com $a$–$b$ em curto.** Agora $v_a = 0$, e a LKC no nó do $4\ \Omega$ fica
+
+$$
+4 = \frac{v}{4} + \frac{v}{2} + \frac{v}{4} = v
+\qquad\Longrightarrow\qquad
+v = 4\ \mathrm{V}
+$$
+
+A corrente que atravessa o curto é a soma do que chega em $a$ pelos dois ramos:
+
+$$
+I_N = \underbrace{\frac{v}{2}}_{2\ \Omega} + \underbrace{\frac{v}{4}}_{\text{controlada}} = 2 + 1 = \boxed{3\ \mathrm{A}}
+$$
+
+**Passo 4 — $R_{\mathrm{Th}}$ pela razão**, que é o caminho seguro quando há fonte controlada:
+
+$$
+R_{\mathrm{Th}} = R_N = \frac{V_{\mathrm{Th}}}{I_N} = \frac{24}{3} = \boxed{8\ \Omega}
+$$
+
+**Passo 5 — a corrente na carga.** Religando o $16\ \Omega$ ao equivalente de Thévenin:
+
+$$
+i = \frac{V_{\mathrm{Th}}}{R_{\mathrm{Th}} + 16} = \frac{24}{8 + 16} = \boxed{1\ \mathrm{A}}
+$$
+
+**Conferência —** por Norton dá o mesmo, com divisão de corrente: $i = 3 \cdot \dfrac{8}{8+16} = 1\ \mathrm{A}$ ✔ E $R_{\mathrm{Th}}$ confere pela fonte de teste: desativando os $4\ \mathrm{A}$ e injetando $1\ \mathrm{A}$ em $a$, sai $v_a = 8\ \mathrm{V}$ ✔
+</Passos>
