@@ -1,0 +1,95 @@
+---
+origem: "2023.1"
+tema: "Kirchhoff · Achar a resistência a partir de uma corrente dada"
+temaId: leis-de-kirchhoff
+pontos: 2 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $i$ e de $R$.
+
+<Circuito
+  alt="Fonte de 60 V com 4 Ω, 20 Ω, 16 Ω em paralelo com 8 Ω percorrido por 2 A, e R"
+  itens={[
+    { t: "V", de: [0, 2.6], para: [0, 0], valor: "60 V" },
+    { t: "R", de: [0, 0], para: [1.8, 0], valor: "4 Ω" },
+    { t: "no", em: [1.8, 0] },
+    { t: "R", de: [1.8, 0], para: [1.8, 2.6], valor: "20 Ω" },
+    { t: "corrente", de: [1.8, 0.3], para: [1.8, 1.3], rotulo: "i" },
+    { t: "fio", pts: [[1.8, 0], [3.2, 0]] },
+    { t: "no", em: [3.2, 0] },
+    { t: "fio", pts: [[3.2, 0], [3.2, -1.2], [5.6, -1.2], [5.6, 0]] },
+    { t: "R", de: [3.4, -1.2], para: [5.4, -1.2], valor: "16 Ω" },
+    { t: "R", de: [3.2, 0], para: [5.6, 0], valor: "8 Ω", abaixo: true },
+    { t: "corrente", de: [4.75, 0], para: [5.5, 0], rotulo: "2 A", abaixo: false },
+    { t: "no", em: [5.6, 0] },
+    { t: "R", de: [5.6, 0], para: [5.6, 2.6], valor: "R", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [5.6, 2.6]] },
+  ]}
+>
+
+A corrente dada de $2\ \mathrm{A}$ é a do $8\ \Omega$. Ela fixa a tensão sobre o paralelo $16\ \Omega \parallel 8\ \Omega$ e, com ela, a corrente total que desce por $R$ — que é o dado que faltava.
+
+</Circuito>
+
+<Gabarito>
+$i = 2\ \mathrm{A}$  ·  $R = 8\ \Omega$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o dado de entrada.** Os $2\ \mathrm{A}$ atravessam o $8\ \Omega$, logo a tensão sobre o paralelo (que é a mesma nos dois resistores) vale
+
+$$
+v_{16\parallel 8} = 8 \cdot 2 = 16\ \mathrm{V}
+$$
+
+**Passo 2 — a outra parcela.** Pelo $16\ \Omega$ passa
+
+$$
+\frac{16}{16} = 1\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i_{\text{total}} = 2 + 1 = 3\ \mathrm{A}
+$$
+
+e esses $3\ \mathrm{A}$ são exatamente a corrente que desce por $R$, porque o nó da direita não tem outro caminho.
+
+**Passo 3 — LKC no nó do $20\ \Omega$.** Tomando o fio de baixo como referência e chamando $v_A$ o potencial desse nó (que é o mesmo do lado esquerdo do paralelo, pois o trecho entre eles é fio):
+
+$$
+\underbrace{\frac{60 - v_A}{4}}_{\text{vem pelo }4\ \Omega} = \underbrace{\frac{v_A}{20}}_{i} + \underbrace{3}_{\text{vai para o paralelo}}
+$$
+
+$$
+\times 20:\quad 300 - 5v_A = v_A + 60
+\qquad\Longrightarrow\qquad
+6v_A = 240
+\qquad\Longrightarrow\qquad
+v_A = 40\ \mathrm{V}
+$$
+
+$$
+\boxed{i = \frac{40}{20} = 2\ \mathrm{A}}
+$$
+
+**Passo 4 — a resistência.** O nó da direita está $16\ \mathrm{V}$ abaixo de $v_A$:
+
+$$
+v_C = 40 - 16 = 24\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{R = \frac{v_C}{3} = \frac{24}{3} = 8\ \Omega}
+$$
+
+**Conferência —** a fonte entrega $(60-40)/4 = 5\ \mathrm{A}$, que se dividem em $2\ \mathrm{A}$ pelo $20\ \Omega$ e $3\ \mathrm{A}$ pelo resto ✔ Potência: fonte $60 \times 5 = 300\ \mathrm{W}$; $4\ \Omega$: $4(5)^2 = 100$; $20\ \Omega$: $20(2)^2 = 80$; paralelo: $16 \times 3 = 48$; $R$: $8(3)^2 = 72$ — soma $300\ \mathrm{W}$ ✔
+</Passos>
