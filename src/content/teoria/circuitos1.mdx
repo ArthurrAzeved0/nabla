@@ -32,6 +32,9 @@ unidades:
       - { id: ckt-amortecimentos, titulo: "Os três amortecimentos" }
       - { id: ckt-ci2, titulo: "Condições iniciais de 2ª ordem e a derivada" }
       - { id: ckt-degrau2, titulo: "Resposta completa de 2ª ordem ao degrau" }
+  - nome: "Circuitos ativos de 1ª e 2ª ordem"
+    secoes:
+      - { id: ckt-integrador, titulo: "Integrador e diferenciador" }
 
 ---
 
@@ -2176,6 +2179,98 @@ $$
 $$
 
 Conferindo: em $t=0$, $12 - 12 = 0$ ✔; para $t$ grande, $12\ \mathrm{V}$ ✔; a derivada em $t=0$ dá $-1{,}5(-12) + 4{,}66(-3{,}86) = 18 - 18 = 0$ ✔ E a corrente sai de $i_L = C\,dv_C/dt$, se o enunciado pedir.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-integrador" num="23" titulo="Integrador e diferenciador">
+
+**A ideia.** Troque um dos dois resistores do amplificador inversor por um capacitor e o circuito para de multiplicar: passa a **integrar** ou a **derivar** o sinal de entrada. É a mesma LKC do terra virtual da seção 11, só que agora um dos termos tem $C\,dv/dt$ no lugar de $v/R$ — e a equação do circuito vira uma equação diferencial de propósito, não por acidente.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $R$, $C$ — o par que define a escala de tempo; $RC$ tem dimensão de segundo;
+- $v_e$, $v_o$ — entrada e saída, ambas em relação ao terra;
+- $v_o(0)$ — a tensão inicial no capacitor do integrador, que é a constante de integração;
+- **terra virtual** — o nó inversor em $0\ \mathrm{V}$, de onde tudo sai.
+
+</Caixa>
+
+### Integrador — capacitor na realimentação
+
+Com $R$ na entrada e $C$ realimentando, a LKC no terra virtual (que não recebe corrente do amp. op.) diz que a corrente que entra por $R$ é a que atravessa $C$:
+
+$$
+\frac{v_e}{R} = -C\,\frac{dv_o}{dt}
+\qquad\Longrightarrow\qquad
+\boxed{\ v_o(t) = -\frac{1}{RC}\int_0^{t} v_e(\tau)\,d\tau + v_o(0)\ }
+$$
+
+<Circuito
+  alt="Integrador inversor: resistor na entrada e capacitor na realimentação"
+  itens={[
+    { t: "fio", pts: [[0, 1], [0.6, 1]] },
+    { t: "V", de: [0, 3], para: [0, 1], rotulo: "v_e" },
+    { t: "R", de: [0.6, 1], para: [2.4, 1], rotulo: "R" },
+    { t: "no", em: [2.4, 1] },
+    { t: "fio", pts: [[2.4, 1], [3, 1]] },
+    { t: "ampop", em: [4, 2] },
+    { t: "fio", pts: [[2.4, 1], [2.4, -0.5], [5.6, -0.5], [5.6, 2]] },
+    { t: "C", de: [3.2, -0.5], para: [4.8, -0.5], rotulo: "C" },
+    { t: "fio", pts: [[5, 2], [6.2, 2]] },
+    { t: "no", em: [5.6, 2] },
+    { t: "texto", em: [6.5, 2.15], texto: "v_o", ancora: "start" },
+    { t: "fio", pts: [[3, 3], [3, 4]] },
+    { t: "fio", pts: [[0, 3], [0, 4], [3, 4]] },
+    { t: "terra", em: [1.5, 4] },
+  ]}
+>
+
+Entrada constante $\Rightarrow$ saída em **rampa** de inclinação $-v_e/RC$. É o circuito que gera dente de serra a partir de nível CC, e o que satura se você o deixar integrando um erro para sempre.
+
+</Circuito>
+
+### Diferenciador — capacitor na entrada
+
+Trocando os dois de lugar:
+
+$$
+C\,\frac{dv_e}{dt} = -\frac{v_o}{R}
+\qquad\Longrightarrow\qquad
+\boxed{\ v_o(t) = -RC\,\frac{dv_e}{dt}\ }
+$$
+
+Entrada em rampa $\Rightarrow$ saída constante. Entrada em degrau $\Rightarrow$ saída em pico — e é justamente por isso que o diferenciador puro é raro na prática: ele amplifica ruído, que é o que mais tem derivada grande.
+
+<Caixa tipo="macete">
+
+**Como não trocar os dois.** O elemento que está na **realimentação** é o que define a operação, e ela é a **inversa** dele:
+
+- capacitor **realimentando** $\to$ **integra** (o capacitor acumula);
+- capacitor **na entrada** $\to$ **deriva** (a corrente de entrada já é uma derivada).
+
+E os dois são **inversores**: o sinal de menos vem de graça na conta, e esquecê-lo custa a questão inteira quando o enunciado pede o gráfico da saída.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Por que o integrador ideal não existe">
+
+Em CC o capacitor é um circuito aberto, e o integrador fica **sem realimentação**: o ganho vai a infinito e qualquer desvio de zero na entrada leva a saída à saturação. Na prática põe-se um resistor grande em paralelo com $C$, que limita o ganho CC — vira um integrador só acima de uma certa frequência. A cadeira cobra o ideal; vale saber que o real tem esse detalhe.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido">
+
+Integrador com $R = 10\ \mathrm{k\Omega}$, $C = 1\ \mathrm{\mu F}$ e $v_o(0) = 0$. Então $RC = 10^{-2}\ \mathrm{s}$ e $1/RC = 100\ \mathrm{s^{-1}}$.
+
+Com $v_e = 0{,}5\ \mathrm{V}$ constante:
+
+$$
+v_o(t) = -100 \int_0^t 0{,}5\,d\tau = -50\,t\ \mathrm{V}
+$$
+
+Uma rampa descendo a $50\ \mathrm{V/s}$. Se o amp. op. saturar em $-12\ \mathrm{V}$, ele chega lá em $t = 0{,}24\ \mathrm{s}$ — e a partir daí a fórmula deixa de valer, porque o curto virtual pressupõe realimentação ativa ✔
 
 </Caixa>
 
