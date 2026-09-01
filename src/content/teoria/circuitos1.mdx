@@ -13,6 +13,7 @@ unidades:
       - { id: ckt-malhas, titulo: "Análise de malhas" }
       - { id: ckt-superposicao, titulo: "Princípio da superposição" }
       - { id: ckt-thevenin, titulo: "Equivalentes de Thévenin e de Norton" }
+      - { id: ckt-maxpot, titulo: "Máxima transferência de potência" }
 
 ---
 
@@ -835,6 +836,86 @@ R_{\mathrm{Th}} = 10 \parallel 10 = 5\ \Omega
 $$
 
 **$I_N$**: por conversão, $I_N = 7{,}5/5 = 1{,}5\ \mathrm{A}$. Conferindo direto — com $a$–$b$ em curto, o resistor vertical fica curto-circuitado e sobra $15/10 = 1{,}5\ \mathrm{A}$ ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-maxpot" num="10" titulo="Máxima transferência de potência">
+
+**A ideia.** Um circuito com $V_{\mathrm{Th}}$ e $R_{\mathrm{Th}}$ fixos alimenta uma carga $R_L$ que você pode escolher. Carga pequena demais: a corrente é grande, mas quase toda a tensão cai dentro da fonte. Carga grande demais: a tensão na carga é quase $V_{\mathrm{Th}}$, mas quase não passa corrente. Existe um meio, e ele é exatamente no ponto em que a carga **casa** com a resistência interna.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $R_L$ — resistência de **carga**, a que você escolhe;
+- $R_{\mathrm{Th}}$ — resistência do circuito visto dos terminais da carga, com a carga removida;
+- $p_L$ — potência entregue à carga;
+- **casamento** — a condição $R_L = R_{\mathrm{Th}}$.
+
+</Caixa>
+
+### O resultado
+
+$$
+p_L = R_L \, i^2 = R_L \left(\frac{V_{\mathrm{Th}}}{R_{\mathrm{Th}} + R_L}\right)^2
+$$
+
+Derive em relação a $R_L$ e iguale a zero:
+
+$$
+\frac{dp_L}{dR_L}
+= V_{\mathrm{Th}}^2 \, \frac{(R_{\mathrm{Th}} + R_L)^2 - 2R_L(R_{\mathrm{Th}} + R_L)}{(R_{\mathrm{Th}} + R_L)^4}
+= V_{\mathrm{Th}}^2 \, \frac{R_{\mathrm{Th}} - R_L}{(R_{\mathrm{Th}} + R_L)^3}
+$$
+
+que zera em
+
+$$
+\boxed{R_L = R_{\mathrm{Th}}}
+\qquad\text{e então}\qquad
+\boxed{p_{L,\max} = \frac{V_{\mathrm{Th}}^2}{4\,R_{\mathrm{Th}}}}
+$$
+
+<Circuito
+  alt="Equivalente de Thévenin alimentando uma resistência de carga RL variável"
+  itens={[
+    { t: "fio", pts: [[0, 2.4], [0, 0], [1.8, 0]] },
+    { t: "V", de: [0, 2.4], para: [0, 0.8], rotulo: "Vₜₕ" },
+    { t: "R", de: [0.8, 0], para: [2.4, 0], rotulo: "Rₜₕ" },
+    { t: "fio", pts: [[2.4, 0], [3.6, 0]] },
+    { t: "R", de: [3.6, 0], para: [3.6, 2.4], rotulo: "Rₗ", abaixo: false, variavel: true, destaque: true },
+    { t: "fio", pts: [[0, 2.4], [3.6, 2.4]] },
+    { t: "corrente", de: [2.5, 0], para: [3.4, 0], rotulo: "i" },
+  ]}
+>
+
+Metade da tensão cai dentro, metade na carga — por isso o rendimento no ponto de máxima **potência** é de apenas $50\%$. Máxima potência e máximo rendimento são objetivos diferentes.
+
+</Circuito>
+
+<Caixa tipo="macete">
+
+**A pergunta é sempre em duas partes**, e a primeira já foi feita na seção anterior: **ache o equivalente de Thévenin** dos terminais da carga. Aí $R_L = R_{\mathrm{Th}}$ é resposta imediata e $p_{L,\max} = V_{\mathrm{Th}}^2/4R_{\mathrm{Th}}$ sai numa linha. Nunca tente derivar direto no circuito original.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O que a curva tem de bom">
+
+$p_L(R_L)$ é **chata** perto do máximo: com $R_L$ igual ao dobro ou à metade de $R_{\mathrm{Th}}$, a potência cai a $\tfrac{8}{9}$ do máximo — perde-se só $11\%$. Errar o casamento por um fator 2 custa pouco; é por isso que na prática se casa "por ordem de grandeza".
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido">
+
+Do exemplo da seção anterior, $V_{\mathrm{Th}} = 7{,}5\ \mathrm{V}$ e $R_{\mathrm{Th}} = 5\ \Omega$. Então
+
+$$
+R_L = 5\ \Omega
+\qquad
+p_{L,\max} = \frac{(7{,}5)^2}{4 \cdot 5} = \frac{56{,}25}{20} = 2{,}81\ \mathrm{W}
+$$
+
+Conferindo pelo circuito: $i = 7{,}5/(5+5) = 0{,}75\ \mathrm{A}$, e $p_L = 5(0{,}75)^2 = 2{,}81\ \mathrm{W}$ ✔ A fonte de Thévenin fornece $7{,}5 \times 0{,}75 = 5{,}63\ \mathrm{W}$, dos quais metade se perde em $R_{\mathrm{Th}}$ — os $50\%$ previstos.
 
 </Caixa>
 
