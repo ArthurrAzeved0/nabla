@@ -31,6 +31,7 @@ unidades:
       - { id: ckt-edo2, titulo: "A equação de 2ª ordem e as frequências naturais" }
       - { id: ckt-amortecimentos, titulo: "Os três amortecimentos" }
       - { id: ckt-ci2, titulo: "Condições iniciais de 2ª ordem e a derivada" }
+      - { id: ckt-degrau2, titulo: "Resposta completa de 2ª ordem ao degrau" }
 
 ---
 
@@ -2054,6 +2055,127 @@ v_L(0^+) = 12 - 3(0) - v_C(0^+) = 12\ \mathrm{V}
 $$
 
 **As quatro respostas do quesito 1**, então: $i_L(0^+) = 0$, $v_C(0^+) = 0$, $di_L(0^+)/dt = 12\ \mathrm{A/s}$ e $dv_C(0^+)/dt = 0$. Note que $v_C$ começa em zero **e** plana, enquanto $i_L$ começa em zero mas subindo — é o indutor que arranca primeiro ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-degrau2" num="22" titulo="Resposta completa de 2ª ordem ao degrau">
+
+**A ideia.** Com excitação constante, a resposta de 2ª ordem é a natural — uma das três formas — **mais** a forçada, que é o valor de regime permanente. Duas constantes a determinar, duas condições iniciais para determiná-las. É o quesito 3 de quase toda segunda prova da cadeira, e o único cuidado novo é que as condições entram na soma, nunca numa parcela isolada.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $x_n(t)$ — resposta **natural**, com as constantes literais;
+- $x_f$ — resposta **forçada**; com excitação constante, $x_f = x(\infty)$;
+- $x(\infty)$ — regime permanente do circuito **novo**: capacitor aberto, indutor em curto;
+- $A_1, A_2$ (ou $B_1, B_2$) — as duas constantes.
+
+</Caixa>
+
+### A forma da resposta completa
+
+$$
+x(t) = x(\infty) + x_n(t)
+$$
+
+com $x_n$ escolhido pelo caso:
+
+$$
+x_n =
+\begin{cases}
+A_1 e^{s_1 t} + A_2 e^{s_2 t}, & \alpha > \omega_0 \\[4pt]
+(A_1 + A_2 t)\,e^{-\alpha t}, & \alpha = \omega_0 \\[4pt]
+e^{-\alpha t}\big(B_1 \cos \omega_d t + B_2 \sin \omega_d t\big), & \alpha < \omega_0
+\end{cases}
+$$
+
+### Determinando as constantes
+
+Imponha as **duas** condições na expressão completa. Para o caso subamortecido, que é o mais pedido:
+
+$$
+x(0^+) = x(\infty) + B_1
+\qquad\Longrightarrow\qquad
+B_1 = x(0^+) - x(\infty)
+$$
+
+Derivando $x(t)$ e avaliando em $t=0$:
+
+$$
+\frac{dx(0^+)}{dt} = -\alpha B_1 + \omega_d B_2
+\qquad\Longrightarrow\qquad
+B_2 = \frac{1}{\omega_d}\left[\frac{dx(0^+)}{dt} + \alpha B_1\right]
+$$
+
+E para o superamortecido, o sistema $2\times 2$:
+
+$$
+\begin{cases}
+A_1 + A_2 = x(0^+) - x(\infty) \\[3pt]
+s_1 A_1 + s_2 A_2 = \dfrac{dx(0^+)}{dt}
+\end{cases}
+$$
+
+<Caixa tipo="macete">
+
+**Os três erros que essa questão cobra, em ordem de frequência:**
+
+1. **Aplicar as condições só na parte natural.** $x(0^+)$ vale para $x$, não para $x_n$. Se você esqueceu de somar $x(\infty)$ antes de igualar, $B_1$ sai errado — e, com ele, tudo.
+2. **Derivar $x(\infty)$ à toa.** $x(\infty)$ é constante: a derivada da resposta completa é a derivada da parte natural, e nada mais.
+3. **Usar $\omega_0$ onde vai $\omega_d$.** Na resposta subamortecida quem oscila é $\omega_d$; $\omega_0$ só serve para decidir o caso e calcular $\omega_d$.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Uma conferência que custa dez segundos">
+
+Com a resposta na mão, teste os três pontos que você já conhece **por outro caminho**:
+
+- $t \to \infty$: a exponencial morre e tem de sobrar exatamente $x(\infty)$;
+- $t = 0$: tem de dar $x(0^+)$;
+- a derivada em $t=0$: tem de dar o valor que você calculou no circuito de $0^+$.
+
+Três substituições, e nenhum erro de constante passa.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — fechando o circuito da seção anterior">
+
+RLC série da seção 21: $12\ \mathrm{V}$, $R = 3\ \Omega$, $L = 1\ \mathrm{H}$, $C = 1/24\ \mathrm{F}$, chave fechando em $t=0$ com tudo descarregado. Já sabemos:
+
+$$
+\alpha = 1{,}5,
+\quad
+\omega_0 = \sqrt{24},
+\quad
+\omega_d = \sqrt{24 - 2{,}25} = 4{,}66\ \mathrm{rad/s}
+$$
+
+$$
+v_C(0^+) = 0,
+\qquad
+\frac{dv_C(0^+)}{dt} = 0
+$$
+
+**Valor final:** em regime, o capacitor abre e nada circula, então não há queda em $R$ nem em $L$:
+
+$$
+v_C(\infty) = 12\ \mathrm{V}
+$$
+
+**Constantes:**
+
+$$
+B_1 = 0 - 12 = -12
+\qquad
+B_2 = \frac{1}{4{,}66}\big[0 + 1{,}5(-12)\big] = -3{,}86
+$$
+
+$$
+\boxed{\,v_C(t) = 12 - e^{-1{,}5t}\big(12\cos 4{,}66t + 3{,}86 \sin 4{,}66 t\big)\ \mathrm{V}\,}
+$$
+
+Conferindo: em $t=0$, $12 - 12 = 0$ ✔; para $t$ grande, $12\ \mathrm{V}$ ✔; a derivada em $t=0$ dá $-1{,}5(-12) + 4{,}66(-3{,}86) = 18 - 18 = 0$ ✔ E a corrente sai de $i_L = C\,dv_C/dt$, se o enunciado pedir.
 
 </Caixa>
 
