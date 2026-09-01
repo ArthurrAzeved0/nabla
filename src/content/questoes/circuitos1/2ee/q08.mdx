@@ -1,0 +1,115 @@
+---
+origem: "2022.2"
+tema: "Condições iniciais · Capacitor por cima de dois resistores"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Se o circuito está em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $dv/dt$ e $di/dt$ em $0^-$ e em $0^+$.
+
+<Circuito
+  alt="Fonte de 6 A, chave, 3 Ω, 6 Ω, 3 Ω, indutor de 5 H e capacitor de 1/20 F ligado por cima"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "6 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "S", de: [1.6, 0], para: [1.6, 3], rotulo: "fecha" },
+    { t: "fio", pts: [[1.6, 0], [1.6, -1.4]] },
+    { t: "C", de: [1.6, -1.4], para: [5.6, -1.4], valor: "1/20 F", abaixo: true },
+    { t: "tensao", de: [1.6, -1.4], para: [5.6, -1.4], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[5.6, -1.4], [5.6, 0]] },
+    { t: "R", de: [1.6, 0], para: [3.6, 0], valor: "3 Ω" },
+    { t: "no", em: [3.6, 0] },
+    { t: "R", de: [3.6, 0], para: [3.6, 3], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [3.6, 0], para: [5.6, 0], valor: "3 Ω" },
+    { t: "no", em: [5.6, 0] },
+    { t: "L", de: [5.6, 0], para: [5.6, 3], valor: "5 H", abaixo: true },
+    { t: "corrente", de: [5.6, 0.4], para: [5.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3], [5.6, 3]] },
+  ]}
+>
+
+A chave é um **ramo vertical** que curto-circuita a fonte: pela convenção da apostila ela está **aberta** antes de $t=0$ e **fecha** no instante zero. E o capacitor liga, por cima, o nó de saída da fonte ao nó do indutor.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $i = 4\ \mathrm{A}$, $v = -30\ \mathrm{V}$, $dv/dt = 0$, $di/dt = 0$
+·
+Em $0^+$: $i = 4\ \mathrm{A}$, $v = -30\ \mathrm{V}$, $dv/dt = 40\ \mathrm{V/s}$, $di/dt = -6\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$** (chave aberta; **capacitor aberto**, **indutor em fio**). Toda a fonte atravessa o primeiro $3\ \Omega$ e chega ao nó do $6\ \Omega$, onde se divide entre o $6\ \Omega$ e o ramo "$3\ \Omega$ + indutor em curto":
+
+$$
+i(0^-) = \frac{6}{6+3}\cdot 6 = \boxed{4\ \mathrm{A}}
+$$
+
+Os potenciais: $v_A = 6\,(3 + 6\!\parallel\!3) = 6 \cdot 5 = 30\ \mathrm{V}$ no nó da esquerda e $0$ no nó do indutor. Com o $+$ do capacitor à **direita**:
+
+$$
+\boxed{v(0^-) = 0 - 30 = -30\ \mathrm{V}}
+$$
+
+E em regime permanente as duas derivadas são nulas:
+
+$$
+i_C(0^-) = 0 \Rightarrow \boxed{\frac{dv(0^-)}{dt} = 0}
+\qquad
+v_L(0^-) = 0 \Rightarrow \boxed{\frac{di(0^-)}{dt} = 0}
+$$
+
+**Passo 2 — continuidade:** $i(0^+) = 4\ \mathrm{A}$ e $v(0^+) = -30\ \mathrm{V}$.
+
+**Passo 3 — circuito em $0^+$.** A chave fecha, o capacitor vira **fonte de $30\ \mathrm{V}$** (com o $+$ à direita) e o indutor, **fonte de $4\ \mathrm{A}$**. Chamando $i_1$ a corrente do primeiro $3\ \Omega$, $i_2$ a do $6\ \Omega$ e $i_3$ a do segundo $3\ \Omega$, as leis dão
+
+$$
+3i_1 + 3i_3 = 30
+\qquad
+3i_1 + 6i_2 = 0
+\qquad
+i_1 = i_2 + i_3
+$$
+
+De onde $i_1 = -2i_2$, $i_3 = -3i_2$ e, substituindo na primeira, $5i_1 = 20$:
+
+$$
+i_1 = 4\ \mathrm{A},
+\qquad
+i_2 = -2\ \mathrm{A},
+\qquad
+i_3 = 6\ \mathrm{A}
+$$
+
+**Passo 4 — as duas derivadas.** A corrente do capacitor é o que sobra no nó do indutor:
+
+$$
+i_C(0^+) = i_3 - i = 6 - 4 = 2\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{2}{1/20} = 40\ \mathrm{V/s}}
+$$
+
+E a tensão do indutor sai da LKT no laço do $6\ \Omega$ com o segundo $3\ \Omega$:
+
+$$
+v_L(0^+) = 6i_2 - 3i_3 = -12 - 18 = -30\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{-30}{5} = -6\ \mathrm{A/s}}
+$$
+
+**Conferência —** $i_2$ dá negativo, ou seja a corrente **sobe** pelo $6\ \Omega$: com a chave fechada quem manda no circuito é o capacitor carregado, não mais a fonte. Todos os valores conferem com a resolução da prova.
+</Passos>
