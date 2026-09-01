@@ -1,0 +1,112 @@
+---
+origem: "2022.1"
+tema: "Superposição · Nós e malhas com fonte controlada"
+temaId: superposicao
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o valor da tensão $v$ e da corrente $i$ no circuito abaixo, utilizando o **Princípio da Superposição**. O circuito com a fonte de tensão deve ser resolvido por Análise de Nós e o com a fonte de corrente por Análise de Malhas.
+
+<Circuito
+  alt="Fonte de 2 A e fonte de 4 V, com 4 Ω por cima em paralelo com 2 Ω mais 1 Ω, e fonte controlada 3v1 à direita"
+  itens={[
+    { t: "fio", pts: [[0, -1.3], [4.4, -1.3]] },
+    { t: "R", de: [1.4, -1.3], para: [3.2, -1.3], valor: "4 Ω" },
+    { t: "tensao", de: [3.2, -1.3], para: [1.4, -1.3], rotulo: "v" },
+    { t: "fio", pts: [[0, -1.3], [0, 0]] },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "2 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [4.4, 0], valor: "1 Ω" },
+    { t: "no", em: [4.4, 0] },
+    { t: "fio", pts: [[4.4, -1.3], [4.4, 0]] },
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "2 A" },
+    { t: "tensao", de: [0, 2.6], para: [0, 0], rotulo: "v_1", abaixo: true },
+    { t: "V", de: [2.2, 2.6], para: [2.2, 0], valor: "4 V", abaixo: true },
+    { t: "R", de: [4.4, 0], para: [4.4, 2.6], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [4.4, 0.4], para: [4.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0]] },
+    { t: "Id", de: [6.2, 2.6], para: [6.2, 0], rotulo: "3v_1 A", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [6.2, 2.6]] },
+  ]}
+>
+
+A fonte controlada vale $3v_1$, e $v_1$ é a tensão sobre a **fonte de corrente** de $2\ \mathrm{A}$ — ou seja, o próprio potencial do nó da esquerda. Ela não se desativa em nenhum dos dois subcircuitos.
+
+</Circuito>
+
+<Gabarito>
+$v = -16\ \mathrm{V}$  ·  $i = 16\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 0 — convenções.** Fio de baixo como referência. Chame $v_1$ o nó da esquerda (que é a própria variável de controle), $v_2$ o nó do $4\ \mathrm{V}$ e $v_3$ o nó da direita — que é o **mesmo** nó da fonte controlada e do topo do $4\ \Omega$, porque o trecho de cima e o de baixo à direita são fios. Então
+
+$$
+v = v_1 - v_3
+\qquad
+i = \frac{v_3}{2}
+$$
+
+**Passo 1 — subcircuito da fonte de $4\ \mathrm{V}$** (a de $2\ \mathrm{A}$ vira **circuito aberto**), com $v_2' = 4\ \mathrm{V}$:
+
+$$
+\text{nó 1:}\quad 0 = \frac{v_1' - 4}{2} + \frac{v_1' - v_3'}{4}
+\qquad\Longrightarrow\qquad
+v_3' = 3v_1' - 8
+$$
+
+$$
+\text{nó 3:}\quad \frac{v_1' - v_3'}{4} + (4 - v_3') + 3v_1' = \frac{v_3'}{2}
+$$
+
+Substituindo, $4v_1' = 36$, logo
+
+$$
+v_1' = 9\ \mathrm{V}, \quad v_3' = 19\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v' = -10\ \mathrm{V}}, \quad \boxed{i' = 9{,}5\ \mathrm{A}}
+$$
+
+**Passo 2 — subcircuito da fonte de $2\ \mathrm{A}$** (a de $4\ \mathrm{V}$ vira **curto**, então $v_2'' = 0$):
+
+$$
+\text{nó 1:}\quad 2 = \frac{v_1''}{2} + \frac{v_1'' - v_3''}{4}
+\qquad\Longrightarrow\qquad
+v_3'' = 3v_1'' - 8
+$$
+
+$$
+\text{nó 3:}\quad \frac{v_1'' - v_3''}{4} - v_3'' + 3v_1'' = \frac{v_3''}{2}
+\qquad\Longrightarrow\qquad
+4v_1'' = 28
+$$
+
+$$
+v_1'' = 7\ \mathrm{V}, \quad v_3'' = 13\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v'' = -6\ \mathrm{V}}, \quad \boxed{i'' = 6{,}5\ \mathrm{A}}
+$$
+
+**Passo 3 — soma:**
+
+$$
+v = -10 - 6 = \boxed{-16\ \mathrm{V}}
+\qquad\qquad
+i = 9{,}5 + 6{,}5 = \boxed{16\ \mathrm{A}}
+$$
+
+**Conferência —** no circuito completo, $v_1 = 16\ \mathrm{V}$ e $v_3 = 32\ \mathrm{V}$, logo $v = -16\ \mathrm{V}$ e $i = 16\ \mathrm{A}$ ✔ A LKC no nó $3$ fecha: entram $3v_1 = 48\ \mathrm{A}$ da controlada, saem $4\ \mathrm{A}$ pelo $4\ \Omega$, $28\ \mathrm{A}$ pelo $1\ \Omega$ e $16\ \mathrm{A}$ pelo $2\ \Omega$ ✔ O sinal de $v$ é negativo porque $v_3 > v_1$: a marcação do enunciado ficou ao contrário do sentido real.
+</Passos>
