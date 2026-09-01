@@ -1,0 +1,111 @@
+---
+origem: "2026.1"
+tema: "Superposição · A controlada que anula um nó"
+temaId: superposicao
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o valor da tensão $v$ e da corrente $i$ no circuito abaixo, utilizando o **Princípio da Superposição**. O circuito com a fonte de tensão deve ser resolvido por Análise de Malhas e o com a fonte de corrente por Análise de Nós.
+
+<Circuito
+  alt="Fonte de 10 V com 5 Ω, 10 Ω por cima, dois 2 Ω, fonte controlada 2i, 8 Ω e fonte de 5 A"
+  itens={[
+    { t: "V", de: [0, 3.8], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "R", de: [1.4, 0], para: [5.2, 0], valor: "10 Ω" },
+    { t: "R", de: [1.4, 0], para: [1.4, 1.9], valor: "5 Ω" },
+    { t: "tensao", de: [1.4, 1.9], para: [1.4, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [1.4, 1.9] },
+    { t: "R", de: [1.4, 1.9], para: [1.4, 3.8], valor: "2 Ω" },
+    { t: "fio", pts: [[1.4, 1.9], [3, 1.9]] },
+    { t: "no", em: [3, 1.9] },
+    { t: "R", de: [3, 1.9], para: [3, 3.8], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [3, 2], para: [3, 2.9], rotulo: "i", abaixo: false },
+    { t: "Vd", de: [5.2, 1.9], para: [3, 1.9], rotulo: "2i V" },
+    { t: "no", em: [5.2, 1.9] },
+    { t: "fio", pts: [[5.2, 0], [5.2, 1.9]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "R", de: [5.2, 1.9], para: [5.2, 3.8], valor: "8 Ω", abaixo: true },
+    { t: "fio", pts: [[5.2, 0], [7, 0]] },
+    { t: "I", de: [7, 3.8], para: [7, 0], valor: "5 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.8], [7, 3.8]] },
+  ]}
+>
+
+Aqui a fonte controlada faz uma coisa curiosa: como $i = v_2/2$ e ela vale $2i = v_2$, a diferença $v_2 - v_3$ é exatamente $v_2$ — ou seja, **$v_3 = 0$**. O nó da direita fica no potencial da referência, e o $8\ \Omega$ some das equações.
+
+</Circuito>
+
+<Gabarito>
+$v = \dfrac{10}{3} \approx 3{,}33\ \mathrm{V}$  ·  $i = \dfrac{10}{3} \approx 3{,}33\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 0 — a simplificação que abre a questão.** Fio de baixo como referência. Chame $v_2$ o potencial do nó do meio (dos dois $2\ \Omega$) e $v_3$ o do nó da direita. Como
+
+$$
+i = \frac{v_2}{2}
+\qquad\text{e}\qquad
+v_2 - v_3 = 2i = v_2
+$$
+
+resulta $\boxed{v_3 = 0}$ **em qualquer subcircuito** — o $8\ \Omega$ não conduz nada, e o $10\ \Omega$ enxerga a referência do lado direito.
+
+**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $5\ \mathrm{A}$ vira **circuito aberto**), com $v_1 = 10\ \mathrm{V}$. LKC no supernó do meio e da direita:
+
+$$
+\frac{v_2 - 10}{5} + \frac{v_2}{2} + \frac{v_2}{2} + \frac{0 - 10}{10} = 0
+\qquad\xrightarrow{\times 5}\qquad
+6 v_2 = 15
+$$
+
+$$
+v_2 = 2{,}5\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v' = 10 - 2{,}5 = 7{,}5\ \mathrm{V}}
+\qquad
+\boxed{i' = 1{,}25\ \mathrm{A}}
+$$
+
+**Passo 2 — subcircuito da fonte de $5\ \mathrm{A}$** (a de $10\ \mathrm{V}$ vira **curto**, $v_1 = 0$):
+
+$$
+\frac{v_2}{5} + \frac{v_2}{2} + \frac{v_2}{2} + 0 - 5 = 0
+\qquad\xrightarrow{\times 5}\qquad
+6 v_2 = 25
+$$
+
+$$
+v_2 = \frac{25}{6}\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v'' = -\frac{25}{6} \approx -4{,}17\ \mathrm{V}}
+\qquad
+\boxed{i'' = \frac{25}{12} \approx 2{,}08\ \mathrm{A}}
+$$
+
+**Passo 3 — soma:**
+
+$$
+v = 7{,}5 - \frac{25}{6} = \frac{45 - 25}{6} = \boxed{\frac{10}{3} \approx 3{,}33\ \mathrm{V}}
+$$
+
+$$
+i = 1{,}25 + \frac{25}{12} = \frac{15 + 25}{12} = \boxed{\frac{10}{3} \approx 3{,}33\ \mathrm{A}}
+$$
+
+**Conferência —** no circuito completo, a LKC no supernó dá $6v_2 = 40$, ou $v_2 = \tfrac{20}{3} \approx 6{,}667\ \mathrm{V}$, e daí $v = 10 - 6{,}667 = 3{,}333\ \mathrm{V}$ e $i = v_2/2 = 3{,}333\ \mathrm{A}$ ✔ É exatamente o que a resolução da prova encontra ($V_2 = 320/48$).
+</Passos>
