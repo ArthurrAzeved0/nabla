@@ -1,0 +1,112 @@
+---
+origem: "2021.2"
+tema: "Primeira ordem · Pulso de corrente e resposta em dois trechos"
+temaId: varios-chaveamentos
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v(t)$, para $t > 0$, dado que $i_g(t) = 20\big[u(t) - u(t-5)\big]\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de corrente em pulso alimentando 10 Ω, indutor de 2 H e 5 Ω"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "i_g(t)" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "10 Ω" },
+    { t: "L", de: [2, 0], para: [4.2, 0], valor: "2 H" },
+    { t: "corrente", de: [4.3, 0], para: [5.1, 0], rotulo: "i(t)", abaixo: false },
+    { t: "no", em: [4.2, 0] },
+    { t: "fio", pts: [[4.2, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "5 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3], para: [5.4, 0], rotulo: "v(t)", abaixo: false },
+    { t: "fio", pts: [[0, 3], [5.4, 3]] },
+  ]}
+>
+
+$i_g = 20\big[u(t) - u(t-5)\big]$ é um **pulso**: vale $20\ \mathrm{A}$ entre $t=0$ e $t=5\ \mathrm{s}$, e zero fora disso. Logo há **dois** intervalos, e o valor da corrente do indutor no fim do primeiro é a condição inicial do segundo.
+
+</Circuito>
+
+<Gabarito>
+$0 < t < 5\ \mathrm{s}$: $v(t) = \dfrac{200}{3}\left(1 - e^{-15t/2}\right)\ \mathrm{V}$
+·
+$t > 5\ \mathrm{s}$: $v(t) = \dfrac{200}{3}\,e^{-\frac{15}{2}(t-5)}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Antes de $t=0$ a fonte vale zero e nada circula:
+
+$$
+i(0) = 0
+$$
+
+**Passo 2 — o primeiro trecho ($0 < t < 5$), com a fonte valendo $20\ \mathrm{A}$.** A LKC no nó de cima e a LKT no laço do indutor dão
+
+$$
+i_R = 20 - i
+\qquad\qquad
+10\,i_R = 2\frac{di}{dt} + 5i
+$$
+
+Substituindo:
+
+$$
+10\,(20 - i) = 2\frac{di}{dt} + 5i
+\qquad\Longrightarrow\qquad
+\boxed{2\frac{di}{dt} + 15\,i = 200}
+$$
+
+**Passo 3 — resolvendo.** Característica $2s + 15 = 0 \Rightarrow s = -\tfrac{15}{2}$, e forçada $i_f = \tfrac{200}{15} = \tfrac{40}{3}\ \mathrm{A}$:
+
+$$
+i(t) = A\,e^{-15t/2} + \frac{40}{3},
+\qquad
+i(0) = 0
+\qquad\Longrightarrow\qquad
+A = -\frac{40}{3}
+$$
+
+$$
+i(t) = \frac{40}{3}\left(1 - e^{-15t/2}\right)\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{v(t) = 5\,i(t) = \frac{200}{3}\left(1 - e^{-15t/2}\right)\ \mathrm{V}}
+$$
+
+**Passo 4 — a costura em $t = 5\ \mathrm{s}$.** A constante de tempo é $\tau = \tfrac{2}{15} \approx 0{,}133\ \mathrm{s}$, então $5\ \mathrm{s}$ são cerca de **37 $\tau$**: o primeiro trecho chegou ao regime permanente com folga.
+
+$$
+i(5) = \frac{40}{3}\left(1 - e^{-37{,}5}\right) \approx \frac{40}{3}\ \mathrm{A}
+$$
+
+**Passo 5 — o segundo trecho ($t > 5$), com a fonte desligada.** Sem fonte, sobra a resposta natural. A LKT no laço fechado que resta ($5\ \Omega$, indutor, $10\ \Omega$):
+
+$$
+5i + 10i + 2\frac{di}{dt} = 0
+\qquad\Longrightarrow\qquad
+2\frac{di}{dt} + 15\,i = 0
+$$
+
+— **a mesma** constante de tempo, porque o indutor continua vendo $10 + 5 = 15\ \Omega$. Com o relógio zerado em $t=5$:
+
+$$
+i(t) = \frac{40}{3}\,e^{-\frac{15}{2}(t-5)}\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{v(t) = \frac{200}{3}\,e^{-\frac{15}{2}(t-5)}\ \mathrm{V}}
+$$
+
+**Conferência —** em $t=5$ os dois trechos dão o mesmo valor, $\tfrac{200}{3} \approx 66{,}7\ \mathrm{V}$ ✔ E note o detalhe que a questão cobra: o expoente do segundo trecho é $-(t-5)/\tau$, **não** $-t/\tau$ — cada trecho tem o seu próprio relógio. Confere com a resolução da prova.
+</Passos>
