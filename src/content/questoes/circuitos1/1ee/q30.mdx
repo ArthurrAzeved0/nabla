@@ -1,0 +1,88 @@
+---
+origem: "2025.1"
+tema: "Amp. op. · Realimentação na entrada não inversora"
+temaId: amplificador-operacional
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores da tensão $v$ e da corrente $i$.
+
+<Circuito
+  alt="Amp. op. com 25 Ω e 100 Ω na entrada não inversora, 20 Ω e fonte de 5 V na inversora, e 10 Ω na saída"
+  itens={[
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "25 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [3.4, 0]] },
+    { t: "ampop", em: [4.4, 1], maisEmCima: true },
+    { t: "fio", pts: [[2.4, 0], [2.4, -1.4]] },
+    { t: "R", de: [2.4, -1.4], para: [6.2, -1.4], valor: "100 Ω" },
+    { t: "fio", pts: [[6.2, -1.4], [6.2, 1]] },
+    { t: "fio", pts: [[3.4, 2], [2.6, 2]] },
+    { t: "R", de: [2.6, 2], para: [2.6, 3.2], valor: "20 Ω", abaixo: true },
+    { t: "V", de: [2.6, 4.2], para: [2.6, 3.2], valor: "5 V" },
+    { t: "fio", pts: [[5.4, 1], [7, 1]] },
+    { t: "no", em: [6.2, 1] },
+    { t: "corrente", de: [5.5, 1], para: [6.1, 1], rotulo: "i", abaixo: false },
+    { t: "R", de: [7, 1], para: [7, 4.2], valor: "10 Ω", abaixo: true },
+    { t: "tensao", de: [7, 4.2], para: [7, 1], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 0], [0, 4.2]] },
+    { t: "fio", pts: [[0, 4.2], [7, 4.2]] },
+  ]}
+>
+
+Atenção: o $100\ \Omega$ realimenta a entrada **não inversora**, não a inversora. Ainda assim, a conta que a prova espera é a de sempre — igualar $v_+$ a $v_-$ e resolver.
+
+</Circuito>
+
+<Gabarito>
+$v = 25\ \mathrm{V}$  ·  $i = 2{,}7\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a entrada inversora.** O $20\ \Omega$ liga a entrada inversora à fonte de $5\ \mathrm{V}$, e a entrada **não puxa corrente**. Sem corrente, o $20\ \Omega$ não cai tensão:
+
+$$
+v_- = 5\ \mathrm{V}
+$$
+
+**Passo 2 — a entrada não inversora.** O $25\ \Omega$ e o $100\ \Omega$ formam um divisor entre a saída e o fio de baixo, e o nó do meio é a entrada não inversora (que também não puxa corrente):
+
+$$
+v_+ = v_o \cdot \frac{25}{100 + 25} = 0{,}2\,v_o
+$$
+
+**Passo 3 — iguale as duas entradas:**
+
+$$
+0{,}2\,v_o = 5
+\qquad\Longrightarrow\qquad
+v_o = 25\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v = 25\ \mathrm{V}}
+$$
+
+já que o $10\ \Omega$ está ligado direto entre a saída e o fio de baixo.
+
+**Passo 4 — a corrente da saída.** Ela alimenta dois caminhos: a carga de $10\ \Omega$ e o divisor da realimentação:
+
+$$
+i = \underbrace{\frac{25}{10}}_{\text{carga}} + \underbrace{\frac{25}{100 + 25}}_{\text{divisor}} = 2{,}5 + 0{,}2 = \boxed{2{,}7\ \mathrm{A}}
+$$
+
+**Conferência —** com $v_o = 25\ \mathrm{V}$, o nó da entrada não inversora fica em $0{,}2 \times 25 = 5\ \mathrm{V}$, igual a $v_-$ ✔ E o divisor conduz $25/125 = 0{,}2\ \mathrm{A}$, que caem $0{,}2 \times 25 = 5\ \mathrm{V}$ no $25\ \Omega$ ✔
+
+**Um cuidado que vale registrar —** aqui a realimentação chega na entrada **não inversora**, isto é, é **positiva**. Num circuito real isso não estabiliza: qualquer desvio cresce e a saída vai ao limite da alimentação. A conta acima acha o único ponto de operação em que $v_+ = v_-$, que é o que a prova pede, mas ele é um equilíbrio **instável** — diferente dos amplificadores inversor e não inversor das outras questões, onde a realimentação é negativa e o ponto é estável.
+</Passos>
