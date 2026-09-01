@@ -1,0 +1,91 @@
+---
+origem: "2023.2"
+tema: "Análise nodal · Fonte controlada por uma corrente de saída"
+temaId: analise-nodal
+pontos: 2 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $i_1$ e de $v$.
+
+<Circuito
+  alt="Fonte de 10 A, 10 Ω, fonte controlada 2i1, 8 Ω, e 6 Ω em paralelo com 3 Ω"
+  itens={[
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 2.6], valor: "10 Ω" },
+    { t: "tensao", de: [1.6, 2.6], para: [1.6, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[1.6, 0], [3.2, 0]] },
+    { t: "no", em: [3.2, 0] },
+    { t: "Id", de: [3.2, 0], para: [3.2, 2.6], rotulo: "2i_1 A", abaixo: true },
+    { t: "R", de: [3.2, 0], para: [5.2, 0], valor: "8 Ω" },
+    { t: "no", em: [5.2, 0] },
+    { t: "R", de: [5.2, 0], para: [5.2, 2.6], valor: "6 Ω", abaixo: true },
+    { t: "fio", pts: [[5.2, 0], [6.8, 0]] },
+    { t: "R", de: [6.8, 0], para: [6.8, 2.6], valor: "3 Ω", abaixo: true },
+    { t: "corrente", de: [6.8, 0.3], para: [6.8, 1.3], rotulo: "i_1", abaixo: false },
+    { t: "fio", pts: [[0, 2.6], [6.8, 2.6]] },
+  ]}
+>
+
+O trecho de fio à direita do $8\ \Omega$ põe o $6\ \Omega$ e o $3\ \Omega$ **em paralelo**, e é essa redução que deixa o circuito com só dois nós.
+
+</Circuito>
+
+<Gabarito>
+$v = 30\ \mathrm{V}$  ·  $i_1 = 2\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reduza a direita.** O $6\ \Omega$ e o $3\ \Omega$ ligam o **mesmo** par de nós:
+
+$$
+6 \parallel 3 = \frac{6 \cdot 3}{9} = 2\ \Omega
+$$
+
+**Passo 2 — dois nós, duas equações.** Fio de baixo como referência; chame $v_A$ o nó da esquerda (que é também o do $10\ \Omega$ e da fonte controlada, ligados por fio) e $v_C$ o nó à direita do $8\ \Omega$. Note que $v = v_A$ e $i_1 = v_C/3$.
+
+LKC no nó $C$:
+
+$$
+\frac{v_A - v_C}{8} = \frac{v_C}{2}
+\qquad\Longrightarrow\qquad
+v_A = 5\,v_C
+$$
+
+**Passo 3 — LKC no nó $A$**, com a fonte controlada **saindo** (a seta dela aponta para baixo):
+
+$$
+10 = \frac{v_A}{10} + 2i_1 + \frac{v_A - v_C}{8}
+= \frac{v_A}{10} + \frac{2v_C}{3} + \frac{v_C}{2}
+$$
+
+Substituindo $v_A = 5v_C$:
+
+$$
+10 = \frac{v_C}{2} + \frac{2v_C}{3} + \frac{v_C}{2} = \frac{5}{3}\,v_C
+\qquad\Longrightarrow\qquad
+v_C = 6\ \mathrm{V}
+$$
+
+$$
+\boxed{i_1 = \frac{6}{3} = 2\ \mathrm{A}}
+\qquad\qquad
+\boxed{v = v_A = 5(6) = 30\ \mathrm{V}}
+$$
+
+**Conferência —** no nó $A$: $30/10 = 3\ \mathrm{A}$ pelo $10\ \Omega$, $2i_1 = 4\ \mathrm{A}$ pela controlada e $(30-6)/8 = 3\ \mathrm{A}$ pelo $8\ \Omega$ — total $10\ \mathrm{A}$ ✔ No nó $C$: chegam $3\ \mathrm{A}$, saem $6/6 = 1\ \mathrm{A}$ pelo $6\ \Omega$ e $6/3 = 2\ \mathrm{A}$ pelo $3\ \Omega$ ✔
+</Passos>
