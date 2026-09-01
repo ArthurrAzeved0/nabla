@@ -20,6 +20,9 @@ unidades:
       - { id: ckt-capacitor, titulo: "Capacitores: tensão, corrente, energia e associação" }
       - { id: ckt-indutor, titulo: "Indutores: tensão, corrente, energia e associação" }
       - { id: ckt-chaveamento, titulo: "Chaveamento: o circuito em 0⁻ e em 0⁺" }
+  - nome: "Circuitos de 1ª ordem"
+    secoes:
+      - { id: ckt-natural, titulo: "Resposta natural: RC e RL sem excitação" }
 
 ---
 
@@ -1323,6 +1326,102 @@ v_L(0^+) = 0
 $$
 
 A corrente do indutor começa em zero **e com derivada zero** — ela vai demorar a subir, o que é a assinatura de um circuito de 2ª ordem ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-natural" num="15" titulo="Resposta natural: RC e RL sem excitação">
+
+**A ideia.** Tire todas as fontes e deixe só um resistor e um elemento armazenador carregado. O que sobra é um circuito que se descarrega sozinho — nenhuma fonte manda nele, e por isso a resposta se chama **natural**. Ela é sempre a mesma exponencial decrescente, e a única coisa que muda de um circuito para outro é a **constante de tempo**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\tau$ — constante de tempo, em segundos: o tempo em que a resposta cai a $1/e \approx 36{,}8\%$;
+- $R_{\mathrm{eq}}$ — resistência **vista pelo elemento armazenador**, com as fontes independentes desativadas;
+- $v_C(0)$, $i_L(0)$ — a condição inicial, que vem da continuidade;
+- **resposta natural** — a solução da equação homogênea, sem fonte.
+
+</Caixa>
+
+### RC: a equação e a resposta
+
+Com o capacitor descarregando em $R$, a LKC no nó de cima dá $C\dfrac{dv}{dt} + \dfrac{v}{R} = 0$, ou
+
+$$
+\frac{dv}{dt} + \frac{1}{RC}\,v = 0
+\qquad\Longrightarrow\qquad
+\boxed{\,v_C(t) = v_C(0)\,e^{-t/\tau}, \quad \tau = R_{\mathrm{eq}}C\,}
+$$
+
+### RL: a equação e a resposta
+
+Com o indutor se descarregando em $R$, a LKT dá $L\dfrac{di}{dt} + Ri = 0$, ou
+
+$$
+\frac{di}{dt} + \frac{R}{L}\,i = 0
+\qquad\Longrightarrow\qquad
+\boxed{\,i_L(t) = i_L(0)\,e^{-t/\tau}, \quad \tau = \frac{L}{R_{\mathrm{eq}}}\,}
+$$
+
+<Circuito
+  alt="À esquerda um RC descarregando, à direita um RL descarregando"
+  itens={[
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "C", de: [0, 0], para: [0, 2], valor: "C", abaixo: true },
+    { t: "R", de: [1.6, 0], para: [1.6, 2], valor: "R", abaixo: true },
+    { t: "fio", pts: [[0, 2], [1.6, 2]] },
+    { t: "tensao", de: [0, 2], para: [0, 0], rotulo: "v_C", abaixo: false },
+    { t: "texto", em: [0.8, 3], texto: "RC:  τ = RC" },
+    { t: "fio", pts: [[4.4, 0], [6, 0]] },
+    { t: "L", de: [4.4, 0], para: [4.4, 2], valor: "L", abaixo: true },
+    { t: "R", de: [6, 0], para: [6, 2], valor: "R", abaixo: true },
+    { t: "fio", pts: [[4.4, 2], [6, 2]] },
+    { t: "corrente", de: [4.4, 0.6], para: [4.4, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "texto", em: [5.2, 3], texto: "RL:  τ = L/R" },
+  ]}
+>
+
+Os dois circuitos são o mesmo problema. Em ambos, $R$ é a resistência **equivalente** vista dos terminais do elemento — se houver uma rede de resistores, reduza-a a um $R_{\mathrm{eq}}$ antes de calcular $\tau$.
+
+</Circuito>
+
+<Caixa tipo="macete">
+
+**Onde $\tau$ se erra.** $R_{\mathrm{eq}}$ é a resistência vista **pelo elemento**, olhando dos terminais dele para fora, com as fontes independentes desativadas — exatamente o $R_{\mathrm{Th}}$ da seção 09, com o capacitor ou o indutor no papel da carga. Se você usou o resistor que está desenhado ao lado em vez do equivalente, $\tau$ sai errado e a questão inteira vai junto.
+
+E lembre que $\tau_{RC} = RC$ **cresce** com $R$, enquanto $\tau_{RL} = L/R$ **cai** com $R$. Trocar um pelo outro é o segundo erro mais comum.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O que τ significa na prática">
+
+| $t$ | resta |
+|---|---|
+| $\tau$ | $36{,}8\%$ |
+| $2\tau$ | $13{,}5\%$ |
+| $3\tau$ | $5{,}0\%$ |
+| $5\tau$ | $0{,}7\%$ |
+
+Daí a regra de engenharia: **em $5\tau$ o transitório acabou**. E há uma leitura geométrica útil: a reta tangente à exponencial em $t=0$ cruza o eixo exatamente em $t = \tau$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido">
+
+Um capacitor de $100\ \mathrm{\mu F}$ carregado a $20\ \mathrm{V}$ é ligado a dois resistores de $10\ \mathrm{k\Omega}$ **em paralelo**.
+
+$$
+R_{\mathrm{eq}} = 5\ \mathrm{k\Omega}
+\qquad
+\tau = (5\times10^{3})(100\times10^{-6}) = 0{,}5\ \mathrm{s}
+$$
+
+$$
+v_C(t) = 20\,e^{-2t}\ \mathrm{V}
+$$
+
+Em $t = 0{,}5\ \mathrm{s}$: $v_C = 20(0{,}368) = 7{,}36\ \mathrm{V}$. A corrente total é $i = v_C/R_{\mathrm{eq}} = 4\,e^{-2t}\ \mathrm{mA}$, **saindo** do capacitor — e a energia inicial, $\tfrac12(100\mu)(20)^2 = 20\ \mathrm{mJ}$, acaba toda nos dois resistores ✔
 
 </Caixa>
 
