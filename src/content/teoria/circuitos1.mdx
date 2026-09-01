@@ -30,6 +30,7 @@ unidades:
     secoes:
       - { id: ckt-edo2, titulo: "A equação de 2ª ordem e as frequências naturais" }
       - { id: ckt-amortecimentos, titulo: "Os três amortecimentos" }
+      - { id: ckt-ci2, titulo: "Condições iniciais de 2ª ordem e a derivada" }
 
 ---
 
@@ -1955,6 +1956,104 @@ RLC série com $L = 1\ \mathrm{H}$ e $C = 0{,}04\ \mathrm{F}$, logo $\omega_0 = 
 | $6\ \Omega$ | $3$ | subamortecido | $-3 \pm j4$ |
 
 No último, $\omega_d = \sqrt{25-9} = 4\ \mathrm{rad/s}$ — e não $5$. O período da oscilação é $2\pi/4 = 1{,}57\ \mathrm{s}$, e o envelope $e^{-3t}$ a apaga em cerca de $5/3 \approx 1{,}7\ \mathrm{s}$: pouco mais de **uma volta** completa antes de desaparecer ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-ci2" num="21" titulo="Condições iniciais de 2ª ordem e a derivada">
+
+**A ideia.** Uma solução de 2ª ordem tem **duas** constantes, então precisa de **duas** condições: o valor inicial e a **derivada** inicial. O valor sai da continuidade, como sempre. A derivada é a parte que decide a nota, e ela não se obtém derivando a resposta — obtém-se lendo o circuito de $0^+$ com as relações do capacitor e do indutor. Esta seção é o quesito 1 da segunda prova levado até o fim.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $x(0^+)$ — valor inicial da grandeza pedida;
+- $\dfrac{dx(0^+)}{dt}$ — derivada inicial, a segunda condição;
+- $i_C(0^+)$, $v_L(0^+)$ — corrente do capacitor e tensão do indutor **no circuito de $0^+$**;
+- $x_n$, $x_f$ — parcelas natural e forçada da resposta completa.
+
+</Caixa>
+
+### O par de condições, e de onde cada uma vem
+
+$$
+v_C(0^+) = v_C(0^-)
+\qquad\qquad
+\frac{dv_C(0^+)}{dt} = \frac{i_C(0^+)}{C}
+$$
+
+$$
+i_L(0^+) = i_L(0^-)
+\qquad\qquad
+\frac{di_L(0^+)}{dt} = \frac{v_L(0^+)}{L}
+$$
+
+À esquerda, a continuidade. À direita, **a relação do próprio elemento**, avaliada no circuito de $0^+$ — o mesmo circuito resistivo da seção 14, com o capacitor virando fonte de tensão $v_C(0^+)$ e o indutor virando fonte de corrente $i_L(0^+)$.
+
+### O roteiro
+
+1. **Circuito de $0^-$** em regime: capacitor aberto, indutor em curto. Anote $v_C(0^-)$ e $i_L(0^-)$ — **os dois**, porque agora há dois elementos.
+2. **Continuidade** nos dois.
+3. **Circuito de $0^+$**: capacitor $\to$ fonte de tensão $v_C(0^+)$; indutor $\to$ fonte de corrente $i_L(0^+)$. Resolva esse circuito resistivo e tire $i_C(0^+)$ e $v_L(0^+)$.
+4. **Divida**: $dv_C/dt = i_C/C$ e $di_L/dt = v_L/L$, em $0^+$.
+5. **Aplique as duas condições na resposta completa** — natural mais forçada, nunca só na natural.
+
+<Caixa tipo="macete">
+
+**Se a grandeza pedida não é $v_C$ nem $i_L$**, escreva-a em função de quem é, no circuito **para $t>0$**, e derive a **relação**, não a resposta. Exemplo: se a LKC dá $i_R = i_L - i_C$, então $i_R(0^+)$ e $di_R(0^+)/dt$ saem dessa mesma equação, com os valores que você já achou.
+
+E a conferência que sempre vale: a sua expressão final tem de reproduzir $x(0^+)$ **e** a derivada em $t=0$. Duas substituições, e você sabe se as constantes estão certas antes de entregar.
+
+</Caixa>
+
+<Circuito
+  alt="Circuito RLC com chave, fonte de 12 V, resistor de 3 ohms, indutor de 1 H e capacitor de 1/24 F"
+  itens={[
+    { t: "fio", pts: [[0, 2.6], [0, 0], [1, 0]] },
+    { t: "V", de: [0, 2.6], para: [0, 0.8], valor: "12 V" },
+    { t: "S", de: [1, 0], para: [2.4, 0], rotulo: "fecha em t = 0" },
+    { t: "R", de: [2.4, 0], para: [4, 0], valor: "3 Ω" },
+    { t: "L", de: [4, 0], para: [5.6, 0], valor: "1 H" },
+    { t: "C", de: [5.6, 0], para: [5.6, 2.6], valor: "1/24 F", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [5.6, 2.6]] },
+    { t: "corrente", de: [4.2, 0], para: [5.4, 0], rotulo: "i_L" },
+    { t: "tensao", de: [5.6, 2.6], para: [5.6, 0], rotulo: "v_C", abaixo: false },
+  ]}
+>
+
+RLC **série**: $\alpha = R/2L = 1{,}5$ e $\omega_0 = 1/\sqrt{LC} = \sqrt{24} = 4{,}9$. Subamortecido, com $\omega_d = \sqrt{24 - 2{,}25} = 4{,}66\ \mathrm{rad/s}$.
+
+</Circuito>
+
+<Caixa tipo="dica" rotulo="A derivada quando o elemento está sem corrente ou sem tensão">
+
+Se em $0^+$ o capacitor não recebe corrente ($i_C(0^+) = 0$), então $dv_C(0^+)/dt = 0$ — a tensão começa **plana**. Idem para o indutor sem tensão. Isso não é caso degenerado: é comum, e é a assinatura visual do circuito de 2ª ordem, cuja resposta sai devagar do repouso em vez de arrancar como a exponencial de 1ª ordem.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o circuito da figura">
+
+A chave **fecha** em $t=0$, tudo descarregado.
+
+**$0^-$:** $i_L(0^-) = 0$ e $v_C(0^-) = 0$.
+
+**$0^+$:** indutor $\to$ fonte de $0\ \mathrm{A}$ (aberto); capacitor $\to$ fonte de $0\ \mathrm{V}$ (curto). Com o ramo aberto no indutor, **nada circula**:
+
+$$
+i_C(0^+) = i_L(0^+) = 0
+\qquad\Longrightarrow\qquad
+\frac{dv_C(0^+)}{dt} = 0
+$$
+
+A tensão no indutor, essa não é zero — ela é o que sobra da malha:
+
+$$
+v_L(0^+) = 12 - 3(0) - v_C(0^+) = 12\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\frac{di_L(0^+)}{dt} = \frac{12}{1} = 12\ \mathrm{A/s}
+$$
+
+**As quatro respostas do quesito 1**, então: $i_L(0^+) = 0$, $v_C(0^+) = 0$, $di_L(0^+)/dt = 12\ \mathrm{A/s}$ e $dv_C(0^+)/dt = 0$. Note que $v_C$ começa em zero **e** plana, enquanto $i_L$ começa em zero mas subindo — é o indutor que arranca primeiro ✔
 
 </Caixa>
 
