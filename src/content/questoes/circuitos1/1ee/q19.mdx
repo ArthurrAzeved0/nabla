@@ -1,0 +1,98 @@
+---
+origem: "2023.2"
+tema: "Amp. op. · Não inversor de ganho 11"
+temaId: amplificador-operacional
+pontos: 2 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $v$, $i_1$ e $i_2$. Considere o amplificador operacional como **ideal**.
+
+<Circuito
+  alt="Fonte de 100 V na entrada não inversora, 2 kΩ ao terra, 20 kΩ de realimentação e 5,5 kΩ na saída"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 3.6], valor: "2 kΩ" },
+    { t: "fio", pts: [[0, 0], [2.6, 0]] },
+    { t: "no", em: [2.6, 0] },
+    { t: "ampop", em: [5, 1] },
+    { t: "fio", pts: [[2.6, 0], [4, 0]] },
+    { t: "fio", pts: [[2.6, 0], [2.6, -1.4], [6.8, -1.4], [6.8, 1]] },
+    { t: "R", de: [3.4, -1.4], para: [6, -1.4], valor: "20 kΩ" },
+    { t: "tensao", de: [6, -1.4], para: [3.4, -1.4], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[4, 2], [3, 2], [3, 2.4]] },
+    { t: "V", de: [3, 3.6], para: [3, 2.4], valor: "100 V" },
+    { t: "fio", pts: [[6, 1], [6.8, 1]] },
+    { t: "no", em: [6.8, 1] },
+    { t: "corrente", de: [6.05, 1], para: [6.7, 1], rotulo: "i_2", abaixo: false },
+    { t: "fio", pts: [[6.8, 1], [6.8, 1.6]] },
+    { t: "corrente", de: [6.8, 1], para: [6.8, 1.55], rotulo: "i_1" },
+    { t: "R", de: [6.8, 1.6], para: [6.8, 3.2], valor: "5,5 kΩ", abaixo: true },
+    { t: "fio", pts: [[6.8, 3.2], [6.8, 3.6]] },
+    { t: "fio", pts: [[0, 3.6], [6.8, 3.6]] },
+    { t: "terra", em: [3, 3.6] },
+  ]}
+>
+
+O sinal entra pela **não inversora** e o par $2\ \mathrm{k\Omega}$–$20\ \mathrm{k\Omega}$ realimenta a inversora: ganho $1 + 20/2 = 11$. A fonte de $100\ \mathrm{V}$ não entrega corrente nenhuma — a entrada do amp. op. é um circuito aberto.
+
+</Circuito>
+
+<Gabarito>
+$v = -1000\ \mathrm{V}$  ·  $i_1 = 0{,}2\ \mathrm{A}$  ·  $i_2 = 0{,}25\ \mathrm{A}$  (com $v_o = 1100\ \mathrm{V}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas regras.** A entrada não inversora está ligada direto à fonte, e não puxa corrente:
+
+$$
+v_+ = 100\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+v_- = 100\ \mathrm{V}
+$$
+
+**Passo 2 — a corrente do $2\ \mathrm{k\Omega}$.** Ele vai do nó inversor ao terra:
+
+$$
+i_{2\mathrm{k}} = \frac{100 - 0}{2000} = 50\ \mathrm{mA}
+$$
+
+Como $i_- = 0$, essa corrente vem **inteira** pelo $20\ \mathrm{k\Omega}$, da saída para o nó inversor.
+
+**Passo 3 — a saída:**
+
+$$
+v_o = v_- + (20\mathrm{k})(50\mathrm{m}) = 100 + 1000 = 1100\ \mathrm{V}
+$$
+
+que é o ganho do não inversor: $v_o = 100\left(1 + \dfrac{20}{2}\right) = 100 \cdot 11$ ✔
+
+**Passo 4 — as três respostas.** A tensão $v$ está marcada com o $+$ do lado do nó inversor:
+
+$$
+\boxed{v = v_- - v_o = 100 - 1100 = -1000\ \mathrm{V}}
+$$
+
+$$
+\boxed{i_1 = \frac{v_o}{5500} = \frac{1100}{5500} = 0{,}2\ \mathrm{A}}
+$$
+
+E $i_2$ é **toda** a corrente que sai da saída do amp. op. — a da carga mais a da realimentação:
+
+$$
+\boxed{i_2 = i_1 + 50\ \mathrm{mA} = 200 + 50 = 250\ \mathrm{mA} = 0{,}25\ \mathrm{A}}
+$$
+
+**Conferência —** a potência que sai do amp. op. é $1100 \times 0{,}25 = 275\ \mathrm{W}$; a carga absorve $1100 \times 0{,}2 = 220\ \mathrm{W}$ e a realimentação $1000 \times 0{,}05 = 50\ \mathrm{W}$, mais os $100 \times 0{,}05 = 5\ \mathrm{W}$ do $2\ \mathrm{k\Omega}$ — total $275\ \mathrm{W}$ ✔ E a fonte de $100\ \mathrm{V}$ não entregou nada: quem alimenta tudo é a alimentação do amp. op., que o modelo ideal não desenha.
+</Passos>
