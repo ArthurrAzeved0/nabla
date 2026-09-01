@@ -1,0 +1,110 @@
+---
+origem: "2023.1"
+tema: "Primeira ordem · Quando a condição inicial já é o valor final"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ para $t > 0$, dado que $v(0) = 5\ \mathrm{V}$.
+
+<Circuito
+  alt="Fonte de 10 V com 5 Ω, fonte de 1 A com 10 Ω, chave e capacitor de 1/20 F"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 1.4], valor: "5 Ω" },
+    { t: "V", de: [0, 3], para: [0, 1.4], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "I", de: [2, 0], para: [2, 1.4], valor: "1 A" },
+    { t: "R", de: [2, 1.4], para: [2, 3], valor: "10 Ω" },
+    { t: "S", de: [2, 0], para: [3.6, 0], rotulo: "fecha" },
+    { t: "fio", pts: [[3.6, 0], [4.4, 0]] },
+    { t: "C", de: [4.4, 0], para: [4.4, 3], valor: "1/20 F", abaixo: true },
+    { t: "tensao", de: [4.4, 3], para: [4.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [4.4, 3]] },
+  ]}
+>
+
+A fonte de $1\ \mathrm{A}$ está **em série** com o $10\ \Omega$: juntas, elas só retiram $1\ \mathrm{A}$ do nó, e o $10\ \Omega$ não influencia mais nada. A chave liga o capacitor em $t = 0$.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 5\ \mathrm{V}$ — **constante**, para todo $t > 0$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a equação.** Chame $i$ a corrente que vem pelo $5\ \Omega$ e $v$ o potencial do nó (que é a tensão do capacitor). A LKC dá
+
+$$
+i = 1 + i_C
+$$
+
+e a LKT no laço da fonte de $10\ \mathrm{V}$:
+
+$$
+-10 + 5i + v = 0
+$$
+
+Substituindo:
+
+$$
+5\,(1 + i_C) + v = 10
+\qquad\Longrightarrow\qquad
+5\,i_C + v = 5
+$$
+
+Com $i_C = \tfrac{1}{20}\,dv/dt$:
+
+$$
+\frac{5}{20}\frac{dv}{dt} + v = 5
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv}{dt} + 4v = 20}
+$$
+
+**Passo 2 — natural e forçada.** A característica é $s + 4 = 0$, logo $s = -4$ e $v_n = A\,e^{-4t}$. A forçada é constante:
+
+$$
+4\,v_f = 20
+\qquad\Longrightarrow\qquad
+v_f = 5\ \mathrm{V}
+$$
+
+**Passo 3 — a constante:**
+
+$$
+v(t) = A\,e^{-4t} + 5,
+\qquad
+v(0) = 5 = A + 5
+\qquad\Longrightarrow\qquad
+A = 0
+$$
+
+$$
+\boxed{v(t) = 5\ \mathrm{V}}
+$$
+
+**O que a questão está ensinando —** a condição inicial **já era** o valor de regime permanente, então a parcela natural nasce com amplitude zero e **não há transitório**. O capacitor entra no circuito e nada acontece: nem sobe, nem desce.
+
+Vale conferir que é mesmo isso, e não erro de conta. Em regime permanente o capacitor é circuito aberto, então toda a corrente do $5\ \Omega$ tem de ir para a fonte de $1\ \mathrm{A}$:
+
+$$
+i = 1\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+v = 10 - 5(1) = 5\ \mathrm{V}
+$$
+
+Igual ao valor inicial ✔ E a resolução da prova chega no mesmo $A = 0$.
+</Passos>
