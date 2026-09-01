@@ -1,0 +1,102 @@
+---
+origem: "2025.2"
+tema: "Amp. op. · Duas entradas alimentadas pela mesma fonte"
+temaId: amplificador-operacional
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q33.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores da tensão $v$ e da corrente $i$.
+
+<Circuito
+  alt="Fonte de 16 V alimentando as duas entradas por 8 Ω cada, 8 Ω ao terra na inversora, 32 Ω de realimentação e 17 Ω na saída"
+  itens={[
+    { t: "V", de: [0, 4.2], para: [0, 1], valor: "16 V" },
+    { t: "fio", pts: [[0, 1], [1.2, 1]] },
+    { t: "no", em: [1.2, 1] },
+    { t: "fio", pts: [[1.2, 1], [1.2, 0]] },
+    { t: "R", de: [1.2, 0], para: [3.2, 0], valor: "8 Ω" },
+    { t: "fio", pts: [[1.2, 1], [1.2, 2]] },
+    { t: "R", de: [1.2, 2], para: [3.2, 2], valor: "8 Ω", abaixo: true },
+    { t: "ampop", em: [4.2, 1], maisEmCima: true },
+    { t: "no", em: [3.2, 0] },
+    { t: "fio", pts: [[3.2, 0], [3.2, -1.4]] },
+    { t: "R", de: [3.2, -1.4], para: [6, -1.4], valor: "32 Ω" },
+    { t: "fio", pts: [[6, -1.4], [6, 1]] },
+    { t: "no", em: [3.2, 2] },
+    { t: "fio", pts: [[3.2, 2], [3.2, 2.4]] },
+    { t: "R", de: [3.2, 2.4], para: [3.2, 3.8], valor: "8 Ω", abaixo: true },
+    { t: "fio", pts: [[3.2, 3.8], [3.2, 4.2]] },
+    { t: "fio", pts: [[5.2, 1], [7, 1]] },
+    { t: "no", em: [6, 1] },
+    { t: "corrente", de: [5.3, 1], para: [5.9, 1], rotulo: "i", abaixo: false },
+    { t: "R", de: [7, 1], para: [7, 4.2], valor: "17 Ω" },
+    { t: "tensao", de: [7, 4.2], para: [7, 1], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 4.2], [7, 4.2]] },
+    { t: "terra", em: [3.2, 4.2] },
+  ]}
+>
+
+A mesma fonte alimenta as **duas** entradas, cada uma por um $8\ \Omega$. A inversora tem ainda um $8\ \Omega$ para o terra — isso a fixa em metade da fonte — e a não inversora recebe a realimentação do $32\ \Omega$.
+
+</Circuito>
+
+<Gabarito>
+$v = -24\ \mathrm{V}$  ·  $i = -\dfrac{41}{17} \approx -2{,}41\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a entrada inversora.** Ela não puxa corrente, então o $8\ \Omega$ que vem da fonte e o $8\ \Omega$ que vai ao terra formam um divisor descarregado:
+
+$$
+v_- = 16 \cdot \frac{8}{8 + 8} = 8\ \mathrm{V}
+$$
+
+**Passo 2 — o curto virtual** dá o potencial da outra entrada:
+
+$$
+v_+ = v_- = 8\ \mathrm{V}
+$$
+
+**Passo 3 — LKC na entrada não inversora.** Chegam correntes pelo $8\ \Omega$ (da fonte) e pelo $32\ \Omega$ (da saída), e a entrada não absorve nada:
+
+$$
+\frac{16 - 8}{8} + \frac{v_o - 8}{32} = 0
+\qquad\Longrightarrow\qquad
+1 + \frac{v_o - 8}{32} = 0
+$$
+
+$$
+v_o - 8 = -32
+\qquad\Longrightarrow\qquad
+v_o = -24\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v = -24\ \mathrm{V}}
+$$
+
+já que o $17\ \Omega$ está entre a saída e o fio de baixo.
+
+**Passo 4 — a corrente da saída.** Ela alimenta o $17\ \Omega$ e o $32\ \Omega$:
+
+$$
+i = \underbrace{\frac{-24}{17}}_{17\ \Omega} + \underbrace{\frac{-24 - 8}{32}}_{32\ \Omega}
+= -\frac{24}{17} - 1
+= \boxed{-\frac{41}{17} \approx -2{,}41\ \mathrm{A}}
+$$
+
+O sinal negativo diz que a corrente **entra** no amp. op.: com a saída negativa, o $17\ \Omega$ e o $32\ \Omega$ empurram corrente para dentro dela.
+
+**Conferência —** o $32\ \Omega$ conduz $1\ \mathrm{A}$ da entrada não inversora **para** a saída, e é exatamente o $1\ \mathrm{A}$ que o $8\ \Omega$ da fonte entrega àquele nó ✔ E o mesmo cuidado da prova anterior vale aqui: a realimentação chega na entrada **não inversora**, ou seja, é positiva — a conta acha o ponto em que $v_+ = v_-$, mas num circuito real ele é instável.
+</Passos>
