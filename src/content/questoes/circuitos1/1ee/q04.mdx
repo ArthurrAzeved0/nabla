@@ -1,0 +1,123 @@
+---
+origem: "2020.2"
+tema: "Leis de Kirchhoff · Redução em cascata e divisores"
+temaId: leis-de-kirchhoff
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os valores de $v$, $i$, $i_1$ e $i_2$ utilizando as **Leis de Kirchhoff** e suas aplicações (não utilizar Análise de Nós ou Análise de Malhas).
+
+<Circuito
+  alt="Fonte de 50 V em série com 2 Ω, alimentando 16 Ω em paralelo com um ramo de 12 Ω, 4 Ω, 3 Ω, 6 Ω e 8 Ω"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "50 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 Ω" },
+    { t: "corrente", de: [0.1, 0], para: [1, 0], rotulo: "i_1" },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "16 Ω" },
+    { t: "corrente", de: [2, 0.4], para: [2, 1.4], rotulo: "i_2" },
+    { t: "R", de: [2, 0], para: [4, 0], valor: "12 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 1.5], valor: "4 Ω", abaixo: true },
+    { t: "no", em: [4, 1.5] },
+    { t: "fio", pts: [[3.2, 1.5], [4.8, 1.5]] },
+    { t: "corrente", de: [4.05, 1.5], para: [4.75, 1.5], rotulo: "i" },
+    { t: "R", de: [3.2, 1.5], para: [3.2, 3], valor: "3 Ω" },
+    { t: "R", de: [4.8, 1.5], para: [4.8, 3], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [4, 0], para: [6, 0], valor: "4 Ω" },
+    { t: "R", de: [6, 0], para: [6, 3], valor: "8 Ω", abaixo: true },
+    { t: "tensao", de: [6, 3], para: [6, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [6, 3]] },
+  ]}
+>
+
+Quatro incógnitas, e nenhuma delas exige sistema: o circuito é uma escada de associações série–paralelo, e cada divisão de corrente entrega uma das respostas.
+
+</Circuito>
+
+<Gabarito>
+$i_1 = 5\ \mathrm{A}$  ·  $i_2 = \dfrac{5}{2}\ \mathrm{A}$  ·  $i = \dfrac{5}{9}\ \mathrm{A} \approx 0{,}556\ \mathrm{A}$  ·  $v = \dfrac{20}{3}\ \mathrm{V} \approx 6{,}67\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reduza de dentro para fora.** Chame de $A$ o nó do $16\ \Omega$, $B$ o do $4\ \Omega$ vertical, $C$ o nó de onde saem $3\ \Omega$ e $6\ \Omega$, e $D$ o do $8\ \Omega$.
+
+$$
+3 \parallel 6 = 2\ \Omega
+\qquad\Longrightarrow\qquad
+\text{ramo } B \to C: \ 4 + 2 = 6\ \Omega
+$$
+
+$$
+\text{ramo } B \to D: \ 4 + 8 = 12\ \Omega
+\qquad\Longrightarrow\qquad
+R_B = 6 \parallel 12 = 4\ \Omega
+$$
+
+**Passo 2 —** Subindo mais um degrau:
+
+$$
+\text{ramo } A \to B: \ 12 + 4 = 16\ \Omega
+\qquad\Longrightarrow\qquad
+R_A = 16 \parallel 16 = 8\ \Omega
+$$
+
+$$
+R_{\mathrm{eq}} = 2 + 8 = 10\ \Omega
+$$
+
+**Passo 3 — a corrente da fonte:**
+
+$$
+i_1 = \frac{50}{10} = \boxed{5\ \mathrm{A}}
+\qquad\Longrightarrow\qquad
+v_A = 8 \cdot 5 = 40\ \mathrm{V}
+$$
+
+**Passo 4 —** Em $A$ os dois caminhos valem $16\ \Omega$ cada, então a corrente se divide **ao meio**:
+
+$$
+i_2 = \frac{8}{16}\,i_1 = \boxed{\frac{5}{2}\ \mathrm{A}}
+$$
+
+e a outra metade, também $2{,}5\ \mathrm{A}$, segue pelo $12\ \Omega$ até $B$, onde
+
+$$
+v_B = 4 \cdot 2{,}5 = 10\ \mathrm{V}
+$$
+
+**Passo 5 —** Em $B$, divisão entre o ramo de $6\ \Omega$ (que desce) e o de $12\ \Omega$ (que vai para $D$):
+
+$$
+i_{B \to C} = \frac{4}{6}\,(2{,}5) = \frac{5}{3}\ \mathrm{A}
+\qquad
+i_{B \to D} = \frac{4}{12}\,(2{,}5) = \frac{5}{6}\ \mathrm{A}
+$$
+
+**Passo 6 —** Daí saem as duas últimas respostas. A tensão sobre o $8\ \Omega$:
+
+$$
+v = 8 \cdot \frac{5}{6} = \boxed{\frac{20}{3} \approx 6{,}67\ \mathrm{V}}
+$$
+
+E a corrente $i$, que é a parcela do $6\ \Omega$ na divisão em $C$ (onde $3\ \Omega$ e $6\ \Omega$ dividem os $5/3\ \mathrm{A}$):
+
+$$
+i = \frac{2}{6}\cdot\frac{5}{3} = \boxed{\frac{5}{9} \approx 0{,}556\ \mathrm{A}}
+$$
+
+**Conferência —** as duas parcelas em $C$ somam $\tfrac{2}{3}\cdot\tfrac53 + \tfrac13\cdot\tfrac53 = \tfrac{10}{9} + \tfrac59 = \tfrac{15}{9} = \tfrac53\ \mathrm{A}$ ✔ e $i_2 + i_{B\to C} \cdot \dots$ — mais direto: $i_1 = i_2 + i_{B\to C} + i_{B\to D} = 2{,}5 + \tfrac53 + \tfrac56 = 5\ \mathrm{A}$ ✔
+</Passos>
