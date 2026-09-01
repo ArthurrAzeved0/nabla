@@ -19,6 +19,7 @@ unidades:
     secoes:
       - { id: ckt-capacitor, titulo: "Capacitores: tensão, corrente, energia e associação" }
       - { id: ckt-indutor, titulo: "Indutores: tensão, corrente, energia e associação" }
+      - { id: ckt-chaveamento, titulo: "Chaveamento: o circuito em 0⁻ e em 0⁺" }
 
 ---
 
@@ -447,7 +448,7 @@ Um circuito com $n$ nós e $b$ ramos precisa de $b$ equações. Delas:
     { t: "fio", pts: [[2, 1], [4, 1]] },
     { t: "corrente", de: [2, 1], para: [3.4, 1], rotulo: "3 A", abaixo: false },
     { t: "fio", pts: [[2, 1], [2, 2.6]] },
-    { t: "corrente", de: [2, 1], para: [2, 2.4], rotulo: "i₁" },
+    { t: "corrente", de: [2, 1], para: [2, 2.4], rotulo: "i_1" },
     { t: "texto", em: [2, 0.6], texto: "A" },
   ]}
 >
@@ -529,10 +530,10 @@ Duas incógnitas, duas equações. Nenhuma informação se perde.
     { t: "fio", pts: [[-0.8, 3], [-0.8, 1], [1, 1]] },
     { t: "I", de: [-0.8, 3], para: [-0.8, 1], valor: "3 A" },
     { t: "no", em: [1, 1] },
-    { t: "texto", em: [1, 0.55], texto: "v₁" },
+    { t: "texto", em: [1, 0.55], texto: "v_1" },
     { t: "V", de: [1, 1], para: [3, 1], valor: "12 V", abaixo: true },
     { t: "no", em: [3, 1] },
-    { t: "texto", em: [3, 0.55], texto: "v₂" },
+    { t: "texto", em: [3, 0.55], texto: "v_2" },
     { t: "R", de: [1, 1], para: [1, 3], rotulo: "4 Ω" },
     { t: "R", de: [3, 1], para: [3, 3], rotulo: "6 Ω" },
     { t: "fio", pts: [[3, 1], [4.4, 1], [4.4, 3]] },
@@ -628,8 +629,8 @@ Uma fonte de corrente ideal não tem uma tensão própria que você possa escrev
     { t: "I", de: [2, 0], para: [2, 2], valor: "2 A" },
     { t: "R", de: [4, 0], para: [4, 2], rotulo: "3 Ω" },
     { t: "fio", pts: [[0, 2], [4, 2]] },
-    { t: "corrente", de: [0.6, 1.2], para: [1.4, 1.2], rotulo: "i₁" },
-    { t: "corrente", de: [2.6, 1.2], para: [3.4, 1.2], rotulo: "i₂" },
+    { t: "corrente", de: [0.6, 1.2], para: [1.4, 1.2], rotulo: "i_1" },
+    { t: "corrente", de: [2.6, 1.2], para: [3.4, 1.2], rotulo: "i_2" },
   ]}
 >
 
@@ -779,17 +780,17 @@ Basta achar **duas** — a terceira sai da relação. Isso é o atalho mais úti
   grade={40}
   itens={[
     { t: "fio", pts: [[0, 2.4], [0, 0.6]] },
-    { t: "V", de: [0, 2.4], para: [0, 0.6], rotulo: "Vₜₕ" },
+    { t: "V", de: [0, 2.4], para: [0, 0.6], rotulo: "V_{Th}" },
     { t: "fio", pts: [[0, 0.6], [0, 0], [1.6, 0]] },
-    { t: "R", de: [0, 0], para: [1.6, 0], rotulo: "Rₜₕ" },
+    { t: "R", de: [0, 0], para: [1.6, 0], rotulo: "R_{Th}" },
     { t: "fio", pts: [[1.6, 0], [2.4, 0]] },
     { t: "texto", em: [2.7, 0.15], texto: "a", ancora: "start" },
     { t: "fio", pts: [[0, 2.4], [2.4, 2.4]] },
     { t: "texto", em: [2.7, 2.55], texto: "b", ancora: "start" },
     { t: "texto", em: [1.2, 3.3], texto: "Thévenin" },
     { t: "fio", pts: [[5, 2.4], [5, 0], [7.4, 0]] },
-    { t: "I", de: [5, 2.4], para: [5, 0], rotulo: "Iₙ" },
-    { t: "R", de: [6.4, 0], para: [6.4, 2.4], rotulo: "Rₙ", abaixo: false },
+    { t: "I", de: [5, 2.4], para: [5, 0], rotulo: "I_N" },
+    { t: "R", de: [6.4, 0], para: [6.4, 2.4], rotulo: "R_N", abaixo: false },
     { t: "no", em: [6.4, 0] },
     { t: "no", em: [6.4, 2.4] },
     { t: "texto", em: [7.7, 0.15], texto: "a", ancora: "start" },
@@ -885,10 +886,10 @@ $$
   alt="Equivalente de Thévenin alimentando uma resistência de carga RL variável"
   itens={[
     { t: "fio", pts: [[0, 2.4], [0, 0], [1.8, 0]] },
-    { t: "V", de: [0, 2.4], para: [0, 0.8], rotulo: "Vₜₕ" },
-    { t: "R", de: [0.8, 0], para: [2.4, 0], rotulo: "Rₜₕ" },
+    { t: "V", de: [0, 2.4], para: [0, 0.8], rotulo: "V_{Th}" },
+    { t: "R", de: [0.8, 0], para: [2.4, 0], rotulo: "R_{Th}" },
     { t: "fio", pts: [[2.4, 0], [3.6, 0]] },
-    { t: "R", de: [3.6, 0], para: [3.6, 2.4], rotulo: "Rₗ", abaixo: false, variavel: true, destaque: true },
+    { t: "R", de: [3.6, 0], para: [3.6, 2.4], rotulo: "R_L", abaixo: false, variavel: true, destaque: true },
     { t: "fio", pts: [[0, 2.4], [3.6, 2.4]] },
     { t: "corrente", de: [2.5, 0], para: [3.4, 0], rotulo: "i" },
   ]}
@@ -966,16 +967,16 @@ E cuidado com o nó da **saída**: nunca escreva LKC ali. O amp. op. injeta ali 
   alt="Amplificador inversor: R1 da fonte ao nó inversor e R2 realimentando da saída"
   itens={[
     { t: "fio", pts: [[0, 1], [0.6, 1]] },
-    { t: "V", de: [0, 3], para: [0, 1], rotulo: "vₑ" },
-    { t: "R", de: [0.6, 1], para: [2.4, 1], rotulo: "R₁" },
+    { t: "V", de: [0, 3], para: [0, 1], rotulo: "v_e" },
+    { t: "R", de: [0.6, 1], para: [2.4, 1], rotulo: "R_1" },
     { t: "no", em: [2.4, 1] },
     { t: "fio", pts: [[2.4, 1], [3, 1]] },
     { t: "ampop", em: [4, 2] },
     { t: "fio", pts: [[2.4, 1], [2.4, -0.5], [5.6, -0.5], [5.6, 2]] },
-    { t: "R", de: [3, -0.5], para: [4.8, -0.5], rotulo: "R₂" },
+    { t: "R", de: [3, -0.5], para: [4.8, -0.5], rotulo: "R_2" },
     { t: "fio", pts: [[5, 2], [6.2, 2]] },
     { t: "no", em: [5.6, 2] },
-    { t: "texto", em: [6.5, 2.15], texto: "vₒ", ancora: "start" },
+    { t: "texto", em: [6.5, 2.15], texto: "v_o", ancora: "start" },
     { t: "fio", pts: [[3, 3], [3, 4]] },
     { t: "fio", pts: [[0, 3], [0, 4], [3, 4]] },
     { t: "terra", em: [1.5, 4] },
@@ -1081,14 +1082,14 @@ $$
   alt="Dois capacitores em série e dois em paralelo"
   itens={[
     { t: "fio", pts: [[0, 0], [0.4, 0]] },
-    { t: "C", de: [0.4, 0], para: [1.8, 0], rotulo: "C₁" },
-    { t: "C", de: [1.8, 0], para: [3.2, 0], rotulo: "C₂" },
+    { t: "C", de: [0.4, 0], para: [1.8, 0], rotulo: "C_1" },
+    { t: "C", de: [1.8, 0], para: [3.2, 0], rotulo: "C_2" },
     { t: "fio", pts: [[3.2, 0], [3.6, 0]] },
     { t: "texto", em: [1.8, 1.9], texto: "em série" },
     { t: "fio", pts: [[5.4, 0], [6, 0], [6, 0.9]] },
     { t: "no", em: [6, 0] },
-    { t: "C", de: [6, 0.9], para: [7.6, 0.9], rotulo: "C₁" },
-    { t: "C", de: [6, -0.9], para: [7.6, -0.9], rotulo: "C₂" },
+    { t: "C", de: [6, 0.9], para: [7.6, 0.9], rotulo: "C_1" },
+    { t: "C", de: [6, -0.9], para: [7.6, -0.9], rotulo: "C_2" },
     { t: "fio", pts: [[6, 0], [6, -0.9], [7.6, -0.9], [7.6, 0.9], [6, 0.9]] },
     { t: "fio", pts: [[7.6, 0], [8.2, 0]] },
     { t: "no", em: [7.6, 0] },
@@ -1210,6 +1211,118 @@ w_L(0) = \tfrac{1}{2}(20\times 10^{-3})(3)^2 = 90\ \mathrm{mJ}
 $$
 
 e cai com $e^{-200t}$ — o **dobro** da taxa da corrente, porque a energia é quadrática ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-chaveamento" num="14" titulo="Chaveamento: o circuito em 0⁻ e em 0⁺">
+
+**A ideia.** Uma chave abre ou fecha em $t=0$ e o circuito muda de cara. O que **não** muda são $v_C$ e $i_L$ — e é só isso que atravessa o instante do chaveamento. Todo o resto (as outras tensões, as outras correntes, e **todas** as derivadas) tem de ser recalculado do zero no circuito novo. Este é o quesito 1 de praticamente toda segunda prova da cadeira, e ele é inteiramente mecânico.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $t = 0^-$ — o instante **imediatamente antes** do chaveamento, com o circuito velho em **regime permanente**;
+- $t = 0^+$ — o instante **imediatamente depois**, já com o circuito novo;
+- $x(0^+)$ — valor inicial da grandeza $x$ no circuito novo;
+- $\dfrac{dx(0^+)}{dt}$ — derivada inicial, quase sempre o item que vale mais ponto.
+
+</Caixa>
+
+### O roteiro, em três circuitos
+
+**1. Desenhe o circuito de $0^-$.** Chaves na posição **anterior**, e regime permanente CC:
+
+- **capacitor $\to$ circuito aberto**;
+- **indutor $\to$ fio**.
+
+Resolva por Ohm/divisores e anote **só** $v_C(0^-)$ e $i_L(0^-)$. É só isso que serve.
+
+**2. Aplique a continuidade.** Sempre, e sem exceção em circuito de prova:
+
+$$
+v_C(0^+) = v_C(0^-)
+\qquad\qquad
+i_L(0^+) = i_L(0^-)
+$$
+
+**3. Desenhe o circuito de $0^+$.** Chaves na posição **nova**, e agora — este é o passo que se erra —
+
+- **capacitor $\to$ fonte de tensão** de valor $v_C(0^+)$;
+- **indutor $\to$ fonte de corrente** de valor $i_L(0^+)$.
+
+Resolva esse circuito puramente resistivo. Ele entrega **todas** as outras grandezas em $0^+$: a corrente do capacitor, a tensão do indutor, a corrente em cada resistor.
+
+<Circuito
+  alt="Circuito com chave, resistores, capacitor e indutor, para análise em 0 menos e 0 mais"
+  itens={[
+    { t: "fio", pts: [[0, 2.6], [0, 0], [1, 0]] },
+    { t: "V", de: [0, 2.6], para: [0, 0.8], valor: "24 V" },
+    { t: "S", de: [1, 0], para: [2.4, 0], rotulo: "t = 0" },
+    { t: "R", de: [2.4, 0], para: [4, 0], valor: "4 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "L", de: [4, 0], para: [5.6, 0], valor: "2 H" },
+    { t: "fio", pts: [[5.6, 0], [6.4, 0], [6.4, 2.6]] },
+    { t: "R", de: [6.4, 0], para: [6.4, 2.6], valor: "8 Ω" },
+    { t: "C", de: [4, 0], para: [4, 2.6], valor: "1 mF", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [6.4, 2.6]] },
+    { t: "terra", em: [2.2, 2.6] },
+    { t: "tensao", de: [4, 2.6], para: [4, 0], rotulo: "v_C", abaixo: false },
+    { t: "corrente", de: [4.2, 0], para: [5.4, 0], rotulo: "i_L" },
+  ]}
+>
+
+Com a chave **aberta** em $0^-$ não circula corrente nenhuma: $i_L(0^-) = 0$ e $v_C(0^-) = 0$. Fechando a chave, esses dois valores atravessam — e o circuito de $0^+$ tem o capacitor como fonte de $0\ \mathrm{V}$ (um curto) e o indutor como fonte de $0\ \mathrm{A}$ (um aberto).
+
+</Circuito>
+
+### As derivadas em $0^+$
+
+Aqui a maioria erra, e o erro é sempre o mesmo: tentar derivar a resposta final. Não precisa. As derivadas saem **das próprias relações do elemento**, avaliadas no circuito de $0^+$:
+
+$$
+\boxed{\ \frac{dv_C(0^+)}{dt} = \frac{i_C(0^+)}{C}\ }
+\qquad\qquad
+\boxed{\ \frac{di_L(0^+)}{dt} = \frac{v_L(0^+)}{L}\ }
+$$
+
+Ou seja: para achar $dv_C/dt$ em $0^+$, ache a **corrente** do capacitor no circuito de $0^+$ e divida por $C$. Para achar $di_L/dt$, ache a **tensão** do indutor e divida por $L$. Duas divisões, e acabou.
+
+<Caixa tipo="macete">
+
+**Se o quesito pedir a derivada de outra grandeza** — $dv_R/dt$, por exemplo — escreva essa grandeza em função das variáveis de estado no circuito de $0^+$ e derive a relação, não a resposta. Exemplo: se $v_R = 8\,i_L$, então $dv_R/dt = 8\,di_L/dt$, e você já sabe $di_L/dt$.
+
+E o erro clássico do sinal: a corrente $i_C$ tem de ser tomada **entrando pelo $+$ de $v_C$**. Se você marcou ao contrário, a derivada sai com o sinal trocado e o resto da questão vai junto.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Quando a continuidade falha">
+
+Existe circuito em que $v_C$ **salta**: dois capacitores ligados em paralelo por uma chave, com tensões diferentes. Ali a corrente é de fato impulsiva e o que se conserva é a **carga total**, não a tensão de cada um. É caso de exceção e a prova avisa; no dia a dia da cadeira, $v_C$ e $i_L$ são contínuos.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o quesito 1 típico">
+
+No circuito da figura, a chave **fecha** em $t = 0$. Em $0^-$ nada circula, então $v_C(0^-) = 0$ e $i_L(0^-) = 0$.
+
+Em $0^+$: capacitor $\to$ fonte de $0\ \mathrm{V}$ (curto), indutor $\to$ fonte de $0\ \mathrm{A}$ (aberto). Com o indutor aberto, o ramo de $8\ \Omega$ não conduz, e toda a corrente da fonte passa pelo $4\ \Omega$ e entra no capacitor:
+
+$$
+i_C(0^+) = \frac{24 - 0}{4} = 6\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\frac{dv_C(0^+)}{dt} = \frac{6}{10^{-3}} = 6000\ \mathrm{V/s}
+$$
+
+E a tensão no indutor em $0^+$: seu terminal esquerdo está em $v_C(0^+) = 0$ e o direito, sem corrente no $8\ \Omega$, também está em $0$. Logo
+
+$$
+v_L(0^+) = 0
+\qquad\Longrightarrow\qquad
+\frac{di_L(0^+)}{dt} = \frac{0}{2} = 0\ \mathrm{A/s}
+$$
+
+A corrente do indutor começa em zero **e com derivada zero** — ela vai demorar a subir, o que é a assinatura de um circuito de 2ª ordem ✔
 
 </Caixa>
 
