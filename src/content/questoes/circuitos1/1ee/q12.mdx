@@ -1,0 +1,102 @@
+---
+origem: "2022.2"
+tema: "Amp. op. · Divisor na entrada de um inversor"
+temaId: amplificador-operacional
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar o circuito equivalente de **Thévenin** e de **Norton** à esquerda dos pontos $a$ e $b$. A partir de um dos dois circuitos, encontre o valor da tensão entre os terminais $a$ e $b$ — que aqui são os terminais de **saída** marcados $+$ e $-$, isto é, a própria $v_o$.
+
+<Circuito
+  alt="Fonte de 11 V com 2 kΩ, 4 kΩ para o terra, 6 kΩ até a entrada inversora e 18 kΩ de realimentação"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "11 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 kΩ" },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "4 kΩ", abaixo: true },
+    { t: "R", de: [2, 0], para: [4, 0], valor: "6 kΩ" },
+    { t: "no", em: [4, 0] },
+    { t: "ampop", em: [5, 1] },
+    { t: "fio", pts: [[4, 0], [4, -1.4], [6.8, -1.4], [6.8, 1]] },
+    { t: "R", de: [4.4, -1.4], para: [6.4, -1.4], valor: "18 kΩ" },
+    { t: "fio", pts: [[6, 1], [7.6, 1]] },
+    { t: "no", em: [6.8, 1] },
+    { t: "texto", em: [7.9, 1.15], texto: "+", ancora: "start" },
+    { t: "fio", pts: [[4, 2], [4, 3]] },
+    { t: "fio", pts: [[0, 3], [7.6, 3]] },
+    { t: "terra", em: [3, 3] },
+    { t: "texto", em: [7.9, 3.15], texto: "−", ancora: "start" },
+    { t: "texto", em: [7.4, 2.1], texto: "v_o" },
+  ]}
+>
+
+A entrada inversora é **terra virtual**: fica em $0\ \mathrm{V}$ sem estar ligada ao terra. Por isso o $6\ \mathrm{k\Omega}$ enxerga terra do lado direito, e entra no divisor da entrada como se fosse um resistor para a referência.
+
+</Circuito>
+
+<Gabarito>
+$v_o = -18\ \mathrm{V}$, com $V_{\mathrm{Th}} = -18\ \mathrm{V}$ e $R_{\mathrm{Th}} = 0$ — a saída do amp. op. ideal é uma fonte de tensão ideal, e por isso o equivalente de **Norton não existe** aqui.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o terra virtual.** Com realimentação negativa pelo $18\ \mathrm{k\Omega}$ e a entrada não inversora aterrada,
+
+$$
+v_- = v_+ = 0
+\qquad\qquad
+i_- = 0
+$$
+
+**Passo 2 — LKC no nó $X$** (entre o $2\ \mathrm{k\Omega}$, o $4\ \mathrm{k\Omega}$ e o $6\ \mathrm{k\Omega}$). O $6\ \mathrm{k\Omega}$ termina em $0\ \mathrm{V}$, então ele participa como um resistor para a referência:
+
+$$
+\frac{11 - v_X}{2\mathrm{k}} = \frac{v_X}{4\mathrm{k}} + \frac{v_X - 0}{6\mathrm{k}}
+$$
+
+Multiplicando por $12\ \mathrm{k}$:
+
+$$
+6(11 - v_X) = 3v_X + 2v_X
+\qquad\Longrightarrow\qquad
+66 = 11 v_X
+\qquad\Longrightarrow\qquad
+v_X = 6\ \mathrm{V}
+$$
+
+**Passo 3 — a corrente que chega ao nó inversor** vem toda do $6\ \mathrm{k\Omega}$, e como o amp. op. não absorve nada, ela **segue inteira** pelo $18\ \mathrm{k\Omega}$:
+
+$$
+i = \frac{v_X - 0}{6\mathrm{k}} = \frac{6}{6000} = 1\ \mathrm{mA}
+$$
+
+**Passo 4 — a saída.** Percorrendo o $18\ \mathrm{k\Omega}$ do nó inversor ($0\ \mathrm{V}$) para a saída, no sentido da corrente:
+
+$$
+v_o = 0 - (18\mathrm{k})(1\mathrm{m}) = \boxed{-18\ \mathrm{V}}
+$$
+
+**Passo 5 — o equivalente pedido.** Visto dos terminais de saída, o amp. op. ideal se comporta como uma **fonte de tensão ideal**:
+
+$$
+V_{\mathrm{Th}} = v_o = -18\ \mathrm{V}
+\qquad\qquad
+R_{\mathrm{Th}} = 0
+$$
+
+E aí vale o cuidado: com $R_{\mathrm{Th}} = 0$ **não existe** equivalente de Norton finito, porque $I_N = V_{\mathrm{Th}}/R_{\mathrm{Th}}$ não é definido. É a diferença entre um amp. op. e um divisor resistivo: a saída do primeiro entrega $-18\ \mathrm{V}$ para qualquer carga.
+
+**Conferência —** o ganho do inversor visto do nó $X$ é $-18/6 = -3$, e $-3 \times 6 = -18\ \mathrm{V}$ ✔ Já o ganho visto da fonte é menor em módulo, porque o $4\ \mathrm{k\Omega}$ derruba a entrada de $11\ \mathrm{V}$ para $6\ \mathrm{V}$: $v_o/11 = -1{,}64$.
+</Passos>
