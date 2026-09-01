@@ -1,0 +1,122 @@
+---
+origem: "2023.1"
+tema: "Superposição · A potência que não se superpõe"
+temaId: superposicao
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $v$, $i$ e da **potência no resistor de $8\ \Omega$** usando superposição. O circuito com a fonte de corrente deve ser resolvido pela análise de nós e o circuito com a fonte de tensão por análise de malhas.
+
+<Circuito
+  alt="Fonte de 2 A, fonte de 4 V, 8 Ω por cima, 4 Ω e 2 Ω no meio, 4 Ω à direita e fonte controlada 3v1"
+  itens={[
+    { t: "fio", pts: [[0, -1.3], [4.4, -1.3]] },
+    { t: "R", de: [1.4, -1.3], para: [3.2, -1.3], valor: "8 Ω" },
+    { t: "fio", pts: [[0, -1.3], [0, 0]] },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "4 Ω" },
+    { t: "tensao", de: [2.2, 0], para: [0, 0], rotulo: "v" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [4.4, 0], valor: "2 Ω" },
+    { t: "corrente", de: [2.4, 0], para: [3.2, 0], rotulo: "i" },
+    { t: "no", em: [4.4, 0] },
+    { t: "fio", pts: [[4.4, -1.3], [4.4, 0]] },
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "2 A" },
+    { t: "tensao", de: [0, 2.6], para: [0, 0], rotulo: "v_1", abaixo: true },
+    { t: "V", de: [2.2, 2.6], para: [2.2, 0], valor: "4 V", abaixo: true },
+    { t: "R", de: [4.4, 0], para: [4.4, 2.6], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0]] },
+    { t: "Id", de: [6.2, 2.6], para: [6.2, 0], rotulo: "3v_1 A", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [6.2, 2.6]] },
+  ]}
+>
+
+O enunciado pede **potência** por superposição — e é uma armadilha deliberada: as correntes se somam, os quadrados não. A superposição entrega a corrente do $8\ \Omega$; a potência só depois.
+
+</Circuito>
+
+<Gabarito>
+$v = -50\ \mathrm{V}$  ·  $i = 83\ \mathrm{A}$  ·  $p_{8\Omega} = 8\,(14{,}5)^2 = 1682\ \mathrm{W}$
+</Gabarito>
+
+<Passos>
+**Passo 0 — convenções.** Fio de baixo como referência; $v_L$ é o nó da esquerda (a variável de controle, $v_1 = v_L$), $v_M = 4\ \mathrm{V}$ o nó da fonte de tensão e $v_D$ o nó da direita — o mesmo da fonte controlada e do topo do $8\ \Omega$. Então $v = v_L - v_M$ e $i = (v_M - v_D)/2$.
+
+**Passo 1 — subcircuito da fonte de $2\ \mathrm{A}$** (a de $4\ \mathrm{V}$ vira **curto**, $v_M' = 0$):
+
+$$
+\text{nó } L:\ 2 = \frac{v_L'}{4} + \frac{v_L' - v_D'}{8}
+\quad\Longrightarrow\quad
+v_D' = 3v_L' - 16
+$$
+
+$$
+\text{nó } D:\ \frac{v_L' - v_D'}{8} - \frac{v_D'}{2} + 3v_L' = \frac{v_D'}{4}
+\quad\Longrightarrow\quad
+25v_L' = 7v_D'
+$$
+
+$$
+v_L' = -28\ \mathrm{V},\quad v_D' = -100\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+v' = -28\ \mathrm{V},\quad i' = 50\ \mathrm{A},\quad i_{8\Omega}' = 9\ \mathrm{A}
+$$
+
+**Passo 2 — subcircuito da fonte de $4\ \mathrm{V}$** (a de $2\ \mathrm{A}$ vira **aberto**):
+
+$$
+\text{nó } L:\ 0 = \frac{v_L'' - 4}{4} + \frac{v_L'' - v_D''}{8}
+\quad\Longrightarrow\quad
+v_D'' = 3v_L'' - 8
+$$
+
+$$
+\text{nó } D:\ 25v_L'' + 16 = 7v_D''
+$$
+
+$$
+v_L'' = -18\ \mathrm{V},\quad v_D'' = -62\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+v'' = -22\ \mathrm{V},\quad i'' = 33\ \mathrm{A},\quad i_{8\Omega}'' = 5{,}5\ \mathrm{A}
+$$
+
+**Passo 3 — soma das grandezas lineares:**
+
+$$
+v = -28 - 22 = \boxed{-50\ \mathrm{V}}
+\qquad
+i = 50 + 33 = \boxed{83\ \mathrm{A}}
+$$
+
+$$
+i_{8\Omega} = 9 + 5{,}5 = 14{,}5\ \mathrm{A}
+$$
+
+**Passo 4 — a potência, e só agora:**
+
+$$
+p_{8\Omega} = 8\,(14{,}5)^2 = \boxed{1682\ \mathrm{W}}
+$$
+
+**Onde a questão pega —** somar as potências parciais daria
+
+$$
+8(9)^2 + 8(5{,}5)^2 = 648 + 242 = 890\ \mathrm{W}
+$$
+
+que **não** é a resposta. A diferença de $792\ \mathrm{W}$ é o termo cruzado $2 \cdot 8 \cdot 9 \cdot 5{,}5$, que a soma de quadrados ignora. Potência é quadrática e por isso **não se superpõe**.
+
+**Conferência —** no circuito completo, $v_L = -46\ \mathrm{V}$ e $v_D = -162\ \mathrm{V}$, logo $i_{8\Omega} = (-46+162)/8 = 14{,}5\ \mathrm{A}$ ✔, $v = -50\ \mathrm{V}$ ✔ e $i = (4+162)/2 = 83\ \mathrm{A}$ ✔
+</Passos>
