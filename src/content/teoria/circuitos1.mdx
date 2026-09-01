@@ -24,6 +24,7 @@ unidades:
     secoes:
       - { id: ckt-natural, titulo: "Resposta natural: RC e RL sem excitação" }
       - { id: ckt-degrau, titulo: "Resposta ao degrau e a fórmula dos três valores" }
+      - { id: ckt-roteiro1, titulo: "O roteiro completo de um circuito de 1ª ordem" }
 
 ---
 
@@ -1532,6 +1533,100 @@ v_L = L\,\frac{di_L}{dt} = 2 \cdot 3 \cdot 2\,e^{-2t} = 12\,e^{-2t}\ \mathrm{V}
 $$
 
 Aplicar a fórmula dos três valores em $v_L$ dá o mesmo, desde que se use $v_L(0^+) = 12$ e não $v_L(0^-) = 0$ ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-roteiro1" num="17" titulo="O roteiro completo de um circuito de 1ª ordem">
+
+**A ideia.** As três seções anteriores dão as peças. Esta junta tudo num procedimento único, na ordem em que ele se escreve na prova. Não há nada novo aqui — há **ordem**, que é o que separa a questão que fecha da que se perde no meio.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $x$ — a grandeza pedida; se não for $v_C$ nem $i_L$, resolva a variável de estado primeiro;
+- $t_0$ — o instante do chaveamento (nem sempre $0$: pode ser $t = 2\ \mathrm{ms}$);
+- $u(t - t_0)$ — degrau deslocado, que é como o enunciado escreve "a chave age em $t_0$".
+
+</Caixa>
+
+### Os seis passos
+
+**1. Identifique a ordem.** Conte os elementos armazenadores **depois** de associar todos os que puderem ser associados. Um só $\Rightarrow$ 1ª ordem, e este roteiro se aplica.
+
+**2. Circuito em $t = 0^-$.** Chaves na posição antiga, regime permanente: capacitor aberto, indutor em curto. Extraia **apenas** $v_C(0^-)$ ou $i_L(0^-)$.
+
+**3. Continuidade.** $v_C(0^+) = v_C(0^-)$; $i_L(0^+) = i_L(0^-)$.
+
+**4. Circuito em $t \to \infty$.** Chaves na posição nova, regime permanente de novo: capacitor aberto, indutor em curto. Daí sai $x(\infty)$.
+
+**5. Constante de tempo.** No circuito **novo**, desative as fontes independentes, remova o elemento armazenador e olhe seus terminais: isso é $R_{\mathrm{eq}}$. Então $\tau = R_{\mathrm{eq}}C$ ou $\tau = L/R_{\mathrm{eq}}$.
+
+**6. Monte a resposta** e só então derive o que mais o enunciado pedir:
+
+$$
+x(t) = x(\infty) + \big[x(0^+) - x(\infty)\big]\,e^{-(t - t_0)/\tau}
+$$
+
+<Caixa tipo="macete">
+
+**Escreva $t - t_0$ no expoente, sempre.** Quando a chave age em $t_0 \neq 0$, o expoente é $-(t-t_0)/\tau$, e o valor inicial é $x(t_0^+)$. Esquecer o deslocamento é o erro mais barato de evitar e o mais comum de cometer — a resposta fica com o valor errado em $t = t_0$ e todo o gráfico sai deslocado.
+
+E confira o resultado nos dois extremos: sua expressão **tem** de dar $x(0^+)$ em $t = t_0$ e $x(\infty)$ para $t$ grande. São dois segundos de conferência que pegam quase todo erro de sinal.
+
+</Caixa>
+
+<Circuito
+  alt="Circuito RL com chave que muda de posição, fonte de 20 V e dois resistores"
+  itens={[
+    { t: "fio", pts: [[0, 2.4], [0, 0], [1, 0]] },
+    { t: "V", de: [0, 2.4], para: [0, 0.8], valor: "20 V" },
+    { t: "S", de: [1, 0], para: [2.4, 0], rotulo: "t = 0" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 2.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [4, 0]] },
+    { t: "R", de: [4, 0], para: [5.6, 0], valor: "5 Ω" },
+    { t: "L", de: [5.6, 0], para: [5.6, 2.4], valor: "0,5 H", abaixo: true },
+    { t: "fio", pts: [[0, 2.4], [5.6, 2.4]] },
+    { t: "corrente", de: [5.6, 0.7], para: [5.6, 1.5], rotulo: "i_L", abaixo: false },
+  ]}
+>
+
+A chave **abre** em $t=0$. Antes dela, a fonte alimenta o $10\ \Omega$ em paralelo com o ramo $5\ \Omega$ + indutor; depois, a fonte é desligada e o indutor se descarrega em $5 + 10 = 15\ \Omega$.
+
+</Circuito>
+
+<Caixa tipo="dica" rotulo="Chave que abre, chave que fecha">
+
+Uma **chave que abre** costuma cortar a fonte: aí $x(\infty) = 0$ e a resposta é natural pura. Uma **chave que fecha** costuma ligar a fonte: aí $x(0^+)$ é o que sobrou de antes e $x(\infty)$ é o novo regime. Reconhecer qual dos dois casos é o seu, antes de calcular, já diz que forma a resposta vai ter — e serve de conferência.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o circuito da figura, passo a passo">
+
+**$0^-$** (chave fechada, indutor em curto): o $10\ \Omega$ fica em paralelo com o $5\ \Omega$, mas o que interessa é a corrente do indutor. Com o indutor em curto, o ramo direito tem só o $5\ \Omega$ ligado ao nó, e o nó está em $20\ \mathrm{V}$ (a fonte é ideal e a chave é um fio):
+
+$$
+i_L(0^-) = \frac{20}{5} = 4\ \mathrm{A}
+$$
+
+**$0^+$**: $i_L(0^+) = 4\ \mathrm{A}$.
+
+**$\infty$** (chave aberta, fonte fora): não há fonte, então $i_L(\infty) = 0$.
+
+**$\tau$**: no circuito novo o indutor vê $5\ \Omega$ em série com $10\ \Omega$ (a chave aberta tira a fonte do caminho, e o retorno é pelo fio de baixo):
+
+$$
+R_{\mathrm{eq}} = 15\ \Omega
+\qquad
+\tau = \frac{0{,}5}{15} = \frac{1}{30}\ \mathrm{s}
+$$
+
+$$
+\boxed{\,i_L(t) = 4\,e^{-30t}\ \mathrm{A}, \quad t > 0\,}
+$$
+
+Conferindo: em $t=0$ dá $4\ \mathrm{A}$ ✔ e tende a zero ✔ A tensão no indutor salta para $v_L(0^+) = -15(4) = -60\ \mathrm{V}$ — três vezes a tensão da fonte, e é por isso que abrir chave em circuito indutivo queima contato.
 
 </Caixa>
 
