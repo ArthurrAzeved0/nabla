@@ -1,0 +1,94 @@
+---
+origem: "2018.1"
+tema: "Primeira ordem · Chave comutadora entre duas fontes"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a função $i(t)$ para $t > 0$, dado que o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Fonte de 50 V com chave que fecha, fonte de 20 V com chave que abre, 4 Ω, capacitor de 1/8 F e 6 Ω"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.6, 0], rotulo: "fecha em t = 0" },
+    { t: "no", em: [1.6, 0] },
+    { t: "V", de: [1.6, 3], para: [1.6, 1.4], valor: "20 V" },
+    { t: "S", de: [1.6, 1.4], para: [1.6, 0], rotulo: "abre em t = 0", abaixo: true },
+    { t: "R", de: [1.6, 0], para: [3.6, 0], valor: "4 Ω" },
+    { t: "no", em: [3.6, 0] },
+    { t: "C", de: [3.6, 0], para: [3.6, 3], valor: "1/8 F" },
+    { t: "tensao", de: [3.6, 3], para: [3.6, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[3.6, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "6 Ω", abaixo: true },
+    { t: "corrente", de: [5.4, 0.4], para: [5.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3], [5.4, 3]] },
+  ]}
+>
+
+No original a comutação é feita por **uma** chave de duas posições; aqui ela aparece como duas chaves complementares — uma abre e a outra fecha no mesmo instante, o que é a mesma coisa. Antes de $t = 0$ manda a fonte de $20\ \mathrm{V}$; depois, a de $50\ \mathrm{V}$.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 5 - 3\,e^{-10t/3}\ \mathrm{A}$, para $t > 0$  (com $v(t) = 30 - 18\,e^{-10t/3}\ \mathrm{V}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial, com a fonte de $20\ \mathrm{V}$.** Em regime permanente o **capacitor é circuito aberto**, então os $4\ \Omega$ e $6\ \Omega$ ficam em série:
+
+$$
+i(0^-) = \frac{20}{4 + 6} = 2\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+v(0^-) = 6 \cdot 2 = 12\ \mathrm{V}
+$$
+
+Pela continuidade, $v(0^+) = 12\ \mathrm{V}$.
+
+**Passo 2 — valor final, com a fonte de $50\ \mathrm{V}$.** De novo o capacitor abre:
+
+$$
+i(\infty) = \frac{50}{10} = 5\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+v(\infty) = 6 \cdot 5 = 30\ \mathrm{V}
+$$
+
+**Passo 3 — constante de tempo.** Desativando a fonte de $50\ \mathrm{V}$, o capacitor vê os $4\ \Omega$ **em paralelo** com os $6\ \Omega$:
+
+$$
+R_{\mathrm{eq}} = 4 \parallel 6 = 2{,}4\ \Omega
+\qquad\Longrightarrow\qquad
+\tau = 2{,}4 \cdot \frac{1}{8} = 0{,}3\ \mathrm{s}
+\qquad\Longrightarrow\qquad
+\frac{1}{\tau} = \frac{10}{3}\ \mathrm{s^{-1}}
+$$
+
+**Passo 4 — a fórmula dos três valores, aplicada a $v$** (que é a grandeza contínua):
+
+$$
+v(t) = 30 + (12 - 30)\,e^{-t/0{,}3}
+= \boxed{30 - 18\,e^{-10t/3}\ \mathrm{V}}
+$$
+
+**Passo 5 — de $v$ para $i$**, que é a corrente do $6\ \Omega$:
+
+$$
+i(t) = \frac{v(t)}{6} = \boxed{5 - 3\,e^{-10t/3}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t = 0$: $i = 5 - 3 = 2\ \mathrm{A}$, igual ao valor de $0^-$ (a corrente do $6\ \Omega$ é contínua aqui porque $v$ é) ✔ Para $t$ grande, $i \to 5\ \mathrm{A}$ ✔ Este é exatamente o resultado da resolução da prova, que chega nele montando a equação diferencial $3\,dv/dt + 10v = 300$.
+</Passos>
