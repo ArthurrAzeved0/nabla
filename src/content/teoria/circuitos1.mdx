@@ -25,6 +25,7 @@ unidades:
       - { id: ckt-natural, titulo: "Resposta natural: RC e RL sem excitação" }
       - { id: ckt-degrau, titulo: "Resposta ao degrau e a fórmula dos três valores" }
       - { id: ckt-roteiro1, titulo: "O roteiro completo de um circuito de 1ª ordem" }
+      - { id: ckt-multichave, titulo: "Vários chaveamentos, o degrau e a fonte genérica" }
 
 ---
 
@@ -1627,6 +1628,106 @@ $$
 $$
 
 Conferindo: em $t=0$ dá $4\ \mathrm{A}$ ✔ e tende a zero ✔ A tensão no indutor salta para $v_L(0^+) = -15(4) = -60\ \mathrm{V}$ — três vezes a tensão da fonte, e é por isso que abrir chave em circuito indutivo queima contato.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-multichave" num="18" titulo="Vários chaveamentos, o degrau e a fonte genérica">
+
+**A ideia.** Nem toda questão tem uma chave só. Quando há dois chaveamentos, ou quando a fonte é uma sequência de degraus, a resposta se monta **por intervalos**: cada trecho é um problema de 1ª ordem completo, e o valor final de um vira o valor inicial do seguinte. Nada de novo — o roteiro da seção anterior aplicado duas ou três vezes, com o cuidado de que $\tau$ pode mudar de trecho para trecho.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $u(t)$ — degrau unitário; $u(t-a)$ é o mesmo degrau começando em $t=a$;
+- $u(t-a) - u(t-b)$ — **pulso** entre $a$ e $b$, que é como se escreve "a fonte ligou e depois desligou";
+- $\tau_1, \tau_2, \dots$ — uma constante de tempo **por intervalo**, porque o circuito muda;
+- $x(t_1^-) = x(t_1^+)$ — a costura entre dois intervalos, válida para $v_C$ e $i_L$.
+
+</Caixa>
+
+### O degrau unitário, e por que ele aparece
+
+$$
+u(t) = \begin{cases} 0, & t < 0 \\ 1, & t > 0 \end{cases}
+\qquad\qquad
+u(t-a) = \begin{cases} 0, & t < a \\ 1, & t > a \end{cases}
+$$
+
+Uma fonte escrita como $v_s(t) = 10\,u(t)\ \mathrm{V}$ é a mesma coisa que "fonte de $10\ \mathrm{V}$ com uma chave que fecha em $t=0$" — o enunciado só trocou o desenho por uma expressão. E $v_s(t) = 10\big[u(t) - u(t-3)\big]$ é a fonte que liga em $t=0$ e desliga em $t=3\ \mathrm{s}$.
+
+### O procedimento por intervalos
+
+1. **Marque os instantes** em que algo muda: $t_1, t_2, \dots$ Eles cortam o eixo em intervalos.
+2. **Em cada intervalo o circuito é fixo.** Resolva-o como 1ª ordem, com $\tau$ próprio.
+3. **Costure**: o $v_C$ (ou $i_L$) no fim de um intervalo é a condição inicial do próximo.
+4. **Escreva a resposta por trechos**, cada um com o seu $e^{-(t-t_k)/\tau_k}$.
+
+<Caixa tipo="macete">
+
+**Duas armadilhas, e as duas são de tempo.**
+
+A primeira: se o intervalo é **curto em relação a $\tau$**, o circuito **não** chega ao regime permanente antes do próximo chaveamento. Então o valor inicial do trecho 2 **não** é $x(\infty)$ do trecho 1 — é $x(t_1)$ calculado pela exponencial. Só use $x(\infty)$ se o enunciado disser que o regime foi atingido, ou se o intervalo passar de $5\tau$.
+
+A segunda: cada trecho tem o seu **próprio relógio**. Escreva $e^{-(t-t_1)/\tau_2}$, não $e^{-t/\tau_2}$, e confira em $t = t_1$.
+
+</Caixa>
+
+<Circuito
+  alt="Fonte com chave de duas posições alimentando um RC, para dois chaveamentos"
+  itens={[
+    { t: "fio", pts: [[0, 2.6], [0, 0], [1, 0]] },
+    { t: "V", de: [0, 2.6], para: [0, 0.8], valor: "12 V" },
+    { t: "S", de: [1, 0], para: [2.4, 0], rotulo: "abre em t_1" },
+    { t: "R", de: [2.4, 0], para: [4, 0], valor: "1 kΩ" },
+    { t: "no", em: [4, 0] },
+    { t: "C", de: [4, 0], para: [4, 2.6], valor: "500 µF", abaixo: true },
+    { t: "R", de: [5.6, 0], para: [5.6, 2.6], valor: "3 kΩ", abaixo: true },
+    { t: "fio", pts: [[4, 0], [5.6, 0]] },
+    { t: "fio", pts: [[0, 2.6], [5.6, 2.6]] },
+    { t: "tensao", de: [4, 2.6], para: [4, 0], rotulo: "v_C", abaixo: false },
+  ]}
+>
+
+Enquanto a chave está fechada, o capacitor vê $1\ \mathrm{k}\Omega \parallel 3\ \mathrm{k}\Omega = 750\ \Omega$; depois de aberta, vê só os $3\ \mathrm{k}\Omega$. **Dois circuitos, dois $\tau$.**
+
+</Circuito>
+
+<Caixa tipo="dica" rotulo="Excitação que não é constante">
+
+Se a fonte for uma função qualquer de $t$ — uma rampa, uma exponencial —, a fórmula dos três valores **não** vale, porque não existe $x(\infty)$ constante. Volte à equação diferencial:
+
+$$
+\frac{dx}{dt} + \frac{x}{\tau} = f(t)
+\qquad\Longrightarrow\qquad
+x(t) = e^{-t/\tau}\left[x(0) + \int_0^{t} e^{\sigma/\tau} f(\sigma)\,d\sigma\right]
+$$
+
+que é o fator integrante de Equações Diferenciais, e nada mais. Na prática a cadeira cobra excitação **constante**, e a fórmula dos três valores basta.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — dois trechos">
+
+No circuito da figura, a chave está fechada há muito tempo e **abre** em $t_1 = 1\ \mathrm{s}$.
+
+**Trecho 1 ($t<1$), regime permanente:** capacitor aberto, então a corrente da fonte atravessa $1\ \mathrm{k}\Omega$ e $3\ \mathrm{k}\Omega$ em série:
+
+$$
+v_C = 12\cdot\frac{3}{1+3} = 9\ \mathrm{V}
+$$
+
+**Costura:** $v_C(1^+) = 9\ \mathrm{V}$.
+
+**Trecho 2 ($t>1$):** sem fonte, o capacitor descarrega nos $3\ \mathrm{k}\Omega$ —
+
+$$
+\tau_2 = (3\times10^{3})(500\times10^{-6}) = 1{,}5\ \mathrm{s}
+\qquad
+v_C(t) = 9\,e^{-(t-1)/1{,}5}\ \mathrm{V}
+$$
+
+Confira em $t=1$: dá $9\ \mathrm{V}$ ✔ Note que $\tau_1 = (750)(500\mu) = 0{,}375\ \mathrm{s}$ **não entra na resposta** — o trecho 1 já estava em regime, e $\tau_1$ só importaria se o enunciado tivesse ligado a fonte pouco antes de $t_1$.
 
 </Caixa>
 
