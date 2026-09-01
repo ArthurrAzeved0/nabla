@@ -1,0 +1,119 @@
+---
+origem: "2021.2"
+tema: "Condições iniciais · Comutação de fonte e chave que abre"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito a seguir encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $dv/dt$ e $di/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 20 V para 100 V, capacitor de 1/20 F, chave, 10 Ω, fonte controlada 2v1, dois 5 Ω e indutor de 2 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "100 V", abaixo: true },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha", abaixo: true },
+    { t: "C", de: [1.8, 0], para: [4, 0], valor: "1/20 F" },
+    { t: "tensao", de: [4, 0], para: [1.8, 0], rotulo: "v" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "10 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v_1", abaixo: true },
+    { t: "S", de: [4, 0], para: [5.6, 0], rotulo: "abre" },
+    { t: "no", em: [5.6, 0] },
+    { t: "Vd", de: [5.6, 3.4], para: [5.6, 0], rotulo: "2v_1 V", abaixo: true },
+    { t: "fio", pts: [[5.6, 0], [7.6, 0]] },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "R", de: [7.6, 0], para: [9.6, 0], valor: "5 Ω" },
+    { t: "no", em: [9.6, 0] },
+    { t: "L", de: [9.6, 0], para: [9.6, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [9.6, 0.4], para: [9.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+  ]}
+>
+
+Duas chaves agem juntas: a da esquerda **comuta** a alimentação de $20\ \mathrm{V}$ para $100\ \mathrm{V}$, e a do meio **abre**, separando o nó do $10\ \Omega$ do resto. A fonte controlada vale $2v_1$, e $v_1$ é a tensão do próprio $10\ \Omega$.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v = 20\ \mathrm{V}$, $i = 0$, $dv/dt = 0$, $di/dt = 0$
+·
+Em $0^+$: $v = 20\ \mathrm{V}$, $i = 0$, $dv/dt = 160\ \mathrm{V/s}$, $di/dt = 80\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$** (fonte de $20\ \mathrm{V}$, chave do meio **fechada**; capacitor aberto, indutor em fio).
+
+Com a chave do meio fechada, existe um laço fechado que contém só o $10\ \Omega$ e a fonte controlada:
+
+$$
+-v_1 + 2v_1 = 0
+\qquad\Longrightarrow\qquad
+v_1(0^-) = 0
+$$
+
+Ou seja, a fonte controlada vale zero e curto-circuita o seu nó. Então o ramo dos dois $5\ \Omega$ com o indutor não é alimentado:
+
+$$
+\boxed{i(0^-) = 0}
+$$
+
+E o capacitor, aberto, fica com toda a tensão da fonte:
+
+$$
+\boxed{v(0^-) = 20 - 0 = 20\ \mathrm{V}}
+$$
+
+Em regime permanente, $i_C = 0$ e $v_L = 0$, logo
+
+$$
+\boxed{\frac{dv(0^-)}{dt} = 0}
+\qquad\qquad
+\boxed{\frac{di(0^-)}{dt} = 0}
+$$
+
+**Passo 2 — continuidade:** $v(0^+) = 20\ \mathrm{V}$ e $i(0^+) = 0$.
+
+**Passo 3 — circuito em $0^+$.** Agora a fonte é de $100\ \mathrm{V}$ e a chave do meio **abriu**. O nó do $10\ \Omega$ passa a ter só dois ramos: o capacitor e o próprio resistor. Com o capacitor valendo $20\ \mathrm{V}$:
+
+$$
+v_1(0^+) = 100 - 20 = 80\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+2v_1 = 160\ \mathrm{V}
+$$
+
+**Passo 4 — a derivada da tensão.** Toda a corrente do $10\ \Omega$ vem pelo capacitor:
+
+$$
+i_C(0^+) = \frac{v_1}{10} = 8\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{8}{1/20} = 160\ \mathrm{V/s}}
+$$
+
+**Passo 5 — a derivada da corrente.** Como $i(0^+) = 0$, o $5\ \Omega$ horizontal não cai tensão, e o indutor recebe inteira a tensão da fonte controlada:
+
+$$
+v_L(0^+) = 160\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{160}{2} = 80\ \mathrm{A/s}}
+$$
+
+**Conferência —** as duas grandezas de estado ficam paradas em $t=0$ ($20\ \mathrm{V}$ e $0\ \mathrm{A}$) e as duas derivadas **saltam** de zero para valores grandes: é a assinatura de um circuito que estava morto e acordou. Confere com a resolução da prova.
+</Passos>
