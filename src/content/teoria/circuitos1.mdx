@@ -15,6 +15,9 @@ unidades:
       - { id: ckt-thevenin, titulo: "Equivalentes de Thévenin e de Norton" }
       - { id: ckt-maxpot, titulo: "Máxima transferência de potência" }
       - { id: ckt-ampop, titulo: "Amplificador operacional ideal" }
+  - nome: "Elementos armazenadores de energia"
+    secoes:
+      - { id: ckt-capacitor, titulo: "Capacitores: tensão, corrente, energia e associação" }
 
 ---
 
@@ -1010,6 +1013,113 @@ v_o = -\frac{20}{5}\,(0{,}4) = -1{,}6\ \mathrm{V}
 $$
 
 A corrente é a mesma nos dois resistores, porque o nó inversor não absorve nada: $i = 0{,}4/5\,\mathrm{k} = 80\ \mathrm{\mu A}$, e de fato $0 - 20\mathrm{k} \times 80\mathrm{\mu} = -1{,}6\ \mathrm{V}$ ✔ Note que a **fonte** enxerga apenas $R_1$: a resistência de entrada do inversor é $R_1$, não $R_1 + R_2$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-capacitor" num="12" titulo="Capacitores: tensão, corrente, energia e associação">
+
+**A ideia.** Até aqui todo elemento era resistivo: a corrente de agora dependia só da tensão de agora. O capacitor quebra isso. Ele guarda carga, e a corrente que passa por ele não depende do valor da tensão, mas da **velocidade** com que ela muda. É o primeiro elemento com memória da cadeira — e é de onde vêm as equações diferenciais de todo o resto.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $C$ — capacitância, em farads ($\mathrm{F}$); na prática $\mathrm{\mu F}$ e $\mathrm{nF}$;
+- $q = Cv$ — carga armazenada, em coulombs;
+- $v_C$, $i_C$ — tensão e corrente no capacitor, na **convenção do receptor** (corrente entrando pelo $+$);
+- $w_C$ — energia armazenada, em joules;
+- $\varepsilon$, $A$, $d$ — permissividade, área das placas e separação, do lado do Eletromagnetismo.
+
+</Caixa>
+
+### As duas relações
+
+$$
+\boxed{\,i_C = C\,\frac{dv_C}{dt}\,}
+\qquad\qquad
+v_C(t) = v_C(t_0) + \frac{1}{C}\int_{t_0}^{t} i_C(\tau)\,d\tau
+$$
+
+A primeira é a definição operacional; a segunda é ela integrada, e mostra onde mora a memória: para saber $v_C$ agora é preciso saber a **história** da corrente, mais a condição inicial $v_C(t_0)$.
+
+Do lado da física, para o capacitor de placas paralelas do Eletromagnetismo, $C = \varepsilon A / d$ — a capacitância é geometria, não escolha do circuito.
+
+### Energia
+
+$$
+w_C(t) = \frac{1}{2}\,C\,v_C^2(t)
+$$
+
+Sempre $\geq 0$: o capacitor **armazena** e devolve, nunca dissipa. Repare que a energia depende de $v_C$, não de $i_C$ — é a tensão que é o "estado" do capacitor.
+
+<Caixa tipo="macete">
+
+**As três consequências que a prova cobra, todas da mesma fórmula:**
+
+1. **$v_C$ não pode saltar.** Um salto teria $dv/dt$ infinito, o que exigiria corrente infinita. Então
+   $$
+   v_C(0^-) = v_C(0^+)
+   $$
+   e é essa continuidade que dá a condição inicial de todo circuito de 1ª e 2ª ordem.
+2. **Em regime permanente CC, o capacitor é circuito aberto.** Se $v_C$ é constante, $dv_C/dt = 0$ e $i_C = 0$. Para achar as condições em $t = 0^-$, **apague o capacitor do desenho**.
+3. **$i_C$ pode saltar à vontade.** Nada impede.
+
+</Caixa>
+
+### Associação
+
+$$
+\text{série:}\quad \frac{1}{C_{\mathrm{eq}}} = \sum_k \frac{1}{C_k}
+\qquad\qquad
+\text{paralelo:}\quad C_{\mathrm{eq}} = \sum_k C_k
+$$
+
+**Ao contrário do resistor** — e a razão é direta: em paralelo as áreas das placas se somam, então a capacitância soma; em série as separações se somam, então o inverso é que soma.
+
+<Circuito
+  alt="Dois capacitores em série e dois em paralelo"
+  itens={[
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "C", de: [0.4, 0], para: [1.8, 0], rotulo: "C₁" },
+    { t: "C", de: [1.8, 0], para: [3.2, 0], rotulo: "C₂" },
+    { t: "fio", pts: [[3.2, 0], [3.6, 0]] },
+    { t: "texto", em: [1.8, 1.9], texto: "em série" },
+    { t: "fio", pts: [[5.4, 0], [6, 0], [6, 0.9]] },
+    { t: "no", em: [6, 0] },
+    { t: "C", de: [6, 0.9], para: [7.6, 0.9], rotulo: "C₁" },
+    { t: "C", de: [6, -0.9], para: [7.6, -0.9], rotulo: "C₂" },
+    { t: "fio", pts: [[6, 0], [6, -0.9], [7.6, -0.9], [7.6, 0.9], [6, 0.9]] },
+    { t: "fio", pts: [[7.6, 0], [8.2, 0]] },
+    { t: "no", em: [7.6, 0] },
+    { t: "texto", em: [6.8, 1.9], texto: "em paralelo" },
+  ]}
+>
+
+Vale a mesma leitura de sempre: em **série** a carga é a mesma nos dois e as tensões se dividem; em **paralelo** a tensão é a mesma e as cargas se somam.
+
+</Circuito>
+
+<Caixa tipo="dica">
+
+Capacitores **em série** e **em paralelo** podem ser associados antes de qualquer análise — e isso muda a ordem do circuito. Dois capacitores associáveis contam como **um só**, e o circuito é de 1ª ordem, não de 2ª. Só quando eles não podem ser reduzidos (há um resistor no meio, por exemplo) é que a ordem sobe.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido">
+
+Um capacitor de $50\ \mathrm{\mu F}$ recebe uma corrente constante de $2\ \mathrm{mA}$, partindo descarregado.
+
+$$
+v_C(t) = 0 + \frac{1}{50 \times 10^{-6}} \int_0^t 2\times 10^{-3}\,d\tau = 40\,t \ \ \mathrm{V}
+$$
+
+Uma rampa: em $0{,}5\ \mathrm{s}$ ele está em $20\ \mathrm{V}$, com
+
+$$
+w_C = \tfrac{1}{2}(50\times 10^{-6})(20)^2 = 10\ \mathrm{mJ}
+$$
+
+Conferindo pela fonte: ela entregou $\int_0^{0,5} 40t \cdot 2\times10^{-3}\,dt = 0{,}08\,\frac{t^2}{2}\Big|_0^{0,5} = 10\ \mathrm{mJ}$ ✔
 
 </Caixa>
 
