@@ -1,0 +1,130 @@
+---
+origem: "2023.2"
+tema: "Segunda ordem · Subamortecido excitado por degrau"
+temaId: subamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$, para $i_g(t) = 2\,u(t)\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de corrente 2u(t), ramo de 4 Ω em série com 1 H, em paralelo com capacitor de 1/5 F"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "i_g" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 1.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2, 0.1], para: [2, 1.1], rotulo: "i", abaixo: false },
+    { t: "L", de: [2, 1.4], para: [2, 3], valor: "1 H", abaixo: true },
+    { t: "fio", pts: [[2, 0], [3.8, 0]] },
+    { t: "C", de: [3.8, 0], para: [3.8, 3], valor: "1/5 F" },
+    { t: "tensao", de: [3.8, 3], para: [3.8, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3], [3.8, 3]] },
+  ]}
+>
+
+$i_g = 2\,u(t)$ significa **fonte de $2\ \mathrm{A}$ ligada em $t=0$** — antes disso ela vale zero, e o circuito está em repouso completo. Dois armazenadores que não se associam ($L$ no ramo do $4\ \Omega$, $C$ no outro): **2ª ordem**.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 2 - e^{-2t}\left(2\cos t + 4\,\mathrm{sen}\,t\right)\ \mathrm{A}$
+·
+$v(t) = 8 - e^{-2t}\left(8\cos t + 6\,\mathrm{sen}\,t\right)\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condições iniciais.** Para $t<0$ a fonte vale zero e nada está carregado:
+
+$$
+i(0) = 0
+\qquad\qquad
+v(0) = 0
+$$
+
+**Passo 2 — as duas relações.** A LKT no ramo do $4\ \Omega$ com o indutor, cuja tensão total é a do capacitor:
+
+$$
+v = 4i + \frac{di}{dt}
+$$
+
+E a LKC no nó de cima, com a fonte já valendo $2\ \mathrm{A}$:
+
+$$
+2 = i + \frac{1}{5}\frac{dv}{dt}
+$$
+
+**Passo 3 — elimine $v$.** Substituindo a primeira na segunda e multiplicando por $5$:
+
+$$
+\boxed{\frac{d^2 i}{dt^2} + 4\,\frac{di}{dt} + 5\,i = 10}
+$$
+
+**Passo 4 — as frequências naturais.** Comparando com a forma padrão, $2\alpha = 4$ e $\omega_0^2 = 5$:
+
+$$
+\alpha = 2
+\qquad
+\omega_0 = \sqrt{5} \approx 2{,}24
+\qquad\Longrightarrow\qquad
+\alpha < \omega_0: \ \textbf{subamortecido}
+$$
+
+$$
+\omega_d = \sqrt{\omega_0^2 - \alpha^2} = \sqrt{5 - 4} = 1\ \mathrm{rad/s}
+\qquad
+s_{1,2} = -2 \pm j\,1
+$$
+
+**Passo 5 — resposta completa.** A forçada é $i_f = 10/5 = 2\ \mathrm{A}$:
+
+$$
+i(t) = 2 + e^{-2t}\left(A_1 \cos t + A_2\,\mathrm{sen}\,t\right)
+$$
+
+**Passo 6 — as duas constantes**, impostas na resposta **completa**. De $i(0) = 0$:
+
+$$
+2 + A_1 = 0
+\qquad\Longrightarrow\qquad
+A_1 = -2
+$$
+
+E de $v(0) = 0$, usando $v = 4i + di/dt$:
+
+$$
+0 = 4A_1 + 8 - 2A_1 + A_2
+\qquad\Longrightarrow\qquad
+A_2 = -4
+$$
+
+$$
+\boxed{i(t) = 2 - e^{-2t}\left(2\cos t + 4\,\mathrm{sen}\,t\right)\ \mathrm{A}}
+$$
+
+**Passo 7 — a tensão**, pela relação do ramo:
+
+$$
+v = 4i + \frac{di}{dt}
+= 8 - e^{-2t}\left(8\cos t + 16\,\mathrm{sen}\,t\right) + 10\,e^{-2t}\,\mathrm{sen}\,t
+$$
+
+$$
+\boxed{v(t) = 8 - e^{-2t}\left(8\cos t + 6\,\mathrm{sen}\,t\right)\ \mathrm{V}}
+$$
+
+**Conferência —** em $t=0$: $i = 2 - 2 = 0$ ✔ e $v = 8 - 8 = 0$ ✔ Para $t$ grande, o indutor vira fio e o capacitor abre, então toda a fonte atravessa o $4\ \Omega$: $i \to 2\ \mathrm{A}$ e $v \to 8\ \mathrm{V}$ ✔ Com $\omega_d = 1\ \mathrm{rad/s}$ o período é $2\pi \approx 6{,}3\ \mathrm{s}$, e o envelope $e^{-2t}$ apaga tudo em $\approx 2{,}5\ \mathrm{s}$ — **menos de meia oscilação** aparece. Confere com a resolução da prova.
+</Passos>
