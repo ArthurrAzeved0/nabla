@@ -18,6 +18,7 @@ unidades:
   - nome: "Elementos armazenadores de energia"
     secoes:
       - { id: ckt-capacitor, titulo: "Capacitores: tensão, corrente, energia e associação" }
+      - { id: ckt-indutor, titulo: "Indutores: tensão, corrente, energia e associação" }
 
 ---
 
@@ -1120,6 +1121,95 @@ w_C = \tfrac{1}{2}(50\times 10^{-6})(20)^2 = 10\ \mathrm{mJ}
 $$
 
 Conferindo pela fonte: ela entregou $\int_0^{0,5} 40t \cdot 2\times10^{-3}\,dt = 0{,}08\,\frac{t^2}{2}\Big|_0^{0,5} = 10\ \mathrm{mJ}$ ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-indutor" num="13" titulo="Indutores: tensão, corrente, energia e associação">
+
+**A ideia.** O indutor é o dual exato do capacitor. Onde o capacitor guarda energia num campo **elétrico** e resiste a mudanças de **tensão**, o indutor guarda energia num campo **magnético** e resiste a mudanças de **corrente**. Troque $v \leftrightarrow i$ e $C \leftrightarrow L$ e você traduz uma fórmula na outra — inclusive as regras de associação, que voltam a ser as do resistor.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $L$ — indutância, em henries ($\mathrm{H}$); na prática $\mathrm{mH}$;
+- $\lambda = Li$ — enlace de fluxo, em webers;
+- $v_L$, $i_L$ — tensão e corrente no indutor, na convenção do receptor;
+- $w_L$ — energia armazenada;
+- $N$, $\mu$, $\ell$ — número de espiras, permeabilidade e comprimento, do lado do Eletromagnetismo.
+
+</Caixa>
+
+### As duas relações
+
+$$
+\boxed{\,v_L = L\,\frac{di_L}{dt}\,}
+\qquad\qquad
+i_L(t) = i_L(t_0) + \frac{1}{L}\int_{t_0}^{t} v_L(\tau)\,d\tau
+$$
+
+A tensão no indutor não depende do valor da corrente, mas da **velocidade** com que ela muda. O sinal vem da lei de Faraday: a tensão induzida se opõe à variação do fluxo, e é por isso que o indutor "empurra de volta" quando você tenta mudar a corrente nele.
+
+### Energia
+
+$$
+w_L(t) = \frac{1}{2}\,L\,i_L^2(t)
+$$
+
+De novo, sempre $\geq 0$, e de novo, a energia depende do **estado**: para o indutor o estado é a corrente.
+
+<Caixa tipo="macete">
+
+**As mesmas três consequências, trocadas de lugar:**
+
+1. **$i_L$ não pode saltar.** Um salto exigiria tensão infinita. Então
+   $$
+   i_L(0^-) = i_L(0^+)
+   $$
+2. **Em regime permanente CC, o indutor é um curto-circuito.** Se $i_L$ é constante, $di_L/dt = 0$ e $v_L = 0$. Para achar as condições em $t = 0^-$, **substitua o indutor por um fio**.
+3. **$v_L$ pode saltar à vontade** — e salta mesmo. É o que faz a faísca quando se abre uma chave num circuito indutivo.
+
+</Caixa>
+
+### Associação — igual à do resistor
+
+$$
+\text{série:}\quad L_{\mathrm{eq}} = \sum_k L_k
+\qquad\qquad
+\text{paralelo:}\quad \frac{1}{L_{\mathrm{eq}}} = \sum_k \frac{1}{L_k}
+$$
+
+<Caixa tipo="dica" rotulo="A tabela de dualidade, que economiza metade do estudo">
+
+| | capacitor | indutor |
+|---|---|---|
+| estado | $v_C$ | $i_L$ |
+| relação | $i = C\,dv/dt$ | $v = L\,di/dt$ |
+| energia | $\tfrac12 C v^2$ | $\tfrac12 L i^2$ |
+| não salta | $v_C$ | $i_L$ |
+| em CC vira | circuito aberto | curto-circuito |
+| série | inverso soma | soma |
+| constante de tempo | $\tau = RC$ | $\tau = L/R$ |
+
+Decorar uma coluna e a regra de tradução $v \leftrightarrow i$, $C \leftrightarrow L$, $R \leftrightarrow 1/R$ vale mais que decorar as duas.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido">
+
+Um indutor de $20\ \mathrm{mH}$ conduz $i_L(t) = 3\,e^{-100t}\ \mathrm{A}$.
+
+$$
+v_L = L\,\frac{di_L}{dt} = (20\times 10^{-3})\,(3)(-100)\,e^{-100t} = -6\,e^{-100t}\ \mathrm{V}
+$$
+
+Negativa: a corrente está caindo, e o indutor age para sustentá-la. A energia em $t = 0$ vale
+
+$$
+w_L(0) = \tfrac{1}{2}(20\times 10^{-3})(3)^2 = 90\ \mathrm{mJ}
+$$
+
+e cai com $e^{-200t}$ — o **dobro** da taxa da corrente, porque a energia é quadrática ✔
 
 </Caixa>
 
