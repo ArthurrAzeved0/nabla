@@ -1,0 +1,129 @@
+---
+origem: "2021.1"
+tema: "Segunda ordem · Superamortecido sem energia inicial"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ para $t > 0$, dado que **não há energia inicial armazenada** no circuito.
+
+<Circuito
+  alt="Fonte de 4 A, 4 Ω com v1, fonte controlada v1/4 em paralelo com 4 Ω e capacitor de 1/8 F, indutor de 2 H e 2 Ω"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "4 A" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "R", de: [1.4, 0], para: [1.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "tensao", de: [1.4, 3.4], para: [1.4, 0], rotulo: "v_1", abaixo: false },
+    { t: "fio", pts: [[1.4, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [2.4, -1.4]] },
+    { t: "Id", de: [2.4, -1.4], para: [5.4, -1.4], rotulo: "v_1/4 A" },
+    { t: "fio", pts: [[5.4, -1.4], [5.4, 0]] },
+    { t: "R", de: [2.4, 0], para: [4, 0], valor: "4 Ω", abaixo: true },
+    { t: "C", de: [4, 0], para: [5.4, 0], valor: "1/8 F", abaixo: true },
+    { t: "no", em: [5.4, 0] },
+    { t: "fio", pts: [[5.4, 0], [6.6, 0]] },
+    { t: "corrente", de: [5.5, 0], para: [6.3, 0], rotulo: "i", abaixo: false },
+    { t: "L", de: [6.6, 0], para: [6.6, 1.7], valor: "2 H", abaixo: true },
+    { t: "R", de: [6.6, 1.7], para: [6.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+  ]}
+>
+
+"Sem energia inicial armazenada" é o enunciado dizendo $v_C(0) = 0$ **e** $i(0) = 0$ — as duas condições de uma vez. A fonte controlada fica em paralelo com o ramo $4\ \Omega$ + capacitor.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 2 + 1{,}185\,e^{-1,44t} - 3{,}185\,e^{-5,56t}\ \mathrm{A}$, para $t > 0$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as condições iniciais**, dadas pelo enunciado:
+
+$$
+v_C(0) = 0
+\qquad\qquad
+i(0) = 0
+$$
+
+**Passo 2 — a equação.** Escrevendo a LKC e a LKT do circuito e eliminando as variáveis até sobrar $v_C$, com $i_C = \tfrac18\,\dfrac{dv_C}{dt}$, chega-se a
+
+$$
+\boxed{\frac{d^2 v_C}{dt^2} + 7\,\frac{dv_C}{dt} + 8\,v_C = 32}
+$$
+
+**Passo 3 — as frequências naturais.** $2\alpha = 7$ e $\omega_0^2 = 8$:
+
+$$
+\alpha = 3{,}5
+\qquad
+\omega_0 = \sqrt{8} \approx 2{,}83
+\qquad\Longrightarrow\qquad
+\alpha > \omega_0: \ \textbf{superamortecido}
+$$
+
+$$
+s = \frac{-7 \pm \sqrt{49 - 32}}{2} = \frac{-7 \pm \sqrt{17}}{2}
+\qquad\Longrightarrow\qquad
+s_1 = -1{,}44,
+\quad
+s_2 = -5{,}56
+$$
+
+**Passo 4 — resposta completa.** Forçada $v_{Cf} = 32/8 = 4\ \mathrm{V}$:
+
+$$
+v_C(t) = A_1 e^{-1,44t} + A_2 e^{-5,56t} + 4
+$$
+
+**Passo 5 — as duas constantes.** De $v_C(0) = 0$:
+
+$$
+A_1 + A_2 = -4
+$$
+
+E de $i(0) = 0$, usando a relação do circuito $i = 2 + \dfrac{i_C}{2} = 2 + \dfrac{1}{16}\dfrac{dv_C}{dt}$:
+
+$$
+0 = 2 + \frac{1}{16}\big(-1{,}44\,A_1 - 5{,}56\,A_2\big)
+\qquad\Longrightarrow\qquad
+1{,}44\,A_1 + 5{,}56\,A_2 = 32
+$$
+
+Resolvendo o sistema:
+
+$$
+-4{,}12\,A_1 = 54{,}24
+\qquad\Longrightarrow\qquad
+A_1 = -13{,}165,
+\quad
+A_2 = 9{,}165
+$$
+
+**Passo 6 — de $v_C$ para $i$:**
+
+$$
+i(t) = 2 + \frac{1}{16}\left[(-1{,}44)(-13{,}165)e^{-1,44t} + (-5{,}56)(9{,}165)e^{-5,56t}\right]
+$$
+
+$$
+\boxed{i(t) = 2 + 1{,}185\,e^{-1,44t} - 3{,}185\,e^{-5,56t}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t=0$: $2 + 1{,}185 - 3{,}185 = 0$ ✔ Para $t$ grande, $i \to 2\ \mathrm{A}$ ✔ E note a assinatura do **superamortecido**: duas exponenciais reais, sem oscilação, e a mais lenta ($s_1 = -1{,}44$) é quem domina o fim do transitório — em $t \approx 2\ \mathrm{s}$ a segunda já morreu e sobra só a primeira. Confere com a resolução da prova.
+</Passos>
