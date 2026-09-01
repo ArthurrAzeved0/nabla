@@ -1,0 +1,114 @@
+---
+origem: "2022.2"
+tema: "Thévenin e Norton · Ponte de resistores com fonte de corrente"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar o circuito equivalente de **Thévenin** e de **Norton** à esquerda dos pontos $a$ e $b$. A partir de um dos dois circuitos, encontre o valor da tensão entre os terminais $a$ e $b$.
+
+<Circuito
+  alt="Fonte de 3 A alimentando 20 Ω e 10 Ω, com 6 Ω e 5 Ω até os terminais a e b, e 30 Ω de carga"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 1.4], valor: "3 A" },
+    { t: "no", em: [0, 1.4] },
+    { t: "fio", pts: [[0, 1.4], [0, 0]] },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "20 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [0, 1.4], para: [2.2, 1.4], valor: "10 Ω" },
+    { t: "R", de: [2.2, 0], para: [2.2, 1.4], valor: "6 Ω", abaixo: true },
+    { t: "no", em: [2.2, 1.4] },
+    { t: "R", de: [2.2, 1.4], para: [2.2, 3], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[2.2, 0], [4.6, 0]] },
+    { t: "no", em: [3.4, 0] },
+    { t: "texto", em: [3.4, -0.5], texto: "a" },
+    { t: "R", de: [4.6, 0], para: [4.6, 3], valor: "30 Ω", abaixo: true },
+    { t: "tensao", de: [4.6, 3], para: [4.6, 0], rotulo: "v_ab", abaixo: false },
+    { t: "fio", pts: [[0, 3], [4.6, 3]] },
+    { t: "no", em: [3.4, 3] },
+    { t: "texto", em: [3.4, 3.5], texto: "b" },
+  ]}
+>
+
+Três nós acima da referência — o da fonte, o de $a$ e o do meio — e nenhuma fonte controlada. É a situação em que $R_{\mathrm{Th}}$ sai por associação pura, e $V_{\mathrm{Th}}$ por um sistema $3\times3$ que se reduz rápido.
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = 20\ \mathrm{V}$, $R_{\mathrm{Th}} = 10\ \Omega$  ·  Norton: $I_N = 2\ \mathrm{A}$, $R_N = 10\ \Omega$  ·  $v_{ab} = 15\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — remova a carga** ($30\ \Omega$) e tome o fio de baixo como referência. Chame $M$ o nó da fonte de corrente (topo do $3\ \mathrm{A}$, à esquerda), $A$ o nó de $a$ (que é o mesmo do $20\ \Omega$ e do topo do $6\ \Omega$) e $B$ o nó do meio (encontro do $10\ \Omega$, do $6\ \Omega$ e do $5\ \Omega$).
+
+**Passo 2 — as três LKC.** Em $A$, sem carga:
+
+$$
+\frac{v_M - v_A}{20} = \frac{v_A - v_B}{6}
+\qquad\Longrightarrow\qquad
+3v_M + 10v_B = 13v_A
+$$
+
+Em $B$:
+
+$$
+\frac{v_M - v_B}{10} + \frac{v_A - v_B}{6} = \frac{v_B}{5}
+\qquad\Longrightarrow\qquad
+3v_M + 5v_A = 14v_B
+$$
+
+Em $M$, com os $3\ \mathrm{A}$ entrando:
+
+$$
+3 = \frac{v_M - v_A}{20} + \frac{v_M - v_B}{10}
+\qquad\Longrightarrow\qquad
+60 = 3v_M - v_A - 2v_B
+$$
+
+**Passo 3 —** Das duas primeiras: $v_A = \tfrac43 v_B$ e $v_M = \tfrac{22}{9} v_B$. Levando na terceira:
+
+$$
+60 = \frac{22}{3}v_B - \frac43 v_B - 2v_B = 4v_B
+\qquad\Longrightarrow\qquad
+v_B = 15\ \mathrm{V}
+$$
+
+$$
+\boxed{V_{\mathrm{Th}} = v_A = \frac43(15) = 20\ \mathrm{V}}
+$$
+
+**Passo 4 — $R_{\mathrm{Th}}$.** A única fonte independente é a de corrente: desativada, ela vira **circuito aberto**. Olhando de $a$ para dentro, de $A$ até $B$ há dois caminhos — o $6\ \Omega$ direto, e o $20\ \Omega$ em série com o $10\ \Omega$ passando por $M$ (o nó $M$ deixou de ter a fonte, mas os dois resistores continuam ligados):
+
+$$
+6 \parallel (20 + 10) = 6 \parallel 30 = 5\ \Omega
+$$
+
+De $B$ até o fio de baixo há o $5\ \Omega$. Em série:
+
+$$
+\boxed{R_{\mathrm{Th}} = R_N = 5 + 5 = 10\ \Omega}
+$$
+
+**Passo 5 — Norton e a carga:**
+
+$$
+\boxed{I_N = \frac{20}{10} = 2\ \mathrm{A}}
+\qquad\qquad
+v_{ab} = 20 \cdot \frac{30}{10 + 30} = \boxed{15\ \mathrm{V}}
+$$
+
+**Conferência —** resolvendo o circuito original **com** o $30\ \Omega$ no lugar, o sistema dá $v_B = 12{,}5\ \mathrm{V}$ e $v_A = 15\ \mathrm{V}$ ✔ Por Norton: $v_{ab} = 2 \cdot (10 \parallel 30) = 2(7{,}5) = 15\ \mathrm{V}$ ✔
+</Passos>
