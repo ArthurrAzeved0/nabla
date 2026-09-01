@@ -1,0 +1,107 @@
+---
+origem: "2026.1"
+tema: "Kirchhoff · Escada de associações com 60 V"
+temaId: leis-de-kirchhoff
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q34.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o valor da tensão $v$ e da corrente $i$ no circuito abaixo.
+
+<Circuito
+  alt="Fonte de 60 V com 4 Ω, 32 Ω, 24 Ω, 8 Ω, 6 Ω em paralelo com 12 Ω, e 8 Ω com 16 Ω"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "60 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "4 Ω" },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "32 Ω" },
+    { t: "R", de: [2, 0], para: [4, 0], valor: "24 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 1.5], valor: "8 Ω", abaixo: true },
+    { t: "no", em: [4, 1.5] },
+    { t: "fio", pts: [[3.2, 1.5], [4.8, 1.5]] },
+    { t: "R", de: [3.2, 1.5], para: [3.2, 3], valor: "6 Ω" },
+    { t: "R", de: [4.8, 1.5], para: [4.8, 3], valor: "12 Ω", abaixo: true },
+    { t: "corrente", de: [4.8, 1.6], para: [4.8, 2.5], rotulo: "i", abaixo: false },
+    { t: "R", de: [4, 0], para: [6, 0], valor: "8 Ω" },
+    { t: "R", de: [6, 0], para: [6, 3], valor: "16 Ω", abaixo: true },
+    { t: "tensao", de: [6, 3], para: [6, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [6, 3]] },
+  ]}
+>
+
+É a **mesma escada** de 2020.2 e 2024.1, com outros valores: reduz-se de dentro para fora, e cada divisão de corrente entrega uma resposta. Aqui $i$ é a corrente do $12\ \Omega$.
+
+</Circuito>
+
+<Gabarito>
+$v = 8\ \mathrm{V}$  ·  $i = \dfrac{1}{3}\ \mathrm{A} \approx 0{,}333\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a redução.** Chame $A$ o nó do $32\ \Omega$, $B$ o do $8\ \Omega$ vertical, $C$ o nó de onde saem $6\ \Omega$ e $12\ \Omega$ e $D$ o do $16\ \Omega$.
+
+$$
+6 \parallel 12 = 4\ \Omega
+\qquad
+\text{ramo } B \to C = 8 + 4 = 12\ \Omega
+\qquad
+\text{ramo } B \to D = 8 + 16 = 24\ \Omega
+$$
+
+$$
+R_B = 12 \parallel 24 = 8\ \Omega
+\qquad
+\text{ramo } A \to B = 24 + 8 = 32\ \Omega
+\qquad
+R_A = 32 \parallel 32 = 16\ \Omega
+$$
+
+$$
+R_{\mathrm{eq}} = 4 + 16 = 20\ \Omega
+$$
+
+**Passo 2 — a corrente da fonte:**
+
+$$
+i_T = \frac{60}{20} = 3\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+v_A = 16 \cdot 3 = 48\ \mathrm{V}
+$$
+
+**Passo 3 — as divisões.** Em $A$ os dois caminhos valem $32\ \Omega$: metade para cada lado, $1{,}5\ \mathrm{A}$. Chegando em $B$:
+
+$$
+v_B = 8 \cdot 1{,}5 = 12\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+i_{B\to C} = \frac{12}{12} = 1\ \mathrm{A},
+\quad
+i_{B\to D} = \frac{12}{24} = 0{,}5\ \mathrm{A}
+$$
+
+**Passo 4 — as respostas.**
+
+$$
+\boxed{v = 16 \cdot 0{,}5 = 8\ \mathrm{V}}
+$$
+
+Em $C$, os $1\ \mathrm{A}$ se dividem entre $6\ \Omega$ e $12\ \Omega$, e $i$ é a parcela do $12\ \Omega$:
+
+$$
+\boxed{i = \frac{6}{6 + 12}\cdot 1 = \frac{1}{3} \approx 0{,}333\ \mathrm{A}}
+$$
+
+**Conferência —** $i_T = 1{,}5 + 1 + 0{,}5 = 3\ \mathrm{A}$ ✔ E $v_C = 4 \cdot 1 = 4\ \mathrm{V}$, com $i = 4/12 = 1/3\ \mathrm{A}$ ✔ Confere com a resolução da prova: $i = 0{,}333\ \mathrm{A}$ e $v = 8\ \mathrm{V}$.
+</Passos>
