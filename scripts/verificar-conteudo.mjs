@@ -20,6 +20,7 @@
    Uso: node scripts/verificar-conteudo.mjs
 */
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
+import { createRequire } from "node:module";
 
 const DIST = "dist/cadeiras";
 if (!existsSync(DIST)) {
@@ -152,6 +153,31 @@ console.log("\n== formas invisíveis em SVG ==");
    PRETO. Foi assim que o gerador de circuitos saiu com um retângulo preto
    atrás de cada símbolo — eu usei `--card-2`, que nunca existiu, e o meu
    preview local não pegou porque eu tinha definido o token no CSS de teste.  */
+/* ------------------------------------------------------- versão do KaTeX
+   O HTML das fórmulas é gerado pelo katex que o `rehype-katex` resolve; o CSS
+   vem do `import "katex/dist/katex.min.css"` do Base.astro. Se as duas versões
+   divergirem, o markup de uma cai nas regras da outra.
+
+   Foi exatamente o que aconteceu: o 0.16 marca a caixa do `\boxed` com
+   `class="stretchy fbox"`, e o 0.18 renomeou essa classe para
+   `katex-stretchy`. Com o CSS do 0.18 e o HTML do 0.16, a caixa recebia
+   `width:100%; display:block; overflow:hidden` da regra `.stretchy` — a borda
+   estourava e sobrava um risco vertical solto no meio da fórmula, em 417
+   `\boxed` das cinco cadeiras. */
+console.log("\n== versão do KaTeX ==");
+{
+  const req = createRequire(import.meta.url);
+  const doCss = req("katex/package.json").version;
+  const doHtml = createRequire(req.resolve("rehype-katex"))("katex/package.json").version;
+  console.log(`  CSS (Base.astro) ${doCss}  ·  HTML (rehype-katex) ${doHtml}`);
+  if (doCss !== doHtml) {
+    erro(
+      `katex do CSS (${doCss}) e do HTML (${doHtml}) divergem — o markup de uma versão ` +
+        `cai nas regras da outra. Fixe a mesma versão no package.json.`,
+    );
+  }
+}
+
 console.log("\n== tokens de CSS ==");
 {
   const definidos = new Set();
