@@ -2,7 +2,7 @@
   {
     "id": "circuitos1",
     "nome": "Circuitos Elétricos 1",
-    "codigo": "CKT1 · 60h",
+    "codigo": "ELET0013 · 60h",
     "descricao": "Revisão de circuitos resistivos, capacitores e indutores, transitórios de primeira e de segunda ordem com excitação contínua, e circuitos ativos com amplificadores operacionais. (Construção do curso em andamento)",
     "teoria": {
       "corrente-tensao": "ckt-grandezas",
