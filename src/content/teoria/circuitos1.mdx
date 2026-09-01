@@ -35,6 +35,7 @@ unidades:
   - nome: "Circuitos ativos de 1ª e 2ª ordem"
     secoes:
       - { id: ckt-integrador, titulo: "Integrador e diferenciador" }
+      - { id: ckt-ativos2, titulo: "Circuitos ativos de 1ª e 2ª ordem" }
 
 ---
 
@@ -2271,6 +2272,115 @@ v_o(t) = -100 \int_0^t 0{,}5\,d\tau = -50\,t\ \mathrm{V}
 $$
 
 Uma rampa descendo a $50\ \mathrm{V/s}$. Se o amp. op. saturar em $-12\ \mathrm{V}$, ele chega lá em $t = 0{,}24\ \mathrm{s}$ — e a partir daí a fórmula deixa de valer, porque o curto virtual pressupõe realimentação ativa ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-ativos2" num="24" titulo="Circuitos ativos de 1ª e 2ª ordem">
+
+**A ideia.** Junte o amp. op. da unidade 1 com os transitórios das unidades 3 e 4 e você tem o último assunto da cadeira. Não há teoria nova: o amp. op. entra nas equações pelas duas regras de sempre, e o que sai é a mesma equação diferencial de 1ª ou 2ª ordem, resolvida pelo mesmo roteiro. A diferença é que agora as constantes $\alpha$ e $\omega_0$ podem ser **escolhidas** pelo projetista, e o amortecimento pode até ser negativo.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v_{-} = v_{+}$, $i_{\pm} = 0$ — as duas regras do amp. op. ideal, que continuam valendo;
+- $v_C(0^+)$ — condição inicial; num circuito ativo ela é a tensão do capacitor, como sempre;
+- $\alpha$, $\omega_0$ — agora **funções dos componentes escolhidos**, e não do arranjo passivo;
+- **saturação** — o limite em que as regras deixam de valer.
+
+</Caixa>
+
+### 1ª ordem ativa: o integrador com resistor de realimentação
+
+Um resistor $R_2$ em paralelo com o capacitor da realimentação transforma o integrador num circuito de 1ª ordem de verdade. A LKC no terra virtual, com o nó em $0\ \mathrm{V}$:
+
+$$
+\frac{v_e}{R_1} + \frac{v_o}{R_2} + C\,\frac{dv_o}{dt} = 0
+$$
+
+Dividindo por $C$:
+
+$$
+\frac{dv_o}{dt} + \frac{1}{R_2 C}\,v_o = -\frac{v_e}{R_1 C}
+$$
+
+É a equação padrão de 1ª ordem, com
+
+$$
+\tau = R_2 C
+\qquad\qquad
+v_o(\infty) = -\frac{R_2}{R_1}\,v_e
+$$
+
+— a constante de tempo é dada pela **realimentação**, e o ganho CC é o do inversor. Daí em diante, a fórmula dos três valores da seção 16, sem alteração nenhuma.
+
+<Circuito
+  alt="Circuito ativo de primeira ordem: resistor na entrada, resistor e capacitor em paralelo na realimentação"
+  itens={[
+    { t: "fio", pts: [[0, 1], [0.6, 1]] },
+    { t: "V", de: [0, 3], para: [0, 1], rotulo: "v_e" },
+    { t: "R", de: [0.6, 1], para: [2.4, 1], rotulo: "R_1" },
+    { t: "no", em: [2.4, 1] },
+    { t: "fio", pts: [[2.4, 1], [3, 1]] },
+    { t: "ampop", em: [4, 2] },
+    { t: "fio", pts: [[2.4, 1], [2.4, -0.5], [5.6, -0.5], [5.6, 2]] },
+    { t: "C", de: [3.2, -0.5], para: [4.8, -0.5], rotulo: "C" },
+    { t: "fio", pts: [[2.4, -0.5], [2.4, -1.7], [5.6, -1.7], [5.6, -0.5]] },
+    { t: "R", de: [3.2, -1.7], para: [4.8, -1.7], rotulo: "R_2" },
+    { t: "fio", pts: [[5, 2], [6.2, 2]] },
+    { t: "no", em: [5.6, 2] },
+    { t: "no", em: [2.4, -0.5] },
+    { t: "no", em: [5.6, -0.5] },
+    { t: "texto", em: [6.5, 2.15], texto: "v_o", ancora: "start" },
+    { t: "fio", pts: [[3, 3], [3, 4]] },
+    { t: "fio", pts: [[0, 3], [0, 4], [3, 4]] },
+    { t: "terra", em: [1.5, 4] },
+  ]}
+>
+
+Com $R_2 \to \infty$ (só o capacitor) volta o integrador puro: $\tau \to \infty$ e não existe regime permanente. Com $C \to 0$ volta o inversor: $\tau \to 0$ e a saída acompanha a entrada na hora.
+
+</Circuito>
+
+### 2ª ordem ativa
+
+Com **dois** capacitores — um na entrada e um na realimentação, ou dois estágios em cascata — a equação sobe para 2ª ordem, e vale tudo o que está nas seções 19 a 22: monte a equação, ache $\alpha$ e $\omega_0$, decida o caso, imponha as duas condições iniciais na resposta completa.
+
+<Caixa tipo="macete">
+
+**O roteiro para um circuito ativo é o mesmo, com um passo antes:**
+
+1. escreva a **LKC no nó inversor** com $v_- = v_+$ e $i_- = 0$ — é daqui que sai a equação, e só daqui;
+2. **nunca** escreva LKC no nó de saída;
+3. reconheça a forma ($1^{\underline{a}}$ ou $2^{\underline{a}}$ ordem) e siga o roteiro passivo correspondente.
+
+E a condição inicial continua sendo do **capacitor**, não da saída: $v_o(0^+)$ se deduz de $v_C(0^+)$ pelo circuito, e não o contrário.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A diferença que o elemento ativo faz">
+
+Num circuito passivo, $\alpha \geq 0$ sempre — a energia só se dissipa, e toda resposta natural decai. Num circuito **ativo** o amp. op. injeta energia, e $\alpha$ pode sair **negativo**: a resposta natural **cresce** e o circuito oscila até saturar. É assim que se constrói oscilador, e é a razão pela qual "estabilidade" passa a ser uma pergunta legítima daqui para frente — assunto de Circuitos 2 e de Controle.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido">
+
+No circuito da figura, $R_1 = 10\ \mathrm{k\Omega}$, $R_2 = 40\ \mathrm{k\Omega}$, $C = 5\ \mathrm{\mu F}$, capacitor descarregado, e $v_e = 2\ \mathrm{V}$ aplicado em $t=0$.
+
+$$
+\tau = R_2 C = (40\times10^{3})(5\times10^{-6}) = 0{,}2\ \mathrm{s}
+\qquad
+v_o(\infty) = -\frac{40}{10}(2) = -8\ \mathrm{V}
+$$
+
+Com o capacitor descarregado e o terra virtual em $0\ \mathrm{V}$, a saída começa em $v_o(0^+) = 0$. Pela fórmula dos três valores:
+
+$$
+v_o(t) = -8 + \big[0 - (-8)\big]e^{-t/0{,}2} = -8\left(1 - e^{-5t}\right)\ \mathrm{V}
+$$
+
+Conferindo a inclinação inicial: $dv_o(0^+)/dt = -8(5) = -40\ \mathrm{V/s}$. Pelo circuito, em $0^+$ toda a corrente de entrada $2/10\mathrm{k} = 0{,}2\ \mathrm{mA}$ vai para o capacitor (o $R_2$ não conduz, porque $v_o = 0$), então $dv_o/dt = -i_C/C = -0{,}2\mathrm{m}/5\mu = -40\ \mathrm{V/s}$ ✔
 
 </Caixa>
 
