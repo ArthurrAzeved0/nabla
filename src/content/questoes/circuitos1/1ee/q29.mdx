@@ -1,0 +1,98 @@
+---
+origem: "2025.1"
+tema: "Thévenin e Norton · Terminais dentro da rede"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os circuitos equivalentes de **Thévenin** e de **Norton** fora dos pontos $a$ e $b$.
+
+<Circuito
+  alt="Fonte de 4 V, 15 Ω de a até b, 9 Ω, 10 Ω, fonte de 3 V e 10 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "4 V" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "texto", em: [2, -0.5], texto: "a" },
+    { t: "R", de: [2, 0], para: [4.6, 0], valor: "15 Ω" },
+    { t: "fio", pts: [[4.6, 0], [4.6, 1.7]] },
+    { t: "R", de: [2, 0], para: [2, 1.7], valor: "9 Ω" },
+    { t: "no", em: [2, 1.7] },
+    { t: "R", de: [2, 1.7], para: [4.6, 1.7], valor: "10 Ω" },
+    { t: "no", em: [4.6, 1.7] },
+    { t: "texto", em: [5.1, 1.85], texto: "b", ancora: "start" },
+    { t: "V", de: [2, 3.4], para: [2, 1.7], valor: "3 V" },
+    { t: "R", de: [4.6, 1.7], para: [4.6, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [4.6, 3.4]] },
+  ]}
+>
+
+Os terminais $a$ e $b$ estão **dentro** da rede: nada é removido, e $V_{\mathrm{Th}}$ é simplesmente a tensão $v_{ab}$ que o circuito já tem. Para $R_{\mathrm{Th}}$, as duas fontes de tensão viram fio — e aí $a$ vai para a referência.
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = 1{,}875\ \mathrm{V}$, $R_{\mathrm{Th}} = 3{,}75\ \Omega$  ·  Norton: $I_N = 0{,}5\ \mathrm{A}$, $R_N = 3{,}75\ \Omega$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os potenciais conhecidos.** Fio de baixo como referência. A fonte de $4\ \mathrm{V}$ ($+$ em cima) fixa o trilho de cima, e a de $3\ \mathrm{V}$ ($+$ em cima) fixa o nó central:
+
+$$
+v_a = 4\ \mathrm{V}
+\qquad\qquad
+v_c = 3\ \mathrm{V}
+$$
+
+**Passo 2 — $V_{\mathrm{Th}} = v_{ab}$.** LKC no nó $b$, que recebe pelo $15\ \Omega$ e pelo $10\ \Omega$ e escoa pelo $10\ \Omega$ de baixo:
+
+$$
+\frac{4 - v_b}{15} + \frac{3 - v_b}{10} = \frac{v_b}{10}
+$$
+
+$$
+\times 30:\quad 2(4 - v_b) + 3(3 - v_b) = 3 v_b
+\qquad\Longrightarrow\qquad
+17 = 8 v_b
+\qquad\Longrightarrow\qquad
+v_b = \frac{17}{8} = 2{,}125\ \mathrm{V}
+$$
+
+$$
+\boxed{V_{\mathrm{Th}} = 4 - 2{,}125 = 1{,}875\ \mathrm{V}}
+$$
+
+**Passo 3 — $R_{\mathrm{Th}}$.** Desative as duas fontes: ambas viram **fio**. Então $a$ e o nó central $c$ ficam **ligados à referência**. Olhando de $b$ para dentro, sobram três caminhos até essa referência:
+
+$$
+\frac{1}{R_{\mathrm{Th}}} = \underbrace{\frac{1}{15}}_{b \to a} + \underbrace{\frac{1}{10}}_{b \to c} + \underbrace{\frac{1}{10}}_{b \to \text{terra}}
+= \frac{2 + 3 + 3}{30} = \frac{8}{30}
+$$
+
+$$
+\boxed{R_{\mathrm{Th}} = R_N = \frac{30}{8} = 3{,}75\ \Omega}
+$$
+
+O $9\ \Omega$ **não entra**: com as duas fontes em curto, ele fica com os dois terminais no mesmo potencial.
+
+**Passo 4 — Norton:**
+
+$$
+\boxed{I_N = \frac{1{,}875}{3{,}75} = 0{,}5\ \mathrm{A}}
+$$
+
+**Conferência direta de $I_N$ —** curto-circuitando $a$ e $b$, o nó $b$ sobe para $4\ \mathrm{V}$. Aí o $15\ \Omega$ não conduz, o $10\ \Omega$ de cima leva $(3-4)/10 = -0{,}1\ \mathrm{A}$ para $b$ e o $10\ \Omega$ de baixo escoa $0{,}4\ \mathrm{A}$ — o curto tem de entregar $0{,}4 + 0{,}1 = 0{,}5\ \mathrm{A}$ ✔
+</Passos>
