@@ -1,0 +1,113 @@
+---
+origem: "2018.1"
+tema: "Condições iniciais · 0⁻, 0⁺ e as duas derivadas"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito abaixo está em **regime permanente** em $t = 0^-$. Determine $i_1$, $i_2$, $dv/dt$ e $di/dt$ em $t = 0^+$.
+
+<Circuito
+  alt="8 Ω, ramo de 2 Ω com fonte de 18 V e chave, indutor de 4 H, 2 Ω e capacitor de 1/4 F"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 3.4], valor: "8 Ω" },
+    { t: "corrente", de: [0, 0.4], para: [0, 1.4], rotulo: "i_1" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 1.1], valor: "2 Ω", abaixo: true },
+    { t: "V", de: [2, 2.3], para: [2, 1.1], valor: "18 V", abaixo: true },
+    { t: "S", de: [2, 2.3], para: [2, 3.4], rotulo: "t = 0", abaixo: true },
+    { t: "L", de: [2, 0], para: [4.4, 0], valor: "4 H" },
+    { t: "corrente", de: [2.9, 0], para: [3.9, 0], rotulo: "i" },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "2 Ω" },
+    { t: "corrente", de: [4.4, 0.4], para: [4.4, 1.4], rotulo: "i_2" },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0]] },
+    { t: "C", de: [6.2, 0], para: [6.2, 3.4], valor: "1/4 F" },
+    { t: "tensao", de: [6.2, 3.4], para: [6.2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.2, 3.4]] },
+  ]}
+>
+
+A chave está **fechada** antes de $t = 0$ e **abre** em $t = 0$ — é o que a resolução da prova mostra. Depois da abertura a fonte sai do circuito, e o que sobra é o $8\ \Omega$, o indutor, o $2\ \Omega$ e o capacitor se descarregando.
+
+</Circuito>
+
+<Gabarito>
+$i_1(0^+) = -4\ \mathrm{A}$  ·  $i_2(0^+) = 4\ \mathrm{A}$  ·  $\dfrac{dv(0^+)}{dt} = 0$  ·  $\dfrac{di(0^+)}{dt} = -10\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $t = 0^-$** (chave fechada, regime permanente): o **indutor vira fio** e o **capacitor vira circuito aberto**. Com o indutor curto-circuitando os dois nós de cima, o $8\ \Omega$ fica em paralelo com o $2\ \Omega$ da direita:
+
+$$
+8 \parallel 2 = \frac{16}{10} = 1{,}6\ \Omega
+\qquad\Longrightarrow\qquad
+i_T = \frac{18}{2 + 1{,}6} = 5\ \mathrm{A}
+$$
+
+$$
+v_{\text{nó}} = 1{,}6 \cdot 5 = 8\ \mathrm{V}
+$$
+
+Daí, o que importa guardar:
+
+$$
+i(0^-) = \frac{8}{2} = 4\ \mathrm{A}
+\qquad\qquad
+v(0^-) = 8\ \mathrm{V}
+$$
+
+**Passo 2 — continuidade:**
+
+$$
+i(0^+) = 4\ \mathrm{A}
+\qquad\qquad
+v(0^+) = 8\ \mathrm{V}
+$$
+
+**Passo 3 — circuito em $t = 0^+$** (chave aberta): o indutor vira **fonte de corrente** de $4\ \mathrm{A}$ e o capacitor, **fonte de tensão** de $8\ \mathrm{V}$. Sem a fonte de $18\ \mathrm{V}$, o único caminho para os $4\ \mathrm{A}$ do indutor voltarem é o $8\ \Omega$:
+
+$$
+\boxed{i_1(0^+) = -i(0^+) = -4\ \mathrm{A}}
+$$
+
+O sinal é negativo porque a corrente sobe pelo $8\ \Omega$, contra a seta de $i_1$.
+
+**Passo 4 — $i_2$ e a derivada da tensão.** O $2\ \Omega$ da direita está direto sobre o capacitor:
+
+$$
+\boxed{i_2(0^+) = \frac{v(0^+)}{2} = \frac{8}{2} = 4\ \mathrm{A}}
+$$
+
+A LKC no nó do capacitor dá $i = i_2 + i_C$, logo
+
+$$
+i_C(0^+) = 4 - 4 = 0
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{i_C(0^+)}{C} = 0}
+$$
+
+**Passo 5 — a derivada da corrente.** A tensão sobre o indutor é a diferença entre os dois nós. O nó da esquerda está em $-8 \times 4 = -32\ \mathrm{V}$ (os $4\ \mathrm{A}$ **sobem** pelo $8\ \Omega$) e o da direita em $+8\ \mathrm{V}$:
+
+$$
+v_L(0^+) = -32 - 8 = -40\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{-40}{4} = -10\ \mathrm{A/s}}
+$$
+
+**Conferência —** os sinais contam a história certa: a corrente do indutor **vai cair** (derivada negativa), porque sem a fonte não há nada que a sustente; e a tensão do capacitor começa **plana**, porque naquele instante toda a corrente do indutor é absorvida pelo $2\ \Omega$ ✔
+</Passos>
