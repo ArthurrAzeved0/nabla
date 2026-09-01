@@ -1,0 +1,116 @@
+---
+origem: "2024.1"
+tema: "Amp. op. · Realimentação em T com dois caminhos"
+temaId: amplificador-operacional
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $v$, $i_1$ e $i_2$. Considere o amplificador operacional como **ideal**.
+
+<Circuito
+  alt="Fonte de 10 V com 4 Ω e 8 Ω, 16 Ω até a entrada inversora, e realimentação em T com 8 Ω e 24 Ω"
+  itens={[
+    { t: "V", de: [0, 2.8], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "4 Ω" },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 2.8], valor: "8 Ω" },
+    { t: "R", de: [2, 0], para: [3.6, 0], valor: "16 Ω" },
+    { t: "no", em: [3.6, 0] },
+    { t: "fio", pts: [[3.6, 0], [4.4, 0]] },
+    { t: "ampop", em: [5.4, 1] },
+    { t: "fio", pts: [[2, 0], [2, -1.6]] },
+    { t: "R", de: [2, -1.6], para: [3.6, -1.6], valor: "8 Ω" },
+    { t: "corrente", de: [2.1, -1.6], para: [2.9, -1.6], rotulo: "i_1" },
+    { t: "no", em: [3.6, -1.6] },
+    { t: "R", de: [3.6, -1.6], para: [3.6, 0], valor: "24 Ω", abaixo: true },
+    { t: "fio", pts: [[3.6, -1.6], [7.2, -1.6], [7.2, 1]] },
+    { t: "fio", pts: [[6.4, 1], [8.2, 1]] },
+    { t: "no", em: [7.2, 1] },
+    { t: "corrente", de: [6.5, 1], para: [7.1, 1], rotulo: "i_2", abaixo: false },
+    { t: "texto", em: [8.5, 1.15], texto: "v", ancora: "start" },
+    { t: "fio", pts: [[4.4, 2], [3.8, 2]] },
+    { t: "terra", em: [3.8, 2] },
+    { t: "fio", pts: [[0, 2.8], [2, 2.8]] },
+    { t: "terra", em: [1, 2.8] },
+  ]}
+>
+
+A realimentação tem **dois caminhos** da saída até o nó inversor: o $24\ \Omega$ direto, e o $8\ \Omega$ até o nó de entrada seguido do $16\ \Omega$. É uma rede em T, e a chave é que o nó inversor continua sendo **terra virtual**.
+
+</Circuito>
+
+<Gabarito>
+$v = -5\ \mathrm{V}$  ·  $i_1 = \dfrac{25}{24} \approx 1{,}04\ \mathrm{A}$  ·  $i_2 = -1{,}25\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o terra virtual.** Com a entrada não inversora aterrada e realimentação negativa,
+
+$$
+v_- = 0
+\qquad\qquad
+i_- = 0
+$$
+
+Chame $v_X$ o nó entre o $4\ \Omega$, o $8\ \Omega$ vertical, o $16\ \Omega$ e o $8\ \Omega$ de cima; a saída é $v$.
+
+**Passo 2 — LKC no nó inversor.** Só dois ramos chegam nele, o $16\ \Omega$ e o $24\ \Omega$, e a soma tem de ser zero:
+
+$$
+\frac{v_X}{16} + \frac{v}{24} = 0
+\qquad\Longrightarrow\qquad
+v = -\frac{3}{2}\,v_X
+$$
+
+**Passo 3 — LKC no nó $X$:**
+
+$$
+\frac{10 - v_X}{4} = \frac{v_X}{8} + \frac{v_X}{16} + \frac{v_X - v}{8}
+$$
+
+Multiplicando por $16$ e usando $v = -1{,}5\,v_X$:
+
+$$
+4(10 - v_X) = 2v_X + v_X + 2\left(v_X + 1{,}5 v_X\right) = 8 v_X
+$$
+
+$$
+40 = 12\,v_X
+\qquad\Longrightarrow\qquad
+v_X = \frac{10}{3}\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v = -\frac{3}{2}\cdot\frac{10}{3} = -5\ \mathrm{V}}
+$$
+
+**Passo 4 — $i_1$**, a corrente do $8\ \Omega$ de cima, de $X$ para a saída:
+
+$$
+\boxed{i_1 = \frac{v_X - v}{8} = \frac{\tfrac{10}{3} + 5}{8} = \frac{25}{24} \approx 1{,}04\ \mathrm{A}}
+$$
+
+**Passo 5 — $i_2$**, a corrente que **sai** do amp. op. Ela é a soma do que deixa o nó de saída pelos dois ramos da realimentação:
+
+$$
+i_2 = \underbrace{\frac{v - 0}{24}}_{24\ \Omega} + \underbrace{\frac{v - v_X}{8}}_{8\ \Omega}
+= -\frac{5}{24} - \frac{25}{24}
+= -\frac{30}{24}
+= \boxed{-1{,}25\ \mathrm{A}}
+$$
+
+O sinal negativo diz que a corrente entra no amp. op. em vez de sair: a saída está negativa e a rede empurra corrente para dentro dela.
+
+**Conferência —** LKC no nó inversor: $\tfrac{10/3}{16} + \tfrac{-5}{24} = \tfrac{10}{48} - \tfrac{10}{48} = 0$ ✔ LKC no nó $X$: entram $(10 - 10/3)/4 = \tfrac53\ \mathrm{A}$ e saem $\tfrac{5}{12} + \tfrac{5}{24} + \tfrac{25}{24} = \tfrac{40}{24} = \tfrac53$ ✔
+</Passos>
