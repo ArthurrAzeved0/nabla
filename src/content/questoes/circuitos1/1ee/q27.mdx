@@ -1,0 +1,112 @@
+---
+origem: "2025.1"
+tema: "Resistência equivalente · Três ramos em paralelo entre os trilhos"
+temaId: resistencia-equivalente
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores das correntes $i_1$ e $i_2$.
+
+<Circuito
+  alt="Fontes de 30 A e 8 A alimentando três ramos em paralelo: 10+15 Ω, 10 Ω, e 20//60 + 22 + 50//30 Ω"
+  itens={[
+    { t: "I", de: [0, 3.6], para: [0, 0], valor: "30 A" },
+    { t: "R", de: [1.6, 0], para: [1.6, 1.6], valor: "10 Ω" },
+    { t: "R", de: [1.6, 1.6], para: [1.6, 3.6], valor: "15 Ω" },
+    { t: "fio", pts: [[3.2, 0], [3.2, 0.6]] },
+    { t: "corrente", de: [3.2, 0], para: [3.2, 0.55], rotulo: "i_1", abaixo: false },
+    { t: "R", de: [3.2, 0.6], para: [3.2, 2.6], valor: "10 Ω" },
+    { t: "fio", pts: [[3.2, 2.6], [3.2, 3.6]] },
+    { t: "fio", pts: [[5.6, 0], [5.6, 0.4]] },
+    { t: "fio", pts: [[4.8, 0.4], [6.4, 0.4]] },
+    { t: "R", de: [4.8, 0.4], para: [4.8, 1.5], valor: "20 Ω" },
+    { t: "corrente", de: [4.8, 0.5], para: [4.8, 1.4], rotulo: "i_2" },
+    { t: "R", de: [6.4, 0.4], para: [6.4, 1.5], valor: "60 Ω", abaixo: true },
+    { t: "fio", pts: [[4.8, 1.5], [6.4, 1.5]] },
+    { t: "no", em: [5.6, 1.5] },
+    { t: "R", de: [5.6, 1.5], para: [5.6, 2.6], valor: "22 Ω", abaixo: true },
+    { t: "no", em: [5.6, 2.6] },
+    { t: "fio", pts: [[4.8, 2.6], [6.4, 2.6]] },
+    { t: "R", de: [4.8, 2.6], para: [4.8, 3.6], valor: "50 Ω" },
+    { t: "R", de: [6.4, 2.6], para: [6.4, 3.6], valor: "30 Ω", abaixo: true },
+    { t: "I", de: [8, 0], para: [8, 3.6], valor: "8 A", abaixo: true },
+    { t: "fio", pts: [[0, 0], [8, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "no", em: [3.2, 0] },
+    { t: "no", em: [5.6, 0] },
+    { t: "fio", pts: [[0, 3.6], [8, 3.6]] },
+    { t: "no", em: [1.6, 3.6] },
+    { t: "no", em: [3.2, 3.6] },
+  ]}
+>
+
+Os **três** ramos ligam o mesmo par de trilhos: estão todos em paralelo, e as duas fontes de corrente se combinam numa só. É a questão mais mecânica da prova, desde que a leitura da topologia esteja certa.
+
+</Circuito>
+
+<Gabarito>
+$i_1 \approx 13{,}93\ \mathrm{A}$  ·  $i_2 \approx 1{,}87\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — combine as fontes.** As duas ligam os mesmos dois trilhos: a de $30\ \mathrm{A}$ injeta no de cima, a de $8\ \mathrm{A}$ retira dele. Sobra
+
+$$
+I_{\mathrm{total}} = 30 - 8 = 22\ \mathrm{A}
+$$
+
+**Passo 2 — reduza cada ramo.**
+
+$$
+R_1 = 10 + 15 = 25\ \Omega
+\qquad\qquad
+R_2 = 10\ \Omega
+$$
+
+$$
+R_3 = \underbrace{(20 \parallel 60)}_{15\ \Omega} + 22 + \underbrace{(50 \parallel 30)}_{18{,}75\ \Omega} = 55{,}75\ \Omega
+$$
+
+**Passo 3 — o paralelo dos três:**
+
+$$
+\frac{1}{R_{\mathrm{eq}}} = \frac{1}{25} + \frac{1}{10} + \frac{1}{55{,}75}
+= 0{,}0400 + 0{,}1000 + 0{,}01794
+= 0{,}15794\ \mathrm{S}
+$$
+
+$$
+R_{\mathrm{eq}} = 6{,}332\ \Omega
+\qquad\Longrightarrow\qquad
+v_{\text{trilho}} = 22 \cdot 6{,}332 = 139{,}30\ \mathrm{V}
+$$
+
+**Passo 4 — $i_1$**, que é a corrente do ramo do meio:
+
+$$
+\boxed{i_1 = \frac{139{,}30}{10} \approx 13{,}93\ \mathrm{A}}
+$$
+
+**Passo 5 — $i_2$.** Primeiro a corrente do terceiro ramo, depois a divisão no par $20 \parallel 60$:
+
+$$
+i_3 = \frac{139{,}30}{55{,}75} = 2{,}499\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{i_2 = \frac{60}{20 + 60}\,i_3 = 0{,}75 \cdot 2{,}499 \approx 1{,}87\ \mathrm{A}}
+$$
+
+**Conferência —** as três correntes de ramo somam $139{,}30/25 + 13{,}93 + 2{,}499 = 5{,}572 + 13{,}93 + 2{,}499 = 22{,}00\ \mathrm{A}$ ✔ E no par de cima, $1{,}87 + 0{,}62 = 2{,}499\ \mathrm{A}$ ✔ Os números não são redondos — vale conferir a soma antes de entregar.
+</Passos>
