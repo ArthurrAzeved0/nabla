@@ -10,6 +10,7 @@ unidades:
       - { id: ckt-divisores, titulo: "Divisor de tensão e divisor de corrente" }
       - { id: ckt-kirchhoff, titulo: "As leis de Kirchhoff" }
       - { id: ckt-nodal, titulo: "Análise nodal (análise de nós)" }
+      - { id: ckt-malhas, titulo: "Análise de malhas" }
 ---
 
 {/* **************************************************************************
@@ -558,6 +559,94 @@ v_2 = 0\ \mathrm{V}, \qquad v_1 = 12\ \mathrm{V}
 $$
 
 Conferindo: pelo resistor de $4\ \Omega$ saem $12/4 = 3\ \mathrm{A}$, e pelos de $6$ e $3\ \Omega$ não passa nada. A fonte injeta exatamente os $3\ \mathrm{A}$ ✔
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ckt-malhas" num="07" titulo="Análise de malhas">
+
+**A ideia.** É a análise nodal de cabeça para baixo: em vez de potenciais nos nós, as incógnitas são **correntes fictícias circulando em cada malha**, e em vez da LKC você escreve a LKT. Vale só para circuitos **planos** (que se desenham sem cruzar fios), e é o método que a prova pede quando o circuito tem **fontes de tensão** — pela mesma razão que a nodal brilha com fontes de corrente.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- **malha** — laço que não contém nenhum outro laço dentro (a "janela" do circuito);
+- $i_1, i_2, \dots$ — correntes de malha, **fictícias**: circulam a malha inteira;
+- $b - n + 1$ — quantas malhas independentes existem ($b$ ramos, $n$ nós);
+- **supermalha** — duas malhas que compartilham uma fonte de corrente.
+
+</Caixa>
+
+### O roteiro
+
+1. **Identifique as malhas** e atribua a cada uma uma corrente, **todas no mesmo sentido** (adote horário e nunca mais pense nisso).
+2. **LKT em cada malha**, percorrendo no sentido da própria corrente.
+3. Num ramo **compartilhado** por duas malhas, a corrente real é a **diferença**: o resistor comum entre as malhas $1$ e $2$ cai $R\,(i_1 - i_2)$ quando escrito da malha $1$.
+4. **Resolva** e só então volte às correntes reais dos ramos.
+
+<Caixa tipo="macete">
+
+**A forma matricial, com todas as correntes no sentido horário:**
+
+$$
+\underbrace{\Big(\textstyle\sum R \text{ da malha } k\Big)}_{\text{diagonal, sempre } +} i_k
+\;-\; \sum_{j \neq k} \underbrace{R_{kj}}_{\text{compartilhado}} i_j
+\;=\; \underbrace{\textstyle\sum V \text{ que empurra } i_k}_{\text{fontes}}
+$$
+
+Diagonal: **soma** das resistências da malha. Fora dela: **menos** a resistência comum às duas malhas. Direita: soma das fontes que empurram a corrente no sentido adotado (fonte percorrida do $-$ para o $+$ entra com $+$). Simétrica de novo — e de novo, assimetria significa erro de sinal ou fonte controlada.
+
+</Caixa>
+
+### Fonte de corrente num ramo: a supermalha
+
+Uma fonte de corrente ideal não tem uma tensão própria que você possa escrever, então a LKT trava. Dois casos, espelhando o supernó:
+
+- **Fonte só numa malha** (num ramo de fronteira externa). A corrente daquela malha já está determinada: $i_k = \pm I_s$. Uma incógnita a menos.
+- **Fonte compartilhada por duas malhas $1$ e $2$.** Escreva a LKT do **contorno externo** das duas juntas — a **supermalha** —, pulando o ramo da fonte. Isso dá **uma** equação; a segunda é a restrição da fonte:
+  $$
+  i_1 - i_2 = I_s
+  $$
+
+<Circuito
+  alt="Duas malhas com uma fonte de corrente de 2 A no ramo comum, formando uma supermalha"
+  itens={[
+    { t: "fio", pts: [[0, 2], [0, 0], [2, 0]] },
+    { t: "V", de: [0, 2], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2, 0], rotulo: "2 Ω" },
+    { t: "fio", pts: [[2, 0], [4, 0], [4, 2]] },
+    { t: "R", de: [2, 0], para: [4, 0], rotulo: "6 Ω" },
+    { t: "I", de: [2, 0], para: [2, 2], valor: "2 A" },
+    { t: "R", de: [4, 0], para: [4, 2], rotulo: "3 Ω" },
+    { t: "fio", pts: [[0, 2], [4, 2]] },
+    { t: "corrente", de: [0.6, 1.2], para: [1.4, 1.2], rotulo: "i₁" },
+    { t: "corrente", de: [2.6, 1.2], para: [3.4, 1.2], rotulo: "i₂" },
+  ]}
+>
+
+A LKT da supermalha percorre o contorno externo e ignora o ramo do meio: $-10 + 2i_1 + 6i_2 + 3i_2 = 0$. A segunda equação vem da fonte: $i_1 - i_2 = 2$.
+
+</Circuito>
+
+<Caixa tipo="dica" rotulo="Nodal ou malhas?">
+
+Conte as incógnitas antes de começar. Um circuito com $6$ nós e $3$ malhas dá $5$ equações pela nodal e $3$ pelas malhas — resolva por malhas. E olhe as fontes: cada **fonte de tensão ligada à referência** apaga uma incógnita da nodal; cada **fonte de corrente numa malha só** apaga uma incógnita das malhas. Quando a prova manda o método, obedeça: o enunciado costuma dizer "resolva por análise de nós" justamente porque o outro caminho é feio.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a supermalha acima">
+
+Com $i_1 = i_2 + 2$:
+
+$$
+-10 + 2(i_2 + 2) + 9i_2 = 0
+\quad\Longrightarrow\quad
+11 i_2 = 6
+\quad\Longrightarrow\quad
+i_2 = 0{,}545\ \mathrm{A}
+$$
+
+e $i_1 = 2{,}545\ \mathrm{A}$. Conferindo pela potência: a fonte de $10\ \mathrm{V}$ fornece $10 \times 2{,}545 = 25{,}45\ \mathrm{W}$; os resistores absorvem $2(2{,}545)^2 + 9(0{,}545)^2 = 12{,}95 + 2{,}67 = 15{,}62\ \mathrm{W}$. Faltam $9{,}82\ \mathrm{W}$, e são da **fonte de corrente**: tomando o fio de baixo como referência, o nó do meio está em $9(0{,}545) = 4{,}91\ \mathrm{V}$, e os $2\ \mathrm{A}$ atravessam a fonte **do $+$ para o $-$** — ela absorve $4{,}91 \times 2 = 9{,}82\ \mathrm{W}$. Agora fecha: $12{,}95 + 2{,}67 + 9{,}82 = 25{,}44\ \mathrm{W}$ ✔
 
 </Caixa>
 
