@@ -1,0 +1,113 @@
+---
+origem: "2025.2"
+tema: "Superposição · Supernó com cinco resistores"
+temaId: superposicao
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores da tensão $v$ e da corrente $i$ por **superposição**. O circuito com a fonte de tensão deve ser resolvido pela Análise de Malhas e o circuito com a fonte de corrente, pela Análise de Nós.
+
+<Circuito
+  alt="Fonte de 10 V com 8 Ω, 5 Ω por cima, dois 4 Ω, fonte controlada 2v, dois 8 Ω e fonte de 8 A"
+  itens={[
+    { t: "V", de: [0, 3.8], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "R", de: [1.4, 0], para: [5.2, 0], valor: "5 Ω" },
+    { t: "R", de: [1.4, 0], para: [1.4, 1.9], valor: "8 Ω" },
+    { t: "tensao", de: [1.4, 1.9], para: [1.4, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [1.4, 1.9] },
+    { t: "R", de: [1.4, 1.9], para: [1.4, 3.8], valor: "4 Ω" },
+    { t: "fio", pts: [[1.4, 1.9], [3, 1.9]] },
+    { t: "no", em: [3, 1.9] },
+    { t: "R", de: [3, 1.9], para: [3, 3.8], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [3, 2], para: [3, 2.9], rotulo: "i", abaixo: false },
+    { t: "Vd", de: [5.2, 1.9], para: [3, 1.9], rotulo: "2v V" },
+    { t: "no", em: [5.2, 1.9] },
+    { t: "fio", pts: [[5.2, 0], [5.2, 1.9]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "R", de: [5.2, 1.9], para: [5.2, 3.8], valor: "8 Ω", abaixo: true },
+    { t: "fio", pts: [[5.2, 0], [7, 0]] },
+    { t: "R", de: [7, 0], para: [7, 3.8], valor: "8 Ω", abaixo: true },
+    { t: "fio", pts: [[7, 0], [8.6, 0]] },
+    { t: "I", de: [8.6, 3.8], para: [8.6, 0], valor: "8 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.8], [8.6, 3.8]] },
+  ]}
+>
+
+O nó da direita da fonte controlada sobe pelo fio até o trilho de cima: o $5\ \Omega$, os dois $8\ \Omega$ da direita e a fonte de $8\ \mathrm{A}$ chegam **todos** naquele mesmo nó. Reconhecer isso reduz o problema a **uma** incógnita.
+
+</Circuito>
+
+<Gabarito>
+$v = -\dfrac{20}{79} \approx -0{,}25\ \mathrm{V}$  ·  $i = \dfrac{405}{158} \approx 2{,}56\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 0 — convenções.** Fio de baixo como referência; a fonte de $10\ \mathrm{V}$ ($+$ em cima) fixa o trilho da esquerda. Chame $x$ o potencial do nó do meio (o mesmo do $8\ \Omega$ de cima, dos dois $4\ \Omega$ e da fonte controlada) e $v_Q$ o do nó da direita. Então
+
+$$
+v = v_T - x
+\qquad
+i = \frac{x}{4}
+\qquad
+v_Q = x - 2v
+$$
+
+**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $8\ \mathrm{A}$ vira **circuito aberto**), com $v_T = 10\ \mathrm{V}$ e $v_Q = 3x - 20$. LKC no supernó formado pelo nó do meio e pelo da direita:
+
+$$
+\frac{x - 10}{8} + \frac{x}{4} + \frac{x}{4} + 2\cdot\frac{3x - 20}{8} + \frac{3x - 30}{5} = 0
+$$
+
+$$
+\times 40:\quad 79x = 490
+\qquad\Longrightarrow\qquad
+x = \frac{490}{79}\ \mathrm{V}
+$$
+
+$$
+\boxed{v' = 10 - \frac{490}{79} = \frac{300}{79} \approx 3{,}80\ \mathrm{V}}
+\qquad
+\boxed{i' = \frac{245}{158} \approx 1{,}55\ \mathrm{A}}
+$$
+
+**Passo 2 — subcircuito da fonte de $8\ \mathrm{A}$** (a de $10\ \mathrm{V}$ vira **curto**, $v_T = 0$). Agora $v = -x$ e $v_Q = 3x$:
+
+$$
+\frac{x}{8} + \frac{x}{4} + \frac{x}{4} + 2\cdot\frac{3x}{8} + \frac{3x}{5} - 8 = 0
+\qquad\xrightarrow{\times 40}\qquad
+79x = 320
+$$
+
+$$
+\boxed{v'' = -\frac{320}{79} \approx -4{,}05\ \mathrm{V}}
+\qquad
+\boxed{i'' = \frac{80}{79} \approx 1{,}01\ \mathrm{A}}
+$$
+
+**Passo 3 — soma:**
+
+$$
+v = \frac{300}{79} - \frac{320}{79} = \boxed{-\frac{20}{79} \approx -0{,}25\ \mathrm{V}}
+$$
+
+$$
+i = \frac{245}{158} + \frac{80}{79} = \frac{245 + 160}{158} = \boxed{\frac{405}{158} \approx 2{,}56\ \mathrm{A}}
+$$
+
+**Conferência —** no circuito completo, $79x = 810$, ou $x = \tfrac{810}{79} \approx 10{,}25\ \mathrm{V}$, e daí $v = 10 - 10{,}25 = -0{,}25\ \mathrm{V}$ ✔ e $i = x/4 \approx 2{,}56\ \mathrm{A}$ ✔ O $v$ quase nulo é resultado de duas parcelas grandes que quase se cancelam — se você errar uma delas, o sinal do resultado muda, e é o tipo de questão em que vale refazer as duas contas.
+</Passos>
