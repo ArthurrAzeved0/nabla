@@ -1,0 +1,92 @@
+---
+origem: "2023.1"
+tema: "Máxima transferência de potência · Thévenin com duas fontes de corrente"
+temaId: maxima-transferencia-de-potencia
+pontos: 2 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o circuito equivalente de **Thévenin** e de **Norton** fora dos pontos $a$ e $b$. Qual seria o valor da resistência $R$ para que ela recebesse a **máxima potência** do resto do circuito?
+
+<Circuito
+  alt="Fonte de 2 A, resistência R entre a e b, 4 Ω, fonte de 3 A, 6 Ω e fonte de 10 V"
+  itens={[
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "texto", em: [1.6, -0.5], texto: "a" },
+    { t: "R", de: [1.6, 0], para: [1.6, 2.6], valor: "R", abaixo: true },
+    { t: "R", de: [1.6, 0], para: [3.6, 0], valor: "4 Ω" },
+    { t: "no", em: [3.6, 0] },
+    { t: "I", de: [3.6, 0], para: [3.6, 2.6], valor: "3 A", abaixo: true },
+    { t: "R", de: [3.6, 0], para: [5.6, 0], valor: "6 Ω" },
+    { t: "V", de: [5.6, 2.6], para: [5.6, 0], valor: "10 V", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [5.6, 2.6]] },
+    { t: "no", em: [1.6, 2.6] },
+    { t: "texto", em: [1.6, 3.1], texto: "b" },
+  ]}
+>
+
+A carga é $R$, entre $a$ e $b$. Removida ela, o circuito vira uma cadeia sem ramificações — e a LKC em cada nó tem só dois termos.
+
+</Circuito>
+
+<Gabarito>
+Thévenin: $V_{\mathrm{Th}} = 12\ \mathrm{V}$, $R_{\mathrm{Th}} = 10\ \Omega$  ·  Norton: $I_N = 1{,}2\ \mathrm{A}$, $R_N = 10\ \Omega$  ·  $R = 10\ \Omega$, com $p_{\max} = 3{,}6\ \mathrm{W}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — remova $R$** e tome o fio de baixo como referência. Chame $P$ o nó da fonte de $3\ \mathrm{A}$; o nó da fonte de $10\ \mathrm{V}$ está fixo em $10\ \mathrm{V}$.
+
+**Passo 2 — $V_{\mathrm{Th}}$.** Sem a carga, os $2\ \mathrm{A}$ da primeira fonte não têm outro caminho: atravessam inteiros o $4\ \Omega$.
+
+$$
+v_a - v_P = 4 \cdot 2 = 8\ \mathrm{V}
+$$
+
+LKC no nó $P$: chegam os $2\ \mathrm{A}$ pelo $4\ \Omega$, saem $3\ \mathrm{A}$ pela fonte de corrente, e a diferença vem pelo $6\ \Omega$:
+
+$$
+2 = 3 + \frac{v_P - 10}{6}
+\qquad\Longrightarrow\qquad
+v_P = 4\ \mathrm{V}
+$$
+
+$$
+\boxed{V_{\mathrm{Th}} = v_a = 4 + 8 = 12\ \mathrm{V}}
+$$
+
+**Passo 3 — $R_{\mathrm{Th}}$.** Desative: as duas fontes de corrente viram **circuito aberto** e a de $10\ \mathrm{V}$ vira **fio**. De $a$ para dentro sobra um caminho só — $4\ \Omega$ até $P$, e $6\ \Omega$ de $P$ até o fio de baixo:
+
+$$
+\boxed{R_{\mathrm{Th}} = R_N = 4 + 6 = 10\ \Omega}
+$$
+
+**Passo 4 — Norton:**
+
+$$
+\boxed{I_N = \frac{12}{10} = 1{,}2\ \mathrm{A}}
+$$
+
+**Passo 5 — máxima transferência.** A condição é o casamento:
+
+$$
+\boxed{R = R_{\mathrm{Th}} = 10\ \Omega}
+\qquad\qquad
+p_{\max} = \frac{V_{\mathrm{Th}}^2}{4R_{\mathrm{Th}}} = \frac{144}{40} = \boxed{3{,}6\ \mathrm{W}}
+$$
+
+**Conferência —** com $R = 10\ \Omega$ a corrente é $12/20 = 0{,}6\ \mathrm{A}$ e $p = 10(0{,}6)^2 = 3{,}6\ \mathrm{W}$ ✔ Metade da potência da fonte equivalente se perde em $R_{\mathrm{Th}}$ — o rendimento no ponto de máxima potência é de $50\%$, como sempre.
+</Passos>
