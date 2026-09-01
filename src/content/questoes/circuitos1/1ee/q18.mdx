@@ -1,0 +1,108 @@
+---
+origem: "2023.2"
+tema: "Superposição · Fonte de tensão controlada em paralelo com a carga"
+temaId: superposicao
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores da tensão $v$ e da corrente $i$ usando **superposição**. O circuito com a fonte de corrente deve ser resolvido pela análise de nós e o circuito com a fonte de tensão por análise de malhas.
+
+<Circuito
+  alt="Fonte de 10 V, 2 Ω, fonte de 5 A, 5 Ω, 10 Ω por cima, 4 Ω e fonte controlada 2v1"
+  itens={[
+    { t: "fio", pts: [[0, -1.3], [4.4, -1.3]] },
+    { t: "R", de: [1.4, -1.3], para: [3.2, -1.3], valor: "10 Ω" },
+    { t: "fio", pts: [[0, -1.3], [0, 0]] },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "2 Ω" },
+    { t: "tensao", de: [2.2, 0], para: [0, 0], rotulo: "v" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [4.4, 0], valor: "5 Ω" },
+    { t: "corrente", de: [2.4, 0], para: [3.2, 0], rotulo: "i" },
+    { t: "no", em: [4.4, 0] },
+    { t: "fio", pts: [[4.4, -1.3], [4.4, 0]] },
+    { t: "V", de: [0, 2.6], para: [0, 0], valor: "10 V" },
+    { t: "I", de: [2.2, 2.6], para: [2.2, 0], valor: "5 A" },
+    { t: "tensao", de: [2.2, 2.6], para: [2.2, 0], rotulo: "v_1", abaixo: true },
+    { t: "R", de: [4.4, 0], para: [4.4, 2.6], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0]] },
+    { t: "Vd", de: [6.2, 2.6], para: [6.2, 0], rotulo: "2v_1 V", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [6.2, 2.6]] },
+  ]}
+>
+
+A fonte **controlada de tensão** está ligada direto entre o nó da direita e a referência: ela **fixa** aquele potencial em $2v_1$, e por isso a LKC naquele nó nem precisa ser escrita.
+
+</Circuito>
+
+<Gabarito>
+$v = -\dfrac{70}{3} \approx -23{,}3\ \mathrm{V}$  ·  $i = -\dfrac{20}{3} \approx -6{,}67\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 0 — convenções.** Fio de baixo como referência. Chame $v_L$ o nó da esquerda, $v_M$ o nó da fonte de $5\ \mathrm{A}$ (que é a variável de controle, $v_1 = v_M$) e $v_D$ o nó da direita. A fonte controlada, com o $+$ em cima, impõe
+
+$$
+v_D = 2v_1 = 2v_M
+$$
+
+e as grandezas pedidas são $v = v_L - v_M$ e $i = (v_M - v_D)/5$.
+
+**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $5\ \mathrm{A}$ vira **circuito aberto**), com $v_L' = 10\ \mathrm{V}$. A LKC no nó $M$ é a única equação:
+
+$$
+0 = \frac{v_M' - 10}{2} + \frac{v_M' - 2v_M'}{5}
+\qquad\xrightarrow{\times 10}\qquad
+0 = 5v_M' - 50 - 2v_M'
+$$
+
+$$
+v_M' = \frac{50}{3}\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{v' = 10 - \frac{50}{3} = -\frac{20}{3} \approx -6{,}67\ \mathrm{V}}
+$$
+
+$$
+\boxed{i' = \frac{1}{5}\left(\frac{50}{3} - \frac{100}{3}\right) = -\frac{10}{3} \approx -3{,}33\ \mathrm{A}}
+$$
+
+**Passo 2 — subcircuito da fonte de $5\ \mathrm{A}$** (a de $10\ \mathrm{V}$ vira **curto**, $v_L'' = 0$):
+
+$$
+5 = \frac{v_M''}{2} + \frac{v_M'' - 2v_M''}{5}
+\qquad\xrightarrow{\times 10}\qquad
+50 = 5v_M'' - 2v_M''
+\qquad\Longrightarrow\qquad
+v_M'' = \frac{50}{3}\ \mathrm{V}
+$$
+
+$$
+\boxed{v'' = 0 - \frac{50}{3} = -\frac{50}{3} \approx -16{,}67\ \mathrm{V}}
+\qquad
+\boxed{i'' = -\frac{10}{3} \approx -3{,}33\ \mathrm{A}}
+$$
+
+**Passo 3 — soma:**
+
+$$
+v = -\frac{20}{3} - \frac{50}{3} = \boxed{-\frac{70}{3} \approx -23{,}3\ \mathrm{V}}
+$$
+
+$$
+i = -\frac{10}{3} - \frac{10}{3} = \boxed{-\frac{20}{3} \approx -6{,}67\ \mathrm{A}}
+$$
+
+**Conferência —** no circuito completo, a LKC em $M$ dá $3v_M = 100$, ou $v_M = \tfrac{100}{3}\ \mathrm{V}$, e daí $v = 10 - \tfrac{100}{3} = -\tfrac{70}{3}$ ✔ e $v_D = \tfrac{200}{3}$, com $i = \tfrac15(\tfrac{100}{3} - \tfrac{200}{3}) = -\tfrac{20}{3}$ ✔ Os dois sinais negativos dizem a mesma coisa: o nó do meio está **acima** dos dois vizinhos, ao contrário do que as marcações do enunciado sugerem.
+</Passos>
