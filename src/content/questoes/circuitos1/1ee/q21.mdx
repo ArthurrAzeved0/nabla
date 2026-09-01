@@ -1,0 +1,108 @@
+---
+origem: "2024.1"
+tema: "Superposição · Três fontes independentes e um supernó"
+temaId: superposicao
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores da tensão $v$ e da corrente $i$ usando **superposição**. O circuito com a fonte de corrente deve ser resolvido pela análise de nós e o circuito com as fontes de tensão por análise de malhas.
+
+<Circuito
+  alt="Fonte de 17 V invertida, 3 Ω, fonte controlada 2v, 3 Ω por cima, fonte de 6 V, 2 Ω e fonte de 2 A"
+  itens={[
+    { t: "V", de: [0, 0], para: [0, 2.6], valor: "17 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "3 Ω" },
+    { t: "tensao", de: [2.2, 0], para: [0, 0], rotulo: "v" },
+    { t: "no", em: [2.2, 0] },
+    { t: "Id", de: [2.2, 2.6], para: [2.2, 0], rotulo: "2v A" },
+    { t: "fio", pts: [[2.2, 0], [2.2, -1.3]] },
+    { t: "R", de: [2.2, -1.3], para: [4.4, -1.3], valor: "3 Ω" },
+    { t: "fio", pts: [[4.4, -1.3], [4.4, 0]] },
+    { t: "fio", pts: [[2.2, 0], [2.8, 0]] },
+    { t: "corrente", de: [2.3, 0], para: [2.75, 0], rotulo: "i", abaixo: false },
+    { t: "V", de: [2.8, 0], para: [3.8, 0], valor: "6 V" },
+    { t: "fio", pts: [[3.8, 0], [4.4, 0]] },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 2.6], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0]] },
+    { t: "I", de: [6.2, 0], para: [6.2, 2.6], valor: "2 A", abaixo: true },
+    { t: "fio", pts: [[0, 2.6], [6.2, 2.6]] },
+  ]}
+>
+
+Atenção à fonte de $17\ \mathrm{V}$: o $-$ está **em cima**, então aquele nó fica em $-17\ \mathrm{V}$. E os nós ligados pela fonte de $6\ \mathrm{V}$ formam um **supernó** — o $3\ \Omega$ de cima é interno a ele e se cancela na LKC.
+
+</Circuito>
+
+<Gabarito>
+$v = -\dfrac{21}{17} \approx -1{,}24\ \mathrm{V}$  ·  $i = -\dfrac{15}{17} \approx -0{,}88\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 0 — convenções.** Fio de baixo como referência. A fonte de $17\ \mathrm{V}$ com o $-$ em cima dá $v_L = -17\ \mathrm{V}$. Chame $v_M$ o nó da fonte controlada e $v_N$ o nó do $2\ \Omega$; a fonte de $6\ \mathrm{V}$ ($-$ à esquerda) impõe $v_N = v_M + 6$. As grandezas pedidas são $v = v_L - v_M$ e $i$, a corrente do ramo da fonte de $6\ \mathrm{V}$.
+
+**Passo 1 — subcircuito das duas fontes de tensão** (a de $2\ \mathrm{A}$ vira **circuito aberto**). LKC no supernó $\{M, N\}$, com a controlada injetando $2v'$:
+
+$$
+\frac{v_M' + 17}{3} - 2v' + \frac{v_M' + 6}{2} = 0
+\qquad\text{com}\qquad
+v' = -17 - v_M'
+$$
+
+$$
+\times 6:\quad 17\,v_M' + 256 = 0
+\qquad\Longrightarrow\qquad
+v_M' = -\frac{256}{17}\ \mathrm{V}
+$$
+
+$$
+\boxed{v' = -\frac{33}{17} \approx -1{,}94\ \mathrm{V}}
+\qquad\qquad
+\boxed{i' = -\frac{43}{17} \approx -2{,}53\ \mathrm{A}}
+$$
+
+**Passo 2 — subcircuito da fonte de $2\ \mathrm{A}$** (as duas de tensão viram **curto**). Com a de $6\ \mathrm{V}$ em curto, $M$ e $N$ passam a ser o **mesmo nó**, e o $3\ \Omega$ de cima fica em paralelo com esse curto — logo **não conduz**:
+
+$$
+\frac{v_M''}{3} + \frac{v_M''}{2} + 2 - 2v'' = 0
+\qquad\text{com}\qquad
+v'' = -v_M''
+$$
+
+$$
+\times 6:\quad 17\,v_M'' = -12
+\qquad\Longrightarrow\qquad
+v_M'' = -\frac{12}{17}\ \mathrm{V}
+$$
+
+$$
+\boxed{v'' = \frac{12}{17} \approx 0{,}71\ \mathrm{V}}
+\qquad\qquad
+\boxed{i'' = \frac{28}{17} \approx 1{,}65\ \mathrm{A}}
+$$
+
+**Passo 3 — soma:**
+
+$$
+v = -\frac{33}{17} + \frac{12}{17} = \boxed{-\frac{21}{17} \approx -1{,}24\ \mathrm{V}}
+$$
+
+$$
+i = -\frac{43}{17} + \frac{28}{17} = \boxed{-\frac{15}{17} \approx -0{,}88\ \mathrm{A}}
+$$
+
+**Conferência —** no circuito completo, o supernó dá $17v_M + 268 = 0$, logo $v_M = -\tfrac{268}{17}\ \mathrm{V}$ e $v = -17 + \tfrac{268}{17} = -\tfrac{21}{17}$ ✔ A LKC no nó $N$ fecha com $i = -\tfrac{15}{17}$ ✔ Note o detalhe do passo 2: um resistor **em paralelo com um curto** tem tensão nula e por isso corrente nula — é o que torna aquele subcircuito tão simples.
+</Passos>
