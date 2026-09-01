@@ -1,0 +1,101 @@
+---
+origem: "2020.1"
+tema: "Leis de Kirchhoff · Resistência equivalente e divisores"
+temaId: leis-de-kirchhoff
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os valores de $v$ e de $i$, utilizando as **Leis de Kirchhoff** (não utilizar Análise de Nós ou Análise de Malhas).
+
+<Circuito
+  alt="Fonte de 5 A alimentando 8 Ω; em série 4 Ω até um nó de onde saem 20 Ω e um ramo com 2 Ω seguido de 4 Ω em paralelo com 12 Ω"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "R", de: [1.4, 0], para: [1.4, 3], valor: "8 Ω" },
+    { t: "R", de: [1.4, 0], para: [3.4, 0], valor: "4 Ω" },
+    { t: "no", em: [3.4, 0] },
+    { t: "R", de: [3.4, 0], para: [3.4, 1.6], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [3.4, 0.3], para: [3.4, 1.3], rotulo: "i", abaixo: false },
+    { t: "no", em: [3.4, 1.6] },
+    { t: "fio", pts: [[2.6, 1.6], [4.2, 1.6]] },
+    { t: "R", de: [2.6, 1.6], para: [2.6, 3], valor: "4 Ω" },
+    { t: "R", de: [4.2, 1.6], para: [4.2, 3], valor: "12 Ω", abaixo: true },
+    { t: "fio", pts: [[3.4, 0], [5.8, 0]] },
+    { t: "R", de: [5.8, 0], para: [5.8, 3], valor: "20 Ω", abaixo: true },
+    { t: "tensao", de: [5.8, 3], para: [5.8, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [5.8, 3]] },
+  ]}
+>
+
+O enunciado proíbe nodal e malhas de propósito: o circuito se reduz por associação série–paralelo de fora para dentro, e as duas incógnitas saem por divisão de corrente.
+
+</Circuito>
+
+<Gabarito>
+$v = 10\ \mathrm{V}$  ·  $i = 2\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 —** Reduza de dentro para fora, começando pelo par mais afastado da fonte. Os $4\ \Omega$ e $12\ \Omega$ estão **em paralelo** entre o nó $C$ e o fio de baixo:
+
+$$
+4 \parallel 12 = \frac{4 \cdot 12}{16} = 3\ \Omega
+$$
+
+**Passo 2 —** Esse $3\ \Omega$ está **em série** com o $2\ \Omega$, formando o ramo que sai do nó $B$:
+
+$$
+R_{B,\text{ramo}} = 2 + 3 = 5\ \Omega
+$$
+
+e esse ramo está **em paralelo** com os $20\ \Omega$, também ligados de $B$ ao fio de baixo:
+
+$$
+R_B = 5 \parallel 20 = \frac{100}{25} = 4\ \Omega
+$$
+
+**Passo 3 —** De $A$ até o fio de baixo há dois caminhos: os $8\ \Omega$, e os $4\ \Omega$ em série com o $R_B$ que acabamos de achar:
+
+$$
+4 + 4 = 8\ \Omega
+\qquad\Longrightarrow\qquad
+R_{\mathrm{eq}} = 8 \parallel 8 = 4\ \Omega
+$$
+
+**Passo 4 —** A fonte injeta $5\ \mathrm{A}$ nesse equivalente, o que fixa o potencial do nó $A$:
+
+$$
+v_A = 5 \cdot 4 = 20\ \mathrm{V}
+$$
+
+Como os dois caminhos a partir de $A$ valem $8\ \Omega$ cada, a corrente se divide **igualmente**: $2{,}5\ \mathrm{A}$ por cada um. A que entra no ramo do $4\ \Omega$ chega ao nó $B$:
+
+$$
+v_B = 2{,}5 \cdot R_B = 2{,}5 \cdot 4 = \boxed{v = 10\ \mathrm{V}}
+$$
+
+porque $v$ é justamente a tensão sobre os $20\ \Omega$, que estão entre $B$ e o fio de baixo.
+
+**Passo 5 —** Em $B$ os $2{,}5\ \mathrm{A}$ se dividem entre os $20\ \Omega$ e o ramo de $5\ \Omega$. A corrente $i$ é a do ramo de $5\ \Omega$:
+
+$$
+i = \frac{v_B}{5} = \frac{10}{5} = \boxed{2\ \mathrm{A}}
+$$
+
+**Conferência —** pelos $20\ \Omega$ passam $10/20 = 0{,}5\ \mathrm{A}$, e $0{,}5 + 2 = 2{,}5\ \mathrm{A}$ ✔ E a potência: a fonte entrega $20 \times 5 = 100\ \mathrm{W}$; os $8\ \Omega$ dissipam $20^2/8 = 50\ \mathrm{W}$, os $4\ \Omega$ da série $4(2{,}5)^2 = 25\ \mathrm{W}$, os $20\ \Omega$ $10^2/20 = 5\ \mathrm{W}$, o $2\ \Omega$ $2(2)^2 = 8\ \mathrm{W}$ e o par paralelo $3(2)^2 = 12\ \mathrm{W}$ — somando $100\ \mathrm{W}$ ✔
+</Passos>
