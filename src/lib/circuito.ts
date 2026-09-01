@@ -59,6 +59,12 @@ export type Item =
       /** seta atravessando o símbolo: resistor variável, potenciômetro */
       variavel?: boolean;
     }
+  /** amp. op. ideal: triângulo com duas entradas à esquerda e a saída à direita.
+      `em` é o CENTRO; os terminais caem em pontos inteiros da grade —
+      entrada de cima em `em + (-1, -1)`, a de baixo em `em + (-1, +1)` e a
+      saída em `em + (+1, 0)`. Por padrão a inversora (−) é a de cima, que é
+      como a apostila da cadeira desenha; `maisEmCima` troca as duas. */
+  | { t: "ampop"; em: Ponto; rotulo?: string; maisEmCima?: boolean }
   | { t: "fio"; pts: readonly Ponto[] }
   | { t: "no"; em: Ponto }
   | { t: "terra"; em: Ponto }
@@ -211,6 +217,27 @@ export function desenhar(itens: readonly Item[], op: Opcoes): string {
         it.pts.forEach((p) => caber(...P(p)));
         const pts = it.pts.map((p) => P(p).map(num).join(",")).join(" ");
         out.push(`<polyline points="${pts}" fill="none" stroke="${COR_FIO}" stroke-width="1.8" stroke-linejoin="round"/>`);
+        break;
+      }
+      case "ampop": {
+        const [x, y] = P(it.em);
+        /* `g` aqui é o lado da grade, definido acima */
+        /* o triângulo é um pouco mais alto que os terminais, para os fios
+           entrarem dentro da borda e não na quina */
+        const alt = g * 1.35;
+        caber(x - g - 2, y - alt - 2);
+        caber(x + g + 2, y + alt + 2);
+        out.push(
+          `<polygon points="${num(x - g)},${num(y - alt)} ${num(x - g)},${num(y + alt)} ${num(x + g)},${num(y)}" ` +
+            `fill="var(--surface-2)" stroke="${COR_CORPO}" stroke-width="1.8" stroke-linejoin="round"/>`,
+        );
+        /* Não há pernas a desenhar: como `alt > g`, os três terminais já caem
+           SOBRE a borda do triângulo, e o fio do autor encosta neles. */
+        const cima = it.maisEmCima ? "+" : "−";
+        const baixo = it.maisEmCima ? "−" : "+";
+        T(x - g + 14, y - g + 5, cima, 15, COR_SINAL);
+        T(x - g + 14, y + g + 5, baixo, 15, COR_SINAL);
+        if (it.rotulo) T(x + 2, y + 4, it.rotulo, 11, COR_ROT);
         break;
       }
       case "no": {
