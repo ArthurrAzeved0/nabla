@@ -1,0 +1,118 @@
+---
+origem: "2019.1"
+tema: "Condições iniciais · Duas chaves que fecham juntas"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $di/dt$ e $dv/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Fonte de 20 V, chave em paralelo com 2 Ω, 6 Ω, 3 Ω, indutor de 0,1 H, 2 Ω, capacitor de 1/5 F, chave e 10 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [0.7, 0]] },
+    { t: "no", em: [0.7, 0] },
+    { t: "R", de: [0.7, 0], para: [2.6, 0], valor: "2 Ω" },
+    { t: "fio", pts: [[0.7, 0], [0.7, -1.5]] },
+    { t: "S", de: [0.7, -1.5], para: [2.6, -1.5], rotulo: "fecha" },
+    { t: "fio", pts: [[2.6, -1.5], [2.6, 0]] },
+    { t: "no", em: [2.6, 0] },
+    { t: "R", de: [2.6, 0], para: [2.6, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [2.6, 0], para: [4.8, 0], valor: "3 Ω" },
+    { t: "no", em: [4.8, 0] },
+    { t: "L", de: [4.8, 0], para: [4.8, 3.4], valor: "0,1 H", abaixo: true },
+    { t: "corrente", de: [4.8, 0.4], para: [4.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "R", de: [4.8, 0], para: [7.8, 0], valor: "2 Ω" },
+    { t: "no", em: [7.8, 0] },
+    { t: "C", de: [7.8, 0], para: [7.8, 3.4], valor: "1/5 F" },
+    { t: "tensao", de: [7.8, 3.4], para: [7.8, 0], rotulo: "v", abaixo: true },
+    { t: "S", de: [7.8, 0], para: [9.6, 0], rotulo: "fecha" },
+    { t: "no", em: [9.6, 0] },
+    { t: "R", de: [9.6, 0], para: [9.6, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+  ]}
+>
+
+As duas chaves estão **abertas** em $t < 0$ e **fecham** em $t = 0$. A da esquerda põe o $2\ \Omega$ em curto; a da direita liga o $10\ \Omega$ ao capacitor. Repare que em $0^-$ o indutor é um fio, e é ele que puxa o nó do capacitor para o terra.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $i = \dfrac{10}{3} \approx 3{,}33\ \mathrm{A}$ · $v = 0$ · $\dfrac{di}{dt} = 0$ · $\dfrac{dv}{dt} = 0$
+
+Em $0^+$: $i = \dfrac{10}{3}\ \mathrm{A}$ · $v = 0$ · $\dfrac{di}{dt} = 40\ \mathrm{A/s}$ · $\dfrac{dv}{dt} = 10\ \mathrm{V/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Chaves abertas, regime permanente: o capacitor é um **aberto** e o indutor é um **fio**.
+
+Com a chave da direita aberta, nada atravessa o $2\ \Omega$ da direita nem o $10\ \Omega$. E como o indutor curto-circuita o nó central, esse nó está no **potencial do terra** — logo o capacitor, que enxerga esse mesmo nó pelo $2\ \Omega$ sem corrente, também está descarregado:
+
+$$
+v(0^-) = 0
+$$
+
+**Passo 2 — a corrente em $0^-$.** Sobra a fonte com o $2\ \Omega$ em série e, depois, o $6\ \Omega$ em paralelo com o $3\ \Omega$ (este último aterrado pelo indutor):
+
+$$
+6 \parallel 3 = 2\ \Omega
+\qquad\Longrightarrow\qquad
+v_B = 20 \cdot \frac{2}{2 + 2} = 10\ \mathrm{V}
+$$
+
+$$
+\boxed{i(0^-) = \frac{10}{3} \approx 3{,}33\ \mathrm{A}}
+\qquad\qquad
+i_{6\Omega}(0^-) = \frac{10}{6} = \frac{5}{3}\ \mathrm{A}
+$$
+
+Em regime permanente nada varia, então as duas derivadas em $0^-$ são **zero**.
+
+**Passo 3 — continuidade.** Corrente de indutor e tensão de capacitor não saltam:
+
+$$
+\boxed{i(0^+) = \frac{10}{3}\ \mathrm{A}}
+\qquad\qquad
+\boxed{v(0^+) = 0}
+$$
+
+**Passo 4 — o circuito em $0^+$.** A chave da esquerda fechou e o $2\ \Omega$ ficou em curto: o nó $B$ passa a valer **os 20 V da fonte**. O indutor vira uma fonte de corrente de $10/3$ A e o capacitor, uma fonte de tensão de $0$ V.
+
+LKC no nó central $C$, com $v_C$ desconhecido:
+
+$$
+\frac{20 - v_C}{3} = \frac{10}{3} + \frac{v_C - 0}{2}
+\qquad\Longrightarrow\qquad
+40 - 2v_C = 20 + 3v_C
+\qquad\Longrightarrow\qquad
+v_C(0^+) = 4\ \mathrm{V}
+$$
+
+**Passo 5 — a derivada da corrente.** O indutor está entre o nó $C$ e o terra, então cai nele os $4$ V inteiros:
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{v_L}{L} = \frac{4}{0{,}1} = 40\ \mathrm{A/s}}
+$$
+
+**Passo 6 — a derivada da tensão.** A corrente que desce o $2\ \Omega$ da direita é $4/2 = 2$ A. Ela chega ao nó do capacitor, e como $v(0^+) = 0$ o $10\ \Omega$ não conduz nada — os $2$ A vão **todos** para o capacitor:
+
+$$
+\boxed{\frac{dv(0^+)}{dt} = \frac{i_C}{C} = \frac{2}{1/5} = 10\ \mathrm{V/s}}
+$$
+
+**Conferência —** pela fonte saem $\frac{20}{6} + \frac{20 - 4}{3} = \frac{10}{3} + \frac{16}{3} = \frac{26}{3}$ A, e o ramo do $3\ \Omega$ leva $16/3$ A, que se divide em $10/3$ A pelo indutor e $2$ A pelo $2\ \Omega$ ✔ Confere com a resolução da prova.
+</Passos>
