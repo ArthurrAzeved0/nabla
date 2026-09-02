@@ -1,0 +1,103 @@
+---
+origem: "2019.2"
+tema: "Primeira ordem · Troca de fonte que não muda nada"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ e a tensão $v$ para $t > 0$, sabendo que o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Fonte de 16 V com 2 Ω, chave, indutor de 2 H, 1 Ω, 2 Ω, segunda chave, outro 2 Ω e fonte de 16 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "16 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 Ω" },
+    { t: "S", de: [2, 0], para: [3.4, 0], rotulo: "abre" },
+    { t: "no", em: [3.4, 0] },
+    { t: "L", de: [3.4, 0], para: [3.4, 3.4], valor: "2 H" },
+    { t: "corrente", de: [3.4, 0.4], para: [3.4, 1.4], rotulo: "i", abaixo: true },
+    { t: "R", de: [3.4, 0], para: [5.4, 0], valor: "1 Ω" },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3.4], para: [5.4, 0], rotulo: "v", abaixo: false },
+    { t: "S", de: [5.4, 0], para: [6.8, 0], rotulo: "fecha" },
+    { t: "no", em: [6.8, 0] },
+    { t: "R", de: [6.8, 0], para: [6.8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[6.8, 0], [8.4, 0]] },
+    { t: "I", de: [8.4, 3.4], para: [8.4, 0], valor: "16 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [8.4, 3.4]] },
+  ]}
+>
+
+As duas chaves trocam a alimentação: sai a fonte de $16\ \mathrm{V}$ com o seu $2\ \Omega$, entra a de $16\ \mathrm{A}$ com outro $2\ \Omega$. Os dois $2\ \Omega$ ficam **em paralelo** depois da troca.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 8\ \mathrm{A}$ e $v(t) = 8\ \mathrm{V}$ — **constantes**, para todo $t > 0$. Não há transitório.
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial** (primeira chave fechada, segunda aberta; indutor em fio). O indutor aterra o seu nó, então o ramo $1\ \Omega + 2\ \Omega$ não conduz e toda a fonte atravessa o $2\ \Omega$ de entrada:
+
+$$
+i(0) = \frac{16}{2} = 8\ \mathrm{A}
+$$
+
+**Passo 2 — o circuito para $t > 0$.** A primeira chave abre e a segunda fecha. Os dois $2\ \Omega$ passam a ligar o mesmo par de nós:
+
+$$
+2 \parallel 2 = 1\ \Omega
+$$
+
+Sobra: fonte de $16\ \mathrm{A}$, o $1\ \Omega$ horizontal, o indutor de $2\ \mathrm{H}$ e o $1\ \Omega$ equivalente.
+
+**Passo 3 — a equação.** Chamando $i'$ a corrente do $1\ \Omega$ equivalente:
+
+$$
+16 = i + i'
+\qquad\qquad
+1 \cdot i' = 1 \cdot i + 2\,\frac{di}{dt}
+$$
+
+Substituindo a primeira na segunda:
+
+$$
+16 - i = i + 2\frac{di}{dt}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di}{dt} + i = 8}
+$$
+
+**Passo 4 — resposta completa.** Característica $s = -1$, forçada $i_f = 8\ \mathrm{A}$:
+
+$$
+i(t) = A\,e^{-t} + 8,
+\qquad
+i(0) = 8 = A + 8
+\qquad\Longrightarrow\qquad
+A = 0
+$$
+
+$$
+\boxed{i(t) = 8\ \mathrm{A}}
+\qquad\Longrightarrow\qquad
+\boxed{v = 1\cdot i + 2\,\frac{di}{dt} = 8 + 0 = 8\ \mathrm{V}}
+$$
+
+**O que a questão ensina —** a troca de fonte foi calibrada para que o valor de regime **novo** seja igual ao **antigo**: $16\ \mathrm{V}/2\ \Omega$ e $16\ \mathrm{A}$ com $1\ \Omega$ equivalente dão a mesma corrente de $8\ \mathrm{A}$ no indutor. Com $A = 0$, o transitório não existe — o circuito troca de alimentação sem sentir.
+
+**Conferência —** em regime, o indutor é fio e a corrente se divide entre ele e o $1\ \Omega$ equivalente… na verdade a LKC dá $16 = 8 + 8$ ✔ e a LKT, $1(8) = 1(8) + 0$ ✔ Confere com a resolução da prova.
+</Passos>
