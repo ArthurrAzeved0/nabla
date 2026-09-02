@@ -1,0 +1,127 @@
+---
+origem: "2017.1"
+tema: "Condições iniciais · Fonte controlada que muda de sinal na comutação"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q37.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado que o circuito abaixo está em **regime permanente** em $t = 0^-$, determine os valores de $i_1$, $v$, $i$, $dv/dt$ e $di/dt$ no instante $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 60 V para 20 V, 5 Ω, capacitor de 1/5 F, 5 Ω, fonte controlada de 2i1 V, 10 Ω e indutor de 2 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "60 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "fio", pts: [[1.8, 0], [2.8, 0]] },
+    { t: "corrente", de: [1.9, 0], para: [2.7, 0], rotulo: "i_1" },
+    { t: "R", de: [2.8, 0], para: [5, 0], valor: "5 Ω" },
+    { t: "no", em: [5, 0] },
+    { t: "C", de: [5, 0], para: [5, 3.4], valor: "1/5 F" },
+    { t: "tensao", de: [5, 3.4], para: [5, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [5, 0], para: [7.6, 0], valor: "5 Ω" },
+    { t: "no", em: [7.6, 0] },
+    { t: "Vd", de: [7.6, 3.4], para: [7.6, 0], rotulo: "2i_1 V" },
+    { t: "R", de: [7.6, 0], para: [10.2, 0], valor: "10 Ω" },
+    { t: "no", em: [10.2, 0] },
+    { t: "L", de: [10.2, 0], para: [10.2, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [10.2, 0.4], para: [10.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [10.2, 3.4]] },
+  ]}
+>
+
+O ponto da questão é que a fonte controlada segue $i_1$ — e $i_1$ **inverte de sinal** quando a fonte cai de $60$ para $20\ \mathrm{V}$, porque o capacitor continua carregado com $35\ \mathrm{V}$, mais do que a fonte nova.
+
+</Circuito>
+
+<Gabarito>
+$i_1(0^+) = -3\ \mathrm{A}$ · $v(0^+) = 35\ \mathrm{V}$ · $i(0^+) = 1\ \mathrm{A}$
+
+$\dfrac{dv(0^+)}{dt} = -56\ \mathrm{V/s}$ · $\dfrac{di(0^+)}{dt} = -8\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Fonte de $60\ \mathrm{V}$, capacitor **aberto** e indutor **em fio**. Com o capacitor aberto, a mesma $i_1$ atravessa os dois $5\ \Omega$; e o indutor põe o nó do $2\ \mathrm{H}$ no terra.
+
+A LKT da malha da esquerda passa pela fonte controlada:
+
+$$
+60 = 5\,i_1 + 5\,i_1 + 2\,i_1 = 12\,i_1
+\qquad\Longrightarrow\qquad
+i_1(0^-) = 5\ \mathrm{A}
+$$
+
+**Passo 2 — as condições iniciais.** A fonte controlada vale $2i_1 = 10\ \mathrm{V}$, e o $10\ \Omega$ liga esse nó ao terra:
+
+$$
+i(0^-) = \frac{10}{10} = 1\ \mathrm{A}
+\qquad\qquad
+v(0^-) = 60 - 5 \cdot 5 = 35\ \mathrm{V}
+$$
+
+Por continuidade:
+
+$$
+\boxed{v(0^+) = 35\ \mathrm{V}}
+\qquad\qquad
+\boxed{i(0^+) = 1\ \mathrm{A}}
+$$
+
+**Passo 3 — a corrente do primeiro $5\ \Omega$ em $0^+$.** A fonte caiu para $20\ \mathrm{V}$, mas o capacitor **ainda vale 35 V**. A LKT da primeira malha dá
+
+$$
+20 = 5\,i_1 + 35
+\qquad\Longrightarrow\qquad
+\boxed{i_1(0^+) = -3\ \mathrm{A}}
+$$
+
+A corrente inverteu: agora é o capacitor que empurra corrente **de volta** para a fonte.
+
+**Passo 4 — a corrente do segundo $5\ \Omega$.** Com $i_1 = -3$, a fonte controlada vale $2i_1 = -6\ \mathrm{V}$, e o $5\ \Omega$ vai do nó do capacitor ($35$ V) até ela:
+
+$$
+i_2(0^+) = \frac{35 - (-6)}{5} = \frac{41}{5} = 8{,}2\ \mathrm{A}
+$$
+
+**Passo 5 — a derivada da tensão.** LKC no nó do capacitor: entra $i_1$, sai $i_2$ e sai $i_C$:
+
+$$
+i_C(0^+) = i_1 - i_2 = -3 - 8{,}2 = -11{,}2\ \mathrm{A}
+$$
+
+$$
+\boxed{\frac{dv(0^+)}{dt} = \frac{i_C}{C} = \frac{-11{,}2}{1/5} = -56\ \mathrm{V/s}}
+$$
+
+**Passo 6 — a derivada da corrente.** No nó da direita só há o $10\ \Omega$ e o indutor, então o $10\ \Omega$ leva os mesmos $i = 1$ A. A LKT do último laço dá a tensão do indutor:
+
+$$
+2\,i_1 = 10\,i + v_L
+\qquad\Longrightarrow\qquad
+-6 = 10 + v_L
+\qquad\Longrightarrow\qquad
+v_L(0^+) = -16\ \mathrm{V}
+$$
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{-16}{2} = -8\ \mathrm{A/s}}
+$$
+
+**Conferência —** em $0^-$ tudo era positivo e parado; em $0^+$ as duas derivadas são **negativas**, e faz sentido: o circuito foi alimentado por $60\ \mathrm{V}$, guardou energia, e agora só tem $20\ \mathrm{V}$ para sustentar — tudo tem de cair ✔ Confere com a resolução da prova.
+</Passos>
