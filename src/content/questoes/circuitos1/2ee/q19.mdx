@@ -1,0 +1,130 @@
+---
+origem: "2020.2"
+tema: "Condições iniciais · Chave que curto-circuita a fonte"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito a seguir encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $i_1$, $dv/dt$ e $di/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Fonte de 10 A, chave, 6 Ω, 10 Ω, 4 Ω, indutor de 2 H e capacitor de 1/10 F por cima"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "S", de: [1.4, 0], para: [1.4, 3], rotulo: "fecha", abaixo: true },
+    { t: "fio", pts: [[1.4, 0], [1.4, -1.4]] },
+    { t: "C", de: [1.4, -1.4], para: [6.4, -1.4], valor: "1/10 F", abaixo: true },
+    { t: "tensao", de: [1.4, -1.4], para: [6.4, -1.4], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[6.4, -1.4], [6.4, 0]] },
+    { t: "R", de: [1.4, 0], para: [4, 0], valor: "6 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3], valor: "10 Ω", abaixo: true },
+    { t: "corrente", de: [4, 0.4], para: [4, 1.4], rotulo: "i_1", abaixo: false },
+    { t: "R", de: [4, 0], para: [6.4, 0], valor: "4 Ω" },
+    { t: "no", em: [6.4, 0] },
+    { t: "L", de: [6.4, 0], para: [6.4, 3], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [6.4, 0.4], para: [6.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3], [6.4, 3]] },
+  ]}
+>
+
+A chave é um **ramo vertical logo depois da fonte**: ao fechar, ela curto-circuita a fonte de $10\ \mathrm{A}$ e aterra aquele nó. O capacitor liga, por cima, esse mesmo nó ao nó do indutor.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $i = \tfrac{50}{7} \approx 7{,}14\ \mathrm{A}$, $v = -\tfrac{620}{7} \approx -88{,}57\ \mathrm{V}$, $i_1 = \tfrac{20}{7} \approx 2{,}86\ \mathrm{A}$, $dv/dt = 0$, $di/dt = 0$
+·
+Em $0^+$: $i = \tfrac{50}{7}\ \mathrm{A}$, $v = -\tfrac{620}{7}\ \mathrm{V}$, $i_1 = -\tfrac{30}{7} \approx -4{,}29\ \mathrm{A}$, $dv/dt = \tfrac{300}{7} \approx 42{,}86\ \mathrm{V/s}$, $di/dt = -\tfrac{310}{7} \approx -44{,}29\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$** (chave **aberta**; capacitor aberto, indutor em fio). O indutor põe o nó da direita em $0\ \mathrm{V}$, então do nó do meio saem o $10\ \Omega$ e o $4\ \Omega$ em paralelo:
+
+$$
+10 \parallel 4 = \frac{40}{14} = \frac{20}{7}\ \Omega
+$$
+
+Toda a fonte atravessa o $6\ \Omega$, logo
+
+$$
+v_{\text{meio}} = 10 \cdot \frac{20}{7} = \frac{200}{7}\ \mathrm{V}
+$$
+
+$$
+\boxed{i(0^-) = \frac{200/7}{4} = \frac{50}{7}\ \mathrm{A}}
+\qquad\qquad
+\boxed{i_1(0^-) = \frac{200/7}{10} = \frac{20}{7}\ \mathrm{A}}
+$$
+
+A tensão do capacitor, com o $+$ à **direita** (no nó do indutor, que está em $0$):
+
+$$
+\boxed{v(0^-) = -6(10) - 4\left(\frac{50}{7}\right) = -60 - \frac{200}{7} = -\frac{620}{7}\ \mathrm{V}}
+$$
+
+E em regime permanente as duas derivadas são nulas:
+
+$$
+\boxed{\frac{dv(0^-)}{dt} = 0}
+\qquad\qquad
+\boxed{\frac{di(0^-)}{dt} = 0}
+$$
+
+**Passo 2 — continuidade:** $i(0^+) = \tfrac{50}{7}\ \mathrm{A}$ e $v(0^+) = -\tfrac{620}{7}\ \mathrm{V}$.
+
+**Passo 3 — circuito em $0^+$.** A chave fecha e **aterra o nó da esquerda**, tirando a fonte do jogo. O capacitor vira fonte de $-\tfrac{620}{7}\ \mathrm{V}$ e o indutor, fonte de $\tfrac{50}{7}\ \mathrm{A}$. Chamando $i_{R1}$ a corrente do $6\ \Omega$ e $i_{R2}$ a do $4\ \Omega$, as leis dão
+
+$$
+10\,i_1 + 6\,i_{R1} = 0
+\qquad
+6\,i_{R1} + 4\,i_{R2} + v = 0
+\qquad
+i_{R1} = i_1 + i_{R2}
+\qquad
+i_{R2} = i_C + i
+$$
+
+Resolvendo o sistema:
+
+$$
+i_{R1} = \frac{50}{7}\ \mathrm{A},
+\qquad
+\boxed{i_1(0^+) = -\frac{30}{7}\ \mathrm{A}},
+\qquad
+i_{R2} = \frac{80}{7}\ \mathrm{A}
+$$
+
+**Passo 4 — as duas derivadas:**
+
+$$
+i_C = i_{R2} - i = \frac{80}{7} - \frac{50}{7} = \frac{30}{7}\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = 10\,i_C = \frac{300}{7} \approx 42{,}86\ \mathrm{V/s}}
+$$
+
+A tensão do indutor é a própria tensão do capacitor (os dois ligam o mesmo par de nós, agora que o da esquerda está aterrado):
+
+$$
+v_L(0^+) = v(0^+) = -\frac{620}{7}\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{-620/7}{2} = -\frac{310}{7} \approx -44{,}29\ \mathrm{A/s}}
+$$
+
+**Conferência —** $i_1$ **inverte de sinal** em $t=0$: antes a corrente descia pelo $10\ \Omega$ alimentada pela fonte; depois, com a fonte curto-circuitada, quem manda é o capacitor carregado, e ela sobe. As grandezas de estado ($i$ e $v$) não saltam ✔ Confere com a resolução da prova.
+</Passos>
