@@ -1,0 +1,133 @@
+---
+origem: "2016.2"
+tema: "Condições iniciais · Uma chave comuta, a outra parte o circuito em dois"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q40.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito a seguir encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $i_g$, $i_1$, $v$, $di/dt$ e $dv/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 20 V para 40 V, 2 Ω com capacitor de 1/10 F, 5 Ω, chave, indutor de 2 H com 10 Ω, fonte controlada de 2i1 A e 4 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "40 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "fio", pts: [[1.8, 0], [4.2, 0]] },
+    { t: "corrente", de: [2, 0], para: [2.8, 0], rotulo: "i_g" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 1.7], valor: "2 Ω", abaixo: true },
+    { t: "C", de: [4.2, 1.7], para: [4.2, 3.4], valor: "1/10 F" },
+    { t: "tensao", de: [4.2, 3.4], para: [4.2, 1.7], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "R", de: [6.8, 0], para: [6.8, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i_1", abaixo: false },
+    { t: "S", de: [6.8, 0], para: [8.8, 0], rotulo: "abre" },
+    { t: "no", em: [8.8, 0] },
+    { t: "L", de: [8.8, 0], para: [8.8, 1.7], valor: "2 H", abaixo: true },
+    { t: "R", de: [8.8, 1.7], para: [8.8, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "corrente", de: [8.8, 0.4], para: [8.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[8.8, 0], [11.6, 0]] },
+    { t: "no", em: [11.6, 0] },
+    { t: "Id", de: [11.6, 3.4], para: [11.6, 0], rotulo: "2i_1 A" },
+    { t: "fio", pts: [[11.6, 0], [14.2, 0]] },
+    { t: "no", em: [14.2, 0] },
+    { t: "R", de: [14.2, 0], para: [14.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [14.2, 3.4]] },
+  ]}
+>
+
+São **duas** chaves em $t = 0$: a da esquerda comuta a fonte de $20$ para $40\ \mathrm{V}$, e a do meio **abre**, partindo o circuito em dois pedaços. Depois disso o lado direito vive só da fonte controlada — que continua obedecendo ao $i_1$ do lado esquerdo.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $i_g = 3\ \mathrm{A}$ · $i_1 = 4\ \mathrm{A}$ · $v = 20\ \mathrm{V}$ · $\dfrac{di}{dt} = 0$ · $\dfrac{dv}{dt} = 0$
+
+Em $0^+$: $i_g = 18\ \mathrm{A}$ · $i_1 = 8\ \mathrm{A}$ · $v = 20\ \mathrm{V}$ · $\dfrac{di}{dt} = 18\ \mathrm{A/s}$ · $\dfrac{dv}{dt} = 100\ \mathrm{V/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Fonte de $20\ \mathrm{V}$, chave do meio **fechada**, capacitor **aberto** e indutor **em fio**. Com o capacitor aberto, o $2\ \Omega$ não conduz e **todo o topo é um nó a $20\ \mathrm{V}$**:
+
+$$
+\boxed{v(0^-) = 20\ \mathrm{V}}
+\qquad\qquad
+\boxed{i_1(0^-) = \frac{20}{5} = 4\ \mathrm{A}}
+$$
+
+O indutor curto-circuita a si mesmo, então o ramo do $10\ \Omega$ vê os $20$ V inteiros:
+
+$$
+i(0^-) = \frac{20}{10} = 2\ \mathrm{A}
+\qquad\qquad
+i_{4\Omega}(0^-) = \frac{20}{4} = 5\ \mathrm{A}
+$$
+
+**Passo 2 — a corrente da fonte em $0^-$.** A fonte controlada vale $2i_1 = 8\ \mathrm{A}$ e **injeta** no nó de topo, ajudando a fonte. A LKC dá
+
+$$
+i_g + 8 = 0 + 4 + 2 + 5 = 11
+\qquad\Longrightarrow\qquad
+\boxed{i_g(0^-) = 3\ \mathrm{A}}
+$$
+
+Em regime permanente nada varia, então as duas derivadas em $0^-$ valem **zero**.
+
+**Passo 3 — o lado esquerdo em $0^+$.** A chave do meio abriu e a fonte virou $40\ \mathrm{V}$. Sobram, à esquerda, o ramo $2\ \Omega$ + capacitor e o $5\ \Omega$.
+
+O capacitor **não salta**: $\boxed{v(0^+) = 20\ \mathrm{V}}$. Então o $2\ \Omega$ passa a conduzir:
+
+$$
+i_C(0^+) = \frac{40 - 20}{2} = 10\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{10}{1/10} = 100\ \mathrm{V/s}}
+$$
+
+$$
+\boxed{i_1(0^+) = \frac{40}{5} = 8\ \mathrm{A}}
+\qquad\qquad
+\boxed{i_g(0^+) = 10 + 8 = 18\ \mathrm{A}}
+$$
+
+**Passo 4 — o lado direito em $0^+$.** Ele ficou isolado, alimentado apenas pela fonte controlada, que agora vale
+
+$$
+2\,i_1(0^+) = 16\ \mathrm{A}
+$$
+
+O indutor mantém $i(0^+) = 2\ \mathrm{A}$, então o resto vai para o $4\ \Omega$:
+
+$$
+i_{4\Omega}(0^+) = 16 - 2 = 14\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+v_{n\acute{o}} = 4 \cdot 14 = 56\ \mathrm{V}
+$$
+
+**Passo 5 — a derivada da corrente.** Desse nó, o $10\ \Omega$ cai $10 \cdot 2 = 20\ \mathrm{V}$, e o que sobra é do indutor:
+
+$$
+v_L(0^+) = 56 - 20 = 36\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{36}{2} = 18\ \mathrm{A/s}}
+$$
+
+**Conferência —** repare no efeito em cascata: dobrar a fonte dobrou $i_1$, o que dobrou a fonte controlada, o que jogou o nó da direita de $20$ para $56\ \mathrm{V}$ ✔ E a chave do meio, ao abrir, tirou do lado direito o caminho pela fonte — é isso que faz o $4\ \Omega$ receber $14$ A em vez de $5$ ✔ Confere com a resolução da prova.
+</Passos>
