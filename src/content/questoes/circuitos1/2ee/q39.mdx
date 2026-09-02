@@ -1,0 +1,128 @@
+---
+origem: "2017.1"
+tema: "Criticamente amortecido · RLC com o L em série na fonte"
+temaId: criticamente-amortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q39.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine $v(t)$ e $i(t)$ para $t > 0$. Considere que $i(0) = 2\ \mathrm{A}$ e $v(0) = 5\ \mathrm{V}$.
+
+<Circuito
+  alt="Fonte de 10 V com indutor de 5 H em série, 5 Ω em paralelo com capacitor de 1/20 F"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [1, 0]] },
+    { t: "corrente", de: [0.1, 0], para: [0.9, 0], rotulo: "i" },
+    { t: "L", de: [1, 0], para: [3.2, 0], valor: "5 H" },
+    { t: "no", em: [3.2, 0] },
+    { t: "R", de: [3.2, 0], para: [3.2, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[3.2, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "C", de: [7, 0], para: [7, 3.4], valor: "1/20 F" },
+    { t: "tensao", de: [7, 3.4], para: [7, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+  ]}
+>
+
+O indutor está **em série com a fonte**, e o $5\ \Omega$ com o capacitor em paralelo na saída. Aqui as duas condições iniciais já vêm dadas — o serviço é montar a equação, descobrir que $\alpha = \omega_0$ e casar as constantes.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 10 - 5\,e^{-2t} + 10\,t\,e^{-2t}\ \mathrm{V}$
+·
+$i(t) = 2 + t\,e^{-2t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas leis.** LKT da malha da fonte e LKC no nó de saída:
+
+$$
+10 = 5\frac{di}{dt} + v
+\qquad\qquad
+i = \frac{v}{5} + \frac{1}{20}\frac{dv}{dt}
+$$
+
+**Passo 2 — elimine $i$.** Derivando a LKC e levando na LKT:
+
+$$
+\frac{di}{dt} = \frac{1}{5}\frac{dv}{dt} + \frac{1}{20}\frac{d^2v}{dt^2}
+$$
+
+$$
+10 = 5\left(\frac{1}{5}\frac{dv}{dt} + \frac{1}{20}\frac{d^2v}{dt^2}\right) + v = \frac{1}{4}\frac{d^2v}{dt^2} + \frac{dv}{dt} + v
+$$
+
+$$
+\times 4 \qquad
+\frac{d^2v}{dt^2} + 4\frac{dv}{dt} + 4\,v = 40
+$$
+
+**Passo 3 — resposta natural.** De $s^2 + 4s + 4 = 0$:
+
+$$
+s = \frac{-4 \pm \sqrt{16 - 16}}{2} = -2 \quad \text{(raiz dupla)}
+$$
+
+Discriminante nulo: caso **criticamente amortecido**, e a segunda solução ganha um $t$:
+
+$$
+v_n(t) = A_1 e^{-2t} + A_2\,t\,e^{-2t}
+$$
+
+**Passo 4 — resposta forçada.** $4K = 40$, logo $v_f = 10\ \mathrm{V}$.
+
+**Passo 5 — a primeira constante.** De $v(0) = 5$:
+
+$$
+5 = A_1 + 10
+\qquad\Longrightarrow\qquad
+A_1 = -5
+$$
+
+**Passo 6 — a segunda.** A corrente inicial dá a derivada da tensão, pela própria LKC:
+
+$$
+2 = \frac{5}{5} + \frac{1}{20}\frac{dv(0)}{dt}
+\qquad\Longrightarrow\qquad
+\frac{dv(0)}{dt} = 20\ \mathrm{V/s}
+$$
+
+Derivando $v$ e avaliando em zero, $\dfrac{dv(0)}{dt} = A_2 - 2A_1 = A_2 + 10$:
+
+$$
+A_2 + 10 = 20
+\qquad\Longrightarrow\qquad
+A_2 = 10
+$$
+
+$$
+\boxed{v(t) = 10 - 5\,e^{-2t} + 10\,t\,e^{-2t}\ \mathrm{V}}
+$$
+
+**Passo 7 — a corrente.** Volte na LKC, com $\dfrac{dv}{dt} = e^{-2t}(20 - 20t)$:
+
+$$
+i = \frac{v}{5} + \frac{1}{20}\frac{dv}{dt}
+= 2 - e^{-2t} + 2t\,e^{-2t} + e^{-2t} - t\,e^{-2t}
+$$
+
+$$
+\boxed{i(t) = 2 + t\,e^{-2t}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t = 0$: $v = 5$ V e $i = 2$ A, as condições dadas ✔ Em $t \to \infty$ o capacitor abre e o indutor vira fio, então $i = 10/5 = 2$ A e $v = 10$ V ✔ Curioso: $i$ começa e termina em $2$ A, mas **sobe** no meio — o pico de $t\,e^{-2t}$ está em $t = 0{,}5$ s ✔ Confere com a resolução da prova.
+</Passos>
