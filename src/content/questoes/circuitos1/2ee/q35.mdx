@@ -1,0 +1,112 @@
+---
+origem: "2017.2"
+tema: "Resposta ao degrau · Fonte controlada que multiplica a indutância"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado que o circuito abaixo está em **regime permanente** em $t = 0^-$, determine $v(t)$ para $t > 0$.
+
+<Circuito
+  alt="Comutação de 20 V para 50 V, indutor de 2 H em série, fonte controlada de 2v A e 5 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "fecha" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "abre" },
+    { t: "fio", pts: [[1.8, 0], [2.8, 0]] },
+    { t: "corrente", de: [1.9, 0], para: [2.7, 0], rotulo: "i" },
+    { t: "L", de: [2.8, 0], para: [5, 0], valor: "2 H", abaixo: true },
+    { t: "tensao", de: [5, 0], para: [2.8, 0], rotulo: "v", abaixo: false },
+    { t: "no", em: [5, 0] },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "2v A" },
+    { t: "fio", pts: [[5, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [7.4, 0.4], para: [7.4, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+A fonte controlada depende de $v$, que é a tensão **do próprio indutor** — ou seja, de $di/dt$. Quando ela entra na LKC, aparece um segundo $di/dt$ na equação, e o efeito prático é uma indutância equivalente **onze vezes maior**.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = \dfrac{30}{11}\,e^{-\frac{5}{22}t} \approx 2{,}73\,e^{-0,227t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Com a fonte de $20\ \mathrm{V}$ e regime permanente, o indutor é um **fio**, logo $v(0^-) = 0$ — e a fonte controlada, que vale $2v$, entrega **zero**. Sobra a fonte direto no $5\ \Omega$:
+
+$$
+i(0^-) = \frac{20}{5} = 4\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i(0^+) = 4\ \mathrm{A}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Com a fonte de $50\ \mathrm{V}$:
+
+$$
+50 = v + 5\,i_R
+\qquad\qquad
+i + 2v = i_R
+\qquad\qquad
+v = 2\frac{di}{dt}
+$$
+
+**Passo 3 — a equação.** Substituindo $i_R$ e depois $v$:
+
+$$
+50 = v + 5\,(i + 2v) = 5\,i + 11\,v = 5\,i + 22\frac{di}{dt}
+$$
+
+$$
+22\frac{di}{dt} + 5\,i = 50
+$$
+
+**Passo 4 — resposta natural.** De $22s + 5 = 0$ vem $s = -\dfrac{5}{22} \approx -0{,}227$:
+
+$$
+i_n(t) = A\,e^{-\frac{5}{22}t}
+$$
+
+**Passo 5 — resposta forçada.** $5K = 50$, logo $i_f = 10\ \mathrm{A}$.
+
+**Passo 6 — a constante.** De $i(0) = 4$:
+
+$$
+4 = A + 10
+\qquad\Longrightarrow\qquad
+A = -6
+\qquad\Longrightarrow\qquad
+i(t) = 10 - 6\,e^{-\frac{5}{22}t}\ \mathrm{A}
+$$
+
+**Passo 7 — a tensão.** Ela é a do indutor:
+
+$$
+v(t) = 2\frac{di}{dt} = 2 \cdot 6 \cdot \frac{5}{22}\,e^{-\frac{5}{22}t}
+$$
+
+$$
+\boxed{v(t) = \frac{30}{11}\,e^{-\frac{5}{22}t} \approx 2{,}73\,e^{-0,227t}\ \mathrm{V}}
+$$
+
+**Conferência —** em $t \to \infty$ o indutor vira fio, $v \to 0$, a fonte controlada morre e $i \to 50/5 = 10$ A ✔ Em $t = 0$: $v = 30/11 \approx 2{,}73$ V, então $i_R = i + 2v = 4 + 5{,}45 = 9{,}45$ A e a LKT fecha em $2{,}73 + 5 \cdot 9{,}45 \approx 50$ V ✔ Confere com a resolução da prova.
+</Passos>
