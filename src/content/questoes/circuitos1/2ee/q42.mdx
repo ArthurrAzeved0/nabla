@@ -1,0 +1,133 @@
+---
+origem: "2016.2"
+tema: "Superamortecido · RLC paralelo puro com fonte de corrente"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q42.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ para $t > 0$, sabendo que a tensão no capacitor e a corrente no indutor em $t = 0$ valem, respectivamente, $4\ \mathrm{V}$ e $2\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 10 A alimentando 4 Ω, indutor de 3 H e capacitor de 1/24 F, todos em paralelo"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2.4, 0.4], para: [2.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "L", de: [5, 0], para: [5, 3.4], valor: "3 H", abaixo: true },
+    { t: "corrente", de: [5, 0.4], para: [5, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "fio", pts: [[5, 0], [9, 0]] },
+    { t: "no", em: [9, 0] },
+    { t: "C", de: [9, 0], para: [9, 3.4], valor: "1/24 F" },
+    { t: "tensao", de: [9, 3.4], para: [9, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [9, 3.4]] },
+  ]}
+>
+
+Esse **é** RLC paralelo puro — os três elementos veem a mesma tensão. Dá para usar $\alpha = \dfrac{1}{2RC}$ e $\omega_0 = \dfrac{1}{\sqrt{LC}}$ direto, e a equação em $i_L$ confirma.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 23\,e^{-2t} - 22\,e^{-4t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Como tudo está em paralelo, a tensão $v$ é comum:
+
+$$
+10 = i + i_L + i_C
+\qquad
+i = \frac{v}{4}
+\qquad
+v = 3\frac{di_L}{dt}
+\qquad
+i_C = \frac{1}{24}\frac{dv}{dt}
+$$
+
+**Passo 2 — a equação em $i_L$.** Trocando $v$ por $3\,di_L/dt$:
+
+$$
+10 = \frac{3}{4}\frac{di_L}{dt} + i_L + \frac{3}{24}\frac{d^2 i_L}{dt^2}
+\qquad \times 8 \qquad
+\frac{d^2 i_L}{dt^2} + 6\frac{di_L}{dt} + 8\,i_L = 80
+$$
+
+**Passo 3 — resposta natural.** De $s^2 + 6s + 8 = 0$:
+
+$$
+s = \frac{-6 \pm \sqrt{36 - 32}}{2} = \frac{-6 \pm 2}{2}
+\qquad\Longrightarrow\qquad
+s_1 = -2
+\quad
+s_2 = -4
+$$
+
+Duas raízes reais distintas: **superamortecido**. Pelas fórmulas do RLC paralelo dá o mesmo:
+
+$$
+\alpha = \frac{1}{2RC} = \frac{1}{2 \cdot 4 \cdot \frac{1}{24}} = 3
+\qquad
+\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{3/24}} = 2\sqrt{2}
+$$
+
+e $\alpha^2 = 9 > \omega_0^2 = 8$, com $s = -3 \pm \sqrt{9 - 8} = -3 \pm 1$.
+
+**Passo 4 — resposta forçada.** $8K = 80$, logo $i_{L,f} = 10\ \mathrm{A}$.
+
+**Passo 5 — as constantes.** De $i_L(0) = 2$:
+
+$$
+A_1 + A_2 = -8
+$$
+
+E de $v(0) = 4 = 3\dfrac{di_L(0)}{dt}$, ou seja $\dfrac{di_L(0)}{dt} = \dfrac{4}{3}$:
+
+$$
+-2A_1 - 4A_2 = \frac{4}{3}
+\qquad\Longrightarrow\qquad
+A_1 + 2A_2 = -\frac{2}{3}
+$$
+
+Subtraindo as duas:
+
+$$
+A_2 = \frac{22}{3}
+\qquad\qquad
+A_1 = -\frac{46}{3}
+$$
+
+$$
+i_L(t) = -\frac{46}{3}\,e^{-2t} + \frac{22}{3}\,e^{-4t} + 10\ \mathrm{A}
+$$
+
+**Passo 6 — chegue em $i$.** Primeiro a tensão:
+
+$$
+v = 3\frac{di_L}{dt} = 3\left(\frac{92}{3}\,e^{-2t} - \frac{88}{3}\,e^{-4t}\right) = 92\,e^{-2t} - 88\,e^{-4t}\ \mathrm{V}
+$$
+
+E $i$ é simplesmente $v/4$:
+
+$$
+\boxed{i(t) = 23\,e^{-2t} - 22\,e^{-4t}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t = 0$: $v = 92 - 88 = 4$ V ✔ e $i = 23 - 22 = 1$ A, que é $4/4$ ✔ Em $t \to \infty$ o indutor vira fio e curto-circuita tudo: $v \to 0$, $i \to 0$ e $i_L \to 10$ A, os $10$ A inteiros da fonte ✔ Confere com a resolução da prova.
+</Passos>
