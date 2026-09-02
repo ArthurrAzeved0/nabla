@@ -1,0 +1,110 @@
+---
+origem: "2017.1"
+tema: "Resposta ao degrau · Comutação para uma fonte menor"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q38.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito abaixo está em **regime permanente** em $t = 0^-$. Determine $v(t)$ e $i(t)$ para $t > 0$.
+
+<Circuito
+  alt="Comutação de 20 V para 10 V, 6 Ω em série, 4 Ω em paralelo com capacitor de 1/10 F"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "10 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "6 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [8, 0]] },
+    { t: "no", em: [8, 0] },
+    { t: "C", de: [8, 0], para: [8, 3.4], valor: "1/10 F" },
+    { t: "tensao", de: [8, 3.4], para: [8, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [8, 3.4]] },
+  ]}
+>
+
+Primeira ordem simples, mas com o degrau **descendo**: a fonte cai de $20$ para $10\ \mathrm{V}$, então o capacitor se **descarrega** de $8$ para $4\ \mathrm{V}$ em vez de carregar.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 4 + 4\,e^{-\frac{25}{6}t}\ \mathrm{V}$
+·
+$i(t) = 1 + e^{-\frac{25}{6}t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Com a fonte de $20\ \mathrm{V}$ e o capacitor **aberto**, o $6\ \Omega$ e o $4\ \Omega$ ficam em série:
+
+$$
+i_g(0^-) = \frac{20}{6 + 4} = 2\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+v(0^-) = 4 \cdot 2 = 8\ \mathrm{V}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Com a fonte de $10\ \mathrm{V}$:
+
+$$
+10 = 6\,i_g + v
+\qquad\qquad
+i_g = i + i_C
+\qquad\qquad
+i = \frac{v}{4}
+\qquad\qquad
+i_C = \frac{1}{10}\frac{dv}{dt}
+$$
+
+**Passo 3 — a equação.** Substituindo:
+
+$$
+10 = 6\left(\frac{v}{4} + \frac{1}{10}\frac{dv}{dt}\right) + v = \frac{5}{2}\,v + \frac{3}{5}\frac{dv}{dt}
+\qquad \times 10 \qquad
+6\frac{dv}{dt} + 25\,v = 100
+$$
+
+**Passo 4 — resposta natural.** De $6s + 25 = 0$ vem $s = -\dfrac{25}{6}$:
+
+$$
+v_n(t) = A\,e^{-\frac{25}{6}t}
+$$
+
+**Passo 5 — resposta forçada.** $25K = 100$, logo $v_f = 4\ \mathrm{V}$.
+
+**Passo 6 — a constante.** De $v(0) = 8$:
+
+$$
+8 = A + 4
+\qquad\Longrightarrow\qquad
+A = 4
+$$
+
+$$
+\boxed{v(t) = 4 + 4\,e^{-\frac{25}{6}t}\ \mathrm{V}}
+$$
+
+**Passo 7 — a corrente.** É a do $4\ \Omega$, direto pela lei de Ohm:
+
+$$
+\boxed{i(t) = \frac{v}{4} = 1 + e^{-\frac{25}{6}t}\ \mathrm{A}}
+$$
+
+**Conferência —** $\tau = R_{eq}C = (6 \parallel 4) \cdot \frac{1}{10} = \frac{24}{10} \cdot \frac{1}{10} = \frac{6}{25}$ s, que é $1/|s|$ ✔ Em $t = 0$: $v = 8$ V e $i = 2$ A, as condições iniciais ✔ Em $t \to \infty$: $v = 4$ V e $i = 1$ A, que é $10/10$ ✔ Confere com a resolução da prova.
+</Passos>
