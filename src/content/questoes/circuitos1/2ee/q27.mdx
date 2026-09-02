@@ -1,0 +1,133 @@
+---
+origem: "2019.2"
+tema: "Segunda ordem · RLC em série e paralelo ao mesmo tempo"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$, dado que $v(0) = 8\ \mathrm{V}$ e $i(0) = 6\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 32 V com 6 Ω e indutor de 1/2 H em série, alimentando capacitor de 1/2 F em paralelo com 2 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "32 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "6 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "L", de: [2, 0], para: [4, 0], valor: "1/2 H" },
+    { t: "no", em: [4, 0] },
+    { t: "C", de: [4, 0], para: [4, 3.4], valor: "1/2 F" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4, 0], [5.8, 0]] },
+    { t: "R", de: [5.8, 0], para: [5.8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+  ]}
+>
+
+Não é RLC série nem paralelo puro: o $6\ \Omega$ e o indutor estão **em série** com a fonte, e o capacitor e o $2\ \Omega$ **em paralelo** na saída. Não há fórmula pronta de $\alpha$ — tem de montar a equação.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 8 + 0{,}39\,e^{-1,38t} - 0{,}39\,e^{-11,62t}\ \mathrm{V}$
+·
+$i(t) = 4 - 0{,}07\,e^{-1,38t} + 2{,}07\,e^{-11,62t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas relações.** A LKT da malha da fonte e a LKC no nó do capacitor:
+
+$$
+32 = 6\,i + \frac{1}{2}\frac{di}{dt} + v
+\qquad\qquad
+i = \frac{1}{2}\frac{dv}{dt} + \frac{v}{2}
+$$
+
+**Passo 2 — elimine $i$.** Da LKC, $\dfrac{dv}{dt} = 2i - v$, e derivando,
+
+$$
+\frac{d^2v}{dt^2} = 2\frac{di}{dt} - \frac{dv}{dt}
+$$
+
+Da LKT, $\dfrac{di}{dt} = 64 - 12\,i - 2\,v$. Substituindo e trocando $i$ por $\tfrac12\left(\dfrac{dv}{dt} + v\right)$:
+
+$$
+\boxed{\frac{d^2v}{dt^2} + 13\,\frac{dv}{dt} + 16\,v = 128}
+$$
+
+**Passo 3 — as frequências naturais.** $2\alpha = 13$ e $\omega_0^2 = 16$:
+
+$$
+\alpha = 6{,}5
+\qquad
+\omega_0 = 4
+\qquad\Longrightarrow\qquad
+\alpha > \omega_0: \ \textbf{superamortecido}
+$$
+
+$$
+s = \frac{-13 \pm \sqrt{169 - 64}}{2} = \frac{-13 \pm \sqrt{105}}{2}
+\qquad\Longrightarrow\qquad
+s_1 = -1{,}38,
+\quad
+s_2 = -11{,}62
+$$
+
+**Passo 4 — resposta completa.** Forçada $v_f = 128/16 = 8\ \mathrm{V}$:
+
+$$
+v(t) = A_1 e^{-1,38t} + A_2 e^{-11,62t} + 8
+$$
+
+**Passo 5 — as duas constantes.** De $v(0) = 8$:
+
+$$
+A_1 + A_2 = 0
+$$
+
+A segunda condição vem de $i(0) = 6$, através da LKC — que dá a derivada inicial da tensão:
+
+$$
+\frac{dv(0)}{dt} = 2\,i(0) - v(0) = 12 - 8 = 4\ \mathrm{V/s}
+$$
+
+$$
+-1{,}38\,A_1 - 11{,}62\,A_2 = 4
+\qquad\xrightarrow{\ A_2 = -A_1\ }\qquad
+10{,}24\,A_1 = 4
+$$
+
+$$
+A_1 = 0{,}39,
+\qquad
+A_2 = -0{,}39
+$$
+
+$$
+\boxed{v(t) = 8 + 0{,}39\,e^{-1,38t} - 0{,}39\,e^{-11,62t}\ \mathrm{V}}
+$$
+
+**Passo 6 — a corrente**, de volta pela LKC:
+
+$$
+i = \frac{1}{2}\left(\frac{dv}{dt} + v\right)
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = 4 - 0{,}07\,e^{-1,38t} + 2{,}07\,e^{-11,62t}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t=0$: $v = 8 + 0{,}39 - 0{,}39 = 8\ \mathrm{V}$ ✔ e $i = 4 - 0{,}07 + 2{,}07 = 6\ \mathrm{A}$ ✔ Para $t$ grande, o indutor vira fio e o capacitor abre: $i \to 32/(6+2) = 4\ \mathrm{A}$ e $v \to 2 \cdot 4 = 8\ \mathrm{V}$ ✔
+
+Note que $v(0)$ **já é** o valor final, mas ainda existe transitório — porque a segunda condição, $i(0) = 6 \neq 4\ \mathrm{A}$, não está no regime. Basta **uma** das duas estar fora para o transitório aparecer. Confere com a resolução da prova.
+</Passos>
