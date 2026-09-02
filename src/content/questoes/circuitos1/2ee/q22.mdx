@@ -1,0 +1,104 @@
+---
+origem: "2020.1"
+tema: "Condições iniciais · Uma chave abre e a outra fecha"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $v_R$, $di/dt$ e $dv/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Fonte de 20 V com 10 Ω, chave, capacitor de 1/5 F, indutor de 2 H, 10 Ω, segunda chave e fonte de 1 A"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "10 Ω" },
+    { t: "S", de: [2, 0], para: [3.4, 0], rotulo: "abre" },
+    { t: "no", em: [3.4, 0] },
+    { t: "C", de: [3.4, 0], para: [3.4, 3], valor: "1/5 F" },
+    { t: "tensao", de: [3.4, 3], para: [3.4, 0], rotulo: "v", abaixo: true },
+    { t: "L", de: [3.4, 0], para: [5.4, 0], valor: "2 H" },
+    { t: "corrente", de: [3.6, 0], para: [4.4, 0], rotulo: "i" },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "10 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3], para: [5.4, 0], rotulo: "v_R", abaixo: false },
+    { t: "S", de: [5.4, 0], para: [6.8, 0], rotulo: "fecha" },
+    { t: "fio", pts: [[6.8, 0], [7.4, 0]] },
+    { t: "I", de: [7.4, 3], para: [7.4, 0], valor: "1 A", abaixo: true },
+    { t: "fio", pts: [[0, 3], [7.4, 3]] },
+  ]}
+>
+
+As duas chaves agem em sentidos opostos: a da esquerda **abre**, tirando a fonte de $20\ \mathrm{V}$, e a da direita **fecha**, trazendo a de $1\ \mathrm{A}$. Depois disso o circuito não tem mais fonte de tensão nenhuma.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $i = 1\ \mathrm{A}$, $v = 10\ \mathrm{V}$, $v_R = 10\ \mathrm{V}$, $di/dt = 0$, $dv/dt = 0$
+·
+Em $0^+$: $i = 1\ \mathrm{A}$, $v = 10\ \mathrm{V}$, $v_R = 20\ \mathrm{V}$, $di/dt = -5\ \mathrm{A/s}$, $dv/dt = -5\ \mathrm{V/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$** (chave da esquerda **fechada**, da direita **aberta**; capacitor aberto, indutor em fio). Sobram a fonte de $20\ \mathrm{V}$, o $10\ \Omega$ da entrada e o $10\ \Omega$ da direita, em série:
+
+$$
+i(0^-) = \frac{20}{20} = \boxed{1\ \mathrm{A}}
+\qquad\Longrightarrow\qquad
+\boxed{v_R(0^-) = 10 \cdot 1 = 10\ \mathrm{V}}
+$$
+
+O capacitor está entre o nó do indutor e o fio de baixo; com o indutor sendo fio, esse nó é o mesmo do $10\ \Omega$:
+
+$$
+\boxed{v(0^-) = 10\ \mathrm{V}}
+$$
+
+E em regime permanente,
+
+$$
+\boxed{\frac{di(0^-)}{dt} = 0}
+\qquad\qquad
+\boxed{\frac{dv(0^-)}{dt} = 0}
+$$
+
+**Passo 2 — continuidade:** $i(0^+) = 1\ \mathrm{A}$ e $v(0^+) = 10\ \mathrm{V}$.
+
+**Passo 3 — circuito em $0^+$.** A chave da esquerda abriu (a fonte de $20\ \mathrm{V}$ saiu) e a da direita fechou (entrou a de $1\ \mathrm{A}$). No nó do $10\ \Omega$ chegam **duas** correntes: $1\ \mathrm{A}$ do indutor e $1\ \mathrm{A}$ da fonte.
+
+$$
+\boxed{v_R(0^+) = 10 \cdot 2 = 20\ \mathrm{V}}
+$$
+
+**Passo 4 — a derivada da tensão.** Com a chave da esquerda aberta, o nó do capacitor só tem dois ramos: o capacitor e o indutor. O indutor **retira** $1\ \mathrm{A}$ dali, então o capacitor o fornece:
+
+$$
+i_C(0^+) = -1\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{-1}{1/5} = -5\ \mathrm{V/s}}
+$$
+
+**Passo 5 — a derivada da corrente.** O indutor tem $v = 10\ \mathrm{V}$ à esquerda e $v_R = 20\ \mathrm{V}$ à direita. Com o $+$ no terminal por onde $i$ **entra**:
+
+$$
+v_L(0^+) = 10 - 20 = -10\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{-10}{2} = -5\ \mathrm{A/s}}
+$$
+
+**Conferência do sinal —** a derivada **tem** de ser negativa, e há como checar sem conta: para $t$ grande o capacitor abre, e sem ele não há caminho de retorno para a corrente do indutor, logo $i(\infty) = 0$. Uma corrente que sai de $1\ \mathrm{A}$ e vai a zero começa **caindo**.
+
+**Uma divergência com a resolução da prova —** ela apresenta $di(0^+)/dt = +5\ \mathrm{A/s}$. O valor correto é $-5\ \mathrm{A/s}$: o gabarito marcou o $+$ de $v_L$ do lado do capacitor mas fez a conta como se estivesse do lado do $10\ \Omega$, invertendo o sinal. Os outros quatro valores dele conferem.
+</Passos>
