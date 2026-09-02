@@ -1,0 +1,122 @@
+---
+origem: "2020.1"
+tema: "Segunda ordem · Quando as condições iniciais matam o transitório"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$, sabendo que $i(0) = 2\ \mathrm{A}$ e $v(0) = 0$.
+
+<Circuito
+  alt="Fonte de 16 V com 8 Ω, indutor de 5 H em paralelo com capacitor de 1/80 F"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "16 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "8 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "L", de: [2.4, 0], para: [2.4, 3.4], valor: "5 H" },
+    { t: "corrente", de: [2.4, 0.4], para: [2.4, 1.4], rotulo: "i", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [4.2, 0]] },
+    { t: "C", de: [4.2, 0], para: [4.2, 3.4], valor: "1/80 F" },
+    { t: "tensao", de: [4.2, 3.4], para: [4.2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [4.2, 3.4]] },
+  ]}
+>
+
+O indutor e o capacitor ficam no mesmo par de nós e não se associam: **2ª ordem**. O enunciado entrega as duas condições iniciais — e elas guardam uma surpresa.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 2\ \mathrm{A}$ e $v(t) = 0$ — **constantes**, para todo $t > 0$. Não há transitório.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a equação.** Com $v = 5\,\dfrac{di}{dt}$ e $i_C = \tfrac{1}{80}\,\dfrac{dv}{dt}$, a LKC no nó do capacitor dá
+
+$$
+\frac{16 - v}{8} = i + \frac{1}{80}\frac{dv}{dt}
+$$
+
+Multiplicando por $80$ e substituindo $v$ e $dv/dt = 5\,\dfrac{d^2 i}{dt^2}$:
+
+$$
+\boxed{\frac{d^2 i}{dt^2} + 10\,\frac{di}{dt} + 16\,i = 32}
+$$
+
+**Passo 2 — as frequências naturais.** $2\alpha = 10$ e $\omega_0^2 = 16$:
+
+$$
+\alpha = 5
+\qquad
+\omega_0 = 4
+\qquad\Longrightarrow\qquad
+\alpha > \omega_0: \ \textbf{superamortecido}
+$$
+
+$$
+s = \frac{-10 \pm \sqrt{100 - 64}}{2} = \frac{-10 \pm 6}{2}
+\qquad\Longrightarrow\qquad
+s_1 = -2,
+\quad
+s_2 = -8
+$$
+
+**Passo 3 — resposta completa.** Forçada $i_f = 32/16 = 2\ \mathrm{A}$:
+
+$$
+i(t) = 2 + A_1 e^{-2t} + A_2 e^{-8t}
+$$
+
+**Passo 4 — as duas constantes.** De $i(0) = 2$:
+
+$$
+A_1 + A_2 = 0
+$$
+
+E de $v(0) = 0$, com $v = 5\,di/dt$:
+
+$$
+v = 5\left(-2A_1 e^{-2t} - 8A_2 e^{-8t}\right)
+\qquad\Longrightarrow\qquad
+v(0) = -10A_1 - 40A_2 = 0
+$$
+
+Substituindo $A_2 = -A_1$:
+
+$$
+-10A_1 + 40A_1 = 30\,A_1 = 0
+\qquad\Longrightarrow\qquad
+A_1 = 0
+\quad\text{e}\quad
+A_2 = 0
+$$
+
+$$
+\boxed{i(t) = 2\ \mathrm{A}}
+\qquad\qquad
+\boxed{v(t) = 0}
+$$
+
+**O que a questão está ensinando —** as **duas** constantes saem nulas, e portanto não existe transitório: o circuito já nasceu no regime permanente. Faz sentido conferir por outro caminho: em regime, o indutor é fio e o capacitor abre, então
+
+$$
+i(\infty) = \frac{16}{8} = 2\ \mathrm{A}
+\qquad\qquad
+v(\infty) = 0
+$$
+
+— exatamente os valores iniciais dados ✔ Quando isso acontece, montar a equação diferencial ainda vale a nota, mas a resposta é a linha reta. Confere com a resolução da prova.
+</Passos>
