@@ -1,0 +1,115 @@
+---
+origem: "2018.2"
+tema: "Condições iniciais · A chave que desliga a fonte e inverte uma corrente"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $v_C$, $i_L$, $i$ e $i_R$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="8 Ω, ramo de 2 Ω com fonte de 20 V e chave, indutor de 4 H, 2 Ω e capacitor de 1/4 F"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 3.4], valor: "8 Ω", abaixo: true },
+    { t: "corrente", de: [0, 0.4], para: [0, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[0, 0], [3.4, 0]] },
+    { t: "no", em: [3.4, 0] },
+    { t: "R", de: [3.4, 0], para: [3.4, 1.2], valor: "2 Ω", abaixo: true },
+    { t: "V", de: [3.4, 2.4], para: [3.4, 1.2], valor: "20 V" },
+    { t: "S", de: [3.4, 2.4], para: [3.4, 3.4], rotulo: "abre" },
+    { t: "fio", pts: [[3.4, 0], [5.4, 0]] },
+    { t: "corrente", de: [4.4, 0], para: [5.3, 0], rotulo: "i_L" },
+    { t: "L", de: [5.4, 0], para: [7.6, 0], valor: "4 H" },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [6.6, 0.4], para: [6.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[7.6, 0], [10.6, 0]] },
+    { t: "no", em: [10.6, 0] },
+    { t: "C", de: [10.6, 0], para: [10.6, 3.4], valor: "1/4 F" },
+    { t: "tensao", de: [10.6, 3.4], para: [10.6, 0], rotulo: "v_C", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [10.6, 3.4]] },
+  ]}
+>
+
+A chave está **fechada** em $t < 0$ e **abre** em $t = 0$, matando a fonte. Em $0^-$ o indutor é um fio e o capacitor um aberto, então os três nós de cima viram **um só**. Em $0^+$ o único caminho que sobra para a corrente do indutor é o $8\ \Omega$ — e ela passa a subir por ele.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v_C = \dfrac{80}{9} \approx 8{,}89\ \mathrm{V}$ · $i_L = i = \dfrac{40}{9} \approx 4{,}44\ \mathrm{A}$ · $i_R = \dfrac{10}{9} \approx 1{,}11\ \mathrm{A}$
+
+Em $0^+$: $v_C = \dfrac{80}{9}\ \mathrm{V}$ · $i_L = i = \dfrac{40}{9}\ \mathrm{A}$ · $i_R = -\dfrac{40}{9} \approx -4{,}44\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Chave fechada, regime permanente: capacitor **aberto**, indutor **em fio**. O fio do indutor junta o nó do meio ao da direita, e o fio de cima já juntava o da esquerda — os três são o **mesmo nó**.
+
+Visto pela fonte, o $2\ \Omega$ do ramo dela está em série com $8 \parallel 2$:
+
+$$
+R_{eq} = 2 + \frac{8 \cdot 2}{8 + 2} = 2 + \frac{16}{10} = \frac{18}{5}\ \Omega
+\qquad\Longrightarrow\qquad
+i_T = \frac{20}{18/5} = \frac{50}{9}\ \mathrm{A}
+$$
+
+**Passo 2 — reparta a corrente.** A tensão do nó de cima é
+
+$$
+v_{topo} = i_T \cdot \frac{16}{10} = \frac{50}{9} \cdot \frac{8}{5} = \frac{80}{9}\ \mathrm{V}
+$$
+
+e é ela que o capacitor, aberto, enxerga:
+
+$$
+\boxed{v_C(0^-) = \frac{80}{9} \approx 8{,}89\ \mathrm{V}}
+$$
+
+$$
+\boxed{i_R(0^-) = \frac{80/9}{8} = \frac{10}{9} \approx 1{,}11\ \mathrm{A}}
+\qquad\qquad
+\boxed{i(0^-) = \frac{80/9}{2} = \frac{40}{9} \approx 4{,}44\ \mathrm{A}}
+$$
+
+Como o capacitor não conduz, tudo o que atravessa o indutor vai para o $2\ \Omega$ da direita:
+
+$$
+\boxed{i_L(0^-) = i(0^-) = \frac{40}{9}\ \mathrm{A}}
+$$
+
+**Passo 3 — continuidade.**
+
+$$
+i_L(0^+) = \frac{40}{9}\ \mathrm{A}
+\qquad\qquad
+v_C(0^+) = \frac{80}{9}\ \mathrm{V}
+$$
+
+**Passo 4 — o circuito em $0^+$.** A chave abriu: o ramo do $2\ \Omega$ com a fonte está **cortado**. Sobra, à esquerda, apenas o $8\ \Omega$ — e é por ele que a corrente do indutor tem de voltar.
+
+Como $i_R$ foi marcada **descendo** e a corrente agora **sobe** pelo $8\ \Omega$:
+
+$$
+\boxed{i_R(0^+) = -i_L(0^+) = -\frac{40}{9} \approx -4{,}44\ \mathrm{A}}
+$$
+
+**Passo 5 — a corrente do $2\ \Omega$ da direita.** O capacitor, valendo $80/9$ V, fixa a tensão do nó da direita, e o $2\ \Omega$ está em paralelo com ele:
+
+$$
+\boxed{i(0^+) = \frac{80/9}{2} = \frac{40}{9}\ \mathrm{A}}
+$$
+
+**Conferência —** em $0^+$ sobra $i_C = i_L - i = \frac{40}{9} - \frac{40}{9} = 0$: o capacitor começa **sem corrente**, então $dv_C/dt(0^+) = 0$ ✔ Já o $8\ \Omega$ passou a cair $8 \cdot \frac{40}{9} = \frac{320}{9}$ V em cima do indutor, e é isso que faz $i_L$ despencar ✔ Confere com a resolução da prova.
+</Passos>
