@@ -1,0 +1,113 @@
+---
+origem: "2020.2"
+tema: "Segunda ordem · Criticamente amortecido com corrente inicial alta"
+temaId: criticamente-amortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ para $t > 0$, dado que $i_g = 10\ \mathrm{A}$ e o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Fonte de 10 A, 2 Ω, chave em paralelo com 3 Ω, indutor de 5 H e capacitor de 1/20 F"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "i_g = 10 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3.4], valor: "2 Ω" },
+    { t: "fio", pts: [[1.6, 0], [1.6, -1.4]] },
+    { t: "S", de: [1.6, -1.4], para: [3.8, -1.4], rotulo: "abre" },
+    { t: "fio", pts: [[3.8, -1.4], [3.8, 0]] },
+    { t: "R", de: [1.6, 0], para: [3.8, 0], valor: "3 Ω" },
+    { t: "no", em: [3.8, 0] },
+    { t: "L", de: [3.8, 0], para: [3.8, 3.4], valor: "5 H", abaixo: true },
+    { t: "corrente", de: [3.8, 0.4], para: [3.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0]] },
+    { t: "C", de: [5.6, 0], para: [5.6, 3.4], valor: "1/20 F", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.6, 3.4]] },
+  ]}
+>
+
+A chave está **em paralelo** com o $3\ \Omega$: fechada, ela o curto-circuita. Ao **abrir** em $t=0$, insere o resistor — e o indutor com o capacitor, que ficam no mesmo par de nós, formam um circuito de **2ª ordem**.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 4 + (6 + 12\,t)\,e^{-2t}\ \mathrm{A}$, para $t > 0$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condições iniciais** (chave fechada, regime permanente: indutor em fio, capacitor aberto). Com o $3\ \Omega$ curto-circuitado e o indutor sendo fio, o nó fica em $0\ \mathrm{V}$: o $2\ \Omega$ não conduz e **toda** a fonte vai para o indutor.
+
+$$
+i(0) = 10\ \mathrm{A}
+\qquad\qquad
+v_C(0) = 0
+$$
+
+**Passo 2 — o circuito para $t > 0$.** A chave abre e o $3\ \Omega$ entra. A fonte de $10\ \mathrm{A}$ em paralelo com o $2\ \Omega$ equivale a $20\ \mathrm{V}$ em série com $2\ \Omega$; somando o $3\ \Omega$, o par $L$–$C$ é alimentado por **$20\ \mathrm{V}$ através de $5\ \Omega$**.
+
+**Passo 3 — a equação.** Com $v_C = 5\,\dfrac{di}{dt}$ e $i_C = \tfrac1{20}\,\dfrac{dv_C}{dt}$, a LKC dá
+
+$$
+\frac{20 - v_C}{5} = i + \frac{1}{20}\frac{dv_C}{dt}
+\qquad\xrightarrow{\ \times 4\ }\qquad
+\boxed{\frac{d^2 i}{dt^2} + 4\,\frac{di}{dt} + 4\,i = 16}
+$$
+
+**Passo 4 — o caso.** $2\alpha = 4$ e $\omega_0^2 = 4$:
+
+$$
+\alpha = \omega_0 = 2
+\qquad\Longrightarrow\qquad
+\textbf{criticamente amortecido},
+\quad
+s_1 = s_2 = -2
+$$
+
+**Passo 5 — resposta completa.** Forçada $i_f = 16/4 = 4\ \mathrm{A}$:
+
+$$
+i(t) = 4 + (A_1 + A_2 t)\,e^{-2t}
+$$
+
+De $i(0) = 10$:
+
+$$
+4 + A_1 = 10 \qquad\Longrightarrow\qquad A_1 = 6
+$$
+
+E de $v_C(0) = 0 = 5\,\dfrac{di(0)}{dt}$, ou seja $di(0)/dt = 0$:
+
+$$
+A_2 - 2A_1 = 0
+\qquad\Longrightarrow\qquad
+A_2 = 12
+$$
+
+$$
+\boxed{i(t) = 4 + (6 + 12\,t)\,e^{-2t}\ \mathrm{A}}
+$$
+
+**Conferência —** $i(0) = 4 + 6 = 10\ \mathrm{A}$ ✔ e $i(\infty) = 4\ \mathrm{A}$, que é $20/5$ ✔ A tensão do capacitor sai da relação do indutor:
+
+$$
+v_C = 5\,\frac{di}{dt} = 5\big[12 - 2(6 + 12t)\big]e^{-2t} = -120\,t\,e^{-2t}\ \mathrm{V}
+$$
+
+com $v_C(0) = 0$ ✔ e **negativa** para $t>0$, porque a corrente do indutor está caindo de $10$ para $4\ \mathrm{A}$.
+
+**Comparação útil —** é o **mesmo** circuito do 3º quesito de 2022.2 (mesma EDO, mesmas raízes), com outras condições iniciais: lá $i(0) = 2\ \mathrm{A}$ e a corrente **subia**; aqui $i(0) = 10\ \mathrm{A}$ e ela **desce**. A equação não muda; quem muda a história são as duas constantes.
+</Passos>
