@@ -1,0 +1,119 @@
+---
+origem: "2017.2"
+tema: "Condições iniciais · Chave que junta dois circuitos independentes"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q36.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado que o circuito abaixo está em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $i_1$, $dv/dt$, $di/dt$ e $di_1/dt$ no instante $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 20 V para 40 V, 6 Ω, capacitor de 1/10 F, 4 Ω, indutor de 2 H, chave, fonte controlada de 2v A, 2 Ω e indutor de 4 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "40 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "6 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "C", de: [4, 0], para: [4, 3.4], valor: "1/10 F" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [4, 0], para: [6.8, 0], valor: "4 Ω" },
+    { t: "no", em: [6.8, 0] },
+    { t: "L", de: [6.8, 0], para: [6.8, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "S", de: [6.8, 0], para: [9.4, 0], rotulo: "fecha" },
+    { t: "no", em: [9.4, 0] },
+    { t: "Id", de: [9.4, 3.4], para: [9.4, 0], rotulo: "2v A" },
+    { t: "R", de: [9.4, 0], para: [12.4, 0], valor: "2 Ω" },
+    { t: "no", em: [12.4, 0] },
+    { t: "L", de: [12.4, 0], para: [12.4, 3.4], valor: "4 H", abaixo: true },
+    { t: "corrente", de: [11.4, 0.4], para: [11.4, 1.4], rotulo: "i_1", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [12.4, 3.4]] },
+  ]}
+>
+
+Em $t < 0$ a chave do meio está **aberta**, e o circuito são **dois pedaços separados**: à esquerda a fonte com o $6\ \Omega$ e o $4\ \Omega$; à direita a fonte controlada com o $2\ \Omega$ e o $4\ \mathrm{H}$. Em $t = 0$ a fonte comuta para $40\ \mathrm{V}$ **e** a chave fecha, juntando os dois.
+
+</Circuito>
+
+<Gabarito>
+$v(0^+) = 8\ \mathrm{V}$ · $i(0^+) = 2\ \mathrm{A}$ · $i_1(0^+) = 16\ \mathrm{A}$
+
+$\dfrac{dv(0^+)}{dt} = \dfrac{100}{3} \approx 33{,}3\ \mathrm{V/s}$ · $\dfrac{di(0^+)}{dt} = 0$ · $\dfrac{di_1(0^+)}{dt} = -8\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o lado esquerdo em $0^-$.** Chave do meio aberta, fonte de $20\ \mathrm{V}$, capacitor **aberto** e indutor de $2\ \mathrm{H}$ **em fio**. O $6\ \Omega$ e o $4\ \Omega$ ficam em série, com o $2\ \mathrm{H}$ aterrando o fim:
+
+$$
+i(0^-) = \frac{20}{6 + 4} = 2\ \mathrm{A}
+\qquad\qquad
+v(0^-) = 20 - 6 \cdot 2 = 8\ \mathrm{V}
+$$
+
+**Passo 2 — o lado direito em $0^-$.** Ele vive por conta própria: a fonte controlada vale $2v = 16\ \mathrm{A}$ e o único caminho é o $2\ \Omega$ seguido do $4\ \mathrm{H}$, que é um fio:
+
+$$
+i_1(0^-) = 2v(0^-) = 16\ \mathrm{A}
+$$
+
+**Passo 3 — continuidade.** As duas correntes de indutor e a tensão de capacitor atravessam $t = 0$:
+
+$$
+\boxed{v(0^+) = 8\ \mathrm{V}}
+\qquad
+\boxed{i(0^+) = 2\ \mathrm{A}}
+\qquad
+\boxed{i_1(0^+) = 16\ \mathrm{A}}
+$$
+
+**Passo 4 — o circuito em $0^+$.** Fonte de $40\ \mathrm{V}$, chave fechada. A fonte controlada continua valendo $2v = 16\ \mathrm{A}$, porque $v$ não saltou.
+
+O $4\ \mathrm{H}$ ainda leva $16\ \mathrm{A}$, e o único ramo que chega ao nó dele é o $2\ \Omega$ — então o $2\ \Omega$ **também** leva $16\ \mathrm{A}$, caindo $32\ \mathrm{V}$.
+
+**Passo 5 — a corrente do $4\ \Omega$.** LKC no nó do meio, agora unido ao da fonte controlada pela chave fechada:
+
+$$
+i_{4\Omega} + \underbrace{16}_{2v} = \underbrace{2}_{i} + \underbrace{16}_{2\ \Omega}
+\qquad\Longrightarrow\qquad
+i_{4\Omega} = 2\ \mathrm{A}
+$$
+
+**Passo 6 — as tensões dos indutores.** O nó do meio fica em $8 - 4 \cdot 2 = 0\ \mathrm{V}$, ou seja, o $2\ \mathrm{H}$ **não cai tensão**:
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{v_L}{2} = 0}
+$$
+
+Descendo mais $32\ \mathrm{V}$ pelo $2\ \Omega$, o nó do $4\ \mathrm{H}$ fica em $-32\ \mathrm{V}$:
+
+$$
+\boxed{\frac{di_1(0^+)}{dt} = \frac{-32}{4} = -8\ \mathrm{A/s}}
+$$
+
+**Passo 7 — a derivada da tensão.** No nó do capacitor entram $\dfrac{40 - 8}{6} = \dfrac{16}{3}$ A pelo $6\ \Omega$ e saem $2$ A pelo $4\ \Omega$:
+
+$$
+i_C(0^+) = \frac{16}{3} - 2 = \frac{10}{3}\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{10/3}{1/10} = \frac{100}{3} \approx 33{,}3\ \mathrm{V/s}}
+$$
+
+**Conferência —** o $6\ \Omega$ cai $40 - 8 = 32$ V com $16/3$ A, e $6 \cdot \frac{16}{3} = 32$ V ✔ A corrente do $4\ \mathrm{H}$ é a única que começa a mudar rápido, e para baixo: a chave fechando "roubou" o caminho de terra que ela tinha ✔ Confere com a resolução da prova.
+</Passos>
