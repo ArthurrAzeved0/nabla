@@ -1,0 +1,107 @@
+---
+origem: "2020.1"
+tema: "Primeira ordem · Chave que insere um resistor em série"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ e a tensão $v$ para $t > 0$, sabendo que o circuito está em **regime permanente** em $t < 0$.
+
+<Circuito
+  alt="Fonte de 21 A, 4 Ω, chave em paralelo com 2 Ω, 3 Ω e capacitor de 1/4 F"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "21 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3.4], valor: "4 Ω" },
+    { t: "corrente", de: [1.6, 0.4], para: [1.6, 1.4], rotulo: "i" },
+    { t: "fio", pts: [[1.6, 0], [1.6, -1.4]] },
+    { t: "S", de: [1.6, -1.4], para: [3.8, -1.4], rotulo: "abre" },
+    { t: "fio", pts: [[3.8, -1.4], [3.8, 0]] },
+    { t: "R", de: [1.6, 0], para: [3.8, 0], valor: "2 Ω" },
+    { t: "no", em: [3.8, 0] },
+    { t: "R", de: [3.8, 0], para: [3.8, 3.4], valor: "3 Ω" },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0]] },
+    { t: "C", de: [5.6, 0], para: [5.6, 3.4], valor: "1/4 F" },
+    { t: "tensao", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.6, 3.4]] },
+  ]}
+>
+
+A chave está **em paralelo** com o $2\ \Omega$. Fechada, ela o curto-circuita e junta os dois nós; ao **abrir**, insere o resistor em série e separa o nó do capacitor do nó da fonte.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 28 + 8\,e^{-2t}\ \mathrm{V}$  ·  $i(t) = \dfrac{35}{3} + \dfrac{4}{3}\,e^{-2t} \approx 11{,}67 + 1{,}33\,e^{-2t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial** (chave fechada, capacitor aberto). Com o $2\ \Omega$ em curto, o $4\ \Omega$ e o $3\ \Omega$ ficam em paralelo:
+
+$$
+4 \parallel 3 = \frac{12}{7}\ \Omega
+\qquad\Longrightarrow\qquad
+v(0) = 21 \cdot \frac{12}{7} = 36\ \mathrm{V}
+$$
+
+**Passo 2 — valor final** (chave aberta, capacitor aberto). Agora o caminho da direita é $2 + 3 = 5\ \Omega$, em paralelo com o $4\ \Omega$:
+
+$$
+4 \parallel 5 = \frac{20}{9}\ \Omega
+\qquad\Longrightarrow\qquad
+v_A(\infty) = 21 \cdot \frac{20}{9} = \frac{140}{3}\ \mathrm{V}
+$$
+
+e a corrente do ramo de $5\ \Omega$ vale $\tfrac{140/3}{5} = \tfrac{28}{3}\ \mathrm{A}$, logo
+
+$$
+v(\infty) = 3 \cdot \frac{28}{3} = 28\ \mathrm{V}
+$$
+
+**Passo 3 — constante de tempo.** Desativando a fonte de corrente (**circuito aberto**), o capacitor vê, do seu nó: o $3\ \Omega$, e o $2 + 4 = 6\ \Omega$ do outro caminho —
+
+$$
+R_{\mathrm{eq}} = 3 \parallel 6 = 2\ \Omega
+\qquad\Longrightarrow\qquad
+\tau = 2 \cdot \frac14 = 0{,}5\ \mathrm{s}
+$$
+
+**Passo 4 — a fórmula dos três valores:**
+
+$$
+\boxed{v(t) = 28 + (36 - 28)\,e^{-t/0,5} = 28 + 8\,e^{-2t}\ \mathrm{V}}
+$$
+
+**Passo 5 — de $v$ para $i$.** A LKC no nó da fonte relaciona as duas:
+
+$$
+21 = \frac{v_A}{4} + \frac{v_A - v}{2}
+\qquad\Longrightarrow\qquad
+v_A = \frac{84 + 2v}{3}
+$$
+
+$$
+i = \frac{v_A}{4} = \frac{84 + 2v}{12}
+= \frac{84 + 56 + 16\,e^{-2t}}{12}
+$$
+
+$$
+\boxed{i(t) = \frac{35}{3} + \frac{4}{3}\,e^{-2t}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t=0$: $v = 36\ \mathrm{V}$ ✔ e $i = 13\ \mathrm{A}$. Dá para checar direto: com $v = 36$, a LKC no nó da fonte dá $v_A = 52\ \mathrm{V}$ e $i = 13\ \mathrm{A}$ ✔ Note que $i$ **salta** de $9\ \mathrm{A}$ (em $0^-$, quando o $2\ \Omega$ estava em curto) para $13\ \mathrm{A}$ — e pode, porque $i$ não é corrente de indutor. Só $v$ é contínua. O resultado de $v$ confere com a resolução da prova.
+</Passos>
