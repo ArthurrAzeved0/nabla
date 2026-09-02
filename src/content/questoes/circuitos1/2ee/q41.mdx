@@ -1,0 +1,101 @@
+---
+origem: "2016.2"
+tema: "Resposta ao degrau · Indutor que curto-circuita o resistor no fim"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q41.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ para $t > 0$, sabendo que a corrente que passa no indutor no instante $t = 0$ é igual a $3\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 10 V com 12 Ω em série, 4 Ω em paralelo com indutor de 6 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "12 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2.4, 0.4], para: [2.4, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "L", de: [5, 0], para: [5, 3.4], valor: "6 H", abaixo: true },
+    { t: "corrente", de: [5, 0.4], para: [5, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+  ]}
+>
+
+O indutor está **em paralelo com o $4\ \Omega$**, então lá no fim ele curto-circuita esse resistor e a corrente da fonte fica valendo $10/12$. A condição inicial de $3\ \mathrm{A}$ é maior que isso — o transitório vai **descer**.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = \dfrac{5}{6} + \dfrac{13}{24}\,e^{-t/2} \approx 0{,}833 + 0{,}542\,e^{-t/2}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** LKC no nó, LKT na malha da fonte e a lei do indutor:
+
+$$
+i = i_R + i_L
+\qquad\qquad
+10 = 12\,i + 6\frac{di_L}{dt}
+\qquad\qquad
+6\frac{di_L}{dt} = 4\,i_R
+$$
+
+Da última, $i_R = \dfrac{3}{2}\dfrac{di_L}{dt}$.
+
+**Passo 2 — a equação em $i_L$.** Substituindo:
+
+$$
+10 = 12\left(\frac{3}{2}\frac{di_L}{dt} + i_L\right) + 6\frac{di_L}{dt} = 24\frac{di_L}{dt} + 12\,i_L
+$$
+
+$$
+\frac{di_L}{dt} + \frac{i_L}{2} = \frac{10}{24}
+$$
+
+**Passo 3 — resposta natural.** De $s + \frac12 = 0$ vem $s = -\dfrac12$:
+
+$$
+i_{L,n}(t) = A\,e^{-t/2}
+$$
+
+**Passo 4 — resposta forçada.** $\dfrac{K}{2} = \dfrac{10}{24}$, logo $i_{L,f} = \dfrac{20}{24} = \dfrac{5}{6}\ \mathrm{A}$.
+
+**Passo 5 — a constante.** De $i_L(0) = 3$:
+
+$$
+3 = A + \frac{5}{6}
+\qquad\Longrightarrow\qquad
+A = \frac{13}{6}
+\qquad\Longrightarrow\qquad
+i_L(t) = \frac{13}{6}\,e^{-t/2} + \frac{5}{6}\ \mathrm{A}
+$$
+
+**Passo 6 — volte para $i$.** Some a corrente do resistor:
+
+$$
+i = \frac{3}{2}\frac{di_L}{dt} + i_L
+= \frac{3}{2}\left(-\frac{13}{12}\,e^{-t/2}\right) + \frac{13}{6}\,e^{-t/2} + \frac{5}{6}
+$$
+
+$$
+\boxed{i(t) = \frac{13}{24}\,e^{-t/2} + \frac{5}{6}\ \mathrm{A}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{6}{12 \parallel 4} = \dfrac{6}{3} = 2$ s, e de fato $s = -1/2$ ✔ Em $t \to \infty$ o indutor curto-circuita o $4\ \Omega$ e $i \to 10/12 = 5/6$ A ✔ Em $t = 0$: $i = 13/24 + 20/24 = 33/24 = 1{,}375$ A, e o cheque direto dá $v_L(0) = 6 \cdot (-13/12) = -6{,}5$ V, então $i = \frac{10 + 6{,}5}{12} = 1{,}375$ A ✔ Confere com a resolução da prova.
+</Passos>
