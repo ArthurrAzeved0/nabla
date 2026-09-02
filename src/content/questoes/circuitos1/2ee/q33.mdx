@@ -1,0 +1,120 @@
+---
+origem: "2018.2"
+tema: "Subamortecido · Fonte de corrente com RL em paralelo com C"
+temaId: subamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q33.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ para $t > 0$, sabendo que a tensão no capacitor e a corrente no indutor em $t = 0$ valem, respectivamente, $4\ \mathrm{V}$ e $2\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 2 A alimentando o ramo de 4 Ω com indutor de 1 H em paralelo com capacitor de 1/5 F"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 1.7], valor: "4 Ω", abaixo: true },
+    { t: "L", de: [2.4, 1.7], para: [2.4, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [2.4, 0.2], para: [2.4, 0.8], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[2.4, 0], [5.8, 0]] },
+    { t: "no", em: [5.8, 0] },
+    { t: "C", de: [5.8, 0], para: [5.8, 3.4], valor: "1/5 F" },
+    { t: "tensao", de: [5.8, 3.4], para: [5.8, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+  ]}
+>
+
+Não é RLC paralelo puro: o indutor vem **em série com o $4\ \Omega$**, e esse par é que fica em paralelo com o capacitor. Então nada de $\alpha = 1/(2RC)$ — monte a equação a partir da LKC e da LKT.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 8 - 8\,e^{-2t}\operatorname{sen} t - 4\,e^{-2t}\cos t\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas leis.** A LKC no nó de cima e a LKT no ramo do indutor:
+
+$$
+2 = i + i_C
+\qquad\qquad
+v = 4\,i + \frac{di}{dt}
+\qquad\qquad
+i_C = \frac{1}{5}\frac{dv}{dt}
+$$
+
+**Passo 2 — elimine $v$ e $i_C$.** Substituindo $i_C$ e depois $dv/dt = 4\frac{di}{dt} + \frac{d^2i}{dt^2}$:
+
+$$
+2 = i + \frac{1}{5}\left(4\frac{di}{dt} + \frac{d^2i}{dt^2}\right)
+\qquad \times 5 \qquad
+\frac{d^2i}{dt^2} + 4\frac{di}{dt} + 5\,i = 10
+$$
+
+**Passo 3 — resposta natural.** De $s^2 + 4s + 5 = 0$:
+
+$$
+s = \frac{-4 \pm \sqrt{16 - 20}}{2} = -2 \pm j
+$$
+
+Raízes complexas: caso **subamortecido**, com $\alpha = 2$ e $\omega_d = 1$.
+
+$$
+i_n(t) = e^{-2t}\left(A_1\cos t + A_2\operatorname{sen} t\right)
+$$
+
+**Passo 4 — resposta forçada.** Constante $i_f = K$, logo $5K = 10$:
+
+$$
+i_f(t) = 2\ \mathrm{A}
+$$
+
+**Passo 5 — a primeira constante.** Com $i(0) = 2$:
+
+$$
+2 = A_1 + 2
+\qquad\Longrightarrow\qquad
+A_1 = 0
+$$
+
+**Passo 6 — a segunda.** A tensão dá a derivada: de $v = 4i + \frac{di}{dt}$ com $v(0) = 4$ e $i(0) = 2$,
+
+$$
+4 = 4 \cdot 2 + \frac{di(0)}{dt}
+\qquad\Longrightarrow\qquad
+\frac{di(0)}{dt} = -4
+$$
+
+E, com $A_1 = 0$, $\dfrac{di}{dt} = e^{-2t}\left(A_2\cos t - 2A_2\operatorname{sen} t\right)$, que em $t = 0$ vale $A_2$:
+
+$$
+A_2 = -4
+\qquad\Longrightarrow\qquad
+i(t) = 2 - 4\,e^{-2t}\operatorname{sen} t\ \mathrm{A}
+$$
+
+**Passo 7 — a tensão.** De volta em $v = 4i + \frac{di}{dt}$:
+
+$$
+v(t) = 8 - 16\,e^{-2t}\operatorname{sen} t + \left(8\,e^{-2t}\operatorname{sen} t - 4\,e^{-2t}\cos t\right)
+$$
+
+$$
+\boxed{v(t) = 8 - 8\,e^{-2t}\operatorname{sen} t - 4\,e^{-2t}\cos t\ \mathrm{V}}
+$$
+
+**Conferência —** em $t = 0$: $v = 8 - 0 - 4 = 4$ V ✔ Em $t \to \infty$ o capacitor abre, os $2$ A inteiros passam pelo ramo do indutor (que vira fio) e $v = 4 \cdot 2 = 8$ V ✔ Confere com a resolução da prova.
+</Passos>
