@@ -1,0 +1,111 @@
+---
+origem: "2019.2"
+tema: "Condições iniciais · Fonte controlada que nasce do nada"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $di/dt$ e $dv/dt$ em $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 12 V para 20 V, capacitor de 1/5 F, chave, 4 Ω, fonte controlada v1, dois 6 Ω e indutor de 1 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "12 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "C", de: [1.8, 0], para: [4, 0], valor: "1/5 F" },
+    { t: "tensao", de: [4, 0], para: [1.8, 0], rotulo: "v" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "4 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v_1", abaixo: true },
+    { t: "S", de: [4, 0], para: [5.6, 0], rotulo: "abre" },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v_1 A", abaixo: true },
+    { t: "fio", pts: [[5.6, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [7.2, 0], para: [9.2, 0], valor: "6 Ω" },
+    { t: "no", em: [9.2, 0] },
+    { t: "L", de: [9.2, 0], para: [9.2, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [9.2, 0.4], para: [9.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [9.2, 3.4]] },
+  ]}
+>
+
+Em $0^-$ o circuito está **inteiro mas parado**: o capacitor bloqueia, logo o $4\ \Omega$ não conduz, $v_1 = 0$ e a fonte controlada entrega zero. Nada circula. A comutação para $20\ \mathrm{V}$ é o que acorda tudo.
+
+</Circuito>
+
+<Gabarito>
+$i(0^+) = 0$  ·  $v(0^+) = 12\ \mathrm{V}$  ·  $\dfrac{di(0^+)}{dt} = 48\ \mathrm{A/s}$  ·  $\dfrac{dv(0^+)}{dt} = 10\ \mathrm{V/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — circuito em $0^-$** (fonte de $12\ \mathrm{V}$, segunda chave **fechada**; capacitor aberto, indutor em fio).
+
+O capacitor, aberto, impede qualquer corrente no $4\ \Omega$:
+
+$$
+v_1(0^-) = 0
+\qquad\Longrightarrow\qquad
+\text{a fonte controlada vale } v_1 = 0
+$$
+
+Sem fonte controlada, o ramo dos $6\ \Omega$ com o indutor não é alimentado:
+
+$$
+i(0^-) = 0
+\qquad\qquad
+v(0^-) = 12 - 0 = 12\ \mathrm{V}
+$$
+
+**Passo 2 — continuidade:**
+
+$$
+\boxed{i(0^+) = 0}
+\qquad\qquad
+\boxed{v(0^+) = 12\ \mathrm{V}}
+$$
+
+**Passo 3 — circuito em $0^+$.** Fonte de $20\ \mathrm{V}$, segunda chave **aberta**. O capacitor, valendo $12\ \mathrm{V}$, deixa o nó do $4\ \Omega$ em
+
+$$
+v_1(0^+) = 20 - 12 = 8\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\text{fonte controlada} = 8\ \mathrm{A}
+$$
+
+**Passo 4 — a derivada da tensão.** Com a chave aberta, o nó do $4\ \Omega$ só tem o capacitor e o resistor, então toda a corrente do $4\ \Omega$ vem do capacitor:
+
+$$
+i_C(0^+) = \frac{8}{4} = 2\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{2}{1/5} = 10\ \mathrm{V/s}}
+$$
+
+**Passo 5 — a derivada da corrente.** A fonte controlada injeta $8\ \mathrm{A}$; como $i(0^+) = 0$, o $6\ \Omega$ horizontal não cai tensão e todos os $8\ \mathrm{A}$ vão para o $6\ \Omega$ vertical:
+
+$$
+v_L(0^+) = 6 \cdot 8 = 48\ \mathrm{V}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{48}{1} = 48\ \mathrm{A/s}}
+$$
+
+**Conferência —** a fonte controlada é o mecanismo da questão: ela vale **zero** em $0^-$ (porque $v_1 = 0$) e **8 A** em $0^+$, e é essa mudança abrupta que faz as duas derivadas saltarem de zero para valores grandes ✔ Confere com a resolução da prova.
+</Passos>
