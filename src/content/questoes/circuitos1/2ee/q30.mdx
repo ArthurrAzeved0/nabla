@@ -1,0 +1,158 @@
+---
+origem: "2019.1"
+tema: "Superamortecido · Capacitor e indutor separados por um resistor"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$, sabendo que o circuito encontra-se em **regime permanente** em $t < 0$.
+
+<Circuito
+  alt="Comutação de 50 V para 20 V, 5 Ω em série, capacitor de 1/25 F em paralelo com o ramo de 5 Ω e indutor de 10 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "5 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "C", de: [4, 0], para: [4, 3.4], valor: "1/25 F" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6.2, 0]] },
+    { t: "no", em: [6.2, 0] },
+    { t: "corrente", de: [6.2, 0.2], para: [6.2, 0.8], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[6.2, 0], [6.2, 1]] },
+    { t: "R", de: [6.2, 1], para: [6.2, 2.2], valor: "5 Ω", abaixo: true },
+    { t: "L", de: [6.2, 2.2], para: [6.2, 3.4], valor: "10 H", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.2, 3.4]] },
+  ]}
+>
+
+O capacitor **só entra em cena depois da chave**: em $t < 0$ o ramo do meio está aberto e o circuito é dois resistores em série. Como o capacitor e o indutor estão separados por um resistor, não há fórmula pronta de $\alpha$ — é preciso montar a equação de segunda ordem na mão.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 4{,}08\,e^{-1,15t} - 1{,}08\,e^{-4,35t} + 2\ \mathrm{A}$
+·
+$v(t) = 10 - 26{,}47\,e^{-1,15t} + 41{,}47\,e^{-4,35t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condições iniciais.** Em $0^-$ manda a fonte de $50\ \mathrm{V}$, o indutor é fio e o capacitor está fora do circuito. Sobram os dois $5\ \Omega$ em série:
+
+$$
+i(0^-) = \frac{50}{5 + 5} = 5\ \mathrm{A}
+\qquad\qquad
+v(0^-) = 50 - 5 \cdot 5 = 25\ \mathrm{V}
+$$
+
+Por continuidade, $i(0^+) = 5\ \mathrm{A}$ e $v(0^+) = 25\ \mathrm{V}$.
+
+**Passo 2 — as relações para $t > 0$.** Com a fonte de $20\ \mathrm{V}$, chamando $i_g$ a corrente da fonte:
+
+$$
+20 = 5\,i_g + v
+\qquad
+i_g = i_C + i
+\qquad
+v = 5\,i + 10\frac{di}{dt}
+\qquad
+i_C = \frac{1}{25}\frac{dv}{dt}
+$$
+
+**Passo 3 — elimine tudo menos $i$.** Substituindo $i_g$ e $i_C$:
+
+$$
+20 = \frac{5}{25}\frac{dv}{dt} + 5\,i + v
+$$
+
+E como $\dfrac{dv}{dt} = 5\dfrac{di}{dt} + 10\dfrac{d^2i}{dt^2}$:
+
+$$
+20 = \frac{1}{5}\left(5\frac{di}{dt} + 10\frac{d^2i}{dt^2}\right) + 5\,i + 5\,i + 10\frac{di}{dt}
+$$
+
+$$
+2\frac{d^2i}{dt^2} + 11\frac{di}{dt} + 10\,i = 20
+$$
+
+**Passo 4 — resposta natural.** A equação característica $2s^2 + 11s + 10 = 0$ dá
+
+$$
+s = \frac{-11 \pm \sqrt{121 - 80}}{4} = \frac{-11 \pm \sqrt{41}}{4}
+\qquad\Longrightarrow\qquad
+s_1 = -1{,}15
+\quad
+s_2 = -4{,}35
+$$
+
+Duas raízes reais e distintas: caso **superamortecido**.
+
+$$
+i_n(t) = A_1 e^{-1,15t} + A_2 e^{-4,35t}
+$$
+
+**Passo 5 — resposta forçada.** Constante $i_f = K$, logo $10K = 20$:
+
+$$
+i_f(t) = 2\ \mathrm{A}
+$$
+
+**Passo 6 — as duas constantes.** A primeira equação sai de $i(0) = 5$:
+
+$$
+A_1 + A_2 + 2 = 5
+\qquad\Longrightarrow\qquad
+A_1 + A_2 = 3
+$$
+
+A segunda sai de $v(0) = 25$. Como $v = 5i + 10\,di/dt$ e $5\,i(0) = 25$, sobra
+
+$$
+10\frac{di(0)}{dt} = 0
+\qquad\Longrightarrow\qquad
+-1{,}15\,A_1 - 4{,}35\,A_2 = 0
+$$
+
+Resolvendo o par:
+
+$$
+A_1 = 4{,}08
+\qquad\qquad
+A_2 = -1{,}08
+$$
+
+$$
+\boxed{i(t) = 4{,}08\,e^{-1,15t} - 1{,}08\,e^{-4,35t} + 2\ \mathrm{A}}
+$$
+
+**Passo 7 — a tensão.** Basta $v = 5i + 10\,di/dt$, agrupando cada exponencial:
+
+$$
+v(t) = A_1(5 + 10 s_1)\,e^{s_1 t} + A_2(5 + 10 s_2)\,e^{s_2 t} + 10
+$$
+
+$$
+\boxed{v(t) = 10 - 26{,}47\,e^{-1,15t} + 41{,}47\,e^{-4,35t}\ \mathrm{V}}
+$$
+
+**Conferência —** em $t = 0$: $i = 4{,}08 - 1{,}08 + 2 = 5$ A ✔ e $v = 10 - 26{,}47 + 41{,}47 = 25$ V ✔ Em $t \to \infty$ o capacitor abre e o indutor vira fio, então $i = 20/10 = 2$ A e $v = 5 \cdot 2 = 10$ V ✔
+
+**Sobre o gabarito —** a resolução da prova traz $v(t) = 10 - 26{,}52\,e^{-1,15t} + 41{,}58\,e^{-4,35t}$. É a **mesma resposta**: a diferença vem de arredondar $s_1$ e $s_2$ para duas casas antes de calcular os coeficientes. Com as raízes exatas, $v(0)$ fecha em $25$ V redondos; com as arredondadas, dá $25{,}06$ V.
+</Passos>
