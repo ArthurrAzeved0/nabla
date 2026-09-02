@@ -1,0 +1,105 @@
+---
+origem: "2018.2"
+tema: "Resposta ao degrau · Achar a corrente passando pela tensão do capacitor"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ para $t > 0$, sabendo que $v(0) = 10\ \mathrm{V}$.
+
+<Circuito
+  alt="Fonte de 40 V com 6 Ω em série, capacitor de 1/8 F em paralelo com 10 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "6 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "no", em: [2.4, 0] },
+    { t: "C", de: [2.4, 0], para: [2.4, 3.4], valor: "1/8 F" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [4.6, 0]] },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [4.6, 3.4]] },
+  ]}
+>
+
+A questão pede $i$, mas a **variável de estado** é $v$ — é ela que tem condição inicial. O caminho curto é resolver a equação de primeira ordem em $v$ e só no fim voltar para $i$ pela LKT da malha da fonte.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = \dfrac{5}{2} + \dfrac{5}{2}\,e^{-\frac{32}{15}t} \approx 2{,}5 + 2{,}5\,e^{-2,13t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as três relações.** LKT na malha da fonte, LKC no nó de cima e a lei do capacitor:
+
+$$
+40 = 6\,i + 10\,i_R
+\qquad
+i = i_C + i_R
+\qquad
+v = 10\,i_R
+\qquad
+i_C = \frac{1}{8}\frac{dv}{dt}
+$$
+
+**Passo 2 — junte tudo em $v$.** Trocando $i$ por $i_C + i_R$:
+
+$$
+40 = 6\,i_C + 6\,i_R + 10\,i_R = 6 \cdot \frac{1}{8}\frac{dv}{dt} + 16 \cdot \frac{v}{10}
+$$
+
+$$
+40 = \frac{3}{4}\frac{dv}{dt} + \frac{8}{5}\,v
+\qquad \times 20 \qquad
+15\frac{dv}{dt} + 32\,v = 800
+$$
+
+**Passo 3 — resposta natural.** De $15s + 32 = 0$ vem $s = -32/15$:
+
+$$
+v_n(t) = A\,e^{-\frac{32}{15}t}
+$$
+
+**Passo 4 — resposta forçada.** Constante $v_f = K$, logo $32K = 800$:
+
+$$
+v_f(t) = 25\ \mathrm{V}
+$$
+
+**Passo 5 — a constante.** Com $v(0) = 10$:
+
+$$
+10 = A + 25
+\qquad\Longrightarrow\qquad
+A = -15
+\qquad\Longrightarrow\qquad
+v(t) = 25 - 15\,e^{-\frac{32}{15}t}\ \mathrm{V}
+$$
+
+**Passo 6 — volte para $i$.** Pela LKT da malha da fonte, $i = \dfrac{40 - v}{6}$:
+
+$$
+i(t) = \frac{40 - 25 + 15\,e^{-\frac{32}{15}t}}{6} = \frac{15 + 15\,e^{-\frac{32}{15}t}}{6}
+$$
+
+$$
+\boxed{i(t) = \frac{5}{2} + \frac{5}{2}\,e^{-\frac{32}{15}t}\ \mathrm{A}}
+$$
+
+**Conferência —** $\tau = R_{eq}C = (6 \parallel 10) \cdot \frac{1}{8} = \frac{60}{16} \cdot \frac{1}{8} = \frac{15}{32}$ s, que é exatamente $1/|s|$ ✔ Em $t = 0$: $i = 5$ A, e de fato $\frac{40 - 10}{6} = 5$ A ✔ Em $t \to \infty$ o capacitor abre e $i \to \frac{40}{16} = 2{,}5$ A ✔ Confere com a resolução da prova.
+</Passos>
