@@ -1,0 +1,116 @@
+---
+origem: "2019.1"
+tema: "Resposta ao degrau · O resistor que só existe depois da chave"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ e a tensão $v$ para $t > 0$, sabendo que o circuito está em **regime permanente** em $t < 0$.
+
+<Circuito
+  alt="Comutação de 10 V para 8 V, 2 Ω em série, 2 Ω em paralelo com indutor de 1 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "8 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "2 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6, 0]] },
+    { t: "no", em: [6, 0] },
+    { t: "L", de: [6, 0], para: [6, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [6, 0.4], para: [6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6, 3.4]] },
+  ]}
+>
+
+Em $t < 0$ quem alimenta é a fonte de $10\ \mathrm{V}$; em $t = 0$ a chave comuta para a de $8\ \mathrm{V}$. O truque está em $0^-$: o indutor, em regime permanente, é um **fio** que curto-circuita o $2\ \Omega$ vertical — por isso a corrente inicial é alta.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = e^{-t} + 4\ \mathrm{A}$
+·
+$v(t) = -e^{-t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Em $0^-$ o indutor é um fio, e ele põe o $2\ \Omega$ vertical em curto. Sobra a fonte de $10\ \mathrm{V}$ sobre o $2\ \Omega$ horizontal:
+
+$$
+i(0^-) = \frac{10}{2} = 5\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i(0^+) = 5\ \mathrm{A}
+$$
+
+**Passo 2 — a equação para $t > 0$.** Agora a fonte é de $8\ \mathrm{V}$. Chamando $i_T$ a corrente que vem da fonte e $i_R$ a do $2\ \Omega$ vertical, a LKT da malha da esquerda e a LKC no nó dão
+
+$$
+8 = 2\,i_T + v
+\qquad\qquad
+i_T = i_R + i
+\qquad\qquad
+v = 2\,i_R = L\frac{di}{dt} = \frac{di}{dt}
+$$
+
+Substituindo $i_R = \dfrac{1}{2}\dfrac{di}{dt}$ e $v = \dfrac{di}{dt}$:
+
+$$
+8 = 2\left(\frac{1}{2}\frac{di}{dt} + i\right) + \frac{di}{dt}
+\qquad\Longrightarrow\qquad
+2\frac{di}{dt} + 2\,i = 8
+$$
+
+**Passo 3 — resposta natural.** Com $2s + 2 = 0$ vem $s = -1$:
+
+$$
+i_n(t) = A\,e^{-t}
+$$
+
+**Passo 4 — resposta forçada.** Constante $i_f = K$, logo $2K = 8$:
+
+$$
+i_f(t) = 4\ \mathrm{A}
+$$
+
+**Passo 5 — junte e use a condição inicial.**
+
+$$
+i(t) = A\,e^{-t} + 4
+\qquad\qquad
+i(0) = 5 = A + 4
+\qquad\Longrightarrow\qquad
+A = 1
+$$
+
+$$
+\boxed{i(t) = e^{-t} + 4\ \mathrm{A}}
+$$
+
+**Passo 6 — a tensão.** Ela é a do indutor:
+
+$$
+v(t) = L\frac{di}{dt} = \frac{d}{dt}\!\left(e^{-t} + 4\right)
+\qquad\Longrightarrow\qquad
+\boxed{v(t) = -e^{-t}\ \mathrm{V}}
+$$
+
+**Conferência —** em $t = 0$, $i = 5$ A (bate com a continuidade) e $v = -1$ V, o que exige $i_R = -0{,}5$ A e $i_T = 4{,}5$ A: de fato $8 - 2(4{,}5) = -1$ V ✔ Em $t \to \infty$ o indutor volta a ser fio, $v \to 0$ e $i \to 8/2 = 4$ A ✔ Confere com a resolução da prova.
+</Passos>
