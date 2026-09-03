@@ -1,0 +1,97 @@
+---
+origem: "2021.2"
+tema: "Análise nodal · Fonte controlada que zera o resistor do meio"
+temaId: analise-nodal
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q43.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine o valor de $v$ no circuito abaixo.
+
+<Circuito
+  alt="Fonte de 5 A, 6 Ω, fonte controlada de v/4 A por cima, 12 Ω e 4 Ω"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "6 Ω" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "corrente", de: [2.4, 0.4], para: [2.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "R", de: [2.4, 0], para: [5.4, 0], valor: "12 Ω" },
+    { t: "corrente", de: [2.6, 0], para: [3.6, 0], rotulo: "i_1" },
+    { t: "fio", pts: [[2.4, 0], [2.4, -1.8]] },
+    { t: "Id", de: [2.4, -1.8], para: [5.4, -1.8], rotulo: "v/4 A" },
+    { t: "fio", pts: [[5.4, -1.8], [5.4, 0]] },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [5.4, 0.4], para: [5.4, 1.4], rotulo: "i_2", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5.4, 3.4]] },
+  ]}
+>
+
+A fonte controlada de corrente vale $v/4$ e passa **por cima** do $12\ \Omega$: ela tira essa corrente do primeiro nó e devolve no segundo. O desfecho é bonito — ela deixa os dois nós no **mesmo potencial**, e o $12\ \Omega$ não conduz nada.
+
+</Circuito>
+
+<Gabarito>
+$v = 12\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os nós.** Terra no fio de baixo; $V_1$ é o nó do $6\ \Omega$ (logo $v = V_1$) e $V_2$ o do $4\ \Omega$.
+
+$$
+i = \frac{v}{6}
+\qquad
+i_1 = \frac{V_1 - V_2}{12}
+\qquad
+i_2 = \frac{V_2}{4}
+$$
+
+**Passo 2 — LKC no nó $V_2$.** Chegam a corrente do $12\ \Omega$ e os $v/4$ da fonte controlada; sai a do $4\ \Omega$:
+
+$$
+\frac{V_1 - V_2}{12} + \frac{V_1}{4} = \frac{V_2}{4}
+$$
+
+$$
+\times 12 \qquad
+V_1 - V_2 + 3\,V_1 = 3\,V_2
+\qquad\Longrightarrow\qquad
+4\,V_1 = 4\,V_2
+\qquad\Longrightarrow\qquad
+V_1 = V_2
+$$
+
+**Passo 3 — a consequência.** Se os dois nós têm a mesma tensão, o $12\ \Omega$ entre eles **não conduz**:
+
+$$
+i_1 = 0
+$$
+
+**Passo 4 — LKC no nó $V_1$.** Saem a corrente do $6\ \Omega$, os $v/4$ da fonte controlada e $i_1 = 0$:
+
+$$
+5 = \frac{V_1}{6} + \frac{V_1}{4} + 0 = \frac{2\,V_1 + 3\,V_1}{12} = \frac{5\,V_1}{12}
+$$
+
+$$
+\boxed{v = V_1 = 12\ \mathrm{V}}
+$$
+
+**Conferência —** com $v = 12$ V: $i = 2$ A pelo $6\ \Omega$, a fonte controlada vale $3$ A, e o $4\ \Omega$ (com $V_2 = 12$ V) leva $3$ A — exatamente os $3$ A que a fonte entrega ✔ A LKC do primeiro nó fecha em $2 + 3 = 5$ A ✔ Confere com a resolução da prova, que chega a $v = 12$ V pelos dois caminhos (Kirchhoff e análise nodal).
+
+**Sobre o enunciado —** o acervo tem apenas a **resolução** desta prova; o circuito acima é o que ela desenha.
+</Passos>
