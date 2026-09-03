@@ -1,0 +1,124 @@
+---
+origem: "2021.1"
+tema: "Thévenin e Norton · Equivalente com fonte controlada de corrente"
+temaId: thevenin-norton
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q42.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar os circuitos equivalentes de **Thévenin** e de **Norton** vistos dos pontos $a$ e $b$, onde está ligada a carga $R$.
+
+<Circuito
+  alt="Fonte de 50 V com 10 Ω, 5 Ω, fonte controlada de 5v A com 4 Ω por cima, 5 Ω, 5 Ω e carga R entre a e b"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "10 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "5 Ω" },
+    { t: "tensao", de: [2.2, 3.4], para: [2.2, 0], rotulo: "v", abaixo: true },
+    { t: "Id", de: [2.2, 0], para: [5, 0], rotulo: "5v A" },
+    { t: "fio", pts: [[2.2, 0], [2.2, -1.8]] },
+    { t: "R", de: [2.2, -1.8], para: [5, -1.8], valor: "4 Ω" },
+    { t: "fio", pts: [[5, -1.8], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "R", de: [5, 0], para: [7.6, 0], valor: "5 Ω" },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[7.6, 0], [10, 0]] },
+    { t: "no", em: [10, 0] },
+    { t: "texto", em: [10, -0.6], texto: "a" },
+    { t: "R", de: [10, 0], para: [10, 3.4], valor: "R", abaixo: true },
+    { t: "texto", em: [10, 4], texto: "b" },
+    { t: "fio", pts: [[0, 3.4], [10, 3.4]] },
+  ]}
+>
+
+A fonte controlada de **corrente** vale $5v$, onde $v$ é a tensão do $5\ \Omega$ do primeiro nó. Com fonte dependente no circuito, o $R_{Th}$ **não** sai zerando fontes: é preciso calcular $V_{oc}$ e $i_{sc}$ e dividir um pelo outro.
+
+</Circuito>
+
+<Gabarito>
+$V_{Th} = 20{,}83\ \mathrm{V}$ · $R_{Th} = 4{,}70\ \Omega$ · $I_N = 4{,}43\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito aberto ($R$ fora).** Terra no fio de baixo; $V_1$ é o nó do $5\ \Omega$ da esquerda (com $v = V_1$) e $V_2$ o do outro lado da fonte controlada. Com $R$ removido, o ramo do $5\ \Omega$ horizontal com o $5\ \Omega$ vertical soma $10\ \Omega$ de $V_2$ ao terra.
+
+LKC no nó $V_1$ — a fonte controlada **retira** $5v$ dali:
+
+$$
+\frac{50 - V_1}{10} = \frac{V_1}{5} + \frac{V_1 - V_2}{4} + 5\,V_1
+\qquad \times 20 \qquad
+111\,V_1 - 5\,V_2 = 100
+$$
+
+**Passo 2 — LKC no nó $V_2$.** Ela devolve os $5v$ aqui:
+
+$$
+\frac{V_1 - V_2}{4} + 5\,V_1 = \frac{V_2}{10}
+\qquad \times 20 \qquad
+105\,V_1 = 7\,V_2
+\qquad\Longrightarrow\qquad
+V_2 = 15\,V_1
+$$
+
+**Passo 3 — a tensão de Thévenin.**
+
+$$
+111\,V_1 - 75\,V_1 = 100
+\qquad\Longrightarrow\qquad
+V_1 = \frac{100}{36} = 2{,}78\ \mathrm{V}
+\qquad
+V_2 = 41{,}67\ \mathrm{V}
+$$
+
+A tensão em $a$–$b$ é a do $5\ \Omega$ vertical, ou seja $V_2$ dividido entre os dois $5\ \Omega$:
+
+$$
+\boxed{V_{Th} = 5 \cdot \frac{V_2}{10} = 20{,}83\ \mathrm{V}}
+$$
+
+**Passo 4 — a corrente de curto.** Curto-circuitando $a$–$b$, o $5\ \Omega$ vertical fica em curto e o ramo de $V_2$ passa a ser só o $5\ \Omega$ horizontal. A primeira equação não muda; a segunda vira
+
+$$
+\frac{V_1 - V_2}{4} + 5\,V_1 = \frac{V_2}{5}
+\qquad \times 20 \qquad
+105\,V_1 = 9\,V_2
+\qquad\Longrightarrow\qquad
+V_2 = \frac{105\,V_1}{9}
+$$
+
+$$
+111\,V_1 - \frac{525\,V_1}{9} = 100
+\qquad\Longrightarrow\qquad
+V_1 = 1{,}90\ \mathrm{V}
+\qquad
+V_2 = 22{,}15\ \mathrm{V}
+$$
+
+$$
+\boxed{I_N = i_{sc} = \frac{V_2}{5} = 4{,}43\ \mathrm{A}}
+$$
+
+**Passo 5 — a resistência.** Com fonte dependente, é a razão entre as duas:
+
+$$
+\boxed{R_{Th} = \frac{V_{oc}}{i_{sc}} = \frac{20{,}83}{4{,}43} = 4{,}70\ \Omega}
+$$
+
+**Conferência —** as duas contas compartilham a equação do nó $V_1$ e diferem só no ramo de saída ($10\ \Omega$ aberto contra $5\ \Omega$ em curto), o que é exatamente o que se espera ✔ E $V_{Th} = R_{Th} \cdot I_N = 4{,}70 \cdot 4{,}43 = 20{,}8$ V fecha o triângulo ✔ Confere com a resolução da prova.
+
+**Sobre o enunciado —** o acervo tem apenas a **resolução** desta prova; o circuito acima é o que ela desenha, com a carga $R$ nos terminais $a$–$b$.
+</Passos>
