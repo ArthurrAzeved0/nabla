@@ -1,0 +1,116 @@
+---
+origem: "2024.1"
+tema: "Resposta ao degrau · Indutor em paralelo com o resistor de saída"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q50.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ e a corrente $i$ para $t > 0$, dado que o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Comutação de 20 V para 100 V, 4 Ω em série, 4 Ω em paralelo com indutor de 1 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "fecha" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "abre" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "4 Ω" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "L", de: [6.8, 0], para: [6.8, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6.8, 3.4]] },
+  ]}
+>
+
+A comutação **sobe** a fonte: de $20$ para $100\ \mathrm{V}$. E repare que $i$ é a corrente do $4\ \Omega$ **vertical** — ou seja, ela é a tensão do indutor dividida por $4$, e portanto proporcional a $di_L/dt$. Em regime permanente ela vale zero nas duas pontas.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 100 - 40\,e^{-2t}\ \mathrm{V}$
+·
+$i(t) = 10\,e^{-2t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Com $20\ \mathrm{V}$ e o indutor **em fio**, o $4\ \Omega$ vertical fica em curto:
+
+$$
+i_L(0^-) = \frac{20}{4} = 5\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i_L(0^+) = 5\ \mathrm{A}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Agora a fonte é de $100\ \mathrm{V}$:
+
+$$
+100 = 4\,i_T + \frac{di_L}{dt}
+\qquad
+i_T = i + i_L
+\qquad
+4\,i = \frac{di_L}{dt}
+$$
+
+**Passo 3 — a equação em $i_L$.** Com $i = \dfrac14\dfrac{di_L}{dt}$:
+
+$$
+100 = 4\,i_L + 4 \cdot \frac14\frac{di_L}{dt} + \frac{di_L}{dt}
+= 4\,i_L + 2\frac{di_L}{dt}
+$$
+
+$$
+\frac{di_L}{dt} + 2\,i_L = 50
+$$
+
+**Passo 4 — resposta natural e forçada.** De $s + 2 = 0$ vem $s = -2$; e $2K = 50$ dá $i_{L,f} = 25\ \mathrm{A}$.
+
+**Passo 5 — a constante.** De $i_L(0) = 5$:
+
+$$
+5 = A + 25
+\qquad\Longrightarrow\qquad
+A = -20
+\qquad\Longrightarrow\qquad
+i_L(t) = 25 - 20\,e^{-2t}\ \mathrm{A}
+$$
+
+**Passo 6 — a corrente do $4\ \Omega$ vertical.**
+
+$$
+i = \frac14\frac{di_L}{dt} = \frac14 \cdot 40\,e^{-2t}
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = 10\,e^{-2t}\ \mathrm{A}}
+$$
+
+**Passo 7 — a tensão do $4\ \Omega$ horizontal.** É $4\,i_T$:
+
+$$
+v = 4\,(i + i_L) = 4\left(25 - 20\,e^{-2t} + 10\,e^{-2t}\right)
+$$
+
+$$
+\boxed{v(t) = 100 - 40\,e^{-2t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{1}{4 \parallel 4} = \dfrac12$ s, e de fato $s = -2$ ✔ Em $t = 0$: $v = 60$ V, então $i_T = 15$ A e a tensão do indutor é $100 - 60 = 40$ V — exatamente o que dá $i(0) = 40/4 = 10$ A ✔ Em $t \to \infty$ o indutor volta a curto-circuitar o $4\ \Omega$: $i \to 0$ e $v \to 100$ V ✔ Confere com a resolução da prova.
+</Passos>
