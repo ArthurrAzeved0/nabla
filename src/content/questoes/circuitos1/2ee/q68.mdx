@@ -1,0 +1,118 @@
+---
+origem: "2017.1 · 2ª chamada"
+tema: "Resposta ao degrau · Sai a fonte de corrente, entra a de tensão"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q68.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito está em **regime permanente** em $t = 0^-$. Encontre $v(t)$ e $i(t)$ para $t > 0$.
+
+<Circuito
+  alt="Fonte de 1 V com 4 Ω e chave, 6 Ω, 4 Ω, indutor de 1 H, chave e fonte de 1 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "1 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "4 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1.1, 0], rotulo: "i_T" },
+    { t: "S", de: [2.2, 0], para: [4, 0], rotulo: "fecha" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "6 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [4, 0], para: [6.6, 0], valor: "4 Ω" },
+    { t: "no", em: [6.6, 0] },
+    { t: "L", de: [6.6, 0], para: [6.6, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [6.6, 0.4], para: [6.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "S", de: [6.6, 0], para: [9, 0], rotulo: "abre" },
+    { t: "no", em: [9, 0] },
+    { t: "I", de: [9, 3.4], para: [9, 0], valor: "1 A" },
+    { t: "fio", pts: [[0, 3.4], [9, 3.4]] },
+  ]}
+>
+
+As duas chaves fazem uma **troca de fonte**: em $t < 0$ quem alimenta é a de $1\ \mathrm{A}$ à direita (e a de $1\ \mathrm{V}$ está desligada); em $t = 0$ elas invertem. Em $0^-$ o indutor, sendo fio, engole toda a corrente da fonte — e é isso que dá a condição inicial.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = \dfrac{3}{32} + \dfrac{29}{32}\,e^{-\frac{32}{5}t} \approx 0{,}094 + 0{,}906\,e^{-6,4t}\ \mathrm{A}$
+
+$v(t) = \dfrac{3}{8} - \dfrac{87}{40}\,e^{-\frac{32}{5}t} \approx 0{,}375 - 2{,}175\,e^{-6,4t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Chave da esquerda **aberta**, da direita **fechada**, indutor **em fio**. O indutor aterra o seu nó, e o par $4\ \Omega + 6\ \Omega$ liga esse nó ao terra pelos dois lados — ou seja, com os dois extremos no mesmo potencial, não passa nada por eles:
+
+$$
+i(0^-) = 1\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i(0^+) = 1\ \mathrm{A}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Agora só a fonte de $1\ \mathrm{V}$ alimenta. Com $i_T$ na entrada e $i_1$ no $6\ \Omega$:
+
+$$
+i_T = i_1 + i
+\qquad
+1 = 4\,i_T + v
+\qquad
+v = 6\,i_1
+\qquad
+v = 4\,i + \frac{di}{dt}
+$$
+
+**Passo 3 — a equação em $i$.** De $i_1 = v/6$:
+
+$$
+1 = 4\left(\frac{v}{6} + i\right) + v = \frac{5}{3}\,v + 4\,i
+\qquad \times 3 \qquad
+3 = 5\,v + 12\,i
+$$
+
+E trocando $v$ por $4i + di/dt$:
+
+$$
+3 = 5\left(4\,i + \frac{di}{dt}\right) + 12\,i
+\qquad\Longrightarrow\qquad
+5\frac{di}{dt} + 32\,i = 3
+$$
+
+**Passo 4 — resposta natural e forçada.** De $5s + 32 = 0$ vem $s = -\dfrac{32}{5} = -6{,}4$; e $32K = 3$ dá $i_f = \dfrac{3}{32}$ A.
+
+**Passo 5 — a constante.** De $i(0) = 1$:
+
+$$
+1 = A + \frac{3}{32}
+\qquad\Longrightarrow\qquad
+A = \frac{29}{32}
+$$
+
+$$
+\boxed{i(t) = \frac{3}{32} + \frac{29}{32}\,e^{-\frac{32}{5}t}\ \mathrm{A}}
+$$
+
+**Passo 6 — a tensão.** De $v = 4i + di/dt$, com $\dfrac{di}{dt} = -\dfrac{29}{5}\,e^{-\frac{32}{5}t}$:
+
+$$
+v = \frac{3}{8} + \left(\frac{29}{8} - \frac{29}{5}\right)e^{-\frac{32}{5}t}
+$$
+
+$$
+\boxed{v(t) = \frac{3}{8} - \frac{87}{40}\,e^{-\frac{32}{5}t} \approx 0{,}375 - 2{,}175\,e^{-6,4t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{1}{4 + (4 \parallel 6)} = \dfrac{1}{6{,}4}$ s, e de fato $s = -6{,}4$ ✔ Em $t = 0$: $i = 1$ A e $v = -1{,}8$ V, o que fecha a relação $3 = 5v + 12i$: $5(-1{,}8) + 12 = 3$ ✔ Em $t \to \infty$ o indutor volta a ser fio, o $6\ \Omega$ e o $4\ \Omega$ ficam em paralelo ($2{,}4\ \Omega$) e $v \to 1 \cdot \frac{2{,}4}{6{,}4} = 0{,}375$ V, com $i \to 0{,}375/4 = 0{,}094$ A ✔
+
+**Sobre o gabarito —** a resolução da prova monta a equação certa, mas erra a constante na última linha: escreve $A = \frac{32}{32} - \frac{3}{32} = -\frac{1}{32}$, quando essa subtração dá $\frac{29}{32}$. Com o $-1/32$ a resposta daria $i(0) = 2/32$, e não $1$ A. Os valores acima usam $A = 29/32$.
+</Passos>
