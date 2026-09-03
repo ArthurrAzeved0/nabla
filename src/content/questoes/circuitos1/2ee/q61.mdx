@@ -1,0 +1,107 @@
+---
+origem: "2019.2 · 2ª chamada"
+tema: "Condições iniciais · Fonte controlada que vale zero e vira curto"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q61.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito encontra-se em **regime permanente** em $t = 0^-$, determine os valores de $i$, $v$, $di/dt$ e $dv/dt$ em $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 10 V para 40 V, capacitor de 1/10 F, 4 Ω, chave, fonte controlada v1 V, 5 Ω, 10 Ω e indutor de 1 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "40 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "C", de: [1.8, 0], para: [4.4, 0], valor: "1/10 F", abaixo: true },
+    { t: "tensao", de: [4.4, 0], para: [1.8, 0], rotulo: "v", abaixo: false },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "4 Ω" },
+    { t: "tensao", de: [4.4, 3.4], para: [4.4, 0], rotulo: "v_1", abaixo: true },
+    { t: "S", de: [4.4, 0], para: [6.4, 0], rotulo: "abre" },
+    { t: "no", em: [6.4, 0] },
+    { t: "Vd", de: [6.4, 3.4], para: [6.4, 0], rotulo: "v_1 V" },
+    { t: "fio", pts: [[6.4, 0], [9, 0]] },
+    { t: "no", em: [9, 0] },
+    { t: "R", de: [9, 0], para: [9, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "R", de: [9, 0], para: [11.6, 0], valor: "10 Ω" },
+    { t: "no", em: [11.6, 0] },
+    { t: "L", de: [11.6, 0], para: [11.6, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [11.6, 0.4], para: [11.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [11.6, 3.4]] },
+  ]}
+>
+
+O truque está na fonte controlada: em $t < 0$ o capacitor bloqueia, então $v_1 = 0$ — e uma fonte de tensão de **zero volts é um curto**, que aterra todo o lado direito. Em $t = 0$ a fonte sobe para $40\ \mathrm{V}$ e a segunda chave **abre**, separando os dois lados.
+
+</Circuito>
+
+<Gabarito>
+$i(0^+) = 0$  ·  $v(0^+) = 10\ \mathrm{V}$  ·  $\dfrac{dv(0^+)}{dt} = 75\ \mathrm{V/s}$  ·  $\dfrac{di(0^+)}{dt} = 30\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Fonte de $10\ \mathrm{V}$, segunda chave **fechada**, capacitor **aberto** e indutor **em fio**.
+
+O capacitor aberto impede corrente no $4\ \Omega$:
+
+$$
+v_1(0^-) = 0
+\qquad\Longrightarrow\qquad
+\text{a fonte controlada vale } 0\ \mathrm{V} = \text{curto}
+$$
+
+Esse curto põe o nó da fonte controlada no terra, e com ele o $5\ \Omega$ e o ramo do $10\ \Omega$ com o indutor. Nada circula:
+
+$$
+i(0^-) = 0
+\qquad\qquad
+v(0^-) = 10 - 0 = 10\ \mathrm{V}
+$$
+
+**Passo 2 — continuidade.**
+
+$$
+\boxed{i(0^+) = 0}
+\qquad\qquad
+\boxed{v(0^+) = 10\ \mathrm{V}}
+$$
+
+**Passo 3 — o lado esquerdo em $0^+$.** Fonte de $40\ \mathrm{V}$, segunda chave **aberta**. O capacitor mantém $10\ \mathrm{V}$, então o nó do $4\ \Omega$ sobe:
+
+$$
+v_1(0^+) = 40 - 10 = 30\ \mathrm{V}
+$$
+
+Com a chave aberta, o único caminho para a corrente do capacitor é o $4\ \Omega$:
+
+$$
+i_C(0^+) = \frac{30}{4} = 7{,}5\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{7{,}5}{1/10} = 75\ \mathrm{V/s}}
+$$
+
+**Passo 4 — o lado direito em $0^+$.** Isolado, ele é alimentado só pela fonte controlada, que agora vale $v_1 = 30\ \mathrm{V}$. O $5\ \Omega$ leva $30/5 = 6\ \mathrm{A}$, e o indutor ainda leva **zero** — então o $10\ \Omega$ não cai tensão e os $30\ \mathrm{V}$ chegam inteiros ao indutor:
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{30}{1} = 30\ \mathrm{A/s}}
+$$
+
+**Conferência —** a cadeia é bonita: a comutação carrega $30\ \mathrm{V}$ no $4\ \Omega$, esses $30\ \mathrm{V}$ acordam a fonte controlada (que era um curto), e ela joga os mesmos $30\ \mathrm{V}$ no indutor ✔ Confere com a resolução da prova.
+</Passos>
