@@ -1,0 +1,105 @@
+---
+origem: "Final 2023.1"
+tema: "Superposição · Com fonte controlada que não se desliga"
+temaId: superposicao
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $v$ e de $i$ no circuito abaixo **por superposição**. O circuito com a fonte de tensão deve ser resolvido pela Análise de Malhas e o circuito com a fonte de corrente pela Análise de Nós.
+
+<Circuito
+  alt="Fonte de 20 V com 10 Ω, 5 Ω, fonte controlada de v/2 A, 4 Ω e fonte de 2 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "10 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "5 Ω" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "v/2 A" },
+    { t: "fio", pts: [[5, 0], [7.6, 0]] },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [7.6, 0.4], para: [7.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[7.6, 0], [10.2, 0]] },
+    { t: "no", em: [10.2, 0] },
+    { t: "I", de: [10.2, 3.4], para: [10.2, 0], valor: "2 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [10.2, 3.4]] },
+  ]}
+>
+
+Repare bem no desenho: os quatro pontos do topo estão ligados por fio, então **é tudo um nó só**. E o mais importante da superposição aqui: a fonte controlada $v/2$ **não se desliga** — ela depende de $v$, que muda em cada parcela, e por isso participa das duas.
+
+</Circuito>
+
+<Gabarito>
+$v = 80\ \mathrm{V}$
+·
+$i = 20\ \mathrm{A}$
+
+(cada fonte contribui com exatamente metade: $40\ \mathrm{V}$ e $10\ \mathrm{A}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — enxergue o nó único.** O fio de cima liga o nó do $5\ \Omega$, o da fonte controlada, o do $4\ \Omega$ e o da fonte de $2\ \mathrm{A}$. Todo o circuito tem **um** nó essencial acima do terra, e a tensão dele é o próprio $v$.
+
+**Passo 2 — parcela da fonte de $20\ \mathrm{V}$.** Desligue a fonte de corrente independente (fonte de corrente desligada = **aberto**); a controlada fica.
+
+$$
+\frac{20 - v_1}{10} + \frac{v_1}{2} = \frac{v_1}{5} + \frac{v_1}{4}
+\qquad \times 20 \qquad
+40 - 2\,v_1 + 10\,v_1 = 4\,v_1 + 5\,v_1
+$$
+
+$$
+40 = v_1
+\qquad\Longrightarrow\qquad
+v_1 = 40\ \mathrm{V}
+\qquad
+i_1 = \frac{40}{4} = 10\ \mathrm{A}
+$$
+
+**Passo 3 — parcela da fonte de $2\ \mathrm{A}$.** Desligue a fonte de tensão (fonte de tensão desligada = **curto**); a controlada fica.
+
+$$
+\frac{0 - v_2}{10} + \frac{v_2}{2} + 2 = \frac{v_2}{5} + \frac{v_2}{4}
+\qquad \times 20 \qquad
+-2\,v_2 + 10\,v_2 + 40 = 4\,v_2 + 5\,v_2
+$$
+
+$$
+8\,v_2 + 40 = 9\,v_2
+\qquad\Longrightarrow\qquad
+v_2 = 40\ \mathrm{V}
+\qquad
+i_2 = 10\ \mathrm{A}
+$$
+
+**Passo 4 — some.**
+
+$$
+\boxed{v = v_1 + v_2 = 80\ \mathrm{V}}
+\qquad\qquad
+\boxed{i = i_1 + i_2 = 20\ \mathrm{A}}
+$$
+
+**Conferência —** com $v = 80\ \mathrm{V}$, a LKC do circuito completo tem de fechar. Entradas: $\frac{20 - 80}{10} = -6$ A pelo $10\ \Omega$ (a corrente **volta** para a fonte), $\frac{80}{2} = 40$ A da controlada e $2$ A da independente — total $36$ A. Saídas: $\frac{80}{5} + \frac{80}{4} = 16 + 20 = 36$ A ✔
+
+**Sobre a análise de malhas —** o enunciado pede que a parcela da fonte de tensão saia por malhas. Com a fonte de corrente **controlada** no meio do circuito, isso exige montar uma **supermalha** em volta dela (e a equação auxiliar $i_{ramo} = v/2$). O resultado é o mesmo $v_1 = 40\ \mathrm{V}$ — a análise nodal acima é só o caminho curto, já que o circuito tem um único nó essencial.
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi obtida por superposição e conferida pela LKC no circuito completo; o fato de as duas parcelas darem exatamente $40\ \mathrm{V}$ cada é uma boa checagem de consistência.
+</Passos>
