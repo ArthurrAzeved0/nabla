@@ -1,0 +1,122 @@
+---
+origem: "2021.1"
+tema: "Supernó · Fonte controlada de tensão entre dois nós"
+temaId: superno
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q41.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $i$ e de $v$ no circuito abaixo.
+
+<Circuito
+  alt="Fonte de 20 V com 5 Ω, 10 Ω, fonte controlada de 2i V com 4 Ω por cima, 3 Ω, 2 Ω e fonte de 5 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "5 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1.1, 0], rotulo: "i_g" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "corrente", de: [2.2, 0.4], para: [2.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "Vd", de: [5, 0], para: [2.2, 0], rotulo: "2i V" },
+    { t: "fio", pts: [[2.2, 0], [2.2, -1.8]] },
+    { t: "R", de: [2.2, -1.8], para: [5, -1.8], valor: "4 Ω" },
+    { t: "fio", pts: [[5, -1.8], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "R", de: [5, 0], para: [7.6, 0], valor: "3 Ω" },
+    { t: "tensao", de: [7.6, 0], para: [5, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [7.6, 0.4], para: [7.6, 1.4], rotulo: "i_3", abaixo: false },
+    { t: "fio", pts: [[7.6, 0], [10.8, 0]] },
+    { t: "no", em: [10.8, 0] },
+    { t: "I", de: [10.8, 3.4], para: [10.8, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 3.4], [10.8, 3.4]] },
+  ]}
+>
+
+A fonte controlada de **tensão** flutua entre dois nós essenciais: é supernó. E ela depende de $i$, que é a corrente do $10\ \Omega$ do primeiro nó — ou seja, o vínculo do supernó vira uma relação entre as próprias tensões nodais. O $4\ \Omega$ de cima liga os mesmos dois nós e some na LKC.
+
+</Circuito>
+
+<Gabarito>
+$i = 1{,}30\ \mathrm{A}$
+·
+$v = 0{,}26\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os nós.** Terra no fio de baixo; $V_1$ é o nó do $10\ \Omega$, $V_2$ o do outro lado da fonte controlada e $V_3$ o do $2\ \Omega$.
+
+**Passo 2 — o vínculo do supernó.** A fonte vale $2i$ com o "+" do lado de $V_1$, e $i = \dfrac{V_1}{10}$:
+
+$$
+V_1 - V_2 = 2\,i = \frac{V_1}{5}
+\qquad\Longrightarrow\qquad
+5\,V_1 - 5\,V_2 = V_1
+\qquad\Longrightarrow\qquad
+V_2 = \frac{4\,V_1}{5}
+$$
+
+**Passo 3 — LKC do supernó ($V_1$ e $V_2$ juntos).** O $4\ \Omega$ de cima é interno e não entra:
+
+$$
+\frac{20 - V_1}{5} = \frac{V_1}{10} + \frac{V_2 - V_3}{3}
+$$
+
+$$
+\times 30 \qquad
+120 - 6\,V_1 = 3\,V_1 + 10\left(\frac{4V_1}{5} - V_3\right)
+\qquad\Longrightarrow\qquad
+17\,V_1 - 10\,V_3 = 120
+$$
+
+**Passo 4 — LKC no nó $V_3$.** A fonte de $5\ \mathrm{A}$ injeta ali:
+
+$$
+5 + \frac{V_2 - V_3}{3} = \frac{V_3}{2}
+\qquad \times 6 \qquad
+30 + 1{,}6\,V_1 = 5\,V_3
+\qquad\Longrightarrow\qquad
+V_3 = 6 + 0{,}32\,V_1
+$$
+
+**Passo 5 — resolva.**
+
+$$
+17\,V_1 - 10\left(6 + 0{,}32\,V_1\right) = 120
+\qquad\Longrightarrow\qquad
+13{,}8\,V_1 = 180
+$$
+
+$$
+V_1 = 13{,}04\ \mathrm{V}
+\qquad
+V_2 = 10{,}43\ \mathrm{V}
+\qquad
+V_3 = 10{,}17\ \mathrm{V}
+$$
+
+**Passo 6 — as duas respostas.**
+
+$$
+\boxed{i = \frac{V_1}{10} = 1{,}30\ \mathrm{A}}
+\qquad\qquad
+\boxed{v = V_2 - V_3 = 0{,}26\ \mathrm{V}}
+$$
+
+**Conferência —** a fonte controlada vale $2i = 2{,}61\ \mathrm{V}$, e de fato $V_1 - V_2 = 13{,}04 - 10{,}43 = 2{,}61$ ✔ No nó $V_3$: entram $5$ A da fonte e $\frac{0{,}26}{3} = 0{,}087$ A do $3\ \Omega$, e saem $\frac{10{,}17}{2} = 5{,}09$ A pelo $2\ \Omega$ ✔ Confere com a resolução da prova ($i_T = 1{,}3$ A e $v_T = 0{,}26$ V).
+
+**Sobre o enunciado —** o acervo tem apenas a **resolução** desta prova; o circuito acima é o que ela desenha na verificação final, com as duas fontes independentes atuando juntas.
+</Passos>
