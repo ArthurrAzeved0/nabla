@@ -1,0 +1,132 @@
+---
+origem: "2017.2 · 2ª chamada"
+tema: "Subamortecido · Chave que curto-circuita o resistor de saída"
+temaId: subamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q64.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado que o circuito abaixo está em **regime permanente** em $t = 0^-$, determine $v(t)$ e $i(t)$ para $t > 0$.
+
+<Circuito
+  alt="Fonte de 10 mA com 4 kΩ, capacitor de 1/8 µF, indutor de 4/13 H, 1 kΩ e chave em paralelo"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 mA" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3.4], valor: "4 kΩ", abaixo: true },
+    { t: "fio", pts: [[2, 0], [5.2, 0]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "C", de: [5.2, 0], para: [5.2, 3.4], valor: "1/8 µF" },
+    { t: "tensao", de: [5.2, 3.4], para: [5.2, 0], rotulo: "v", abaixo: true },
+    { t: "L", de: [5.2, 0], para: [7.6, 0], valor: "4/13 H" },
+    { t: "fio", pts: [[7.6, 0], [8.8, 0]] },
+    { t: "corrente", de: [7.7, 0], para: [8.7, 0], rotulo: "i" },
+    { t: "no", em: [8.8, 0] },
+    { t: "R", de: [8.8, 0], para: [8.8, 3.4], valor: "1 kΩ", abaixo: true },
+    { t: "fio", pts: [[8.8, 0], [8.8, -1.6]] },
+    { t: "S", de: [8.8, -1.6], para: [11.2, -1.6], rotulo: "fecha" },
+    { t: "fio", pts: [[11.2, -1.6], [11.2, 3.4]] },
+    { t: "fio", pts: [[0, 3.4], [11.2, 3.4]] },
+  ]}
+>
+
+A chave está **em paralelo com o $1\ \mathrm{k}\Omega$**: ao fechar, ela põe esse resistor em curto e o ramo do indutor passa a ser um caminho sem perdas. Os valores foram escolhidos para as raízes saírem redondas — $\alpha = 1000$ e $\omega_d = 5000$.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 10 - 2\,e^{-1000t}\cos 5000t + 4{,}8\,e^{-1000t}\operatorname{sen} 5000t\ \ \mathrm{mA}$
+
+$v(t) = e^{-1000t}\left(8\cos 5000t + 1{,}6\operatorname{sen} 5000t\right)\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condições iniciais.** Chave **aberta**, capacitor **aberto** e indutor **em fio**: a fonte de $10\ \mathrm{mA}$ se divide entre o $4\ \mathrm{k}\Omega$ e o ramo do $1\ \mathrm{k}\Omega$.
+
+$$
+i(0^-) = 10\ \mathrm{mA} \cdot \frac{4000}{4000 + 1000} = 8\ \mathrm{mA}
+$$
+
+$$
+v(0^-) = 4000 \cdot \left(10 - 8\right)\ \mathrm{mA} = 8\ \mathrm{V}
+$$
+
+**Passo 2 — o circuito em $t > 0$.** A chave fechou e o $1\ \mathrm{k}\Omega$ saiu de cena. Sobram a fonte, o $4\ \mathrm{k}\Omega$, o capacitor e o indutor:
+
+$$
+10^{-2} = \frac{v}{4000} + \frac18 \cdot 10^{-6}\frac{dv}{dt} + i
+\qquad\qquad
+v = \frac{4}{13}\frac{di}{dt}
+$$
+
+**Passo 3 — a equação em $i$.** Substituindo $v$ e multiplicando por $26 \cdot 10^{6}$:
+
+$$
+\frac{d^2 i}{dt^2} + 2000\frac{di}{dt} + 26 \cdot 10^{6}\,i = 26 \cdot 10^{4}
+$$
+
+**Passo 4 — resposta natural.** De $s^2 + 2000s + 26 \cdot 10^6 = 0$:
+
+$$
+s = \frac{-2000 \pm \sqrt{4 \cdot 10^6 - 104 \cdot 10^6}}{2} = -1000 \pm j5000
+$$
+
+Caso **subamortecido**, com $\alpha = 1000$ e $\omega_d = 5000$:
+
+$$
+i_n(t) = e^{-1000t}\left(A_1\cos 5000t + A_2\operatorname{sen} 5000t\right)
+$$
+
+**Passo 5 — resposta forçada.** $26 \cdot 10^6 K = 26 \cdot 10^4$, logo $i_f = 10^{-2} = 10\ \mathrm{mA}$ — no fim o capacitor abre, o indutor vira fio sem resistência e leva **toda** a corrente da fonte.
+
+**Passo 6 — a primeira constante.** De $i(0) = 8\ \mathrm{mA}$:
+
+$$
+A_1 + 10 = 8
+\qquad\Longrightarrow\qquad
+A_1 = -2\ \mathrm{mA}
+$$
+
+**Passo 7 — a segunda.** De $v(0) = 8 = \dfrac{4}{13}\dfrac{di(0)}{dt}$ vem $\dfrac{di(0)}{dt} = 26$ A/s, e derivando a resposta em $t = 0$:
+
+$$
+-1000\,A_1 + 5000\,A_2 = 26
+\qquad\Longrightarrow\qquad
+2 + 5000\,A_2 = 26
+\qquad\Longrightarrow\qquad
+A_2 = 4{,}8\ \mathrm{mA}
+$$
+
+$$
+\boxed{i(t) = 10 - 2\,e^{-1000t}\cos 5000t + 4{,}8\,e^{-1000t}\operatorname{sen} 5000t\ \ \mathrm{mA}}
+$$
+
+**Passo 8 — a tensão.** $v = \dfrac{4}{13}\dfrac{di}{dt}$, agrupando seno e cosseno:
+
+$$
+\boxed{v(t) = e^{-1000t}\left(8\cos 5000t + 1{,}6\operatorname{sen} 5000t\right)\ \mathrm{V}}
+$$
+
+**Conferência —** com o $1\ \mathrm{k}\Omega$ em curto, o que sobra é um **RLC paralelo puro**, e as fórmulas prontas confirmam as raízes:
+
+$$
+\alpha = \frac{1}{2RC} = \frac{1}{2 \cdot 4000 \cdot \frac{1}{8} \cdot 10^{-6}} = 1000
+\qquad
+\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{\frac{4}{13} \cdot \frac{10^{-6}}{8}}} = \sqrt{26 \cdot 10^6}
+$$
+
+e $\omega_d = \sqrt{26 \cdot 10^6 - 10^6} = 5000$ ✔ É para isso que serve o $4/13\ \mathrm{H}$: não é valor aleatório, é o que deixa as raízes redondas. Em $t = 0$: $i = 8$ mA e $v = 8$ V ✔ Em $t \to \infty$: $v \to 0$ e $i \to 10$ mA, os $10\ \mathrm{mA}$ inteiros da fonte ✔ Confere com a resolução da prova.
+</Passos>
