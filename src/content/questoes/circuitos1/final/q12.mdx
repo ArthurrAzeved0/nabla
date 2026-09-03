@@ -1,0 +1,123 @@
+---
+origem: "Final 2022.1"
+tema: "Análise nodal · Três nós e uma escada de resistores"
+temaId: analise-nodal
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Usando um método qualquer de análise de circuitos, determine as tensões dos nós e a corrente $i$ no circuito a seguir.
+
+<Circuito
+  alt="Fonte de 10 A alimentando escada de 3 Ω, 9 Ω, 6 Ω, 2 Ω e 3 Ω"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 1.7], valor: "3 Ω" },
+    { t: "no", em: [2.4, 1.7] },
+    { t: "R", de: [2.4, 1.7], para: [2.4, 3.4], valor: "9 Ω" },
+    { t: "R", de: [2.4, 0], para: [5.8, 0], valor: "6 Ω" },
+    { t: "no", em: [5.8, 0] },
+    { t: "R", de: [2.4, 1.7], para: [5.8, 1.7], valor: "2 Ω" },
+    { t: "corrente", de: [2.9, 1.7], para: [3.8, 1.7], rotulo: "i", abaixo: true },
+    { t: "fio", pts: [[5.8, 1.7], [5.8, 0]] },
+    { t: "no", em: [5.8, 1.7] },
+    { t: "R", de: [5.8, 1.7], para: [5.8, 3.4], valor: "3 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+  ]}
+>
+
+Três nós essenciais e uma única fonte de corrente: análise nodal direta. Repare que o $6\ \Omega$ e o $2\ \Omega$ ligam **os mesmos dois pares de nós** por caminhos diferentes — é uma escada, não uma associação série-paralelo simples.
+
+</Circuito>
+
+<Gabarito>
+$v_A = 45\ \mathrm{V}$  ·  $v_B = 27\ \mathrm{V}$  ·  $v_C = 21\ \mathrm{V}$
+
+$i = \dfrac{v_B - v_C}{2} = 3\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — escolha os nós.** Terra no fio de baixo. $v_A$ é o nó de cima (onde a fonte entrega), $v_B$ o nó do meio (entre o $3\ \Omega$ e o $9\ \Omega$) e $v_C$ o nó da direita.
+
+**Passo 2 — LKC no nó $A$.** Os $10\ \mathrm{A}$ se repartem entre o $3\ \Omega$ e o $6\ \Omega$:
+
+$$
+10 = \frac{v_A - v_B}{3} + \frac{v_A - v_C}{6}
+\qquad \times 6 \qquad
+60 = 2\,v_A - 2\,v_B + v_A - v_C
+$$
+
+$$
+3\,v_A - 2\,v_B - v_C = 60
+$$
+
+**Passo 3 — LKC no nó $B$.**
+
+$$
+\frac{v_A - v_B}{3} = \frac{v_B}{9} + \frac{v_B - v_C}{2}
+\qquad \times 18 \qquad
+6\,v_A - 6\,v_B = 2\,v_B + 9\,v_B - 9\,v_C
+$$
+
+$$
+6\,v_A - 17\,v_B + 9\,v_C = 0
+$$
+
+**Passo 4 — LKC no nó $C$.**
+
+$$
+\frac{v_A - v_C}{6} + \frac{v_B - v_C}{2} = \frac{v_C}{3}
+\qquad \times 6 \qquad
+v_A - v_C + 3\,v_B - 3\,v_C = 2\,v_C
+$$
+
+$$
+v_A + 3\,v_B = 6\,v_C
+\qquad\Longrightarrow\qquad
+v_C = \frac{v_A + 3\,v_B}{6}
+$$
+
+**Passo 5 — resolva.** Levando $v_C$ nas duas primeiras:
+
+$$
+\text{(A)} \quad 360 = 17\,v_A - 15\,v_B
+\qquad\qquad
+\text{(B)} \quad 45\,v_A = 75\,v_B
+\quad\Longrightarrow\quad
+v_A = \frac53\,v_B
+$$
+
+$$
+360 = \frac{85}{3}v_B - 15\,v_B = \frac{40}{3}v_B
+\qquad\Longrightarrow\qquad
+\boxed{v_B = 27\ \mathrm{V}}
+\quad
+\boxed{v_A = 45\ \mathrm{V}}
+\quad
+\boxed{v_C = 21\ \mathrm{V}}
+$$
+
+**Passo 6 — a corrente do $2\ \Omega$.**
+
+$$
+\boxed{i = \frac{27 - 21}{2} = 3\ \mathrm{A}}
+$$
+
+**Conferência —** todas as correntes: $3\ \Omega$: $\frac{45-27}{3} = 6$ A; $6\ \Omega$: $\frac{45-21}{6} = 4$ A — e $6 + 4 = 10$ A da fonte ✔ No nó $B$: entram $6$ A, saem $\frac{27}{9} = 3$ A pelo $9\ \Omega$ e $3$ A pelo $2\ \Omega$ ✔ No nó $C$: entram $4 + 3 = 7$ A, sai $\frac{21}{3} = 7$ A ✔ Todas as tensões saem inteiras — bom sinal.
+
+**Sobre o enunciado —** o PDF perdeu as fórmulas do texto ("os valores de e de"), e a figura, recortada de um livro, só marca a seta da corrente no $2\ \Omega$ sem nomeá-la. O que a questão cobra — as três tensões nodais e as correntes de todos os ramos — está resolvido acima; a grandeza chamada $v$ na sua prova será uma dessas tensões.
+</Passos>
