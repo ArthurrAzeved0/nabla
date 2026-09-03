@@ -23,6 +23,40 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ## [Não publicado]
 
+### Adicionado
+
+- **Circuitos Elétricos 1 está completa: 128 questões** (1º EE 43, 2º EE 69,
+  final 16), com as 24 seções de teoria e a divisão 1º/2º EE marcada no sumário.
+  O acervo de provas foi **esgotado** — todas as provas do 1º e do 2º EE, as três
+  segundas chamadas do 2º EE e as oito finais, na medida em que os PDFs permitem.
+- **Onde o gabarito não existia** (2024.2, 2025.1, 2025.2 do 2º EE e as finais),
+  a resolução é própria e cada resposta foi conferida em $t = 0$ pela LKC/LKT e em
+  $t \to \infty$ pelo regime permanente; a nota "Sobre o gabarito" de cada questão
+  diz isso em voz alta.
+- **O cartão social se atualiza sozinho.** `.githooks/pre-commit` roda
+  `cartao-social.mjs --se-preciso` quando o commit toca `src/content/` e inclui o
+  HTML e o PNG no **mesmo commit** — antes disso os três números viviam atrasados
+  e derrubavam o CI. `npm run ganchos` instala o gancho (uma vez por cópia do
+  repositório); a flag respeita a mesma folga de 5% do `npm run verificar`, para
+  não gerar um PNG novo a cada questão.
+
+### Corrigido
+
+- **`2ee/q11` e `2ee/q12` estavam atribuídas a 2023.1 — são de 2022.1.** O arquivo
+  do acervo tinha o nome trocado, e o cabeçalho manuscrito da resolução repetia o
+  erro. No caminho descobriu-se que `Circuitos1_2EE_2023.1 - Prova.pdf` é uma
+  segunda cópia da prova de 2022.1: **não existe 2º EE de 2023.1 no acervo**.
+- **Três divergências entre enunciado e resolução**, agora documentadas dentro da
+  própria questão em vez de escondidas: 2015.1 Q3 (a resolução usa 4 Ω onde o
+  enunciado traz 10 Ω), 2024.1 Q3 (5 H contra 2 H — muda o caso de amortecimento)
+  e 2017.1 2ª chamada Q2 (a resolução escreve $A = -1/32$ onde a subtração dá
+  $29/32$).
+- **Dois quesitos mal-postos, recuperados com a leitura que os torna coerentes:**
+  2022.1 Q3 (a chave só fecha se comutar o **capacitor**, não o nó do indutor) e
+  2017.2 2ª chamada Q2 (a chave isola uma fonte de corrente, e então $di_L/dt$ e
+  $dv/dt$ ficam indeterminados — a questão traz os quatro valores que fecham e diz
+  por que os outros dois não existem).
+
 ### Corrigido
 
 - **"Limpar progresso" não apagava o tempo do cronômetro.** O aviso promete
