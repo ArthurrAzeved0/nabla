@@ -1,0 +1,115 @@
+---
+origem: "2014.2"
+tema: "Resposta ao degrau · O indutor que era o curto do resistor"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q47.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito está em **regime permanente** em $t < 0$. Determine $i(t)$ e $v(t)$ para $t > 0$.
+
+<Circuito
+  alt="Comutação de 48 V para 12 V, 6 Ω em série, indutor de 1/4 H em paralelo com 2 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "48 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "12 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "6 Ω" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: false },
+    { t: "no", em: [4.2, 0] },
+    { t: "L", de: [4.2, 0], para: [4.2, 3.4], valor: "1/4 H" },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [6.6, 0]] },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [6.6, 0.4], para: [6.6, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+  ]}
+>
+
+Em $t < 0$ o indutor é um fio **em paralelo com o $2\ \Omega$** — ou seja, ele curto-circuita o resistor, e a fonte de $48\ \mathrm{V}$ vê só o $6\ \Omega$. Daí a corrente inicial alta.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 2 + 6\,e^{-6t}\ \mathrm{A}$
+·
+$v(t) = 12 + 9\,e^{-6t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Com o $2\ \Omega$ em curto pelo indutor:
+
+$$
+i(0^-) = \frac{48}{6} = 8\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i(0^+) = 8\ \mathrm{A}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Agora a fonte é de $12\ \mathrm{V}$:
+
+$$
+12 = 6\,i_T + \frac{1}{4}\frac{di}{dt}
+\qquad
+i_T = i + i_R
+\qquad
+v_{2\Omega} = 2\,i_R = \frac{1}{4}\frac{di}{dt}
+$$
+
+**Passo 3 — a equação.** De $i_R = \dfrac{1}{8}\dfrac{di}{dt}$:
+
+$$
+12 = 6\,i + 6 \cdot \frac{1}{8}\frac{di}{dt} + \frac{1}{4}\frac{di}{dt}
+= 6\,i + \frac{3}{4}\frac{di}{dt} + \frac{1}{4}\frac{di}{dt}
+$$
+
+$$
+\frac{di}{dt} + 6\,i = 12
+$$
+
+**Passo 4 — resposta natural e forçada.** De $s + 6 = 0$ vem $s = -6$; e $6K = 12$ dá $i_f = 2\ \mathrm{A}$:
+
+$$
+i(t) = A\,e^{-6t} + 2
+$$
+
+**Passo 5 — a constante.** De $i(0) = 8$:
+
+$$
+8 = A + 2
+\qquad\Longrightarrow\qquad
+A = 6
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = 2 + 6\,e^{-6t}\ \mathrm{A}}
+$$
+
+**Passo 6 — a tensão do $6\ \Omega$.** Ela é $6\,i_T = 6\,(i + i_R)$, e $i_R = \dfrac{1}{8}\dfrac{di}{dt}$, com $\dfrac{di}{dt} = -36\,e^{-6t}$:
+
+$$
+v = 6\,i + \frac{3}{4}\frac{di}{dt}
+= 12 + 36\,e^{-6t} + \frac{3}{4}\left(-36\,e^{-6t}\right)
+$$
+
+$$
+\boxed{v(t) = 12 + 9\,e^{-6t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{1/4}{6 \parallel 2} = \dfrac{1/4}{3/2} = \dfrac16$ s, e de fato $s = -6$ ✔ Em $t = 0$: $v = 21$ V, ou seja $i_T = 3{,}5$ A, e a LKT fecha com $v_L = 12 - 21 = -9$ V, isto é $di/dt = -36$ A/s ✔ Em $t \to \infty$ o indutor volta a curto-circuitar o $2\ \Omega$: $v \to 12$ V e $i \to 2$ A ✔ Confere com a resolução da prova.
+
+**Sobre o enunciado —** o acervo tem apenas a **resolução** desta prova; o circuito acima é o que ela desenha nos dois estados, com a comutação de $48$ para $12\ \mathrm{V}$.
+</Passos>
