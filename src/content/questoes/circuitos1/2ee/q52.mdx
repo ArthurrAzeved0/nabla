@@ -1,0 +1,120 @@
+---
+origem: "2024.2"
+tema: "Condições iniciais · Duas chaves que ligam duas fontes de corrente"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q52.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito está em **regime permanente** em $t = 0^-$. Determine os valores de $v$, $i$, $dv/dt$ e $di/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Fonte de 40 V com 4 Ω, 4 Ω, capacitor de 1 F, chave, 10 Ω, 10 Ω, indutor de 4 H, fonte de 10 A, chave e fonte de 20 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "4 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.2, 0], [4.6, 0]] },
+    { t: "no", em: [4.6, 0] },
+    { t: "C", de: [4.6, 0], para: [4.6, 3.4], valor: "1 F" },
+    { t: "tensao", de: [4.6, 3.4], para: [4.6, 0], rotulo: "v", abaixo: true },
+    { t: "S", de: [4.6, 0], para: [6.6, 0], rotulo: "fecha" },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "R", de: [6.6, 0], para: [9.2, 0], valor: "10 Ω" },
+    { t: "no", em: [9.2, 0] },
+    { t: "L", de: [9.2, 0], para: [9.2, 3.4], valor: "4 H", abaixo: true },
+    { t: "corrente", de: [9.2, 0.4], para: [9.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[9.2, 0], [12.4, 0]] },
+    { t: "no", em: [12.4, 0] },
+    { t: "I", de: [12.4, 3.4], para: [12.4, 0], valor: "10 A" },
+    { t: "S", de: [12.4, 0], para: [14.6, 0], rotulo: "fecha" },
+    { t: "no", em: [14.6, 0] },
+    { t: "I", de: [14.6, 3.4], para: [14.6, 0], valor: "20 A" },
+    { t: "fio", pts: [[0, 3.4], [14.6, 3.4]] },
+  ]}
+>
+
+As duas chaves estão **abertas** em $t < 0$ e **fecham** em $t = 0$. Antes disso o circuito são três pedaços: o divisor da fonte de $40\ \mathrm{V}$, o par de $10\ \Omega$ com o indutor e a fonte de $10\ \mathrm{A}$, e a fonte de $20\ \mathrm{A}$ desligada. É essa leitura que dá condições iniciais redondas.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v = 20\ \mathrm{V}$ · $i = 10\ \mathrm{A}$ · $\dfrac{dv}{dt} = 0$ · $\dfrac{di}{dt} = 0$
+
+Em $0^+$: $v = 20\ \mathrm{V}$ · $i = 10\ \mathrm{A}$ · $\dfrac{dv}{dt} = 18\ \mathrm{V/s}$ · $\dfrac{di}{dt} = 55\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o lado esquerdo em $0^-$.** Chave aberta e capacitor **aberto**: sobram os dois $4\ \Omega$ em série:
+
+$$
+i_{fonte}(0^-) = \frac{40}{4 + 4} = 5\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{v(0^-) = 4 \cdot 5 = 20\ \mathrm{V}}
+$$
+
+**Passo 2 — o miolo em $0^-$.** O indutor é **fio**, então o nó dele está no terra. O nó do $10\ \Omega$ vertical só tem esse resistor e o $10\ \Omega$ horizontal: sem outra fonte, a LKC obriga esse nó a ficar em zero também, e nada circula pelos dois $10\ \Omega$.
+
+Sobra a fonte de $10\ \mathrm{A}$, que injeta direto no nó do indutor:
+
+$$
+\boxed{i(0^-) = 10\ \mathrm{A}}
+$$
+
+Em regime permanente as duas derivadas em $0^-$ valem **zero**.
+
+**Passo 3 — continuidade.**
+
+$$
+\boxed{v(0^+) = 20\ \mathrm{V}}
+\qquad\qquad
+\boxed{i(0^+) = 10\ \mathrm{A}}
+$$
+
+**Passo 4 — o nó do indutor em $0^+$.** As chaves fecharam, então as **duas** fontes de corrente ($10 + 20 = 30\ \mathrm{A}$) despejam nesse nó, e o indutor ainda só leva $10\ \mathrm{A}$. O excedente tem de voltar pelo $10\ \Omega$ horizontal:
+
+$$
+\frac{20 - v_D}{10} + 30 = 10
+\qquad\Longrightarrow\qquad
+v_D = 220\ \mathrm{V}
+$$
+
+(usei que a chave da esquerda fechada põe o nó do $10\ \Omega$ vertical no mesmo potencial do capacitor, $20\ \mathrm{V}$).
+
+**Passo 5 — a derivada da corrente.** O indutor está entre esse nó e o terra:
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{220}{4} = 55\ \mathrm{A/s}}
+$$
+
+**Passo 6 — a derivada da tensão.** LKC no nó do capacitor, que agora recebe também os $20\ \mathrm{A}$ que sobem pelo $10\ \Omega$ horizontal:
+
+$$
+\underbrace{5}_{\text{fonte de }40\,\mathrm{V}} + \underbrace{20}_{10\ \Omega\ \text{horizontal}}
+= \underbrace{5}_{4\ \Omega} + \underbrace{2}_{10\ \Omega\ \text{vertical}} + i_C
+$$
+
+$$
+i_C(0^+) = 18\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{18}{1} = 18\ \mathrm{V/s}}
+$$
+
+**Conferência —** o sinal de $v_D$ é o que dá o tom: as fontes de corrente empurram $30\ \mathrm{A}$ num nó que só sabe escoar $10\ \mathrm{A}$, e a tensão desse nó **explode** para $220\ \mathrm{V}$ — daí a derivada grande da corrente do indutor ✔ E os $20\ \mathrm{A}$ que sobem pelo $10\ \Omega$ são o que alimenta a subida do capacitor ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. Os valores acima foram obtidos com a análise de $0^-$ e $0^+$ e conferidos pela LKC nos dois nós; a leitura das chaves ("abrem em $t<0$, fecham em $t=0$") é a única que dá $v(0^-)$ e $i(0^-)$ redondos.
+</Passos>
