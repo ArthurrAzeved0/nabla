@@ -1,0 +1,145 @@
+---
+origem: "Final 2022.1"
+tema: "Superamortecido · RL em série em paralelo com o capacitor"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$, dada a fonte $v_g$ e as condições iniciais.
+
+<Circuito
+  alt="Fonte v_g com 4 Ω em série, ramo de 6 Ω com indutor de 1 H em paralelo com capacitor de 1/4 F"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "v_g" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "4 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 1.7], valor: "6 Ω" },
+    { t: "L", de: [2.4, 1.7], para: [2.4, 3.4], valor: "1 H" },
+    { t: "corrente", de: [2.4, 0.2], para: [2.4, 0.9], rotulo: "i", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "C", de: [5, 0], para: [5, 3.4], valor: "1/4 F" },
+    { t: "tensao", de: [5, 3.4], para: [5, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+  ]}
+>
+
+O $6\ \Omega$ está **em série com o indutor**, e esse ramo em paralelo com o capacitor. A tensão $v$ é a do capacitor, que é também a do nó — e é ela que a fonte "vê" através do $4\ \Omega$.
+
+</Circuito>
+
+<Gabarito>
+Raízes: $s_1 = -2$ e $s_2 = -5$ — caso **superamortecido**.
+
+$$
+i(t) = \frac{V_g}{10} + A_1 e^{-2t} + A_2 e^{-5t}
+\qquad
+v(t) = 6\,i + \frac{di}{dt}
+$$
+
+Com $v_g = V_g$ constante e as constantes fixadas por $i(0)$ e $v(0)$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Chamando $i_1$ a corrente do $4\ \Omega$:
+
+$$
+v_g = 4\,i_1 + v
+\qquad
+i_1 = i + i_C
+\qquad
+i_C = \frac14\frac{dv}{dt}
+\qquad
+v = 6\,i + \frac{di}{dt}
+$$
+
+**Passo 2 — a equação em $i$.** Substituindo $i_1$:
+
+$$
+v_g = 4\left(\frac14\frac{dv}{dt} + i\right) + v
+= \frac{dv}{dt} + 4\,i + v
+$$
+
+E como $\dfrac{dv}{dt} = 6\dfrac{di}{dt} + \dfrac{d^2i}{dt^2}$:
+
+$$
+v_g = 6\frac{di}{dt} + \frac{d^2i}{dt^2} + 4\,i + 6\,i + \frac{di}{dt}
+$$
+
+$$
+\frac{d^2i}{dt^2} + 7\frac{di}{dt} + 10\,i = v_g
+$$
+
+**Passo 3 — resposta natural.** De $s^2 + 7s + 10 = 0$:
+
+$$
+s = \frac{-7 \pm \sqrt{49 - 40}}{2} = \frac{-7 \pm 3}{2}
+\qquad\Longrightarrow\qquad
+\boxed{s_1 = -2 \qquad s_2 = -5}
+$$
+
+Duas raízes reais distintas: **superamortecido**, independentemente do valor da fonte.
+
+$$
+i_n(t) = A_1 e^{-2t} + A_2 e^{-5t}
+$$
+
+**Passo 4 — resposta forçada.** Com $v_g = V_g$ constante, $10K = V_g$:
+
+$$
+i_f = \frac{V_g}{10}
+$$
+
+Confere pelo regime permanente: o capacitor abre, o indutor vira fio, e a fonte vê $4 + 6 = 10\ \Omega$ ✓
+
+**Passo 5 — as constantes.** A primeira sai de $i(0)$ e a segunda da tensão inicial, via $v = 6i + di/dt$:
+
+$$
+A_1 + A_2 = i(0) - \frac{V_g}{10}
+\qquad\qquad
+-2A_1 - 5A_2 = \frac{di(0)}{dt} = v(0) - 6\,i(0)
+$$
+
+**Passo 6 — a tensão.** Uma vez achados $A_1$ e $A_2$:
+
+$$
+v = 6\,i + \frac{di}{dt}
+= \frac{6V_g}{10} + A_1(6 - 2)\,e^{-2t} + A_2(6 - 5)\,e^{-5t}
+= \frac{3V_g}{5} + 4A_1 e^{-2t} + A_2 e^{-5t}
+$$
+
+**Exemplo concreto —** com $v_g = 20\ \mathrm{V}$ e o circuito partindo do **repouso** ($i(0) = 0$, $v(0) = 0$):
+
+$$
+A_1 + A_2 = -2
+\qquad
+-2A_1 - 5A_2 = 0
+\qquad\Longrightarrow\qquad
+A_1 = -\frac{10}{3}
+\quad
+A_2 = \frac43
+$$
+
+$$
+i(t) = 2 - \frac{10}{3}\,e^{-2t} + \frac43\,e^{-5t}\ \mathrm{A}
+\qquad
+v(t) = 12 - \frac{40}{3}\,e^{-2t} + \frac43\,e^{-5t}\ \mathrm{V}
+$$
+
+E confere: $i(0) = 2 - 3{,}33 + 1{,}33 = 0$ ✔ e $v(0) = 12 - 13{,}33 + 1{,}33 = 0$ ✔ Em $t \to \infty$: $i \to 2$ A e $v \to 12$ V, que é $20 \cdot \frac{6}{10}$ ✔
+
+**Sobre o enunciado —** o PDF desta prova perdeu as fórmulas do texto: o valor de $v_g$ e as duas condições iniciais **não** aparecem ("dado que , e ."). O miolo da questão — a equação, as raízes $-2$ e $-5$ e a estrutura da resposta — está todo acima; o exemplo com $20\ \mathrm{V}$ e repouso inicial mostra como fechar as constantes com os dados da sua prova.
+</Passos>
