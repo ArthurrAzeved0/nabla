@@ -243,7 +243,8 @@ console.log("\n== cartão social ==");
       if (atraso > folga) {
         erro(
           `cartão social diz ${dito} ${rotulo}, mas o site tem ${real} ` +
-            `(atraso de ${atraso}, limite ${folga}) — regere o PNG de ${ARTE}`,
+            `(atraso de ${atraso}, limite ${folga}) — rode 'npm run cartao' ` +
+            "(ou 'npm run ganchos' para nunca mais)",
         );
       } else if (dito !== real) {
         console.log(`  ${rotulo.padEnd(20)} ${dito} (site: ${real}, dentro da folga)`);

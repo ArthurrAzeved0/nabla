@@ -14,11 +14,12 @@
     "preview": "astro preview",
     "check": "astro check",
     "verificar": "node scripts/verificar-conteudo.mjs",
-    "cabecalhos": "node scripts/cabecalho.mjs --check src public scripts arte astro.config.mjs CHANGELOG.md THIRD-PARTY.md README.md",
+    "cabecalhos": "node scripts/cabecalho.mjs --check src public scripts arte .githooks astro.config.mjs CHANGELOG.md THIRD-PARTY.md README.md",
     "test": "esbuild src/ilhas/progresso.ts src/ilhas/fluxograma.ts --format=esm --target=es2022 --outdir=.tmp-teste --out-extension:.js=.mjs --log-level=error && esbuild src/ilhas/ferramentas.ts --bundle --format=esm --target=es2022 --outfile=.tmp-teste/ferramentas.mjs --log-level=error && esbuild src/lib/circuito.ts --bundle --format=esm --target=es2022 --outfile=.tmp-teste/circuito.mjs --log-level=error && node testes/circuito.test.mjs && node testes/progresso.test.mjs && node testes/ferramentas.test.mjs && node testes/grade.test.mjs && node testes/setas.test.mjs && node testes/ponte.test.mjs",
     "publicar": "npm run build && wrangler pages deploy dist --project-name=nabla-poli",
     "formulas": "node scripts/auditar-formulas.mjs",
-    "cartao": "node scripts/cartao-social.mjs"
+    "cartao": "node scripts/cartao-social.mjs",
+    "ganchos": "git config core.hooksPath .githooks && node -e \"console.log('  ganchos instalados: .githooks (pre-commit poe o cartao social em dia)')\""
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

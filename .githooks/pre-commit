@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# **************************************************************************
+# * Nabla — Guia do aluno POLI/UPE                              pre-commit *
+# *------------------------------------------------------------------------*
+# * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+# * Todos os direitos reservados.                                          *
+# *                                                                        *
+# * Software proprietário — ver arquivo LICENSE.                           *
+# *                                                                        *
+# * Autor:   Arthur Epifanio De Azevedo                                    *
+# * Página:  https://github.com/ArthurrAzeved0                             *
+# * Contato: arthur_azevedo05@hotmail.com                                  *
+# **************************************************************************
+
+# Põe o cartão social em dia junto com o commit.
+#
+# Os três números do cartão (questões, seções, mapas) descrevem o conteúdo do
+# site. Enquanto dependiam de alguém rodar `npm run cartao`, ficaram meses
+# errados — e depois passaram a quebrar o CI, que confere a folga. Aqui eles
+# acompanham o commit sozinhos.
+#
+# Só roda quando o commit toca conteúdo, e só reescreve os arquivos quando
+# algum número mudou de verdade (é o `--se-preciso` que decide).
+#
+# Instalar:  npm run ganchos
+# Pular:     git commit --no-verify
+
+set -euo pipefail
+
+# `git diff --cached` é o que vai no commit; `--diff-filter=d` ignora remoções
+# de arquivo que não afetam a contagem de forma diferente (elas afetam, mas o
+# caminho continua listado, então o gatilho pega igual).
+if ! git diff --cached --name-only | grep -qE '^src/content/(questoes|teoria|grade)/'; then
+  exit 0
+fi
+
+echo "cartão social — conferindo os números"
+if ! node scripts/cartao-social.mjs --se-preciso; then
+  echo
+  echo "  o cartão não pôde ser regerado (Chrome ausente?)."
+  echo "  o commit segue; rode 'npm run cartao' quando puder."
+  exit 0
+fi
+
+# Se algo mudou, entra no MESMO commit — senão o cartão vive sempre um
+# commit atrasado, que é exatamente o problema que este gancho resolve.
+if ! git diff --quiet -- arte/social-card.html public/social-card.png; then
+  git add arte/social-card.html public/social-card.png
+  echo "  cartão atualizado e incluído no commit"
+fi

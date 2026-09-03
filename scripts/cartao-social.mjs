@@ -19,6 +19,11 @@
 
    O `npm run verificar` confere se o cartão está atrasado; este script é como
    se põe em dia. Uso: npm run cartao
+
+   Com `--se-preciso` ele só age quando os números divergem, e sai calado
+   quando já estão certos. É esse o modo que o gancho de pre-commit usa
+   (.githooks/pre-commit), para o cartão nunca mais depender de alguém
+   lembrar de rodar o comando.
 */
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdtempSync, rmSync, copyFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -27,6 +32,7 @@ import { join } from "node:path";
 
 const ARTE = "arte/social-card.html";
 const PNG = "public/social-card.png";
+const SE_PRECISO = process.argv.includes("--se-preciso");
 
 /* ------------------------------------------------------------- contagem --- */
 const contarArquivos = (dir) =>
@@ -42,14 +48,37 @@ console.log(`  ${questoes} questões · ${secoes} seções · ${grades} mapas de
 
 /* --------------------------------------------------------------- escrita --- */
 let html = readFileSync(ARTE, "utf8");
+const numero = (rotulo) => {
+  const m = html.match(new RegExp(`<b>(\\d+)</b><span>${rotulo}</span>`));
+  if (!m) throw new Error(`não achei o número de "${rotulo}" em ${ARTE}`);
+  return Number(m[1]);
+};
+const ALVOS = [
+  ["questões de prova", questoes],
+  ["seções de teoria", secoes],
+  ["mapas de grade", grades],
+];
+
+/* Uma questão nova muda a contagem, então regerar "a cada divergência" daria
+   um PNG novo em quase todo commit — e PNG não faz delta no git. O gancho usa
+   a MESMA folga do `npm run verificar` (5%, mínimo 3): assim o CI nunca pega o
+   cartão atrasado e o repositório não engorda por um número de diferença.
+   Já `npm run cartao` sem a flag deixa exato, sempre. */
+const folgado = ALVOS.every(([rotulo, valor]) => {
+  const folga = Math.max(3, Math.round(valor * 0.05));
+  return valor - numero(rotulo) <= folga;
+});
+if (SE_PRECISO && folgado && existsSync(PNG)) {
+  console.log("  cartão dentro da folga — nada a fazer");
+  process.exit(0);
+}
+
 const trocar = (rotulo, valor) => {
   const re = new RegExp(`(<b>)\\d+(</b><span>${rotulo}</span>)`);
   if (!re.test(html)) throw new Error(`não achei o número de "${rotulo}" em ${ARTE}`);
   html = html.replace(re, `$1${valor}$2`);
 };
-trocar("questões de prova", questoes);
-trocar("seções de teoria", secoes);
-trocar("mapas de grade", grades);
+for (const [rotulo, valor] of ALVOS) trocar(rotulo, valor);
 writeFileSync(ARTE, html, "utf8");
 
 /* ---------------------------------------------------------------- imagem --- */
