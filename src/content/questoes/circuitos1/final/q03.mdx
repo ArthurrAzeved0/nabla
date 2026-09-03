@@ -1,0 +1,112 @@
+---
+origem: "Final 2025.1"
+tema: "Criticamente amortecido · O mesmo circuito que caiu no 2º EE"
+temaId: criticamente-amortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ para $t > 0$, onde $v(0) = 10\ \mathrm{V}$ e $i(0) = 5\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 50 V com indutor de 2 H e 12 Ω em série, 4 Ω em paralelo com capacitor de 1/8 F"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "L", de: [0, 0], para: [2.2, 0], valor: "2 H" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "R", de: [2.2, 0], para: [4.6, 0], valor: "12 Ω" },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[4.6, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "C", de: [7.2, 0], para: [7.2, 3.4], valor: "1/8 F" },
+    { t: "tensao", de: [7.2, 3.4], para: [7.2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+  ]}
+>
+
+Esta questão é **idêntica** ao 3º quesito do 2º EE de 2025.1 — mesmos valores, mesmas condições iniciais. A diferença é que aqui a prova só pede $v$. Se você fez o 2º EE, já tem meio caminho andado.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 12{,}5 + (10\,t - 2{,}5)\,e^{-4t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas leis.** LKT na malha da fonte e LKC no nó de saída:
+
+$$
+50 = 2\frac{di}{dt} + 12\,i + v
+\qquad\qquad
+i = \frac{v}{4} + \frac18\frac{dv}{dt}
+$$
+
+**Passo 2 — elimine $i$.** Levando a LKC (e sua derivada) na LKT:
+
+$$
+50 = 2\left(\frac14\frac{dv}{dt} + \frac18\frac{d^2v}{dt^2}\right) + 12\left(\frac{v}{4} + \frac18\frac{dv}{dt}\right) + v
+$$
+
+$$
+50 = \frac14\frac{d^2v}{dt^2} + 2\frac{dv}{dt} + 4\,v
+\qquad \times 4 \qquad
+\frac{d^2v}{dt^2} + 8\frac{dv}{dt} + 16\,v = 200
+$$
+
+**Passo 3 — resposta natural.** De $s^2 + 8s + 16 = 0$:
+
+$$
+s = \frac{-8 \pm \sqrt{64 - 64}}{2} = -4 \quad \text{(raiz dupla)}
+$$
+
+Discriminante nulo: **criticamente amortecido**.
+
+$$
+v_n(t) = \left(A_1 + A_2\,t\right)e^{-4t}
+$$
+
+**Passo 4 — resposta forçada.** $16K = 200$, logo $v_f = 12{,}5\ \mathrm{V}$ — o divisor $50 \cdot \frac{4}{16}$ com o indutor em fio e o capacitor aberto.
+
+**Passo 5 — a primeira constante.** De $v(0) = 10$:
+
+$$
+10 = A_1 + 12{,}5
+\qquad\Longrightarrow\qquad
+A_1 = -2{,}5
+$$
+
+**Passo 6 — a segunda.** A corrente inicial dá a derivada da tensão pela própria LKC:
+
+$$
+5 = \frac{10}{4} + \frac18\frac{dv(0)}{dt}
+\qquad\Longrightarrow\qquad
+\frac{dv(0)}{dt} = 20\ \mathrm{V/s}
+$$
+
+E como $\dfrac{dv(0)}{dt} = A_2 - 4A_1 = A_2 + 10$:
+
+$$
+A_2 = 10
+$$
+
+$$
+\boxed{v(t) = 12{,}5 + \left(10\,t - 2{,}5\right)e^{-4t}\ \mathrm{V}}
+$$
+
+**Conferência —** em $t = 0$: $v = 12{,}5 - 2{,}5 = 10$ V ✔ Em $t \to \infty$: $v \to 12{,}5$ V ✔ E a derivada inicial é positiva ($+20$ V/s), coerente com o capacitor ainda recebendo corrente: $i(0) = 5$ A entra e só $2{,}5$ A escoam pelo $4\ \Omega$ ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi conferida nas duas pontas e pela LKC; o caso crítico ($s = -4$ duplo) sai exato dos valores do enunciado.
+</Passos>
