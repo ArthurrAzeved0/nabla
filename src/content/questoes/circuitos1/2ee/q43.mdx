@@ -1,0 +1,121 @@
+---
+origem: "2015.1"
+tema: "Condições iniciais · Fonte controlada que só acorda depois da comutação"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q43.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere que o circuito abaixo está em **regime permanente** em $t = 0^-$. Determine os valores de $dv/dt$ e $di/dt$ no instante $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 10 V para 15 V, capacitor de 1/5 F, 5 Ω, chave, fonte controlada de 2v1 A, 6 Ω, 6 Ω e indutor de 2 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "15 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "C", de: [1.8, 0], para: [4.2, 0], valor: "1/5 F", abaixo: true },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: false },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "5 Ω" },
+    { t: "tensao", de: [4.2, 3.4], para: [4.2, 0], rotulo: "v_1", abaixo: true },
+    { t: "S", de: [4.2, 0], para: [7, 0], rotulo: "abre" },
+    { t: "no", em: [7, 0] },
+    { t: "Id", de: [7, 3.4], para: [7, 0], rotulo: "2v_1 A" },
+    { t: "fio", pts: [[7, 0], [9.8, 0]] },
+    { t: "no", em: [9.8, 0] },
+    { t: "R", de: [9.8, 0], para: [9.8, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [9.8, 0], para: [12.4, 0], valor: "6 Ω" },
+    { t: "no", em: [12.4, 0] },
+    { t: "L", de: [12.4, 0], para: [12.4, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [12.4, 0.4], para: [12.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [12.4, 3.4]] },
+  ]}
+>
+
+Em $t < 0$ está **tudo parado**: o capacitor, aberto, impede corrente no $5\ \Omega$, então $v_1 = 0$ e a fonte controlada entrega zero — e, sem ela, o lado direito também fica em zero. A comutação para $15\ \mathrm{V}$ é o que liga o circuito, e a segunda chave, ao **abrir**, isola os dois lados.
+
+</Circuito>
+
+<Gabarito>
+$\dfrac{dv(0^+)}{dt} = 5\ \mathrm{V/s}$  ·  $\dfrac{di(0^+)}{dt} = 30\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Fonte de $10\ \mathrm{V}$, segunda chave **fechada**, capacitor **aberto** e indutor **em fio**.
+
+Com o capacitor aberto, nada entra pelo topo. A LKC no nó do $5\ \Omega$ — que a chave fechada une ao nó da fonte controlada — fica
+
+$$
+2\,v_1 = \frac{v_1}{5} + \frac{v_1}{6} + \frac{v_1}{6}
+\qquad\Longrightarrow\qquad
+2\,v_1 = 0{,}533\,v_1
+\qquad\Longrightarrow\qquad
+v_1(0^-) = 0
+$$
+
+A única solução é o zero: a fonte controlada não consegue se sustentar sozinha.
+
+**Passo 2 — as condições iniciais.** Com o nó a zero, o capacitor enxerga a fonte inteira e o indutor não conduz:
+
+$$
+v(0^-) = 10 - 0 = 10\ \mathrm{V}
+\qquad\qquad
+i(0^-) = 0
+$$
+
+E, por continuidade, $v(0^+) = 10\ \mathrm{V}$ e $i(0^+) = 0$.
+
+**Passo 3 — o lado esquerdo em $0^+$.** A fonte virou $15\ \mathrm{V}$ e a segunda chave **abriu**. A LKT da malha da esquerda dá a tensão do $5\ \Omega$:
+
+$$
+-15 + v + v_1 = 0
+\qquad\Longrightarrow\qquad
+v_1(0^+) = 15 - 10 = 5\ \mathrm{V}
+$$
+
+Como o ramo do $5\ \Omega$ é o único caminho, é ele que leva a corrente do capacitor:
+
+$$
+i_C(0^+) = \frac{5}{5} = 1\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{1}{1/5} = 5\ \mathrm{V/s}}
+$$
+
+**Passo 4 — o lado direito em $0^+$.** Isolado pela chave aberta, ele é alimentado só pela fonte controlada, que agora vale
+
+$$
+2\,v_1(0^+) = 10\ \mathrm{A}
+$$
+
+O indutor mantém $i = 0$, então o $6\ \Omega$ **horizontal** não conduz e os $10\ \mathrm{A}$ vão todos para o $6\ \Omega$ vertical:
+
+$$
+v_{n\acute{o}} = 6 \cdot 10 = 60\ \mathrm{V}
+$$
+
+**Passo 5 — a derivada da corrente.** Sem queda no $6\ \Omega$ horizontal, esses $60\ \mathrm{V}$ caem inteiros no indutor:
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{60}{2} = 30\ \mathrm{A/s}}
+$$
+
+**Conferência —** o mecanismo é em cadeia: a comutação carrega $5\ \mathrm{V}$ no $5\ \Omega$, o que acorda a fonte controlada com $10\ \mathrm{A}$, o que joga $60\ \mathrm{V}$ no indutor ✔ E é a chave abrindo que garante isso: se ela continuasse fechada, os $10\ \mathrm{A}$ voltariam pelo $5\ \Omega$ e a conta seria outra ✔ Confere com as duas resoluções do acervo.
+
+**Sobre o gabarito —** uma das cópias do acervo traz, em anotação vermelha, $v(0^-) = 6\ \mathrm{V}$, $v_1(0^+) = 4\ \mathrm{V}$, $dv/dt = 20\ \mathrm{V/s}$ e $di/dt = 12\ \mathrm{A/s}$. Esses números **não fecham**: com $v(0^-) = 6$ a LKT daria $v_1 = 15 - 6 = 9\ \mathrm{V}$, não $4$. A resolução limpa (e a segunda cópia inteira) chega aos valores acima.
+</Passos>
