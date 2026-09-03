@@ -1,0 +1,124 @@
+---
+origem: "2014.2"
+tema: "Superamortecido · RLC com valores de laboratório"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q48.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine $v_C(t)$ e $i(t)$ para $t > 0$, sabendo que $v_C(0) = 8\ \mathrm{V}$ e $i_L(0) = 4\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 30 V com 10 Ω e indutor de 1,615 H em série, 2 Ω em paralelo com capacitor de 0,62 F"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "30 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "10 Ω" },
+    { t: "L", de: [2.2, 0], para: [4.6, 0], valor: "1,615 H" },
+    { t: "corrente", de: [2.4, 0], para: [3.4, 0], rotulo: "i_L" },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [4.6, 0.4], para: [4.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.6, 0], [8.4, 0]] },
+    { t: "no", em: [8.4, 0] },
+    { t: "C", de: [8.4, 0], para: [8.4, 3.4], valor: "0,62 F" },
+    { t: "tensao", de: [8.4, 3.4], para: [8.4, 0], rotulo: "v_C", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [8.4, 3.4]] },
+  ]}
+>
+
+Os valores de $L$ e $C$ são feios de propósito: foram escolhidos para a equação característica cair em raízes redondas, $-1$ e $-6$. As duas condições iniciais já vêm dadas, então o trabalho é montar a equação e casar as constantes.
+
+</Circuito>
+
+<Gabarito>
+$v_C(t) = 5 + 3{,}6\,e^{-t} - 0{,}6\,e^{-6t}\ \mathrm{V}$
+·
+$i(t) = 2{,}5 + 1{,}8\,e^{-t} - 0{,}3\,e^{-6t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** LKT na malha da fonte e LKC no nó de saída:
+
+$$
+30 = 10\,i_L + 1{,}615\frac{di_L}{dt} + v_C
+\qquad\qquad
+i_L = i + i_C = \frac{v_C}{2} + 0{,}62\frac{dv_C}{dt}
+$$
+
+**Passo 2 — a equação em $v_C$.** Substituindo $i_L$ e sua derivada:
+
+$$
+30 = 10\left(\frac{v_C}{2} + 0{,}62\frac{dv_C}{dt}\right) + 1{,}615\left(\frac12\frac{dv_C}{dt} + 0{,}62\frac{d^2 v_C}{dt^2}\right) + v_C
+$$
+
+$$
+\frac{d^2 v_C}{dt^2} + 7\frac{dv_C}{dt} + 6\,v_C = 30
+$$
+
+**Passo 3 — resposta natural.** De $s^2 + 7s + 6 = 0$:
+
+$$
+s_1 = -1
+\qquad\qquad
+s_2 = -6
+$$
+
+Duas raízes reais distintas: **superamortecido**.
+
+**Passo 4 — resposta forçada.** $6K = 30$, logo $v_{C,f} = 5\ \mathrm{V}$.
+
+**Passo 5 — a primeira equação.** De $v_C(0) = 8$:
+
+$$
+A_1 + A_2 = 3
+$$
+
+**Passo 6 — a segunda.** A corrente inicial do indutor entra pela LKC. Com $\dfrac{dv_C}{dt} = -A_1 e^{-t} - 6A_2 e^{-6t}$,
+
+$$
+i_L = \frac{v_C}{2} + 0{,}62\frac{dv_C}{dt}
+= 2{,}5 - 0{,}12\,A_1 e^{-t} - 3{,}22\,A_2 e^{-6t}
+$$
+
+e em $t = 0$, com $i_L(0) = 4$:
+
+$$
+-0{,}12\,A_1 - 3{,}22\,A_2 = 1{,}5
+$$
+
+Trocando $A_2 = 3 - A_1$:
+
+$$
+3{,}1\,A_1 = 11{,}16
+\qquad\Longrightarrow\qquad
+A_1 = 3{,}6
+\qquad
+A_2 = -0{,}6
+$$
+
+$$
+\boxed{v_C(t) = 5 + 3{,}6\,e^{-t} - 0{,}6\,e^{-6t}\ \mathrm{V}}
+$$
+
+**Passo 7 — a corrente do $2\ \Omega$.** É a lei de Ohm, $i = v_C/2$:
+
+$$
+\boxed{i(t) = 2{,}5 + 1{,}8\,e^{-t} - 0{,}3\,e^{-6t}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t = 0$: $v_C = 8$ V ✔ e $i = 4$ A, o que com a LKC devolve $i_C(0) = i_L(0) - i(0) = 0$ — coerente com $dv_C/dt(0) = -3{,}6 + 3{,}6 = 0$ ✔ Em $t \to \infty$ o capacitor abre, o indutor vira fio e sobra o divisor $30 \cdot \frac{2}{12} = 5$ V, com $i = 2{,}5$ A ✔ Confere com a resolução da prova.
+
+**Sobre o enunciado —** o acervo tem apenas a **resolução** desta prova; o circuito e as duas condições iniciais acima são os que ela usa.
+</Passos>
