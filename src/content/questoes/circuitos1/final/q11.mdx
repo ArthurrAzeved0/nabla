@@ -1,0 +1,94 @@
+---
+origem: "Final 2023.1"
+tema: "Primeira ordem · Fonte de corrente com dois resistores e um indutor"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ para $t > 0$, sabendo que $i(0)$ é dado.
+
+<Circuito
+  alt="Fonte de 10 A com 2 Ω, 5 Ω em série com indutor de 2 H"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.2, 0]] },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "R", de: [2.2, 0], para: [4.8, 0], valor: "5 Ω" },
+    { t: "no", em: [4.8, 0] },
+    { t: "L", de: [4.8, 0], para: [4.8, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [4.8, 0.4], para: [4.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [4.8, 3.4]] },
+  ]}
+>
+
+O $5\ \Omega$ está **em série com o indutor**, e esse par em paralelo com o $2\ \Omega$. Uma fonte de corrente alimentando: no fim, o indutor vira fio e os $10\ \mathrm{A}$ se dividem entre $2$ e $5\ \Omega$ pelo divisor de corrente.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = \dfrac{20}{7} + \left[i(0) - \dfrac{20}{7}\right]e^{-3,5t}\ \mathrm{A}$
+
+Com o circuito partindo do repouso ($i(0) = 0$): $i(t) = \dfrac{20}{7}\left(1 - e^{-3,5t}\right) \approx 2{,}86\left(1 - e^{-3,5t}\right)\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Chamando $v_A$ a tensão do nó de cima:
+
+$$
+10 = \frac{v_A}{2} + i
+\qquad\qquad
+v_A = 5\,i + 2\frac{di}{dt}
+$$
+
+**Passo 2 — a equação.** Substituindo $v_A$:
+
+$$
+10 = \frac{5\,i + 2\frac{di}{dt}}{2} + i = 2{,}5\,i + \frac{di}{dt} + i
+$$
+
+$$
+\frac{di}{dt} + 3{,}5\,i = 10
+$$
+
+**Passo 3 — resposta natural.** De $s + 3{,}5 = 0$ vem $s = -3{,}5$, ou seja $\tau = \dfrac{2}{7}$ s.
+
+Confere com a regra do circuito: a fonte de corrente vira **aberto**, e o indutor enxerga $5 + 2 = 7\ \Omega$, logo $\tau = L/R = 2/7$ ✓
+
+**Passo 4 — resposta forçada.** $3{,}5\,K = 10$, logo
+
+$$
+i_f = \frac{20}{7} \approx 2{,}86\ \mathrm{A}
+$$
+
+Confere com o divisor de corrente: com o indutor em fio, os $10\ \mathrm{A}$ se repartem entre o $2\ \Omega$ e o $5\ \Omega$, e o ramo do $5\ \Omega$ leva $10 \cdot \frac{2}{2 + 5} = \frac{20}{7}$ A ✓
+
+**Passo 5 — a constante.** Da forma geral $i(t) = i_f + A\,e^{-3,5t}$ com $i(0)$ dado:
+
+$$
+\boxed{i(t) = \frac{20}{7} + \left[i(0) - \frac{20}{7}\right]e^{-3,5t}\ \mathrm{A}}
+$$
+
+E se o circuito partir do repouso, $i(0) = 0$:
+
+$$
+\boxed{i(t) = \frac{20}{7}\left(1 - e^{-3,5t}\right)\ \mathrm{A}}
+$$
+
+**Conferência —** em $t \to \infty$, $i \to 20/7$ A e o nó fica em $v_A = 5 \cdot \frac{20}{7} = \frac{100}{7} \approx 14{,}29$ V, o que dá $\frac{v_A}{2} = \frac{50}{7}$ A no $2\ \Omega$ — e $\frac{50}{7} + \frac{20}{7} = 10$ A ✔
+
+**Sobre o enunciado —** o PDF desta prova perdeu as fórmulas do texto: o valor de $i(0)$ **não** aparece ("sabendo que ."). O que a questão realmente cobra — a equação, $\tau = 2/7$ s e $i_f = 20/7$ A — está todo acima; basta encaixar o $i(0)$ da sua prova na fórmula do Passo 5.
+</Passos>
