@@ -1,0 +1,95 @@
+---
+origem: "Final 2025.2"
+tema: "Resposta ao degrau · Sem chave, só a condição inicial"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ e a corrente $i$ para $t > 0$, dado que $i(0) = 5\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 50 V com 1 Ω em série, 5 Ω em paralelo com indutor de 1/6 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "1 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "5 Ω" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "L", de: [5, 0], para: [5, 3.4], valor: "1/6 H", abaixo: true },
+    { t: "corrente", de: [5, 0.4], para: [5, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+  ]}
+>
+
+Não há chave nenhuma: a condição inicial já vem dada, e $i(0) = 5\ \mathrm{A}$ é **muito menor** que o valor final. Como $v$ é a tensão do indutor (ele está em paralelo com o $5\ \Omega$), ela vai decair de um pico para zero.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 50 - 45\,e^{-5t}\ \mathrm{A}$
+·
+$v(t) = 37{,}5\,e^{-5t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Chamando $i_T$ a corrente da fonte e $i_R$ a do $5\ \Omega$:
+
+$$
+50 = 1 \cdot i_T + v
+\qquad
+i_T = i_R + i
+\qquad
+v = 5\,i_R = \frac16\frac{di}{dt}
+$$
+
+**Passo 2 — a equação em $i$.** De $i_R = \dfrac{1}{30}\dfrac{di}{dt}$:
+
+$$
+50 = \frac{1}{30}\frac{di}{dt} + i + \frac16\frac{di}{dt}
+= i + \frac{1 + 5}{30}\frac{di}{dt}
+= i + \frac15\frac{di}{dt}
+$$
+
+$$
+\frac{di}{dt} + 5\,i = 250
+$$
+
+**Passo 3 — resposta natural e forçada.** De $s + 5 = 0$ vem $s = -5$; e $5K = 250$ dá $i_f = 50\ \mathrm{A}$.
+
+**Passo 4 — a constante.** De $i(0) = 5$:
+
+$$
+5 = A + 50
+\qquad\Longrightarrow\qquad
+A = -45
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = 50 - 45\,e^{-5t}\ \mathrm{A}}
+$$
+
+**Passo 5 — a tensão.** É a do indutor:
+
+$$
+v = \frac16\frac{di}{dt} = \frac16 \cdot 225\,e^{-5t}
+\qquad\Longrightarrow\qquad
+\boxed{v(t) = 37{,}5\,e^{-5t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{1/6}{1 \parallel 5} = \dfrac{1/6}{5/6} = 0{,}2$ s, e de fato $s = -5$ ✔ Em $t = 0$: $v = 37{,}5$ V, então $i_R = 7{,}5$ A e $i_T = 12{,}5$ A, fechando a LKT em $12{,}5 + 37{,}5 = 50$ V ✔ Em $t \to \infty$ o indutor curto-circuita o $5\ \Omega$: $v \to 0$ e $i \to 50/1 = 50$ A ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi conferida em $t = 0$ pela LKT com as três correntes e em $t \to \infty$ pelo regime permanente.
+</Passos>
