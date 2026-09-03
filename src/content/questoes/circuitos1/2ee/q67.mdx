@@ -1,0 +1,112 @@
+---
+origem: "2017.1 · 2ª chamada"
+tema: "Condições iniciais · Só o capacitor reage à chave"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q67.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre $v$, $i_L$, $v_C$, $di_L/dt$ e $dv_C/dt$ em $t = 0^-$ e em $t = 0^+$, considerando que o circuito estava em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Fonte de 5 A, chave para o terra, 8 Ω em paralelo com capacitor de 1/10 F, fonte de 16 V, indutor de 5 H e 2 Ω"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [2.2, 0]] },
+    { t: "no", em: [2.2, 0] },
+    { t: "S", de: [2.2, 0], para: [2.2, 3.4], rotulo: "abre" },
+    { t: "fio", pts: [[2.2, 0], [2.2, -1.6]] },
+    { t: "R", de: [2.2, -1.6], para: [5.2, -1.6], valor: "8 Ω" },
+    { t: "fio", pts: [[5.2, -1.6], [5.2, 0]] },
+    { t: "C", de: [2.2, 0], para: [5.2, 0], valor: "1/10 F" },
+    { t: "tensao", de: [2.2, 0], para: [5.2, 0], rotulo: "v_C", abaixo: true },
+    { t: "no", em: [5.2, 0] },
+    { t: "V", de: [5.2, 3.4], para: [5.2, 0], valor: "16 V", abaixo: true },
+    { t: "L", de: [5.2, 0], para: [8, 0], valor: "5 H" },
+    { t: "no", em: [8, 0] },
+    { t: "R", de: [8, 0], para: [8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [8, 0.2], para: [8, 0.9], rotulo: "i_L", abaixo: false },
+    { t: "tensao", de: [8, 3.4], para: [8, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [8, 3.4]] },
+  ]}
+>
+
+A fonte de $16\ \mathrm{V}$ **prende** o nó do meio, e o indutor com o $2\ \Omega$ vivem só dela — a chave não os afeta. Quem sente a abertura é o capacitor: os $5\ \mathrm{A}$ da fonte, que antes escoavam pela chave, passam a ter **um único caminho**.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v = 16\ \mathrm{V}$ · $i_L = 8\ \mathrm{A}$ · $v_C = 16\ \mathrm{V}$ · $\dfrac{di_L}{dt} = 0$ · $\dfrac{dv_C}{dt} = 0$
+
+Em $0^+$: $v = 16\ \mathrm{V}$ · $i_L = 8\ \mathrm{A}$ · $v_C = 16\ \mathrm{V}$ · $\dfrac{di_L}{dt} = 0$ · $\dfrac{dv_C}{dt} = -70\ \mathrm{V/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Chave **fechada** (o nó da esquerda está no terra), capacitor **aberto** e indutor **em fio**.
+
+A fonte de $16\ \mathrm{V}$ fixa o nó do meio. O indutor, sendo fio, passa esse potencial adiante:
+
+$$
+\boxed{v(0^-) = 16\ \mathrm{V}}
+\qquad\qquad
+\boxed{i_L(0^-) = \frac{16}{2} = 8\ \mathrm{A}}
+$$
+
+E o capacitor, com o "+" do lado do meio, guarda a diferença entre os dois nós:
+
+$$
+\boxed{v_C(0^-) = 16 - 0 = 16\ \mathrm{V}}
+$$
+
+Regime permanente: as duas derivadas em $0^-$ são **zero**.
+
+**Passo 2 — quem fica onde estava.** A chave, ao abrir, não muda nem a fonte de $16\ \mathrm{V}$ nem o ramo do indutor. Por continuidade e por não haver o que mudar:
+
+$$
+\boxed{i_L(0^+) = 8\ \mathrm{A}}
+\qquad
+\boxed{v(0^+) = 16\ \mathrm{V}}
+\qquad
+\boxed{v_C(0^+) = 16\ \mathrm{V}}
+$$
+
+O indutor está entre o nó de $16\ \mathrm{V}$ e o do $2\ \Omega$, que também está em $2 \cdot 8 = 16\ \mathrm{V}$:
+
+$$
+v_L(0^+) = 0
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di_L(0^+)}{dt} = 0}
+$$
+
+**Passo 3 — a derivada da tensão do capacitor.** Com $v_C = 16\ \mathrm{V}$ e o nó do meio em $16\ \mathrm{V}$, o nó da esquerda fica em **zero** — e o $8\ \Omega$, ligando os dois, traz $2\ \mathrm{A}$ para a esquerda:
+
+$$
+i_{8\Omega} = \frac{16 - 0}{8} = 2\ \mathrm{A}
+$$
+
+LKC no nó da esquerda, que agora só tem a fonte, o $8\ \Omega$ e o capacitor:
+
+$$
+5 + 2 = 7\ \mathrm{A}
+$$
+
+Esses $7\ \mathrm{A}$ atravessam o capacitor **entrando pelo "−"**, o que o descarrega:
+
+$$
+\boxed{\frac{dv_C(0^+)}{dt} = \frac{-7}{1/10} = -70\ \mathrm{V/s}}
+$$
+
+**Conferência —** a questão é uma lição sobre o que uma chave **não** faz: com uma fonte de tensão ideal segurando o nó do meio, o lado direito nem percebe a comutação, e das cinco grandezas pedidas só uma muda ✔ E o sinal negativo é o recado: o capacitor estava sustentando os $5\ \mathrm{A}$ pela chave e agora tem de absorvê-los, então sua tensão **cai** ✔ Confere com a resolução da prova.
+</Passos>
