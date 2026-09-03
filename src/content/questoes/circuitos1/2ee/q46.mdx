@@ -1,0 +1,108 @@
+---
+origem: "2014.2"
+tema: "Condições iniciais · Sai a fonte de tensão, entra a de corrente"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q46.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que o circuito encontra-se em **regime permanente** em $t = 0^-$, determine $i$, $v$, $dv/dt$ e $di/dt$ em $t = 0^+$.
+
+<Circuito
+  alt="Fonte de 20 V com 8 Ω e chave, ramo de 3 Ω com chave, indutor de 1/2 H, capacitor de 1/10 F, 2 Ω e fonte de 5 A com chave"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "8 Ω" },
+    { t: "S", de: [2.2, 0], para: [3.6, 0], rotulo: "abre" },
+    { t: "no", em: [3.6, 0] },
+    { t: "S", de: [3.6, 1.2], para: [3.6, 0], rotulo: "fecha" },
+    { t: "R", de: [3.6, 3.4], para: [3.6, 1.2], valor: "3 Ω" },
+    { t: "fio", pts: [[3.6, 0], [4.6, 0]] },
+    { t: "corrente", de: [3.7, 0], para: [4.5, 0], rotulo: "i" },
+    { t: "L", de: [4.6, 0], para: [6.8, 0], valor: "1/2 H" },
+    { t: "no", em: [6.8, 0] },
+    { t: "C", de: [6.8, 0], para: [6.8, 3.4], valor: "1/10 F" },
+    { t: "tensao", de: [6.8, 3.4], para: [6.8, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[6.8, 0], [9.4, 0]] },
+    { t: "no", em: [9.4, 0] },
+    { t: "R", de: [9.4, 0], para: [9.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [9.4, 0.4], para: [9.4, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[9.4, 0], [12, 0]] },
+    { t: "no", em: [12, 0] },
+    { t: "S", de: [12, 0], para: [12, 1.2], rotulo: "fecha" },
+    { t: "I", de: [12, 3.4], para: [12, 1.2], valor: "5 A" },
+    { t: "fio", pts: [[0, 3.4], [12, 3.4]] },
+  ]}
+>
+
+Em $t = 0$ o circuito troca de dono: a fonte de $20\ \mathrm{V}$ **sai**, e entram o $3\ \Omega$ e a fonte de $5\ \mathrm{A}$. Em $0^-$ o indutor, sendo fio, junta os dois nós de cima, e é ele que faz o $2\ \Omega$ ver a fonte pelo $8\ \Omega$.
+
+</Circuito>
+
+<Gabarito>
+$i(0^+) = 2\ \mathrm{A}$ · $v(0^+) = 4\ \mathrm{V}$
+
+$\dfrac{dv(0^+)}{dt} = 50\ \mathrm{V/s}$ · $\dfrac{di(0^+)}{dt} = -20\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Só a fonte de $20\ \mathrm{V}$ está ligada; capacitor **aberto** e indutor **em fio**. Sobram o $8\ \Omega$ e o $2\ \Omega$ em série:
+
+$$
+i(0^-) = \frac{20}{8 + 2} = 2\ \mathrm{A}
+\qquad\qquad
+v(0^-) = 2 \cdot 2 = 4\ \mathrm{V}
+$$
+
+Por continuidade:
+
+$$
+\boxed{i(0^+) = 2\ \mathrm{A}}
+\qquad\qquad
+\boxed{v(0^+) = 4\ \mathrm{V}}
+$$
+
+**Passo 2 — o circuito em $0^+$.** A fonte de tensão saiu, o $3\ \Omega$ e a fonte de $5\ \mathrm{A}$ entraram. O indutor mantém $2\ \mathrm{A}$ e o capacitor mantém $4\ \mathrm{V}$.
+
+A corrente do $2\ \Omega$ sai direto da lei de Ohm:
+
+$$
+i_R(0^+) = \frac{4}{2} = 2\ \mathrm{A}
+$$
+
+**Passo 3 — a derivada da tensão.** LKC no nó do capacitor: entram os $2\ \mathrm{A}$ do indutor e os $5\ \mathrm{A}$ da fonte; saem $2\ \mathrm{A}$ pelo $2\ \Omega$:
+
+$$
+i_C(0^+) = 2 + 5 - 2 = 5\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{5}{1/10} = 50\ \mathrm{V/s}}
+$$
+
+**Passo 4 — a derivada da corrente.** Os $2\ \mathrm{A}$ do indutor sobem pelo $3\ \Omega$, que cai $3 \cdot 2 = 6\ \mathrm{V}$. A LKT da malha da esquerda dá
+
+$$
+6 + v_L + 4 = 0
+\qquad\Longrightarrow\qquad
+v_L(0^+) = -10\ \mathrm{V}
+$$
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{-10}{1/2} = -20\ \mathrm{A/s}}
+$$
+
+**Conferência —** as duas derivadas apontam para lados opostos, e faz sentido: a fonte de corrente entope o nó do capacitor (que sobe rápido), enquanto o indutor, sem fonte de tensão para sustentá-lo, tem de devolver energia e sua corrente cai ✔ Confere com a resolução da prova.
+
+**Sobre o enunciado —** o acervo tem apenas a **resolução** desta prova. O circuito acima foi reconstruído a partir dos dois estados que ela desenha ($t = 0^-$ e $t = 0^+$): é o arranjo mais simples de chaves que reproduz os dois exatamente.
+</Passos>
