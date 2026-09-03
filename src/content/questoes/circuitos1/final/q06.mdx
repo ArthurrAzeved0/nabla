@@ -1,0 +1,132 @@
+---
+origem: "Final 2025.2"
+tema: "Superamortecido · Partindo do repouso total"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$, onde $v(0) = 0\ \mathrm{V}$ e $i(0) = 0\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 105 V com 5 Ω, capacitor de 1/10 F, 16 Ω e indutor de 2 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "105 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "5 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "C", de: [2.4, 0], para: [2.4, 3.4], valor: "1/10 F" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [2.4, 0], para: [5.4, 0], valor: "16 Ω" },
+    { t: "no", em: [5.4, 0] },
+    { t: "L", de: [5.4, 0], para: [5.4, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [5.4, 0.4], para: [5.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5.4, 3.4]] },
+  ]}
+>
+
+As duas condições iniciais são **zero**: o circuito parte do repouso total, como se a fonte tivesse acabado de ser ligada. Isso simplifica muito as constantes — mas cuidado, elas ainda não são iguais.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 5 - 8{,}75\,e^{-3t} + 3{,}75\,e^{-7t}\ \mathrm{A}$
+·
+$v(t) = 80 - 87{,}5\,e^{-3t} + 7{,}5\,e^{-7t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Chamando $i_1$ a corrente do $5\ \Omega$:
+
+$$
+105 = 5\,i_1 + v
+\qquad
+i_1 = i_C + i
+\qquad
+i_C = \frac{1}{10}\frac{dv}{dt}
+\qquad
+v = 16\,i + 2\frac{di}{dt}
+$$
+
+**Passo 2 — a equação em $i$.** Substituindo $i_1$:
+
+$$
+105 = 5\left(\frac{1}{10}\frac{dv}{dt} + i\right) + v
+= \frac12\frac{dv}{dt} + 5\,i + v
+$$
+
+E como $\dfrac{dv}{dt} = 16\dfrac{di}{dt} + 2\dfrac{d^2i}{dt^2}$:
+
+$$
+105 = 8\frac{di}{dt} + \frac{d^2i}{dt^2} + 5\,i + 16\,i + 2\frac{di}{dt}
+$$
+
+$$
+\frac{d^2i}{dt^2} + 10\frac{di}{dt} + 21\,i = 105
+$$
+
+**Passo 3 — resposta natural.** De $s^2 + 10s + 21 = 0$:
+
+$$
+s = \frac{-10 \pm \sqrt{100 - 84}}{2} = \frac{-10 \pm 4}{2}
+\qquad\Longrightarrow\qquad
+s_1 = -3
+\quad
+s_2 = -7
+$$
+
+Duas raízes reais distintas: **superamortecido**.
+
+**Passo 4 — resposta forçada.** $21K = 105$, logo $i_f = 5\ \mathrm{A}$ — no fim o capacitor abre, o indutor vira fio e a fonte vê $5 + 16 = 21\ \Omega$ ✓
+
+**Passo 5 — as constantes.** De $i(0) = 0$:
+
+$$
+A_1 + A_2 = -5
+$$
+
+E de $v(0) = 0 = 16 \cdot 0 + 2\dfrac{di(0)}{dt}$ vem $\dfrac{di(0)}{dt} = 0$:
+
+$$
+-3A_1 - 7A_2 = 0
+\qquad\Longrightarrow\qquad
+A_1 = -\frac{7}{3}A_2
+$$
+
+$$
+-\frac{7}{3}A_2 + A_2 = -5
+\qquad\Longrightarrow\qquad
+A_2 = 3{,}75
+\qquad
+A_1 = -8{,}75
+$$
+
+$$
+\boxed{i(t) = 5 - 8{,}75\,e^{-3t} + 3{,}75\,e^{-7t}\ \mathrm{A}}
+$$
+
+**Passo 6 — a tensão do capacitor.** Some $16\,i$ com $2\,di/dt$, onde $\dfrac{di}{dt} = 26{,}25\,e^{-3t} - 26{,}25\,e^{-7t}$:
+
+$$
+v = 80 - 140\,e^{-3t} + 60\,e^{-7t} + 52{,}5\,e^{-3t} - 52{,}5\,e^{-7t}
+$$
+
+$$
+\boxed{v(t) = 80 - 87{,}5\,e^{-3t} + 7{,}5\,e^{-7t}\ \mathrm{V}}
+$$
+
+**Conferência —** em $t = 0$: $i = 5 - 8{,}75 + 3{,}75 = 0$ ✔ e $v = 80 - 87{,}5 + 7{,}5 = 0$ ✔ Em $t \to \infty$: $i \to 5$ A e $v \to 80$ V, que é $105 - 5 \cdot 5$ ✔ Repare que as duas constantes **não** são simétricas mesmo com as duas condições iniciais nulas — quem manda nisso são as raízes, $-3$ e $-7$ ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. As raízes saem redondas dos valores do enunciado, e a resposta foi conferida nas duas pontas.
+</Passos>
