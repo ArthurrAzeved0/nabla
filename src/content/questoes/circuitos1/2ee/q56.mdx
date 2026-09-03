@@ -1,0 +1,111 @@
+---
+origem: "2025.1"
+tema: "Resposta ao degrau · A corrente que só existe no transitório"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q56.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ e a corrente $i$ para $t > 0$, dado que o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Comutação de 20 V para 50 V, 8 Ω em série, 2 Ω em paralelo com indutor de 1 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "fecha" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "abre" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "8 Ω" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "L", de: [6.8, 0], para: [6.8, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6.8, 3.4]] },
+  ]}
+>
+
+$i$ é a corrente do $2\ \Omega$, que está **em paralelo com o indutor**. Em regime permanente o indutor curto-circuita esse resistor, então $i$ vale zero antes e depois — ela só existe **durante** o transitório.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 50 - 6\,e^{-1,6t}\ \mathrm{V}$
+·
+$i(t) = 3\,e^{-1,6t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Com a fonte de $20\ \mathrm{V}$ e o indutor **em fio**, o $2\ \Omega$ fica em curto:
+
+$$
+i_L(0^-) = \frac{20}{8} = 2{,}5\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i_L(0^+) = 2{,}5\ \mathrm{A}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Com a fonte de $50\ \mathrm{V}$:
+
+$$
+50 = 8\,i_T + \frac{di_L}{dt}
+\qquad
+i_T = i + i_L
+\qquad
+2\,i = \frac{di_L}{dt}
+$$
+
+**Passo 3 — a equação em $i_L$.** De $i = \dfrac12\dfrac{di_L}{dt}$:
+
+$$
+50 = 8\,i_L + 4\frac{di_L}{dt} + \frac{di_L}{dt}
+\qquad\Longrightarrow\qquad
+5\frac{di_L}{dt} + 8\,i_L = 50
+$$
+
+**Passo 4 — resposta natural e forçada.** De $5s + 8 = 0$ vem $s = -1{,}6$; e $8K = 50$ dá $i_{L,f} = 6{,}25\ \mathrm{A}$.
+
+**Passo 5 — a constante.** De $i_L(0) = 2{,}5$:
+
+$$
+2{,}5 = A + 6{,}25
+\qquad\Longrightarrow\qquad
+A = -3{,}75
+\qquad\Longrightarrow\qquad
+i_L(t) = 6{,}25 - 3{,}75\,e^{-1,6t}\ \mathrm{A}
+$$
+
+**Passo 6 — a corrente do $2\ \Omega$.**
+
+$$
+i = \frac12\frac{di_L}{dt} = \frac12 \cdot 6\,e^{-1,6t}
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = 3\,e^{-1,6t}\ \mathrm{A}}
+$$
+
+**Passo 7 — a tensão do $8\ \Omega$.** Pela LKT, $v = 50 - v_L$, e $v_L = \dfrac{di_L}{dt} = 6\,e^{-1,6t}$:
+
+$$
+\boxed{v(t) = 50 - 6\,e^{-1,6t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{1}{8 \parallel 2} = \dfrac{1}{1{,}6}$ s, e de fato $s = -1{,}6$ ✔ Em $t = 0$: $v = 44$ V, então $i_T = 5{,}5$ A, e como $i_L = 2{,}5$ A sobra $i = 3$ A ✔ com $v_L = 50 - 44 = 6$ V, que dá $i = 6/2 = 3$ A ✔ Em $t \to \infty$: $i \to 0$, $v \to 50$ V e $i_L \to 6{,}25$ A ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi verificada em $t = 0$ pelas três correntes do nó e em $t \to \infty$ pelo regime permanente, e a constante de tempo confere com $L/R_{eq}$.
+</Passos>
