@@ -1,0 +1,108 @@
+---
+origem: "Final 2025.2"
+tema: "Análise nodal · Fonte de corrente numa ponta, de tensão na outra"
+temaId: analise-nodal
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ e a corrente $i$ usando um método qualquer de análise de circuitos.
+
+<Circuito
+  alt="Fonte de 5 A, 3 Ω, 5 Ω, 6 Ω, 4 Ω e fonte de 10 V"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [2.2, 0]] },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "3 Ω" },
+    { t: "tensao", de: [2.2, 3.4], para: [2.2, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [2.2, 0], para: [4.8, 0], valor: "5 Ω" },
+    { t: "no", em: [4.8, 0] },
+    { t: "R", de: [4.8, 0], para: [4.8, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "corrente", de: [4.8, 0.4], para: [4.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "R", de: [4.8, 0], para: [7.4, 0], valor: "4 Ω" },
+    { t: "no", em: [7.4, 0] },
+    { t: "V", de: [7.4, 3.4], para: [7.4, 0], valor: "10 V", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+A fonte de tensão está **aterrada**, então o nó dela já vale $10\ \mathrm{V}$ de graça: sobram só dois nós desconhecidos. Repare que o $4\ \Omega$ conduz **de volta** para a fonte de $10\ \mathrm{V}$ — a corrente dele sai negativa.
+
+</Circuito>
+
+<Gabarito>
+$v = \dfrac{645}{52} \approx 12{,}40\ \mathrm{V}$
+·
+$i = \dfrac{35}{26} \approx 1{,}35\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — escolha os nós.** Terra no fio de baixo. $v_A$ é o nó do $3\ \Omega$ (que é o próprio $v$), $v_B$ o nó do $6\ \Omega$, e o nó da direita já está fixado pela fonte em $10\ \mathrm{V}$.
+
+**Passo 2 — LKC no nó $A$.** Os $5\ \mathrm{A}$ entram e se repartem entre o $3\ \Omega$ e o $5\ \Omega$:
+
+$$
+5 = \frac{v_A}{3} + \frac{v_A - v_B}{5}
+\qquad \times 15 \qquad
+75 = 5\,v_A + 3\,v_A - 3\,v_B
+$$
+
+$$
+8\,v_A - 3\,v_B = 75
+$$
+
+**Passo 3 — LKC no nó $B$.**
+
+$$
+\frac{v_A - v_B}{5} = \frac{v_B}{6} + \frac{v_B - 10}{4}
+\qquad \times 60 \qquad
+12\,v_A - 12\,v_B = 10\,v_B + 15\,v_B - 150
+$$
+
+$$
+12\,v_A - 37\,v_B = -150
+$$
+
+**Passo 4 — resolva.** Da primeira, $v_A = \dfrac{75 + 3\,v_B}{8}$. Levando na segunda:
+
+$$
+\frac{12(75 + 3\,v_B)}{8} - 37\,v_B = -150
+\qquad \times 8 \qquad
+900 + 36\,v_B - 296\,v_B = -1200
+$$
+
+$$
+260\,v_B = 2100
+\qquad\Longrightarrow\qquad
+v_B = \frac{105}{13} \approx 8{,}08\ \mathrm{V}
+$$
+
+$$
+v_A = \frac{75 + \frac{315}{13}}{8} = \frac{1290}{104} = \frac{645}{52} \approx 12{,}40\ \mathrm{V}
+$$
+
+**Passo 5 — as duas respostas.**
+
+$$
+\boxed{v = v_A = \frac{645}{52} \approx 12{,}40\ \mathrm{V}}
+\qquad\qquad
+\boxed{i = \frac{v_B}{6} = \frac{35}{26} \approx 1{,}35\ \mathrm{A}}
+$$
+
+**Conferência —** no nó $A$: o $3\ \Omega$ leva $4{,}13$ A e o $5\ \Omega$ leva $0{,}87$ A, somando os $5$ A da fonte ✔ No nó $B$: entram $0{,}87$ A pelo $5\ \Omega$, saem $1{,}35$ A pelo $6\ \Omega$ e **entram** $0{,}48$ A pelo $4\ \Omega$ (que vem da fonte de $10\ \mathrm{V}$, já que $v_B < 10$) — e $0{,}87 + 0{,}48 = 1{,}35$ ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi obtida por análise nodal e conferida pela LKC nos dois nós.
+</Passos>
