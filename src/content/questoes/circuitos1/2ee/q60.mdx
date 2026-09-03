@@ -1,0 +1,137 @@
+---
+origem: "2025.2"
+tema: "Subamortecido · Degrau u(t) com R em paralelo com o capacitor"
+temaId: subamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q60.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$.
+
+<Circuito
+  alt="Fonte de degrau 20u(t) V com chave, 6 Ω, 4 Ω em paralelo com capacitor de 1/25 F e indutor de 1/4 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20u(t) V" },
+    { t: "fio", pts: [[0, 0], [0.6, 0]] },
+    { t: "S", de: [0.6, 0], para: [2, 0], rotulo: "fecha" },
+    { t: "R", de: [2, 0], para: [4.6, 0], valor: "6 Ω" },
+    { t: "tensao", de: [4.6, 0], para: [2, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [4.6, 0] },
+    { t: "C", de: [4.6, 0], para: [7.4, 0], valor: "1/25 F", abaixo: true },
+    { t: "fio", pts: [[4.6, 0], [4.6, -1.8]] },
+    { t: "R", de: [4.6, -1.8], para: [7.4, -1.8], valor: "4 Ω" },
+    { t: "fio", pts: [[7.4, -1.8], [7.4, 0]] },
+    { t: "corrente", de: [4.6, -0.3], para: [4.6, -1.4], rotulo: "i", abaixo: false },
+    { t: "no", em: [7.4, 0] },
+    { t: "L", de: [7.4, 0], para: [7.4, 3.4], valor: "1/4 H", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+O $4\ \Omega$ está **em paralelo com o capacitor**, e esse par em série com o $6\ \Omega$ e com o indutor. Como a fonte é um degrau $20u(t)$ e a chave só fecha em $t = 0$, o circuito parte do **repouso total**: $i_L(0) = 0$ e a tensão do capacitor também.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 12 - e^{-15,13t}\left(12\cos 4{,}61t - 64{,}78\operatorname{sen} 4{,}61t\right)\ \mathrm{V}$
+
+$i(t) = 2 - e^{-15,13t}\left(2\cos 4{,}61t + 6{,}56\operatorname{sen} 4{,}61t\right)\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condições iniciais.** Antes de $t = 0$ a fonte vale zero e a chave está aberta: nada está carregado.
+
+$$
+i_L(0) = 0
+\qquad\qquad
+v_p(0) = 0
+$$
+
+onde $v_p$ é a tensão do bloco $4\ \Omega \parallel C$ (a mesma do capacitor).
+
+**Passo 2 — as relações para $t > 0$.** Chamando $i_L$ a corrente da malha (a mesma no $6\ \Omega$ e no indutor):
+
+$$
+20 = 6\,i_L + v_p + \frac14\frac{di_L}{dt}
+\qquad\qquad
+i_L = \underbrace{\frac{v_p}{4}}_{i} + \underbrace{\frac{1}{25}\frac{dv_p}{dt}}_{i_C}
+$$
+
+**Passo 3 — a equação em $v_p$.** Substituindo $i_L$ e sua derivada:
+
+$$
+20 = 6\left(\frac{v_p}{4} + \frac{1}{25}\frac{dv_p}{dt}\right) + v_p
++ \frac14\left(\frac14\frac{dv_p}{dt} + \frac{1}{25}\frac{d^2v_p}{dt^2}\right)
+$$
+
+$$
+20 = 0{,}01\frac{d^2v_p}{dt^2} + 0{,}3025\frac{dv_p}{dt} + 2{,}5\,v_p
+\qquad \times 100 \qquad
+\frac{d^2v_p}{dt^2} + 30{,}25\frac{dv_p}{dt} + 250\,v_p = 2000
+$$
+
+**Passo 4 — resposta natural.** De $s^2 + 30{,}25s + 250 = 0$:
+
+$$
+s = \frac{-30{,}25 \pm \sqrt{915{,}06 - 1000}}{2} = -15{,}125 \pm j\,4{,}608
+$$
+
+Raízes complexas: **subamortecido**.
+
+**Passo 5 — resposta forçada.** $250K = 2000$, logo $v_{p,f} = 8\ \mathrm{V}$ — coerente: em regime o capacitor abre, o indutor vira fio e o divisor entre $6$ e $4\ \Omega$ dá $20 \cdot \frac{4}{10} = 8\ \mathrm{V}$.
+
+**Passo 6 — as constantes.** De $v_p(0) = 0$:
+
+$$
+8 + A_1 = 0
+\qquad\Longrightarrow\qquad
+A_1 = -8
+$$
+
+E de $i_L(0) = 0 = \dfrac{v_p(0)}{4} + \dfrac{1}{25}\dfrac{dv_p(0)}{dt}$ vem $\dfrac{dv_p(0)}{dt} = 0$, ou seja $-\alpha A_1 + \omega_d A_2 = 0$:
+
+$$
+121 + 4{,}608\,A_2 = 0
+\qquad\Longrightarrow\qquad
+A_2 = -26{,}26
+$$
+
+$$
+v_p(t) = 8 - e^{-15,13t}\left(8\cos 4{,}61t + 26{,}26\operatorname{sen} 4{,}61t\right)\ \mathrm{V}
+$$
+
+**Passo 7 — a corrente do $4\ \Omega$.** É $v_p/4$:
+
+$$
+\boxed{i(t) = 2 - e^{-15,13t}\left(2\cos 4{,}61t + 6{,}56\operatorname{sen} 4{,}61t\right)\ \mathrm{A}}
+$$
+
+**Passo 8 — a tensão do $6\ \Omega$.** Some as duas correntes do bloco para achar $i_L$ e multiplique por $6$:
+
+$$
+i_L = \frac{v_p}{4} + \frac{1}{25}\frac{dv_p}{dt}
+= 2 - e^{-15,13t}\left(2\cos 4{,}61t - 10{,}80\operatorname{sen} 4{,}61t\right)
+$$
+
+$$
+\boxed{v(t) = 6\,i_L = 12 - e^{-15,13t}\left(12\cos 4{,}61t - 64{,}78\operatorname{sen} 4{,}61t\right)\ \mathrm{V}}
+$$
+
+**Conferência —** em $t = 0$: $v = 12 - 12 = 0$ ✔, $i = 2 - 2 = 0$ ✔ e $i_L = 0$ ✔ — tudo parte do repouso, como manda o degrau. Em $t \to \infty$: $v \to 12$ V, $i \to 2$ A e $v_p \to 8$ V, exatamente o divisor $6 / 4$ com $20\ \mathrm{V}$ ✔
+
+**Sobre os números —** eles são deselegantes de propósito da nossa parte, não do enunciado: se o $4\ \Omega$ estivesse **em série** com $L$ e $C$ (em vez de em paralelo com o capacitor), sairia $\alpha = \frac{R}{2L} = 8$, $\omega_0 = \frac{1}{\sqrt{LC}} = 10$ e $\omega_d = 6$ — redondos. O desenho da prova, porém, põe o $4\ \Omega$ **em paralelo** com o capacitor, e é essa topologia que resolvemos acima.
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi conferida nas duas pontas e pela LKC do bloco paralelo.
+</Passos>
