@@ -1,0 +1,122 @@
+---
+origem: "2025.1"
+tema: "Condições iniciais · Sessenta ampères num nó que só escoa dez"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q55.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito está em **regime permanente** em $t = 0^-$. Determine os valores de $v$, $i$, $dv/dt$ e $di/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 50 V para 100 V, 5 Ω, 2 Ω, capacitor de 1/5 F, chave, 2 Ω, 10 Ω, indutor de 4 H, fonte de 10 A, chave e fonte de 50 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "fecha" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "50 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "abre" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "5 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[4.2, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "C", de: [7.4, 0], para: [7.4, 3.4], valor: "1/5 F" },
+    { t: "tensao", de: [7.4, 3.4], para: [7.4, 0], rotulo: "v", abaixo: true },
+    { t: "S", de: [7.4, 0], para: [9.4, 0], rotulo: "fecha" },
+    { t: "no", em: [9.4, 0] },
+    { t: "R", de: [9.4, 0], para: [9.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "R", de: [9.4, 0], para: [12, 0], valor: "10 Ω" },
+    { t: "no", em: [12, 0] },
+    { t: "L", de: [12, 0], para: [12, 3.4], valor: "4 H", abaixo: true },
+    { t: "corrente", de: [12, 0.4], para: [12, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[12, 0], [14.8, 0]] },
+    { t: "no", em: [14.8, 0] },
+    { t: "I", de: [14.8, 3.4], para: [14.8, 0], valor: "10 A" },
+    { t: "S", de: [14.8, 0], para: [16.8, 0], rotulo: "fecha" },
+    { t: "no", em: [16.8, 0] },
+    { t: "I", de: [16.8, 3.4], para: [16.8, 0], valor: "50 A" },
+    { t: "fio", pts: [[0, 3.4], [16.8, 3.4]] },
+  ]}
+>
+
+Mesmo esqueleto do 1º quesito de **2024.2**, com outros valores: em $t < 0$ o circuito são três pedaços independentes, e em $t = 0$ as duas chaves do topo fecham e a fonte sobe de $50$ para $100\ \mathrm{V}$. O nó do indutor passa a receber $60\ \mathrm{A}$ e só sabe escoar $10$ — a tensão dele **dispara**.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v = \dfrac{100}{7} \approx 14{,}29\ \mathrm{V}$ · $i = 10\ \mathrm{A}$ · $\dfrac{dv}{dt} = 0$ · $\dfrac{di}{dt} = 0$
+
+Em $0^+$: $v = \dfrac{100}{7}\ \mathrm{V}$ · $i = 10\ \mathrm{A}$ · $\dfrac{dv}{dt} = \dfrac{1850}{7} \approx 264{,}3\ \mathrm{V/s}$ · $\dfrac{di}{dt} = \dfrac{900}{7} \approx 128{,}6\ \mathrm{A/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o lado esquerdo em $0^-$.** Fonte de $50\ \mathrm{V}$, chave aberta e capacitor **aberto**: divisor entre o $5\ \Omega$ e o $2\ \Omega$.
+
+$$
+i_{fonte} = \frac{50}{5 + 2} = \frac{50}{7}\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{v(0^-) = 2 \cdot \frac{50}{7} = \frac{100}{7} \approx 14{,}29\ \mathrm{V}}
+$$
+
+**Passo 2 — o miolo em $0^-$.** O indutor, sendo **fio**, aterra o nó dele. O nó do segundo $2\ \Omega$ só tem esse resistor e o $10\ \Omega$: sem fonte para alimentá-los, ambos ficam com corrente zero e esse nó também vai a zero.
+
+Sobra a fonte de $10\ \mathrm{A}$, que entrega direto ao indutor:
+
+$$
+\boxed{i(0^-) = 10\ \mathrm{A}}
+$$
+
+Em regime permanente, as duas derivadas em $0^-$ valem **zero**.
+
+**Passo 3 — continuidade.**
+
+$$
+v(0^+) = \frac{100}{7}\ \mathrm{V}
+\qquad\qquad
+i(0^+) = 10\ \mathrm{A}
+$$
+
+**Passo 4 — o nó do indutor em $0^+$.** As duas chaves fecharam: as fontes de $10$ e $50\ \mathrm{A}$ despejam $60\ \mathrm{A}$ nesse nó, e o indutor só leva $10\ \mathrm{A}$. Os outros $50\ \mathrm{A}$ têm de voltar pelo $10\ \Omega$:
+
+$$
+v_D = v + 10 \cdot 50 = \frac{100}{7} + 500 = \frac{3600}{7} \approx 514{,}3\ \mathrm{V}
+$$
+
+$$
+\boxed{\frac{di(0^+)}{dt} = \frac{v_D}{4} = \frac{900}{7} \approx 128{,}6\ \mathrm{A/s}}
+$$
+
+**Passo 5 — o nó do capacitor em $0^+$.** Com a chave fechada, os dois $2\ \Omega$ passam a compartilhar o mesmo nó, que o capacitor fixa em $v = 100/7$. A LKC ali fica
+
+$$
+\underbrace{\frac{100 - \frac{100}{7}}{5}}_{\text{fonte} \;=\; \frac{120}{7}}
++ \underbrace{50}_{10\ \Omega}
+= \underbrace{\frac{50}{7} + \frac{50}{7}}_{\text{dois } 2\ \Omega} + i_C
+$$
+
+$$
+i_C(0^+) = \frac{120}{7} + 50 - \frac{100}{7} = \frac{370}{7} \approx 52{,}86\ \mathrm{A}
+$$
+
+$$
+\boxed{\frac{dv(0^+)}{dt} = \frac{i_C}{C} = \frac{370/7}{1/5} = \frac{1850}{7} \approx 264{,}3\ \mathrm{V/s}}
+$$
+
+**Conferência —** o mecanismo é o mesmo de 2024.2: fontes de corrente entopem um nó cuja única saída é um indutor que ainda não mudou, e a tensão desse nó vai às alturas ✔ E são justamente os $50\ \mathrm{A}$ de refluxo pelo $10\ \Omega$ que fazem o capacitor subir tão rápido ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. As frações de sete vêm do divisor $5\ \Omega$ / $2\ \Omega$ e não são erro de conta: o enunciado simplesmente não foi montado para dar números redondos aqui. A leitura das chaves é a mesma do quesito gêmeo de 2024.2.
+</Passos>
