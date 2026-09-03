@@ -1,0 +1,107 @@
+---
+origem: "2025.2"
+tema: "Condições iniciais · O indutor que aterra o nó da direita"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q58.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O circuito está em **regime permanente** em $t = 0^-$. Determine os valores de $v$, $i$, $dv/dt$ e $di/dt$ em $t = 0^-$ e em $t = 0^+$.
+
+<Circuito
+  alt="Comutação de 24 V para 60 V, 6 Ω, 3 Ω, capacitor de 2 F, 2 Ω e indutor de 1 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "60 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "fecha" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "24 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "abre" },
+    { t: "R", de: [1.8, 0], para: [4.4, 0], valor: "6 Ω" },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "3 Ω" },
+    { t: "tensao", de: [4.4, 3.4], para: [4.4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4.4, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "C", de: [7, 0], para: [7, 3.4], valor: "2 F", abaixo: true },
+    { t: "R", de: [7, 0], para: [9.6, 0], valor: "2 Ω" },
+    { t: "no", em: [9.6, 0] },
+    { t: "L", de: [9.6, 0], para: [9.6, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [9.6, 0.4], para: [9.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+  ]}
+>
+
+O $3\ \Omega$ e o capacitor de $2\ \mathrm{F}$ estão no **mesmo nó**, então $v$ serve para os dois. E o indutor, sendo fio em regime permanente, põe o nó da direita **no terra** — é isso que faz o $2\ \Omega$ conduzir nas duas pontas.
+
+</Circuito>
+
+<Gabarito>
+Em $0^-$: $v = 4\ \mathrm{V}$ · $i = 2\ \mathrm{A}$ · $\dfrac{dv}{dt} = 0$ · $\dfrac{di}{dt} = 0$
+
+Em $0^+$: $v = 4\ \mathrm{V}$ · $i = 2\ \mathrm{A}$ · $\dfrac{dv}{dt} = 3\ \mathrm{V/s}$ · $\dfrac{di}{dt} = 0$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Fonte de $24\ \mathrm{V}$, capacitor **aberto** e indutor **em fio**. O indutor aterra o nó da direita, então o $2\ \Omega$ liga o nó de $v$ direto ao terra. A LKC nesse nó dá
+
+$$
+\frac{24 - v}{6} = \frac{v}{3} + \frac{v}{2}
+\qquad \times 6 \qquad
+24 - v = 2v + 3v
+\qquad\Longrightarrow\qquad
+\boxed{v(0^-) = 4\ \mathrm{V}}
+$$
+
+$$
+\boxed{i(0^-) = \frac{v}{2} = 2\ \mathrm{A}}
+$$
+
+Regime permanente: as duas derivadas em $0^-$ são **zero**.
+
+**Passo 2 — continuidade.**
+
+$$
+\boxed{v(0^+) = 4\ \mathrm{V}}
+\qquad\qquad
+\boxed{i(0^+) = 2\ \mathrm{A}}
+$$
+
+**Passo 3 — a derivada da corrente.** No nó da direita só existem o $2\ \Omega$ e o indutor, então o $2\ \Omega$ leva exatamente os $2\ \mathrm{A}$ do indutor. Isso fixa a tensão desse nó:
+
+$$
+v_{n\acute{o}} = 4 - 2 \cdot 2 = 0
+\qquad\Longrightarrow\qquad
+\boxed{\frac{di(0^+)}{dt} = \frac{0}{1} = 0}
+$$
+
+**Passo 4 — a derivada da tensão.** A fonte subiu para $60\ \mathrm{V}$, e agora entra muito mais corrente pelo $6\ \Omega$:
+
+$$
+i_{6\Omega}(0^+) = \frac{60 - 4}{6} = \frac{28}{3}\ \mathrm{A}
+$$
+
+LKC no nó de $v$, onde saem $4/3$ A pelo $3\ \Omega$ e $2$ A pelo $2\ \Omega$:
+
+$$
+i_C(0^+) = \frac{28}{3} - \frac{4}{3} - 2 = 6\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv(0^+)}{dt} = \frac{6}{2} = 3\ \mathrm{V/s}}
+$$
+
+**Conferência —** a corrente do indutor **não** salta e sua derivada também é zero: como o $2\ \Omega$ está preso entre um capacitor que não mudou e um indutor que não mudou, nada nele mudou ✔ Toda a corrente extra da fonte vai para o capacitor, que é o único elemento livre para reagir ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. Os valores foram obtidos pela LKC nos dois nós e conferidos pela continuidade; a leitura da chave (fonte sobe de $24$ para $60\ \mathrm{V}$) é a que dá $v(0^-)$ e $i(0^-)$ redondos.
+</Passos>
