@@ -1,0 +1,116 @@
+---
+origem: "2019.2 · 2ª chamada"
+tema: "Resposta ao degrau · Uma chave abre e a outra fecha"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q62.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a corrente $i$ e a tensão $v$ para $t > 0$, sabendo que o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Fonte de 10 V com 5 Ω, chave, indutor de 1 H, 10 Ω, 1 Ω, chave, 5 Ω e fonte de 5 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "5 Ω" },
+    { t: "S", de: [2.2, 0], para: [4, 0], rotulo: "abre" },
+    { t: "no", em: [4, 0] },
+    { t: "L", de: [4, 0], para: [4, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [4, 0.4], para: [4, 1.4], rotulo: "i", abaixo: false },
+    { t: "R", de: [4, 0], para: [6.6, 0], valor: "10 Ω" },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "1 Ω" },
+    { t: "tensao", de: [6.6, 3.4], para: [6.6, 0], rotulo: "v", abaixo: true },
+    { t: "S", de: [6.6, 0], para: [8.6, 0], rotulo: "fecha" },
+    { t: "no", em: [8.6, 0] },
+    { t: "R", de: [8.6, 0], para: [8.6, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[8.6, 0], [11, 0]] },
+    { t: "no", em: [11, 0] },
+    { t: "I", de: [11, 3.4], para: [11, 0], valor: "5 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [11, 3.4]] },
+  ]}
+>
+
+Duas chaves fazem coisas opostas em $t = 0$: a da esquerda **abre** (e leva embora a fonte de $10\ \mathrm{V}$ com o $5\ \Omega$) e a da direita **fecha** (trazendo o $5\ \Omega$ e a fonte de $5\ \mathrm{A}$). Em $0^-$ o indutor é um fio que aterra o nó, e por isso o $10\ \Omega$ e o $1\ \Omega$ nem conduzem.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = \dfrac{5}{13} + \dfrac{21}{13}\,e^{-\frac{65}{6}t} \approx 0{,}385 + 1{,}615\,e^{-10,83t}\ \mathrm{A}$
+
+$v(t) = \dfrac{50}{13} - \dfrac{35}{26}\,e^{-\frac{65}{6}t} \approx 3{,}846 - 1{,}346\,e^{-10,83t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Chave da esquerda **fechada**, indutor **em fio**: o nó dele está no terra, então o $10\ \Omega$ e o $1\ \Omega$ ficam sem tensão e a fonte vê só o $5\ \Omega$:
+
+$$
+i(0^-) = \frac{10}{5} = 2\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i(0^+) = 2\ \mathrm{A}
+$$
+
+**Passo 2 — o circuito em $t > 0$.** Sobram o ramo do indutor com o $10\ \Omega$, o $1\ \Omega$, o $5\ \Omega$ e a fonte de $5\ \mathrm{A}$ — tudo em paralelo no nó de $v$. A LKC dá
+
+$$
+5 = \frac{v}{5} + \frac{v}{1} + i
+\qquad \times 5 \qquad
+25 = v + 5\,v + 5\,i = 6\,v + 5\,i
+$$
+
+**Passo 3 — a equação.** Pelo ramo do indutor, $v = 10\,i + \dfrac{di}{dt}$:
+
+$$
+25 = 6\left(10\,i + \frac{di}{dt}\right) + 5\,i = 65\,i + 6\frac{di}{dt}
+$$
+
+$$
+6\frac{di}{dt} + 65\,i = 25
+$$
+
+**Passo 4 — resposta natural.** De $6s + 65 = 0$ vem $s = -\dfrac{65}{6} \approx -10{,}83$.
+
+Confere: com as fontes desligadas, o indutor enxerga $10 + (1 \parallel 5) = 10 + \frac56 = \frac{65}{6}\ \Omega$, e $\tau = L/R = \frac{6}{65}$ s ✓
+
+**Passo 5 — resposta forçada.** $65K = 25$, logo
+
+$$
+i_f = \frac{25}{65} = \frac{5}{13} \approx 0{,}385\ \mathrm{A}
+$$
+
+Confere pelo regime: o indutor vira fio, $R_{eq} = 1 \parallel 5 \parallel 10 = \frac{10}{13}$, e $v_f = 5 \cdot \frac{10}{13} = \frac{50}{13}$, com $i_f = \frac{v_f}{10} = \frac{5}{13}$ ✓
+
+**Passo 6 — a constante.** De $i(0) = 2$:
+
+$$
+A = 2 - \frac{5}{13} = \frac{21}{13}
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = \frac{5}{13} + \frac{21}{13}\,e^{-\frac{65}{6}t}\ \mathrm{A}}
+$$
+
+**Passo 7 — a tensão.** De $v = 10\,i + \dfrac{di}{dt}$, com $\dfrac{di}{dt} = -\dfrac{65}{6} \cdot \dfrac{21}{13}\,e^{-\frac{65}{6}t} = -\dfrac{35}{2}\,e^{-\frac{65}{6}t}$:
+
+$$
+v = \frac{50}{13} + \left(\frac{210}{13} - \frac{35}{2}\right)e^{-\frac{65}{6}t}
+$$
+
+$$
+\boxed{v(t) = \frac{50}{13} - \frac{35}{26}\,e^{-\frac{65}{6}t}\ \mathrm{V}}
+$$
+
+**Conferência —** em $t = 0$: $i = 2$ A e $v = \frac{50}{13} - \frac{35}{26} = \frac{65}{26} = 2{,}5$ V. Pela LKC direta: $5 = \frac{2{,}5}{5} + 2{,}5 + 2 = 0{,}5 + 2{,}5 + 2$ ✔ Em $t \to \infty$: $v \to 3{,}846$ V e $i \to 0{,}385$ A ✔
+
+**Sobre o gabarito —** a resolução do acervo calcula corretamente $K = \frac{25}{65} = \frac{5}{13}$ e depois, por lapso de conta, **usa $\frac13$** no lugar — daí ela chega a $i(t) = \frac53 e^{-\frac{65}{6}t} + \frac13$ e $v(t) = \frac{10}{3} - \frac{25}{18}e^{-\frac{65}{6}t}$. Os valores acima são os corretos: $\frac{5}{13} \approx 0{,}385$, e o regime permanente calculado por $R_{eq}$ confirma.
+</Passos>
