@@ -1,0 +1,140 @@
+---
+origem: "2022.1"
+tema: "Subamortecido · Capacitor que troca de ramo na comutação"
+temaId: subamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q49.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e a corrente $i$ para $t > 0$, dado que o circuito está em **regime permanente** para $t = 0^-$.
+
+<Circuito
+  alt="Fonte de 20 V com 10 Ω, indutor de 4 H, chave comutadora, capacitor de 1/20 F, 3 Ω e fonte de 4 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "10 Ω" },
+    { t: "tensao", de: [2.4, 0], para: [0, 0], rotulo: "v" },
+    { t: "no", em: [2.4, 0] },
+    { t: "L", de: [2.4, 0], para: [2.4, 3.4], valor: "4 H", abaixo: true },
+    { t: "corrente", de: [2.4, 0.9], para: [2.4, 1.8], rotulo: "i", abaixo: false },
+    { t: "S", de: [2.4, 0], para: [5.2, 0], rotulo: "fecha" },
+    { t: "no", em: [5.2, 0] },
+    { t: "C", de: [5.2, 0], para: [5.2, 3.4], valor: "1/20 F" },
+    { t: "tensao", de: [5.2, 3.4], para: [5.2, 0], rotulo: "v_C", abaixo: true },
+    { t: "S", de: [5.2, 0], para: [7.2, 0], rotulo: "abre" },
+    { t: "R", de: [7.2, 0], para: [9.6, 0], valor: "3 Ω" },
+    { t: "no", em: [9.6, 0] },
+    { t: "V", de: [9.6, 3.4], para: [9.6, 0], valor: "4 V", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+  ]}
+>
+
+A chave da prova é **comutadora**: em $t < 0$ o capacitor está ligado ao ramo do $3\ \Omega$ com a fonte de $4\ \mathrm{V}$ — que o deixa carregado com $4\ \mathrm{V}$ — e em $t = 0$ ele **troca de ramo**, passando a enxergar o indutor. É essa leitura que reproduz as duas condições iniciais e a equação da resolução.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 2 + \dfrac{1}{2}\,e^{-t}\operatorname{sen} 2t\ \mathrm{A}$
+·
+$v(t) = 20 - 4\,e^{-t}\cos 2t + 2\,e^{-t}\operatorname{sen} 2t\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condições iniciais.** Em $0^-$ o capacitor está do lado do $3\ \Omega$, aberto e sem corrente, logo enxerga a fonte inteira:
+
+$$
+v_C(0) = 4\ \mathrm{V}
+$$
+
+Do outro lado, o indutor é **fio** e aterra o nó do meio, então os $20\ \mathrm{V}$ caem todos no $10\ \Omega$:
+
+$$
+i(0) = \frac{20}{10} = 2\ \mathrm{A}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Com o capacitor agora em paralelo com o indutor:
+
+$$
+20 = 10\,i_T + 4\frac{di}{dt}
+\qquad
+i_T = i + i_C
+\qquad
+i_C = \frac{1}{20}\frac{dv_C}{dt}
+\qquad
+v_C = 4\frac{di}{dt}
+$$
+
+**Passo 3 — a equação em $i$.** Trocando $i_C$ e depois $v_C$:
+
+$$
+20 = 10\,i + \frac{10}{20} \cdot 4\frac{d^2 i}{dt^2} + 4\frac{di}{dt}
+= 10\,i + 2\frac{d^2 i}{dt^2} + 4\frac{di}{dt}
+$$
+
+$$
+\div 2 \qquad
+\frac{d^2 i}{dt^2} + 2\frac{di}{dt} + 5\,i = 10
+$$
+
+**Passo 4 — resposta natural.** De $s^2 + 2s + 5 = 0$:
+
+$$
+s = \frac{-2 \pm \sqrt{4 - 20}}{2} = -1 \pm j2
+$$
+
+Raízes complexas: **subamortecido**, com $\alpha = 1$ e $\omega_d = 2$.
+
+$$
+i_n(t) = e^{-t}\left(A_1\cos 2t + A_2\operatorname{sen} 2t\right)
+$$
+
+**Passo 5 — resposta forçada.** $5K = 10$, logo $i_f = 2\ \mathrm{A}$.
+
+**Passo 6 — a primeira constante.** De $i(0) = 2$:
+
+$$
+2 = A_1 + 2
+\qquad\Longrightarrow\qquad
+A_1 = 0
+$$
+
+**Passo 7 — a segunda.** A tensão do capacitor é $4\,di/dt$, e em $t = 0$, com $A_1 = 0$:
+
+$$
+v_C(0) = 4 \cdot 2A_2 = 4
+\qquad\Longrightarrow\qquad
+A_2 = \frac{1}{2}
+$$
+
+$$
+\boxed{i(t) = 2 + \frac{1}{2}\,e^{-t}\operatorname{sen} 2t\ \mathrm{A}}
+$$
+
+**Passo 8 — as duas tensões.** Derivando,
+
+$$
+v_C = 4\frac{di}{dt} = 4\,e^{-t}\cos 2t - 2\,e^{-t}\operatorname{sen} 2t\ \mathrm{V}
+$$
+
+e a do $10\ \Omega$ sai da LKT, $v = 20 - v_C$:
+
+$$
+\boxed{v(t) = 20 - 4\,e^{-t}\cos 2t + 2\,e^{-t}\operatorname{sen} 2t\ \mathrm{V}}
+$$
+
+**Conferência —** em $t = 0$: $i = 2$ A e $v_C = 4$ V, as condições iniciais ✔ e $v = 16$ V, o que dá $i_T = 1{,}6$ A, coerente com $i_C(0) = -0{,}4$ A (o capacitor começa **descarregando** para o indutor) ✔ Em $t \to \infty$ o capacitor abre, o indutor vira fio e $v \to 20$ V com $i \to 2$ A ✔ Confere com a resolução da prova.
+
+**Sobre o gabarito —** o desenho de $t > 0$ da resolução omite o ramo do $3\ \Omega$ com a fonte de $4\ \mathrm{V}$, e a equação dela também. Isso só fecha se a chave **tirar** aquele ramo ao mesmo tempo que liga o indutor — ou seja, se ela for comutadora, como está desenhado acima. Com o ramo do $3\ \Omega$ ainda no circuito depois de $t = 0$, a equação seria $\frac{d^2i}{dt^2} + 8{,}67\frac{di}{dt} + 5i = 16{,}7$ e a resposta cairia no caso **superamortecido** — nada parecido com o gabarito.
+</Passos>
