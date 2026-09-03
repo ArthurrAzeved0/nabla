@@ -1,0 +1,108 @@
+---
+origem: "2024.2"
+tema: "Resposta ao degrau · Tensão do indutor como resposta"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q53.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ e a corrente $i$ para $t > 0$, dado que o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Comutação de 100 V para 200 V, 50 Ω em série, indutor de 10 H em paralelo com 25 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "200 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "fecha" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "100 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "abre" },
+    { t: "R", de: [1.8, 0], para: [4.4, 0], valor: "50 Ω" },
+    { t: "no", em: [4.4, 0] },
+    { t: "L", de: [4.4, 0], para: [4.4, 3.4], valor: "10 H", abaixo: true },
+    { t: "corrente", de: [4.4, 0.4], para: [4.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.4, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3.4], valor: "25 Ω" },
+    { t: "tensao", de: [7.2, 3.4], para: [7.2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+  ]}
+>
+
+O indutor está **em paralelo** com o $25\ \Omega$, então $v$ é a própria tensão do indutor — e em regime permanente ela é **zero** nas duas pontas. A resposta é uma exponencial pura, sem termo constante.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 4 - 2\,e^{-\frac{5}{3}t}\ \mathrm{A}$
+·
+$v(t) = \dfrac{100}{3}\,e^{-\frac{5}{3}t} \approx 33{,}3\,e^{-1,67t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Com a fonte de $100\ \mathrm{V}$ e o indutor **em fio**, o $25\ \Omega$ fica em curto:
+
+$$
+i(0^-) = \frac{100}{50} = 2\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i(0^+) = 2\ \mathrm{A}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Com a fonte de $200\ \mathrm{V}$:
+
+$$
+200 = 50\,i_T + 10\frac{di}{dt}
+\qquad
+i_T = i + i_R
+\qquad
+v = 25\,i_R = 10\frac{di}{dt}
+$$
+
+**Passo 3 — a equação.** De $i_R = \dfrac{10}{25}\dfrac{di}{dt} = 0{,}4\dfrac{di}{dt}$:
+
+$$
+200 = 50\,i + 20\frac{di}{dt} + 10\frac{di}{dt}
+\qquad\Longrightarrow\qquad
+30\frac{di}{dt} + 50\,i = 200
+$$
+
+$$
+\frac{di}{dt} + \frac{5}{3}\,i = \frac{20}{3}
+$$
+
+**Passo 4 — resposta natural e forçada.** De $s + \frac53 = 0$ vem $s = -\dfrac53$; e $\frac53 K = \frac{20}{3}$ dá $i_f = 4\ \mathrm{A}$.
+
+**Passo 5 — a constante.** De $i(0) = 2$:
+
+$$
+2 = A + 4
+\qquad\Longrightarrow\qquad
+A = -2
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = 4 - 2\,e^{-\frac{5}{3}t}\ \mathrm{A}}
+$$
+
+**Passo 6 — a tensão.** É a do indutor:
+
+$$
+v = 10\frac{di}{dt} = 10 \cdot 2 \cdot \frac{5}{3}\,e^{-\frac{5}{3}t}
+\qquad\Longrightarrow\qquad
+\boxed{v(t) = \frac{100}{3}\,e^{-\frac{5}{3}t} \approx 33{,}3\,e^{-1,67t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{10}{50 \parallel 25} = \dfrac{10}{50/3} = 0{,}6$ s, e de fato $s = -5/3$ ✔ Em $t = 0$: $v = 33{,}3$ V, então $i_R = 1{,}33$ A, $i_T = 3{,}33$ A e a LKT fecha em $50 \cdot 3{,}33 + 33{,}3 = 200$ V ✔ Em $t \to \infty$ o indutor volta a curto-circuitar o $25\ \Omega$: $v \to 0$ e $i \to 200/50 = 4$ A ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi verificada em $t = 0$ (pela LKT com as três correntes) e em $t \to \infty$, e a constante de tempo confere com $L/R_{eq}$.
+</Passos>
