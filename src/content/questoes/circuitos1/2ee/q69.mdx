@@ -1,0 +1,130 @@
+---
+origem: "2017.1 · 2ª chamada"
+tema: "Superamortecido · Dois ramos RL e RC em paralelo"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q69.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre $v(t)$ e $i(t)$ para $t > 0$, sabendo que $v(0) = 2\ \mathrm{V}$ e $i(0) = 1\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 2 A alimentando o ramo de 4 Ω com indutor de 2 H e o ramo de 8 Ω com capacitor de 1/4 F"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2.8, 0]] },
+    { t: "no", em: [2.8, 0] },
+    { t: "R", de: [2.8, 0], para: [2.8, 1.7], valor: "4 Ω", abaixo: true },
+    { t: "L", de: [2.8, 1.7], para: [2.8, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [2.8, 0.2], para: [2.8, 0.9], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[2.8, 0], [5.8, 0]] },
+    { t: "no", em: [5.8, 0] },
+    { t: "R", de: [5.8, 0], para: [5.8, 1.7], valor: "8 Ω", abaixo: true },
+    { t: "C", de: [5.8, 1.7], para: [5.8, 3.4], valor: "1/4 F" },
+    { t: "tensao", de: [5.8, 3.4], para: [5.8, 1.7], rotulo: "v", abaixo: true },
+    { t: "corrente", de: [5.8, 0.2], para: [5.8, 0.9], rotulo: "i_C", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+  ]}
+>
+
+Dois ramos em série pendurados na mesma fonte de corrente: um $RL$ e um $RC$. A LKC amarra as duas correntes ($i + i_C = 2$) e a LKT iguala as duas tensões de ramo — daí sai uma equação de segunda ordem com raízes $-3 \pm \sqrt{7}$.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 8 - 5{,}65\,e^{-0,354t} - 0{,}35\,e^{-5,646t}\ \mathrm{V}$
+
+$i(t) = 2 - 0{,}5\,e^{-0,354t} - 0{,}5\,e^{-5,646t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas leis.** A LKC no nó de cima e a igualdade das tensões dos dois ramos:
+
+$$
+2 = i + i_C
+\qquad\qquad
+4\,i + 2\frac{di}{dt} = 8\,i_C + v
+\qquad\qquad
+i_C = \frac14\frac{dv}{dt}
+$$
+
+**Passo 2 — elimine $i$.** Da LKC, $i = 2 - i_C = 2 - \dfrac14\dfrac{dv}{dt}$, e portanto $\dfrac{di}{dt} = -\dfrac14\dfrac{d^2v}{dt^2}$. Levando na LKT:
+
+$$
+4\left(2 - \frac14\frac{dv}{dt}\right) - \frac12\frac{d^2v}{dt^2} = 2\frac{dv}{dt} + v
+$$
+
+$$
+8 - \frac{dv}{dt} - \frac12\frac{d^2v}{dt^2} = 2\frac{dv}{dt} + v
+\qquad \times (-2) \qquad
+\frac{d^2v}{dt^2} + 6\frac{dv}{dt} + 2\,v = 16
+$$
+
+**Passo 3 — resposta natural.** De $s^2 + 6s + 2 = 0$:
+
+$$
+s = \frac{-6 \pm \sqrt{36 - 8}}{2} = -3 \pm \sqrt7
+\qquad\Longrightarrow\qquad
+s_1 = -0{,}354
+\quad
+s_2 = -5{,}646
+$$
+
+Duas raízes reais distintas: **superamortecido**.
+
+**Passo 4 — resposta forçada.** $2K = 16$, logo $v_f = 8\ \mathrm{V}$ — em regime o capacitor abre, os $2\ \mathrm{A}$ vão todos pelo ramo do indutor e $v = 4 \cdot 2 = 8\ \mathrm{V}$.
+
+**Passo 5 — a primeira equação.** De $v(0) = 2$:
+
+$$
+A_1 + A_2 = 2 - 8 = -6
+$$
+
+**Passo 6 — a segunda.** A corrente inicial dá a derivada da tensão, pela LKC:
+
+$$
+\frac{dv(0)}{dt} = 4\,i_C(0) = 4\left(2 - i(0)\right) = 4
+\qquad\Longrightarrow\qquad
+s_1 A_1 + s_2 A_2 = 4
+$$
+
+As duas equações têm uma solução bonita: como $s_1 + s_2 = -6$ e $s_1 s_2 = 2$, basta tomar
+
+$$
+A_1 = s_2 = -3 - \sqrt7 \approx -5{,}65
+\qquad\qquad
+A_2 = s_1 = -3 + \sqrt7 \approx -0{,}35
+$$
+
+(de fato $A_1 + A_2 = -6$ e $s_1A_1 + s_2A_2 = 2\,s_1s_2 = 4$ ✓)
+
+$$
+\boxed{v(t) = 8 - 5{,}65\,e^{-0,354t} - 0{,}35\,e^{-5,646t}\ \mathrm{V}}
+$$
+
+**Passo 7 — a corrente.** Como $A_1 s_1 = A_2 s_2 = s_1 s_2 = 2$, a derivada fica simétrica:
+
+$$
+\frac{dv}{dt} = 2\left(e^{-0,354t} + e^{-5,646t}\right)
+$$
+
+$$
+i = 2 - \frac14\frac{dv}{dt}
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = 2 - 0{,}5\,e^{-0,354t} - 0{,}5\,e^{-5,646t}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t = 0$: $v = 8 - 5{,}65 - 0{,}35 = 2$ V ✔ e $i = 2 - 0{,}5 - 0{,}5 = 1$ A ✔ Em $t \to \infty$: $v \to 8$ V e $i \to 2$ A, os $2\ \mathrm{A}$ inteiros pelo ramo do indutor ✔ Confere com a equação da resolução da prova (que para na EDO, sem fechar as constantes).
+</Passos>
