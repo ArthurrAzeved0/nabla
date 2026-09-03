@@ -1,0 +1,106 @@
+---
+origem: "Final 2020.2"
+tema: "Primeira ordem · Fonte de corrente com dois resistores e um capacitor"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine $v$ para $t > 0$ no circuito abaixo, dada a fonte $I_s$ e a condição inicial.
+
+<Circuito
+  alt="Fonte de corrente Is com 5 Ω, 5 Ω em série e capacitor de 0,01 F"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "I_s" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [2.4, 0.4], para: [2.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "R", de: [2.4, 0], para: [6.2, 0], valor: "5 Ω" },
+    { t: "no", em: [6.2, 0] },
+    { t: "C", de: [6.2, 0], para: [6.2, 3.4], valor: "0,01 F" },
+    { t: "tensao", de: [6.2, 3.4], para: [6.2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.2, 3.4]] },
+  ]}
+>
+
+O capacitor enxerga os dois $5\ \Omega$ **em série** (a fonte de corrente, desligada para o cálculo de $R_{eq}$, vira um aberto). Daí $\tau = 0{,}1\ \mathrm{s}$ — e o valor final é $5 I_s$, porque com o capacitor aberto toda a corrente vai pelo $5\ \Omega$ vertical.
+
+</Circuito>
+
+<Gabarito>
+$\tau = 0{,}1\ \mathrm{s}$ ($s = -10$) · $v_f = 5\,I_s$
+
+$$
+v(t) = 5\,I_s + \left[v(0) - 5\,I_s\right]e^{-10t}
+$$
+
+Com $I_s = 10\ \mathrm{A}$ e $v(0) = 0$: $v(t) = 50\left(1 - e^{-10t}\right)\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Chamando $v_A$ a tensão do nó da esquerda:
+
+$$
+I_s = \frac{v_A}{5} + i_{5\Omega}
+\qquad
+i_{5\Omega} = \frac{v_A - v}{5} = 0{,}01\frac{dv}{dt}
+$$
+
+**Passo 2 — a equação.** Da segunda relação, $v_A = v + 0{,}05\dfrac{dv}{dt}$. Levando na primeira:
+
+$$
+I_s = \frac{v + 0{,}05\frac{dv}{dt}}{5} + 0{,}01\frac{dv}{dt}
+= 0{,}2\,v + 0{,}02\frac{dv}{dt}
+$$
+
+$$
+\frac{dv}{dt} + 10\,v = 50\,I_s
+$$
+
+**Passo 3 — a constante de tempo.** De $s + 10 = 0$ vem $s = -10$, isto é $\tau = 0{,}1$ s.
+
+Confere pela regra do circuito: com a fonte de corrente aberta, o capacitor enxerga $5 + 5 = 10\ \Omega$, e $\tau = R_{eq}C = 10 \cdot 0{,}01 = 0{,}1$ s ✓
+
+**Passo 4 — o valor final.** $10K = 50 I_s$, logo
+
+$$
+v_f = 5\,I_s
+$$
+
+Confere pelo regime permanente: capacitor aberto ⟹ nada circula no $5\ \Omega$ horizontal ⟹ todo o $I_s$ passa pelo $5\ \Omega$ vertical, e o capacitor enxerga essa mesma tensão, $5 I_s$ ✓
+
+**Passo 5 — a resposta completa.**
+
+$$
+\boxed{v(t) = 5\,I_s + \left[v(0) - 5\,I_s\right]e^{-10t}}
+$$
+
+**Exemplo concreto —** com $I_s = 10\ \mathrm{A}$ e capacitor descarregado:
+
+$$
+v(t) = 50\left(1 - e^{-10t}\right)\ \mathrm{V}
+\qquad\qquad
+i(t) = \frac{v_A}{5}, \quad v_A = v + 0{,}05\frac{dv}{dt} = 50 - 25\,e^{-10t}
+$$
+
+$$
+i(t) = 10 - 5\,e^{-10t}\ \mathrm{A}
+$$
+
+E confere: em $t = 0$, $i = 5$ A e o $5\ \Omega$ horizontal leva os outros $5$ A direto para o capacitor descarregado ✔ Em $t \to \infty$, $i \to 10$ A, os $I_s$ inteiros ✔
+
+**Sobre o enunciado —** o PDF perdeu as fórmulas do texto: o valor de $I_s$ e a condição inicial **não** aparecem ("Determine para no circuito abaixo. Considere ."). O conteúdo da questão — a equação, $\tau = 0{,}1$ s e $v_f = 5I_s$ — está acima; basta encaixar os dados da sua prova. **A mesma figura reaparece no 2º quesito da final de 2022.2**, lá sem nem os valores dos resistores.
+</Passos>
