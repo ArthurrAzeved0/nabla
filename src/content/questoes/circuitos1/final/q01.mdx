@@ -1,0 +1,108 @@
+---
+origem: "Final 2025.1"
+tema: "Análise nodal · Fonte de corrente entre dois resistores"
+temaId: analise-nodal
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ e a corrente $i$ usando um método qualquer de análise de circuitos.
+
+<Circuito
+  alt="Fonte de 20 V com 2 Ω, 5 Ω, 4 Ω, fonte de 2 A e 10 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "2 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [2.4, 0.4], para: [2.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "R", de: [2.4, 0], para: [5, 0], valor: "4 Ω" },
+    { t: "tensao", de: [5, 0], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [5, 0] },
+    { t: "I", de: [5, 3.4], para: [5, 0], valor: "2 A" },
+    { t: "fio", pts: [[5, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+Dois nós essenciais e nenhuma fonte de tensão flutuando: é o caso mais direto da análise nodal. A fonte de $2\ \mathrm{A}$ **injeta** no nó da direita, e é ela que faz esse nó ficar num potencial **maior** que o da esquerda — daí o $v$ negativo.
+
+</Circuito>
+
+<Gabarito>
+$v = -\dfrac{40}{27} \approx -1{,}48\ \mathrm{V}$
+·
+$i = \dfrac{80}{27} \approx 2{,}96\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — escolha os nós.** Terra no fio de baixo; $v_A$ é o nó do $5\ \Omega$ e $v_B$ o nó da fonte de $2\ \mathrm{A}$ (que o fio de cima liga ao $10\ \Omega$).
+
+**Passo 2 — LKC no nó $A$.**
+
+$$
+\frac{20 - v_A}{2} = \frac{v_A}{5} + \frac{v_A - v_B}{4}
+\qquad \times 20 \qquad
+200 - 10\,v_A = 4\,v_A + 5\,v_A - 5\,v_B
+$$
+
+$$
+19\,v_A - 5\,v_B = 200
+$$
+
+**Passo 3 — LKC no nó $B$.** Entram a corrente do $4\ \Omega$ e os $2\ \mathrm{A}$ da fonte; sai a do $10\ \Omega$:
+
+$$
+\frac{v_A - v_B}{4} + 2 = \frac{v_B}{10}
+\qquad \times 20 \qquad
+5\,v_A - 5\,v_B + 40 = 2\,v_B
+$$
+
+$$
+5\,v_A + 40 = 7\,v_B
+\qquad\Longrightarrow\qquad
+v_B = \frac{5\,v_A + 40}{7}
+$$
+
+**Passo 4 — resolva.** Levando $v_B$ na equação do Passo 2:
+
+$$
+19\,v_A - \frac{5(5\,v_A + 40)}{7} = 200
+\qquad \times 7 \qquad
+133\,v_A - 25\,v_A - 200 = 1400
+$$
+
+$$
+108\,v_A = 1600
+\qquad\Longrightarrow\qquad
+v_A = \frac{400}{27} \approx 14{,}81\ \mathrm{V}
+\qquad
+v_B = \frac{440}{27} \approx 16{,}30\ \mathrm{V}
+$$
+
+**Passo 5 — as duas respostas.** $v$ é a tensão do $4\ \Omega$ com o "+" à esquerda, ou seja $v_A - v_B$; e $i$ é a corrente do $5\ \Omega$:
+
+$$
+\boxed{v = \frac{400 - 440}{27} = -\frac{40}{27} \approx -1{,}48\ \mathrm{V}}
+\qquad\qquad
+\boxed{i = \frac{v_A}{5} = \frac{80}{27} \approx 2{,}96\ \mathrm{A}}
+$$
+
+**Conferência —** as três correntes do nó $A$: a fonte entrega $\frac{20 - 14{,}81}{2} = 2{,}59$ A, o $5\ \Omega$ leva $2{,}96$ A e o $4\ \Omega$ leva $-0{,}37$ A — e $2{,}96 - 0{,}37 = 2{,}59$ ✔ No nó $B$: $-0{,}37 + 2 = 1{,}63 = \frac{16{,}30}{10}$ ✔ O sinal negativo de $v$ é o recado da questão: com $2\ \mathrm{A}$ entrando à direita, a corrente do $4\ \Omega$ vai **de $B$ para $A$** ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi obtida por análise nodal e conferida pela LKC nos dois nós; as frações de $27$ são do próprio enunciado, não arredondamento.
+</Passos>
