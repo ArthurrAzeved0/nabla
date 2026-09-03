@@ -1,0 +1,106 @@
+---
+origem: "Final 2024.2"
+tema: "Análise nodal · A fonte de corrente que inverte o resistor do meio"
+temaId: analise-nodal
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine os valores de $v$ e de $i$ no circuito abaixo usando um método qualquer de análise de circuitos.
+
+<Circuito
+  alt="Fonte de 40 V com 4 Ω, 10 Ω, 8 Ω, fonte de 4 A e 20 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "4 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "corrente", de: [2.4, 0.4], para: [2.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "R", de: [2.4, 0], para: [5, 0], valor: "8 Ω" },
+    { t: "tensao", de: [5, 0], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [5, 0] },
+    { t: "I", de: [5, 3.4], para: [5, 0], valor: "4 A" },
+    { t: "fio", pts: [[5, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.4], valor: "20 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+Mesmo esqueleto do 1º quesito da final de **2025.1**, com outros valores. Aqui os números saem em **terços**, e o $v$ negativo continua sendo o recado: os $4\ \mathrm{A}$ elevam o nó da direita acima do da esquerda, e o $8\ \Omega$ conduz **de volta**.
+
+</Circuito>
+
+<Gabarito>
+$v = -\dfrac{40}{3} \approx -13{,}33\ \mathrm{V}$
+·
+$i = \dfrac{10}{3} \approx 3{,}33\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — escolha os nós.** Terra no fio de baixo; $v_A$ é o nó do $10\ \Omega$ e $v_B$ o da fonte de $4\ \mathrm{A}$ (ligado ao $20\ \Omega$ pelo fio de cima).
+
+**Passo 2 — LKC no nó $A$.**
+
+$$
+\frac{40 - v_A}{4} = \frac{v_A}{10} + \frac{v_A - v_B}{8}
+\qquad \times 40 \qquad
+400 - 10\,v_A = 4\,v_A + 5\,v_A - 5\,v_B
+$$
+
+$$
+19\,v_A - 5\,v_B = 400
+$$
+
+**Passo 3 — LKC no nó $B$.**
+
+$$
+\frac{v_A - v_B}{8} + 4 = \frac{v_B}{20}
+\qquad \times 40 \qquad
+5\,v_A - 5\,v_B + 160 = 2\,v_B
+$$
+
+$$
+v_B = \frac{5\,v_A + 160}{7}
+$$
+
+**Passo 4 — resolva.**
+
+$$
+19\,v_A - \frac{5(5\,v_A + 160)}{7} = 400
+\qquad \times 7 \qquad
+133\,v_A - 25\,v_A - 800 = 2800
+$$
+
+$$
+108\,v_A = 3600
+\qquad\Longrightarrow\qquad
+v_A = \frac{100}{3} \approx 33{,}33\ \mathrm{V}
+\qquad
+v_B = \frac{140}{3} \approx 46{,}67\ \mathrm{V}
+$$
+
+**Passo 5 — as duas respostas.** $v$ é a tensão do $8\ \Omega$ com o "+" à esquerda, e $i$ a corrente do $10\ \Omega$:
+
+$$
+\boxed{v = \frac{100 - 140}{3} = -\frac{40}{3} \approx -13{,}33\ \mathrm{V}}
+\qquad\qquad
+\boxed{i = \frac{v_A}{10} = \frac{10}{3} \approx 3{,}33\ \mathrm{A}}
+$$
+
+**Conferência —** no nó $A$: a fonte entrega $\frac{40 - 33{,}33}{4} = 1{,}67$ A, o $10\ \Omega$ leva $3{,}33$ A e o $8\ \Omega$ leva $-1{,}67$ A — soma zero ✔ No nó $B$: $-1{,}67 + 4 = 2{,}33 = \frac{46{,}67}{20}$ ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi obtida por análise nodal e conferida pela LKC nos dois nós.
+</Passos>
