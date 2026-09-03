@@ -1,0 +1,95 @@
+---
+origem: "Final 2024.2"
+tema: "Resposta ao degrau · O mesmo circuito do 2º EE, sem a chave"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a corrente $i$ e a tensão $v$ para $t > 0$, dado que $i(0) = 2\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 200 V com 50 Ω em série, indutor de 10 H em paralelo com 25 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "200 V" },
+    { t: "R", de: [0, 0], para: [2.6, 0], valor: "50 Ω" },
+    { t: "no", em: [2.6, 0] },
+    { t: "L", de: [2.6, 0], para: [2.6, 3.4], valor: "10 H", abaixo: true },
+    { t: "corrente", de: [2.6, 0.4], para: [2.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[2.6, 0], [5.4, 0]] },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3.4], valor: "25 Ω" },
+    { t: "tensao", de: [5.4, 3.4], para: [5.4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.4, 3.4]] },
+  ]}
+>
+
+É o **mesmo circuito** do 2º quesito do 2º EE de 2024.2, agora sem a chave: em vez de comutar de $100$ para $200\ \mathrm{V}$, a prova simplesmente dá a corrente inicial. O indutor está em paralelo com o $25\ \Omega$, então $v$ é a tensão dele — e vale zero em regime.
+
+</Circuito>
+
+<Gabarito>
+$i(t) = 4 - 2\,e^{-\frac{5}{3}t}\ \mathrm{A}$
+·
+$v(t) = \dfrac{100}{3}\,e^{-\frac{5}{3}t} \approx 33{,}3\,e^{-1,67t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Chamando $i_T$ a corrente da fonte e $i_R$ a do $25\ \Omega$:
+
+$$
+200 = 50\,i_T + 10\frac{di}{dt}
+\qquad
+i_T = i + i_R
+\qquad
+v = 25\,i_R = 10\frac{di}{dt}
+$$
+
+**Passo 2 — a equação.** De $i_R = \dfrac{10}{25}\dfrac{di}{dt} = 0{,}4\dfrac{di}{dt}$:
+
+$$
+200 = 50\,i + 20\frac{di}{dt} + 10\frac{di}{dt}
+\qquad\Longrightarrow\qquad
+30\frac{di}{dt} + 50\,i = 200
+$$
+
+$$
+\frac{di}{dt} + \frac53\,i = \frac{20}{3}
+$$
+
+**Passo 3 — resposta natural e forçada.** De $s + \frac53 = 0$ vem $s = -\dfrac53$; e $\frac53 K = \frac{20}{3}$ dá $i_f = 4\ \mathrm{A}$.
+
+**Passo 4 — a constante.** De $i(0) = 2$:
+
+$$
+2 = A + 4
+\qquad\Longrightarrow\qquad
+A = -2
+\qquad\Longrightarrow\qquad
+\boxed{i(t) = 4 - 2\,e^{-\frac{5}{3}t}\ \mathrm{A}}
+$$
+
+**Passo 5 — a tensão.**
+
+$$
+v = 10\frac{di}{dt} = 10 \cdot 2 \cdot \frac53\,e^{-\frac{5}{3}t}
+\qquad\Longrightarrow\qquad
+\boxed{v(t) = \frac{100}{3}\,e^{-\frac{5}{3}t} \approx 33{,}3\,e^{-1,67t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{10}{50 \parallel 25} = \dfrac{10}{50/3} = 0{,}6$ s, e de fato $s = -5/3$ ✔ Em $t = 0$: $v = 33{,}3$ V, $i_R = 1{,}33$ A, $i_T = 3{,}33$ A e a LKT fecha em $50 \cdot 3{,}33 + 33{,}3 = 200$ V ✔ Em $t \to \infty$: $v \to 0$ e $i \to 4$ A ✔
+
+**Sobre o enunciado —** o PDF desta prova perdeu as fórmulas do texto: o valor da condição inicial **não** aparece ("dado que ."). O circuito, porém, é idêntico ao do 2º EE de 2024.2, cuja comutação de $100\ \mathrm{V}$ dá $i(0) = 100/50 = 2\ \mathrm{A}$ — e é esse valor que adotamos. Se a sua prova trouxer outro $i(0)$, só a constante muda: $A = i(0) - 4$, e $v = -10\,s\,A\,e^{st} = \frac{50}{3}\,A\,e^{-\frac53 t}$ com sinal trocado.
+</Passos>
