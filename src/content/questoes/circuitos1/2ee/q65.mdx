@@ -1,0 +1,120 @@
+---
+origem: "2017.2 · 2ª chamada"
+tema: "Condições iniciais · Chave que isola uma fonte controlada"
+temaId: condicoes-iniciais
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q65.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado que o circuito abaixo está em **regime permanente** em $t = 0^-$, determine os valores de $i_L$, $v_C$, $v$ e $dv_C/dt$ no instante $t = 0^+$.
+
+<Circuito
+  alt="Fonte de 34 V, 100 Ω, 20 Ω, indutor de 1 H, fonte controlada de 0,8ix, chave, 25 Ω, 75 Ω e capacitor de 10 mF"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "34 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "100 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "20 Ω" },
+    { t: "L", de: [2.2, 0], para: [5, 0], valor: "1 H" },
+    { t: "corrente", de: [2.4, 0], para: [3.4, 0], rotulo: "i_L" },
+    { t: "no", em: [5, 0] },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "0,8i_x A" },
+    { t: "S", de: [5, 0], para: [7, 0], rotulo: "abre" },
+    { t: "no", em: [7, 0] },
+    { t: "R", de: [7, 0], para: [7, 3.4], valor: "25 Ω", abaixo: true },
+    { t: "corrente", de: [7, 0.4], para: [7, 1.4], rotulo: "i_x", abaixo: false },
+    { t: "R", de: [7, 0], para: [10, 0], valor: "75 Ω" },
+    { t: "tensao", de: [10, 0], para: [7, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [10, 0] },
+    { t: "C", de: [10, 0], para: [10, 3.4], valor: "10 mF" },
+    { t: "tensao", de: [10, 3.4], para: [10, 0], rotulo: "v_C", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [10, 3.4]] },
+  ]}
+>
+
+Em $t < 0$ a chave está **fechada** e tudo é um circuito só. Ao **abrir**, ela deixa o nó da fonte controlada com um único caminho de escoamento — a própria fonte —, e é essa LKC que **força** o valor de $i_x$. Uma questão de leitura de sinais, não de conta.
+
+</Circuito>
+
+<Gabarito>
+$i_L(0^+) = 0{,}04\ \mathrm{A}$ · $v_C(0^+) = 5\ \mathrm{V}$ · $v(0^+) = 3{,}75\ \mathrm{V}$ · $\dfrac{dv_C(0^+)}{dt} = 5\ \mathrm{V/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito em $0^-$.** Chave fechada, capacitor **aberto** e indutor **em fio**: o nó do $20\ \Omega$, o da fonte controlada e o do $25\ \Omega$ são o **mesmo nó**, de tensão $v_1$. O $75\ \Omega$ não conduz (o capacitor está aberto).
+
+Com $i_x = \dfrac{v_1}{25}$, a LKC nesse nó é
+
+$$
+\frac{34 - v_1}{100} + 0{,}8\,\frac{v_1}{25} = \frac{v_1}{20} + \frac{v_1}{25}
+$$
+
+$$
+\times 100 \qquad
+34 - v_1 + 3{,}2\,v_1 = 5\,v_1 + 4\,v_1
+\qquad\Longrightarrow\qquad
+34 = 6{,}8\,v_1
+\qquad\Longrightarrow\qquad
+v_1 = 5\ \mathrm{V}
+$$
+
+**Passo 2 — as condições iniciais.** O capacitor enxerga esse nó pelo $75\ \Omega$ sem corrente, então tem a mesma tensão:
+
+$$
+\boxed{v_C(0^-) = 5\ \mathrm{V}}
+$$
+
+E a corrente do indutor sai da LKC do nó do $20\ \Omega$:
+
+$$
+i_L(0^-) = \frac{34 - 5}{100} - \frac{5}{20} = 0{,}29 - 0{,}25
+\qquad\Longrightarrow\qquad
+\boxed{i_L(0^-) = 0{,}04\ \mathrm{A}}
+$$
+
+**Passo 3 — continuidade.**
+
+$$
+\boxed{i_L(0^+) = 0{,}04\ \mathrm{A}}
+\qquad\qquad
+\boxed{v_C(0^+) = 5\ \mathrm{V}}
+$$
+
+**Passo 4 — o que a chave aberta impõe.** Agora o nó da fonte controlada tem **só** o indutor entrando e a fonte saindo. A LKC não deixa escolha:
+
+$$
+0{,}8\,i_x = -i_L(0^+) = -0{,}04
+\qquad\Longrightarrow\qquad
+\boxed{i_x(0^+) = -0{,}05\ \mathrm{A}}
+$$
+
+**Passo 5 — a tensão do $75\ \Omega$.** Do lado direito da chave, a corrente que atravessa o $75\ \Omega$ é $-i_x$:
+
+$$
+\boxed{v(0^+) = 75 \cdot (-i_x) = 75 \cdot 0{,}05 = 3{,}75\ \mathrm{V}}
+$$
+
+**Passo 6 — a derivada da tensão do capacitor.** Essa mesma corrente é a que carrega o capacitor:
+
+$$
+i_C(0^+) = -i_x = 0{,}05\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+\boxed{\frac{dv_C(0^+)}{dt} = \frac{0{,}05}{10 \cdot 10^{-3}} = 5\ \mathrm{V/s}}
+$$
+
+**Conferência —** o mecanismo é a **inversão de sinal**: em $0^-$, $i_x$ valia $+0{,}2$ A; em $0^+$, a chave aberta obriga a fonte controlada a engolir os $0{,}04$ A do indutor, e $i_x$ vira $-0{,}05$ A ✔ Confere com a resolução da prova.
+
+**Sobre o gabarito —** o enunciado também pede $dv/dt$ e $di_L/dt$, e a resolução da prova **não** os calcula — com razão. Com a chave aberta, o nó da fonte controlada fica sem nenhum resistor que fixe seu potencial, então a tensão do indutor (e portanto $di_L/dt$) **não é determinada** pelo circuito. Pior: as duas exigências não se conciliam — o nó da fonte pede $i_x = -0{,}05$ A, enquanto o laço $25\ \Omega$–$75\ \Omega$–capacitor, com $v_C = 5\ \mathrm{V}$, pediria $i_x = +0{,}05$ A. Os quatro valores acima são os que fecham e são o que o gabarito cobra.
+</Passos>
