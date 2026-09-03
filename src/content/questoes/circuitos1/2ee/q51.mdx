@@ -1,0 +1,152 @@
+---
+origem: "2024.1"
+tema: "Subamortecido · RLC paralelo com as três correntes pedidas"
+temaId: subamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q51.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a tensão $v$ e as correntes $i_R$, $i_L$ e $i_C$ para $t > 0$, onde $v(0) = 50\ \mathrm{V}$ e $i_L(0) = 10\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 50 A alimentando 6 Ω, indutor de 2 H e capacitor de 1/30 F em paralelo"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "50 A" },
+    { t: "fio", pts: [[0, 0], [2.6, 0]] },
+    { t: "no", em: [2.6, 0] },
+    { t: "R", de: [2.6, 0], para: [2.6, 3.4], valor: "6 Ω" },
+    { t: "tensao", de: [2.6, 3.4], para: [2.6, 0], rotulo: "v", abaixo: true },
+    { t: "corrente", de: [2.6, 0.2], para: [2.6, 0.9], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[2.6, 0], [5.2, 0]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "L", de: [5.2, 0], para: [5.2, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [5.2, 0.2], para: [5.2, 0.9], rotulo: "i_L", abaixo: false },
+    { t: "fio", pts: [[5.2, 0], [7.8, 0]] },
+    { t: "no", em: [7.8, 0] },
+    { t: "C", de: [7.8, 0], para: [7.8, 3.4], valor: "1/30 F", abaixo: true },
+    { t: "corrente", de: [7.8, 0.2], para: [7.8, 0.9], rotulo: "i_C", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7.8, 3.4]] },
+  ]}
+>
+
+RLC paralelo puro com fonte de corrente: os três elementos veem a mesma $v$, e as três correntes pedidas saem de $v$ e da própria LKC. Aqui $\alpha < \omega_0$ — o circuito **oscila** antes de acomodar.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = e^{-2,5t}\left(50\cos 2{,}96t + 363{,}4\operatorname{sen} 2{,}96t\right)\ \mathrm{V}$
+
+$i_R(t) = e^{-2,5t}\left(8{,}33\cos 2{,}96t + 60{,}57\operatorname{sen} 2{,}96t\right)\ \mathrm{A}$
+
+$i_L(t) = 50 - e^{-2,5t}\left(40\cos 2{,}96t + 25{,}36\operatorname{sen} 2{,}96t\right)\ \mathrm{A}$
+
+$i_C(t) = e^{-2,5t}\left(31{,}67\cos 2{,}96t - 35{,}21\operatorname{sen} 2{,}96t\right)\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Tudo em paralelo, com $v$ comum:
+
+$$
+50 = i_R + i_L + i_C
+\qquad
+i_R = \frac{v}{6}
+\qquad
+v = 2\frac{di_L}{dt}
+\qquad
+i_C = \frac{1}{30}\frac{dv}{dt}
+$$
+
+**Passo 2 — a equação em $i_L$.** Substituindo $v$:
+
+$$
+50 = \frac{2}{6}\frac{di_L}{dt} + i_L + \frac{2}{30}\frac{d^2 i_L}{dt^2}
+\qquad \times 15 \qquad
+\frac{d^2 i_L}{dt^2} + 5\frac{di_L}{dt} + 15\,i_L = 750
+$$
+
+**Passo 3 — resposta natural.** Pelas fórmulas do RLC paralelo,
+
+$$
+\alpha = \frac{1}{2RC} = \frac{1}{2 \cdot 6 \cdot \frac{1}{30}} = 2{,}5
+\qquad
+\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{2/30}} = \sqrt{15} \approx 3{,}873
+$$
+
+Como $\alpha < \omega_0$, o caso é **subamortecido**:
+
+$$
+s = -2{,}5 \pm j\sqrt{15 - 6{,}25} = -2{,}5 \pm j2{,}96
+$$
+
+$$
+i_{L,n}(t) = e^{-2,5t}\left(A_1\cos 2{,}96t + A_2\operatorname{sen} 2{,}96t\right)
+$$
+
+**Passo 4 — resposta forçada.** $15K = 750$, logo $i_{L,f} = 50\ \mathrm{A}$ — no fim o indutor vira fio e leva os $50\ \mathrm{A}$ inteiros.
+
+**Passo 5 — a primeira constante.** De $i_L(0) = 10$:
+
+$$
+A_1 + 50 = 10
+\qquad\Longrightarrow\qquad
+A_1 = -40
+$$
+
+**Passo 6 — a segunda.** De $v(0) = 50 = 2\dfrac{di_L(0)}{dt}$, vem $\dfrac{di_L(0)}{dt} = 25$. Derivando a resposta e avaliando em zero:
+
+$$
+-2{,}5\,A_1 + 2{,}96\,A_2 = 25
+\qquad\Longrightarrow\qquad
+100 + 2{,}96\,A_2 = 25
+\qquad\Longrightarrow\qquad
+A_2 = -25{,}36
+$$
+
+$$
+\boxed{i_L(t) = 50 - e^{-2,5t}\left(40\cos 2{,}96t + 25{,}36\operatorname{sen} 2{,}96t\right)\ \mathrm{A}}
+$$
+
+**Passo 7 — a tensão.** $v = 2\,di_L/dt$, agrupando seno e cosseno:
+
+$$
+\boxed{v(t) = e^{-2,5t}\left(50\cos 2{,}96t + 363{,}4\operatorname{sen} 2{,}96t\right)\ \mathrm{V}}
+$$
+
+**Passo 8 — as outras duas correntes.** Uma é lei de Ohm, a outra é a LKC:
+
+$$
+\boxed{i_R = \frac{v}{6} = e^{-2,5t}\left(8{,}33\cos 2{,}96t + 60{,}57\operatorname{sen} 2{,}96t\right)\ \mathrm{A}}
+$$
+
+$$
+\boxed{i_C = 50 - i_R - i_L = e^{-2,5t}\left(31{,}67\cos 2{,}96t - 35{,}21\operatorname{sen} 2{,}96t\right)\ \mathrm{A}}
+$$
+
+**Conferência —** em $t = 0$: $v = 50$ V ✔, $i_L = 10$ A ✔, $i_R = 50/6 = 8{,}33$ A ✔ e $i_C = 50 - 8{,}33 - 10 = 31{,}67$ A ✔ Em $t \to \infty$ tudo vai a zero menos $i_L$, que fica com os $50\ \mathrm{A}$ ✔
+
+**Sobre o gabarito —** a resolução do acervo resolve este quesito com **$L = 5\ \mathrm{H}$** em vez dos $2\ \mathrm{H}$ do enunciado impresso. Com $5\ \mathrm{H}$ a equação vira $\frac{d^2i_L}{dt^2} + 5\frac{di_L}{dt} + 6i_L = 300$, as raízes ficam **reais** ($-2$ e $-3$, caso superamortecido) e ela chega a
+
+$$
+i_L = 50 - 110\,e^{-2t} + 70\,e^{-3t}
+\quad
+v = 1100\,e^{-2t} - 1050\,e^{-3t}
+\quad
+i_R = 183{,}33\,e^{-2t} - 175\,e^{-3t}
+\quad
+i_C = -73{,}33\,e^{-2t} + 105\,e^{-3t}
+$$
+
+Os valores acima são os do **enunciado** ($2\ \mathrm{H}$); se a sua prova trouxer $5\ \mathrm{H}$, use estes últimos.
+</Passos>
