@@ -1,0 +1,139 @@
+---
+origem: "2015.1"
+tema: "Superamortecido · Degrau de fonte de corrente com RL e C"
+temaId: superamortecido
+pontos: 4 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q45.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado que o circuito encontra-se em **regime permanente CC** em $t < 0$, determine $v(t)$ e $i(t)$ para $t > 0$.
+
+<Circuito
+  alt="Comutação de fonte de 2 A para 5 A, ramo de 10 Ω com indutor de 2 H em paralelo com capacitor de 1/10 F"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "abre" },
+    { t: "no", em: [1.8, 0] },
+    { t: "I", de: [1.8, 3.4], para: [1.8, 1.4], valor: "5 A" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "fecha" },
+    { t: "fio", pts: [[1.8, 0], [4.4, 0]] },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 1.7], valor: "10 Ω", abaixo: true },
+    { t: "L", de: [4.4, 1.7], para: [4.4, 3.4], valor: "2 H" },
+    { t: "tensao", de: [4.4, 3.4], para: [4.4, 1.7], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4.4, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "C", de: [7.2, 0], para: [7.2, 3.4], valor: "1/10 F" },
+    { t: "corrente", de: [7.2, 0.4], para: [7.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+  ]}
+>
+
+Repare no que é pedido: $v$ é a tensão **do indutor** (não a do nó) e $i$ é a corrente **do capacitor**. As duas começam do que a comutação de $2$ para $5\ \mathrm{A}$ deixa sobrando.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 13{,}42\,e^{-1,38t} - 13{,}42\,e^{-3,62t}\ \mathrm{V}$
+·
+$i(t) = 4{,}85\,e^{-1,38t} - 1{,}85\,e^{-3,62t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condições iniciais.** Com a fonte de $2\ \mathrm{A}$, o capacitor é **aberto** e o indutor é **fio**: todos os $2\ \mathrm{A}$ atravessam o ramo do $10\ \Omega$.
+
+$$
+i_L(0) = 2\ \mathrm{A}
+\qquad\qquad
+v_C(0) = 10 \cdot 2 = 20\ \mathrm{V}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Com a fonte de $5\ \mathrm{A}$, chamando $v_C$ a tensão do nó:
+
+$$
+5 = i_L + i
+\qquad
+i = \frac{1}{10}\frac{dv_C}{dt}
+\qquad
+v_C = 10\,i_L + 2\frac{di_L}{dt}
+$$
+
+**Passo 3 — a equação em $i_L$.** Substituindo:
+
+$$
+5 = i_L + \frac{1}{10}\left(10\frac{di_L}{dt} + 2\frac{d^2 i_L}{dt^2}\right)
+\qquad \times 5 \qquad
+\frac{d^2 i_L}{dt^2} + 5\frac{di_L}{dt} + 5\,i_L = 25
+$$
+
+**Passo 4 — resposta natural.** De $s^2 + 5s + 5 = 0$:
+
+$$
+s = \frac{-5 \pm \sqrt{25 - 20}}{2} = \frac{-5 \pm \sqrt5}{2}
+\qquad\Longrightarrow\qquad
+s_1 = -1{,}382
+\quad
+s_2 = -3{,}618
+$$
+
+Duas raízes reais distintas: **superamortecido**.
+
+**Passo 5 — resposta forçada.** $5K = 25$, logo $i_{L,f} = 5\ \mathrm{A}$ — coerente, porque no fim o indutor vira fio e leva os $5\ \mathrm{A}$ inteiros.
+
+**Passo 6 — as constantes.** De $i_L(0) = 2$:
+
+$$
+A_1 + A_2 = -3
+$$
+
+E de $v_C(0) = 20 = 10 \cdot 2 + 2\dfrac{di_L(0)}{dt}$, ou seja $\dfrac{di_L(0)}{dt} = 0$:
+
+$$
+s_1 A_1 + s_2 A_2 = 0
+$$
+
+Resolvendo o par:
+
+$$
+A_1 = -4{,}854
+\qquad\qquad
+A_2 = 1{,}854
+$$
+
+$$
+i_L(t) = 5 - 4{,}854\,e^{-1,38t} + 1{,}854\,e^{-3,62t}\ \mathrm{A}
+$$
+
+**Passo 7 — a tensão do indutor.**
+
+$$
+v = 2\frac{di_L}{dt} = 2\left(6{,}708\,e^{-1,38t} - 6{,}708\,e^{-3,62t}\right)
+$$
+
+$$
+\boxed{v(t) = 13{,}42\,e^{-1,38t} - 13{,}42\,e^{-3,62t}\ \mathrm{V}}
+$$
+
+**Passo 8 — a corrente do capacitor.** Direto da LKC, $i = 5 - i_L$:
+
+$$
+\boxed{i(t) = 4{,}85\,e^{-1,38t} - 1{,}85\,e^{-3,62t}\ \mathrm{A}}
+$$
+
+**Conferência —** em $t = 0$: $v = 0$ (o indutor tinha corrente constante, logo não caía tensão nele) ✔ e $i = 4{,}85 - 1{,}85 = 3$ A, que é exatamente o que sobra dos $5\ \mathrm{A}$ depois dos $2\ \mathrm{A}$ presos no indutor ✔ Em $t \to \infty$ as duas vão a zero e $i_L \to 5$ A ✔ Confere com a resolução da prova.
+
+**Sobre o gabarito —** uma das duas cópias do acervo resolve este quesito com $4\ \Omega$ no lugar do $10\ \Omega$ (chegando a $v = 15\,e^{-t}\operatorname{sen} 2t$, subamortecido). O enunciado traz $10\ \Omega$, e é com ele que a **outra** cópia — e as raízes $-1{,}382$ e $-3{,}618$ — fecham.
+</Passos>
