@@ -1,0 +1,125 @@
+---
+origem: "2024.1 · 2ª chamada"
+tema: "Thévenin e Norton · Equivalente com fonte de corrente por cima"
+temaId: thevenin-norton
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q40.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar o circuito equivalente de **Thévenin** e de **Norton** fora dos pontos $a$ e $b$. A partir de um dos dois circuitos, encontre o valor da tensão entre os terminais $a$ e $b$.
+
+<Circuito
+  alt="Fonte de 18 V, 6 Ω, fonte de 2 A por cima do segundo 6 Ω, 20 Ω, 5 Ω com fonte de 20 V e 24 Ω entre a e b"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "18 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "6 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [5, 0], valor: "6 Ω" },
+    { t: "fio", pts: [[2.2, 0], [2.2, -1.8]] },
+    { t: "I", de: [5, -1.8], para: [2.2, -1.8], valor: "2 A" },
+    { t: "fio", pts: [[5, -1.8], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "R", de: [5, 0], para: [5, 3.4], valor: "20 Ω", abaixo: true },
+    { t: "fio", pts: [[5, 0], [7.6, 0]] },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 1.7], valor: "5 Ω" },
+    { t: "V", de: [7.6, 3.4], para: [7.6, 1.7], valor: "20 V", abaixo: true },
+    { t: "fio", pts: [[7.6, 0], [10.2, 0]] },
+    { t: "no", em: [10.2, 0] },
+    { t: "texto", em: [10.2, -0.5], texto: "a" },
+    { t: "R", de: [10.2, 0], para: [10.2, 3.4], valor: "24 Ω", abaixo: true },
+    { t: "tensao", de: [10.2, 3.4], para: [10.2, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [10.2, 3.9], texto: "b" },
+    { t: "fio", pts: [[0, 3.4], [10.2, 3.4]] },
+  ]}
+>
+
+A fonte de $2\ \mathrm{A}$ passa **por cima** do segundo $6\ \Omega$ e aponta para a **esquerda** — ela tira corrente do nó da direita e devolve no da esquerda. Para o $R_{Th}$, o truque é lembrar que zerar a fonte de $20\ \mathrm{V}$ deixa o $5\ \Omega$ ligado direto ao terra.
+
+</Circuito>
+
+<Gabarito>
+$V_{Th} = 13{,}5\ \mathrm{V}$ · $R_{Th} = 3\ \Omega$ · $I_N = 4{,}5\ \mathrm{A}$
+
+$v_{ab} = 12\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — tire o $24\ \Omega$ e ache a tensão de circuito aberto.** Chame $v_C$ o nó entre os dois $6\ \Omega$ e $v_D$ o nó do $20\ \Omega$ (que é o terminal $a$).
+
+LKC em $C$ — entram a corrente da fonte de $18\ \mathrm{V}$ e os $2\ \mathrm{A}$ (que a fonte devolve neste nó):
+
+$$
+\frac{18 - v_C}{6} + 2 = \frac{v_C - v_D}{6}
+\qquad \times 6 \qquad
+30 + v_D = 2\,v_C
+$$
+
+**Passo 2 — LKC em $D$.** Sai a corrente que a fonte de $2\ \mathrm{A}$ puxa, mais o $20\ \Omega$ e o ramo do $5\ \Omega$ (cujo pé está preso em $+20\ \mathrm{V}$):
+
+$$
+\frac{v_C - v_D}{6} = 2 + \frac{v_D}{20} + \frac{v_D - 20}{5}
+$$
+
+$$
+\times 60 \qquad
+10\,v_C - 10\,v_D = 120 + 3\,v_D + 12\,v_D - 240
+\qquad\Longrightarrow\qquad
+10\,v_C = 25\,v_D - 120
+$$
+
+**Passo 3 — resolva.** Substituindo $v_C = \dfrac{30 + v_D}{2}$:
+
+$$
+5\left(30 + v_D\right) = 25\,v_D - 120
+\qquad\Longrightarrow\qquad
+20\,v_D = 270
+$$
+
+$$
+\boxed{V_{Th} = v_D = 13{,}5\ \mathrm{V}}
+$$
+
+**Passo 4 — a resistência de Thévenin.** Zere as fontes independentes: a de $18\ \mathrm{V}$ vira **curto** (o primeiro $6\ \Omega$ passa a ligar $C$ ao terra), a de $2\ \mathrm{A}$ vira **aberto** (o ramo dela desaparece) e a de $20\ \mathrm{V}$ vira **curto** (o $5\ \Omega$ vai direto ao terra).
+
+Olhando de $a$–$b$, os três caminhos ficam em paralelo:
+
+$$
+R_{Th} = 20 \parallel 5 \parallel \left(6 + 6\right)
+= \frac{1}{\frac{1}{20} + \frac{1}{5} + \frac{1}{12}}
+$$
+
+$$
+\boxed{R_{Th} = 3\ \Omega}
+$$
+
+**Passo 5 — o equivalente de Norton.**
+
+$$
+\boxed{I_N = \frac{V_{Th}}{R_{Th}} = \frac{13{,}5}{3} = 4{,}5\ \mathrm{A}}
+\qquad\qquad
+R_N = R_{Th} = 3\ \Omega
+$$
+
+**Passo 6 — a tensão em $a$–$b$.** Recoloque o $24\ \Omega$ no equivalente de Thévenin: é um divisor de tensão simples.
+
+$$
+\boxed{v_{ab} = 13{,}5 \cdot \frac{24}{24 + 3} = 12\ \mathrm{V}}
+$$
+
+**Conferência —** pelo equivalente de Norton dá o mesmo: $4{,}5\ \mathrm{A}$ em $3 \parallel 24 = \frac{8}{3}\ \Omega$ resulta em $4{,}5 \cdot \frac{8}{3} = 12\ \mathrm{V}$ ✔ E os números redondos ($R_{Th} = 3$, $v_{ab} = 12$) são o sinal de que a leitura da fonte de $2\ \mathrm{A}$ — apontando para a esquerda — está certa ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. O $V_{Th}$ saiu por análise nodal, o $R_{Th}$ pelo circuito morto, e as duas rotas (Thévenin e Norton) foram conferidas uma contra a outra.
+</Passos>
