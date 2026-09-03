@@ -1,0 +1,104 @@
+---
+origem: "2015.1"
+tema: "Resposta ao degrau · Resistor do meio em paralelo com o ramo do indutor"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q44.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine $v(t)$ para $t > 0$ no circuito abaixo, dado que $i(0) = 2\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 10 V, 2 Ω em série, 2 Ω em paralelo com o ramo de 4 Ω e indutor de 2 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "2 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i_T" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [2.4, 0], para: [5, 0], valor: "4 Ω" },
+    { t: "no", em: [5, 0] },
+    { t: "L", de: [5, 0], para: [5, 3.4], valor: "2 H", abaixo: true },
+    { t: "corrente", de: [5, 0.4], para: [5, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+  ]}
+>
+
+A tensão pedida é a do $2\ \Omega$ **vertical**, que é a mesma do ramo $4\ \Omega$ + indutor. Como só há uma condição inicial ($i$), resolva em $i$ e depois volte para $v$ pela LKT desse ramo.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 4 - e^{-\frac{5}{2}t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as relações.** Chamando $i_R$ a corrente do $2\ \Omega$ vertical:
+
+$$
+i_T = i_R + i
+\qquad
+10 = 2\,i_T + v
+\qquad
+v = 2\,i_R
+\qquad
+v = 4\,i + 2\frac{di}{dt}
+$$
+
+**Passo 2 — junte em $i$.** Das duas últimas, $i_R = \dfrac{v}{2} = 2\,i + \dfrac{di}{dt}$. Levando na LKT:
+
+$$
+10 = 2\left(2\,i + \frac{di}{dt} + i\right) + 4\,i + 2\frac{di}{dt}
+= 6\,i + 2\frac{di}{dt} + 4\,i + 2\frac{di}{dt}
+$$
+
+$$
+4\frac{di}{dt} + 10\,i = 10
+\qquad\Longrightarrow\qquad
+2\frac{di}{dt} + 5\,i = 5
+$$
+
+**Passo 3 — resposta natural.** De $2s + 5 = 0$ vem $s = -\dfrac52$:
+
+$$
+i_n(t) = A\,e^{-\frac{5}{2}t}
+$$
+
+**Passo 4 — resposta forçada.** $5K = 5$, logo $i_f = 1\ \mathrm{A}$.
+
+**Passo 5 — a constante.** De $i(0) = 2$:
+
+$$
+2 = A + 1
+\qquad\Longrightarrow\qquad
+A = 1
+\qquad\Longrightarrow\qquad
+i(t) = e^{-\frac{5}{2}t} + 1\ \mathrm{A}
+$$
+
+**Passo 6 — volte para $v$.** Pela LKT do ramo do indutor:
+
+$$
+v = 4\,i + 2\frac{di}{dt}
+= 4\,e^{-\frac{5}{2}t} + 4 + 2\left(-\frac{5}{2}\,e^{-\frac{5}{2}t}\right)
+$$
+
+$$
+\boxed{v(t) = 4 - e^{-\frac{5}{2}t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{2}{4 + (2 \parallel 2)} = \dfrac{2}{5}$ s, e de fato $s = -5/2$ ✔ Em $t = 0$: $v = 3$ V, então $i_R = 1{,}5$ A, $i_T = 3{,}5$ A e a LKT fecha em $2 \cdot 3{,}5 + 3 = 10$ V ✔ Em $t \to \infty$ o indutor vira fio, $4 \parallel 2 = 4/3$ e o divisor dá $v = 10 \cdot \frac{4/3}{2 + 4/3} = 4$ V, com $i = 1$ A ✔ Confere com a resolução da prova.
+</Passos>
