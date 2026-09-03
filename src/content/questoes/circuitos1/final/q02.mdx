@@ -1,0 +1,109 @@
+---
+origem: "Final 2025.1"
+tema: "Resposta ao degrau · A corrente do resistor que o indutor curto-circuita"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ e a corrente $i$ para $t > 0$, dado que o circuito está em **regime permanente** em $t = 0^-$.
+
+<Circuito
+  alt="Comutação de 40 V para 100 V, 8 Ω em série, 2 Ω em paralelo com indutor de 1 H"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "S", de: [0.4, 0], para: [1.8, 0], rotulo: "fecha" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "40 V" },
+    { t: "S", de: [1.8, 1.4], para: [1.8, 0], rotulo: "abre" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "8 Ω" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "L", de: [6.8, 0], para: [6.8, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6.8, 3.4]] },
+  ]}
+>
+
+Mesmo circuito do 2º quesito do 2º EE de 2025.1, com a fonte dobrada: $40 \to 100\ \mathrm{V}$. E o mesmo recado — $i$ é a corrente do $2\ \Omega$, que o indutor curto-circuita em regime permanente, então ela **começa e termina em zero**.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = 100 - 12\,e^{-1,6t}\ \mathrm{V}$
+·
+$i(t) = 6\,e^{-1,6t}\ \mathrm{A}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Com a fonte de $40\ \mathrm{V}$ e o indutor **em fio**, o $2\ \Omega$ fica em curto:
+
+$$
+i_L(0^-) = \frac{40}{8} = 5\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i_L(0^+) = 5\ \mathrm{A}
+$$
+
+**Passo 2 — as relações para $t > 0$.** Com a fonte de $100\ \mathrm{V}$:
+
+$$
+100 = 8\,i_T + \frac{di_L}{dt}
+\qquad
+i_T = i + i_L
+\qquad
+2\,i = \frac{di_L}{dt}
+$$
+
+**Passo 3 — a equação em $i_L$.** De $i = \dfrac12\dfrac{di_L}{dt}$:
+
+$$
+100 = 8\,i_L + 4\frac{di_L}{dt} + \frac{di_L}{dt}
+\qquad\Longrightarrow\qquad
+5\frac{di_L}{dt} + 8\,i_L = 100
+$$
+
+**Passo 4 — resposta natural e forçada.** De $5s + 8 = 0$ vem $s = -1{,}6$; e $8K = 100$ dá $i_{L,f} = 12{,}5\ \mathrm{A}$.
+
+**Passo 5 — a constante.** De $i_L(0) = 5$:
+
+$$
+5 = A + 12{,}5
+\qquad\Longrightarrow\qquad
+A = -7{,}5
+\qquad\Longrightarrow\qquad
+i_L(t) = 12{,}5 - 7{,}5\,e^{-1,6t}\ \mathrm{A}
+$$
+
+**Passo 6 — a corrente do $2\ \Omega$.** Com $\dfrac{di_L}{dt} = 12\,e^{-1,6t}$:
+
+$$
+\boxed{i(t) = \frac12 \cdot 12\,e^{-1,6t} = 6\,e^{-1,6t}\ \mathrm{A}}
+$$
+
+**Passo 7 — a tensão do $8\ \Omega$.** Pela LKT, $v = 100 - v_L$:
+
+$$
+\boxed{v(t) = 100 - 12\,e^{-1,6t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{1}{8 \parallel 2} = \dfrac{1}{1{,}6}$ s, e de fato $s = -1{,}6$ ✔ Em $t = 0$: $v = 88$ V, então $i_T = 11$ A; como $i_L = 5$ A, sobra $i = 6$ A — e com $v_L = 100 - 88 = 12$ V dá $i = 12/2 = 6$ A ✔ Em $t \to \infty$: $i \to 0$, $v \to 100$ V e $i_L \to 12{,}5$ A ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A resposta foi conferida em $t = 0$ pelas três correntes do nó, em $t \to \infty$ pelo regime permanente, e a constante de tempo bate com $L/R_{eq}$.
+</Passos>
