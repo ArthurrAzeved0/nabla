@@ -1,0 +1,115 @@
+---
+origem: "2025.2"
+tema: "Resposta natural · Chave que corta a fonte de corrente"
+temaId: resposta-ao-degrau
+pontos: 3 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q59.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a tensão $v$ para $t > 0$, dado que o circuito está em **regime permanente** em $t < 0$.
+
+<Circuito
+  alt="Fonte de 2 A com 12 Ω, chave, 20 Ω, 6 Ω com indutor de 1/2 H, 5 Ω por cima e fonte de 20 V"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3.4], valor: "12 Ω", abaixo: true },
+    { t: "S", de: [2, 0], para: [4.2, 0], rotulo: "abre" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "20 Ω", abaixo: true },
+    { t: "R", de: [4.2, 0], para: [7.6, 0], valor: "6 Ω" },
+    { t: "no", em: [7.6, 0] },
+    { t: "L", de: [7.6, 0], para: [7.6, 3.4], valor: "1/2 H" },
+    { t: "tensao", de: [7.6, 3.4], para: [7.6, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4.2, 0], [4.2, -1.8]] },
+    { t: "R", de: [4.2, -1.8], para: [10.4, -1.8], valor: "5 Ω" },
+    { t: "fio", pts: [[10.4, -1.8], [10.4, 0]] },
+    { t: "no", em: [10.4, 0] },
+    { t: "V", de: [10.4, 3.4], para: [10.4, 0], valor: "20 V", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [10.4, 3.4]] },
+  ]}
+>
+
+Repare que o $5\ \Omega$ **passa por cima**: ele liga o nó do meio direto à fonte de $20\ \mathrm{V}$, sem tocar no ramo do indutor. A chave, ao **abrir**, corta a fonte de $2\ \mathrm{A}$ com o $12\ \Omega$ — e o que sobra é alimentado só pela fonte de tensão.
+
+</Circuito>
+
+<Gabarito>
+$v(t) = -4\,e^{-20t}\ \mathrm{V}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — condição inicial.** Chave **fechada**, indutor **em fio**: o nó do meio (chame-o $v_Q$) recebe a fonte de $2\ \mathrm{A}$, o $12\ \Omega$, o $20\ \Omega$, o $5\ \Omega$ com a fonte de $20\ \mathrm{V}$ e o ramo do $6\ \Omega$ (aterrado pelo indutor):
+
+$$
+2 + \frac{20 - v_Q}{5} = \frac{v_Q}{12} + \frac{v_Q}{20} + \frac{v_Q}{6}
+$$
+
+$$
+\times 60 \qquad
+120 + 240 - 12\,v_Q = 5\,v_Q + 3\,v_Q + 10\,v_Q
+\qquad\Longrightarrow\qquad
+v_Q(0^-) = 12\ \mathrm{V}
+$$
+
+$$
+i_L(0^-) = \frac{12}{6} = 2\ \mathrm{A}
+\qquad\Longrightarrow\qquad
+i_L(0^+) = 2\ \mathrm{A}
+$$
+
+**Passo 2 — o circuito em $t > 0$.** A chave abriu: a fonte de $2\ \mathrm{A}$ e o $12\ \Omega$ saíram. No nó do meio ficam o $20\ \Omega$, o $5\ \Omega$ com a fonte e o ramo do indutor:
+
+$$
+\frac{20 - v_Q}{5} = \frac{v_Q}{20} + i_L
+\qquad \times 20 \qquad
+80 = 5\,v_Q + 20\,i_L
+\qquad\Longrightarrow\qquad
+16 = v_Q + 4\,i_L
+$$
+
+**Passo 3 — a equação.** Pelo ramo do indutor, $v_Q = 6\,i_L + \dfrac12\dfrac{di_L}{dt}$:
+
+$$
+16 = 6\,i_L + \frac12\frac{di_L}{dt} + 4\,i_L
+\qquad\Longrightarrow\qquad
+\frac{di_L}{dt} + 20\,i_L = 32
+$$
+
+**Passo 4 — resposta natural e forçada.** De $s + 20 = 0$ vem $s = -20$; e $20K = 32$ dá $i_{L,f} = 1{,}6\ \mathrm{A}$.
+
+**Passo 5 — a constante.** De $i_L(0) = 2$:
+
+$$
+2 = A + 1{,}6
+\qquad\Longrightarrow\qquad
+A = 0{,}4
+\qquad\Longrightarrow\qquad
+i_L(t) = 1{,}6 + 0{,}4\,e^{-20t}\ \mathrm{A}
+$$
+
+**Passo 6 — a tensão do indutor.**
+
+$$
+v = \frac12\frac{di_L}{dt} = \frac12 \cdot 0{,}4 \cdot (-20)\,e^{-20t}
+\qquad\Longrightarrow\qquad
+\boxed{v(t) = -4\,e^{-20t}\ \mathrm{V}}
+$$
+
+**Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{0{,}5}{6 + (20 \parallel 5)} = \dfrac{0{,}5}{10}$ s, e de fato $s = -20$ ✔ O sinal **negativo** é o esperado: sem a fonte de corrente, a corrente do indutor tem de **cair** de $2$ para $1{,}6\ \mathrm{A}$, e a tensão de um indutor cuja corrente cai é negativa ✔ Em $t = 0$: $v_Q = 16 - 4 \cdot 2 = 8$ V, e o ramo do indutor fecha em $8 = 6 \cdot 2 + (-4)$ ✔
+
+**Sobre o gabarito —** esta prova não tem resolução no acervo. A condição inicial saiu da LKC com quatro ramos e foi conferida pelo regime permanente; a resposta fecha em $t = 0$ e em $t \to \infty$ ($v \to 0$, $i_L \to 1{,}6$ A).
+</Passos>
