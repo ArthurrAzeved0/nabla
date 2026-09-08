@@ -366,7 +366,11 @@
       "perda-de-carga-localizada": "ft-localizadas",
       "comprimento-equivalente": "ft-localizadas",
       "coeficiente-k": "ft-localizadas",
-      "perda-total": "ft-localizadas"
+      "perda-total": "ft-localizadas",
+      "quantidade-de-movimento": "ft-qmov",
+      "volume-de-controle": "ft-qmov",
+      "forca-de-jato": "ft-qmov",
+      "segunda-lei-para-fluidos": "ft-qmov"
     }
   }
 ]

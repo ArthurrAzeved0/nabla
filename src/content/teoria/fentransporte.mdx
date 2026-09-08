@@ -31,6 +31,10 @@ unidades:
       - { id: ft-maquina, titulo: "Equação da energia com máquina: bombas e turbinas" }
       - { id: ft-perdas, titulo: "Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody" }
       - { id: ft-localizadas, titulo: "Perdas de carga localizadas e comprimento equivalente" }
+  - nome: "Quantidade de movimento e análise"
+    prova: 2ee
+    secoes:
+      - { id: ft-qmov, titulo: "Equação da quantidade de movimento para regime permanente" }
 
 ---
 
@@ -1667,6 +1671,97 @@ H_L = f\,\frac{\sum L_{eq}}{D}\,\frac{v^2}{2g} = 0{,}02 \times \frac{9{,}0}{0{,}
 $$
 
 Idênticos, como tinham de ser — os métodos são a mesma conta reorganizada. E a leitura prática é boa: **cada joelho de 90° custa 4,5 m de tubo reto.**
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-qmov" num="18" titulo="Equação da quantidade de movimento para regime permanente">
+
+**A ideia.** Continuidade é massa, Bernoulli é energia — falta a **segunda lei de Newton** escrita para um escoamento. Ela responde à pergunta que as outras duas não respondem: **qual força o fluido faz na estrutura?** É o que dimensiona o bloco de ancoragem de uma curva, a força num jato contra uma pá e o esforço num redutor de tubulação.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\vec{F}_R$ — **resultante** das forças externas sobre o volume de controle, em $\mathrm{N}$;
+- $Q_m = \rho\,Q$ — vazão mássica, em $\mathrm{kg/s}$;
+- $\vec{v}_1,\ \vec{v}_2$ — velocidades **médias** na entrada e na saída, em $\mathrm{m/s}$;
+- volume de controle — a região do espaço que se escolhe para analisar.
+
+</Caixa>
+
+### A equação
+
+Para regime permanente, uma entrada e uma saída:
+
+$$
+\boxed{\;\vec{F}_R = Q_m\,(\vec{v}_2 - \vec{v}_1) = \rho\,Q\,(\vec{v}_2 - \vec{v}_1)\;}
+$$
+
+Em componentes, que é como se usa:
+
+$$
+F_{Rx} = \rho\,Q\,(v_{2x} - v_{1x})
+\qquad\qquad
+F_{Ry} = \rho\,Q\,(v_{2y} - v_{1y})
+$$
+
+<Caixa tipo="macete" rotulo="É equação VETORIAL — e é aí que se erra">
+
+Continuidade e Bernoulli são escalares; esta **não é**. Três consequências práticas:
+
+1. **projete em eixos** e resolva uma equação por eixo;
+2. **o sinal da velocidade importa**: fluido entrando para a direita e saindo para a esquerda tem $v_{1x} > 0$ e $v_{2x} < 0$;
+3. uma curva de 180° **não** tem variação nula de quantidade de movimento — tem o **dobro**, porque o vetor inverteu.
+
+</Caixa>
+
+### O que entra em $\vec{F}_R$
+
+A resultante inclui **todas** as forças externas ao volume de controle:
+
+$$
+\vec{F}_R = \vec{F}_{p_1} + \vec{F}_{p_2} + \vec{G} + \vec{F}_{est}
+$$
+
+- $\vec{F}_{p} = p\,A$ — forças de **pressão** nas seções de entrada e saída (use pressão **efetiva**);
+- $\vec{G}$ — **peso** do fluido no volume de controle;
+- $\vec{F}_{est}$ — a força que a **estrutura** faz no fluido. É a incógnita.
+
+<Caixa tipo="dica" rotulo="A pergunta invertida">
+
+O enunciado quase nunca pede a força da *estrutura no fluido* — pede a do **fluido na estrutura**. Pela terceira lei de Newton, é a mesma com o **sinal trocado**. Responder sem inverter é perder a questão tendo feito toda a conta certa.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — jato horizontal contra placa plana">
+
+Um jato de água ($\rho = 1000\ \mathrm{kg/m^3}$) de $A = 10\ \mathrm{cm^2}$ e $v = 20\ \mathrm{m/s}$ atinge perpendicularmente uma placa fixa, espalhando-se lateralmente. Qual a força sobre a placa?
+
+$$
+Q = v\,A = 20 \times 10 \times 10^{-4} = 0{,}02\ \mathrm{m^3/s}
+\qquad
+Q_m = \rho\,Q = 20\ \mathrm{kg/s}
+$$
+
+No eixo $x$ (direção do jato), a saída não tem componente nessa direção ($v_{2x} = 0$):
+
+$$
+F_{Rx} = \rho\,Q\,(0 - 20) = -400\ \mathrm{N}
+$$
+
+A placa faz $400\ \mathrm{N}$ **contra** o jato; logo o jato empurra a placa com $400\ \mathrm{N}$ **no sentido do escoamento**.
+
+**Um caso que vale reconhecer:** para jato contra placa plana, $F = \rho Q v = \rho A v^2$. Se a placa fosse uma **concha** que inverte o jato, a força seria o **dobro**.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Roteiro">
+
+1. **desenhe o volume de controle** cortando entrada e saída;
+2. **escolha os eixos** e marque os sinais das velocidades;
+3. **liste as forças**: pressão nas seções, peso, força da estrutura;
+4. **escreva uma equação por eixo** e resolva para a incógnita;
+5. **inverta o sinal** se o que se pede é a força no sólido.
 
 </Caixa>
 
