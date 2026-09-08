@@ -336,7 +336,11 @@
       "numero-de-reynolds": "ft-escoamentos",
       "laminar-turbulento": "ft-escoamentos",
       "linha-de-corrente": "ft-escoamentos",
-      "regime-permanente": "ft-escoamentos"
+      "regime-permanente": "ft-escoamentos",
+      "vazao": "ft-vazao",
+      "vazao-volumetrica": "ft-vazao",
+      "vazao-massica": "ft-vazao",
+      "velocidade-media": "ft-vazao"
     }
   }
 ]

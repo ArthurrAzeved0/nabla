@@ -22,6 +22,7 @@ unidades:
     prova: 1ee
     secoes:
       - { id: ft-escoamentos, titulo: "Tipos e regimes de escoamento; número de Reynolds" }
+      - { id: ft-vazao, titulo: "Vazão volumétrica, vazão mássica e velocidade média" }
 
 ---
 
@@ -1070,6 +1071,104 @@ Re = \frac{v\,D}{\nu} = \frac{2 \times 0{,}050}{10^{-6}} = 100\,000
 $$
 
 $Re \gg 4000$: **turbulento**. E é o caso da esmagadora maioria dos escoamentos de água em tubulação real — laminar aparece em óleo viscoso, tubo capilar ou velocidade muito baixa.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-vazao" num="12" titulo="Vazão volumétrica, vazão mássica e velocidade média">
+
+**A ideia.** Vazão é a grandeza que amarra a cadeira inteira: ela aparece na continuidade, em Bernoulli, no cálculo de perda de carga e na potência da bomba. E a definição de **velocidade média** é o que permite tratar um perfil de velocidades complicado como se fosse um número só.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $Q$ — **vazão volumétrica**, em $\mathrm{m^3/s}$;
+- $Q_m$ — **vazão mássica**, em $\mathrm{kg/s}$;
+- $A$ — área da **seção transversal** ao escoamento, em $\mathrm{m^2}$;
+- $v$ — **velocidade média** na seção, em $\mathrm{m/s}$;
+- $G$ — vazão em **peso**, em $\mathrm{N/s}$.
+
+</Caixa>
+
+### As três vazões
+
+$$
+\boxed{\;Q = v\,A\;}
+\qquad\qquad
+Q_m = \rho\,Q = \rho\,v\,A
+\qquad\qquad
+G = \gamma\,Q
+$$
+
+<Caixa tipo="dica" rotulo="Qual usar">
+
+- **volumétrica** ($Q$) — é a que o enunciado dá quase sempre, em $\mathrm{L/s}$ ou $\mathrm{m^3/h}$;
+- **mássica** ($Q_m$) — obrigatória quando o fluido é **compressível** ou quando há mistura de fluidos: o que se conserva é massa, não volume;
+- **em peso** ($G$) — aparece em problemas de potência e de balanço de forças.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="As conversões que caem em toda prova">
+
+$$
+1\ \mathrm{m^3} = 1000\ \mathrm{L}
+\qquad\Longrightarrow\qquad
+1\ \mathrm{L/s} = 10^{-3}\ \mathrm{m^3/s}
+$$
+
+$$
+1\ \mathrm{m^3/h} = \frac{1}{3600}\ \mathrm{m^3/s}
+$$
+
+E a área do tubo circular, que é o passo esquecido:
+
+$$
+A = \frac{\pi D^2}{4}
+$$
+
+**Diâmetro, não raio.** Trocar $D$ por $R$ nessa fórmula erra a área por um fator 4 — e é o erro mais comum da cadeira.
+
+</Caixa>
+
+### Velocidade média: a definição que salva a conta
+
+A velocidade **não** é a mesma em todos os pontos da seção: por causa da aderência, ela é zero na parede e máxima no centro. A velocidade média é definida para que a vazão dê certo:
+
+$$
+v = \frac{1}{A}\int_A v_{\text{local}}\,dA
+\qquad\Longleftrightarrow\qquad
+Q = \int_A v_{\text{local}}\,dA = v\,A
+$$
+
+<Caixa tipo="dica" rotulo="A relação com a velocidade máxima">
+
+Para escoamento **laminar** em tubo circular, o perfil é parabólico e vale um resultado exato:
+
+$$
+v = \frac{v_{max}}{2}
+$$
+
+No **turbulento**, o perfil é bem mais "cheio" e a razão fica em torno de $v \approx 0{,}8\,v_{max}$. Se o enunciado der a velocidade **no centro** e pedir a vazão, é esta relação que ele quer.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — vazão num tubo">
+
+Água escoa a $3\ \mathrm{m/s}$ num tubo de $100\ \mathrm{mm}$ de diâmetro. Ache $Q$ em $\mathrm{L/s}$ e $Q_m$.
+
+$$
+A = \frac{\pi D^2}{4} = \frac{\pi (0{,}100)^2}{4} = 7{,}854 \times 10^{-3}\ \mathrm{m^2}
+$$
+
+$$
+Q = v\,A = 3 \times 7{,}854 \times 10^{-3} = 2{,}356 \times 10^{-2}\ \mathrm{m^3/s} = 23{,}6\ \mathrm{L/s}
+$$
+
+$$
+Q_m = \rho\,Q = 1000 \times 2{,}356 \times 10^{-2} = 23{,}6\ \mathrm{kg/s}
+$$
+
+**Coincidência útil:** para água, o número em $\mathrm{L/s}$ é igual ao número em $\mathrm{kg/s}$, porque $\rho = 1\ \mathrm{kg/L}$. Serve de conferência rápida.
 
 </Caixa>
 
