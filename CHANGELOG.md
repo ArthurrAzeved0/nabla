@@ -21,7 +21,7 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
-## [Não publicado]
+## [2.13.0] — 2026-09-08
 
 ### Adicionado
 
@@ -56,8 +56,8 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   2017.2 2ª chamada Q2 (a chave isola uma fonte de corrente, e então $di_L/dt$ e
   $dv/dt$ ficam indeterminados — a questão traz os quatro valores que fecham e diz
   por que os outros dois não existem).
-
-### Corrigido
+- **A cadeira de Circuitos 1 ainda dizia "Construção do curso em andamento"**
+  na descrição, na página inicial e no card — mesmo depois de completa.
 
 - **"Limpar progresso" não apagava o tempo do cronômetro.** O aviso promete
   "marcações e tempos", e as marcações iam — o tempo ficava. Duas causas, uma
@@ -1076,6 +1076,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.13.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.13.0
 [2.12.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.12.0
 [2.11.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.11.0
 [2.10.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.10.0
