@@ -13,6 +13,7 @@ unidades:
     prova: 1ee
     secoes:
       - { id: ft-pressao, titulo: "Pressão, escalas de medida e carga de pressão" }
+      - { id: ft-stevin, titulo: "Lei de Stevin e lei de Pascal" }
 
 ---
 
@@ -456,6 +457,108 @@ p = \gamma\,h = 8829 \times 0{,}60 = 5297{,}4\ \mathrm{N/m^2}
 $$
 
 **As arestas da base não entraram na conta** — e não é esquecimento. A pressão no fundo não depende da área nem do formato do recipiente, só da coluna de fluido acima. É a pegadinha padrão deste enunciado.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-stevin" num="06" titulo="Lei de Stevin e lei de Pascal">
+
+**A ideia.** Duas leis que parecem próximas e dizem coisas diferentes — e a prova gosta exatamente dessa confusão. **Stevin** governa a variação da pressão na **vertical**; **Pascal** governa a transmissão da pressão para **todos os pontos**. Uma explica por que a pressão cresce com a profundidade; a outra, por que um macaco hidráulico levanta um carro.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p_M,\ p_N$ — pressões em dois pontos do fluido, em $\mathrm{Pa}$;
+- $\gamma$ — peso específico do fluido em repouso, em $\mathrm{N/m^3}$;
+- $\Delta h$ — **diferença de cotas** (vertical) entre os pontos, em $\mathrm{m}$;
+- $p_0$ — pressão na superfície livre, em $\mathrm{Pa}$.
+
+</Caixa>
+
+### Lei de Stevin
+
+> A diferença de pressão entre dois pontos de um fluido em repouso é igual ao produto do peso específico pela diferença de cotas.
+
+$$
+\boxed{\;p_N - p_M = \gamma\,\Delta h\;}
+$$
+
+E, no caso mais comum — superfície livre aberta para a atmosfera, ponto a uma profundidade $h$:
+
+$$
+p = \gamma\,h
+\qquad\text{(efetiva)}
+\qquad\qquad
+p = p_0 + \gamma\,h
+\qquad\text{(com } p_0 \text{ na superfície)}
+$$
+
+<Caixa tipo="macete" rotulo="As cinco consequências que a prova cobra">
+
+1. **Não importa a distância entre os pontos, importa a diferença de cotas.** Dois pontos afastados horizontalmente e na mesma altura têm a mesma pressão;
+2. **pontos no mesmo nível horizontal, no mesmo fluido contínuo, têm a mesma pressão.** É esta que resolve manômetro;
+3. **o formato do recipiente é irrelevante.** Cone, cilindro ou tubo torto: a pressão no fundo é $\gamma h$ com o mesmo $h$;
+4. se a pressão na superfície livre é nula (efetiva), então $p = \gamma h$ na profundidade $h$;
+5. **em gases, a diferença de pressão com a altura pode ser desprezada**, porque $\gamma$ é pequeno. Num manômetro com ar num dos ramos, a coluna de ar não conta.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+A consequência 3 é o **paradoxo hidrostático**, e vale entender por que não é paradoxo: a pressão no fundo depende da altura da coluna, não do peso total do líquido. Um tubo fino de 10 m de água faz no fundo a mesma pressão que uma piscina de 10 m de profundidade.
+
+</Caixa>
+
+### Lei de Pascal
+
+> A pressão aplicada num ponto de um fluido em repouso transmite-se **integralmente** a todos os pontos do fluido.
+
+A aplicação prática é a **prensa hidráulica**: dois êmbolos de áreas diferentes ligados pelo mesmo fluido. A pressão é a mesma nos dois, então
+
+$$
+p_1 = p_2
+\qquad\Longrightarrow\qquad
+\boxed{\;\frac{F_1}{A_1} = \frac{F_2}{A_2}\;}
+$$
+
+<Caixa tipo="dica" rotulo="De onde vem a multiplicação de força">
+
+A força cresce na razão das áreas:
+
+$$
+F_2 = F_1\,\frac{A_2}{A_1}
+$$
+
+Não há energia de graça: o êmbolo grande sobe **menos** na mesma proporção, porque o volume deslocado é o mesmo. É o mesmo compromisso de uma alavanca — força contra deslocamento.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a prensa hidráulica">
+
+Êmbolos de $A_1 = 10\ \mathrm{cm^2}$ e $A_2 = 100\ \mathrm{cm^2}$. Aplicando $F_1 = 200\ \mathrm{N}$ em (1), qual a força em (2)?
+
+A pressão gerada em (1):
+
+$$
+p_1 = \frac{F_1}{A_1} = \frac{200}{10\ \mathrm{cm^2}} = 20\ \mathrm{N/cm^2}
+$$
+
+Por Pascal, essa pressão chega inteira a (2):
+
+$$
+F_2 = p_1\,A_2 = 20 \times 100 = 2000\ \mathrm{N}
+$$
+
+Dez vezes a área, dez vezes a força. Repare que **não foi preciso converter $\mathrm{cm^2}$ para $\mathrm{m^2}$**: como a razão de áreas é adimensional, basta usar a mesma unidade nos dois lados.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Stevin ou Pascal? A pergunta que decide">
+
+- a pressão muda porque **subi ou desci** no fluido → **Stevin** ($\gamma \Delta h$);
+- a pressão é a mesma porque estou **no mesmo nível** ou porque foi **aplicada de fora** → **Pascal**.
+
+Numa frase: **Pascal age em $x$, Stevin age em $y$.**
 
 </Caixa>
 
