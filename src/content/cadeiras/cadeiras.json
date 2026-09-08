@@ -318,7 +318,11 @@
       "manometria": "ft-manometros",
       "piezometro": "ft-manometros",
       "manometro-diferencial": "ft-manometros",
-      "barometro": "ft-manometros"
+      "barometro": "ft-manometros",
+      "forca-superficie-plana": "ft-forca-plana",
+      "forca-hidrostatica": "ft-forca-plana",
+      "centro-de-pressao": "ft-forca-plana",
+      "comporta": "ft-forca-plana"
     }
   }
 ]

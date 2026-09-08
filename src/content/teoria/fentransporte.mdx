@@ -15,6 +15,7 @@ unidades:
       - { id: ft-pressao, titulo: "Pressão, escalas de medida e carga de pressão" }
       - { id: ft-stevin, titulo: "Lei de Stevin e lei de Pascal" }
       - { id: ft-manometros, titulo: "Manômetros e a equação manométrica" }
+      - { id: ft-forca-plana, titulo: "Força em superfície plana submersa e centro de pressão" }
 
 ---
 
@@ -659,6 +660,118 @@ d_{\text{óleo}} = \frac{64 \times 10^3 + 10\,000 \times 0{,}50 - 13{,}6 \times 
 $$
 
 **Confira se o resultado faz sentido:** $d < 1$, como tem de ser para um óleo — ele flutua na água. Se der $d > 1$ num óleo, há erro de sinal no caminho.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-forca-plana" num="08" titulo="Força em superfície plana submersa e centro de pressão">
+
+**A ideia.** A pressão cresce com a profundidade, então a força sobre uma comporta **não** está distribuída por igual: aperta mais embaixo. Essa unidade responde a duas perguntas separadas — **quanto** é a força resultante e **onde** ela age. A primeira resposta é surpreendentemente simples; a segunda é a que derruba prova, porque o ponto de aplicação **não** é o centro de gravidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F$ — **força resultante** das pressões sobre a área, em $\mathrm{N}$;
+- $\bar{h}$ — **profundidade do centro de gravidade** (CG) da área, em $\mathrm{m}$;
+- $\bar{y}$ — distância do **CG** ao eixo onde a superfície corta a superfície livre, medida **ao longo da placa**;
+- $y_{CP}$ — distância do **centro de pressão** (CP) ao mesmo eixo;
+- $A$ — área da superfície submersa, em $\mathrm{m^2}$;
+- $I_{CG}$ — momento de inércia da área em relação ao eixo que passa pelo **CG**;
+- $\theta$ — ângulo da placa com a superfície livre.
+
+</Caixa>
+
+### Quanto: a força resultante
+
+Integrando a pressão sobre a área e reconhecendo a definição de centroide, chega-se a um resultado curto:
+
+$$
+F = \int p\,dA = \gamma \operatorname{sen}\theta \int y\,dA = \gamma \operatorname{sen}\theta\,\bar{y}\,A
+$$
+
+E como $\bar{h} = \bar{y}\operatorname{sen}\theta$:
+
+$$
+\boxed{\;F = \gamma\,\bar{h}\,A = \bar{p}\,A\;}
+$$
+
+<Caixa tipo="macete">
+
+**A força resultante é a pressão no CG multiplicada pela área.** Isso vale para qualquer inclinação e qualquer forma de placa — não precisa integrar nada em prova.
+
+Mas atenção: é a pressão **no CG**, não a pressão média entre topo e fundo (que coincide só quando a placa é retangular e vertical), e não a pressão no CP.
+
+</Caixa>
+
+### Onde: o centro de pressão
+
+O CP é o ponto onde a resultante deveria ser aplicada para produzir **o mesmo momento** que a distribuição real. Igualando os momentos:
+
+$$
+F\,y_{CP} = \gamma \operatorname{sen}\theta \int y^2\,dA = \gamma \operatorname{sen}\theta\,I_0
+\qquad\Longrightarrow\qquad
+y_{CP} = \frac{I_0}{\bar{y}\,A}
+$$
+
+Aplicando o **teorema de Steiner**, $I_0 = I_{CG} + \bar{y}^2 A$:
+
+$$
+\boxed{\;y_{CP} = \bar{y} + \frac{I_{CG}}{\bar{y}\,A}\;}
+$$
+
+<Caixa tipo="dica" rotulo="As duas conclusões que a prova cobra por escrito">
+
+1. **O CP fica sempre ABAIXO do CG** — a parcela $I_{CG}/(\bar{y}A)$ é positiva, sempre. Faz sentido: a pressão é maior embaixo, então o "peso" da distribuição desce o ponto de aplicação;
+2. **quanto mais fundo, mais os dois se aproximam.** Se $\bar{y}$ cresce, a parcela extra encolhe. Numa comporta muito profunda a pressão é quase uniforme, e CP e CG praticamente coincidem.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Momentos de inércia que caem">
+
+Para as formas usuais, em relação ao eixo horizontal pelo CG:
+
+$$
+\text{retângulo } (b \times h): \quad I_{CG} = \frac{b\,h^3}{12}
+\qquad\qquad
+\text{círculo de raio } R: \quad I_{CG} = \frac{\pi R^4}{4}
+$$
+
+$$
+\text{triângulo de base } b \text{ e altura } h: \quad I_{CG} = \frac{b\,h^3}{36}
+$$
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — comporta retangular vertical">
+
+Uma comporta retangular de $b = 2\ \mathrm{m}$ de largura e $h = 3\ \mathrm{m}$ de altura é vertical, com o topo **na** superfície livre da água ($\gamma = 10\,000\ \mathrm{N/m^3}$). Ache $F$ e a profundidade do CP.
+
+**A força.** O CG está no meio da placa, então $\bar{h} = 1{,}5\ \mathrm{m}$ e $A = 6\ \mathrm{m^2}$:
+
+$$
+F = \gamma\,\bar{h}\,A = 10\,000 \times 1{,}5 \times 6 = 90\,000\ \mathrm{N} = 90\ \mathrm{kN}
+$$
+
+**O centro de pressão.** A placa é vertical, então $\bar{y} = \bar{h} = 1{,}5\ \mathrm{m}$, e
+
+$$
+I_{CG} = \frac{b\,h^3}{12} = \frac{2 \times 27}{12} = 4{,}5\ \mathrm{m^4}
+$$
+
+$$
+y_{CP} = \bar{y} + \frac{I_{CG}}{\bar{y}\,A} = 1{,}5 + \frac{4{,}5}{1{,}5 \times 6} = 1{,}5 + 0{,}5 = 2{,}0\ \mathrm{m}
+$$
+
+O CP está a $2\ \mathrm{m}$ de profundidade: **abaixo** do CG (que está a $1{,}5\ \mathrm{m}$), como tinha de ser. E note o resultado clássico: numa placa retangular com o topo na superfície, o CP fica a **dois terços** da altura ($2/3 \times 3 = 2\ \mathrm{m}$).
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Cuidado com o que o enunciado pede">
+
+Duas armadilhas frequentes:
+
+- $y_{CP}$ é medido **ao longo da placa**, a partir da linha onde ela cortaria a superfície livre. Se a placa é **inclinada**, a *profundidade* do CP é $h_{CP} = y_{CP}\operatorname{sen}\theta$ — não confunda os dois;
+- se o topo da placa **não** está na superfície livre, $\bar{y}$ conta desde a superfície livre (não desde o topo da placa). Desenhe e marque a origem antes de aplicar a fórmula.
 
 </Caixa>
 
