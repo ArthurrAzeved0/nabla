@@ -301,7 +301,13 @@
       "fluidos-nao-newtonianos": "ft-classificacao",
       "classificacao-dos-fluidos": "ft-classificacao",
       "plastico-de-bingham": "ft-classificacao",
-      "fluido-ideal": "ft-classificacao"
+      "fluido-ideal": "ft-classificacao",
+      "pressao": "ft-pressao",
+      "pressao-absoluta": "ft-pressao",
+      "pressao-efetiva": "ft-pressao",
+      "escalas-de-pressao": "ft-pressao",
+      "carga-de-pressao": "ft-pressao",
+      "estatica-dos-fluidos": "ft-pressao"
     }
   }
 ]

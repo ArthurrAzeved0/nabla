@@ -9,6 +9,10 @@ unidades:
       - { id: ft-propriedades, titulo: "Massa específica, peso específico, densidade relativa e volume específico" }
       - { id: ft-viscosidade, titulo: "Viscosidade dinâmica e cinemática" }
       - { id: ft-classificacao, titulo: "Fluidos newtonianos e não-newtonianos" }
+  - nome: "Estática dos fluidos"
+    prova: 1ee
+    secoes:
+      - { id: ft-pressao, titulo: "Pressão, escalas de medida e carga de pressão" }
 
 ---
 
@@ -365,6 +369,93 @@ $$
 $$
 
 **Não** é newtoniano: a viscosidade aparente caiu quando a tensão subiu — é **pseudoplástico**. (E note que os dois pontos, ligados, dão uma reta que cortaria $\tau = 10\ \mathrm{Pa}$ na origem: se o comportamento for linear a partir de $\tau_0 = 10$, trata-se de um **Bingham**. Dois pontos não distinguem os dois casos — é preciso ver a curva ou um terceiro ponto.)
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-pressao" num="05" titulo="Pressão, escalas de medida e carga de pressão">
+
+**A ideia.** Estática dos fluidos é o estudo do fluido **em repouso**: velocidade nula em todos os pontos e, por consequência, **tensão de cisalhamento nula**. Sem cisalhamento sobra uma única força de superfície — a **pressão**, sempre normal à superfície. Toda esta unidade é a consequência disso.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p = \dfrac{F}{A}$ — **pressão**, em $\mathrm{Pa} = \mathrm{N/m^2}$: força **normal** por unidade de área;
+- $p_{abs}$ — **pressão absoluta**, medida a partir do **vácuo**;
+- $p_{ef}$ — **pressão efetiva** (ou manométrica, ou relativa), medida a partir da **atmosfera**;
+- $p_{atm}$ — pressão atmosférica local ($\approx 101{,}3\ \mathrm{kPa}$ ao nível do mar);
+- $\dfrac{p}{\gamma}$ — **carga de pressão**, em metros de coluna de fluido.
+
+</Caixa>
+
+### Pressão só existe em fluido
+
+O equivalente da pressão num sólido chama-se **tensão normal**. A palavra "pressão" reserva-se a fluidos, e a razão é a do parágrafo de abertura: num fluido em repouso, a força normal é a única que sobra.
+
+<Caixa tipo="dica">
+
+**A pressão num ponto de um fluido em repouso é a mesma em todas as direções.** Ela é uma grandeza **escalar** — não tem direção própria. O que tem direção é a *força* que ela produz, e essa é sempre perpendicular à superfície onde age.
+
+</Caixa>
+
+### As duas escalas, e a soma que as liga
+
+Pressão é sempre medida **em relação a alguma referência**, e há duas em uso:
+
+$$
+\boxed{\;p_{abs} = p_{atm} + p_{ef}\;}
+$$
+
+- **absoluta** — conta do vácuo (zero absoluto) para cima. **Nunca é negativa**;
+- **efetiva** — conta da atmosfera local. **Pode ser negativa**, e aí se diz que há *vácuo parcial* (a pressão está abaixo da atmosférica).
+
+<Caixa tipo="macete">
+
+**Quando o enunciado não diz, é efetiva.** Manômetro mede efetiva — é para isso que ele é calibrado. Se a superfície livre de um reservatório está aberta para a atmosfera, a pressão efetiva ali é **zero**, e é isso que faz as contas de manometria fecharem.
+
+Só troque para absoluta quando o problema pedir explicitamente, ou quando envolver **gás** com lei dos gases (que exige pressão absoluta).
+
+</Caixa>
+
+### Carga de pressão: pressão medida em metros
+
+Divida uma pressão pelo peso específico e o resultado tem dimensão de **comprimento**:
+
+$$
+h = \frac{p}{\gamma}
+$$
+
+Esse $h$ é a **carga de pressão** — a altura da coluna daquele fluido que a pressão $p$ consegue sustentar. É por isso que existem unidades como $\mathrm{mmHg}$ e $\mathrm{mca}$ (metro de coluna de água): elas são pressões **escritas como altura**.
+
+<Caixa tipo="dica" rotulo="As conversões que aparecem em enunciado">
+
+$$
+1\ \mathrm{atm} = 101{,}3\ \mathrm{kPa} = 760\ \mathrm{mmHg} = 10{,}33\ \mathrm{mca}
+$$
+
+O $10{,}33\ \mathrm{mca}$ tem uma leitura física bonita: a atmosfera sustenta uma coluna de água de cerca de dez metros. É o limite teórico de sucção de uma bomba — e a razão de nenhuma bomba conseguir puxar água de um poço muito profundo por sucção.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — pressão no fundo de um recipiente">
+
+Um recipiente de base $0{,}80\ \mathrm{m} \times 0{,}50\ \mathrm{m}$ e altura $0{,}60\ \mathrm{m}$ está cheio de óleo com $d = 0{,}90$. Com $g = 9{,}81\ \mathrm{m/s^2}$, qual a pressão sobre a base?
+
+Primeiro o peso específico, pela densidade relativa:
+
+$$
+\rho = 0{,}90 \times 1000 = 900\ \mathrm{kg/m^3}
+\qquad
+\gamma = \rho\,g = 900 \times 9{,}81 = 8829\ \mathrm{N/m^3}
+$$
+
+A pressão depende **só da altura** (é o que a próxima seção vai formalizar):
+
+$$
+p = \gamma\,h = 8829 \times 0{,}60 = 5297{,}4\ \mathrm{N/m^2}
+$$
+
+**As arestas da base não entraram na conta** — e não é esquecimento. A pressão no fundo não depende da área nem do formato do recipiente, só da coluna de fluido acima. É a pegadinha padrão deste enunciado.
 
 </Caixa>
 
