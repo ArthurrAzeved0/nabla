@@ -370,7 +370,13 @@
       "quantidade-de-movimento": "ft-qmov",
       "volume-de-controle": "ft-qmov",
       "forca-de-jato": "ft-qmov",
-      "segunda-lei-para-fluidos": "ft-qmov"
+      "segunda-lei-para-fluidos": "ft-qmov",
+      "analise-dimensional": "ft-dimensional",
+      "teorema-dos-pi": "ft-dimensional",
+      "buckingham": "ft-dimensional",
+      "numeros-adimensionais": "ft-dimensional",
+      "equacoes-dimensionais": "ft-dimensional",
+      "froude": "ft-dimensional"
     }
   }
 ]

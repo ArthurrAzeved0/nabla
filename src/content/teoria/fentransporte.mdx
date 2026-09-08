@@ -35,6 +35,7 @@ unidades:
     prova: 2ee
     secoes:
       - { id: ft-qmov, titulo: "Equação da quantidade de movimento para regime permanente" }
+      - { id: ft-dimensional, titulo: "Análise dimensional, números adimensionais e o teorema dos π" }
 
 ---
 
@@ -1762,6 +1763,119 @@ A placa faz $400\ \mathrm{N}$ **contra** o jato; logo o jato empurra a placa com
 3. **liste as forças**: pressão nas seções, peso, força da estrutura;
 4. **escreva uma equação por eixo** e resolva para a incógnita;
 5. **inverta o sinal** se o que se pede é a força no sólido.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-dimensional" num="19" titulo="Análise dimensional, números adimensionais e o teorema dos π">
+
+**A ideia.** Alguns problemas de fluidos têm variáveis demais para resolver analiticamente e caro demais para testar em tamanho real. A análise dimensional é a ferramenta que **reduz o número de variáveis** antes de qualquer experimento: em vez de estudar sete grandezas separadas, estuda-se um punhado de **grupos adimensionais**. É o que permite ensaiar um modelo pequeno e extrapolar para a obra.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $[M], [L], [T]$ — **dimensões primárias**: massa, comprimento, tempo (e $[\Theta]$ para temperatura);
+- $n$ — número de **variáveis** do problema;
+- $k$ — número de **dimensões primárias** envolvidas;
+- $n - k$ — número de **grupos adimensionais** independentes ($\pi$);
+- $Re, Fr, Eu, Ma, We$ — os adimensionais clássicos.
+
+</Caixa>
+
+### Dimensões das grandezas usuais
+
+<Caixa tipo="dica" rotulo="A tabela que resolve qualquer equação dimensional">
+
+$$
+[v] = LT^{-1}
+\qquad
+[a] = LT^{-2}
+\qquad
+[F] = MLT^{-2}
+\qquad
+[\rho] = ML^{-3}
+$$
+
+$$
+[p] = [\tau] = ML^{-1}T^{-2}
+\qquad
+[\mu] = ML^{-1}T^{-1}
+\qquad
+[\nu] = L^{2}T^{-1}
+\qquad
+[Q] = L^{3}T^{-1}
+$$
+
+$$
+[\gamma] = ML^{-2}T^{-2}
+\qquad
+[\text{energia}] = ML^{2}T^{-2}
+\qquad
+[\text{potência}] = ML^{2}T^{-3}
+$$
+
+Toda equação dimensional se resolve com essa tabela e a regra de que **os dois lados de uma equação física têm as mesmas dimensões** (homogeneidade dimensional).
+
+</Caixa>
+
+### O teorema dos $\pi$ de Buckingham
+
+> Um problema com $n$ variáveis, envolvendo $k$ dimensões primárias, pode ser reescrito com $n - k$ grupos adimensionais independentes.
+
+<Caixa tipo="macete" rotulo="O roteiro em cinco passos">
+
+1. **liste as $n$ variáveis** relevantes do problema;
+2. **escreva a dimensão** de cada uma e conte quantas dimensões primárias $k$ aparecem;
+3. o número de grupos é $n - k$;
+4. **escolha $k$ variáveis repetentes** — devem conter juntas todas as dimensões e **não** formar um adimensional entre si. Escolha padrão em fluidos: uma **geométrica** ($D$), uma **cinemática** ($v$) e uma de **propriedade** ($\rho$);
+5. monte cada $\pi$ multiplicando as repetentes elevadas a expoentes desconhecidos por uma das variáveis restantes, e **resolva os expoentes** impondo que o grupo seja adimensional.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — de onde sai o número de Reynolds">
+
+Suponha que a força de arrasto $F$ sobre um corpo dependa de $v$, $D$, $\rho$ e $\mu$. Então $n = 5$ variáveis e $k = 3$ dimensões ($M$, $L$, $T$), logo $n - k = 2$ grupos.
+
+Com repetentes $D$, $v$, $\rho$, um dos grupos sai com $\mu$:
+
+$$
+\pi_1 = \frac{\mu}{\rho\,v\,D} = \frac{1}{Re}
+$$
+
+e o outro, com $F$:
+
+$$
+\pi_2 = \frac{F}{\rho\,v^2\,D^2} = C_D \text{ (coeficiente de arrasto)}
+$$
+
+Resultado: em vez de mapear $F(v, D, \rho, \mu)$ com quatro eixos, basta medir **uma curva** $C_D$ contra $Re$. Foi assim que a aerodinâmica ficou viável antes dos computadores.
+
+</Caixa>
+
+### Os adimensionais que têm nome
+
+<Caixa tipo="dica" rotulo="Cada um compara a inércia com uma força diferente">
+
+$$
+Re = \frac{\rho v D}{\mu} \;\text{(inércia / viscosa)}
+\qquad
+Fr = \frac{v}{\sqrt{g\,L}} \;\text{(inércia / gravidade)}
+$$
+
+$$
+Eu = \frac{p}{\rho v^2} \;\text{(pressão / inércia)}
+\qquad
+Ma = \frac{v}{c} \;\text{(inércia / elástica)}
+\qquad
+We = \frac{\rho v^2 L}{\sigma} \;\text{(inércia / tensão superficial)}
+$$
+
+Qual domina o problema decide qual deve ser igualado no ensaio de modelo:
+
+- escoamento **em tubulação**, submerso → **Reynolds**;
+- escoamento com **superfície livre** (canal, vertedouro, navio) → **Froude**;
+- escoamento com **alta velocidade** de gás → **Mach**;
+- gotas, bolhas, jatos finos → **Weber**.
 
 </Caixa>
 
