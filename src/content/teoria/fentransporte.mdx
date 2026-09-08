@@ -37,6 +37,7 @@ unidades:
       - { id: ft-qmov, titulo: "Equação da quantidade de movimento para regime permanente" }
       - { id: ft-dimensional, titulo: "Análise dimensional, números adimensionais e o teorema dos π" }
       - { id: ft-semelhanca, titulo: "Semelhança e teoria dos modelos" }
+      - { id: ft-navier, titulo: "Análise diferencial: Navier-Stokes e aplicações" }
 
 ---
 
@@ -1974,6 +1975,96 @@ E o tempo: um evento que no modelo durou $10\ \mathrm{s}$ corresponde a $10 \tim
 Igualar $Re$ **e** $Fr$ ao mesmo tempo, com o mesmo fluido, é impossível: $Re$ pede $v_m/v_p = 1/\lambda$ e $Fr$ pede $v_m/v_p = \sqrt{\lambda}$ — só coincidem se $\lambda = 1$, ou seja, se o modelo for do tamanho da obra.
 
 A saída prática é o **efeito de escala**: iguala-se o adimensional dominante, aceita-se o erro no outro e corrige-se por coeficiente empírico. Reconhecer essa limitação é uma pergunta conceitual frequente.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-navier" num="21" titulo="Análise diferencial: Navier-Stokes e aplicações">
+
+**A ideia.** Até aqui a cadeira usou **volumes de controle finitos**: entra em (1), sai em (2), e o que acontece no meio não importa. A análise diferencial faz o oposto — escreve as leis para um **elemento infinitesimal** e obtém o campo de velocidades **ponto a ponto**. O preço é uma equação diferencial parcial não-linear; o ganho é a descrição completa do escoamento.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\vec{v} = (u, v, w)$ — campo de velocidades;
+- $\dfrac{D\vec{v}}{Dt}$ — **derivada material** (ou total) da velocidade: a aceleração da partícula;
+- $\nabla p$ — gradiente de pressão;
+- $\mu\nabla^2\vec{v}$ — termo **viscoso**;
+- $\rho\vec{g}$ — força de **campo** (peso) por unidade de volume.
+
+</Caixa>
+
+### A derivada material
+
+A aceleração de uma partícula de fluido tem duas parcelas — e essa distinção é o coração da análise diferencial:
+
+$$
+\frac{D\vec{v}}{Dt} = \underbrace{\frac{\partial \vec{v}}{\partial t}}_{\text{local}} + \underbrace{(\vec{v} \cdot \nabla)\vec{v}}_{\text{convectiva}}
+$$
+
+<Caixa tipo="dica" rotulo="Por que existe aceleração em regime permanente">
+
+Em regime permanente $\partial \vec{v}/\partial t = 0$, e ainda assim há aceleração: é a parcela **convectiva**. A partícula acelera porque **muda de lugar** e, no lugar novo, a velocidade do campo é outra.
+
+O exemplo é o Venturi: o escoamento é permanente (a foto é sempre a mesma), mas cada partícula acelera ao entrar na garganta. É a convectiva que faz isso — e é ela que torna a equação **não-linear**.
+
+</Caixa>
+
+### A continuidade em forma diferencial
+
+$$
+\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho\vec{v}) = 0
+\qquad\xrightarrow{\ \text{incompressível}\ }\qquad
+\boxed{\;\nabla \cdot \vec{v} = 0\;}
+$$
+
+Ou seja $\dfrac{\partial u}{\partial x} + \dfrac{\partial v}{\partial y} + \dfrac{\partial w}{\partial z} = 0$ — é este o teste que a prova pede para verificar se um campo dado é fisicamente possível.
+
+### A equação de Navier-Stokes
+
+Para fluido **newtoniano** e **incompressível** com $\mu$ constante:
+
+$$
+\boxed{\;\rho\frac{D\vec{v}}{Dt} = -\nabla p + \mu\nabla^2\vec{v} + \rho\vec{g}\;}
+$$
+
+<Caixa tipo="dica" rotulo="É a segunda lei de Newton, termo a termo">
+
+$$
+\underbrace{\rho\frac{D\vec{v}}{Dt}}_{\text{massa} \times \text{aceleração}}
+= \underbrace{-\nabla p}_{\text{força de pressão}}
++ \underbrace{\mu\nabla^2\vec{v}}_{\text{força viscosa}}
++ \underbrace{\rho\vec{g}}_{\text{peso}}
+$$
+
+Zerando o termo viscoso ($\mu = 0$) obtém-se a equação de **Euler**, e integrando Euler ao longo de uma linha de corrente reaparece **Bernoulli**. Toda a cadeira está contida aqui — Bernoulli é um caso particular.
+
+</Caixa>
+
+### A aplicação clássica: escoamento entre placas
+
+Para escoamento **laminar, permanente e unidirecional** entre duas placas paralelas, quase todos os termos morrem e sobra uma equação ordinária simples:
+
+$$
+\frac{d^2u}{dy^2} = \frac{1}{\mu}\frac{dp}{dx}
+$$
+
+Integrando duas vezes com $u = 0$ nas paredes (aderência), obtém-se o **perfil parabólico** — e, dele, o resultado de Hagen-Poiseuille que a seção de perda de carga usou:
+
+$$
+v = \frac{v_{max}}{2}
+\qquad\qquad
+f = \frac{64}{Re}
+$$
+
+<Caixa tipo="macete" rotulo="O que a prova cobra desta seção">
+
+Raramente se pede resolver Navier-Stokes. O que cai é:
+
+1. **identificar os termos** e dizer o que cada um representa;
+2. **simplificar** a equação para um caso dado, justificando quais termos se anulam e por quê;
+3. **verificar** se um campo de velocidades satisfaz a continuidade ($\nabla \cdot \vec{v} = 0$);
+4. explicar a diferença entre aceleração **local** e **convectiva**.
 
 </Caixa>
 
