@@ -399,7 +399,13 @@
       "paredes-compostas": "ft-paredes",
       "conducao-em-tubulacoes": "ft-paredes",
       "resistencia-cilindrica": "ft-paredes",
-      "isolamento-termico": "ft-paredes"
+      "isolamento-termico": "ft-paredes",
+      "transporte-de-massa": "ft-massa",
+      "lei-de-fick": "ft-massa",
+      "difusao": "ft-massa",
+      "coeficiente-de-difusao": "ft-massa",
+      "analogia-dos-transportes": "ft-massa",
+      "prandtl-schmidt": "ft-massa"
     }
   }
 ]

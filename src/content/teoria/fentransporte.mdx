@@ -44,6 +44,7 @@ unidades:
       - { id: ft-modos, titulo: "Os três modos de transferência de calor" }
       - { id: ft-fourier, titulo: "Lei de Fourier, condutividade e resistência térmica" }
       - { id: ft-paredes, titulo: "Condução em paredes compostas e em tubulações" }
+      - { id: ft-massa, titulo: "Fundamentos do transporte de massa" }
 
 ---
 
@@ -2362,6 +2363,100 @@ q = \frac{200 - 30}{3{,}03 \times 10^{-5} + 0{,}2058} = \frac{170}{0{,}2058} = 8
 $$
 
 **A resistência do aço é 6800 vezes menor que a do isolante** — e é por isso que, num problema com isolamento, desprezar a resistência do metal é aproximação legítima. O isolante é quem manda.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-massa" num="25" titulo="Fundamentos do transporte de massa">
+
+**A ideia.** O último assunto da cadeira fecha o círculo que o nome dela sempre anunciou: são **três** fenômenos de transporte com a mesma estrutura matemática. Quantidade de movimento (Newton), calor (Fourier) e agora **massa** (Fick) — em todos, um fluxo é proporcional a um gradiente, com uma propriedade do meio como constante. Quem enxerga a analogia aprende esta unidade em minutos.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $J_A$ — **fluxo mássico difusivo** da espécie $A$, em $\mathrm{kg/(m^2 \cdot s)}$;
+- $D_{AB}$ — **coeficiente de difusão** (difusividade mássica) de $A$ em $B$, em $\mathrm{m^2/s}$;
+- $C_A$ — **concentração** da espécie $A$, em $\mathrm{kg/m^3}$;
+- $h_m$ — coeficiente de transferência de massa por convecção, em $\mathrm{m/s}$;
+- $\alpha = \dfrac{k}{\rho c_p}$ — difusividade **térmica**, em $\mathrm{m^2/s}$.
+
+</Caixa>
+
+### A lei de Fick
+
+$$
+\boxed{\;J_A = -D_{AB}\,\frac{dC_A}{dx}\;}
+$$
+
+A massa da espécie $A$ migra da região de **maior** para a de **menor** concentração — daí o sinal negativo, exatamente como em Fourier.
+
+<Caixa tipo="macete" rotulo="A analogia que unifica a cadeira">
+
+| transporte | lei | fluxo | gradiente | propriedade | unidade |
+|---|---|---|---|---|---|
+| **quantidade de movimento** | Newton | $\tau$ | $dv/dy$ | $\nu = \mu/\rho$ | $\mathrm{m^2/s}$ |
+| **calor** | Fourier | $q''$ | $dT/dx$ | $\alpha = k/(\rho c_p)$ | $\mathrm{m^2/s}$ |
+| **massa** | Fick | $J_A$ | $dC_A/dx$ | $D_{AB}$ | $\mathrm{m^2/s}$ |
+
+**As três difusividades têm a mesma unidade** — $\mathrm{m^2/s}$ — e é isso que permite formar adimensionais comparando-as:
+
+$$
+Pr = \frac{\nu}{\alpha} \;\text{(Prandtl)}
+\qquad
+Sc = \frac{\nu}{D_{AB}} \;\text{(Schmidt)}
+\qquad
+Le = \frac{\alpha}{D_{AB}} \;\text{(Lewis)}
+$$
+
+Se a prova pedir "explique a analogia entre os fenômenos de transporte", esta tabela **é** a resposta.
+
+</Caixa>
+
+### Difusão e convecção mássica
+
+Como no calor, há dois mecanismos:
+
+- **difusão** — migração molecular por gradiente de concentração, governada por Fick. É o análogo da condução;
+- **convecção mássica** — transporte pelo movimento do fluido:
+
+$$
+N_A = h_m\,A\,(C_{A,s} - C_{A,\infty})
+$$
+
+que é a lei do resfriamento de Newton com concentração no lugar de temperatura.
+
+<Caixa tipo="dica" rotulo="Exemplos que fixam a diferença">
+
+- uma gota de tinta que se espalha em água **parada** → difusão;
+- a mesma gota em água **mexida** → convecção mássica (muito mais rápida);
+- roupa secando no varal → evaporação na superfície e convecção mássica levando o vapor;
+- açúcar dissolvendo no café sem mexer → difusão, e é por isso que mexer resolve.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — difusão numa membrana">
+
+Oxigênio difunde por uma membrana de $2\ \mathrm{mm}$ de espessura e área $0{,}5\ \mathrm{m^2}$, com $D_{AB} = 1{,}8 \times 10^{-5}\ \mathrm{m^2/s}$. As concentrações nas faces são $0{,}025$ e $0{,}005\ \mathrm{kg/m^3}$. Qual a taxa de transferência?
+
+Perfil linear em regime permanente, como na parede plana:
+
+$$
+J_A = D_{AB}\,\frac{\Delta C_A}{L} = 1{,}8 \times 10^{-5} \times \frac{0{,}025 - 0{,}005}{2 \times 10^{-3}} = 1{,}8 \times 10^{-4}\ \mathrm{kg/(m^2 s)}
+$$
+
+$$
+N_A = J_A\,A = 1{,}8 \times 10^{-4} \times 0{,}5 = 9{,}0 \times 10^{-5}\ \mathrm{kg/s}
+$$
+
+**Compare com a seção anterior:** é exatamente a conta da parede plana, trocando $k$ por $D_{AB}$ e $\Delta T$ por $\Delta C_A$. A analogia não é retórica — é operacional.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Fim do programa">
+
+Aqui termina o conteúdo da disciplina. Somando as seis unidades: propriedades dos fluidos, estática, cinemática, energia com máquinas e perdas, quantidade de movimento com análise dimensional e diferencial, e transferência de calor e massa.
+
+O **Exercício Final** cobre tudo — 1º e 2º EE juntos.
 
 </Caixa>
 
