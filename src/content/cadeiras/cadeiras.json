@@ -293,7 +293,10 @@
       "peso-especifico": "ft-propriedades",
       "densidade-relativa": "ft-propriedades",
       "volume-especifico": "ft-propriedades",
-      "propriedades-dos-fluidos": "ft-propriedades"
+      "propriedades-dos-fluidos": "ft-propriedades",
+      "viscosidade": "ft-viscosidade",
+      "viscosidade-dinamica": "ft-viscosidade",
+      "viscosidade-cinematica": "ft-viscosidade"
     }
   }
 ]

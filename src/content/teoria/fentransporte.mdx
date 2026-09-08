@@ -7,6 +7,7 @@ unidades:
     secoes:
       - { id: ft-fluido, titulo: "O que é um fluido: aderência, cisalhamento e a lei de Newton da viscosidade" }
       - { id: ft-propriedades, titulo: "Massa específica, peso específico, densidade relativa e volume específico" }
+      - { id: ft-viscosidade, titulo: "Viscosidade dinâmica e cinemática" }
 
 ---
 
@@ -223,6 +224,75 @@ v_s = \frac{1}{\rho} = \frac{1}{830} = 1{,}20 \times 10^{-3}\ \mathrm{m^3/kg}
 $$
 
 Repare que $\gamma$ também sairia de $d \cdot \gamma_{\text{água}} = 0{,}83 \times 10\,000$ — dá o mesmo, e é um caminho mais curto.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-viscosidade" num="03" titulo="Viscosidade dinâmica e cinemática">
+
+**A ideia.** A viscosidade já apareceu como a constante da lei de Newton. Aqui ela ganha uma **segunda versão** — a cinemática —, e é essa dupla que as provas exploram: o enunciado dá $\nu$ (cinemática) e a fórmula do cisalhamento pede $\mu$ (dinâmica). Quem não souber a ponte entre as duas trava numa questão de meio ponto.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mu$ — **viscosidade dinâmica** (ou absoluta), em $\mathrm{Pa \cdot s}$: a constante da lei de Newton, $\tau = \mu\,dv/dy$;
+- $\nu = \dfrac{\mu}{\rho}$ — **viscosidade cinemática**, em $\mathrm{m^2/s}$;
+- $\rho$ — massa específica, em $\mathrm{kg/m^3}$.
+
+</Caixa>
+
+### A ponte entre as duas
+
+$$
+\boxed{\;\nu = \frac{\mu}{\rho}\;}
+\qquad\Longleftrightarrow\qquad
+\mu = \nu\,\rho
+$$
+
+O nome "cinemática" tem motivo: a unidade $\mathrm{m^2/s}$ não traz massa nem força, só comprimento e tempo — as dimensões da cinemática. E é essa versão que aparece no número de Reynolds, mais adiante na cadeira.
+
+<Caixa tipo="dica" rotulo="As unidades antigas, que ainda aparecem em enunciado">
+
+$$
+1\ \mathrm{poise} = 0{,}1\ \mathrm{Pa \cdot s}
+\qquad\qquad
+1\ \mathrm{stoke} = 10^{-4}\ \mathrm{m^2/s}
+$$
+
+Poise mede a **dinâmica**; stoke, a **cinemática**. Se o enunciado der "centistoke" ($\mathrm{cSt}$), é $10^{-6}\ \mathrm{m^2/s}$ — a viscosidade cinemática da água a $20\ ^\circ\mathrm{C}$ é justamente $1\ \mathrm{cSt}$.
+
+</Caixa>
+
+### Como a temperatura age — e por que líquido e gás são opostos
+
+Esta é a pergunta conceitual mais frequente do 1º EE, e a resposta depende de **de onde vem** a viscosidade em cada caso:
+
+<Caixa tipo="macete">
+
+- Nos **líquidos**, a viscosidade vem das **forças de coesão** entre moléculas. Aquecer afasta as moléculas e enfraquece a coesão → a viscosidade **diminui**;
+- nos **gases**, vem das **colisões** entre moléculas. Aquecer acelera as moléculas e aumenta o número de colisões → a viscosidade **aumenta**.
+
+E, na comparação direta, a viscosidade dinâmica dos **líquidos é muito maior** que a dos gases, porque coesão é um efeito mais forte que colisão.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o caminho que a prova cobra (2023.2)">
+
+Duas placas paralelas a $2\ \mathrm{mm}$ de distância. A superior move-se a $4\ \mathrm{m/s}$, a inferior está fixa, e entre elas há óleo com $\nu = 10^{-5}\ \mathrm{m^2/s}$ e $\rho = 830\ \mathrm{kg/m^3}$.
+
+**a) A viscosidade dinâmica.** É a ponte:
+
+$$
+\mu = \nu\,\rho = 10^{-5} \times 830 = 8{,}3 \times 10^{-3}\ \mathrm{Pa \cdot s}
+$$
+
+**b) A tensão de cisalhamento.** Perfil linear, então $dv/dy = v_0/\varepsilon$:
+
+$$
+\tau = \mu\,\frac{v_0}{\varepsilon} = 8{,}3 \times 10^{-3} \times \frac{4}{2 \times 10^{-3}} = 16{,}6\ \mathrm{Pa}
+$$
+
+Note a estrutura da questão: o item (a) existe **só** para dar o $\mu$ que o item (b) precisa. É o formato clássico desta cadeira.
 
 </Caixa>
 
