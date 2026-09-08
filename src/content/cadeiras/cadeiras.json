@@ -343,7 +343,13 @@
       "velocidade-media": "ft-vazao",
       "equacao-da-continuidade": "ft-continuidade",
       "continuidade": "ft-continuidade",
-      "conservacao-da-massa": "ft-continuidade"
+      "conservacao-da-massa": "ft-continuidade",
+      "bernoulli": "ft-bernoulli",
+      "equacao-de-bernoulli": "ft-bernoulli",
+      "carga-total": "ft-bernoulli",
+      "venturi": "ft-bernoulli",
+      "torricelli": "ft-bernoulli",
+      "equacao-da-energia": "ft-bernoulli"
     }
   }
 ]

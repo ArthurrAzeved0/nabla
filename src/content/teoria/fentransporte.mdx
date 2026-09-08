@@ -24,6 +24,10 @@ unidades:
       - { id: ft-escoamentos, titulo: "Tipos e regimes de escoamento; número de Reynolds" }
       - { id: ft-vazao, titulo: "Vazão volumétrica, vazão mássica e velocidade média" }
       - { id: ft-continuidade, titulo: "Equação da continuidade para regime permanente" }
+  - nome: "Dinâmica dos fluidos: a equação da energia"
+    prova: 2ee
+    secoes:
+      - { id: ft-bernoulli, titulo: "Equação de Bernoulli, carga total e o tubo de Venturi" }
 
 ---
 
@@ -1253,6 +1257,112 @@ Iguais, como tinham de ser.
 Pelo programa vigente (2026.2), o **1º Exercício Escolar** termina aqui: propriedades, estática e cinemática até a continuidade.
 
 Mas o acervo mostra que **a divisão já foi diferente**: a prova do 1º EE de 2023.2, de outros professores, cobrava Bernoulli e até perdas de carga. Se você estuda por prova antiga, confira o programa do **seu** semestre antes de decidir o que revisar.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-bernoulli" num="14" titulo="Equação de Bernoulli, carga total e o tubo de Venturi">
+
+**A ideia.** Bernoulli é a conservação de energia escrita em **metros**. Cada termo é uma "carga" — uma altura equivalente — e a soma das três é constante ao longo do escoamento de um fluido ideal. A força da equação está em quê ela permite: sabendo a geometria (pela continuidade), você descobre a **pressão** sem saber nada sobre a força que empurra o fluido.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $z$ — **carga de posição** (cota), em $\mathrm{m}$: a altura do ponto em relação a um plano de referência;
+- $\dfrac{p}{\gamma}$ — **carga de pressão**, em $\mathrm{m}$;
+- $\dfrac{v^2}{2g}$ — **carga cinética** (ou de velocidade), em $\mathrm{m}$;
+- $H$ — **carga total**, a soma das três, em $\mathrm{m}$;
+- $g$ — aceleração da gravidade, em $\mathrm{m/s^2}$.
+
+</Caixa>
+
+### A equação
+
+$$
+\boxed{\;z_1 + \frac{p_1}{\gamma} + \frac{v_1^2}{2g} \;=\; z_2 + \frac{p_2}{\gamma} + \frac{v_2^2}{2g} \;=\; H\;}
+$$
+
+<Caixa tipo="dica" rotulo="As hipóteses — que a prova cobra por escrito">
+
+Bernoulli nesta forma vale para escoamento:
+
+1. **permanente**;
+2. **incompressível** ($\gamma$ constante);
+3. **sem atrito** (fluido ideal, **sem perda de carga**);
+4. **sem máquina** (nada de bomba ou turbina no trecho);
+5. ao longo de **uma mesma linha de corrente**.
+
+Cada hipótese quebrada acrescenta um termo à equação — e as duas próximas seções são exatamente sobre isso: máquina (4) e atrito (3).
+
+</Caixa>
+
+### Por que "todos os termos em metros"
+
+Dividir a energia pelo peso do fluido transforma joules em metros:
+
+$$
+\frac{\text{energia}}{\text{peso}} = \frac{\mathrm{J}}{\mathrm{N}} = \frac{\mathrm{N \cdot m}}{\mathrm{N}} = \mathrm{m}
+$$
+
+<Caixa tipo="macete" rotulo="O uso mais frequente: dois termos somem">
+
+Quase toda questão elimina termos antes de calcular:
+
+- **tubo horizontal** → $z_1 = z_2$, e a cota sai dos dois lados;
+- **reservatório grande e aberto** → na superfície, $v \approx 0$ (o nível baixa devagar) e $p = 0$ (efetiva, aberto à atmosfera). Sobra só $z$;
+- **jato livre na saída** → $p = 0$ (efetiva), porque o jato está na atmosfera.
+
+Aplicando as duas últimas a um reservatório com orifício, sobra $z_1 = v_2^2/2g$, isto é o **teorema de Torricelli**:
+
+$$
+v = \sqrt{2\,g\,h}
+$$
+
+</Caixa>
+
+### O tubo de Venturi
+
+É a aplicação clássica, e cai em prova em toda variação possível. Um estrangulamento na tubulação: pela **continuidade** a velocidade aumenta na garganta; por **Bernoulli**, se a carga cinética cresce e a cota não muda, a **carga de pressão tem de cair**.
+
+$$
+\frac{p_1 - p_2}{\gamma} = \frac{v_2^2 - v_1^2}{2g}
+$$
+
+Medindo o desnível num manômetro diferencial ligado entre (1) e (2), obtém-se a vazão — é assim que um Venturi funciona como **medidor**.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — Venturi com manômetro de mercúrio (prova de 2023.2)">
+
+Água ($\gamma = 10\,000\ \mathrm{N/m^3}$) escoa por um Venturi com $A_1 = 20\ \mathrm{cm^2}$ e garganta $A_2 = 10\ \mathrm{cm^2}$. A vazão é $Q = 5{,}8\ \mathrm{L/s}$ e o manômetro é de mercúrio ($\gamma_{Hg} = 136\,000\ \mathrm{N/m^3}$). Qual o desnível $h$?
+
+**Velocidades, pela continuidade:**
+
+$$
+v_1 = \frac{Q}{A_1} = \frac{5{,}8 \times 10^{-3}}{20 \times 10^{-4}} = 2{,}9\ \mathrm{m/s}
+\qquad
+v_2 = \frac{5{,}8 \times 10^{-3}}{10 \times 10^{-4}} = 5{,}8\ \mathrm{m/s}
+$$
+
+**Bernoulli** com $z_1 = z_2$, para achar a diferença de pressão:
+
+$$
+\frac{p_1 - p_2}{\gamma} = \frac{v_2^2 - v_1^2}{2g} = \frac{5{,}8^2 - 2{,}9^2}{2 \times 10} = \frac{33{,}64 - 8{,}41}{20} = 1{,}2615\ \mathrm{m}
+$$
+
+$$
+p_1 - p_2 = 10\,000 \times 1{,}2615 = 12\,615\ \mathrm{Pa}
+$$
+
+**Manometria** para converter em desnível — o mercúrio sobe de um lado e a água desce do outro:
+
+$$
+p_1 - p_2 = h\,(\gamma_{Hg} - \gamma_{\text{água}}) = h \times 126\,000
+$$
+
+$$
+h = \frac{12\,615}{126\,000} = 0{,}100\ \mathrm{m} = 10{,}0\ \mathrm{cm}
+$$
+
+**Note a estrutura:** continuidade → Bernoulli → manometria. É a espinha da questão de 2 pontos desta unidade, e as três seções anteriores entram todas.
 
 </Caixa>
 
