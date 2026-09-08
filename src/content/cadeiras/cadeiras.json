@@ -395,7 +395,11 @@
       "lei-de-fourier": "ft-fourier",
       "condutividade-termica": "ft-fourier",
       "resistencia-termica": "ft-fourier",
-      "analogia-eletrica": "ft-fourier"
+      "analogia-eletrica": "ft-fourier",
+      "paredes-compostas": "ft-paredes",
+      "conducao-em-tubulacoes": "ft-paredes",
+      "resistencia-cilindrica": "ft-paredes",
+      "isolamento-termico": "ft-paredes"
     }
   }
 ]

@@ -43,6 +43,7 @@ unidades:
     secoes:
       - { id: ft-modos, titulo: "Os três modos de transferência de calor" }
       - { id: ft-fourier, titulo: "Lei de Fourier, condutividade e resistência térmica" }
+      - { id: ft-paredes, titulo: "Condução em paredes compostas e em tubulações" }
 
 ---
 
@@ -2274,6 +2275,93 @@ q = \frac{\Delta T}{R_{eq}} = \frac{35 - 20}{0{,}0461} = 325\ \mathrm{W}
 $$
 
 **O calor entra na casa** (de fora para dentro), porque o exterior está mais quente. E note qual resistência domina: a **condução** da parede, com 62 % do total — engrossar a parede ou usar material de $k$ menor é o que reduz a carga térmica.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-paredes" num="24" titulo="Condução em paredes compostas e em tubulações">
+
+**A ideia.** Com o dicionário elétrico da seção anterior, resolver uma parede de três camadas é somar resistências. O caso do **tubo** é o único que exige cuidado extra: ali a área **cresce** com o raio, o perfil de temperatura deixa de ser linear e a resistência ganha um logaritmo. É a fórmula que a prova de 2º EE cobra com mais frequência nesta unidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $L_i,\ k_i$ — espessura e condutividade de **cada camada**;
+- $r_1,\ r_2$ — raios **interno** e **externo** do tubo, em $\mathrm{m}$;
+- $L$ — **comprimento** do tubo, em $\mathrm{m}$;
+- $R_t$ — resistência térmica, em $\mathrm{K/W}$;
+- $q$ — fluxo de calor, em $\mathrm{W}$.
+
+</Caixa>
+
+### Parede composta: resistências em série
+
+$$
+q = \frac{T_1 - T_{n+1}}{\sum R_i}
+= \frac{\Delta T_{total}}{\dfrac{L_1}{k_1 A} + \dfrac{L_2}{k_2 A} + \dfrac{L_3}{k_3 A} + \ldots}
+$$
+
+<Caixa tipo="macete" rotulo="O mesmo q atravessa todas as camadas">
+
+Em série, o fluxo é **o mesmo** em cada camada — como a corrente num circuito série. Isso dá duas ferramentas:
+
+1. achado $q$ pelo total, a temperatura em **qualquer** interface sai de uma camada só:
+
+$$
+T_2 = T_1 - q\,R_1
+$$
+
+2. **a maior queda de temperatura ocorre na maior resistência.** Se uma camada é o isolante, quase todo o $\Delta T$ cai nela — e isso serve de conferência do resultado.
+
+</Caixa>
+
+### Tubo cilíndrico: onde entra o logaritmo
+
+Na parede plana a área é constante; no tubo, $A = 2\pi r L$ **cresce** com o raio. Integrando a lei de Fourier com essa área variável:
+
+$$
+q = \frac{2\pi k L\,(T_1 - T_2)}{\ln(r_2/r_1)}
+\qquad\Longleftrightarrow\qquad
+\boxed{\;R_{tubo} = \frac{\ln(r_2/r_1)}{2\pi k L}\;}
+$$
+
+<Caixa tipo="dica" rotulo="Por que logaritmo, e o que muda na prática">
+
+O calor se "espalha" por uma área cada vez maior à medida que sai — então a resistência não cresce proporcionalmente à espessura, e sim ao **logaritmo da razão de raios**.
+
+Consequência prática: **dobrar a espessura de um isolamento em tubo rende menos que dobrar em parede plana**. E existe até um *raio crítico de isolamento*, abaixo do qual acrescentar isolante **aumenta** a perda de calor (porque a área externa cresce mais rápido que a resistência).
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Tubo com várias camadas e convecção">
+
+Tudo em série, cada camada com seu logaritmo:
+
+$$
+R_{total} = \underbrace{\frac{1}{h_i\,2\pi r_1 L}}_{\text{convecção interna}} + \frac{\ln(r_2/r_1)}{2\pi k_1 L} + \frac{\ln(r_3/r_2)}{2\pi k_2 L} + \underbrace{\frac{1}{h_e\,2\pi r_3 L}}_{\text{convecção externa}}
+$$
+
+Repare que nas convecções a área é a do **raio daquela face** — usar o raio errado é um erro clássico.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — tubo de vapor com isolamento">
+
+Um tubo de aço ($k_1 = 50\ \mathrm{W/(mK)}$) de $r_1 = 5\ \mathrm{cm}$ e $r_2 = 5{,}5\ \mathrm{cm}$ é isolado com lã de rocha ($k_2 = 0{,}05\ \mathrm{W/(mK)}$) até $r_3 = 10{,}5\ \mathrm{cm}$. Para $L = 10\ \mathrm{m}$, com face interna a $200\ ^\circ\mathrm{C}$ e externa a $30\ ^\circ\mathrm{C}$, qual o fluxo?
+
+$$
+R_{aço} = \frac{\ln(5{,}5/5)}{2\pi \times 50 \times 10} = \frac{0{,}0953}{3141{,}6} = 3{,}03 \times 10^{-5}\ \mathrm{K/W}
+$$
+
+$$
+R_{isol} = \frac{\ln(10{,}5/5{,}5)}{2\pi \times 0{,}05 \times 10} = \frac{0{,}6466}{3{,}1416} = 0{,}2058\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{200 - 30}{3{,}03 \times 10^{-5} + 0{,}2058} = \frac{170}{0{,}2058} = 826\ \mathrm{W}
+$$
+
+**A resistência do aço é 6800 vezes menor que a do isolante** — e é por isso que, num problema com isolamento, desprezar a resistência do metal é aproximação legítima. O isolante é quem manda.
 
 </Caixa>
 
