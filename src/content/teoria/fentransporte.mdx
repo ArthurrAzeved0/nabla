@@ -14,6 +14,7 @@ unidades:
     secoes:
       - { id: ft-pressao, titulo: "Pressão, escalas de medida e carga de pressão" }
       - { id: ft-stevin, titulo: "Lei de Stevin e lei de Pascal" }
+      - { id: ft-manometros, titulo: "Manômetros e a equação manométrica" }
 
 ---
 
@@ -559,6 +560,105 @@ Dez vezes a área, dez vezes a força. Repare que **não foi preciso converter $
 - a pressão é a mesma porque estou **no mesmo nível** ou porque foi **aplicada de fora** → **Pascal**.
 
 Numa frase: **Pascal age em $x$, Stevin age em $y$.**
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-manometros" num="07" titulo="Manômetros e a equação manométrica">
+
+**A ideia.** Aqui a estática deixa de ser conceito e passa a valer 2 pontos de prova. A equação manométrica é uma aplicação repetida de Stevin, feita com **um método mecânico**: caminhar pelo tubo de um ponto ao outro, somando quando desce e subtraindo quando sobe. Quem faz isso com disciplina não erra; quem tenta "ver" a resposta erra o sinal.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p_A,\ p_B$ — pressões nos reservatórios ou pontos de interesse;
+- $\gamma_i$ — peso específico de **cada** fluido atravessado;
+- $h_i$ — desnível **vertical** de cada trecho;
+- fluido manométrico — o líquido do tubo em U, normalmente **mercúrio** ($\gamma = 136\,000\ \mathrm{N/m^3}$).
+
+</Caixa>
+
+### Os instrumentos, e para que serve cada um
+
+- **barômetro** — mede a **pressão atmosférica**. O de mercúrio, de Torricelli (1643): ao nível do mar a coluna sobe $760\ \mathrm{mmHg}$;
+- **manômetro metálico (Bourdon)** — mede pela **deformação** de um tubo metálico. Indica $p_{int} - p_{ext}$, ou seja, pressão **efetiva**;
+- **piezômetro** — tubo de vidro simples ligado ao reservatório; lê-se a carga de pressão direto na altura da coluna, $p = \gamma h$;
+- **manômetro em U** — resolve as três limitações do piezômetro;
+- **manômetro diferencial** — em U mas com os **dois** ramos ligados a reservatórios; mede $p_A - p_B$ quando nenhuma das duas pressões é conhecida.
+
+<Caixa tipo="dica" rotulo="Por que o piezômetro não serve para tudo">
+
+Três limitações, e todas caem em prova conceitual:
+
+1. só serve para **pressões baixas** (senão a coluna fica altíssima);
+2. **não serve para gases** — eles escapam;
+3. **não serve para pressão efetiva negativa** — entraria ar pelo tubo.
+
+O tubo em U com mercúrio resolve as três: o fluido manométrico pesado **encurta a coluna**, e o U impede a entrada de ar.
+
+</Caixa>
+
+### A equação manométrica: o método de caminhar
+
+<Caixa tipo="macete" rotulo="A regra de sinal, que é tudo nesta conta">
+
+Escolha um ponto de partida e caminhe pelo tubo até o destino. Em cada trecho:
+
+- **desceu** no fluido → **soma** $\gamma h$ (a pressão aumenta);
+- **subiu** no fluido → **subtrai** $\gamma h$ (a pressão diminui).
+
+Ao chegar, iguale ao ponto de destino:
+
+$$
+p_A + \sum_{\text{desce}} \gamma_i h_i - \sum_{\text{sobe}} \gamma_j h_j = p_B
+$$
+
+Dois cuidados que valem a questão inteira:
+
+- use o $\gamma$ **do fluido daquele trecho** — trocar o do mercúrio pelo da água é o erro clássico;
+- **ar tem $\gamma$ desprezível**: trecho de gás não entra na soma (consequência 5 de Stevin).
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Antes de caminhar, marque no desenho os **níveis horizontais** dentro de um mesmo fluido contínuo: por Stevin eles têm a mesma pressão. Cada nível marcado é um trecho que você **não** precisa percorrer.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a coluna equivalente">
+
+Um manômetro em U liga dois líquidos que se encontram no mesmo nível. De um lado, fluido com $\gamma_1 = 6000\ \mathrm{N/m^3}$ e coluna $h_1$; do outro, $\gamma_2 = 10\,000\ \mathrm{N/m^3}$ e $h_2 = 5{,}0\ \mathrm{m}$. Qual $h_1$?
+
+No nível de encontro as pressões são iguais:
+
+$$
+\gamma_1 h_1 = \gamma_2 h_2
+\qquad\Longrightarrow\qquad
+h_1 = \frac{10\,000 \times 5{,}0}{6000} = 8{,}33\ \mathrm{m}
+$$
+
+**Leitura física:** o fluido mais leve precisa de uma coluna **mais alta** para fazer a mesma pressão. É por isso que se usa mercúrio como fluido manométrico — para a coluna caber no instrumento.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — achar a densidade de um óleo (prova de 2023.2)">
+
+Um manômetro indica $64\ \mathrm{kPa}$ num sistema com três fluidos: água ($h = 50\ \mathrm{cm}$), óleo ($h = 80\ \mathrm{cm}$) e mercúrio ($h = 46\ \mathrm{cm}$). Com $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$, qual a densidade relativa do óleo?
+
+Igualando as pressões nos dois lados do nível de referência:
+
+$$
+p_{man} + \gamma_{\text{água}}\,h_{\text{água}} = \gamma_{\text{óleo}}\,h_{\text{óleo}} + \gamma_{Hg}\,h_{Hg}
+$$
+
+Escrevendo os pesos específicos como $d \cdot \gamma_{\text{água}}$ e isolando:
+
+$$
+d_{\text{óleo}} = \frac{64 \times 10^3 + 10\,000 \times 0{,}50 - 13{,}6 \times 10\,000 \times 0{,}46}{10\,000 \times 0{,}80} = 0{,}805
+$$
+
+**Confira se o resultado faz sentido:** $d < 1$, como tem de ser para um óleo — ele flutua na água. Se der $d > 1$ num óleo, há erro de sinal no caminho.
 
 </Caixa>
 

@@ -312,7 +312,13 @@
       "teorema-de-stevin": "ft-stevin",
       "lei-de-pascal": "ft-stevin",
       "prensa-hidraulica": "ft-stevin",
-      "paradoxo-hidrostatico": "ft-stevin"
+      "paradoxo-hidrostatico": "ft-stevin",
+      "manometros": "ft-manometros",
+      "equacao-manometrica": "ft-manometros",
+      "manometria": "ft-manometros",
+      "piezometro": "ft-manometros",
+      "manometro-diferencial": "ft-manometros",
+      "barometro": "ft-manometros"
     }
   }
 ]
