@@ -362,7 +362,11 @@
       "fator-de-atrito": "ft-perdas",
       "diagrama-de-moody": "ft-perdas",
       "hazen-williams": "ft-perdas",
-      "condutos-forcados": "ft-perdas"
+      "condutos-forcados": "ft-perdas",
+      "perda-de-carga-localizada": "ft-localizadas",
+      "comprimento-equivalente": "ft-localizadas",
+      "coeficiente-k": "ft-localizadas",
+      "perda-total": "ft-localizadas"
     }
   }
 ]

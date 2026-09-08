@@ -30,6 +30,7 @@ unidades:
       - { id: ft-bernoulli, titulo: "Equação de Bernoulli, carga total e o tubo de Venturi" }
       - { id: ft-maquina, titulo: "Equação da energia com máquina: bombas e turbinas" }
       - { id: ft-perdas, titulo: "Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody" }
+      - { id: ft-localizadas, titulo: "Perdas de carga localizadas e comprimento equivalente" }
 
 ---
 
@@ -1564,6 +1565,108 @@ $$
 **Vinte metros de coluna de água perdidos só em atrito** — é mais que o desnível de muitas instalações, e mostra por que a perda de carga não é um detalhe do projeto: é o projeto.
 
 Conferindo o regime: $Re = 2 \times 0{,}1/10^{-6} = 2 \times 10^5$, turbulento, coerente com $f$ dado em vez de calculado.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-localizadas" num="17" titulo="Perdas de carga localizadas e comprimento equivalente">
+
+**A ideia.** Cada curva, válvula, registro ou mudança de seção obriga o fluido a **mudar de direção ou de velocidade** bruscamente, e isso gera turbilhonamento — energia que vira calor. Numa instalação curta e cheia de conexões, essas perdas "pontuais" podem passar a distribuída. Há dois métodos para contabilizá-las, e a prova pede saber os dois.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $H_L$ — **perda de carga localizada**, em $\mathrm{m}$;
+- $K$ — **coeficiente de perda localizada** da peça, adimensional (tabelado);
+- $L_{eq}$ — **comprimento equivalente**: o comprimento de tubo reto que causaria a mesma perda, em $\mathrm{m}$;
+- $H_{p_{total}}$ — perda de carga total, em $\mathrm{m}$.
+
+</Caixa>
+
+### Método 1 — o coeficiente $K$
+
+$$
+\boxed{\;H_L = K\,\frac{v^2}{2g}\;}
+$$
+
+Cada peça tem seu $K$, tabelado. Some as perdas de todas:
+
+$$
+H_L = \left(\sum K_i\right)\frac{v^2}{2g}
+$$
+
+<Caixa tipo="dica" rotulo="Valores de K que aparecem em enunciado">
+
+| peça | $K$ aproximado |
+|---|---|
+| curva de 90° (joelho) | $0{,}9$ |
+| curva de 45° | $0{,}4$ |
+| registro de gaveta **aberto** | $0{,}2$ |
+| registro de globo aberto | $10$ |
+| válvula de pé com crivo | $1{,}75$ |
+| entrada de borda (reservatório → tubo) | $0{,}5$ |
+| saída de tubo (tubo → reservatório) | $1{,}0$ |
+
+O registro de globo com $K = 10$ é a razão de ele ser usado para **controlar** vazão, e o de gaveta, com $K = 0{,}2$, para apenas **abrir e fechar**.
+
+</Caixa>
+
+### Método 2 — o comprimento equivalente
+
+Trocar cada peça por um trecho de tubo reto que perderia o mesmo:
+
+$$
+L_{eq} = K\,\frac{D}{f}
+$$
+
+Aí a perda total sai de **uma única** aplicação de Darcy, com o comprimento somado:
+
+$$
+\boxed{\;H_{p_{total}} = f\,\frac{L_{real} + \sum L_{eq}}{D}\,\frac{v^2}{2g}\;}
+$$
+
+<Caixa tipo="macete" rotulo="Qual método usar">
+
+- **coeficiente $K$** — quando o enunciado der uma lista de $K$;
+- **comprimento equivalente** — quando der uma tabela de $L_{eq}$ (comum em hidráulica), ou quando o tubo tiver **um só diâmetro**, porque aí uma conta resolve tudo.
+
+Os dois dão o mesmo resultado. **Não some os dois métodos** para a mesma peça — é contar a perda duas vezes, e é um erro que aparece.
+
+</Caixa>
+
+### A perda total, e quando desprezar as localizadas
+
+$$
+H_{p_{total}} = H_f + H_L
+$$
+
+<Caixa tipo="dica">
+
+Chama-se **instalação longa** aquela em que $L/D > 4000$ — nela as localizadas costumam representar menos de 5 % do total e podem ser desprezadas (o enunciado normalmente autoriza). Em instalação **curta**, como o recalque de uma casa, desprezá-las erra o dimensionamento da bomba.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — os dois métodos dando o mesmo">
+
+Tubo de $D = 100\ \mathrm{mm}$, $f = 0{,}02$, $v = 2\ \mathrm{m/s}$, com **dois** joelhos de 90° ($K = 0{,}9$ cada).
+
+**Por $K$:**
+
+$$
+H_L = \left(\sum K\right)\frac{v^2}{2g} = 1{,}8 \times \frac{4}{20} = 0{,}36\ \mathrm{m}
+$$
+
+**Por comprimento equivalente:**
+
+$$
+L_{eq} = K\,\frac{D}{f} = 0{,}9 \times \frac{0{,}100}{0{,}02} = 4{,}5\ \mathrm{m} \text{ por joelho} \;\Rightarrow\; 9{,}0\ \mathrm{m}
+$$
+
+$$
+H_L = f\,\frac{\sum L_{eq}}{D}\,\frac{v^2}{2g} = 0{,}02 \times \frac{9{,}0}{0{,}100} \times 0{,}2 = 0{,}36\ \mathrm{m}
+$$
+
+Idênticos, como tinham de ser — os métodos são a mesma conta reorganizada. E a leitura prática é boa: **cada joelho de 90° custa 4,5 m de tubo reto.**
 
 </Caixa>
 
