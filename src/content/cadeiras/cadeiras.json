@@ -276,5 +276,19 @@
       "rlc-sem-capacitor-fasores": "em-oscilacoes",
       "rlc-componentes-associados": "em-oscilacoes"
     }
+  },
+  {
+    "id": "fentransporte",
+    "nome": "Fenômenos de Transporte",
+    "codigo": "FISC0001 · 60h",
+    "descricao": "Propriedades dos fluidos e a lei de Newton da viscosidade, estática dos fluidos (Stevin, Pascal, manometria, força em superfícies submersas e empuxo), cinemática e continuidade, Bernoulli e a equação da energia com máquinas, perdas de carga em condutos forçados, quantidade de movimento, análise dimensional e semelhança, e os fundamentos da transferência de calor e de massa.",
+    "teoria": {
+      "fluido": "ft-fluido",
+      "definicao-de-fluido": "ft-fluido",
+      "aderencia": "ft-fluido",
+      "tensao-de-cisalhamento": "ft-fluido",
+      "lei-de-newton-da-viscosidade": "ft-fluido",
+      "gradiente-de-velocidade": "ft-fluido"
+    }
   }
 ]

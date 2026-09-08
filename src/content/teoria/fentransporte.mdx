@@ -1,0 +1,136 @@
+---
+cadeira: fentransporte
+titulo: "Fenômenos de Transporte"
+unidades:
+  - nome: "Generalidades e propriedades dos fluidos"
+    prova: 1ee
+    secoes:
+      - { id: ft-fluido, titulo: "O que é um fluido: aderência, cisalhamento e a lei de Newton da viscosidade" }
+
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                       fentransporte.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+<Topico id="ft-fluido" num="01" titulo="O que é um fluido: aderência, cisalhamento e a lei de Newton da viscosidade">
+
+**A ideia.** Em Dinâmica você empurrava blocos: corpos com forma própria, que se deslocam inteiros. Aqui o objeto de estudo **não tem forma própria** e, o que é mais importante, **não para de se deformar** enquanto houver força tangencial sobre ele. Essa única frase é a definição de fluido, e é dela que sai toda a cadeira — inclusive a viscosidade, que é a medida de *quão devagar* essa deformação acontece.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F_t$ — **força tangencial** (paralela à superfície), em newtons ($\mathrm{N}$);
+- $A$ — **área** sobre a qual a força age, em $\mathrm{m^2}$;
+- $\tau = \dfrac{F_t}{A}$ — **tensão de cisalhamento**, em pascals ($\mathrm{Pa} = \mathrm{N/m^2}$);
+- $\dfrac{dv}{dy}$ — **gradiente de velocidade**, em $\mathrm{s^{-1}}$: quanto a velocidade muda por unidade de distância na direção perpendicular ao escoamento;
+- $\mu$ — **viscosidade dinâmica** (ou absoluta), em $\mathrm{Pa \cdot s}$.
+
+</Caixa>
+
+### Sólido para, fluido não
+
+Aplique uma força tangencial **constante** $F_t$ sobre um sólido: ele se deforma até uma posição de equilíbrio e **para**. As tensões internas crescem com a deformação até equilibrarem a força externa.
+
+Aplique a mesma $F_t$ constante sobre um fluido: ele se deforma, e continua se deformando, **indefinidamente**. Não existe posição de equilíbrio estático.
+
+<Caixa tipo="dica">
+
+**Fluido é aquilo que não tem posição de equilíbrio sob força tangencial.** É por isso que "fluido" cobre líquidos *e* gases: a diferença entre eles é o volume (o líquido tem volume definido e superfície livre; o gás se expande até ocupar o recipiente), não o comportamento diante do cisalhamento.
+
+</Caixa>
+
+### Aderência: a condição de contorno de toda a cadeira
+
+<Caixa tipo="macete">
+
+**As partículas de fluido em contato com uma superfície sólida adquirem a velocidade dessa superfície.**
+
+Numa placa que se move com velocidade $v_0$ sobre um fluido:
+
+- o fluido **junto à placa** move-se com $v_0$;
+- o fluido **junto ao fundo parado** tem velocidade **zero**.
+
+Isso não é detalhe: é a condição de contorno que permite calcular tudo. Sem aderência não haveria perfil de velocidade, não haveria cisalhamento e não haveria perda de carga.
+
+</Caixa>
+
+### Tensão de cisalhamento
+
+A força que a placa faz no fluido se distribui pela área de contato. O que interessa é a força **por unidade de área**:
+
+$$
+\tau = \frac{F_t}{A}
+\qquad\Longleftrightarrow\qquad
+F_t = \tau\,A
+$$
+
+Dimensionalmente, $[\tau] = F L^{-2}$ — a mesma dimensão de pressão. A diferença é a direção: pressão age **normal** à superfície, cisalhamento age **tangencial** a ela.
+
+### A lei de Newton da viscosidade
+
+A observação experimental que funda a cadeira: a tensão de cisalhamento é **proporcional ao gradiente de velocidade**.
+
+$$
+\boxed{\;\tau = \mu \,\frac{dv}{dy}\;}
+$$
+
+A constante de proporcionalidade $\mu$ é a **viscosidade dinâmica** — a propriedade que mede a dificuldade de o fluido escoar. Ela depende do fluido e, fortemente, da **temperatura**.
+
+<Caixa tipo="dica" rotulo="O caso linear, que é o que cai na prova">
+
+Quando a folga $\varepsilon$ entre as placas é pequena, admite-se **perfil linear** de velocidades. Aí o gradiente deixa de ser derivada e vira uma razão de números:
+
+$$
+\frac{dv}{dy} = \frac{v_0}{\varepsilon}
+\qquad\Longrightarrow\qquad
+\tau = \mu\,\frac{v_0}{\varepsilon}
+\qquad\Longrightarrow\qquad
+F_t = \mu\,\frac{v_0}{\varepsilon}\,A
+$$
+
+Praticamente toda questão de viscosidade do 1º EE é esta fórmula, com uma das quatro grandezas escondida no enunciado.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a força para arrastar a placa">
+
+Uma placa de $2{,}0\ \mathrm{m^2}$ desliza a $0{,}30\ \mathrm{m/s}$ sobre uma camada de óleo de $2{,}0\ \mathrm{mm}$ de espessura. O óleo tem $\mu = 0{,}10\ \mathrm{Pa \cdot s}$. Qual a força necessária?
+
+Perfil linear, então o gradiente é
+
+$$
+\frac{dv}{dy} = \frac{v_0}{\varepsilon} = \frac{0{,}30}{2{,}0 \times 10^{-3}} = 150\ \mathrm{s^{-1}}
+$$
+
+A tensão de cisalhamento:
+
+$$
+\tau = \mu\,\frac{dv}{dy} = 0{,}10 \times 150 = 15\ \mathrm{Pa}
+$$
+
+E a força:
+
+$$
+F_t = \tau\,A = 15 \times 2{,}0 = 30\ \mathrm{N}
+$$
+
+**Confira as unidades sempre:** $\mathrm{mm}$ virou $\mathrm{m}$ antes da divisão. Esquecer isso multiplica o gradiente por mil — e é o erro mais comum desta conta.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="O sinal e o sentido da tensão">
+
+A tensão que o fluido exerce **na placa** é oposta ao movimento dela (é resistência). A que a placa exerce **no fluido** aponta no sentido do movimento. Em prova, o que se pede quase sempre é o módulo da força necessária para **manter** a placa em movimento uniforme — que é exatamente $F_t = \tau A$, porque em movimento uniforme a resultante é nula.
+
+</Caixa>
+
+</Topico>
