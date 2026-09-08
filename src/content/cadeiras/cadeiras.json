@@ -349,7 +349,13 @@
       "carga-total": "ft-bernoulli",
       "venturi": "ft-bernoulli",
       "torricelli": "ft-bernoulli",
-      "equacao-da-energia": "ft-bernoulli"
+      "equacao-da-energia": "ft-bernoulli",
+      "equacao-da-energia-com-maquina": "ft-maquina",
+      "bomba": "ft-maquina",
+      "turbina": "ft-maquina",
+      "potencia-da-bomba": "ft-maquina",
+      "rendimento": "ft-maquina",
+      "altura-manometrica": "ft-maquina"
     }
   }
 ]

@@ -28,6 +28,7 @@ unidades:
     prova: 2ee
     secoes:
       - { id: ft-bernoulli, titulo: "Equação de Bernoulli, carga total e o tubo de Venturi" }
+      - { id: ft-maquina, titulo: "Equação da energia com máquina: bombas e turbinas" }
 
 ---
 
@@ -1363,6 +1364,106 @@ h = \frac{12\,615}{126\,000} = 0{,}100\ \mathrm{m} = 10{,}0\ \mathrm{cm}
 $$
 
 **Note a estrutura:** continuidade → Bernoulli → manometria. É a espinha da questão de 2 pontos desta unidade, e as três seções anteriores entram todas.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-maquina" num="15" titulo="Equação da energia com máquina: bombas e turbinas">
+
+**A ideia.** Bernoulli puro só serve a um mundo sem atrito e sem máquinas. A equação da energia **real** acrescenta dois termos: o que a **máquina** entrega ou retira, e o que o **atrito** dissipa. Com esses dois termos a equação deixa de ser exercício e passa a dimensionar bomba de verdade — que é o que a prova pede quando fala em "potência requerida".
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $H_M$ — **carga da máquina**, em $\mathrm{m}$: energia por unidade de peso que a máquina entrega ($>0$, bomba) ou retira ($<0$, turbina);
+- $H_{p_{1,2}}$ — **perda de carga** entre (1) e (2), em $\mathrm{m}$ — sempre positiva;
+- $N$ — **potência**, em $\mathrm{W}$;
+- $\eta$ — **rendimento** da máquina, adimensional (entre 0 e 1);
+- $\gamma,\ Q$ — peso específico e vazão.
+
+</Caixa>
+
+### A equação completa
+
+$$
+\boxed{\;z_1 + \frac{p_1}{\gamma} + \frac{v_1^2}{2g} + H_M \;=\; z_2 + \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + H_{p_{1,2}}\;}
+$$
+
+Lê-se: **a carga em (1), mais o que a máquina põe, é a carga em (2) mais o que o atrito comeu.**
+
+<Caixa tipo="macete" rotulo="O sinal de H_M, que decide a questão">
+
+- **bomba** → entrega energia ao fluido → $H_M > 0$. Costuma-se escrever $H_B$;
+- **turbina** → retira energia do fluido → $H_M < 0$. Costuma-se escrever $-H_T$.
+
+Se você isolar $H_M$ e o resultado sair **negativo** num problema de bomba, o erro está na ordem dos pontos (1) e (2): o ponto (1) tem de ser **antes** da máquina, no sentido do escoamento.
+
+</Caixa>
+
+### Potência: três versões da mesma fórmula
+
+A potência **útil**, transferida ao fluido:
+
+$$
+N_{\text{útil}} = \gamma\,Q\,H_M
+$$
+
+Máquina real tem perdas internas, e aí entra o rendimento:
+
+$$
+\boxed{\;N_{\text{bomba}} = \frac{\gamma\,Q\,H_B}{\eta}\;}
+\qquad\qquad
+N_{\text{turbina}} = \eta\,\gamma\,Q\,H_T
+$$
+
+<Caixa tipo="dica" rotulo="Por que o rendimento divide numa e multiplica na outra">
+
+Pense em **onde está a perda**:
+
+- na **bomba**, você paga energia elétrica no eixo e só parte dela chega ao fluido. A potência **consumida** é maior que a útil → **divide** por $\eta$;
+- na **turbina**, o fluido entrega energia e só parte dela sai como potência de eixo. A potência **obtida** é menor que a retirada → **multiplica** por $\eta$.
+
+Regra prática: o rendimento sempre **piora** o resultado para quem paga a conta.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Unidades de potência que aparecem">
+
+$$
+1\ \mathrm{CV} = 735{,}5\ \mathrm{W}
+\qquad\qquad
+1\ \mathrm{HP} = 745{,}7\ \mathrm{W}
+\qquad\qquad
+1\ \mathrm{kW} = 1000\ \mathrm{W}
+$$
+
+Enunciado de hidráulica gosta de $\mathrm{CV}$; confira o que ele pede antes de responder.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — dimensionar a bomba">
+
+Uma bomba eleva água ($\gamma = 10\,000\ \mathrm{N/m^3}$) de um reservatório para outro $20\ \mathrm{m}$ acima, com $Q = 10\ \mathrm{L/s}$. A perda de carga total é $H_p = 4\ \mathrm{m}$ e o rendimento é $\eta = 0{,}75$. Qual a potência da bomba, em CV?
+
+**A carga da bomba.** Tomando (1) e (2) nas duas superfícies livres, onde $v \approx 0$ e $p = 0$:
+
+$$
+z_1 + H_B = z_2 + H_p
+\qquad\Longrightarrow\qquad
+H_B = (z_2 - z_1) + H_p = 20 + 4 = 24\ \mathrm{m}
+$$
+
+**A potência:**
+
+$$
+N = \frac{\gamma\,Q\,H_B}{\eta} = \frac{10\,000 \times 10 \times 10^{-3} \times 24}{0{,}75} = 3200\ \mathrm{W}
+$$
+
+$$
+N = \frac{3200}{735{,}5} = 4{,}35\ \mathrm{CV}
+$$
+
+**Leitura:** dos $24\ \mathrm{m}$ de carga, $20$ são o desnível que precisava ser vencido e $4$ foram desperdiçados no atrito. Se a tubulação fosse mais larga, a perda cairia e a bomba seria menor — é esse o compromisso de todo projeto hidráulico.
 
 </Caixa>
 
