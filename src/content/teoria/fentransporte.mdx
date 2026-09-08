@@ -42,6 +42,7 @@ unidades:
     prova: 2ee
     secoes:
       - { id: ft-modos, titulo: "Os três modos de transferência de calor" }
+      - { id: ft-fourier, titulo: "Lei de Fourier, condutividade e resistência térmica" }
 
 ---
 
@@ -2166,6 +2167,113 @@ Uma parede de tijolo separa o interior de uma casa a $22\ ^\circ\mathrm{C}$ do a
 - da superfície interna **para** o ar interno: **convecção**.
 
 Em série, os três mecanismos formam um circuito térmico — e a próxima seção mostra como somar as resistências, exatamente como se faz com resistores.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-fourier" num="23" titulo="Lei de Fourier, condutividade e resistência térmica">
+
+**A ideia.** A lei de Fourier é a lei de Newton da viscosidade com outros nomes: fluxo proporcional a gradiente. E há um ganho enorme escondido nela — se o regime é permanente e o perfil é linear, a condução vira um **circuito elétrico**, com "resistências térmicas" que se somam em série e em paralelo exatamente como resistores. Essa analogia é a ferramenta mais poderosa desta unidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $q$ — fluxo de calor, em $\mathrm{W}$;
+- $k$ — **condutividade térmica**, em $\mathrm{W/(m \cdot K)}$;
+- $L$ — espessura da parede, em $\mathrm{m}$;
+- $A$ — área **normal ao fluxo**, em $\mathrm{m^2}$;
+- $\Delta T$ — diferença de temperatura, em $\mathrm{K}$ (ou $^\circ\mathrm{C}$, tanto faz numa diferença);
+- $R_t$ — **resistência térmica**, em $\mathrm{K/W}$.
+
+</Caixa>
+
+### A lei de Fourier e o caso linear
+
+$$
+q = -k\,A\,\frac{dT}{dx}
+$$
+
+Em **regime permanente**, numa parede plana de espessura $L$ com faces a $T_1$ e $T_2$, o perfil de temperatura é **linear** e a derivada vira razão:
+
+$$
+\boxed{\;q = k\,A\,\frac{T_1 - T_2}{L}\;}
+$$
+
+<Caixa tipo="dica" rotulo="Por que o perfil é linear">
+
+Em regime permanente e sem geração interna, o **mesmo** $q$ atravessa todas as seções da parede. Se $q$, $k$ e $A$ são constantes, $dT/dx$ tem de ser constante — e temperatura com derivada constante é uma reta.
+
+Se o perfil sair **curvo** num problema, é porque uma dessas hipóteses caiu: há geração interna, $k$ varia com $T$, ou a área muda (é o caso do tubo cilíndrico).
+
+</Caixa>
+
+### A analogia elétrica
+
+Reescrevendo a lei de Fourier no formato "corrente = tensão / resistência":
+
+$$
+q = \frac{\Delta T}{R_t}
+\qquad\text{com}\qquad
+\boxed{\;R_t = \frac{L}{k\,A}\;}
+$$
+
+<Caixa tipo="macete" rotulo="O dicionário da analogia">
+
+| térmico | elétrico |
+|---|---|
+| fluxo de calor $q$ | corrente $i$ |
+| diferença de temperatura $\Delta T$ | tensão $v$ |
+| resistência térmica $R_t = L/(kA)$ | resistência $R$ |
+
+E as regras de associação são **as mesmas**:
+
+$$
+\text{série: } R_{eq} = \sum R_i
+\qquad\qquad
+\text{paralelo: } \frac{1}{R_{eq}} = \sum \frac{1}{R_i}
+$$
+
+Quem já fez Circuitos Elétricos 1 não precisa aprender nada de novo aqui — é o mesmo cálculo com outras unidades.
+
+</Caixa>
+
+### A resistência de convecção
+
+A convecção também vira resistência, e é isso que permite montar o circuito completo da parede:
+
+$$
+q = h\,A\,\Delta T = \frac{\Delta T}{R_{conv}}
+\qquad\Longrightarrow\qquad
+\boxed{\;R_{conv} = \frac{1}{h\,A}\;}
+$$
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — parede com convecção nas duas faces">
+
+Uma parede de $L = 0{,}20\ \mathrm{m}$, $k = 0{,}70\ \mathrm{W/(mK)}$ e $A = 10\ \mathrm{m^2}$ separa ar interno a $20\ ^\circ\mathrm{C}$ ($h_i = 8\ \mathrm{W/(m^2K)}$) do externo a $35\ ^\circ\mathrm{C}$ ($h_e = 20\ \mathrm{W/(m^2K)}$). Qual o fluxo de calor?
+
+Três resistências **em série**:
+
+$$
+R_{conv,e} = \frac{1}{h_e A} = \frac{1}{20 \times 10} = 0{,}005\ \mathrm{K/W}
+$$
+
+$$
+R_{cond} = \frac{L}{k A} = \frac{0{,}20}{0{,}70 \times 10} = 0{,}0286\ \mathrm{K/W}
+$$
+
+$$
+R_{conv,i} = \frac{1}{h_i A} = \frac{1}{8 \times 10} = 0{,}0125\ \mathrm{K/W}
+$$
+
+$$
+R_{eq} = 0{,}005 + 0{,}0286 + 0{,}0125 = 0{,}0461\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{\Delta T}{R_{eq}} = \frac{35 - 20}{0{,}0461} = 325\ \mathrm{W}
+$$
+
+**O calor entra na casa** (de fora para dentro), porque o exterior está mais quente. E note qual resistência domina: a **condução** da parede, com 62 % do total — engrossar a parede ou usar material de $k$ menor é o que reduz a carga térmica.
 
 </Caixa>
 

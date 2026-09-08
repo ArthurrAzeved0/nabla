@@ -391,7 +391,11 @@
       "conducao": "ft-modos",
       "conveccao": "ft-modos",
       "radiacao": "ft-modos",
-      "modos-de-transferencia": "ft-modos"
+      "modos-de-transferencia": "ft-modos",
+      "lei-de-fourier": "ft-fourier",
+      "condutividade-termica": "ft-fourier",
+      "resistencia-termica": "ft-fourier",
+      "analogia-eletrica": "ft-fourier"
     }
   }
 ]
