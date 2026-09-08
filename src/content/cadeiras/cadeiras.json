@@ -331,7 +331,12 @@
       "flutuacao": "ft-empuxo",
       "peso-aparente": "ft-empuxo",
       "estabilidade": "ft-empuxo",
-      "metacentro": "ft-empuxo"
+      "metacentro": "ft-empuxo",
+      "regimes-de-escoamento": "ft-escoamentos",
+      "numero-de-reynolds": "ft-escoamentos",
+      "laminar-turbulento": "ft-escoamentos",
+      "linha-de-corrente": "ft-escoamentos",
+      "regime-permanente": "ft-escoamentos"
     }
   }
 ]

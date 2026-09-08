@@ -18,6 +18,10 @@ unidades:
       - { id: ft-forca-plana, titulo: "Força em superfície plana submersa e centro de pressão" }
       - { id: ft-forca-curva, titulo: "Força em superfície curva submersa" }
       - { id: ft-empuxo, titulo: "Empuxo e equilíbrio de corpos submersos" }
+  - nome: "Cinemática dos fluidos"
+    prova: 1ee
+    secoes:
+      - { id: ft-escoamentos, titulo: "Tipos e regimes de escoamento; número de Reynolds" }
 
 ---
 
@@ -978,6 +982,94 @@ Chamando $M$ o **metacentro** (o ponto onde a linha de ação do empuxo cruza o 
 - $M$ coincidindo com o $CG$ → equilíbrio indiferente.
 
 É por isso que navio leva lastro no fundo: abaixar o $CG$ é o que garante que ele volte à posição vertical.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-escoamentos" num="11" titulo="Tipos e regimes de escoamento; número de Reynolds">
+
+**A ideia.** Sai o repouso, entra o movimento. Antes de escrever qualquer equação para um fluido escoando é preciso **classificar** o escoamento, porque as hipóteses que você pode usar depois dependem dessa classificação. E o classificador mais importante da cadeira é um número adimensional que compara duas forças: **Reynolds**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v$ — velocidade média do escoamento, em $\mathrm{m/s}$;
+- $D$ — diâmetro interno do conduto, em $\mathrm{m}$;
+- $\rho$ — massa específica, em $\mathrm{kg/m^3}$;
+- $\mu$ — viscosidade dinâmica, em $\mathrm{Pa \cdot s}$;
+- $\nu = \mu/\rho$ — viscosidade cinemática, em $\mathrm{m^2/s}$;
+- $Re$ — **número de Reynolds**, **adimensional**.
+
+</Caixa>
+
+### As classificações que o enunciado usa
+
+<Caixa tipo="dica" rotulo="Quatro pares para arrumar a cabeça">
+
+- **permanente** ou **variado** — as propriedades num ponto **não** mudam com o tempo, ou mudam. A cadeira quase toda é permanente (e é o que "regime permanente" no enunciado quer dizer);
+- **uniforme** ou **não-uniforme** — a velocidade **não** muda de um ponto a outro ao longo do escoamento, ou muda;
+- **incompressível** ou **compressível** — $\rho$ constante ou não;
+- **laminar** ou **turbulento** — é o que Reynolds decide.
+
+</Caixa>
+
+### Trajetória e linha de corrente
+
+- **trajetória** — o caminho percorrido por **uma** partícula ao longo do tempo;
+- **linha de corrente** — a linha **tangente aos vetores velocidade** de várias partículas, num **mesmo instante**.
+
+<Caixa tipo="dica">
+
+Em **regime permanente** as duas coincidem — e é por isso que a distinção parece inútil na prática desta cadeira. Ela existe para o caso variado, e para a pergunta conceitual de prova: *linhas de corrente nunca se cruzam*, porque no ponto de cruzamento a velocidade teria duas direções ao mesmo tempo.
+
+</Caixa>
+
+### Laminar e turbulento: o experimento de Reynolds
+
+Injetando corante num tubo de vidro com água escoando:
+
+- em velocidade baixa, o filete de corante segue **reto**, sem se misturar — as partículas escoam em camadas paralelas. É o **laminar**;
+- aumentando a velocidade, o filete começa a oscilar e depois se **dissolve** por toda a seção. É o **turbulento**, com movimento errático e mistura intensa.
+
+$$
+\boxed{\;Re = \frac{\rho\,v\,D}{\mu} = \frac{v\,D}{\nu}\;}
+$$
+
+<Caixa tipo="macete" rotulo="Os limites para conduto circular">
+
+$$
+Re < 2000 \;\rightarrow\; \textbf{laminar}
+\qquad
+2000 < Re < 4000 \;\rightarrow\; \textbf{transição}
+\qquad
+Re > 4000 \;\rightarrow\; \textbf{turbulento}
+$$
+
+Alguns livros usam $2300$ como o limite crítico único. **Use o valor que o enunciado ou o professor der** — o que não muda é a leitura: Reynolds é a razão entre as **forças de inércia** e as **forças viscosas**.
+
+$Re$ pequeno significa viscosidade dominando (o fluido "se organiza"); $Re$ grande significa inércia dominando (o fluido "se atropela").
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Reynolds é adimensional — e isso se confere">
+
+$$
+[Re] = \frac{(\mathrm{kg/m^3})(\mathrm{m/s})(\mathrm{m})}{\mathrm{Pa \cdot s}} = \frac{\mathrm{kg/(m \cdot s)}}{\mathrm{kg/(m \cdot s)}} = 1
+$$
+
+Se a sua conta de $Re$ sair com unidade, há erro — normalmente $\mathrm{mm}$ que não virou $\mathrm{m}$, ou $\nu$ trocado por $\mu$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — classificar o escoamento">
+
+Água ($\nu = 10^{-6}\ \mathrm{m^2/s}$) escoa a $2\ \mathrm{m/s}$ num tubo de $50\ \mathrm{mm}$ de diâmetro. Laminar ou turbulento?
+
+$$
+Re = \frac{v\,D}{\nu} = \frac{2 \times 0{,}050}{10^{-6}} = 100\,000
+$$
+
+$Re \gg 4000$: **turbulento**. E é o caso da esmagadora maioria dos escoamentos de água em tubulação real — laminar aparece em óleo viscoso, tubo capilar ou velocidade muito baixa.
 
 </Caixa>
 
