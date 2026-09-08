@@ -38,6 +38,10 @@ unidades:
       - { id: ft-dimensional, titulo: "Análise dimensional, números adimensionais e o teorema dos π" }
       - { id: ft-semelhanca, titulo: "Semelhança e teoria dos modelos" }
       - { id: ft-navier, titulo: "Análise diferencial: Navier-Stokes e aplicações" }
+  - nome: "Transferência de calor e de massa"
+    prova: 2ee
+    secoes:
+      - { id: ft-modos, titulo: "Os três modos de transferência de calor" }
 
 ---
 
@@ -2065,6 +2069,103 @@ Raramente se pede resolver Navier-Stokes. O que cai é:
 2. **simplificar** a equação para um caso dado, justificando quais termos se anulam e por quê;
 3. **verificar** se um campo de velocidades satisfaz a continuidade ($\nabla \cdot \vec{v} = 0$);
 4. explicar a diferença entre aceleração **local** e **convectiva**.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-modos" num="22" titulo="Os três modos de transferência de calor">
+
+**A ideia.** A cadeira muda de assunto, mas não de estrutura: transporte de **calor** obedece à mesma lógica do transporte de quantidade de movimento — um fluxo proporcional a um gradiente. Calor é energia em trânsito **por diferença de temperatura**, e há exatamente três mecanismos para ele viajar. Identificar qual está em jogo é o primeiro passo de qualquer questão desta unidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $q$ — **fluxo de calor** (taxa de transferência), em watts ($\mathrm{W}$);
+- $q''$ — **densidade de fluxo de calor**, em $\mathrm{W/m^2}$: calor por unidade de tempo **e** de área;
+- $k$ — **condutividade térmica** do material, em $\mathrm{W/(m \cdot K)}$;
+- $h$ — **coeficiente de convecção**, em $\mathrm{W/(m^2 \cdot K)}$;
+- $\varepsilon$ — **emissividade** da superfície, adimensional ($0 \le \varepsilon \le 1$);
+- $\sigma = 5{,}67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)}$ — constante de Stefan-Boltzmann.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Fluxo e densidade de fluxo — não confunda">
+
+$$
+q = q''\,A
+$$
+
+O enunciado alterna entre os dois: "**taxa** de transferência" ou "**fluxo de calor**" costuma ser $q$, em $\mathrm{W}$; "**densidade** de fluxo" ou "fluxo **por unidade de área**" é $q''$, em $\mathrm{W/m^2}$. Ler errado erra o resultado pela área.
+
+</Caixa>
+
+### Condução
+
+Transferência **dentro** de um sólido ou de um fluido **estacionário**, por contato direto — a energia passa de molécula a molécula, sem que a matéria se desloque.
+
+$$
+q''_x = -k\,\frac{\partial T}{\partial x}
+\qquad\qquad
+q_x = -k\,A\,\frac{\partial T}{\partial x}
+$$
+
+Esta é a **lei de Fourier**, e a próxima seção a desenvolve.
+
+<Caixa tipo="dica" rotulo="O sinal negativo não é decoração">
+
+O calor flui do **quente para o frio**, isto é, no sentido **contrário** ao gradiente de temperatura. Se $T$ cresce com $x$, então $\partial T/\partial x > 0$ e o calor vai no sentido $-x$: daí o sinal. Em prova, o sinal negativo dá o **sentido**; o módulo dá a intensidade.
+
+</Caixa>
+
+### Convecção
+
+Transferência entre uma superfície e um **fluido em movimento**. Aqui a matéria se desloca e carrega energia com ela.
+
+$$
+\boxed{\;q = h\,A\,(T_s - T_\infty)\;}
+$$
+
+com $T_s$ a temperatura da superfície e $T_\infty$ a do fluido longe dela (**lei do resfriamento de Newton**).
+
+<Caixa tipo="dica">
+
+Dois tipos:
+
+- **natural** (ou livre) — o movimento nasce da própria diferença de densidade causada pelo aquecimento. $h$ é baixo, tipicamente $2$ a $25\ \mathrm{W/(m^2K)}$ para gases;
+- **forçada** — há um agente externo (ventilador, bomba). $h$ é muito maior, $25$ a $250$ para gases e até $20\,000$ para água em ebulição.
+
+É por isso que soprar a comida esfria mais rápido: você troca convecção natural por forçada.
+
+</Caixa>
+
+### Radiação
+
+Transferência por **ondas eletromagnéticas**, emitidas por qualquer corpo com temperatura acima do zero absoluto. **Não precisa de meio material** — é assim que o calor do Sol chega à Terra.
+
+$$
+q = \varepsilon\,\sigma\,A\,(T_s^4 - T_{viz}^4)
+$$
+
+<Caixa tipo="macete" rotulo="A quarta potência, e a temperatura em KELVIN">
+
+Duas armadilhas nesta fórmula:
+
+1. a dependência é com $T^4$ — dobrar a temperatura absoluta multiplica a emissão por **16**. Por isso radiação é desprezível em temperatura ambiente e dominante em fornos e chamas;
+2. **a temperatura tem de estar em kelvin**, sempre. Usar Celsius numa quarta potência não é aproximação, é erro grosseiro: $(300)^4$ e $(27)^4$ diferem por um fator de mais de 15 mil.
+
+Note que na **condução** e na **convecção** aparece apenas a *diferença* de temperatura, e aí $\Delta T$ em Celsius e em kelvin **é o mesmo número**. Só na radiação a escala importa.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — identificar os modos numa parede">
+
+Uma parede de tijolo separa o interior de uma casa a $22\ ^\circ\mathrm{C}$ do ar externo a $35\ ^\circ\mathrm{C}$, sob sol.
+
+- do ar externo **para** a superfície externa: **convecção** (e **radiação** solar sobre ela);
+- **através** do tijolo: **condução**;
+- da superfície interna **para** o ar interno: **convecção**.
+
+Em série, os três mecanismos formam um circuito térmico — e a próxima seção mostra como somar as resistências, exatamente como se faz com resistores.
 
 </Caixa>
 

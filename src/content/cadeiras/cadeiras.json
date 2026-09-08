@@ -386,7 +386,12 @@
       "analise-diferencial": "ft-navier",
       "derivada-material": "ft-navier",
       "continuidade-diferencial": "ft-navier",
-      "equacao-de-euler": "ft-navier"
+      "equacao-de-euler": "ft-navier",
+      "transferencia-de-calor": "ft-modos",
+      "conducao": "ft-modos",
+      "conveccao": "ft-modos",
+      "radiacao": "ft-modos",
+      "modos-de-transferencia": "ft-modos"
     }
   }
 ]
