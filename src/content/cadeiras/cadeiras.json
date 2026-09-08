@@ -325,7 +325,13 @@
       "comporta": "ft-forca-plana",
       "forca-superficie-curva": "ft-forca-curva",
       "area-projetada": "ft-forca-curva",
-      "volume-virtual": "ft-forca-curva"
+      "volume-virtual": "ft-forca-curva",
+      "empuxo": "ft-empuxo",
+      "arquimedes": "ft-empuxo",
+      "flutuacao": "ft-empuxo",
+      "peso-aparente": "ft-empuxo",
+      "estabilidade": "ft-empuxo",
+      "metacentro": "ft-empuxo"
     }
   }
 ]

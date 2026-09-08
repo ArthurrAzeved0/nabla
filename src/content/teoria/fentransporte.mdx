@@ -17,6 +17,7 @@ unidades:
       - { id: ft-manometros, titulo: "Manômetros e a equação manométrica" }
       - { id: ft-forca-plana, titulo: "Força em superfície plana submersa e centro de pressão" }
       - { id: ft-forca-curva, titulo: "Força em superfície curva submersa" }
+      - { id: ft-empuxo, titulo: "Empuxo e equilíbrio de corpos submersos" }
 
 ---
 
@@ -874,6 +875,109 @@ $$
 2. **projete** num plano vertical → $F_H = \gamma \bar{h} A_{proj}$;
 3. **identifique o volume** (real ou virtual) até a superfície livre → $F_V = \gamma V$;
 4. **componha** com Pitágoras e ache o ângulo.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-empuxo" num="10" titulo="Empuxo e equilíbrio de corpos submersos">
+
+**A ideia.** Empuxo não é uma força nova: é o **resultado líquido** das pressões que o fluido faz na superfície do corpo. Como a pressão cresce com a profundidade, o empurrão de baixo vence o de cima, e sobra uma força para cima. O princípio de Arquimedes é essa conta já resolvida — e ela depende **só do volume deslocado**, não do que há dentro do corpo.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $E$ — **empuxo**, em $\mathrm{N}$;
+- $\gamma_f$ — peso específico do **fluido**, em $\mathrm{N/m^3}$;
+- $V_{des}$ — **volume deslocado**: o volume da parte **submersa** do corpo, em $\mathrm{m^3}$;
+- $G = \gamma_c V_c$ — **peso** do corpo, com $\gamma_c$ o peso específico do corpo;
+- $C$ — **centro de carena**: o centroide do volume deslocado, onde $E$ age.
+
+</Caixa>
+
+### O princípio de Arquimedes
+
+$$
+\boxed{\;E = \gamma_f\,V_{des}\;}
+$$
+
+> Todo corpo imerso num fluido sofre uma força vertical para cima igual ao **peso do fluido deslocado**.
+
+<Caixa tipo="macete" rotulo="Os dois volumes que não são o mesmo">
+
+$V_{des}$ é o volume **submerso**, não o volume do corpo. Eles coincidem só quando o corpo está **totalmente** imerso.
+
+- corpo **totalmente submerso** → $V_{des} = V_c$;
+- corpo **flutuando** → $V_{des} < V_c$, e é justamente a fração submersa que o equilíbrio determina.
+
+Trocar um pelo outro é o erro que mais aparece em prova de empuxo.
+
+</Caixa>
+
+### As três situações
+
+Comparando empuxo com peso, para um corpo **totalmente** imerso:
+
+- $E > G$ (isto é, $\gamma_f > \gamma_c$) → o corpo **sobe** e passa a flutuar;
+- $E = G$ ($\gamma_f = \gamma_c$) → **equilíbrio indiferente**: fica onde for colocado;
+- $E < G$ ($\gamma_f < \gamma_c$) → o corpo **afunda**.
+
+<Caixa tipo="dica" rotulo="A condição de flutuação, e de onde vem a fração submersa">
+
+Um corpo flutuando está em equilíbrio, então $E = G$:
+
+$$
+\gamma_f\,V_{des} = \gamma_c\,V_c
+\qquad\Longrightarrow\qquad
+\boxed{\;\frac{V_{des}}{V_c} = \frac{\gamma_c}{\gamma_f} = \frac{d_c}{d_f}\;}
+$$
+
+**A fração submersa é a razão das densidades.** Um gelo com $d = 0{,}92$ na água tem 92 % do volume submerso — e é daí que vem a imagem do iceberg com um décimo à vista.
+
+</Caixa>
+
+### Peso aparente
+
+Um corpo pendurado numa balança dentro do fluido "pesa" menos:
+
+$$
+G_{ap} = G - E
+$$
+
+É a leitura da balança, e é uma das formas favoritas de o enunciado dar o empuxo sem dizer o nome dele.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o bloco que flutua">
+
+Um bloco de madeira de $0{,}50\ \mathrm{m^3}$ e $d_c = 0{,}70$ flutua em água ($\gamma_f = 10\,000\ \mathrm{N/m^3}$). Que volume fica submerso, e qual o empuxo?
+
+Pela condição de flutuação:
+
+$$
+\frac{V_{des}}{V_c} = \frac{d_c}{d_f} = \frac{0{,}70}{1{,}0} = 0{,}70
+\qquad\Longrightarrow\qquad
+V_{des} = 0{,}70 \times 0{,}50 = 0{,}35\ \mathrm{m^3}
+$$
+
+$$
+E = \gamma_f\,V_{des} = 10\,000 \times 0{,}35 = 3500\ \mathrm{N}
+$$
+
+**Conferência:** o peso do bloco é $G = \gamma_c V_c = 7000 \times 0{,}50 = 3500\ \mathrm{N}$. Igual ao empuxo, como o equilíbrio exige.
+
+</Caixa>
+
+### Estabilidade: onde agem as duas forças
+
+O peso age no **centro de gravidade** ($CG$) do corpo; o empuxo age no **centro de carena** ($C$), que é o centroide da **parte submersa**. Quando o corpo inclina, a parte submersa muda de forma e $C$ **se desloca** — o $CG$ não.
+
+<Caixa tipo="macete" rotulo="O critério do metacentro">
+
+Chamando $M$ o **metacentro** (o ponto onde a linha de ação do empuxo cruza o eixo de simetria do corpo inclinado):
+
+- $M$ **acima** do $CG$ → o par peso–empuxo cria um momento que **desfaz** a inclinação: **estável**;
+- $M$ **abaixo** do $CG$ → o momento **aumenta** a inclinação: **instável**, o corpo tomba;
+- $M$ coincidindo com o $CG$ → equilíbrio indiferente.
+
+É por isso que navio leva lastro no fundo: abaixar o $CG$ é o que garante que ele volte à posição vertical.
 
 </Caixa>
 
