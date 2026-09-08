@@ -355,7 +355,14 @@
       "turbina": "ft-maquina",
       "potencia-da-bomba": "ft-maquina",
       "rendimento": "ft-maquina",
-      "altura-manometrica": "ft-maquina"
+      "altura-manometrica": "ft-maquina",
+      "perda-de-carga": "ft-perdas",
+      "perda-de-carga-distribuida": "ft-perdas",
+      "darcy-weisbach": "ft-perdas",
+      "fator-de-atrito": "ft-perdas",
+      "diagrama-de-moody": "ft-perdas",
+      "hazen-williams": "ft-perdas",
+      "condutos-forcados": "ft-perdas"
     }
   }
 ]

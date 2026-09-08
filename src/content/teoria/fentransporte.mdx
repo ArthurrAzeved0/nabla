@@ -29,6 +29,7 @@ unidades:
     secoes:
       - { id: ft-bernoulli, titulo: "Equação de Bernoulli, carga total e o tubo de Venturi" }
       - { id: ft-maquina, titulo: "Equação da energia com máquina: bombas e turbinas" }
+      - { id: ft-perdas, titulo: "Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody" }
 
 ---
 
@@ -1464,6 +1465,105 @@ N = \frac{3200}{735{,}5} = 4{,}35\ \mathrm{CV}
 $$
 
 **Leitura:** dos $24\ \mathrm{m}$ de carga, $20$ são o desnível que precisava ser vencido e $4$ foram desperdiçados no atrito. Se a tubulação fosse mais larga, a perda cairia e a bomba seria menor — é esse o compromisso de todo projeto hidráulico.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-perdas" num="16" titulo="Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody">
+
+**A ideia.** O termo $H_p$ da seção anterior apareceu como um número dado. Aqui ele é **calculado**. A perda de carga tem duas origens: o atrito ao longo do tubo reto (**distribuída**) e as singularidades como curvas e válvulas (**localizada**, próxima seção). A distribuída é governada por uma fórmula única, e a dificuldade toda está em achar **um** coeficiente: o fator de atrito.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $H_f$ — **perda de carga distribuída**, em $\mathrm{m}$;
+- $f$ — **fator de atrito**, adimensional;
+- $L$ — comprimento do trecho reto, em $\mathrm{m}$;
+- $D$ — diâmetro interno, em $\mathrm{m}$;
+- $v$ — velocidade média, em $\mathrm{m/s}$;
+- $\varepsilon$ — **rugosidade absoluta** da parede, em $\mathrm{m}$;
+- $\varepsilon/D$ — **rugosidade relativa**, adimensional.
+
+</Caixa>
+
+### A fórmula universal
+
+$$
+\boxed{\;H_f = f\,\frac{L}{D}\,\frac{v^2}{2g}\;}
+$$
+
+<Caixa tipo="dica" rotulo="O que a fórmula diz antes de qualquer conta">
+
+- a perda é **proporcional ao comprimento** — dobrar o tubo dobra a perda;
+- é **proporcional ao quadrado da velocidade** — dobrar a vazão **quadruplica** a perda;
+- é **inversamente proporcional ao diâmetro**, e o efeito é ainda mais forte do que parece: se $D$ dobra, $v$ cai a um quarto (continuidade), então $H_f$ cai por um fator $2 \times 16 = 32$.
+
+É por isso que engrossar o tubo é o remédio mais eficaz contra perda de carga — e o mais caro.
+
+</Caixa>
+
+### Como achar $f$
+
+<Caixa tipo="macete" rotulo="Laminar tem fórmula exata; turbulento precisa de Moody">
+
+**Se $Re < 2000$ (laminar):**
+
+$$
+f = \frac{64}{Re}
+$$
+
+Substituindo na fórmula universal, chega-se à equação de **Hagen-Poiseuille**, em que a perda é proporcional à **primeira** potência da velocidade:
+
+$$
+H_f = \frac{32\,\mu\,L\,v}{\gamma\,D^2}
+$$
+
+**Se $Re > 4000$ (turbulento):** $f$ depende de $Re$ **e** da rugosidade relativa $\varepsilon/D$, e se obtém no **diagrama de Moody** — ou pela equação de Colebrook-White, que é implícita em $f$:
+
+$$
+\frac{1}{\sqrt{f}} = -2\log\left(\frac{\varepsilon/D}{3{,}7} + \frac{2{,}51}{Re\sqrt{f}}\right)
+$$
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Como ler o diagrama de Moody">
+
+1. calcule $Re$ (entra no **eixo horizontal**);
+2. calcule $\varepsilon/D$ (escolhe a **curva**);
+3. leia $f$ no **eixo vertical**, no cruzamento.
+
+Duas regiões valem nome:
+
+- **tubo liso** — a curva de baixo; $f$ depende só de $Re$;
+- **turbulência completa** — à direita, as curvas ficam **horizontais**: $f$ depende só de $\varepsilon/D$ e **não** muda mais com $Re$. Se o seu $Re$ é muito alto, nem precisa de precisão nele.
+
+</Caixa>
+
+### A fórmula de Hazen-Williams
+
+Em hidráulica de água a fórmula empírica de Hazen-Williams aparece com frequência (é a preferida em projeto de redes):
+
+$$
+H_f = 10{,}65\,\frac{Q^{1,85}}{C^{1,85}\,D^{4,87}}\,L
+$$
+
+com $C$ o coeficiente de Hazen-Williams (depende do material: $\approx 130$ para PVC, $\approx 100$ para ferro fundido usado). **Só vale para água** em regime turbulento — não é universal como Darcy.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — perda num trecho reto">
+
+Água ($\nu = 10^{-6}\ \mathrm{m^2/s}$) escoa a $2\ \mathrm{m/s}$ por $500\ \mathrm{m}$ de tubo de $100\ \mathrm{mm}$, com $f = 0{,}02$. Qual a perda de carga?
+
+$$
+H_f = f\,\frac{L}{D}\,\frac{v^2}{2g} = 0{,}02 \times \frac{500}{0{,}100} \times \frac{2^2}{2 \times 10}
+$$
+
+$$
+H_f = 0{,}02 \times 5000 \times 0{,}2 = 20\ \mathrm{m}
+$$
+
+**Vinte metros de coluna de água perdidos só em atrito** — é mais que o desnível de muitas instalações, e mostra por que a perda de carga não é um detalhe do projeto: é o projeto.
+
+Conferindo o regime: $Re = 2 \times 0{,}1/10^{-6} = 2 \times 10^5$, turbulento, coerente com $f$ dado em vez de calculado.
 
 </Caixa>
 
