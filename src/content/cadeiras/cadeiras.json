@@ -376,7 +376,12 @@
       "buckingham": "ft-dimensional",
       "numeros-adimensionais": "ft-dimensional",
       "equacoes-dimensionais": "ft-dimensional",
-      "froude": "ft-dimensional"
+      "froude": "ft-dimensional",
+      "semelhanca": "ft-semelhanca",
+      "teoria-dos-modelos": "ft-semelhanca",
+      "escala-geometrica": "ft-semelhanca",
+      "semelhanca-dinamica": "ft-semelhanca",
+      "efeito-de-escala": "ft-semelhanca"
     }
   }
 ]

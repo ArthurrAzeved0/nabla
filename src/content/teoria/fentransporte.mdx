@@ -36,6 +36,7 @@ unidades:
     secoes:
       - { id: ft-qmov, titulo: "Equação da quantidade de movimento para regime permanente" }
       - { id: ft-dimensional, titulo: "Análise dimensional, números adimensionais e o teorema dos π" }
+      - { id: ft-semelhanca, titulo: "Semelhança e teoria dos modelos" }
 
 ---
 
@@ -1876,6 +1877,103 @@ Qual domina o problema decide qual deve ser igualado no ensaio de modelo:
 - escoamento com **superfície livre** (canal, vertedouro, navio) → **Froude**;
 - escoamento com **alta velocidade** de gás → **Mach**;
 - gotas, bolhas, jatos finos → **Weber**.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-semelhanca" num="20" titulo="Semelhança e teoria dos modelos">
+
+**A ideia.** Ninguém constrói uma barragem para descobrir se ela funciona. Constrói-se um **modelo** reduzido, ensaia-se, e transfere-se o resultado para o **protótipo**. A teoria dos modelos é o conjunto de regras que garante que essa transferência é legítima — e a regra central é: **os adimensionais relevantes têm de ser iguais nos dois**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- índice $m$ — **modelo** (o que se constrói e ensaia);
+- índice $p$ — **protótipo** (a obra real);
+- $\lambda = \dfrac{L_m}{L_p}$ — **escala geométrica** (razão de comprimentos);
+- $Re, Fr$ — os adimensionais a igualar.
+
+</Caixa>
+
+### Os três níveis de semelhança
+
+<Caixa tipo="dica">
+
+Para o ensaio valer, é preciso ter, nesta ordem:
+
+1. **semelhança geométrica** — mesma forma, todas as dimensões na mesma escala $\lambda$;
+2. **semelhança cinemática** — velocidades homólogas na mesma razão, campos de escoamento com a mesma forma;
+3. **semelhança dinâmica** — forças homólogas na mesma razão. É esta que exige igualar os adimensionais.
+
+Geométrica é condição para a cinemática, que é condição para a dinâmica. Falhar na primeira invalida tudo.
+
+</Caixa>
+
+### A condição de projeto
+
+$$
+\boxed{\;\pi_{i,m} = \pi_{i,p}\;}
+$$
+
+para cada adimensional relevante. Na prática, iguala-se **o que domina** o fenômeno:
+
+$$
+Re_m = Re_p
+\qquad\text{(escoamento confinado, viscosidade dominante)}
+$$
+
+$$
+Fr_m = Fr_p
+\qquad\text{(superfície livre, gravidade dominante)}
+$$
+
+<Caixa tipo="macete" rotulo="Semelhança de Froude — a que cai em hidráulica">
+
+Igualando $Fr$ e usando o mesmo fluido e a mesma gravidade:
+
+$$
+\frac{v_m}{\sqrt{g L_m}} = \frac{v_p}{\sqrt{g L_p}}
+\qquad\Longrightarrow\qquad
+\frac{v_m}{v_p} = \sqrt{\lambda}
+$$
+
+E daí saem as escalas derivadas, que a prova pede:
+
+$$
+\frac{Q_m}{Q_p} = \lambda^{5/2}
+\qquad\qquad
+\frac{t_m}{t_p} = \sqrt{\lambda}
+\qquad\qquad
+\frac{F_m}{F_p} = \lambda^{3}
+$$
+
+**Como lembrar:** $Q = vA$, então a escala de vazão é $\sqrt{\lambda} \times \lambda^2 = \lambda^{5/2}$. Vale mais deduzir do que decorar.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — modelo de vertedouro 1:25">
+
+Um vertedouro é ensaiado em escala $1{:}25$ ($\lambda = 1/25$). No modelo mediu-se $Q_m = 60\ \mathrm{L/s}$. Qual a vazão do protótipo?
+
+Superfície livre → **Froude**:
+
+$$
+\frac{Q_m}{Q_p} = \lambda^{5/2} = \left(\frac{1}{25}\right)^{5/2} = \frac{1}{3125}
+$$
+
+$$
+Q_p = 60 \times 3125 = 187\,500\ \mathrm{L/s} = 187{,}5\ \mathrm{m^3/s}
+$$
+
+E o tempo: um evento que no modelo durou $10\ \mathrm{s}$ corresponde a $10 \times \sqrt{25} = 50\ \mathrm{s}$ na obra. **O modelo é mais rápido que a realidade** — é por isso que ensaio de maré em modelo reduzido comprime dias em horas.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Por que não se consegue igualar tudo">
+
+Igualar $Re$ **e** $Fr$ ao mesmo tempo, com o mesmo fluido, é impossível: $Re$ pede $v_m/v_p = 1/\lambda$ e $Fr$ pede $v_m/v_p = \sqrt{\lambda}$ — só coincidem se $\lambda = 1$, ou seja, se o modelo for do tamanho da obra.
+
+A saída prática é o **efeito de escala**: iguala-se o adimensional dominante, aceita-se o erro no outro e corrige-se por coeficiente empírico. Reconhecer essa limitação é uma pergunta conceitual frequente.
 
 </Caixa>
 
