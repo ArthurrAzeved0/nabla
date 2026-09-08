@@ -310,6 +310,7 @@ disciplinas:
     categoria: basico
     pre: []
     co: [ONDTERM, EQDIF]
+    cadeira: fentransporte
   - id: MODEL
     codigo: ELET0119
     nome: Modelagem e Análise de Sistemas

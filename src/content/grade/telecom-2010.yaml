@@ -220,6 +220,7 @@ disciplinas:
     categoria: basico
     pre: [MAT03]
     co: [FIS04]
+    cadeira: fentransporte
   - id: FIS04
     codigo: FIS04
     nome: Física 3

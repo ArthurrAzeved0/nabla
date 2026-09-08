@@ -259,6 +259,8 @@ disciplinas:
     categoria: basico
     pre: [MATM0020]
     co: []
+    nota: "O conteúdo de fluidos é o mesmo; a transferência de calor, que em Fenômenos de Transporte vem na 2ª unidade, aqui é a cadeira Transmissão de Calor, do 6º período."
+    cadeira: fentransporte
   - id: PRBE0002
     codigo: PRBE0002
     nome: Probabilidade e Estatística

@@ -288,6 +288,7 @@ disciplinas:
     categoria: basico
     pre: [FUNDMEC, CALCVET]
     co: [EQDIF, ONDTERM]
+    cadeira: fentransporte
   - id: ELMAG1
     codigo: ELET0030
     nome: Eletromagnetismo 1
