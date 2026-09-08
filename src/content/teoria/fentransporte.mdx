@@ -6,6 +6,7 @@ unidades:
     prova: 1ee
     secoes:
       - { id: ft-fluido, titulo: "O que é um fluido: aderência, cisalhamento e a lei de Newton da viscosidade" }
+      - { id: ft-propriedades, titulo: "Massa específica, peso específico, densidade relativa e volume específico" }
 
 ---
 
@@ -130,6 +131,98 @@ $$
 <Caixa tipo="macete" rotulo="O sinal e o sentido da tensão">
 
 A tensão que o fluido exerce **na placa** é oposta ao movimento dela (é resistência). A que a placa exerce **no fluido** aponta no sentido do movimento. Em prova, o que se pede quase sempre é o módulo da força necessária para **manter** a placa em movimento uniforme — que é exatamente $F_t = \tau A$, porque em movimento uniforme a resultante é nula.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-propriedades" num="02" titulo="Massa específica, peso específico, densidade relativa e volume específico">
+
+**A ideia.** Quatro grandezas que descrevem "quanto de matéria" há num volume de fluido — e que os enunciados usam de forma intercambiável, de propósito. A prova raramente dá a que você quer: ela dá a densidade relativa e cobra o peso específico, ou dá a viscosidade cinemática e cobra a dinâmica. Saber converter entre elas de cabeça vale mais que decorar as definições.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\rho = \dfrac{m}{V}$ — **massa específica** (ou densidade absoluta), em $\mathrm{kg/m^3}$;
+- $\gamma = \dfrac{G}{V}$ — **peso específico**, em $\mathrm{N/m^3}$, onde $G = mg$ é o **peso**;
+- $d = \dfrac{\rho}{\rho_{ref}}$ — **densidade relativa**, **adimensional**;
+- $v_s = \dfrac{1}{\rho}$ — **volume específico**, em $\mathrm{m^3/kg}$.
+
+</Caixa>
+
+### A ponte entre $\rho$ e $\gamma$
+
+É a única relação que precisa ser memorizada, e sai direto de $G = mg$:
+
+$$
+\gamma = \frac{G}{V} = \frac{m\,g}{V}
+\qquad\Longrightarrow\qquad
+\boxed{\;\gamma = \rho\,g\;}
+$$
+
+<Caixa tipo="dica" rotulo="Os números da água, que aparecem em toda prova">
+
+$$
+\rho_{\text{água}} = 1000\ \mathrm{kg/m^3}
+\qquad\qquad
+\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}
+$$
+
+O segundo valor usa $g = 10\ \mathrm{m/s^2}$, que é o que os enunciados desta cadeira adotam. Com $g = 9{,}81$, seria $9810\ \mathrm{N/m^3}$ — **use o $g$ que o enunciado der**, e não o que você decorou.
+
+</Caixa>
+
+### Densidade relativa: o número sem unidade
+
+Densidade relativa compara o fluido com uma **referência** — água a $4\ ^\circ\mathrm{C}$ para líquidos:
+
+$$
+d = \frac{\rho}{\rho_{\text{água}}} = \frac{\gamma}{\gamma_{\text{água}}}
+$$
+
+As duas razões dão o mesmo número, porque o $g$ cancela. É por isso que o enunciado pode dizer "densidade relativa" ou "peso específico relativo" e estar falando da **mesma** grandeza.
+
+<Caixa tipo="macete">
+
+**Densidade relativa é um fator de multiplicação.** Se o enunciado diz $d = 0{,}8$ para um óleo, então
+
+$$
+\gamma_{\text{óleo}} = 0{,}8 \times \gamma_{\text{água}} = 0{,}8 \times 10\,000 = 8000\ \mathrm{N/m^3}
+$$
+
+E o mercúrio, que aparece em toda questão de manometria, tem $d = 13{,}6$:
+
+$$
+\gamma_{Hg} = 13{,}6 \times 10\,000 = 136\,000\ \mathrm{N/m^3}
+$$
+
+Esse $136\,000$ vai aparecer tantas vezes na cadeira que vale reconhecê-lo de imediato.
+
+</Caixa>
+
+### Compressível ou incompressível
+
+A classificação que decide quais equações você pode usar:
+
+- **incompressível** — $\rho$ não muda com a pressão. É a hipótese para **líquidos** e para a cadeira quase inteira;
+- **compressível** — $\rho$ muda com a pressão. É o caso dos **gases**, e só entra em problemas específicos.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o pulo entre as quatro grandezas">
+
+Um óleo tem densidade relativa $d = 0{,}83$. Com $g = 10\ \mathrm{m/s^2}$, ache $\rho$, $\gamma$ e $v_s$.
+
+$$
+\rho = d \cdot \rho_{\text{água}} = 0{,}83 \times 1000 = 830\ \mathrm{kg/m^3}
+$$
+
+$$
+\gamma = \rho\,g = 830 \times 10 = 8300\ \mathrm{N/m^3}
+$$
+
+$$
+v_s = \frac{1}{\rho} = \frac{1}{830} = 1{,}20 \times 10^{-3}\ \mathrm{m^3/kg}
+$$
+
+Repare que $\gamma$ também sairia de $d \cdot \gamma_{\text{água}} = 0{,}83 \times 10\,000$ — dá o mesmo, e é um caminho mais curto.
 
 </Caixa>
 

@@ -288,7 +288,12 @@
       "aderencia": "ft-fluido",
       "tensao-de-cisalhamento": "ft-fluido",
       "lei-de-newton-da-viscosidade": "ft-fluido",
-      "gradiente-de-velocidade": "ft-fluido"
+      "gradiente-de-velocidade": "ft-fluido",
+      "massa-especifica": "ft-propriedades",
+      "peso-especifico": "ft-propriedades",
+      "densidade-relativa": "ft-propriedades",
+      "volume-especifico": "ft-propriedades",
+      "propriedades-dos-fluidos": "ft-propriedades"
     }
   }
 ]
