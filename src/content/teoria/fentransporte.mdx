@@ -23,6 +23,7 @@ unidades:
     secoes:
       - { id: ft-escoamentos, titulo: "Tipos e regimes de escoamento; número de Reynolds" }
       - { id: ft-vazao, titulo: "Vazão volumétrica, vazão mássica e velocidade média" }
+      - { id: ft-continuidade, titulo: "Equação da continuidade para regime permanente" }
 
 ---
 
@@ -1169,6 +1170,89 @@ Q_m = \rho\,Q = 1000 \times 2{,}356 \times 10^{-2} = 23{,}6\ \mathrm{kg/s}
 $$
 
 **Coincidência útil:** para água, o número em $\mathrm{L/s}$ é igual ao número em $\mathrm{kg/s}$, porque $\rho = 1\ \mathrm{kg/L}$. Serve de conferência rápida.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-continuidade" num="13" titulo="Equação da continuidade para regime permanente">
+
+**A ideia.** É a conservação da massa escrita para um escoamento. A frase é banal — *o que entra tem de sair* —, mas a consequência não é: se o tubo estreita, o fluido **acelera**. É esse aumento de velocidade que, na próxima unidade, vai fazer a pressão cair (Bernoulli) e explicar o funcionamento de um Venturi.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\rho_1, \rho_2$ — massas específicas nas seções (1) e (2);
+- $v_1, v_2$ — velocidades médias nas seções, em $\mathrm{m/s}$;
+- $A_1, A_2$ — áreas das seções, em $\mathrm{m^2}$;
+- $Q$ — vazão volumétrica, em $\mathrm{m^3/s}$.
+
+</Caixa>
+
+### A forma geral e a que se usa
+
+Em **regime permanente**, a massa que entra por unidade de tempo iguala a que sai:
+
+$$
+\rho_1\,v_1\,A_1 = \rho_2\,v_2\,A_2
+\qquad\Longleftrightarrow\qquad
+Q_{m1} = Q_{m2}
+$$
+
+Para fluido **incompressível** ($\rho_1 = \rho_2$), o $\rho$ cancela:
+
+$$
+\boxed{\;v_1\,A_1 = v_2\,A_2 = Q = \text{constante}\;}
+$$
+
+<Caixa tipo="macete" rotulo="A leitura que resolve a questão">
+
+$$
+\frac{v_2}{v_1} = \frac{A_1}{A_2} = \left(\frac{D_1}{D_2}\right)^2
+$$
+
+**A velocidade varia com o inverso da área — e com o inverso do quadrado do diâmetro.** Metade do diâmetro significa **quatro vezes** a velocidade, não o dobro. Essa potência 2 é a origem de metade dos erros em questões de Venturi e de redução de tubo.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Quando há mais de uma entrada ou saída">
+
+Numa junção (um "tê", uma bifurcação), a conservação vira soma:
+
+$$
+\sum Q_{\text{entra}} = \sum Q_{\text{saem}}
+$$
+
+Ou seja: $Q_1 = Q_2 + Q_3$ para um tubo que se divide em dois. Com $\rho$ variável, a mesma soma vale para $Q_m$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a redução de diâmetro">
+
+Água escoa por um tubo que reduz de $D_1 = 100\ \mathrm{mm}$ para $D_2 = 50\ \mathrm{mm}$. Se $v_1 = 2\ \mathrm{m/s}$, qual $v_2$?
+
+Pela razão dos quadrados dos diâmetros:
+
+$$
+v_2 = v_1\left(\frac{D_1}{D_2}\right)^2 = 2 \times \left(\frac{100}{50}\right)^2 = 2 \times 4 = 8\ \mathrm{m/s}
+$$
+
+**Conferência pela vazão**, que é o teste de sanidade:
+
+$$
+Q_1 = 2 \times \frac{\pi (0{,}1)^2}{4} = 1{,}571 \times 10^{-2}\ \mathrm{m^3/s}
+\qquad
+Q_2 = 8 \times \frac{\pi (0{,}05)^2}{4} = 1{,}571 \times 10^{-2}\ \mathrm{m^3/s}
+$$
+
+Iguais, como tinham de ser.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O fim do 1º EE, e um aviso sobre as provas antigas">
+
+Pelo programa vigente (2026.2), o **1º Exercício Escolar** termina aqui: propriedades, estática e cinemática até a continuidade.
+
+Mas o acervo mostra que **a divisão já foi diferente**: a prova do 1º EE de 2023.2, de outros professores, cobrava Bernoulli e até perdas de carga. Se você estuda por prova antiga, confira o programa do **seu** semestre antes de decidir o que revisar.
 
 </Caixa>
 

@@ -340,7 +340,10 @@
       "vazao": "ft-vazao",
       "vazao-volumetrica": "ft-vazao",
       "vazao-massica": "ft-vazao",
-      "velocidade-media": "ft-vazao"
+      "velocidade-media": "ft-vazao",
+      "equacao-da-continuidade": "ft-continuidade",
+      "continuidade": "ft-continuidade",
+      "conservacao-da-massa": "ft-continuidade"
     }
   }
 ]
