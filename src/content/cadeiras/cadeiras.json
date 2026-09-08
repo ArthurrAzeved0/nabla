@@ -322,7 +322,10 @@
       "forca-superficie-plana": "ft-forca-plana",
       "forca-hidrostatica": "ft-forca-plana",
       "centro-de-pressao": "ft-forca-plana",
-      "comporta": "ft-forca-plana"
+      "comporta": "ft-forca-plana",
+      "forca-superficie-curva": "ft-forca-curva",
+      "area-projetada": "ft-forca-curva",
+      "volume-virtual": "ft-forca-curva"
     }
   }
 ]

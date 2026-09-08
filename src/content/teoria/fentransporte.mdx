@@ -16,6 +16,7 @@ unidades:
       - { id: ft-stevin, titulo: "Lei de Stevin e lei de Pascal" }
       - { id: ft-manometros, titulo: "Manômetros e a equação manométrica" }
       - { id: ft-forca-plana, titulo: "Força em superfície plana submersa e centro de pressão" }
+      - { id: ft-forca-curva, titulo: "Força em superfície curva submersa" }
 
 ---
 
@@ -772,6 +773,107 @@ Duas armadilhas frequentes:
 
 - $y_{CP}$ é medido **ao longo da placa**, a partir da linha onde ela cortaria a superfície livre. Se a placa é **inclinada**, a *profundidade* do CP é $h_{CP} = y_{CP}\operatorname{sen}\theta$ — não confunda os dois;
 - se o topo da placa **não** está na superfície livre, $\bar{y}$ conta desde a superfície livre (não desde o topo da placa). Desenhe e marque a origem antes de aplicar a fórmula.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-forca-curva" num="09" titulo="Força em superfície curva submersa">
+
+**A ideia.** Numa superfície **curva** a pressão continua sempre normal à parede — mas a normal muda de direção ponto a ponto. Somar vetores que giram não dá para fazer com uma fórmula única, então o método é outro: **decompor em duas direções** e tratar cada componente com o que já se sabe. A horizontal cai na seção anterior; a vertical vira um problema de **peso de volume**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F_H$ — **componente horizontal** da força sobre a superfície curva, em $\mathrm{N}$;
+- $F_V$ — **componente vertical**, em $\mathrm{N}$;
+- $A_{proj}$ — **área projetada** da superfície curva num plano vertical, em $\mathrm{m^2}$;
+- $\bar{h}$ — profundidade do CG **da área projetada**;
+- $V$ — volume de líquido **acima** (ou virtualmente acima) da superfície, em $\mathrm{m^3}$;
+- $F_R = \sqrt{F_H^2 + F_V^2}$ — resultante.
+
+</Caixa>
+
+### A componente horizontal: projete e esqueça a curva
+
+$$
+\boxed{\;F_H = \gamma\,\bar{h}\,A_{proj}\;}
+$$
+
+É **a mesma fórmula** da superfície plana, aplicada à **projeção** da superfície curva num plano vertical.
+
+<Caixa tipo="dica">
+
+Por que projetar funciona: a componente horizontal da pressão sobre um pedaço inclinado da parede é a mesma que agiria sobre a sombra vertical daquele pedaço. Ao somar todas as sombras, obtém-se um retângulo plano — e para plano você já tem fórmula.
+
+O ponto de aplicação de $F_H$ também sai da seção anterior: é o CP **da área projetada**.
+
+</Caixa>
+
+### A componente vertical: é peso de líquido
+
+$$
+\boxed{\;F_V = \gamma\,V\;}
+$$
+
+onde $V$ é o volume de líquido **entre a superfície curva e a superfície livre**.
+
+<Caixa tipo="macete" rotulo="O sinal de F_V, que é onde se erra">
+
+Pergunte: **de que lado da parede está o líquido?**
+
+- líquido **acima** da superfície (a parede sustenta o líquido) → $F_V$ aponta para **baixo**, e $V$ é o volume real de líquido ali;
+- líquido **abaixo** da superfície (a parede é empurrada por baixo) → $F_V$ aponta para **cima**, e $V$ é o **volume virtual**: aquele que *estaria* entre a superfície e o nível livre, mesmo que ali não haja líquido.
+
+Nos dois casos o módulo é $\gamma V$. O que muda é o sentido — e é isso que o desenho do enunciado decide.
+
+</Caixa>
+
+### A resultante
+
+$$
+F_R = \sqrt{F_H^2 + F_V^2}
+\qquad\qquad
+\tan\alpha = \frac{F_V}{F_H}
+$$
+
+onde $\alpha$ é o ângulo da resultante com a horizontal.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — comporta em quarto de círculo">
+
+Uma comporta é um quarto de cilindro de raio $R = 2\ \mathrm{m}$ e largura $b = 3\ \mathrm{m}$, com água ($\gamma = 10\,000\ \mathrm{N/m^3}$) apoiada nela e a superfície livre no topo da comporta.
+
+**Horizontal.** A projeção vertical é um retângulo $2\ \mathrm{m} \times 3\ \mathrm{m}$, com CG a $\bar{h} = 1\ \mathrm{m}$:
+
+$$
+F_H = \gamma\,\bar{h}\,A_{proj} = 10\,000 \times 1 \times (2 \times 3) = 60\,000\ \mathrm{N} = 60\ \mathrm{kN}
+$$
+
+**Vertical.** O volume de líquido acima da superfície curva é o quarto de círculo vezes a largura:
+
+$$
+V = \frac{\pi R^2}{4}\,b = \frac{\pi \times 4}{4} \times 3 = 3\pi \approx 9{,}42\ \mathrm{m^3}
+$$
+
+$$
+F_V = \gamma\,V = 10\,000 \times 9{,}42 = 94\,200\ \mathrm{N} \approx 94{,}2\ \mathrm{kN}
+$$
+
+**Resultante:**
+
+$$
+F_R = \sqrt{60^2 + 94{,}2^2} \approx 111{,}7\ \mathrm{kN}
+\qquad
+\tan\alpha = \frac{94{,}2}{60} \Rightarrow \alpha \approx 57{,}5^\circ
+$$
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O roteiro, em quatro passos">
+
+1. **desenhe** a superfície curva e marque de que lado está o líquido;
+2. **projete** num plano vertical → $F_H = \gamma \bar{h} A_{proj}$;
+3. **identifique o volume** (real ou virtual) até a superfície livre → $F_V = \gamma V$;
+4. **componha** com Pitágoras e ache o ângulo.
 
 </Caixa>
 
