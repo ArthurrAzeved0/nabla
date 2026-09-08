@@ -8,6 +8,7 @@ unidades:
       - { id: ft-fluido, titulo: "O que é um fluido: aderência, cisalhamento e a lei de Newton da viscosidade" }
       - { id: ft-propriedades, titulo: "Massa específica, peso específico, densidade relativa e volume específico" }
       - { id: ft-viscosidade, titulo: "Viscosidade dinâmica e cinemática" }
+      - { id: ft-classificacao, titulo: "Fluidos newtonianos e não-newtonianos" }
 
 ---
 
@@ -293,6 +294,77 @@ $$
 $$
 
 Note a estrutura da questão: o item (a) existe **só** para dar o $\mu$ que o item (b) precisa. É o formato clássico desta cadeira.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-classificacao" num="04" titulo="Fluidos newtonianos e não-newtonianos">
+
+**A ideia.** A lei de Newton da viscosidade diz que $\tau$ é **proporcional** a $dv/dy$. Isso é uma hipótese, não uma verdade universal: existem fluidos em que a razão $\tau / (dv/dy)$ **não** é constante. Classificar um fluido é dizer qual é a forma da curva $\tau$ contra $dv/dy$ — e essa curva é o que a prova pede para desenhar ou identificar.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\tau$ — tensão de cisalhamento, em $\mathrm{Pa}$;
+- $dv/dy$ — gradiente de velocidade (taxa de deformação), em $\mathrm{s^{-1}}$;
+- $\mu_{ap} = \dfrac{\tau}{dv/dy}$ — **viscosidade aparente**: a inclinação da reta que liga o ponto à origem;
+- $\tau_0$ — **tensão inicial de escoamento**, dos plásticos de Bingham.
+
+</Caixa>
+
+### Newtoniano: a reta pela origem
+
+$$
+\tau = \mu\,\frac{dv}{dy}
+\qquad \text{com } \mu = \text{constante}
+$$
+
+No diagrama $\tau$ contra $dv/dy$, é uma **reta que passa pela origem**, e a inclinação é $\mu$. Água, ar e óleos lubrificantes são newtonianos — e é essa a hipótese de toda a cadeira, salvo aviso contrário.
+
+### Não-newtoniano: a viscosidade aparente muda
+
+<Caixa tipo="macete" rotulo="Os quatro casos que a prova cobra">
+
+Todos comparados com a reta do newtoniano:
+
+- **pseudoplástico** — a viscosidade aparente **diminui** quando a tensão aumenta. A curva sai da origem e **encurva para baixo** (côncava para baixo). É a maioria dos não-newtonianos: tinta látex, melado, solução de polímero, suspensão coloidal;
+- **dilatante** — a viscosidade aparente **aumenta** com a tensão. A curva **encurva para cima**. Solução de amido, areia movediça — quanto mais rápido você tenta se mover, mais resistência encontra;
+- **plástico de Bingham** (ou plástico ideal) — comporta-se como **sólido** até uma tensão mínima $\tau_0$ e, passada ela, responde linearmente. A reta **não** passa pela origem:
+
+$$
+\tau = \tau_0 + \mu\,\frac{dv}{dy}
+$$
+
+  Pasta de dente, ketchup, maionese, suspensão de argila. É por isso que a pasta não sai do tubo sem um aperto mínimo;
+- **fluido ideal** — modelo teórico **sem viscosidade** ($\mu = 0$, logo $\tau = 0$ sempre). No diagrama, é o **eixo horizontal**. Não existe na natureza, mas é a hipótese que permite usar Bernoulli sem perda de carga.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+**Como identificar no gráfico, sem decorar:** olhe se a curva passa pela origem e como ela encurva.
+
+- reta pela origem → newtoniano;
+- reta que **corta o eixo $\tau$** acima de zero → Bingham;
+- curva côncava **para baixo** → pseudoplástico;
+- curva côncava **para cima** → dilatante;
+- em cima do eixo $dv/dy$ → ideal (sem viscosidade).
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o que a curva diz">
+
+Um fluido tem $\tau = 20\ \mathrm{Pa}$ quando $dv/dy = 100\ \mathrm{s^{-1}}$, e $\tau = 30\ \mathrm{Pa}$ quando $dv/dy = 200\ \mathrm{s^{-1}}$. Newtoniano?
+
+Viscosidades aparentes:
+
+$$
+\mu_{ap,1} = \frac{20}{100} = 0{,}20\ \mathrm{Pa \cdot s}
+\qquad
+\mu_{ap,2} = \frac{30}{200} = 0{,}15\ \mathrm{Pa \cdot s}
+$$
+
+**Não** é newtoniano: a viscosidade aparente caiu quando a tensão subiu — é **pseudoplástico**. (E note que os dois pontos, ligados, dão uma reta que cortaria $\tau = 10\ \mathrm{Pa}$ na origem: se o comportamento for linear a partir de $\tau_0 = 10$, trata-se de um **Bingham**. Dois pontos não distinguem os dois casos — é preciso ver a curva ou um terceiro ponto.)
 
 </Caixa>
 

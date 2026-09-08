@@ -296,7 +296,12 @@
       "propriedades-dos-fluidos": "ft-propriedades",
       "viscosidade": "ft-viscosidade",
       "viscosidade-dinamica": "ft-viscosidade",
-      "viscosidade-cinematica": "ft-viscosidade"
+      "viscosidade-cinematica": "ft-viscosidade",
+      "fluidos-newtonianos": "ft-classificacao",
+      "fluidos-nao-newtonianos": "ft-classificacao",
+      "classificacao-dos-fluidos": "ft-classificacao",
+      "plastico-de-bingham": "ft-classificacao",
+      "fluido-ideal": "ft-classificacao"
     }
   }
 ]
