@@ -1,0 +1,93 @@
+---
+origem: "2023.1"
+tema: "Convecção · Natural e forçada, e por que uma troca mais"
+temaId: conveccao-natural-e-forcada
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Os processos de convecção na transferência de calor são importantes, pois descrevem o funcionamento de diversos equipamentos, como os trocadores de calor. A convecção desempenha um papel importante nesse processo. Nesse sentido, **identifique e explique os principais tipos de convecção.**
+
+<Gabarito>
+São as convecções **natural** e **forçada**.
+
+**Natural** (ou livre) — ocorre devido a **diferenças de densidade** causadas por variações de temperatura, **sem** a necessidade de dispositivos mecânicos, tais como ventiladores, bombas, etc.
+
+**Forçada** — o fluido é **impulsionado** por esses equipamentos mecânicos (ventilador, bomba, compressor) ou por um agente externo como o vento.
+
+Nas duas vale a lei do resfriamento de Newton, $q = h\,A\,(T_s - T_\infty)$; o que muda é o valor de $h$, muito maior na forçada.
+</Gabarito>
+
+<Passos>
+**1 — Convecção natural (ou livre).** O movimento do fluido **nasce da própria troca de calor**. O fluido junto à superfície quente se aquece, fica **menos denso**, e o empuxo o faz subir; fluido mais frio desce para ocupar o lugar, e a circulação se mantém sozinha.
+
+- não há nenhum equipamento movendo o fluido;
+- a velocidade **não é dada** no problema: ela é consequência do aquecimento;
+- por isso, na correlação, o Reynolds é substituído pelo número de **Grashof**, que compara o empuxo térmico com a viscosidade:
+
+$$
+Gr = \frac{g\,\beta\,(T_s - T_\infty)\,L^3}{\nu^2}
+\qquad\Longrightarrow\qquad
+Nu = f(Gr,\,Pr)
+$$
+
+Exemplos: o ar subindo de um radiador, a água circulando numa panela antes de ferver, a brisa marítima, o ar quente que sobe do asfalto.
+
+**2 — Convecção forçada.** O fluido é impulsionado por um **agente externo** — ventilador, bomba, compressor, vento. O escoamento existe independentemente da diferença de temperatura.
+
+$$
+Nu = f(Re,\,Pr)
+$$
+
+Exemplos: radiador de carro com ventoinha, trocador de calor com bomba de circulação, secador de cabelo, resfriamento de processador com cooler.
+
+**3 — Por que a forçada troca muito mais calor.** A resistência à troca está na **camada limite** junto à parede, onde o fluido está praticamente parado e o calor só passa por **condução**. Quanto mais rápido o escoamento, mais **fina** essa camada — e menor a resistência.
+
+$$
+q = h\,A\,(T_s - T_\infty)
+$$
+
+| situação | $h$ típico $[\mathrm{W/(m^2 K)}]$ |
+|---|---|
+| gás, convecção **natural** | $2$ a $25$ |
+| gás, convecção **forçada** | $25$ a $250$ |
+| líquido, convecção **natural** | $50$ a $1000$ |
+| líquido, convecção **forçada** | $100$ a $20\,000$ |
+| ebulição / condensação | $2500$ a $100\,000$ |
+
+Uma ordem de grandeza de diferença entre natural e forçada, para o mesmo fluido. É por isso que soprar a sopa esfria mais rápido: troca-se natural por forçada.
+
+<Caixa tipo="macete" rotulo="A pergunta que separa os dois tipos">
+
+*"Se eu desligar tudo, o fluido continua se movendo?"*
+
+- **sim** → natural (o motor é a própria diferença de temperatura);
+- **não** → forçada (o motor é o equipamento).
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Convecção mista, e a mudança de fase">
+
+Há ainda dois casos que valem menção:
+
+- **convecção mista** — quando os dois efeitos são comparáveis, isto é, quando a velocidade imposta é baixa e o aquecimento é intenso. O critério é $Gr/Re^2 \approx 1$;
+- **com mudança de fase** — ebulição e condensação são tratadas como convecção, mas com $h$ enormes, porque o calor latente é liberado ou absorvido na própria superfície. É o mecanismo dos trocadores mais eficientes.
+
+Citar a convecção mista não é obrigatório, mas mostra que a classificação foi entendida como um espectro, e não como duas caixas.
+
+</Caixa>
+
+**Conferência —** **dois** tipos principais, com o critério que os separa: existe ou não um dispositivo mecânico ✔ dizer que na natural o motor é a diferença de **densidade** causada pela temperatura ✔ apontar que o que muda na conta é o valor de $h$, e não a fórmula, fecha a resposta ✔
+</Passos>
