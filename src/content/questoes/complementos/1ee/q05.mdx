@@ -1,0 +1,103 @@
+---
+origem: "2023.2"
+tema: "Integral de linha · Sobre um segmento, com f não analítica"
+temaId: integral-em-segmento
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\int_{\gamma} \Big[(4xy - y^2) + i\,(3xy^2 + 3x^2y)\Big]\,dz
+$$
+
+ao longo do segmento de reta $\gamma$ que liga os pontos $z_0 = 0$ e $z_1 = -1 + 2i$.
+
+<Gabarito>
+$$
+\int_{\gamma} f(z)\,dz = 7 - \frac{13}{2}i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — verificar se há atalho. Não há.** Antes de parametrizar, vale testar Cauchy-Riemann: se $f$ fosse analítica, a integral dependeria só das pontas.
+
+$$
+u = 4xy - y^2,\quad v = 3xy^2 + 3x^2y
+\qquad\Longrightarrow\qquad
+u_x = 4y,\quad v_y = 6xy + 3x^2
+$$
+
+$u_x \ne v_y$, então $f$ **não** é analítica e não existe primitiva. É parametrizar e integrar.
+
+**Passo 2 — parametrizar o segmento.** A parametrização de um segmento de $z_0$ a $z_1$ é sempre a mesma:
+
+$$
+z(t) = z_0 + t\,(z_1 - z_0) = t\,(-1 + 2i),
+\qquad t \in [0,1]
+$$
+
+Daí saem as três coisas de que se precisa:
+
+$$
+x = -t,
+\qquad
+y = 2t,
+\qquad
+dz = (-1+2i)\,dt
+$$
+
+**Passo 3 — escrever o integrando no parâmetro.** Este é o passo que decide: troque $x$ e $y$ por $t$ **antes** de qualquer conta.
+
+$$
+u = 4(-t)(2t) - (2t)^2 = -8t^2 - 4t^2 = -12t^2
+$$
+
+$$
+v = 3(-t)(2t)^2 + 3(-t)^2(2t) = -12t^3 + 6t^3 = -6t^3
+$$
+
+$$
+f\big(z(t)\big) = -12t^2 - 6i\,t^3
+$$
+
+**Passo 4 — integrar em $t$.** O fator $(-1+2i)$ é constante e sai da integral:
+
+$$
+\int_\gamma f\,dz = (-1+2i)\int_0^1 \big(-12t^2 - 6i\,t^3\big)dt
+= (-1+2i)\left[-4t^3 - \frac{3i}{2}t^4\right]_0^1
+$$
+
+$$
+= (-1+2i)\left(-4 - \frac{3}{2}i\right)
+$$
+
+**Passo 5 — o produto final**, com $i^2 = -1$:
+
+$$
+(-1+2i)\left(-4 - \frac32 i\right)
+= 4 + \frac32 i - 8i - 3i^2
+= 4 + 3 + \left(\frac32 - 8\right)i
+$$
+
+$$
+\boxed{\;\int_\gamma f(z)\,dz = 7 - \frac{13}{2}\,i\;}
+$$
+
+**Conferência —** a integral de uma função contínua num caminho de comprimento $L = |{-1+2i}| = \sqrt5 \approx 2{,}24$ com $|f| \le \sqrt{12^2 + 6^2} \approx 13{,}4$ no caminho tem de respeitar a estimativa ML: $|7 - 6{,}5i| = 9{,}55 \le 13{,}4 \times 2{,}24 = 30$ ✔
+
+**A lição da questão** é o teste do passo 1. Boa parte das integrais desta prova é resolvida por Cauchy sem parametrizar nada — esta não, e o enunciado avisa disso dando uma $f$ escrita em $x$ e $y$ em vez de em $z$.
+</Passos>
