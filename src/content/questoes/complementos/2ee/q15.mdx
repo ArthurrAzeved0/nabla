@@ -1,0 +1,95 @@
+---
+origem: "2025.2"
+tema: "Laurent · Singularidade essencial com resíduo nulo"
+temaId: serie-de-laurent
+pontos: 1,25 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $f(z) = \cos\left(\dfrac{1}{z-2}\right)$. Classifique o ponto singular, escreva a série de Laurent da mesma, e calcule
+
+$$
+\oint_{\gamma:\,|z|=2} f(z)\,dz
+$$
+
+<Gabarito>
+$z = 2$ é **singularidade essencial**;
+
+$$
+f(z) = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!\,(z-2)^{2n}}
+= 1 - \frac{1}{2!\,(z-2)^2} + \frac{1}{4!\,(z-2)^4} - \cdots
+$$
+
+O resíduo é $a_{-1} = 0$, logo a integral é **zero**.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a série, por substituição.** Parta da série do cosseno e troque a variável por $w = \dfrac{1}{z-2}$:
+
+$$
+\cos w = \sum_{n=0}^{\infty}\frac{(-1)^n w^{2n}}{(2n)!}
+$$
+
+$$
+\boxed{\;f(z) = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!\,(z-2)^{2n}}
+= 1 - \frac{1}{2!\,(z-2)^{2}} + \frac{1}{4!\,(z-2)^{4}} - \cdots\;}
+$$
+
+válida em $0 < |z-2| < \infty$ — todo o plano menos o ponto.
+
+**Passo 2 — classificar.** A parte principal (as potências negativas) tem **infinitos** termos, e não há $m$ para o qual $(z-2)^m f(z)$ tenha limite finito. Logo $z=2$ é **singularidade essencial**.
+
+O reconhecimento é imediato pela forma: $\dfrac{1}{z-z_0}$ **dentro** de cosseno, seno, exponencial ou hiperbólica sempre produz essencial, porque a substituição joga a série inteira para as potências negativas.
+
+**Passo 3 — o resíduo.** Ele é o coeficiente de $(z-2)^{-1}$. Na série acima só aparecem expoentes $-2n$, isto é, **potências pares**:
+
+$$
+0,\; -2,\; -4,\; -6,\; \dots
+$$
+
+A potência $-1$ **nunca aparece**. Portanto
+
+$$
+\operatorname{Res}\big[f(z)\big]_{z=2} = a_{-1} = 0
+$$
+
+**Passo 4 — a integral.**
+
+$$
+\boxed{\;\oint_{|z|=2}\cos\!\left(\frac{1}{z-2}\right)dz = 2\pi i\cdot 0 = 0\;}
+$$
+
+<Caixa tipo="dica" rotulo="Sobre a curva do enunciado">
+
+Há um detalhe no enunciado: a curva é $|z| = 2$ e o ponto singular é $z = 2$, que está **exatamente sobre** ela — não dentro. Formalmente, o teorema dos resíduos pede o integrando analítico **sobre** o contorno, e essa hipótese falha.
+
+O gabarito passa por cima disso e conclui zero pelo resíduo nulo, o que dá o valor certo por acaso: qualquer curva que envolva $z=2$ dá zero, porque o resíduo é zero. Provavelmente a intenção era $|z-2| = 2$, ou uma curva que contenha o ponto.
+
+Na prova, o que vale ponto é a classificação, a série e o resíduo nulo. Notar que a curva passa pela singularidade é rigor a mais, e não muda a resposta.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Paridade da série decide o resíduo">
+
+Em singularidade essencial vinda de substituição, olhe a **paridade** da série de origem:
+
+- $\cos$ e $\cosh$ → só potências **pares** → o termo $-1$ nunca aparece → **resíduo zero**;
+- $\operatorname{sen}$ e $\operatorname{senh}$ → só potências **ímpares** → o termo $-1$ aparece → resíduo não nulo;
+- $e^{w}$ → **todas** as potências → o termo $-1$ aparece.
+
+Compare com a q27 do 1º EE, onde $z^2e^{1/z}$ tem resíduo $1/6$: ali a exponencial fornece todas as potências e o fator $z^2$ desloca qual delas cai em $-1$.
+
+</Caixa>
+</Passos>
