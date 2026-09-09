@@ -1,0 +1,90 @@
+---
+origem: "2025.2"
+tema: "Conceitos · Definição, propriedades e classificação dos fluidos"
+temaId: propriedades-dos-fluidos
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Defina o que é um fluido, quais são suas propriedades e como se classificam.**
+
+<Gabarito>
+**Fluido** é a substância que se **deforma continuamente** quando submetida a uma tensão de cisalhamento, **por pequena que ela seja** — não tem forma própria, assume a do recipiente.
+
+**Propriedades:** massa específica $\rho$, peso específico $\gamma$, volume específico $v_e$, densidade relativa $d$, viscosidade dinâmica $\mu$ e cinemática $\nu$, compressibilidade e tensão superficial.
+
+**Classificação:** pelo estado (líquido, com superfície livre; gás, sem), pela compressibilidade (incompressível ou compressível) e, principalmente, pela **relação $\tau$ vs. $du/dy$** — newtonianos (linear) e não newtonianos (dilatantes, pseudoplásticos, plásticos de Bingham), mais o **fluido ideal** ($\mu = 0$), que é abstração de cálculo.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a definição, e a palavra que decide a nota.** O que separa fluido de sólido não é "ser mole": é o que acontece **depois** que a tensão de cisalhamento é aplicada.
+
+- **sólido** — deforma até uma posição de **equilíbrio**, em que as tensões internas equilibram a força externa, e para;
+- **fluido** — **não para**. Enquanto houver tensão de cisalhamento, ele continua se deformando, isto é, **escoa**.
+
+A palavra que não pode faltar é **continuamente**. E o complemento: *por pequena que seja a tensão* — porque um fluido não tem tensão mínima para começar a escoar.
+
+**Passo 2 — as propriedades, agrupadas pelo que medem.**
+
+*Quanta matéria há em cada volume:*
+
+$$
+\rho = \frac{m}{V}
+\qquad
+\gamma = \frac{P}{V} = \rho\,g
+\qquad
+v_e = \frac{V}{m} = \frac{1}{\rho}
+\qquad
+d = \frac{\rho}{\rho_{\text{ref}}}
+$$
+
+*Quanta resistência há ao escoamento:*
+
+$$
+\mu = \frac{\tau}{du/dy}
+\qquad
+\nu = \frac{\mu}{\rho}
+$$
+
+*E as duas que aparecem menos, mas contam:* a **compressibilidade** (o quanto o volume muda com a pressão) e a **tensão superficial** (a energia da superfície livre, que sustenta gota e menisco).
+
+<Caixa tipo="simbolos">
+
+- $\rho$ — massa específica, em $\mathrm{kg/m^3}$
+- $\gamma$ — peso específico, em $\mathrm{N/m^3}$
+- $v_e$ — volume específico, em $\mathrm{m^3/kg}$
+- $d$ — densidade relativa, **adimensional** (referência: água a 4 °C para líquidos, ar para gases)
+- $\mu$ — viscosidade dinâmica, em $\mathrm{Pa\cdot s}$
+- $\nu$ — viscosidade cinemática, em $\mathrm{m^2/s}$
+
+</Caixa>
+
+**Passo 3 — a classificação que a prova quer.** Há três cortes, e o terceiro é o que a disciplina usa:
+
+**a) Pelo estado.** *Líquido* tem volume definido e, num recipiente aberto, **superfície livre**; *gás* ocupa todo o recipiente e **não tem** superfície livre. Os dois são fluidos, porque os dois escoam.
+
+**b) Pela compressibilidade.** *Incompressível* — $\rho$ praticamente não muda com a pressão (líquidos, e gases a baixa velocidade); *compressível* — $\rho$ muda (gases em geral).
+
+**c) Pelo comportamento reológico**, isto é, pelo gráfico $\tau$ contra $du/dy$:
+
+$$
+\tau = \mu\,\frac{du}{dy}
+$$
+
+- **newtoniano** — a reta pela origem: $\mu$ é **constante**. Água, ar, óleos leves;
+- **não newtoniano** — a curva não é reta. *Dilatante* (a viscosidade aparente **cresce** com a taxa: amido em água), *pseudoplástico* (a viscosidade aparente **cai**: tinta, sangue), *plástico de Bingham* (só começa a escoar depois de uma **tensão inicial** $\tau_0$: pasta de dente, lama);
+- **ideal** — $\mu = 0$, escoa sem atrito. Não existe; serve para calcular Bernoulli sem perda.
+
+**Conferência —** a definição precisa dizer *continuamente* e *por pequena que seja* ✔ as propriedades precisam vir com unidade ✔ a classificação precisa chegar em newtoniano/não newtoniano, que é o corte que a lei de Newton da viscosidade organiza ✔
+</Passos>
