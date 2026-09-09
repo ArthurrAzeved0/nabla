@@ -1,0 +1,75 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Exponencial · Todas as soluções de exp(z) = 1 + i"
+temaId: equacao-exponencial
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre **todas** as soluções complexas de $\exp(z) = 1 + i$.
+
+<Gabarito>
+$$
+z = \frac{\ln 2}{2} + i\left(\frac{\pi}{4} + 2k\pi\right),
+\qquad k \in \mathbb{Z}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — módulo e argumento do lado direito.** O ponto $1+i$ está no 1º quadrante:
+
+$$
+|1+i| = \sqrt2,
+\qquad
+\operatorname{Arg}(1+i) = \frac{\pi}{4}
+$$
+
+**Passo 2 — separar a equação em duas.** Com $z = x+iy$:
+
+$$
+e^{x+iy} = e^x\big(\cos y + i\operatorname{sen} y\big) = 1+i
+$$
+
+Comparando módulos e argumentos:
+
+$$
+e^x = \sqrt2
+\qquad\Longrightarrow\qquad
+x = \ln\sqrt2 = \frac{\ln 2}{2}
+$$
+
+$$
+y = \frac{\pi}{4} + 2k\pi,
+\qquad k \in \mathbb{Z}
+$$
+
+**Passo 3 — juntar.**
+
+$$
+\boxed{\;z = \frac{\ln 2}{2} + i\left(\frac{\pi}{4} + 2k\pi\right),\qquad k \in \mathbb{Z}\;}
+$$
+
+Ou, em uma linha: $z = \log(1+i)$, com o logaritmo **completo**.
+
+**Conferência —** para $k=0$: $e^{(\ln 2)/2}\,e^{i\pi/4} = \sqrt2\left(\tfrac{\sqrt2}{2} + i\tfrac{\sqrt2}{2}\right) = 1+i$ ✔
+
+<Caixa tipo="dica" rotulo="A ponte com a q01">
+
+Este é o inverso exato do que a q01 desta unidade faz. Lá se pedia $\operatorname{Log}(1-i) = \tfrac{\ln 2}{2} - i\tfrac\pi4$, o **valor principal**; aqui se pede o logaritmo **completo** de $1+i$, que é $\tfrac{\ln2}{2} + i\left(\tfrac\pi4 + 2k\pi\right)$.
+
+Mesma função, duas perguntas diferentes — e o que as distingue é uma palavra do enunciado: *todas* contra *principal*.
+
+</Caixa>
+</Passos>
