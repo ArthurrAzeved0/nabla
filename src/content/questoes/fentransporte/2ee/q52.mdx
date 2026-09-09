@@ -1,0 +1,151 @@
+---
+origem: "2018.1"
+tema: "Fluxos de massa · Concentração total variável e velocidades distintas"
+temaId: fluxo-absoluto
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q52.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de massa de uma mistura entre duas espécies, $A$ e $B$, ao longo de um tubo. Na **entrada**, a concentração total da mistura é de $10{,}0\ \mathrm{mol/m^3}$ e $80\ \%$ em mol dessa mistura é da espécie $A$. Na **saída**, a concentração total é de $4{,}0\ \mathrm{mol/m^3}$ e $70\ \%$ em mol dessa mistura é da espécie $B$. A espécie $A$ escoa com velocidade de $2{,}0\ \mathrm{m/s}$, enquanto que $B$ escoa com $1{,}0\ \mathrm{m/s}$, ambas no **mesmo sentido**. O comprimento do tubo é de $1{,}0\ \mathrm{m}$ e o coeficiente de difusão binária é de $3{,}0\times10^{-2}\ \mathrm{m^2/s}$.
+
+Determine para $A$ e para $B$ as densidades de **fluxo difusivo**, as densidades de **fluxo convectivo** e as densidades de **fluxo absoluto** (na **saída** do tubo).
+
+<Gabarito>
+Entrada: $C_{A1} = 8{,}0$, $C_{B1} = 2{,}0$. Saída: $C_{A2} = 1{,}2$, $C_{B2} = 2{,}8\ \mathrm{mol/m^3}$.
+
+$$
+\frac{dC_A}{dx} = -6{,}8
+\qquad
+\frac{dC_B}{dx} = +0{,}8\ \mathrm{mol/m^4}
+$$
+
+| | difusivo $J''$ | convectivo $N''$ | absoluto |
+|---|---|---|---|
+| $A$ | $+0{,}204$ | $2{,}40$ | $\mathbf{2{,}60}$ |
+| $B$ | $-0{,}024$ | $2{,}80$ | $\mathbf{2{,}78}$ |
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$, com o convectivo calculado com a velocidade **de cada espécie**.
+</Gabarito>
+
+<Passos>
+**Passo 1 — completar as frações e achar as concentrações.** Cada seção tem a **sua** concentração total, e a fração dada é de uma espécie diferente em cada lado.
+
+$$
+x_{A1} = 0{,}80 \Rightarrow x_{B1} = 0{,}20
+\qquad\qquad
+x_{B2} = 0{,}70 \Rightarrow x_{A2} = 0{,}30
+$$
+
+$$
+C_{A1} = 0{,}80 \times 10{,}0 = 8{,}0
+\qquad
+C_{B1} = 0{,}20 \times 10{,}0 = 2{,}0
+$$
+
+$$
+C_{A2} = 0{,}30 \times 4{,}0 = 1{,}2
+\qquad
+C_{B2} = 0{,}70 \times 4{,}0 = 2{,}8
+$$
+
+em $\mathrm{mol/m^3}$. Confira: $8+2 = 10$ ✔ e $1{,}2+2{,}8 = 4{,}0$ ✔
+
+**Passo 2 — os gradientes, com $L = 1{,}0\ \mathrm{m}$.**
+
+$$
+\frac{dC_A}{dx} = \frac{1{,}2 - 8{,}0}{1{,}0} = -6{,}8\ \mathrm{mol/m^4}
+$$
+
+$$
+\frac{dC_B}{dx} = \frac{2{,}8 - 2{,}0}{1{,}0} = +0{,}8\ \mathrm{mol/m^4}
+$$
+
+**Passo 3 — os fluxos difusivos.**
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx} = -3{,}0\times10^{-2} \times (-6{,}8) = +0{,}204\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_B = -3{,}0\times10^{-2} \times (+0{,}8) = -0{,}024\ \mathrm{mol/(m^2 s)}
+$$
+
+<Caixa tipo="macete" rotulo="Aqui J_A não é −J_B, e a conta mostra por quê">
+
+A concentração total **cai** de $10$ para $4\ \mathrm{mol/m^3}$, então
+
+$$
+\frac{dC_A}{dx} + \frac{dC_B}{dx} = -6{,}8 + 0{,}8 = -6{,}0 = \frac{dC_T}{dx} = \frac{4 - 10}{1{,}0}\ \checkmark
+$$
+
+e os difusivos somam $0{,}204 - 0{,}024 = 0{,}18 = -D\,dC_T/dx$. A conferência $J''_A = -J''_B$ vale **só** com $C_T$ constante — reconhecer isso é o que separa quem entendeu de quem decorou.
+
+</Caixa>
+
+**Passo 4 — os fluxos convectivos, com a velocidade de cada espécie.** O enunciado dá $v_A = 2{,}0$ e $v_B = 1{,}0\ \mathrm{m/s}$ — velocidades **diferentes**, ambas no mesmo sentido:
+
+$$
+N''_A = C_{A2}\,v_A = 1{,}2 \times 2{,}0 = 2{,}40\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_B = C_{B2}\,v_B = 2{,}8 \times 1{,}0 = 2{,}80\ \mathrm{mol/(m^2 s)}
+$$
+
+**Passo 5 — os absolutos.**
+
+$$
+N''_{A,abs} = 0{,}204 + 2{,}40 = 2{,}60\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_{B,abs} = -0{,}024 + 2{,}80 = 2{,}78\ \mathrm{mol/(m^2 s)}
+$$
+
+**Passo 6 — a leitura.** Aqui, diferente das outras versões, o convectivo é só **dez vezes** o difusivo — e não centenas. Duas razões: as velocidades são baixas ($1$ e $2\ \mathrm{m/s}$) e as concentrações são pequenas ($\mathrm{mol/m^3}$ de um dígito), mas o **gradiente** é grande, porque toda a variação acontece em $1\ \mathrm{m}$ de tubo.
+
+$$
+\frac{N''_A}{J''_A} = \frac{2{,}40}{0{,}204} = 11{,}8
+$$
+
+É o caso em que a difusão de fato conta.
+
+<Caixa tipo="dica" rotulo="Há uma segunda convenção, e o professor usou as duas">
+
+Quando cada espécie tem a **sua** velocidade, há dois modos de escrever o convectivo:
+
+1. **velocidade de cada espécie**, $N''_i = C_i\,v_i$ — é o que a 2ª chamada de 2018.1 faz, onde "$B$ estacionária" zera o convectivo de $B$. É o adotado acima;
+2. **velocidade média molar da mistura**, $V = \sum x_i v_i$, e então $N''_i = C_i\,V$ — é o que a Final de 2023.1 faz.
+
+Pela segunda convenção, aqui teríamos
+
+$$
+V_2 = x_{A2}v_A + x_{B2}v_B = 0{,}3(2{,}0) + 0{,}7(1{,}0) = 1{,}3\ \mathrm{m/s}
+$$
+
+$$
+N''_A = 1{,}2 \times 1{,}3 = 1{,}56
+\qquad
+N''_B = 2{,}8 \times 1{,}3 = 3{,}64
+$$
+
+As duas somam $5{,}2 = C_{T2}\,V_2$, enquanto as da primeira convenção somam $5{,}2$ também — o que é coerência, não coincidência.
+
+Como esta prova é de **2018.1**, o mesmo semestre da 2ª chamada que usa a primeira convenção, é ela que os passos seguem. Numa prova, vale escrever qual convenção se adotou.
+
+</Caixa>
+
+**Conferência —** cada seção com a sua concentração total ✔ a fração da saída é de $B$ ✔ com $C_T$ variável, $J''_A \ne -J''_B$ ✔ cada espécie com a sua velocidade no convectivo ✔ o difusivo aqui **não** é desprezível, é um doze avos do convectivo ✔
+</Passos>
