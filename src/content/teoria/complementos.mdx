@@ -26,6 +26,7 @@ unidades:
       - { id: cm-frobenius, titulo: "Método de Frobenius e a equação indicial" }
       - { id: cm-ortogonalidade, titulo: "Funções periódicas, paridade e ortogonalidade" }
       - { id: cm-fourier, titulo: "Série de Fourier: os coeficientes e os casos par e ímpar" }
+      - { id: cm-fourier-complexa, titulo: "Forma complexa da série de Fourier" }
 ---
 
 {/* **************************************************************************
@@ -2134,6 +2135,88 @@ O passo 4 é o mais subestimado: substituir $x=0$, $x=\pi/2$ ou $x=\pi$ costuma 
 <Caixa tipo="dica">
 
 Nos pontos de **salto**, a série não converge para $f$: converge para a **média dos limites laterais**. Na onda quadrada, em $x=0$ a série vale $0$, que é a média entre $-1$ e $1$ — e não $1$, apesar de $f(0)=1$ pela definição do enunciado. É o teorema de Dirichlet, da seção 22, e é a pergunta de gráfico que a prova costuma anexar ("faça os gráficos de $f$ e de sua série").
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-fourier-complexa" num="21" titulo="Forma complexa da série de Fourier">
+
+### A ideia
+
+Aqui as duas unidades se encontram. Trocando seno e cosseno por exponenciais complexas — a fórmula de Euler da seção 02 — a série de Fourier vira **uma** soma em vez de duas, com **um** coeficiente em vez de dois. É a forma que se usa em engenharia, porque é dela que sai o espectro e, no limite, a transformada de Fourier.
+
+<Formula rotulo="Forma complexa da série de Fourier">
+
+$$
+f(x) = \sum_{n=-\infty}^{\infty} c_n\,e^{\,i n\pi x/L},
+\qquad
+c_n = \frac{1}{2L}\int_{-L}^{L} f(x)\,e^{-i n\pi x/L}\,dx
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $c_n$ — coeficiente complexo, definido para $n$ **positivo, negativo e zero**;
+- $c_0 = \dfrac{a_0}{2}$ — o valor médio, como antes;
+- o sinal do expoente: **menos** na fórmula do coeficiente, **mais** na série. Trocar é o erro mecânico da seção;
+- $|c_n|$ — a **amplitude** do harmônico $n$; o gráfico de $|c_n|$ contra $n$ é o **espectro** de $f$.
+
+</Caixa>
+
+### A ponte com a forma real
+
+Substituindo $\cos\theta = \tfrac{e^{i\theta}+e^{-i\theta}}{2}$ e $\operatorname{sen}\theta = \tfrac{e^{i\theta}-e^{-i\theta}}{2i}$ e reagrupando:
+
+$$
+c_n = \frac{a_n - i\,b_n}{2},
+\qquad
+c_{-n} = \frac{a_n + i\,b_n}{2} = \overline{c_n}
+\quad (f \text{ real})
+$$
+
+$$
+a_n = c_n + c_{-n} = 2\operatorname{Re}(c_n),
+\qquad
+b_n = i\,(c_n - c_{-n}) = -2\operatorname{Im}(c_n)
+$$
+
+Duas leituras que caem em prova:
+
+- para $f$ **real**, $c_{-n} = \overline{c_n}$ — os coeficientes vêm em pares conjugados, e o espectro é simétrico;
+- para $f$ **par**, os $c_n$ são **reais**; para $f$ **ímpar**, são **imaginários puros**. É a paridade da seção 19 vista no plano complexo.
+
+<Caixa tipo="exemplo">
+
+A onda quadrada de 2025.2, agora na forma complexa. Da forma real sabemos $a_n = 0$ e $b_n = \tfrac{2}{n\pi}[1-(-1)^n]$, então
+
+$$
+c_n = \frac{a_n - i b_n}{2} = -\frac{i}{n\pi}\big[1 - (-1)^n\big]
+$$
+
+$$
+c_n = \begin{cases}
+-\dfrac{2i}{n\pi}, & n \text{ ímpar}\\[4pt]
+0, & n \text{ par (inclusive } n=0)
+\end{cases}
+$$
+
+Os coeficientes são **imaginários puros**, como tinham de ser para uma função ímpar, e $c_{-n} = \overline{c_n}$ ✔ — as duas conferências fecham de uma vez.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Se a forma real já foi calculada, **não recalcule integral nenhuma**: use $c_n = (a_n - ib_n)/2$. E vice-versa — pedida a forma real depois da complexa, use $a_n = 2\operatorname{Re}(c_n)$ e $b_n = -2\operatorname{Im}(c_n)$.
+
+Quando só a complexa é pedida e $f$ é uma exponencial ou um pulso, calcular $c_n$ direto é mais rápido que passar pela forma real, porque $\int e^{ax}e^{-inx}dx$ sai numa linha.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Cuidado com $n = 0$ na fórmula de $c_n$: o expoente zera e a integral vira $\tfrac{1}{2L}\int f$, o valor médio. Não dá para obter $c_0$ substituindo $n=0$ numa expressão fechada que tenha $n$ no denominador — é preciso calcular à parte, como em qualquer série de Fourier.
 
 </Caixa>
 

@@ -546,7 +546,10 @@
       "coeficientes-de-fourier": "cm-fourier",
       "serie-de-senos": "cm-fourier",
       "serie-de-cossenos": "cm-fourier",
-      "onda-quadrada": "cm-fourier"
+      "onda-quadrada": "cm-fourier",
+      "forma-complexa-de-fourier": "cm-fourier-complexa",
+      "coeficiente-complexo-cn": "cm-fourier-complexa",
+      "espectro-de-fourier": "cm-fourier-complexa"
     }
   }
 ]
