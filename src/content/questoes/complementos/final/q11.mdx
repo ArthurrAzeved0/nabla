@@ -1,0 +1,142 @@
+---
+origem: "Final 2025.2"
+tema: "EDP · Calor com pontas a zero, e os dois limites em t"
+temaId: problema-do-calor
+pontos: 3,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva o seguinte problema de valor inicial e de fronteira. Ao obter a solução, calcule $\displaystyle\lim_{t\to\infty}u(x,t)$ e $\displaystyle\lim_{t\to0}u(x,t)$.
+
+$$
+\begin{cases}
+u_t = K\,u_{xx}, & \text{em } \mathbb{R}\\
+u(0,t) = u(L,t) = 0, & t > 0\\
+u(x,0) = f(x), & 0 < x < L
+\end{cases}
+$$
+
+<Gabarito>
+$$
+u(x,t) = \sum_{n=1}^{\infty} b_n \operatorname{sen}\!\left(\frac{n\pi x}{L}\right)
+\exp\!\left[-K\left(\frac{n\pi}{L}\right)^2 t\right],
+\qquad
+b_n = \frac2L\int_0^L f(x)\operatorname{sen}\frac{n\pi x}{L}\,dx
+$$
+
+$$
+\lim_{t\to\infty}u(x,t) = 0,
+\qquad
+\lim_{t\to0}u(x,t) = f(x)
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — ler o contorno.** $u(0,t) = u(L,t) = 0$ é **Dirichlet**: prescreve o **valor**, não o fluxo. Fisicamente, as duas pontas são mantidas a $0\ ^\circ\mathrm{C}$ — a barra está em contato com reservatórios frios, e o calor **escapa** por elas.
+
+Consequência imediata: a solução sai em **senos**, e **não** há modo constante.
+
+**Passo 2 — separar variáveis.** Com $u = X(x)T(t)$:
+
+$$
+\frac{T'}{K\,T} = \frac{X''}{X} = -\lambda
+$$
+
+**Passo 3 — o problema em $x$, com os três casos.** A equação é $X'' + \lambda X = 0$ com $X(0) = X(L) = 0$.
+
+**$\lambda < 0$:** $X = A\cosh(\mu x) + B\operatorname{senh}(\mu x)$. De $X(0)=0$, $A=0$; de $X(L) = B\operatorname{senh}(\mu L) = 0$ com $\operatorname{senh}(\mu L)\ne0$, $B=0$. **Só a solução nula** — descartado.
+
+**$\lambda = 0$:** $X = A + Bx$. De $X(0) = 0$, $A = 0$; de $X(L) = BL = 0$, $B = 0$. **Também descartado** — e é aqui que Dirichlet difere de Neumann, onde este caso sobreviveria.
+
+**$\lambda > 0$:** com $\lambda = \mu^2$, $X = A\cos(\mu x) + B\operatorname{sen}(\mu x)$. De $X(0) = A = 0$; de $X(L) = B\operatorname{sen}(\mu L) = 0$ com $B \ne 0$:
+
+$$
+\operatorname{sen}(\mu L) = 0
+\;\Longrightarrow\;
+\mu = \frac{n\pi}{L},
+\qquad
+\lambda_n = \left(\frac{n\pi}{L}\right)^2,
+\qquad
+X_n = \operatorname{sen}\frac{n\pi x}{L},
+\qquad n \ge 1
+$$
+
+**Passo 4 — o problema em $t$.**
+
+$$
+T' = -K\lambda_n T
+\qquad\Longrightarrow\qquad
+T_n(t) = \exp\!\left[-K\left(\frac{n\pi}{L}\right)^2 t\right]
+$$
+
+**Todos** os modos decaem, porque $\lambda_n > 0$ para todo $n \ge 1$ — não há o modo $n=0$ que salvava a energia no caso isolado.
+
+**Passo 5 — somar e impor a condição inicial.**
+
+$$
+u(x,t) = \sum_{n=1}^{\infty}b_n\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)
+\exp\!\left[-K\left(\frac{n\pi}{L}\right)^2 t\right]
+$$
+
+Em $t=0$, a soma tem de reproduzir $f$:
+
+$$
+f(x) = \sum_{n\ge1}b_n\operatorname{sen}\frac{n\pi x}{L}
+$$
+
+que é a **série de Fourier de senos** de $f$ em $[0,L]$ — a extensão ímpar. Pela ortogonalidade:
+
+$$
+\boxed{\;b_n = \frac{2}{L}\int_0^{L}f(x)\operatorname{sen}\frac{n\pi x}{L}\,dx\;}
+$$
+
+**Passo 6 — o limite $t \to \infty$.** Cada exponencial tende a zero, e a série converge uniformemente:
+
+$$
+\boxed{\;\lim_{t\to\infty}u(x,t) = 0\;}
+$$
+
+**Interpretação:** a barra esfria **completamente**. Toda a energia térmica escapa pelas pontas, que estão presas a $0\ ^\circ\mathrm{C}$. Compare com a barra **isolada** (q22 do 2º EE), onde o limite é a temperatura **média** — ali o calor não tem por onde sair.
+
+**Passo 7 — o limite $t \to 0$.** Cada exponencial tende a $1$, e sobra a série de senos:
+
+$$
+\lim_{t\to0}u(x,t) = \sum_{n\ge1}b_n\operatorname{sen}\frac{n\pi x}{L} = f(x)
+$$
+
+$$
+\boxed{\;\lim_{t\to0}u(x,t) = f(x)\;}
+$$
+
+**A ressalva que vale ponto:** a igualdade vale nos pontos em que $f$ é **contínua**. Onde $f$ tem salto, o limite é a **média dos limites laterais**, pelo teorema de Dirichlet — e nas pontas $x=0$ e $x=L$ o limite é $0$, mesmo que $f$ não se anule ali. A condição de contorno vence a condição inicial nos cantos.
+
+<Caixa tipo="macete" rotulo="Os dois limites contam a história inteira">
+
+$$
+t\to0: \;\; u \to f
+\qquad\qquad
+t\to\infty: \;\; u \to 0
+$$
+
+A solução **interpola** entre o perfil inicial e o estado de equilíbrio, e a velocidade da transição é dada pelo modo mais lento, $n=1$:
+
+$$
+\tau = \frac{1}{K}\left(\frac{L}{\pi}\right)^2
+$$
+
+Esse é o **tempo característico** de esfriamento. Depois de alguns $\tau$, só o primeiro harmônico importa e o perfil é praticamente um seno puro decaindo — resultado que vale citar se a questão pedir interpretação.
+
+</Caixa>
+</Passos>
