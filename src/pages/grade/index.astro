@@ -90,7 +90,7 @@ const cursos = [...new Set(matrizes.map((m) => m.curso))]
                     site começa com dígito, e sem eles estas duas começariam. */}
                 {m.chMatriz === m.chTotalCurso
                   ? `São ${m.chMatriz}h no total`
-                  : `São ${m.chMatriz}h de um curso de ${m.chTotalCurso}h`}
+                  : `São ${m.chMatriz}h em disciplinas, num curso de ${m.chTotalCurso}h`}
                 .
                 {m.ligadas > 0 &&
                   ` Dessas disciplinas, ${m.ligadas === 1 ? "uma tem" : `${m.ligadas} têm`} teoria e questões aqui no site.`}
@@ -125,6 +125,19 @@ const cursos = [...new Set(matrizes.map((m) => m.curso))]
     grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr));
     gap: var(--e-7) var(--e-6);
   }
+  /* O <section> de cada curso precisa ser uma COLUNA FLEX para que a grade
+     de cartões possa crescer: como item da grade de cursos, o section já
+     ganha a altura da fileira (stretch é o padrão), mas sem o flex essa
+     altura sobra vazia embaixo e os cartões ficam do tamanho do seu texto.
+
+     Era o defeito: em tela estreita, a frase de Civil quebra em três linhas
+     e a de Automação em duas, então os cartões de Civil ficavam mais altos
+     que os da mesma fileira. Em tela larga tudo cabe em duas linhas e o
+     desalinhamento não aparecia. */
+  .curso {
+    display: flex;
+    flex-direction: column;
+  }
   .curso h2 {
     font-size: var(--t-lg);
     margin: 0 0 var(--e-3);
@@ -136,6 +149,12 @@ const cursos = [...new Set(matrizes.map((m) => m.curso))]
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
     gap: var(--e-4);
+    /* toma a altura que sobra no section… */
+    flex: 1;
+    /* …e distribui para as fileiras de cartões, que assim encostam no
+       rodapé do section. Com o `flex: 1` do <p> dentro do cartão, o "Ver o
+       mapa" desce junto e as fileiras de cursos vizinhos se alinham. */
+    grid-auto-rows: 1fr;
   }
 
   .card {
