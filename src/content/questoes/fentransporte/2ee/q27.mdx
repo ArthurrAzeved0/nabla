@@ -1,0 +1,146 @@
+---
+origem: "2024.2"
+tema: "Fourier · Condutividade a partir da temperatura no centro"
+temaId: condutividade-termica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere uma parede plana de área lateral $5\ \mathrm{m^2}$ e espessura $20\ \mathrm{cm}$. A temperatura na face esquerda da parede é de $100\ ^\circ\mathrm{C}$, enquanto que **no centro dela** é de $30\ ^\circ\mathrm{C}$. A taxa de calor que passa através da parede é de $10\,000\ \mathrm{W}$. Considerando um sistema de transferência de calor por condução, **sem geração ou acúmulo** de calor, determine a **condutividade térmica** do material da parede. Admita um perfil **linear** de temperaturas.
+
+<Figura>
+  <svg viewBox="0 0 340 200" role="img" aria-label="Parede plana de 20 centímetros com a face esquerda a 100 graus e o centro a 30 graus: o perfil linear é extrapolado até menos 40 graus na face direita">
+    {/* parede */}
+    <rect x="96" y="34" width="140" height="118" fill="var(--line-2)" opacity="0.45" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="166" y1="28" x2="166" y2="158" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="148" y="24" font-size="9" fill="var(--ink-3)">centro</text>
+    {/* perfil linear */}
+    <line x1="96" y1="46" x2="236" y2="130" stroke="var(--warn)" stroke-width="2"/>
+    <circle cx="96" cy="46" r="3.5" fill="var(--warn)"/>
+    <circle cx="166" cy="88" r="3.5" fill="var(--warn)"/>
+    <circle cx="236" cy="130" r="3.5" fill="var(--warn)"/>
+    <text x="44" y="50" font-size="9" fill="var(--warn)">T₁ = 100 °C</text>
+    <text x="172" y="84" font-size="9" fill="var(--warn)">T₂ = 30 °C</text>
+    <text x="242" y="134" font-size="9" fill="var(--ink-3)">(−40 °C)</text>
+    {/* taxa de calor */}
+    <line x1="112" y1="140" x2="150" y2="140" stroke="var(--ok)" stroke-width="2.2"/>
+    <polygon points="156,140 146,136 146,144" fill="var(--ok)"/>
+    <text x="106" y="170" font-size="9" fill="var(--ok)">q = 10 000 W</text>
+    {/* cotas */}
+    <line x1="96" y1="184" x2="166" y2="184" stroke="var(--accent)" stroke-width="1.1"/>
+    <polygon points="96,184 103,181 103,187" fill="var(--accent)"/>
+    <polygon points="166,184 159,181 159,187" fill="var(--accent)"/>
+    <text x="108" y="196" font-size="9" fill="var(--accent)">10 cm</text>
+    <line x1="166" y1="184" x2="236" y2="184" stroke="var(--accent)" stroke-width="1.1"/>
+    <polygon points="166,184 173,181 173,187" fill="var(--accent)"/>
+    <polygon points="236,184 229,181 229,187" fill="var(--accent)"/>
+    <text x="178" y="196" font-size="9" fill="var(--accent)">10 cm</text>
+    {/* área */}
+    <text x="256" y="52" font-size="9" fill="var(--ink-3)">A = 5 m²</text>
+    <text x="256" y="66" font-size="9" fill="var(--ink-3)">L = 20 cm</text>
+  </svg>
+  <figcaption>
+
+A temperatura de $30\ ^\circ\mathrm{C}$ é do **centro**: a espessura que corresponde à queda de $70\ ^\circ\mathrm{C}$ é $10\ \mathrm{cm}$, não $20$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+q = k\,A\,\frac{\Delta T}{\Delta x}
+\qquad\Longrightarrow\qquad
+k = \frac{q\,\Delta x}{A\,\Delta T}
+$$
+
+$$
+k = \frac{10\,000 \times 0{,}10}{5 \times 70} = \frac{1000}{350} \approx \mathbf{2{,}86\ W/(m\cdot K)}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que "sem geração ou acúmulo" garante.** Duas coisas, e as duas são usadas:
+
+- **sem acúmulo** → regime permanente;
+- **sem geração** → o **mesmo** $q$ atravessa todas as seções da parede.
+
+Juntas, com $k$ e $A$ constantes, elas obrigam $dT/dx$ a ser constante — e é daí que vem o perfil **linear** que o enunciado manda admitir. Ele não é hipótese extra: é consequência.
+
+**Passo 2 — a lei de Fourier em forma finita.** Com o perfil reto, a derivada vira razão de diferenças:
+
+$$
+q = -k\,A\,\frac{dT}{dx} = k\,A\,\frac{T_1 - T_2}{\Delta x}
+$$
+
+<Caixa tipo="simbolos">
+
+- $q = 10\,000\ \mathrm{W}$ — **taxa** de calor (não densidade de fluxo)
+- $A = 5\ \mathrm{m^2}$ — área lateral, perpendicular ao fluxo
+- $T_1 - T_2 = 100 - 30 = 70\ ^\circ\mathrm{C}$ (o mesmo que $70\ \mathrm{K}$)
+- $\Delta x$ — a espessura **entre os dois pontos de temperatura conhecida**
+
+</Caixa>
+
+**Passo 3 — a espessura correta, que é a armadilha inteira.** A segunda temperatura é do **centro** da parede, não da face direita. Então:
+
+$$
+\Delta x = \frac{L}{2} = \frac{0{,}20}{2} = 0{,}10\ \mathrm{m}
+$$
+
+$$
+k = \frac{q\,\Delta x}{A\,(T_1 - T_2)} = \frac{10\,000 \times 0{,}10}{5 \times 70} = \frac{1000}{350} = 2{,}857\ \mathrm{W/(m\cdot K)}
+$$
+
+<Caixa tipo="macete" rotulo="Usar 0,20 m dobra a resposta">
+
+$$
+k^{\text{errado}} = \frac{10\,000 \times 0{,}20}{5 \times 70} = 5{,}71\ \mathrm{W/(m\cdot K)}
+$$
+
+O dobro. É o erro que a questão está caçando: ela dá a espessura **total** e a temperatura do **meio**, e cabe a quem resolve emparelhar $\Delta T$ com o $\Delta x$ correspondente.
+
+A regra geral: **$\Delta T$ e $\Delta x$ têm de ser medidos entre os mesmos dois pontos.**
+
+</Caixa>
+
+**Passo 4 — o que o perfil linear diz sobre a face direita.** Como a queda é de $70\ ^\circ\mathrm{C}$ em $10\ \mathrm{cm}$, o gradiente é
+
+$$
+\frac{dT}{dx} = -\frac{70}{0{,}10} = -700\ ^\circ\mathrm{C/m}
+$$
+
+e nos $10\ \mathrm{cm}$ seguintes cai outros $70\ ^\circ\mathrm{C}$:
+
+$$
+T_3 = 30 - 70 = -40\ ^\circ\mathrm{C}
+$$
+
+Essa extrapolação é a conferência da hipótese: o perfil reto **exige** que a face direita esteja a $-40\ ^\circ\mathrm{C}$. É uma temperatura estranha para uma parede comum, e vale dizer isso — o exercício é numérico, não realista.
+
+E confere pela parede inteira:
+
+$$
+q = k\,A\,\frac{100 - (-40)}{0{,}20} = 2{,}857 \times 5 \times \frac{140}{0{,}20} = 2{,}857 \times 5 \times 700 = 10\,000\ \mathrm{W}\ \checkmark
+$$
+
+A mesma taxa, usando a espessura total com o $\Delta T$ total — como tinha de ser em série sem geração.
+
+<Caixa tipo="dica" rotulo="Se houvesse geração, nada disso valeria">
+
+Com geração, o perfil seria **parábola** e o fluxo variaria com a posição: o $q$ medido numa seção não serviria para outra, e a temperatura do centro seria um **máximo**, não um ponto qualquer da reta. O enunciado exclui geração justamente para permitir a conta de uma linha.
+
+</Caixa>
+
+**Conferência —** $\Delta x = L/2$, porque a segunda temperatura é a do centro ✔ $\Delta T$ em $^\circ\mathrm{C}$ ou K dá o mesmo, por ser diferença ✔ $q$ é taxa em watt, então $A$ entra ✔ refazer a conta com a espessura total e o $\Delta T$ total tem de dar o mesmo $q$ ✔
+</Passos>
