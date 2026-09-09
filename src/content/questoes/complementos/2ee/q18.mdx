@@ -1,0 +1,115 @@
+---
+origem: "2026.1"
+tema: "Fourier · Série de x² em [−π, π]"
+temaId: coeficientes-de-fourier
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $f(x) = x^2$, vista como periódica, de período $2\pi$, no intervalo $[-\pi,\pi]$. Estabeleça a série de Fourier de $f$ e construa os gráficos de $f$ e de sua série.
+
+<Gabarito>
+$$
+x^2 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2}\cos(nx)
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a paridade.** $f(-x) = (-x)^2 = x^2 = f(x)$: $f$ é **par**. Então o produto $f\cdot\operatorname{sen}(nx)$ é ímpar, e
+
+$$
+b_n = \frac1\pi\int_{-\pi}^{\pi}x^2\operatorname{sen}(nx)\,dx = 0
+\qquad\text{para todo } n
+$$
+
+A série é **só de cossenos**. É o primeiro movimento do gabarito da prova, e economiza metade do trabalho.
+
+**Passo 2 — o termo médio $a_0/2$.** Usando a simetria par para integrar só em $[0,\pi]$:
+
+$$
+a_0 = \frac1\pi\int_{-\pi}^{\pi}x^2\,dx = \frac2\pi\int_0^\pi x^2\,dx
+= \frac2\pi\cdot\frac{\pi^3}{3} = \frac{2\pi^2}{3}
+$$
+
+$$
+\frac{a_0}{2} = \frac{\pi^2}{3}
+$$
+
+É o **valor médio** de $x^2$ no período — e faz sentido: a média de $x^2$ em $[-\pi,\pi]$ é $\pi^2/3 \approx 3{,}29$, entre $0$ e $\pi^2 \approx 9{,}87$ ✔
+
+**Passo 3 — os $a_n$, por partes duas vezes.**
+
+$$
+a_n = \frac{2}{\pi}\int_0^\pi x^2\cos(nx)\,dx
+$$
+
+Primeira integração por partes, com $u = x^2$ e $dv = \cos(nx)dx$:
+
+$$
+\int x^2\cos(nx)\,dx = \frac{x^2\operatorname{sen}(nx)}{n} - \frac2n\int x\operatorname{sen}(nx)\,dx
+$$
+
+Nos limites $0$ e $\pi$, o primeiro termo **se anula**, porque $\operatorname{sen}(n\pi) = 0$.
+
+Segunda integração por partes, com $u = x$ e $dv = \operatorname{sen}(nx)dx$:
+
+$$
+\int_0^\pi x\operatorname{sen}(nx)\,dx
+= \left[-\frac{x\cos(nx)}{n} + \frac{\operatorname{sen}(nx)}{n^2}\right]_0^\pi
+= -\frac{\pi(-1)^n}{n}
+$$
+
+Juntando:
+
+$$
+a_n = \frac{2}{\pi}\cdot\left(-\frac2n\right)\cdot\left(-\frac{\pi(-1)^n}{n}\right)
+= \frac{4(-1)^n}{n^2}
+$$
+
+que é o valor do gabarito.
+
+**Passo 4 — a série.**
+
+$$
+\boxed{\;x^2 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2}\cos(nx)
+= \frac{\pi^2}{3} - 4\cos x + \cos 2x - \frac49\cos 3x + \cdots\;}
+$$
+
+**Passo 5 — os gráficos.** $f$ é a parábola em $[-\pi,\pi]$ **repetida** fora dele — o que produz uma sequência de arcos, com **bicos** em $x = \pm\pi, \pm3\pi,\dots$ onde os arcos se encontram no valor $\pi^2$.
+
+E aqui $f$ é **contínua** em todo ponto (os bicos são só de derivada), então a série converge para $f$ em **todos** os pontos, sem o salto da onda quadrada da q17.
+
+**Conferência — o problema de Basileia, de graça.** Avalie em $x = \pi$, onde $f = \pi^2$ e $\cos(n\pi) = (-1)^n$:
+
+$$
+\pi^2 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{(-1)^n(-1)^n}{n^2}
+= \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{1}{n^2}
+$$
+
+$$
+\sum_{n=1}^{\infty}\frac{1}{n^2} = \frac{1}{4}\left(\pi^2 - \frac{\pi^2}{3}\right) = \frac{\pi^2}{6}
+\;\;\checkmark
+$$
+
+E é **exatamente** esse valor que o item seguinte da prova pede — ver a q19 desta unidade.
+
+<Caixa tipo="macete" rotulo="Por que os coeficientes caem como 1/n²">
+
+$f$ é contínua com derivada seccionalmente contínua, e para esse tipo os coeficientes decaem como $1/n^2$. Na onda quadrada da q17, que tem **salto**, eles decaem só como $1/n$.
+
+A regra vale como conferência de plausibilidade: **quanto mais suave a função, mais rápido os coeficientes caem**. Se você achar $1/n$ para uma função contínua, provavelmente perdeu uma integração por partes.
+
+</Caixa>
+</Passos>
