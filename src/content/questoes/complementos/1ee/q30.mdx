@@ -1,0 +1,68 @@
+---
+origem: "2024.2"
+tema: "Conceitual · Por que não se pode escrever 2i < 3i"
+temaId: numeros-complexos
+pontos: 0,2 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Qual o erro conceitual ao se escrever $2i < 3i$, com $i = \sqrt{-1}$?
+
+<Gabarito>
+O erro é tentar **ordenar** números complexos. Não existe relação de ordem em $\mathbb{C}$ compatível com as operações de corpo — $\mathbb{C}$ é um corpo **não ordenável**.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que uma ordem teria de respeitar.** Para uma relação $<$ ser uma ordem compatível com as operações (como a de $\mathbb{R}$), ela precisa de duas regras:
+
+- se $a < b$, então $a + c < b + c$ para todo $c$;
+- se $a > 0$ e $b > 0$, então $ab > 0$.
+
+Da segunda sai o fato conhecido: **todo quadrado é não negativo**.
+
+**Passo 2 — a contradição.** Suponha que existisse tal ordem em $\mathbb{C}$. Compare $i$ com $0$ — pela tricotomia, uma das três vale.
+
+**Se $i > 0$:** então $i \cdot i > 0$, isto é, $-1 > 0$. Somando $1$ dos dois lados, $0 > 1$. Mas $1 = 1^2$ é quadrado, logo $1 > 0$. Contradição.
+
+**Se $i < 0$:** então $-i > 0$, e $(-i)(-i) > 0$, isto é, $i^2 = -1 > 0$. Mesma contradição.
+
+**Se $i = 0$:** então $i^2 = 0 = -1$, absurdo.
+
+Nenhum caso sobrevive: **não existe ordem compatível em $\mathbb{C}$**.
+
+**Passo 3 — o que se pode comparar.** Números **reais**, e por isso o que se compara em $\mathbb{C}$ são grandezas reais associadas:
+
+$$
+|2i| = 2 < 3 = |3i|
+\qquad\checkmark
+$$
+
+$$
+\operatorname{Re}(z_1) < \operatorname{Re}(z_2),
+\qquad
+\operatorname{Im}(z_1) < \operatorname{Im}(z_2)
+\qquad\checkmark
+$$
+
+Escrever $|2i| < |3i|$ é correto e diz o que provavelmente se queria dizer. Escrever $2i < 3i$ não é.
+
+<Caixa tipo="macete" rotulo="A pegadinha do caso particular">
+
+O que engana é que $2i$ e $3i$ estão no **mesmo eixo**, e ali parece natural ordenar. Mas uma ordem tem de valer para **todos** os pares, e a demonstração do passo 2 mostra que nenhuma serve.
+
+Se a ordem valesse só no eixo imaginário, ela não seria compatível com a multiplicação — que é justamente a operação que tira do eixo.
+
+</Caixa>
+</Passos>
