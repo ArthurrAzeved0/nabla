@@ -1,0 +1,111 @@
+---
+origem: "Final 2024.2"
+tema: "Fourier · Série de f(x) = x, a dente de serra"
+temaId: serie-de-senos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule a série de Fourier de $f(x) = x$, vista como uma função periódica definida em $[-\pi, +\pi]$.
+
+<Gabarito>
+$$
+x = 2\sum_{n=1}^{\infty}\frac{(-1)^{\,n+1}}{n}\operatorname{sen}(nx)
+= 2\left(\operatorname{sen} x - \frac{\operatorname{sen} 2x}{2} + \frac{\operatorname{sen} 3x}{3} - \cdots\right)
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a paridade zera metade do trabalho.**
+
+$$
+f(-x) = -x = -f(x)
+\qquad\Longrightarrow\qquad
+f \text{ é } \textbf{ímpar}
+$$
+
+Logo $a_0 = 0$ e $a_n = 0$ para todo $n$: a série é **só de senos**.
+
+**Passo 2 — calcular $b_n$**, integrando só em $[0,\pi]$ com fator $2/\pi$:
+
+$$
+b_n = \frac{2}{\pi}\int_0^{\pi} x\operatorname{sen}(nx)\,dx
+$$
+
+Por partes, com $u = x$ e $dv = \operatorname{sen}(nx)dx$:
+
+$$
+\int_0^\pi x\operatorname{sen}(nx)\,dx
+= \left[-\frac{x\cos(nx)}{n} + \frac{\operatorname{sen}(nx)}{n^2}\right]_0^{\pi}
+$$
+
+Em $x=\pi$ o seno zera e $\cos(n\pi) = (-1)^n$; em $x=0$ tudo zera:
+
+$$
+= -\frac{\pi(-1)^n}{n}
+$$
+
+$$
+b_n = \frac{2}{\pi}\cdot\left(-\frac{\pi(-1)^n}{n}\right)
+= \frac{-2(-1)^n}{n} = \frac{2(-1)^{\,n+1}}{n}
+$$
+
+**Passo 3 — a série.**
+
+$$
+\boxed{\;x = 2\sum_{n=1}^{\infty}\frac{(-1)^{\,n+1}}{n}\operatorname{sen}(nx)
+= 2\operatorname{sen} x - \operatorname{sen} 2x + \frac23\operatorname{sen} 3x - \frac12\operatorname{sen} 4x + \cdots\;}
+$$
+
+**Passo 4 — o gráfico é a dente de serra.** Estendida periodicamente, a reta $y=x$ em $(-\pi,\pi)$ produz uma sequência de rampas com **salto** em $x = \pm\pi, \pm3\pi,\dots$: de $\pi$ para $-\pi$.
+
+Nos saltos a série converge para a **média** dos limites laterais:
+
+$$
+\frac{\pi + (-\pi)}{2} = 0
+$$
+
+Ou seja: em $x=\pi$ a série vale **zero**, e não $\pi$. Substituindo na fórmula se confere — todos os termos têm $\operatorname{sen}(n\pi) = 0$ ✔ É a conferência mais rápida da questão.
+
+**Conferência 2 — em $x = \pi/2$.** Ali $f = \pi/2$, e $\operatorname{sen}(n\pi/2)$ vale $1, 0, -1, 0, 1,\dots$:
+
+$$
+\frac\pi2 = 2\left(1 - \frac13 + \frac15 - \frac17 + \cdots\right)
+\qquad\Longrightarrow\qquad
+1 - \frac13 + \frac15 - \cdots = \frac\pi4
+$$
+
+a série de Leibniz — a mesma que a onda quadrada do 2º EE entrega ✔
+
+<Caixa tipo="macete" rotulo="Coeficientes caindo como 1/n é assinatura de salto">
+
+$$
+b_n \sim \frac1n
+\qquad\Longrightarrow\qquad
+f \text{ tem descontinuidade}
+$$
+
+Compare as três funções do acervo:
+
+| $f$ | continuidade | decaimento |
+|---|---|---|
+| dente de serra ($x$) | salto em $\pm\pi$ | $1/n$ |
+| onda quadrada | salto em $0,\pm\pi$ | $1/n$ |
+| $x^2$ | contínua | $1/n^2$ |
+
+Se você achar $1/n^2$ para uma função com salto, ou $1/n$ para uma contínua, refaça — quase certamente há erro numa integração por partes.
+
+</Caixa>
+</Passos>
