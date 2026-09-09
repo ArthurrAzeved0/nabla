@@ -1,0 +1,137 @@
+---
+origem: "2023.2"
+tema: "Harmônicas · Reconstruir f(z) a partir da parte real"
+temaId: conjugada-harmonica
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dada $u(x,y) = 1 - 9xy^2 + 4y^2 + 3x^3 - 4x^2 + x$,
+
+**a)** prove que $u(x,y)$ é a parte real de uma função analítica $f(z) = u(x,y) + i\,v(x,y)$;
+
+**b)** calcule $f'(z)$;
+
+**c)** encontre a função $f(z)$ sabendo que $f(i) = -i$.
+
+<Gabarito>
+**a)** $u_{xx} + u_{yy} = (18x-8) + (-18x+8) = 0$: $u$ é harmônica em todo o plano, logo é parte real de uma analítica.
+
+**b)** $f'(z) = (9x^2 - 9y^2 - 8x + 1) + i(18xy - 8y) = 9z^2 - 8z + 1$
+
+**c)** O item **não tem solução como está** — o próprio gabarito da prova diz isso. Com $v = 9x^2y - 3y^3 - 8xy + y + C$, vale $f(i) = 5 + i(C-2)$, e nenhum $C$ real faz isso valer $-i$. Com a condição corrigida $f(i) = 5 - i$, sai $C = 1$ e
+
+$$
+f(z) = 3z^3 - 4z^2 + z + 1 + i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o critério é a equação de Laplace.** Uma função é parte real de analítica exatamente quando é **harmônica**. Então o item (a) é calcular duas derivadas segundas e somar.
+
+$$
+u_x = 9x^2 - 9y^2 - 8x + 1
+\qquad\Longrightarrow\qquad
+u_{xx} = 18x - 8
+$$
+
+$$
+u_y = -18xy + 8y
+\qquad\Longrightarrow\qquad
+u_{yy} = -18x + 8
+$$
+
+$$
+u_{xx} + u_{yy} = (18x - 8) + (-18x + 8) = 0
+\;\checkmark
+$$
+
+As parciais são polinomiais, logo contínuas em todo o plano: $u$ é harmônica em $\mathbb{C}$ e a conjugada existe.
+
+**Passo 2 — a derivada, sem precisar de $v$.** Vale $f'(z) = u_x + i\,v_x$, e Cauchy-Riemann dá $v_x = -u_y$:
+
+$$
+f'(z) = u_x - i\,u_y = \big(9x^2 - 9y^2 - 8x + 1\big) + i\big(18xy - 8y\big)
+$$
+
+É esta a forma que o gabarito destaca. E o reconhecimento que abrevia o item (c): agrupando,
+
+$$
+f'(z) = 9\big(x^2 - y^2 + 2ixy\big) - 8(x + iy) + 1 = 9z^2 - 8z + 1
+$$
+
+porque $z^2 = (x^2-y^2) + 2ixy$ e $z = x+iy$.
+
+**Passo 3 — a conjugada harmônica, pelo roteiro de sempre.** De $v_y = u_x$:
+
+$$
+v = \int \big(9x^2 - 9y^2 - 8x + 1\big)dy = 9x^2y - 3y^3 - 8xy + y + g(x)
+$$
+
+Derivando em $x$ e comparando com $v_x = -u_y = 18xy - 8y$:
+
+$$
+18xy - 8y + g'(x) = 18xy - 8y
+\qquad\Longrightarrow\qquad
+g'(x) = 0
+\qquad\Longrightarrow\qquad
+g = C
+$$
+
+$$
+v(x,y) = 9x^2y - 3y^3 - 8xy + y + C,
+\qquad C \in \mathbb{R}
+$$
+
+Equivalentemente, $f(z) = 3z^3 - 4z^2 + z + 1 + iC$ — o $1$ vem de $u(0,0) = 1$ e não é ajustável.
+
+**Passo 4 — impor $f(i) = -i$, e ver que não fecha.** Em $z = i$ vale $x=0$ e $y=1$:
+
+$$
+\operatorname{Re} f(i) = u(0,1) = 1 - 0 + 4 + 0 - 0 + 0 = 5
+$$
+
+$$
+\operatorname{Im} f(i) = v(0,1) = 0 - 3 - 0 + 1 + C = C - 2
+$$
+
+$$
+f(i) = 5 + i\,(C-2)
+$$
+
+A condição pede $f(i) = -i$, isto é, parte real **zero**. Mas a parte real de $f(i)$ já está decidida por $u$: vale $5$, e nenhuma constante imaginária muda isso. **O item, como impresso, não tem solução.**
+
+**Passo 5 — a correção que o gabarito indica.** Trocando a condição por $f(i) = 5 - i$, que é compatível com a $u$ dada:
+
+$$
+C - 2 = -1 \qquad\Longrightarrow\qquad C = 1
+$$
+
+$$
+\boxed{\;f(z) = 3z^3 - 4z^2 + z + 1 + i\;}
+$$
+
+**Conferência —** $f(i) = 3(-i) - 4(-1) + i + 1 + i = -3i + 4 + i + 1 + i = 5 - i$ ✔ E as duas equações de Cauchy-Riemann fecham com o par $(u,v)$ do passo 3 ✔
+
+<Caixa tipo="dica" rotulo="Sobre o gabarito">
+
+A inconsistência **está reconhecida no gabarito da prova**: depois de chegar a $f(i) = 5 + i(C-2)$, o professor escreve *"Não tem solução!"* e anota ao lado *"poderia ser $f(i) = 5-i \Rightarrow C = 1$"*.
+
+O motivo é estrutural, e vale entender: a condição $f(z_0) = w_0$ impõe **duas** equações reais, mas com $u$ já fixada só resta **uma** constante real livre — a imaginária. A parte real de $f$ em qualquer ponto já está determinada por $u$. Então uma condição desse tipo só é compatível se a parte real dela coincidir com $u(z_0)$.
+
+Na prova, o que vale ponto são os passos 1 a 3. Chegar ao passo 4 e **dizer que não fecha, com o motivo**, vale mais que forçar um número.
+
+</Caixa>
+</Passos>
