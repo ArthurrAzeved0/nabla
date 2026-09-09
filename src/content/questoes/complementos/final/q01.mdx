@@ -1,0 +1,98 @@
+---
+origem: "Final 2024.2"
+tema: "Potência complexa · O valor de i elevado a i"
+temaId: potencia-complexa
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Qual o valor de $i^{\,i}$, onde $i = \sqrt{-1}$?
+
+<Gabarito>
+$$
+i^{\,i} = e^{-\pi/2} \approx 0{,}2079
+$$
+
+— um número **real**. Considerando todos os ramos, $i^{\,i} = e^{-\pi/2 - 2k\pi}$, $k\in\mathbb{Z}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a definição de potência complexa.**
+
+$$
+z^{\alpha} = e^{\alpha\log z}
+$$
+
+Pelo ramo principal, $\operatorname{Log}$, obtém-se o **valor principal**.
+
+**Passo 2 — o logaritmo da base.** Com $z = i$:
+
+$$
+|i| = 1,
+\qquad
+\operatorname{Arg}(i) = \frac{\pi}{2}
+$$
+
+$$
+\operatorname{Log}(i) = \ln 1 + i\frac{\pi}{2} = \frac{i\pi}{2}
+$$
+
+**Passo 3 — montar o expoente.**
+
+$$
+i^{\,i} = e^{\,i\operatorname{Log}(i)} = \exp\!\left(i\cdot\frac{i\pi}{2}\right)
+= \exp\!\left(\frac{i^2\pi}{2}\right)
+= e^{-\pi/2}
+$$
+
+$$
+\boxed{\;i^{\,i} = e^{-\pi/2} \approx 0{,}2079\;}
+$$
+
+**Passo 4 — o resultado é real, e isso não é acidente.** O expoente $i\cdot\tfrac{i\pi}{2}$ é **puramente real** e negativo, porque $i\cdot i = -1$. Não sobra parte imaginária, e a potência é um número real entre $0$ e $1$.
+
+O mecanismo: numa potência $z^\alpha = e^{\alpha\operatorname{Log} z}$, a parte imaginária de $\alpha$ multiplica o **argumento** de $z$ e vira parte **real** do expoente — isto é, vira **módulo**. Com $\alpha = i$ e $z = i$, é só isso que resta.
+
+**Passo 5 — todos os valores.** Se a questão pedisse "todos", o logaritmo completo daria
+
+$$
+\log i = i\left(\frac\pi2 + 2k\pi\right)
+\qquad\Longrightarrow\qquad
+i^{\,i} = e^{-\pi/2 - 2k\pi},
+\qquad k\in\mathbb{Z}
+$$
+
+uma **infinidade** de valores reais positivos: $e^{-\pi/2} \approx 0{,}208$, $e^{-5\pi/2}\approx 3{,}9\times10^{-4}$, $e^{3\pi/2}\approx 111{,}3$, e assim por diante.
+
+<Caixa tipo="dica" rotulo="O parente da q21 do 1º EE">
+
+A q21 do 1º EE pede $(-i)^{1+i}$, e sai pelo mesmo caminho — mas ali o expoente tem parte real também, e o resultado é complexo, $-i\,e^{\pi/2}$.
+
+A comparação é instrutiva:
+
+$$
+i^{\,i} = e^{-\pi/2}
+\qquad\text{(real, menor que 1)}
+$$
+
+$$
+(-i)^{1+i} = -i\,e^{\pi/2}
+\qquad\text{(imaginário puro, módulo maior que 1)}
+$$
+
+O sinal do módulo se inverte porque o argumento da base trocou de $+\pi/2$ para $-\pi/2$. **Errar o quadrante da base inverte o expoente inteiro** — é o único erro possível nesta questão.
+
+</Caixa>
+</Passos>
