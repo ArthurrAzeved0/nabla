@@ -36,18 +36,19 @@ no qual $C_1$ e $C_2$ são constantes.
     {/* meio da membrana */}
     <line x1="170" y1="24" x2="170" y2="162" stroke="var(--warn)" stroke-width="1.1" stroke-dasharray="4 3"/>
     <text x="152" y="20" font-size="9" fill="var(--warn)">x = L/2</text>
-    {/* perfil de A: cai de 85 para 16 (exponencial) */}
-    <path d="M110 42 Q142 98 230 122" fill="none" stroke="var(--accent)" stroke-width="1.9"/>
+    {/* escala vertical: 85 em y=42, 15 em y=140 — 1,4 px por mol/m³ */}
+    {/* perfil de A: cai de 85 para 16 (exponencial, 36,9 no meio) */}
+    <path d="M110 42 Q170 128 230 139" fill="none" stroke="var(--accent)" stroke-width="1.9"/>
     <circle cx="110" cy="42" r="3.2" fill="var(--accent)"/>
-    <circle cx="230" cy="122" r="3.2" fill="var(--accent)"/>
+    <circle cx="230" cy="139" r="3.2" fill="var(--accent)"/>
     <text x="44" y="46" font-size="9" fill="var(--accent)">C<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = 85</tspan></text>
-    <text x="236" y="134" font-size="9" fill="var(--accent)">16</text>
-    {/* perfil de B: sobe de 15 para 24 */}
-    <path d="M110 140 Q168 134 230 118" fill="none" stroke="var(--ok)" stroke-width="1.9"/>
+    <text x="236" y="146" font-size="9" fill="var(--accent)">16</text>
+    {/* perfil de B: sobe de 15 para 24 (19,0 no meio) — cruza o de A */}
+    <path d="M110 140 Q170 135 230 127" fill="none" stroke="var(--ok)" stroke-width="1.9"/>
     <circle cx="110" cy="140" r="3.2" fill="var(--ok)"/>
-    <circle cx="230" cy="118" r="3.2" fill="var(--ok)"/>
+    <circle cx="230" cy="127" r="3.2" fill="var(--ok)"/>
     <text x="44" y="144" font-size="9" fill="var(--ok)">C<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 15</tspan></text>
-    <text x="236" y="106" font-size="9" fill="var(--ok)">24</text>
+    <text x="236" y="124" font-size="9" fill="var(--ok)">24</text>
     {/* rótulos das faces */}
     <text x="30" y="70" font-size="9" fill="var(--ink-3)">esquerda</text>
     <text x="30" y="82" font-size="9" fill="var(--ink-3)">C = 100</text>
