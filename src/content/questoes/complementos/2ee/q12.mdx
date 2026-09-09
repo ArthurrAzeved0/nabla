@@ -1,0 +1,124 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "EDO · Homogênea de grau zero com solução implícita"
+temaId: edo-homogenea-de-grau-zero
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução geral de
+
+$$
+y' = \frac{x - y}{x + y}
+$$
+
+<Gabarito>
+$$
+x^2 - 2xy - y^2 = C
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reconhecer o tipo.** Numerador e denominador são **homogêneos de grau 1**, então o quociente depende só de $y/x$:
+
+$$
+y' = \frac{x-y}{x+y} = \frac{1 - y/x}{1 + y/x}
+$$
+
+É homogênea de grau zero — substituição $y = xv$.
+
+**Passo 2 — substituir.** Com $y' = v + xv'$:
+
+$$
+v + x\,v' = \frac{1-v}{1+v}
+$$
+
+$$
+x\,v' = \frac{1-v}{1+v} - v = \frac{1 - v - v(1+v)}{1+v} = \frac{1 - 2v - v^2}{1+v}
+$$
+
+**Passo 3 — separar as variáveis.**
+
+$$
+\frac{(1+v)\,dv}{1 - 2v - v^2} = \frac{dx}{x}
+$$
+
+**Passo 4 — a integral da esquerda, por reconhecimento.** Chame $w = 1 - 2v - v^2$. Então
+
+$$
+dw = (-2 - 2v)\,dv = -2\,(1+v)\,dv
+\qquad\Longrightarrow\qquad
+(1+v)\,dv = -\frac{dw}{2}
+$$
+
+O numerador **é** (a menos de constante) a derivada do denominador — é o que faz a integral sair em log:
+
+$$
+\int \frac{(1+v)dv}{1-2v-v^2} = -\frac12\int\frac{dw}{w} = -\frac12\ln|w|
+$$
+
+**Passo 5 — integrar e voltar.**
+
+$$
+-\frac12\ln\big|1 - 2v - v^2\big| = \ln|x| + c
+$$
+
+$$
+\ln\big|1-2v-v^2\big| = -2\ln|x| + c'
+\qquad\Longrightarrow\qquad
+1 - 2v - v^2 = \frac{C}{x^2}
+$$
+
+Com $v = y/x$:
+
+$$
+1 - \frac{2y}{x} - \frac{y^2}{x^2} = \frac{C}{x^2}
+$$
+
+Multiplicando por $x^2$:
+
+$$
+\boxed{\;x^2 - 2xy - y^2 = C\;}
+$$
+
+**Conferência —** derive implicitamente:
+
+$$
+2x - 2y - 2x\,y' - 2y\,y' = 0
+\qquad\Longrightarrow\qquad
+x - y = y'\,(x+y)
+\qquad\Longrightarrow\qquad
+y' = \frac{x-y}{x+y}
+\;\;\checkmark
+$$
+
+Fecha exatamente com a equação dada.
+
+<Caixa tipo="dica" rotulo="Resposta implícita é resposta">
+
+A solução não sai explícita em $y$ sem resolver uma quadrática, e isso é **normal** neste tipo. A forma $x^2 - 2xy - y^2 = C$ é a resposta, e é a que se confere por derivação implícita — três linhas, e não deixa dúvida.
+
+Se quiser explicitar: $y^2 + 2xy - (x^2 - C) = 0$ dá $y = -x \pm \sqrt{2x^2 - C}$. Mas a forma implícita é mais limpa e não exige escolher o sinal.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Numerador é a derivada do denominador?">
+
+Sempre olhe para isso antes de fazer frações parciais. Aqui $\dfrac{d}{dv}(1-2v-v^2) = -2(1+v)$, e o numerador é $(1+v)$ — proporcional. A integral é imediatamente um logaritmo, e não há o que decompor.
+
+É a mesma economia que se faz em Cálculo 1, e nesta cadeira ela aparece em quase toda separável que vem de homogênea de grau zero.
+
+</Caixa>
+</Passos>
