@@ -1,0 +1,167 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Continuidade · Temperatura de saída da mistura de dois gases"
+temaId: conservacao-da-massa
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q38.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um sistema de escoamento é composto por dois tubos de entrada e um de saída. O tubo (1) admite um gás ideal ($P_1 = 6\ \mathrm{atm}$; $T_1 = 300\ \mathrm{K}$; $\mathcal{M}_1 = 28\ \mathrm{g/mol}$) com uma vazão de $0{,}02\ \mathrm{m^3/s}$ e o tubo (2) admite outro gás ideal ($P_2 = 2\ \mathrm{atm}$; $T_2 = 400\ \mathrm{K}$; $\mathcal{M}_2 = 16\ \mathrm{g/mol}$) com vazão de $0{,}01\ \mathrm{m^3/s}$. A mistura formada é descarregada pelo tubo (3). **Determine a temperatura de saída** da mistura ideal ($\mathcal{M}_3 = 44\ \mathrm{g/mol}$), sabendo que a vazão volumétrica é $0{,}025\ \mathrm{m^3/s}$, com pressão de $4\ \mathrm{atm}$ em (3). Considere o regime permanente de escoamento.
+
+**Dado:** $R = 8{,}314\ \mathrm{J/(mol\cdot K)}$.
+
+<Figura>
+  <svg viewBox="0 0 340 180" role="img" aria-label="Duas correntes de gás entram num misturador e saem por um único duto: a incógnita é a temperatura da mistura na saída">
+    <rect x="26" y="24" width="240" height="130" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 4"/>
+    <text x="30" y="18" font-size="9" fill="var(--accent)">volume de controle · regime permanente</text>
+    {/* duto 1 */}
+    <path d="M40 48 L140 48 L176 84" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="4" y1="48" x2="30" y2="48" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="36,48 26,44 26,52" fill="var(--ok)"/>
+    <text x="46" y="40" font-size="10" fill="var(--ink-2)">(1)</text>
+    <text x="60" y="40" font-size="9" fill="var(--ink-3)">6 atm · 300 K · ℳ = 28</text>
+    <text x="60" y="62" font-size="9" fill="var(--ok)">Q₁ = 0,02 m³/s</text>
+    {/* duto 2 */}
+    <path d="M40 130 L140 130 L176 94" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="4" y1="130" x2="30" y2="130" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="36,130 26,126 26,134" fill="var(--ok)"/>
+    <text x="46" y="146" font-size="10" fill="var(--ink-2)">(2)</text>
+    <text x="60" y="146" font-size="9" fill="var(--ink-3)">2 atm · 400 K · ℳ = 16</text>
+    <text x="60" y="124" font-size="9" fill="var(--ok)">Q₂ = 0,01 m³/s</text>
+    {/* saída */}
+    <line x1="176" y1="84" x2="256" y2="84" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="176" y1="94" x2="256" y2="94" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="264" y1="89" x2="300" y2="89" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="306,89 296,85 296,93" fill="var(--warn)"/>
+    <text x="222" y="76" font-size="10" fill="var(--ink-2)">(3)</text>
+    <text x="196" y="112" font-size="9" fill="var(--warn)">4 atm · ℳ = 44</text>
+    <text x="196" y="124" font-size="9" fill="var(--warn)">Q₃ = 0,025 m³/s · T₃ = ?</text>
+  </svg>
+  <figcaption>
+
+O que se conserva é a **massa**. A temperatura de saída é o que a equação de estado devolve depois de a massa fechar.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\rho = \frac{P\,\mathcal{M}}{R\,T}
+\qquad
+\dot m = \rho\,Q
+\qquad
+\dot m_3 = \dot m_1 + \dot m_2
+$$
+
+$$
+\rho_1 = 6{,}82\ \mathrm{kg/m^3}
+\qquad
+\rho_2 = 0{,}97\ \mathrm{kg/m^3}
+$$
+
+$$
+\rho_3 = \frac{\rho_1 Q_1 + \rho_2 Q_2}{Q_3} = \frac{6{,}82(0{,}02) + 0{,}97(0{,}01)}{0{,}025} = 5{,}85\ \mathrm{kg/m^3}
+$$
+
+$$
+T_3 = \frac{P_3\,\mathcal{M}_3}{R\,\rho_3} \approx \mathbf{366{,}7\ K}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o caminho da solução, em três movimentos.** A temperatura não sai de um balanço de energia: sai da **equação de estado**, depois de a massa fechar.
+
+$$
+\underbrace{\rho_1,\ \rho_2}_{\text{estado nas entradas}}
+\;\to\;
+\underbrace{\dot m_3 = \dot m_1 + \dot m_2}_{\text{conservação de massa}}
+\;\to\;
+\underbrace{\rho_3 = \dot m_3/Q_3}_{\text{estado na saída}}
+\;\to\;
+\underbrace{T_3 = \frac{P_3 \mathcal{M}_3}{R\,\rho_3}}_{\text{de volta ao estado}}
+$$
+
+**Passo 2 — as massas específicas de entrada.** Com $1\ \mathrm{atm} = 1{,}013\times10^5\ \mathrm{Pa}$ e $\mathcal{M}$ em $\mathrm{kg/mol}$:
+
+$$
+\rho_1 = \frac{P_1 \mathcal{M}_1}{R\,T_1} = \frac{6{,}078\times10^5 \times 0{,}028}{8{,}314 \times 300} = \frac{17\,018}{2494{,}2} = 6{,}82\ \mathrm{kg/m^3}
+$$
+
+$$
+\rho_2 = \frac{P_2 \mathcal{M}_2}{R\,T_2} = \frac{2{,}026\times10^5 \times 0{,}016}{8{,}314 \times 400} = \frac{3241{,}6}{3325{,}6} = 0{,}97\ \mathrm{kg/m^3}
+$$
+
+A corrente (1) é **sete vezes** mais densa: está a três vezes a pressão, mais fria e com massa molar maior.
+
+**Passo 3 — a conservação de massa.**
+
+$$
+\dot m_1 = \rho_1 Q_1 = 6{,}82 \times 0{,}02 = 0{,}1365\ \mathrm{kg/s}
+$$
+
+$$
+\dot m_2 = \rho_2 Q_2 = 0{,}97 \times 0{,}01 = 0{,}0097\ \mathrm{kg/s}
+$$
+
+$$
+\dot m_3 = 0{,}1365 + 0{,}0097 = 0{,}1462\ \mathrm{kg/s}
+$$
+
+<Caixa tipo="dica" rotulo="Confira que o volume NÃO se conserva">
+
+$$
+Q_1 + Q_2 = 0{,}02 + 0{,}01 = 0{,}03\ \mathrm{m^3/s}
+\qquad\text{mas}\qquad
+Q_3 = 0{,}025\ \mathrm{m^3/s}
+$$
+
+O enunciado dá $Q_3$ **de propósito diferente** da soma: é o aviso de que a mistura muda de estado. Quem soma vazões volumétricas nem chega ao meio da questão.
+
+</Caixa>
+
+**Passo 4 — a massa específica na saída.**
+
+$$
+\rho_3 = \frac{\dot m_3}{Q_3} = \frac{0{,}1462}{0{,}025} = 5{,}85\ \mathrm{kg/m^3}
+$$
+
+**Passo 5 — a equação de estado ao contrário, agora para achar $T_3$.**
+
+$$
+\rho_3 = \frac{P_3\,\mathcal{M}_3}{R\,T_3}
+\qquad\Longrightarrow\qquad
+T_3 = \frac{P_3\,\mathcal{M}_3}{R\,\rho_3}
+$$
+
+$$
+T_3 = \frac{4{,}052\times10^5 \times 0{,}044}{8{,}314 \times 5{,}85} = \frac{17\,829}{48{,}64} = 366{,}5\ \mathrm{K}
+$$
+
+ou, mantendo mais casas nos intermediários, $T_3 = 366{,}7\ \mathrm{K}$ — cerca de $93\ ^\circ\mathrm{C}$.
+
+**Passo 6 — a conferência de plausibilidade.** $T_3$ tem de ficar **entre** as duas temperaturas de entrada, $300$ e $400\ \mathrm{K}$ — e fica ✔ Mais que isso: como a corrente (1), a $300\ \mathrm{K}$, traz **93 %** da massa, era de esperar um valor bem mais perto de $300$ que de $400$... mas aqui a mistura também **muda de pressão e de massa molar**, e são esses dois que puxam o resultado para cima. O $\mathcal{M}_3 = 44$ dado no enunciado não é decorativo.
+
+<Caixa tipo="macete" rotulo="Por que a massa molar da saída é dada e é diferente">
+
+$\mathcal{M}_3 = 44\ \mathrm{g/mol}$ não é a média das massas molares de entrada ($28$ e $16$ dariam algo entre elas). O enunciado está simplesmente **dando** a massa molar da mistura resultante, e é ela que fecha a equação de estado na saída.
+
+Não caia na tentação de "corrigir" esse dado: sem ele, o sistema não tem solução, porque $\rho$, $P$, $\mathcal{M}$ e $T$ são quatro grandezas ligadas por **uma** equação.
+
+</Caixa>
+
+**Conferência —** atm para pascal ✔ g/mol para kg/mol ✔ temperatura em kelvin nas entradas ✔ vazões **volumétricas** não se somam; **mássicas** sim ✔ $T_3$ tem de cair entre $300$ e $400\ \mathrm{K}$ ✔
+
+**Sobre o gabarito —** a resolução oficial escreve $\rho_2 = 0{,}962\ \mathrm{kg/m^3}$ (valor que sai de tomar $1\ \mathrm{atm} = 1\times10^5\ \mathrm{Pa}$ só nessa linha), mas os demais números dela — $\rho_1 = 6{,}825$, $\rho_3 = 5{,}85$ e $T_3 = 366{,}67\ \mathrm{K}$ — correspondem a $1\ \mathrm{atm} = 1{,}013\times10^5\ \mathrm{Pa}$, que é o valor usado acima. A resposta final é a mesma.
+</Passos>
