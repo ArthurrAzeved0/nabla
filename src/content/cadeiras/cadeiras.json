@@ -564,7 +564,11 @@
       "fracoes-parciais": "cm-laplace-inversa",
       "completar-o-quadrado": "cm-laplace-inversa",
       "formula-de-bromwich": "cm-laplace-inversa",
-      "teorema-do-valor-inicial": "cm-laplace-inversa"
+      "teorema-do-valor-inicial": "cm-laplace-inversa",
+      "convolucao": "cm-convolucao",
+      "teorema-da-convolucao": "cm-convolucao",
+      "equacao-integral": "cm-convolucao",
+      "resposta-ao-impulso": "cm-convolucao"
     }
   }
 ]

@@ -30,6 +30,7 @@ unidades:
       - { id: cm-fourier-convergencia, titulo: "Convergência de Fourier, Dirichlet e Parseval" }
       - { id: cm-laplace, titulo: "Transformada de Laplace e suas propriedades" }
       - { id: cm-laplace-inversa, titulo: "Inversão da transformada de Laplace" }
+      - { id: cm-convolucao, titulo: "Teorema da convolução e aplicações" }
 ---
 
 {/* **************************************************************************
@@ -2572,6 +2573,87 @@ Duas conferências rápidas para qualquer inversa:
 - **valor final**: se $F$ tende a um limite, $\lim_{x\to\infty}F(x) = \lim_{s\to0} s\,\mathcal{L}\{F\}(s)$.
 
 Nos dois exemplos acima elas fecham em uma linha, e pegam erro de sinal em qualquer constante.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-convolucao" num="25" titulo="Teorema da convolução e aplicações">
+
+### A ideia
+
+Laplace transforma soma em soma e derivada em multiplicação por $s$ — mas **não** transforma produto em produto. O que corresponde ao produto no domínio de $s$ é uma operação nova no domínio de $x$: a **convolução**.
+
+<Formula rotulo="Convolução e o teorema">
+
+$$
+(F * G)(x) = \int_0^{x} F(\tau)\,G(x-\tau)\,d\tau
+$$
+
+$$
+\mathcal{L}\{F * G\} = \mathcal{L}\{F\}\cdot\mathcal{L}\{G\}
+\qquad\Longleftrightarrow\qquad
+\mathcal{L}^{-1}\{\Phi\,\Psi\} = \mathcal{L}^{-1}\{\Phi\} * \mathcal{L}^{-1}\{\Psi\}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\tau$ — variável muda de integração; o limite superior é o próprio $x$;
+- $F*G = G*F$ — a convolução é **comutativa**, e trocar a ordem às vezes simplifica a integral;
+- $\mathcal{L}\{F\}\cdot\mathcal{L}\{G\}$ — produto **no domínio de $s$**;
+- $1 * F = \displaystyle\int_0^x F$ — convoluir com $1$ é integrar, o que dá $\mathcal{L}\left\{\int_0^x F\right\} = \dfrac{\mathcal{L}\{F\}}{s}$.
+
+</Caixa>
+
+### Para que serve, em prova
+
+**Primeiro uso: inverter um produto sem frações parciais.** Quando a expressão em $s$ já vem fatorada em duas transformadas conhecidas, a convolução dá a inversa direto.
+
+<Caixa tipo="exemplo">
+
+$$
+\mathcal{L}^{-1}\left\{\frac{1}{s^2(s^2+1)}\right\}
+$$
+
+Reconheça o produto: $\dfrac{1}{s^2}\cdot\dfrac{1}{s^2+1}$, cujas inversas são $x$ e $\operatorname{sen} x$. Então
+
+$$
+\mathcal{L}^{-1} = x * \operatorname{sen} x = \int_0^x \tau\operatorname{sen}(x-\tau)\,d\tau = x - \operatorname{sen} x
+$$
+
+Por frações parciais sairia o mesmo, com mais álgebra: $\dfrac{1}{s^2} - \dfrac{1}{s^2+1}$.
+
+</Caixa>
+
+**Segundo uso: a resposta de um sistema.** Se um sistema linear tem função de transferência $H(s)$ e entrada $u(x)$, a saída é $y = h * u$, com $h = \mathcal{L}^{-1}\{H\}$ a **resposta ao impulso**. É a forma que a engenharia usa: caracterizado o $h$, a saída para qualquer entrada é uma convolução.
+
+**Terceiro uso: equações integrais.** Uma equação do tipo
+
+$$
+y(x) = f(x) + \int_0^x k(x-\tau)\,y(\tau)\,d\tau
+$$
+
+tem a integral em forma de convolução. Transformando, ela vira algébrica:
+
+$$
+Y = \mathcal{L}\{f\} + \mathcal{L}\{k\}\,Y
+\qquad\Longrightarrow\qquad
+Y = \frac{\mathcal{L}\{f\}}{1 - \mathcal{L}\{k\}}
+$$
+
+<Caixa tipo="macete">
+
+Reconhecer que uma integral **é** convolução: o integrando tem de ser produto de duas funções cujos argumentos **somam $x$** — $F(\tau)G(x-\tau)$. Se aparecer $G(x+\tau)$ ou o limite superior for constante, **não** é convolução e o teorema não se aplica.
+
+E, na dúvida entre convolução e frações parciais para inverter, escolha frações parciais quando o denominador fatora em lineares, e convolução quando um dos fatores já é uma transformada reconhecível e a integral resultante é simples.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Erro clássico: escrever $\mathcal{L}^{-1}\{\Phi\Psi\} = \mathcal{L}^{-1}\{\Phi\}\cdot\mathcal{L}^{-1}\{\Psi\}$. **A inversa de um produto não é o produto das inversas** — é a convolução delas. Testar com $\Phi = \Psi = 1/s$ resolve a dúvida na hora: a inversa de $1/s^2$ é $x$, não $1\cdot1 = 1$.
 
 </Caixa>
 
