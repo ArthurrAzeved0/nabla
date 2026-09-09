@@ -1,0 +1,133 @@
+---
+origem: "2026.1"
+tema: "Parseval · A soma 1/n² e o expoente 2026"
+temaId: identidade-de-parseval
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Mostre que $f(x) = x^2$ é uma função par de $x$. Em seguida, usando a fórmula de Parseval, ou outro método de sua escolha, calcule o valor de
+
+$$
+\left(\frac{6}{\pi^2}\sum_{n=1}^{\infty}\frac{1}{n^2}\right)^{2026}
+$$
+
+<Gabarito>
+$$
+\sum_{n=1}^{\infty}\frac{1}{n^2} = \frac{\pi^2}{6}
+\qquad\Longrightarrow\qquad
+\left(\frac{6}{\pi^2}\cdot\frac{\pi^2}{6}\right)^{2026} = 1^{2026} = \mathbf{1}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a paridade, em uma linha.**
+
+$$
+f(-x) = (-x)^2 = x^2 = f(x)
+\qquad\Longrightarrow\qquad
+f \text{ é par}
+$$
+
+**Passo 2 — reconhecer o que o enunciado está pedindo.** O que está dentro do parêntese é
+
+$$
+\frac{6}{\pi^2}\sum_{n=1}^{\infty}\frac{1}{n^2}
+$$
+
+Se a soma valer $\pi^2/6$, o parêntese vale exatamente $1$ — e $1$ elevado a qualquer coisa é $1$. **O expoente $2026$ é decoração**: a questão é calcular a soma.
+
+**Passo 3 — o caminho por Parseval.** Da q18 desta unidade, os coeficientes de $x^2$ são $a_0 = \tfrac{2\pi^2}{3}$, $a_n = \tfrac{4(-1)^n}{n^2}$ e $b_n = 0$. A identidade, com $L = \pi$:
+
+$$
+\frac1\pi\int_{-\pi}^{\pi}\big[f(x)\big]^2dx = \frac{a_0^2}{2} + \sum_{n=1}^{\infty}\left(a_n^2 + b_n^2\right)
+$$
+
+**Lado esquerdo:**
+
+$$
+\frac1\pi\int_{-\pi}^{\pi}x^4dx = \frac1\pi\cdot\frac{2\pi^5}{5} = \frac{2\pi^4}{5}
+$$
+
+**Lado direito:**
+
+$$
+\frac{a_0^2}{2} = \frac12\left(\frac{2\pi^2}{3}\right)^2 = \frac{2\pi^4}{9},
+\qquad
+\sum a_n^2 = \sum \frac{16}{n^4}
+$$
+
+**Igualando:**
+
+$$
+\frac{2\pi^4}{5} = \frac{2\pi^4}{9} + 16\sum_{n=1}^{\infty}\frac{1}{n^4}
+$$
+
+$$
+16\sum\frac{1}{n^4} = 2\pi^4\left(\frac15 - \frac19\right) = 2\pi^4\cdot\frac{4}{45} = \frac{8\pi^4}{45}
+$$
+
+$$
+\sum_{n=1}^{\infty}\frac{1}{n^4} = \frac{\pi^4}{90}
+$$
+
+**Passo 4 — atenção: Parseval entrega $1/n^4$, não $1/n^2$.** Este é o ponto que decide a questão. Como os coeficientes vão como $1/n^2$, elevá-los ao quadrado dá $1/n^4$ — Parseval **não** produz a soma pedida.
+
+O "ou outro método de sua escolha" do enunciado é o aviso. O método que entrega $1/n^2$ é **avaliar a série num ponto**:
+
+$$
+x = \pi:
+\qquad
+\pi^2 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{(-1)^n\cos(n\pi)}{n^2}
+= \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{1}{n^2}
+$$
+
+usando $\cos(n\pi) = (-1)^n$, de modo que $(-1)^n\cos(n\pi) = (-1)^{2n} = 1$.
+
+$$
+\sum_{n=1}^{\infty}\frac{1}{n^2} = \frac14\left(\pi^2 - \frac{\pi^2}{3}\right) = \frac14\cdot\frac{2\pi^2}{3} = \frac{\pi^2}{6}
+$$
+
+**Passo 5 — fechar.**
+
+$$
+\frac{6}{\pi^2}\cdot\frac{\pi^2}{6} = 1
+\qquad\Longrightarrow\qquad
+\boxed{\;\left(\frac{6}{\pi^2}\sum_{n=1}^{\infty}\frac{1}{n^2}\right)^{2026} = 1^{2026} = 1\;}
+$$
+
+<Caixa tipo="macete" rotulo="Qual método entrega qual soma">
+
+A escolha não é de gosto — cada caminho produz um expoente diferente:
+
+| método | o que entrega |
+|---|---|
+| avaliar a série num ponto | somas com **$a_n$ cru**: aqui $1/n^2$ |
+| identidade de Parseval | somas com **$a_n^2$**: aqui $1/n^4$ |
+
+Regra prática: **olhe o expoente do $n$ na soma pedida e compare com o do coeficiente**. Se for o mesmo, avalie num ponto; se for o dobro, use Parseval.
+
+Para $x^2$, com $a_n \sim 1/n^2$: $\sum 1/n^2$ pede ponto, $\sum 1/n^4$ pede Parseval. É por isso que o enunciado diz "ou outro método de sua escolha" — Parseval sozinho não resolve o que ele pede.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O expoente 2026 é o ano da prova">
+
+Não há conta nenhuma escondida nele. É a brincadeira do professor: quem reconhece que o parêntese vale $1$ responde em três linhas; quem não reconhece pode tentar estimar $\pi$ e elevar a $2026$, e não chega a lugar nenhum.
+
+O mesmo tipo de brincadeira aparece em outras provas com potências grandes — e a leitura é sempre: **calcule o que está dentro primeiro**.
+
+</Caixa>
+</Passos>
