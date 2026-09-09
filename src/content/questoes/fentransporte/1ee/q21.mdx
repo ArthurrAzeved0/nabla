@@ -1,0 +1,146 @@
+---
+origem: "2026.1"
+tema: "Fick · Difusão de umidade através de uma parede"
+temaId: lei-de-fick
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere que a umidade se transfere a um fluxo de $0{,}01\ \mathrm{kg/(m^2 \cdot s)}$ através de uma parede de $30\ \mathrm{cm}$ de espessura, do interior para o exterior de uma sala. Sabendo que a densidade da umidade no ar no interior da sala é de $0{,}8\ \mathrm{kg/m^3}$, determine a **densidade da umidade no ar no exterior**. Considere o perfil **linear** da densidade de umidade através da espessura da parede.
+
+**Dado:** $D = 0{,}02\ \mathrm{m^2/s}$ (coeficiente de difusão da umidade na parede).
+
+<Figura>
+  <svg viewBox="0 0 320 190" role="img" aria-label="Parede de 30 centímetros com perfil linear de densidade de umidade: dentro da sala vale 0,8 quilogramas por metro cúbico e cai linearmente até o valor desconhecido no exterior, com fluxo de massa da esquerda para a direita">
+    {/* parede */}
+    <rect x="110" y="30" width="90" height="120" fill="var(--line-2)" opacity="0.5" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <text x="140" y="168" font-size="10" fill="var(--ink-3)">parede</text>
+    {/* rótulos dos lados */}
+    <text x="34" y="46" font-size="10" fill="var(--ink-2)">interior</text>
+    <text x="238" y="46" font-size="10" fill="var(--ink-2)">exterior</text>
+    {/* perfil linear de densidade */}
+    <line x1="110" y1="52" x2="200" y2="108" stroke="var(--accent)" stroke-width="1.8"/>
+    <circle cx="110" cy="52" r="3.5" fill="var(--accent)"/>
+    <circle cx="200" cy="108" r="3.5" fill="var(--accent)"/>
+    <text x="42" y="70" font-size="10" fill="var(--accent)">ρ₁ = 0,8</text>
+    <text x="42" y="82" font-size="9" fill="var(--accent)">kg/m³</text>
+    <line x1="86" y1="66" x2="106" y2="56" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="238" y="122" font-size="10" fill="var(--accent)">ρ₂ = ?</text>
+    <line x1="204" y1="108" x2="234" y2="118" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    {/* fluxo de massa */}
+    <line x1="126" y1="132" x2="176" y2="132" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="182,132 172,128 172,136" fill="var(--warn)"/>
+    <text x="148" y="126" font-size="11" fill="var(--warn)">N</text>
+    {/* eixo x */}
+    <line x1="110" y1="22" x2="200" y2="22" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="110,22 120,18 120,26" fill="var(--ok)"/>
+    <polygon points="200,22 190,18 190,26" fill="var(--ok)"/>
+    <text x="128" y="16" font-size="10" fill="var(--ok)">L = 30 cm</text>
+  </svg>
+  <figcaption>
+
+Perfil **linear** significa que o gradiente é constante: a derivada pode ser trocada pela razão entre a queda total e a espessura.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+N = -D\,\frac{d\rho_A}{dx} = D\,\frac{\rho_1 - \rho_2}{L}
+$$
+
+$$
+0{,}01 = 0{,}02 \cdot \frac{0{,}8 - \rho_2}{0{,}30}
+\qquad\Longrightarrow\qquad
+0{,}8 - \rho_2 = 0{,}15
+$$
+
+$$
+\rho_2 = \mathbf{0{,}65\ kg/m^3}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a lei que governa o transporte de massa.** É a **lei de Fick**, irmã da lei de Fourier para o calor:
+
+$$
+N_A = -\,D\,\frac{d\rho_A}{dx}
+$$
+
+O sinal negativo diz que a massa vai do **mais concentrado para o menos** concentrado — como o calor vai do quente para o frio.
+
+<Caixa tipo="simbolos">
+
+- $N_A$ — fluxo de massa por unidade de área, em $\mathrm{kg/(m^2\cdot s)}$
+- $D$ — coeficiente de difusão, em $\mathrm{m^2/s}$ (mesma unidade de $\nu$ e de $\alpha$)
+- $\rho_A$ — densidade (concentração mássica) da espécie que difunde, em $\mathrm{kg/m^3}$
+- $L$ — espessura atravessada, em metros
+
+</Caixa>
+
+**Passo 2 — o que "perfil linear" permite.** Se $\rho_A$ varia linearmente na espessura, o gradiente é **constante** e a derivada vira uma razão de diferenças finitas:
+
+$$
+\frac{d\rho_A}{dx} = \frac{\rho_2 - \rho_1}{L}
+$$
+
+Substituindo na lei de Fick e usando o negativo para arrumar a ordem:
+
+$$
+N = -\,D\,\frac{\rho_2 - \rho_1}{L} = D\,\frac{\rho_1 - \rho_2}{L}
+$$
+
+Nesta forma, $\rho_1 - \rho_2$ é a **queda** de concentração no sentido do fluxo — e sai positiva, como o fluxo.
+
+**Passo 3 — isolar a incógnita.**
+
+$$
+\rho_1 - \rho_2 = \frac{N\,L}{D}
+$$
+
+$$
+\rho_2 = \rho_1 - \frac{N\,L}{D}
+$$
+
+**Passo 4 — os números, com a espessura em metros.** $30\ \mathrm{cm} = 0{,}30\ \mathrm{m}$:
+
+$$
+\frac{N\,L}{D} = \frac{0{,}01 \cdot 0{,}30}{0{,}02} = \frac{0{,}003}{0{,}02} = 0{,}15\ \mathrm{kg/m^3}
+$$
+
+$$
+\rho_2 = 0{,}8 - 0{,}15 = 0{,}65\ \mathrm{kg/m^3}
+$$
+
+**Passo 5 — conferir o sentido.** O enunciado diz que a umidade vai **do interior para o exterior**. Para isso, a concentração tem de ser **maior dentro** — e $0{,}65 < 0{,}8$ confirma. Se a conta tivesse dado acima de $0{,}8$, o fluxo estaria apontando para dentro, contradizendo o enunciado.
+
+<Caixa tipo="macete">
+
+Fourier, Newton e Fick são a **mesma** estrutura: fluxo = coeficiente × gradiente.
+
+$$
+\underbrace{q = -k\,\frac{dT}{dx}}_{\text{calor}}
+\qquad
+\underbrace{\tau = \mu\,\frac{du}{dy}}_{\text{quantidade de movimento}}
+\qquad
+\underbrace{N = -D\,\frac{d\rho_A}{dx}}_{\text{massa}}
+$$
+
+É por isso que a disciplina se chama **Fenômenos de Transporte**, no plural: são três transportes com a mesma matemática. Quem resolve parede plana de condução resolve esta questão com a mesma conta.
+
+</Caixa>
+
+**Conferência —** a espessura tem de ir para metros ✔ o resultado tem de ser **menor** que $0{,}8$ ✔ $N\,L/D$ tem unidade de $\mathrm{kg/m^3}$: $\frac{\mathrm{kg}}{\mathrm{m^2 s}}\cdot\frac{\mathrm{m}}{\mathrm{m^2/s}} = \frac{\mathrm{kg}}{\mathrm{m^3}}$ ✔
+</Passos>
