@@ -1,0 +1,82 @@
+---
+origem: "Final 2024.2"
+tema: "Fórmula de Cauchy · Polo simples com numerador polinomial"
+temaId: formula-integral-de-cauchy
+pontos: 0,7 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, usando a teoria de Cauchy,
+
+$$
+\oint_{\gamma:\,|z|=2}\frac{z^2+4}{z+i}\,dz
+$$
+
+<Gabarito>
+$$
+\oint_{|z|=2}\frac{z^2+4}{z+i}\,dz = 6\pi i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a singularidade e a curva.** O denominador zera em
+
+$$
+z + i = 0
+\qquad\Longrightarrow\qquad
+z_0 = -i
+$$
+
+$$
+|-i| = 1 < 2
+\qquad\text{(dentro de } |z|=2\text{)}
+$$
+
+**Passo 2 — identificar $f$ e $n$.** Denominador de expoente $1$ significa $n = 0$: é a fórmula de Cauchy na forma original.
+
+$$
+f(z) = z^2 + 4,
+\qquad
+z_0 = -i
+$$
+
+$f$ é polinomial, logo inteira ✔
+
+**Passo 3 — avaliar $f$ no ponto.**
+
+$$
+f(-i) = (-i)^2 + 4 = -1 + 4 = 3
+$$
+
+**Passo 4 — aplicar a fórmula.**
+
+$$
+\oint_\gamma \frac{f(z)}{z-z_0}\,dz = 2\pi i\,f(z_0)
+$$
+
+$$
+\boxed{\;\oint_{|z|=2}\frac{z^2+4}{z+i}\,dz = 2\pi i\cdot 3 = 6\pi i\;}
+$$
+
+**Conferência —** o resultado é imaginário puro, como esperado: $f(z_0) = 3$ saiu real, e o $2\pi i$ carrega o $i$ sozinho.
+
+<Caixa tipo="dica" rotulo="Cuidado com o sinal do polo">
+
+O denominador é $z + i$, então o polo é $z_0 = \mathbf{-}i$, **não** $+i$. E $(-i)^2 = -1$, igual a $(+i)^2$ — neste caso particular o erro de sinal **não** muda a resposta, porque o numerador é par.
+
+Não conte com essa sorte: com numerador $z^3$, por exemplo, $(-i)^3 = i$ e $(+i)^3 = -i$, e a resposta inverteria. Escreva o denominador na forma $(z - z_0)$ antes de ler o ponto.
+
+</Caixa>
+</Passos>
