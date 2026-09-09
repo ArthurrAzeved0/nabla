@@ -68,6 +68,10 @@ const folgado = ALVOS.every(([rotulo, valor]) => {
   const folga = Math.max(3, Math.round(valor * 0.05));
   return valor - numero(rotulo) <= folga;
 });
+/* A folga existe para o gancho de pre-commit não redesenhar o PNG a cada
+   questão nova — mas ela deixou o cartão da v2.15.0 sair dizendo 532 com o
+   site em 535. Em RELEASE não há folga: `npm run cartao` sem `--se-preciso`
+   regenera sempre, e é ele que a sequência de release chama. */
 if (SE_PRECISO && folgado && existsSync(PNG)) {
   console.log("  cartão dentro da folga — nada a fazer");
   process.exit(0);
