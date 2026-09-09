@@ -1,0 +1,108 @@
+---
+origem: "2024.2"
+tema: "Séries · Natureza dos polos e a expansão em |z| < 1"
+temaId: serie-geometrica
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja
+
+$$
+f(z) = \frac{1}{(z-1)(z-2)}
+$$
+
+Estabeleça a natureza dos pontos onde $f$ não é definida. Ela admite expansão em série em torno de $z=0$, no círculo $|z| < 1$.
+
+**a)** Escreva essa expansão por um método à sua escolha;
+
+**b)** Escreva a série de Laurent, em torno de $z=0$, na região anelar $1 < |z| < 2$.
+
+<Gabarito>
+$z=1$ e $z=2$ são **polos simples**.
+
+**a)** Em $|z| < 1$, série de Taylor:
+
+$$
+f(z) = \sum_{n=0}^{\infty}\left(1 - \frac{1}{2^{\,n+1}}\right)z^{n}
+$$
+
+**b)** Em $1 < |z| < 2$:
+
+$$
+f(z) = -\sum_{n=0}^{\infty}\frac{z^{n}}{2^{\,n+1}} - \sum_{n=1}^{\infty}\frac{1}{z^{n}}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a natureza dos pontos.** O denominador zera em $z=1$ e $z=2$, cada um com zero de **ordem 1**, e o numerador é $1$ (não cancela nada). Logo os dois são **polos simples**.
+
+**Passo 2 — separar em frações simples.**
+
+$$
+f(z) = \frac{1}{z-2} - \frac{1}{z-1}
+$$
+
+(coeficientes lidos como resíduos: $-1$ em $z=1$ e $+1$ em $z=2$)
+
+**Passo 3 — item (a): o disco $|z| < 1$.** Aqui **os dois** polos estão fora, então a expansão é uma série de **Taylor** — só potências positivas, sem parte principal. Nas duas parcelas o pequeno é o próprio $z$:
+
+$$
+\frac{1}{z-2} = -\frac12\cdot\frac{1}{1 - z/2} = -\sum_{n=0}^{\infty}\frac{z^n}{2^{\,n+1}}
+$$
+
+$$
+-\frac{1}{z-1} = \frac{1}{1-z} = \sum_{n=0}^{\infty}z^{n}
+$$
+
+Somando:
+
+$$
+\boxed{\;f(z) = \sum_{n=0}^{\infty}\left(1 - \frac{1}{2^{\,n+1}}\right)z^{n}
+= \frac12 + \frac34 z + \frac78 z^2 + \cdots\;}
+$$
+
+**Conferência —** em $z=0$ a série dá $\tfrac12$, e $f(0) = \dfrac{1}{(-1)(-2)} = \dfrac12$ ✔ O raio de convergência é $1$, a distância até o polo mais próximo ✔
+
+**Passo 4 — item (b): o anel $1 < |z| < 2$.** Agora o polo $z=1$ está **dentro** do anel, e a parcela dele muda de manipulação: o pequeno passa a ser $1/z$.
+
+$$
+\frac{1}{z-2} = -\sum_{n=0}^{\infty}\frac{z^n}{2^{\,n+1}}
+\qquad\text{(igual ao item a — ainda } |z/2|<1\text{)}
+$$
+
+$$
+-\frac{1}{z-1} = -\frac1z\cdot\frac{1}{1-1/z} = -\sum_{n=1}^{\infty}\frac{1}{z^{n}}
+$$
+
+$$
+\boxed{\;f(z) = -\sum_{n=0}^{\infty}\frac{z^n}{2^{\,n+1}} - \sum_{n=1}^{\infty}\frac{1}{z^{n}}\;}
+$$
+
+Esta é a mesma expansão da q24 desta unidade, que a prova de 2024.1 pediu isolada.
+
+<Caixa tipo="macete" rotulo="Uma parcela por polo, e cada polo muda em um anel">
+
+A estrutura fica clara comparando os dois itens:
+
+| parcela | $\vert z\vert<1$ | $1<\vert z\vert<2$ |
+|---|---|---|
+| $\dfrac{1}{z-2}$ | $z/2$ pequeno → potências $+$ | **igual** |
+| $-\dfrac{1}{z-1}$ | $z$ pequeno → potências $+$ | $1/z$ pequeno → potências $-$ |
+
+Ao atravessar o anel de raio $1$, **só a parcela do polo $z=1$ troca de forma**. É por isso que a série do anel de fora ($|z|>2$) tem as duas parcelas em potências negativas: ali os dois polos ficaram para dentro.
+
+</Caixa>
+</Passos>
