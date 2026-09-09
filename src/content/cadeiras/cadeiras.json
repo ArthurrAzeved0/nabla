@@ -436,7 +436,7 @@
   {
     "id": "complementos",
     "nome": "Complementos de Matemática",
-    "codigo": "MAT07 · 60h",
+    "codigo": "MATM0006 · 60h",
     "descricao": "Números complexos e a fórmula de Euler, funções de uma variável complexa, funções analíticas e Cauchy-Riemann, funções harmônicas, integrais complexas com o teorema e a fórmula de Cauchy, séries de Taylor e de Laurent, singularidades e resíduos, solução de EDO por séries e Frobenius, séries de Fourier, transformada de Laplace e equações diferenciais parciais por separação de variáveis.",
     "teoria": {
       "numeros-complexos": "cm-complexos",
