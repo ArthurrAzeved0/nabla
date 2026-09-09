@@ -1,0 +1,95 @@
+---
+origem: "2026.1"
+tema: "Laplace · Transformada de e^(αx) pela definição"
+temaId: transformada-de-laplace
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q20.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $f(x) = e^{\alpha x}$, onde $\alpha$ é uma constante real. Calcule $\mathcal{L}\{f(x)\}$, a transformada de Laplace de $f$, considerando $s > \alpha$ para a convergência da transformada, sendo $s$ o parâmetro desta.
+
+<Gabarito>
+$$
+\mathcal{L}\left\{e^{\alpha x}\right\} = \frac{1}{s - \alpha},
+\qquad s > \alpha
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a definição.** O enunciado pede pela definição, não pela tabela:
+
+$$
+\mathcal{L}\{f(x)\}(s) = \int_0^{\infty}e^{-sx}f(x)\,dx
+= \int_0^{\infty}e^{-sx}e^{\alpha x}\,dx
+$$
+
+**Passo 2 — juntar os expoentes.** É o passo que faz a integral virar elementar:
+
+$$
+e^{-sx}e^{\alpha x} = e^{-(s-\alpha)x}
+$$
+
+$$
+\mathcal{L}\left\{e^{\alpha x}\right\} = \int_0^\infty e^{-(s-\alpha)x}\,dx
+$$
+
+**Passo 3 — integrar, como imprópria.**
+
+$$
+\int_0^{\infty} e^{-(s-\alpha)x}dx
+= \lim_{R\to\infty}\left[\frac{e^{-(s-\alpha)x}}{-(s-\alpha)}\right]_0^{R}
+= \lim_{R\to\infty}\frac{1 - e^{-(s-\alpha)R}}{s-\alpha}
+$$
+
+**Passo 4 — é aqui que a condição $s > \alpha$ entra.** O limite existe **somente** se o expoente for negativo:
+
+$$
+s - \alpha > 0
+\qquad\Longrightarrow\qquad
+e^{-(s-\alpha)R} \to 0
+$$
+
+Se $s < \alpha$, a exponencial **cresce** e a integral diverge; se $s = \alpha$, o integrando é $1$ e a integral também diverge. Por isso a transformada só está definida em $s > \alpha$ — e é o que o enunciado pede para justificar.
+
+$$
+\boxed{\;\mathcal{L}\left\{e^{\alpha x}\right\} = \frac{1}{s-\alpha},\qquad s > \alpha\;}
+$$
+
+**Conferência —** com $\alpha = 0$ a fórmula devolve $\mathcal{L}\{1\} = 1/s$, que é o caso conhecido ✔
+
+<Caixa tipo="macete" rotulo="Esta é a transformada mais importante da tabela">
+
+Dela sai quase todo o resto, por dois caminhos:
+
+**Deslocamento em $s$.** A propriedade $\mathcal{L}\{e^{ax}F\} = \mathcal{L}\{F\}(s-a)$ é literalmente esta conta feita com um $F$ genérico — o $e^{ax}$ só translada o argumento.
+
+**Seno e cosseno.** Com $\alpha = i\beta$ imaginário puro, $e^{i\beta x} = \cos\beta x + i\operatorname{sen}\beta x$, e
+
+$$
+\mathcal{L}\left\{e^{i\beta x}\right\} = \frac{1}{s - i\beta} = \frac{s + i\beta}{s^2+\beta^2}
+$$
+
+Separando parte real e imaginária saem **as duas** transformadas de uma vez:
+
+$$
+\mathcal{L}\{\cos\beta x\} = \frac{s}{s^2+\beta^2},
+\qquad
+\mathcal{L}\{\operatorname{sen}\beta x\} = \frac{\beta}{s^2+\beta^2}
+$$
+
+É a 1ª unidade da cadeira pagando dividendo na 2ª — e é um atalho legítimo para o item seguinte da prova.
+
+</Caixa>
+</Passos>
