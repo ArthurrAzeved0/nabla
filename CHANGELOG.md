@@ -21,13 +21,13 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
-## [Não publicado]
+## [2.14.0] — 2026-09-09
 
 ### Adicionado
 
 - **Fenômenos de Transporte, a sexta cadeira: 97 questões e 29 seções de teoria.**
-  O acervo de provas foi **esgotado**: os cinco 1º EE (2022.1, 2023.2, 2024.2,
-  2025.1, 2025.2, 2026.1), os cinco 2º EE (2018.1, 2022.1, 2022.2, 2023.1,
+  O acervo de provas foi **esgotado**: os seis 1º EE (2022.1, 2023.2, 2024.2,
+  2025.1, 2025.2, 2026.1), os seis 2º EE (2018.1, 2022.1, 2022.2, 2023.1,
   2023.2, 2024.2), as duas provas do Prof. Adérito nas turmas EM e 4E, as cinco
   segundas chamadas (2018.1 nas turmas CM e KT, 2022.1, 2023.1 e 2023.2), as
   duas finais (2023.1 e 2023.2) e o que os dois bancos de dissertativas tinham
@@ -1132,6 +1132,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.14.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.14.0
 [2.13.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.13.0
 [2.12.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.12.0
 [2.11.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.11.0
