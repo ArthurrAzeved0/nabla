@@ -1,0 +1,103 @@
+---
+origem: "2022.1"
+tema: "Transferência de massa · Os dois mecanismos, explicados"
+temaId: transporte-de-massa
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Quais são os mecanismos de transferência de massa? Explique detalhadamente cada um deles.**
+
+<Gabarito>
+São **dois**: a **difusão** e a **convecção**.
+
+**Difusão** está relacionada com uma **diferença de concentração** (ou de massa específica) de uma espécie entre dois pontos do meio ou da mistura. É migração molecular, e ocorre mesmo com o fluido **parado**.
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx}
+$$
+
+**Convecção** está relacionada com o **escoamento** dessa espécie, pura ou em mistura: a espécie é carregada pelo movimento do fluido.
+
+$$
+N''_A = C_A\,v
+\qquad\text{ou}\qquad
+N_A = h_m\,A\,(C_{A,s} - C_{A,\infty})
+$$
+</Gabarito>
+
+<Passos>
+**1 — Difusão.** O motor é o **gradiente de concentração**. As moléculas da espécie $A$ se movem aleatoriamente, e o resultado líquido desse movimento é uma migração da região de **maior** para a de **menor** concentração, até a mistura ficar homogênea.
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx}
+$$
+
+Esta é a **lei de Fick**:
+
+- $D_{AB}$ — **coeficiente de difusão binária**, em $\mathrm{m^2/s}$; propriedade do par $A$–$B$ e do meio, e **cresce com a temperatura**;
+- o **sinal negativo** — a massa vai contra o gradiente, igual em Fourier;
+- **não exige escoamento.** É o mecanismo que sobra quando o fluido está parado.
+
+Exemplos: perfume se espalhando numa sala sem vento, corante numa água em repouso, oxigênio atravessando a parede de um alvéolo, umidade migrando por uma parede de gesso.
+
+**2 — Convecção mássica.** O motor é o **movimento do fluido**. A espécie é levada porque a mistura inteira está indo para algum lado.
+
+$$
+N''_A = C_A\,v
+$$
+
+E, quando o interesse é a troca entre uma superfície e um fluido que escoa por ela, escreve-se na forma da lei de Newton:
+
+$$
+N_A = h_m\,A\,(C_{A,s} - C_{A,\infty})
+$$
+
+com $h_m$ o **coeficiente de transferência de massa por convecção**, em $\mathrm{m/s}$. Como o $h$ do calor, ele depende da geometria e do escoamento — não é propriedade do fluido.
+
+Também aqui há os dois tipos: **natural** (o movimento nasce de diferenças de densidade) e **forçada** (há agitador, ventilador, bomba).
+
+<Caixa tipo="macete" rotulo="A analogia com o calor é a resposta pronta">
+
+| | transferência de **calor** | transferência de **massa** |
+|---|---|---|
+| meio **parado** | condução (Fourier) | **difusão** (Fick) |
+| meio **escoando** | convecção ($q = hA\Delta T$) | **convecção** ($N = h_m A\Delta C$) |
+| terceiro mecanismo | radiação | **não existe** |
+
+O ponto que a questão cobra e que se esquece: em massa há **dois** mecanismos, não três. **Não existe "radiação de massa"** — matéria não viaja como onda eletromagnética.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Os dois num exemplo só">
+
+Um saquinho de chá numa xícara de água quente:
+
+- **sem mexer** — só **difusão**: as moléculas do chá migram para onde há menos chá, e leva minutos;
+- **mexendo** — entra a **convecção**, que domina de imediato e espalha o chá em segundos;
+- **com água fria** — continua sendo difusão, mas **mais lenta**, porque $D_{AB}$ cai com a temperatura.
+
+Esse é o formato favorito das provas mais recentes: em vez de pedir a definição, pedem para identificar os mecanismos numa situação do dia a dia.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Ordem de grandeza">
+
+Em escoamento com velocidade apreciável, o transporte convectivo é **centenas de vezes** maior que o difusivo. A difusão só manda onde o fluido está praticamente imóvel: dentro de sólidos porosos, em membranas, na camada limite junto a uma parede.
+
+</Caixa>
+
+**Conferência —** **dois** mecanismos, com nome e lei de cada ✔ difusão pede gradiente de concentração e dispensa escoamento; convecção pede escoamento ✔ dizer que não há um terceiro mecanismo análogo à radiação mostra que a analogia foi entendida, e não decorada ✔
+</Passos>
