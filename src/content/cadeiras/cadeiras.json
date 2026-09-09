@@ -496,7 +496,11 @@
       "serie-de-taylor": "cm-series",
       "serie-de-maclaurin": "cm-series",
       "raio-de-convergencia": "cm-series",
-      "serie-geometrica": "cm-series"
+      "serie-geometrica": "cm-series",
+      "serie-de-laurent": "cm-laurent",
+      "parte-principal": "cm-laurent",
+      "anel-de-convergencia": "cm-laurent",
+      "expansao-em-dois-aneis": "cm-laurent"
     }
   }
 ]

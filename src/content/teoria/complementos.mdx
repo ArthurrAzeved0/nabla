@@ -14,6 +14,7 @@ unidades:
       - { id: cm-cauchy, titulo: "Teorema de Cauchy-Goursat e deformação de contorno" }
       - { id: cm-formula-cauchy, titulo: "Fórmula integral de Cauchy e a das derivadas" }
       - { id: cm-series, titulo: "Sequências, séries complexas e a série de Taylor" }
+      - { id: cm-laurent, titulo: "Série de Laurent e os anéis de convergência" }
 ---
 
 {/* **************************************************************************
@@ -1122,6 +1123,100 @@ Duas manobras que cobrem o acervo: **trocar a variável** ($e^{z^2}$ sai de $e^w
 <Caixa tipo="dica">
 
 Cuidado com o que a questão chama de "série". Se o centro é um ponto **onde $f$ é analítica**, é Taylor e só há potências positivas. Se o centro é uma **singularidade**, Taylor não existe ali — o que existe é a série de **Laurent**, da seção 11, com potências negativas. A questão 03 (ii) da final de 2026.1 pede a série de $\cos\!\big(1/(z-1)\big)$: o centro é singular, então é Laurent, e quem tentar Taylor não sai do lugar.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-laurent" num="11" titulo="Série de Laurent e os anéis de convergência">
+
+### A ideia
+
+Taylor exige que o centro seja um ponto de analiticidade. Mas as questões desta cadeira giram justamente em torno das singularidades — e é para elas que serve **Laurent**: admite potências **negativas** e converge num **anel**, não num disco.
+
+<Formula rotulo="Série de Laurent">
+
+$$
+f(z) = \sum_{n=-\infty}^{\infty} a_n\,(z - z_0)^n
+= \underbrace{\sum_{n=1}^{\infty} \frac{a_{-n}}{(z-z_0)^n}}_{\text{parte principal}}
++ \underbrace{\sum_{n=0}^{\infty} a_n\,(z-z_0)^n}_{\text{parte analítica}}
+$$
+
+$$
+a_n = \frac{1}{2\pi i}\oint_{\gamma} \frac{f(z)}{(z-z_0)^{n+1}}\,dz,
+\qquad r < |z - z_0| < R
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- **parte principal** — os termos de potência negativa. É ela que diz o tipo da singularidade e onde vive o resíduo;
+- **parte analítica** — a parte de Taylor, com potências $\ge 0$;
+- $r < |z-z_0| < R$ — o **anel** de convergência: $r$ é a distância à singularidade mais próxima por dentro, $R$ à mais próxima por fora;
+- $a_{-1}$ — o coeficiente que é o **resíduo** de $f$ em $z_0$ (seção 13).
+
+</Caixa>
+
+### Uma função, várias séries
+
+O ponto que mais confunde: **a série de Laurent depende do anel**, não só do centro. A mesma função tem expansões diferentes em anéis diferentes, e a questão sempre diz qual quer — pelo anel, ou pela curva de integração.
+
+Tome $f(z) = \dfrac{1}{z(z-1)}$, com centro $z_0 = 0$. Há dois anéis: $0 < |z| < 1$ e $|z| > 1$.
+
+No primeiro, expanda $\dfrac{1}{z-1} = \dfrac{-1}{1-z} = -\sum z^n$:
+
+$$
+f(z) = \frac1z \cdot \left(-\sum_{n=0}^{\infty} z^n\right)
+= -\frac1z - 1 - z - z^2 - \cdots
+$$
+
+No segundo, $|z| > 1$ obriga a fatorar o **$z$** para fora, porque é $1/z$ que agora é pequeno:
+
+$$
+\frac{1}{z-1} = \frac{1}{z}\cdot\frac{1}{1 - 1/z} = \sum_{n=0}^{\infty} \frac{1}{z^{n+1}}
+\quad\Longrightarrow\quad
+f(z) = \frac{1}{z^2} + \frac{1}{z^3} + \cdots
+$$
+
+<Caixa tipo="macete">
+
+A regra que decide qual manipulação fazer: na geométrica $\dfrac{1}{1-w} = \sum w^n$, o $w$ tem de ter **módulo menor que 1** no anel considerado.
+
+- anel de dentro ($|z| < 1$): o pequeno é $z$, então deixe $z$ no numerador;
+- anel de fora ($|z| > 1$): o pequeno é $1/z$, então **fatore $z$ para fora** do denominador.
+
+Escolher errado dá uma série que diverge em todo o anel — e o erro passa desapercebido se ninguém confere.
+
+</Caixa>
+
+### Na prática das provas: não se calcula $a_n$ por integral
+
+A fórmula integral dos coeficientes é a definição, mas ninguém a usa em prova — seria integrar para achar o que se quer para integrar. O caminho é **montar** a série a partir das conhecidas, exatamente como em Taylor.
+
+<Caixa tipo="exemplo">
+
+Questão 03 (ii) da final de 2026.1: classifique a singularidade de $f(z) = \cos\!\left(\dfrac{1}{z-1}\right)$ e escreva sua série de Laurent.
+
+Parta da série do cosseno e substitua $w = 1/(z-1)$:
+
+$$
+\cos w = \sum_{n=0}^{\infty} \frac{(-1)^n w^{2n}}{(2n)!}
+\quad\Longrightarrow\quad
+f(z) = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!\,(z-1)^{2n}}
+$$
+
+$$
+f(z) = 1 - \frac{1}{2!\,(z-1)^2} + \frac{1}{4!\,(z-1)^4} - \cdots
+$$
+
+A parte principal tem **infinitos** termos, então $z = 1$ é uma **singularidade essencial** (seção 12) — e o resíduo, que é $a_{-1}$, vale **zero**, porque só aparecem potências pares. Válida em $0 < |z-1| < \infty$.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Em torno de uma singularidade isolada, o anel é sempre $0 < |z - z_0| < R$ — o limite de dentro é o próprio ponto. Quando a questão dá uma curva, é ela que fixa o anel: a curva tem de ficar **dentro** do anel escolhido, senão a série não vale ali.
 
 </Caixa>
 
