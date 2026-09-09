@@ -28,6 +28,7 @@ unidades:
       - { id: cm-fourier, titulo: "Série de Fourier: os coeficientes e os casos par e ímpar" }
       - { id: cm-fourier-complexa, titulo: "Forma complexa da série de Fourier" }
       - { id: cm-fourier-convergencia, titulo: "Convergência de Fourier, Dirichlet e Parseval" }
+      - { id: cm-laplace, titulo: "Transformada de Laplace e suas propriedades" }
 ---
 
 {/* **************************************************************************
@@ -2316,6 +2317,152 @@ Olhe o expoente do denominador na série pedida: quadrado do coeficiente sugere 
 <Caixa tipo="dica">
 
 O gráfico que a prova pede ("construa os gráficos de $f$ e de sua série") é justamente para verificar Dirichlet: desenhe $f$ e marque, em cada salto, um ponto na **média** dos dois lados. Na onda quadrada, isso significa marcar $0$ em $x = 0, \pm\pi, \pm2\pi,\dots$ — mesmo que a definição de $f$ dê $1$ ali.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-laplace" num="23" titulo="Transformada de Laplace e suas propriedades">
+
+### A ideia
+
+A transformada de Laplace troca o domínio do problema: uma EDO em $x$ vira uma **equação algébrica** em $s$. Derivada vira multiplicação por $s$, integral vira divisão por $s$, e as condições iniciais entram **automaticamente** na conta em vez de serem impostas no fim. Resolve-se a álgebra, volta-se com a inversa, e a solução do PVI aparece pronta.
+
+<Formula rotulo="Definição">
+
+$$
+\mathcal{L}\{F(x)\}(s) = \int_0^{\infty} e^{-sx}F(x)\,dx
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $F(x)$ — a função no domínio original, definida para $x \ge 0$;
+- $s$ — a variável da transformada; a integral converge para $s$ suficientemente grande;
+- **ordem exponencial** — $|F| \le Me^{cx}$: é a condição que garante existência, com convergência para $s > c$;
+- $\mathcal{L}^{-1}$ — a **inversa**, tratada na seção 24.
+
+</Caixa>
+
+### A tabela mínima
+
+$$
+\mathcal{L}\{1\} = \frac1s,
+\qquad
+\mathcal{L}\{x^{n}\} = \frac{\Gamma(n+1)}{s^{\,n+1}} = \frac{n!}{s^{\,n+1}},
+\qquad
+\mathcal{L}\{e^{ax}\} = \frac{1}{s-a}
+$$
+
+$$
+\mathcal{L}\{\cos kx\} = \frac{s}{s^2+k^2},
+\qquad
+\mathcal{L}\{\operatorname{sen} kx\} = \frac{k}{s^2+k^2}
+$$
+
+$$
+\mathcal{L}\{\cosh kx\} = \frac{s}{s^2-k^2},
+\qquad
+\mathcal{L}\{\operatorname{senh} kx\} = \frac{k}{s^2-k^2}
+$$
+
+Note o $\Gamma(n+1)$ em vez de $n!$: é a seção 16 entrando, e é o que permite transformar $x^{1/2}$ ou $x^{3{,}7}$.
+
+### As propriedades que fazem o trabalho
+
+**Linearidade.** $\mathcal{L}\{\alpha F + \beta G\} = \alpha\mathcal{L}\{F\} + \beta\mathcal{L}\{G\}$.
+
+**Transformada da derivada** — a propriedade central, a que resolve PVI:
+
+<Formula rotulo="Derivadas">
+
+$$
+\mathcal{L}\{F'\} = s\,\mathcal{L}\{F\} - F(0)
+$$
+
+$$
+\mathcal{L}\{F''\} = s^2\,\mathcal{L}\{F\} - s\,F(0) - F'(0)
+$$
+
+</Formula>
+
+**Deslocamento em $s$** (primeiro teorema da translação):
+
+$$
+\mathcal{L}\{e^{ax}F(x)\} = \mathcal{L}\{F\}(s-a)
+$$
+
+É ele que dá $\mathcal{L}\{x^ne^{ax}\} = \dfrac{n!}{(s-a)^{n+1}}$ e $\mathcal{L}\{e^{ax}\cos kx\} = \dfrac{s-a}{(s-a)^2+k^2}$.
+
+**Derivada em $s$** (multiplicação por $x$):
+
+$$
+\mathcal{L}\{x\,F(x)\} = -\frac{d}{ds}\mathcal{L}\{F\}(s)
+$$
+
+<Caixa tipo="exemplo">
+
+Da 2ª chamada de 2023.2: $\mathcal{L}\left\{x^2\cos(3x) - x\operatorname{sen}(2x)e^{2x}\right\}$.
+
+**Primeira parcela**, por derivada em $s$ duas vezes, partindo de $\dfrac{s}{s^2+9}$:
+
+$$
+\mathcal{L}\{x^2\cos 3x\} = \frac{d^2}{ds^2}\left[\frac{s}{s^2+9}\right]
+= \frac{2s^3 - 54s}{(s^2+9)^3}
+$$
+
+**Segunda parcela**, primeiro $x\operatorname{sen}(2x)$ por derivada em $s$, depois o $e^{2x}$ por deslocamento:
+
+$$
+\mathcal{L}\{x\operatorname{sen} 2x\} = -\frac{d}{ds}\left[\frac{2}{s^2+4}\right] = \frac{4s}{(s^2+4)^2}
+$$
+
+$$
+\mathcal{L}\{x\operatorname{sen}(2x)e^{2x}\} = \frac{4(s-2)}{\big[(s-2)^2+4\big]^2}
+$$
+
+A resposta é a diferença das duas. O roteiro é sempre: **transformada básica → derivada em $s$ para os fatores $x^n$ → deslocamento para o $e^{ax}$**, nessa ordem.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+E o uso que dá nome à seção — resolver PVI. Questão 02 do 2º EE de 2023.2: $y'' + 3y = \cos(3x)$, com $y(0)=2$ e $y'(0)=5$.
+
+Transformando, com $Y = \mathcal{L}\{y\}$:
+
+$$
+s^2Y - 2s - 5 + 3Y = \frac{s}{s^2+9}
+\quad\Longrightarrow\quad
+Y = \frac{2s+5}{s^2+3} + \frac{s}{(s^2+3)(s^2+9)}
+$$
+
+Note que as condições iniciais **já estão dentro** — não há constante para determinar no fim. A prova até fornece a decomposição do segundo termo:
+
+$$
+\frac{s}{(s^2+3)(s^2+9)} = \frac16\left[\frac{s}{s^2+3} - \frac{s}{s^2+9}\right]
+$$
+
+e a inversa (seção 24) devolve
+
+$$
+y(x) = 2\cos(\sqrt3\,x) + \frac{5}{\sqrt3}\operatorname{sen}(\sqrt3\,x) + \frac16\Big[\cos(\sqrt3\,x) - \cos(3x)\Big]
+$$
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Na hora de reconhecer $\dfrac{1}{s^2+3}$, o $k$ é $\sqrt3$, não $3$ — a tabela é $\dfrac{k}{s^2+k^2}$, então o numerador que falta tem de ser $\sqrt3$, e é preciso multiplicar e dividir por ele. É o erro de sinal desta seção: confundir $k$ com $k^2$.
+
+E sempre confira o resultado nas condições iniciais: substituir $x=0$ na $y$ encontrada tem de devolver $y(0)$ do enunciado. Custa uma linha e pega qualquer erro de álgebra.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+A tabela que a prova fornece é curta de propósito: ela dá $\mathcal{L}\{\cos kx\}$, a fórmula de $\mathcal{L}\{F''\}$ e a definição de $\Gamma$. Todo o resto tem de sair das **propriedades**, não da memória. Saber as três propriedades (linearidade, derivada em $s$, deslocamento em $s$) vale mais que decorar vinte transformadas.
 
 </Caixa>
 
