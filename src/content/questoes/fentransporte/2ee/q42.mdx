@@ -1,0 +1,114 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Condições de contorno · Qual delas se aplica ao forno"
+temaId: dirichlet-neumann-robin
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q42.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Na transferência de calor através de uma parede plana, seja simples ou composta, como a parede de um **forno**, após o forno ser ligado e a temperatura interna ter entrado em **equilíbrio (estável)**, considerando ainda que **não haja acúmulo ou geração** de calor no interior das paredes e, finalmente, sabendo que o forno está **exposto ao ar**, há uma condição de contorno que pode ser verificada.
+
+**Explique o que vêm a ser condições de contorno e que tipo de condição de contorno pode ser usada neste caso, descrevendo-a.**
+
+<Gabarito>
+**Condições de contorno** são as situações que precisam ser conhecidas nas **fronteiras** do domínio para que se possa resolver o problema proposto — sem elas, a equação diferencial da condução tem infinitas soluções.
+
+No caso em tela, a condição é do **terceiro tipo**, também chamada **mista** ou **condição de Robin**: ela ocorre quando a troca de calor é por **condução e convecção ao mesmo tempo**, ou seja, o calor que chega à superfície por condução é o que sai dela por convecção para o ar:
+
+$$
+q_{\text{condução}} = q_{\text{convecção}}
+\qquad\Longrightarrow\qquad
+-k\,\frac{\partial T}{\partial x}\bigg|_{s} = h\,(T_s - T_\infty)
+$$
+
+Os parâmetros conhecidos são $h$ e $T_\infty$; a temperatura da superfície é **resultado**, não dado.
+</Gabarito>
+
+<Passos>
+**1 — O que são condições de contorno, e por que são necessárias.** A equação da condução é diferencial de segunda ordem no espaço:
+
+$$
+\frac{d^2T}{dx^2} = 0
+\qquad\Longrightarrow\qquad
+T(x) = C_1 x + C_2
+$$
+
+(a forma já simplificada pelas hipóteses do enunciado — ver o passo 2). Integrar duas vezes produz **duas constantes**, e elas não saem da equação: saem de duas informações nas **fronteiras**. Sem elas, o perfil é uma família de retas em vez de uma reta.
+
+**2 — Ler o enunciado como uma lista de hipóteses.** Cada expressão do texto elimina um termo da equação geral:
+
+| o que o enunciado diz | o que isso significa | o que cai |
+|---|---|---|
+| "temperatura entrou em **equilíbrio (estável)**" | regime **permanente** | $\partial T/\partial t = 0$ |
+| "não haja **acúmulo**" | idem, reforçando | — |
+| "nem **geração** de calor" | $\dot q = 0$ | o termo de fonte |
+| "parede **plana**" | unidimensional em $x$ | $y$ e $z$ |
+
+Sobrando:
+
+$$
+\frac{d^2T}{dx^2} = 0
+$$
+
+cuja solução é o **perfil linear** que se usa em toda parede plana.
+
+**3 — Qual é a condição, e por quê.** A informação decisiva é "**o forno está exposto ao ar**". Na face externa, então:
+
+- **não** se conhece a temperatura da superfície — logo não é **Dirichlet** (1º tipo);
+- **não** se conhece o fluxo prescrito — logo não é **Neumann** (2º tipo);
+- conhecem-se $h$ (do ar) e $T_\infty$ (do ambiente), e o que se sabe é que **o que chega por condução sai por convecção**.
+
+Essa é a condição de **Robin**, do terceiro tipo, também dita **mista**:
+
+$$
+\underbrace{-k\,\frac{\partial T}{\partial x}\bigg|_{s}}_{\text{condução, no sólido}}
+=
+\underbrace{h\,(T_s - T_\infty)}_{\text{convecção, para o ar}}
+$$
+
+<Caixa tipo="macete" rotulo="Por que se chama mista">
+
+Porque **mistura** as duas anteriores: ela não fixa a temperatura (Dirichlet) nem a derivada (Neumann), e sim uma **combinação linear** das duas. A superfície encontra sozinha a sua temperatura, como resultado do equilíbrio entre o que chega e o que sai.
+
+E ela contém as outras duas nos extremos: com $h \to \infty$ a superfície assume $T_\infty$ (vira Dirichlet); com $h \to 0$ o fluxo vai a zero (vira Neumann, adiabática).
+
+</Caixa>
+
+**4 — Como isso aparece na conta que se faz na prática.** Escrita como **resistência térmica**, a condição de Robin é exatamente a resistência de convecção que se soma às de condução:
+
+$$
+R_{conv} = \frac{1}{h\,A}
+$$
+
+$$
+q = \frac{T_{\infty,int} - T_{\infty,ext}}{\dfrac{1}{h_{int}A} + \dfrac{L_1}{k_1 A} + \dfrac{L_2}{k_2 A} + \dfrac{1}{h_{ext}A}}
+$$
+
+Toda vez que se soma um $1/(hA)$ ao circuito térmico, está-se aplicando uma condição de Robin. Dizer isso na resposta liga a teoria ao exercício numérico da mesma prova.
+
+<Caixa tipo="dica" rotulo="As três, para não trocar os nomes">
+
+| tipo | nome | fixa | quando aparece |
+|---|---|---|---|
+| 1º | **Dirichlet** | a temperatura $T_s$ | face em mudança de fase, ou medida |
+| 2º | **Neumann** | o fluxo $q''_s$ | resistência elétrica; face **isolada** ($q'' = 0$) |
+| 3º | **Robin** / mista | $T$ **e** $\partial T/\partial x$ juntos | face trocando com um **fluido** ($h$, $T_\infty$) |
+
+Robin é, de longe, a mais comum em problemas reais — porque quase sempre há um fluido do outro lado.
+
+</Caixa>
+
+**Conferência —** definir o que são condições de contorno **antes** de escolher a tipo ✔ justificar a escolha pelo dado "exposto ao ar", isto é, **fluido** com $h$ e $T_\infty$ ✔ escrever a igualdade $q_{cond} = q_{conv}$, que é a descrição pedida ✔ dar o nome: terceiro tipo, mista, ou Robin ✔
+</Passos>
