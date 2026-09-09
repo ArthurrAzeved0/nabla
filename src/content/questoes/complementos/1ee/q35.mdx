@@ -1,0 +1,116 @@
+---
+origem: "2024.2"
+tema: "Fórmula de Cauchy · Três integrais e três respostas diferentes"
+temaId: formula-integral-de-cauchy
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule as integrais.
+
+**a)** $\displaystyle\oint_{\gamma} \frac{e^{z^2}\cos(z)}{z-3}\,dz$, onde $\gamma = \{z\in\mathbb{C} : |z| = 1\}$;
+
+**b)** $\displaystyle\oint_{\gamma} \frac{e^{z}\cos(z)}{z-1}\,dz$, onde $\gamma = \{z\in\mathbb{C} : |z| = 2\}$;
+
+**c)** $\displaystyle\oint_{\gamma} \frac{\cos(z)}{z^4}\,dz$, onde $\gamma = \{z\in\mathbb{C} : |z| = 2\}$.
+
+<Gabarito>
+**a)** $0$  ·  **b)** $2\pi i\,e\cos(1)$  ·  **c)** $0$
+</Gabarito>
+
+<Passos>
+**Item (a) — a singularidade está fora.**
+
+$$
+z = 3,
+\qquad
+|3| = 3 > 1
+$$
+
+O polo fica fora de $|z|=1$, e o integrando é analítico dentro e sobre a curva ($e^{z^2}$ e $\cos z$ são inteiras). Pelo teorema de Cauchy-Goursat:
+
+$$
+\oint_{|z|=1}\frac{e^{z^2}\cos z}{z-3}\,dz = 0
+$$
+
+**Item (b) — a fórmula de Cauchy, na versão sem derivada.**
+
+$$
+z_0 = 1,
+\qquad
+|1| = 1 < 2
+\quad\text{(dentro)},
+\qquad
+f(z) = e^z\cos z
+\quad\text{(inteira)}
+$$
+
+Denominador de expoente $1$ significa $n = 0$, isto é, a fórmula original:
+
+$$
+\oint_{|z|=2}\frac{f(z)}{z - z_0}\,dz = 2\pi i\,f(z_0)
+$$
+
+$$
+f(1) = e^1\cos(1) = e\cos 1
+$$
+
+$$
+\oint_{|z|=2}\frac{e^z\cos z}{z-1}\,dz = 2\pi i\,e\cos(1) \approx 9{,}23\,i
+$$
+
+**Item (c) — a fórmula das derivadas, com resultado nulo.**
+
+$$
+z_0 = 0
+\quad\text{(dentro de } |z|=2\text{)},
+\qquad
+f(z) = \cos z,
+\qquad
+n + 1 = 4 \;\Longrightarrow\; n = 3
+$$
+
+Derivando o cosseno três vezes:
+
+$$
+f' = -\operatorname{sen} z,
+\qquad
+f'' = -\cos z,
+\qquad
+f''' = \operatorname{sen} z
+$$
+
+$$
+f'''(0) = \operatorname{sen}(0) = 0
+$$
+
+$$
+\oint_{|z|=2}\frac{\cos z}{z^4}\,dz = \frac{2\pi i}{3!}\cdot 0 = 0
+$$
+
+<Caixa tipo="macete" rotulo="Três itens, três motivos diferentes">
+
+A questão foi montada para separar os três casos, e reconhecer qual é qual é a habilidade cobrada:
+
+- **(a) zero porque não há singularidade dentro** — Cauchy-Goursat, nenhuma conta;
+- **(b) não é zero** — fórmula de Cauchy com $n=0$, basta avaliar $f$ no ponto;
+- **(c) zero mesmo com a singularidade dentro** — a fórmula se aplica, mas a derivada de ordem $3$ do cosseno se anula na origem.
+
+Note a diferença entre (a) e (c): os dois dão zero, por razões **opostas**. Em (a) o teorema diz que é zero antes de qualquer conta; em (c) é preciso fazer a conta para descobrir. Responder "zero" em (c) sem mostrar a derivada não vale o item.
+
+E o motivo de (c) dar zero tem nome: $\cos z$ é **par**, então sua série de Maclaurin só tem potências pares, e o coeficiente de $z^3$ — que é o resíduo de $\cos z/z^4$ — é zero.
+
+</Caixa>
+</Passos>
