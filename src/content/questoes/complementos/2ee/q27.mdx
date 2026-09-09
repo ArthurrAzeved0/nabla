@@ -1,0 +1,116 @@
+---
+origem: "2024.1"
+tema: "Resíduos · Polo triplo e polo simples na mesma curva"
+temaId: residuo-em-polo-de-ordem-m
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Utilize o Teorema dos Resíduos para calcular
+
+$$
+\oint_{C} \frac{e^{z}}{z^{3}(z+1)}\,dz,
+\qquad C: |z| = 2
+$$
+
+<Gabarito>
+$$
+\oint_C \frac{e^z}{z^3(z+1)}\,dz = 2\pi i\left(\frac12 - e^{-1}\right) \approx 0{,}83\,i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as singularidades e a curva.**
+
+$$
+z = 0 \;\;(\text{polo de ordem } 3),
+\qquad
+z = -1 \;\;(\text{polo simples})
+$$
+
+$|0| = 0 < 2$ e $|-1| = 1 < 2$: **as duas dentro** de $C$. Duas singularidades pedem o teorema dos resíduos.
+
+**Passo 2 — o resíduo em $z=-1$, que é simples.**
+
+$$
+\operatorname{Res}(f,-1) = \lim_{z\to-1}(z+1)\,f(z)
+= \frac{e^{z}}{z^3}\bigg|_{z=-1}
+= \frac{e^{-1}}{-1}
+= -e^{-1}
+$$
+
+**Passo 3 — o resíduo em $z=0$, de ordem 3.** A fórmula pede $m-1 = 2$ derivadas:
+
+$$
+\operatorname{Res}(f,0) = \frac{1}{2!}\lim_{z\to0}\frac{d^2}{dz^2}\left[z^3 f(z)\right]
+= \frac12\lim_{z\to0}\frac{d^2}{dz^2}\left[\frac{e^z}{z+1}\right]
+$$
+
+Primeira derivada:
+
+$$
+\frac{d}{dz}\left[\frac{e^z}{z+1}\right]
+= \frac{e^z(z+1) - e^z}{(z+1)^2}
+= \frac{z\,e^z}{(z+1)^2}
+$$
+
+Segunda derivada:
+
+$$
+\frac{d}{dz}\left[\frac{z e^z}{(z+1)^2}\right]
+= \frac{(e^z + ze^z)(z+1)^2 - z e^z\cdot 2(z+1)}{(z+1)^4}
+= \frac{e^z\big[(1+z)(1+z) - 2z\big]}{(z+1)^3}
+= \frac{e^z\left(z^2+1\right)}{(z+1)^3}
+$$
+
+Avaliando em $z=0$:
+
+$$
+\operatorname{Res}(f,0) = \frac12\cdot\frac{e^0(0+1)}{1} = \frac12
+$$
+
+**Passo 4 — somar e multiplicar.**
+
+$$
+\boxed{\;\oint_C \frac{e^z}{z^3(z+1)}\,dz = 2\pi i\left(\frac12 - e^{-1}\right)\;}
+$$
+
+Numericamente, $\tfrac12 - 0{,}3679 = 0{,}1321$, logo a integral vale $\approx 0{,}830\,i$.
+
+**Conferência do resíduo em zero, pela série.** Muito mais rápido que duas derivadas:
+
+$$
+\frac{e^z}{z^3(z+1)} = \frac{1}{z^3}\left(1 + z + \frac{z^2}{2} + \cdots\right)\left(1 - z + z^2 - \cdots\right)
+$$
+
+O produto das duas séries começa como $1 + 0\cdot z + \tfrac12 z^2 + \cdots$ (o coeficiente de $z$ é $1 - 1 = 0$, e o de $z^2$ é $\tfrac12 - 1 + 1 = \tfrac12$). Dividido por $z^3$, o coeficiente de $z^{-1}$ é o de $z^2$ do produto:
+
+$$
+\operatorname{Res}(f,0) = \frac12
+\;\;\checkmark
+$$
+
+<Caixa tipo="macete" rotulo="Série contra derivada, em polo de ordem alta">
+
+Para $m = 3$ ou mais, a fórmula com derivadas fica pesada — e o risco de erro na regra do quociente é grande. O caminho da série é mecânico:
+
+1. escreva as séries dos fatores do numerador e do denominador (a de $\tfrac{1}{1+z}$ é a geométrica);
+2. multiplique até a potência $m-1$;
+3. o resíduo é o coeficiente de $z^{\,m-1}$ do produto.
+
+Aqui: $m=3$, e o coeficiente de $z^2$ é $\tfrac12$. Duas linhas contra seis.
+
+</Caixa>
+</Passos>
