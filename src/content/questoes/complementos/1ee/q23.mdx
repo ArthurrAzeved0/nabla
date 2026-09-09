@@ -1,0 +1,69 @@
+---
+origem: "2026.1"
+tema: "Cauchy-Goursat · Integral nula porque os polos estão fora"
+temaId: teorema-de-cauchy
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, usando a teoria de Cauchy,
+
+$$
+\oint_{\gamma:\,|z|=1} \frac{\operatorname{sen} z}{z^2 - 4}\,dz
+$$
+
+<Gabarito>
+$$
+\oint_{|z|=1}\frac{\operatorname{sen} z}{z^2-4}\,dz = 0
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — fatorar o denominador e achar os polos.**
+
+$$
+z^2 - 4 = (z-2)(z+2)
+\qquad\Longrightarrow\qquad
+z = 2 \quad\text{e}\quad z = -2
+$$
+
+**Passo 2 — comparar com a curva.**
+
+$$
+|2| = 2 > 1,
+\qquad
+|-2| = 2 > 1
+$$
+
+**Nenhum** dos dois está dentro de $|z| = 1$ — os dois ficam a duas unidades da origem, e a curva tem raio um.
+
+**Passo 3 — concluir.** Dentro e sobre $\gamma$, o integrando é analítico: $\operatorname{sen} z$ é inteira e o denominador não zera ali. Pelo **teorema de Cauchy-Goursat**,
+
+$$
+\boxed{\;\oint_{|z|=1}\frac{\operatorname{sen} z}{z^2-4}\,dz = 0\;}
+$$
+
+É o que o gabarito da prova diz, em uma linha: *"$z = \pm2$ fora de $\gamma$; pelo teorema de Cauchy, a integral é zero"*.
+
+<Caixa tipo="dica" rotulo="O item de graça, que é o mais perdido">
+
+Esta é a primeira das quatro integrais da questão 03, e a única cuja resposta é zero. Ela existe para separar quem **verifica** onde estão os polos de quem parte direto para a fórmula.
+
+O hábito que resolve as quatro em ordem: para cada integral, escreva os polos e o raio antes de qualquer conta. Aqui isso leva cinco segundos e vale o item inteiro.
+
+Repare que o numerador não faz diferença nenhuma: $\operatorname{sen} z$ ser inteira é tudo o que importa. Nem é preciso saber quanto vale.
+
+</Caixa>
+</Passos>
