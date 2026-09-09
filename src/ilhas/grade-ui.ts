@@ -372,6 +372,31 @@ export function ligarGrade() {
         M + 9,
       );
       pdf.addImage(png, "JPEG", M, M + CAB, lMm, aMm);
+
+      /* O "ver no site ↗" ia impresso e não levava a lugar nenhum: a captura
+         é um bitmap, e link não sobrevive a virar pixel. O que sobrevive é
+         uma ANOTAÇÃO do PDF colada por cima — `pdf.link` desenha nada, só
+         marca o retângulo clicável.
+
+         As coordenadas saem de agora, com a escala já travada em 1: a
+         posição de cada <a> menos a do quadro dá o deslocamento em pixels
+         de CSS dentro da captura, e o mesmo PX_MM que dimensionou a imagem
+         converte para milímetros. Deslocar por (M, M + CAB) porque é ali
+         que a imagem começa na página. `a.href` já vem absoluto. */
+      const rq = quadro.getBoundingClientRect();
+      for (const ancora of quadro.querySelectorAll<HTMLAnchorElement>("a.ir[href]")) {
+        const r = ancora.getBoundingClientRect();
+        /* cartão escondido (nó filtrado, modo lista) mede zero: não vira link */
+        if (r.width < 1 || r.height < 1) continue;
+        pdf.link(
+          M + (r.left - rq.left) * PX_MM,
+          M + CAB + (r.top - rq.top) * PX_MM,
+          r.width * PX_MM,
+          r.height * PX_MM,
+          { url: ancora.href },
+        );
+      }
+
       pdf.save(semProgresso ? `grade-${grade.sigla}.pdf` : `grade-${grade.sigla}-progresso.pdf`);
     } catch (e) {
       window.alert(`Não consegui gerar o PDF.\n\n${(e as Error).message}`);
