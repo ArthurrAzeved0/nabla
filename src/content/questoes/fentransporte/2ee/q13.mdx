@@ -1,0 +1,131 @@
+---
+origem: "2023.1"
+tema: "Adimensionais · Reynolds e Nusselt, equações e significado"
+temaId: numero-de-nusselt
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Em uma análise dimensional, a grandeza adimensional (ou número adimensional) é um número desprovido de qualquer unidade física que o defina, sendo, portanto, um **número puro**. Os números adimensionais são descritos como produtos ou quocientes de quantidades cujas unidades se cancelam e, dependendo do seu valor, estes números têm algum significado físico que caracteriza determinadas propriedades para alguns sistemas. Assim, por exemplo, o **número de Grashof** é um número adimensional usado na mecânica dos fluidos, representando a relação entre a sustentação de um fluido e a sua viscosidade.
+
+Nesse sentido, **defina os números adimensionais de Reynolds e Nusselt, com suas equações características e a relação entre grandezas que eles possuem.**
+
+<Gabarito>
+**Reynolds:**
+
+$$
+Re = \frac{\rho\,v\,D}{\mu}
+$$
+
+relaciona as forças de **inércia** com as de **viscosidade**, onde $\rho$ é a massa específica $[\mathrm{kg/m^3}]$, $v$ a velocidade do fluido $[\mathrm{m/s}]$, $D$ o comprimento característico (ou o diâmetro, no escoamento em tubo) $[\mathrm{m}]$ e $\mu$ a viscosidade dinâmica $[\mathrm{kg\,m^{-1}s^{-1}}]$.
+
+**Nusselt:**
+
+$$
+Nu = \frac{h\,L}{k}
+$$
+
+relaciona a troca de calor por **convecção** com a troca de calor por **condução**, onde $h$ é o coeficiente de transferência de calor por convecção $[\mathrm{W\,K^{-1}m^{-2}}]$, $k$ é o coeficiente de transferência de calor por condução (condutividade térmica) $[\mathrm{W\,K^{-1}m^{-1}}]$ e $L$ é a espessura do material condutor $[\mathrm{m}]$.
+</Gabarito>
+
+<Passos>
+**1 — Reynolds: inércia contra viscosidade.**
+
+$$
+Re = \frac{\rho\,v\,D}{\mu} = \frac{v\,D}{\nu}
+$$
+
+O numerador mede a tendência do fluido a **seguir em frente** (inércia); o denominador, a tendência a ser **freado** pelo atrito interno (viscosidade). O quociente diz qual vence:
+
+- $Re$ **baixo** — a viscosidade domina, o escoamento é **laminar** e organizado;
+- $Re$ **alto** — a inércia domina, as perturbações crescem e o escoamento é **turbulento**.
+
+Em tubo, as faixas de referência são $Re < 2000$ laminar, $Re > 4000$ turbulento, e a transição no meio.
+
+<Caixa tipo="dica" rotulo="O comprimento característico não é sempre o diâmetro">
+
+$D$ é a dimensão que **caracteriza** a geometria:
+
+- escoamento **em tubo** → o diâmetro interno;
+- escoamento **sobre placa plana** → o comprimento na direção do escoamento;
+- **em torno de esfera ou cilindro** → o diâmetro externo.
+
+Trocar o comprimento característico muda o valor de $Re$ e invalida a correlação que se for usar depois.
+
+</Caixa>
+
+**2 — Nusselt: convecção contra condução.**
+
+$$
+Nu = \frac{h\,L}{k}
+$$
+
+A leitura mais direta vem de escrever os dois transportes na mesma camada de fluido de espessura $L$:
+
+$$
+\underbrace{q''_{conv} = h\,\Delta T}_{\text{com o fluido escoando}}
+\qquad\qquad
+\underbrace{q''_{cond} = \frac{k}{L}\,\Delta T}_{\text{com o fluido parado}}
+$$
+
+$$
+Nu = \frac{q''_{conv}}{q''_{cond}} = \frac{h\,\Delta T}{(k/L)\,\Delta T} = \frac{h\,L}{k}
+$$
+
+- $Nu = 1$ — não há ganho: o fluido está efetivamente **parado**, e a troca é só condução;
+- $Nu \gg 1$ — a convecção domina, tanto mais quanto maior o número. É o caso de qualquer escoamento real.
+
+<Caixa tipo="macete" rotulo="O k de Nusselt é o do FLUIDO">
+
+$$
+Nu = \frac{h L}{k_{\text{fluido}}}
+\qquad\qquad
+Bi = \frac{h L}{k_{\text{sólido}}}
+$$
+
+A expressão é **idêntica**; o que muda é de quem é o $k$. Em **Nusselt**, é o do fluido que escoa (é ele que conduziria, se estivesse parado). Em **Biot**, é o do sólido que está sendo aquecido ou resfriado.
+
+Este é o erro mais comum da questão, e ele não aparece na conta — aparece na explicação.
+
+</Caixa>
+
+**3 — Por que Nusselt é o adimensional útil.** Porque é ele que **entrega o $h$**, que é a incógnita difícil da convecção. O roteiro é sempre:
+
+$$
+\underbrace{Nu = f(Re,\,Pr)}_{\text{convecção forçada}}
+\qquad
+\underbrace{Nu = f(Gr,\,Pr)}_{\text{convecção natural}}
+\;\Longrightarrow\;
+h = \frac{Nu\,k}{L}
+\;\Longrightarrow\;
+q = h\,A\,\Delta T
+$$
+
+E é aí que o **Reynolds** do enunciado se encaixa: ele é a entrada da correlação na convecção **forçada**, e o **Grashof** citado pela questão faz o mesmo papel na convecção **natural** — onde não há velocidade imposta, e o motor é o empuxo térmico.
+
+<Caixa tipo="dica" rotulo="Confira que são de fato adimensionais">
+
+$$
+[Re] = \frac{\mathrm{kg/m^3} \cdot \mathrm{m/s} \cdot \mathrm{m}}{\mathrm{kg/(m\,s)}} = 1
+\qquad
+[Nu] = \frac{\mathrm{W/(m^2K)} \cdot \mathrm{m}}{\mathrm{W/(m\,K)}} = 1
+$$
+
+Fazer essa checagem na prova custa duas linhas e prova que se entendeu o enunciado, que abre falando justamente em "número puro".
+
+</Caixa>
+
+**Conferência —** os dois pedem **equação**, **significado físico** e **unidade de cada símbolo** ✔ Reynolds é inércia sobre viscosidade; Nusselt é convecção sobre condução ✔ o $k$ de Nusselt é do fluido ✔
+</Passos>
