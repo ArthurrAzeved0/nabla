@@ -36,7 +36,6 @@ const matrizes = (await getCollection("grade"))
     return {
       ...g.data,
       quantas: d.length,
-      chMatriz: d.reduce((s, x) => s + x.teorica + x.pratica, 0),
       arestas: d.reduce((s, x) => s + x.pre.length + x.co.length, 0),
       ligadas: d.filter((x) => {
         const id = typeof x.cadeira === "string" ? x.cadeira : x.cadeira?.id;
@@ -86,11 +85,14 @@ const cursos = [...new Set(matrizes.map((m) => m.curso))]
                 {m.quantas} disciplinas<span>{m.arestas} requisitos</span>
               </h3>
               <p>
-                {/* "São" e "Dessas disciplinas" não são enfeite: nenhuma frase do
-                    site começa com dígito, e sem eles estas duas começariam. */}
-                {m.chMatriz === m.chTotalCurso
-                  ? `São ${m.chMatriz}h no total`
-                  : `São ${m.chMatriz}h em disciplinas, num curso de ${m.chTotalCurso}h`}
+                {/* Só a CH TOTAL DO CURSO. Antes o cartão comparava a soma das
+                    disciplinas da matriz com o total, e em Civil — a única grade
+                    em que os dois diferem — a frase levantava uma pergunta que
+                    ela não respondia.
+
+                    "São" não é enfeite: nenhuma frase do site começa com
+                    dígito, e sem ele esta começaria. */}
+                {`São ${m.chTotalCurso}h no total`}
                 .
                 {m.ligadas > 0 &&
                   ` Dessas disciplinas, ${m.ligadas === 1 ? "uma tem" : `${m.ligadas} têm`} teoria e questões aqui no site.`}
