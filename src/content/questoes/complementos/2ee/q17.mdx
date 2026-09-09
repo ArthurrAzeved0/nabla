@@ -1,0 +1,129 @@
+---
+origem: "2025.2"
+tema: "Fourier · Série da onda quadrada, e o gráfico nos saltos"
+temaId: onda-quadrada
+pontos: 1,7 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule a série de Fourier de
+
+$$
+f(x) = \begin{cases}
+\phantom{-}1, & x \ge 0\\
+-1, & x < 0
+\end{cases}
+$$
+
+vista como uma função periódica de período $2\pi$. Faça gráficos pertinentes.
+
+<Gabarito>
+$$
+f(x) = \frac{4}{\pi}\sum_{k=1}^{\infty}\frac{\operatorname{sen}\big[(2k-1)x\big]}{2k-1}
+= \frac4\pi\left(\operatorname{sen} x + \frac{\operatorname{sen} 3x}{3} + \frac{\operatorname{sen} 5x}{5} + \cdots\right)
+$$
+
+Nos saltos ($x = 0, \pm\pi, \pm2\pi,\dots$) a série vale **zero**, a média dos limites laterais.
+</Gabarito>
+
+<Passos>
+**Passo 1 — classificar a paridade, que já resolve metade.** No intervalo $(-\pi,\pi)$, $f$ é a função sinal:
+
+$$
+f(-x) = -f(x)
+\qquad\Longrightarrow\qquad
+f \text{ é } \textbf{ímpar}
+$$
+
+Pelo item de paridade da mesma questão, então:
+
+$$
+a_0 = 0,
+\qquad
+a_n = 0
+\quad\text{para todo } n
+$$
+
+porque $f\cdot\cos$ é ímpar e a integral em intervalo simétrico é zero. **A série é só de senos**, e resta um coeficiente a calcular.
+
+**Passo 2 — calcular $b_n$.** Com $L = \pi$ e usando a simetria para integrar só em $[0,\pi]$, onde $f = 1$:
+
+$$
+b_n = \frac{2}{\pi}\int_0^\pi 1\cdot\operatorname{sen}(nx)\,dx
+= \frac{2}{\pi}\left[\frac{-\cos(nx)}{n}\right]_0^{\pi}
+= \frac{2}{n\pi}\Big[1 - \cos(n\pi)\Big]
+$$
+
+Como $\cos(n\pi) = (-1)^n$:
+
+$$
+b_n = \frac{2}{n\pi}\Big[1 - (-1)^n\Big]
+$$
+
+**Passo 3 — ler o fator $[1-(-1)^n]$.** Ele vale
+
+$$
+\begin{cases}
+0, & n \text{ par}\\
+2, & n \text{ ímpar}
+\end{cases}
+\qquad\Longrightarrow\qquad
+b_{2k} = 0,
+\qquad
+b_{2k-1} = \frac{4}{(2k-1)\pi}
+$$
+
+**Só os harmônicos ímpares sobrevivem** — e isso não é acidente: a onda quadrada tem a simetria $f(x+\pi) = -f(x)$, que anula todo harmônico par.
+
+**Passo 4 — a série.**
+
+$$
+\boxed{\;f(x) = \frac{4}{\pi}\sum_{k=1}^{\infty}\frac{\operatorname{sen}\big[(2k-1)x\big]}{2k-1}\;}
+$$
+
+**Passo 5 — os gráficos, que o enunciado pede.** Duas coisas a desenhar:
+
+- **$f$**: os patamares $+1$ em $(0,\pi)$ e $-1$ em $(-\pi,0)$, repetindo com período $2\pi$, com saltos em $x = 0, \pm\pi, \pm2\pi,\dots$;
+- **a série**: idêntica a $f$ onde $f$ é contínua, e valendo **zero** em cada salto — a média entre $-1$ e $+1$.
+
+Esse é o ponto que o gráfico serve para mostrar. Apesar de o enunciado definir $f(0) = 1$, a série converge para $0$ em $x=0$: é o **teorema de Dirichlet**, que dá a média dos limites laterais nos pontos de descontinuidade.
+
+**Conferência — a série de Leibniz de graça.** Avalie em $x = \pi/2$, onde $f = 1$:
+
+$$
+1 = \frac4\pi\left(1 - \frac13 + \frac15 - \frac17 + \cdots\right)
+\qquad\Longrightarrow\qquad
+1 - \frac13 + \frac15 - \cdots = \frac{\pi}{4}
+\;\;\checkmark
+$$
+
+que é uma identidade conhecida. Se a sua série não reproduzir isso, algum coeficiente está errado.
+
+<Caixa tipo="dica" rotulo="Sobre o gabarito">
+
+O gabarito da prova abre com *"note que $f$ é par"* e em seguida conclui que $a_0$ e $a_n$ são nulos, chegando ao $b_n$ correto. As duas coisas não se conciliam: função **par** teria os $b_n$ nulos, não os $a_n$.
+
+A onda quadrada aqui é **ímpar**, e é isso que zera os $a_n$ e deixa só senos — que é o resultado a que o próprio gabarito chega. Trata-se de lapso de escrita, não de conta: o valor final está certo.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Fenômeno de Gibbs, se pedirem o gráfico com detalhe">
+
+Somas parciais da série **ultrapassam** os patamares perto do salto, com oscilações que não desaparecem ao aumentar o número de termos — elas só se estreitam. A sobra é de cerca de $9\%$ da altura do salto.
+
+Não é erro de conta nem de convergência: é o comportamento inevitável de aproximar descontinuidade por funções contínuas. Vale mencionar se a questão pedir "gráficos pertinentes" com algum cuidado.
+
+</Caixa>
+</Passos>
