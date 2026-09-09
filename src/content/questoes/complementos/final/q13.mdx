@@ -1,0 +1,105 @@
+---
+origem: "Final 2026.1"
+tema: "Laurent · Essencial em z = 1, com a integral"
+temaId: singularidade-essencial
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $f(z) = \cos\left(\dfrac{1}{z-1}\right)$. Classifique o ponto singular, escreva a série de Laurent da mesma, e calcule
+
+$$
+\oint_{\gamma:\,|z|=2} f(z)\,dz
+$$
+
+<Gabarito>
+$z=1$ é **singularidade essencial**;
+
+$$
+f(z) = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!\,(z-1)^{2n}}
+= 1 - \frac{1}{2!(z-1)^2} + \frac{1}{4!(z-1)^4} - \cdots
+$$
+
+Resíduo $a_{-1} = 0$, logo a integral é **zero**.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a série, por substituição.** Tome $w = \dfrac{1}{z-1}$ na série do cosseno:
+
+$$
+\cos w = \sum_{n=0}^{\infty}\frac{(-1)^n w^{2n}}{(2n)!}
+$$
+
+$$
+\boxed{\;f(z) = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!\,(z-1)^{2n}}
+= 1 - \frac{1}{2(z-1)^2} + \frac{1}{24(z-1)^4} - \cdots\;}
+$$
+
+válida em $0 < |z-1| < \infty$.
+
+**Passo 2 — classificar.** A parte principal tem **infinitos** termos e nenhum $m$ faz $(z-1)^mf(z)$ ter limite finito:
+
+$$
+z=1 \text{ é } \textbf{singularidade essencial}
+$$
+
+O reconhecimento é imediato: $\dfrac{1}{z-z_0}$ dentro de cosseno sempre produz essencial.
+
+**Passo 3 — o ponto singular está dentro da curva?**
+
+$$
+|1| = 1 < 2
+\qquad\text{(dentro de } |z|=2\text{)}
+$$
+
+Sim — e aqui, ao contrário da q15 do 2º EE (onde a curva passava exatamente pela singularidade), o ponto está **estritamente** no interior. O teorema dos resíduos se aplica sem ressalva.
+
+**Passo 4 — o resíduo.** É o coeficiente de $(z-1)^{-1}$, e os expoentes da série são $0, -2, -4, -6, \dots$ — **todos pares**. A potência $-1$ nunca aparece:
+
+$$
+\operatorname{Res}\big[f\big]_{z=1} = a_{-1} = 0
+$$
+
+**Passo 5 — a integral.**
+
+$$
+\boxed{\;\oint_{|z|=2}\cos\!\left(\frac{1}{z-1}\right)dz = 2\pi i\cdot 0 = 0\;}
+$$
+
+<Caixa tipo="macete" rotulo="Resíduo zero não é o mesmo que ponto regular">
+
+Aqui $z=1$ é uma singularidade **essencial** — a pior espécie, onde $f$ nem tem limite — e ainda assim a integral é **zero**, porque o resíduo é nulo.
+
+O teorema dos resíduos não pergunta que **tipo** de singularidade há dentro da curva: ele pergunta apenas quanto vale $a_{-1}$. Uma essencial com resíduo nulo contribui tanto quanto um ponto regular.
+
+O mesmo fenômeno em polo aparece na q32 do 2º EE, onde um polo **duplo** legítimo tem resíduo zero.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Como saber, sem escrever a série toda">
+
+Escreva o **expoente geral** e resolva a equação "expoente $= -1$":
+
+| função | expoente geral | resolve $=-1$? | resíduo |
+|---|---|---|---|
+| $\cos\!\left(\frac{1}{z-1}\right)$ | $-2n$ | não (par) | $0$ |
+| $\operatorname{sen}\!\left(\frac{1}{z-1}\right)$ | $-(2n+1)$ | sim, $n=0$ | $1$ |
+| $e^{1/(z-1)}$ | $-n$ | sim, $n=1$ | $1$ |
+| $(z-1)^2e^{1/(z-1)}$ | $2-n$ | sim, $n=3$ | $\frac16$ |
+
+Duas linhas, e resolve qualquer essencial vinda de substituição — sem escrever termo nenhum.
+
+</Caixa>
+</Passos>
