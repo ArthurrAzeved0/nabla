@@ -32,6 +32,7 @@ unidades:
       - { id: cm-laplace-inversa, titulo: "Inversão da transformada de Laplace" }
       - { id: cm-convolucao, titulo: "Teorema da convolução e aplicações" }
       - { id: cm-edp, titulo: "Equações diferenciais parciais: exemplos e classificação" }
+      - { id: cm-separacao, titulo: "Separação de variáveis: calor, onda e Laplace" }
 ---
 
 {/* **************************************************************************
@@ -2748,6 +2749,131 @@ As duas questões de EDP do 2º EE de 2026.1 — calor e onda — trazem **$u_x(
 <Caixa tipo="dica">
 
 Diferença física que a classificação captura: na **parabólica** (calor) qualquer irregularidade inicial suaviza imediatamente e a informação se espalha instantaneamente; na **hiperbólica** (onda) o perfil viaja com velocidade $c$ e um bico continua bico. É por isso que a onda precisa de **duas** condições iniciais ($u$ e $u_t$) e o calor de **uma** só.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-separacao" num="27" titulo="Separação de variáveis: calor, onda e Laplace">
+
+### A ideia
+
+O método de Fourier, que fecha a disciplina. A aposta é procurar a solução na forma de um **produto**:
+
+$$
+u(x,t) = X(x)\,T(t)
+$$
+
+Substituída na EDP, ela se parte em **duas EDO** — uma em $x$, outra em $t$ — ligadas por uma constante. Cada EDO se resolve com o que a cadeira já tem, as condições de contorno selecionam quais soluções sobrevivem, e a condição inicial é atendida **somando** todas elas: é aí que a série de Fourier entra, e é por isso que ela vem antes.
+
+<Caixa tipo="simbolos">
+
+- $X(x)T(t)$ — a forma **separada** que se testa;
+- $-\lambda$ — a **constante de separação**; o sinal negativo é convenção que faz os autovalores saírem positivos;
+- **autovalor** $\lambda_n$ — os valores de $\lambda$ para os quais existe $X$ não nula satisfazendo o contorno;
+- **autofunção** $X_n$ — a solução correspondente; o conjunto delas é a base ortogonal da seção 19.
+
+</Caixa>
+
+### O roteiro, em cinco passos
+
+1. **Separe.** Ponha $u = XT$ na EDP e arrume tudo de um lado em $x$ e do outro em $t$. Como as variáveis são independentes, os dois lados são a mesma constante $-\lambda$;
+2. **Resolva o problema em $x$** com as condições de **contorno**. Só certos $\lambda$ admitem solução não nula: são os autovalores;
+3. **Resolva a EDO em $t$** com cada $\lambda_n$;
+4. **Some**: $u = \sum_n c_n X_n(x)T_n(t)$ — a soma resolve a EDP porque ela é linear e homogênea;
+5. **Imponha a condição inicial** e ache os $c_n$ pelas fórmulas de Fourier — é a ortogonalidade que os isola.
+
+<Caixa tipo="exemplo">
+
+Questão 03 do 2º EE de 2026.1 — barra **isolada nas duas pontas**:
+
+$$
+u_t = k\,u_{xx},
+\qquad
+u_x(0,t) = u_x(L,t) = 0,
+\qquad
+u(x,0) = f(x)
+$$
+
+**Passo 1.** Com $u = XT$: $XT' = kX''T$, logo
+
+$$
+\frac{T'}{kT} = \frac{X''}{X} = -\lambda
+$$
+
+**Passo 2.** $X'' + \lambda X = 0$ com $X'(0) = X'(L) = 0$ (Neumann). Para $\lambda > 0$, $X = A\cos(\sqrt\lambda x) + B\operatorname{sen}(\sqrt\lambda x)$; a condição em $0$ mata o seno ($B=0$), e a condição em $L$ pede $\operatorname{sen}(\sqrt\lambda L) = 0$:
+
+$$
+\lambda_n = \left(\frac{n\pi}{L}\right)^2,
+\qquad
+X_n = \cos\frac{n\pi x}{L},
+\qquad n = 0,1,2,\dots
+$$
+
+**O $n=0$ conta** aqui, e é o detalhe que distingue Neumann de Dirichlet: $\lambda = 0$ dá $X$ constante, que satisfaz $X'=0$ nas duas pontas.
+
+**Passo 3.** $T' = -k\lambda_n T$ dá $T_n = e^{-k\lambda_n t}$.
+
+**Passo 4 e 5.**
+
+$$
+u(x,t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos\!\left(\frac{n\pi x}{L}\right) e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+$$
+
+$$
+a_n = \frac{2}{L}\int_0^{L} f(x)\cos\frac{n\pi x}{L}\,dx
+$$
+
+**Interpretação física, que é o "explicando os detalhes não-triviais" do enunciado:** cada harmônico decai com $e^{-k(n\pi/L)^2t}$, e o expoente cresce com $n^2$ — os detalhes finos do perfil inicial desaparecem primeiro. Quando $t\to\infty$, sobra só $a_0/2$, que é a **temperatura média** do perfil inicial. Faz sentido: a barra está isolada, então o calor não escapa — ele só se redistribui até ficar uniforme.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Questão 04 da mesma prova — corda com as **mesmas** condições de Neumann:
+
+$$
+u_{tt} = c^2u_{xx},
+\qquad
+u_x(0,t)=u_x(L,t)=0,
+\qquad
+u(x,0)=f(x),\quad u_t(x,0)=g(x)
+$$
+
+Os passos 1 e 2 são idênticos: mesmas autofunções $\cos(n\pi x/L)$, mesmos autovalores. O que muda é o passo 3, porque a equação em $t$ agora é de **2ª ordem**:
+
+$$
+T'' + c^2\lambda_n T = 0
+\quad\Longrightarrow\quad
+T_n = a_n\cos\frac{n\pi c\,t}{L} + b_n\operatorname{sen}\frac{n\pi c\,t}{L}
+$$
+
+$$
+u(x,t) = \frac{a_0}{2} + \frac{b_0 t}{2} + \sum_{n=1}^{\infty}\cos\!\left(\frac{n\pi x}{L}\right)\left[a_n\cos\frac{n\pi ct}{L} + b_n\operatorname{sen}\frac{n\pi ct}{L}\right]
+$$
+
+com $a_n$ vindo de $f$ e $b_n$ de $g$ — **duas** condições iniciais, duas famílias de coeficientes, como a seção 26 anunciou. E aqui o modo $n=0$ dá um termo que **cresce linearmente no tempo**: a corda livre nas pontas pode transladar, e $b_0$ é a velocidade média inicial.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Não decore as soluções — decore o **roteiro** e o que cada condição faz:
+
+- $u=0$ nas pontas → autofunções $\operatorname{sen}(n\pi x/L)$, $n \ge 1$, **sem** modo constante;
+- $u_x=0$ nas pontas → autofunções $\cos(n\pi x/L)$, $n\ge 0$, **com** modo constante;
+- calor (1ª ordem no tempo) → fator $e^{-k\lambda_n t}$, uma condição inicial;
+- onda (2ª ordem no tempo) → seno e cosseno em $t$, duas condições iniciais.
+
+Com esses quatro fatos, as duas questões de 2026.1 se escrevem sem consultar nada.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Casos de $\lambda$ que a prova espera ver **descartados**, e que valem ponto: $\lambda < 0$ dá exponenciais reais em $x$, que não satisfazem as duas condições de contorno simultaneamente (a não ser pela solução nula); $\lambda = 0$ dá $X$ afim, que **é** aceito em Neumann e **rejeitado** em Dirichlet. Analisar os três casos é o "explicando os detalhes" do enunciado.
+
+E na equação de **Laplace** em retângulo, o método é o mesmo, mas a EDO em $y$ também tem contorno nas duas pontas — as soluções saem em $\operatorname{senh}$ e $\cosh$, não em exponencial solta.
 
 </Caixa>
 

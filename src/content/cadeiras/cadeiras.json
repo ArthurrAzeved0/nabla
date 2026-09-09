@@ -574,7 +574,13 @@
       "equacao-do-calor": "cm-edp",
       "equacao-da-onda": "cm-edp",
       "equacao-de-poisson": "cm-edp",
-      "condicoes-de-contorno-edp": "cm-edp"
+      "condicoes-de-contorno-edp": "cm-edp",
+      "separacao-de-variaveis": "cm-separacao",
+      "metodo-de-fourier": "cm-separacao",
+      "autovalores-e-autofuncoes": "cm-separacao",
+      "problema-do-calor": "cm-separacao",
+      "problema-da-onda": "cm-separacao",
+      "laplace-em-retangulo": "cm-separacao"
     }
   }
 ]
