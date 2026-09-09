@@ -18,6 +18,9 @@ unidades:
       - { id: cm-singularidades, titulo: "Zeros e classificação de singularidades" }
       - { id: cm-residuos, titulo: "Teorema dos resíduos" }
       - { id: cm-integrais-reais, titulo: "Integrais reais calculadas por resíduos" }
+  - nome: "2ª Unidade"
+    secoes:
+      - { id: cm-edo, titulo: "EDO: solução geral, wronskiano e as de 1ª ordem que caem" }
 ---
 
 {/* **************************************************************************
@@ -1500,6 +1503,92 @@ Duas conferências que pegam quase todo erro:
 
 - se a integral original é de uma função **real e positiva**, o resultado tem de ser **real e positivo**. Sobrou $i$ na resposta? Há erro de sinal em algum resíduo;
 - na substituição $z=e^{i\theta}$, das duas raízes do denominador quadrático **exatamente uma** fica dentro do círculo unitário (o produto delas é $1$). Se você achou duas dentro, ou nenhuma, refaça — e não esqueça o $d\theta = dz/(iz)$, que é o fator mais esquecido da unidade.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-edo" num="15" titulo="EDO: solução geral, wronskiano e as de 1ª ordem que caem">
+
+### A ideia
+
+A 2ª unidade começa retomando equações diferenciais, e a razão é prática: as três ferramentas que vêm depois — séries de potências, Fourier e Laplace — existem para **resolver EDO e EDP**. Esta seção fixa o vocabulário e cobre as equações de 1ª ordem que o acervo cobra de entrada.
+
+Boa parte do conteúdo é o de **Equações Diferenciais (Cálculo 4)**, e nas seções daquela cadeira está o tratamento completo. Aqui fica o que Complementos usa e o que as provas desta disciplina pedem.
+
+<Caixa tipo="simbolos">
+
+- **ordem** — a da maior derivada presente;
+- **solução geral** — a família com $n$ constantes arbitrárias, para EDO de ordem $n$;
+- **solução particular** — uma escolha de constantes; um **PVI** as fixa por $y(x_0), y'(x_0), \dots$;
+- $W(y_1,\dots,y_n)$ — **wronskiano**, o determinante que testa independência linear;
+- **conjunto fundamental** — $n$ soluções com $W \ne 0$; a solução geral é combinação delas.
+
+</Caixa>
+
+### O wronskiano
+
+<Formula rotulo="Wronskiano de duas soluções">
+
+$$
+W(y_1, y_2)(x) =
+\begin{vmatrix}
+y_1 & y_2 \\
+y_1' & y_2'
+\end{vmatrix}
+= y_1 y_2' - y_2 y_1'
+$$
+
+</Formula>
+
+Para soluções de uma EDO linear homogênea num intervalo, vale o dado que resolve a questão teórica: $W$ é **identicamente zero** ou **nunca zero** no intervalo — não há meio caminho. Então basta testar em **um** ponto.
+
+$$
+W \ne 0 \;\Longrightarrow\; y_1, y_2 \text{ linearmente independentes} \;\Longrightarrow\; y = c_1y_1 + c_2y_2 \text{ é a solução geral}
+$$
+
+### As duas de 1ª ordem que o acervo cobra
+
+A questão 01 do 2º EE de 2023.2 deixa escolher entre uma **homogênea de grau zero** e uma de **Bernoulli** — e dá a substituição no enunciado, o que revela o que se espera: reconhecer o tipo e aplicar a troca.
+
+**Homogênea de grau zero** — quando $y' = F(y/x)$. Substitua $y = xv$, logo $y' = v + xv'$, e a equação **separa** em $v$ e $x$.
+
+$$
+x y y' = 4x^2 + y^2
+\;\Longrightarrow\;
+y' = \frac{4x}{y} + \frac{y}{x}
+\;\;\text{(depende só de } y/x\text{)}
+$$
+
+Com $y = xv$: $v + xv' = \dfrac{4}{v} + v$, isto é $xv' = \dfrac4v$, que separa em $v\,dv = \dfrac{4\,dx}{x}$ e dá $v^2 = 8\ln|x| + C$, ou seja
+
+$$
+y^2 = x^2\big(8\ln|x| + C\big)
+$$
+
+**Bernoulli** — quando $y' + P(x)y = Q(x)\,y^n$ com $n \ne 0, 1$. Substitua $v = y^{1-n}$ e a equação vira **linear** em $v$.
+
+$$
+y' - y = x y^4
+\;\Longrightarrow\;
+n = 4,\quad v = y^{-3}
+\;\Longrightarrow\;
+v' + 3v = -3x
+$$
+
+que é linear, resolve por fator integrante $e^{3x}$ e dá $v = -x + \tfrac13 + Ce^{-3x}$, donde $y^{-3} = -x + \tfrac13 + Ce^{-3x}$.
+
+<Caixa tipo="macete">
+
+O enunciado entrega o tipo pela substituição sugerida. **$y = xv$** → homogênea de grau zero, e o objetivo é separar. **$v = 1/y^{k}$** → Bernoulli, e o objetivo é linearizar.
+
+Sem a sugestão, o teste da homogênea é rápido: troque $x \to tx$ e $y \to ty$; se a equação não muda, é homogênea de grau zero.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Nesta cadeira, EDO de 2ª ordem quase nunca é resolvida pela equação característica — é resolvida por **Laplace** (seção 24) ou por **séries** (seções 17 e 18), porque é isso que a 2ª unidade está ensinando. Quando a questão diz "use Transformada de Laplace", como o PVI $y'' + 2y' + 2y = \operatorname{sen}(2x)$ da 2ª chamada de 2023.2, resolver pela característica não vale ponto.
 
 </Caixa>
 

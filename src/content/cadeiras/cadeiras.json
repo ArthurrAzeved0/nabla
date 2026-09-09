@@ -517,7 +517,13 @@
       "integral-trigonometrica-por-residuos": "cm-integrais-reais",
       "substituicao-z-igual-e-i-theta": "cm-integrais-reais",
       "integral-impropria-por-residuos": "cm-integrais-reais",
-      "lema-de-jordan": "cm-integrais-reais"
+      "lema-de-jordan": "cm-integrais-reais",
+      "solucao-geral-de-edo": "cm-edo",
+      "wronskiano": "cm-edo",
+      "conjunto-fundamental": "cm-edo",
+      "edo-homogenea-de-grau-zero": "cm-edo",
+      "equacao-de-bernoulli": "cm-edo",
+      "substituicao-em-edo": "cm-edo"
     }
   }
 ]
