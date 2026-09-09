@@ -1,0 +1,78 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Primitiva complexa · Integral entre dois pontos"
+temaId: primitiva-complexa
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\int_{1+i}^{3+4i} (2z + 3)\,dz
+$$
+
+<Gabarito>
+$$
+\int_{1+i}^{3+4i}(2z+3)\,dz = -1 + 31i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reconhecer que não há caminho a escolher.** O integrando $2z+3$ é um polinômio, logo **inteiro** (analítico em todo o plano). Num domínio simplesmente conexo, a integral de função analítica **não depende do caminho** e vale o teorema fundamental do cálculo:
+
+$$
+\int_{z_0}^{z_1} f(z)\,dz = F(z_1) - F(z_0),
+\qquad F' = f
+$$
+
+É por isso que o enunciado não diz por qual curva ir — não importa.
+
+**Passo 2 — a primitiva.**
+
+$$
+F(z) = z^2 + 3z
+$$
+
+**Passo 3 — avaliar no ponto final**, com $(3+4i)^2 = 9 + 24i + 16i^2 = -7 + 24i$:
+
+$$
+F(3+4i) = (-7 + 24i) + 3(3+4i) = -7 + 24i + 9 + 12i = 2 + 36i
+$$
+
+**Passo 4 — avaliar no ponto inicial**, com $(1+i)^2 = 1 + 2i + i^2 = 2i$:
+
+$$
+F(1+i) = 2i + 3(1+i) = 2i + 3 + 3i = 3 + 5i
+$$
+
+**Passo 5 — subtrair.**
+
+$$
+\int_{1+i}^{3+4i}(2z+3)\,dz = (2 + 36i) - (3 + 5i)
+$$
+
+$$
+\boxed{\;\int_{1+i}^{3+4i}(2z+3)\,dz = -1 + 31i\;}
+$$
+
+<Caixa tipo="dica" rotulo="Quando a primitiva vale e quando não">
+
+O que autoriza o atalho é a **analiticidade** no domínio, não o fato de a integral ser entre dois pontos. Compare com a q05 desta mesma unidade: lá o integrando vinha escrito em $x$ e $y$, não satisfazia Cauchy-Riemann, e a única saída era parametrizar.
+
+Regra: integrando escrito em $z$ e analítico → primitiva. Integrando escrito em $x$ e $y$ → teste Cauchy-Riemann antes de decidir.
+
+</Caixa>
+</Passos>
