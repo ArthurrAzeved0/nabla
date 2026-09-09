@@ -21,6 +21,51 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [Não publicado]
+
+### Adicionado
+
+- **Fenômenos de Transporte, a sexta cadeira: 97 questões e 29 seções de teoria.**
+  O acervo de provas foi **esgotado**: os cinco 1º EE (2022.1, 2023.2, 2024.2,
+  2025.1, 2025.2, 2026.1), os cinco 2º EE (2018.1, 2022.1, 2022.2, 2023.1,
+  2023.2, 2024.2), as duas provas do Prof. Adérito nas turmas EM e 4E, as cinco
+  segundas chamadas (2018.1 nas turmas CM e KT, 2022.1, 2023.1 e 2023.2), as
+  duas finais (2023.1 e 2023.2) e o que os dois bancos de dissertativas tinham
+  de novo.
+- **Quatro seções novas de teoria para a 2ª unidade**, que as provas cobravam e
+  o conteúdo não tinha: condução em esferas e o **raio crítico de isolamento**
+  ($k/h$ no cilindro, $2k/h$ na esfera); condução **com geração** e as três
+  **condições de contorno** pelo nome (Dirichlet, Neumann, Robin); **convecção**
+  natural contra forçada com Nusselt, Prandtl e Grashof; e os três **fluxos de
+  massa** — difusivo, convectivo e absoluto.
+- **A grade liga Fenômenos em nove nós**, em Civil, Automação, Mecânica,
+  Eletrônica e Telecomunicações. Nos perfis antigos a cadeira aparece como
+  *Mecânica dos Fluidos*, e os dois nós levam nota explicando que o conteúdo de
+  fluidos é o mesmo — a transferência de calor, que aqui vem na 2ª unidade, ali
+  é a cadeira Transmissão de Calor, do 6º período.
+
+### Corrigido
+
+- **O PDF do mapa da grade saía com o desenho minúsculo num canto quando gerado
+  no telefone.** No celular a grade abre em modo lista, e o `definirModo("quadro")`
+  do botão de PDF agenda um redesenho que reaplicava o zoom de ajuste da tela
+  (uns 17%) **depois** da limpeza da escala: as dimensões eram medidas no tamanho
+  natural e a pintura saía reduzida. Três barreiras: esperar o redesenho agendado,
+  um cadeado que desliga `aplicarEscala` durante a exportação, e `width`/`height`/
+  `style` passados ao `html-to-image`, que os aplica no clone.
+
+### Notas de acervo
+
+- Nove **divergências de gabarito** ficaram registradas na própria questão, com
+  a conta refeita: dígitos trocados (46,19 impresso como 49,19), `1 atm` usado
+  como $10^5$ numa linha e $1{,}013\times10^5$ na seguinte, um raio de 12 cm
+  escrito como 0,13 m, e o rendimento de uma turbina dividido em vez de
+  multiplicado. Em todos os casos o valor cobrado na prova está indicado.
+- Dois arquivos que o índice do acervo dava como perdidos **estavam inteiros**:
+  a prova de 2022.1 do 1º EE (as páginas escaneadas vinham embutidas como JPEG
+  num PDF cujo texto era só um print de links do Drive) e a prova de 2022.2 do
+  2º EE.
+
 ## [2.13.0] — 2026-09-08
 
 ### Adicionado
