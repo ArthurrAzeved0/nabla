@@ -1,0 +1,85 @@
+---
+origem: "2025.2"
+tema: "Fórmula de Cauchy · Logaritmo no numerador, e o corte do ramo"
+temaId: formula-integral-de-cauchy
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, e simplifique,
+
+$$
+\oint_{\gamma} \left[\frac{\log(z)}{-z+i}\right] dz,
+\qquad\text{onde}\qquad
+\gamma = \left\{ |z - i| = \tfrac12 \right\}
+$$
+
+<Gabarito>
+$$
+\oint_{\gamma}\frac{\log z}{-z+i}\,dz = \pi^2
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — arrumar o sinal do denominador.** O $-z+i$ está escrito ao contrário de propósito. Colocando $-1$ em evidência:
+
+$$
+\frac{\log z}{-z+i} = \frac{\log z}{-(z - i)} = \frac{-\log z}{z-i}
+$$
+
+Agora está na forma da fórmula de Cauchy, com $z_0 = i$ e $f(z) = -\log z$.
+
+**Passo 2 — a curva e a singularidade.** $\gamma$ é a circunferência de centro $i$ e raio $\tfrac12$, e o ponto singular $z_0 = i$ é o **próprio centro**: está dentro ✔
+
+**Passo 3 — o numerador é analítico ali?** Esta é a verificação que a questão realmente cobra. O logaritmo complexo não é analítico no **corte do ramo** — por convenção, o semieixo real negativo mais a origem.
+
+A curva $|z-i| = \tfrac12$ tem $y$ variando entre $0{,}5$ e $1{,}5$ e $x$ entre $-0{,}5$ e $0{,}5$: ela vive inteira no **semiplano superior** e não toca o corte nem a origem. Logo $\log z$ é analítico dentro e sobre $\gamma$ ✔
+
+**Passo 4 — aplicar a fórmula.**
+
+$$
+\oint_\gamma \frac{f(z)}{z - z_0}\,dz = 2\pi i\,f(z_0)
+\qquad\Longrightarrow\qquad
+\oint_\gamma \frac{-\log z}{z-i}\,dz = 2\pi i\,\big(-\operatorname{Log} i\big)
+$$
+
+**Passo 5 — o "simplifique!" do enunciado.** Falta calcular $\operatorname{Log} i$, e é aqui que a definição de logaritmo complexo entra:
+
+$$
+|i| = 1,
+\qquad
+\operatorname{Arg}(i) = \frac{\pi}{2}
+\qquad\Longrightarrow\qquad
+\operatorname{Log} i = \ln 1 + i\frac{\pi}{2} = \frac{i\pi}{2}
+$$
+
+$$
+\oint_\gamma = 2\pi i\left(-\frac{i\pi}{2}\right) = -\pi^2 i^2
+$$
+
+$$
+\boxed{\;\oint_{\gamma}\frac{\log z}{-z+i}\,dz = \pi^2\;}
+$$
+
+**Conferência —** o resultado é **real e positivo**, o que é curioso para uma integral complexa e é justamente o que o "simplifique!" anuncia: os dois $i$ se multiplicam e viram $-1$, que cancela o sinal do denominador invertido. Se a sua resposta tiver $i$ sobrando, faltou um dos dois sinais.
+
+<Caixa tipo="dica" rotulo="A mesma integral reaparece em 2026.1">
+
+O item (i) da questão 04 do 1º EE de **2026.1** é literalmente esta integral, com o enunciado dizendo "use a definição de logaritmo complexo", e o gabarito de lá confirma: $\pi^2$.
+
+Duas provas, dois anos, a mesma questão. Vale como aviso do que o professor considera essencial: saber que $\operatorname{Log}$ é analítico fora do corte, e saber avaliar $\operatorname{Log}$ num ponto do eixo imaginário.
+
+</Caixa>
+</Passos>
