@@ -1,0 +1,114 @@
+---
+origem: "2025.2"
+tema: "Paridade · z² é par, z³ é ímpar, e o que isso implica"
+temaId: funcao-par-e-impar
+pontos: 0,8 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**1)** Mostre que $f(z) = z^2$ é uma função par, ao passo que $f(z) = z^3$ é ímpar;
+
+**2)** Se uma função $f(x)$ é par e outra $g(x)$ é ímpar, o que se pode dizer do produto delas? E sobre a integração deste produto em um intervalo simétrico?
+
+<Gabarito>
+**1)** $(-z)^2 = z^2$ (par); $(-z)^3 = -z^3$ (ímpar).
+
+**2)** O produto $f\cdot g$ é **ímpar**, e a integral de função ímpar em intervalo simétrico é **zero**:
+
+$$
+\int_{-L}^{L} f(x)\,g(x)\,dx = 0
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as definições, que é do que a prova precisa.**
+
+$$
+f \text{ par} \iff f(-x) = f(x),
+\qquad
+f \text{ ímpar} \iff f(-x) = -f(x)
+$$
+
+**Passo 2 — item (1), direto da definição.**
+
+$$
+(-z)^2 = (-1)^2 z^2 = z^2
+\qquad\Longrightarrow\qquad
+\textbf{par}
+$$
+
+$$
+(-z)^3 = (-1)^3 z^3 = -z^3
+\qquad\Longrightarrow\qquad
+\textbf{ímpar}
+$$
+
+O gabarito da prova classifica este item como *"trivial"* — e é. A generalização vale registrar: $z^n$ é **par** para $n$ par e **ímpar** para $n$ ímpar, e é daí que vêm os nomes.
+
+**Passo 3 — item (2), a paridade do produto.** Seja $h = f\cdot g$, com $f$ par e $g$ ímpar:
+
+$$
+h(-x) = f(-x)\,g(-x) = f(x)\cdot\big[-g(x)\big] = -f(x)g(x) = -h(x)
+$$
+
+$$
+\Longrightarrow\qquad
+h = f\cdot g \text{ é } \textbf{ímpar}
+$$
+
+A regra completa, que vale decorar como sinais de multiplicação:
+
+$$
+\text{par}\times\text{par} = \text{par},
+\qquad
+\text{ímpar}\times\text{ímpar} = \text{par},
+\qquad
+\text{par}\times\text{ímpar} = \text{ímpar}
+$$
+
+**Passo 4 — a integral em intervalo simétrico.** Para $h$ ímpar, quebre em duas metades e troque $x \to -x$ na primeira:
+
+$$
+\int_{-L}^{L} h(x)\,dx = \int_{-L}^{0}h(x)\,dx + \int_0^L h(x)\,dx
+$$
+
+$$
+\int_{-L}^{0}h(x)\,dx
+\;\overset{x\to-x}{=}\;
+\int_0^{L}h(-x)\,dx = -\int_0^L h(x)\,dx
+$$
+
+As duas metades se cancelam:
+
+$$
+\boxed{\;\int_{-L}^{L} f(x)\,g(x)\,dx = 0\;}
+$$
+
+E, de passagem, o fato irmão: para $h$ **par**, $\displaystyle\int_{-L}^{L}h = 2\int_0^L h$.
+
+<Caixa tipo="macete" rotulo="Por que a prova pergunta isso antes de Fourier">
+
+Esta questão é o **item preparatório** do que vem em seguida na mesma prova: calcular a série de Fourier de uma função. E o resultado do passo 4 é o que zera metade dos coeficientes **antes de qualquer integração**:
+
+$$
+b_n = \frac1\pi\int_{-\pi}^{\pi}f(x)\operatorname{sen}(nx)\,dx
+$$
+
+Se $f$ é **par**, o produto $f\cdot\operatorname{sen}$ é ímpar e todos os $b_n$ são zero — a série é só de cossenos. Se $f$ é **ímpar**, o produto $f\cdot\cos$ é ímpar e todos os $a_n$ (incluindo $a_0$) são zero — série só de senos.
+
+Responder o item (2) e **não** usar a conclusão no item seguinte é jogar fora o presente que a prova deu.
+
+</Caixa>
+</Passos>
