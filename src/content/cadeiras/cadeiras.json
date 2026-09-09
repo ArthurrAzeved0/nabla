@@ -568,7 +568,13 @@
       "convolucao": "cm-convolucao",
       "teorema-da-convolucao": "cm-convolucao",
       "equacao-integral": "cm-convolucao",
-      "resposta-ao-impulso": "cm-convolucao"
+      "resposta-ao-impulso": "cm-convolucao",
+      "equacao-diferencial-parcial": "cm-edp",
+      "classificacao-de-edp": "cm-edp",
+      "equacao-do-calor": "cm-edp",
+      "equacao-da-onda": "cm-edp",
+      "equacao-de-poisson": "cm-edp",
+      "condicoes-de-contorno-edp": "cm-edp"
     }
   }
 ]

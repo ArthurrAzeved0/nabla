@@ -31,6 +31,7 @@ unidades:
       - { id: cm-laplace, titulo: "Transformada de Laplace e suas propriedades" }
       - { id: cm-laplace-inversa, titulo: "Inversão da transformada de Laplace" }
       - { id: cm-convolucao, titulo: "Teorema da convolução e aplicações" }
+      - { id: cm-edp, titulo: "Equações diferenciais parciais: exemplos e classificação" }
 ---
 
 {/* **************************************************************************
@@ -2654,6 +2655,99 @@ E, na dúvida entre convolução e frações parciais para inverter, escolha fra
 <Caixa tipo="dica">
 
 Erro clássico: escrever $\mathcal{L}^{-1}\{\Phi\Psi\} = \mathcal{L}^{-1}\{\Phi\}\cdot\mathcal{L}^{-1}\{\Psi\}$. **A inversa de um produto não é o produto das inversas** — é a convolução delas. Testar com $\Phi = \Psi = 1/s$ resolve a dúvida na hora: a inversa de $1/s^2$ é $x$, não $1\cdot1 = 1$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-edp" num="26" titulo="Equações diferenciais parciais: exemplos e classificação">
+
+### A ideia
+
+Numa EDO, a incógnita depende de uma variável. Numa **EDP**, depende de duas ou mais — tipicamente posição e tempo — e as derivadas são parciais. Quase toda física de meio contínuo é uma EDP: temperatura ao longo de uma barra, deslocamento de uma corda, potencial numa placa.
+
+E a solução geral deixa de ser uma família com $n$ constantes: passa a envolver **funções arbitrárias**, que só as condições de contorno e iniciais fixam. É por isso que uma EDP vem sempre acompanhada delas.
+
+<Caixa tipo="simbolos">
+
+- $u(x,t)$ ou $u(x,y)$ — a incógnita, função de duas variáveis;
+- $u_x, u_{xx}, u_t$ — derivadas parciais, na notação que as provas usam;
+- **linear** — $u$ e suas derivadas aparecem na 1ª potência, sem produtos entre si;
+- **homogênea** — sem termo independente de $u$;
+- **condição de contorno** — o que acontece nas **bordas** do domínio; **condição inicial** — o estado em $t=0$.
+
+</Caixa>
+
+### As três EDP da cadeira
+
+<Formula rotulo="Calor (difusão), onda e Laplace">
+
+$$
+u_t = k\,u_{xx}
+\qquad\text{(calor: 1ª ordem no tempo)}
+$$
+
+$$
+u_{tt} = c^2\,u_{xx}
+\qquad\text{(onda: 2ª ordem no tempo)}
+$$
+
+$$
+u_{xx} + u_{yy} = 0
+\qquad\text{(Laplace: regime permanente)}
+$$
+
+</Formula>
+
+E a de **Poisson**, que é Laplace com fonte: $u_{xx} + u_{yy} = f(x,y)$.
+
+Note o reencontro: a equação de Laplace é exatamente $\nabla^2 u = 0$ da seção 06 — a das funções harmônicas. Toda parte real de função analítica resolve o problema de Laplace, e é por isso que variável complexa e EDP estão na mesma disciplina.
+
+### Classificação das lineares de 2ª ordem
+
+Para $A u_{xx} + B u_{xy} + C u_{yy} + \cdots = 0$, o **discriminante** $B^2 - 4AC$ classifica:
+
+| $B^2-4AC$ | tipo | protótipo | comportamento |
+|---|---|---|---|
+| $< 0$ | **elíptica** | Laplace | equilíbrio, sem tempo; solução suave |
+| $= 0$ | **parabólica** | calor | difusão; suaviza com o tempo |
+| $> 0$ | **hiperbólica** | onda | propagação com velocidade finita |
+
+<Caixa tipo="exemplo">
+
+Classifique as três protótipo, tomando $y$ como a segunda variável (o tempo, onde houver).
+
+**Calor**, $u_t - k u_{xx} = 0$: $A = -k$, $B = 0$, $C = 0$, logo $B^2-4AC = 0$ → **parabólica**.
+
+**Onda**, $u_{tt} - c^2u_{xx} = 0$: $A = -c^2$, $B=0$, $C=1$, logo $B^2-4AC = 4c^2 > 0$ → **hiperbólica**.
+
+**Laplace**, $u_{xx}+u_{yy}=0$: $A = C = 1$, $B=0$, logo $-4 < 0$ → **elíptica**.
+
+</Caixa>
+
+### Os três tipos de condição de contorno
+
+O nome vem da 1ª unidade da disciplina de transferência de calor, mas a classificação é da matemática, e a prova de 2026.1 usa a segunda:
+
+- **Dirichlet** — prescreve o **valor**: $u(0,t) = 0$. Barra com extremidade a temperatura fixa;
+- **Neumann** — prescreve a **derivada**: $u_x(0,t) = 0$. Extremidade **isolada**, sem fluxo;
+- **Robin** (ou mista) — combina os dois: $u_x + h\,u = 0$. Extremidade trocando com o ambiente.
+
+<Caixa tipo="macete">
+
+Antes de separar variáveis, leia as condições e traduza:
+
+- $u = 0$ nas pontas (Dirichlet) → a solução sai em **senos**;
+- $u_x = 0$ nas pontas (Neumann) → sai em **cossenos**, e sobra um **termo constante**;
+- mistas → sai com autovalores que não são múltiplos inteiros de $\pi/L$.
+
+As duas questões de EDP do 2º EE de 2026.1 — calor e onda — trazem **$u_x(0,t) = u_x(L,t) = 0$**: as duas são de Neumann, e as duas dão série de cossenos. Quem escreve senos por hábito perde as duas.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Diferença física que a classificação captura: na **parabólica** (calor) qualquer irregularidade inicial suaviza imediatamente e a informação se espalha instantaneamente; na **hiperbólica** (onda) o perfil viaja com velocidade $c$ e um bico continua bico. É por isso que a onda precisa de **duas** condições iniciais ($u$ e $u_t$) e o calor de **uma** só.
 
 </Caixa>
 
