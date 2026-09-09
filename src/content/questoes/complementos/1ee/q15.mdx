@@ -1,0 +1,86 @@
+---
+origem: "2025.2"
+tema: "Fórmula de Cauchy · Polo de ordem 3 com e^(iz)"
+temaId: formula-das-derivadas
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, usando a teoria de Cauchy,
+
+$$
+\oint_{\gamma} \frac{e^{iz}}{(z-\pi)^3}\,dz
+$$
+
+onde $\gamma$ é a curva fechada da figura da prova — uma elipse que contém os pontos $0$, $1$ e $\pi$ no seu interior, percorrida no sentido anti-horário.
+
+<Gabarito>
+$$
+\oint_{\gamma}\frac{e^{iz}}{(z-\pi)^3}\,dz = \pi i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a singularidade está dentro?** O integrando tem um único ponto singular, $z = \pi$, e a figura mostra $\pi$ **dentro** da elipse. Então a integral não é zero, e a fórmula de Cauchy se aplica.
+
+Se $\pi$ estivesse fora, o teorema de Cauchy-Goursat daria zero direto — é a primeira coisa a checar em qualquer integral fechada.
+
+**Passo 2 — identificar $f$, $z_0$ e $n$.** Comparando com $\dfrac{f(z)}{(z-z_0)^{n+1}}$:
+
+$$
+f(z) = e^{iz},
+\qquad
+z_0 = \pi,
+\qquad
+n+1 = 3 \;\Longrightarrow\; n = 2
+$$
+
+Cuidado com o passo: expoente $3$ no denominador significa derivada **segunda**, não terceira. E $f(z) = e^{iz}$ é inteira, então é analítica dentro e sobre $\gamma$ ✔
+
+**Passo 3 — derivar duas vezes.**
+
+$$
+f'(z) = i\,e^{iz},
+\qquad
+f''(z) = i^2 e^{iz} = -e^{iz}
+$$
+
+$$
+f''(\pi) = -e^{i\pi} = -(-1) = 1
+$$
+
+usando $e^{i\pi} = -1$, que é a identidade de Euler.
+
+**Passo 4 — aplicar a fórmula.**
+
+$$
+\oint_\gamma \frac{f(z)}{(z-z_0)^{n+1}}\,dz = \frac{2\pi i}{n!}\,f^{(n)}(z_0)
+= \frac{2\pi i}{2!}\cdot 1
+$$
+
+$$
+\boxed{\;\oint_{\gamma}\frac{e^{iz}}{(z-\pi)^3}\,dz = \pi i\;}
+$$
+
+**Conferência —** o resultado é imaginário puro. Faz sentido: $f''(\pi)$ saiu **real**, e o $2\pi i$ da fórmula é o único fator imaginário.
+
+<Caixa tipo="dica" rotulo="A figura é parte do enunciado">
+
+O enunciado não descreve a curva por equação — ele desenha. O que a figura tem de informar é uma coisa só: **quais singularidades ficam dentro**. Aqui, a elipse envolve $0$, $1$ e $\pi$, e como o integrando só é singular em $\pi$, o resto do desenho é irrelevante.
+
+Numa prova, a leitura correta é essa: olhe a figura, marque os pontos singulares, decida quem está dentro. O formato exato da curva nunca importa — a deformação de contorno garante isso.
+
+</Caixa>
+</Passos>
