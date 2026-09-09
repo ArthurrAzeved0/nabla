@@ -40,32 +40,32 @@ $$
     <polygon points="150,80 178,58 244,58 216,80" fill="var(--line-2)" opacity="0.7" stroke="var(--ink-2)" stroke-width="1.3"/>
     <polygon points="216,80 244,58 244,124 216,146" fill="var(--line-2)" opacity="0.45" stroke="var(--ink-2)" stroke-width="1.3"/>
     {/* cotas do elemento */}
-    <text x="176" y="160" font-size="9" fill="var(--ok)">dx</text>
+    <text x="194" y="162" font-size="9" fill="var(--ok)">dx</text>
     <text x="226" y="120" font-size="9" fill="var(--ok)">dy</text>
     <text x="136" y="98" font-size="9" fill="var(--ok)">dz</text>
-    {/* entradas */}
+    {/* entradas: faces x, z e y — as três escondidas (esquerda, base e fundo) */}
     <line x1="108" y1="126" x2="144" y2="126" stroke="var(--warn)" stroke-width="1.9"/>
     <polygon points="149,126 139,122 139,130" fill="var(--warn)"/>
     <text x="100" y="120" font-size="9" fill="var(--warn)">q<tspan font-size="7" dy="2">x</tspan></text>
-    <line x1="182" y1="34" x2="182" y2="62" stroke="var(--warn)" stroke-width="1.9"/>
-    <polygon points="182,67 178,57 186,57" fill="var(--warn)"/>
-    <text x="188" y="40" font-size="9" fill="var(--warn)">q<tspan font-size="7" dy="2">z</tspan></text>
-    <line x1="272" y1="176" x2="248" y2="158" stroke="var(--warn)" stroke-width="1.9"/>
-    <polygon points="243,154 251,162 246,166" fill="var(--warn)"/>
-    <text x="276" y="180" font-size="9" fill="var(--warn)">q<tspan font-size="7" dy="2">y</tspan></text>
-    {/* saídas */}
+    <line x1="166" y1="190" x2="166" y2="158" stroke="var(--warn)" stroke-width="1.9"/>
+    <polygon points="166,150 162,160 170,160" fill="var(--warn)"/>
+    <text x="172" y="186" font-size="9" fill="var(--warn)">q<tspan font-size="7" dy="2">z</tspan></text>
+    <line x1="286" y1="40" x2="252" y2="66" stroke="var(--warn)" stroke-width="1.9"/>
+    <polygon points="246,71 254,63 258,68" fill="var(--warn)"/>
+    <text x="290" y="36" font-size="9" fill="var(--warn)">q<tspan font-size="7" dy="2">y</tspan></text>
+    {/* saídas: pelas faces opostas, acrescidas da variação */}
     <line x1="246" y1="92" x2="286" y2="92" stroke="var(--ok)" stroke-width="1.9"/>
     <polygon points="292,92 282,88 282,96" fill="var(--ok)"/>
-    <text x="250" y="86" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">x</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">x</tspan><tspan dy="-2">/∂x · dx</tspan></text>
-    <line x1="152" y1="52" x2="152" y2="24" stroke="var(--ok)" stroke-width="1.9"/>
-    <polygon points="152,18 148,28 156,28" fill="var(--ok)"/>
-    <text x="26" y="30" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">z</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">z</tspan><tspan dy="-2">/∂z · dz</tspan></text>
-    <line x1="164" y1="150" x2="140" y2="170" stroke="var(--ok)" stroke-width="1.9"/>
-    <polygon points="135,174 143,167 147,172" fill="var(--ok)"/>
-    <text x="118" y="206" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">y</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">y</tspan><tspan dy="-2">/∂y · dy</tspan></text>
-    {/* geração */}
-    <text x="256" y="140" font-size="9" fill="var(--ink-2)">geração q̇</text>
-    <text x="258" y="152" font-size="8" fill="var(--ink-3)">no volume</text>
+    <text x="248" y="86" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">x</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">x</tspan><tspan dy="-2">/∂x · dx</tspan></text>
+    <line x1="196" y1="52" x2="196" y2="26" stroke="var(--ok)" stroke-width="1.9"/>
+    <polygon points="196,18 192,28 200,28" fill="var(--ok)"/>
+    <text x="120" y="30" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">z</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">z</tspan><tspan dy="-2">/∂z · dz</tspan></text>
+    <line x1="146" y1="152" x2="124" y2="170" stroke="var(--ok)" stroke-width="1.9"/>
+    <polygon points="118,175 126,168 130,173" fill="var(--ok)"/>
+    <text x="100" y="206" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">y</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">y</tspan><tspan dy="-2">/∂y · dy</tspan></text>
+    {/* geração dentro do volume */}
+    <text x="176" y="118" font-size="11" fill="var(--ink-2)">q̇</text>
+    <text x="232" y="196" font-size="8" fill="var(--ink-3)">q̇ : geração no volume</text>
   </svg>
   <figcaption>
 
