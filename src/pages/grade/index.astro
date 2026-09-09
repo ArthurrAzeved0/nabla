@@ -86,10 +86,14 @@ const cursos = [...new Set(matrizes.map((m) => m.curso))]
                 {m.quantas} disciplinas<span>{m.arestas} requisitos</span>
               </h3>
               <p>
+                {/* "São" e "Dessas disciplinas" não são enfeite: nenhuma frase do
+                    site começa com dígito, e sem eles estas duas começariam. */}
                 {m.chMatriz === m.chTotalCurso
-                  ? `${m.chMatriz}h no total`
-                  : `${m.chMatriz}h de um curso de ${m.chTotalCurso}h`}
-                .{m.ligadas > 0 && ` ${m.ligadas} com teoria e questões aqui no site.`}
+                  ? `São ${m.chMatriz}h no total`
+                  : `São ${m.chMatriz}h de um curso de ${m.chTotalCurso}h`}
+                .
+                {m.ligadas > 0 &&
+                  ` Dessas disciplinas, ${m.ligadas === 1 ? "uma tem" : `${m.ligadas} têm`} teoria e questões aqui no site.`}
               </p>
               <span class="conta">Ver o mapa<em>→</em></span>
             </a>
