@@ -1,0 +1,65 @@
+---
+origem: "2024.2"
+tema: "Conceitual · Enunciado do teorema de Cauchy"
+temaId: teorema-de-cauchy
+pontos: 0,2 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Enuncie, sem demonstrar, o teorema de Cauchy para integrais complexas, sob uma curva $\gamma$.
+
+<Gabarito>
+Se $f$ é analítica num domínio **simplesmente conexo** $D$ e $\gamma$ é uma curva **fechada** contida em $D$, então
+
+$$
+\oint_{\gamma} f(z)\,dz = 0
+$$
+</Gabarito>
+
+<Passos>
+**O enunciado, com as hipóteses todas.** Cada palavra carrega peso:
+
+$$
+f \text{ analítica em } D \text{ simplesmente conexo},
+\qquad
+\gamma \subset D \text{ fechada}
+\qquad\Longrightarrow\qquad
+\oint_\gamma f(z)\,dz = 0
+$$
+
+**As três hipóteses, e por que nenhuma sobra:**
+
+**1. $f$ analítica.** Não basta contínua. $f(z) = \bar z$ é contínua em todo o plano e $\oint_{|z|=1}\bar z\,dz = 2\pi i \ne 0$.
+
+**2. Curva fechada.** Em curva aberta a integral não é zero em geral — ela vale $F(z_1) - F(z_0)$, que só é nulo se as pontas coincidirem.
+
+**3. Domínio simplesmente conexo.** Sem buraco. É a hipótese que se esquece, e a que a prova cobra. Em $D = \mathbb{C}\setminus\{0\}$, a função $1/z$ é analítica, mas
+
+$$
+\oint_{|z|=1}\frac{dz}{z} = 2\pi i \ne 0
+$$
+
+O domínio tem um furo na origem, e a curva o envolve.
+
+**A versão de Goursat**, que é como o teorema aparece nos livros modernos: a mesma conclusão **sem** exigir que $f'$ seja contínua. Daí o nome duplo, Cauchy-Goursat.
+
+**Como isso é usado nesta cadeira**, e é o que dá sentido ao enunciado: o teorema é o critério de **integral nula**. Localizadas as singularidades, se nenhuma cai dentro de $\gamma$, a resposta é zero sem conta nenhuma — e três dos quesitos de integral do acervo se resolvem assim.
+
+<Caixa tipo="dica" rotulo="Enunciar não é o mesmo que resumir">
+
+A instrução é "enuncie, sem demonstrar", e o que se avalia são as **hipóteses**. Escrever apenas *"a integral de função analítica em curva fechada é zero"* perde o "simplesmente conexo" — e é justamente esse detalhe que separa o teorema de Cauchy do teorema dos resíduos.
+
+</Caixa>
+</Passos>
