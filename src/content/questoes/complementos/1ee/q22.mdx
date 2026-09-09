@@ -1,0 +1,120 @@
+---
+origem: "2026.1"
+tema: "Harmônicas · u = 3x²y − y³ e sua conjugada"
+temaId: conjugada-harmonica
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $u(x,y) = 3x^2y - y^3$. Verifique se $u(x,y)$ é harmônica e, em caso afirmativo, determine sua função harmônica conjugada, $v(x,y)$.
+
+<Gabarito>
+$u_{xx} + u_{yy} = 6y - 6y = 0$: harmônica em todo o plano.
+
+$$
+v(x,y) = 3xy^2 - x^3 + c,
+\qquad c \in \mathbb{R}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — verificar que é harmônica.**
+
+$$
+u_x = 6xy
+\qquad\Longrightarrow\qquad
+u_{xx} = 6y
+$$
+
+$$
+u_y = 3x^2 - 3y^2
+\qquad\Longrightarrow\qquad
+u_{yy} = -6y
+$$
+
+$$
+\nabla^2 u = u_{xx} + u_{yy} = 6y - 6y = 0
+\;\checkmark
+$$
+
+As parciais são polinomiais, logo contínuas: $u$ é harmônica em $\mathbb{C}$ e a conjugada existe. O gabarito da prova resume este item em uma linha — *"basta calcular $u_{xx}$ e $u_{yy}$ e somar"*.
+
+**Passo 2 — integrar $v_y = u_x$ em $y$.** A primeira equação de Cauchy-Riemann:
+
+$$
+\frac{\partial v}{\partial y} = u_x = 6xy
+$$
+
+$$
+v = \int 6xy\,dy = 3xy^2 + \varphi(x)
+$$
+
+A "constante" de integração é uma **função de $x$**, porque a integração foi em $y$ — é o passo em que mais se erra.
+
+**Passo 3 — derivar em $x$ e usar a segunda equação.**
+
+$$
+\frac{\partial v}{\partial x} = 3y^2 + \varphi'(x)
+$$
+
+e Cauchy-Riemann pede $v_x = -u_y = -(3x^2 - 3y^2) = 3y^2 - 3x^2$. Igualando:
+
+$$
+3y^2 + \varphi'(x) = 3y^2 - 3x^2
+\qquad\Longrightarrow\qquad
+\varphi'(x) = -3x^2
+$$
+
+**Passo 4 — integrar $\varphi$ e escrever a resposta.**
+
+$$
+\varphi(x) = -x^3 + c
+$$
+
+$$
+\boxed{\;v(x,y) = 3xy^2 - x^3 + c,\qquad c \in \mathbb{R}\;}
+$$
+
+que é exatamente o gabarito da prova.
+
+**Passo 5 — reconhecer a função (não é pedido, mas confere tudo).**
+
+$$
+f(z) = u + iv = \big(3x^2y - y^3\big) + i\big(3xy^2 - x^3\big)
+$$
+
+Compare com $z^3 = (x^3 - 3xy^2) + i(3x^2y - y^3)$. Multiplicando por $-i$:
+
+$$
+-i\,z^3 = (3x^2y - y^3) + i\big(3xy^2 - x^3\big)
+\;\;\checkmark
+$$
+
+Logo $f(z) = -i\,z^3 + ic$.
+
+<Caixa tipo="macete" rotulo="Decore as partes de z² e z³">
+
+$$
+z^2 = (x^2 - y^2) + i\,(2xy),
+\qquad
+z^3 = (x^3 - 3xy^2) + i\,(3x^2y - y^3)
+$$
+
+Com esses dois na cabeça, metade das questões de conjugada harmônica desta cadeira se resolve **por reconhecimento**, sem integrar nada: identificado que $u$ é a parte real (ou imaginária) de alguma potência de $z$, a conjugada é a outra parte.
+
+Aqui, $u = 3x^2y - y^3$ é a parte **imaginária** de $z^3$ — o que já entrega que $f$ é $-i z^3$, e daí $v$.
+
+</Caixa>
+</Passos>
