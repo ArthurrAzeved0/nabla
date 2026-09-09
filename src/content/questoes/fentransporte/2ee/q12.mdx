@@ -1,0 +1,168 @@
+---
+origem: "2022.1"
+tema: "Fluxos de massa · Os três fluxos na saída do tubo"
+temaId: densidade-de-fluxo
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de massa de uma mistura entre duas espécies, $A$ e $B$, ao longo de um tubo. A concentração total da mistura é mantida **constante**, igual a $200\ \mathrm{mol/m^3}$. Na **entrada**, $70\ \%$ em mol dessa mistura é da espécie $A$, e na **saída**, $60\ \%$ em mol dessa mistura é da espécie $B$. A mistura escoa com velocidade de $4{,}0\ \mathrm{m/s}$. O comprimento do tubo é de $2{,}0\ \mathrm{m}$ e o coeficiente de difusão binária é de $5{,}0 \times 10^{-2}\ \mathrm{m^2/s}$.
+
+Determine para $A$ e para $B$ as densidades de **fluxo difusivo**, as densidades de **fluxo convectivo** e as densidades de **fluxo absoluto** **na saída do tubo**. Admita o regime permanente de escoamento com perfil **linear** de concentração ao longo do tubo, para ambas as espécies.
+
+<Figura>
+  <svg viewBox="0 0 340 178" role="img" aria-label="Tubo horizontal com concentração total constante de 200 mol por metro cúbico: na entrada 70 por cento em mol é da espécie A e na saída 60 por cento é da espécie B, com a mistura escoando a 4 metros por segundo">
+    {/* tubo */}
+    <rect x="50" y="46" width="240" height="56" fill="var(--accent-soft)" opacity="0.4" stroke="var(--ink-2)" stroke-width="1.5"/>
+    {/* seções */}
+    <line x1="50" y1="40" x2="50" y2="108" stroke="var(--ok)" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="34" y="36" font-size="10" fill="var(--ok)">①</text>
+    <line x1="290" y1="40" x2="290" y2="108" stroke="var(--warn)" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <text x="296" y="36" font-size="10" fill="var(--warn)">②</text>
+    {/* velocidade da mistura */}
+    <line x1="120" y1="74" x2="180" y2="74" stroke="var(--accent)" stroke-width="2.2"/>
+    <polygon points="188,74 176,69 176,79" fill="var(--accent)"/>
+    <text x="112" y="66" font-size="10" fill="var(--accent)">v = 4,0 m/s (mistura)</text>
+    <text x="128" y="94" font-size="9" fill="var(--ink-3)">C = 200 mol/m³ (constante)</text>
+    {/* dados das seções */}
+    <text x="14" y="124" font-size="9" fill="var(--ink-3)">entrada</text>
+    <text x="14" y="136" font-size="9" fill="var(--ink-3)">x<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = 0,70</tspan></text>
+    <text x="256" y="124" font-size="9" fill="var(--warn)">saída</text>
+    <text x="256" y="136" font-size="9" fill="var(--warn)">x<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 0,60</tspan></text>
+    {/* comprimento */}
+    <line x1="50" y1="158" x2="290" y2="158" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="50,158 58,154 58,162" fill="var(--ok)"/>
+    <polygon points="290,158 282,154 282,162" fill="var(--ok)"/>
+    <text x="150" y="172" font-size="9" fill="var(--ok)">L = 2,0 m</text>
+  </svg>
+  <figcaption>
+
+Aqui a concentração total **é constante** — e isso garante a conferência $J''_A = -J''_B$, que na versão de 2018.1 não valia.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Na saída: $C_{A2} = 80$ e $C_{B2} = 120\ \mathrm{mol/m^3}$.
+
+| | difusivo $J''$ | convectivo $N''$ | absoluto |
+|---|---|---|---|
+| $A$ | $+1{,}5$ | $320$ | $\mathbf{321{,}5}$ |
+| $B$ | $-1{,}5$ | $480$ | $\mathbf{478{,}5}$ |
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — completar as frações molares.** O enunciado dá $x_A$ na entrada e $x_B$ na saída, de propósito:
+
+$$
+x_{A1} = 0{,}70 \Rightarrow x_{B1} = 0{,}30
+\qquad\qquad
+x_{B2} = 0{,}60 \Rightarrow x_{A2} = 0{,}40
+$$
+
+**Passo 2 — as concentrações nas duas pontas.** Como $C = 200\ \mathrm{mol/m^3}$ é **constante**, ela é a mesma nas duas seções:
+
+$$
+C_{A1} = 0{,}70 \times 200 = 140
+\qquad
+C_{A2} = 0{,}40 \times 200 = 80
+$$
+
+$$
+C_{B1} = 0{,}30 \times 200 = 60
+\qquad
+C_{B2} = 0{,}60 \times 200 = 120
+$$
+
+todos em $\mathrm{mol/m^3}$. Cada par soma $200$ ✔
+
+**Passo 3 — os gradientes (perfil linear).**
+
+$$
+\frac{dC_A}{dx} = \frac{80 - 140}{2{,}0} = -30\ \mathrm{mol/m^4}
+\qquad
+\frac{dC_B}{dx} = \frac{120 - 60}{2{,}0} = +30\ \mathrm{mol/m^4}
+$$
+
+Opostos, porque a soma é constante. É de onde vem a conferência do próximo passo.
+
+**Passo 4 — os fluxos difusivos.** Por Fick, com o gradiente constante o difusivo é o **mesmo em qualquer posição** do tubo:
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx} = -5{,}0\times10^{-2} \times (-30) = +1{,}5\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_B = -D_{AB}\,\frac{dC_B}{dx} = -5{,}0\times10^{-2} \times (+30) = -1{,}5\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_A = -J''_B \ \checkmark
+$$
+
+$A$ difunde no sentido do escoamento (está mais concentrado na entrada); $B$ difunde **contra** o escoamento (está mais concentrado na saída).
+
+**Passo 5 — os fluxos convectivos, na saída.** As duas espécies são arrastadas pela **mesma** velocidade da mistura, então basta multiplicar a concentração local:
+
+$$
+N''_A = C_{A2}\,v = 80 \times 4{,}0 = 320\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_B = C_{B2}\,v = 120 \times 4{,}0 = 480\ \mathrm{mol/(m^2 s)}
+$$
+
+<Caixa tipo="dica" rotulo="Aqui o convectivo depende da posição">
+
+Diferente do difusivo, o convectivo **muda ao longo do tubo**, porque $C_A$ muda. Na entrada seria $140 \times 4 = 560$; na saída é $320$. Por isso o enunciado especifica **onde** quer os fluxos — ler "na saída" é parte da questão.
+
+E confira: $N''_A + N''_B = 800 = C\,v = 200 \times 4$ ✔ — a convecção carrega a mistura inteira.
+
+</Caixa>
+
+**Passo 6 — os fluxos absolutos.**
+
+$$
+N''_{A,abs} = J''_A + N''_A = 1{,}5 + 320 = 321{,}5\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_{B,abs} = J''_B + N''_B = -1{,}5 + 480 = 478{,}5\ \mathrm{mol/(m^2 s)}
+$$
+
+**Passo 7 — a leitura.** O convectivo é mais de **200 vezes** o difusivo: com a mistura a $4\ \mathrm{m/s}$, a difusão é uma correção de menos de $0{,}5\ \%$. E a soma dos absolutos,
+
+$$
+321{,}5 + 478{,}5 = 800 = C\,v
+$$
+
+confirma que os difusivos, sendo opostos, não alteram o transporte total da mistura — **só redistribuem** as espécies dentro dela.
+
+<Caixa tipo="macete" rotulo="O roteiro, em cinco linhas">
+
+1. complete as frações molares ($x_A + x_B = 1$ em **cada** seção);
+2. $C_i = x_i\,C$ em cada ponta;
+3. gradiente linear: $(C_{i2} - C_{i1})/L$;
+4. difusivo por Fick (constante ao longo do tubo);
+5. convectivo $C_i\,v$ **na posição pedida**, e absoluto é a soma.
+
+E as duas conferências: $J''_A = -J''_B$ (se $C$ constante) e $\sum N'' = C\,v$.
+
+</Caixa>
+
+**Conferência —** a fração da saída é de $B$ ✔ os difusivos saem opostos, porque $C$ é constante ✔ o convectivo usa a concentração **da saída** ✔ os absolutos somam $C\,v$ ✔
+</Passos>
