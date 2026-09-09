@@ -1,0 +1,103 @@
+---
+origem: "2025.2"
+tema: "Exponencial · Periodicidade e analiticidade de e^z"
+temaId: periodicidade-da-exponencial
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**i)** Mostre que a função complexa $f(z) = e^z$ é periódica de período $\tau = 2\pi i$, ou seja, $f(z + 2\pi i) = f(z)$;
+
+**ii)** Mostre que $f(z)$ é analítica em todo o plano complexo.
+
+<Gabarito>
+**i)** $e^{z+2\pi i} = e^z e^{2\pi i} = e^z\big(\cos 2\pi + i\operatorname{sen} 2\pi\big) = e^z \cdot 1 = e^z$.
+
+**ii)** Com $u = e^x\cos y$ e $v = e^x\operatorname{sen} y$, as duas equações de Cauchy-Riemann valem em todo ponto e as parciais são contínuas: $e^z$ é **inteira**, com $f'(z) = e^z$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a periodicidade, em uma linha.** A propriedade $e^{a+b} = e^ae^b$ vale no plano complexo, então
+
+$$
+e^{z + 2\pi i} = e^{z}\,e^{2\pi i}
+$$
+
+E, pela fórmula de Euler,
+
+$$
+e^{2\pi i} = \cos(2\pi) + i\operatorname{sen}(2\pi) = 1 + 0i = 1
+$$
+
+$$
+\boxed{\;e^{z+2\pi i} = e^z \cdot 1 = e^z\;}
+$$
+
+**O que isso significa**, e é o que a questão está realmente cobrando: a exponencial complexa **não é injetora**. Ela repete valores a cada faixa horizontal de altura $2\pi$. É dessa periodicidade que nasce o logaritmo multivalorado, e é por isso que "todas as soluções de $e^z = w$" carrega um $2k\pi i$.
+
+**Passo 2 — separar $e^z$ em parte real e imaginária.** Escrevendo $z = x + iy$:
+
+$$
+e^z = e^{x}e^{iy} = e^x\big(\cos y + i\operatorname{sen} y\big)
+$$
+
+$$
+u(x,y) = e^x\cos y,
+\qquad
+v(x,y) = e^x\operatorname{sen} y
+$$
+
+**Passo 3 — as quatro parciais.**
+
+$$
+u_x = e^x\cos y,
+\qquad
+u_y = -e^x\operatorname{sen} y
+$$
+
+$$
+v_x = e^x\operatorname{sen} y,
+\qquad
+v_y = e^x\cos y
+$$
+
+**Passo 4 — testar Cauchy-Riemann.**
+
+$$
+u_x = e^x\cos y = v_y
+\;\checkmark
+\qquad\qquad
+u_y = -e^x\operatorname{sen} y = -v_x
+\;\checkmark
+$$
+
+As duas valem em **todo** ponto do plano, e as quatro parciais são produtos de exponencial por seno ou cosseno, logo **contínuas** em $\mathbb{C}$. Pela condição suficiente, $e^z$ é analítica em todo o plano — isto é, **inteira**.
+
+**Passo 5 — a derivada, de brinde.**
+
+$$
+f'(z) = u_x + i\,v_x = e^x\cos y + i\,e^x\operatorname{sen} y = e^z
+$$
+
+A exponencial complexa é sua própria derivada, como a real.
+
+<Caixa tipo="dica" rotulo="Não esqueça a continuidade das parciais">
+
+Cauchy-Riemann sozinho é condição **necessária**, não suficiente. Para concluir analiticidade é preciso dizer também que as parciais são contínuas na vizinhança — e é uma frase, não uma conta.
+
+Nesta prova o item vale $2{,}0$ pontos e as duas partes são curtas; o que separa a nota cheia é justamente enunciar o critério completo em (ii) e explicar o significado da periodicidade em (i), em vez de só fazer a álgebra.
+
+</Caixa>
+</Passos>
