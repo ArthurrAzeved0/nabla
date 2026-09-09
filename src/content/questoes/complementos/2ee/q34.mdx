@@ -1,0 +1,113 @@
+---
+origem: "2024.2"
+tema: "Fourier · A série de x² avaliada em x = 0 e em x = π"
+temaId: soma-de-serie-numerica
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q34.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $f(x) = x^2$.
+
+**a)** Mostre que $f(x)$ é uma função par e faça o gráfico;
+
+**b)** Calcule a série de Fourier de $f$ em $-\pi \le x \le \pi$ e esboce o gráfico da extensão;
+
+**c)** Faça $x = 0$. Qual o resultado?
+
+**d)** Faça $x = \pi$. Qual o resultado?
+
+<Gabarito>
+**a)** $f(-x) = (-x)^2 = x^2 = f(x)$.
+
+**b)** $\displaystyle x^2 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2}\cos(nx)$
+
+**c)** $\displaystyle\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^2} = \frac{\pi^2}{12}$
+
+**d)** $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^2} = \frac{\pi^2}{6}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — itens (a) e (b).** A paridade é imediata, $f(-x) = (-x)^2 = x^2$, e a série é a calculada na q18 desta unidade:
+
+$$
+x^2 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2}\cos(nx)
+$$
+
+O **gráfico da extensão** é a parábola de $[-\pi,\pi]$ **repetida** com período $2\pi$: uma fileira de arcos, com bicos em $x = \pm\pi, \pm3\pi,\dots$, no valor $\pi^2$. A função é **contínua** em todo ponto (os bicos são só de derivada), então a série converge para ela em todos os pontos.
+
+**Passo 2 — item (c): avaliar em $x=0$.** O lado esquerdo é $0$, e $\cos(0) = 1$:
+
+$$
+0 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2}
+$$
+
+$$
+\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2} = -\frac{\pi^2}{12}
+$$
+
+Trocando o sinal para a forma usual, com o primeiro termo positivo:
+
+$$
+\boxed{\;\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^2}
+= 1 - \frac14 + \frac19 - \frac1{16} + \cdots = \frac{\pi^2}{12}\;}
+$$
+
+**Conferência numérica:** $1 - 0{,}25 + 0{,}111 - 0{,}0625 + 0{,}04 - \cdots \approx 0{,}822$, e $\pi^2/12 = 0{,}8225$ ✔
+
+**Passo 3 — item (d): avaliar em $x=\pi$.** Agora o lado esquerdo é $\pi^2$, e $\cos(n\pi) = (-1)^n$, de modo que $(-1)^n\cos(n\pi) = (-1)^{2n} = 1$:
+
+$$
+\pi^2 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{1}{n^2}
+$$
+
+$$
+4\sum_{n=1}^{\infty}\frac1{n^2} = \pi^2 - \frac{\pi^2}{3} = \frac{2\pi^2}{3}
+$$
+
+$$
+\boxed{\;\sum_{n=1}^{\infty}\frac{1}{n^2} = \frac{\pi^2}{6}\;}
+$$
+
+que é o **problema de Basileia**, resolvido por Euler em 1735 — e que aqui cai de graça, como consequência de uma série de Fourier.
+
+**Conferência numérica:** $1 + 0{,}25 + 0{,}111 + 0{,}0625 + \cdots \approx 1{,}64$, e $\pi^2/6 = 1{,}6449$ ✔
+
+<Caixa tipo="macete" rotulo="Por que dois pontos dão duas somas diferentes">
+
+O ponto de avaliação controla o **sinal** dos termos:
+
+| $x$ | $\cos(nx)$ | o que a série entrega |
+|---|---|---|
+| $0$ | $1$ | soma **alternada** (o $(-1)^n$ do coeficiente sobrevive) |
+| $\pi$ | $(-1)^n$ | soma **positiva** (o $(-1)^n$ cancela) |
+
+É o truque padrão para extrair somas numéricas de uma série de Fourier: escolha $x$ de modo que os cossenos produzam o padrão de sinais que você quer. E note que os dois valores são **coerentes** entre si:
+
+$$
+\frac{\pi^2}{6} - \frac{\pi^2}{12} = \frac{\pi^2}{12}
+$$
+
+que é a soma dos termos pares, $\tfrac14\sum 1/n^2$ ✔ — mais uma conferência de graça.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Sobre o gabarito">
+
+A resolução da prova diz apenas *"Trivial"* para os quatro itens. Os cálculos são de fato diretos, mas os itens (c) e (d) escondem os dois resultados mais famosos da teoria — $\pi^2/12$ e $\pi^2/6$ — e é isso que a questão está mostrando: **uma série de Fourier avaliada num ponto é uma máquina de somar séries numéricas**.
+
+A prova de 2026.1 volta a esse mesmo poço na q19 desta unidade, pedindo o valor de $\left(\tfrac{6}{\pi^2}\sum 1/n^2\right)^{2026}$ — que é $1$.
+
+</Caixa>
+</Passos>
