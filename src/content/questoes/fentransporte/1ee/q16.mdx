@@ -1,0 +1,121 @@
+---
+origem: "2025.1"
+tema: "Manometria · Massa específica do óleo num tubo em U"
+temaId: equacao-manometrica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A figura mostra um tubo em U contendo **dois líquidos em equilíbrio**. Um deles é água, que se encontra no lado esquerdo e cuja massa específica é conhecida, e o outro é um **óleo com massa específica não conhecida**. De acordo com a figura, $l = 127\ \mathrm{mm}$ e $d = 15\ \mathrm{mm}$. Calcule a massa específica do óleo.
+
+**Dado:** $\rho_{\text{água}} = 1000\ \mathrm{kg/m^3}$.
+
+<Figura>
+  <svg viewBox="0 0 300 270" role="img" aria-label="Tubo em U com água no ramo esquerdo e óleo no ramo direito, em equilíbrio: a interface de separação está na base do ramo direito, a água sobe l acima dela e o óleo sobe l mais d, ficando com a superfície livre mais alta">
+    {/* ramos e base do tubo */}
+    <rect x="100" y="26" width="24" height="218" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <rect x="170" y="20" width="24" height="224" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <rect x="100" y="232" width="94" height="12" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.3"/>
+    {/* água: ramo esquerdo, base e o pedaço do ramo direito abaixo da separação */}
+    <rect x="101" y="55" width="22" height="188" fill="var(--accent-soft)" opacity="0.75"/>
+    <rect x="101" y="233" width="92" height="10" fill="var(--accent-soft)" opacity="0.75"/>
+    <rect x="171" y="224" width="22" height="19" fill="var(--accent-soft)" opacity="0.75"/>
+    <line x1="101" y1="55" x2="123" y2="55" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="130" y="104" font-size="10" fill="var(--accent)">Água</text>
+    {/* óleo: ramo direito acima da separação */}
+    <rect x="171" y="35" width="22" height="189" fill="var(--warn)" opacity="0.35"/>
+    <line x1="171" y1="35" x2="193" y2="35" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="200" y="104" font-size="10" fill="var(--warn)">Óleo</text>
+    {/* separação */}
+    <line x1="76" y1="224" x2="232" y2="224" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="5 3"/>
+    <text x="236" y="222" font-size="9" fill="var(--ink-2)">separação</text>
+    {/* cota l */}
+    <line x1="68" y1="63" x2="68" y2="216" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="68,55 64,65 72,65" fill="var(--ok)"/>
+    <polygon points="68,224 64,214 72,214" fill="var(--ok)"/>
+    <line x1="68" y1="55" x2="100" y2="55" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="10" y="145" font-size="10" fill="var(--ok)">l = 127 mm</text>
+    {/* cota d */}
+    <line x1="230" y1="41" x2="230" y2="49" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="230,35 226,41 234,41" fill="var(--ok)"/>
+    <polygon points="230,55 226,49 234,49" fill="var(--ok)"/>
+    <line x1="194" y1="35" x2="230" y2="35" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="124" y1="55" x2="230" y2="55" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="238" y="52" font-size="10" fill="var(--ok)">d = 15 mm</text>
+  </svg>
+  <figcaption>
+
+A superfície livre do **óleo** está $d$ **acima** da da água: é isso que diz, antes de qualquer conta, que o óleo é o mais leve. O $d$ está exagerado no desenho.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\rho_{\text{óleo}} = \rho_{\text{água}}\,\frac{l}{l + d} = 1000 \cdot \frac{127}{142} \approx \mathbf{894{,}4\ kg/m^3}
+$$
+
+Densidade relativa $d_{\text{óleo}} \approx 0{,}89$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — achar o nível que serve de referência.** O nível certo é o da **superfície de separação** entre os dois líquidos. Motivo: é o único ponto em que se pode escrever a pressão pelos dois lados, porque acima dele há água de um lado e óleo do outro, e abaixo dele há um único fluido conectando os ramos.
+
+**Passo 2 — as duas alturas.** Da figura:
+
+- a coluna de **água** vai da separação até a superfície livre da água: altura $l = 127\ \mathrm{mm}$;
+- a coluna de **óleo** vai da separação até a superfície livre do óleo, que está $d$ **mais alta**: altura $l + d = 127 + 15 = 142\ \mathrm{mm}$.
+
+Essa é a leitura que a questão cobra. O $d$ **não** é a coluna de óleo: é só a diferença entre as duas superfícies livres.
+
+**Passo 3 — igualar as pressões no nível da separação.** As duas superfícies livres estão abertas à atmosfera, então de cada lado se parte de $p_0$ e desce por Stevin:
+
+$$
+p_0 + \rho_{\text{água}}\,g\,l = p_0 + \rho_{\text{óleo}}\,g\,(l + d)
+$$
+
+A atmosférica cancela:
+
+$$
+\rho_{\text{água}}\,g\,l = \rho_{\text{óleo}}\,g\,(l + d)
+$$
+
+E o $g$ também:
+
+$$
+\boxed{\;\rho_{\text{óleo}} = \rho_{\text{água}}\,\frac{l}{l + d}\;}
+$$
+
+**Passo 4 — o número.** Como a razão é entre duas alturas, **não é preciso converter** de mm para m: a unidade se cancela.
+
+$$
+\rho_{\text{óleo}} = 1000 \cdot \frac{127}{142} = 894{,}37\ \mathrm{kg/m^3}
+$$
+
+<Caixa tipo="dica">
+
+Vale conferir o sentido físico: o líquido **mais leve** precisa de uma coluna **mais alta** para equilibrar a mesma pressão. O óleo subiu mais ($142$ contra $127$), logo tem de sair $\rho_{\text{óleo}} < 1000$. Se a conta der acima de 1000, a razão foi invertida.
+
+</Caixa>
+
+**Passo 5 — a densidade relativa.**
+
+$$
+d_{\text{óleo}} = \frac{\rho_{\text{óleo}}}{\rho_{\text{água}}} = \frac{894{,}4}{1000} \approx 0{,}89
+$$
+
+Valor típico de óleo lubrificante, que fica entre $0{,}85$ e $0{,}92$ — outro sinal de que a conta fecha.
+
+**Conferência —** a coluna de óleo é $l + d$, não $d$ ✔ a atmosférica e o $g$ se cancelam, então não precisam de valor ✔ o resultado tem de ser menor que 1000 ✔
+</Passos>
