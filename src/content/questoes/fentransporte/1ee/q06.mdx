@@ -1,0 +1,119 @@
+---
+origem: "2023.2"
+tema: "Venturi · Achar o desnível do mercúrio pela vazão"
+temaId: venturi
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Água escoa em regime permanente através do tubo Venturi da figura. A área $A_1$ é de $20\ \mathrm{cm^2}$ enquanto a da garganta $A_2$ é $10\ \mathrm{cm^2}$. Um manômetro cujo líquido manométrico é mercúrio ($\gamma_{Hg} = 136\,000\ \mathrm{N/m^3}$) é ligado entre as seções (1) e (2). Sabendo que a vazão da água que passa pelo Venturi é de $5{,}8\ \mathrm{L/s}$, determine o desnível, em centímetros, do mercúrio.
+
+**Dados:** $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$; $g = 10\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 360 220" role="img" aria-label="Tubo Venturi horizontal com garganta estreita e manômetro diferencial de mercúrio ligado entre a seção larga e a garganta">
+    {/* tubo: entrada larga, garganta, saída */}
+    <path d="M20 62 L120 62 L160 84 L200 84 L240 62 L340 62" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <path d="M20 122 L120 122 L160 100 L200 100 L240 122 L340 122" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <path d="M20 62 L120 62 L160 84 L200 84 L240 62 L340 62 L340 122 L240 122 L200 100 L160 100 L120 122 L20 122 Z" fill="var(--accent-soft)" opacity="0.4"/>
+    {/* seções */}
+    <line x1="70" y1="62" x2="70" y2="122" stroke="var(--ok)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="64" y="55" font-size="11" fill="var(--ok)">(1)</text>
+    <text x="86" y="55" font-size="9" fill="var(--ink-3)">A₁ = 20 cm²</text>
+    <line x1="180" y1="84" x2="180" y2="100" stroke="var(--ok)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="174" y="78" font-size="11" fill="var(--ok)">(2)</text>
+    <text x="196" y="55" font-size="9" fill="var(--ink-3)">A₂ = 10 cm²</text>
+    {/* seta de escoamento */}
+    <line x1="28" y1="92" x2="56" y2="92" stroke="var(--accent)" stroke-width="1.6"/>
+    <polygon points="62,92 52,88 52,96" fill="var(--accent)"/>
+    <text x="24" y="112" font-size="9" fill="var(--accent)">Q = 5,8 L/s</text>
+    {/* tomadas de pressão */}
+    <line x1="70" y1="122" x2="70" y2="164" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <line x1="180" y1="100" x2="180" y2="150" stroke="var(--ink-3)" stroke-width="1.4"/>
+    {/* U de mercúrio */}
+    <path d="M70 164 Q70 190 100 190 L150 190 Q180 190 180 164" fill="none" stroke="var(--warn)" stroke-width="4"/>
+    <line x1="180" y1="164" x2="180" y2="150" stroke="var(--warn)" stroke-width="4"/>
+    {/* desnível */}
+    <line x1="70" y1="164" x2="70" y2="150" stroke="var(--warn)" stroke-width="4"/>
+    <line x1="96" y1="150" x2="96" y2="164" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="102" y="161" font-size="10" fill="var(--ink-3)">h = ?</text>
+    <text x="200" y="196" font-size="10" fill="var(--warn)">Hg</text>
+  </svg>
+  <figcaption>
+
+A garganta tem metade da área, então a velocidade **dobra** — e é essa diferença de carga cinética que o mercúrio mede como desnível.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$h = 10{,}0\ \mathrm{cm}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as velocidades, pela continuidade.**
+
+$$
+v_1 = \frac{Q}{A_1} = \frac{5{,}8 \times 10^{-3}}{20 \times 10^{-4}} = 2{,}9\ \mathrm{m/s}
+$$
+
+$$
+v_2 = \frac{Q}{A_2} = \frac{5{,}8 \times 10^{-3}}{10 \times 10^{-4}} = 5{,}8\ \mathrm{m/s}
+$$
+
+Metade da área, o dobro da velocidade — como a continuidade manda.
+
+**Passo 2 — Bernoulli entre (1) e (2).** O tubo é horizontal, então $z_1 = z_2$ e as cotas saem dos dois lados:
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} = \frac{p_2}{\gamma} + \frac{v_2^2}{2g}
+\qquad\Longrightarrow\qquad
+\frac{p_1 - p_2}{\gamma} = \frac{v_2^2 - v_1^2}{2g}
+$$
+
+$$
+\frac{p_1 - p_2}{\gamma} = \frac{5{,}8^2 - 2{,}9^2}{2 \times 10} = \frac{33{,}64 - 8{,}41}{20} = 1{,}2615\ \mathrm{m}
+$$
+
+$$
+p_1 - p_2 = 10\,000 \times 1{,}2615 = 12\,615\ \mathrm{Pa}
+$$
+
+**Passo 3 — a manometria do U.** Percorrendo o tubo de (1) até (2) pelo manômetro, desce-se a água e sobe-se o mercúrio no desnível $h$:
+
+$$
+p_1 + \gamma_{\text{água}}\,h - \gamma_{Hg}\,h = p_2
+\qquad\Longrightarrow\qquad
+p_1 - p_2 = h\,(\gamma_{Hg} - \gamma_{\text{água}})
+$$
+
+$$
+p_1 - p_2 = h\,(136\,000 - 10\,000) = 126\,000\,h
+$$
+
+**Passo 4 — junte as duas.**
+
+$$
+h = \frac{12\,615}{126\,000} = 0{,}1001\ \mathrm{m}
+$$
+
+$$
+\boxed{h \approx 10{,}0\ \mathrm{cm}}
+$$
+
+**Conferência —** o desnível de $10\ \mathrm{cm}$ de mercúrio equivale a $13{,}6 \times 10 = 136\ \mathrm{cm}$ de coluna de água, e descontando os $10\ \mathrm{cm}$ de água do próprio ramo sobram $126\ \mathrm{cm}$ — exatamente a carga $1{,}26\ \mathrm{m}$ do Passo 2 ✔
+
+**A espinha desta questão** aparece em toda prova da cadeira: **continuidade** para achar as velocidades, **Bernoulli** para converter em diferença de pressão, **manometria** para ler o desnível. Confere com o gabarito da prova.
+</Passos>
