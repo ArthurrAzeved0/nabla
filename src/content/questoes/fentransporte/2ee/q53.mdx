@@ -1,0 +1,148 @@
+---
+origem: "Banco"
+tema: "Radiação · Corpo negro, emissividade e Stefan-Boltzmann"
+temaId: emissividade
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q53.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Do que trata a lei de Stefan-Boltzmann? O que é um corpo negro para radiação? E o que é emissividade?**
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Comparação entre um corpo negro, que absorve toda a radiação incidente, e uma superfície real, que absorve parte e reflete o resto">
+    {/* corpo negro */}
+    <rect x="40" y="52" width="76" height="76" fill="var(--ink-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="52" y="42" font-size="10" fill="var(--ink-2)">corpo negro</text>
+    <text x="58" y="146" font-size="9" fill="var(--ink-2)">ε = 1</text>
+    <text x="42" y="160" font-size="8" fill="var(--ink-3)">absorve tudo</text>
+    {/* radiação chegando */}
+    <line x1="6" y1="70" x2="34" y2="76" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="40,77 30,73 29,81" fill="var(--warn)"/>
+    <line x1="6" y1="90" x2="34" y2="90" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="40,90 30,86 30,94" fill="var(--warn)"/>
+    <line x1="6" y1="110" x2="34" y2="104" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="40,103 30,99 31,107" fill="var(--warn)"/>
+    {/* superfície real */}
+    <rect x="216" y="52" width="76" height="76" fill="var(--line-2)" opacity="0.8" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="222" y="42" font-size="10" fill="var(--ink-2)">superfície real</text>
+    <text x="230" y="146" font-size="9" fill="var(--ink-2)">0 &lt; ε &lt; 1</text>
+    <text x="212" y="160" font-size="8" fill="var(--ink-3)">absorve parte, reflete o resto</text>
+    {/* radiação chegando */}
+    <line x1="182" y1="70" x2="210" y2="76" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="216,77 206,73 205,81" fill="var(--warn)"/>
+    <line x1="182" y1="90" x2="210" y2="90" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="216,90 206,86 206,94" fill="var(--warn)"/>
+    {/* reflexão */}
+    <line x1="214" y1="104" x2="190" y2="116" stroke="var(--ok)" stroke-width="1.6"/>
+    <polygon points="184,119 194,116 191,109" fill="var(--ok)"/>
+    <text x="176" y="132" font-size="8" fill="var(--ok)">reflete</text>
+    {/* emissão dos dois */}
+    <path d="M120 66 L136 62 M120 78 L138 76 M120 90 L136 94" stroke="var(--warn)" stroke-width="1.2" fill="none"/>
+    <text x="126" y="112" font-size="8" fill="var(--warn)">emite</text>
+    <path d="M296 66 L310 62 M296 78 L312 76" stroke="var(--warn)" stroke-width="1.2" fill="none"/>
+    <text x="298" y="112" font-size="8" fill="var(--warn)">emite</text>
+    {/* fórmula */}
+    <text x="88" y="182" font-size="9" fill="var(--ink-3)">q″ = ε σ T⁴   com   0 ≤ ε ≤ 1</text>
+  </svg>
+  <figcaption>
+
+A emissividade mede **o quanto** a superfície real se aproxima do corpo negro — o emissor perfeito.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**Lei de Stefan-Boltzmann.** É o análogo, para a radiação, do que a lei de Fourier é para a condução: ela dá a densidade de fluxo de calor **emitida** por uma superfície, e diz que ela depende da temperatura elevada à **quarta potência**:
+
+$$
+q'' = \varepsilon\,\sigma\,T^4
+\qquad\text{e, na troca com a vizinhança,}\qquad
+q = \varepsilon\,\sigma\,A\,(T_s^4 - T_{viz}^4)
+$$
+
+com $\sigma = 5{,}67\times10^{-8}\ \mathrm{W/(m^2\cdot K^4)}$, a constante de Stefan-Boltzmann.
+
+**Corpo negro.** É um corpo **teórico**, capaz de **absorver toda** a radiação que recebe, sem refletir nenhuma parcela de volta para o ambiente — e que, à mesma temperatura, é também o que **mais emite**. Dele se diz que tem **emissividade unitária**.
+
+**Emissividade.** É a constante de proporcionalidade da lei de Stefan-Boltzmann: uma grandeza **adimensional**, com valor entre zero e um, que mede **o quanto um corpo se aproxima do comportamento do corpo negro ideal**.
+</Gabarito>
+
+<Passos>
+**1 — A lei, e o que a torna diferente das outras duas.**
+
+$$
+q'' = \varepsilon\,\sigma\,T^4
+$$
+
+Comparando com as leis de Fourier e de Newton:
+
+| mecanismo | lei | dependência da temperatura |
+|---|---|---|
+| condução | $q'' = -k\,dT/dx$ | **gradiente** de $T$ |
+| convecção | $q'' = h\,(T_s - T_\infty)$ | **diferença** de $T$ |
+| **radiação** | $q'' = \varepsilon\sigma T^4$ | a **quarta potência** de $T$ absoluta |
+
+Duas consequências:
+
+- **a temperatura tem de estar em kelvin.** Nas outras duas só aparece a diferença, e $\Delta T$ em Celsius e em kelvin é o mesmo número. Na quarta potência, não: $(300)^4$ e $(27)^4$ diferem por mais de 15 mil vezes;
+- a radiação **não** precisa de meio material. É a única das três que funciona no vácuo.
+
+**2 — Corpo negro: a referência ideal.** É um modelo, não um material. Suas propriedades:
+
+- **absorve** toda a radiação que incide sobre ele, em qualquer comprimento de onda e de qualquer direção — nada é refletido nem transmitido;
+- **emite**, à mesma temperatura, mais que qualquer superfície real. É o **limite superior** da emissão;
+- por definição, $\varepsilon = 1$.
+
+O nome vem de que, à temperatura ambiente, um corpo que absorve toda a luz visível **parece** negro. Mas o corpo negro **emite** — e a temperaturas altas emite muito, e em cores visíveis: o Sol se aproxima bem de um corpo negro a $5800\ \mathrm{K}$.
+
+<Caixa tipo="dica" rotulo="Superfície branca também pode ter ε alto">
+
+Emissividade é definida para a radiação **térmica**, que em temperaturas comuns está no **infravermelho** — não no visível. Uma parede pintada de branco reflete a luz visível, mas tem $\varepsilon \approx 0{,}9$ no infravermelho: ela é quase um corpo negro para o calor.
+
+Quem tem $\varepsilon$ baixo são os **metais polidos**: alumínio espelhado tem $\varepsilon \approx 0{,}05$. É por isso que a manta térmica é aluminizada — não para isolar por condução, mas para **não emitir** por radiação.
+
+</Caixa>
+
+**3 — Emissividade: a medida do desvio do ideal.**
+
+$$
+\varepsilon = \frac{q''_{\text{emitido pela superfície real}}}{q''_{\text{emitido pelo corpo negro à mesma } T}}
+\qquad
+0 \le \varepsilon \le 1
+$$
+
+- **adimensional**, por ser uma razão;
+- depende do **material**, do **acabamento** da superfície e, em geral, da temperatura;
+- $\varepsilon = 1$ é o corpo negro; $\varepsilon = 0$ seria um refletor perfeito, que não emite nada.
+
+Valores de referência:
+
+| superfície | $\varepsilon$ |
+|---|---|
+| alumínio polido | $0{,}03$–$0{,}07$ |
+| aço oxidado | $0{,}7$–$0{,}9$ |
+| tijolo, concreto, tinta | $0{,}85$–$0{,}95$ |
+| água, pele humana | $\approx 0{,}95$ |
+| corpo negro (ideal) | $1{,}00$ |
+
+<Caixa tipo="macete" rotulo="A conferência que vale em qualquer questão de radiação">
+
+Se uma conta de emissividade der **acima de 1** ou **negativa**, algo está errado — e o erro mais provável é a temperatura em Celsius na quarta potência.
+
+E há uma relação que fecha o conceito: pela **lei de Kirchhoff**, em equilíbrio térmico a emissividade é **igual à absortividade**, $\varepsilon = \alpha$. Bom absorvedor é bom emissor — é por isso que o corpo negro, que absorve tudo, é também o que mais emite.
+
+</Caixa>
+
+**Conferência —** a lei precisa vir com a $T^4$ e a constante $\sigma$ ✔ dizer que a temperatura é **absoluta** ✔ corpo negro é o **ideal** que absorve tudo e emite o máximo, com $\varepsilon = 1$ ✔ emissividade é **adimensional**, entre 0 e 1, e mede a proximidade do ideal ✔
+</Passos>

@@ -428,7 +428,9 @@
       "fluxo-absoluto": "ft-fluxos-massa",
       "fracao-molar": "ft-fluxos-massa",
       "concentracao-molar": "ft-fluxos-massa",
-      "densidade-de-fluxo": "ft-fluxos-massa"
+      "densidade-de-fluxo": "ft-fluxos-massa",
+      "stefan-boltzmann": "ft-modos",
+      "emissividade": "ft-modos"
     }
   }
 ]
