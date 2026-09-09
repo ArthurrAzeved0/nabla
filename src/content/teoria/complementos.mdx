@@ -25,6 +25,7 @@ unidades:
       - { id: cm-series-potencias, titulo: "Solução de EDO por séries de potências" }
       - { id: cm-frobenius, titulo: "Método de Frobenius e a equação indicial" }
       - { id: cm-ortogonalidade, titulo: "Funções periódicas, paridade e ortogonalidade" }
+      - { id: cm-fourier, titulo: "Série de Fourier: os coeficientes e os casos par e ímpar" }
 ---
 
 {/* **************************************************************************
@@ -2010,6 +2011,129 @@ Metade das integrais desaparece de graça. E é o primeiro movimento do gabarito
 <Caixa tipo="dica">
 
 Função definida só em $[0,L]$ **não tem** paridade — quem a define é você, ao escolher como estendê-la. Estender como par dá série de cossenos; como ímpar, série de senos. É a **extensão de meia-onda**, e é o que se usa nos problemas de EDP da seção 27, onde a condição de contorno escolhe a extensão.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-fourier" num="20" titulo="Série de Fourier: os coeficientes e os casos par e ímpar">
+
+### A ideia
+
+Taylor aproxima uma função perto de um ponto, usando potências. **Fourier** representa uma função periódica no intervalo **inteiro**, usando senos e cossenos. A troca de base tem um efeito prático enorme: funções com bico ou salto — onda quadrada, dente de serra, pulso — que Taylor não alcança, Fourier representa sem esforço. É por isso que é a ferramenta de sinal, de vibração e de condução de calor.
+
+<Formula rotulo="Série de Fourier em período 2L">
+
+$$
+f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty}\left[a_n\cos\frac{n\pi x}{L} + b_n\operatorname{sen}\frac{n\pi x}{L}\right]
+$$
+
+$$
+a_n = \frac{1}{L}\int_{-L}^{L} f(x)\cos\frac{n\pi x}{L}\,dx,
+\qquad
+b_n = \frac{1}{L}\int_{-L}^{L} f(x)\operatorname{sen}\frac{n\pi x}{L}\,dx
+$$
+
+</Formula>
+
+Em período $2\pi$ (isto é, $L = \pi$), que é o caso das provas:
+
+$$
+a_n = \frac1\pi\int_{-\pi}^{\pi} f(x)\cos(nx)\,dx,
+\qquad
+b_n = \frac1\pi\int_{-\pi}^{\pi} f(x)\operatorname{sen}(nx)\,dx
+$$
+
+<Caixa tipo="simbolos">
+
+- $a_0/2$ — o **valor médio** de $f$ no período. Escrever $a_0/2$ e não $a_0$ é a convenção que faz a fórmula de $a_n$ valer também para $n=0$;
+- $L$ — **semiperíodo**: o período é $2L$;
+- $n\pi/L$ — a **frequência** do $n$-ésimo harmônico;
+- $a_n, b_n$ — as **projeções** de $f$ em cada cosseno e cada seno, pela ortogonalidade da seção 19.
+
+</Caixa>
+
+### Os dois casos que simplificam
+
+$$
+f \text{ par} \;\Longrightarrow\; b_n = 0,
+\qquad
+a_n = \frac{2}{L}\int_0^{L} f\cos\frac{n\pi x}{L}\,dx
+\qquad\text{(série de cossenos)}
+$$
+
+$$
+f \text{ ímpar} \;\Longrightarrow\; a_n = 0,
+\qquad
+b_n = \frac{2}{L}\int_0^{L} f\operatorname{sen}\frac{n\pi x}{L}\,dx
+\qquad\text{(série de senos)}
+$$
+
+<Caixa tipo="exemplo">
+
+Questão 02 do 2º EE de 2025.2: a onda quadrada
+
+$$
+f(x) = \begin{cases} \phantom{-}1, & x \ge 0\\ -1, & x < 0\end{cases}
+\qquad\text{de período } 2\pi
+$$
+
+Ela é **ímpar** ($f(-x) = -f(x)$), então $a_0 = a_n = 0$ e só há senos:
+
+$$
+b_n = \frac{2}{\pi}\int_0^{\pi} 1\cdot\operatorname{sen}(nx)\,dx
+= \frac{2}{\pi}\left[\frac{-\cos nx}{n}\right]_0^{\pi}
+= \frac{2}{n\pi}\big[1 - (-1)^n\big]
+$$
+
+O fator $[1-(-1)^n]$ é $0$ para $n$ par e $2$ para $n$ ímpar: **só sobrevivem os harmônicos ímpares**.
+
+$$
+f(x) = \frac{4}{\pi}\sum_{k=1}^{\infty}\frac{\operatorname{sen}\big[(2k-1)x\big]}{2k-1}
+= \frac4\pi\left(\operatorname{sen} x + \frac{\operatorname{sen} 3x}{3} + \frac{\operatorname{sen} 5x}{5} + \cdots\right)
+$$
+
+Confere com o gabarito da prova. Em $x = \pi/2$ a igualdade dá a série de Leibniz, $1 - \tfrac13 + \tfrac15 - \cdots = \tfrac\pi4$ — uma conferência bonita e imediata.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Questão 01a do 2º EE de 2026.1: $f(x) = x^2$ em $[-\pi,\pi]$, período $2\pi$.
+
+Agora $f$ é **par**, então $b_n = 0$. O termo médio:
+
+$$
+\frac{a_0}{2} = \frac{1}{2\pi}\int_{-\pi}^{\pi}x^2dx = \frac{1}{2\pi}\cdot\frac{2\pi^3}{3} = \frac{\pi^2}{3}
+$$
+
+E, integrando por partes duas vezes,
+
+$$
+a_n = \frac{2}{\pi}\int_0^\pi x^2\cos(nx)\,dx = \frac{4(-1)^n}{n^2}
+$$
+
+$$
+x^2 = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2}\cos(nx)
+$$
+
+Em $x = \pi$, com $\cos(n\pi) = (-1)^n$: $\pi^2 = \tfrac{\pi^2}{3} + 4\sum \tfrac{1}{n^2}$, o que dá $\sum 1/n^2 = \pi^2/6$ — o problema de Basileia, de graça. E é exatamente esse valor que o item 01b da prova pede, por Parseval (seção 22).
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Roteiro de quatro passos, na ordem:
+
+1. **ache o período** e o $L$; 2. **classifique a paridade**, para zerar metade dos coeficientes; 3. **integre só o que sobrou**, usando o intervalo $[0,L]$ com fator $2/L$; 4. **avalie a série num ponto conveniente** para conferir.
+
+O passo 4 é o mais subestimado: substituir $x=0$, $x=\pi/2$ ou $x=\pi$ costuma dar uma soma numérica conhecida, e se ela não fecha, há erro nos coeficientes.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Nos pontos de **salto**, a série não converge para $f$: converge para a **média dos limites laterais**. Na onda quadrada, em $x=0$ a série vale $0$, que é a média entre $-1$ e $1$ — e não $1$, apesar de $f(0)=1$ pela definição do enunciado. É o teorema de Dirichlet, da seção 22, e é a pergunta de gráfico que a prova costuma anexar ("faça os gráficos de $f$ e de sua série").
 
 </Caixa>
 

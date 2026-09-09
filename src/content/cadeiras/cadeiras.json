@@ -541,7 +541,12 @@
       "funcao-par-e-impar": "cm-ortogonalidade",
       "ortogonalidade-de-funcoes": "cm-ortogonalidade",
       "relacoes-de-ortogonalidade": "cm-ortogonalidade",
-      "extensao-de-meia-onda": "cm-ortogonalidade"
+      "extensao-de-meia-onda": "cm-ortogonalidade",
+      "serie-de-fourier": "cm-fourier",
+      "coeficientes-de-fourier": "cm-fourier",
+      "serie-de-senos": "cm-fourier",
+      "serie-de-cossenos": "cm-fourier",
+      "onda-quadrada": "cm-fourier"
     }
   }
 ]
