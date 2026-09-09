@@ -1,0 +1,116 @@
+---
+origem: "2024.1"
+tema: "Fourier · Série de e^x em [−π, π]"
+temaId: coeficientes-de-fourier
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $f(x) = e^{x}$ em $-\pi \le x < \pi$. Determine a série de Fourier de $f$.
+
+<Gabarito>
+$$
+e^{x} = \frac{\operatorname{senh}\pi}{\pi}
++ \frac{2\operatorname{senh}\pi}{\pi}\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2+1}
+\Big[\cos(nx) - n\operatorname{sen}(nx)\Big]
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — não há paridade a explorar.** $e^{-x} \ne \pm e^{x}$: a exponencial **não é par nem ímpar**. Então **os dois** coeficientes, $a_n$ e $b_n$, têm de ser calculados — é o caso geral, mais trabalhoso que a onda quadrada ou o $x^2$.
+
+**Passo 2 — o termo médio.** Com $L = \pi$:
+
+$$
+a_0 = \frac1\pi\int_{-\pi}^{\pi}e^x\,dx = \frac1\pi\left[e^x\right]_{-\pi}^{\pi}
+= \frac{e^\pi - e^{-\pi}}{\pi} = \frac{2\operatorname{senh}\pi}{\pi}
+$$
+
+$$
+\frac{a_0}{2} = \frac{\operatorname{senh}\pi}{\pi}
+$$
+
+usando $\operatorname{senh}\pi = \dfrac{e^\pi - e^{-\pi}}{2}$.
+
+**Passo 3 — as duas primitivas, que valem decorar.** As integrais saem por partes duas vezes, e o resultado é sempre desta forma:
+
+$$
+\int e^{x}\cos(nx)\,dx = \frac{e^{x}\big[\cos(nx) + n\operatorname{sen}(nx)\big]}{n^2+1}
+$$
+
+$$
+\int e^{x}\operatorname{sen}(nx)\,dx = \frac{e^{x}\big[\operatorname{sen}(nx) - n\cos(nx)\big]}{n^2+1}
+$$
+
+O denominador $n^2+1$ é a assinatura desse par — e é ele que faz os coeficientes caírem como $1/n$.
+
+**Passo 4 — o coeficiente $a_n$.** Nos limites $\pm\pi$, os senos zeram e $\cos(n\pi) = (-1)^n$:
+
+$$
+\int_{-\pi}^{\pi}e^x\cos(nx)\,dx
+= \left[\frac{e^x\cos(nx)}{n^2+1}\right]_{-\pi}^{\pi}
+= \frac{(-1)^n\left(e^\pi - e^{-\pi}\right)}{n^2+1}
+= \frac{2(-1)^n\operatorname{senh}\pi}{n^2+1}
+$$
+
+$$
+a_n = \frac1\pi\cdot\frac{2(-1)^n\operatorname{senh}\pi}{n^2+1}
+= \frac{2\operatorname{senh}\pi}{\pi}\cdot\frac{(-1)^n}{n^2+1}
+$$
+
+**Passo 5 — o coeficiente $b_n$.** Agora só o termo com $\cos$ sobrevive nos limites:
+
+$$
+\int_{-\pi}^{\pi}e^x\operatorname{sen}(nx)\,dx
+= \left[\frac{-n\,e^x\cos(nx)}{n^2+1}\right]_{-\pi}^{\pi}
+= \frac{-n(-1)^n\left(e^\pi - e^{-\pi}\right)}{n^2+1}
+$$
+
+$$
+b_n = -\frac{2\operatorname{senh}\pi}{\pi}\cdot\frac{n\,(-1)^n}{n^2+1}
+$$
+
+**Passo 6 — montar a série.** Note que $a_n$ e $b_n$ compartilham o fator $\dfrac{2\operatorname{senh}\pi}{\pi}\cdot\dfrac{(-1)^n}{n^2+1}$:
+
+$$
+\boxed{\;e^{x} = \frac{\operatorname{senh}\pi}{\pi}
++ \frac{2\operatorname{senh}\pi}{\pi}\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2+1}
+\big[\cos(nx) - n\operatorname{sen}(nx)\big]\;}
+$$
+
+**Conferência — em $x = 0$.** Ali $f$ é contínua e vale $1$:
+
+$$
+1 = \frac{\operatorname{senh}\pi}{\pi}\left[1 + 2\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2+1}\right]
+\qquad\Longrightarrow\qquad
+\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2+1} = \frac12\left(\frac{\pi}{\operatorname{senh}\pi} - 1\right)
+$$
+
+Numericamente: $\operatorname{senh}\pi = 11{,}549$, então o lado direito é $\tfrac12(0{,}272 - 1) = -0{,}364$. E a soma alternada $-\tfrac12 + \tfrac15 - \tfrac1{10} + \tfrac1{17} - \cdots \approx -0{,}364$ ✔
+
+<Caixa tipo="dica" rotulo="Onde a série NÃO vale">
+
+$f(x) = e^x$ em $[-\pi,\pi)$, estendida periodicamente, tem **salto** em $x = \pm\pi$: pela esquerda vale $e^\pi \approx 23{,}1$, pela direita $e^{-\pi} \approx 0{,}043$.
+
+Nesses pontos a série converge para a **média**:
+
+$$
+\frac{e^\pi + e^{-\pi}}{2} = \cosh\pi \approx 11{,}59
+$$
+
+e não para $e^{\pi}$. É o teorema de Dirichlet, e é por isso que os coeficientes desta série caem apenas como $1/n$ — bem mais devagar que os de $x^2$, que é contínua e cai como $1/n^2$.
+
+</Caixa>
+</Passos>
