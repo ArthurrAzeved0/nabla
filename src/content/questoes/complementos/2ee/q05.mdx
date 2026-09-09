@@ -1,0 +1,88 @@
+---
+origem: "2023.2"
+tema: "Laplace · Inversa com três polos simples"
+temaId: fracoes-parciais
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre
+
+$$
+\mathcal{L}^{-1}\left\{\frac{s+1}{s(s+2)(s-3)}\right\}
+$$
+
+<Gabarito>
+$$
+\mathcal{L}^{-1} = -\frac16 - \frac{1}{10}e^{-2x} + \frac{4}{15}e^{3x}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o denominador já está fatorado.** Três fatores lineares distintos, logo três polos simples: $s = 0$, $s = -2$ e $s = 3$. A decomposição é
+
+$$
+\frac{s+1}{s(s+2)(s-3)} = \frac{A}{s} + \frac{B}{s+2} + \frac{C}{s-3}
+$$
+
+**Passo 2 — achar as constantes pelo método do valor conveniente.** Multiplique tudo pelo denominador e avalie em cada raiz — muito mais rápido que montar sistema.
+
+$$
+s + 1 = A(s+2)(s-3) + B\,s(s-3) + C\,s(s+2)
+$$
+
+$$
+s = 0:\quad 1 = A(2)(-3) = -6A
+\qquad\Longrightarrow\qquad
+A = -\frac16
+$$
+
+$$
+s = -2:\quad -1 = B(-2)(-5) = 10B
+\qquad\Longrightarrow\qquad
+B = -\frac{1}{10}
+$$
+
+$$
+s = 3:\quad 4 = C(3)(5) = 15C
+\qquad\Longrightarrow\qquad
+C = \frac{4}{15}
+$$
+
+**Passo 3 — inverter termo a termo.** Da tabela, $\mathcal{L}^{-1}\{1/(s-a)\} = e^{ax}$, e $\mathcal{L}^{-1}\{1/s\} = 1$:
+
+$$
+\boxed{\;\mathcal{L}^{-1}\left\{\frac{s+1}{s(s+2)(s-3)}\right\}
+= -\frac16 - \frac{1}{10}e^{-2x} + \frac{4}{15}e^{3x}\;}
+$$
+
+**Conferência 1 — teorema do valor inicial.** Vale $F(0) = \lim_{s\to\infty} s\,\mathcal{L}\{F\}$. Aqui o grau do denominador excede o do numerador em $2$, então
+
+$$
+\lim_{s\to\infty} s\cdot\frac{s+1}{s(s+2)(s-3)} = 0
+$$
+
+E de fato $-\tfrac16 - \tfrac1{10} + \tfrac4{15} = \tfrac{-5 - 3 + 8}{30} = 0$ ✔
+
+**Conferência 2 — soma dos resíduos.** As três constantes têm de somar zero sempre que o numerador tem grau ao menos $2$ menor que o denominador — é a mesma conta acima, e serve como teste imediato de erro de sinal.
+
+<Caixa tipo="macete" rotulo="Valor conveniente ou sistema?">
+
+**Polos simples** → método do valor conveniente, sempre: uma linha por constante, sem sistema.
+
+**Fator repetido ou quadrático irredutível** → aí não escapa do sistema (ou de derivar), porque avaliar na raiz não isola a constante. A q10 desta unidade é exatamente esse caso, com $s^2+2s+2$ irredutível.
+
+</Caixa>
+</Passos>
