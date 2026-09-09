@@ -1,0 +1,92 @@
+---
+origem: "2026.1"
+tema: "Fórmula de Cauchy · Polo duplo na origem com produto de funções"
+temaId: formula-das-derivadas
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, usando a teoria de Cauchy,
+
+$$
+\oint_{\gamma:\,|z|=1} \frac{e^{iz}\cos(z)}{z^2}\,dz
+$$
+
+<Gabarito>
+$$
+\oint_{|z|=1}\frac{e^{iz}\cos z}{z^2}\,dz = -2\pi
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a singularidade.** O denominador $z^2$ zera só em $z=0$, que é o centro de $|z|=1$: **dentro** ✔
+
+**Passo 2 — identificar $f$ e $n$.**
+
+$$
+f(z) = e^{iz}\cos z,
+\qquad
+z_0 = 0,
+\qquad
+n+1 = 2 \;\Longrightarrow\; n = 1
+$$
+
+$f$ é produto de duas funções inteiras, logo inteira ✔
+
+**Passo 3 — derivar o produto.**
+
+$$
+f'(z) = i\,e^{iz}\cos z + e^{iz}\,(-\operatorname{sen} z)
+= e^{iz}\big(i\cos z - \operatorname{sen} z\big)
+$$
+
+$$
+f'(0) = e^{0}\big(i\cdot 1 - 0\big) = i
+$$
+
+**Passo 4 — aplicar a fórmula.**
+
+$$
+\oint_{|z|=1}\frac{e^{iz}\cos z}{z^2}\,dz
+= \frac{2\pi i}{1!}\,f'(0)
+= 2\pi i \cdot i = 2\pi i^2
+$$
+
+$$
+\boxed{\;\oint_{|z|=1}\frac{e^{iz}\cos z}{z^2}\,dz = -2\pi\;}
+$$
+
+que é o valor do gabarito da prova.
+
+<Caixa tipo="macete" rotulo="Atalho pela série">
+
+Dá para conferir sem derivar. O resíduo em $z=0$ é o coeficiente de $z^{-1}$ na série de Laurent, isto é, o coeficiente de $z^{1}$ em $e^{iz}\cos z$:
+
+$$
+e^{iz} = 1 + iz - \frac{z^2}{2} + \cdots,
+\qquad
+\cos z = 1 - \frac{z^2}{2} + \cdots
+$$
+
+$$
+e^{iz}\cos z = 1 + iz + O(z^2)
+$$
+
+O coeficiente de $z$ é $i$, e o de $z^{-1}$ em $\dfrac{e^{iz}\cos z}{z^2}$ é o mesmo $i$. Logo a integral é $2\pi i\cdot i = -2\pi$ ✔
+
+Este atalho é o que salva quando a derivada do produto fica feia — e é a única saída quando a singularidade é essencial.
+
+</Caixa>
+</Passos>
