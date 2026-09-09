@@ -1,0 +1,140 @@
+---
+origem: "2026.1"
+tema: "EDP · Equação do calor numa barra isolada nas duas pontas"
+temaId: problema-do-calor
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere uma barra, termicamente isolada em suas extremidades, digamos, à temperatura de $0\ ^\circ\mathrm{C}$. Determine, explicando os detalhes não triviais, uma função $u(x,t)$ tal que
+
+$$
+\begin{cases}
+u_t = k\,u_{xx}, & \text{em } \mathbb{R}\\
+u_x(0,t) = u_x(L,t) = 0, & t > 0\\
+u(x,0) = f(x), & 0 \le x \le L
+\end{cases}
+$$
+
+<Gabarito>
+$$
+u(x,t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n\cos\!\left(\frac{n\pi x}{L}\right)
+\exp\!\left[-k\left(\frac{n\pi}{L}\right)^2 t\right]
+$$
+
+$$
+a_n = \frac{2}{L}\int_0^{L}f(x)\cos\frac{n\pi x}{L}\,dx
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — ler as condições de contorno.** $u_x(0,t) = u_x(L,t) = 0$ é condição de **Neumann**: o que se prescreve é o **fluxo**, não a temperatura. Fluxo nulo nas pontas significa **extremidades isoladas** — nada de calor entra ou sai.
+
+Este é o primeiro "detalhe não trivial" que o enunciado cobra: com Neumann a solução sai em **cossenos**, e não em senos. Quem escreve senos por hábito perde a questão inteira.
+
+**Passo 2 — separar variáveis.** Procure $u = X(x)\,T(t)$:
+
+$$
+X\,T' = k\,X''\,T
+\qquad\Longrightarrow\qquad
+\frac{T'}{k\,T} = \frac{X''}{X} = -\lambda
+$$
+
+Os dois lados dependem de variáveis independentes, logo ambos são a mesma **constante**, que se chama $-\lambda$ por conveniência de sinal.
+
+**Passo 3 — o problema em $x$, e os três casos de $\lambda$.** A equação é $X'' + \lambda X = 0$, com $X'(0) = X'(L) = 0$. Analisar os três casos é o segundo detalhe que a questão pede:
+
+**$\lambda < 0$.** Escrevendo $\lambda = -\mu^2$, a solução é $X = A\cosh(\mu x) + B\operatorname{senh}(\mu x)$. De $X'(0) = 0$ vem $B = 0$; de $X'(L) = A\mu\operatorname{senh}(\mu L) = 0$, com $\operatorname{senh}(\mu L) \ne 0$, vem $A = 0$. **Só a solução nula** — descartado.
+
+**$\lambda = 0$.** Então $X'' = 0$ e $X = A + Bx$. De $X'= B = 0$ nas duas pontas, sobra $X = A$ **constante**, que **satisfaz** as duas condições. Este caso **conta** — e é a diferença essencial em relação a Dirichlet, onde ele seria descartado.
+
+**$\lambda > 0$.** Com $\lambda = \mu^2$: $X = A\cos(\mu x) + B\operatorname{sen}(\mu x)$, e $X' = -A\mu\operatorname{sen}(\mu x) + B\mu\cos(\mu x)$.
+
+$$
+X'(0) = B\mu = 0 \;\Longrightarrow\; B = 0
+$$
+
+$$
+X'(L) = -A\mu\operatorname{sen}(\mu L) = 0
+\;\Longrightarrow\;
+\operatorname{sen}(\mu L) = 0
+\;\Longrightarrow\;
+\mu = \frac{n\pi}{L}
+$$
+
+$$
+\lambda_n = \left(\frac{n\pi}{L}\right)^2,
+\qquad
+X_n(x) = \cos\frac{n\pi x}{L},
+\qquad n = 1, 2, 3, \dots
+$$
+
+Somando o caso $\lambda = 0$, a família de autofunções é $\cos(n\pi x/L)$ com $n = 0, 1, 2, \dots$
+
+**Passo 4 — o problema em $t$.** Para cada $\lambda_n$:
+
+$$
+T' = -k\lambda_n T
+\qquad\Longrightarrow\qquad
+T_n(t) = \exp\!\left[-k\left(\frac{n\pi}{L}\right)^2 t\right]
+$$
+
+Note que $n = 0$ dá $T_0 = 1$: o modo constante **não decai**.
+
+**Passo 5 — somar e impor a condição inicial.** A equação é linear e homogênea, então a soma de soluções é solução:
+
+$$
+u(x,t) = \frac{a_0}{2} + \sum_{n=1}^{\infty}a_n\cos\!\left(\frac{n\pi x}{L}\right)
+\exp\!\left[-k\left(\frac{n\pi}{L}\right)^2t\right]
+$$
+
+Em $t=0$:
+
+$$
+u(x,0) = \frac{a_0}{2} + \sum_{n=1}^{\infty}a_n\cos\frac{n\pi x}{L} = f(x)
+$$
+
+que é exatamente a **série de Fourier de cossenos** de $f$ em $[0,L]$. Pela ortogonalidade,
+
+$$
+\boxed{\;a_n = \frac{2}{L}\int_0^{L}f(x)\cos\frac{n\pi x}{L}\,dx,
+\qquad n = 0,1,2,\dots\;}
+$$
+
+**Os detalhes não triviais, reunidos** — é isso que o enunciado pede por escrito:
+
+**1. O modo $n=0$ existe e não decai.** Todos os outros carregam $e^{-k(n\pi/L)^2t}$ e morrem. Então
+
+$$
+\lim_{t\to\infty}u(x,t) = \frac{a_0}{2} = \frac1L\int_0^L f(x)\,dx
+$$
+
+que é a **temperatura média** do perfil inicial. Fisicamente inevitável: a barra está isolada, o calor não escapa, e ele só se redistribui até ficar uniforme. Se a condição fosse Dirichlet ($u=0$ nas pontas), a barra esfriaria até zero.
+
+**2. Os detalhes finos somem primeiro.** O expoente cresce com $n^2$: o harmônico $n=10$ decai cem vezes mais rápido que o $n=1$. Qualquer irregularidade do perfil inicial é suavizada quase imediatamente, e é por isso que a equação do calor é chamada de **suavizadora** — comportamento típico de EDP **parabólica**.
+
+**3. Conferência da condição de contorno.** Cada termo tem $\dfrac{\partial}{\partial x}\cos\left(\tfrac{n\pi x}{L}\right) = -\tfrac{n\pi}{L}\operatorname{sen}\left(\tfrac{n\pi x}{L}\right)$, que se anula em $x=0$ e em $x=L$ ✔ — a solução respeita Neumann termo a termo, como tinha de ser.
+
+<Caixa tipo="macete" rotulo="Dirichlet contra Neumann, na tabela">
+
+| contorno | autofunções | modo constante |
+|---|---|---|
+| $u = 0$ nas pontas (Dirichlet) | $\operatorname{sen}(n\pi x/L)$, $n \ge 1$ | **não** existe |
+| $u_x = 0$ nas pontas (Neumann) | $\cos(n\pi x/L)$, $n \ge 0$ | **existe**, e não decai |
+
+Ler o contorno e escolher a família certa é o primeiro movimento — e o que decide as duas questões de EDP desta prova, que são as duas de Neumann.
+
+</Caixa>
+</Passos>
