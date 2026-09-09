@@ -1,0 +1,121 @@
+---
+origem: "Final 2024.2"
+tema: "Analiticidade · e^z é inteira e é sua própria derivada"
+temaId: funcao-inteira
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Mostre que $e^{z}$ é uma função analítica e que
+
+$$
+\frac{d}{dz}e^{z} = e^{z}
+$$
+
+<Gabarito>
+Com $u = e^x\cos y$ e $v = e^x\operatorname{sen} y$, as equações de Cauchy-Riemann valem em todo o plano e as parciais são contínuas: $e^z$ é **inteira**. E
+
+$$
+f'(z) = u_x + i\,v_x = e^x\cos y + i\,e^x\operatorname{sen} y = e^{z}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — separar em parte real e imaginária.** Com $z = x+iy$ e a fórmula de Euler:
+
+$$
+e^{z} = e^{x}e^{iy} = e^{x}\big(\cos y + i\operatorname{sen} y\big)
+$$
+
+$$
+u(x,y) = e^{x}\cos y,
+\qquad
+v(x,y) = e^{x}\operatorname{sen} y
+$$
+
+**Passo 2 — as quatro parciais.**
+
+$$
+u_x = e^x\cos y,
+\qquad
+u_y = -e^x\operatorname{sen} y
+$$
+
+$$
+v_x = e^x\operatorname{sen} y,
+\qquad
+v_y = e^x\cos y
+$$
+
+**Passo 3 — verificar Cauchy-Riemann.**
+
+$$
+u_x = e^x\cos y = v_y
+\;\;\checkmark
+\qquad\qquad
+u_y = -e^x\operatorname{sen} y = -v_x
+\;\;\checkmark
+$$
+
+As duas valem em **todo** ponto do plano — sem exceção, sem restrição de domínio.
+
+**Passo 4 — fechar com a condição suficiente.** As quatro parciais são produtos de exponencial por seno ou cosseno, logo **contínuas em $\mathbb{C}$**. Pelo teorema, a analiticidade segue:
+
+$$
+\boxed{\;e^{z} \text{ é analítica em todo o plano — isto é, } \textbf{inteira}\;}
+$$
+
+Esta frase é o que distingue nota cheia de nota parcial: só as equações dão a condição **necessária**; é a continuidade das parciais que fecha a **suficiente**.
+
+**Passo 5 — a derivada.** Quando a derivada existe, ela vale $f' = u_x + i\,v_x$:
+
+$$
+\frac{d}{dz}e^{z} = e^{x}\cos y + i\,e^{x}\operatorname{sen} y = e^{x}\big(\cos y + i\operatorname{sen} y\big)
+$$
+
+$$
+\boxed{\;\frac{d}{dz}e^{z} = e^{z}\;}
+$$
+
+**Conferência pela outra fórmula.** A derivada também é $f' = v_y - i\,u_y$:
+
+$$
+v_y - i\,u_y = e^x\cos y - i\big(-e^x\operatorname{sen} y\big) = e^x\cos y + i\,e^x\operatorname{sen} y = e^z
+\;\;\checkmark
+$$
+
+As duas expressões coincidem — o que é exatamente o conteúdo de Cauchy-Riemann.
+
+<Caixa tipo="macete" rotulo="Um caminho alternativo, pela série">
+
+Se a questão não exigir Cauchy-Riemann, a série resolve as duas partes de uma vez. A definição
+
+$$
+e^{z} = \sum_{n=0}^{\infty}\frac{z^{n}}{n!}
+$$
+
+converge para **todo** $z$ (raio infinito), e série de potências convergente é analítica no seu disco de convergência — logo $e^z$ é inteira. Derivando termo a termo:
+
+$$
+\frac{d}{dz}\sum_{n\ge0}\frac{z^n}{n!}
+= \sum_{n\ge1}\frac{n\,z^{n-1}}{n!}
+= \sum_{n\ge1}\frac{z^{n-1}}{(n-1)!}
+= \sum_{m\ge0}\frac{z^m}{m!} = e^{z}
+$$
+
+O deslocamento de índice devolve **a mesma série** — é essa a razão estrutural de $e^z$ ser sua própria derivada.
+
+</Caixa>
+</Passos>
