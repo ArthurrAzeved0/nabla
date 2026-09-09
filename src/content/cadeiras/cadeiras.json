@@ -480,7 +480,12 @@
       "parametrizacao-de-curva": "cm-integral",
       "integral-em-segmento": "cm-integral",
       "estimativa-ml": "cm-integral",
-      "primitiva-complexa": "cm-integral"
+      "primitiva-complexa": "cm-integral",
+      "teorema-de-cauchy": "cm-cauchy",
+      "cauchy-goursat": "cm-cauchy",
+      "simplesmente-conexo": "cm-cauchy",
+      "deformacao-de-contorno": "cm-cauchy",
+      "dominio-multiplamente-conexo": "cm-cauchy"
     }
   }
 ]

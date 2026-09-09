@@ -11,6 +11,7 @@ unidades:
       - { id: cm-analiticas, titulo: "Derivada, funções analíticas e Cauchy-Riemann" }
       - { id: cm-harmonicas, titulo: "Funções harmônicas e a conjugada harmônica" }
       - { id: cm-integral, titulo: "Integral de linha complexa e parametrização" }
+      - { id: cm-cauchy, titulo: "Teorema de Cauchy-Goursat e deformação de contorno" }
 ---
 
 {/* **************************************************************************
@@ -835,6 +836,85 @@ $$
 $$
 
 É como sai em uma linha o item (a) da 2ª chamada de 2023.2, $\int_{1+i}^{3+4i} (2z+3)\,dz$: a primitiva é $z^2 + 3z$, e basta avaliar nas pontas.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-cauchy" num="08" titulo="Teorema de Cauchy-Goursat e deformação de contorno">
+
+### A ideia
+
+O teorema que organiza a unidade inteira, e cujo enunciado é curto:
+
+<Formula rotulo="Teorema de Cauchy-Goursat">
+
+$$
+f \text{ analítica em } D \text{ simplesmente conexo}
+\quad\Longrightarrow\quad
+\oint_{\gamma} f(z)\,dz = 0
+\;\text{ para toda curva fechada } \gamma \subset D
+$$
+
+</Formula>
+
+Traduzido para a prática de prova: **se não há singularidade dentro da curva, a integral é zero.** Nenhuma conta. E o recíproco em espírito: quando a integral **não** é zero, é porque há singularidade dentro — e o valor depende só dela, não da forma da curva.
+
+<Caixa tipo="simbolos">
+
+- **simplesmente conexo** — todo laço dentro de $D$ pode ser encolhido até um ponto sem sair de $D$; informalmente, $D$ **não tem buracos**;
+- **curva simples** — não se cruza; **fechada** — começa e termina no mesmo ponto;
+- **dentro** — a região limitada pela curva, o interior;
+- **Goursat** — a versão que dispensa a hipótese de $f'$ contínua, e por isso o teorema leva os dois nomes.
+
+</Caixa>
+
+### Deformação de contorno: a consequência que se usa mais
+
+Se duas curvas fechadas envolvem **as mesmas** singularidades, as integrais são iguais. A curva pode ser esticada, amassada ou trocada por uma circunferência mínima em torno do ponto — o valor não muda.
+
+$$
+\oint_{\gamma_1} f\,dz = \oint_{\gamma_2} f\,dz
+\qquad\text{se } \gamma_1 \text{ e } \gamma_2 \text{ envolvem as mesmas singularidades}
+$$
+
+E para uma curva que envolve **várias** singularidades, o teorema em domínio multiplamente conexo diz que o total é a soma das partes:
+
+$$
+\oint_{\gamma} f\,dz = \sum_{k} \oint_{\gamma_k} f\,dz,
+$$
+
+com cada $\gamma_k$ uma circunferência pequena em torno de uma singularidade. É esta fórmula que, na seção 13, vira o teorema dos resíduos.
+
+<Caixa tipo="exemplo">
+
+Integral 2 da questão 02 do 1º EE de 2025.2:
+
+$$
+\oint_{\gamma:\,|z|=2} \frac{z^{100}}{(z-1)^{101}}\,dz
+$$
+
+A única singularidade é $z = 1$, e ela está **dentro** de $|z| = 2$. Então a integral não é zero, e não importa se a curva é o círculo de raio $2$, o de raio $1{,}5$ ou um quadrado — todos dão o mesmo. Isso autoriza trocar a curva pela mais conveniente antes de aplicar a fórmula de Cauchy da seção 09.
+
+Já a integral 1, $\oint e^{iz}/(z-\pi)^3$, tem a singularidade em $z=\pi \approx 3{,}14$: se a curva fosse $|z| = 2$, ela ficaria **fora**, e a resposta seria zero. Ler onde está a singularidade em relação à curva é o primeiro passo de toda questão de integral desta cadeira.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Roteiro de três linhas para qualquer integral fechada do 1º EE:
+
+1. **liste as singularidades** — os zeros do denominador, e os pontos onde $\log$ ou raiz não são analíticos;
+2. **veja quais estão dentro** da curva, comparando com o centro e o raio;
+3. **nenhuma dentro → zero.** Uma dentro → fórmula de Cauchy. Várias → resíduos.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Cuidado com singularidade que **não** é zero de denominador. Em $\oint \operatorname{Log}(z)\,dz$ o integrando é analítico em $\mathbb{C}$ menos o **corte** do ramo (o semieixo real negativo, mais a origem) — não é um ponto isolado, é uma linha. Se a curva cruza o corte, o teorema de Cauchy não se aplica como está.
+
+É o que faz a integral 4 de 2025.2 ser resolvível: a curva é $|z - i| = 1/2$, que fica inteira no semiplano superior e **não toca** o corte.
 
 </Caixa>
 
