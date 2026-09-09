@@ -17,6 +17,7 @@ unidades:
       - { id: cm-laurent, titulo: "Série de Laurent e os anéis de convergência" }
       - { id: cm-singularidades, titulo: "Zeros e classificação de singularidades" }
       - { id: cm-residuos, titulo: "Teorema dos resíduos" }
+      - { id: cm-integrais-reais, titulo: "Integrais reais calculadas por resíduos" }
 ---
 
 {/* **************************************************************************
@@ -1405,6 +1406,100 @@ Somando os dois e multiplicando por $2\pi i$ sai o valor da integral. O importan
 Antes de somar resíduos, conte quantas singularidades a curva **realmente** contém. É onde a questão esconde a dificuldade: em $|z| = 3/2$ o ponto $z = -2$ fica fora; em $|z|=1$, o ponto $z = \pi$ fica fora. Resíduo de singularidade externa **não entra** — e somá-lo é o erro que mais aparece nas correções.
 
 E não confunda ordem do polo com o expoente do enunciado: em $\dfrac{z^{100}}{(z-1)^{101}}$ o polo tem ordem $101$, mas a fórmula de Cauchy da seção 09 resolve em uma linha, sem resíduo nenhum. Resíduos são para **várias** singularidades; para uma só, Cauchy é mais curto.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-integrais-reais" num="14" titulo="Integrais reais calculadas por resíduos">
+
+### A ideia
+
+Aqui a cadeira paga o que prometeu. Integrais reais que nenhuma técnica de Cálculo resolve caem em três linhas quando se sai da reta, dá uma volta pelo plano complexo e usa resíduos. É a aplicação que aparece em **todo** 1º EE do acervo.
+
+### Tipo 1 — integral trigonométrica em $[0, 2\pi]$
+
+A que mais cai: $\displaystyle\int_0^{2\pi} R(\cos\theta, \operatorname{sen}\theta)\,d\theta$. A ideia é reconhecer que $\theta$ percorrendo $[0,2\pi]$ **é** a circunferência unitária. Substituindo $z = e^{i\theta}$:
+
+<Formula rotulo="A substituição que fecha o círculo">
+
+$$
+z = e^{i\theta},
+\qquad
+d\theta = \frac{dz}{iz},
+\qquad
+\cos\theta = \frac{z + z^{-1}}{2},
+\qquad
+\operatorname{sen}\theta = \frac{z - z^{-1}}{2i}
+$$
+
+</Formula>
+
+A integral real vira $\oint_{|z|=1}$ de uma função racional, e resíduos resolvem.
+
+<Caixa tipo="exemplo">
+
+Item (c) da questão 04 do 1º EE de 2023.2:
+
+$$
+\int_0^{2\pi} \frac{3\,d\theta}{4 + 3\cos\theta}
+$$
+
+Substituindo:
+
+$$
+\int_0^{2\pi}\frac{3\,d\theta}{4+3\cos\theta}
+= \oint_{|z|=1} \frac{3}{4 + \tfrac32\left(z + \tfrac1z\right)}\cdot\frac{dz}{iz}
+= \oint_{|z|=1} \frac{3\,dz}{i\left(4z + \tfrac32 z^2 + \tfrac32\right)}
+$$
+
+$$
+= \frac{2}{i}\oint_{|z|=1} \frac{dz}{z^2 + \tfrac83 z + 1}
+$$
+
+As raízes de $z^2 + \tfrac83 z + 1$ são $z = -3$ e $z = -\tfrac13$. **Só $-1/3$ está dentro** de $|z|=1$ — e é sempre assim: das duas raízes, uma cai dentro e a outra fora, com produto $1$.
+
+$$
+\operatorname{Res} = \frac{1}{2z + \tfrac83}\bigg|_{z=-1/3} = \frac{1}{-\tfrac23 + \tfrac83} = \frac12
+$$
+
+$$
+\int_0^{2\pi} \frac{3\,d\theta}{4+3\cos\theta} = \frac{2}{i}\cdot 2\pi i \cdot \frac12 = 2\pi
+$$
+
+Conferência de sanidade: o integrando é positivo, com média em torno de $3/4$ ao longo de $2\pi$ — e $2\pi \approx 6{,}28$ está na faixa certa ✔
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Para $\displaystyle\int_0^{2\pi}\frac{d\theta}{a + b\cos\theta}$ com $a > |b| > 0$, o resultado fechado é
+
+$$
+\int_0^{2\pi}\frac{d\theta}{a + b\cos\theta} = \frac{2\pi}{\sqrt{a^2-b^2}}
+$$
+
+Vale decorar: resolve o item (c) de 2023.2 ($a=4$, $b=3$, com o fator $3$ na frente: $3\cdot 2\pi/\sqrt{7}$… **cuidado**, aqui a conta acima dá $2\pi$ porque o $3$ do numerador entra na álgebra) e o da 2ª chamada ($a=5$, $b=3$, dando $2\pi/4 = \pi/2$). Use a fórmula para **conferir**, e a substituição para **mostrar o serviço**, que é o que a prova cobra.
+
+</Caixa>
+
+### Tipo 2 — integral imprópria na reta toda
+
+Para $\displaystyle\int_{-\infty}^{\infty} \frac{p(x)}{q(x)}\,dx$ com $\deg q \ge \deg p + 2$ e $q$ sem raiz real: feche o contorno com um semicírculo grande no **semiplano superior**. A contribuição do arco vai a zero pela estimativa ML, e sobra
+
+$$
+\int_{-\infty}^{\infty} \frac{p(x)}{q(x)}\,dx
+= 2\pi i \sum \operatorname{Res}\ \text{nos polos do semiplano SUPERIOR}
+$$
+
+Com $e^{iax}$ no integrando (lema de Jordan), o mesmo vale para $a>0$, e é assim que se calculam as integrais de Fourier que voltam na 2ª unidade.
+
+<Caixa tipo="dica">
+
+Duas conferências que pegam quase todo erro:
+
+- se a integral original é de uma função **real e positiva**, o resultado tem de ser **real e positivo**. Sobrou $i$ na resposta? Há erro de sinal em algum resíduo;
+- na substituição $z=e^{i\theta}$, das duas raízes do denominador quadrático **exatamente uma** fica dentro do círculo unitário (o produto delas é $1$). Se você achou duas dentro, ou nenhuma, refaça — e não esqueça o $d\theta = dz/(iz)$, que é o fator mais esquecido da unidade.
 
 </Caixa>
 

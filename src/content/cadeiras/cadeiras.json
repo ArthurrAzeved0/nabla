@@ -513,7 +513,11 @@
       "residuo": "cm-residuos",
       "residuo-em-polo-simples": "cm-residuos",
       "residuo-em-polo-de-ordem-m": "cm-residuos",
-      "integral-por-residuos": "cm-residuos"
+      "integral-por-residuos": "cm-residuos",
+      "integral-trigonometrica-por-residuos": "cm-integrais-reais",
+      "substituicao-z-igual-e-i-theta": "cm-integrais-reais",
+      "integral-impropria-por-residuos": "cm-integrais-reais",
+      "lema-de-jordan": "cm-integrais-reais"
     }
   }
 ]
