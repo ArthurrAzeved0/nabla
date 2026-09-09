@@ -21,6 +21,52 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [Não publicado]
+
+### Adicionado
+
+- **Complementos de Matemática, a sétima cadeira: 84 questões e 27 seções de
+  teoria.** `MAT07 · 60h`, a disciplina de variáveis complexas, séries de Fourier,
+  transformada de Laplace e EDP. O sumário segue os **18 itens** do conteúdo
+  programático oficial que veio no acervo, em duas unidades: da 1ª, números
+  complexos até resíduos; da 2ª, EDO por séries até separação de variáveis.
+- **Uma seção que a ementa não lista, e a página diz isso na primeira linha:**
+  funções **Gama e Beta**. Três quesitos do acervo só saem por elas — duas
+  integrais impróprias do 2º EE de 2023.2 e uma da 2ª chamada — e a transformada
+  de Laplace de $x^n$ com $n$ não inteiro não se escreve sem a Gama.
+- **84 questões**, um commit cada: **37 no 1º EE** (2023.2, 2ª chamada de 2023.2,
+  2024.2, 2025.2 e 2026.1), **34 no 2º EE** (2023.2, 2ª chamada de 2023.2, 2024.1,
+  2024.2, 2025.2 e 2026.1) e **13 na final** (2024.2, 2025.2 e 2026.1).
+- **A grade acende Complementos em sete nós**, no 4º período de Automação (2021.1
+  e 2010), Mecânica, Eletrônica (2019 e 2012) e Telecom (2019 e 2010). **Nenhum
+  pré-requisito foi tocado**: cada curso os define de forma diferente, e a ementa
+  da disciplina divergia de todos eles. Fica registrada também a divergência de
+  nome entre os PPCs — Automação 2021.1 escreve "Complementos **da** Matemática",
+  as outras seis escrevem "**de** Matemática".
+
+### Corrigido
+
+- **Dois erros de conta na teoria nova**, os dois achados ao converter o quesito
+  correspondente e conferir contra fórmula fechada: as raízes de $z^2+\tfrac83z+1$
+  na seção de integrais por resíduos (são $\tfrac{-4\pm\sqrt7}{3}$, não $-3$ e
+  $-\tfrac13$, que pertencem ao caso $a=5$ da 2ª chamada), e um termo de seno a
+  mais no exemplo de inversa de Laplace, que vinha de comparar dois coeficientes
+  em vez de três.
+
+### Notas de acervo
+
+- **Oito divergências de gabarito** ficaram registradas na própria questão, com a
+  conta refeita: uma condição que **não tem solução** e cujo próprio gabarito diz
+  isso ($f(i)=-i$ com $u$ que impõe $\operatorname{Re} f(i)=5$); um caso resolvido
+  só para $y\ne0$, perdendo duas das quatro soluções de $z^2=\bar z$; um sinal
+  trocado na conjugada harmônica de $\cosh y\cos x$; uma condição inventada
+  ligando o raio da curva ao parâmetro; uma fração parcial fatorada com o sinal
+  invertido; uma série de $e^{1/z^2}$ escrita com sinais alternados; e um gabarito
+  que chama de "par" uma onda quadrada ímpar — este último sem efeito no valor.
+- **Duas questões do acervo põem a singularidade exatamente SOBRE a curva** de
+  integração ($|z|=2$ com polo em $z=2$, e $|z|\le\pi$ com polo em $\pi$). Em
+  ambas o valor sai certo por outro motivo, e a questão anota o problema formal.
+
 ## [2.14.0] — 2026-09-09
 
 ### Adicionado
