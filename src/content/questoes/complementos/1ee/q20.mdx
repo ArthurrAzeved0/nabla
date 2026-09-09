@@ -1,0 +1,99 @@
+---
+origem: "2025.2"
+tema: "Fórmula de Cauchy · Mostrar que a integral vale −2π"
+temaId: formula-das-derivadas
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q20.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Mostre que
+
+$$
+\oint_{\gamma:\,|z|=3} \frac{\cosh(z)}{\left(z - i\frac{\pi}{2}\right)^2}\,dz = -2\pi.
+$$
+
+Note que $\operatorname{senh}(z) = \dfrac{e^z - e^{-z}}{2}$.
+
+<Gabarito>
+$z_0 = i\pi/2$ está dentro de $|z|=3$; com $f = \cosh z$ e $n=1$,
+
+$$
+\oint = \frac{2\pi i}{1!}\,\operatorname{senh}\!\left(\frac{i\pi}{2}\right) = 2\pi i\,(i) = -2\pi
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a singularidade está dentro?**
+
+$$
+z_0 = \frac{i\pi}{2},
+\qquad
+|z_0| = \frac{\pi}{2} \approx 1{,}57 < 3
+$$
+
+Sim, dentro de $|z|=3$ ✔
+
+**Passo 2 — identificar $f$ e $n$.**
+
+$$
+f(z) = \cosh z,
+\qquad
+n + 1 = 2 \;\Longrightarrow\; n = 1
+$$
+
+$\cosh z$ é inteira (soma de duas exponenciais), então a hipótese está satisfeita.
+
+**Passo 3 — a derivada.** A derivada de $\cosh$ é $\operatorname{senh}$, como no caso real:
+
+$$
+f'(z) = \operatorname{senh} z
+$$
+
+**Passo 4 — avaliar $\operatorname{senh}$ num argumento imaginário puro.** É para isto que o enunciado dá a definição. Com $z = i\pi/2$:
+
+$$
+\operatorname{senh}\!\left(\frac{i\pi}{2}\right)
+= \frac{e^{i\pi/2} - e^{-i\pi/2}}{2}
+= \frac{i - (-i)}{2}
+= \frac{2i}{2}
+= i
+$$
+
+usando $e^{i\pi/2} = i$ e $e^{-i\pi/2} = -i$.
+
+Vale conferir pela ponte entre as famílias: $\operatorname{senh}(iz) = i\operatorname{sen} z$, então $\operatorname{senh}(i\pi/2) = i\operatorname{sen}(\pi/2) = i$ ✔
+
+**Passo 5 — aplicar a fórmula.**
+
+$$
+\oint_{|z|=3} \frac{\cosh z}{\left(z - \tfrac{i\pi}{2}\right)^2}\,dz
+= \frac{2\pi i}{1!}\,f'\!\left(\frac{i\pi}{2}\right)
+= 2\pi i\cdot i = 2\pi i^2
+$$
+
+$$
+\boxed{\;\oint_{|z|=3} \frac{\cosh z}{\left(z - i\frac{\pi}{2}\right)^2}\,dz = -2\pi\;}
+$$
+
+como se queria mostrar.
+
+<Caixa tipo="macete" rotulo="A dica está no enunciado">
+
+Quando a prova fornece uma definição no fim do enunciado, ela está dizendo **por onde passar**. Aqui, dar $\operatorname{senh}(z) = (e^z - e^{-z})/2$ é avisar que o valor em $i\pi/2$ sai por exponenciais — e não por tabela de hiperbólicas reais, onde $\operatorname{senh}$ de argumento imaginário não existe.
+
+Ler o que a prova entrega, e usar, costuma valer mais que lembrar identidades de cor.
+
+</Caixa>
+</Passos>
