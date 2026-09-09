@@ -1,0 +1,112 @@
+---
+origem: "2024.1"
+tema: "Singularidades · Classificar em z = 0 dois casos"
+temaId: classificacao-de-singularidades
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Classifique a singularidade em $z=0$ das funções
+
+**a)** $f(z) = \dfrac{1}{z\left(e^{z}-1\right)}$;
+
+**b)** $f(z) = \dfrac{\operatorname{sen}(z)}{z}$.
+
+<Gabarito>
+**a)** **Polo de ordem 2.**  ·  **b)** Singularidade **removível**.
+</Gabarito>
+
+<Passos>
+**Item (a) — pelo zero do denominador.** Escreva $f = g/h$ com
+
+$$
+g(z) = 1
+\quad\text{(analítica, } g(0) = 1 \ne 0\text{)},
+\qquad
+h(z) = z\left(e^z - 1\right)
+$$
+
+Como $g(0) \ne 0$, a **ordem do polo de $f$ é a ordem do zero de $h$ em $z=0$**.
+
+**Caminho 1 — por derivadas**, que é o do gabarito:
+
+$$
+h(0) = 0\cdot(1-1) = 0
+$$
+
+$$
+h'(z) = \left(e^z - 1\right) + z\,e^z
+\qquad\Longrightarrow\qquad
+h'(0) = 0 + 0 = 0
+$$
+
+$$
+h''(z) = e^z + e^z + z\,e^z
+\qquad\Longrightarrow\qquad
+h''(0) = 2 \ne 0
+$$
+
+A primeira derivada não nula é a **segunda**: zero de ordem $2$.
+
+**Caminho 2 — por série**, que é mais rápido. De $e^z - 1 = z + \dfrac{z^2}{2} + \cdots$:
+
+$$
+h(z) = z\left(z + \frac{z^2}{2} + \cdots\right) = z^2\left(1 + \frac z2 + \cdots\right)
+$$
+
+O fator entre parênteses vale $1$ em $z=0$, então o zero é exatamente de **ordem 2**.
+
+$$
+\boxed{\;z=0 \text{ é polo de ordem } 2\;}
+$$
+
+E, de brinde, o resíduo sai da série: $f = \dfrac{1}{z^2}\left(1 - \dfrac z2 + \cdots\right)$, logo $a_{-1} = -\dfrac12$.
+
+**Item (b) — o exemplo canônico de removível.** Divida a série do seno por $z$:
+
+$$
+\frac{\operatorname{sen} z}{z}
+= \frac1z\left(z - \frac{z^3}{3!} + \frac{z^5}{5!} - \cdots\right)
+= 1 - \frac{z^2}{3!} + \frac{z^4}{5!} - \cdots
+$$
+
+A série resultante **não tem potência negativa nenhuma**: a parte principal é vazia.
+
+$$
+\lim_{z\to0}\frac{\operatorname{sen} z}{z} = 1
+\qquad\text{(finito)}
+$$
+
+$$
+\boxed{\;z = 0 \text{ é singularidade removível}\;}
+$$
+
+Basta **definir** $f(0) = 1$ e a função passa a ser analítica em todo o plano — daí o nome "removível". Consistentemente, o resíduo é **zero**.
+
+<Caixa tipo="macete" rotulo="A regra que resolve os dois itens">
+
+Para quociente de analíticas, $f = g/h$:
+
+$$
+\text{ordem do polo} = (\text{ordem do zero de } h) - (\text{ordem do zero de } g)
+$$
+
+- item (a): $h$ tem ordem $2$, $g$ tem ordem $0$ → polo de ordem $2$;
+- item (b): $h = z$ tem ordem $1$, $g = \operatorname{sen} z$ tem ordem $1$ → diferença $0$ → **removível**.
+
+E ler a ordem do zero pela **primeira potência da série** é sempre mais rápido que derivar procurando qual derivada não se anula — compare os dois caminhos do item (a).
+
+</Caixa>
+</Passos>
