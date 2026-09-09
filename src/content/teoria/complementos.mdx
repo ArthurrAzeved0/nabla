@@ -23,6 +23,7 @@ unidades:
       - { id: cm-edo, titulo: "EDO: solução geral, wronskiano e as de 1ª ordem que caem" }
       - { id: cm-gama, titulo: "Funções Gama e Beta: as integrais que a prova exige" }
       - { id: cm-series-potencias, titulo: "Solução de EDO por séries de potências" }
+      - { id: cm-frobenius, titulo: "Método de Frobenius e a equação indicial" }
 ---
 
 {/* **************************************************************************
@@ -1802,6 +1803,119 @@ E confira a recorrência achada num caso conhecido: aplicada a $y'' + y = 0$, el
 Nesta cadeira, o **raio** de convergência da série vem da teoria complexa da 1ª unidade: é a distância de $x_0$ à singularidade mais próxima **no plano**, ainda que a equação seja real. É por isso que as duas unidades não são assuntos separados.
 
 Ver também as seções de séries de potências e de Frobenius em **Equações Diferenciais**, onde o método aparece com mais exemplos resolvidos.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-frobenius" num="18" titulo="Método de Frobenius e a equação indicial">
+
+### A ideia
+
+Quando $x_0$ é **singular**, a solução pode não ser série de potências — ela pode começar numa potência fracionária ou negativa, ou envolver logaritmo. Frobenius trata disso com uma tentativa mais larga: multiplica a série por $x^{s}$ e deixa o próprio método descobrir o $s$.
+
+<Formula rotulo="A tentativa de Frobenius">
+
+$$
+y = x^{s}\sum_{j=0}^{\infty} a_j x^{j} = \sum_{j=0}^{\infty} a_j\,x^{\,j+s},
+\qquad a_0 \ne 0
+$$
+
+</Formula>
+
+### Ponto singular regular
+
+O método só funciona se a singularidade for **mansa**. O teste, na forma padrão $y'' + Py' + Qy = 0$:
+
+<Formula rotulo="Teste do ponto singular regular">
+
+$$
+\lim_{x\to x_0}(x-x_0)\,P(x)
+\qquad\text{e}\qquad
+\lim_{x\to x_0}(x-x_0)^2\,Q(x)
+$$
+
+</Formula>
+
+Se **os dois limites existem e são finitos**, $x_0$ é **singular regular** e Frobenius se aplica. Se algum estoura, é **singular irregular** e não há método elementar.
+
+<Caixa tipo="exemplo">
+
+Item (a) da Opção B do 2º EE de 2023.2, com a hipergeométrica confluente $xy'' + (c-x)y' - ay = 0$.
+
+Forma padrão: $P = \dfrac{c-x}{x}$, $Q = -\dfrac{a}{x}$. Então
+
+$$
+\lim_{x\to0} x\,P(x) = \lim_{x\to0}(c - x) = c
+\qquad\text{(finito)}
+$$
+
+$$
+\lim_{x\to0} x^2\,Q(x) = \lim_{x\to0}(-a x) = 0
+\qquad\text{(finito)}
+$$
+
+Os dois existem, logo $x = 0$ é **ponto singular regular** — que é exatamente o que o item pede para mostrar "através dos limites apropriados".
+
+</Caixa>
+
+### A equação indicial
+
+Substituindo a tentativa e olhando **a menor potência** de $x$, o coeficiente de $x^{s-2}$ (ou $x^{s-1}$, conforme a equação) tem de anular. Como $a_0 \ne 0$, sobra uma equação **de segundo grau em $s$**: a indicial. Com $p_0 = \lim (x-x_0)P$ e $q_0 = \lim (x-x_0)^2Q$:
+
+<Formula rotulo="Equação indicial">
+
+$$
+s(s-1) + p_0\,s + q_0 = 0
+$$
+
+</Formula>
+
+As raízes $s_1 \ge s_2$ decidem o formato das duas soluções:
+
+- $s_1 - s_2$ **não inteiro** → duas séries de Frobenius independentes;
+- $s_1 = s_2$ → a segunda solução carrega um $\ln x$;
+- $s_1 - s_2$ **inteiro positivo** → a segunda pode ou não carregar $\ln x$; garante-se só a de $s_1$.
+
+<Caixa tipo="exemplo">
+
+Continuando a hipergeométrica confluente, com $p_0 = c$ e $q_0 = 0$:
+
+$$
+s(s-1) + c\,s = 0
+\quad\Longrightarrow\quad
+s\,(s - 1 + c) = 0
+\quad\Longrightarrow\quad
+s_1 = 0,\quad s_2 = 1 - c
+$$
+
+que é a resposta do item (b). Para $s = 0$ (item c), substituir a série na equação e igualar o coeficiente de $x^{j}$ dá
+
+$$
+(j+1)(j+c)\,a_{j+1} = (j + a)\,a_j
+\qquad\Longrightarrow\qquad
+a_{j+1} = \frac{j+a}{(j+1)(j+c)}\,a_j
+$$
+
+Iterando de $a_0 = 1$ e usando $\Gamma(z+1) = z\Gamma(z)$ para empacotar os produtos — que é o que o enunciado pede:
+
+$$
+a_j = \frac{\Gamma(a+j)\,\Gamma(c)}{\Gamma(a)\,\Gamma(c+j)\,j!}
+$$
+
+E a solução com $s=0$ é a série hipergeométrica confluente $M(a,c;x) = \sum_j a_j x^j$. É aqui que a seção 16 se paga: sem a recorrência da Gama, não há como escrever o coeficiente em forma fechada.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Não decore a equação indicial — **obtenha** $p_0$ e $q_0$ pelos dois limites do teste e substitua em $s(s-1) + p_0 s + q_0 = 0$. É o mesmo trabalho do item (a), reaproveitado no (b), e evita o erro de montar a indicial a partir da equação original sem dividir pelo coeficiente de $y''$.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Reconheça os nomes: a hipergeométrica confluente ($xy'' + (c-x)y' - ay = 0$), a de **Bessel** ($x^2y'' + xy' + (x^2-\nu^2)y=0$) e a de **Legendre** aparecem com nome próprio porque as soluções são funções tabeladas. Se o enunciado der o nome, ele já está dizendo que a resposta é uma série — não procure função elementar.
 
 </Caixa>
 
