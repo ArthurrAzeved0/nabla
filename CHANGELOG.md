@@ -53,6 +53,17 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   natural e a pintura saía reduzida. Três barreiras: esperar o redesenho agendado,
   um cadeado que desliga `aplicarEscala` durante a exportação, e `width`/`height`/
   `style` passados ao `html-to-image`, que os aplica no clone.
+- **Onze figuras de Fenômenos não correspondiam ao que o enunciado descrevia.**
+  Todas as 69 figuras das questões foram conferidas uma a uma, cada uma ao lado
+  do próprio enunciado, e onze foram refeitas: no q05 e no q06 do 1º EE o
+  manômetro media alturas que não eram as da solução (no q06 os dois meniscos
+  estavam no mesmo nível, com a cota de $h$ marcada ao lado); no q29 do 2º EE o
+  fluxo em $z$ entrava e saía pela **mesma** face e o de $y$ apontava contra o
+  eixo; no q23 do 2º EE os dois perfis não se cruzavam, apesar de $C_A$ acabar
+  em 16 e $C_B$ em 24; no q01 da final o pseudoplástico e o dilatante estavam
+  cada um do lado errado da reta newtoniana. As outras seis eram rótulo cortado
+  pela borda, chamada de cota apontando para o bloco vizinho, ou texto que se
+  lia como grandeza física quando era só o eixo do desenho.
 
 ### Notas de acervo
 
