@@ -463,7 +463,14 @@
       "funcoes-hiperbolicas": "cm-trig-hip",
       "identidades-complexas": "cm-trig-hip",
       "zeros-do-seno-e-cosseno": "cm-trig-hip",
-      "equacao-trigonometrica-complexa": "cm-trig-hip"
+      "equacao-trigonometrica-complexa": "cm-trig-hip",
+      "derivada-complexa": "cm-analiticas",
+      "funcao-analitica": "cm-analiticas",
+      "funcao-holomorfa": "cm-analiticas",
+      "funcao-inteira": "cm-analiticas",
+      "cauchy-riemann": "cm-analiticas",
+      "ponto-singular": "cm-analiticas",
+      "analiticidade": "cm-analiticas"
     }
   }
 ]

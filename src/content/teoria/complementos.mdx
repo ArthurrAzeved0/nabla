@@ -8,6 +8,7 @@ unidades:
       - { id: cm-polar, titulo: "Forma polar, fórmula de Euler, De Moivre e raízes" }
       - { id: cm-exp-log, titulo: "Exponencial, logaritmo e potências complexas" }
       - { id: cm-trig-hip, titulo: "Funções trigonométricas e hiperbólicas complexas" }
+      - { id: cm-analiticas, titulo: "Derivada, funções analíticas e Cauchy-Riemann" }
 ---
 
 {/* **************************************************************************
@@ -509,6 +510,120 @@ Nunca tente inverter com $\arccos$ — no plano complexo essa função é multiv
 $|\operatorname{sen} z|$ e $|\cos z|$ **não são limitados por 1**. Da separação acima, $|\cos z|^2 = \cos^2 x + \operatorname{senh}^2 y$, que cresce sem limite quando $y \to \pm\infty$. Usar "$|\cos z| \le 1$" para majorar uma integral é o erro clássico de estimativa nesta cadeira.
 
 A questão 04 do 1º EE de 2025.2 dá a definição de $\operatorname{senh}$ no enunciado exatamente por isso: ela quer que você troque $\cosh$ por exponenciais em vez de tratá-lo como o hiperbólico real.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-analiticas" num="05" titulo="Derivada, funções analíticas e Cauchy-Riemann">
+
+### A ideia
+
+A derivada complexa tem a **mesma** definição da real:
+
+$$
+f'(z_0) = \lim_{\Delta z \to 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}
+$$
+
+A diferença está escondida no $\Delta z \to 0$. Na reta há dois caminhos de aproximação; no plano há **infinitos**, e o limite tem de dar o mesmo valor em todos. Essa exigência é brutal — e é ela que faz a análise complexa ser tão poderosa: derivável uma vez implica derivável infinitas vezes, ser dado numa curva determina a função num domínio inteiro, e assim por diante. Nada disso vale no caso real.
+
+<Caixa tipo="simbolos">
+
+- **derivável em $z_0$** — o limite acima existe naquele ponto;
+- **analítica (ou holomorfa) em $z_0$** — derivável em **todo um disco** em torno de $z_0$, não só nele. É esta a palavra que a prova usa;
+- **inteira** — analítica em todo o plano complexo ($e^z$, polinômios, $\operatorname{sen} z$, $\cos z$);
+- **ponto singular** — ponto onde $f$ não é analítica, mas que tem pontos analíticos arbitrariamente perto.
+
+</Caixa>
+
+### As equações de Cauchy-Riemann
+
+Escreva $f(z) = u(x,y) + i\,v(x,y)$ e force o limite pelos dois caminhos mais simples: paralelo ao eixo real ($\Delta z = \Delta x$) e paralelo ao imaginário ($\Delta z = i\Delta y$). Igualar os dois resultados dá o sistema:
+
+<Formula rotulo="Equações de Cauchy-Riemann">
+
+$$
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y},
+\qquad
+\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+$$
+
+</Formula>
+
+<Caixa tipo="macete">
+
+Guarde como **"iguais em cruz, com um sinal negativo"**: $u_x = v_y$ e $u_y = -v_x$. O sinal fica na equação que envolve $y$ no $u$ — e trocar de lugar esse menos é o erro que mais aparece.
+
+</Caixa>
+
+E a derivada, quando existe, sai de qualquer uma das duas formas:
+
+$$
+f'(z) = u_x + i\,v_x = v_y - i\,u_y
+$$
+
+### O que é condição necessária e o que é suficiente
+
+Esta distinção vale ponto em questão teórica:
+
+- se $f$ é derivável em $z_0$, então as equações de Cauchy-Riemann **valem** ali. (necessária)
+- se $u$ e $v$ têm derivadas parciais **contínuas** numa vizinhança de $z_0$ **e** satisfazem Cauchy-Riemann ali, então $f$ é analítica em $z_0$. (suficiente)
+
+Só as equações, sem a continuidade das parciais, não basta — mas em prova as funções são polinomiais, exponenciais ou racionais, e a continuidade é imediata. O que se costuma cobrar é: *verifique Cauchy-Riemann e conclua*.
+
+<Caixa tipo="exemplo">
+
+Mostre que $f(z) = e^z$ é inteira — Questão 01 do 1º EE de 2025.2 e da final de 2026.1.
+
+$$
+e^z = e^x\cos y + i\,e^x\operatorname{sen} y
+\quad\Longrightarrow\quad
+u = e^x\cos y,\qquad v = e^x\operatorname{sen} y
+$$
+
+$$
+u_x = e^x\cos y = v_y \;\checkmark
+\qquad
+u_y = -e^x\operatorname{sen} y = -v_x \;\checkmark
+$$
+
+As parciais são contínuas em todo o plano, então $e^z$ é analítica em todo o plano — **inteira**. E a derivada confirma o esperado:
+
+$$
+f'(z) = u_x + i\,v_x = e^x\cos y + i\,e^x\operatorname{sen} y = e^z
+$$
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+E o contraexemplo obrigatório: $f(z) = \bar z = x - iy$.
+
+$$
+u = x,\quad v = -y
+\quad\Longrightarrow\quad
+u_x = 1,\qquad v_y = -1
+$$
+
+$u_x \ne v_y$ em **ponto nenhum**, então o conjugado não é derivável em lugar algum do plano — apesar de $u$ e $v$ serem tão suaves quanto se queira. Derivabilidade complexa não é suavidade: é rigidez.
+
+</Caixa>
+
+### Onde a analiticidade falha
+
+Para função racional, o roteiro é mecânico: $f$ é analítica em todo ponto **menos** onde o denominador zera. $f(z) = \dfrac{z^{100}}{(z-1)^{101}}$ é analítica em $\mathbb{C} \setminus \{1\}$; $f(z) = \dfrac{e^{iz}}{(z-\pi)^3}$, em $\mathbb{C}\setminus\{\pi\}$. Localizar esses pontos e comparar com a curva de integração é **o** movimento das questões de integral do 1º EE — e é por isso que esta seção vem antes delas.
+
+<Caixa tipo="dica">
+
+Em coordenadas polares, Cauchy-Riemann fica
+
+$$
+\frac{\partial u}{\partial r} = \frac{1}{r}\frac{\partial v}{\partial \theta},
+\qquad
+\frac{1}{r}\frac{\partial u}{\partial \theta} = -\frac{\partial v}{\partial r}
+$$
+
+e é essa a forma que vale a pena usar quando a função vem escrita com $|z|$ ou com $\log$ — o que acontece na questão de função harmônica de 2025.2, onde $u = \ln|z|$.
 
 </Caixa>
 
