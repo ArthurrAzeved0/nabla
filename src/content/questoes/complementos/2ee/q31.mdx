@@ -1,0 +1,104 @@
+---
+origem: "2024.2"
+tema: "Laurent · Singularidade essencial de e^(1/z²)"
+temaId: singularidade-essencial
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $f(z) = e^{1/z^{2}}$.
+
+**a)** Estabeleça a natureza da singularidade em $z=0$;
+
+**b)** Escreva a série de Laurent de $f(z)$ em $0 < |z| < \infty$.
+
+<Gabarito>
+**a)** **Singularidade essencial** em $z=0$.
+
+**b)**
+
+$$
+e^{1/z^2} = \sum_{n=0}^{\infty}\frac{1}{n!\,z^{2n}}
+= 1 + \frac{1}{z^{2}} + \frac{1}{2!\,z^{4}} + \frac{1}{3!\,z^{6}} + \cdots
+$$
+
+O resíduo é **zero**, porque só há potências pares.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a série, por substituição.** Parta de $e^{w} = \sum_{n\ge0}\dfrac{w^n}{n!}$ e tome $w = \dfrac{1}{z^2}$:
+
+$$
+\boxed{\;e^{1/z^2} = \sum_{n=0}^{\infty}\frac{1}{n!}\left(\frac{1}{z^2}\right)^{n}
+= \sum_{n=0}^{\infty}\frac{z^{-2n}}{n!}
+= 1 + \frac{1}{z^2} + \frac{1}{2!z^4} + \frac{1}{3!z^6} + \cdots\;}
+$$
+
+Válida em $0 < |z| < \infty$, porque a série da exponencial converge para **todo** $w$ finito, e $w = 1/z^2$ é finito para todo $z \ne 0$.
+
+**Passo 2 — a natureza da singularidade.** A parte principal tem **infinitos** termos, e não existe $m$ para o qual $z^m f(z)$ tenha limite finito em $0$. Logo:
+
+$$
+z = 0 \text{ é } \textbf{singularidade essencial}
+$$
+
+**Passo 3 — a evidência de que não é polo.** Vale ver o que acontece por dois caminhos diferentes, porque isso caracteriza a essencial:
+
+$$
+z \to 0 \text{ pelo eixo real } (z = x):
+\qquad
+e^{1/x^2} \to +\infty
+$$
+
+$$
+z \to 0 \text{ pelo eixo imaginário } (z = iy):
+\qquad
+e^{1/(iy)^2} = e^{-1/y^2} \to 0
+$$
+
+O limite **não existe**: por um caminho a função explode, por outro ela morre. Num polo, $|f| \to \infty$ por **todos** os caminhos; numa removível, o limite existe. Só a essencial se comporta assim.
+
+**Passo 4 — o resíduo.** Ele é o coeficiente de $z^{-1}$, e os expoentes da série são $0, -2, -4, -6,\dots$ — **todos pares**. A potência $-1$ nunca aparece:
+
+$$
+\operatorname{Res}\big[e^{1/z^2}\big]_{z=0} = 0
+$$
+
+Em consequência, $\displaystyle\oint_{|z|=r} e^{1/z^2}\,dz = 0$ para qualquer $r > 0$.
+
+<Caixa tipo="dica" rotulo="Sobre o gabarito">
+
+O gabarito da prova escreve a série com sinais **alternados**:
+
+$$
+1 - z^{-2} + \frac{1}{2!}z^{-4} - \frac{1}{3!}z^{-6} + \cdots
+$$
+
+Essa é a série de $e^{-1/z^2}$, não de $e^{+1/z^2}$. Com o expoente positivo, todos os coeficientes são **positivos**, porque $e^w = \sum w^n/n!$ não alterna.
+
+O que **não** muda é a resposta dos dois itens: a singularidade é essencial nos dois casos, e o resíduo é zero nos dois, porque a paridade dos expoentes é a mesma. Trata-se de lapso de sinal, sem efeito na classificação.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="O expoente 2 dobra os espaçamentos">
+
+Compare com $e^{1/z}$, cuja série é $\sum z^{-n}/n!$ — **todas** as potências negativas, e resíduo $a_{-1} = 1$.
+
+Trocar $z$ por $z^2$ no denominador faz aparecerem só potências **pares**, e o resíduo cai para zero. É o mesmo mecanismo que zera o resíduo de $\cos(1/z)$ na q15 desta unidade.
+
+Regra: para achar o resíduo de uma essencial, escreva o expoente geral da série e **resolva** a equação "expoente $= -1$". Se ela não tiver solução inteira, o resíduo é zero.
+
+</Caixa>
+</Passos>
