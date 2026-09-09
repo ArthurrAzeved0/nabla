@@ -1,0 +1,100 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Fórmula de Cauchy · Só um dos dois polos está dentro"
+temaId: formula-das-derivadas
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\oint_{C} \frac{z\,dz}{(z-1)^2 (z+2)}
+$$
+
+onde $C$ é o círculo de raio $\dfrac32$ centrado na origem.
+
+<Gabarito>
+$$
+\oint_C \frac{z\,dz}{(z-1)^2(z+2)} = \frac{4\pi i}{9}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — listar as singularidades e comparar com a curva.** É aqui que a questão se resolve.
+
+$$
+z = 1 \;\;(\text{polo de ordem } 2),
+\qquad
+z = -2 \;\;(\text{polo simples})
+$$
+
+$$
+|1| = 1 < \frac32 \;\;\text{(dentro)},
+\qquad
+|-2| = 2 > \frac32 \;\;\text{(FORA)}
+$$
+
+Como **só uma** singularidade está dentro, não é preciso teorema dos resíduos: a fórmula de Cauchy resolve em uma aplicação. E o fator $(z+2)$, que é analítico dentro de $C$, passa a fazer parte do numerador.
+
+**Passo 2 — identificar $f$, $z_0$ e $n$.** Escrevendo o integrando na forma $\dfrac{f(z)}{(z-z_0)^{n+1}}$:
+
+$$
+f(z) = \frac{z}{z+2},
+\qquad
+z_0 = 1,
+\qquad
+n + 1 = 2 \;\Longrightarrow\; n = 1
+$$
+
+$f$ é analítica em $|z| \le 3/2$, pois seu único polo, $z=-2$, está fora. A hipótese está satisfeita.
+
+**Passo 3 — derivar $f$ uma vez.**
+
+$$
+f'(z) = \frac{(z+2) - z}{(z+2)^2} = \frac{2}{(z+2)^2}
+\qquad\Longrightarrow\qquad
+f'(1) = \frac{2}{9}
+$$
+
+**Passo 4 — aplicar a fórmula das derivadas.**
+
+$$
+\oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz = \frac{2\pi i}{n!}\,f^{(n)}(z_0)
+= \frac{2\pi i}{1!}\cdot\frac29
+$$
+
+$$
+\boxed{\;\oint_C \frac{z\,dz}{(z-1)^2(z+2)} = \frac{4\pi i}{9}\;}
+$$
+
+**Conferência —** o resultado é **imaginário puro**, o que era esperado: o integrando tem coeficientes reais e o resíduo saiu real ($2/9$), então o $2\pi i$ carrega o $i$ sozinho. Parte real diferente de zero aqui seria sinal de erro.
+
+<Caixa tipo="dica" rotulo="A armadilha do raio">
+
+Trocar o raio muda a questão inteira. Com $R = 3$, os dois polos entrariam e o caminho seria resíduos:
+
+$$
+\operatorname{Res}(f,1) = \frac29,
+\qquad
+\operatorname{Res}(f,-2) = \frac{z}{(z-1)^2}\bigg|_{z=-2} = \frac{-2}{9}
+$$
+
+soma zero, e a integral daria **zero** — o que também tem explicação: para $|z|$ grande o integrando cai como $1/z^2$, e a integral no círculo grande tende a zero.
+
+Ler o raio antes de tudo é o hábito que esta prova cobra em três itens seguidos.
+
+</Caixa>
+</Passos>
