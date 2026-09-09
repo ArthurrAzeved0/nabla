@@ -1,0 +1,115 @@
+---
+origem: "2023.2"
+tema: "Laplace · Transformada de um binômio cúbico com exponencial"
+temaId: transformada-de-laplace
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre
+
+$$
+\mathcal{L}\left\{\big(2 + 2x^3\big)^3 \exp(4x)\right\}
+$$
+
+(sugestão: expanda o binômio e utilize funções Gama.)
+
+**Dado:** $\Gamma(z) = \displaystyle\int_0^\infty t^{z-1}e^{-t}dt$, $\operatorname{Re}(z) > 0$.
+
+<Gabarito>
+$$
+\mathcal{L} = \frac{8}{s-4} + \frac{144}{(s-4)^4} + \frac{17\,280}{(s-4)^7} + \frac{2\,903\,040}{(s-4)^{10}}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — expandir o binômio, como o enunciado manda.** Ponha o $2$ em evidência primeiro, que encurta a conta:
+
+$$
+\big(2+2x^3\big)^3 = 2^3\big(1 + x^3\big)^3 = 8\big(1 + x^3\big)^3
+$$
+
+E $(1+u)^3 = 1 + 3u + 3u^2 + u^3$ com $u = x^3$:
+
+$$
+\big(2+2x^3\big)^3 = 8\left(1 + 3x^3 + 3x^6 + x^9\right)
+= 8 + 24x^3 + 24x^6 + 8x^9
+$$
+
+**Passo 2 — a transformada de $x^n e^{ax}$.** Duas propriedades combinadas. Primeiro,
+
+$$
+\mathcal{L}\{x^{n}\} = \frac{\Gamma(n+1)}{s^{\,n+1}}
+$$
+
+que é onde a Gama entra: para $n$ inteiro, $\Gamma(n+1) = n!$. Depois, o **deslocamento em $s$** cuida da exponencial:
+
+$$
+\mathcal{L}\{e^{ax}F(x)\} = \mathcal{L}\{F\}(s-a)
+\qquad\Longrightarrow\qquad
+\mathcal{L}\{x^{n}e^{ax}\} = \frac{n!}{(s-a)^{\,n+1}}
+$$
+
+Com $a = 4$.
+
+**Passo 3 — aplicar termo a termo.**
+
+$$
+\mathcal{L}\{8\,e^{4x}\} = \frac{8}{s-4}
+$$
+
+$$
+\mathcal{L}\{24x^3e^{4x}\} = \frac{24\cdot 3!}{(s-4)^4} = \frac{144}{(s-4)^4}
+$$
+
+$$
+\mathcal{L}\{24x^6e^{4x}\} = \frac{24\cdot 6!}{(s-4)^7} = \frac{24 \cdot 720}{(s-4)^7} = \frac{17\,280}{(s-4)^7}
+$$
+
+$$
+\mathcal{L}\{8x^9e^{4x}\} = \frac{8\cdot 9!}{(s-4)^{10}} = \frac{8\cdot 362\,880}{(s-4)^{10}} = \frac{2\,903\,040}{(s-4)^{10}}
+$$
+
+**Passo 4 — somar.**
+
+$$
+\boxed{\;\mathcal{L}\left\{(2+2x^3)^3e^{4x}\right\}
+= \frac{8}{s-4} + \frac{144}{(s-4)^4} + \frac{17\,280}{(s-4)^7} + \frac{2\,903\,040}{(s-4)^{10}}\;}
+$$
+
+válida para $s > 4$, que é onde a integral converge.
+
+<Caixa tipo="macete" rotulo="Por que a sugestão fala de Gama se os expoentes são inteiros">
+
+Com $n = 3, 6, 9$ inteiros, $\Gamma(n+1) = n!$ e a Gama parece dispensável. Ela está na sugestão por dois motivos.
+
+O primeiro é que a prova **fornece** a definição de $\Gamma$ na folha de dados, e usar o que a prova entrega é o caminho esperado. O segundo é que a mesma questão, com expoente fracionário — digamos $x^{3/2}$ —, **só** se escreve com Gama:
+
+$$
+\mathcal{L}\left\{x^{3/2}\right\} = \frac{\Gamma(5/2)}{s^{5/2}} = \frac{3\sqrt\pi}{4\,s^{5/2}}
+$$
+
+usando $\Gamma(5/2) = \tfrac32\cdot\tfrac12\cdot\sqrt\pi$. Escrever a fórmula com $\Gamma(n+1)$ desde o começo cobre os dois casos.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A ordem certa das propriedades">
+
+Faça **primeiro** a potência e **depois** o deslocamento. Tentar transformar $e^{4x}$ e depois multiplicar por algo é o erro de método aqui — Laplace **não** transforma produto em produto (ver a seção de convolução).
+
+A regra prática: exponencial multiplicando qualquer coisa vira translação em $s$, e translação é a **última** coisa que se aplica.
+
+</Caixa>
+</Passos>
