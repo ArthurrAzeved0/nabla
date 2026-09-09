@@ -22,6 +22,7 @@ unidades:
     secoes:
       - { id: cm-edo, titulo: "EDO: solução geral, wronskiano e as de 1ª ordem que caem" }
       - { id: cm-gama, titulo: "Funções Gama e Beta: as integrais que a prova exige" }
+      - { id: cm-series-potencias, titulo: "Solução de EDO por séries de potências" }
 ---
 
 {/* **************************************************************************
@@ -1708,6 +1709,99 @@ $$
 $$
 
 Para $n$ inteiro isso é o familiar $n!/s^{n+1}$. Para $n$ fracionário, só a Gama serve — e é por isso que o 2º EE de 2023.2 sugere "expanda o binômio e utilize funções Gama" na transformada de $(2+2x^3)^3e^{4x}$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-series-potencias" num="17" titulo="Solução de EDO por séries de potências">
+
+### A ideia
+
+Equação como $y'' + xy = 0$ não tem solução em funções elementares. Mas se a solução é analítica, ela **é** uma série de potências — e os coeficientes se descobrem substituindo a série na equação e igualando potência por potência. O método troca "resolver uma equação diferencial" por "resolver uma recorrência entre números", e isso quase sempre dá.
+
+<Formula rotulo="A tentativa e suas derivadas">
+
+$$
+y = \sum_{n=0}^{\infty} a_n (x - x_0)^n,
+\qquad
+y' = \sum_{n=1}^{\infty} n\,a_n (x-x_0)^{n-1},
+\qquad
+y'' = \sum_{n=2}^{\infty} n(n-1)\,a_n (x-x_0)^{n-2}
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $x_0$ — o **ponto de expansão**, que precisa ser **ordinário** (ver abaixo);
+- $a_n$ — coeficientes a determinar; $a_0$ e $a_1$ ficam livres e são as duas constantes da solução geral;
+- **relação de recorrência** — a fórmula que dá $a_{n+2}$ em função de $a_n$;
+- **raio de convergência** — pelo menos a distância de $x_0$ até o ponto singular mais próximo (agora no plano complexo — é a seção 10 pagando dividendo).
+
+</Caixa>
+
+### Ponto ordinário e ponto singular
+
+Escreva a equação na **forma padrão**, com o coeficiente de $y''$ igual a $1$:
+
+$$
+y'' + P(x)\,y' + Q(x)\,y = 0
+$$
+
+- $x_0$ é **ordinário** se $P$ e $Q$ são analíticas em $x_0$;
+- é **singular** caso contrário — e aí o método desta seção não se aplica direto: usa-se **Frobenius** (seção 18).
+
+O passo que decide é dividir pelo coeficiente de $y''$ **antes** de julgar. Em $2xy'' + y' + xy = 0$, a forma padrão tem $P = \dfrac{1}{2x}$ e $Q = \dfrac12$: $x=0$ é singular por causa do $P$.
+
+### O roteiro
+
+1. **Substitua** a série e suas derivadas na equação;
+2. **Alinhe as potências** — mude o índice de cada soma para que todas fiquem em $x^n$;
+3. **Iguale a zero o coeficiente** de cada potência: sai a recorrência;
+4. **Itere** a recorrência a partir de $a_0$ e $a_1$;
+5. **Separe** a solução em duas séries, uma multiplicando $a_0$ e outra $a_1$.
+
+<Caixa tipo="exemplo">
+
+Resolva $y'' - xy = 0$ (Airy) em torno de $x_0 = 0$, que é ordinário.
+
+Substituindo e deslocando índices para $x^n$:
+
+$$
+\sum_{n=0}^{\infty}(n+2)(n+1)a_{n+2}x^n - \sum_{n=1}^{\infty} a_{n-1}x^{n} = 0
+$$
+
+Coeficiente de $x^0$: $2a_2 = 0 \Rightarrow a_2 = 0$. Coeficiente de $x^n$, $n\ge1$:
+
+$$
+(n+2)(n+1)a_{n+2} = a_{n-1}
+\qquad\Longrightarrow\qquad
+a_{n+2} = \frac{a_{n-1}}{(n+2)(n+1)}
+$$
+
+A recorrência liga índices de **três em três**, então $a_0$ gera $a_3, a_6,\dots$ e $a_1$ gera $a_4, a_7,\dots$, enquanto $a_2 = a_5 = \cdots = 0$:
+
+$$
+y = a_0\left(1 + \frac{x^3}{6} + \frac{x^6}{180} + \cdots\right)
++ a_1\left(x + \frac{x^4}{12} + \frac{x^7}{504} + \cdots\right)
+$$
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+O passo 2 é onde se perde a questão. Regra mecânica: para levar $\sum_{n=k}^{\infty} c_n x^{n-j}$ a potências $x^n$, troque $n \to n+j$ e o limite inferior vai de $k$ para $k-j$. Escreva os primeiros termos à mão para conferir — se o coeficiente de $x^0$ não bater, o deslocamento está errado.
+
+E confira a recorrência achada num caso conhecido: aplicada a $y'' + y = 0$, ela tem de reproduzir seno e cosseno.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Nesta cadeira, o **raio** de convergência da série vem da teoria complexa da 1ª unidade: é a distância de $x_0$ à singularidade mais próxima **no plano**, ainda que a equação seja real. É por isso que as duas unidades não são assuntos separados.
+
+Ver também as seções de séries de potências e de Frobenius em **Equações Diferenciais**, onde o método aparece com mais exemplos resolvidos.
 
 </Caixa>
 

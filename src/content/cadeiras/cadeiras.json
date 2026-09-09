@@ -527,7 +527,11 @@
       "funcao-gama": "cm-gama",
       "funcao-beta": "cm-gama",
       "recorrencia-de-gama": "cm-gama",
-      "integral-impropria-por-gama": "cm-gama"
+      "integral-impropria-por-gama": "cm-gama",
+      "solucao-por-serie-de-potencias": "cm-series-potencias",
+      "ponto-ordinario": "cm-series-potencias",
+      "relacao-de-recorrencia": "cm-series-potencias",
+      "equacao-de-airy": "cm-series-potencias"
     }
   }
 ]
