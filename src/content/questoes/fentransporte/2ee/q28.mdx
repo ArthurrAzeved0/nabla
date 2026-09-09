@@ -1,0 +1,181 @@
+---
+origem: "Prova · turma EM"
+tema: "Dedução · Equação de Bernoulli pela segunda lei de Newton"
+temaId: equacao-de-bernoulli
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A partir do diagrama, aplicando a **segunda lei de Newton**, deduza a equação de Bernoulli para escoamento em **regime permanente, incompressível e invíscido** (coordenadas cartesianas), ao longo de uma **linha de corrente**.
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Elemento de fluido ao longo de uma linha de corrente inclinada: a pressão empurra pelas duas faces, o peso age para baixo, e a projeção do comprimento do elemento na vertical é dz">
+    {/* linha de corrente */}
+    <path d="M20 168 Q120 150 200 96 Q262 56 320 42" fill="none" stroke="var(--accent)" stroke-width="1.3" stroke-dasharray="5 4"/>
+    <text x="26" y="184" font-size="9" fill="var(--accent)">linha de corrente</text>
+    {/* elemento de fluido, inclinado */}
+    <polygon points="150,124 186,100 200,120 164,144" fill="var(--accent-soft)" opacity="0.75" stroke="var(--ink-2)" stroke-width="1.3"/>
+    {/* pressão na face de trás */}
+    <line x1="126" y1="152" x2="150" y2="136" stroke="var(--warn)" stroke-width="1.9"/>
+    <polygon points="155,133 144,133 148,141" fill="var(--warn)"/>
+    <text x="92" y="152" font-size="9" fill="var(--warn)">p · dA</text>
+    {/* pressão na face da frente */}
+    <line x1="204" y1="102" x2="228" y2="86" stroke="var(--warn)" stroke-width="1.9"/>
+    <polygon points="199,105 210,105 206,97" fill="var(--warn)"/>
+    <text x="234" y="72" font-size="9" fill="var(--warn)">(p + dp) · dA</text>
+    {/* peso */}
+    <line x1="176" y1="128" x2="176" y2="164" stroke="var(--ink-2)" stroke-width="1.9"/>
+    <polygon points="176,170 172,159 180,159" fill="var(--ink-2)"/>
+    <text x="182" y="164" font-size="9" fill="var(--ink-2)">ρ g dA ds</text>
+    {/* ds ao longo do eixo do elemento */}
+    <line x1="152" y1="112" x2="188" y2="88" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="192,85 182,86 186,92" fill="var(--ok)"/>
+    <text x="150" y="100" font-size="9" fill="var(--ok)">ds</text>
+    {/* projeção dz */}
+    <line x1="238" y1="122" x2="238" y2="98" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="238,94 235,102 241,102" fill="var(--ok)"/>
+    <polygon points="238,126 235,118 241,118" fill="var(--ok)"/>
+    <line x1="200" y1="122" x2="238" y2="122" stroke="var(--ok)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="200" y1="98" x2="238" y2="98" stroke="var(--ok)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="244" y="114" font-size="9" fill="var(--ok)">dz</text>
+    {/* ângulo */}
+    <path d="M164 144 Q176 142 178 134" fill="none" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="170" y="156" font-size="9" fill="var(--ink-3)">θ</text>
+    <line x1="164" y1="144" x2="212" y2="144" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    {/* eixos */}
+    <line x1="300" y1="192" x2="300" y2="160" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="300,156 297,164 303,164" fill="var(--ink-3)"/>
+    <text x="306" y="166" font-size="10" fill="var(--ink-3)">z</text>
+    <line x1="300" y1="192" x2="330" y2="192" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="292" y="204" font-size="10" fill="var(--ink-3)">x</text>
+  </svg>
+  <figcaption>
+
+O elemento é fatiado **ao longo** da linha de corrente: só a direção $s$ interessa, e nela agem duas pressões e a componente do peso.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\frac{p}{\gamma} + \frac{v^2}{2g} + z = \text{constante}
+$$
+
+ao longo de uma mesma linha de corrente.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o elemento e as forças na direção do escoamento.** Toma-se um elemento de fluido de área transversal $dA$ e comprimento $ds$ **ao longo** da linha de corrente, inclinada de $\theta$ com a horizontal. Na direção $s$ agem:
+
+- a pressão na face de trás, empurrando **para frente**: $p\,dA$;
+- a pressão na face da frente, empurrando **para trás**: $(p + dp)\,dA$;
+- a componente do **peso** ao longo de $s$: $-\rho\,g\,dA\,ds\,\sin\theta$.
+
+<Caixa tipo="dica" rotulo="Por que a viscosidade não aparece">
+
+O enunciado diz **invíscido** ($\mu = 0$): não há tensão de cisalhamento nas faces laterais do elemento. É essa hipótese que deixa **só** pressão e peso na conta — e é ela que, ao cair, faz surgir a perda de carga.
+
+</Caixa>
+
+**Passo 2 — a segunda lei de Newton.** A massa do elemento é $dm = \rho\,dA\,ds$:
+
+$$
+\sum F_s = dm\,a_s
+$$
+
+$$
+p\,dA - (p + dp)\,dA - \rho\,g\,dA\,ds\,\sin\theta = \rho\,dA\,ds\,a_s
+$$
+
+O termo $p\,dA$ cancela com parte do segundo:
+
+$$
+-\,dp\,dA - \rho\,g\,dA\,ds\,\sin\theta = \rho\,dA\,ds\,a_s
+$$
+
+**Passo 3 — a geometria: $\sin\theta$ vira $dz/ds$.** Este é o passo que conecta a inclinação à altura, e é o que o diagrama mostra:
+
+$$
+\sin\theta = \frac{dz}{ds}
+\qquad\Longrightarrow\qquad
+ds\,\sin\theta = dz
+$$
+
+$$
+-\,dp\,dA - \rho\,g\,dA\,dz = \rho\,dA\,ds\,a_s
+$$
+
+Dividindo tudo por $\rho\,dA$:
+
+$$
+-\frac{dp}{\rho} - g\,dz = ds\,a_s
+$$
+
+**Passo 4 — a aceleração em regime permanente.** A velocidade não muda com o tempo num ponto fixo, mas muda **de ponto a ponto** ao longo de $s$. Pela regra da cadeia:
+
+$$
+a_s = \frac{dv}{dt} = \frac{dv}{ds}\cdot\frac{ds}{dt} = v\,\frac{dv}{ds}
+\qquad\Longrightarrow\qquad
+ds\,a_s = v\,dv
+$$
+
+Esta é a **aceleração convectiva**: a partícula acelera porque **muda de lugar**, e nos lugares novos a velocidade é outra. Sem ela a dedução não fecha.
+
+$$
+-\frac{dp}{\rho} - g\,dz = v\,dv
+$$
+
+**Passo 5 — reorganizar: a equação de Euler ao longo da linha de corrente.**
+
+$$
+\boxed{\;\frac{dp}{\rho} + v\,dv + g\,dz = 0\;}
+$$
+
+**Passo 6 — integrar, e é aqui que entra "incompressível".** Como $\rho$ é **constante**, ele sai da integral:
+
+$$
+\frac{1}{\rho}\int dp + \int v\,dv + g\int dz = 0
+$$
+
+$$
+\frac{p}{\rho} + \frac{v^2}{2} + g\,z = \text{constante}
+$$
+
+Se $\rho$ dependesse de $p$ (gás), a primeira integral não seria $p/\rho$ e a equação sairia diferente — é exatamente aí que a hipótese de incompressibilidade é usada.
+
+**Passo 7 — dividir por $g$ para chegar à forma de cargas.**
+
+$$
+\frac{p}{\rho g} + \frac{v^2}{2g} + z = \text{constante}
+\qquad\Longrightarrow\qquad
+\boxed{\;\frac{p}{\gamma} + \frac{v^2}{2g} + z = H\;}
+$$
+
+com $\gamma = \rho g$. Agora os três termos têm unidade de **comprimento** — metro de coluna de fluido — e podem ser lidos como alturas.
+
+<Caixa tipo="macete" rotulo="Onde cada hipótese foi usada">
+
+| hipótese | onde entrou |
+|---|---|
+| **invíscido** | Passo 1: nenhuma tensão de cisalhamento nas faces |
+| **regime permanente** | Passo 4: $a_s = v\,dv/ds$, sem termo $\partial v/\partial t$ |
+| **incompressível** | Passo 6: $\rho$ sai da integral |
+| **ao longo de uma linha de corrente** | Passo 1: o elemento foi fatiado ao longo de $s$ |
+
+Numa questão de dedução, apontar em que passo cada hipótese foi usada vale tanto quanto a álgebra — mostra que a dedução foi entendida, e não decorada.
+
+</Caixa>
+
+**Conferência —** a dedução tem de passar por: forças de pressão e peso → 2ª lei de Newton → $\sin\theta = dz/ds$ → aceleração convectiva $v\,dv/ds$ → Euler → integração com $\rho$ constante → divisão por $g$ ✔ Pular a aceleração convectiva ou o $\sin\theta$ derruba a dedução ✔ Escrever direto a equação final não é dedução, é enunciado da fórmula ✔
+</Passos>
