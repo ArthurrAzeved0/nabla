@@ -1,0 +1,164 @@
+---
+origem: "2026.1"
+tema: "Bomba · Altura máxima do reservatório de chegada"
+temaId: equacao-da-energia-com-maquina
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q20.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um sistema hidráulico transfere água de um reservatório aberto de grandes dimensões (Tanque 1) para um segundo reservatório aberto (Tanque 2). O Tanque 1 está localizado $5\ \mathrm{m}$ **abaixo** da linha de centro da bomba, que tem uma **potência ideal de $2\ \mathrm{kW}$** e opera com vazão constante de $0{,}01\ \mathrm{m^3/s}$. A tubulação tem diâmetro constante de $10\ \mathrm{cm}$. Sabendo que a perda de carga total do sistema é de $2\ \mathrm{m}$, determine a **altura máxima**, a partir da linha de centro da bomba, na qual o Tanque 2 pode ser instalado.
+
+**Dados:** $g = 10\ \mathrm{m/s^2}$; $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$.
+
+<Figura>
+  <svg viewBox="0 0 340 230" role="img" aria-label="Tanque 1 aberto cinco metros abaixo da linha de centro da bomba, tubulação de dez centímetros passando pela bomba e subindo até o Tanque 2, cuja altura h acima da bomba é a incógnita">
+    {/* linha de centro da bomba */}
+    <line x1="20" y1="76" x2="320" y2="76" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="6 4"/>
+    <text x="22" y="70" font-size="9" fill="var(--ink-3)">linha de centro da bomba</text>
+    {/* tanque 1 */}
+    <path d="M40 140 L40 200 L120 200 L120 140" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="41" y="152" width="78" height="48" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="41" y1="152" x2="119" y2="152" stroke="var(--accent)" stroke-width="1.4"/>
+    <text x="58" y="182" font-size="10" fill="var(--ink-2)">Tanque 1</text>
+    {/* cota 5 m */}
+    <line x1="150" y1="76" x2="150" y2="152" stroke="var(--warn)" stroke-width="1.2"/>
+    <polygon points="150,76 146,86 154,86" fill="var(--warn)"/>
+    <polygon points="150,152 146,142 154,142" fill="var(--warn)"/>
+    <line x1="119" y1="152" x2="150" y2="152" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="156" y="118" font-size="10" fill="var(--warn)">5 m</text>
+    {/* tubulação: sobe do tanque 1 até a bomba */}
+    <line x1="80" y1="152" x2="80" y2="76" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="80" y1="76" x2="176" y2="76" stroke="var(--ink-2)" stroke-width="2.2"/>
+    {/* bomba */}
+    <circle cx="192" cy="76" r="14" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="186" y="80" font-size="11" fill="var(--ink-2)">B</text>
+    <text x="164" y="102" font-size="9" fill="var(--ink-2)">N = 2 kW</text>
+    {/* tubulação: da bomba até o tanque 2 */}
+    <line x1="206" y1="76" x2="262" y2="76" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="262" y1="76" x2="262" y2="40" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <text x="212" y="66" font-size="9" fill="var(--ink-3)">d = 10 cm</text>
+    {/* tanque 2 */}
+    <path d="M242 40 L242 20 L316 20 L316 40" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="243" y="28" width="72" height="12" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="243" y1="28" x2="315" y2="28" stroke="var(--accent)" stroke-width="1.4"/>
+    <text x="258" y="16" font-size="10" fill="var(--ink-2)">Tanque 2</text>
+    {/* cota h */}
+    <line x1="330" y1="28" x2="330" y2="76" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="330,28 326,38 334,38" fill="var(--ok)"/>
+    <polygon points="330,76 326,66 334,66" fill="var(--ok)"/>
+    <line x1="316" y1="28" x2="330" y2="28" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="308" y="56" font-size="11" fill="var(--ok)">h = ?</text>
+    {/* perda de carga */}
+    <text x="34" y="222" font-size="9" fill="var(--ink-3)">perda de carga total do sistema: hₚ = 2 m</text>
+  </svg>
+  <figcaption>
+
+Os dois reservatórios são **abertos** e de grandes dimensões: nas duas superfícies livres a pressão é a atmosférica e a velocidade é praticamente nula.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+H_B = \frac{N_{\text{ideal}}}{\gamma\,Q} = \frac{2000}{10\,000 \cdot 0{,}01} = 20\ \mathrm{m}
+$$
+
+$$
+z_1 + H_B = z_2 + h_p
+\qquad\Longrightarrow\qquad
+-5 + 20 = h + 2
+$$
+
+$$
+h = \mathbf{13\ m}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a carga que a bomba entrega.** Potência **ideal** significa sem contar rendimento: toda ela vira carga no fluido.
+
+$$
+N_{\text{ideal}} = \gamma\,Q\,H_B
+\qquad\Longrightarrow\qquad
+H_B = \frac{N_{\text{ideal}}}{\gamma\,Q}
+$$
+
+$$
+H_B = \frac{2000\ \mathrm{W}}{10\,000\ \mathrm{N/m^3} \cdot 0{,}01\ \mathrm{m^3/s}} = \frac{2000}{100} = 20\ \mathrm{m}
+$$
+
+Vinte metros de coluna d'água: é esse o "orçamento" de energia que o sistema tem para gastar.
+
+<Caixa tipo="simbolos">
+
+- $N_{\text{ideal}} = 2\ \mathrm{kW} = 2000\ \mathrm{W}$ — potência da bomba
+- $\gamma = 10\,000\ \mathrm{N/m^3}$ — peso específico da água
+- $Q = 0{,}01\ \mathrm{m^3/s}$ — vazão
+- $H_B$ — altura manométrica da bomba, em metros de coluna d'água
+- $h_p = 2\ \mathrm{m}$ — perda de carga total
+
+</Caixa>
+
+**Passo 2 — escolher os pontos e o referencial.** Os pontos que simplificam tudo são as **duas superfícies livres**. Referencial na **linha de centro da bomba**, como pede o enunciado. Então:
+
+$$
+z_1 = -5\ \mathrm{m}
+\qquad
+z_2 = +h
+$$
+
+**Passo 3 — a equação da energia com máquina.**
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 + H_B = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2 + h_p
+$$
+
+Três termos caem de uma vez:
+
+- $p_1 = p_2 = p_{\text{atm}}$ — os dois tanques são **abertos**, então as parcelas de pressão se cancelam;
+- $v_1 \approx v_2 \approx 0$ — os reservatórios são de **grandes dimensões**, então a superfície livre desce (ou sobe) devagar.
+
+Sobra:
+
+$$
+z_1 + H_B = z_2 + h_p
+$$
+
+**Passo 4 — resolver.**
+
+$$
+-5 + 20 = h + 2
+\qquad\Longrightarrow\qquad
+h = 15 - 2 = 13\ \mathrm{m}
+$$
+
+**Passo 5 — por que é a altura *máxima*.** Os $20\ \mathrm{m}$ da bomba são divididos em três destinos:
+
+- $5\ \mathrm{m}$ para tirar a água de baixo da bomba;
+- $2\ \mathrm{m}$ para pagar o atrito;
+- o que sobra, $13\ \mathrm{m}$, para **subir** além da bomba.
+
+Instalar o Tanque 2 mais alto que isso pediria mais carga do que a bomba tem, e a vazão de $0{,}01\ \mathrm{m^3/s}$ não se sustentaria.
+
+<Caixa tipo="macete">
+
+O diâmetro de $10\ \mathrm{cm}$ é dado, mas **não muda a resposta**: como a tubulação tem diâmetro **constante** e os dois tanques são de grandes dimensões, a carga cinética não aparece na equação.
+
+Ele serviria se a questão pedisse a velocidade ($v = Q/A = 0{,}01/7{,}85\times10^{-3} \approx 1{,}27\ \mathrm{m/s}$) ou se a tubulação descarregasse **livremente** no Tanque 2 — nesse caso valeria descontar também a carga cinética de saída, $v^2/2g \approx 0{,}08\ \mathrm{m}$, e a resposta cairia para $12{,}92\ \mathrm{m}$.
+
+</Caixa>
+
+**Conferência —** $z_1$ é **negativo**, porque o Tanque 1 está abaixo do referencial ✔ a perda de carga entra somando do lado de chegada ✔ a potência em watt e $\gamma$ em $\mathrm{N/m^3}$ dão $H_B$ em metro ✔
+</Passos>
