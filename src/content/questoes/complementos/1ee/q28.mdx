@@ -1,0 +1,45 @@
+---
+origem: "2024.2"
+tema: "Conceitual · Por que usar complexos para grandezas físicas"
+temaId: numeros-complexos
+pontos: 0,2 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Nós não obtemos valores complexos ao medir quantidades físicas. Por exemplo, a velocidade de um carro nunca é $2i\ \mathrm{m/s}$, $i = \sqrt{-1}$. Isso, no entanto, não nos impede de usarmos números complexos para representar quantidades físicas. Por quê?
+
+<Gabarito>
+Porque o número complexo é uma **ferramenta de cálculo intermediária**: ele carrega duas informações reais (módulo e fase, ou parte real e imaginária) num só objeto, simplifica contas que seriam pesadas em variáveis separadas, e o resultado final é sempre extraído como uma quantidade **real** — a parte real, o módulo, ou a fase.
+</Gabarito>
+
+<Passos>
+**A resposta curta**, que é o que a prova pede em até quatro linhas: os complexos facilitam certos cálculos e permitem que os **resultados finais sejam reais**. A medida nunca é complexa; a **representação** é.
+
+**O que está por trás disso.** Três razões, e vale conhecer as três:
+
+**1. Duas grandezas reais em um objeto.** Uma oscilação tem amplitude e fase. Escrevê-la como $A\cos(\omega t + \varphi)$ obriga a carregar as duas separadamente em cada conta. Escrevê-la como $\operatorname{Re}\!\left[A e^{i\varphi}e^{i\omega t}\right]$ empacota amplitude e fase num único número, o **fasor** $Ae^{i\varphi}$.
+
+**2. Soma de senoides vira soma de vetores.** Somar $A_1\cos(\omega t+\varphi_1) + A_2\cos(\omega t+\varphi_2)$ com identidades trigonométricas é penoso. Somar os dois fasores é somar dois números complexos. É exatamente por isso que a análise de circuitos em regime permanente senoidal se faz com impedância complexa.
+
+**3. Derivada vira multiplicação.** $\dfrac{d}{dt}e^{i\omega t} = i\omega\,e^{i\omega t}$: derivar no tempo é multiplicar por $i\omega$. Uma equação diferencial vira uma equação algébrica, e é essa a raiz da transformada de Laplace da 2ª unidade.
+
+**O ponto que fecha a resposta:** em todos os casos, o complexo entra no meio e **sai no fim**. Toma-se $\operatorname{Re}$, ou o módulo, ou a fase, e o que se mede continua sendo real.
+
+<Caixa tipo="dica" rotulo="O formato da resposta">
+
+Esta prova tem cinco questões conceituais de $0{,}2$ ponto, com instrução explícita de responder **em até quatro linhas**. Não é lugar para dissertação: uma frase dizendo o que o complexo faz (empacota duas informações reais e simplifica a conta) e outra dizendo que o resultado volta a ser real bastam para o ponto cheio.
+
+</Caixa>
+</Passos>
