@@ -1,0 +1,105 @@
+---
+origem: "2024.2"
+tema: "Resíduos · Um resíduo nulo em polo duplo"
+temaId: residuo-em-polo-de-ordem-m
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja
+
+$$
+f(z) = \frac{z^2+1}{z\,(z-1)^2}
+$$
+
+**a)** Calcule os resíduos correspondentes a $f(z)$;
+
+**b)** Se $\gamma$ é qualquer curva fechada em torno de $z=0$, mas **não** envolvendo $z=1$, calcule
+
+$$
+\oint_{\gamma}\frac{z^2+1}{z(z-1)^2}\,dz
+$$
+
+<Gabarito>
+**a)** $\operatorname{Res}(f,0) = 1$ e $\operatorname{Res}(f,1) = 0$.
+
+**b)** $\displaystyle\oint_\gamma f(z)\,dz = 2\pi i$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os polos.**
+
+$$
+z = 0 \;\;(\text{simples}),
+\qquad
+z = 1 \;\;(\text{ordem } 2)
+$$
+
+O numerador $z^2+1$ vale $1$ em $z=0$ e $2$ em $z=1$: não cancela nenhum dos dois.
+
+**Passo 2 — resíduo em $z=0$, simples.** Corte o fator e avalie:
+
+$$
+\operatorname{Res}(f,0) = \frac{z^2+1}{(z-1)^2}\bigg|_{z=0} = \frac{1}{(-1)^2} = 1
+$$
+
+**Passo 3 — resíduo em $z=1$, ordem 2.** Uma derivada:
+
+$$
+\operatorname{Res}(f,1) = \lim_{z\to1}\frac{d}{dz}\left[\frac{z^2+1}{z}\right]
+$$
+
+Simplifique **antes** de derivar — é o que torna a conta trivial:
+
+$$
+\frac{z^2+1}{z} = z + \frac1z
+\qquad\Longrightarrow\qquad
+\frac{d}{dz}\left[z + \frac1z\right] = 1 - \frac{1}{z^2}
+$$
+
+$$
+\operatorname{Res}(f,1) = 1 - \frac{1}{1^2} = 0
+$$
+
+**Resíduo nulo em polo genuíno de ordem 2** — vale registrar: resíduo zero **não** significa que o ponto seja regular. Aqui $z=1$ é polo duplo de verdade ($|f|\to\infty$ ali), mas o coeficiente $a_{-1}$ da série de Laurent é zero.
+
+**Passo 4 — item (b): só o polo de $z=0$ conta.** A curva envolve $z=0$ e **não** envolve $z=1$, então a soma tem uma parcela só:
+
+$$
+\boxed{\;\oint_\gamma \frac{z^2+1}{z(z-1)^2}\,dz = 2\pi i\cdot\operatorname{Res}(f,0) = 2\pi i\;}
+$$
+
+**Conferência — e um resultado bonito de brinde.** Se a curva envolvesse **os dois** polos, o valor seria
+
+$$
+2\pi i\,(1 + 0) = 2\pi i
+$$
+
+**o mesmo!** Porque o resíduo em $z=1$ é nulo, o valor da integral não muda ao incluir aquele polo. Uma curva grande e uma curva pequena em torno da origem dão a mesma resposta.
+
+<Caixa tipo="macete" rotulo="Simplifique antes de derivar">
+
+No passo 3, derivar $\dfrac{z^2+1}{z}$ pela regra do quociente também funciona:
+
+$$
+\frac{2z\cdot z - (z^2+1)}{z^2} = \frac{z^2-1}{z^2}
+$$
+
+que em $z=1$ dá zero ✔ Mas reescrever como $z + 1/z$ e derivar termo a termo é mais rápido e não tem onde errar.
+
+Regra geral em resíduo de ordem $m$: **simplifique a expressão $(z-z_0)^m f(z)$ ao máximo antes de derivar**. Em polos de ordem $3$ ou mais, isso é o que separa uma conta de duas linhas de uma de dez.
+
+</Caixa>
+</Passos>
