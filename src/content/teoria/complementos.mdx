@@ -9,6 +9,7 @@ unidades:
       - { id: cm-exp-log, titulo: "Exponencial, logaritmo e potências complexas" }
       - { id: cm-trig-hip, titulo: "Funções trigonométricas e hiperbólicas complexas" }
       - { id: cm-analiticas, titulo: "Derivada, funções analíticas e Cauchy-Riemann" }
+      - { id: cm-harmonicas, titulo: "Funções harmônicas e a conjugada harmônica" }
 ---
 
 {/* **************************************************************************
@@ -624,6 +625,108 @@ $$
 $$
 
 e é essa a forma que vale a pena usar quando a função vem escrita com $|z|$ ou com $\log$ — o que acontece na questão de função harmônica de 2025.2, onde $u = \ln|z|$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-harmonicas" num="06" titulo="Funções harmônicas e a conjugada harmônica">
+
+### A ideia
+
+Derive $u_x = v_y$ em $x$, derive $u_y = -v_x$ em $y$ e some: as derivadas mistas de $v$ se cancelam e sobra
+
+<Formula rotulo="Equação de Laplace">
+
+$$
+\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0
+$$
+
+</Formula>
+
+O mesmo vale para $v$. Isto é, **parte real e parte imaginária de função analítica são harmônicas** — e a recíproca também serve: dada uma harmônica, existe uma função analítica que a tem como parte real.
+
+Por que isso importa em engenharia: a equação de Laplace é a do **potencial elétrico** sem carga, a do **escoamento potencial**, a da **condução de calor em regime permanente**. Toda função analítica é, de graça, um par de soluções desses problemas — e é por esse caminho que variável complexa entra em eletromagnetismo e em mecânica dos fluidos.
+
+<Caixa tipo="simbolos">
+
+- $\nabla^2 u$ — **laplaciano** de $u$, também escrito $\Delta u$;
+- **harmônica** — $u$ tem parciais de 2ª ordem contínuas e $\nabla^2 u = 0$ na região;
+- **conjugada harmônica de $u$** — a $v$ tal que $f = u + iv$ é analítica. A ordem importa: $v$ é conjugada de $u$, mas $u$ é conjugada de $-v$;
+- **região simplesmente conexa** — sem buracos. É a condição para a conjugada existir globalmente.
+
+</Caixa>
+
+### O roteiro da conjugada harmônica
+
+É a questão que mais se repete no 1º EE — 2023.2, 2025.2 e 2026.1 pedem exatamente isso. Quatro passos, sempre os mesmos:
+
+1. **Confirme que $u$ é harmônica.** Calcule $u_{xx}$ e $u_{yy}$ e some. Se não der zero, não existe conjugada e a questão acaba aqui;
+2. **Integre $v_y = u_x$ em $y$**, tratando $x$ como constante. Aparece uma constante de integração que é uma **função de $x$**: $\varphi(x)$;
+3. **Derive o resultado em $x$ e compare com $v_x = -u_y$.** Isso determina $\varphi'(x)$;
+4. **Integre $\varphi'$** e escreva $f = u + iv$, com uma constante real $c$ sobrando.
+
+<Caixa tipo="exemplo">
+
+Questão 02 do 1º EE de 2026.1: $u(x,y) = 3x^2y - y^3$. Verifique se é harmônica e ache $v$.
+
+**Passo 1.** $u_x = 6xy$, $u_{xx} = 6y$; $u_y = 3x^2 - 3y^2$, $u_{yy} = -6y$. Soma: $6y - 6y = 0$ ✔ harmônica em todo o plano.
+
+**Passo 2.** $v_y = u_x = 6xy \Rightarrow v = 3xy^2 + \varphi(x)$.
+
+**Passo 3.** $v_x = 3y^2 + \varphi'(x)$, e Cauchy-Riemann pede $v_x = -u_y = 3y^2 - 3x^2$. Logo $\varphi'(x) = -3x^2$.
+
+**Passo 4.** $\varphi(x) = -x^3 + c$, e
+
+$$
+v(x,y) = 3xy^2 - x^3 + c
+$$
+
+O gabarito da prova traz exatamente este $v$. E dá para reconhecer a função: $f(z) = u + iv = -i\,z^3 + ic$ — de onde vem o par $(3x^2y - y^3,\; 3xy^2 - x^3)$.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Questão 03 do 1º EE de 2025.2, com a função em coordenadas polares: $u = \ln|z| = \ln r$, na região $\Omega$ sem a origem.
+
+Aqui a forma polar de Cauchy-Riemann é o caminho curto. Com $u = \ln r$:
+
+$$
+u_r = \frac1r,
+\qquad
+u_\theta = 0
+$$
+
+$$
+\frac{\partial v}{\partial \theta} = r\,u_r = 1
+\quad\Longrightarrow\quad
+v = \theta + \varphi(r)
+$$
+
+$$
+\frac{\partial v}{\partial r} = \varphi'(r) = -\frac1r u_\theta = 0
+\quad\Longrightarrow\quad
+\varphi = c
+$$
+
+Então $v = \theta + c = \operatorname{Arg} z + c$, e $f(z) = \ln r + i\theta = \operatorname{Log} z$. Faz sentido: a conjugada harmônica do logaritmo do módulo é o argumento, porque juntos eles **são** o logaritmo complexo.
+
+E é por isso que a questão exclui a origem: $\ln r$ explode ali, e o argumento não é contínuo dando a volta.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Terminado o passo 4, **confira derivando**: as duas equações de Cauchy-Riemann têm de fechar com o $v$ encontrado. Custa três linhas e pega qualquer erro de sinal — que é o erro típico, no passo 3, quando se esquece o menos de $v_x = -u_y$.
+
+Outro atalho: se a questão também pede $f(z)$ em função de $z$, tente reconhecer o par nas potências de $z$. $z^2 = (x^2-y^2) + i(2xy)$, $z^3 = (x^3 - 3xy^2) + i(3x^2y - y^3)$ — decorar estes dois resolve metade das questões sem integrar nada.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+A conjugada harmônica é única **a menos de uma constante real**. Se a questão dá um valor de $f$ num ponto — como o $f(i) = -i$ do 1º EE de 2023.2 — é para fixar essa constante: só no fim, substituindo o ponto na $f$ já montada.
 
 </Caixa>
 

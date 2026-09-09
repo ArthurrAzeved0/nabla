@@ -470,7 +470,12 @@
       "funcao-inteira": "cm-analiticas",
       "cauchy-riemann": "cm-analiticas",
       "ponto-singular": "cm-analiticas",
-      "analiticidade": "cm-analiticas"
+      "analiticidade": "cm-analiticas",
+      "funcao-harmonica": "cm-harmonicas",
+      "equacao-de-laplace": "cm-harmonicas",
+      "conjugada-harmonica": "cm-harmonicas",
+      "laplaciano": "cm-harmonicas",
+      "reconstruir-f-de-u": "cm-harmonicas"
     }
   }
 ]
