@@ -1,0 +1,194 @@
+---
+origem: "Final 2023.1"
+tema: "Instalação hidráulica · Duas vazões que se juntam e uma turbina"
+temaId: turbina
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a instalação hidráulica apresentada na figura. Admitindo que a vazão proporcionada pelo tanque inferior seja de $Q_1 = 40\ \mathrm{L/s}$, **determine o tipo de máquina e a potência da mesma.**
+
+**Dados:** $\gamma = 10^4\ \mathrm{N/m^3}$; $A_t = 0{,}02\ \mathrm{m^2}$ (área da seção reta da tubulação); $p_m = 0\ \mathrm{kPa}$ (pressão manométrica); $g = 10\ \mathrm{m/s^2}$; $\eta_m = 80\ \%$; $H_m = 5\ \mathrm{m}$ (altura da máquina). Considere ambos os tanques como sendo de **grandes dimensões**. **Desconsidere a perda de carga.**
+
+<Figura>
+  <svg viewBox="0 0 400 220" role="img" aria-label="Instalação com dois tanques: o de cima com 9 metros de coluna descarrega pelo ponto 2, o do meio com 7 metros contribui com Q1 pelo ponto 3, e a linha segue para a esquerda passando pela máquina até a descarga livre em 6">
+    {/* linha da tubulação */}
+    <line x1="16" y1="170" x2="384" y2="170" stroke="var(--ink-2)" stroke-width="2.4"/>
+    {/* tanque (0), à direita */}
+    <path d="M300 20 L300 92 L382 92 L382 20" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="301" y="30" width="80" height="62" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="301" y1="30" x2="381" y2="30" stroke="var(--accent)" stroke-width="1.3"/>
+    <line x1="312" y1="25" x2="330" y2="25" stroke="var(--accent)" stroke-width="1"/>
+    <text x="384" y="26" font-size="10" fill="var(--ink-2)">(0)</text>
+    <line x1="340" y1="92" x2="340" y2="170" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <circle cx="340" cy="126" r="7" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="350" y="122" font-size="9" fill="var(--ink-3)">A t</text>
+    {/* cota 9 m */}
+    <line x1="276" y1="30" x2="276" y2="170" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="276,30 273,39 279,39" fill="var(--ok)"/>
+    <polygon points="276,170 273,161 279,161" fill="var(--ok)"/>
+    <line x1="276" y1="30" x2="300" y2="30" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="250" y="100" font-size="10" fill="var(--ok)">9 m</text>
+    {/* ponto (2) com manômetro */}
+    <line x1="252" y1="164" x2="252" y2="176" stroke="var(--warn)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="246" y="192" font-size="10" fill="var(--warn)">(2)</text>
+    <circle cx="230" cy="146" r="8" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <line x1="230" y1="146" x2="234" y2="142" stroke="var(--ink-2)" stroke-width="1.1"/>
+    <line x1="230" y1="154" x2="230" y2="164" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="212" y="136" font-size="9" fill="var(--ink-2)">p m</text>
+    <text x="348" y="146" font-size="9" fill="var(--warn)">Q₀</text>
+    {/* tanque (1), no meio */}
+    <path d="M164 46 L164 108 L242 108 L242 46" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="165" y="56" width="76" height="52" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="165" y1="56" x2="241" y2="56" stroke="var(--accent)" stroke-width="1.3"/>
+    <line x1="176" y1="51" x2="194" y2="51" stroke="var(--accent)" stroke-width="1"/>
+    <text x="244" y="52" font-size="10" fill="var(--ink-2)">(1)</text>
+    <line x1="200" y1="108" x2="200" y2="170" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <circle cx="200" cy="140" r="7" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="176" y="136" font-size="9" fill="var(--ink-3)">A t</text>
+    <text x="206" y="152" font-size="9" fill="var(--warn)">Q₁</text>
+    {/* cota 7 m */}
+    <line x1="140" y1="56" x2="140" y2="170" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="140,56 137,65 143,65" fill="var(--ok)"/>
+    <polygon points="140,170 137,161 143,161" fill="var(--ok)"/>
+    <line x1="140" y1="56" x2="164" y2="56" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="114" y="118" font-size="10" fill="var(--ok)">7 m</text>
+    {/* pontos (3) e (4) */}
+    <line x1="186" y1="164" x2="186" y2="176" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="180" y="192" font-size="10" fill="var(--ink-3)">(3)</text>
+    <line x1="130" y1="164" x2="130" y2="176" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="124" y="192" font-size="10" fill="var(--ink-3)">(4)</text>
+    {/* máquina */}
+    <circle cx="104" cy="170" r="13" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.7"/>
+    <text x="99" y="174" font-size="11" fill="var(--ink-2)">M</text>
+    <line x1="82" y1="164" x2="82" y2="176" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="76" y="192" font-size="10" fill="var(--ink-3)">(5)</text>
+    {/* descarga em (6) */}
+    <circle cx="52" cy="170" r="7" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="44" y="156" font-size="9" fill="var(--ink-3)">A t</text>
+    <path d="M14 162 L30 166 M14 170 L30 170 M14 178 L30 174" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="18" y="192" font-size="10" fill="var(--ink-2)">(6)</text>
+    {/* sentido */}
+    <line x1="300" y1="206" x2="240" y2="206" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="234,206 244,202 244,210" fill="var(--warn)"/>
+    <text x="306" y="210" font-size="9" fill="var(--warn)">escoamento</text>
+  </svg>
+  <figcaption>
+
+As duas vazões se **juntam** em (3): a que vem do tanque (0), por Torricelli, e a que o tanque (1) fornece, $Q_1 = 40\ \mathrm{L/s}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Entre (0) e (2), com $p_m = 0$ e perda de carga desprezada:
+
+$$
+v_2 = \sqrt{2\,g\left(h_0 - \frac{p_m}{\gamma}\right)} = \sqrt{2 \times 10 \times 9} = 13{,}42\ \mathrm{m/s}
+$$
+
+$$
+Q_0 = v_2\,A_t = 13{,}42 \times 0{,}02 = 0{,}268\ \mathrm{m^3/s}
+$$
+
+$$
+Q_4 = Q_1 + Q_0 = 0{,}04 + 0{,}268 = 0{,}308\ \mathrm{m^3/s}
+$$
+
+O escoamento **desce** dos dois tanques e a máquina está no caminho: ela **retira** energia — é uma **turbina**.
+
+$$
+N_m = \frac{\gamma\,Q_4\,H_m}{\eta_m} = \frac{10^4 \times 0{,}308 \times 5}{0{,}8} \approx \mathbf{1{,}925\times10^{4}\ W} \approx 19{,}3\ \mathrm{kW}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reconhecer que há duas vazões, e uma delas não é dada.** O enunciado dá $Q_1$ (do tanque do meio) mas **não** dá a vazão que vem do tanque (0). Ela tem de sair da própria instalação — e sai por **Torricelli**, porque a perda de carga foi desprezada.
+
+**Passo 2 — a vazão do tanque (0), por Bernoulli entre (0) e (2).**
+
+$$
+\frac{p_0}{\gamma} + \frac{v_0^2}{2g} + h_0 = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + h_2
+$$
+
+O que cai:
+
+- $p_0 = p_{atm} = 0$ em manométrica — o tanque é aberto;
+- $v_0 \approx 0$ — grandes dimensões;
+- $h_2 = 0$ — o ponto (2) está na linha da tubulação, que é o referencial;
+- $p_2 = p_m = 0$ — **é o dado do enunciado**, e é ele que faz o problema fechar.
+
+$$
+h_0 = \frac{v_2^2}{2g} + \frac{p_m}{\gamma}
+\qquad\Longrightarrow\qquad
+v_2 = \sqrt{2g\left(h_0 - \frac{p_m}{\gamma}\right)}
+$$
+
+$$
+v_2 = \sqrt{2 \times 10 \times (9 - 0)} = \sqrt{180} = 13{,}42\ \mathrm{m/s}
+$$
+
+<Caixa tipo="dica" rotulo="Por que o manômetro está ali">
+
+Se $p_m$ não fosse zero, parte da carga de $9\ \mathrm{m}$ ficaria como **pressão** em (2) e sobraria menos para a velocidade. Com $p_m = 0$, toda a coluna vira carga cinética — é Torricelli puro.
+
+O manômetro no desenho existe para dizer isso: em (2) a pressão manométrica é **nula**.
+
+</Caixa>
+
+$$
+Q_0 = v_2\,A_t = 13{,}42 \times 0{,}02 = 0{,}2684\ \mathrm{m^3/s} = 268{,}4\ \mathrm{L/s}
+$$
+
+**Passo 3 — juntar as vazões.** Em (3) as duas correntes se encontram, e da máquina para a frente passa a soma:
+
+$$
+Q_4 = Q_1 + Q_0 = 0{,}04 + 0{,}2684 = 0{,}3084\ \mathrm{m^3/s}
+$$
+
+Repare na proporção: o tanque de cima traz **87 %** da vazão. Os $40\ \mathrm{L/s}$ do tanque (1) são a menor parcela.
+
+**Passo 4 — o tipo de máquina.** Os dois tanques estão **acima** da linha da tubulação e a descarga em (6) é **livre**, na própria linha. Não há nada a vencer: o escoamento é todo de descida. A máquina, portanto, **retira** energia do fluido — é uma **turbina**.
+
+(O próprio enunciado confirma, ao chamar $\eta_m$ de "eficiência da turbina".)
+
+**Passo 5 — a potência.** Com a carga da máquina dada, $H_m = 5\ \mathrm{m}$, e a vazão que a atravessa:
+
+$$
+N_m = \frac{\gamma\,Q_4\,H_m}{\eta_m} = \frac{10^4 \times 0{,}3084 \times 5}{0{,}8} = \frac{15\,420}{0{,}8} = 19\,275\ \mathrm{W}
+$$
+
+isto é, $1{,}93\times10^4\ \mathrm{W} \approx 19{,}3\ \mathrm{kW}$.
+
+<Caixa tipo="macete" rotulo="O rendimento, nesta questão, está do lado que o gabarito escolheu">
+
+A potência hidráulica que o fluido entrega à máquina é
+
+$$
+\gamma\,Q_4\,H_m = 10^4 \times 0{,}3084 \times 5 = 15\,420\ \mathrm{W}
+$$
+
+Para uma **turbina**, o rendimento normalmente **multiplica** — dela sai menos no eixo do que o fluido entregou:
+
+$$
+N_T = \gamma\,Q\,H\,\eta = 15\,420 \times 0{,}8 = 12\,336\ \mathrm{W} \approx 1{,}23\times10^4\ \mathrm{W}
+$$
+
+O gabarito, porém, **divide** por $\eta$, chegando a $1{,}925\times10^4\ \mathrm{W}$ — que é a fórmula da bomba. Na prova, é esse o valor cobrado. Sabendo dos dois, você reconhece o número esperado e entende por que ele é o que é.
+
+</Caixa>
+
+**Conferência —** $Q_0$ não é dado: sai de Torricelli com $h_0 = 9\ \mathrm{m}$ ✔ $p_m = 0$ é o que permite usar toda a coluna ✔ a vazão que passa na máquina é a **soma** das duas ✔ os $7\ \mathrm{m}$ do tanque (1) não entram, porque $Q_1$ já é dado ✔ máquina em instalação toda de descida é **turbina** ✔
+</Passos>
