@@ -1,0 +1,100 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Função Gama · Integral com expoente cúbico no expoente"
+temaId: integral-impropria-por-gama
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\int_0^{\infty} x^3\exp\big(-x^3\big)\,dx
+$$
+
+<Gabarito>
+$$
+\int_0^\infty x^3 e^{-x^3}dx = \frac13\,\Gamma\!\left(\frac43\right) = \frac19\,\Gamma\!\left(\frac13\right) \approx 0{,}2980
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a substituição é ditada pela exponencial.** A definição da Gama tem $e^{-t}$, então o expoente precisa virar $-u$:
+
+$$
+u = x^3,
+\qquad
+x = u^{1/3},
+\qquad
+dx = \frac13 u^{-2/3}\,du
+$$
+
+Os limites não mudam: $x: 0\to\infty$ dá $u: 0\to\infty$.
+
+**Passo 2 — substituir tudo.**
+
+$$
+\int_0^\infty x^3 e^{-x^3}dx
+= \int_0^\infty u\,e^{-u}\cdot\frac13 u^{-2/3}\,du
+= \frac13\int_0^\infty u^{\,1 - 2/3}\,e^{-u}\,du
+= \frac13\int_0^\infty u^{1/3}e^{-u}\,du
+$$
+
+**Passo 3 — identificar o $z$.** Comparando com $\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt$:
+
+$$
+z - 1 = \frac13
+\qquad\Longrightarrow\qquad
+z = \frac43
+$$
+
+$$
+\int_0^\infty x^3e^{-x^3}dx = \frac13\,\Gamma\!\left(\frac43\right)
+$$
+
+**Passo 4 — simplificar pela recorrência**, que é o que a prova costuma pedir. De $\Gamma(z+1) = z\,\Gamma(z)$ com $z = 1/3$:
+
+$$
+\Gamma\!\left(\frac43\right) = \frac13\,\Gamma\!\left(\frac13\right)
+$$
+
+$$
+\boxed{\;\int_0^\infty x^3e^{-x^3}dx = \frac13\,\Gamma\!\left(\frac43\right) = \frac19\,\Gamma\!\left(\frac13\right)\;}
+$$
+
+Numericamente, com $\Gamma(1/3) \approx 2{,}6789$: o valor é $\approx 0{,}2977$.
+
+**Conferência —** o integrando é positivo, tem máximo em torno de $x \approx 1$ (onde vale $x^3e^{-x^3} \approx e^{-1} = 0{,}37$) e cai rápido. Uma área na casa de $0{,}3$ é o esperado ✔
+
+<Caixa tipo="macete" rotulo="Fórmula geral, que resolve toda a família">
+
+$$
+\int_0^\infty x^{m}e^{-x^{n}}dx = \frac1n\,\Gamma\!\left(\frac{m+1}{n}\right)
+$$
+
+Aqui $m = 3$ e $n = 3$, dando $\tfrac13\Gamma\!\left(\tfrac43\right)$ ✔ O da q06 desta unidade é $m=0, n=2$ (dando $\tfrac12\Gamma(\tfrac12) = \tfrac{\sqrt\pi}{2}$) e $m=1,n=2$ (dando $\tfrac12\Gamma(1) = \tfrac12$).
+
+Vale decorar como **conferência**, e fazer a substituição na prova para mostrar o serviço.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Quando parar de simplificar">
+
+$\Gamma(4/3)$ e $\Gamma(1/3)$ **não** têm forma elementar — ao contrário de $\Gamma(1/2) = \sqrt\pi$ e de $\Gamma$ em inteiros. Então a resposta em termos de Gama **é** a resposta final; não há número fechado a perseguir.
+
+O que a prova espera é a recorrência aplicada, para deixar o argumento no intervalo $(0,1]$ — de $\Gamma(4/3)$ para $\tfrac13\Gamma(1/3)$.
+
+</Caixa>
+</Passos>
