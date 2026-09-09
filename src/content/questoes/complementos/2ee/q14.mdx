@@ -1,0 +1,113 @@
+---
+origem: "2025.2"
+tema: "Resíduos · Polo simples achado por séries de Maclaurin"
+temaId: residuo
+pontos: 1,25 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja
+
+$$
+f(z) = \frac{\operatorname{sen}(3z) - 3\operatorname{sen}(z)}{\operatorname{sen}(z)\,\big[\operatorname{sen}(z) - z\big]}
+$$
+
+Calcule $\operatorname{Res}\big[f(z)\big]_{z=0}$.
+
+<Gabarito>
+$$
+\operatorname{Res}\big[f(z)\big]_{z=0} = 24
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que nenhuma fórmula de resíduo funciona direto.** Numerador e denominador **ambos** se anulam em $z=0$, e não se vê de imediato a ordem do polo. O caminho é expandir tudo em série de Maclaurin e comparar as **ordens dos zeros**.
+
+**Passo 2 — o numerador.** De $\operatorname{sen} w = w - \dfrac{w^3}{6} + \dfrac{w^5}{120} - \cdots$:
+
+$$
+\operatorname{sen}(3z) = 3z - \frac{27z^3}{6} + \cdots = 3z - \frac{9z^3}{2} + \cdots
+$$
+
+$$
+3\operatorname{sen}(z) = 3z - \frac{3z^3}{6} + \cdots = 3z - \frac{z^3}{2} + \cdots
+$$
+
+$$
+\operatorname{sen}(3z) - 3\operatorname{sen}(z) = \left(-\frac92 + \frac12\right)z^3 + O(z^5) = -4z^3 + O(z^5)
+$$
+
+Os termos em $z$ **cancelam**, e o numerador tem zero de **ordem 3**.
+
+**Passo 3 — o denominador.** O segundo fator é o que dá a ordem alta:
+
+$$
+\operatorname{sen}(z) - z = -\frac{z^3}{6} + O(z^5)
+\qquad\text{(zero de ordem 3)}
+$$
+
+$$
+\operatorname{sen}(z) = z + O(z^3)
+\qquad\text{(zero de ordem 1)}
+$$
+
+$$
+\operatorname{sen}(z)\big[\operatorname{sen}(z) - z\big] = z\cdot\left(-\frac{z^3}{6}\right) + O(z^6) = -\frac{z^4}{6} + O(z^6)
+$$
+
+Zero de **ordem 4**.
+
+**Passo 4 — a ordem do polo.** Zero de ordem $4$ embaixo contra ordem $3$ em cima:
+
+$$
+4 - 3 = 1
+\qquad\Longrightarrow\qquad
+\textbf{polo simples}
+$$
+
+**Passo 5 — o resíduo.** Em polo simples, $\operatorname{Res} = \lim_{z\to0} z\,f(z)$, e só os termos de ordem mais baixa importam:
+
+$$
+\operatorname{Res} = \lim_{z\to0} z\cdot\frac{-4z^3 + O(z^5)}{-\frac{z^4}{6} + O(z^6)}
+= \lim_{z\to0}\frac{-4z^4}{-\frac{z^4}{6}}
+= \frac{-4}{-\frac16}
+$$
+
+$$
+\boxed{\;\operatorname{Res}\big[f(z)\big]_{z=0} = 24\;}
+$$
+
+que é o valor do gabarito da prova.
+
+<Caixa tipo="macete" rotulo="Ordem do polo = ordem do zero de baixo menos a de cima">
+
+O procedimento inteiro se resume a isso, e é mecânico:
+
+1. expanda numerador e denominador até o **primeiro termo não nulo** de cada;
+2. a diferença das ordens é a ordem do polo (se der $\le 0$, a singularidade é **removível**);
+3. o resíduo, em polo simples, é a **razão dos coeficientes principais** dividida pelo que sobrar.
+
+Ler a ordem do zero pela primeira potência da série é muito mais rápido que derivar procurando qual derivada não se anula.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O cancelamento é a graça da questão">
+
+Se o numerador fosse $\operatorname{sen}(3z)$ sozinho, ele teria zero de ordem $1$ e o polo seria de ordem $3$ — questão bem mais pesada, com duas derivadas. A combinação $\operatorname{sen}(3z) - 3\operatorname{sen}(z)$ foi escolhida para **matar o termo linear**, subindo a ordem do zero para $3$ e derrubando o polo para simples.
+
+Reconhecer isso antes de calcular é o que separa dez minutos de dois.
+
+</Caixa>
+</Passos>
