@@ -1,0 +1,89 @@
+---
+origem: "2026.1"
+tema: "Fórmula de Cauchy · Numerador z⁵ com denominador de sexta potência"
+temaId: formula-das-derivadas
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, usando a teoria de Cauchy,
+
+$$
+\oint_{\gamma:\,|z|\le 2} \frac{z^{5}}{(z-1)^{6}}\,dz
+$$
+
+<Gabarito>
+$$
+\oint_{|z|\le 2}\frac{z^5}{(z-1)^6}\,dz = 2\pi i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a singularidade.** $z = 1$, com $|1| = 1 < 2$: dentro ✔
+
+**Passo 2 — identificar $f$ e $n$.**
+
+$$
+f(z) = z^{5},
+\qquad
+z_0 = 1,
+\qquad
+n+1 = 6 \;\Longrightarrow\; n = 5
+$$
+
+**Passo 3 — a derivada de ordem 5 de $z^5$.**
+
+$$
+\frac{d^5}{dz^5}z^5 = 5! = 120
+$$
+
+constante, sem $z$ nenhum: derivar $z^n$ exatamente $n$ vezes sempre dá $n!$.
+
+**Passo 4 — aplicar a fórmula, e ver o fatorial cancelar.**
+
+$$
+\oint_{|z|\le2}\frac{z^5}{(z-1)^6}\,dz
+= \frac{2\pi i}{5!}\cdot 5!
+$$
+
+$$
+\boxed{\;\oint_{|z|\le 2}\frac{z^5}{(z-1)^6}\,dz = 2\pi i\;}
+$$
+
+confirmando o gabarito.
+
+<Caixa tipo="macete" rotulo="É o mesmo padrão da q16">
+
+A q16 desta unidade, do 1º EE de 2025.2, é $\displaystyle\oint \frac{z^{100}}{(z-1)^{101}}dz$ — mesma estrutura, mesmo resultado $2\pi i$.
+
+O padrão, em uma frase: **numerador $z^n$ sobre $(z-z_0)^{n+1}$, com $z_0$ dentro da curva, dá $2\pi i$**. Não importa o valor de $n$ nem de $z_0$.
+
+Duas provas seguidas com a mesma questão em roupagens diferentes ($5$ e $6$ aqui, $100$ e $101$ lá) dizem que o professor cobra o **reconhecimento**, não a conta.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Conferência pela série">
+
+O resíduo em $z=1$ é o coeficiente de $(z-1)^{-1}$ na expansão. Escrevendo $z = 1 + w$:
+
+$$
+\frac{z^5}{(z-1)^6} = \frac{(1+w)^5}{w^6}
+= \frac{1}{w^6}\sum_{k=0}^{5}\binom{5}{k}w^{k}
+$$
+
+O termo em $w^{-1}$ vem de $k=5$, com coeficiente $\binom55 = 1$. Logo o resíduo é $1$ e a integral é $2\pi i$ ✔
+
+</Caixa>
+</Passos>
