@@ -27,6 +27,7 @@ unidades:
       - { id: cm-ortogonalidade, titulo: "Funções periódicas, paridade e ortogonalidade" }
       - { id: cm-fourier, titulo: "Série de Fourier: os coeficientes e os casos par e ímpar" }
       - { id: cm-fourier-complexa, titulo: "Forma complexa da série de Fourier" }
+      - { id: cm-fourier-convergencia, titulo: "Convergência de Fourier, Dirichlet e Parseval" }
 ---
 
 {/* **************************************************************************
@@ -2217,6 +2218,104 @@ Quando só a complexa é pedida e $f$ é uma exponencial ou um pulso, calcular $
 <Caixa tipo="dica">
 
 Cuidado com $n = 0$ na fórmula de $c_n$: o expoente zera e a integral vira $\tfrac{1}{2L}\int f$, o valor médio. Não dá para obter $c_0$ substituindo $n=0$ numa expressão fechada que tenha $n$ no denominador — é preciso calcular à parte, como em qualquer série de Fourier.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-fourier-convergencia" num="22" titulo="Convergência de Fourier, Dirichlet e Parseval">
+
+### A ideia
+
+Duas perguntas ficaram abertas na seção 20: a série converge **para** $f$? E o que a soma dos quadrados dos coeficientes significa? A primeira é respondida por **Dirichlet**, a segunda por **Parseval** — e a de Parseval é a que resolve questão de prova, porque transforma uma série numérica difícil numa integral fácil.
+
+### Convergência pontual: o teorema de Dirichlet
+
+<Formula rotulo="Teorema de Dirichlet">
+
+$$
+\text{se } f \text{ é seccionalmente contínua com derivada seccionalmente contínua, a série converge para}
+$$
+
+$$
+\frac{f(x^+) + f(x^-)}{2}
+$$
+
+</Formula>
+
+Isto é: **onde $f$ é contínua**, a série dá $f(x)$; **num salto**, ela dá a **média dos dois lados**, ignorando o valor que o enunciado atribuiu ao ponto.
+
+<Caixa tipo="simbolos">
+
+- $f(x^+), f(x^-)$ — limites laterais à direita e à esquerda;
+- **seccionalmente contínua** — contínua salvo em finitos pontos, com limites laterais finitos;
+- convergência **pontual** — vale ponto a ponto, e é a que Dirichlet garante;
+- convergência **em média** (ou $L^2$) — o erro quadrático médio vai a zero; é mais fraca, e é a que Parseval expressa.
+
+</Caixa>
+
+### Identidade de Parseval
+
+Ela é a conservação de energia da decomposição: a energia do sinal é a soma das energias dos harmônicos.
+
+<Formula rotulo="Identidade de Parseval (período 2L)">
+
+$$
+\frac{1}{L}\int_{-L}^{L} \big[f(x)\big]^2 dx
+= \frac{a_0^2}{2} + \sum_{n=1}^{\infty}\left(a_n^2 + b_n^2\right)
+$$
+
+</Formula>
+
+Na forma complexa fica ainda mais limpa:
+
+$$
+\frac{1}{2L}\int_{-L}^{L}|f|^2\,dx = \sum_{n=-\infty}^{\infty}|c_n|^2
+$$
+
+<Caixa tipo="exemplo">
+
+Item 01b do 2º EE de 2026.1. Com $f(x) = x^2$ em $[-\pi,\pi]$, sabendo da seção 20 que $a_0/2 = \pi^2/3$ e $a_n = 4(-1)^n/n^2$, use Parseval para calcular $\sum 1/n^2$.
+
+Lado esquerdo:
+
+$$
+\frac{1}{\pi}\int_{-\pi}^{\pi}x^4dx = \frac{1}{\pi}\cdot\frac{2\pi^5}{5} = \frac{2\pi^4}{5}
+$$
+
+Lado direito, com $a_0 = 2\pi^2/3$ e $b_n = 0$:
+
+$$
+\frac{a_0^2}{2} + \sum_{n=1}^{\infty}\frac{16}{n^4}
+= \frac{2\pi^4}{9} + 16\sum_{n=1}^{\infty}\frac{1}{n^4}
+$$
+
+Igualando:
+
+$$
+16\sum \frac{1}{n^4} = \frac{2\pi^4}{5} - \frac{2\pi^4}{9} = \frac{8\pi^4}{45}
+\qquad\Longrightarrow\qquad
+\sum_{n=1}^{\infty}\frac{1}{n^4} = \frac{\pi^4}{90}
+$$
+
+Parseval com esta $f$ entrega $\sum 1/n^4$; a **série avaliada em $x=\pi$** entrega $\sum 1/n^2 = \pi^2/6$ (seção 20). A prova de 2026.1 pede $\left(\tfrac{6}{\pi^2}\sum \tfrac{1}{n^2}\right)^{2026}$ — que, com $\sum 1/n^2 = \pi^2/6$, é $1^{2026} = \mathbf{1}$. A potência gigante é decoração: o que está dentro do parêntese vale exatamente $1$.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Quando a prova pede a soma de uma série numérica, o caminho é um destes dois:
+
+- **avaliar a série de Fourier num ponto** — dá somas com $1/n$ ou $1/n^2$, alternadas ou não;
+- **usar Parseval** — dá somas dos **quadrados**, isto é $1/n^2$ ou $1/n^4$.
+
+Olhe o expoente do denominador na série pedida: quadrado do coeficiente sugere Parseval; coeficiente cru sugere avaliar num ponto.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+O gráfico que a prova pede ("construa os gráficos de $f$ e de sua série") é justamente para verificar Dirichlet: desenhe $f$ e marque, em cada salto, um ponto na **média** dos dois lados. Na onda quadrada, isso significa marcar $0$ em $x = 0, \pm\pi, \pm2\pi,\dots$ — mesmo que a definição de $f$ dê $1$ ali.
 
 </Caixa>
 

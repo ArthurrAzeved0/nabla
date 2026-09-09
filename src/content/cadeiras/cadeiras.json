@@ -549,7 +549,11 @@
       "onda-quadrada": "cm-fourier",
       "forma-complexa-de-fourier": "cm-fourier-complexa",
       "coeficiente-complexo-cn": "cm-fourier-complexa",
-      "espectro-de-fourier": "cm-fourier-complexa"
+      "espectro-de-fourier": "cm-fourier-complexa",
+      "convergencia-de-fourier": "cm-fourier-convergencia",
+      "teorema-de-dirichlet": "cm-fourier-convergencia",
+      "identidade-de-parseval": "cm-fourier-convergencia",
+      "soma-de-serie-numerica": "cm-fourier-convergencia"
     }
   }
 ]
