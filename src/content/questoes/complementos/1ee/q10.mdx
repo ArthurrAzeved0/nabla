@@ -1,0 +1,100 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Resíduos · Integral trigonométrica com a = 5 e b = 3"
+temaId: integral-trigonometrica-por-residuos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\int_0^{2\pi} \frac{d\theta}{5 + 3\cos\theta}
+$$
+
+<Gabarito>
+$$
+\int_0^{2\pi}\frac{d\theta}{5+3\cos\theta} = \frac{\pi}{2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a substituição que fecha o círculo.**
+
+$$
+z = e^{i\theta},
+\qquad
+\cos\theta = \frac{z+z^{-1}}{2},
+\qquad
+d\theta = \frac{dz}{iz}
+$$
+
+$$
+\int_0^{2\pi}\frac{d\theta}{5+3\cos\theta}
+= \oint_{|z|=1}\frac{1}{5 + \tfrac32\left(z+\tfrac1z\right)}\cdot\frac{dz}{iz}
+= \oint_{|z|=1}\frac{dz}{i\left(\tfrac32 z^2 + 5z + \tfrac32\right)}
+$$
+
+$$
+= \frac{2}{3i}\oint_{|z|=1}\frac{dz}{z^2 + \tfrac{10}{3}z + 1}
+$$
+
+**Passo 2 — os polos.** Aqui eles saem redondos:
+
+$$
+z = \frac{-\tfrac{10}{3}\pm\sqrt{\tfrac{100}{9}-4}}{2}
+= \frac{-10 \pm 8}{6}
+\qquad\Longrightarrow\qquad
+z_1 = -\frac13,
+\qquad
+z_2 = -3
+$$
+
+$|-1/3| < 1$ está **dentro**; $|-3| > 1$ está **fora**. Produto $1$, como sempre nesse tipo ✔
+
+**Passo 3 — o resíduo, por $p/q'$.**
+
+$$
+\operatorname{Res} = \frac{1}{2z + \tfrac{10}{3}}\bigg|_{z=-1/3}
+= \frac{1}{-\tfrac23 + \tfrac{10}{3}}
+= \frac{1}{\tfrac83}
+= \frac38
+$$
+
+**Passo 4 — juntar.**
+
+$$
+\int_0^{2\pi}\frac{d\theta}{5+3\cos\theta}
+= \frac{2}{3i}\cdot 2\pi i\cdot\frac38
+= \frac{2\cdot 2\pi\cdot 3}{3\cdot 8}
+= \frac{\pi}{2}
+$$
+
+$$
+\boxed{\;\int_0^{2\pi}\frac{d\theta}{5+3\cos\theta} = \frac{\pi}{2}\;}
+$$
+
+**Conferência 1 — fórmula fechada.** $\dfrac{2\pi}{\sqrt{a^2-b^2}} = \dfrac{2\pi}{\sqrt{25-9}} = \dfrac{2\pi}{4} = \dfrac\pi2$ ✔
+
+**Conferência 2 — pelo tamanho.** O integrando vai de $1/8$ a $1/2$; uma média perto de $0{,}25$ em $2\pi$ dá $\approx 1{,}57 = \pi/2$ ✔
+
+<Caixa tipo="macete" rotulo="Este é o par do item (c) de 2023.2">
+
+As duas provas trazem a mesma integral com $(a,b)$ diferentes: aqui $(5,3)$, dando $\pi/2$; na primeira chamada $(4,3)$ com um $3$ no numerador, dando $6\pi/\sqrt7$.
+
+Note a diferença de sabor: com $(5,3)$ o discriminante é $16$, quadrado perfeito, e os polos saem racionais. Com $(4,3)$ ele é $7$ e aparece raiz. Se os seus polos saírem irracionais numa prova em que o professor costuma escolher números redondos, vale reconferir a álgebra — mas às vezes a raiz é mesmo a resposta.
+
+</Caixa>
+</Passos>
