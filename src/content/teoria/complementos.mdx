@@ -10,6 +10,7 @@ unidades:
       - { id: cm-trig-hip, titulo: "Funções trigonométricas e hiperbólicas complexas" }
       - { id: cm-analiticas, titulo: "Derivada, funções analíticas e Cauchy-Riemann" }
       - { id: cm-harmonicas, titulo: "Funções harmônicas e a conjugada harmônica" }
+      - { id: cm-integral, titulo: "Integral de linha complexa e parametrização" }
 ---
 
 {/* **************************************************************************
@@ -727,6 +728,113 @@ Outro atalho: se a questão também pede $f(z)$ em função de $z$, tente reconh
 <Caixa tipo="dica">
 
 A conjugada harmônica é única **a menos de uma constante real**. Se a questão dá um valor de $f$ num ponto — como o $f(i) = -i$ do 1º EE de 2023.2 — é para fixar essa constante: só no fim, substituindo o ponto na $f$ já montada.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-integral" num="07" titulo="Integral de linha complexa e parametrização">
+
+### A ideia
+
+Integrar no plano complexo é integrar **ao longo de uma curva**, não de um intervalo. A definição é a de integral de linha: parametrize a curva, troque $z$ e $dz$ pelo parâmetro, e caia numa integral real comum.
+
+<Formula rotulo="Integral ao longo de uma curva">
+
+$$
+\int_{\gamma} f(z)\,dz = \int_{a}^{b} f\big(z(t)\big)\,z'(t)\,dt,
+\qquad z(t),\; t \in [a,b]
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $z(t)$ — parametrização da curva, de $z(a)$ até $z(b)$;
+- $z'(t)\,dt = dz$ — o "comprimento com direção": é ele que carrega a orientação;
+- $\oint$ — integral em curva **fechada**; o sentido positivo é o **anti-horário**;
+- $-\gamma$ — a mesma curva no sentido oposto: $\int_{-\gamma} = -\int_{\gamma}$.
+
+</Caixa>
+
+### As três parametrizações que resolvem tudo
+
+**Segmento de reta de $z_0$ a $z_1$:**
+
+$$
+z(t) = z_0 + t\,(z_1 - z_0),
+\qquad t \in [0,1],
+\qquad dz = (z_1 - z_0)\,dt
+$$
+
+**Circunferência de centro $z_0$ e raio $R$, anti-horária:**
+
+$$
+z(t) = z_0 + R\,e^{it},
+\qquad t \in [0, 2\pi],
+\qquad dz = i R\,e^{it}\,dt
+$$
+
+**Arco de circunferência** — a mesma coisa, com $t$ variando só no trecho desejado.
+
+Reconhecer a curva pela notação é meio caminho: $|z| = 1$ é a circunferência unitária, $|z - i| = 1/2$ tem centro $i$ e raio $\tfrac12$, e $\gamma(t) = i + e^{it}$, $t\in[0,2\pi]$ — que aparece na integral 3 do 1º EE de 2025.2 — é a circunferência de centro $i$ e raio $1$, já escrita parametrizada.
+
+<Caixa tipo="exemplo">
+
+Item (a) da questão 04 do 1º EE de 2023.2: integrar $f(z) = (4xy - y^2) + i(3xy^2 + 3x^2y)$ ao longo do segmento de $z_0 = 0$ a $z_1 = -1 + 2i$.
+
+Note que esta $f$ **não** satisfaz Cauchy-Riemann, então não há atalho: é parametrizar e integrar. Com $z(t) = t(-1+2i)$, vale $x = -t$, $y = 2t$ e $dz = (-1+2i)\,dt$, $t\in[0,1]$:
+
+$$
+u = 4(-t)(2t) - (2t)^2 = -12t^2,
+\qquad
+v = 3(-t)(4t^2) + 3t^2(2t) = -6t^3
+$$
+
+$$
+\int_\gamma f\,dz = \int_0^1 \big(-12t^2 - 6i\,t^3\big)(-1+2i)\,dt
+= (-1+2i)\left(-4 - \frac{3i}{2}\right)
+= 7 - \frac{13i}{2}
+$$
+
+O roteiro é sempre este: **substituir $x$ e $y$ pelo parâmetro antes de tudo**. Quem tenta integrar em $x$ e $y$ separados se perde.
+
+</Caixa>
+
+### Propriedades e a estimativa ML
+
+Linearidade e aditividade valem como no caso real, e a curva pode ser quebrada em trechos. A propriedade específica do caso complexo é a **desigualdade ML**, usada para mostrar que uma integral tende a zero:
+
+<Formula rotulo="Estimativa ML">
+
+$$
+\left|\int_{\gamma} f(z)\,dz\right| \le M\,L,
+\qquad
+M = \max_{z \in \gamma}|f(z)|,
+\qquad
+L = \text{comprimento de } \gamma
+$$
+
+</Formula>
+
+<Caixa tipo="macete">
+
+Antes de parametrizar qualquer coisa, faça duas perguntas: **a curva é fechada?** e **$f$ é analítica dentro dela?** Se as duas respostas forem sim, a integral é **zero** pelo teorema de Cauchy (seção 08) e não há conta a fazer. Se a curva é fechada e há singularidade dentro, o caminho é a fórmula de Cauchy (seção 09) ou os resíduos (seção 13).
+
+Parametrizar na mão só é obrigatório quando a curva é **aberta** — como o segmento do exemplo acima — ou quando $f$ não é analítica em lugar nenhum.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Quando $f$ é analítica num domínio simplesmente conexo, a integral entre dois pontos **não depende do caminho** e vale o teorema fundamental do cálculo com a primitiva:
+
+$$
+\int_{z_0}^{z_1} f(z)\,dz = F(z_1) - F(z_0),
+\qquad F' = f
+$$
+
+É como sai em uma linha o item (a) da 2ª chamada de 2023.2, $\int_{1+i}^{3+4i} (2z+3)\,dz$: a primitiva é $z^2 + 3z$, e basta avaliar nas pontas.
 
 </Caixa>
 

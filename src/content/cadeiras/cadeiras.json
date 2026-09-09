@@ -475,7 +475,12 @@
       "equacao-de-laplace": "cm-harmonicas",
       "conjugada-harmonica": "cm-harmonicas",
       "laplaciano": "cm-harmonicas",
-      "reconstruir-f-de-u": "cm-harmonicas"
+      "reconstruir-f-de-u": "cm-harmonicas",
+      "integral-de-linha-complexa": "cm-integral",
+      "parametrizacao-de-curva": "cm-integral",
+      "integral-em-segmento": "cm-integral",
+      "estimativa-ml": "cm-integral",
+      "primitiva-complexa": "cm-integral"
     }
   }
 ]
