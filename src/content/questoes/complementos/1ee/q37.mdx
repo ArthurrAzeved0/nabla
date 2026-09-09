@@ -1,0 +1,109 @@
+---
+origem: "2024.2"
+tema: "Demonstração · Fórmula de Cauchy com dois pontos interiores"
+temaId: formula-integral-de-cauchy
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q37.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Prove que, se $f(z)$ é analítica dentro e sobre uma curva fechada $\gamma$, e $\alpha$ e $\beta$ são dois pontos distintos no interior de $\gamma$, então
+
+$$
+\frac{1}{2\pi i}\oint_{\gamma} \frac{f(z)}{(z-\alpha)(z-\beta)}\,dz
+= \frac{f(\alpha)}{\alpha - \beta} + \frac{f(\beta)}{\beta - \alpha}
+$$
+
+<Gabarito>
+Decompor em frações parciais, com os coeficientes lidos como resíduos, e aplicar a fórmula de Cauchy a cada parcela:
+
+$$
+\frac{1}{(z-\alpha)(z-\beta)} = \frac{1}{\alpha-\beta}\cdot\frac{1}{z-\alpha} + \frac{1}{\beta-\alpha}\cdot\frac{1}{z-\beta}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — decompor em frações parciais.** Como $\alpha \ne \beta$, os dois fatores do denominador são distintos e existe a decomposição
+
+$$
+\frac{1}{(z-\alpha)(z-\beta)} = \frac{A}{z-\alpha} + \frac{B}{z-\beta}
+$$
+
+O jeito seguro de achar $A$ e $B$ é lê-los como **resíduos**: corte o fator e avalie no ponto.
+
+$$
+A = \frac{1}{z-\beta}\bigg|_{z=\alpha} = \frac{1}{\alpha-\beta},
+\qquad
+B = \frac{1}{z-\alpha}\bigg|_{z=\beta} = \frac{1}{\beta-\alpha}
+$$
+
+Note que $B = -A$, como tinha de ser: somando as duas frações, o numerador precisa dar $1$, sem termo em $z$.
+
+**Passo 2 — quebrar a integral.** Multiplicando por $f(z)$, integrando e usando a linearidade:
+
+$$
+\oint_\gamma \frac{f(z)}{(z-\alpha)(z-\beta)}\,dz
+= \frac{1}{\alpha-\beta}\oint_\gamma \frac{f(z)}{z-\alpha}\,dz
++ \frac{1}{\beta-\alpha}\oint_\gamma \frac{f(z)}{z-\beta}\,dz
+$$
+
+**Passo 3 — aplicar a fórmula de Cauchy a cada parcela.** As hipóteses do enunciado são exatamente as que a fórmula pede: $f$ analítica dentro e sobre $\gamma$, e os pontos no **interior**.
+
+$$
+\oint_\gamma \frac{f(z)}{z-\alpha}\,dz = 2\pi i\,f(\alpha),
+\qquad
+\oint_\gamma \frac{f(z)}{z-\beta}\,dz = 2\pi i\,f(\beta)
+$$
+
+**Passo 4 — substituir e dividir por $2\pi i$.**
+
+$$
+\oint_\gamma \frac{f(z)}{(z-\alpha)(z-\beta)}\,dz
+= 2\pi i\left[\frac{f(\alpha)}{\alpha-\beta} + \frac{f(\beta)}{\beta-\alpha}\right]
+$$
+
+$$
+\boxed{\;\frac{1}{2\pi i}\oint_{\gamma} \frac{f(z)\,dz}{(z-\alpha)(z-\beta)}
+= \frac{f(\alpha)}{\alpha-\beta} + \frac{f(\beta)}{\beta-\alpha}\;}
+$$
+
+como se queria demonstrar.
+
+<Caixa tipo="macete" rotulo="Leia os coeficientes como resíduos">
+
+Achar $A$ e $B$ montando e resolvendo sistema funciona, mas é onde nasce o erro de sinal: basta trocar $\alpha-\beta$ por $\beta-\alpha$ numa passagem e o resultado inteiro inverte.
+
+A leitura por resíduo não tem esse risco: **o coeficiente de $1/(z-\alpha)$ é o que sobra ao apagar o fator $(z-\alpha)$ e avaliar em $z=\alpha$**. Vale para qualquer decomposição com polos simples, e é a mesma técnica que a 2ª unidade usa para inverter transformada de Laplace.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O que a fórmula significa">
+
+Reescrevendo com denominador comum:
+
+$$
+\frac{f(\alpha)}{\alpha-\beta} + \frac{f(\beta)}{\beta-\alpha}
+= \frac{f(\alpha) - f(\beta)}{\alpha - \beta}
+$$
+
+A integral é a **razão incremental** de $f$ entre os dois pontos. E quando $\beta \to \alpha$, os dois polos colidem, a razão tende a $f'(\alpha)$ e a fórmula vira a das derivadas com $n=1$:
+
+$$
+\frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{(z-\alpha)^2}\,dz = f'(\alpha)
+$$
+
+Reconhecer isso é a melhor conferência do resultado — e mostra que a fórmula pedida é um passo intermediário entre a fórmula de Cauchy e a das derivadas.
+
+</Caixa>
+</Passos>
