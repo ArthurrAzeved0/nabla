@@ -45,6 +45,7 @@ unidades:
       - { id: ft-fourier, titulo: "Lei de Fourier, condutividade e resistência térmica" }
       - { id: ft-paredes, titulo: "Condução em paredes compostas e em tubulações" }
       - { id: ft-esferas, titulo: "Condução em esferas e o raio crítico de isolamento" }
+      - { id: ft-geracao, titulo: "Condução com geração de calor e as condições de contorno" }
       - { id: ft-massa, titulo: "Fundamentos do transporte de massa" }
 
 ---
@@ -2507,7 +2508,134 @@ Repare que a **convecção** carrega $75\ \%$ da resistência total: é o ar ext
 
 </Topico>
 
-<Topico id="ft-massa" num="26" titulo="Fundamentos do transporte de massa">
+<Topico id="ft-geracao" num="26" titulo="Condução com geração de calor e as condições de contorno">
+
+**A ideia.** Tudo até aqui supôs que o calor só **atravessa** o material. Se o material **produz** calor — resistência elétrica dissipando, reação química, decaimento nuclear —, o perfil de temperatura deixa de ser reto e vira **parábola**. E, para resolver a equação diferencial que aparece, é preciso dizer o que acontece nas fronteiras: são as **condições de contorno**, que a prova cobra pelo nome.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\dot q$ — **taxa de geração** de calor por unidade de volume, em $\mathrm{W/m^3}$;
+- $L$ — semiespessura (parede simétrica) ou espessura, em $\mathrm{m}$;
+- $T_s$ — temperatura da **superfície**, em $\mathrm{K}$;
+- $T_0$ — temperatura no **plano central**, em $\mathrm{K}$;
+- $q''(x)$ — densidade de fluxo de calor na posição $x$, em $\mathrm{W/m^2}$.
+
+</Caixa>
+
+### A equação, e por que a parábola
+
+O balanço de energia num elemento de parede plana, em regime permanente (**sem acúmulo**) e com geração, é
+
+$$
+\underbrace{\frac{d^2T}{dx^2}}_{\text{condução}} + \underbrace{\frac{\dot q}{k}}_{\text{geração}} = 0
+$$
+
+Integrando duas vezes:
+
+$$
+\frac{dT}{dx} = -\frac{\dot q}{k}\,x + C_1
+\qquad\qquad
+T(x) = -\frac{\dot q}{2k}\,x^2 + C_1 x + C_2
+$$
+
+$$
+\boxed{\;T(x)\ \text{é uma parábola};\qquad q''(x) = -k\,\frac{dT}{dx} = \dot q\,x - k\,C_1\ \text{é uma reta}\;}
+$$
+
+<Caixa tipo="macete" rotulo="A resposta curta que a prova pede">
+
+Pergunta clássica: *como se comportam o perfil de temperatura e o fluxo de calor numa parede plana com condução unidimensional, com geração, mas sem acúmulo?*
+
+- **temperatura** — perfil **parabólico** (não linear);
+- **fluxo de calor** — varia **linearmente** com a posição, e **não** é constante como no caso sem geração;
+- com **geração** ($\dot q > 0$) a parábola tem **máximo** dentro da parede e o calor sai **para fora** pelas duas faces;
+- com **consumo** ($\dot q < 0$, reação endotérmica) a parábola tem **mínimo** dentro e o calor entra **para dentro** pelas duas faces.
+
+O contraste com o caso sem geração é o que se cobra: lá o perfil é **reto** e o fluxo é **constante**.
+
+</Caixa>
+
+### Parede simétrica: o caso resolvido
+
+Para uma parede de semiespessura $L$ (portanto de $-L$ a $+L$), refrigerada igualmente nas duas faces, a simetria dá $C_1 = 0$ e $T(\pm L) = T_s$:
+
+$$
+T(x) = T_s + \frac{\dot q\,L^2}{2k}\left(1 - \frac{x^2}{L^2}\right)
+$$
+
+$$
+T_0 = T(0) = T_s + \frac{\dot q\,L^2}{2k}
+\qquad\qquad
+q''(L) = \dot q\,L
+$$
+
+<Caixa tipo="dica" rotulo="Conferência física">
+
+Em $x = 0$ a derivada é nula, logo $q''(0) = 0$: no **plano central** não passa calor, porque metade vai para cada lado. E o que sai por uma face, $\dot q L$, é exatamente o calor gerado na metade que ela drena. Se a conta não fechar assim, há erro.
+
+</Caixa>
+
+### As três condições de contorno
+
+Resolver a equação diferencial exige duas informações nas fronteiras. Há três tipos, e cada um tem nome próprio:
+
+**1ª — Dirichlet (primeiro tipo): temperatura prescrita.**
+
+$$
+T(0,t) = T_s
+$$
+
+A superfície é mantida a uma temperatura conhecida. É o caso de uma face em contato com um fluido em mudança de fase (água fervendo, gelo derretendo), que impõe a sua temperatura.
+
+**2ª — Neumann (segundo tipo): fluxo prescrito.**
+
+$$
+-k\,\frac{\partial T}{\partial x}\bigg|_{0} = q''_s
+$$
+
+O que se conhece é a **taxa de calor** na superfície, não a temperatura. Caso particular importantíssimo: **superfície adiabática** (isolada), em que $q''_s = 0$ e portanto $\partial T/\partial x = 0$ — a mesma condição que a simetria dá no plano central.
+
+**3ª — Robin (terceiro tipo, ou mista): convecção na superfície.**
+
+$$
+-k\,\frac{\partial T}{\partial x}\bigg|_{0} = h\,\big[T_\infty - T(0,t)\big]
+$$
+
+O calor que **chega por condução** à superfície é o que **sai por convecção** dela. Nem a temperatura nem o fluxo são dados: dá-se $h$ e $T_\infty$, e a superfície encontra a própria temperatura.
+
+<Caixa tipo="macete" rotulo="Como decorar sem trocar os nomes">
+
+Pela **ordem da derivada** que a condição fixa:
+
+| tipo | nome | fixa | exemplo |
+|---|---|---|---|
+| 1º | **Dirichlet** | $T$ (a função) | face a $100\ ^\circ\mathrm{C}$ |
+| 2º | **Neumann** | $dT/dx$ (a derivada) | face isolada, $q'' = 0$ |
+| 3º | **Robin** / mista | combinação de $T$ e $dT/dx$ | face trocando com ar a $h$ e $T_\infty$ |
+
+Dirichlet vem primeiro no alfabeto e é a mais simples; Robin é "mista" porque mistura as duas anteriores.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — condutividade a partir do perfil">
+
+Uma parede plana de área $5\ \mathrm{m^2}$ e espessura $20\ \mathrm{cm}$ tem a face esquerda a $100\ ^\circ\mathrm{C}$ e o **centro** a $30\ ^\circ\mathrm{C}$. A taxa de calor é $10\,000\ \mathrm{W}$, sem geração nem acúmulo, com perfil **linear**. Qual o $k$?
+
+Sem geração, o perfil é reto e o mesmo $q$ atravessa tudo — então basta usar meia parede:
+
+$$
+q = k\,A\,\frac{\Delta T}{\Delta x}
+\qquad\Longrightarrow\qquad
+k = \frac{q\,\Delta x}{A\,\Delta T} = \frac{10\,000 \times 0{,}10}{5 \times 70} = 2{,}86\ \mathrm{W/(m\cdot K)}
+$$
+
+A armadilha é usar $\Delta x = 0{,}20\ \mathrm{m}$ com $\Delta T = 70\ \mathrm{K}$: a temperatura de $30\ ^\circ\mathrm{C}$ é do **meio**, logo a espessura correspondente é $0{,}10\ \mathrm{m}$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-massa" num="27" titulo="Fundamentos do transporte de massa">
 
 **A ideia.** O último assunto da cadeira fecha o círculo que o nome dela sempre anunciou: são **três** fenômenos de transporte com a mesma estrutura matemática. Quantidade de movimento (Newton), calor (Fourier) e agora **massa** (Fick) — em todos, um fluxo é proporcional a um gradiente, com uma propriedade do meio como constante. Quem enxerga a analogia aprende esta unidade em minutos.
 
