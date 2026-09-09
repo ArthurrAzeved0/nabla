@@ -1,0 +1,188 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Bomba · Descarga livre com perda de carga e rendimento"
+temaId: potencia-da-bomba
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q39.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O reservatório de **grandes dimensões** da figura descarrega água ($\rho = 1000\ \mathrm{kg/m^3}$) **para a atmosfera** através de uma tubulação com uma vazão de $20\ \mathrm{L/s}$. A perda de carga no sistema é de $10\ \mathrm{m}$. **Verificar se a máquina instalada é BOMBA ou TURBINA** e determinar sua **potência**, se o rendimento é $85\ \%$.
+
+**Dados:** $g = 10\ \mathrm{m/s^2}$; $A = 10\ \mathrm{cm^2}$.
+
+<Figura>
+  <svg viewBox="0 0 360 200" role="img" aria-label="Reservatório aberto com a superfície a 20 metros do plano de referência, tubulação que desce até a bomba e sobe até uma descarga livre a 5 metros">
+    {/* PHR */}
+    <line x1="16" y1="170" x2="348" y2="170" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="6 4"/>
+    <text x="316" y="166" font-size="9" fill="var(--ink-3)">PHR</text>
+    {/* reservatório */}
+    <path d="M24 40 L24 154 L120 154 L120 40" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="25" y="46" width="94" height="108" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="25" y1="46" x2="119" y2="46" stroke="var(--accent)" stroke-width="1.4"/>
+    <line x1="36" y1="41" x2="56" y2="41" stroke="var(--accent)" stroke-width="1"/>
+    <text x="30" y="34" font-size="9" fill="var(--warn)">P atm</text>
+    <text x="124" y="44" font-size="10" fill="var(--ink-2)">(1)</text>
+    <text x="30" y="106" font-size="8" fill="var(--ink-3)">grandes</text>
+    <text x="30" y="117" font-size="8" fill="var(--ink-3)">dimensões</text>
+    {/* cota 20 m */}
+    <line x1="140" y1="46" x2="140" y2="170" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="140,46 137,55 143,55" fill="var(--ok)"/>
+    <polygon points="140,170 137,161 143,161" fill="var(--ok)"/>
+    <line x1="120" y1="46" x2="140" y2="46" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="146" y="112" font-size="10" fill="var(--ok)">20 m</text>
+    {/* tubulação: fundo -> PHR -> bomba -> sobe */}
+    <line x1="72" y1="154" x2="72" y2="170" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="72" y1="170" x2="252" y2="170" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <circle cx="192" cy="170" r="12" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.7"/>
+    <text x="188" y="174" font-size="11" fill="var(--ink-2)">B</text>
+    <text x="176" y="196" font-size="9" fill="var(--ink-3)">A = 10 cm²</text>
+    {/* sobe 5 m e descarrega */}
+    <line x1="252" y1="170" x2="252" y2="112" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="252" y1="112" x2="292" y2="112" stroke="var(--ink-2)" stroke-width="2.4"/>
+    {/* jato livre */}
+    <path d="M296 110 Q314 114 322 130" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <path d="M296 116 Q312 120 320 136" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="296" y="102" font-size="10" fill="var(--warn)">(2)</text>
+    <text x="272" y="92" font-size="8" fill="var(--warn)">descarga livre</text>
+    {/* cota 5 m */}
+    <line x1="234" y1="112" x2="234" y2="170" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="234,112 231,121 237,121" fill="var(--ok)"/>
+    <polygon points="234,170 231,161 237,161" fill="var(--ok)"/>
+    <text x="206" y="144" font-size="10" fill="var(--ok)">5 m</text>
+    {/* perda */}
+    <text x="24" y="196" font-size="9" fill="var(--ink-3)">h p = 10 m  ·  Q = 20 L/s  ·  η = 85 %</text>
+  </svg>
+  <figcaption>
+
+A saída é **descarga livre** e a seção é pequena ($10\ \mathrm{cm^2}$): a carga cinética de saída vai valer $20\ \mathrm{m}$, tanto quanto a altura do reservatório.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v_2 = \frac{Q}{A} = \frac{0{,}02}{0{,}001} = 20\ \mathrm{m/s}
+\qquad
+\frac{v_2^2}{2g} = \frac{400}{20} = 20\ \mathrm{m}
+$$
+
+$$
+H_m = \frac{v_2^2}{2g} + y_2 + h_p - y_1 = 20 + 5 + 10 - 20 = \mathbf{+15\ m}
+\qquad\Longrightarrow\qquad
+\textbf{BOMBA}
+$$
+
+$$
+N_{ideal} = \rho\,g\,Q\,H_m = 1000 \times 10 \times 0{,}02 \times 15 = 3000\ \mathrm{W}
+$$
+
+$$
+N_{real} = \frac{N_{ideal}}{\eta} = \frac{3000}{0{,}85} \approx \mathbf{3529\ W} \approx 3{,}53\ \mathrm{kW}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a velocidade de saída, que é a chave da questão.**
+
+$$
+A = 10\ \mathrm{cm^2} = 10 \times 10^{-4} = 1{,}0\times10^{-3}\ \mathrm{m^2}
+$$
+
+$$
+Q = 20\ \mathrm{L/s} = 0{,}02\ \mathrm{m^3/s}
+\qquad\Longrightarrow\qquad
+v_2 = \frac{0{,}02}{0{,}001} = 20\ \mathrm{m/s}
+$$
+
+$$
+\frac{v_2^2}{2g} = \frac{20^2}{2 \times 10} = \frac{400}{20} = 20\ \mathrm{m}
+$$
+
+**Vinte metros de carga cinética** — exatamente a altura do reservatório. Não é detalhe: é o termo que decide se a máquina é bomba ou turbina.
+
+<Caixa tipo="dica" rotulo="Por que a carga cinética é tão grande aqui">
+
+Porque a seção é pequena. Com $10\ \mathrm{cm^2}$ e $20\ \mathrm{L/s}$, o jato sai a $20\ \mathrm{m/s}$ — $72\ \mathrm{km/h}$. Nos exercícios em que a tubulação é larga, $v^2/2g$ vale centésimos de metro e some da conta; aqui ela é o maior termo do lado direito.
+
+</Caixa>
+
+**Passo 2 — a equação da energia com máquina.** Ponto ① na superfície livre do reservatório, ponto ② na saída livre:
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + y_1 + H_m = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + y_2 + h_p
+$$
+
+O que cai:
+
+- $p_1 = p_2 = p_{atm}$ — o reservatório é **aberto** e a descarga é **para a atmosfera**;
+- $v_1 \approx 0$ — reservatório de **grandes dimensões**.
+
+O que **fica**: $v_2^2/2g$, porque a descarga é **livre** — o jato leva a sua energia cinética embora.
+
+$$
+y_1 + H_m = \frac{v_2^2}{2g} + y_2 + h_p
+$$
+
+**Passo 3 — resolver, com as cotas da figura.** Do PHR: $y_1 = 20\ \mathrm{m}$ (superfície do reservatório) e $y_2 = 5\ \mathrm{m}$ (saída).
+
+$$
+H_m = \frac{v_2^2}{2g} + y_2 + h_p - y_1 = 20 + 5 + 10 - 20 = +15\ \mathrm{m}
+$$
+
+**Passo 4 — ler o sinal, que é o item pedido.** $H_m > 0$: a máquina **fornece** carga ao fluido. É uma **BOMBA**.
+
+E o balanço explica: o reservatório oferece $20\ \mathrm{m}$ de queda, mas o sistema **consome** $35\ \mathrm{m}$ ($20$ de carga cinética + $5$ de altura da saída + $10$ de perda). Faltam $15\ \mathrm{m}$, e é a bomba que os coloca.
+
+<Caixa tipo="macete" rotulo="O contraste com a questão da turbina">
+
+Compare com o sistema de 2018.1, em que a mesma conta deu $H_M = -9\ \mathrm{m}$ (turbina). A diferença está em **para onde a energia vai**:
+
+| | 2018.1 · 2ª ch. | 2023.1 · 2ª ch. |
+|---|---|---|
+| queda disponível | $\sim 29\ \mathrm{m}$ de carga de pressão | $20\ \mathrm{m}$ de altura |
+| consumo | $1\ \mathrm{m}$ de perda | $20 + 5 + 10 = 35\ \mathrm{m}$ |
+| sobra / falta | **sobra** $9\ \mathrm{m}$ | **falta** $15\ \mathrm{m}$ |
+| máquina | **turbina** | **bomba** |
+
+O sinal de $H_m$ não é decorado: é o saldo entre o que o sistema oferece e o que ele gasta.
+
+</Caixa>
+
+**Passo 5 — a potência ideal.**
+
+$$
+N_{ideal} = \gamma\,Q\,H_m = \rho\,g\,Q\,H_m = 1000 \times 10 \times 0{,}02 \times 15 = 3000\ \mathrm{W}
+$$
+
+**Passo 6 — a potência real, com o rendimento no lugar certo.** Para **bomba**, o rendimento **divide**: o motor tem de entregar mais do que o fluido recebe, porque parte se perde na máquina.
+
+$$
+N_{real} = \frac{N_{ideal}}{\eta} = \frac{3000}{0{,}85} = 3529{,}4\ \mathrm{W} \approx 3{,}53\ \mathrm{kW}
+$$
+
+<Caixa tipo="dica" rotulo="O rendimento sempre piora o resultado">
+
+$$
+\underbrace{N_{bomba} = \frac{\gamma Q H}{\eta}}_{\text{pede MAIS do motor}}
+\qquad\qquad
+\underbrace{N_{turbina} = \gamma Q |H| \eta}_{\text{entrega MENOS no eixo}}
+$$
+
+Aqui, $3529 > 3000$ ✔ Se a conta tivesse dado **menos** que a ideal, o $\eta$ estaria do lado errado.
+
+</Caixa>
+
+**Conferência —** $10\ \mathrm{cm^2} = 10^{-3}\ \mathrm{m^2}$ ✔ $20\ \mathrm{L/s} = 0{,}02\ \mathrm{m^3/s}$ ✔ descarga livre **mantém** $v_2^2/2g$ na equação ✔ $H_m$ positivo é bomba, e aí o rendimento **divide** ✔ $N_{real} > N_{ideal}$ ✔
+</Passos>
