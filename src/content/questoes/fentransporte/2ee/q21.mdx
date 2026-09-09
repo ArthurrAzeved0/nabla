@@ -1,0 +1,144 @@
+---
+origem: "2023.2"
+tema: "Radiação · O percentual de aumento com a quarta potência"
+temaId: stefan-boltzmann
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Admita que radiação seja emitida por uma superfície real a $350\ \mathrm{K}$ com uma emissividade de $0{,}55$. **Em que percentual é aumentada a radiação emitida da superfície se a temperatura for aumentada para $1273\ \mathrm{K}$?** Compare com o percentual em que se aumentou a temperatura.
+
+**Dado:** $\sigma = 5{,}67\times10^{-8}\ \mathrm{W/(m^2\cdot K^4)}$.
+
+<Gabarito>
+$$
+q''_{350} = \varepsilon\,\sigma\,T^4 = 0{,}55 \cdot 5{,}67\times10^{-8} \cdot 350^4 = 4{,}68\times10^{2}\ \mathrm{W/m^2}
+$$
+
+$$
+q''_{1273} = 0{,}55 \cdot 5{,}67\times10^{-8} \cdot 1273^4 = 8{,}19\times10^{4}\ \mathrm{W/m^2}
+$$
+
+**Aumento da radiação:**
+
+$$
+\frac{8{,}19\times10^{4} - 4{,}68\times10^{2}}{4{,}68\times10^{2}} \times 100\ \% \approx \mathbf{17\,400\ \%}
+$$
+
+**Aumento da temperatura:**
+
+$$
+\frac{1273 - 350}{350} \times 100\ \% \approx \mathbf{264\ \%}
+$$
+
+A temperatura subiu $264\ \%$; a radiação emitida subiu $17\,400\ \%$ — cerca de **66 vezes mais**, porque a emissão depende de $T^4$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a lei de Stefan-Boltzmann para superfície real.** A questão pede a radiação **emitida** pela superfície, não a troca líquida com a vizinhança — então não há o termo $T_{viz}^4$:
+
+$$
+q'' = \varepsilon\,\sigma\,T^4
+$$
+
+<Caixa tipo="simbolos">
+
+- $\varepsilon = 0{,}55$ — emissividade, adimensional; é o que faz a superfície ser "real" e não corpo negro
+- $\sigma = 5{,}67\times10^{-8}\ \mathrm{W/(m^2K^4)}$ — constante de Stefan-Boltzmann
+- $T$ — temperatura absoluta, em **kelvin** (aqui já vem em K, o que é uma gentileza do enunciado)
+- $q''$ — densidade de fluxo emitida, em $\mathrm{W/m^2}$
+
+</Caixa>
+
+**Passo 2 — a emissão a $350\ \mathrm{K}$.**
+
+$$
+350^4 = (3{,}5\times10^2)^4 = 3{,}5^4 \times 10^8 = 150{,}06 \times 10^8 = 1{,}5006\times10^{10}\ \mathrm{K^4}
+$$
+
+$$
+q''_{350} = 0{,}55 \times 5{,}67\times10^{-8} \times 1{,}5006\times10^{10} = 0{,}55 \times 850{,}9 = 468\ \mathrm{W/m^2}
+$$
+
+**Passo 3 — a emissão a $1273\ \mathrm{K}$.**
+
+$$
+1273^2 = 1{,}6205\times10^{6}
+\qquad
+1273^4 = (1{,}6205\times10^{6})^2 = 2{,}6261\times10^{12}\ \mathrm{K^4}
+$$
+
+$$
+q''_{1273} = 0{,}55 \times 5{,}67\times10^{-8} \times 2{,}6261\times10^{12} = 0{,}55 \times 148\,900 = 81\,895\ \mathrm{W/m^2}
+$$
+
+Ou seja, de $0{,}47\ \mathrm{kW/m^2}$ para $82\ \mathrm{kW/m^2}$.
+
+**Passo 4 — o percentual de aumento da radiação.** "Em que percentual é **aumentada**" pede a variação relativa, não a razão:
+
+$$
+\frac{\Delta q''}{q''_{350}} = \frac{81\,895 - 468}{468} = \frac{81\,427}{468} = 174{,}0
+\qquad\Longrightarrow\qquad
+17\,400\ \%
+$$
+
+<Caixa tipo="dica" rotulo="Aumento de 17 400 % é o mesmo que 175 vezes">
+
+$$
+\text{razão} = \frac{81\,895}{468} = 175{,}0
+\qquad
+\text{aumento} = 175 - 1 = 174 = 17\,400\ \%
+$$
+
+A diferença entre "175 vezes maior" e "aumentou 17 400 %" é o $-1$. Trocar um pelo outro é o erro de leitura mais comum aqui, e vale ponto.
+
+</Caixa>
+
+**Passo 5 — o percentual de aumento da temperatura.**
+
+$$
+\frac{1273 - 350}{350} = \frac{923}{350} = 2{,}637
+\qquad\Longrightarrow\qquad
+264\ \%
+$$
+
+**Passo 6 — a comparação, que é o que a questão realmente pede.** Multiplicar a temperatura absoluta por $k$ multiplica a emissão por $k^4$:
+
+$$
+\frac{T_2}{T_1} = \frac{1273}{350} = 3{,}637
+\qquad\Longrightarrow\qquad
+\left(\frac{T_2}{T_1}\right)^4 = 3{,}637^4 = 175
+$$
+
+que é exatamente a razão do Passo 4 ✔ — a conferência sai de graça, e sem calcular nenhuma quarta potência grande.
+
+$$
+\underbrace{264\ \%}_{\text{temperatura}}
+\qquad\text{contra}\qquad
+\underbrace{17\,400\ \%}_{\text{radiação}}
+$$
+
+A conclusão a escrever: a radiação **não** cresce em proporção à temperatura; cresce com a **quarta potência** dela. Pouco mais que triplicar a temperatura absoluta multiplicou a emissão por 175.
+
+<Caixa tipo="macete" rotulo="É por isso que radiação só importa em alta temperatura">
+
+A $350\ \mathrm{K}$ ($77\ ^\circ\mathrm{C}$), $468\ \mathrm{W/m^2}$ é comparável ao que a convecção natural entrega — os dois competem. A $1273\ \mathrm{K}$ ($1000\ ^\circ\mathrm{C}$), $82\ \mathrm{kW/m^2}$ é ordens de grandeza acima de qualquer convecção: em fornos, chamas e fornalhas, **a radiação domina** e os outros dois mecanismos viram detalhe.
+
+E a emissividade nem precisava ser calculada duas vezes: como ela é a mesma nas duas temperaturas, ela **se cancela** na razão. Só entra se a questão pedir os valores absolutos — e esta pede.
+
+</Caixa>
+
+**Conferência —** a temperatura já vem em kelvin, e é nela que se eleva à quarta ✔ "percentual de aumento" leva o $-1$ ✔ a razão das emissões tem de dar $(T_2/T_1)^4$ ✔ os dois percentuais pedidos são $264\ \%$ e $17\,400\ \%$, e a comparação entre eles é a resposta ✔
+</Passos>
