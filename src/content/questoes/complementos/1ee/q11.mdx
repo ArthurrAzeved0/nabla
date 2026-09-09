@@ -1,0 +1,99 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Trigonométrica complexa · Todas as soluções de cos z = 2"
+temaId: equacao-trigonometrica-complexa
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre **todas** as soluções complexas de $\cos(z) = 2$.
+
+<Gabarito>
+$$
+z = 2k\pi \pm i\,\ln\!\left(2+\sqrt3\right),
+\qquad k \in \mathbb{Z}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que existe solução.** Nos reais, $\cos x \in [-1,1]$ e a equação seria absurda. No plano complexo o cosseno **não é limitado**, porque
+
+$$
+\cos z = \cos x\cosh y - i\operatorname{sen} x\operatorname{senh} y
+$$
+
+e $\cosh y$ cresce sem limite. A equação tem solução, e as soluções não são reais.
+
+**Passo 2 — escrever em exponencial e chamar $w = e^{iz}$.** É o roteiro de toda equação trigonométrica complexa:
+
+$$
+\cos z = \frac{e^{iz} + e^{-iz}}{2} = 2
+\qquad\Longrightarrow\qquad
+w + \frac1w = 4
+$$
+
+**Passo 3 — resolver a quadrática em $w$.** Multiplicando por $w$:
+
+$$
+w^2 - 4w + 1 = 0
+\qquad\Longrightarrow\qquad
+w = \frac{4 \pm \sqrt{16-4}}{2} = 2 \pm \sqrt3
+$$
+
+Os dois valores são **reais e positivos** ($2+\sqrt3 \approx 3{,}73$ e $2-\sqrt3 \approx 0{,}268$), o que simplifica o próximo passo: o argumento deles é zero.
+
+**Passo 4 — voltar com o logaritmo completo.** De $w = e^{iz}$:
+
+$$
+iz = \log w = \ln|w| + i\big(\arg w + 2k\pi\big) = \ln\big(2\pm\sqrt3\big) + 2k\pi i
+$$
+
+Dividindo por $i$, isto é, multiplicando por $-i$:
+
+$$
+z = 2k\pi - i\,\ln\big(2\pm\sqrt3\big)
+$$
+
+**Passo 5 — simplificar os dois casos num só.** Note que
+
+$$
+\big(2+\sqrt3\big)\big(2-\sqrt3\big) = 4 - 3 = 1
+\qquad\Longrightarrow\qquad
+\ln\big(2-\sqrt3\big) = -\ln\big(2+\sqrt3\big)
+$$
+
+Os dois sinais do logaritmo se juntam num $\pm$:
+
+$$
+\boxed{\;z = 2k\pi \pm i\,\ln\!\left(2+\sqrt3\right),\qquad k \in \mathbb{Z}\;}
+$$
+
+**Conferência —** a parte real é múltipla de $2\pi$ e a imaginária é $\pm 1{,}317$. Substituindo na separação do passo 1, com $x = 0$ e $y = -1{,}317$:
+
+$$
+\cos z = \cos 0 \cdot \cosh(1{,}317) - i\operatorname{sen} 0 \cdot \operatorname{senh}(1{,}317) = \cosh(1{,}317) = 2{,}0
+\;\checkmark
+$$
+
+E nenhuma solução é real, como tinha de ser.
+
+<Caixa tipo="macete" rotulo="O roteiro serve para as quatro">
+
+Seno, cosseno, $\operatorname{senh}$ e $\cosh$ seguem o mesmo caminho: **exponencial → quadrática em $w$ → logaritmo completo**. Nunca tente $\arccos(2)$: no plano complexo essa função é multivalorada e o caminho da quadrática é mais curto e mais seguro.
+
+E o $2k\pi$ não é enfeite: sem ele a resposta cobre duas soluções em vez de infinitas.
+
+</Caixa>
+</Passos>
