@@ -451,7 +451,14 @@
       "formula-de-euler": "cm-polar",
       "de-moivre": "cm-polar",
       "raizes-de-complexos": "cm-polar",
-      "raizes-da-unidade": "cm-polar"
+      "raizes-da-unidade": "cm-polar",
+      "exponencial-complexa": "cm-exp-log",
+      "periodicidade-da-exponencial": "cm-exp-log",
+      "logaritmo-complexo": "cm-exp-log",
+      "ramo-principal": "cm-exp-log",
+      "superficie-de-riemann": "cm-exp-log",
+      "potencia-complexa": "cm-exp-log",
+      "equacao-exponencial": "cm-exp-log"
     }
   }
 ]

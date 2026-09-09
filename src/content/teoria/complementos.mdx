@@ -6,6 +6,7 @@ unidades:
     secoes:
       - { id: cm-complexos, titulo: "Números complexos: forma algébrica, conjugado e módulo" }
       - { id: cm-polar, titulo: "Forma polar, fórmula de Euler, De Moivre e raízes" }
+      - { id: cm-exp-log, titulo: "Exponencial, logaritmo e potências complexas" }
 ---
 
 {/* **************************************************************************
@@ -250,6 +251,139 @@ Some as $n$ raízes: dá **zero** sempre que $n \ge 2$ (são os vértices de um 
 Na hora de dividir o argumento, use o **argumento principal** e depois varra $k = 0, \dots, n-1$. Começar por um argumento já somado com $2\pi$ funciona, mas embaralha a ordem das raízes e atrapalha a conferência do polígono.
 
 E cuidado com a pergunta: "a forma polar de $z$" quer $r$ **e** $\theta$, não só o módulo. No 1º EE de 2023.2, $z = 3 + \sqrt3\,i$ tem $r = 2\sqrt3$ e $\theta = \pi/6$, logo $z = 2\sqrt3\,e^{i\pi/6}$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-exp-log" num="03" titulo="Exponencial, logaritmo e potências complexas">
+
+### A ideia
+
+Estender $e^x$ ao plano complexo custa uma decisão só — e ela é a fórmula de Euler. O preço vem depois: a exponencial complexa é **periódica**, e função periódica não tem inversa única. É daí que nasce tudo o que confunde nesta seção: o logaritmo complexo tem **infinitos** valores, e $z^\alpha$ também.
+
+<Formula rotulo="Exponencial complexa">
+
+$$
+e^{z} = e^{x+iy} = e^{x}\big(\cos y + i \operatorname{sen} y\big),
+\qquad
+|e^z| = e^{x},
+\qquad
+\arg\!\left(e^z\right) = y
+$$
+
+</Formula>
+
+Três consequências que caem direto em prova:
+
+- $e^z$ **nunca é zero** — $|e^z| = e^x > 0$ sempre. Logo $e^z = 0$ não tem solução;
+- $e^{z_1+z_2} = e^{z_1}e^{z_2}$, como no caso real;
+- $e^{z + 2\pi i} = e^z$: a exponencial complexa é **periódica de período $2\pi i$**. Mostrar isso foi a Questão 01 do 1º EE de 2025.2 e reapareceu na final de 2026.1 — a prova é uma linha: $e^{z+2\pi i} = e^z e^{2\pi i} = e^z \cdot 1$.
+
+### O logaritmo é multivalorado
+
+Se $e^w = z$, então $w$ é um logaritmo de $z$. Escrevendo $z = r e^{i\theta}$ e $w = u + iv$: $e^u = r$ e $v = \theta + 2k\pi$. Ou seja, há um logaritmo para cada volta.
+
+<Formula rotulo="Logaritmo complexo e o ramo principal">
+
+$$
+\log z = \ln|z| + i\big(\operatorname{Arg} z + 2k\pi\big),
+\qquad k \in \mathbb{Z}
+$$
+
+$$
+\operatorname{Log} z = \ln|z| + i\operatorname{Arg} z,
+\qquad -\pi < \operatorname{Arg} z \le \pi
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\log z$ — o logaritmo **completo**, um conjunto de infinitos valores;
+- $\operatorname{Log} z$ — o **ramo principal**, com $L$ maiúsculo: um único valor, o de $k = 0$;
+- $\ln|z|$ — logaritmo real do módulo, a única parte que não tem ambiguidade;
+- $z = 0$ — único ponto onde $\log z$ **não existe**, porque $\ln 0$ não existe.
+
+</Caixa>
+
+O corte que se faz no plano para escolher um ramo (por convenção o semieixo real negativo, onde $\operatorname{Arg}$ salta de $\pi$ para $-\pi$) é o que a ementa chama de **superfície de Riemann**: em vez de cortar, imagine folhas empilhadas, uma por volta, coladas ao longo do corte. Cada folha é um ramo, e subir de folha é dar uma volta em torno da origem.
+
+<Caixa tipo="exemplo">
+
+Do 1º EE de 2023.2: $w = \operatorname{Log}(1 - i)$.
+
+$$
+|1-i| = \sqrt2,
+\qquad
+\operatorname{Arg}(1-i) = -\frac{\pi}{4}
+$$
+
+$$
+\operatorname{Log}(1-i) = \ln\sqrt2 - i\,\frac{\pi}{4} = \frac{\ln 2}{2} - i\,\frac{\pi}{4}
+$$
+
+Note que a parte real é **negativa quando $|z| < 1$** e positiva quando $|z| > 1$ — igual ao logaritmo real, porque é ele.
+
+</Caixa>
+
+### Potências complexas
+
+Com o logaritmo na mão, $z^\alpha$ se define pela identidade que já valia nos reais, $a^b = e^{b\ln a}$:
+
+<Formula rotulo="Potência de expoente complexo">
+
+$$
+z^{\alpha} = e^{\alpha \log z}
+\qquad\text{(ramo principal: } z^{\alpha} = e^{\alpha \operatorname{Log} z}\text{)}
+$$
+
+</Formula>
+
+<Caixa tipo="exemplo">
+
+Questão 01 do 1º EE de 2026.1: calcule $(-i)^{1+i}$ pelo ramo principal.
+
+$$
+\operatorname{Log}(-i) = \ln 1 + i\left(-\frac{\pi}{2}\right) = -\frac{i\pi}{2}
+$$
+
+$$
+(-i)^{1+i} = e^{(1+i)\operatorname{Log}(-i)}
+= e^{(1+i)\left(-\frac{i\pi}{2}\right)}
+= e^{-\frac{i\pi}{2} + \frac{\pi}{2}}
+= e^{\pi/2}\,e^{-i\pi/2}
+= -i\,e^{\pi/2}
+$$
+
+O passo que decide a questão é o primeiro: $\operatorname{Log}(-i)$. Errar o quadrante de $-i$ e escrever $+i\pi/2$ inverte o sinal da resposta inteira.
+
+</Caixa>
+
+### Resolver $e^z = w$
+
+É o roteiro inverso, e ele aparece em toda prova ($e^z = 4i$ em 2023.2, $e^z = 1+i$ na 2ª chamada). Tome logaritmo **completo**, não o principal, porque a questão pede **todas** as soluções:
+
+$$
+e^z = w
+\quad\Longrightarrow\quad
+z = \ln|w| + i\big(\operatorname{Arg} w + 2k\pi\big),
+\qquad k \in \mathbb{Z}
+$$
+
+Para $e^z = 4i$: $|4i| = 4$ e $\operatorname{Arg}(4i) = \pi/2$, logo $z = \ln 4 + i\left(\tfrac{\pi}{2} + 2k\pi\right)$.
+
+<Caixa tipo="macete">
+
+A pergunta diz qual logaritmo usar. **"Todas as soluções"** ou **"resolva"** → logaritmo completo, com o $+2k\pi i$ escrito. **"Ramo principal"**, **"valor principal"** ou $\operatorname{Log}$ com maiúscula → um valor só, sem $k$.
+
+Perder o $2k\pi i$ numa questão de "todas as soluções" custa a questão inteira, e é o erro mais comum da unidade.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+As identidades do logaritmo real **não sobrevivem inteiras**: $\operatorname{Log}(z_1 z_2) = \operatorname{Log} z_1 + \operatorname{Log} z_2$ pode falhar por $2\pi i$, porque a soma dos argumentos principais pode sair de $(-\pi, \pi]$. Teste com $z_1 = z_2 = -1$: $\operatorname{Log}(1) = 0$, mas $\operatorname{Log}(-1) + \operatorname{Log}(-1) = 2\pi i$.
 
 </Caixa>
 
