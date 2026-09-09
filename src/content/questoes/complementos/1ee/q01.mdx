@@ -1,0 +1,103 @@
+---
+origem: "2023.2"
+tema: "Complexos · Forma cartesiana de um quociente e forma polar"
+temaId: forma-polar
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado $z = 3 + \sqrt3\,i$ e $w = \operatorname{Log}(1-i)$, calcule
+
+**a)** a forma cartesiana de $\dfrac{z^2}{w}$;
+
+**b)** a forma polar de $z$.
+
+<Gabarito>
+**a)**
+
+$$
+\frac{z^2}{w} = \frac{48\ln 2 - 24\sqrt3\,\pi}{4\ln^2 2 + \pi^2}
++ i\,\frac{24\pi + 48\sqrt3\,\ln 2}{4\ln^2 2 + \pi^2}
+\approx -8{,}25 + 11{,}28\,i
+$$
+
+**b)** $z = 2\sqrt3\,e^{i\pi/6}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o quadrado, pelo produto notável.** Nada de forma polar aqui: elevar ao quadrado na forma algébrica é direto.
+
+$$
+z^2 = (3 + \sqrt3\,i)^2 = 9 + 6\sqrt3\,i + 3i^2 = 6 + 6\sqrt3\,i
+$$
+
+Conferência pelo módulo, que é mais rápida que refazer: $|z| = \sqrt{9+3} = \sqrt{12}$, logo $|z^2| = 12$ — e $\sqrt{36 + 108} = 12$ ✔
+
+**Passo 2 — o logaritmo principal.** $w = \operatorname{Log}(1-i)$ pede módulo e argumento **principal** de $1-i$, que está no 4º quadrante:
+
+$$
+|1-i| = \sqrt2,
+\qquad
+\operatorname{Arg}(1-i) = -\frac{\pi}{4}
+$$
+
+$$
+w = \ln\sqrt2 - i\,\frac{\pi}{4} = \frac{\ln 2}{2} - i\,\frac{\pi}{4}
+$$
+
+O erro de quadrante aqui inverte o sinal da parte imaginária de tudo o que vem depois.
+
+**Passo 3 — a divisão, pelo conjugado.** Multiplique numerador e denominador por $4$ para limpar as frações e depois pelo conjugado do denominador:
+
+$$
+\frac{z^2}{w} = \frac{6 + 6\sqrt3\,i}{\tfrac{\ln 2}{2} - i\tfrac{\pi}{4}}
+= \frac{24 + 24\sqrt3\,i}{2\ln 2 - i\pi}
+= \frac{(24 + 24\sqrt3\,i)(2\ln 2 + i\pi)}{4\ln^2 2 + \pi^2}
+$$
+
+Abrindo o numerador, com $i^2 = -1$:
+
+$$
+(24 + 24\sqrt3\,i)(2\ln 2 + i\pi)
+= \big(48\ln 2 - 24\sqrt3\,\pi\big) + i\big(24\pi + 48\sqrt3\,\ln 2\big)
+$$
+
+$$
+\frac{z^2}{w} = \frac{48\ln 2 - 24\sqrt3\,\pi}{4\ln^2 2 + \pi^2}
++ i\,\frac{24\pi + 48\sqrt3\,\ln 2}{4\ln^2 2 + \pi^2}
+$$
+
+Numericamente, com $4\ln^2 2 + \pi^2 = 11{,}79$:
+
+$$
+\frac{z^2}{w} \approx \frac{-97{,}33 + 133{,}02\,i}{11{,}79} \approx -8{,}25 + 11{,}28\,i
+$$
+
+**Passo 4 — a forma polar de $z$.** Módulo e argumento, com $z = 3+\sqrt3 i$ no 1º quadrante:
+
+$$
+r = \sqrt{9+3} = \sqrt{12} = 2\sqrt3,
+\qquad
+\theta = \arctan\frac{\sqrt3}{3} = \arctan\frac{1}{\sqrt3} = \frac{\pi}{6}
+$$
+
+$$
+\boxed{\;z = 2\sqrt3\,e^{i\pi/6} = 2\sqrt3\left(\cos\frac\pi6 + i\operatorname{sen}\frac\pi6\right)\;}
+$$
+
+**Conferência —** $2\sqrt3\cos(\pi/6) = 2\sqrt3\cdot\tfrac{\sqrt3}{2} = 3$ ✔ e $2\sqrt3\operatorname{sen}(\pi/6) = 2\sqrt3\cdot\tfrac12 = \sqrt3$ ✔
+
+**O que a questão testa** é a divisão de trabalho entre as duas formas: **algébrica** para somar, subtrair e elevar a expoente pequeno; **polar** para argumento, módulo e potência alta. Quem tentou o item (a) em forma polar gastou o dobro do tempo.
+</Passos>
