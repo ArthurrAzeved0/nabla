@@ -1,0 +1,140 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Laplace · Inversa com fator quadrático irredutível"
+temaId: completar-o-quadrado
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre
+
+$$
+\mathcal{L}^{-1}\left\{\frac{s+2}{s^3 + 2s^2 + 2s}\right\}
+$$
+
+<Gabarito>
+$$
+\mathcal{L}^{-1} = 1 - e^{-x}\cos x
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — fatorar o denominador.** Todo termo tem $s$:
+
+$$
+s^3 + 2s^2 + 2s = s\big(s^2 + 2s + 2\big)
+$$
+
+O fator quadrático tem discriminante $4 - 8 = -4 < 0$: é **irredutível** nos reais. Então a decomposição leva numerador linear nele:
+
+$$
+\frac{s+2}{s(s^2+2s+2)} = \frac{A}{s} + \frac{Bs + C}{s^2+2s+2}
+$$
+
+**Passo 2 — achar as três constantes.** Multiplicando pelo denominador e abrindo:
+
+$$
+s + 2 = A\big(s^2+2s+2\big) + (Bs+C)\,s
+= (A+B)s^2 + (2A+C)s + 2A
+$$
+
+Comparando coeficiente por coeficiente:
+
+$$
+s^0:\;\; 2 = 2A \;\Longrightarrow\; A = 1
+$$
+
+$$
+s^2:\;\; 0 = A + B \;\Longrightarrow\; B = -1
+$$
+
+$$
+s^1:\;\; 1 = 2A + C \;\Longrightarrow\; C = -1
+$$
+
+$$
+\frac{s+2}{s(s^2+2s+2)} = \frac{1}{s} + \frac{-s-1}{s^2+2s+2}
+$$
+
+**Passo 3 — completar o quadrado.** É o movimento que decide a questão:
+
+$$
+s^2 + 2s + 2 = (s+1)^2 + 1
+$$
+
+isto é, $a = -1$ e $k = 1$ na tabela deslocada.
+
+**Passo 4 — escrever o numerador em termos de $(s+1)$.** Aqui ele já sai proporcional:
+
+$$
+\frac{-s-1}{(s+1)^2+1} = \frac{-(s+1)}{(s+1)^2+1}
+$$
+
+Não sobra constante, logo **não há termo de seno** na resposta. (Se sobrasse, ela iria para $\dfrac{k}{(s-a)^2+k^2} \to e^{ax}\operatorname{sen} kx$.)
+
+**Passo 5 — inverter termo a termo.**
+
+$$
+\mathcal{L}^{-1}\left\{\frac1s\right\} = 1,
+\qquad
+\mathcal{L}^{-1}\left\{\frac{s+1}{(s+1)^2+1}\right\} = e^{-x}\cos x
+$$
+
+$$
+\boxed{\;\mathcal{L}^{-1}\left\{\frac{s+2}{s^3+2s^2+2s}\right\} = 1 - e^{-x}\cos x\;}
+$$
+
+**Conferência 1 — valor inicial.** $F(0) = \lim_{s\to\infty}s\,\mathcal{L}\{F\} = 0$, e $1 - e^{0}\cos 0 = 0$ ✔
+
+**Conferência 2 — derivada inicial.**
+
+$$
+F'(0) = \lim_{s\to\infty}\Big[s^2\mathcal{L}\{F\} - s\,F(0)\Big]
+= \lim_{s\to\infty} s^2\cdot\frac{s+2}{s^3+2s^2+2s} = 1
+$$
+
+E derivando a resposta, $F'(x) = e^{-x}\cos x + e^{-x}\operatorname{sen} x$, logo $F'(0) = 1$ ✔
+
+**Conferência 3 — refazer a transformada direta.**
+
+$$
+\frac1s - \frac{s+1}{s^2+2s+2}
+= \frac{(s^2+2s+2) - s(s+1)}{s(s^2+2s+2)}
+= \frac{s+2}{s(s^2+2s+2)}
+\;\;\checkmark
+$$
+
+<Caixa tipo="dica" rotulo="Onde nasce o termo de seno espúrio">
+
+O erro comum aqui é achar $C = 0$ em vez de $C = -1$, escrever o numerador como $-s$ e então "consertar" somando e subtraindo $1$ — o que produz uma resposta com $+e^{-x}\operatorname{sen} x$ sobrando.
+
+Duas defesas: comparar **os três** coeficientes ($s^2$, $s^1$ e $s^0$) em vez de dois, e usar a conferência 2. Com o seno a mais, $F'(0)$ daria $2$ em vez de $1$ — e o teorema do valor inicial não depende de nada que se fez no meio.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Fator quadrático irredutível sempre pede quadrado completo">
+
+E o numerador tem de ser escrito em $(s-a)$, **nunca** em $s$. Depois disso é mecânico:
+
+$$
+\frac{s-a}{(s-a)^2+k^2} \to e^{ax}\cos kx,
+\qquad
+\frac{k}{(s-a)^2+k^2} \to e^{ax}\operatorname{sen} kx
+$$
+
+Toda inversa com raiz complexa cai nessas duas linhas.
+
+</Caixa>
+</Passos>
