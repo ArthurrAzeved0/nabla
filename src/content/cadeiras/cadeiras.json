@@ -405,7 +405,12 @@
       "difusao": "ft-massa",
       "coeficiente-de-difusao": "ft-massa",
       "analogia-dos-transportes": "ft-massa",
-      "prandtl-schmidt": "ft-massa"
+      "prandtl-schmidt": "ft-massa",
+      "resistencia-esferica": "ft-esferas",
+      "conducao-em-esferas": "ft-esferas",
+      "raio-critico": "ft-esferas",
+      "raio-critico-de-isolamento": "ft-esferas",
+      "camadas-esfericas": "ft-esferas"
     }
   }
 ]

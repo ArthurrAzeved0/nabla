@@ -44,6 +44,7 @@ unidades:
       - { id: ft-modos, titulo: "Os três modos de transferência de calor" }
       - { id: ft-fourier, titulo: "Lei de Fourier, condutividade e resistência térmica" }
       - { id: ft-paredes, titulo: "Condução em paredes compostas e em tubulações" }
+      - { id: ft-esferas, titulo: "Condução em esferas e o raio crítico de isolamento" }
       - { id: ft-massa, titulo: "Fundamentos do transporte de massa" }
 
 ---
@@ -2368,7 +2369,145 @@ $$
 
 </Topico>
 
-<Topico id="ft-massa" num="25" titulo="Fundamentos do transporte de massa">
+<Topico id="ft-esferas" num="25" titulo="Condução em esferas e o raio crítico de isolamento">
+
+**A ideia.** O tubo trouxe o logaritmo porque a área cresce com o raio. Na **esfera** a área cresce com o raio **ao quadrado**, e a resistência ganha uma forma ainda diferente. E, nos dois casos curvos, aparece um efeito que não existe na parede plana: acrescentar isolante pode **aumentar** a perda de calor. O limite entre uma coisa e outra é o **raio crítico**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $r_1,\ r_2,\ r_3$ — raios das interfaces, do interior para fora, em $\mathrm{m}$;
+- $k$ — condutividade da camada, em $\mathrm{W/(m \cdot K)}$;
+- $h_e$ — coeficiente de convecção na face **externa**, em $\mathrm{W/(m^2 \cdot K)}$;
+- $r_c$ — **raio crítico de isolamento**, em $\mathrm{m}$;
+- $R$ — resistência térmica, em $\mathrm{K/W}$.
+
+</Caixa>
+
+### A resistência de uma casca esférica
+
+Na esfera, $A = 4\pi r^2$. Integrando Fourier com essa área:
+
+$$
+q = -k\,(4\pi r^2)\,\frac{dT}{dr}
+\qquad\Longrightarrow\qquad
+q\int_{r_1}^{r_2}\frac{dr}{r^2} = -4\pi k\int_{T_1}^{T_2} dT
+$$
+
+$$
+q\left(\frac{1}{r_1} - \frac{1}{r_2}\right) = 4\pi k\,(T_1 - T_2)
+$$
+
+$$
+\boxed{\;R_{esfera} = \frac{\dfrac{1}{r_1} - \dfrac{1}{r_2}}{4\pi k}\;}
+$$
+
+<Caixa tipo="macete" rotulo="As três geometrias, lado a lado">
+
+| geometria | área | resistência |
+|---|---|---|
+| **parede plana** | $A$ constante | $\dfrac{L}{k\,A}$ |
+| **casca cilíndrica** | $2\pi r L$ | $\dfrac{\ln(r_2/r_1)}{2\pi k L}$ |
+| **casca esférica** | $4\pi r^2$ | $\dfrac{1/r_1 - 1/r_2}{4\pi k}$ |
+
+Note que a resistência esférica **não tem $L$**: a esfera não tem comprimento, e a fórmula já dá $\mathrm{K/W}$ direto. Trocar a fórmula do tubo pela da esfera (ou vice-versa) é o erro mais comum desta seção.
+
+</Caixa>
+
+### Convecção na face externa
+
+A convecção sempre usa a **área da face** onde ela acontece:
+
+$$
+R_{conv} = \frac{1}{h_e\,A_{ext}}
+\qquad\text{com}\qquad
+A_{ext} =
+\begin{cases}
+2\pi r_3 L & \text{(cilindro)}\\[4pt]
+4\pi r_3^2 & \text{(esfera)}
+\end{cases}
+$$
+
+Camadas e convecção entram todas **em série**:
+
+$$
+q = \frac{T_1 - T_\infty}{R_1 + R_2 + \ldots + R_{conv}}
+$$
+
+### O raio crítico de isolamento
+
+Aqui está o efeito que não existe na parede plana. Acrescentar isolante faz duas coisas **opostas**:
+
+- **aumenta** a resistência de condução (mais material a atravessar);
+- **diminui** a resistência de convecção, porque a área externa fica maior.
+
+Enquanto o segundo efeito vence, mais isolante significa **mais** perda de calor. O raio em que os dois se equilibram — em que a resistência total é **mínima** e o fluxo é **máximo** — é o raio crítico. Derivando $R_{total}$ em relação a $r$ e igualando a zero:
+
+$$
+\boxed{\;r_c = \frac{k_{iso}}{h_e}\;\text{(cilindro)}
+\qquad\qquad
+r_c = \frac{2\,k_{iso}}{h_e}\;\text{(esfera)}\;}
+$$
+
+<Caixa tipo="dica" rotulo="Como ler o resultado numa prova">
+
+Compare o raio externo real $r_3$ com $r_c$:
+
+- $r_3 < r_c$ → o sistema está **antes** do crítico: acrescentar isolante **aumenta** a perda. Isolar mal é pior que não isolar;
+- $r_3 > r_c$ → o sistema está **depois** do crítico: acrescentar isolante **reduz** a perda, como a intuição espera.
+
+O caso $r_3 < r_c$ é real e importante: é por isso que fio elétrico fino ganha capa isolante — a capa **ajuda a dissipar** o calor do condutor, e não o contrário.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — esfera com duas camadas e convecção">
+
+Uma esfera de material A a $T_1 = 350\ \mathrm{K}$, de raio $r_1 = 5\ \mathrm{cm}$, é revestida por B ($k_B = 4{,}0\ \mathrm{W/(mK)}$) até $r_2 = 8\ \mathrm{cm}$ e por isolante ($k_{iso} = 0{,}7\ \mathrm{W/(mK)}$) até $r_3 = 10\ \mathrm{cm}$. Fora, ar a $T_\infty = 298\ \mathrm{K}$ com $h_e = 6{,}2\ \mathrm{W/(m^2K)}$.
+
+**Raio crítico:**
+
+$$
+r_c = \frac{2 \times 0{,}7}{6{,}2} = 0{,}2258\ \mathrm{m} = 22{,}6\ \mathrm{cm}
+$$
+
+Como $r_3 = 10\ \mathrm{cm} < r_c$, o isolamento **está aumentando** a perda de calor. Diagnóstico que a conta seguinte confirma.
+
+**As resistências:**
+
+$$
+R_B = \frac{1/0{,}05 - 1/0{,}08}{4\pi \times 4} = \frac{7{,}5}{50{,}27} = 0{,}1492\ \mathrm{K/W}
+$$
+
+$$
+R_{iso} = \frac{1/0{,}08 - 1/0{,}10}{4\pi \times 0{,}7} = \frac{2{,}5}{8{,}80} = 0{,}2842\ \mathrm{K/W}
+$$
+
+$$
+R_{conv} = \frac{1}{6{,}2 \times 4\pi (0{,}10)^2} = \frac{1}{0{,}779} = 1{,}2835\ \mathrm{K/W}
+$$
+
+$$
+R_T = 0{,}1492 + 0{,}2842 + 1{,}2835 = 1{,}7169\ \mathrm{K/W}
+\qquad
+q = \frac{350 - 298}{1{,}7169} = 30{,}3\ \mathrm{W}
+$$
+
+**As temperaturas nas interfaces**, uma resistência por vez:
+
+$$
+T_2 = T_1 - q\,R_B = 350 - 30{,}3 \times 0{,}1492 = 345{,}5\ \mathrm{K}
+$$
+
+$$
+T_3 = T_2 - q\,R_{iso} = 345{,}5 - 30{,}3 \times 0{,}2842 = 336{,}9\ \mathrm{K}
+$$
+
+Repare que a **convecção** carrega $75\ \%$ da resistência total: é o ar externo, e não o isolante, que está segurando o calor. Coerente com o diagnóstico do raio crítico.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-massa" num="26" titulo="Fundamentos do transporte de massa">
 
 **A ideia.** O último assunto da cadeira fecha o círculo que o nome dela sempre anunciou: são **três** fenômenos de transporte com a mesma estrutura matemática. Quantidade de movimento (Newton), calor (Fourier) e agora **massa** (Fick) — em todos, um fluxo é proporcional a um gradiente, com uma propriedade do meio como constante. Quem enxerga a analogia aprende esta unidade em minutos.
 
