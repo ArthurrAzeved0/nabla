@@ -1,0 +1,110 @@
+---
+origem: "2024.1"
+tema: "Resíduos · Integral da tangente, com dois polos simples"
+temaId: residuo-em-polo-simples
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Utilize o Teorema dos Resíduos para calcular
+
+$$
+\oint_{C}\operatorname{tg}(z)\,dz,
+\qquad C: |z| = 2
+$$
+
+<Gabarito>
+$$
+\oint_C \operatorname{tg}(z)\,dz = -4\pi i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — onde a tangente é singular.**
+
+$$
+\operatorname{tg} z = \frac{\operatorname{sen} z}{\cos z}
+$$
+
+As singularidades são os zeros do **cosseno**:
+
+$$
+\cos z = 0
+\qquad\Longleftrightarrow\qquad
+z = \frac{\pi}{2} + k\pi,
+\qquad k \in \mathbb{Z}
+$$
+
+isto é $\pm\dfrac\pi2, \pm\dfrac{3\pi}{2}, \pm\dfrac{5\pi}{2},\dots$ — e **todos reais**, porque o cosseno complexo só tem zeros reais.
+
+**Passo 2 — quais estão dentro de $|z| = 2$.**
+
+$$
+\left|\pm\frac\pi2\right| = 1{,}571 < 2
+\qquad\text{(dentro)}
+$$
+
+$$
+\left|\pm\frac{3\pi}{2}\right| = 4{,}712 > 2
+\qquad\text{(fora)}
+$$
+
+**Exatamente dois** polos entram: $z = \pi/2$ e $z = -\pi/2$. Ler isso é a parte da questão que separa quem acerta.
+
+**Passo 3 — verificar que são simples.** Em $z_0 = \pm\pi/2$:
+
+- $\cos z$ tem zero **simples**, pois $\dfrac{d}{dz}\cos z = -\operatorname{sen} z$ vale $\mp1 \ne 0$ ali;
+- $\operatorname{sen}(z_0) = \pm1 \ne 0$, então o numerador **não** cancela o zero.
+
+Logo os dois são polos simples.
+
+**Passo 4 — os resíduos, por $p/q'$.** Com $p = \operatorname{sen} z$ e $q = \cos z$, temos $q' = -\operatorname{sen} z$:
+
+$$
+\operatorname{Res}\big(\operatorname{tg}, z_0\big)
+= \frac{\operatorname{sen} z_0}{-\operatorname{sen} z_0}
+= -1
+$$
+
+**Independente de $z_0$** — o resíduo da tangente é $-1$ em **todo** polo. É um resultado que vale guardar.
+
+**Passo 5 — somar.**
+
+$$
+\sum\operatorname{Res} = (-1) + (-1) = -2
+$$
+
+$$
+\boxed{\;\oint_{|z|=2}\operatorname{tg}(z)\,dz = 2\pi i\,(-2) = -4\pi i\;}
+$$
+
+**Conferência —** o valor é sempre um múltiplo de $-2\pi i$: **$-2\pi i$ vezes o número de polos dentro**. Com raio $2$ entram dois; com raio $5$ entrariam quatro ($\pm\pi/2$ e $\pm3\pi/2$) e a integral daria $-8\pi i$. Com raio $1$, nenhum, e daria zero.
+
+<Caixa tipo="macete" rotulo="A fórmula p/q' é feita para isto">
+
+Sempre que o denominador é uma função **transcendente** com zero simples — $\cos z$, $\operatorname{sen} z$, $e^z - 1$ — fatorar é impossível e $\dfrac{p(z_0)}{q'(z_0)}$ é o único caminho prático.
+
+E o resultado costuma ser bonito, como aqui: $\dfrac{\operatorname{sen}}{-\operatorname{sen}} = -1$, sem depender do ponto. O mesmo acontece com $\cot z$, cujo resíduo é $+1$ em todo polo.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O erro é contar os polos errado">
+
+Toda a dificuldade da questão está no passo 2. $\pi/2 \approx 1{,}57$ e $3\pi/2 \approx 4{,}71$: o raio $2$ foi escolhido para ficar **entre** os dois, deixando só o primeiro par dentro.
+
+Antes de qualquer resíduo, liste os polos em ordem de módulo e marque a linha de corte do raio. Numa função com infinitos polos, é o único jeito de não errar a contagem.
+
+</Caixa>
+</Passos>
