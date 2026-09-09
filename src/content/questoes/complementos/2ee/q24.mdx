@@ -1,0 +1,107 @@
+---
+origem: "2024.1"
+tema: "Laurent · Expansão no anel 1 < |z| < 2"
+temaId: expansao-em-dois-aneis
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a série de Laurent de $f$ em $D$:
+
+$$
+f(z) = \frac{1}{(z-1)(z-2)},
+\qquad
+D = \{\,1 < |z| < 2\,\}
+$$
+
+<Gabarito>
+$$
+f(z) = -\sum_{n=0}^{\infty}\frac{z^{n}}{2^{\,n+1}} \;-\; \sum_{n=1}^{\infty}\frac{1}{z^{n}}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — separar em frações simples.**
+
+$$
+\frac{1}{(z-1)(z-2)} = \frac{A}{z-1} + \frac{B}{z-2}
+$$
+
+Lendo os coeficientes como resíduos:
+
+$$
+A = \frac{1}{z-2}\bigg|_{z=1} = -1,
+\qquad
+B = \frac{1}{z-1}\bigg|_{z=2} = 1
+$$
+
+$$
+f(z) = \frac{1}{z-2} - \frac{1}{z-1}
+$$
+
+**Passo 2 — o anel decide a manipulação de cada parcela.** Em $1 < |z| < 2$ valem **duas** desigualdades ao mesmo tempo:
+
+$$
+\left|\frac z2\right| < 1
+\qquad\text{e}\qquad
+\left|\frac1z\right| < 1
+$$
+
+Cada parcela usa a sua. A regra é sempre: na geométrica $\dfrac{1}{1-w} = \sum w^n$, o $w$ tem de ter módulo **menor que 1** no anel.
+
+**Passo 3 — a parcela de $z=2$: o pequeno é $z/2$.**
+
+$$
+\frac{1}{z-2} = \frac{-1}{2-z} = -\frac12\cdot\frac{1}{1 - z/2}
+= -\frac12\sum_{n=0}^{\infty}\left(\frac z2\right)^n
+= -\sum_{n=0}^{\infty}\frac{z^n}{2^{\,n+1}}
+$$
+
+Só potências **positivas** — é a parte analítica.
+
+**Passo 4 — a parcela de $z=1$: o pequeno é $1/z$.** Aqui é preciso **fatorar o $z$ para fora**, porque $|z| > 1$:
+
+$$
+-\frac{1}{z-1} = -\frac1z\cdot\frac{1}{1 - 1/z}
+= -\frac1z\sum_{n=0}^{\infty}\frac{1}{z^{n}}
+= -\sum_{n=0}^{\infty}\frac{1}{z^{\,n+1}}
+= -\sum_{n=1}^{\infty}\frac{1}{z^{n}}
+$$
+
+Só potências **negativas** — é a parte principal.
+
+**Passo 5 — juntar.**
+
+$$
+\boxed{\;f(z) = -\sum_{n=0}^{\infty}\frac{z^n}{2^{\,n+1}} - \sum_{n=1}^{\infty}\frac{1}{z^n}
+= \cdots -\frac{1}{z^2} - \frac1z - \frac12 - \frac z4 - \frac{z^2}{8} - \cdots\;}
+$$
+
+**Conferência —** o coeficiente $a_{-1}$ é $-1$. E de fato o resíduo em $z=1$ é $-1$, calculado no passo 1: a série de Laurent **no anel que separa** os dois polos tem, como $a_{-1}$, a soma dos resíduos internos — aqui só o de $z=1$ ✔
+
+<Caixa tipo="macete" rotulo="A mesma função tem três expansões">
+
+Com polos em $1$ e $2$, o plano se divide em **três** anéis centrados na origem, e cada um tem sua série:
+
+| anel | manipulação | forma |
+|---|---|---|
+| $\vert z\vert < 1$ | $z$ pequeno nas duas | só potências positivas (Taylor) |
+| $1 < \vert z\vert < 2$ | $z/2$ e $1/z$ | mista — é a pedida |
+| $\vert z\vert > 2$ | $1/z$ nas duas | só potências negativas |
+
+Escrever a série do anel errado dá uma expansão que **diverge** em todo o anel pedido — e o erro passa despercebido se ninguém conferir. Sempre anote as desigualdades do anel antes de expandir.
+
+</Caixa>
+</Passos>
