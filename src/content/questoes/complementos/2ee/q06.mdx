@@ -1,0 +1,102 @@
+---
+origem: "2023.2"
+tema: "Função Gama · Integral imprópria com e^(−x²)"
+temaId: integral-impropria-por-gama
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\int_0^{\infty} \big(2 + 3x\big)\exp\big(-x^2\big)\,dx
+$$
+
+**Dado:** $\Gamma(z) = \displaystyle\int_0^\infty t^{z-1}e^{-t}\,dt$.
+
+<Gabarito>
+$$
+\int_0^\infty (2+3x)e^{-x^2}dx = \sqrt{\pi} + \frac32 \approx 3{,}27
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — separar as duas parcelas.** A integral é linear, e cada parcela cai numa Gama diferente:
+
+$$
+\int_0^\infty (2+3x)e^{-x^2}dx
+= 2\int_0^\infty e^{-x^2}dx + 3\int_0^\infty x\,e^{-x^2}dx
+$$
+
+**Passo 2 — a substituição que revela a Gama.** O expoente precisa virar $-u$, então $u = x^2$:
+
+$$
+u = x^2,
+\qquad
+x = u^{1/2},
+\qquad
+dx = \frac12 u^{-1/2}du
+$$
+
+**Passo 3 — primeira parcela.**
+
+$$
+2\int_0^\infty e^{-x^2}dx
+= 2\int_0^\infty e^{-u}\cdot\frac12 u^{-1/2}du
+= \int_0^\infty u^{-1/2}e^{-u}du
+$$
+
+Comparando com a definição, $z - 1 = -\tfrac12$, isto é $z = \tfrac12$:
+
+$$
+= \Gamma\!\left(\frac12\right) = \sqrt{\pi}
+$$
+
+Esta é a **integral gaussiana** disfarçada — e é exatamente de onde vem o valor $\Gamma(1/2) = \sqrt\pi$.
+
+**Passo 4 — segunda parcela.**
+
+$$
+3\int_0^\infty x\,e^{-x^2}dx
+= 3\int_0^\infty u^{1/2}e^{-u}\cdot\frac12 u^{-1/2}du
+= \frac32\int_0^\infty e^{-u}du
+$$
+
+Aqui $z-1 = 0$, logo $z=1$:
+
+$$
+= \frac32\,\Gamma(1) = \frac32
+$$
+
+**Passo 5 — somar.**
+
+$$
+\boxed{\;\int_0^\infty (2+3x)e^{-x^2}dx = \sqrt\pi + \frac32 \approx 1{,}772 + 1{,}5 = 3{,}27\;}
+$$
+
+**Conferência —** a segunda parcela também sai por substituição elementar, sem Gama: com $w = x^2$, $\int_0^\infty x e^{-x^2}dx = \tfrac12\int_0^\infty e^{-w}dw = \tfrac12$, e vezes $3$ dá $\tfrac32$ ✔
+
+<Caixa tipo="macete" rotulo="O deslocamento de 1 é o erro clássico">
+
+Na definição, o expoente de $t$ é $z-1$, **não** $z$. Então:
+
+- expoente $-1/2$ → $z = 1/2$ → $\Gamma(1/2) = \sqrt\pi$;
+- expoente $0$ → $z = 1$ → $\Gamma(1) = 1$;
+- expoente $1$ → $z = 2$ → $\Gamma(2) = 1! = 1$.
+
+A conferência rápida: se o expoente é $0$, o resultado é $\Gamma(1) = 1$. Se a sua conta der outra coisa nesse caso, o deslocamento está errado.
+
+</Caixa>
+</Passos>
