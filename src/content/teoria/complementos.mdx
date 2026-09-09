@@ -12,6 +12,7 @@ unidades:
       - { id: cm-harmonicas, titulo: "Funções harmônicas e a conjugada harmônica" }
       - { id: cm-integral, titulo: "Integral de linha complexa e parametrização" }
       - { id: cm-cauchy, titulo: "Teorema de Cauchy-Goursat e deformação de contorno" }
+      - { id: cm-formula-cauchy, titulo: "Fórmula integral de Cauchy e a das derivadas" }
 ---
 
 {/* **************************************************************************
@@ -915,6 +916,116 @@ Roteiro de três linhas para qualquer integral fechada do 1º EE:
 Cuidado com singularidade que **não** é zero de denominador. Em $\oint \operatorname{Log}(z)\,dz$ o integrando é analítico em $\mathbb{C}$ menos o **corte** do ramo (o semieixo real negativo, mais a origem) — não é um ponto isolado, é uma linha. Se a curva cruza o corte, o teorema de Cauchy não se aplica como está.
 
 É o que faz a integral 4 de 2025.2 ser resolvível: a curva é $|z - i| = 1/2$, que fica inteira no semiplano superior e **não toca** o corte.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-formula-cauchy" num="09" titulo="Fórmula integral de Cauchy e a das derivadas">
+
+### A ideia
+
+O teorema da seção anterior diz quando a integral é zero. A **fórmula** de Cauchy diz quanto ela vale quando não é — e o resultado é espantoso: o valor da função **dentro** da curva está inteiramente determinado pelos valores dela **sobre** a curva.
+
+<Formula rotulo="Fórmula integral de Cauchy">
+
+$$
+f(z_0) = \frac{1}{2\pi i}\oint_{\gamma} \frac{f(z)}{z - z_0}\,dz
+\qquad\Longleftrightarrow\qquad
+\oint_{\gamma} \frac{f(z)}{z - z_0}\,dz = 2\pi i\, f(z_0)
+$$
+
+</Formula>
+
+com $f$ analítica dentro e sobre $\gamma$, e $z_0$ **dentro** de $\gamma$, percorrida no sentido anti-horário.
+
+Derivando essa identidade em relação a $z_0$, quantas vezes se queira, sai a versão que resolve denominador com potência — a mais cobrada das duas:
+
+<Formula rotulo="Fórmula das derivadas">
+
+$$
+f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint_{\gamma} \frac{f(z)}{(z - z_0)^{n+1}}\,dz
+\qquad\Longleftrightarrow\qquad
+\oint_{\gamma} \frac{f(z)}{(z - z_0)^{n+1}}\,dz = \frac{2\pi i}{n!}\,f^{(n)}(z_0)
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $z_0$ — o ponto singular do integrando, o que zera o denominador;
+- $f$ — o que **sobra** no numerador depois de separar $(z-z_0)^{n+1}$. Tem de ser analítica dentro da curva;
+- $n$ — a potência do denominador **menos um**. Denominador ao cubo dá $n = 2$;
+- $n!$ — o fatorial que aparece porque cada derivada acumula um fator.
+
+</Caixa>
+
+### O roteiro
+
+1. **Identifique $z_0$ e $n$** olhando o denominador na forma $(z - z_0)^{n+1}$;
+2. **Chame de $f$ tudo o que resta** e confirme que essa $f$ é analítica dentro da curva;
+3. **Derive $f$ $n$ vezes** e avalie em $z_0$;
+4. **Multiplique por $2\pi i/n!$.**
+
+O erro clássico está no passo 1: contar a potência errada. Denominador $(z-\pi)^3$ dá $n+1 = 3$, logo $n = 2$ e derivada **segunda**.
+
+<Caixa tipo="exemplo">
+
+Integral 1 da questão 02 do 1º EE de 2025.2:
+
+$$
+\oint_{\gamma} \frac{e^{iz}}{(z - \pi)^3}\,dz,
+\qquad \pi \text{ dentro de } \gamma
+$$
+
+Aqui $z_0 = \pi$, $n + 1 = 3$, logo $n = 2$, e $f(z) = e^{iz}$, inteira. Então
+
+$$
+f^{(2)}(z) = (i)^2 e^{iz} = -e^{iz},
+\qquad
+f^{(2)}(\pi) = -e^{i\pi} = 1
+$$
+
+$$
+\oint_{\gamma} \frac{e^{iz}}{(z-\pi)^3}\,dz = \frac{2\pi i}{2!}\,(1) = \pi i
+$$
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+E o caso que parece pior do que é — integral 2 da mesma questão:
+
+$$
+\oint_{|z|=2} \frac{z^{100}}{(z - 1)^{101}}\,dz
+$$
+
+Ninguém vai derivar cem vezes. Com $z_0 = 1$, $n = 100$ e $f(z) = z^{100}$, vale que a derivada de ordem $n$ de $z^n$ é $n!$, constante:
+
+$$
+f^{(100)}(z) = 100!
+\qquad\Longrightarrow\qquad
+\oint = \frac{2\pi i}{100!}\cdot 100! = 2\pi i
+$$
+
+A questão é de reconhecimento, não de conta: quando o numerador é $z^n$ e a ordem pedida é $n$, o fatorial cancela e a resposta é $2\pi i$ seco.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Denominador com **dois** fatores diferentes — como $\dfrac{z}{(z-1)^2(z+2)}$, da 2ª chamada de 2023.2 — não sai com uma aplicação só. Dois caminhos:
+
+- se apenas **um** dos pontos está dentro da curva, o outro não interessa: ele fica dentro do numerador analítico;
+- se os **dois** estão dentro, use **resíduos** (seção 13), ou quebre em frações parciais e aplique a fórmula em cada pedaço.
+
+No exemplo, com o círculo de raio $3/2$ centrado na origem, $z=1$ está dentro e $z=-2$ está fora: então $f(z) = z/(z+2)$, $z_0 = 1$ e $n = 1$.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+A fórmula tem duas consequências que caem em questão teórica: a **desigualdade de Cauchy**, $|f^{(n)}(z_0)| \le n!\,M/R^n$, e o **teorema de Liouville** — função inteira e limitada é constante. É de Liouville que sai a prova do teorema fundamental da álgebra, e ele aparece pedido de enunciado.
 
 </Caixa>
 

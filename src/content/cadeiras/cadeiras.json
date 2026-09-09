@@ -485,7 +485,12 @@
       "cauchy-goursat": "cm-cauchy",
       "simplesmente-conexo": "cm-cauchy",
       "deformacao-de-contorno": "cm-cauchy",
-      "dominio-multiplamente-conexo": "cm-cauchy"
+      "dominio-multiplamente-conexo": "cm-cauchy",
+      "formula-integral-de-cauchy": "cm-formula-cauchy",
+      "formula-das-derivadas": "cm-formula-cauchy",
+      "integral-com-polo-de-ordem-n": "cm-formula-cauchy",
+      "desigualdade-de-cauchy": "cm-formula-cauchy",
+      "teorema-de-liouville": "cm-formula-cauchy"
     }
   }
 ]
