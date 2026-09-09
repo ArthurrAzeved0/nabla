@@ -500,7 +500,15 @@
       "serie-de-laurent": "cm-laurent",
       "parte-principal": "cm-laurent",
       "anel-de-convergencia": "cm-laurent",
-      "expansao-em-dois-aneis": "cm-laurent"
+      "expansao-em-dois-aneis": "cm-laurent",
+      "singularidade-isolada": "cm-singularidades",
+      "singularidade-removivel": "cm-singularidades",
+      "polo": "cm-singularidades",
+      "polo-simples": "cm-singularidades",
+      "ordem-do-polo": "cm-singularidades",
+      "singularidade-essencial": "cm-singularidades",
+      "zeros-e-ordem": "cm-singularidades",
+      "classificacao-de-singularidades": "cm-singularidades"
     }
   }
 ]

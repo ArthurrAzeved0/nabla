@@ -15,6 +15,7 @@ unidades:
       - { id: cm-formula-cauchy, titulo: "Fórmula integral de Cauchy e a das derivadas" }
       - { id: cm-series, titulo: "Sequências, séries complexas e a série de Taylor" }
       - { id: cm-laurent, titulo: "Série de Laurent e os anéis de convergência" }
+      - { id: cm-singularidades, titulo: "Zeros e classificação de singularidades" }
 ---
 
 {/* **************************************************************************
@@ -1217,6 +1218,89 @@ A parte principal tem **infinitos** termos, então $z = 1$ é uma **singularidad
 <Caixa tipo="dica">
 
 Em torno de uma singularidade isolada, o anel é sempre $0 < |z - z_0| < R$ — o limite de dentro é o próprio ponto. Quando a questão dá uma curva, é ela que fixa o anel: a curva tem de ficar **dentro** do anel escolhido, senão a série não vale ali.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-singularidades" num="12" titulo="Zeros e classificação de singularidades">
+
+### A ideia
+
+Toda a máquina dos resíduos depende de uma pergunta só: **que tipo de singularidade é essa?** E a resposta está na parte principal da série de Laurent — quantos termos negativos ela tem.
+
+<Caixa tipo="simbolos">
+
+- **singularidade isolada** — $z_0$ onde $f$ não é analítica, mas $f$ é analítica num anel $0<|z-z_0|<R$ em volta;
+- **removível** — parte principal **vazia**. O limite existe e finito; basta redefinir $f(z_0)$;
+- **polo de ordem $m$** — a parte principal para em $(z-z_0)^{-m}$. Ordem $1$ se chama **polo simples**;
+- **essencial** — parte principal com **infinitos** termos. $|f|$ não tem limite algum;
+- **zero de ordem $k$** — $f(z_0) = 0$ com $f$ analítica, e $f(z) = (z-z_0)^k g(z)$, $g(z_0)\ne 0$.
+
+</Caixa>
+
+### Os três tipos, pelo teste rápido
+
+Não é preciso montar a série inteira para classificar. Basta o limite:
+
+| tipo | teste | exemplo |
+|---|---|---|
+| removível | $\lim_{z\to z_0} f(z)$ existe e é finito | $\dfrac{\operatorname{sen} z}{z}$ em $z=0$ |
+| polo de ordem $m$ | $\lim_{z\to z_0} (z-z_0)^m f(z)$ existe, finito e $\ne 0$ | $\dfrac{e^z}{(z-1)^2}$ em $z=1$ ($m=2$) |
+| essencial | nenhum $m$ funciona; $\lim$ não existe | $e^{1/z}$ em $z=0$ |
+
+Equivalentemente, para polo: $|f(z)| \to \infty$ quando $z \to z_0$. Se $|f|$ vai para infinito, é polo; se se acomoda num número, é removível; se oscila sem decidir, é essencial.
+
+### A regra que faz o trabalho: zero embaixo vira polo em cima
+
+Para função racional ou quociente de analíticas, a ordem do polo é a **ordem do zero do denominador**, descontada a do numerador:
+
+$$
+f(z) = \frac{p(z)}{q(z)},
+\qquad
+q \text{ tem zero de ordem } k \text{ em } z_0,
+\qquad
+p \text{ tem zero de ordem } j
+$$
+
+- $k > j$ → **polo de ordem $k - j$**;
+- $k \le j$ → **removível**.
+
+<Caixa tipo="exemplo">
+
+Classifique as singularidades de $f(z) = \dfrac{\operatorname{sen} z}{z^2(z-\pi)}$.
+
+**Em $z=0$:** o denominador tem zero de ordem $2$; o numerador, $\operatorname{sen} z$, tem zero de ordem $1$ (pois $\operatorname{sen} z = z - z^3/6 + \cdots$). Então $k - j = 1$: **polo simples**.
+
+**Em $z=\pi$:** denominador com zero de ordem $1$; numerador $\operatorname{sen}\pi = 0$, também de ordem $1$. Então $k \le j$: singularidade **removível** — e a função, redefinida ali, é analítica.
+
+Esse segundo caso é a pegadinha típica: o ponto está no denominador mas **não** é polo, e portanto não contribui com resíduo nenhum.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+E o caso do 1º EE de 2025.2, integral 4: $\dfrac{\operatorname{Log}(z)}{-z+i}$ na curva $|z-i| = 1/2$.
+
+O denominador zera em $z = i$, que está no **centro** da curva: polo simples. O numerador, $\operatorname{Log} z$, é analítico numa vizinhança de $i$ — o corte do ramo fica no semieixo real negativo, longe da curva. Então a fórmula de Cauchy se aplica com $f(z) = -\operatorname{Log}(z)$ e o resultado é $-2\pi i \operatorname{Log}(i) = -2\pi i \cdot i\pi/2 = \pi^2$.
+
+O "simplifique!" do enunciado é isso: reconhecer que $\operatorname{Log}(i) = i\pi/2$ e que o sinal do denominador foi escrito ao contrário de propósito.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Para achar a ordem do zero de uma função qualquer, use a série: o zero tem a ordem da **primeira potência que aparece**. De $\operatorname{sen} z = z - z^3/6 + \cdots$ sai ordem $1$; de $1 - \cos z = z^2/2 - \cdots$, ordem $2$; de $z - \operatorname{sen} z = z^3/6 - \cdots$, ordem $3$.
+
+É mais rápido e mais seguro que derivar procurando qual derivada não zera.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Exponencial de $1/z$ é a assinatura da singularidade essencial: $e^{1/z}$, $\operatorname{sen}(1/z)$, $\cos\!\big(1/(z-1)\big)$ — todas essenciais no ponto em questão, porque a substituição $w = 1/(z-z_0)$ joga a série inteira para as potências negativas.
+
+Nesses casos **não** existe fórmula de resíduo por derivada: o resíduo tem de ser lido da série, como o $a_{-1}$ que ele é.
 
 </Caixa>
 
