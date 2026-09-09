@@ -21,6 +21,7 @@ unidades:
   - nome: "2ª Unidade"
     secoes:
       - { id: cm-edo, titulo: "EDO: solução geral, wronskiano e as de 1ª ordem que caem" }
+      - { id: cm-gama, titulo: "Funções Gama e Beta: as integrais que a prova exige" }
 ---
 
 {/* **************************************************************************
@@ -1589,6 +1590,124 @@ Sem a sugestão, o teste da homogênea é rápido: troque $x \to tx$ e $y \to ty
 <Caixa tipo="dica">
 
 Nesta cadeira, EDO de 2ª ordem quase nunca é resolvida pela equação característica — é resolvida por **Laplace** (seção 24) ou por **séries** (seções 17 e 18), porque é isso que a 2ª unidade está ensinando. Quando a questão diz "use Transformada de Laplace", como o PVI $y'' + 2y' + 2y = \operatorname{sen}(2x)$ da 2ª chamada de 2023.2, resolver pela característica não vale ponto.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-gama" num="16" titulo="Funções Gama e Beta: as integrais que a prova exige">
+
+### A ideia
+
+Esta seção **não está entre os 18 itens do programa**. Ela está aqui porque as provas a cobram sem aviso: o 2º EE de 2023.2 pede $\int_0^\infty (2+3x)e^{-x^2}dx$ e $\int_0^1 \sqrt{(1-x)/x}\,dx$, a 2ª chamada pede $\int_0^\infty x^3 e^{-x^3}dx$, e a transformada de Laplace de $x^n$ com $n$ **não inteiro** só se escreve com Gama. Quem não conhece a função perde essas questões inteiras.
+
+A ideia é uma só: **estender o fatorial** a valores não inteiros, por uma integral.
+
+<Formula rotulo="Função Gama">
+
+$$
+\Gamma(z) = \int_0^{\infty} t^{\,z-1}e^{-t}\,dt,
+\qquad \operatorname{Re}(z) > 0
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $\Gamma(z+1) = z\,\Gamma(z)$ — a **relação de recorrência**, que é o que a prova manda usar para simplificar;
+- $\Gamma(n+1) = n!$ para $n$ inteiro $\ge 0$ — daí "fatorial estendido";
+- $\Gamma(1) = 1$, $\quad \Gamma\!\left(\tfrac12\right) = \sqrt{\pi}$ — os dois valores que vale decorar;
+- $\Gamma\!\left(\tfrac32\right) = \tfrac12\Gamma\!\left(\tfrac12\right) = \tfrac{\sqrt\pi}{2}$ — sai da recorrência.
+
+</Caixa>
+
+### O roteiro: toda integral desse tipo vira Gama por uma substituição
+
+O padrão é sempre reconhecer $\int_0^\infty t^{z-1}e^{-t}dt$ depois de trocar o expoente do $e$ por $-u$.
+
+<Caixa tipo="exemplo">
+
+Da 2ª chamada de 2023.2: $\displaystyle\int_0^{\infty} x^3 e^{-x^3}dx$.
+
+Faça $u = x^3$, logo $x = u^{1/3}$ e $dx = \tfrac13 u^{-2/3}du$:
+
+$$
+\int_0^\infty x^3 e^{-x^3}dx
+= \int_0^\infty u\,e^{-u}\cdot\frac{1}{3}u^{-2/3}\,du
+= \frac13\int_0^\infty u^{1/3}e^{-u}\,du
+= \frac13\,\Gamma\!\left(\frac43\right)
+$$
+
+E, pela recorrência, $\Gamma(4/3) = \tfrac13\Gamma(1/3)$, então o valor também se escreve $\tfrac19\Gamma(1/3)$.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Item (a) da questão 4 (Opção A) do 2º EE de 2023.2: $\displaystyle\int_0^\infty (2+3x)e^{-x^2}dx$.
+
+Separe e faça $u = x^2$ em cada parcela, com $dx = \tfrac12 u^{-1/2}du$:
+
+$$
+\int_0^\infty 2e^{-x^2}dx = 2\cdot\frac12\int_0^\infty u^{-1/2}e^{-u}du = \Gamma\!\left(\frac12\right) = \sqrt\pi
+$$
+
+$$
+\int_0^\infty 3x\,e^{-x^2}dx = 3\cdot\frac12\int_0^\infty e^{-u}du = \frac32\,\Gamma(1) = \frac32
+$$
+
+$$
+\int_0^\infty (2+3x)e^{-x^2}dx = \sqrt{\pi} + \frac32
+$$
+
+A primeira parcela é a integral gaussiana disfarçada — e é assim que $\Gamma(1/2) = \sqrt\pi$ aparece na prática.
+
+</Caixa>
+
+### A função Beta, para integrais em $[0,1]$
+
+<Formula rotulo="Função Beta e sua relação com Gama">
+
+$$
+B(p,q) = \int_0^1 x^{\,p-1}(1-x)^{\,q-1}dx = \frac{\Gamma(p)\,\Gamma(q)}{\Gamma(p+q)}
+$$
+
+</Formula>
+
+<Caixa tipo="exemplo">
+
+Item (b) da mesma questão: $\displaystyle\int_0^1 \sqrt{\frac{1-x}{x}}\,dx$.
+
+Escreva com expoentes: $x^{-1/2}(1-x)^{1/2}$. Comparando com a definição, $p - 1 = -\tfrac12$ e $q-1 = \tfrac12$, isto é $p = \tfrac12$ e $q = \tfrac32$:
+
+$$
+\int_0^1 \sqrt{\frac{1-x}{x}}\,dx = B\!\left(\frac12,\frac32\right)
+= \frac{\Gamma(1/2)\,\Gamma(3/2)}{\Gamma(2)}
+= \frac{\sqrt\pi \cdot \tfrac{\sqrt\pi}{2}}{1}
+= \frac{\pi}{2}
+$$
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Reconhecer qual das duas usar é imediato pelos limites: **$\int_0^\infty$ com $e^{-\text{algo}}$ → Gama**; **$\int_0^1$ com $x^a(1-x)^b$ → Beta**. E a substituição é sempre a que transforma o expoente da exponencial em $-u$, ou o intervalo em $[0,1]$.
+
+Na Gama, o expoente de $u$ dá $z-1$, não $z$ — errar esse deslocamento de $1$ é o erro mais comum, e a conferência é rápida: se o expoente é $0$, o resultado é $\Gamma(1) = 1$.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+A ligação com Laplace, que é o motivo real de a Gama estar na cadeira:
+
+$$
+\mathcal{L}\{x^{n}\} = \frac{\Gamma(n+1)}{s^{\,n+1}},
+\qquad
+\mathcal{L}\{x^{n}e^{ax}\} = \frac{\Gamma(n+1)}{(s-a)^{\,n+1}}
+$$
+
+Para $n$ inteiro isso é o familiar $n!/s^{n+1}$. Para $n$ fracionário, só a Gama serve — e é por isso que o 2º EE de 2023.2 sugere "expanda o binômio e utilize funções Gama" na transformada de $(2+2x^3)^3e^{4x}$.
 
 </Caixa>
 

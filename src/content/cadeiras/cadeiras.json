@@ -523,7 +523,11 @@
       "conjunto-fundamental": "cm-edo",
       "edo-homogenea-de-grau-zero": "cm-edo",
       "equacao-de-bernoulli": "cm-edo",
-      "substituicao-em-edo": "cm-edo"
+      "substituicao-em-edo": "cm-edo",
+      "funcao-gama": "cm-gama",
+      "funcao-beta": "cm-gama",
+      "recorrencia-de-gama": "cm-gama",
+      "integral-impropria-por-gama": "cm-gama"
     }
   }
 ]
