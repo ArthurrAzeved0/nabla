@@ -1,0 +1,126 @@
+---
+origem: "2024.2"
+tema: "Harmônicas · u = cosh(y)cos(x) e a conjugada, com o sinal certo"
+temaId: conjugada-harmonica
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q34.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $u = u(x,y) = \cosh(y)\cos(x)$.
+
+**1)** Verificar se $u(x,y)$ é harmônica;
+
+**2)** Encontrar a harmônica conjugada, $v = v(x,y)$, caso exista.
+
+<Gabarito>
+**1)** $u_{xx} + u_{yy} = -\cosh y\cos x + \cosh y\cos x = 0$: harmônica em todo o plano.
+
+**2)**
+
+$$
+v(x,y) = -\operatorname{senh}(y)\operatorname{sen}(x) + C
+\qquad\Longrightarrow\qquad
+f(z) = \cos z + iC
+$$
+
+O gabarito da prova traz $v = \operatorname{senh}(y)\operatorname{sen}(x)$, **sem o sinal negativo** — ver a nota.
+</Gabarito>
+
+<Passos>
+**Passo 1 — verificar Laplace.**
+
+$$
+u_x = -\cosh y\operatorname{sen} x
+\qquad\Longrightarrow\qquad
+u_{xx} = -\cosh y\cos x
+$$
+
+$$
+u_y = \operatorname{senh} y\cos x
+\qquad\Longrightarrow\qquad
+u_{yy} = \cosh y\cos x
+$$
+
+$$
+\nabla^2 u = -\cosh y\cos x + \cosh y\cos x = 0
+\;\checkmark
+$$
+
+Harmônica em todo o plano, com parciais contínuas: a conjugada existe.
+
+**Passo 2 — integrar $v_y = u_x$.**
+
+$$
+\frac{\partial v}{\partial y} = u_x = -\cosh y\operatorname{sen} x
+$$
+
+$$
+v = -\operatorname{senh}(y)\operatorname{sen}(x) + \varphi(x)
+$$
+
+usando $\displaystyle\int\cosh y\,dy = \operatorname{senh} y$.
+
+**Passo 3 — fechar com a segunda equação.**
+
+$$
+\frac{\partial v}{\partial x} = -\operatorname{senh}(y)\cos(x) + \varphi'(x)
+$$
+
+e Cauchy-Riemann pede $v_x = -u_y = -\operatorname{senh}(y)\cos(x)$. Logo $\varphi'(x) = 0$ e $\varphi = C$:
+
+$$
+\boxed{\;v(x,y) = -\operatorname{senh}(y)\operatorname{sen}(x) + C\;}
+$$
+
+**Passo 4 — reconhecer a função, que confirma o sinal.** A separação do cosseno complexo é
+
+$$
+\cos z = \cos(x)\cosh(y) - i\operatorname{sen}(x)\operatorname{senh}(y)
+$$
+
+A parte real é exatamente o $u$ dado, e a parte imaginária é exatamente o $v$ encontrado — **com o menos**. Logo
+
+$$
+f(z) = u + iv = \cos z + iC
+$$
+
+**Conferência final —** as duas equações, com o $v$ obtido:
+
+$$
+u_x = -\cosh y\operatorname{sen} x
+\quad\text{e}\quad
+v_y = -\cosh y \operatorname{sen} x
+\;\;\checkmark
+$$
+
+$$
+u_y = \operatorname{senh} y\cos x
+\quad\text{e}\quad
+-v_x = \operatorname{senh} y\cos x
+\;\;\checkmark
+$$
+
+Com $v = +\operatorname{senh}(y)\operatorname{sen}(x)$, a primeira equação daria $u_x = -v_y$ — falharia por sinal.
+
+<Caixa tipo="dica" rotulo="Sobre o gabarito">
+
+O gabarito da prova escreve $v(x,y) = \operatorname{senh}(y)\operatorname{sen}(x) + C$, **sem** o sinal negativo. É erro de sinal no passo de integração: com $v_y = u_x = -\cosh y\operatorname{sen} x$, a primitiva em $y$ carrega o menos.
+
+Duas conferências independentes mostram que o certo é $-\operatorname{senh}(y)\operatorname{sen}(x)$: a substituição direta nas duas equações de Cauchy-Riemann, e o reconhecimento de que $f = \cos z$, cuja parte imaginária é $-\operatorname{sen}(x)\operatorname{senh}(y)$.
+
+**A conferência do passo 4 é o hábito que salva:** terminada a conjugada, substitua nas duas equações. Custa três linhas e pega qualquer erro de sinal — que é o erro típico desta questão.
+
+</Caixa>
+</Passos>
