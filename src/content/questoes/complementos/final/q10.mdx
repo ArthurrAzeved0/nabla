@@ -1,0 +1,129 @@
+---
+origem: "Final 2025.2 · Final 2026.1"
+tema: "Fourier · Série do degrau unitário, e o gráfico"
+temaId: serie-de-fourier
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule o desenvolvimento em série de Fourier para a função
+
+$$
+f(x) = \begin{cases}
+1, & 0 \le x < \pi\\
+0, & -\pi \le x < 0
+\end{cases}
+$$
+
+periódica de período $2\pi$, e faça um esboço do gráfico de $f$ e da série de Fourier.
+
+<Gabarito>
+$$
+f(x) = \frac12 + \frac{2}{\pi}\sum_{k=1}^{\infty}\frac{\operatorname{sen}\big[(2k-1)x\big]}{2k-1}
+= \frac12 + \frac2\pi\left(\operatorname{sen} x + \frac{\operatorname{sen} 3x}{3} + \frac{\operatorname{sen} 5x}{5} + \cdots\right)
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — não há paridade a explorar.** $f$ não é par nem ímpar: ela vale $1$ à direita e $0$ à esquerda. Então **os dois** coeficientes precisam ser calculados.
+
+Mas há uma simetria útil: $f = \tfrac12 + \tfrac12\,g$, com $g$ a onda quadrada **ímpar** da q17 do 2º EE. Isso já antecipa o resultado — ver o macete.
+
+**Passo 2 — o termo médio.** Com $L = \pi$ e $f$ nula na metade esquerda:
+
+$$
+a_0 = \frac1\pi\int_{-\pi}^{\pi}f(x)\,dx = \frac1\pi\int_0^\pi 1\,dx = \frac{\pi}{\pi} = 1
+$$
+
+$$
+\frac{a_0}{2} = \frac12
+$$
+
+É o **valor médio** de $f$ no período — metade do tempo em $1$, metade em $0$ ✔
+
+**Passo 3 — os $a_n$ são todos nulos.**
+
+$$
+a_n = \frac1\pi\int_0^\pi \cos(nx)\,dx
+= \frac1\pi\left[\frac{\operatorname{sen}(nx)}{n}\right]_0^\pi
+= \frac{\operatorname{sen}(n\pi)}{n\pi} = 0
+$$
+
+para todo $n \ge 1$, porque $\operatorname{sen}(n\pi) = 0$.
+
+**Passo 4 — os $b_n$.**
+
+$$
+b_n = \frac1\pi\int_0^\pi \operatorname{sen}(nx)\,dx
+= \frac1\pi\left[\frac{-\cos(nx)}{n}\right]_0^\pi
+= \frac{1 - \cos(n\pi)}{n\pi}
+= \frac{1 - (-1)^n}{n\pi}
+$$
+
+$$
+b_n = \begin{cases}
+\dfrac{2}{n\pi}, & n \text{ ímpar}\\[6pt]
+0, & n \text{ par}
+\end{cases}
+$$
+
+**Passo 5 — a série.**
+
+$$
+\boxed{\;f(x) = \frac12 + \frac{2}{\pi}\sum_{k=1}^{\infty}\frac{\operatorname{sen}\big[(2k-1)x\big]}{2k-1}\;}
+$$
+
+**Passo 6 — os gráficos.**
+
+**$f$**: patamares em $1$ (para $0 \le x < \pi$) e $0$ (para $-\pi \le x < 0$), repetindo com período $2\pi$. Saltos em $x = 0, \pm\pi, \pm2\pi,\dots$
+
+**A série**: idêntica a $f$ onde $f$ é contínua, e valendo a **média** em cada salto:
+
+$$
+\frac{0 + 1}{2} = \frac12
+$$
+
+Ou seja, nos pontos $x = 0, \pm\pi, \dots$ a série vale $\tfrac12$, apesar de $f(0) = 1$ pela definição. É o teorema de Dirichlet — e é a única coisa que o esboço precisa mostrar.
+
+**Conferência —** substitua $x = 0$ na série: todos os senos zeram e sobra $\tfrac12$ ✔ Exatamente o valor que Dirichlet manda.
+
+<Caixa tipo="macete" rotulo="Esta é a onda quadrada, deslocada e reescalada">
+
+Seja $g$ a onda quadrada da q17 do 2º EE, que vale $+1$ à direita e $-1$ à esquerda. Então
+
+$$
+f = \frac{1 + g}{2}
+$$
+
+E a série sai **sem integrar nada**: de $g = \dfrac4\pi\sum \dfrac{\operatorname{sen}[(2k-1)x]}{2k-1}$,
+
+$$
+f = \frac12 + \frac12\cdot\frac4\pi\sum\frac{\operatorname{sen}[(2k-1)x]}{2k-1}
+= \frac12 + \frac2\pi\sum\frac{\operatorname{sen}[(2k-1)x]}{2k-1}
+\;\;\checkmark
+$$
+
+O termo constante $\tfrac12$ é o deslocamento; o fator $\tfrac12$ é o reescalamento. **Reconhecer que uma função é combinação de outra já resolvida é o atalho mais barato de Fourier** — e vale a nota cheia se explicado.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A mesma questão em duas finais seguidas">
+
+Esta função aparece na questão 03 da **final de 2025.2** e de novo na questão 04 da **final de 2026.1**, com o mesmo enunciado. Duas provas seguidas com a mesma pergunta é o sinal mais claro de que o professor a considera essencial.
+
+E ela reaparece transformada: o pulso da equação do calor da final de 2026.1 (q12 desta unidade) é um degrau duplo, resolvido pela mesma técnica.
+
+</Caixa>
+</Passos>
