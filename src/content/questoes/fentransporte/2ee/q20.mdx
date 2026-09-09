@@ -1,0 +1,130 @@
+---
+origem: "2023.2"
+tema: "Transferência de calor · Os três mecanismos numa estufa agrícola"
+temaId: conducao
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q20.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um engenheiro é designado para projetar um sistema de aquecimento para uma **estufa agrícola**, onde a temperatura precisa ser mantida dentro de uma faixa específica para garantir o crescimento saudável das plantas. Nesse contexto, **indique quais são os mecanismos de transferência de calor existentes, e onde pode atuar cada mecanismo** nesse processo de aquecimento.
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Corte de uma estufa agrícola: o sol emite radiação que atravessa a cobertura, o calor conduz pelo material da cobertura e o ar quente circula dentro por convecção">
+    {/* sol */}
+    <circle cx="42" cy="30" r="13" fill="var(--warn)" opacity="0.85"/>
+    <path d="M42 10 L42 4 M42 50 L42 56 M22 30 L16 30 M62 30 L68 30 M28 16 L24 12 M56 44 L60 48 M56 16 L60 12 M28 44 L24 48" stroke="var(--warn)" stroke-width="1.4"/>
+    {/* raios de sol até a estufa */}
+    <line x1="58" y1="42" x2="120" y2="76" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="126,80 114,78 118,70" fill="var(--warn)"/>
+    <line x1="62" y1="52" x2="112" y2="92" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="78" y="28" font-size="9" fill="var(--warn)">radiação</text>
+    {/* estufa: cobertura em arco */}
+    <path d="M96 156 L96 116 Q168 60 240 116 L240 156" fill="var(--accent-soft)" opacity="0.4" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <line x1="90" y1="156" x2="250" y2="156" stroke="var(--ink-3)" stroke-width="1.6"/>
+    {/* condução na cobertura */}
+    <line x1="198" y1="102" x2="222" y2="84" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="228,80 216,81 220,89" fill="var(--ok)"/>
+    <text x="234" y="80" font-size="9" fill="var(--ok)">condução</text>
+    <text x="234" y="92" font-size="8" fill="var(--ink-3)">(na cobertura)</text>
+    {/* convecção interna */}
+    <path d="M132 146 Q126 124 138 108 Q148 96 142 84" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <polygon points="141,79 137,89 146,88" fill="var(--accent)"/>
+    <path d="M196 84 Q202 100 192 116 Q182 132 190 146" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <polygon points="191,151 195,141 186,142" fill="var(--accent)"/>
+    <text x="146" y="130" font-size="9" fill="var(--accent)">convecção</text>
+    {/* plantas */}
+    <path d="M118 156 L118 145 M118 148 Q112 143 110 147 M118 148 Q124 143 126 147" fill="none" stroke="var(--ok)" stroke-width="1.3"/>
+    <path d="M156 156 L156 143 M156 147 Q150 142 148 146 M156 147 Q162 142 164 146" fill="none" stroke="var(--ok)" stroke-width="1.3"/>
+    <path d="M214 156 L214 145 M214 148 Q208 143 206 147 M214 148 Q220 143 222 147" fill="none" stroke="var(--ok)" stroke-width="1.3"/>
+    <text x="122" y="176" font-size="9" fill="var(--ink-3)">estufa agrícola</text>
+  </svg>
+  <figcaption>
+
+Os três mecanismos atuam **ao mesmo tempo**, e em lugares diferentes: fora, atravessando, e dentro.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Existem três mecanismos, e todos aparecem no problema:
+
+- **radiação** — emitida pelo Sol, responsável pelo aquecimento da estufa (bem como das próprias plantas). Não precisa de meio material, e é como a energia chega do espaço até a cobertura;
+- **condução** — no **material que compõe a estufa** (plástico, vidro, metal da estrutura), atravessando a espessura da cobertura;
+- **convecção** — **dentro** da estufa, devido à variação de temperatura, que provoca mudança de densidade do ar e o faz circular. E também na face **externa**, do vento sobre a cobertura.
+</Gabarito>
+
+<Passos>
+**1 — Radiação: como a energia chega.** O Sol emite ondas eletromagnéticas que atravessam o vácuo e a atmosfera. Não é preciso meio material — este é o único dos três mecanismos que funciona no vácuo.
+
+$$
+q = \varepsilon\,\sigma\,A\,(T_s^4 - T_{viz}^4)
+$$
+
+Onde atua na estufa:
+
+- aquece a **cobertura** (plástico ou vidro);
+- atravessa parte dela e aquece **o solo e as próprias plantas**;
+- de noite, atua no sentido contrário: a estufa **emite** para o céu frio, e é por isso que a temperatura cai.
+
+<Caixa tipo="dica" rotulo="Por que a estufa aquece mais do que o ar de fora">
+
+É o efeito que dá nome ao fenômeno: o vidro é **transparente** à radiação de onda curta do Sol (que entra), mas **opaco** à radiação de onda longa que o interior aquecido emite (que não sai). A energia entra com facilidade e sai com dificuldade — e o interior esquenta.
+
+Citar isso não é obrigatório, mas é o argumento que fecha o papel da radiação no problema.
+
+</Caixa>
+
+**2 — Condução: como a energia atravessa.** Dentro do material da cobertura — plástico, vidro, o metal da estrutura — o calor passa de molécula a molécula, sem que a matéria se mova.
+
+$$
+q = -k\,A\,\frac{dT}{dx}
+$$
+
+Onde atua: através da **espessura** da cobertura, e também pelo **solo**, que troca calor com o subsolo por condução.
+
+**3 — Convecção: como a energia se espalha por dentro.** Dentro da estufa, o ar junto ao solo aquecido fica **menos denso** e sobe; o ar mais frio do topo desce. A circulação se sustenta sozinha — é convecção **natural**.
+
+$$
+q = h\,A\,(T_s - T_\infty)
+$$
+
+Onde atua:
+
+- **dentro**, distribuindo o calor do solo e das plantas para todo o volume de ar (natural);
+- **fora**, do vento sobre a cobertura (forçada) — e é por aqui que a estufa **perde** calor;
+- e se o projeto usar ventiladores ou um sistema de ar aquecido, a convecção interna passa a ser **forçada**.
+
+<Caixa tipo="macete" rotulo="O formato desta questão">
+
+O professor não pede a definição dos mecanismos: pede **onde cada um atua** num sistema real. A resposta completa tem duas partes por mecanismo:
+
+| mecanismo | onde atua na estufa |
+|---|---|
+| **radiação** | Sol → cobertura, solo e plantas; e a perda para o céu à noite |
+| **condução** | através do **material** da cobertura e pelo solo |
+| **convecção** | circulação do **ar interno**; vento na face externa |
+
+Responder só "são condução, convecção e radiação" perde metade dos pontos, porque a pergunta tem duas metades.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Para o projeto de aquecimento">
+
+Se o engenheiro precisa **manter** a temperatura, tem de olhar por onde ela **escapa**: condução pela cobertura mais convecção do vento externo, em série — exatamente o circuito de resistências térmicas da parede composta. Reduzir a perda significa aumentar essas resistências (cobertura dupla, quebra-vento).
+
+</Caixa>
+
+**Conferência —** os **três** mecanismos, e cada um com o **lugar** em que atua ✔ dizer que a radiação dispensa meio material ✔ apontar que a convecção interna é **natural** (nasce da diferença de densidade) e a externa é forçada ✔
+</Passos>
