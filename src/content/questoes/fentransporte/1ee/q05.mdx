@@ -1,0 +1,122 @@
+---
+origem: "2023.2"
+tema: "Manometria · Achar a densidade relativa do óleo"
+temaId: equacao-manometrica
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o sistema manométrico apresentado na figura. O manômetro ligado ao sistema mede uma pressão de $64\ \mathrm{kPa}$. Determine o valor de $\gamma_r$ (peso específico relativo) do óleo. Considere a água como fluido de referência.
+
+**Dado:** $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$.
+
+<Figura>
+  <svg viewBox="0 0 380 260" role="img" aria-label="Reservatório com ar e água, manômetro de 64 kPa, tubo em U com mercúrio e coluna de óleo de 80 cm no ramo direito">
+    {/* reservatório */}
+    <rect x="24" y="96" width="130" height="120" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <rect x="24" y="78" width="130" height="18" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="78" y="91" font-size="10" fill="var(--ink-2)">ar</text>
+    {/* manômetro */}
+    <line x1="89" y1="78" x2="89" y2="64" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <circle cx="89" cy="56" r="9" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="89" y1="56" x2="94" y2="51" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="38" y="46" font-size="10" fill="var(--accent)">64 kPa</text>
+    {/* tubo: do topo do reservatório para a direita e desce (água) */}
+    <line x1="154" y1="87" x2="196" y2="87" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <line x1="196" y1="87" x2="196" y2="196" stroke="var(--accent)" stroke-width="4"/>
+    <text x="202" y="104" font-size="10" fill="var(--accent)">água</text>
+    {/* U com mercúrio */}
+    <path d="M196 196 Q196 224 224 224 Q252 224 252 196" fill="none" stroke="var(--warn)" stroke-width="4"/>
+    <line x1="252" y1="196" x2="252" y2="150" stroke="var(--warn)" stroke-width="4"/>
+    <text x="286" y="182" font-size="10" fill="var(--warn)">Hg</text>
+    <text x="286" y="195" font-size="9" fill="var(--warn)">γr = 13,6</text>
+    {/* óleo no ramo direito */}
+    <line x1="252" y1="150" x2="252" y2="60" stroke="var(--ok)" stroke-width="4"/>
+    <text x="286" y="66" font-size="10" fill="var(--ok)">óleo</text>
+    <text x="286" y="79" font-size="9" fill="var(--ok)">γr = ?</text>
+    {/* cotas */}
+    <line x1="176" y1="87" x2="176" y2="150" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="140" y="122" font-size="10" fill="var(--ink-3)">50 cm</text>
+    <line x1="238" y1="150" x2="238" y2="196" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="204" y="176" font-size="10" fill="var(--ink-3)">46 cm</text>
+    <line x1="268" y1="60" x2="268" y2="150" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="228" y="52" font-size="10" fill="var(--ink-3)">80 cm</text>
+  </svg>
+  <figcaption>
+
+O ramo esquerdo tem **ar** (peso desprezível) e **água**; o direito, **mercúrio** e **óleo**. O nível de referência é o fundo do U, onde as pressões dos dois lados se igualam.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\gamma_r = 0{,}805$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as alturas e a estratégia.** Do desenho:
+
+$$
+h_1 = 50\ \mathrm{cm} \text{ (água)}
+\qquad
+h_2 = 80\ \mathrm{cm} \text{ (óleo)}
+\qquad
+h_3 = 46\ \mathrm{cm} \text{ (mercúrio)}
+$$
+
+Corte o sistema no **fundo do U** e escreva a pressão chegando por cada lado. No equilíbrio elas são iguais.
+
+**Passo 2 — o lado esquerdo.** Partindo do ar (que o manômetro mede) e **descendo** pela água:
+
+$$
+p_E = p_{ar} + \gamma_{\text{água}}\,h_1
+$$
+
+O **ar não entra na conta**: seu peso específico é desprezível, então a coluna de ar não altera a pressão (é a consequência 5 da lei de Stevin).
+
+**Passo 3 — o lado direito.** Partindo da atmosfera no topo do ramo aberto e **descendo** pelo óleo e depois pelo mercúrio:
+
+$$
+p_D = p_{atm} + \gamma_{\text{óleo}}\,h_2 + \gamma_{Hg}\,h_3
+$$
+
+Trabalhando em pressão **efetiva**, $p_{atm} = 0$.
+
+**Passo 4 — iguale e escreva tudo em relativo.** Com $\gamma_{\text{óleo}} = \gamma_r\,\gamma_{\text{água}}$ e $\gamma_{Hg} = 13{,}6\,\gamma_{\text{água}}$:
+
+$$
+p_{ar} + \gamma_{\text{água}}\,h_1 = \gamma_r\,\gamma_{\text{água}}\,h_2 + 13{,}6\,\gamma_{\text{água}}\,h_3
+$$
+
+$$
+\gamma_r = \frac{p_{ar} + \gamma_{\text{água}}\,h_1 - 13{,}6\,\gamma_{\text{água}}\,h_3}{\gamma_{\text{água}}\,h_2}
+$$
+
+**Passo 5 — os números.**
+
+$$
+\gamma_r = \frac{64 \times 10^3 + 10\,000 \times 0{,}50 - 13{,}6 \times 10\,000 \times 0{,}46}{10\,000 \times 0{,}80}
+$$
+
+$$
+\gamma_r = \frac{64\,000 + 5000 - 62\,560}{8000} = \frac{6440}{8000}
+$$
+
+$$
+\boxed{\gamma_r = 0{,}805}
+$$
+
+**Conferência —** o resultado **tem** de dar menor que 1: óleo flutua na água. Se sair maior que 1, há erro de sinal no caminho (provavelmente uma coluna somada onde devia ser subtraída) ✔ E note que os $\mathrm{cm}$ viraram $\mathrm{m}$ antes de multiplicar por $\gamma$ ✔ Confere com o gabarito da prova.
+</Passos>
