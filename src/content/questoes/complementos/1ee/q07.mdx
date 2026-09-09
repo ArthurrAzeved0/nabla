@@ -1,0 +1,103 @@
+---
+origem: "2023.2"
+tema: "Resíduos · Integral trigonométrica real em [0, 2π]"
+temaId: integral-trigonometrica-por-residuos
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\int_0^{2\pi} \frac{3\,d\theta}{4 + 3\cos\theta}
+$$
+
+<Gabarito>
+$$
+\int_0^{2\pi}\frac{3\,d\theta}{4+3\cos\theta} = \frac{6\pi}{\sqrt7} = \frac{6\sqrt7\,\pi}{7} \approx 7{,}13
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a ideia: $[0,2\pi]$ é a circunferência unitária.** Percorrer $\theta$ de $0$ a $2\pi$ é dar uma volta em $|z|=1$. A substituição que traduz isso:
+
+$$
+z = e^{i\theta},
+\qquad
+\cos\theta = \frac{z + z^{-1}}{2},
+\qquad
+d\theta = \frac{dz}{iz}
+$$
+
+O $d\theta = dz/(iz)$ é o fator mais esquecido da unidade — sem ele a conta sai errada por um fator de $z$.
+
+**Passo 2 — substituir e limpar.**
+
+$$
+\int_0^{2\pi}\frac{3\,d\theta}{4+3\cos\theta}
+= \oint_{|z|=1}\frac{3}{4 + \tfrac32\left(z + \tfrac1z\right)}\cdot\frac{dz}{iz}
+= \oint_{|z|=1}\frac{3\,dz}{i\left(4z + \tfrac32 z^2 + \tfrac32\right)}
+$$
+
+Colocando $\tfrac32$ em evidência no denominador:
+
+$$
+= \frac{3}{i}\cdot\frac{2}{3}\oint_{|z|=1}\frac{dz}{z^2 + \tfrac83 z + 1}
+= \frac{2}{i}\oint_{|z|=1}\frac{dz}{z^2 + \tfrac83 z + 1}
+$$
+
+**Passo 3 — achar os polos e ver qual entra.**
+
+$$
+z = \frac{-\tfrac83 \pm \sqrt{\tfrac{64}{9} - 4}}{2}
+= \frac{-8 \pm 2\sqrt7}{6}
+= \frac{-4 \pm \sqrt7}{3}
+$$
+
+$$
+z_1 = \frac{-4+\sqrt7}{3} \approx -0{,}451
+\qquad\text{(dentro)},
+\qquad
+z_2 = \frac{-4-\sqrt7}{3} \approx -2{,}215
+\qquad\text{(fora)}
+$$
+
+O produto das raízes é $1$, então **uma sempre cai dentro e a outra fora** — é a estrutura desse tipo de integral, e serve de conferência.
+
+**Passo 4 — o resíduo, por $p/q'$.** Polo simples, e derivar o denominador é mais rápido que fatorar:
+
+$$
+\operatorname{Res} = \frac{1}{2z + \tfrac83}\bigg|_{z=z_1}
+= \frac{1}{\tfrac{2(-4+\sqrt7)}{3} + \tfrac83}
+= \frac{1}{\tfrac{2\sqrt7}{3}}
+= \frac{3}{2\sqrt7}
+$$
+
+**Passo 5 — juntar.**
+
+$$
+\int_0^{2\pi}\frac{3\,d\theta}{4+3\cos\theta}
+= \frac{2}{i}\cdot 2\pi i\cdot\frac{3}{2\sqrt7}
+= \frac{6\pi}{\sqrt7}
+$$
+
+$$
+\boxed{\;\int_0^{2\pi}\frac{3\,d\theta}{4+3\cos\theta} = \frac{6\sqrt7\,\pi}{7} \approx 7{,}13\;}
+$$
+
+**Conferência 1 — pela fórmula fechada.** Para $\displaystyle\int_0^{2\pi}\frac{d\theta}{a+b\cos\theta} = \frac{2\pi}{\sqrt{a^2-b^2}}$, com $a=4$ e $b=3$: $3 \times \dfrac{2\pi}{\sqrt{16-9}} = \dfrac{6\pi}{\sqrt7}$ ✔
+
+**Conferência 2 — pelo tamanho.** O integrando vai de $3/7 \approx 0{,}43$ em $\theta=0$ a $3$ em $\theta=\pi$. Uma média em torno de $1{,}1$ ao longo de $2\pi$ dá algo perto de $7$ ✔ — e o resultado tem de ser **real e positivo**, porque o integrando é.
+</Passos>
