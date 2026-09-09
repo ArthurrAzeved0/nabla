@@ -416,7 +416,13 @@
       "condicoes-de-contorno": "ft-geracao",
       "dirichlet-neumann-robin": "ft-geracao",
       "parede-plana": "ft-geracao",
-      "conducao-unidimensional": "ft-geracao"
+      "conducao-unidimensional": "ft-geracao",
+      "conveccao-natural-e-forcada": "ft-conveccao",
+      "numero-de-nusselt": "ft-conveccao",
+      "nusselt": "ft-conveccao",
+      "coeficiente-de-conveccao": "ft-conveccao",
+      "camada-limite": "ft-conveccao",
+      "grashof": "ft-conveccao"
     }
   }
 ]

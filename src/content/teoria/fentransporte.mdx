@@ -46,6 +46,7 @@ unidades:
       - { id: ft-paredes, titulo: "Condução em paredes compostas e em tubulações" }
       - { id: ft-esferas, titulo: "Condução em esferas e o raio crítico de isolamento" }
       - { id: ft-geracao, titulo: "Condução com geração de calor e as condições de contorno" }
+      - { id: ft-conveccao, titulo: "Convecção: natural, forçada e o número de Nusselt" }
       - { id: ft-massa, titulo: "Fundamentos do transporte de massa" }
 
 ---
@@ -2635,7 +2636,115 @@ A armadilha é usar $\Delta x = 0{,}20\ \mathrm{m}$ com $\Delta T = 70\ \mathrm{
 
 </Topico>
 
-<Topico id="ft-massa" num="27" titulo="Fundamentos do transporte de massa">
+<Topico id="ft-conveccao" num="27" titulo="Convecção: natural, forçada e o número de Nusselt">
+
+**A ideia.** A lei do resfriamento de Newton, $q = hA\Delta T$, esconde toda a dificuldade dentro do $h$ — que não é propriedade do fluido, e sim resultado do escoamento. Achar $h$ é o problema central da convecção, e o caminho é sempre o mesmo: calcular adimensionais e usar uma correlação. O adimensional que **entrega** o $h$ é o de **Nusselt**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $h$ — coeficiente de convecção, em $\mathrm{W/(m^2 \cdot K)}$;
+- $L$ — **comprimento característico** (diâmetro do tubo, altura da placa), em $\mathrm{m}$;
+- $k$ — condutividade térmica **do fluido**, em $\mathrm{W/(m \cdot K)}$;
+- $\alpha = k/(\rho c_p)$ — difusividade térmica, em $\mathrm{m^2/s}$;
+- $\beta$ — coeficiente de expansão térmica do fluido, em $\mathrm{K^{-1}}$.
+
+</Caixa>
+
+### Os dois tipos de convecção
+
+**Natural (ou livre).** O movimento do fluido nasce **da própria diferença de temperatura**: o fluido aquecido fica menos denso e sobe, o frio desce. Não há nenhum dispositivo mecânico. É o ar subindo de um radiador, a água circulando numa panela antes de ferver.
+
+**Forçada.** O fluido é impulsionado por um agente **externo** — ventilador, bomba, compressor, o vento. O escoamento não depende da diferença de temperatura.
+
+<Caixa tipo="dica" rotulo="Por que a forçada troca muito mais calor">
+
+Porque a resistência à troca está na **camada limite** junto à parede, onde o fluido está quase parado e o calor só passa por **condução**. Quanto mais rápido o escoamento, mais fina essa camada e maior o $h$:
+
+| situação | $h$ típico $[\mathrm{W/(m^2K)}]$ |
+|---|---|
+| gás, convecção **natural** | $2$ a $25$ |
+| gás, convecção **forçada** | $25$ a $250$ |
+| líquido, convecção **forçada** | $100$ a $20\,000$ |
+| ebulição / condensação | $2500$ a $100\,000$ |
+
+Soprar a sopa é trocar natural por forçada — e ganhar uma ordem de grandeza.
+
+</Caixa>
+
+### O número de Nusselt
+
+$$
+\boxed{\;Nu = \frac{h\,L}{k}\;}
+$$
+
+**O que ele compara:** a troca de calor por **convecção** contra a troca por **condução** através da mesma camada de fluido.
+
+- $Nu = 1$ → só há condução: o fluido está parado (é o limite da condução pura);
+- $Nu \gg 1$ → a convecção domina, e tanto mais quanto maior o $Nu$.
+
+<Caixa tipo="macete" rotulo="Nusselt e Biot parecem iguais, mas não são">
+
+$$
+Nu = \frac{h L}{k_{\text{fluido}}}
+\qquad\qquad
+Bi = \frac{h L}{k_{\text{sólido}}}
+$$
+
+A fórmula é a mesma; **o $k$ é de quem muda**. Em Nusselt, $k$ é do **fluido** que escoa; em Biot, do **sólido** que está sendo aquecido ou resfriado. Ler o enunciado para ver de quem é o $k$ resolve a confusão.
+
+</Caixa>
+
+### Os adimensionais que alimentam a correlação
+
+$$
+Re = \frac{\rho\,v\,D}{\mu}
+\qquad
+Pr = \frac{\nu}{\alpha} = \frac{\mu\,c_p}{k}
+\qquad
+Gr = \frac{g\,\beta\,(T_s - T_\infty)\,L^3}{\nu^2}
+$$
+
+- **Reynolds** — inércia contra viscosidade; diz se o escoamento é laminar ou turbulento;
+- **Prandtl** — difusividade de quantidade de movimento contra a de calor; diz qual camada limite é mais espessa, a de velocidade ou a térmica;
+- **Grashof** — empuxo (sustentação térmica) contra viscosidade; é o "Reynolds da convecção natural", já que ali não há velocidade imposta para se usar.
+
+E o roteiro é sempre este:
+
+$$
+\underbrace{Nu = f(Re,\,Pr)}_{\text{convecção forçada}}
+\qquad\qquad
+\underbrace{Nu = f(Gr,\,Pr)}_{\text{convecção natural}}
+\qquad\Longrightarrow\qquad
+h = \frac{Nu\,k}{L}
+\qquad\Longrightarrow\qquad
+q = h\,A\,\Delta T
+$$
+
+<Caixa tipo="dica" rotulo="Por que Grashof no lugar de Reynolds">
+
+Na convecção **natural** não existe velocidade dada no enunciado — ela é consequência do aquecimento. Grashof substitui Reynolds justamente porque monta a mesma comparação (força que move contra força que resiste) usando o **empuxo térmico** $g\beta\Delta T$ em vez de uma velocidade.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — de Nusselt até o calor">
+
+Ar escoa sobre uma placa de $L = 0{,}5\ \mathrm{m}$ e área $2\ \mathrm{m^2}$, e uma correlação dá $Nu = 250$. Para o ar, $k = 0{,}026\ \mathrm{W/(mK)}$. A placa está a $80\ ^\circ\mathrm{C}$ e o ar a $20\ ^\circ\mathrm{C}$.
+
+$$
+h = \frac{Nu\,k}{L} = \frac{250 \times 0{,}026}{0{,}5} = 13\ \mathrm{W/(m^2K)}
+$$
+
+$$
+q = h\,A\,(T_s - T_\infty) = 13 \times 2 \times 60 = 1560\ \mathrm{W}
+$$
+
+O $\Delta T$ pode ficar em Celsius: em convecção só a **diferença** entra, e ela é a mesma nas duas escalas. Diferente da radiação, onde o kelvin é obrigatório.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-massa" num="28" titulo="Fundamentos do transporte de massa">
 
 **A ideia.** O último assunto da cadeira fecha o círculo que o nome dela sempre anunciou: são **três** fenômenos de transporte com a mesma estrutura matemática. Quantidade de movimento (Newton), calor (Fourier) e agora **massa** (Fick) — em todos, um fluxo é proporcional a um gradiente, com uma propriedade do meio como constante. Quem enxerga a analogia aprende esta unidade em minutos.
 
