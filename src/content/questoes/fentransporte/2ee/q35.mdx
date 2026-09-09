@@ -1,0 +1,120 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Transporte de massa · Velocidade média de uma mistura de três componentes"
+temaId: fracao-molar
+pontos: 0,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Como se define a velocidade média de uma mistura entre três componentes?**
+
+<Gabarito>
+É a **média ponderada** das velocidades das espécies, com a composição da mistura como peso. Há duas definições, e as duas são aceitas:
+
+**Velocidade média molar** (ponderada pelas concentrações molares):
+
+$$
+v^* = \frac{C_A v_A + C_B v_B + C_C v_C}{C_A + C_B + C_C} = \frac{1}{C}\sum_{i} C_i\,v_i = \sum_i x_i\,v_i
+$$
+
+**Velocidade média mássica** (ponderada pelas massas específicas):
+
+$$
+v = \frac{\rho_A v_A + \rho_B v_B + \rho_C v_C}{\rho_A + \rho_B + \rho_C} = \frac{1}{\rho}\sum_i \rho_i\,v_i = \sum_i w_i\,v_i
+$$
+
+com $x_i$ a fração **molar** e $w_i$ a fração **mássica** de cada espécie.
+</Gabarito>
+
+<Passos>
+**1 — Por que a média tem de ser ponderada.** Cada espécie pode ter a **sua própria** velocidade $v_i$. A média aritmética simples,
+
+$$
+\frac{v_A + v_B + v_C}{3}
+$$
+
+**não** serve: ela daria o mesmo peso a uma espécie presente a $1\ \%$ e a outra a $98\ \%$. O que importa é **quanto** de cada uma há — daí a ponderação pela concentração.
+
+<Caixa tipo="simbolos">
+
+- $C_i$ — concentração molar da espécie $i$, em $\mathrm{mol/m^3}$; $C = \sum C_i$
+- $\rho_i$ — concentração mássica (massa específica parcial), em $\mathrm{kg/m^3}$; $\rho = \sum \rho_i$
+- $x_i = C_i/C$ — **fração molar**, com $\sum x_i = 1$
+- $w_i = \rho_i/\rho$ — **fração mássica**, com $\sum w_i = 1$
+- $v_i$ — velocidade da espécie $i$
+
+</Caixa>
+
+**2 — A forma geral, para qualquer número de componentes.** A definição não depende de serem três:
+
+$$
+v^* = \sum_{i=1}^{n} x_i\,v_i
+\qquad\qquad
+v = \sum_{i=1}^{n} w_i\,v_i
+$$
+
+Para três componentes é só escrever os três termos. Nada muda na estrutura — e é isso que a questão quer ver.
+
+**3 — Por que a ponderação é a concentração, e não outra coisa.** Porque o que se está calculando é o **fluxo total** da mistura dividido pela sua concentração total:
+
+$$
+\underbrace{C\,v^*}_{\text{fluxo molar total}} = \sum_i \underbrace{C_i\,v_i}_{\text{fluxo molar de } i}
+$$
+
+$$
+\underbrace{\rho\,v}_{\text{fluxo mássico total}} = \sum_i \underbrace{\rho_i\,v_i}_{\text{fluxo mássico de } i}
+$$
+
+A velocidade média é, por definição, aquela que **reproduz o fluxo total** se toda a mistura andasse com ela. É a velocidade que se mede com um medidor de vazão.
+
+<Caixa tipo="macete" rotulo="Molar e mássica não dão o mesmo número">
+
+Elas coincidem **só** quando todas as espécies têm a mesma massa molar. Em geral, $v^* \ne v$, e a diferença é justamente o que faz aparecerem duas definições de fluxo difusivo (uma relativa a $v^*$, outra a $v$).
+
+Qual usar? A **molar** quando o problema está em $\mathrm{mol}$ — que é o caso de todas as questões de fluxos desta disciplina.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — três componentes">
+
+Mistura com $C_A = 100$, $C_B = 60$, $C_C = 40\ \mathrm{mol/m^3}$, escoando a $v_A = 3$, $v_B = 2$ e $v_C = 0\ \mathrm{m/s}$ (a espécie $C$ está parada).
+
+$$
+C = 100 + 60 + 40 = 200\ \mathrm{mol/m^3}
+$$
+
+$$
+v^* = \frac{100(3) + 60(2) + 40(0)}{200} = \frac{300 + 120 + 0}{200} = 2{,}1\ \mathrm{m/s}
+$$
+
+Repare que $v^*$ fica **entre** a maior e a menor velocidade, e puxada para a de $A$, que é a espécie mais abundante. Se a média tivesse sido aritmética, daria $1{,}67\ \mathrm{m/s}$ — errado, por ignorar que há mais $A$ que $C$.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Para que ela serve">
+
+A velocidade média é a **referência** contra a qual se define a difusão:
+
+$$
+\underbrace{N''_i = C_i\,v_i}_{\text{fluxo absoluto}}
+= \underbrace{C_i\,v^*}_{\text{convectivo}} + \underbrace{C_i\,(v_i - v^*)}_{\text{difusivo}}
+$$
+
+O fluxo **convectivo** usa a velocidade **da mistura**; o **difusivo** é o que cada espécie faz **em relação** a ela. Sem definir $v^*$, não se separa um do outro — é por isso que esta questão, valendo meio ponto, é a base das que valem dois.
+
+</Caixa>
+
+**Conferência —** a média é **ponderada**, e o peso é a concentração ✔ escrever as três parcelas explicitamente ✔ dizer que há a versão **molar** e a **mássica** ✔ a forma com frações, $v^* = \sum x_i v_i$, é a mais compacta e vale como resposta ✔
+</Passos>
