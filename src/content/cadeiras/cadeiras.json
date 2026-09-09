@@ -422,7 +422,13 @@
       "nusselt": "ft-conveccao",
       "coeficiente-de-conveccao": "ft-conveccao",
       "camada-limite": "ft-conveccao",
-      "grashof": "ft-conveccao"
+      "grashof": "ft-conveccao",
+      "fluxo-difusivo": "ft-fluxos-massa",
+      "fluxo-convectivo": "ft-fluxos-massa",
+      "fluxo-absoluto": "ft-fluxos-massa",
+      "fracao-molar": "ft-fluxos-massa",
+      "concentracao-molar": "ft-fluxos-massa",
+      "densidade-de-fluxo": "ft-fluxos-massa"
     }
   }
 ]

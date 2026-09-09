@@ -48,6 +48,7 @@ unidades:
       - { id: ft-geracao, titulo: "Condução com geração de calor e as condições de contorno" }
       - { id: ft-conveccao, titulo: "Convecção: natural, forçada e o número de Nusselt" }
       - { id: ft-massa, titulo: "Fundamentos do transporte de massa" }
+      - { id: ft-fluxos-massa, titulo: "Fluxo difusivo, convectivo e absoluto" }
 
 ---
 
@@ -2825,6 +2826,144 @@ N_A = J_A\,A = 1{,}8 \times 10^{-4} \times 0{,}5 = 9{,}0 \times 10^{-5}\ \mathrm
 $$
 
 **Compare com a seção anterior:** é exatamente a conta da parede plana, trocando $k$ por $D_{AB}$ e $\Delta T$ por $\Delta C_A$. A analogia não é retórica — é operacional.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Onde isto vai dar">
+
+A próxima seção fecha a cadeira detalhando os **três** fluxos que uma questão de transferência de massa pede: o difusivo (Fick), o convectivo (arrastado pelo escoamento) e o absoluto, que é a soma dos dois.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-fluxos-massa" num="29" titulo="Fluxo difusivo, convectivo e absoluto">
+
+**A ideia.** Numa mistura que **escoa**, uma espécie se move por dois motivos ao mesmo tempo: porque há gradiente de concentração (difusão) e porque o fluido inteiro está indo para algum lado (convecção). A questão típica de 2º EE dá a concentração total, as frações molares nas duas pontas e a velocidade, e pede **os três** fluxos para **as duas** espécies. É contabilidade, não dificuldade — desde que a ordem dos passos seja fixa.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $C$ — **concentração molar total** da mistura, em $\mathrm{mol/m^3}$;
+- $x_A$ — **fração molar** da espécie $A$, adimensional, com $x_A + x_B = 1$;
+- $C_A = x_A\,C$ — concentração molar da espécie $A$, em $\mathrm{mol/m^3}$;
+- $J''_A$ — densidade de fluxo **difusivo** de $A$, em $\mathrm{mol/(m^2 \cdot s)}$;
+- $N''_A$ — densidade de fluxo **convectivo** de $A$, em $\mathrm{mol/(m^2 \cdot s)}$;
+- $N''_{A,abs}$ — densidade de fluxo **absoluto** (total) de $A$;
+- $v$ — velocidade média da mistura, em $\mathrm{m/s}$;
+- $D_{AB}$ — coeficiente de difusão binária, em $\mathrm{m^2/s}$.
+
+</Caixa>
+
+### Os três fluxos
+
+**Difusivo** — é Fick, escrito em base molar:
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx}
+$$
+
+**Convectivo** — a espécie é simplesmente **carregada** pelo escoamento:
+
+$$
+N''_A = C_A\,v
+$$
+
+**Absoluto** — a soma, porque os dois transportes acontecem ao mesmo tempo:
+
+$$
+\boxed{\;N''_{A,abs} = J''_A + C_A\,v\;}
+$$
+
+<Caixa tipo="macete" rotulo="O roteiro, na ordem">
+
+1. **frações molares nas duas pontas.** Se o enunciado dá $x_A$ na entrada e $x_B$ na saída, complete com $x_B = 1 - x_A$ e $x_A = 1 - x_B$. É onde mais se perde ponto: o dado da saída costuma vir da **outra** espécie, de propósito;
+2. **concentrações**: $C_A = x_A C$ em cada ponta (e $C_B = x_B C$);
+3. **o gradiente.** Com perfil **linear**, $\dfrac{dC_A}{dx} = \dfrac{C_{A,2} - C_{A,1}}{L}$ — constante, então $J''_A$ é o mesmo em qualquer posição;
+4. **os três fluxos**, no ponto que a questão pedir (entrada, saída, meio do tubo).
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A conferência que sai de graça">
+
+Se a **concentração total é constante** ao longo do tubo, então $C_A + C_B = C$ em todo ponto, logo
+
+$$
+\frac{dC_A}{dx} = -\frac{dC_B}{dx}
+\qquad\Longrightarrow\qquad
+J''_A = -J''_B
+$$
+
+Os dois fluxos difusivos são **iguais em módulo e opostos em sinal**: o que $A$ difunde para a direita, $B$ difunde para a esquerda. Se a conta não sair assim (e a concentração total for constante), há erro.
+
+Os fluxos **convectivos**, ao contrário, apontam os dois para o **mesmo** lado — o lado em que o fluido escoa.
+
+</Caixa>
+
+### Concentração a partir da pressão parcial
+
+Quando a mistura é de **gases ideais**, a concentração molar sai da equação de estado, e a fração molar vale também para as pressões:
+
+$$
+C = \frac{P}{R\,T}
+\qquad\qquad
+C_A = \frac{p_A}{R\,T} = \frac{x_A\,P}{R\,T}
+$$
+
+E a massa que atravessa uma área $A$ num tempo $t$ é o fluxo molar convertido por massa molar:
+
+$$
+m = J''_A\,A\,t\,\mathcal{M}_A
+$$
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — os três fluxos na saída de um tubo">
+
+Mistura de $A$ e $B$ num tubo de $L = 2{,}0\ \mathrm{m}$, com $C = 200\ \mathrm{mol/m^3}$ **constante**, escoando a $v = 4{,}0\ \mathrm{m/s}$, com $D_{AB} = 5{,}0 \times 10^{-2}\ \mathrm{m^2/s}$. Na entrada, $70\ \%$ em mol é de $A$; na **saída**, $60\ \%$ em mol é de $B$.
+
+**Passo 1 — completar as frações.**
+
+$$
+x_{A1} = 0{,}70 \Rightarrow x_{B1} = 0{,}30
+\qquad
+x_{B2} = 0{,}60 \Rightarrow x_{A2} = 0{,}40
+$$
+
+**Passo 2 — concentrações.**
+
+$$
+C_{A1} = 140,\quad C_{A2} = 80,\quad C_{B1} = 60,\quad C_{B2} = 120
+\qquad [\mathrm{mol/m^3}]
+$$
+
+**Passo 3 — gradientes (perfil linear).**
+
+$$
+\frac{dC_A}{dx} = \frac{80 - 140}{2{,}0} = -30
+\qquad
+\frac{dC_B}{dx} = \frac{120 - 60}{2{,}0} = +30
+\qquad [\mathrm{mol/m^4}]
+$$
+
+**Passo 4 — os três fluxos, na saída.**
+
+$$
+J''_A = -5{,}0\times10^{-2}\,(-30) = +1{,}5
+\qquad
+J''_B = -5{,}0\times10^{-2}\,(+30) = -1{,}5
+$$
+
+$$
+N''_A = C_{A2}\,v = 80 \times 4 = 320
+\qquad
+N''_B = C_{B2}\,v = 120 \times 4 = 480
+$$
+
+$$
+N''_{A,abs} = 1{,}5 + 320 = 321{,}5
+\qquad
+N''_{B,abs} = -1{,}5 + 480 = 478{,}5
+$$
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$. Note as duas conferências: $J''_A = -J''_B$ ✔ e o convectivo é **centenas de vezes** maior que o difusivo, porque a velocidade de $4\ \mathrm{m/s}$ domina — o escoamento carrega muito mais do que a difusão espalha.
 
 </Caixa>
 
