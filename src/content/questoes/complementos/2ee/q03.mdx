@@ -1,0 +1,117 @@
+---
+origem: "2023.2"
+tema: "Laplace · PVI de 2ª ordem com forçamento em ressonância parcial"
+temaId: pvi-por-laplace
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Utilizando a Transformada de Laplace, encontre a solução do PVI
+
+$$
+y'' + 3y = \cos(3x),
+\qquad
+y(0) = 2,
+\qquad
+y'(0) = 5
+$$
+
+**Dados:** $\mathcal{L}\{\cos kx\} = \dfrac{s}{s^2+k^2}$; $\mathcal{L}\{F''\} = s^2\mathcal{L}\{F\} - sF(0) - F'(0)$; e
+
+$$
+\frac{s}{(s^2+3)(s^2+9)} = \frac16\left[\frac{s}{s^2+3} - \frac{s}{s^2+9}\right]
+$$
+
+<Gabarito>
+$$
+y(x) = 2\cos\!\left(\sqrt3\,x\right) + \frac{5}{\sqrt3}\operatorname{sen}\!\left(\sqrt3\,x\right)
++ \frac16\left[\cos\!\left(\sqrt3\,x\right) - \cos(3x)\right]
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — transformar a equação.** Chamando $Y = \mathcal{L}\{y\}$ e usando a fórmula dada para $F''$, **com as condições iniciais já dentro**:
+
+$$
+\big(s^2 Y - s\cdot 2 - 5\big) + 3Y = \frac{s}{s^2+9}
+$$
+
+É o ganho do método: nada de constantes a determinar no fim — $y(0)$ e $y'(0)$ entram na álgebra.
+
+**Passo 2 — isolar $Y$.**
+
+$$
+Y\big(s^2 + 3\big) = 2s + 5 + \frac{s}{s^2+9}
+$$
+
+$$
+Y = \frac{2s+5}{s^2+3} + \frac{s}{(s^2+3)(s^2+9)}
+$$
+
+**Passo 3 — inverter a primeira parcela.** Cuidado com o $k$: em $\dfrac{1}{s^2+3}$ vale $k^2 = 3$, logo $k = \sqrt3$ — **não** $3$.
+
+$$
+\mathcal{L}^{-1}\left\{\frac{2s}{s^2+3}\right\} = 2\cos\!\left(\sqrt3\,x\right)
+$$
+
+Para o termo constante no numerador, é preciso ajustar: a tabela é $\mathcal{L}\{\operatorname{sen} kx\} = \dfrac{k}{s^2+k^2}$, então falta um $\sqrt3$ em cima.
+
+$$
+\mathcal{L}^{-1}\left\{\frac{5}{s^2+3}\right\}
+= \frac{5}{\sqrt3}\,\mathcal{L}^{-1}\left\{\frac{\sqrt3}{s^2+3}\right\}
+= \frac{5}{\sqrt3}\operatorname{sen}\!\left(\sqrt3\,x\right)
+$$
+
+**Passo 4 — inverter a segunda parcela, com a decomposição dada.**
+
+$$
+\frac{s}{(s^2+3)(s^2+9)} = \frac16\left[\frac{s}{s^2+3} - \frac{s}{s^2+9}\right]
+$$
+
+$$
+\mathcal{L}^{-1} = \frac16\left[\cos\!\left(\sqrt3\,x\right) - \cos(3x)\right]
+$$
+
+**Passo 5 — juntar.**
+
+$$
+\boxed{\;y(x) = 2\cos\!\left(\sqrt3 x\right) + \frac{5}{\sqrt3}\operatorname{sen}\!\left(\sqrt3 x\right)
++ \frac16\cos\!\left(\sqrt3 x\right) - \frac16\cos(3x)\;}
+$$
+
+**Conferência 1 — a condição inicial em $y$.** Em $x=0$, todos os senos zeram e os cossenos valem $1$:
+
+$$
+y(0) = 2 + 0 + \frac16 - \frac16 = 2
+\;\checkmark
+$$
+
+**Conferência 2 — a condição em $y'$.** Derivando e avaliando em $0$, só o termo de seno sobrevive:
+
+$$
+y'(0) = \frac{5}{\sqrt3}\cdot\sqrt3 = 5
+\;\checkmark
+$$
+
+As duas conferências custam duas linhas e pegam qualquer erro de álgebra em $s$.
+
+<Caixa tipo="dica" rotulo="Por que aparecem duas frequências">
+
+A equação tem frequência natural $\sqrt3$ (do $y'' + 3y$) e é forçada em frequência $3$. Como as duas **não** coincidem, não há ressonância: a resposta é a soma de uma oscilação em $\sqrt3$ (homogênea, com amplitude dada pelas condições iniciais) e uma em $3$ (particular, com amplitude fixada pelo forçamento).
+
+Se o forçamento fosse $\cos(\sqrt3 x)$, o denominador $(s^2+3)^2$ apareceria e a solução teria um termo $x\operatorname{sen}(\sqrt3 x)$, que cresce — a assinatura da ressonância. Reconhecer isso na cara do denominador é o que a 2ª unidade quer ensinar.
+
+</Caixa>
+</Passos>
