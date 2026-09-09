@@ -29,20 +29,20 @@ Na indústria, os engenheiros frequentemente lidam com uma variedade de fluidos 
     <line x1="46" y1="168" x2="250" y2="168" stroke="var(--ink-3)" stroke-width="1.2"/>
     <polygon points="256,168 246,165 246,171" fill="var(--ink-3)"/>
     <text x="212" y="186" font-size="9" fill="var(--ink-3)">du/dy</text>
-    {/* dilatante: côncava para cima */}
-    <path d="M46 168 Q170 156 246 34" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
-    <text x="256" y="36" font-size="9" fill="var(--warn)">dilatante</text>
-    {/* newtoniano: reta pela origem */}
-    <line x1="46" y1="168" x2="246" y2="56" stroke="var(--accent)" stroke-width="2.2"/>
-    <text x="256" y="58" font-size="9" fill="var(--accent)">newtoniano</text>
-    {/* pseudoplástico: côncava para baixo */}
-    <path d="M46 168 Q96 88 246 70" fill="none" stroke="var(--ok)" stroke-width="1.8"/>
-    <text x="256" y="76" font-size="9" fill="var(--ok)">pseudoplástico</text>
-    {/* Bingham: parte de tau0 */}
-    <line x1="46" y1="130" x2="246" y2="100" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="6 3"/>
+    {/* Bingham: reta que parte de tau0 — a única que não passa pela origem */}
+    <line x1="46" y1="130" x2="246" y2="30" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="6 3"/>
     <circle cx="46" cy="130" r="3.5" fill="var(--ink-2)"/>
     <text x="26" y="128" font-size="9" fill="var(--ink-2)">τ₀</text>
-    <text x="256" y="102" font-size="9" fill="var(--ink-2)">Bingham</text>
+    <text x="256" y="34" font-size="9" fill="var(--ink-2)">Bingham</text>
+    {/* pseudoplástico: côncava para baixo, sempre acima da reta newtoniana */}
+    <path d="M46 168 Q90 90 246 52" fill="none" stroke="var(--ok)" stroke-width="1.8"/>
+    <text x="256" y="56" font-size="9" fill="var(--ok)">pseudoplástico</text>
+    {/* newtoniano: reta pela origem */}
+    <line x1="46" y1="168" x2="246" y2="78" stroke="var(--accent)" stroke-width="2.2"/>
+    <text x="256" y="82" font-size="9" fill="var(--accent)">newtoniano</text>
+    {/* dilatante: côncava para cima, sempre abaixo da reta newtoniana */}
+    <path d="M46 168 Q180 158 246 106" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
+    <text x="256" y="110" font-size="9" fill="var(--warn)">dilatante</text>
     {/* legenda */}
     <text x="52" y="204" font-size="8" fill="var(--ink-3)">a inclinação da curva é a viscosidade: constante só no newtoniano</text>
   </svg>
