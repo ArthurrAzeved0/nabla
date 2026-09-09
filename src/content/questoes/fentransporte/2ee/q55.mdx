@@ -1,0 +1,144 @@
+---
+origem: "Banco"
+tema: "Quantidade de movimento · A equação e a força sobre o volume de controle"
+temaId: quantidade-de-movimento
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q55.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Do que trata a equação do momento linear (quantidade de movimento) para um volume de controle?**
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Volume de controle envolvendo uma curva de tubulação: o fluido entra por uma seção e sai por outra em direção diferente, e a força resultante sobre o volume de controle é o que segura a curva no lugar">
+    {/* volume de controle */}
+    <rect x="70" y="30" width="180" height="126" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 4"/>
+    <text x="74" y="24" font-size="9" fill="var(--accent)">volume de controle</text>
+    {/* curva de tubulação */}
+    <path d="M70 120 L150 120 Q200 120 200 70 L200 30" fill="none" stroke="var(--ink-2)" stroke-width="10" opacity="0.35"/>
+    <path d="M70 120 L150 120 Q200 120 200 70 L200 30" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    {/* entrada */}
+    <line x1="20" y1="120" x2="56" y2="120" stroke="var(--ok)" stroke-width="2.4"/>
+    <polygon points="64,120 52,115 52,125" fill="var(--ok)"/>
+    <text x="18" y="112" font-size="9" fill="var(--ok)">ṁ v₁</text>
+    <text x="30" y="140" font-size="9" fill="var(--ink-3)">(1)</text>
+    {/* saída */}
+    <line x1="200" y1="22" x2="200" y2="8" stroke="var(--ok)" stroke-width="2.4"/>
+    <polygon points="200,2 195,14 205,14" fill="var(--ok)"/>
+    <text x="208" y="16" font-size="9" fill="var(--ok)">ṁ v₂</text>
+    <text x="208" y="36" font-size="9" fill="var(--ink-3)">(2)</text>
+    {/* força resultante */}
+    <line x1="150" y1="92" x2="112" y2="118" stroke="var(--warn)" stroke-width="2.4"/>
+    <polygon points="104,124 116,120 111,112" fill="var(--warn)"/>
+    <text x="122" y="86" font-size="10" fill="var(--warn)">R</text>
+    <text x="126" y="100" font-size="8" fill="var(--warn)">(reação do apoio)</text>
+    {/* legenda */}
+    <text x="66" y="176" font-size="9" fill="var(--ink-3)">o fluido muda de direção: alguém tem de aplicar força nele</text>
+  </svg>
+  <figcaption>
+
+O fluido entra em uma direção e sai em outra: **mudou** de quantidade de movimento, e isso exige uma **força**.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+A equação do momento linear é a **segunda lei de Newton escrita para um volume de controle**. Ela diz que a **força resultante** que atua sobre o fluido dentro do volume de controle é igual ao **fluxo líquido de quantidade de movimento** que atravessa a superfície de controle, somado à taxa de variação da quantidade de movimento armazenada dentro dele.
+
+Em **regime permanente**, o termo de armazenamento é nulo e sobra:
+
+$$
+\sum \vec F = \dot m\,\vec v_2 - \dot m\,\vec v_1 = \dot m\,(\vec v_2 - \vec v_1)
+$$
+
+com $\dot m = \rho\,Q$. É uma equação **vetorial** — vale componente por componente:
+
+$$
+\sum F_x = \dot m\,(v_{2x} - v_{1x})
+\qquad\qquad
+\sum F_y = \dot m\,(v_{2y} - v_{1y})
+$$
+</Gabarito>
+
+<Passos>
+**1 — De onde ela vem.** A segunda lei de Newton para uma partícula é $\vec F = d(m\vec v)/dt$. Para um **volume de controle**, que é uma região fixa do espaço por onde o fluido passa, ela se reescreve como
+
+$$
+\sum \vec F = \underbrace{\frac{\partial}{\partial t}\int_{VC} \rho\,\vec v\,dV}_{\text{acumula dentro}} + \underbrace{\int_{SC} \rho\,\vec v\,(\vec v \cdot \vec n)\,dA}_{\text{fluxo que atravessa a fronteira}}
+$$
+
+Em **regime permanente** e com escoamento uniforme nas seções, isso vira a forma que se usa nos exercícios:
+
+$$
+\sum \vec F = \dot m\,(\vec v_2 - \vec v_1)
+$$
+
+<Caixa tipo="simbolos">
+
+- $\dot m = \rho\,Q = \rho\,A\,v$ — vazão em massa, em $\mathrm{kg/s}$
+- $\vec v_1,\ \vec v_2$ — velocidades **médias** na entrada e na saída, com **direção**
+- $\sum \vec F$ — resultante de **todas** as forças: pressão nas seções, peso e a reação do apoio
+- unidade: newton
+
+</Caixa>
+
+**2 — Quais forças entram na soma.** É aqui que a questão se resolve na prática:
+
+- **forças de pressão** nas seções de entrada e saída: $p_1 A_1$ e $p_2 A_2$, cada uma **perpendicular** à sua seção e apontando **para dentro** do volume de controle;
+- **peso** do fluido contido, quando não é desprezível;
+- **reação do apoio** ou da estrutura — que é justamente o que quase sempre se quer descobrir.
+
+**3 — O que a equação é usada para responder.** Sempre a mesma pergunta: **que força é necessária para mudar a quantidade de movimento do fluido?**
+
+| situação | o que se calcula |
+|---|---|
+| **curva** de tubulação | a força no ancoramento, que impede a curva de se soltar |
+| **jato** batendo numa placa ou pá | o empuxo sobre a placa; a base das turbinas |
+| **redução** de seção | o esforço nos parafusos da flange |
+| **foguete / propulsor** | o empuxo, que é $\dot m\,\Delta v$ |
+| **ressalto hidráulico** | a perda de energia num canal |
+
+<Caixa tipo="macete" rotulo="Por que ela é vetorial, e por que isso importa">
+
+Bernoulli e a continuidade são equações **escalares**: dão números. A quantidade de movimento é **vetorial**, e é a única que responde sobre **direção**.
+
+Numa curva de $90°$, por exemplo, o módulo da velocidade pode não mudar nada — mas a **direção** muda, e portanto $\vec v_2 - \vec v_1 \ne 0$: há força. Uma análise só com Bernoulli não veria nada acontecendo.
+
+Daí o roteiro: **desenhe o volume de controle**, escolha os eixos, e escreva **uma** equação por componente.
+
+</Caixa>
+
+**4 — A relação com as outras duas equações.** As três formam o trio de balanços do volume de controle, e cada uma conserva uma coisa diferente:
+
+| balanço | o que conserva | responde |
+|---|---|---|
+| **continuidade** | massa | vazões e velocidades |
+| **energia** (Bernoulli, com máquina e perdas) | energia mecânica | pressões, alturas, potência |
+| **quantidade de movimento** | momento linear | **forças** e direções |
+
+Em geral se usa continuidade para achar as velocidades, energia para achar as pressões, e só então quantidade de movimento para achar a força — nessa ordem.
+
+<Caixa tipo="dica" rotulo="O termo de acúmulo cai quase sempre">
+
+Nos problemas da disciplina o regime é **permanente**, então
+
+$$
+\frac{\partial}{\partial t}\int_{VC} \rho\,\vec v\,dV = 0
+$$
+
+e a equação fica com dois termos apenas: forças de um lado, $\dot m\,\Delta\vec v$ do outro. O termo de acúmulo só reaparece em problemas transientes — enchimento de tanque, partida de bomba.
+
+</Caixa>
+
+**Conferência —** dizer que é a **segunda lei de Newton** aplicada a um volume de controle ✔ escrever a forma de regime permanente, $\sum \vec F = \dot m\,\Delta\vec v$ ✔ enfatizar que é **vetorial** e que por isso responde sobre **direção** ✔ listar as forças que entram na soma, sem esquecer as de **pressão** nas seções ✔
+</Passos>
