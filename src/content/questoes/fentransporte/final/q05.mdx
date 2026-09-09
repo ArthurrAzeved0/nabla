@@ -1,0 +1,201 @@
+---
+origem: "Final 2023.2"
+tema: "Bomba · Dois reservatórios pressurizados e a altura manométrica"
+temaId: altura-manometrica
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere um sistema composto por dois reservatórios **fechados**, (1) e (2), contendo água pressurizada, interligados por uma tubulação de $20\ \mathrm{cm}$ de diâmetro. No meio da tubulação existe uma **bomba**, que transporta água do reservatório (1) para o (2) numa vazão de $0{,}05\ \mathrm{m^3/s}$. A superfície da água no reservatório (1) está $5\ \mathrm{m}$ **abaixo** da linha da bomba, enquanto no (2) está $10\ \mathrm{m}$ **acima** dessa linha. A pressão na superfície de (1) é de $2\ \mathrm{atm}$, enquanto para (2) é de $5\ \mathrm{atm}$. A perda de carga ao longo da tubulação é de $10\ \mathrm{m}$. Considere a velocidade de escoamento no reservatório (1) nula (grandes dimensões).
+
+**a)** (1,0 pt.) A **altura da bomba**.
+
+**b)** (1,0 pt.) A **potência real** da bomba, considerando uma eficiência de $85\ \%$.
+
+**Dados:** $\gamma_{H_2O} = 10^4\ \mathrm{N/m^3}$; $g = 10\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 360 234" role="img" aria-label="Dois reservatórios fechados pressurizados: o de baixo a 2 atmosferas com a superfície 5 metros abaixo da linha da bomba, e o de cima a 5 atmosferas com a superfície 10 metros acima dessa linha">
+    {/* linha da bomba */}
+    <line x1="16" y1="120" x2="344" y2="120" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="6 4"/>
+    <text x="16" y="114" font-size="9" fill="var(--ink-3)">linha da bomba (referência)</text>
+    {/* reservatório 1, embaixo à esquerda */}
+    <path d="M28 152 L28 206 L110 206 L110 152" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="29" y="160" width="80" height="14" fill="var(--line-2)" opacity="0.7"/>
+    <text x="56" y="170" font-size="8" fill="var(--ink-2)">2 atm</text>
+    <rect x="29" y="174" width="80" height="32" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="29" y1="174" x2="109" y2="174" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="112" y="170" font-size="10" fill="var(--ink-2)">(1)</text>
+    {/* cota 5 m */}
+    <line x1="134" y1="120" x2="134" y2="174" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="134,120 131,129 137,129" fill="var(--ok)"/>
+    <polygon points="134,174 131,165 137,165" fill="var(--ok)"/>
+    <line x1="109" y1="174" x2="134" y2="174" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="140" y="152" font-size="9" fill="var(--ok)">5 m (abaixo)</text>
+    {/* tubulação: sobe do reservatório 1, bomba, sobe ao reservatório 2 */}
+    <line x1="70" y1="174" x2="70" y2="120" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="70" y1="120" x2="248" y2="120" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <circle cx="160" cy="120" r="13" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.7"/>
+    <text x="155" y="124" font-size="11" fill="var(--ink-2)">B</text>
+    <line x1="248" y1="120" x2="248" y2="60" stroke="var(--ink-2)" stroke-width="2.4"/>
+    {/* reservatório 2, em cima à direita */}
+    <path d="M212 20 L212 60 L294 60 L294 20" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="213" y="22" width="80" height="16" fill="var(--line-2)" opacity="0.7"/>
+    <text x="240" y="34" font-size="8" fill="var(--ink-2)">5 atm</text>
+    <rect x="213" y="38" width="80" height="22" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="213" y1="38" x2="293" y2="38" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="296" y="34" font-size="10" fill="var(--ink-2)">(2)</text>
+    {/* cota 10 m */}
+    <line x1="322" y1="38" x2="322" y2="120" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="322,38 319,47 325,47" fill="var(--ok)"/>
+    <polygon points="322,120 319,111 325,111" fill="var(--ok)"/>
+    <line x1="293" y1="38" x2="322" y2="38" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="284" y="84" font-size="9" fill="var(--ok)">10 m</text>
+    {/* dados */}
+    <text x="24" y="228" font-size="9" fill="var(--ink-3)">d = 20 cm  ·  Q = 0,05 m³/s  ·  h p = 10 m  ·  η = 85 %</text>
+    {/* sentido */}
+    <line x1="96" y1="106" x2="128" y2="106" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="134,106 124,102 124,110" fill="var(--warn)"/>
+  </svg>
+  <figcaption>
+
+Os **dois** reservatórios são fechados e pressurizados: nenhuma das duas parcelas de pressão se cancela, e as duas entram na conta.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v_2 = \frac{4Q}{\pi D^2} = \frac{4 \times 0{,}05}{\pi \times 0{,}2^2} = 1{,}59\ \mathrm{m/s}
+\qquad
+\frac{v_2^2}{2g} = 0{,}127\ \mathrm{m}
+$$
+
+**a)**
+
+$$
+H_B = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + y_2 + h_p - \left(\frac{p_1}{\gamma} + y_1\right)
+$$
+
+$$
+H_B = 50 + 0{,}127 + 10 + 10 - (20 - 5) \approx \mathbf{55{,}13\ m}
+$$
+
+**b)**
+
+$$
+N_{ideal} = \gamma\,Q\,H_B = 10^4 \times 0{,}05 \times 55{,}13 = 2{,}76\times10^{4}\ \mathrm{W}
+$$
+
+$$
+N_{real} = \frac{N_{ideal}}{\eta} = \frac{2{,}76\times10^{4}}{0{,}85} \approx \mathbf{3{,}24\times10^{4}\ W} \approx 32{,}4\ \mathrm{kW}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a velocidade na tubulação.**
+
+$$
+A = \frac{\pi D^2}{4} = \frac{\pi (0{,}20)^2}{4} = 3{,}142\times10^{-2}\ \mathrm{m^2}
+$$
+
+$$
+v_2 = \frac{Q}{A} = \frac{0{,}05}{3{,}142\times10^{-2}} = 1{,}59\ \mathrm{m/s}
+\qquad
+\frac{v_2^2}{2g} = \frac{2{,}53}{20} = 0{,}127\ \mathrm{m}
+$$
+
+Pequena, mas o gabarito a mantém — e mantê-la não custa nada.
+
+**Passo 2 — a equação da energia, sem cancelar as pressões.** Aqui está a diferença desta questão: os **dois** reservatórios são **fechados** e pressurizados.
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + y_1 + H_B = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + y_2 + h_p
+$$
+
+Só uma coisa cai: $v_1 = 0$ (grandes dimensões, e o enunciado manda considerar). As duas parcelas de pressão **ficam**.
+
+$$
+H_B = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + y_2 + h_p - \left(\frac{p_1}{\gamma} + y_1\right)
+$$
+
+<Caixa tipo="macete" rotulo="O erro que a questão está caçando">
+
+Em quase todo exercício os tanques são abertos e $p_1/\gamma$ cancela com $p_2/\gamma$. Quem repete o automatismo aqui perde **30 m** de carga:
+
+$$
+\frac{p_2 - p_1}{\gamma} = \frac{5 - 2}{1} \times \frac{10^5}{10^4} = 30\ \mathrm{m}
+$$
+
+Ou seja, mais da metade da altura manométrica vem só da diferença de pressurização.
+
+</Caixa>
+
+**Passo 3 — as cotas, com o sinal certo.** O referencial é a **linha da bomba**:
+
+$$
+y_1 = -5\ \mathrm{m} \ \text{(a superfície de (1) está \textbf{abaixo})}
+\qquad
+y_2 = +10\ \mathrm{m}
+$$
+
+E as cargas de pressão, com $1\ \mathrm{atm} = 10^5\ \mathrm{Pa}$:
+
+$$
+\frac{p_1}{\gamma} = \frac{2\times10^5}{10^4} = 20\ \mathrm{m}
+\qquad
+\frac{p_2}{\gamma} = \frac{5\times10^5}{10^4} = 50\ \mathrm{m}
+$$
+
+**Passo 4 — juntar.**
+
+$$
+H_B = 50 + 0{,}127 + 10 + 10 - \big(20 + (-5)\big) = 70{,}127 - 15 = 55{,}13\ \mathrm{m}
+$$
+
+**Passo 5 — de onde vêm os 55 m.** Vale decompor, porque mostra o que a bomba está pagando:
+
+| parcela | valor $[\mathrm{m}]$ |
+|---|---|
+| diferença de pressurização, $(p_2 - p_1)/\gamma$ | $+30{,}0$ |
+| diferença de altura, $y_2 - y_1 = 10 - (-5)$ | $+15{,}0$ |
+| perda de carga, $h_p$ | $+10{,}0$ |
+| carga cinética de chegada, $v_2^2/2g$ | $+0{,}13$ |
+| **total** | $\mathbf{55{,}13}$ |
+
+Positivo em todas as parcelas: tudo neste sistema pede energia. Nada estranho que a máquina seja **bomba**, como o enunciado já adianta.
+
+**Passo 6 — item (b): a potência.** Ideal primeiro:
+
+$$
+N_{ideal} = \gamma\,Q\,H_B = 10^4 \times 0{,}05 \times 55{,}13 = 27\,565\ \mathrm{W} \approx 2{,}76\times10^4\ \mathrm{W}
+$$
+
+E a **real**, com o rendimento **dividindo** (é bomba):
+
+$$
+N_{real} = \frac{27\,565}{0{,}85} = 32\,429\ \mathrm{W} \approx 3{,}24\times10^4\ \mathrm{W} = 32{,}4\ \mathrm{kW}
+$$
+
+<Caixa tipo="dica" rotulo="Confira o sentido do rendimento">
+
+$32{,}4 > 27{,}6$: o motor entrega **mais** do que o fluido recebe, e os $15\ \%$ de diferença se perdem na máquina. Se a conta tivesse dado menos que a ideal, o $\eta$ estaria do lado errado.
+
+</Caixa>
+
+**Conferência —** os dois reservatórios são **fechados**, então nenhuma pressão se cancela ✔ $y_1$ é **negativo**, porque (1) está abaixo do referencial ✔ $\mathrm{atm}$ para pascal, e depois para metro de coluna dividindo por $\gamma$ ✔ bomba: rendimento **divide** ✔ $N_{real} > N_{ideal}$ ✔
+
+**Sobre o gabarito —** a resolução oficial imprime $10\times10^5$ e $5\times10^5$ nas cargas de pressão (o que corresponderia a $10$ e $5\ \mathrm{atm}$), mas o resultado final que ela apresenta, $55{,}13\ \mathrm{m}$, é o que se obtém com os $5$ e $2\ \mathrm{atm}$ do enunciado, como acima. São dígitos trocados na digitação.
+</Passos>
