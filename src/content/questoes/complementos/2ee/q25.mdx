@@ -1,0 +1,86 @@
+---
+origem: "2024.1"
+tema: "Laurent · Expansão centrada na própria singularidade"
+temaId: serie-de-laurent
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine a série de Laurent de $f$ em $D$:
+
+$$
+f(z) = \frac{1}{z-1} + \frac{1}{z-3},
+\qquad
+D = \{\,0 < |z-3| < 2\,\}
+$$
+
+<Gabarito>
+$$
+f(z) = \frac{1}{z-3} + \sum_{n=0}^{\infty}\frac{(-1)^n}{2^{\,n+1}}\,(z-3)^{n}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — ler o centro do anel.** O anel é $0 < |z-3| < 2$: o centro é $z_0 = 3$, e o raio externo $2$ é a distância até o outro polo, $z=1$. Faz sentido — a série não pode alcançar outra singularidade.
+
+**Passo 2 — a primeira parcela já está pronta.** O termo $\dfrac{1}{z-3}$ **é** uma potência de $(z-3)$, com expoente $-1$. Ele é a parte principal inteira, e não há nada a expandir.
+
+Isso já entrega duas informações: $z=3$ é **polo simples**, e o **resíduo** ali é $1$.
+
+**Passo 3 — adaptar a segunda parcela ao centro.** O truque é somar e subtrair $3$ para fazer aparecer $(z-3)$:
+
+$$
+\frac{1}{z-1} = \frac{1}{(z-3) + 2} = \frac{1}{2}\cdot\frac{1}{1 + \dfrac{z-3}{2}}
+$$
+
+**Passo 4 — aplicar a geométrica.** No anel, $\left|\dfrac{z-3}{2}\right| < 1$, então
+
+$$
+\frac{1}{1 + w} = \sum_{n=0}^{\infty}(-1)^n w^n
+\qquad\text{com } w = \frac{z-3}{2}
+$$
+
+$$
+\frac{1}{z-1} = \frac12\sum_{n=0}^{\infty}(-1)^n\left(\frac{z-3}{2}\right)^n
+= \sum_{n=0}^{\infty}\frac{(-1)^n}{2^{\,n+1}}(z-3)^n
+$$
+
+**Passo 5 — juntar.**
+
+$$
+\boxed{\;f(z) = \frac{1}{z-3} + \sum_{n=0}^{\infty}\frac{(-1)^n}{2^{\,n+1}}(z-3)^{n}
+= \frac{1}{z-3} + \frac12 - \frac{z-3}{4} + \frac{(z-3)^2}{8} - \cdots\;}
+$$
+
+**Conferência —** avalie a série da segunda parcela em $z=3$: ela dá $\tfrac12$, e de fato $\dfrac{1}{3-1} = \dfrac12$ ✔ E o raio de convergência é $2$, a distância de $3$ até $1$ ✔
+
+<Caixa tipo="dica" rotulo="Atenção ao sinal do denominador">
+
+A geométrica tem duas formas, e confundi-las troca o sinal de metade dos termos:
+
+$$
+\frac{1}{1-w} = \sum w^n
+\qquad\text{(sem alternância)}
+$$
+
+$$
+\frac{1}{1+w} = \sum (-1)^n w^n
+\qquad\text{(com alternância)}
+$$
+
+Aqui apareceu $1 + \dfrac{z-3}{2}$, com **mais**, e por isso a série alterna. Na q24 apareceu $1 - \dfrac z2$, com **menos**, e a série não alterna. Olhar o sinal antes de expandir é o hábito que evita o erro.
+
+</Caixa>
+</Passos>
