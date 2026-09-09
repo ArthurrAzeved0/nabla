@@ -134,7 +134,16 @@
   --sombra-2: 0 2px 4px rgba(22, 33, 42, 0.06), 0 10px 24px -16px rgba(22, 33, 42, 0.18);
 
   /* ---------------- medidas ---------------- */
-  --largura-texto: 68ch; /* coluna de leitura */
+  /* Coluna de leitura. Era 68ch, e ficava estreita demais para o container:
+     com 892px úteis, a prosa parava em ~580px e sobrava um vazio de 312px à
+     direita de cada parágrafo, enquanto sumário, caixas e fórmulas iam até a
+     borda. A página ficava com o lado direito irregular.
+
+     84ch põe a prosa em ~773px e derruba o vazio para ~118px, que lê como
+     margem em vez de buraco. A linha fica com uns 88 caracteres: acima do
+     confortável clássico (45–75), dentro do tolerável (até 90). Não subir
+     mais que isso — a partir daí o olho perde a volta da linha. */
+  --largura-texto: 84ch;
   --largura-pagina: 940px;
 }
 
