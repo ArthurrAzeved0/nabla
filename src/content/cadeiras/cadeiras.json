@@ -444,7 +444,14 @@
       "conjugado": "cm-complexos",
       "modulo": "cm-complexos",
       "plano-de-argand": "cm-complexos",
-      "operacoes-com-complexos": "cm-complexos"
+      "operacoes-com-complexos": "cm-complexos",
+      "forma-polar": "cm-polar",
+      "argumento": "cm-polar",
+      "argumento-principal": "cm-polar",
+      "formula-de-euler": "cm-polar",
+      "de-moivre": "cm-polar",
+      "raizes-de-complexos": "cm-polar",
+      "raizes-da-unidade": "cm-polar"
     }
   }
 ]
