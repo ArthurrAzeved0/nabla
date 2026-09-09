@@ -1,0 +1,91 @@
+---
+origem: "Final 2025.2"
+tema: "Fórmula das derivadas · Produto de duas inteiras sobre polo duplo"
+temaId: formula-das-derivadas
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\oint_{\gamma}\frac{e^{z}\cos(z)}{(z-\pi)^{2}}\,dz,
+\qquad
+\gamma = \{z\in\mathbb{C} : |z| = 4\}
+$$
+
+<Gabarito>
+$$
+\oint_{|z|=4}\frac{e^z\cos z}{(z-\pi)^2}\,dz = -2\pi i\,e^{\pi} \approx -145{,}4\,i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a singularidade e a curva.**
+
+$$
+z_0 = \pi \approx 3{,}14 < 4
+\qquad\text{(dentro de } |z|=4\text{)}
+$$
+
+Se o raio fosse $3$, o ponto ficaria **fora** e a resposta seria zero — a escolha de $4$ é deliberada.
+
+**Passo 2 — identificar $f$ e $n$.**
+
+$$
+f(z) = e^{z}\cos z,
+\qquad
+n+1 = 2 \;\Longrightarrow\; n = 1
+$$
+
+$f$ é produto de duas funções inteiras, logo inteira ✔
+
+**Passo 3 — derivar o produto.**
+
+$$
+f'(z) = e^z\cos z + e^z(-\operatorname{sen} z) = e^{z}\big(\cos z - \operatorname{sen} z\big)
+$$
+
+$$
+f'(\pi) = e^{\pi}\big(\cos\pi - \operatorname{sen}\pi\big) = e^{\pi}(-1 - 0) = -e^{\pi}
+$$
+
+**Passo 4 — aplicar a fórmula.**
+
+$$
+\boxed{\;\oint_{|z|=4}\frac{e^z\cos z}{(z-\pi)^2}\,dz
+= \frac{2\pi i}{1!}\left(-e^{\pi}\right) = -2\pi i\,e^{\pi}\;}
+$$
+
+Numericamente, $e^\pi \approx 23{,}14$, logo o valor é $\approx -145{,}4\,i$.
+
+**Conferência —** o resultado é imaginário puro e **negativo** no coeficiente. Faz sentido: $f'(\pi)$ saiu real e negativo, porque $\cos\pi = -1$ domina.
+
+<Caixa tipo="dica" rotulo="Três provas, o mesmo par de integrais">
+
+Esta questão é a **primeira** de um par que a prova de 2025.2 repete de 2024.2:
+
+$$
+\oint_{|z|=4}\frac{e^z\cos z}{(z-\pi)^2}
+\qquad\text{e}\qquad
+\oint_{|z|=2}\frac{\cos z}{z^4}
+$$
+
+A segunda é a q35 do 1º EE, item (c), e dá **zero** — porque a terceira derivada do cosseno se anula na origem.
+
+O par foi montado para cobrar as duas leituras: um caso em que a fórmula devolve valor, e outro em que ela devolve zero **apesar** de a singularidade estar dentro. Responder "zero" na segunda sem mostrar a derivada não vale o item.
+
+</Caixa>
+</Passos>
