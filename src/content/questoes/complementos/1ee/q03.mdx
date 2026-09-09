@@ -1,0 +1,75 @@
+---
+origem: "2023.2"
+tema: "Exponencial · Todas as soluções de exp(z) = 4i"
+temaId: equacao-exponencial
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre **todas** as soluções de $\exp(z) = 4i$.
+
+<Gabarito>
+$$
+z = \ln 4 + i\left(\frac{\pi}{2} + 2k\pi\right),
+\qquad k \in \mathbb{Z}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que há infinitas soluções.** A exponencial complexa é **periódica de período $2\pi i$**:
+
+$$
+e^{z + 2\pi i} = e^z\,e^{2\pi i} = e^z \cdot 1 = e^z
+$$
+
+Função periódica não tem inversa única. Então "todas as soluções" quer o logaritmo **completo**, com o $2k\pi i$ escrito — e não o ramo principal.
+
+**Passo 2 — separar módulo e argumento.** Escreva $z = x + iy$:
+
+$$
+e^{x+iy} = e^x\big(\cos y + i\operatorname{sen} y\big) = 4i
+$$
+
+Comparando módulo e argumento dos dois lados:
+
+$$
+e^{x} = |4i| = 4
+\qquad\Longrightarrow\qquad
+x = \ln 4
+$$
+
+$$
+y = \arg(4i) = \frac{\pi}{2} + 2k\pi,
+\qquad k \in \mathbb{Z}
+$$
+
+**Passo 3 — juntar.**
+
+$$
+\boxed{\;z = \ln 4 + i\left(\frac{\pi}{2} + 2k\pi\right),\qquad k \in \mathbb{Z}\;}
+$$
+
+Equivalentemente, $z = \log(4i)$ com o logaritmo completo. O valor principal ($k=0$) é $\ln 4 + i\pi/2$.
+
+**Conferência —** teste $k=0$: $e^{\ln 4 + i\pi/2} = 4\,e^{i\pi/2} = 4i$ ✔ E $k=1$ dá o mesmo, porque $e^{2\pi i} = 1$.
+
+<Caixa tipo="dica" rotulo="O que decide a nota">
+
+A questão vale por **inteiro** ou **nada**, e o que separa é o $+2k\pi i$. Escrever só $\ln 4 + i\pi/2$ responde "o valor principal", não "todas as soluções".
+
+O aviso está no enunciado: **"encontre todas"** → logaritmo completo, $k$ inteiro qualquer. Se o enunciado dissesse "pelo ramo principal" ou usasse $\operatorname{Log}$ com maiúscula, aí sim seria um valor só.
+
+</Caixa>
+</Passos>
