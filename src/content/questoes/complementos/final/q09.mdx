@@ -1,0 +1,112 @@
+---
+origem: "Final 2026.1"
+tema: "Logaritmo · A forma cartesiana de ln(z) no semiplano direito"
+temaId: logaritmo-complexo
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Para todo ponto $z$ no semiplano direito, $x > 0$, mostre que
+
+$$
+\ln(z) = \frac12\ln\!\left(x^2+y^2\right) + i\arctan\!\left(\frac yx\right),
+$$
+
+onde a tangente inversa tem o valor principal usado no cálculo, isto é, $-\pi/2 < \arctan(t) < \pi/2$.
+
+<Gabarito>
+Da definição $\operatorname{Log} z = \ln|z| + i\operatorname{Arg} z$, com $|z| = \sqrt{x^2+y^2}$ e, **no semiplano $x>0$**, $\operatorname{Arg} z = \arctan(y/x)$ — porque ali o argumento principal cai em $(-\pi/2,\pi/2)$, que é exatamente a imagem do arco-tangente principal.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a definição do logaritmo principal.** Escrevendo $z = re^{i\theta}$:
+
+$$
+\operatorname{Log}(z) = \ln|z| + i\operatorname{Arg}(z),
+\qquad
+-\pi < \operatorname{Arg} z \le \pi
+$$
+
+**Passo 2 — a parte real.** Com $|z| = \sqrt{x^2+y^2}$ e a propriedade do logaritmo real:
+
+$$
+\ln|z| = \ln\sqrt{x^2+y^2} = \ln\left[\left(x^2+y^2\right)^{1/2}\right]
+= \frac12\ln\!\left(x^2+y^2\right)
+$$
+
+Esta metade não depende de hipótese nenhuma — vale em todo $z \ne 0$.
+
+**Passo 3 — a parte imaginária, e é aqui que $x>0$ entra.** O argumento satisfaz
+
+$$
+\tan\big(\operatorname{Arg} z\big) = \frac yx
+$$
+
+Mas essa relação, sozinha, **não determina** $\operatorname{Arg} z$: a tangente tem período $\pi$, e $\arctan$ devolve valores só em $(-\pi/2, \pi/2)$. Inverter sem cuidado erra o quadrante.
+
+**Passo 4 — a hipótese resolve a ambiguidade.** No semiplano direito, $x > 0$, o ponto está no **1º ou no 4º quadrante**. Nesses dois:
+
+$$
+-\frac\pi2 < \operatorname{Arg}(z) < \frac\pi2
+$$
+
+que é **exatamente** a imagem do ramo principal do arco-tangente. Como a tangente é injetora nesse intervalo, a inversão é sem ambiguidade:
+
+$$
+\operatorname{Arg}(z) = \arctan\!\left(\frac yx\right),
+\qquad x > 0
+$$
+
+**Passo 5 — juntar.**
+
+$$
+\boxed{\;\ln(z) = \frac12\ln\!\left(x^2+y^2\right) + i\arctan\!\left(\frac yx\right),
+\qquad x>0\;}
+$$
+
+como se queria demonstrar.
+
+<Caixa tipo="macete" rotulo="Por que a fórmula NÃO vale fora do semiplano direito">
+
+Teste em $z = -1$, que tem $x = -1 < 0$:
+
+$$
+\operatorname{Arg}(-1) = \pi
+$$
+
+mas a fórmula daria $\arctan\!\left(\dfrac{0}{-1}\right) = \arctan(0) = 0$ — **errado por $\pi$**.
+
+A correção, para $x < 0$, é somar ou subtrair $\pi$ conforme o sinal de $y$:
+
+$$
+\operatorname{Arg}(z) = \arctan\frac yx + \pi \;\;(y \ge 0),
+\qquad
+\arctan\frac yx - \pi \;\;(y<0)
+$$
+
+E em $x = 0$ a fórmula nem faz sentido, porque $y/x$ não existe — ali $\operatorname{Arg} = \pm\pi/2$ direto.
+
+É por isso que o enunciado **restringe** ao semiplano direito: é a única região em que a expressão com arco-tangente é literalmente correta. Notar essa restrição é o que a questão está avaliando.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A ligação com a função harmônica de 2025.2">
+
+A parte real desta fórmula, $\tfrac12\ln(x^2+y^2) = \ln|z|$, é exatamente a função harmônica da q19 do 1º EE — e a parte imaginária é a conjugada harmônica dela.
+
+Não é coincidência: **as duas questões são a mesma coisa vista de dois lados**. Uma pede para verificar que $\ln|z|$ é harmônica e achar a conjugada; a outra pede para escrever o logaritmo em coordenadas cartesianas. A resposta das duas é $\operatorname{Log} z$.
+
+</Caixa>
+</Passos>
