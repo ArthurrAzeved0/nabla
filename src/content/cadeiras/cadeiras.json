@@ -559,7 +559,12 @@
       "transformada-da-derivada": "cm-laplace",
       "primeiro-teorema-da-translacao": "cm-laplace",
       "derivada-em-s": "cm-laplace",
-      "pvi-por-laplace": "cm-laplace"
+      "pvi-por-laplace": "cm-laplace",
+      "transformada-inversa": "cm-laplace-inversa",
+      "fracoes-parciais": "cm-laplace-inversa",
+      "completar-o-quadrado": "cm-laplace-inversa",
+      "formula-de-bromwich": "cm-laplace-inversa",
+      "teorema-do-valor-inicial": "cm-laplace-inversa"
     }
   }
 ]

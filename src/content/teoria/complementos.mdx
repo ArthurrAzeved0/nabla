@@ -29,6 +29,7 @@ unidades:
       - { id: cm-fourier-complexa, titulo: "Forma complexa da série de Fourier" }
       - { id: cm-fourier-convergencia, titulo: "Convergência de Fourier, Dirichlet e Parseval" }
       - { id: cm-laplace, titulo: "Transformada de Laplace e suas propriedades" }
+      - { id: cm-laplace-inversa, titulo: "Inversão da transformada de Laplace" }
 ---
 
 {/* **************************************************************************
@@ -2463,6 +2464,114 @@ E sempre confira o resultado nas condições iniciais: substituir $x=0$ na $y$ e
 <Caixa tipo="dica">
 
 A tabela que a prova fornece é curta de propósito: ela dá $\mathcal{L}\{\cos kx\}$, a fórmula de $\mathcal{L}\{F''\}$ e a definição de $\Gamma$. Todo o resto tem de sair das **propriedades**, não da memória. Saber as três propriedades (linearidade, derivada em $s$, deslocamento em $s$) vale mais que decorar vinte transformadas.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-laplace-inversa" num="24" titulo="Inversão da transformada de Laplace">
+
+### A ideia
+
+Transformar é integrar; **inverter** é reconhecer. Na prática de prova, achar $\mathcal{L}^{-1}$ é manipular a expressão em $s$ até ela ficar igual a uma linha da tabela — e a ferramenta que faz isso é a **decomposição em frações parciais**.
+
+Há uma fórmula fechada, a integral de Bromwich, que inverte por resíduos no plano complexo:
+
+<Formula rotulo="Fórmula de inversão (Bromwich-Mellin)">
+
+$$
+F(x) = \frac{1}{2\pi i}\int_{\sigma - i\infty}^{\sigma + i\infty} e^{sx}\,\mathcal{L}\{F\}(s)\,ds
+= \sum_{k} \operatorname{Res}\Big[e^{sx}\,\mathcal{L}\{F\}(s)\Big]_{s = s_k}
+$$
+
+</Formula>
+
+Ela fecha o círculo da cadeira — a 1ª unidade serve à 2ª — mas em prova quase nunca é o caminho: frações parciais é mais rápido.
+
+<Caixa tipo="simbolos">
+
+- $\sigma$ — abscissa à direita de todos os polos, para o caminho de integração;
+- $s_k$ — os polos de $\mathcal{L}\{F\}(s)$; cada um contribui um resíduo;
+- polo **simples** em $s=a$ → termo $e^{ax}$; polo **duplo** → termo $x\,e^{ax}$;
+- par de polos **complexos conjugados** $\alpha \pm i\beta$ → $e^{\alpha x}$ vezes seno e cosseno de $\beta x$.
+
+</Caixa>
+
+### O roteiro por frações parciais
+
+1. **Fatore o denominador** em fatores lineares e quadráticos irredutíveis;
+2. **Monte a decomposição** com um termo por fator — e potência de fator repetido pede um termo por potência;
+3. **Ache as constantes**, pelo método dos valores convenientes ou igualando coeficientes;
+4. **Inverta termo a termo** pela tabela.
+
+<Caixa tipo="exemplo">
+
+Item (b) da questão 3 do 2º EE de 2023.2: $\mathcal{L}^{-1}\left\{\dfrac{s+1}{s(s+2)(s-3)}\right\}$.
+
+Três polos simples. Decompondo:
+
+$$
+\frac{s+1}{s(s+2)(s-3)} = \frac{A}{s} + \frac{B}{s+2} + \frac{C}{s-3}
+$$
+
+Multiplicando pelo denominador e usando os valores convenientes $s = 0$, $s = -2$ e $s = 3$:
+
+$$
+A = \frac{0+1}{(2)(-3)} = -\frac16,
+\qquad
+B = \frac{-2+1}{(-2)(-5)} = -\frac{1}{10},
+\qquad
+C = \frac{3+1}{(3)(5)} = \frac{4}{15}
+$$
+
+$$
+\mathcal{L}^{-1} = -\frac16 - \frac{1}{10}e^{-2x} + \frac{4}{15}e^{3x}
+$$
+
+Conferência: em $x=0$ a soma dá $-\tfrac16 - \tfrac1{10} + \tfrac4{15} = 0$, e de fato $F(0) = \lim_{s\to\infty} s\,\mathcal{L}\{F\} = 0$ ✔ — é o teorema do valor inicial trabalhando como verificação.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Item (b) da 2ª chamada de 2023.2: $\mathcal{L}^{-1}\left\{\dfrac{s+2}{s^3+2s^2+2s}\right\}$.
+
+Fatore: $s^3+2s^2+2s = s\big(s^2+2s+2\big)$, e $s^2+2s+2 = (s+1)^2+1$ é irredutível. Então
+
+$$
+\frac{s+2}{s\big[(s+1)^2+1\big]} = \frac{A}{s} + \frac{Bs + C}{(s+1)^2+1}
+$$
+
+Com $s=0$: $A = \tfrac{2}{2} = 1$. Igualando coeficientes de $s^2$ e $s^1$: $B = -1$ e $C = 0$. Reescrevendo o segundo termo para casar com a tabela deslocada:
+
+$$
+\frac{-s}{(s+1)^2+1} = -\frac{(s+1)}{(s+1)^2+1} + \frac{1}{(s+1)^2+1}
+$$
+
+$$
+\mathcal{L}^{-1} = 1 - e^{-x}\cos x + e^{-x}\operatorname{sen} x
+$$
+
+O movimento que decide: **completar o quadrado** no fator quadrático e escrever o numerador em termos de $(s+1)$, para poder usar o deslocamento da seção 23.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Fator quadrático irredutível **sempre** pede completar o quadrado, e o numerador tem de ser reescrito em $(s-a)$ — nunca em $s$. Depois disso é mecânico: a parte com $(s-a)$ no numerador dá cosseno, a parte constante dá seno.
+
+E para achar as constantes de polos simples, o método do valor conveniente ($s$ igual à raiz) é muito mais rápido que montar o sistema. Só use sistema quando houver fator quadrático ou repetido.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Duas conferências rápidas para qualquer inversa:
+
+- **valor inicial**: $F(0) = \lim_{s\to\infty} s\,\mathcal{L}\{F\}(s)$;
+- **valor final**: se $F$ tende a um limite, $\lim_{x\to\infty}F(x) = \lim_{s\to0} s\,\mathcal{L}\{F\}(s)$.
+
+Nos dois exemplos acima elas fecham em uma linha, e pegam erro de sinal em qualquer constante.
 
 </Caixa>
 
