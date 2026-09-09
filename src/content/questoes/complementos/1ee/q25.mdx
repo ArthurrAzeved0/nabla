@@ -1,0 +1,89 @@
+---
+origem: "2026.1"
+tema: "Resíduos · Dois polos simples e um parâmetro no resultado"
+temaId: teorema-dos-residuos
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, usando a teoria de Cauchy,
+
+$$
+\oint_{\gamma:\,|z|\le 2a} \frac{e^{z}}{z^2 + a^2}\,dz,
+\qquad a > 0.
+$$
+
+<Gabarito>
+$$
+\oint \frac{e^z}{z^2+a^2}\,dz = \frac{2\pi i}{a}\operatorname{sen} a
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — fatorar e localizar.**
+
+$$
+z^2 + a^2 = (z - ia)(z + ia)
+\qquad\Longrightarrow\qquad
+z = ia \quad\text{e}\quad z = -ia
+$$
+
+Os dois têm módulo $a$, e a curva tem raio $2a$:
+
+$$
+|{\pm ia}| = a < 2a
+$$
+
+**Os dois estão dentro** — e é por isso que o enunciado escolhe o raio $2a$ e não $a/2$. Com duas singularidades, o caminho é o teorema dos resíduos.
+
+**Passo 2 — os dois resíduos, por $p/q'$.** Com $p = e^z$ e $q = z^2+a^2$, temos $q' = 2z$:
+
+$$
+\operatorname{Res}(f, ia) = \frac{e^{ia}}{2ia},
+\qquad
+\operatorname{Res}(f,-ia) = \frac{e^{-ia}}{-2ia}
+$$
+
+**Passo 3 — somar, e reconhecer o seno.**
+
+$$
+\sum\operatorname{Res} = \frac{e^{ia}}{2ia} - \frac{e^{-ia}}{2ia}
+= \frac{e^{ia} - e^{-ia}}{2ia}
+$$
+
+E aqui aparece a definição de seno complexo, $\operatorname{sen} a = \dfrac{e^{ia}-e^{-ia}}{2i}$:
+
+$$
+\sum\operatorname{Res} = \frac{1}{a}\cdot\frac{e^{ia}-e^{-ia}}{2i} = \frac{\operatorname{sen} a}{a}
+$$
+
+**Passo 4 — multiplicar por $2\pi i$.**
+
+$$
+\boxed{\;\oint_{|z|\le 2a}\frac{e^z}{z^2+a^2}\,dz = \frac{2\pi i}{a}\operatorname{sen} a\;}
+$$
+
+que é o valor do gabarito.
+
+**Conferência —** o resultado é imaginário puro e depende de $a$ como $\operatorname{sen}(a)/a$, que tende a $1$ quando $a\to0$. No limite, a integral tende a $2\pi i$ — e faz sentido: com $a\to0$ os dois polos colidem na origem e o integrando vira $e^z/z^2$, cuja integral é $2\pi i\,f'(0) = 2\pi i$ ✔
+
+<Caixa tipo="dica" rotulo="Quando o par de polos é conjugado, espere seno ou cosseno">
+
+Polos em $\pm ia$ com numerador exponencial **sempre** produzem $\operatorname{sen}$ ou $\cos$ no resultado, porque a soma dos resíduos reconstrói a definição exponencial de uma das duas.
+
+Se a sua resposta ficar com $e^{ia}$ e $e^{-ia}$ soltos, ela está certa mas incompleta — a forma esperada é a trigonométrica.
+
+</Caixa>
+</Passos>
