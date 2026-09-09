@@ -1,0 +1,149 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Continuidade · Mistura de dois líquidos incompressíveis"
+temaId: vazao-volumetrica
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q43.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um sistema de escoamento é composto por dois tubos de entrada e um de saída. O tubo (1) admite um líquido ($\rho_1 = 820\ \mathrm{kg/m^3}$) com uma vazão de $0{,}02\ \mathrm{m^3/s}$ e o tubo (2) admite outro líquido ($\rho_2 = 950\ \mathrm{kg/m^3}$) com vazão de $0{,}01\ \mathrm{m^3/s}$. A mistura formada é descarregada pelo tubo (3), de **diâmetro interno $5\ \mathrm{cm}$**. **Determine a densidade e a velocidade de saída** da mistura. Considere o regime permanente de escoamento.
+
+<Figura>
+  <svg viewBox="0 0 340 180" role="img" aria-label="Dois tubos com líquidos de massas específicas 820 e 950 quilogramas por metro cúbico entram num misturador e saem por um duto de 5 centímetros de diâmetro">
+    <rect x="26" y="24" width="240" height="130" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 4"/>
+    <text x="30" y="18" font-size="9" fill="var(--accent)">volume de controle · regime permanente</text>
+    {/* duto 1 */}
+    <path d="M40 48 L140 48 L176 84" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="4" y1="48" x2="30" y2="48" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="36,48 26,44 26,52" fill="var(--ok)"/>
+    <text x="46" y="40" font-size="10" fill="var(--ink-2)">(1)</text>
+    <text x="60" y="40" font-size="9" fill="var(--ink-3)">ρ₁ = 820 kg/m³</text>
+    <text x="60" y="62" font-size="9" fill="var(--ok)">Q₁ = 0,02 m³/s</text>
+    {/* duto 2 */}
+    <path d="M40 130 L140 130 L176 94" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="4" y1="130" x2="30" y2="130" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="36,130 26,126 26,134" fill="var(--ok)"/>
+    <text x="46" y="146" font-size="10" fill="var(--ink-2)">(2)</text>
+    <text x="60" y="146" font-size="9" fill="var(--ink-3)">ρ₂ = 950 kg/m³</text>
+    <text x="60" y="124" font-size="9" fill="var(--ok)">Q₂ = 0,01 m³/s</text>
+    {/* saída */}
+    <line x1="176" y1="84" x2="256" y2="84" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="176" y1="94" x2="256" y2="94" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="264" y1="89" x2="300" y2="89" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="306,89 296,85 296,93" fill="var(--warn)"/>
+    <text x="222" y="76" font-size="10" fill="var(--ink-2)">(3)</text>
+    <text x="196" y="112" font-size="9" fill="var(--warn)">d₃ = 5 cm</text>
+    <text x="196" y="124" font-size="9" fill="var(--warn)">ρ₃ = ?  ·  v₃ = ?</text>
+  </svg>
+  <figcaption>
+
+São **líquidos**: incompressíveis. Aqui, ao contrário dos gases, a vazão **volumétrica** também se conserva.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Como os fluidos são **incompressíveis**, o volume também se conserva:
+
+$$
+Q_3 = Q_1 + Q_2 = 0{,}02 + 0{,}01 = 0{,}03\ \mathrm{m^3/s}
+$$
+
+$$
+\rho_3 = \frac{\rho_1 Q_1 + \rho_2 Q_2}{Q_3} = \frac{820(0{,}02) + 950(0{,}01)}{0{,}03} \approx \mathbf{863{,}3\ kg/m^3}
+$$
+
+$$
+A_3 = \frac{\pi d_3^2}{4} = \frac{\pi (0{,}05)^2}{4} = 1{,}963\times10^{-3}\ \mathrm{m^2}
+\qquad
+v_3 = \frac{Q_3}{A_3} \approx \mathbf{15{,}3\ m/s}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a diferença que muda tudo: são líquidos.** Nas questões com **gases**, $Q_3 \ne Q_1 + Q_2$, e era preciso o enunciado dar $Q_3$. Aqui os fluidos são **líquidos**, portanto incompressíveis, e as duas conservações valem ao mesmo tempo:
+
+$$
+\underbrace{\dot m_3 = \dot m_1 + \dot m_2}_{\text{sempre vale}}
+\qquad\text{e}\qquad
+\underbrace{Q_3 = Q_1 + Q_2}_{\text{só com } \rho \text{ constante}}
+$$
+
+$$
+Q_3 = 0{,}02 + 0{,}01 = 0{,}03\ \mathrm{m^3/s}
+$$
+
+<Caixa tipo="macete" rotulo="É por isso que o enunciado não dá Q3">
+
+Compare com a mistura de gases da mesma prova: lá o enunciado **precisava** informar $Q_3 = 0{,}025\ \mathrm{m^3/s}$, porque não havia como deduzi-lo. Aqui, ele não dá — e não precisa. Reconhecer isso é o primeiro ponto da questão.
+
+</Caixa>
+
+**Passo 2 — a massa específica da mistura, pela conservação de massa.**
+
+$$
+\rho_1 Q_1 + \rho_2 Q_2 = \rho_3 Q_3
+\qquad\Longrightarrow\qquad
+\rho_3 = \frac{\rho_1 Q_1 + \rho_2 Q_2}{Q_3}
+$$
+
+$$
+\rho_3 = \frac{820 \times 0{,}02 + 950 \times 0{,}01}{0{,}03} = \frac{16{,}4 + 9{,}5}{0{,}03} = \frac{25{,}9}{0{,}03} = 863{,}3\ \mathrm{kg/m^3}
+$$
+
+<Caixa tipo="dica" rotulo="A conferência: é uma média ponderada">
+
+$\rho_3$ tem de ficar **entre** $820$ e $950$ — e fica ✔ E mais perto de $820$, porque a corrente (1) traz **dois terços** do volume:
+
+$$
+\rho_3 = \frac{2}{3}(820) + \frac{1}{3}(950) = 546{,}7 + 316{,}7 = 863{,}3\ \mathrm{kg/m^3}\ \checkmark
+$$
+
+Com líquidos, a massa específica da mistura é a média das massas específicas **ponderada pelas vazões volumétricas**. É uma segunda forma de fazer a mesma conta, e serve de checagem.
+
+</Caixa>
+
+**Passo 3 — a área da seção de saída.** O enunciado dá o **diâmetro**:
+
+$$
+A_3 = \frac{\pi d_3^2}{4} = \frac{\pi (0{,}05)^2}{4} = \frac{\pi \times 0{,}0025}{4} = 1{,}963\times10^{-3}\ \mathrm{m^2}
+$$
+
+**Passo 4 — a velocidade de saída.**
+
+$$
+v_3 = \frac{Q_3}{A_3} = \frac{0{,}03}{1{,}963\times10^{-3}} = 15{,}3\ \mathrm{m/s}
+$$
+
+<Caixa tipo="dica" rotulo="Quinze metros por segundo é muito para líquido">
+
+Em tubulações de líquido, a velocidade de projeto fica entre $1$ e $3\ \mathrm{m/s}$; acima disso, a perda de carga e o ruído crescem demais (e há risco de erosão). Os $15\ \mathrm{m/s}$ daqui dizem que o tubo de saída está **subdimensionado** para essa vazão — é um exercício numérico, não um projeto.
+
+Para chegar a $2\ \mathrm{m/s}$ seria preciso $A = 0{,}03/2 = 0{,}015\ \mathrm{m^2}$, ou seja, $d \approx 14\ \mathrm{cm}$ em vez de $5$.
+
+</Caixa>
+
+**Passo 5 — a conferência final pela vazão mássica.**
+
+$$
+\dot m_3 = \rho_3 Q_3 = 863{,}3 \times 0{,}03 = 25{,}9\ \mathrm{kg/s}
+$$
+
+$$
+\dot m_1 + \dot m_2 = 820(0{,}02) + 950(0{,}01) = 16{,}4 + 9{,}5 = 25{,}9\ \mathrm{kg/s}\ \checkmark
+$$
+
+**Conferência —** com **líquidos**, as vazões volumétricas se somam ✔ o diâmetro tem de ir para área, com o $\pi d^2/4$ ✔ $\rho_3$ tem de ficar entre as duas massas específicas de entrada ✔ a vazão mássica calculada pela saída tem de bater com a soma das entradas ✔
+</Passos>
