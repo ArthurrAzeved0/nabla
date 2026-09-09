@@ -1,0 +1,175 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Cisalhamento · O perfil de velocidades num tubo e as tensões"
+temaId: tensao-de-cisalhamento
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q34.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Desenhe o diagrama** de um fluido escoando dentro de uma tubulação (completamente preenchida pelo fluido), na região de **escoamento plenamente desenvolvido**, representando o perfil de velocidades, com a localização das velocidades **máximas e mínimas** relacionadas com o raio da tubulação. E, com suas próprias palavras, **explique o que vem a ser tensão de cisalhamento** e o que ela tem a ver com essas velocidades.
+
+<Figura>
+  <svg viewBox="0 0 340 200" role="img" aria-label="Corte longitudinal de um tubo cheio de fluido: o perfil de velocidade é parabólico, nulo nas paredes em r igual a R e máximo no eixo em r igual a zero, com a tensão de cisalhamento máxima na parede e nula no centro">
+    {/* paredes do tubo */}
+    <rect x="40" y="34" width="240" height="10" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <rect x="40" y="136" width="240" height="10" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <rect x="40" y="44" width="240" height="92" fill="var(--accent-soft)" opacity="0.35"/>
+    {/* eixo do tubo */}
+    <line x1="40" y1="90" x2="290" y2="90" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="6 4"/>
+    {/* perfil parabólico */}
+    <path d="M96 44 Q192 90 96 136" fill="none" stroke="var(--ok)" stroke-width="2"/>
+    <line x1="96" y1="44" x2="96" y2="136" stroke="var(--ok)" stroke-width="1"/>
+    {/* setas do perfil */}
+    <line x1="96" y1="52" x2="118" y2="52" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="124,52 114,48 114,56" fill="var(--ok)"/>
+    <line x1="96" y1="66" x2="146" y2="66" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="152,66 142,62 142,70" fill="var(--ok)"/>
+    <line x1="96" y1="90" x2="163" y2="90" stroke="var(--ok)" stroke-width="1.4"/>
+    <polygon points="169,90 159,86 159,94" fill="var(--ok)"/>
+    <line x1="96" y1="114" x2="146" y2="114" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="152,114 142,110 142,118" fill="var(--ok)"/>
+    <line x1="96" y1="128" x2="118" y2="128" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="124,128 114,124 114,132" fill="var(--ok)"/>
+    {/* rótulos das velocidades */}
+    <text x="180" y="86" font-size="9" fill="var(--ok)">r = 0 · u = u máx</text>
+    <text x="198" y="28" font-size="9" fill="var(--warn)">r = R · u = 0</text>
+    <text x="198" y="162" font-size="9" fill="var(--warn)">r = R · u = 0</text>
+    {/* tensões nas paredes */}
+    <line x1="70" y1="30" x2="52" y2="30" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="46,30 56,26 56,34" fill="var(--warn)"/>
+    <text x="44" y="22" font-size="8" fill="var(--warn)">τ máx</text>
+    <line x1="70" y1="152" x2="52" y2="152" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="46,152 56,148 56,160" fill="var(--warn)"/>
+    <text x="44" y="168" font-size="8" fill="var(--warn)">τ máx</text>
+    <circle cx="238" cy="90" r="3.5" fill="var(--accent)"/>
+    <text x="248" y="108" font-size="8" fill="var(--accent)">τ = 0</text>
+    {/* eixos r e x */}
+    <line x1="30" y1="90" x2="30" y2="44" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="30,40 27,48 33,48" fill="var(--ink-3)"/>
+    <text x="20" y="38" font-size="10" fill="var(--ink-3)">r</text>
+    <line x1="40" y1="180" x2="86" y2="180" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="92,180 82,177 82,183" fill="var(--ink-3)"/>
+    <text x="96" y="184" font-size="10" fill="var(--ink-3)">x</text>
+    <text x="112" y="184" font-size="8" fill="var(--ink-3)">u = u(r), independente de x</text>
+  </svg>
+  <figcaption>
+
+**Plenamente desenvolvido** quer dizer que o perfil já não muda com $x$: $u = u(r)$ apenas.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**O diagrama:** perfil **parabólico**, com
+
+$$
+u = 0 \ \text{ em } \ r = R \ \text{(nas paredes)}
+\qquad\qquad
+u = u_{máx} \ \text{ em } \ r = 0 \ \text{(no eixo)}
+$$
+
+**Tensão de cisalhamento** é a tensão gerada por forças aplicadas **tangencialmente** à superfície, isto é, o **atrito interno entre camadas** do fluido que deslizam uma sobre a outra:
+
+$$
+\tau = \mu\,\frac{du}{dr}
+$$
+
+**A relação com as velocidades:** em $r = R$, na parede, a velocidade é **nula** porque há atrito entre o fluido e a parede, que não se move (condição de não escorregamento). Ao se afastar da parede surgem as tensões de cisalhamento, que são os atritos internos entre as camadas do fluido e que permitem que ele se desloque. **Quanto mais longe da parede, menor a tensão de cisalhamento** — e é isso que permite ao fluido alcançar a **velocidade máxima no centro** da tubulação.
+</Gabarito>
+
+<Passos>
+**1 — O que "plenamente desenvolvido" significa.** Depois de um trecho de entrada, o perfil de velocidades **para de mudar** ao longo do tubo:
+
+$$
+u = u(r)
+\qquad\text{e não}\qquad
+u = u(r,x)
+$$
+
+É a condição que permite desenhar **um** perfil, válido em qualquer seção.
+
+**2 — As duas velocidades extremas, e de onde vêm.**
+
+- **em $r = R$ (paredes): $u = 0$.** É a condição de **não escorregamento**: o fluido adere à parede, e a parede não se move. Verificada experimentalmente para todos os fluidos;
+- **em $r = 0$ (eixo): $u = u_{máx}$.** É o ponto mais distante das duas paredes, onde o freio do atrito com a parede chega mais atenuado.
+
+Para escoamento **laminar** em tubo, o perfil é uma parábola exata:
+
+$$
+u(r) = u_{máx}\left[1 - \left(\frac{r}{R}\right)^2\right]
+\qquad\text{com}\qquad
+u_{máx} = 2\,\bar u
+$$
+
+isto é, a velocidade no eixo é o **dobro** da velocidade média.
+
+**3 — O que é tensão de cisalhamento.** É a razão entre a componente da força **tangente** à superfície e a área sobre a qual ela atua:
+
+$$
+\tau = \frac{F_t}{A}
+$$
+
+Diferente da tensão **normal** (que é a pressão, e empurra a superfície de frente), a cisalhante age **de lado** — ela tenta fazer uma camada deslizar sobre a outra. Dentro de um fluido em movimento, é o **atrito interno** entre camadas vizinhas que andam a velocidades diferentes.
+
+E, para fluido newtoniano, ela é proporcional ao **gradiente de velocidade**:
+
+$$
+\tau = \mu\,\frac{du}{dr}
+$$
+
+<Caixa tipo="simbolos">
+
+- $\tau$ — tensão de cisalhamento, em $\mathrm{Pa}$
+- $\mu$ — viscosidade dinâmica do fluido
+- $du/dr$ — gradiente de velocidade na direção radial
+- $R$ — raio interno do tubo; $r$ — distância ao eixo
+
+</Caixa>
+
+**4 — A ligação entre as duas coisas, que é o cerne da questão.** Olhe o perfil e pense na **inclinação** dele:
+
+| posição | inclinação $du/dr$ | tensão $\tau$ | velocidade |
+|---|---|---|---|
+| $r = R$ (parede) | **máxima** | $\tau_{máx}$ | $u = 0$ |
+| intermediária | intermediária | intermediária | intermediária |
+| $r = 0$ (eixo) | **nula** | $\tau = 0$ | $u = u_{máx}$ |
+
+Duas leituras, e as duas contam ponto:
+
+- **onde a velocidade é mínima, a tensão é máxima** (parede), e **onde a velocidade é máxima, a tensão é nula** (eixo). Os dois extremos são opostos;
+- a tensão não é máxima onde o fluido corre mais rápido — é máxima onde ele **muda de velocidade mais rápido**. Tensão responde a **gradiente**, não a valor.
+
+<Caixa tipo="macete" rotulo="Por que τ = 0 exatamente no eixo">
+
+Por **simetria**. Se houvesse tensão no eixo, ela apontaria para algum lado — mas o tubo é igual dos dois lados, e não há motivo para escolher um. A única possibilidade é ser nula.
+
+Matematicamente: o perfil tem um **máximo** em $r = 0$, e no máximo a derivada é zero, logo $\tau = \mu\,du/dr = 0$.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="E a tensão na parede é o que causa a perda de carga">
+
+A tensão máxima, na parede, é o que o fluido tem de vencer para escoar — e a energia gasta nisso é justamente a **perda de carga distribuída**. Um balanço de forças num trecho de tubo dá
+
+$$
+\tau_p = \frac{\Delta p\,R}{2L}
+$$
+
+Ou seja: o perfil de velocidades, a tensão na parede e a perda de carga são três faces do mesmo fenômeno.
+
+</Caixa>
+
+**Conferência —** o desenho tem de mostrar a **parábola** com $u = 0$ nas duas paredes e o máximo no eixo ✔ definir tensão de cisalhamento como força **tangencial** por área, isto é, atrito **entre camadas** ✔ dizer que $\tau$ é máxima na parede e **nula** no eixo, e que é por isso que a velocidade cresce da parede para o centro ✔
+</Passos>
