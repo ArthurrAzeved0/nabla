@@ -1,0 +1,108 @@
+---
+origem: "2025.1 · 2025.2"
+tema: "Barômetro · Torricelli e a pressão atmosférica"
+temaId: barometro
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Para a medida da pressão atmosférica, o cientista **Evangelista Torricelli** (1608–1647) desenvolveu o barômetro de mercúrio: um longo tubo fechado, cheio de mercúrio, é invertido e colocado numa bandeja também com mercúrio. A extremidade superior do tubo, que está fechada, é tal que a pressão ali pode ser considerada **nula**.
+
+**a)** Deduza a expressão da pressão atmosférica $p_0$ em função da altura $h$ da coluna de mercúrio.
+
+**b)** Determine o valor da pressão atmosférica num dia tal que, utilizando-se esse barômetro, a altura da coluna do medidor seja de $760\ \mathrm{mm}$.
+
+**Dados:** $\rho_{Hg} = 13\,600\ \mathrm{kg/m^3}$; $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 260 190" role="img" aria-label="Barômetro de mercúrio: tubo vertical fechado no topo, com vácuo acima da coluna de mercúrio de altura h, mergulhado numa bandeja de mercúrio aberta à atmosfera">
+    {/* vácuo no topo */}
+    <rect x="104" y="20" width="20" height="26" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="132" y="30" font-size="10" fill="var(--ink-3)">p = 0</text>
+    <text x="132" y="43" font-size="9" fill="var(--ink-3)">(vácuo)</text>
+    {/* coluna de mercúrio */}
+    <rect x="104" y="46" width="20" height="98" fill="var(--ink-2)"/>
+    <rect x="104" y="46" width="20" height="98" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* bandeja */}
+    <rect x="56" y="144" width="116" height="18" fill="var(--ink-2)"/>
+    <rect x="56" y="144" width="116" height="18" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="176" y="158" font-size="10" fill="var(--ink-3)">Hg</text>
+    {/* cota h */}
+    <line x1="204" y1="46" x2="204" y2="144" stroke="var(--accent)" stroke-width="1.2"/>
+    <polygon points="204,46 200,56 208,56" fill="var(--accent)"/>
+    <polygon points="204,144 200,134 208,134" fill="var(--accent)"/>
+    <text x="212" y="99" font-size="11" fill="var(--accent)">h</text>
+    {/* pressão atmosférica na superfície livre */}
+    <line x1="72" y1="120" x2="72" y2="140" stroke="var(--warn)" stroke-width="1.4"/>
+    <polygon points="72,144 68,134 76,134" fill="var(--warn)"/>
+    <text x="34" y="118" font-size="10" fill="var(--warn)">p₀</text>
+    {/* nível de referência */}
+    <line x1="40" y1="144" x2="196" y2="144" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="4 3"/>
+  </svg>
+  <figcaption>
+
+O ponto que resolve a questão é a **superfície livre da bandeja**: ali a pressão é $p_0$ pelo lado de fora e $\rho g h$ pelo lado de dentro do tubo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)**
+
+$$
+p_0 = \rho_{Hg}\,g\,h
+$$
+
+**b)** $p_0 = 13\,600 \cdot 9{,}81 \cdot 0{,}760 \approx 1{,}01 \times 10^5\ \mathrm{Pa} \approx \mathbf{101{,}4\ kPa}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — escolher o nível de referência.** A escolha certa é a **superfície livre do mercúrio na bandeja**. Ela está no mesmo fluido em repouso e conectada aos dois lados, então a lei de Stevin vale entre ela e qualquer ponto do tubo.
+
+**Passo 2 — a pressão pelo lado de fora.** Na bandeja, a superfície está exposta ao ar: a pressão ali é a **atmosférica**,
+
+$$
+p_{\text{fora}} = p_0
+$$
+
+**Passo 3 — a pressão pelo lado de dentro do tubo.** Descendo do topo fechado até o nível da bandeja, atravessa-se uma coluna de mercúrio de altura $h$. Por Stevin,
+
+$$
+p_{\text{dentro}} = \underbrace{p_{\text{topo}}}_{=\,0} + \rho_{Hg}\,g\,h = \rho_{Hg}\,g\,h
+$$
+
+É aqui que entra o dado do enunciado: **a pressão no topo é nula**. O mercúrio, ao descer, deixou vácuo — e é por isso que o barômetro mede a atmosfera "pura", sem gás nenhum somando por cima.
+
+**Passo 4 — igualar.** Os dois pontos estão no **mesmo nível** e no **mesmo fluido em repouso**, logo têm a mesma pressão:
+
+$$
+\boxed{\;p_0 = \rho_{Hg}\,g\,h\;}
+$$
+
+**Passo 5 — o número.** Com $h = 760\ \mathrm{mm} = 0{,}760\ \mathrm{m}$:
+
+$$
+p_0 = 13\,600 \cdot 9{,}81 \cdot 0{,}760 = 101\,396\ \mathrm{Pa} \approx 101{,}4\ \mathrm{kPa}
+$$
+
+<Caixa tipo="macete">
+
+$760\ \mathrm{mmHg}$ é a **definição** de 1 atm — e a conta acima é de onde vem o valor $101{,}325\ \mathrm{kPa}$ que se decora. A pequena diferença ($101{,}4$ contra $101{,}3$) é só o $g$ arredondado para $9{,}81$.
+
+Por isso o mercúrio: com água, a mesma pressão pediria $h = p_0/(\rho g) = 101\,396/(1000 \cdot 9{,}81) \approx 10{,}3\ \mathrm{m}$ de tubo.
+
+</Caixa>
+
+**Conferência —** o topo tem de entrar na conta como $p = 0$, não como $p_{atm}$ ✔ a altura tem de estar em metros antes de multiplicar ✔ o resultado tem de dar da ordem de $10^5\ \mathrm{Pa}$: se deu $10^3$, a conversão de mm ficou pelo caminho ✔
+</Passos>
