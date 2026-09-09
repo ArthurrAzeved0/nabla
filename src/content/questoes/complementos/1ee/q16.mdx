@@ -1,0 +1,83 @@
+---
+origem: "2025.2"
+tema: "Fórmula de Cauchy · Derivada de ordem 100, sem derivar"
+temaId: formula-das-derivadas
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\oint_{\gamma:\,|z|=2} \frac{z^{100}}{(z-1)^{101}}\,dz
+$$
+
+<Gabarito>
+$$
+\oint_{|z|=2}\frac{z^{100}}{(z-1)^{101}}\,dz = 2\pi i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a singularidade e a curva.** Único ponto singular: $z=1$, com $|1| = 1 < 2$, **dentro** de $|z|=2$.
+
+**Passo 2 — identificar $f$, $z_0$ e $n$.**
+
+$$
+f(z) = z^{100},
+\qquad
+z_0 = 1,
+\qquad
+n+1 = 101 \;\Longrightarrow\; n = 100
+$$
+
+$f$ é polinomial, logo inteira ✔
+
+**Passo 3 — a derivada de ordem 100, que ninguém calcula à mão.** O fato que resolve: **a derivada de ordem $n$ de $z^n$ é $n!$**, uma constante.
+
+$$
+\frac{d}{dz}z^{100} = 100\,z^{99},
+\qquad
+\frac{d^2}{dz^2}z^{100} = 100\cdot 99\,z^{98},
+\qquad\dots\qquad
+\frac{d^{100}}{dz^{100}}z^{100} = 100!
+$$
+
+Cada derivada baixa o expoente em um e multiplica pelo expoente anterior; depois de $100$ passos sobra o produto $100\cdot99\cdots 1 = 100!$ e $z^0 = 1$.
+
+$$
+f^{(100)}(1) = 100!
+$$
+
+**Passo 4 — aplicar a fórmula, e ver o fatorial cancelar.**
+
+$$
+\oint_{|z|=2}\frac{z^{100}}{(z-1)^{101}}\,dz
+= \frac{2\pi i}{100!}\,f^{(100)}(1)
+= \frac{2\pi i}{100!}\cdot 100!
+$$
+
+$$
+\boxed{\;\oint_{|z|=2}\frac{z^{100}}{(z-1)^{101}}\,dz = 2\pi i\;}
+$$
+
+<Caixa tipo="macete" rotulo="A questão é de reconhecimento, não de conta">
+
+O padrão vale sempre: se o numerador é $z^n$ e o denominador é $(z-z_0)^{n+1}$, o fatorial da fórmula cancela com a derivada e sobra $2\pi i$ — **qualquer** que seja $n$ e $z_0$ dentro da curva.
+
+Os números grandes do enunciado ($100$ e $101$) são intimidação. Reconhecer a estrutura transforma uma questão que parece impossível numa de dez segundos, e é exatamente isso que o professor está testando.
+
+</Caixa>
+</Passos>
