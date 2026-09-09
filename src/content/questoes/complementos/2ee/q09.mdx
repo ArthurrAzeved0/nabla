@@ -1,0 +1,98 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Laplace · Transformada composta com derivada em s e deslocamento"
+temaId: derivada-em-s
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre
+
+$$
+\mathcal{L}\left\{x^2\cos(3x) - x\operatorname{sen}(2x)\exp(2x)\right\}
+$$
+
+<Gabarito>
+$$
+\mathcal{L} = \frac{2s^3 - 54s}{(s^2+9)^3} - \frac{4(s-2)}{\big[(s-2)^2+4\big]^2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — separar por linearidade** e atacar cada parcela com a propriedade adequada.
+
+$$
+\mathcal{L}\{x^2\cos 3x\} - \mathcal{L}\{x\operatorname{sen}(2x)e^{2x}\}
+$$
+
+**Passo 2 — a propriedade que trata o fator $x^n$.** Multiplicar por $x$ no domínio original é **derivar em $s$**, com sinal:
+
+$$
+\mathcal{L}\{x\,F(x)\} = -\frac{d}{ds}\mathcal{L}\{F\}(s)
+\qquad\Longrightarrow\qquad
+\mathcal{L}\{x^2F\} = \frac{d^2}{ds^2}\mathcal{L}\{F\}
+$$
+
+O sinal desaparece na segunda derivada, porque $(-1)^2 = 1$.
+
+**Passo 3 — primeira parcela.** Partindo de $\mathcal{L}\{\cos 3x\} = \dfrac{s}{s^2+9}$:
+
+$$
+\frac{d}{ds}\left[\frac{s}{s^2+9}\right]
+= \frac{(s^2+9) - s(2s)}{(s^2+9)^2}
+= \frac{9 - s^2}{(s^2+9)^2}
+$$
+
+$$
+\frac{d^2}{ds^2}\left[\frac{s}{s^2+9}\right]
+= \frac{-2s\,(s^2+9)^2 - (9-s^2)\cdot 2(s^2+9)(2s)}{(s^2+9)^4}
+$$
+
+$$
+= \frac{-2s(s^2+9) - 4s(9-s^2)}{(s^2+9)^3}
+= \frac{-2s^3 - 18s - 36s + 4s^3}{(s^2+9)^3}
+= \frac{2s^3 - 54s}{(s^2+9)^3}
+$$
+
+**Passo 4 — segunda parcela, em duas etapas.** Primeiro o fator $x$, sobre $\mathcal{L}\{\operatorname{sen} 2x\} = \dfrac{2}{s^2+4}$:
+
+$$
+\mathcal{L}\{x\operatorname{sen} 2x\} = -\frac{d}{ds}\left[\frac{2}{s^2+4}\right]
+= \frac{4s}{(s^2+4)^2}
+$$
+
+Depois o $e^{2x}$, pelo **deslocamento em $s$** — troque $s$ por $s-2$ em tudo:
+
+$$
+\mathcal{L}\{x\operatorname{sen}(2x)e^{2x}\} = \frac{4(s-2)}{\big[(s-2)^2+4\big]^2}
+$$
+
+**Passo 5 — juntar, com o sinal do enunciado.**
+
+$$
+\boxed{\;\mathcal{L}\left\{x^2\cos 3x - x\operatorname{sen}(2x)e^{2x}\right\}
+= \frac{2s^3 - 54s}{(s^2+9)^3} - \frac{4(s-2)}{\big[(s-2)^2+4\big]^2}\;}
+$$
+
+**Conferência —** as duas parcelas têm de **tender a zero** quando $s\to\infty$, e com a ordem certa: transformada de $x^2\cos$ cai como $s^{-3}$ ✔ e a de $x\operatorname{sen}$, como $s^{-3}$ também ✔ Se alguma tender a constante, houve erro de grau.
+
+<Caixa tipo="macete" rotulo="A ordem das propriedades importa">
+
+Sempre nesta ordem: **transformada básica → derivada em $s$ pelos fatores $x^n$ → deslocamento em $s$ pelo $e^{ax}$**.
+
+O deslocamento é a última etapa porque ele é uma **substituição** $s \to s-a$: aplicado no fim, atinge a expressão inteira de uma vez. Aplicado antes, é preciso lembrar de deslocar também o que vem depois — e é aí que se erra.
+
+</Caixa>
+</Passos>
