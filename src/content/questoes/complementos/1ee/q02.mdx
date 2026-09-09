@@ -1,0 +1,76 @@
+---
+origem: "2023.2"
+tema: "Raízes · Todas as soluções de z³ = −i"
+temaId: raizes-de-complexos
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre **todas** as soluções de $z^3 = -i$.
+
+<Gabarito>
+$$
+z_0 = e^{-i\pi/6} = \frac{\sqrt3}{2} - \frac{i}{2},
+\qquad
+z_1 = e^{i\pi/2} = i,
+\qquad
+z_2 = e^{i\,7\pi/6} = -\frac{\sqrt3}{2} - \frac{i}{2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a forma polar do lado direito.** É o passo que a maioria pula, e sem ele não há fórmula a aplicar. O ponto $-i$ está no eixo imaginário negativo:
+
+$$
+|-i| = 1,
+\qquad
+\operatorname{Arg}(-i) = -\frac{\pi}{2}
+\qquad\Longrightarrow\qquad
+-i = e^{-i\pi/2}
+$$
+
+**Passo 2 — a fórmula das $n$ raízes.** Em $\mathbb{C}$, $z^3 = w$ tem **três** soluções: o módulo sai da raiz cúbica real e o argumento se divide em três, espaçado de $2\pi/3$.
+
+$$
+z_k = \sqrt[3]{1}\;
+\exp\!\left(i\,\frac{-\pi/2 + 2k\pi}{3}\right),
+\qquad k = 0, 1, 2
+$$
+
+**Passo 3 — as três raízes, uma a uma.**
+
+$$
+k=0:\quad z_0 = e^{-i\pi/6} = \cos\frac{-\pi}{6} + i\operatorname{sen}\frac{-\pi}{6} = \frac{\sqrt3}{2} - \frac{i}{2}
+$$
+
+$$
+k=1:\quad z_1 = \exp\!\left(i\,\frac{-\pi/2 + 2\pi}{3}\right) = e^{i\pi/2} = i
+$$
+
+$$
+k=2:\quad z_2 = \exp\!\left(i\,\frac{-\pi/2 + 4\pi}{3}\right) = e^{i\,7\pi/6} = -\frac{\sqrt3}{2} - \frac{i}{2}
+$$
+
+**Conferência 1 — a mais rápida.** As raízes de índice $n \ge 2$ **somam zero**, porque são vértices de um polígono regular centrado na origem:
+
+$$
+z_0 + z_1 + z_2 = \left(\frac{\sqrt3}{2} - \frac{\sqrt3}{2}\right) + i\left(-\frac12 + 1 - \frac12\right) = 0
+\;\checkmark
+$$
+
+**Conferência 2 —** a raiz mais fácil de testar é $z_1 = i$: $i^3 = i^2\cdot i = -i$ ✔
+
+**Leitura geométrica.** As três estão na circunferência de raio $1$, a $120°$ uma da outra, nos ângulos $-30°$, $90°$ e $210°$. Se as suas raízes não formarem um triângulo equilátero, alguma está errada.
+</Passos>
