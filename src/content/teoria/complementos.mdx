@@ -16,6 +16,7 @@ unidades:
       - { id: cm-series, titulo: "Sequências, séries complexas e a série de Taylor" }
       - { id: cm-laurent, titulo: "Série de Laurent e os anéis de convergência" }
       - { id: cm-singularidades, titulo: "Zeros e classificação de singularidades" }
+      - { id: cm-residuos, titulo: "Teorema dos resíduos" }
 ---
 
 {/* **************************************************************************
@@ -1301,6 +1302,109 @@ Para achar a ordem do zero de uma função qualquer, use a série: o zero tem a 
 Exponencial de $1/z$ é a assinatura da singularidade essencial: $e^{1/z}$, $\operatorname{sen}(1/z)$, $\cos\!\big(1/(z-1)\big)$ — todas essenciais no ponto em questão, porque a substituição $w = 1/(z-z_0)$ joga a série inteira para as potências negativas.
 
 Nesses casos **não** existe fórmula de resíduo por derivada: o resíduo tem de ser lido da série, como o $a_{-1}$ que ele é.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-residuos" num="13" titulo="Teorema dos resíduos">
+
+### A ideia
+
+Junte a deformação de contorno da seção 08 com a série de Laurent da seção 11 e sai o resultado que fecha a unidade. Integrando a série termo a termo sobre uma circunferência em torno de $z_0$, **todos** os termos dão zero — menos o de $(z-z_0)^{-1}$, que dá $2\pi i$. Logo a integral só vê um coeficiente: o $a_{-1}$.
+
+<Formula rotulo="Teorema dos resíduos">
+
+$$
+\oint_{\gamma} f(z)\,dz = 2\pi i \sum_{k=1}^{n} \operatorname{Res}\big(f, z_k\big)
+$$
+
+</Formula>
+
+com $\gamma$ fechada e anti-horária, e $z_1,\dots,z_n$ as singularidades **dentro** dela.
+
+<Caixa tipo="simbolos">
+
+- $\operatorname{Res}(f, z_0) = a_{-1}$ — o coeficiente de $(z-z_0)^{-1}$ na série de Laurent em torno de $z_0$;
+- só entram as singularidades **de dentro** da curva — as de fora são ignoradas;
+- singularidade **removível** tem resíduo **zero**, e por isso não conta;
+- sentido horário inverte o sinal do total.
+
+</Caixa>
+
+### As fórmulas de resíduo, por tipo
+
+**Polo simples:**
+
+$$
+\operatorname{Res}(f, z_0) = \lim_{z\to z_0} (z - z_0)\,f(z)
+$$
+
+**Polo simples de um quociente**, o caso mais comum — se $f = p/q$ com $q$ tendo zero simples em $z_0$:
+
+$$
+\operatorname{Res}(f, z_0) = \frac{p(z_0)}{q'(z_0)}
+$$
+
+**Polo de ordem $m$:**
+
+<Formula rotulo="Resíduo em polo de ordem m">
+
+$$
+\operatorname{Res}(f, z_0) = \frac{1}{(m-1)!}\,
+\lim_{z\to z_0} \frac{d^{\,m-1}}{dz^{\,m-1}}\Big[(z-z_0)^m f(z)\Big]
+$$
+
+</Formula>
+
+**Singularidade essencial:** não há fórmula. Expanda em Laurent e **leia** o $a_{-1}$.
+
+<Caixa tipo="macete">
+
+A fórmula $p(z_0)/q'(z_0)$ é a que economiza mais tempo em prova, e vale sempre que o zero do denominador é **simples**. Em $\dfrac{z^4}{(z+2i)^2(z-1)}$, o resíduo em $z=1$ sai por ela em uma linha; o resíduo em $z=-2i$, não, porque ali o zero é duplo e precisa da fórmula com derivada.
+
+Regra de bolso: **derivar o denominador é mais rápido que derivar o produto** — use a versão $p/q'$ sempre que puder.
+
+</Caixa>
+
+<Caixa tipo="exemplo">
+
+Item (b) da questão 04 do 1º EE de 2023.2:
+
+$$
+\oint_{|z|=5} \frac{z^4}{(z + 2i)^2 (z-1)}\,dz
+$$
+
+As duas singularidades, $z = -2i$ e $z = 1$, estão **dentro** de $|z|=5$. Então há dois resíduos a somar.
+
+**Em $z = 1$** (polo simples), por $p/q'$ com $p = z^4$ e $q = (z+2i)^2(z-1)$ — ou, mais direto, cortando o fator:
+
+$$
+\operatorname{Res}(f,1) = \frac{1^4}{(1+2i)^2} = \frac{1}{1 + 4i - 4} = \frac{1}{-3+4i} = \frac{-3-4i}{25}
+$$
+
+**Em $z = -2i$** (polo de ordem $2$), com $m = 2$:
+
+$$
+\operatorname{Res}(f,-2i) = \lim_{z\to -2i} \frac{d}{dz}\left[\frac{z^4}{z-1}\right]
+= \left[\frac{4z^3(z-1) - z^4}{(z-1)^2}\right]_{z=-2i}
+$$
+
+$$
+= \frac{4(8i)(-2i-1) - 16}{(-2i-1)^2}
+= \frac{(64 - 32i) - 16}{-3+4i}
+= \frac{48 - 32i}{-3+4i}
+$$
+
+Somando os dois e multiplicando por $2\pi i$ sai o valor da integral. O importante é o método: **classificar cada polo, escolher a fórmula certa para cada um, somar**.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Antes de somar resíduos, conte quantas singularidades a curva **realmente** contém. É onde a questão esconde a dificuldade: em $|z| = 3/2$ o ponto $z = -2$ fica fora; em $|z|=1$, o ponto $z = \pi$ fica fora. Resíduo de singularidade externa **não entra** — e somá-lo é o erro que mais aparece nas correções.
+
+E não confunda ordem do polo com o expoente do enunciado: em $\dfrac{z^{100}}{(z-1)^{101}}$ o polo tem ordem $101$, mas a fórmula de Cauchy da seção 09 resolve em uma linha, sem resíduo nenhum. Resíduos são para **várias** singularidades; para uma só, Cauchy é mais curto.
 
 </Caixa>
 

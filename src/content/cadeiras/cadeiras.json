@@ -508,7 +508,12 @@
       "ordem-do-polo": "cm-singularidades",
       "singularidade-essencial": "cm-singularidades",
       "zeros-e-ordem": "cm-singularidades",
-      "classificacao-de-singularidades": "cm-singularidades"
+      "classificacao-de-singularidades": "cm-singularidades",
+      "teorema-dos-residuos": "cm-residuos",
+      "residuo": "cm-residuos",
+      "residuo-em-polo-simples": "cm-residuos",
+      "residuo-em-polo-de-ordem-m": "cm-residuos",
+      "integral-por-residuos": "cm-residuos"
     }
   }
 ]
