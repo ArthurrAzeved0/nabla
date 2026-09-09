@@ -1,0 +1,140 @@
+---
+cadeira: complementos
+titulo: "Complementos de Matemática"
+unidades:
+  - nome: "1ª Unidade"
+    secoes:
+      - { id: cm-complexos, titulo: "Números complexos: forma algébrica, conjugado e módulo" }
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                        complementos.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+<Topico id="cm-complexos" num="01" titulo="Números complexos: forma algébrica, conjugado e módulo">
+
+### A ideia
+
+$x^2 = -1$ não tem solução real, e a matemática do século XVI decidiu não parar aí: chamou de $i$ um objeto com $i^2 = -1$ e continuou calculando. O que parecia truque virou a ferramenta central da engenharia — impedância, fasor, resposta em frequência, estabilidade de sistema: tudo isso é conta com número complexo.
+
+O ganho não é resolver $x^2 = -1$. É que, admitido o $i$, **todo** polinômio de grau $n$ passa a ter exatamente $n$ raízes, a exponencial passa a conter o seno e o cosseno, e integrais reais que resistem a qualquer técnica de Cálculo caem em três linhas. Esta cadeira é a colheita disso.
+
+<Formula rotulo="Forma algébrica">
+
+$$
+z = x + i\,y,
+\qquad x = \operatorname{Re}(z),
+\qquad y = \operatorname{Im}(z),
+\qquad i^2 = -1
+$$
+
+</Formula>
+
+<Caixa tipo="simbolos">
+
+- $x = \operatorname{Re}(z)$ — **parte real**, um número real;
+- $y = \operatorname{Im}(z)$ — **parte imaginária**, também um número real (é o $y$, não o $iy$);
+- $\bar z = x - i\,y$ — **conjugado**: mesmo ponto refletido no eixo real;
+- $|z| = \sqrt{x^2 + y^2}$ — **módulo**, a distância até a origem;
+- $\mathbb{C}$ — o conjunto dos complexos; $\mathbb{R} \subset \mathbb{C}$ é o eixo $y = 0$.
+
+</Caixa>
+
+### O plano de Argand-Gauss
+
+Um complexo é um **par ordenado** $(x, y)$, e é por isso que ele se desenha como ponto — ou como vetor da origem até o ponto. Some como vetor, subtraia como vetor: $z_1 + z_2$ é a diagonal do paralelogramo, e $|z_1 - z_2|$ é a **distância** entre os dois pontos.
+
+Essa última leitura é a que resolve questão de região: $|z - z_0| = r$ é a **circunferência** de centro $z_0$ e raio $r$, $|z - z_0| < r$ é o disco aberto, e $|z - i| = 1/2$ — que aparece literalmente na integral 4 do 1º EE de 2025.2 — é a circunferência de centro $i$ e raio $\tfrac12$.
+
+### As quatro operações
+
+Soma e produto saem de tratar $i$ como uma letra qualquer e trocar $i^2$ por $-1$:
+
+$$
+(a + ib) + (c + id) = (a + c) + i\,(b + d)
+$$
+
+$$
+(a + ib)(c + id) = (ac - bd) + i\,(ad + bc)
+$$
+
+A divisão é a única que pede manobra: **multiplique numerador e denominador pelo conjugado do denominador**. O denominador vira real, porque
+
+<Formula rotulo="A identidade que faz a divisão funcionar">
+
+$$
+z\,\bar z = (x + iy)(x - iy) = x^2 + y^2 = |z|^2
+$$
+
+</Formula>
+
+$$
+\frac{a + ib}{c + id}
+= \frac{(a + ib)(c - id)}{(c + id)(c - id)}
+= \frac{(ac + bd) + i\,(bc - ad)}{c^2 + d^2}
+$$
+
+<Caixa tipo="macete">
+
+Racionalizar com o conjugado é o mesmo movimento de $\tfrac{1}{\sqrt2}$ na escola: multiplicar por algo que **mata a raiz** — aqui, que mata o $i$ do denominador. Se aparecer $i$ embaixo, o reflexo é imediato: conjugado.
+
+E decore $\dfrac1i = -i$. Sai de multiplicar por $\bar i = -i$, e economiza meia linha em toda prova.
+
+</Caixa>
+
+### Propriedades que economizam conta
+
+$$
+\overline{z_1 \pm z_2} = \bar z_1 \pm \bar z_2,
+\qquad
+\overline{z_1 z_2} = \bar z_1 \bar z_2,
+\qquad
+\overline{\left(\frac{z_1}{z_2}\right)} = \frac{\bar z_1}{\bar z_2}
+$$
+
+$$
+\operatorname{Re}(z) = \frac{z + \bar z}{2},
+\qquad
+\operatorname{Im}(z) = \frac{z - \bar z}{2i},
+\qquad
+|z_1 z_2| = |z_1|\,|z_2|,
+\qquad
+\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}
+$$
+
+E a **desigualdade triangular**, que é o mesmo fato geométrico dos vetores:
+
+$$
+|z_1 + z_2| \le |z_1| + |z_2|,
+\qquad
+|z_1 + z_2| \ge \big|\,|z_1| - |z_2|\,\big|
+$$
+
+<Caixa tipo="exemplo">
+
+Do 1º EE de 2023.2: com $z = 3 + \sqrt3\,i$, calcule $z^2$.
+
+$$
+z^2 = (3)^2 - (\sqrt3)^2 + 2\cdot 3 \cdot \sqrt3\, i = 9 - 3 + 6\sqrt3\,i = 6 + 6\sqrt3\,i
+$$
+
+Conferência pelo módulo, que é mais rápida que refazer a conta: $|z| = \sqrt{9 + 3} = \sqrt{12}$, logo $|z^2| = |z|^2 = 12$. E de fato $\sqrt{36 + 108} = \sqrt{144} = 12$ ✔
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+$|z|$ é **sempre real e não negativo** — se aparecer $i$ no seu módulo, a conta está errada. E $\operatorname{Im}(z)$ também é real: em $z = 3 + \sqrt3\,i$, a parte imaginária é $\sqrt3$, não $\sqrt3\,i$. Trocar isso é o erro que mais custa ponto de graça nesta cadeira.
+
+</Caixa>
+
+</Topico>
