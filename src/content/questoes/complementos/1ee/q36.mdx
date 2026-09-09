@@ -1,0 +1,88 @@
+---
+origem: "2024.2"
+tema: "Resíduos · A resposta depende do parâmetro a"
+temaId: teorema-dos-residuos
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q36.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule a integral
+
+$$
+\oint_{\gamma:\,|z| = 2} \frac{e^{z}}{z^2 + a^2}\,dz
+$$
+
+<Gabarito>
+A resposta depende de $|a|$, porque os polos estão em $z = \pm ia$, a distância $|a|$ da origem:
+
+$$
+\oint_{|z|=2}\frac{e^z}{z^2+a^2}\,dz =
+\begin{cases}
+\dfrac{2\pi i}{a}\operatorname{sen} a, & |a| < 2 \quad\text{(os dois polos dentro)}\\[8pt]
+\text{indefinida}, & |a| = 2 \quad\text{(polos sobre a curva)}\\[6pt]
+0, & |a| > 2 \quad\text{(os dois polos fora)}
+\end{cases}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os polos, e onde eles estão.**
+
+$$
+z^2 + a^2 = 0
+\qquad\Longrightarrow\qquad
+z = \pm i a,
+\qquad
+|{\pm ia}| = |a|
+$$
+
+Os dois estão sempre à **mesma** distância da origem, $|a|$. Como a curva tem raio $2$, tudo se decide comparando $|a|$ com $2$.
+
+**Passo 2 — caso $|a| > 2$: nenhum polo dentro.** O integrando é analítico dentro e sobre $|z|=2$, e Cauchy-Goursat dá
+
+$$
+\oint_{|z|=2}\frac{e^z}{z^2+a^2}\,dz = 0
+$$
+
+**Passo 3 — caso $|a| = 2$: os polos caem SOBRE a curva.** Aí não há teorema a aplicar: a hipótese de todos eles é que o integrando seja analítico **sobre** o contorno. A integral não está definida no sentido usual.
+
+**Passo 4 — caso $|a| < 2$: os dois polos dentro.** Agora é o teorema dos resíduos, com dois polos simples. Por $p/q'$, com $q' = 2z$:
+
+$$
+\operatorname{Res}(f, ia) = \frac{e^{ia}}{2ia},
+\qquad
+\operatorname{Res}(f,-ia) = \frac{e^{-ia}}{-2ia}
+$$
+
+$$
+\sum\operatorname{Res} = \frac{e^{ia} - e^{-ia}}{2ia} = \frac1a\cdot\frac{e^{ia}-e^{-ia}}{2i} = \frac{\operatorname{sen} a}{a}
+$$
+
+$$
+\oint_{|z|=2}\frac{e^z}{z^2+a^2}\,dz = \frac{2\pi i}{a}\operatorname{sen} a
+$$
+
+**Conferência —** para $a$ pequeno, $\operatorname{sen}(a)/a \to 1$ e a integral tende a $2\pi i$: os dois polos colidem na origem, o integrando vira $e^z/z^2$, e a fórmula das derivadas dá $2\pi i\,f'(0) = 2\pi i$ ✔
+
+<Caixa tipo="dica" rotulo="Sobre o gabarito">
+
+O gabarito da prova troca as bolas com o parâmetro. Ele escreve *"a condição $\gamma \le a$ implica que $a \ge 2$"* — mas o enunciado fixa a curva em $|z| = 2$ e deixa $a$ **livre**; não há condição nenhuma ligando os dois. Em consequência, ele analisa apenas $|a| \ge 2$ e conclui $0$ ou "indefinida", **deixando de fora o caso mais interessante**, $|a| < 2$, que é justamente o que produz uma resposta não trivial.
+
+E é esse caso que a prova de **2026.1** cobra, na q25 desta unidade: lá a curva é $|z| \le 2a$, o que **garante** os dois polos dentro, e o gabarito de lá dá $\tfrac{2\pi i}{a}\operatorname{sen} a$ — confirmando a conta do passo 4.
+
+A resposta completa é a discussão dos três casos. Numa prova, escrever "depende de $|a|$" e destrinchar vale mais que escolher um caso e seguir.
+
+</Caixa>
+</Passos>
