@@ -1,0 +1,129 @@
+---
+origem: "Prova · sem data"
+tema: "Dedução · Lei de Newton da viscosidade"
+temaId: lei-de-newton-da-viscosidade
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A partir do desenho esquemático, **deduza a lei de Newton da viscosidade** para fluidos newtonianos (viscosidade dinâmica do fluido). Quando a força $P$ é aplicada na placa superior, esta se movimenta continuamente com uma velocidade $U$.
+
+<Figura>
+  <svg viewBox="0 0 320 150" role="img" aria-label="Fluido entre duas placas: a superior recebe a força P e move-se com velocidade U, a inferior é fixa; o perfil de velocidade é linear e a linha vertical do fluido gira de um ângulo delta beta">
+    {/* placa superior */}
+    <rect x="30" y="30" width="240" height="10" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="212" y1="22" x2="256" y2="22" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="262,22 252,18 252,26" fill="var(--accent)"/>
+    <text x="222" y="16" font-size="10" fill="var(--accent)">U</text>
+    <line x1="150" y1="35" x2="196" y2="35" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="202,35 192,31 192,39" fill="var(--warn)"/>
+    <text x="168" y="30" font-size="10" fill="var(--warn)">P</text>
+    {/* fluido */}
+    <rect x="30" y="40" width="240" height="60" fill="var(--accent-soft)" opacity="0.45"/>
+    {/* perfil linear */}
+    <line x1="60" y1="100" x2="60" y2="40" stroke="var(--ok)" stroke-width="1"/>
+    <line x1="60" y1="100" x2="112" y2="40" stroke="var(--ok)" stroke-width="1.5"/>
+    <line x1="60" y1="60" x2="94" y2="60" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="100,60 90,56 90,64" fill="var(--ok)"/>
+    <text x="104" y="58" font-size="9" fill="var(--ok)">u(y)</text>
+    {/* linha material girando */}
+    <line x1="180" y1="100" x2="180" y2="40" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="180" y1="100" x2="214" y2="40" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="196" y="86" font-size="10" fill="var(--ink-2)">δβ</text>
+    <line x1="180" y1="46" x2="214" y2="46" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="220" y="50" font-size="9" fill="var(--ink-3)">δa</text>
+    {/* placa inferior */}
+    <rect x="30" y="100" width="240" height="10" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="120" y="126" font-size="10" fill="var(--ink-3)">placa imóvel</text>
+    {/* eixos */}
+    <line x1="20" y1="110" x2="20" y2="40" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="10" y="38" font-size="10" fill="var(--ink-3)">y</text>
+    <line x1="278" y1="110" x2="278" y2="40" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="284" y="78" font-size="10" fill="var(--ink-3)">L</text>
+  </svg>
+  <figcaption>
+
+A linha vertical de fluido gira de $\delta\beta$ no intervalo $\delta t$: é essa rotação que define a **taxa de deformação**.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\tau = \mu\,\frac{du}{dy}
+$$
+
+com $\mu$ a **viscosidade dinâmica**, constante de proporcionalidade entre a tensão de cisalhamento e a taxa de deformação por cisalhamento.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a condição de aderência.** O fluido em contato com a placa superior move-se com $U$; o em contato com a inferior tem velocidade **nula**. Essa é a condição de **não escorregamento**, verificada experimentalmente para todos os fluidos.
+
+Entre as placas, a velocidade é função só de $y$:
+
+$$
+u = u(y)
+\qquad\text{com}\qquad
+u(0) = 0
+\quad\text{e}\quad
+u(L) = U
+$$
+
+**Passo 2 — o gradiente é constante.** Com perfil linear entre as placas,
+
+$$
+\frac{du}{dy} = \frac{U}{L} = \text{constante}
+$$
+
+**Passo 3 — a deformação angular.** No intervalo $\delta t$, uma linha vertical de fluido gira de um ângulo $\delta\beta$. Para ângulos pequenos,
+
+$$
+\tan(\delta\beta) \approx \delta\beta = \frac{\delta a}{L}
+$$
+
+e o deslocamento do topo é $\delta a = U\,\delta t$, logo
+
+$$
+\delta\beta = \frac{U\,\delta t}{L}
+$$
+
+**Passo 4 — a taxa de deformação por cisalhamento.** Define-se $\dot{\gamma}$ como a taxa de variação de $\delta\beta$ no tempo:
+
+$$
+\dot{\gamma} = \lim_{\delta t \to 0}\frac{\delta\beta}{\delta t} = \frac{U}{L}
+$$
+
+Comparando com o Passo 2:
+
+$$
+\boxed{\;\dot{\gamma} = \frac{U}{L} = \frac{du}{dy}\;}
+$$
+
+**A taxa de deformação por cisalhamento é igual ao gradiente de velocidade** — este é o resultado central da dedução.
+
+**Passo 5 — a proporcionalidade experimental.** Variando as condições do experimento, observa-se que **aumentar $P$** aumenta a tensão de cisalhamento **e** a taxa de deformação, na mesma proporção:
+
+$$
+\tau \propto \dot{\gamma}
+\qquad\Longrightarrow\qquad
+\tau = \mu\,\dot{\gamma} = \mu\,\frac{du}{dy}
+$$
+
+A constante $\mu$ é a **viscosidade dinâmica**, que varia de fluido para fluido e, para um mesmo fluido, depende fortemente da **temperatura**.
+
+**Passo 6 — a definição de newtoniano.** Os fluidos em que essa relação é **linear** (isto é, $\mu$ constante) são os **fluidos newtonianos**. Água, ar e óleos lubrificantes são exemplos.
+
+**Conferência —** a dedução tem de passar por: aderência → perfil linear → deformação angular $\delta\beta = \delta a/L$ → taxa de deformação igual ao gradiente → proporcionalidade experimental ✔ Pular a etapa angular e escrever direto $\tau = \mu\,du/dy$ não é dedução, é enunciado da fórmula ✔
+</Passos>
