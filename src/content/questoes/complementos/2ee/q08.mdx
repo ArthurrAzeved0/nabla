@@ -1,0 +1,169 @@
+---
+origem: "2023.2"
+tema: "Frobenius · A equação hipergeométrica confluente, do início ao fim"
+temaId: metodo-de-frobenius
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a equação hipergeométrica confluente
+
+$$
+x\,y'' + (c - x)\,y' - a\,y = 0,
+$$
+
+com $a$ e $c$ números reais não inteiros.
+
+**a)** Mostre que $x=0$ é um ponto singular regular através dos limites apropriados;
+
+**b)** Encontre as raízes da equação indicial do método de Frobenius, substituindo $y(x) = \sum_{j\ge0} a_j x^{\,j+s}$ na equação diferencial;
+
+**c)** Encontre os coeficientes $a_j$ da solução com $s = 0$. Utilize $\Gamma(z+1) = z\,\Gamma(z)$ para simplificar a resposta.
+
+<Gabarito>
+**a)** $\lim_{x\to0} xP = c$ e $\lim_{x\to0}x^2Q = 0$: os dois finitos, logo $x=0$ é **singular regular**.
+
+**b)** $s(s-1) + cs = 0 \Rightarrow s_1 = 0$ e $s_2 = 1-c$.
+
+**c)** $a_{j+1} = \dfrac{j+a}{(j+1)(j+c)}\,a_j$, e com $a_0=1$,
+
+$$
+a_j = \frac{\Gamma(a+j)\,\Gamma(c)}{\Gamma(a)\,\Gamma(c+j)\,j!}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a forma padrão.** O teste de ponto singular exige o coeficiente de $y''$ igual a $1$. Dividindo por $x$:
+
+$$
+y'' + \underbrace{\frac{c-x}{x}}_{P(x)}\,y' \;\underbrace{-\;\frac{a}{x}}_{Q(x)}\,y = 0
+$$
+
+Tanto $P$ quanto $Q$ explodem em $x=0$: o ponto é **singular**. A pergunta é se é *regular*.
+
+**Passo 2 — item (a): os dois limites.**
+
+$$
+\lim_{x\to0} x\,P(x) = \lim_{x\to0} x\cdot\frac{c-x}{x} = \lim_{x\to0}(c-x) = c
+$$
+
+$$
+\lim_{x\to0} x^2\,Q(x) = \lim_{x\to0} x^2\cdot\left(-\frac{a}{x}\right) = \lim_{x\to0}(-a x) = 0
+$$
+
+**Os dois existem e são finitos** — logo $x=0$ é **ponto singular regular** e Frobenius se aplica. Chame
+
+$$
+p_0 = c,
+\qquad
+q_0 = 0
+$$
+
+**Passo 3 — item (b): a equação indicial.** Ela sai de $p_0$ e $q_0$, que o item (a) já entregou:
+
+$$
+s(s-1) + p_0\,s + q_0 = 0
+\qquad\Longrightarrow\qquad
+s(s-1) + c\,s = 0
+$$
+
+$$
+s\big(s - 1 + c\big) = 0
+\qquad\Longrightarrow\qquad
+\boxed{\;s_1 = 0,\qquad s_2 = 1 - c\;}
+$$
+
+Como $c$ **não é inteiro**, a diferença $s_1 - s_2 = c - 1$ também não é: as duas raízes dão **duas séries de Frobenius independentes**, sem termo logarítmico. É para isso que o enunciado impõe $a$ e $c$ não inteiros.
+
+**Passo 4 — item (c): a recorrência, com $s=0$.** Com $s=0$ a tentativa é uma série de potências comum, $y = \sum_j a_j x^j$:
+
+$$
+y' = \sum_{j\ge0}(j+1)a_{j+1}x^{j},
+\qquad
+y'' = \sum_{j\ge0}(j+2)(j+1)a_{j+2}x^{j}
+$$
+
+Substituindo na equação original e alinhando tudo em $x^j$:
+
+$$
+x\,y'' \to \sum_j (j+1)j\,a_{j+1}x^{j},
+\qquad
+c\,y' \to \sum_j c\,(j+1)a_{j+1}x^j
+$$
+
+$$
+-x\,y' \to -\sum_j j\,a_j x^j,
+\qquad
+-a\,y \to -\sum_j a\,a_j x^j
+$$
+
+Igualando a zero o coeficiente de $x^j$:
+
+$$
+(j+1)j\,a_{j+1} + c(j+1)a_{j+1} - j\,a_j - a\,a_j = 0
+$$
+
+$$
+(j+1)(j+c)\,a_{j+1} = (j+a)\,a_j
+$$
+
+$$
+\boxed{\;a_{j+1} = \frac{j+a}{(j+1)(j+c)}\,a_j\;}
+$$
+
+**Passo 5 — iterar e empacotar com a Gama.** Tomando $a_0 = 1$ e aplicando a recorrência:
+
+$$
+a_1 = \frac{a}{1\cdot c},
+\qquad
+a_2 = \frac{(a+1)a}{2!\;c(c+1)},
+\qquad
+a_3 = \frac{(a+2)(a+1)a}{3!\;c(c+1)(c+2)}
+$$
+
+O padrão é claro: no numerador o produto $a(a+1)\cdots(a+j-1)$, no denominador $j!$ e o produto $c(c+1)\cdots(c+j-1)$. E é exatamente isso que a recorrência da Gama empacota — de $\Gamma(z+1) = z\Gamma(z)$ segue
+
+$$
+a(a+1)\cdots(a+j-1) = \frac{\Gamma(a+j)}{\Gamma(a)}
+$$
+
+$$
+\boxed{\;a_j = \frac{\Gamma(a+j)}{\Gamma(a)}\cdot\frac{\Gamma(c)}{\Gamma(c+j)}\cdot\frac{1}{j!}\;}
+$$
+
+A solução com $s=0$ é a **função hipergeométrica confluente**:
+
+$$
+y(x) = M(a,c;x) = \sum_{j=0}^{\infty}\frac{\Gamma(a+j)\,\Gamma(c)}{\Gamma(a)\,\Gamma(c+j)\,j!}\,x^{j}
+$$
+
+**Conferência —** para $j=0$ a fórmula dá $\dfrac{\Gamma(a)\Gamma(c)}{\Gamma(a)\Gamma(c)\cdot 0!} = 1 = a_0$ ✔ E para $j=1$: $\dfrac{\Gamma(a+1)\Gamma(c)}{\Gamma(a)\Gamma(c+1)} = \dfrac{a\,\Gamma(a)\,\Gamma(c)}{\Gamma(a)\,c\,\Gamma(c)} = \dfrac{a}{c}$ ✔
+
+<Caixa tipo="macete" rotulo="O item (a) já resolve o item (b)">
+
+Os dois limites do teste **são** os $p_0$ e $q_0$ da equação indicial. Calculados uma vez no item (a), substituem-se direto em $s(s-1) + p_0s + q_0 = 0$ — não há nova conta a fazer.
+
+Quem tenta montar a indicial substituindo a série na equação original, sem dividir pelo coeficiente de $y''$, erra o $p_0$ e sai com raízes trocadas. Este é o erro que mais custa nesta questão.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Por que a Gama e não o produto">
+
+O produto $a(a+1)\cdots(a+j-1)$ chama-se **fatorial ascendente**, e escrevê-lo por extenso numa resposta é aceitável — mas a razão de Gamas é fechada, vale para $a$ e $c$ **não inteiros** (que é a hipótese do enunciado) e é o que a prova pede explicitamente ao fornecer $\Gamma(z+1) = z\Gamma(z)$.
+
+É também o momento em que a seção de Gama e Beta se paga: sem ela, este item não tem forma final.
+
+</Caixa>
+</Passos>
