@@ -1,0 +1,123 @@
+---
+origem: "2026.1"
+tema: "Laplace · Transformada do seno, e o artifício para o cosseno"
+temaId: transformada-da-derivada
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+No mesmo raciocínio da letra a), calcule a transformada de Laplace de $f(x) = \operatorname{sen}(\beta x)$, onde $\beta$ é uma constante real. Sem precisar calcular, sugira um artifício com o qual você calcularia a transformada de Laplace de $f(x) = \cos(\beta x)$, baseado nos cálculos anteriores.
+
+<Gabarito>
+$$
+\mathcal{L}\{\operatorname{sen}\beta x\} = \frac{\beta}{s^2+\beta^2},
+\qquad s > 0
+$$
+
+**O artifício:** como $\big[\operatorname{sen}(\beta x)\big]' = \beta\cos(\beta x)$, a propriedade $\mathcal{L}\{F'\} = s\mathcal{L}\{F\} - F(0)$ dá o cosseno **sem integrar**:
+
+$$
+\mathcal{L}\{\cos\beta x\} = \frac{s}{\beta}\cdot\frac{\beta}{s^2+\beta^2} = \frac{s}{s^2+\beta^2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a transformada do seno, pelo caminho complexo.** É o "mesmo raciocínio da letra a)" mais curto. Da q20, $\mathcal{L}\{e^{\alpha x}\} = \dfrac{1}{s-\alpha}$; tome $\alpha = i\beta$:
+
+$$
+\mathcal{L}\left\{e^{i\beta x}\right\} = \frac{1}{s - i\beta}
+= \frac{s+i\beta}{(s-i\beta)(s+i\beta)}
+= \frac{s + i\beta}{s^2+\beta^2}
+$$
+
+E, pela fórmula de Euler, $e^{i\beta x} = \cos(\beta x) + i\operatorname{sen}(\beta x)$. Como a transformada é linear e $s,\beta$ são reais, basta separar:
+
+$$
+\mathcal{L}\{\cos\beta x\} = \operatorname{Re} = \frac{s}{s^2+\beta^2},
+\qquad
+\boxed{\;\mathcal{L}\{\operatorname{sen}\beta x\} = \operatorname{Im} = \frac{\beta}{s^2+\beta^2}\;}
+$$
+
+com convergência para $s > 0$, porque $|e^{i\beta x}| = 1$ e basta $\operatorname{Re}(s) > 0$.
+
+**Passo 2 — pela definição, se a prova exigir.** Duas integrações por partes, ou o truque de fechar o ciclo. Chamando $I = \displaystyle\int_0^\infty e^{-sx}\operatorname{sen}(\beta x)dx$:
+
+$$
+I = \left[-\frac{e^{-sx}\cos\beta x}{\beta}\right]_0^\infty - \frac{s}{\beta}\int_0^\infty e^{-sx}\cos(\beta x)\,dx
+= \frac1\beta - \frac{s}{\beta}J
+$$
+
+$$
+J = \int_0^\infty e^{-sx}\cos(\beta x)dx = \frac{s}{\beta}I
+$$
+
+(a segunda sai da mesma conta, por partes). Substituindo:
+
+$$
+I = \frac1\beta - \frac{s^2}{\beta^2}I
+\qquad\Longrightarrow\qquad
+I\left(1 + \frac{s^2}{\beta^2}\right) = \frac1\beta
+\qquad\Longrightarrow\qquad
+I = \frac{\beta}{s^2+\beta^2}
+\;\checkmark
+$$
+
+**Passo 3 — o artifício para o cosseno, que é o que a questão realmente cobra.** Note que
+
+$$
+\frac{d}{dx}\Big[\operatorname{sen}(\beta x)\Big] = \beta\cos(\beta x)
+$$
+
+e use a propriedade da **transformada da derivada**, com $F(x) = \operatorname{sen}(\beta x)$ e $F(0) = 0$:
+
+$$
+\mathcal{L}\{F'\} = s\,\mathcal{L}\{F\} - F(0)
+$$
+
+$$
+\mathcal{L}\{\beta\cos\beta x\} = s\cdot\frac{\beta}{s^2+\beta^2} - 0
+$$
+
+$$
+\boxed{\;\mathcal{L}\{\cos\beta x\} = \frac{s}{s^2+\beta^2}\;}
+$$
+
+**Sem integrar nada** — que é exatamente o que o "sem precisar calcular" do enunciado pede.
+
+**Conferência —** o mesmo artifício aplicado de volta fecha o ciclo. Com $G = \cos\beta x$, $G' = -\beta\operatorname{sen}\beta x$ e $G(0) = 1$:
+
+$$
+\mathcal{L}\{-\beta\operatorname{sen}\beta x\} = s\cdot\frac{s}{s^2+\beta^2} - 1 = \frac{s^2 - s^2 - \beta^2}{s^2+\beta^2} = \frac{-\beta^2}{s^2+\beta^2}
+$$
+
+$$
+\mathcal{L}\{\operatorname{sen}\beta x\} = \frac{\beta}{s^2+\beta^2}
+\;\;\checkmark
+$$
+
+Consistente nos dois sentidos.
+
+<Caixa tipo="macete" rotulo="Três artifícios válidos, e o que cada um mostra">
+
+O enunciado pede **um**; qualquer destes serve, e mencionar o raciocínio vale mais que a fórmula:
+
+1. **transformada da derivada** — o do passo 3, e o mais direto;
+2. **exponencial complexa** — separar $\mathcal{L}\{e^{i\beta x}\}$ em parte real e imaginária, como no passo 1: entrega as duas transformadas de uma vez;
+3. **derivada em $\beta$** — derivar $\mathcal{L}\{\operatorname{sen}\beta x\}$ em relação ao **parâmetro** $\beta$ e comparar.
+
+O caminho 2 é o que mais dialoga com a cadeira, porque usa a 1ª unidade para resolver a 2ª. O caminho 1 é o que a pergunta espera, porque ela diz "baseado nos cálculos anteriores".
+
+</Caixa>
+</Passos>
