@@ -1,0 +1,112 @@
+---
+origem: "2024.2"
+tema: "Complexos · Qual número tem quadrado igual ao próprio conjugado"
+temaId: operacoes-com-complexos
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q33.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Qual o número complexo cujo quadrado é igual ao seu complexo conjugado?
+
+<Gabarito>
+São **quatro**:
+
+$$
+z = 0,
+\qquad
+z = 1,
+\qquad
+z = -\frac12 + \frac{\sqrt3}{2}i,
+\qquad
+z = -\frac12 - \frac{\sqrt3}{2}i
+$$
+
+isto é, o zero e as três raízes cúbicas da unidade.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o caminho elegante, que dá a resposta completa de imediato.** A equação é $z^2 = \bar z$. Multiplique os dois lados por $z$:
+
+$$
+z^3 = z\,\bar z = |z|^2
+$$
+
+Tomando módulos: $|z|^3 = |z|^2$, isto é, $|z|^2\big(|z| - 1\big) = 0$. Logo
+
+$$
+|z| = 0
+\qquad\text{ou}\qquad
+|z| = 1
+$$
+
+**Se $|z| = 0$:** $z = 0$, que satisfaz a equação ($0 = 0$) ✔
+
+**Se $|z| = 1$:** então $|z|^2 = 1$ e a equação vira $z^3 = 1$ — as **raízes cúbicas da unidade**:
+
+$$
+z = 1,
+\qquad
+z = -\frac12 + \frac{\sqrt3}{2}i,
+\qquad
+z = -\frac12 - \frac{\sqrt3}{2}i
+$$
+
+**Passo 2 — o caminho por coordenadas, que é o do gabarito.** Com $z = x+iy$:
+
+$$
+(x+iy)^2 = x - iy
+\qquad\Longrightarrow\qquad
+x^2 - y^2 + 2ixy = x - iy
+$$
+
+Igualando parte real com parte real e imaginária com imaginária:
+
+$$
+\text{(I)}\quad x^2 - y^2 = x,
+\qquad\qquad
+\text{(II)}\quad 2xy = -y
+$$
+
+**Caso $y \ne 0$:** de (II), $2x = -1$, logo $x = -\tfrac12$. Em (I):
+
+$$
+\frac14 - y^2 = -\frac12
+\qquad\Longrightarrow\qquad
+y^2 = \frac34
+\qquad\Longrightarrow\qquad
+y = \pm\frac{\sqrt3}{2}
+$$
+
+**Caso $y = 0$:** (II) é satisfeita automaticamente, e (I) vira $x^2 = x$, isto é, $x = 0$ ou $x = 1$.
+
+Juntando os dois casos saem as **quatro** soluções.
+
+**Conferência —** teste $z = -\tfrac12 + \tfrac{\sqrt3}{2}i$:
+
+$$
+z^2 = \frac14 - \frac34 - 2\cdot\frac12\cdot\frac{\sqrt3}{2}i = -\frac12 - \frac{\sqrt3}{2}i = \bar z
+\;\checkmark
+$$
+
+<Caixa tipo="dica" rotulo="Sobre o gabarito">
+
+O gabarito da prova resolve por coordenadas e trata **apenas** o caso $y \ne 0$, chegando às duas soluções complexas e observando que "são as raízes cúbicas". Ele **não** volta para o caso $y = 0$, e por isso deixa de fora $z = 0$ e $z = 1$ — que também satisfazem a equação.
+
+A resposta completa tem quatro números. E o caminho do passo 1 mostra por que: a equação, multiplicada por $z$, **é** $z^3 = |z|^2$ — o zero e as três raízes cúbicas da unidade, nem mais nem menos.
+
+Dividir por $y$ (ou por $z$) sem separar o caso em que ele é zero é o erro que produz respostas incompletas em toda esta cadeira.
+
+</Caixa>
+</Passos>
