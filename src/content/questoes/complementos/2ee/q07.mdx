@@ -1,0 +1,96 @@
+---
+origem: "2023.2"
+tema: "Função Beta · Integral em [0,1] com raiz de (1−x)/x"
+temaId: funcao-beta
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\int_0^1 \sqrt{\frac{1-x}{x}}\,dx
+$$
+
+<Gabarito>
+$$
+\int_0^1\sqrt{\frac{1-x}{x}}\,dx = B\!\left(\frac12,\frac32\right) = \frac{\pi}{2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reconhecer o formato da função Beta.** A definição é
+
+$$
+B(p,q) = \int_0^1 x^{\,p-1}(1-x)^{\,q-1}dx = \frac{\Gamma(p)\,\Gamma(q)}{\Gamma(p+q)}
+$$
+
+O sinal de que é Beta e não Gama: o intervalo é $[0,1]$ e o integrando é produto de potências de $x$ e de $(1-x)$.
+
+**Passo 2 — escrever o integrando com expoentes.**
+
+$$
+\sqrt{\frac{1-x}{x}} = \frac{(1-x)^{1/2}}{x^{1/2}} = x^{-1/2}\,(1-x)^{1/2}
+$$
+
+**Passo 3 — identificar $p$ e $q$.** Comparando com $x^{p-1}(1-x)^{q-1}$:
+
+$$
+p - 1 = -\frac12 \;\Longrightarrow\; p = \frac12,
+\qquad
+q - 1 = \frac12 \;\Longrightarrow\; q = \frac32
+$$
+
+**Passo 4 — usar a relação com a Gama.**
+
+$$
+\int_0^1\sqrt{\frac{1-x}{x}}\,dx = B\!\left(\frac12,\frac32\right)
+= \frac{\Gamma\!\left(\tfrac12\right)\Gamma\!\left(\tfrac32\right)}{\Gamma(2)}
+$$
+
+Os três valores, todos vindos de $\Gamma(1/2) = \sqrt\pi$ e da recorrência $\Gamma(z+1) = z\Gamma(z)$:
+
+$$
+\Gamma\!\left(\frac12\right) = \sqrt\pi,
+\qquad
+\Gamma\!\left(\frac32\right) = \frac12\Gamma\!\left(\frac12\right) = \frac{\sqrt\pi}{2},
+\qquad
+\Gamma(2) = 1! = 1
+$$
+
+$$
+\boxed{\;\int_0^1\sqrt{\frac{1-x}{x}}\,dx = \frac{\sqrt\pi\cdot\tfrac{\sqrt\pi}{2}}{1} = \frac{\pi}{2} \approx 1{,}571\;}
+$$
+
+**Conferência —** o integrando é positivo e explode como $x^{-1/2}$ perto de $0$ — integrável, portanto. Uma estimativa grosseira: ele vale $1$ em $x = 1/2$, e a área sob a curva em $[0,1]$ fica na casa de $1{,}5$ ✔ E a resposta tem de ser **real e positiva**, como é.
+
+<Caixa tipo="dica" rotulo="Gama ou Beta? Olhe os limites">
+
+$$
+\int_0^{\infty} \text{com } e^{-\text{algo}}
+\;\;\longrightarrow\;\; \Gamma
+$$
+
+$$
+\int_0^{1} \text{com } x^{a}(1-x)^{b}
+\;\;\longrightarrow\;\; B
+$$
+
+O item (a) desta mesma questão, na q06, é o caso da Gama; este é o da Beta. A prova põe os dois juntos de propósito, e reconhecer qual é qual é metade do trabalho.
+
+Vale saber também a substituição $x = \operatorname{sen}^2\theta$, que leva a Beta a uma integral trigonométrica — caminho alternativo quando não se lembra da relação com a Gama.
+
+</Caixa>
+</Passos>
