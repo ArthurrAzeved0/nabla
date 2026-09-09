@@ -21,7 +21,7 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
-## [Não publicado]
+## [2.15.0] — 2026-09-09
 
 ### Adicionado
 
@@ -46,6 +46,24 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Corrigido
 
+- **Os cartões do índice da grade não ficavam da mesma altura.** Em tela
+  estreita a frase de Civil quebrava em três linhas e a dos vizinhos em duas, e
+  os cartões da mesma fileira terminavam em alturas diferentes; em tela larga o
+  desalinhamento não aparecia. O `<section>` de cada curso já recebia a altura
+  da fileira, mas ela sobrava vazia embaixo: agora ele é coluna flex e a grade
+  de cartões leva `flex: 1` com `grid-auto-rows: 1fr`. Conferido renderizando a
+  página em 820, 1366 e 1920 px.
+- **O cartão comparava duas cargas horárias e a frase não se explicava.** Dizia
+  "São 3915h em disciplinas, num curso de 4350h" — a soma da matriz contra o
+  total do curso, o que só acontece em Civil e levantava uma pergunta sem
+  resposta. Agora mostra uma informação só, igual em todos: a **carga horária
+  total do curso**. A mesma frase na página de cada grade foi alinhada.
+- **A carga horária total de Civil 2021.1 era 4350h, e é 4035h.** O PPC traz
+  duas tabelas-resumo, e o número vinha da errada: a Tabela 21 é o resumo da
+  matriz de **2012.1**; a Tabela 26, do perfil **2021.1**, declara TOTAL 4035, e
+  o §7.5a repete "a carga horária total proposta no curso é de 4.035 horas". O
+  comentário no YAML registra a composição declarada e o fato de as parcelas
+  somarem 3975, não 4035 — o PPC tem 60h de folga na própria tabela.
 - **Dois erros de conta na teoria nova**, os dois achados ao converter o quesito
   correspondente e conferir contra fórmula fechada: as raízes de $z^2+\tfrac83z+1$
   na seção de integrais por resíduos (são $\tfrac{-4\pm\sqrt7}{3}$, não $-3$ e
@@ -1178,6 +1196,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.15.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.15.0
 [2.14.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.14.0
 [2.13.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.13.0
 [2.12.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.12.0
