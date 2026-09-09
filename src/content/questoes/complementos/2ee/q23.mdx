@@ -1,0 +1,156 @@
+---
+origem: "2026.1"
+tema: "EDP · Equação da onda com as duas pontas livres"
+temaId: problema-da-onda
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Use o método visto em sala, ou seja, o método de Fourier, para resolver o problema
+
+$$
+\begin{cases}
+u_{tt} = c^2\,u_{xx}, & \text{em } \mathbb{R}\\
+u_x(0,t) = u_x(L,t) = 0, & t > 0\\
+u(x,0) = f(x),\quad u_t(x,0) = g(x), & 0 < x < L
+\end{cases}
+$$
+
+<Gabarito>
+$$
+u(x,t) = \frac{a_0}{2} + \frac{b_0\,t}{2}
++ \sum_{n=1}^{\infty}\cos\!\left(\frac{n\pi x}{L}\right)
+\left[a_n\cos\frac{n\pi c\,t}{L} + b_n\operatorname{sen}\frac{n\pi c\,t}{L}\right]
+$$
+
+com
+
+$$
+a_n = \frac2L\int_0^L f(x)\cos\frac{n\pi x}{L}dx,
+\qquad
+b_n = \frac{2}{n\pi c}\int_0^L g(x)\cos\frac{n\pi x}{L}dx
+$$
+
+e $b_0 = \dfrac2L\displaystyle\int_0^L g(x)\,dx$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o problema em $x$ é o mesmo da equação do calor.** Separando $u = XT$:
+
+$$
+X\,T'' = c^2X''\,T
+\qquad\Longrightarrow\qquad
+\frac{T''}{c^2T} = \frac{X''}{X} = -\lambda
+$$
+
+A equação em $x$ e as condições de contorno são **idênticas** às da q22: $X'' + \lambda X = 0$ com $X'(0) = X'(L) = 0$. Logo as autofunções e os autovalores são os mesmos:
+
+$$
+\lambda_n = \left(\frac{n\pi}{L}\right)^2,
+\qquad
+X_n = \cos\frac{n\pi x}{L},
+\qquad n = 0,1,2,\dots
+$$
+
+incluindo o modo constante de $n=0$, por serem condições de **Neumann**.
+
+**Passo 2 — o que muda é a equação em $t$: agora é de 2ª ordem.**
+
+$$
+T'' + c^2\lambda_n\,T = 0
+$$
+
+**Para $n \ge 1$**, com $\omega_n = \dfrac{n\pi c}{L}$:
+
+$$
+T_n(t) = a_n\cos(\omega_n t) + b_n\operatorname{sen}(\omega_n t)
+$$
+
+**Duas** constantes por modo, e não uma — porque há **duas** condições iniciais a atender.
+
+**Para $n = 0$**, $\lambda_0 = 0$ e a equação é $T'' = 0$:
+
+$$
+T_0(t) = \frac{a_0}{2} + \frac{b_0}{2}t
+$$
+
+Um termo constante **e um linear no tempo**. Este é o detalhe que distingue esta questão da anterior.
+
+**Passo 3 — a solução geral.**
+
+$$
+u(x,t) = \frac{a_0}{2} + \frac{b_0 t}{2}
++ \sum_{n=1}^{\infty}\cos\!\left(\frac{n\pi x}{L}\right)
+\Big[a_n\cos(\omega_n t) + b_n\operatorname{sen}(\omega_n t)\Big]
+$$
+
+**Passo 4 — a primeira condição inicial fixa os $a_n$.** Em $t=0$ os senos zeram e sobra
+
+$$
+u(x,0) = \frac{a_0}{2} + \sum_{n\ge1}a_n\cos\frac{n\pi x}{L} = f(x)
+$$
+
+que é a série de cossenos de $f$:
+
+$$
+a_n = \frac{2}{L}\int_0^{L}f(x)\cos\frac{n\pi x}{L}\,dx,
+\qquad n \ge 0
+$$
+
+**Passo 5 — a segunda condição fixa os $b_n$.** Derivando em $t$ e avaliando em $t=0$:
+
+$$
+u_t(x,0) = \frac{b_0}{2} + \sum_{n\ge1}\omega_n\,b_n\cos\frac{n\pi x}{L} = g(x)
+$$
+
+Comparando com a série de cossenos de $g$, cujos coeficientes são $\dfrac2L\int_0^L g\cos$:
+
+$$
+\boxed{\;b_0 = \frac2L\int_0^L g(x)\,dx,
+\qquad
+b_n = \frac{1}{\omega_n}\cdot\frac{2}{L}\int_0^L g(x)\cos\frac{n\pi x}{L}\,dx
+= \frac{2}{n\pi c}\int_0^L g(x)\cos\frac{n\pi x}{L}\,dx\;}
+$$
+
+O fator $1/\omega_n$ vem da derivada do seno — esquecê-lo é o erro típico deste passo.
+
+**Os detalhes que a questão espera comentados:**
+
+**1. Nada decai.** Ao contrário do calor, aqui não há exponencial: cada modo **oscila para sempre** na frequência $\omega_n = n\pi c/L$. É a diferença entre EDP **hiperbólica** e **parabólica** — a onda propaga, o calor difunde.
+
+**2. O modo $n=0$ cresce linearmente no tempo.** O termo $\tfrac{b_0}{2}t$ significa que a corda **transladar** como um todo é solução: com as duas pontas livres (Neumann), nada a prende, e uma velocidade inicial média não nula a faz derivar indefinidamente.
+
+$$
+\frac{b_0}{2} = \frac1L\int_0^L g(x)\,dx
+= \text{velocidade média inicial}
+$$
+
+Se $g$ tiver média zero, esse termo desaparece e a corda apenas vibra em torno da posição média.
+
+**3. Duas condições iniciais, duas famílias de coeficientes.** $f$ (posição) alimenta os $a_n$; $g$ (velocidade) alimenta os $b_n$. Uma condição só deixaria o problema indeterminado — e é por isso que a onda pede duas e o calor pede uma.
+
+<Caixa tipo="macete" rotulo="Calor e onda, lado a lado">
+
+O problema em $x$ é **o mesmo** nos dois: mesmas autofunções, mesmos autovalores, decididos só pelo contorno. Toda a diferença está no tempo:
+
+| | equação em $t$ | solução | condições iniciais |
+|---|---|---|---|
+| calor | $T' = -k\lambda T$ | $e^{-k\lambda_n t}$ | uma ($f$) |
+| onda | $T'' = -c^2\lambda T$ | $\cos\omega_n t$, $\operatorname{sen}\omega_n t$ | duas ($f$ e $g$) |
+
+Resolvida uma, a outra sai trocando apenas o passo do tempo. As duas questões de EDP desta prova são exatamente esse par.
+
+</Caixa>
+</Passos>
