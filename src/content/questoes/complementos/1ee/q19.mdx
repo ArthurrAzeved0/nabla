@@ -1,0 +1,117 @@
+---
+origem: "2025.2"
+tema: "Harmônicas · u = ln|z| em coordenadas polares"
+temaId: conjugada-harmonica
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Mostre que a seguinte função é harmônica, na região assinalada,
+
+$$
+u(x,y) = \ln|z| = \ln\sqrt{x^2+y^2},
+\qquad\text{na região}\quad \Omega - \{0\},
+$$
+
+e encontre sua harmônica conjugada, $v(x,y)$.
+
+<Gabarito>
+$u$ é harmônica em $\mathbb{C}\setminus\{0\}$, e
+
+$$
+v(x,y) = \arctan\frac{y}{x} = \operatorname{Arg} z + c
+\qquad\Longrightarrow\qquad
+f(z) = \ln|z| + i\operatorname{Arg} z = \operatorname{Log} z
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que a origem é excluída.** Em $z=0$, $\ln|z| \to -\infty$: a função nem está definida ali. A região é o plano furado, e é isso que $\Omega - \{0\}$ quer dizer.
+
+**Passo 2 — o caminho curto é o polar.** A função depende só de $r = |z|$, então usar $x$ e $y$ é trabalho desnecessário. Em coordenadas polares, $u = \ln r$, e o laplaciano é
+
+$$
+\nabla^2 u = u_{rr} + \frac1r u_r + \frac{1}{r^2}u_{\theta\theta}
+$$
+
+$$
+u_r = \frac1r,
+\qquad
+u_{rr} = -\frac{1}{r^2},
+\qquad
+u_\theta = 0
+$$
+
+$$
+\nabla^2 u = -\frac{1}{r^2} + \frac1r\cdot\frac1r + 0 = 0
+\;\checkmark
+$$
+
+$u$ é **harmônica** em todo ponto com $r \ne 0$.
+
+**Passo 3 — a conferência em cartesianas**, para quem preferir. Com $u = \tfrac12\ln(x^2+y^2)$:
+
+$$
+u_x = \frac{x}{x^2+y^2}
+\qquad\Longrightarrow\qquad
+u_{xx} = \frac{(x^2+y^2) - x(2x)}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2}
+$$
+
+Por simetria, $u_{yy} = \dfrac{x^2-y^2}{(x^2+y^2)^2}$, e a soma é zero ✔
+
+**Passo 4 — a conjugada, por Cauchy-Riemann em polares.** A forma polar das equações é
+
+$$
+\frac{\partial u}{\partial r} = \frac1r\frac{\partial v}{\partial\theta},
+\qquad
+\frac1r\frac{\partial u}{\partial\theta} = -\frac{\partial v}{\partial r}
+$$
+
+Da primeira, com $u_r = 1/r$:
+
+$$
+\frac{\partial v}{\partial\theta} = r\cdot\frac1r = 1
+\qquad\Longrightarrow\qquad
+v = \theta + \varphi(r)
+$$
+
+Da segunda, com $u_\theta = 0$:
+
+$$
+\frac{\partial v}{\partial r} = \varphi'(r) = 0
+\qquad\Longrightarrow\qquad
+\varphi = c
+$$
+
+$$
+\boxed{\;v(x,y) = \theta + c = \operatorname{Arg} z + c = \arctan\frac{y}{x} + c\;}
+$$
+
+**Passo 5 — reconhecer a função.** Juntando:
+
+$$
+f(z) = u + iv = \ln r + i\theta = \ln|z| + i\operatorname{Arg} z = \operatorname{Log} z
+$$
+
+A conjugada harmônica do **logaritmo do módulo** é o **argumento** — o que faz todo o sentido, porque juntos eles *são* o logaritmo complexo.
+
+<Caixa tipo="dica" rotulo="Por que a origem tem de sair, de novo">
+
+Duas razões, e as duas aparecem no resultado. Primeira: $\ln r$ explode em $r=0$. Segunda, mais sutil: o argumento **não é contínuo** dando uma volta completa em torno da origem — ele salta $2\pi$. Então $v$ só é função bem definida num domínio que não circunde a origem, isto é, num plano cortado.
+
+É a mesma multivaloração da seção do logaritmo, vista pelo lado das funções harmônicas. E é por isso que o enunciado escreve $\Omega - \{0\}$ em vez de simplesmente $\mathbb{C}$.
+
+</Caixa>
+</Passos>
