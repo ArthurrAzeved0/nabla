@@ -1,0 +1,93 @@
+---
+origem: "Final 2024.2"
+tema: "Fórmula das derivadas · Tangente sobre polo duplo"
+temaId: formula-das-derivadas
+pontos: 0,6 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, usando a teoria de Cauchy,
+
+$$
+\oint_{\gamma:\,|z|=1}\frac{\operatorname{tg} z}{\left(z - \frac{\pi}{4}\right)^{2}}\,dz
+$$
+
+<Gabarito>
+$$
+\oint_{|z|=1}\frac{\operatorname{tg} z}{\left(z-\frac\pi4\right)^2}\,dz = 4\pi i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — listar TODAS as singularidades.** Há duas fontes, e esquecer a segunda é o erro da questão:
+
+- o denominador: $z = \dfrac\pi4 \approx 0{,}785$, polo de **ordem 2**;
+- a tangente: $\operatorname{tg} z = \dfrac{\operatorname{sen} z}{\cos z}$ é singular onde $\cos z = 0$, isto é em $z = \pm\dfrac\pi2, \pm\dfrac{3\pi}{2},\dots$
+
+**Passo 2 — ver quais estão dentro de $|z| = 1$.**
+
+$$
+\left|\frac\pi4\right| = 0{,}785 < 1
+\qquad\text{(dentro)}
+$$
+
+$$
+\left|\pm\frac\pi2\right| = 1{,}571 > 1
+\qquad\text{(FORA)}
+$$
+
+**Só o polo do denominador entra.** Os polos da tangente ficam de fora — e é por isso que o raio $1$ foi escolhido: $\pi/4 < 1 < \pi/2$.
+
+**Passo 3 — aplicar a fórmula das derivadas.** Com apenas uma singularidade dentro:
+
+$$
+f(z) = \operatorname{tg} z,
+\qquad
+z_0 = \frac\pi4,
+\qquad
+n+1 = 2 \;\Longrightarrow\; n = 1
+$$
+
+E $f$ é analítica em $|z| \le 1$, porque seus polos estão fora ✔
+
+**Passo 4 — derivar a tangente.**
+
+$$
+\frac{d}{dz}\operatorname{tg} z = \sec^2 z = \frac{1}{\cos^2 z}
+$$
+
+$$
+f'\!\left(\frac\pi4\right) = \frac{1}{\cos^2(\pi/4)}
+= \frac{1}{\left(\frac{\sqrt2}{2}\right)^2}
+= \frac{1}{1/2} = 2
+$$
+
+**Passo 5 — fechar.**
+
+$$
+\boxed{\;\oint_{|z|=1}\frac{\operatorname{tg} z}{\left(z-\frac\pi4\right)^2}\,dz
+= \frac{2\pi i}{1!}\cdot 2 = 4\pi i\;}
+$$
+
+<Caixa tipo="dica" rotulo="Compare com a q28 do 2º EE">
+
+Lá a integral era $\displaystyle\oint_{|z|=2}\operatorname{tg}(z)\,dz$, e os polos **da tangente** eram o assunto: $\pm\pi/2$ entravam e cada um dava resíduo $-1$.
+
+Aqui o raio caiu para $1$ e a tangente virou o **numerador analítico** — os polos dela saíram, e quem manda é o $(z-\pi/4)^2$ do denominador.
+
+A lição vale para toda a cadeira: **o mesmo integrando muda de natureza quando o raio muda**. Listar singularidades e comparar com o raio, sempre, antes de escolher a ferramenta.
+
+</Caixa>
+</Passos>
