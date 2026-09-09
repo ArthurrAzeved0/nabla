@@ -490,7 +490,13 @@
       "formula-das-derivadas": "cm-formula-cauchy",
       "integral-com-polo-de-ordem-n": "cm-formula-cauchy",
       "desigualdade-de-cauchy": "cm-formula-cauchy",
-      "teorema-de-liouville": "cm-formula-cauchy"
+      "teorema-de-liouville": "cm-formula-cauchy",
+      "sequencias-complexas": "cm-series",
+      "series-complexas": "cm-series",
+      "serie-de-taylor": "cm-series",
+      "serie-de-maclaurin": "cm-series",
+      "raio-de-convergencia": "cm-series",
+      "serie-geometrica": "cm-series"
     }
   }
 ]

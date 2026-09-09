@@ -13,6 +13,7 @@ unidades:
       - { id: cm-integral, titulo: "Integral de linha complexa e parametrização" }
       - { id: cm-cauchy, titulo: "Teorema de Cauchy-Goursat e deformação de contorno" }
       - { id: cm-formula-cauchy, titulo: "Fórmula integral de Cauchy e a das derivadas" }
+      - { id: cm-series, titulo: "Sequências, séries complexas e a série de Taylor" }
 ---
 
 {/* **************************************************************************
@@ -1026,6 +1027,101 @@ No exemplo, com o círculo de raio $3/2$ centrado na origem, $z=1$ está dentro 
 <Caixa tipo="dica">
 
 A fórmula tem duas consequências que caem em questão teórica: a **desigualdade de Cauchy**, $|f^{(n)}(z_0)| \le n!\,M/R^n$, e o **teorema de Liouville** — função inteira e limitada é constante. É de Liouville que sai a prova do teorema fundamental da álgebra, e ele aparece pedido de enunciado.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-series" num="10" titulo="Sequências, séries complexas e a série de Taylor">
+
+### A ideia
+
+Convergência de sequência complexa se reduz a duas convergências reais: $z_n \to z$ se e só se $\operatorname{Re} z_n \to \operatorname{Re} z$ **e** $\operatorname{Im} z_n \to \operatorname{Im} z$. O mesmo para séries. Então tudo o que se sabe de Cálculo 3 sobre séries continua valendo — testes de convergência inclusive, aplicados aos módulos.
+
+O que é **novo** é o teorema de Taylor complexo, e ele é mais forte do que o real:
+
+<Formula rotulo="Série de Taylor">
+
+$$
+f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(z_0)}{n!}\,(z - z_0)^n,
+\qquad |z - z_0| < R
+$$
+
+</Formula>
+
+Toda função **analítica** num disco é, ali, a soma da sua série de Taylor — sem exceção, sem hipótese extra. Não existe função analítica que não seja série de potências, e é por isso que "analítica" e "holomorfa" acabam sendo a mesma coisa nesta cadeira.
+
+<Caixa tipo="simbolos">
+
+- $z_0$ — centro da expansão; com $z_0 = 0$ a série se chama **de Maclaurin**;
+- $R$ — **raio de convergência**: a distância de $z_0$ até a singularidade **mais próxima**;
+- $a_n = f^{(n)}(z_0)/n!$ — os coeficientes, únicos;
+- convergência **absoluta** dentro do disco, **uniforme** em todo subdisco fechado.
+
+</Caixa>
+
+### O raio de convergência é geométrico
+
+Este é o ganho mais bonito da teoria complexa, e a resposta a uma pergunta que Cálculo 3 deixa no ar. Por que a série de $\dfrac{1}{1+x^2}$ tem raio $1$, se a função é lisa em toda a reta? Porque no **plano** ela tem singularidades em $\pm i$, e a distância da origem até elas é $1$. A obstrução estava fora da reta.
+
+Na prática: para achar $R$, localize as singularidades e meça a distância até o centro.
+
+$$
+f(z) = \frac{1}{z-2},\quad z_0 = 0
+\;\Rightarrow\; R = 2;
+\qquad
+f(z) = \frac{1}{z-2},\quad z_0 = i
+\;\Rightarrow\; R = |i - 2| = \sqrt5
+$$
+
+### As quatro séries que resolvem quase tudo
+
+Vale mais reconhecê-las do que derivar $n$ vezes:
+
+$$
+e^{z} = \sum_{n=0}^{\infty} \frac{z^n}{n!}
+\quad (R=\infty),
+\qquad
+\frac{1}{1-z} = \sum_{n=0}^{\infty} z^n
+\quad (R=1)
+$$
+
+$$
+\operatorname{sen} z = \sum_{n=0}^{\infty} \frac{(-1)^n z^{2n+1}}{(2n+1)!},
+\qquad
+\cos z = \sum_{n=0}^{\infty} \frac{(-1)^n z^{2n}}{(2n)!}
+\quad (R=\infty)
+$$
+
+A geométrica é a mais útil das quatro, porque ela é o **motor** de toda expansão de função racional: manipule o denominador até virar $1 - (\text{algo})$ e substitua.
+
+<Caixa tipo="exemplo">
+
+Expandir $f(z) = \dfrac{1}{z}$ em torno de $z_0 = 1$.
+
+Escreva $z = 1 + (z-1)$ e force a forma da geométrica:
+
+$$
+\frac{1}{z} = \frac{1}{1 + (z-1)} = \frac{1}{1 - \big[-(z-1)\big]}
+= \sum_{n=0}^{\infty} \big[-(z-1)\big]^n
+= \sum_{n=0}^{\infty} (-1)^n (z-1)^n
+$$
+
+Raio: a única singularidade é $z = 0$, a distância $1$ do centro, logo $R = 1$ ✔ — e a série de fato diverge em $z = 0$, onde ela vira $1 - 1 + 1 - \cdots$.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Nunca calcule $f^{(n)}(z_0)$ por derivação repetida se der para **montar** a série a partir das quatro conhecidas. Os coeficientes de Taylor são únicos, então qualquer caminho legítimo dá o mesmo resultado — e substituir na geométrica é ordens de magnitude mais rápido que derivar.
+
+Duas manobras que cobrem o acervo: **trocar a variável** ($e^{z^2}$ sai de $e^w$ com $w = z^2$) e **derivar ou integrar a série termo a termo** (de $1/(1-z)$ sai $1/(1-z)^2$).
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Cuidado com o que a questão chama de "série". Se o centro é um ponto **onde $f$ é analítica**, é Taylor e só há potências positivas. Se o centro é uma **singularidade**, Taylor não existe ali — o que existe é a série de **Laurent**, da seção 11, com potências negativas. A questão 03 (ii) da final de 2026.1 pede a série de $\cos\!\big(1/(z-1)\big)$: o centro é singular, então é Laurent, e quem tentar Taylor não sai do lugar.
 
 </Caixa>
 
