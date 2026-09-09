@@ -1,0 +1,86 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Raízes da unidade · Todas as soluções de z³ = 1"
+temaId: raizes-da-unidade
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre **todas** as soluções complexas de $z^3 = 1$.
+
+<Gabarito>
+$$
+z_0 = 1,
+\qquad
+z_1 = -\frac12 + \frac{\sqrt3}{2}i,
+\qquad
+z_2 = -\frac12 - \frac{\sqrt3}{2}i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o lado direito em forma polar.** $1$ tem módulo $1$ e argumento $0$:
+
+$$
+1 = 1\cdot e^{i\,0}
+$$
+
+**Passo 2 — as três raízes.** Módulo $\sqrt[3]{1} = 1$, e o argumento se divide em três com espaçamento $2\pi/3$:
+
+$$
+z_k = \exp\!\left(i\,\frac{0 + 2k\pi}{3}\right) = e^{i\,2k\pi/3},
+\qquad k = 0,1,2
+$$
+
+**Passo 3 — escrever na forma algébrica.**
+
+$$
+z_0 = e^{0} = 1
+$$
+
+$$
+z_1 = e^{i\,2\pi/3} = \cos\frac{2\pi}{3} + i\operatorname{sen}\frac{2\pi}{3} = -\frac12 + \frac{\sqrt3}{2}\,i
+$$
+
+$$
+z_2 = e^{i\,4\pi/3} = \cos\frac{4\pi}{3} + i\operatorname{sen}\frac{4\pi}{3} = -\frac12 - \frac{\sqrt3}{2}\,i
+$$
+
+Estas são as **raízes cúbicas da unidade**, e a de índice $1$ costuma ser chamada de $\omega$: as três são $1$, $\omega$ e $\omega^2$.
+
+**Conferência 1 — a soma dá zero.**
+
+$$
+1 + \left(-\frac12 + \frac{\sqrt3}{2}i\right) + \left(-\frac12 - \frac{\sqrt3}{2}i\right) = 0
+\;\checkmark
+$$
+
+**Conferência 2 — por fatoração, sem forma polar.** Como $z^3 - 1 = (z-1)(z^2+z+1)$, as outras duas raízes saem de $z^2+z+1=0$:
+
+$$
+z = \frac{-1 \pm \sqrt{1-4}}{2} = \frac{-1 \pm i\sqrt3}{2}
+\;\checkmark
+$$
+
+Bate exatamente. Este caminho alternativo é útil quando $n$ é pequeno e o lado direito é $1$ ou $-1$.
+
+<Caixa tipo="dica" rotulo="Compare com a q02">
+
+A q02 desta unidade pede $z^3 = -i$, e a estrutura é idêntica — o que muda é só o argumento do lado direito, que ali é $-\pi/2$ e aqui é $0$. Em ambas: **três** raízes, módulo $1$, vértices de um triângulo equilátero na circunferência unitária.
+
+O erro que aparece nas duas é responder só uma raiz — a "óbvia". Em $z^3=1$, dar apenas $z=1$ vale um terço da questão.
+
+</Caixa>
+</Passos>
