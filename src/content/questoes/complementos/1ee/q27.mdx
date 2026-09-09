@@ -1,0 +1,83 @@
+---
+origem: "2026.1"
+tema: "Singularidade essencial · Resíduo lido da série de Laurent"
+temaId: singularidade-essencial
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\oint_{\gamma;\,|z|=1} z^{2}\,e^{\frac1z}\,dz
+$$
+
+pelo teorema dos resíduos. Qual o ponto singular, e de qual natureza (polo simples, polo de ordem $m$, singularidade essencial)?
+
+<Gabarito>
+$z=0$ é **singularidade essencial**, com $\operatorname{Res} = \dfrac{1}{3!} = \dfrac16$, e
+
+$$
+\oint_{|z|=1} z^2 e^{1/z}\,dz = 2\pi i\cdot\frac16 = \frac{\pi i}{3}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o ponto singular.** A função $e^{1/z}$ não está definida em $z=0$, e é analítica em todo o resto do plano. Então $z=0$ é a única singularidade, e ela está dentro de $|z|=1$.
+
+**Passo 2 — de que natureza?** Aqui **não** vale tentar a fórmula do polo. Expanda: partindo de $e^w = \sum w^n/n!$ com $w = 1/z$,
+
+$$
+e^{1/z} = \sum_{n=0}^{\infty}\frac{1}{n!\,z^{n}}
+= 1 + \frac1z + \frac{1}{2!z^2} + \frac{1}{3!z^3} + \cdots
+$$
+
+A parte principal tem **infinitos** termos: $z=0$ é uma **singularidade essencial**. Nenhum $m$ faz $z^m f(z)$ ter limite finito, então não é polo de ordem alguma.
+
+**Passo 3 — a série do integrando.** Multiplicando por $z^2$:
+
+$$
+z^2 e^{1/z} = \sum_{n=0}^{\infty}\frac{z^{2-n}}{n!}
+= z^2 + z + \frac{1}{2!} + \frac{1}{3!\,z} + \frac{1}{4!\,z^2} + \cdots
+$$
+
+**Passo 4 — ler o resíduo.** O resíduo é, por definição, o coeficiente de $z^{-1}$. Ele aparece quando $2 - n = -1$, isto é, $n = 3$:
+
+$$
+\operatorname{Res}\big(z^2e^{1/z},\,0\big) = \frac{1}{3!} = \frac16
+$$
+
+**Passo 5 — o teorema dos resíduos.**
+
+$$
+\boxed{\;\oint_{|z|=1} z^2e^{1/z}\,dz = 2\pi i\cdot\frac16 = \frac{\pi i}{3}\;}
+$$
+
+<Caixa tipo="macete" rotulo="Em singularidade essencial, só a série serve">
+
+As fórmulas de resíduo — $\lim (z-z_0)f$, $p/q'$, a da derivada de ordem $m-1$ — **todas** pressupõem polo. Numa essencial elas não se aplicam, e o único caminho é expandir e **ler** o $a_{-1}$.
+
+O reconhecimento é rápido: $1/z$ dentro de exponencial, seno, cosseno ou hiperbólica → essencial. E a expansão nunca é difícil, porque basta substituir $w = 1/(z-z_0)$ numa série conhecida.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Compare com a q05 do 2º EE de 2025.2">
+
+A mesma prova de 2025.2 traz $\cos\!\big(1/(z-2)\big)$, também essencial, mas com resíduo **zero** — porque a série do cosseno só tem potências pares e o termo $(z-2)^{-1}$ nunca aparece. Ali a integral dá zero.
+
+Duas essenciais, dois resultados opostos: o que decide é se a potência $-1$ existe na série. Não há como saber sem escrever a expansão.
+
+</Caixa>
+</Passos>
