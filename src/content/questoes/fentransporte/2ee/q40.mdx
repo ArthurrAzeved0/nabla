@@ -1,0 +1,232 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Isolamento · Achar a espessura que atende à norma"
+temaId: isolamento-termico
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q40.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma parede de $4\ \mathrm{m^2}$ de área transversal é composta por dois materiais: **aço carbono** ($k = 3{,}0\ \mathrm{W/(m\cdot{}^\circ C)}$; espessura de $10{,}0\ \mathrm{cm}$) e um **isolante** ($k = 0{,}1\ \mathrm{W/(m\cdot{}^\circ C)}$; **espessura a ser determinada**), justapostos para separar dois meios. Do lado do aço carbono (na esquerda) há gases de combustão a $1000\ ^\circ\mathrm{C}$ ($h = 5{,}0\ \mathrm{W/(m^2\cdot{}^\circ C)}$) e do outro lado há ar a $25\ ^\circ\mathrm{C}$ ($h = 3{,}0\ \mathrm{W/(m^2\cdot{}^\circ C)}$).
+
+Sabendo que as normas ambientais limitam a liberação de calor a $400\ \mathrm{W/m^2}$, determine a **espessura da placa de isolante** que deve ser usada e, também, as **temperaturas nas interfaces** da parede com os fluidos e na interface aço–isolante. Considere que **não há geração** de calor na parede.
+
+<Figura>
+  <svg viewBox="0 0 360 200" role="img" aria-label="Parede de duas camadas: aço carbono de 10 centímetros à esquerda com gases de combustão a 1000 graus, e isolante de espessura desconhecida à direita com ar a 25 graus">
+    {/* aço */}
+    <rect x="104" y="40" width="34" height="110" fill="var(--line-2)" opacity="0.85" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="110" y="98" font-size="9" fill="var(--ink-2)">aço</text>
+    <text x="106" y="112" font-size="8" fill="var(--ink-3)">k = 3,0</text>
+    {/* isolante */}
+    <rect x="138" y="40" width="76" height="110" fill="var(--warn)" opacity="0.28" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="152" y="92" font-size="9" fill="var(--ink-2)">isolante</text>
+    <text x="152" y="106" font-size="8" fill="var(--ink-3)">k = 0,1</text>
+    {/* gases à esquerda */}
+    <path d="M92 80 Q84 95 92 110" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
+    <path d="M82 72 Q70 95 82 118" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="8" y="72" font-size="9" fill="var(--warn)">gases de combustão</text>
+    <text x="14" y="85" font-size="9" fill="var(--warn)">T∞,1 = 1000 °C</text>
+    <text x="24" y="98" font-size="9" fill="var(--warn)">h₁ = 5,0</text>
+    {/* ar à direita */}
+    <path d="M226 80 Q234 95 226 110" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M236 72 Q248 95 236 118" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="256" y="78" font-size="9" fill="var(--accent)">ar</text>
+    <text x="256" y="91" font-size="9" fill="var(--accent)">T∞,2 = 25 °C</text>
+    <text x="256" y="104" font-size="9" fill="var(--accent)">h₂ = 3,0</text>
+    {/* fluxo limitado */}
+    <line x1="160" y1="62" x2="200" y2="62" stroke="var(--ok)" stroke-width="2.2"/>
+    <polygon points="206,62 196,58 196,66" fill="var(--ok)"/>
+    <text x="150" y="54" font-size="9" fill="var(--ok)">q″ ≤ 400 W/m²</text>
+    {/* interfaces */}
+    <circle cx="104" cy="150" r="3" fill="var(--ink-2)"/>
+    <text x="90" y="168" font-size="9" fill="var(--ink-2)">T₁</text>
+    <circle cx="138" cy="150" r="3" fill="var(--ink-2)"/>
+    <text x="132" y="168" font-size="9" fill="var(--ink-2)">T₂</text>
+    <circle cx="214" cy="150" r="3" fill="var(--ink-2)"/>
+    <text x="210" y="168" font-size="9" fill="var(--ink-2)">T₃</text>
+    {/* cotas */}
+    <line x1="104" y1="32" x2="138" y2="32" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="104,32 110,29 110,35" fill="var(--accent)"/>
+    <polygon points="138,32 132,29 132,35" fill="var(--accent)"/>
+    <text x="96" y="24" font-size="8" fill="var(--accent)">10,0 cm</text>
+    <line x1="138" y1="32" x2="214" y2="32" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="138,32 144,29 144,35" fill="var(--accent)"/>
+    <polygon points="214,32 208,29 208,35" fill="var(--accent)"/>
+    <text x="160" y="24" font-size="8" fill="var(--accent)">L iso = ?</text>
+    {/* área */}
+    <text x="130" y="192" font-size="9" fill="var(--ink-3)">A = 4 m²  ·  sem geração de calor</text>
+  </svg>
+  <figcaption>
+
+O dado que resolve o problema é o **limite** de $400\ \mathrm{W/m^2}$: ele fixa $q$, e a espessura passa a ser a incógnita da equação das resistências.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+q = q''\,A = 400 \times 4 = 1600\ \mathrm{W}
+$$
+
+$$
+R_e = \frac{1}{h_1 A} = 0{,}05
+\quad
+R_1 = \frac{L_{aço}}{k_{aço}A} = 0{,}00833
+\quad
+R_2 = \frac{L_{iso}}{k_{iso}A} = 2{,}5\,L_{iso}
+\quad
+R_i = \frac{1}{h_2 A} = 0{,}0833
+$$
+
+$$
+q = \frac{T_{\infty,1} - T_{\infty,2}}{R_t}
+\qquad\Longrightarrow\qquad
+1600 = \frac{975}{2{,}5\,L_{iso} + 0{,}1417}
+$$
+
+$$
+\boxed{\;L_{iso} \approx 0{,}187\ \mathrm{m} = 18{,}7\ \mathrm{cm}\;}
+$$
+
+As temperaturas:
+
+$$
+T_1 = 1000 - q R_e = \mathbf{920\ ^\circ C}
+\qquad
+T_2 = T_1 - q R_1 = \mathbf{907\ ^\circ C}
+\qquad
+T_3 = T_2 - q R_2 = \mathbf{158\ ^\circ C}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o problema está de cabeça para trás.** Nas questões anteriores, a geometria era dada e o fluxo era a incógnita. Aqui é o contrário: **o fluxo é dado** (pelo limite da norma) e a **geometria** é a incógnita.
+
+$$
+q'' = 400\ \mathrm{W/m^2}
+\qquad\Longrightarrow\qquad
+q = q''\,A = 400 \times 4 = 1600\ \mathrm{W}
+$$
+
+**Passo 2 — as quatro resistências, três conhecidas e uma com a incógnita.**
+
+$$
+R_e = \frac{1}{h_1 A} = \frac{1}{5{,}0 \times 4} = 0{,}05\ ^\circ\mathrm{C/W}
+$$
+
+$$
+R_1 = \frac{L_{aço}}{k_{aço}\,A} = \frac{0{,}10}{3{,}0 \times 4} = 0{,}00833\ ^\circ\mathrm{C/W}
+$$
+
+$$
+R_2 = \frac{L_{iso}}{k_{iso}\,A} = \frac{L_{iso}}{0{,}1 \times 4} = \frac{L_{iso}}{0{,}4} = 2{,}5\,L_{iso}
+$$
+
+$$
+R_i = \frac{1}{h_2 A} = \frac{1}{3{,}0 \times 4} = 0{,}0833\ ^\circ\mathrm{C/W}
+$$
+
+<Caixa tipo="simbolos">
+
+- $R_e$ — convecção dos **gases** na face esquerda
+- $R_1$ — condução no **aço**
+- $R_2$ — condução no **isolante**, a única que depende da incógnita
+- $R_i$ — convecção do **ar** na face direita
+
+</Caixa>
+
+**Passo 3 — montar a equação e isolar $L_{iso}$.**
+
+$$
+R_t = R_e + R_1 + R_2 + R_i = 0{,}05 + 0{,}00833 + 2{,}5\,L_{iso} + 0{,}0833 = 2{,}5\,L_{iso} + 0{,}1417
+$$
+
+$$
+q = \frac{T_{\infty,1} - T_{\infty,2}}{R_t}
+\qquad\Longrightarrow\qquad
+1600 = \frac{1000 - 25}{2{,}5\,L_{iso} + 0{,}1417}
+$$
+
+$$
+2{,}5\,L_{iso} + 0{,}1417 = \frac{975}{1600} = 0{,}6094
+$$
+
+$$
+2{,}5\,L_{iso} = 0{,}4677
+\qquad\Longrightarrow\qquad
+L_{iso} = 0{,}1871\ \mathrm{m} \approx 18{,}7\ \mathrm{cm}
+$$
+
+**Passo 4 — as temperaturas, uma resistência por vez.** Caminhando dos gases para dentro:
+
+$$
+T_1 = T_{\infty,1} - q\,R_e = 1000 - 1600 \times 0{,}05 = 1000 - 80 = 920\ ^\circ\mathrm{C}
+$$
+
+$$
+T_2 = T_1 - q\,R_1 = 920 - 1600 \times 0{,}00833 = 920 - 13{,}3 = 906{,}7\ ^\circ\mathrm{C}
+$$
+
+$$
+R_2 = 2{,}5 \times 0{,}1871 = 0{,}4677\ ^\circ\mathrm{C/W}
+$$
+
+$$
+T_3 = T_2 - q\,R_2 = 906{,}7 - 1600 \times 0{,}4677 = 906{,}7 - 748{,}3 = 158{,}4\ ^\circ\mathrm{C}
+$$
+
+**Passo 5 — a conferência pelo lado do ar.**
+
+$$
+T_3 - T_{\infty,2} = q\,R_i = 1600 \times 0{,}0833 = 133{,}3\ ^\circ\mathrm{C}
+\qquad\Longrightarrow\qquad
+T_3 = 25 + 133{,}3 = 158{,}3\ ^\circ\mathrm{C}\ \checkmark
+$$
+
+Chega-se ao mesmo $T_3$ pelos dois caminhos.
+
+**Passo 6 — onde a temperatura cai.**
+
+| resistência | valor $[^\circ\mathrm{C/W}]$ | fração | $\Delta T$ $[^\circ\mathrm{C}]$ |
+|---|---|---|---|
+| convecção dos gases | $0{,}0500$ | $8{,}2\ \%$ | $80{,}0$ |
+| condução no aço | $0{,}00833$ | $1{,}4\ \%$ | $13{,}3$ |
+| **condução no isolante** | $0{,}4677$ | $\mathbf{76{,}7\ \%}$ | $748{,}3$ |
+| convecção do ar | $0{,}0833$ | $13{,}7\ \%$ | $133{,}3$ |
+| **total** | $0{,}6094$ | $100\ \%$ | $\mathbf{975{,}0}$ |
+
+As quedas somam $975\ ^\circ\mathrm{C}$ ✔ E o isolante, como se espera do nome, absorve **três quartos** da queda: de $907$ para $158\ ^\circ\mathrm{C}$ em $18{,}7\ \mathrm{cm}$.
+
+<Caixa tipo="macete" rotulo="Por que o aço não serve de isolante">
+
+$$
+\frac{R_2}{R_1} = \frac{0{,}4677}{0{,}00833} = 56
+$$
+
+Os $18{,}7\ \mathrm{cm}$ de isolante resistem **56 vezes** mais que os $10\ \mathrm{cm}$ de aço. Para conseguir o mesmo efeito só com aço, seriam necessários $L = 0{,}4677 \times 3{,}0 \times 4 = 5{,}6\ \mathrm{m}$ de espessura.
+
+É a razão de existir a segunda camada: o aço dá **resistência mecânica**, o isolante dá **resistência térmica**. Cada material para o que serve.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Um detalhe de engenharia">
+
+A norma limita a $400\ \mathrm{W/m^2}$, então $18{,}7\ \mathrm{cm}$ é a espessura **mínima**: mais isolante reduz ainda mais a liberação, e continua atendendo. Na prática se especificaria a espessura comercial imediatamente **acima** — $20\ \mathrm{cm}$, por exemplo.
+
+E vale notar que a face externa fica a $158\ ^\circ\mathrm{C}$: ainda alta para contato humano. Uma norma de segurança pediria mais isolante que a ambiental.
+
+</Caixa>
+
+**Conferência —** $q'' \times A$ dá o $q$ em watt, e é ele que entra na equação ✔ as duas convecções e as duas conduções usam a **mesma** área, $4\ \mathrm{m^2}$ ✔ a incógnita aparece só em $R_2$ ✔ as quatro quedas somam $975\ ^\circ\mathrm{C}$ ✔ o isolante tem de concentrar a maior queda ✔
+</Passos>
