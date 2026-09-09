@@ -1,0 +1,95 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Transporte de massa · Fluxo convectivo e a velocidade média da mistura"
+temaId: fluxo-convectivo
+pontos: 0,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**O que acontece com o fluxo convectivo de dois componentes em uma mistura, em relação à velocidade média da mistura?**
+
+<Gabarito>
+Os dois fluxos convectivos são **arrastados pela mesma velocidade média** $v$ da mistura, logo apontam **para o mesmo lado** e são proporcionais apenas à concentração de cada espécie:
+
+$$
+N''_A = C_A\,v
+\qquad\qquad
+N''_B = C_B\,v
+$$
+
+Somados, dão o fluxo convectivo da mistura inteira:
+
+$$
+N''_A + N''_B = (C_A + C_B)\,v = C\,v
+$$
+
+Ou seja: **o transporte convectivo não separa as espécies** — ele carrega as duas juntas, na proporção em que estão presentes. Quem separa é a difusão, que atua em sentidos opostos para $A$ e $B$.
+</Gabarito>
+
+<Passos>
+**1 — O que é o fluxo convectivo.** É o transporte que existe **só porque a mistura escoa**. Cada espécie é levada com a velocidade média da mistura:
+
+$$
+N''_i = C_i\,v
+$$
+
+Não há gradiente envolvido, nem coeficiente de difusão: é a concentração multiplicada pela velocidade.
+
+<Caixa tipo="simbolos">
+
+- $C_A,\ C_B$ — concentrações molares das espécies, em $\mathrm{mol/m^3}$
+- $C = C_A + C_B$ — concentração **total** da mistura
+- $v$ — **velocidade média da mistura**, em $\mathrm{m/s}$ (a mesma para as duas espécies)
+- $N''_i$ — densidade de fluxo convectivo, em $\mathrm{mol/(m^2\cdot s)}$
+
+</Caixa>
+
+**2 — A consequência que a questão quer.** Como a velocidade é **comum**, os dois fluxos convectivos:
+
+- têm o **mesmo sentido** — o do escoamento;
+- estão na **razão das concentrações**:
+
+$$
+\frac{N''_A}{N''_B} = \frac{C_A}{C_B} = \frac{x_A}{x_B}
+$$
+
+- e somam exatamente o transporte da mistura como um todo, $C\,v$.
+
+Em outras palavras, a convecção transporta a mistura **sem alterar a sua composição**. Se numa seção a mistura é 70 % de $A$, a convecção leva adiante 70 % de $A$.
+
+**3 — O contraste com a difusão, que é o outro lado da resposta.** Com concentração total constante,
+
+$$
+J''_A = -J''_B
+$$
+
+A difusão manda $A$ para um lado e $B$ para o outro — **ela separa**. Já a convecção manda os dois para o mesmo lado — **ela não separa**.
+
+**4 — E o fluxo absoluto reúne os dois.**
+
+$$
+N''_{A,abs} = \underbrace{J''_A}_{\text{difusivo}} + \underbrace{C_A\,v}_{\text{convectivo}}
+$$
+
+<Caixa tipo="macete" rotulo="A ordem de grandeza é sempre a mesma surpresa">
+
+Em escoamento com velocidade apreciável, o termo convectivo é **centenas de vezes** maior que o difusivo. Por exemplo, com $C_A = 80\ \mathrm{mol/m^3}$ e $v = 4\ \mathrm{m/s}$, o convectivo é $320\ \mathrm{mol/(m^2 s)}$ contra um difusivo típico de $1{,}5$.
+
+Daí a regra prática: **se o fluido escoa, a convecção domina**; a difusão só manda onde o fluido está praticamente parado — dentro de um sólido poroso, numa membrana, numa camada limite.
+
+</Caixa>
+
+**Conferência —** os dois fluxos convectivos usam a **mesma** velocidade e vão no **mesmo** sentido ✔ a soma dá $Cv$ ✔ o contraste com $J''_A = -J''_B$ é o que mostra que se entendeu a diferença entre os dois mecanismos ✔
+</Passos>
