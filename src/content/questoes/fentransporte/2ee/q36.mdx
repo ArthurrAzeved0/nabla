@@ -1,0 +1,242 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Máquina hidráulica · Perda entre duas seções e o tipo de máquina"
+temaId: altura-manometrica
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q36.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o sistema hidráulico da figura, cujo **sentido do escoamento vai de (4) para (1)**.
+
+**Dados:** $Q = 1{,}0\ \mathrm{L/s}$; $h_{p,1\text{-}2} = h_{p,3\text{-}4} = 1{,}0\ \mathrm{m}$; $p_2 = 2{,}0\times10^5\ \mathrm{Pa}$; $p_3 = 4{,}0\times10^5\ \mathrm{Pa}$; $p_1 = 0{,}1\ \mathrm{MPa}$; $\gamma_{H_2O} = 10^4\ \mathrm{N/m^3}$; $A_2 = 2\times10^{-3}\ \mathrm{m^2}$; $A_3 = 8\times10^{-3}\ \mathrm{m^2}$; $\eta_m = 0{,}8$.
+
+**a)** (1,0 pt.) Determine a **perda de carga no trecho (2)–(3)**.
+
+**b)** (1,5 pts.) Determine o **tipo de máquina** e a sua **potência**.
+
+<Figura>
+  <svg viewBox="0 0 400 220" role="img" aria-label="Reservatório 1 fechado com ar, tubulação que desce até a máquina 2 metros abaixo do plano de referência, sobe e passa pelas seções 2 e 3, e segue até o reservatório 4, cuja superfície está 5 metros acima do referencial">
+    {/* PHR */}
+    <line x1="16" y1="96" x2="392" y2="96" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="6 4"/>
+    <text x="360" y="92" font-size="9" fill="var(--ink-3)">PHR</text>
+    {/* reservatório 1 */}
+    <path d="M28 76 L28 190 L120 190 L120 76" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="29" y="78" width="90" height="18" fill="var(--line-2)" opacity="0.7"/>
+    <text x="60" y="91" font-size="9" fill="var(--ink-2)">Ar</text>
+    <rect x="29" y="96" width="90" height="94" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="29" y1="96" x2="119" y2="96" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="32" y="72" font-size="9" fill="var(--warn)">p₁ = 0,1 MPa</text>
+    <text x="122" y="90" font-size="10" fill="var(--ink-2)">(1)</text>
+    <text x="34" y="182" font-size="8" fill="var(--ink-3)">γ = 10⁴ N/m³</text>
+    {/* tubulação: fundo do reservatório -> desce -> máquina -> sobe ao PHR */}
+    <line x1="74" y1="190" x2="74" y2="200" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="74" y1="200" x2="140" y2="200" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="140" y1="200" x2="140" y2="130" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <circle cx="140" cy="130" r="11" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="136" y="134" font-size="10" fill="var(--ink-2)">M</text>
+    <text x="92" y="150" font-size="8" fill="var(--ink-3)">ηₘ = 0,8</text>
+    <line x1="140" y1="119" x2="140" y2="96" stroke="var(--ink-2)" stroke-width="2.2"/>
+    {/* cota 2 m */}
+    <line x1="158" y1="96" x2="158" y2="130" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="158,96 155,105 161,105" fill="var(--ok)"/>
+    <polygon points="158,130 155,121 161,121" fill="var(--ok)"/>
+    <text x="162" y="128" font-size="9" fill="var(--ok)">2 m</text>
+    {/* trecho horizontal com as seções 2 e 3 */}
+    <line x1="140" y1="92" x2="196" y2="92" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <path d="M196 92 L214 88 L214 84 L268 84" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="182" y1="80" x2="182" y2="100" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2"/>
+    <circle cx="182" cy="74" r="6" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="190" y="110" font-size="10" fill="var(--accent)">(2)</text>
+    <text x="140" y="66" font-size="8" fill="var(--accent)">A₂ = 2·10⁻³ m²</text>
+    <line x1="240" y1="72" x2="240" y2="92" stroke="var(--warn)" stroke-width="1" stroke-dasharray="3 2"/>
+    <circle cx="240" cy="66" r="6" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="234" y="108" font-size="10" fill="var(--warn)">(3)</text>
+    <text x="248" y="120" font-size="8" fill="var(--warn)">A₃ = 8·10⁻³ m²</text>
+    {/* sobe até o reservatório 4 */}
+    <line x1="268" y1="84" x2="268" y2="44" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="268" y1="44" x2="292" y2="44" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <path d="M292 26 L292 60 L376 60 L376 26" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="293" y="28" width="82" height="16" fill="var(--line-2)" opacity="0.7"/>
+    <text x="326" y="40" font-size="9" fill="var(--ink-2)">Ar</text>
+    <rect x="293" y="44" width="82" height="16" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="293" y1="44" x2="375" y2="44" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="378" y="40" font-size="10" fill="var(--ink-2)">(4)</text>
+    {/* cota 5 m */}
+    <line x1="390" y1="44" x2="390" y2="96" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="390,44 387,53 393,53" fill="var(--ok)"/>
+    <polygon points="390,96 387,87 393,87" fill="var(--ok)"/>
+    <text x="366" y="74" font-size="9" fill="var(--ok)">5 m</text>
+    {/* sentido do escoamento */}
+    <line x1="228" y1="196" x2="188" y2="196" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="182,196 192,192 192,200" fill="var(--warn)"/>
+    <text x="234" y="200" font-size="9" fill="var(--warn)">escoamento: de (4) para (1)</text>
+  </svg>
+  <figcaption>
+
+Atenção ao **sentido**: numerada de (1) a (4), a tubulação é percorrida ao contrário — de (4) para (1). Todo Bernoulli tem de ser escrito nessa ordem.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v_2 = \frac{Q}{A_2} = 0{,}5\ \mathrm{m/s}
+\qquad
+v_3 = \frac{Q}{A_3} = 0{,}125\ \mathrm{m/s}
+\qquad
+g = 10\ \mathrm{m/s^2}
+$$
+
+**a)** Bernoulli de (3) para (2), ambos no PHR:
+
+$$
+h_{p,3\text{-}2} = \frac{p_3 - p_2}{\gamma} + \frac{v_3^2 - v_2^2}{2g} = 40 - 20 + (0{,}00078 - 0{,}0125)
+$$
+
+$$
+h_{p,2\text{-}3} \approx \mathbf{19{,}99\ m}
+$$
+
+**b)** Bernoulli de (2) para (1), com a máquina no caminho:
+
+$$
+\frac{p_2}{\gamma} + \frac{v_2^2}{2g} + H_M = \frac{p_1}{\gamma} + h_{p,2\text{-}1}
+\qquad\Longrightarrow\qquad
+20 + 0{,}0125 + H_M = 10 + 1{,}0
+$$
+
+$$
+H_M = -9{,}01\ \mathrm{m}
+\qquad\Longrightarrow\qquad
+\textbf{turbina}
+$$
+
+$$
+N = \gamma\,Q\,|H_M|\,\eta_m = 10^4 \times 10^{-3} \times 9{,}01 \times 0{,}8 \approx \mathbf{72{,}1\ W}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as velocidades e o $g$.** A vazão é a mesma em todo o sistema:
+
+$$
+Q = 1{,}0\ \mathrm{L/s} = 1{,}0\times10^{-3}\ \mathrm{m^3/s}
+$$
+
+$$
+v_2 = \frac{Q}{A_2} = \frac{10^{-3}}{2\times10^{-3}} = 0{,}5\ \mathrm{m/s}
+\qquad
+v_3 = \frac{Q}{A_3} = \frac{10^{-3}}{8\times10^{-3}} = 0{,}125\ \mathrm{m/s}
+$$
+
+E o $g$ vem do peso específico dado:
+
+$$
+\gamma = \rho\,g = 10^4\ \mathrm{N/m^3}
+\qquad\text{com}\qquad
+\rho = 1000\ \mathrm{kg/m^3}
+\qquad\Longrightarrow\qquad
+g = 10\ \mathrm{m/s^2}
+$$
+
+As cargas cinéticas:
+
+$$
+\frac{v_2^2}{2g} = \frac{0{,}25}{20} = 0{,}0125\ \mathrm{m}
+\qquad
+\frac{v_3^2}{2g} = \frac{0{,}015625}{20} = 0{,}00078\ \mathrm{m}
+$$
+
+Ambas **minúsculas** diante das cargas de pressão — mas vale escrevê-las, porque o enunciado deu as áreas justamente para isso.
+
+**Passo 2 — item (a): a perda entre (2) e (3).** Os dois pontos estão **no PHR**, logo $z_2 = z_3 = 0$. Escrevendo Bernoulli **no sentido do escoamento**, de (3) para (2):
+
+$$
+\frac{p_3}{\gamma} + \frac{v_3^2}{2g} + z_3 = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2 + h_p
+$$
+
+$$
+\frac{4{,}0\times10^5}{10^4} + 0{,}00078 = \frac{2{,}0\times10^5}{10^4} + 0{,}0125 + h_p
+$$
+
+$$
+40 + 0{,}00078 = 20 + 0{,}0125 + h_p
+\qquad\Longrightarrow\qquad
+h_p = 19{,}988\ \mathrm{m}
+$$
+
+<Caixa tipo="macete" rotulo="O sentido decide quem paga a perda">
+
+A perda de carga entra **sempre do lado de chegada** — do ponto para onde o fluido está indo. Escrever Bernoulli de (2) para (3), na ordem da numeração, daria $h_p = -19{,}99\ \mathrm{m}$, uma perda negativa, que é impossível.
+
+O enunciado avisa que o escoamento vai **de (4) para (1)**, e é por isso que ele avisa: a numeração da figura está ao contrário do percurso.
+
+</Caixa>
+
+**Passo 3 — item (b): montar Bernoulli sobre a máquina.** A máquina está entre (2) e o reservatório (1) — é o único trecho que a contém, e o trecho cuja perda é dada ($h_{p,1\text{-}2} = 1{,}0\ \mathrm{m}$).
+
+De (2) para (1), no sentido do escoamento:
+
+$$
+\frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2 + H_M = \frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 + h_{p,2\text{-}1}
+$$
+
+- $v_1 \approx 0$ — (1) é a **superfície livre** de um reservatório;
+- $z_1 = z_2 = 0$ — as duas estão no PHR (a superfície de (1) coincide com o referencial).
+
+$$
+20 + 0{,}0125 + H_M = 10 + 0 + 0 + 1{,}0
+$$
+
+$$
+H_M = 11 - 20{,}0125 = -9{,}01\ \mathrm{m}
+$$
+
+**Passo 4 — ler o sinal.** $H_M < 0$: a máquina **retira** carga do fluido. É uma **turbina**.
+
+E faz todo o sentido físico: o fluido vem de (4), que está $5\ \mathrm{m}$ mais alto e pressurizado, e chega em (1) a apenas $1\ \mathrm{atm}$. Há energia disponível de sobra, e a máquina a colhe.
+
+**Passo 5 — a potência, com o rendimento no lugar certo.** Para **turbina**, o rendimento **multiplica**:
+
+$$
+N = \gamma\,Q\,|H_M|\,\eta_m = 10^4 \times 10^{-3} \times 9{,}01 \times 0{,}8
+$$
+
+$$
+N = 10 \times 9{,}01 \times 0{,}8 = 72{,}1\ \mathrm{W}
+$$
+
+A potência hidráulica retirada é $\gamma Q |H_M| = 90{,}1\ \mathrm{W}$; dela, $80\ \%$ chegam ao eixo.
+
+<Caixa tipo="dica" rotulo="Bônus: a pressão do ar em (4)">
+
+O dado $h_{p,3\text{-}4} = 1{,}0\ \mathrm{m}$ não foi usado — mas ele permite achar $p_4$, que a figura não dá. De (4) para (3):
+
+$$
+\frac{p_4}{\gamma} + 0 + 5 = 40 + 0{,}00078 + 0 + 1{,}0
+\qquad\Longrightarrow\qquad
+\frac{p_4}{\gamma} = 36{,}0
+$$
+
+$$
+p_4 = 3{,}6\times10^5\ \mathrm{Pa}
+$$
+
+Reservatório pressurizado, como o "Ar" da figura sugere. Se a prova pedisse a carga total do sistema inteiro, seria por aqui.
+
+</Caixa>
+
+**Conferência —** $g = 10\ \mathrm{m/s^2}$ sai de $\gamma = 10^4$ ✔ (2) e (3) estão os dois no PHR, então $z$ não entra no item (a) ✔ a perda vai do lado de **chegada**, e o escoamento é de (4) para (1) ✔ $H_M$ negativo é **turbina**, e aí o rendimento **multiplica** ✔ $v_1 \approx 0$ porque (1) é superfície livre ✔
+</Passos>
