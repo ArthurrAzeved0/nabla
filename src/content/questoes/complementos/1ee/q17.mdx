@@ -1,0 +1,77 @@
+---
+origem: "2025.2"
+tema: "Cauchy-Goursat · A singularidade fica FORA da curva"
+temaId: teorema-de-cauchy
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule
+
+$$
+\oint_{\gamma} \frac{e^{z}}{z+i}\,dz,
+\qquad\text{onde}\qquad
+\gamma(t) = i + e^{it},\quad t \in [0, 2\pi]
+$$
+
+<Gabarito>
+$$
+\oint_{\gamma}\frac{e^z}{z+i}\,dz = 0
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — ler a curva na parametrização.** A forma $z(t) = z_c + R\,e^{it}$ é a de uma circunferência de centro $z_c$ e raio $R$. Aqui:
+
+$$
+\gamma(t) = i + e^{it}
+\qquad\Longrightarrow\qquad
+\text{centro } z_c = i,
+\qquad
+\text{raio } R = 1
+$$
+
+**Passo 2 — onde está a singularidade.** O denominador zera em
+
+$$
+z + i = 0
+\qquad\Longrightarrow\qquad
+z = -i
+$$
+
+**Passo 3 — dentro ou fora?** A distância do centro ao ponto singular:
+
+$$
+|-i - i| = |-2i| = 2 > 1 = R
+$$
+
+O ponto $-i$ está a **duas** unidades do centro, e o raio é $1$: a singularidade está **fora** da curva.
+
+**Passo 4 — concluir pelo teorema de Cauchy-Goursat.** Dentro e sobre $\gamma$ o integrando é analítico: $e^z$ é inteira e $z+i$ não zera ali. Então
+
+$$
+\boxed{\;\oint_{\gamma}\frac{e^z}{z+i}\,dz = 0\;}
+$$
+
+Sem parametrizar, sem integrar, sem resíduo nenhum.
+
+<Caixa tipo="dica" rotulo="A questão é uma armadilha, e ela é gentil">
+
+Das quatro integrais da questão 02 desta prova, três exigem a fórmula de Cauchy e **esta** exige o contrário: reconhecer que não há nada a calcular. Quem aplica a fórmula por reflexo escreve $2\pi i\,e^{-i}$ e perde o item inteiro.
+
+O disfarce está na notação: a curva vem **parametrizada** em vez de escrita como $|z - i| = 1$, e o centro $i$ e a singularidade $-i$ diferem só por um sinal. Traduzir a parametrização para centro e raio, antes de qualquer conta, é o hábito que evita isso.
+
+</Caixa>
+</Passos>
