@@ -1,0 +1,96 @@
+---
+origem: "2023.2"
+tema: "Viscosidade · Placas paralelas com viscosidade cinemática dada"
+temaId: viscosidade
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+São dadas duas placas planas paralelas à distância de $2\ \mathrm{mm}$. A placa superior se move com velocidade de $4\ \mathrm{m/s}$ enquanto a inferior está fixa. O espaço entre as duas placas está preenchido com óleo.
+
+**Dados:** viscosidade cinemática $\nu = 10^{-5}\ \mathrm{m^2/s}$; $\rho = 830\ \mathrm{kg/m^3}$.
+
+**a)** (0,5) Determine a viscosidade dinâmica.
+
+**b)** (0,5) Determine a tensão de cisalhamento que agirá no óleo.
+
+<Figura>
+  <svg viewBox="0 0 300 120" role="img" aria-label="Duas placas paralelas separadas por 2 mm de óleo, a superior movendo-se a 4 m/s e a inferior fixa">
+    {/* placa superior */}
+    <rect x="30" y="26" width="230" height="10" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="200" y1="18" x2="252" y2="18" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="258,18 248,14 248,22" fill="var(--accent)"/>
+    <text x="196" y="12" font-size="10" fill="var(--accent)">4 m/s</text>
+    {/* óleo */}
+    <rect x="30" y="36" width="230" height="34" fill="var(--accent-soft)" opacity="0.55"/>
+    <text x="120" y="58" font-size="10" fill="var(--ink-2)">óleo</text>
+    {/* perfil linear de velocidade */}
+    <line x1="60" y1="70" x2="60" y2="36" stroke="var(--ok)" stroke-width="1"/>
+    <line x1="60" y1="70" x2="96" y2="36" stroke="var(--ok)" stroke-width="1.4"/>
+    <line x1="60" y1="45" x2="78" y2="45" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="84,45 74,41 74,49" fill="var(--ok)"/>
+    {/* placa inferior */}
+    <rect x="30" y="70" width="230" height="10" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="132" y="94" font-size="10" fill="var(--ink-3)">placa fixa</text>
+    {/* cota da folga */}
+    <line x1="270" y1="36" x2="270" y2="70" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="276" y="57" font-size="10" fill="var(--ink-3)">2 mm</text>
+  </svg>
+  <figcaption>
+
+A folga é pequena, então o perfil de velocidade é **linear**: de $4\ \mathrm{m/s}$ na placa (aderência) a zero no fundo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)** $\mu = 8{,}3 \times 10^{-3}\ \mathrm{Pa \cdot s}$
+
+**b)** $\tau = 16{,}6\ \mathrm{Pa}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que o item (a) existe.** O enunciado dá a viscosidade **cinemática**, e a lei de Newton usa a **dinâmica**. O item (a) é só a ponte entre as duas:
+
+$$
+\nu = \frac{\mu}{\rho}
+\qquad\Longrightarrow\qquad
+\mu = \nu\,\rho
+$$
+
+$$
+\mu = 10^{-5} \times 830 = 8{,}3 \times 10^{-3}\ \mathrm{Pa \cdot s}
+$$
+
+**Passo 2 — o gradiente de velocidade.** Com a folga pequena, admite-se perfil linear, e a derivada vira razão de números:
+
+$$
+\frac{dv}{dy} = \frac{v_0}{\varepsilon} = \frac{4}{2 \times 10^{-3}} = 2000\ \mathrm{s^{-1}}
+$$
+
+**Cuidado com a unidade:** os $2\ \mathrm{mm}$ **têm** de virar $2 \times 10^{-3}\ \mathrm{m}$. Deixar em milímetros multiplica o gradiente por mil.
+
+**Passo 3 — a lei de Newton da viscosidade.**
+
+$$
+\tau = \mu\,\frac{dv}{dy} = 8{,}3 \times 10^{-3} \times 2000
+$$
+
+$$
+\boxed{\tau = 16{,}6\ \mathrm{Pa}}
+$$
+
+**Conferência —** confira pela ordem de grandeza: $\mu$ da ordem de $10^{-2}$ vezes gradiente da ordem de $10^{3}$ dá dezenas de pascal ✔ E o sentido: a tensão que o óleo exerce **na placa** se opõe ao movimento dela; a que a placa exerce no óleo o arrasta ✔ Confere com o gabarito da prova.
+</Passos>
