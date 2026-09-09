@@ -1,0 +1,112 @@
+---
+origem: "2023.2"
+tema: "EDO · Homogênea de grau zero com a substituição y = xv"
+temaId: edo-homogenea-de-grau-zero
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução geral de
+
+$$
+x\,y\,y' = 4x^2 + y^2
+$$
+
+(sugestão: faça a substituição $y = xv$).
+
+<Gabarito>
+$$
+y^2 = x^2\big(8\ln|x| + C\big)
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reconhecer o tipo.** Isolando $y'$:
+
+$$
+y' = \frac{4x^2 + y^2}{xy} = \frac{4x}{y} + \frac{y}{x}
+$$
+
+O lado direito depende **só da razão $y/x$**: escrevendo $v = y/x$, ele é $\dfrac4v + v$. É uma **homogênea de grau zero**, e a sugestão do enunciado confirma.
+
+O teste geral, quando não há sugestão: troque $x \to tx$ e $y \to ty$. Se a equação não muda, é homogênea de grau zero.
+
+**Passo 2 — substituir.** Com $y = xv$, a derivada sai pela regra do produto:
+
+$$
+y' = v + x\,v'
+$$
+
+$$
+v + xv' = \frac{4}{v} + v
+$$
+
+O $v$ **cancela dos dois lados** — é isso que a substituição faz de útil:
+
+$$
+x\,v' = \frac{4}{v}
+$$
+
+**Passo 3 — separar as variáveis.**
+
+$$
+v\,dv = \frac{4\,dx}{x}
+$$
+
+$$
+\int v\,dv = 4\int\frac{dx}{x}
+\qquad\Longrightarrow\qquad
+\frac{v^2}{2} = 4\ln|x| + c
+$$
+
+$$
+v^2 = 8\ln|x| + C
+$$
+
+**Passo 4 — voltar para $y$.** Com $v = y/x$:
+
+$$
+\frac{y^2}{x^2} = 8\ln|x| + C
+$$
+
+$$
+\boxed{\;y^2 = x^2\big(8\ln|x| + C\big)\;}
+$$
+
+**Conferência —** derive implicitamente $y^2 = 8x^2\ln|x| + Cx^2$:
+
+$$
+2yy' = 16x\ln|x| + 8x + 2Cx
+$$
+
+Multiplique a equação original por $2$: $2xyy' = 8x^2 + 2y^2$. Substituindo $2yy'$ da linha acima:
+
+$$
+x\big(16x\ln|x| + 8x + 2Cx\big) = 8x^2 + 2x^2\big(8\ln|x| + C\big)
+$$
+
+$$
+16x^2\ln|x| + 8x^2 + 2Cx^2 = 8x^2 + 16x^2\ln|x| + 2Cx^2
+\;\;\checkmark
+$$
+
+<Caixa tipo="macete" rotulo="O enunciado entrega o tipo">
+
+Esta prova dá duas equações e manda escolher **uma**, com a substituição sugerida em cada. Isso diz o que se cobra: reconhecer o tipo e aplicar a troca certa, não descobrir a troca.
+
+**$y = xv$** → homogênea de grau zero, e o objetivo é **separar**. **$v = 1/y^{k}$** → Bernoulli, e o objetivo é **linearizar**. A q02 desta unidade é a outra opção da mesma questão.
+
+</Caixa>
+</Passos>
