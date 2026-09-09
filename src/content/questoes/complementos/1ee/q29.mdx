@@ -1,0 +1,74 @@
+---
+origem: "2024.2"
+tema: "Conceitual · O isomorfismo R-linear entre C e R²"
+temaId: plano-de-argand
+pontos: 0,2 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Como é estabelecido, algebricamente, o isomorfismo $\mathbb{R}$-linear entre $\mathbb{C}$ e $\mathbb{R}^2$?
+
+<Gabarito>
+Pela correspondência
+
+$$
+z = x + iy \;\longmapsto\; (x, y),
+\qquad
+x = \operatorname{Re}(z),
+\quad
+y = \operatorname{Im}(z)
+$$
+
+que é bijetora, preserva a soma e preserva a multiplicação por escalar **real** — e é só isso que "$\mathbb{R}$-linear" exige.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a aplicação.** Todo complexo se escreve de modo **único** como $z = x + iy$ com $x,y$ reais. A aplicação
+
+$$
+\Phi: \mathbb{C}\to\mathbb{R}^2,
+\qquad
+\Phi(x+iy) = (x,y)
+$$
+
+é bijetora justamente por essa unicidade.
+
+**Passo 2 — verificar que é linear sobre $\mathbb{R}$.** Duas propriedades:
+
+$$
+\Phi\big(z_1 + z_2\big) = \Phi(z_1) + \Phi(z_2)
+$$
+
+porque $(x_1+iy_1)+(x_2+iy_2) = (x_1+x_2) + i(y_1+y_2)$, que vai em $(x_1+x_2,\,y_1+y_2)$ ✔
+
+$$
+\Phi(\lambda z) = \lambda\,\Phi(z),
+\qquad \lambda \in \mathbb{R}
+$$
+
+porque $\lambda(x+iy) = \lambda x + i\lambda y \mapsto (\lambda x, \lambda y)$ ✔
+
+Bijetora e linear: é um **isomorfismo** de espaços vetoriais reais. Em particular, $\mathbb{C}$ tem dimensão $2$ sobre $\mathbb{R}$, com base $\{1, i\}$.
+
+**Passo 3 — a ressalva que dá a nota cheia.** O escalar tem de ser **real**. Sobre $\mathbb{C}$ a coisa muda: $\mathbb{C}$ tem dimensão $1$ sobre si mesmo, e $\mathbb{R}^2$ não tem estrutura de espaço vetorial complexo natural. Por isso o enunciado diz "$\mathbb{R}$-linear" e não apenas "linear".
+
+E há o que o isomorfismo **não** preserva: a **multiplicação** de complexos. $\mathbb{C}$ é um corpo; $\mathbb{R}^2$ com as operações usuais, não. Multiplicar $(x_1,y_1)$ por $(x_2,y_2)$ coordenada a coordenada não corresponde a $z_1z_2$.
+
+<Caixa tipo="dica" rotulo="A pergunta seguinte da prova depende desta">
+
+A questão 03 desta mesma prova pergunta o erro em escrever $2i < 3i$. As duas se completam: $\mathbb{C}$ é isomorfo a $\mathbb{R}^2$ **como espaço vetorial**, e $\mathbb{R}^2$ não é ordenado — não há como comparar pontos do plano da forma como se comparam pontos da reta.
+
+</Caixa>
+</Passos>
