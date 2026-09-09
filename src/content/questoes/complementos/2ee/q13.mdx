@@ -1,0 +1,133 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Laplace · PVI com forçamento senoidal e raízes complexas"
+temaId: pvi-por-laplace
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução de
+
+$$
+y'' + 2y' + 2y = \operatorname{sen}(2x),
+\qquad
+y(0) = y'(0) = 0
+$$
+
+usando a Transformada de Laplace.
+
+<Gabarito>
+$$
+y(x) = -\frac15\cos(2x) - \frac{1}{10}\operatorname{sen}(2x)
++ \frac15 e^{-x}\cos x + \frac25 e^{-x}\operatorname{sen} x
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — transformar.** Com $y(0) = y'(0) = 0$, os termos de condição inicial desaparecem — é o caso mais limpo:
+
+$$
+s^2 Y + 2sY + 2Y = \frac{2}{s^2+4}
+$$
+
+$$
+Y = \frac{2}{\big(s^2+4\big)\big(s^2+2s+2\big)}
+$$
+
+**Passo 2 — decompor.** Dois fatores quadráticos, os dois irredutíveis, então dois numeradores lineares:
+
+$$
+\frac{2}{(s^2+4)(s^2+2s+2)} = \frac{As+B}{s^2+4} + \frac{Cs+D}{s^2+2s+2}
+$$
+
+Multiplicando e agrupando por potência de $s$:
+
+$$
+2 = (A+C)s^3 + (2A+B+D)s^2 + (2A+2B+4C)s + (2B+4D)
+$$
+
+**Passo 3 — resolver o sistema.** Quatro equações:
+
+$$
+s^3:\; A + C = 0
+\qquad
+s^2:\; 2A + B + D = 0
+$$
+
+$$
+s^1:\; 2A + 2B + 4C = 0
+\qquad
+s^0:\; 2B + 4D = 2
+$$
+
+De $C = -A$ na terceira: $2A + 2B - 4A = 0$, logo $B = A$. Na segunda: $3A + D = 0$, logo $D = -3A$. Na quarta: $B + 2D = 1$, isto é $A - 6A = 1$:
+
+$$
+A = -\frac15,
+\qquad
+B = -\frac15,
+\qquad
+C = \frac15,
+\qquad
+D = \frac35
+$$
+
+**Passo 4 — arrumar cada parcela para a tabela.**
+
+$$
+\frac{-\tfrac15 s - \tfrac15}{s^2+4}
+= -\frac15\cdot\frac{s}{s^2+4} - \frac{1}{10}\cdot\frac{2}{s^2+4}
+$$
+
+(o $\tfrac1{10}$ aparece porque a tabela do seno pede $k=2$ no numerador)
+
+$$
+\frac{\tfrac15 s + \tfrac35}{(s+1)^2+1}
+= \frac15\cdot\frac{(s+1)}{(s+1)^2+1} + \frac25\cdot\frac{1}{(s+1)^2+1}
+$$
+
+(escrevendo $s + 3 = (s+1) + 2$, para casar com o deslocamento)
+
+**Passo 5 — inverter.**
+
+$$
+\boxed{\;y(x) = -\frac15\cos 2x - \frac{1}{10}\operatorname{sen} 2x
++ \frac15 e^{-x}\cos x + \frac25 e^{-x}\operatorname{sen} x\;}
+$$
+
+**Conferência 1 — a condição em $y$.**
+
+$$
+y(0) = -\frac15 - 0 + \frac15 + 0 = 0
+\;\checkmark
+$$
+
+**Conferência 2 — a condição em $y'$.** Derivando e avaliando em zero:
+
+$$
+y'(0) = 0 - \frac15 + \frac15(-1) + \frac25(1) = -\frac15 - \frac15 + \frac25 = 0
+\;\checkmark
+$$
+
+**Leitura física.** A resposta tem duas partes: o **transiente** $e^{-x}(\ldots)$, que morre, e o **regime permanente** $-\tfrac15\cos2x - \tfrac1{10}\operatorname{sen} 2x$, que oscila na frequência do forçamento. É a estrutura de todo sistema linear amortecido — e é a mesma leitura dos circuitos RLC de Circuitos 1.
+
+<Caixa tipo="macete" rotulo="Quando o sistema pede quatro constantes">
+
+Dois fatores quadráticos irredutíveis obrigam ao sistema completo — não há valor conveniente que isole constante, porque as raízes são complexas. O caminho é agrupar por potência de $s$ e resolver as quatro equações.
+
+Atalho útil: comece pela equação de $s^3$, que costuma dar uma relação direta ($C = -A$), e substitua nas outras. Reduz o sistema de quatro para duas incógnitas em duas linhas.
+
+</Caixa>
+</Passos>
