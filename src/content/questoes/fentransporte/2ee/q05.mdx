@@ -1,0 +1,168 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Tubo cilíndrico · Aço com amianto, convecção nas duas faces"
+temaId: conducao-em-tubulacoes
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um tubo liso de aço carbono ($k_{aço} = 60{,}5\ \mathrm{W/(m\cdot{}^\circ C)}$) com **diâmetro interno de $5{,}25\ \mathrm{cm}$**, espessura de $0{,}78\ \mathrm{cm}$ e $1{,}0\ \mathrm{m}$ de comprimento é recoberto com uma camada de papel corrugado de amianto ($k_{amianto} = 0{,}078\ \mathrm{W/(m\cdot{}^\circ C)}$) com $2{,}0\ \mathrm{cm}$ de espessura. A temperatura do vapor de água ($h_{vapor} = 1500\ \mathrm{W/(m^2\cdot{}^\circ C)}$) no lado interno do tubo é de $150\ ^\circ\mathrm{C}$ e o ar ($h_{ar} = 5\ \mathrm{W/(m^2\cdot{}^\circ C)}$) no lado externo é de $25\ ^\circ\mathrm{C}$. Determine:
+
+**a)** (1,5 pts.) O fluxo de calor através da parede.
+
+**b)** (1,0 pt.) A temperatura no lado externo do amianto.
+
+<Figura>
+  <svg viewBox="0 0 340 226" role="img" aria-label="Corte de um tubo de aço revestido de amianto: vapor a 150 graus dentro, ar a 25 graus fora, com os três raios marcados">
+    {/* amianto */}
+    <circle cx="130" cy="106" r="78" fill="var(--warn)" opacity="0.3" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* aço */}
+    <circle cx="130" cy="106" r="48" fill="var(--line-2)" opacity="0.85" stroke="var(--ink-2)" stroke-width="1.2"/>
+    {/* vapor */}
+    <circle cx="130" cy="106" r="40" fill="var(--accent-soft)" opacity="0.75" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="105" y="88" font-size="10" fill="var(--ink-2)">vapor</text>
+    <text x="103" y="101" font-size="9" fill="var(--ink-2)">150 °C</text>
+    {/* raios, em três direções */}
+    <line x1="130" y1="106" x2="168" y2="106" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="170,106 162,103 162,109" fill="var(--ok)"/>
+    <text x="145" y="100" font-size="10" fill="var(--ok)">r₁</text>
+    <line x1="130" y1="106" x2="163" y2="73" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="166,70 158,72 163,77" fill="var(--ok)"/>
+    <text x="168" y="68" font-size="10" fill="var(--ok)">r₂</text>
+    <line x1="130" y1="106" x2="130" y2="32" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="130,28 127,36 133,36" fill="var(--ok)"/>
+    <text x="136" y="42" font-size="10" fill="var(--ok)">r₃</text>
+    {/* chamadas dos materiais */}
+    <text x="240" y="152" font-size="10" fill="var(--ink-2)">aço</text>
+    <line x1="236" y1="149" x2="162" y2="139" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="240" y="178" font-size="10" fill="var(--ink-2)">amianto</text>
+    <line x1="236" y1="175" x2="176" y2="156" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="228" y="44" font-size="10" fill="var(--accent)">ar · 25 °C · h = 5</text>
+    <line x1="230" y1="50" x2="198" y2="62" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    {/* legenda dos valores */}
+    <text x="10" y="204" font-size="9" fill="var(--ink-3)">r₁ = 2,625 cm  ·  r₂ = 3,405 cm  ·  r₃ = 5,405 cm  ·  L = 1,0 m</text>
+    <text x="10" y="218" font-size="9" fill="var(--ink-3)">h_vapor = 1500 W/(m²·°C)  ·  h_ar = 5 W/(m²·°C)</text>
+  </svg>
+  <figcaption>
+
+Quatro resistências **em série**: convecção do vapor, condução no aço, condução no amianto e convecção no ar.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)**
+
+$$
+R_T = R_{conv,i} + R_{aço} + R_{amianto} + R_{conv,e} = 0{,}00404 + 0{,}000684 + 0{,}9438 + 0{,}5891
+$$
+
+$$
+R_T = 1{,}5376\ ^\circ\mathrm{C/W}
+\qquad
+q = \frac{150 - 25}{1{,}5376} \approx \mathbf{81{,}3\ W}
+$$
+
+**b)**
+
+$$
+T_4 = T_\infty + q\,R_{conv,e} = 25 + 81{,}3 \times 0{,}5891 \approx \mathbf{72{,}9\ ^\circ C}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os três raios, que é onde a questão derruba.** O enunciado dá **diâmetro** interno e **espessuras**:
+
+$$
+r_1 = \frac{5{,}25}{2} = 2{,}625\ \mathrm{cm} = 0{,}02625\ \mathrm{m}
+$$
+
+$$
+r_2 = r_1 + 0{,}78\ \mathrm{cm} = 3{,}405\ \mathrm{cm} = 0{,}03405\ \mathrm{m}
+$$
+
+$$
+r_3 = r_2 + 2{,}0\ \mathrm{cm} = 5{,}405\ \mathrm{cm} = 0{,}05405\ \mathrm{m}
+$$
+
+Usar $5{,}25\ \mathrm{cm}$ como **raio** dobra tudo e a resposta vai embora.
+
+**Passo 2 — a convecção interna.** Área da face interna: $A_1 = 2\pi r_1 L$.
+
+$$
+R_{conv,i} = \frac{1}{h_{vapor}\,2\pi r_1 L} = \frac{1}{1500 \cdot 2\pi (0{,}02625)(1{,}0)} = \frac{1}{247{,}4} = 4{,}04\times10^{-3}\ ^\circ\mathrm{C/W}
+$$
+
+**Passo 3 — a condução no aço.**
+
+$$
+R_{aço} = \frac{\ln(r_2/r_1)}{2\pi k_{aço} L} = \frac{\ln(3{,}405/2{,}625)}{2\pi (60{,}5)(1{,}0)} = \frac{0{,}2601}{380{,}1} = 6{,}84\times10^{-4}\ ^\circ\mathrm{C/W}
+$$
+
+**Passo 4 — a condução no amianto.**
+
+$$
+R_{amianto} = \frac{\ln(r_3/r_2)}{2\pi k_{am} L} = \frac{\ln(5{,}405/3{,}405)}{2\pi (0{,}078)(1{,}0)} = \frac{0{,}4630}{0{,}4901} = 0{,}9448\ ^\circ\mathrm{C/W}
+$$
+
+**Passo 5 — a convecção externa.** Aqui a área é a do raio **externo**, $A_3 = 2\pi r_3 L$:
+
+$$
+R_{conv,e} = \frac{1}{h_{ar}\,2\pi r_3 L} = \frac{1}{5 \cdot 2\pi (0{,}05405)(1{,}0)} = \frac{1}{1{,}698} = 0{,}5891\ ^\circ\mathrm{C/W}
+$$
+
+<Caixa tipo="dica" rotulo="Cada convecção com o raio da SUA face">
+
+A interna usa $r_1$, a externa usa $r_3$. Trocar os dois é o erro clássico do tubo — e aqui ele custa caro, porque $r_3$ é o dobro de $r_1$.
+
+</Caixa>
+
+**Passo 6 — o total e o fluxo.**
+
+$$
+R_T = 0{,}00404 + 0{,}000684 + 0{,}9448 + 0{,}5891 = 1{,}5386\ ^\circ\mathrm{C/W}
+$$
+
+$$
+q = \frac{T_{vapor} - T_{ar}}{R_T} = \frac{150 - 25}{1{,}5386} = 81{,}2\ \mathrm{W}
+$$
+
+**Passo 7 — a temperatura externa do amianto (item b).** É o ponto de onde o calor sai por convecção para o ar. Caminhando **do ar para dentro**, só se atravessa $R_{conv,e}$:
+
+$$
+q = \frac{T_4 - T_{ar}}{R_{conv,e}}
+\qquad\Longrightarrow\qquad
+T_4 = 25 + 81{,}2 \times 0{,}5891 = 25 + 47{,}8 = 72{,}8\ ^\circ\mathrm{C}
+$$
+
+**Passo 8 — a conferência pelas frações.**
+
+| resistência | valor $[^\circ\mathrm{C/W}]$ | fração | $\Delta T$ |
+|---|---|---|---|
+| convecção do vapor | $0{,}00404$ | $0{,}3\ \%$ | $0{,}3\ ^\circ\mathrm{C}$ |
+| condução no aço | $0{,}000684$ | $0{,}04\ \%$ | $0{,}06\ ^\circ\mathrm{C}$ |
+| **condução no amianto** | $0{,}9448$ | $\mathbf{61{,}4\ \%}$ | $76{,}7\ ^\circ\mathrm{C}$ |
+| **convecção do ar** | $0{,}5891$ | $\mathbf{38{,}3\ \%}$ | $47{,}8\ ^\circ\mathrm{C}$ |
+
+<Caixa tipo="macete">
+
+A resistência do **aço** é 1400 vezes menor que a do amianto. Isso justifica a aproximação que muitos livros fazem: **num tubo com isolamento, a parede metálica pode ser desprezada**. Aqui, desprezá-la mudaria $q$ de $81{,}2$ para $81{,}3\ \mathrm{W}$ — menos de $0{,}1\ \%$.
+
+Quem manda são o **isolante** e o **ar externo**, e sempre nessa ordem quando há isolante espesso.
+
+</Caixa>
+
+**Conferência —** diâmetro interno vira raio dividindo por 2, e as espessuras **somam** raio a raio ✔ cada convecção com o raio da sua face ✔ a maior queda de temperatura tem de estar no amianto ✔ $T_4$ tem de ficar entre $25$ e $150\ ^\circ\mathrm{C}$, mais perto do ar do que do vapor ✔
+</Passos>
