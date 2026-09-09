@@ -1,0 +1,129 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Resistência térmica · Parede plana em série e em paralelo"
+temaId: resistencia-termica
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**O que é a resistência à condução em uma parede plana? Como ela se comporta para um sistema de parede plana em série? E para um sistema de parede plana em paralelo?**
+
+<Gabarito>
+**Resistência à condução** é a razão entre a diferença de temperatura que impulsiona o calor e a taxa de calor que passa — a oposição que o material faz à passagem do calor:
+
+$$
+R_{cond} = \frac{\Delta T}{q} = \frac{L}{k\,A}
+$$
+
+**Em série** (camadas uma atrás da outra, atravessadas pelo mesmo $q$): as resistências **somam**.
+
+$$
+R_{eq} = R_1 + R_2 + \ldots + R_n
+$$
+
+**Em paralelo** (caminhos alternativos entre as mesmas duas temperaturas): somam-se os **inversos**.
+
+$$
+\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}
+$$
+
+É a mesma álgebra dos resistores elétricos, com $\Delta T$ no papel da tensão e $q$ no da corrente.
+</Gabarito>
+
+<Passos>
+**1 — De onde a resistência vem.** Parte-se da lei de Fourier em regime permanente, perfil linear, área constante:
+
+$$
+q = k\,A\,\frac{T_1 - T_2}{L}
+\qquad\Longrightarrow\qquad
+T_1 - T_2 = q\,\underbrace{\frac{L}{k\,A}}_{R_{cond}}
+$$
+
+Comparando com a lei de Ohm:
+
+$$
+\underbrace{\Delta V = i\,R}_{\text{elétrico}}
+\qquad\longleftrightarrow\qquad
+\underbrace{\Delta T = q\,R_{cond}}_{\text{térmico}}
+$$
+
+<Caixa tipo="simbolos">
+
+| térmico | elétrico | papel |
+|---|---|---|
+| $\Delta T$ $[\mathrm{K}]$ | $\Delta V$ | o que **impulsiona** |
+| $q$ $[\mathrm{W}]$ | $i$ | o que **flui** |
+| $R = L/(kA)$ $[\mathrm{K/W}]$ | $R$ | o que **resiste** |
+
+</Caixa>
+
+**2 — Em série: as camadas somam.** Camadas empilhadas, uma atrás da outra. Em regime permanente **o mesmo $q$ atravessa todas** — nada se acumula em nenhuma delas. Então cada camada consome uma parcela do $\Delta T$ total:
+
+$$
+\Delta T_{total} = q\,R_1 + q\,R_2 + \ldots = q\,(R_1 + R_2 + \ldots)
+$$
+
+$$
+q = \frac{\Delta T_{total}}{\sum R_i}
+\qquad\text{com}\qquad
+\sum R_i = \frac{L_1}{k_1 A} + \frac{L_2}{k_2 A} + \ldots
+$$
+
+Duas consequências que valem ponto:
+
+- **a maior queda de temperatura ocorre na maior resistência.** É por isso que, num sistema com isolante, quase todo o $\Delta T$ cai no isolante — e por isso desprezar a resistência do metal é aproximação legítima;
+- achado $q$, a temperatura em **qualquer** interface sai de uma camada só: $T_2 = T_1 - q R_1$.
+
+**3 — Em paralelo: os caminhos dividem o calor.** Materiais lado a lado, **entre as mesmas duas temperaturas**, cada um levando parte do calor:
+
+$$
+q_{total} = q_1 + q_2 + \ldots = \Delta T\left(\frac{1}{R_1} + \frac{1}{R_2} + \ldots\right)
+$$
+
+$$
+\frac{1}{R_{eq}} = \sum \frac{1}{R_i}
+\qquad\Longrightarrow\qquad
+R_{eq} = \frac{1}{\sum 1/R_i}
+$$
+
+Aqui o que é comum é o $\Delta T$; o que se **reparte** é o $q$.
+
+<Caixa tipo="macete" rotulo="Como decidir se é série ou paralelo">
+
+Olhe o **sentido do fluxo** de calor:
+
+- se o calor tem de atravessar as camadas **uma depois da outra** → série;
+- se o calor pode escolher **por qual** material passar, indo de uma face à outra → paralelo.
+
+E confira o resultado: em série, $R_{eq}$ é **maior** que qualquer resistência isolada; em paralelo, $R_{eq}$ é **menor** que a menor delas. Se der o contrário, as fórmulas foram trocadas.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O detalhe da área no paralelo">
+
+Nas resistências em paralelo, cada material tem a **sua** área — a fração da face que ele ocupa:
+
+$$
+R_i = \frac{L_i}{k_i\,A_i}
+\qquad\text{com}\qquad
+\sum A_i = A_{total}
+$$
+
+Esquecer isso e usar a área total em cada ramo é o erro mais frequente em parede composta, e ele **subestima** a resistência do conjunto.
+
+</Caixa>
+
+**Conferência —** a definição precisa ser a razão $\Delta T/q$, não só a fórmula ✔ em série soma direto, em paralelo soma o inverso ✔ dizer que em série o $q$ é comum e em paralelo o $\Delta T$ é comum fecha a resposta ✔
+</Passos>
