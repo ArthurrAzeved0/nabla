@@ -1,0 +1,136 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Fluxos de massa · Concentração a partir da pressão total"
+temaId: concentracao-molar
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q41.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de massa de uma mistura entre duas espécies, $A$ e $B$, ao longo de um tubo. Na **entrada**, a pressão total da mistura é de $20\ \mathrm{atm}$ e $60\ \%$ em mol dessa mistura é da espécie $A$. Na **saída**, a pressão total é mantida **constante** e $75\ \%$ em mol dessa mistura é da espécie $B$. A mistura escoa com velocidade de $5{,}0\ \mathrm{m/s}$. O comprimento do tubo é de $2{,}0\ \mathrm{m}$ e o coeficiente de difusão binária é de $5{,}0\times10^{-2}\ \mathrm{m^2/s}$. A **temperatura é mantida constante**, igual a $300\ \mathrm{K}$.
+
+Determine para $A$ e para $B$ as densidades de **fluxo difusivo** e **convectivo** **na saída do tubo**. Admita regime permanente com perfil **linear** de concentração.
+
+**Dado:** $R = 8{,}314\ \mathrm{J/(mol\cdot K)}$.
+
+<Gabarito>
+$$
+C = \frac{P}{R\,T} = \frac{2{,}0265\times10^6}{8{,}314 \times 300} = 812{,}5\ \mathrm{mol/m^3}
+$$
+
+Na saída: $C_{A2} = 203{,}1$ e $C_{B2} = 609{,}4\ \mathrm{mol/m^3}$.
+
+| | difusivo $J''$ | convectivo $n''$ |
+|---|---|---|
+| $A$ | $\mathbf{+7{,}11}$ | $\mathbf{1{,}016\times10^3}$ |
+| $B$ | $\mathbf{-7{,}11}$ | $\mathbf{3{,}047\times10^3}$ |
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a concentração total, que aqui vem da pressão.** Esta é a novidade da questão: em vez de dar $C$ direto, o enunciado dá **pressão** e **temperatura**. Para mistura de gases ideais,
+
+$$
+C = \frac{P}{R\,T}
+$$
+
+$$
+P = 20\ \mathrm{atm} = 20 \times 1{,}013\times10^5 = 2{,}0265\times10^6\ \mathrm{Pa}
+$$
+
+$$
+C = \frac{2{,}0265\times10^6}{8{,}314 \times 300} = \frac{2{,}0265\times10^6}{2494{,}2} = 812{,}5\ \mathrm{mol/m^3}
+$$
+
+<Caixa tipo="dica" rotulo="Pressão e temperatura constantes ⇒ C constante">
+
+O enunciado diz que a pressão total é **mantida constante** e a temperatura **também**. Pela equação de estado, isso obriga a concentração total a ser a **mesma** nas duas pontas — e é o que garante a conferência $J''_A = -J''_B$ mais adiante.
+
+Se a pressão variasse, cada seção teria a sua concentração total, como no exercício de 2018.1.
+
+</Caixa>
+
+**Passo 2 — completar as frações molares.**
+
+$$
+y_{A1} = 0{,}60 \Rightarrow y_{B1} = 0{,}40
+\qquad\qquad
+y_{B2} = 0{,}75 \Rightarrow y_{A2} = 0{,}25
+$$
+
+**Passo 3 — as concentrações nas duas pontas.**
+
+$$
+C_{A1} = 0{,}60 \times 812{,}5 = 487{,}5
+\qquad
+C_{B1} = 0{,}40 \times 812{,}5 = 325{,}0
+$$
+
+$$
+C_{A2} = 0{,}25 \times 812{,}5 = 203{,}1
+\qquad
+C_{B2} = 0{,}75 \times 812{,}5 = 609{,}4
+$$
+
+em $\mathrm{mol/m^3}$. Cada par soma $812{,}5$ ✔
+
+**Passo 4 — os gradientes (perfil linear).**
+
+$$
+\frac{dC_A}{dx} = \frac{203{,}1 - 487{,}5}{2{,}0} = -142{,}2\ \mathrm{mol/m^4}
+$$
+
+$$
+\frac{dC_B}{dx} = \frac{609{,}4 - 325{,}0}{2{,}0} = +142{,}2\ \mathrm{mol/m^4}
+$$
+
+Opostos, como tinha de ser com $C$ constante.
+
+**Passo 5 — os fluxos difusivos.**
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx} = -5{,}0\times10^{-2} \times (-142{,}2) = +7{,}11\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_B = -5{,}0\times10^{-2} \times (+142{,}2) = -7{,}11\ \mathrm{mol/(m^2 s)}
+$$
+
+$A$ difunde no sentido do escoamento; $B$, contra. E o gradiente é constante, então esses valores servem em **qualquer** posição do tubo — inclusive na saída.
+
+**Passo 6 — os fluxos convectivos, na saída.**
+
+$$
+n''_A = C_{A2}\,v = 203{,}1 \times 5{,}0 = 1015{,}6 \approx 1{,}016\times10^3\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+n''_B = C_{B2}\,v = 609{,}4 \times 5{,}0 = 3046{,}8 \approx 3{,}047\times10^3\ \mathrm{mol/(m^2 s)}
+$$
+
+Confira: $n''_A + n''_B = 4062{,}5 = C\,v = 812{,}5 \times 5$ ✔
+
+**Passo 7 — a leitura.** O convectivo é **da ordem de $10^3$**, o difusivo de $10^0$: uma diferença de mais de **400 vezes**. Com a mistura a $5\ \mathrm{m/s}$ e a $20\ \mathrm{atm}$ (portanto muito densa em mols), o transporte é praticamente todo convectivo. A difusão só **redistribui** as duas espécies dentro da corrente.
+
+<Caixa tipo="macete" rotulo="A pressão alta é o que faz os números crescerem">
+
+A $20\ \mathrm{atm}$, a concentração total é $812\ \mathrm{mol/m^3}$ — vinte vezes o que seria à pressão atmosférica ($40{,}6\ \mathrm{mol/m^3}$). Como **os dois** fluxos são proporcionais a $C$, os dois crescem na mesma proporção, e a **razão** entre eles não muda.
+
+O que a pressão alta faz é dar números grandes: é o único cuidado extra desta versão da questão.
+
+</Caixa>
+
+**Conferência —** atm para pascal ✔ temperatura em kelvin ✔ a fração da saída é de $B$ ✔ $C$ é a **mesma** nas duas pontas, porque $P$ e $T$ são constantes ✔ os difusivos saem opostos ✔ os convectivos usam a concentração **da saída** e somam $C\,v$ ✔
+</Passos>
