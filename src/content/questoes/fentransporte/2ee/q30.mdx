@@ -1,0 +1,130 @@
+---
+origem: "2022.1 · 2ª chamada"
+tema: "Raio crítico · O que é e em que geometrias existe"
+temaId: raio-critico-de-isolamento
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**O que é o raio crítico de isolamento? Em que geometrias ele atua?**
+
+<Figura>
+  <svg viewBox="0 0 340 200" role="img" aria-label="Gráfico da resistência térmica total contra o raio externo: a curva tem um mínimo no raio crítico, com a resistência de condução crescendo e a de convecção decrescendo">
+    {/* eixos */}
+    <line x1="46" y1="156" x2="46" y2="26" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="46,20 43,30 49,30" fill="var(--ink-3)"/>
+    <text x="30" y="34" font-size="10" fill="var(--ink-3)">R</text>
+    <line x1="46" y1="156" x2="306" y2="156" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="312,156 302,153 302,159" fill="var(--ink-3)"/>
+    <text x="290" y="172" font-size="10" fill="var(--ink-3)">r ext</text>
+    {/* R condução: cresce */}
+    <path d="M56 150 Q160 120 296 66" fill="none" stroke="var(--ok)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text x="238" y="60" font-size="9" fill="var(--ok)">R condução</text>
+    {/* R convecção: cai */}
+    <path d="M56 40 Q120 120 296 142" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text x="60" y="34" font-size="9" fill="var(--accent)">R convecção</text>
+    {/* R total: mínimo */}
+    <path d="M56 62 Q112 104 148 106 Q216 108 296 52" fill="none" stroke="var(--warn)" stroke-width="2.2"/>
+    <text x="160" y="132" font-size="9" fill="var(--warn)">R total</text>
+    {/* raio crítico */}
+    <circle cx="150" cy="106" r="4" fill="var(--warn)"/>
+    <line x1="150" y1="106" x2="150" y2="156" stroke="var(--warn)" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="136" y="172" font-size="10" fill="var(--warn)">r c</text>
+    {/* setas de leitura */}
+    <text x="52" y="190" font-size="8" fill="var(--ink-3)">isolar AUMENTA a perda</text>
+    <text x="188" y="190" font-size="8" fill="var(--ink-3)">isolar REDUZ a perda</text>
+  </svg>
+  <figcaption>
+
+No **mínimo** da resistência total o fluxo de calor é **máximo**. Antes dele, acrescentar isolante piora; depois, melhora.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+O **raio crítico de isolamento** é o raio externo em que a **resistência térmica total** do sistema é **mínima** — e portanto o fluxo de calor é **máximo**. Acrescentar isolante até esse raio **aumenta** a perda de calor; a partir dele, **reduz**.
+
+Ele existe porque o isolante faz duas coisas opostas: **aumenta** a resistência de condução (mais material a atravessar) e **diminui** a de convecção, porque a área externa fica maior.
+
+Atua **apenas nas geometrias curvas**, em que a área de troca **cresce** com o raio:
+
+$$
+r_c = \frac{k_{iso}}{h_e}\ \text{(cilindro)}
+\qquad\qquad
+r_c = \frac{2\,k_{iso}}{h_e}\ \text{(esfera)}
+$$
+
+Na **parede plana** ele **não existe**, porque ali a área é constante: acrescentar isolante só aumenta a resistência, sempre.
+</Gabarito>
+
+<Passos>
+**1 — De onde o efeito vem.** Escreva a resistência total de um tubo isolado, com raio externo $r$ variável:
+
+$$
+R_{total}(r) = \underbrace{\frac{\ln(r/r_2)}{2\pi k_{iso} L}}_{\text{condução: CRESCE com } r} + \underbrace{\frac{1}{h_e\,2\pi r L}}_{\text{convecção: CAI com } r}
+$$
+
+Duas tendências opostas. A soma, então, tem um **mínimo**.
+
+**2 — Achar o mínimo.** Derivando em relação a $r$ e igualando a zero:
+
+$$
+\frac{dR_{total}}{dr} = \frac{1}{2\pi k_{iso} L\,r} - \frac{1}{h_e\,2\pi L\,r^2} = 0
+$$
+
+$$
+\frac{1}{k_{iso}\,r} = \frac{1}{h_e\,r^2}
+\qquad\Longrightarrow\qquad
+\boxed{\;r_c = \frac{k_{iso}}{h_e}\;}
+$$
+
+Para a **esfera**, a área externa é $4\pi r^2$ (cresce com $r^2$, não com $r$), e a mesma derivação dá
+
+$$
+r_c = \frac{2\,k_{iso}}{h_e}
+$$
+
+<Caixa tipo="macete" rotulo="Por que a esfera leva o 2">
+
+Porque na esfera a convecção ganha área **mais rápido** — com $r^2$ em vez de $r$. O efeito de "facilitar a saída" se mantém por mais tempo, e o crítico se afasta: fica no **dobro** do valor do cilindro.
+
+</Caixa>
+
+**3 — Como usar o resultado.** Compare $r_c$ com o raio externo **real** $r_3$:
+
+- $r_3 < r_c$ → o sistema está **antes** do crítico. Acrescentar isolante **aumenta** a perda de calor. Isolar mal é pior que não isolar;
+- $r_3 = r_c$ → perda **máxima**, o pior caso possível;
+- $r_3 > r_c$ → **depois** do crítico. Acrescentar isolante **reduz** a perda, como a intuição espera.
+
+**4 — Em que geometrias atua, que é a segunda metade da pergunta.**
+
+| geometria | área externa | tem raio crítico? |
+|---|---|---|
+| **parede plana** | $A$ **constante** | **não** |
+| **cilindro** (tubo) | $2\pi r L$, cresce com $r$ | **sim**, $r_c = k/h$ |
+| **esfera** | $4\pi r^2$, cresce com $r^2$ | **sim**, $r_c = 2k/h$ |
+
+Na parede plana, acrescentar espessura só aumenta $L/(kA)$ e não muda a área de convecção — a resistência total **só cresce**, e não há mínimo. O raio crítico é um fenômeno **das geometrias curvas**.
+
+<Caixa tipo="dica" rotulo="Onde isso importa na prática">
+
+O caso $r_3 < r_c$ é real e frequente em **fios elétricos finos**: com $k_{iso} \approx 0{,}15$ e $h_e \approx 10$, o crítico fica em $r_c = 1{,}5\ \mathrm{cm}$ — bem acima do raio de um condutor comum. Ou seja, a capa plástica de um fio **ajuda a dissipar** o calor do condutor, e não o contrário.
+
+Já em tubulações industriais, $r_3$ é grande e o sistema está sempre depois do crítico: ali isolar funciona como se espera.
+
+</Caixa>
+
+**Conferência —** a definição precisa dizer que é o raio de resistência **mínima** (fluxo máximo), e explicar os dois efeitos opostos ✔ dar as **duas** fórmulas, com o 2 na esfera ✔ responder a segunda pergunta: só em cilindro e esfera, **não** em parede plana, e dizer por quê ✔
+</Passos>
