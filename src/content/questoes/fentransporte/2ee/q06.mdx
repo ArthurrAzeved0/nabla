@@ -1,0 +1,174 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Fluxos de massa · Uma espécie escoa, a outra está parada"
+temaId: fluxo-absoluto
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de massa de uma mistura entre duas espécies, $A$ e $B$, ao longo de um tubo. Na **entrada**, a concentração total da mistura é de $20\ \mathrm{mol/m^3}$ e $80\ \%$ em mol dessa mistura é da espécie $A$. Na **saída**, a concentração total da mistura é de $5\ \mathrm{mol/m^3}$ e $90\ \%$ em mol dessa mistura é da espécie $B$. A espécie $A$ escoa com velocidade de $3{,}0\ \mathrm{m/s}$, enquanto que $B$ está **estacionária**. O comprimento do tubo é de $4{,}0\ \mathrm{m}$ e o coeficiente de difusão binária é de $8{,}0 \times 10^{-2}\ \mathrm{m^2/s}$.
+
+Determine para $A$ e para $B$ as densidades de **fluxo difusivo**, as densidades de **fluxo convectivo** e as densidades de **fluxo absoluto** **no meio do tubo**. Admita regime permanente com perfil **linear** de concentração ao longo do tubo, para ambas as espécies.
+
+<Figura>
+  <svg viewBox="0 0 340 180" role="img" aria-label="Tubo horizontal com entrada à esquerda e saída à direita: a concentração total cai de 20 para 5 mol por metro cúbico, a espécie A escoa a 3 metros por segundo e a espécie B está parada; o ponto pedido é o meio do tubo">
+    {/* tubo */}
+    <rect x="50" y="52" width="240" height="56" fill="var(--accent-soft)" opacity="0.4" stroke="var(--ink-2)" stroke-width="1.5"/>
+    {/* seções */}
+    <line x1="50" y1="46" x2="50" y2="114" stroke="var(--ok)" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="34" y="42" font-size="10" fill="var(--ok)">①</text>
+    <line x1="170" y1="46" x2="170" y2="114" stroke="var(--warn)" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="160" y="42" font-size="10" fill="var(--warn)">meio</text>
+    <line x1="290" y1="46" x2="290" y2="114" stroke="var(--ok)" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="296" y="42" font-size="10" fill="var(--ok)">②</text>
+    {/* dados das seções */}
+    <text x="14" y="130" font-size="9" fill="var(--ink-3)">C = 20 mol/m³</text>
+    <text x="26" y="142" font-size="9" fill="var(--ink-3)">x<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = 0,80</tspan></text>
+    <text x="248" y="130" font-size="9" fill="var(--ink-3)">C = 5 mol/m³</text>
+    <text x="252" y="142" font-size="9" fill="var(--ink-3)">x<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 0,90</tspan></text>
+    {/* velocidades */}
+    <line x1="62" y1="72" x2="94" y2="72" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="100,72 90,68 90,76" fill="var(--accent)"/>
+    <text x="106" y="76" font-size="9" fill="var(--accent)">v<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = 3,0 m/s</tspan></text>
+    <circle cx="70" cy="94" r="3.5" fill="var(--ink-3)"/>
+    <text x="80" y="98" font-size="9" fill="var(--ink-3)">v<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 0 (B parada)</tspan></text>
+    {/* comprimento */}
+    <line x1="50" y1="160" x2="290" y2="160" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="50,160 58,156 58,164" fill="var(--ok)"/>
+    <polygon points="290,160 282,156 282,164" fill="var(--ok)"/>
+    <text x="150" y="174" font-size="9" fill="var(--ok)">L = 4,0 m</text>
+  </svg>
+  <figcaption>
+
+Atenção: a concentração **total** cai de $20$ para $5\ \mathrm{mol/m^3}$ — ela **não** é constante, e por isso os dois fluxos difusivos aqui **não** são opostos.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+No meio do tubo ($x = 2{,}0\ \mathrm{m}$): $C_A = 8{,}25$ e $C_B = 4{,}25\ \mathrm{mol/m^3}$.
+
+| | difusivo $J''$ | convectivo $N''$ | absoluto |
+|---|---|---|---|
+| $A$ | $+0{,}31$ | $24{,}75$ | $\mathbf{25{,}06}$ |
+| $B$ | $-0{,}01$ | $0$ | $\mathbf{-0{,}01}$ |
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — completar as frações molares nas duas pontas.** O enunciado dá a fração de $A$ na entrada e a de $B$ na saída — de propósito.
+
+$$
+x_{A1} = 0{,}80 \Rightarrow x_{B1} = 0{,}20
+\qquad\qquad
+x_{B2} = 0{,}90 \Rightarrow x_{A2} = 0{,}10
+$$
+
+**Passo 2 — as concentrações de cada espécie nas pontas.** Aqui o cuidado é usar a concentração total **daquela** seção, porque ela muda de uma ponta à outra.
+
+$$
+C_{A1} = 0{,}80 \times 20 = 16
+\qquad
+C_{B1} = 0{,}20 \times 20 = 4
+$$
+
+$$
+C_{A2} = 0{,}10 \times 5 = 0{,}5
+\qquad
+C_{B2} = 0{,}90 \times 5 = 4{,}5
+$$
+
+todos em $\mathrm{mol/m^3}$.
+
+<Caixa tipo="dica" rotulo="Confira a soma">
+
+$C_{A1} + C_{B1} = 20$ ✔ e $C_{A2} + C_{B2} = 5$ ✔ — cada par tem de fechar com a concentração total da sua seção. Se não fechar, uma fração foi aplicada à total errada.
+
+</Caixa>
+
+**Passo 3 — os gradientes (perfil linear).**
+
+$$
+\frac{dC_A}{dx} = \frac{C_{A2} - C_{A1}}{L} = \frac{0{,}5 - 16}{4{,}0} = -3{,}875\ \mathrm{mol/m^4}
+$$
+
+$$
+\frac{dC_B}{dx} = \frac{C_{B2} - C_{B1}}{L} = \frac{4{,}5 - 4}{4{,}0} = +0{,}125\ \mathrm{mol/m^4}
+$$
+
+**Passo 4 — as concentrações no meio ($x = 2{,}0\ \mathrm{m}$).**
+
+$$
+C_A(2) = 16 - 3{,}875 \times 2 = 8{,}25\ \mathrm{mol/m^3}
+$$
+
+$$
+C_B(2) = 4 + 0{,}125 \times 2 = 4{,}25\ \mathrm{mol/m^3}
+$$
+
+Confere: $8{,}25 + 4{,}25 = 12{,}5$, que é a média de $20$ e $5$ — coerente com os dois perfis lineares.
+
+**Passo 5 — os fluxos difusivos (Fick).** O gradiente é constante, então o difusivo é o **mesmo em qualquer posição**:
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx} = -0{,}08 \times (-3{,}875) = +0{,}31\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_B = -D_{AB}\,\frac{dC_B}{dx} = -0{,}08 \times (+0{,}125) = -0{,}01\ \mathrm{mol/(m^2 s)}
+$$
+
+<Caixa tipo="macete" rotulo="Por que J_A não é −J_B nesta questão">
+
+A conferência $J''_A = -J''_B$ vale **só quando a concentração total é constante**. Aqui ela cai de $20$ para $5$, então
+
+$$
+\frac{dC_A}{dx} + \frac{dC_B}{dx} = \frac{dC}{dx} = \frac{5 - 20}{4} = -3{,}75 \ne 0
+$$
+
+e os dois difusivos **não** se cancelam: $0{,}31 - 0{,}01 = 0{,}30$, que é exatamente $-D\,dC/dx = -0{,}08 \times (-3{,}75)$. Reconhecer isso é o que separa quem decorou a conferência de quem entendeu de onde ela vem.
+
+</Caixa>
+
+**Passo 6 — os fluxos convectivos, com a velocidade de cada espécie.** O enunciado dá velocidades **diferentes**: $A$ a $3{,}0\ \mathrm{m/s}$ e $B$ **parada**.
+
+$$
+N''_A = C_A(2)\,v_A = 8{,}25 \times 3{,}0 = 24{,}75\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_B = C_B(2)\,v_B = 4{,}25 \times 0 = 0
+$$
+
+O "B estacionária" existe justamente para anular este termo — é o dado que a questão põe para ver quem lê.
+
+**Passo 7 — os fluxos absolutos.**
+
+$$
+N''_{A,abs} = J''_A + N''_A = 0{,}31 + 24{,}75 = 25{,}06\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_{B,abs} = J''_B + N''_B = -0{,}01 + 0 = -0{,}01\ \mathrm{mol/(m^2 s)}
+$$
+
+**Passo 8 — a leitura dos resultados.** Duas coisas valem ser ditas na prova:
+
+- para $A$, o convectivo é **80 vezes** o difusivo. Com o fluido escoando a $3\ \mathrm{m/s}$, a difusão é detalhe;
+- para $B$, o **único** transporte é o difusivo, e ele é **negativo**: $B$ migra da saída para a entrada, isto é, **contra** o escoamento de $A$. Faz sentido — $B$ está mais concentrado na saída ($4{,}5$ contra $4$).
+
+**Conferência —** a fração da saída é de $B$, não de $A$ ✔ cada seção tem a sua concentração total ✔ o difusivo é constante ao longo do tubo, o convectivo não ✔ com a total variável, $J''_A \ne -J''_B$ ✔ $B$ parada zera só o **convectivo** dela, não o difusivo ✔
+</Passos>
