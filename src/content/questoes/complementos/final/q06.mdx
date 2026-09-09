@@ -1,0 +1,108 @@
+---
+origem: "Final 2024.2"
+tema: "Laurent · Série de (z−1)·e^(1/(z−1))"
+temaId: serie-de-laurent
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule a série de Laurent para a função
+
+$$
+f(z) = (z-1)\,e^{\frac{1}{z-1}}
+$$
+
+<Gabarito>
+$$
+f(z) = (z-1) + 1 + \sum_{n=2}^{\infty}\frac{1}{n!\,(z-1)^{\,n-1}}
+= (z-1) + 1 + \frac{1}{2!(z-1)} + \frac{1}{3!(z-1)^2} + \cdots
+$$
+
+Singularidade **essencial** em $z=1$, com $\operatorname{Res} = \dfrac{1}{2}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — mudar de variável.** Toda a função está escrita em torno de $z=1$, então chame
+
+$$
+w = z - 1
+\qquad\Longrightarrow\qquad
+f = w\,e^{1/w}
+$$
+
+**Passo 2 — a série da exponencial.** De $e^{u} = \sum_{n\ge0}\dfrac{u^n}{n!}$ com $u = \dfrac1w$:
+
+$$
+e^{1/w} = \sum_{n=0}^{\infty}\frac{1}{n!\,w^{n}}
+= 1 + \frac1w + \frac{1}{2!w^2} + \frac{1}{3!w^3} + \cdots
+$$
+
+**Passo 3 — multiplicar por $w$.** É só somar $1$ a cada expoente:
+
+$$
+w\,e^{1/w} = \sum_{n=0}^{\infty}\frac{w^{\,1-n}}{n!}
+= w + 1 + \frac{1}{2!\,w} + \frac{1}{3!\,w^2} + \cdots
+$$
+
+**Passo 4 — voltar para $z$.**
+
+$$
+\boxed{\;(z-1)e^{\frac{1}{z-1}}
+= (z-1) + 1 + \frac{1}{2!(z-1)} + \frac{1}{3!(z-1)^2} + \cdots
+= \sum_{n=0}^{\infty}\frac{(z-1)^{\,1-n}}{n!}\;}
+$$
+
+válida em $0 < |z-1| < \infty$.
+
+**Passo 5 — o que a série informa.** Três leituras, todas de graça:
+
+**Natureza da singularidade.** A parte principal tem **infinitos** termos → $z=1$ é **singularidade essencial**.
+
+**Resíduo.** É o coeficiente de $(z-1)^{-1}$, que aparece em $1-n = -1$, isto é $n=2$:
+
+$$
+\operatorname{Res}\big[f\big]_{z=1} = \frac{1}{2!} = \frac12
+$$
+
+**Integral em qualquer curva em torno de $z=1$.**
+
+$$
+\oint_\gamma (z-1)e^{\frac{1}{z-1}}\,dz = 2\pi i\cdot\frac12 = \pi i
+$$
+
+**Conferência do resíduo, por outro caminho.** O coeficiente de $w^{-1}$ no produto $w\cdot e^{1/w}$ é o coeficiente de $w^{-2}$ em $e^{1/w}$, que é $\dfrac{1}{2!}$ ✔
+
+<Caixa tipo="macete" rotulo="Multiplicar por potência desloca a série">
+
+Multiplicar uma série por $w^{k}$ **soma $k$ a todos os expoentes**. É o que faz o resíduo mudar de lugar:
+
+| função | resíduo em $w=0$ |
+|---|---|
+| $e^{1/w}$ | $\dfrac{1}{1!} = 1$ (termo $n=1$) |
+| $w\,e^{1/w}$ | $\dfrac{1}{2!} = \dfrac12$ (termo $n=2$) |
+| $w^2 e^{1/w}$ | $\dfrac{1}{3!} = \dfrac16$ (termo $n=3$) |
+
+Compare com a q27 do 1º EE, que é exatamente o terceiro caso, com resíduo $1/6$. A regra: em $w^k e^{1/w}$, o resíduo é $\dfrac{1}{(k+1)!}$.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A mudança de variável é o primeiro passo, sempre">
+
+Escrever $w = z - z_0$ antes de qualquer conta evita arrastar o $(z-1)$ por seis linhas. No fim, volta-se para $z$ trocando de novo.
+
+Vale também para Taylor: expandir em torno de $z_0$ é expandir em $w$ e trocar no fim.
+
+</Caixa>
+</Passos>
