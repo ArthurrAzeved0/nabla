@@ -16,6 +16,7 @@ import mdx from "@astrojs/mdx";
 import { unified } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeTabelaRolavel from "./src/plugins/rehype-tabela-rolavel.mjs";
 
 /* Publicado no Cloudflare Pages, que serve na RAIZ — daí não haver `base`.
    `site` alimenta as URLs absolutas (canonical, sitemap): se estiver errado,
@@ -45,7 +46,12 @@ export default defineConfig({
        script nenhum no navegador. Era o papel do MathJax no site antigo. */
     processor: unified({
       remarkPlugins: [remarkMath],
-      rehypePlugins: [[rehypeKatex, { strict: false, throwOnError: false }]],
+      rehypePlugins: [
+        [rehypeKatex, { strict: false, throwOnError: false }],
+        /* toda tabela rola dentro de si mesma: sem isso a página inteira
+           rolava para o lado nas tabelas largas de Fenômenos */
+        rehypeTabelaRolavel,
+      ],
     }),
     shikiConfig: { theme: "github-dark-dimmed", wrap: true },
   },
