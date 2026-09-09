@@ -1,0 +1,149 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Fluxos de massa · Perfil linear com C constante, na saída"
+temaId: densidade-de-fluxo
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q46.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de massa de uma mistura entre duas espécies, $A$ e $B$, ao longo de um tubo. Na **entrada**, a concentração total da mistura é de $500\ \mathrm{mol/m^3}$ e $40\ \%$ em mol dessa mistura é da espécie $A$. Na **saída**, a concentração total é mantida **constante** e $55\ \%$ em mol dessa mistura é da espécie $B$. A mistura escoa com velocidade constante de $5{,}0\ \mathrm{m/s}$. O comprimento do tubo é de $2{,}0\ \mathrm{m}$ e o coeficiente de difusão binária é de $5{,}0\times10^{-2}\ \mathrm{m^2/s}$.
+
+Determine para $A$ e para $B$ as densidades (taxa por unidade de área) de **fluxo difusivo** e **convectivo** **na saída do tubo**. Admita regime unidimensional permanente, **sem reação química** e com perfil **linear** de concentração.
+
+<Gabarito>
+Entrada: $C_{EA} = 200$, $C_{EB} = 300$. Saída: $C_{SA} = 225$, $C_{SB} = 275\ \mathrm{mol/m^3}$.
+
+$$
+C_A(x) = 12{,}5\,x + 200
+\qquad\qquad
+C_B(x) = -12{,}5\,x + 300
+$$
+
+| | difusivo $J''$ | convectivo $N''$ |
+|---|---|---|
+| $A$ | $\mathbf{-0{,}625}$ | $\mathbf{1125}$ |
+| $B$ | $\mathbf{+0{,}625}$ | $\mathbf{1375}$ |
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — completar as frações e achar as concentrações.** A concentração total é a **mesma** nas duas pontas ($500\ \mathrm{mol/m^3}$), porque o enunciado diz que ela é mantida constante.
+
+$$
+x_{EA} = 0{,}40 \Rightarrow x_{EB} = 0{,}60
+\qquad\qquad
+x_{SB} = 0{,}55 \Rightarrow x_{SA} = 0{,}45
+$$
+
+$$
+C_{EA} = 0{,}40 \times 500 = 200
+\qquad
+C_{EB} = 0{,}60 \times 500 = 300
+$$
+
+$$
+C_{SA} = 0{,}45 \times 500 = 225
+\qquad
+C_{SB} = 0{,}55 \times 500 = 275
+$$
+
+em $\mathrm{mol/m^3}$. Cada par soma $500$ ✔
+
+**Passo 2 — montar o perfil linear pelas condições de contorno.** O enunciado pede perfil linear, isto é, $C(x) = C_1 x + C_2$. Duas condições, duas constantes:
+
+*Em $x = 0$:*
+
+$$
+C_A(0) = C_{1A}(0) + C_{2A} = C_{2A} = C_{EA} = 200\ \mathrm{mol/m^3}
+$$
+
+*Em $x = L = 2{,}0\ \mathrm{m}$:*
+
+$$
+C_{SA} = C_{1A}L + C_{EA}
+\qquad\Longrightarrow\qquad
+C_{1A} = \frac{C_{SA} - C_{EA}}{L} = \frac{225 - 200}{2{,}0} = 12{,}5\ \mathrm{mol/m^4}
+$$
+
+$$
+C_A(x) = 12{,}5\,x + 200
+\qquad\Longrightarrow\qquad
+\frac{dC_A}{dx} = 12{,}5\ \mathrm{mol/m^4}
+$$
+
+Para $B$, do mesmo modo:
+
+$$
+C_{2B} = 300
+\qquad
+C_{1B} = \frac{275 - 300}{2{,}0} = -12{,}5\ \mathrm{mol/m^4}
+$$
+
+$$
+C_B(x) = -12{,}5\,x + 300
+$$
+
+<Caixa tipo="dica" rotulo="Com perfil linear, o coeficiente É o gradiente">
+
+Escrever $C(x) = C_1 x + C_2$ e depois derivar dá o mesmo que calcular $(C_{saída} - C_{entrada})/L$ direto — o $C_1$ **é** o gradiente. O caminho longo, que o gabarito segue, só fica obrigatório quando o perfil **não** é reto (como o exponencial da prova de 2023.2).
+
+</Caixa>
+
+**Passo 3 — os fluxos difusivos.** O gradiente é constante, então valem em qualquer posição, inclusive na saída:
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx} = -5{,}0\times10^{-2} \times 12{,}5 = -0{,}625\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_B = -5{,}0\times10^{-2} \times (-12{,}5) = +0{,}625\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_A = -J''_B\ \checkmark
+$$
+
+$J''_A$ é **negativo** porque $A$ **ganha** concentração ao longo do tubo ($200 \to 225$): ele difunde da saída para a entrada, contra o escoamento. E $B$, que perde ($300 \to 275$), difunde no sentido do escoamento.
+
+**Passo 4 — os fluxos convectivos, na saída.**
+
+$$
+N''_A = C_{SA}\,v = 225 \times 5{,}0 = 1125\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_B = C_{SB}\,v = 275 \times 5{,}0 = 1375\ \mathrm{mol/(m^2 s)}
+$$
+
+Confira: $N''_A + N''_B = 2500 = C\,v = 500 \times 5$ ✔
+
+**Passo 5 — a ordem de grandeza.** O convectivo é **1800 vezes** o difusivo. A difusão, aqui, é um ajuste fino: transfere $0{,}625\ \mathrm{mol/(m^2s)}$ de $B$ para a frente e a mesma quantidade de $A$ para trás, dentro de uma corrente que carrega $2500$.
+
+<Caixa tipo="macete" rotulo="Quatro versões, e o que muda em cada uma">
+
+| prova | $C$ | onde | $J''_A$ |
+|---|---|---|---|
+| 2022.1 | $200$ const. | saída | $+1{,}5$ |
+| 2022.1 · 2ª ch. | $400$ const. | entrada | $-0{,}8$ |
+| 2023.1 · 2ª ch. | $812{,}5$ (de $P/RT$) | saída | $+7{,}11$ |
+| **2023.2 · 2ª ch.** | $500$ const. | saída | $-0{,}625$ |
+
+O roteiro é sempre o mesmo. O que muda: se $C$ é dado ou vem de $P/RT$, **onde** avaliar, e se $A$ ganha ou perde concentração ao longo do caminho — que é o que decide o **sinal** de $J''_A$.
+
+</Caixa>
+
+**Conferência —** a fração da saída é de $B$ ✔ a concentração total é a **mesma** nas duas pontas ✔ os difusivos saem opostos ✔ o convectivo usa a concentração **da saída** e a soma dá $C\,v$ ✔ $J''_A < 0$ é correto aqui, porque $A$ cresce para a frente ✔
+</Passos>
