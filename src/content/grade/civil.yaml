@@ -23,7 +23,17 @@
 curso: Engenharia Civil
 sigla: civil
 matriz: "2021.1"
-chTotalCurso: 4350
+# 4035h, e não 4350h: a Tabela 26 do PPC ("Tabela resumo da matriz das
+# disciplinas do Curso de Engenharia Civil (2021.1)") declara TOTAL 4035, e o
+# §7.5a repete por escrito "a carga horária total proposta no curso é de 4.035
+# horas". Os 4350h que estavam aqui saem da Tabela 21, que é o resumo da matriz
+# de **2012.1** — o perfil anterior.
+#
+# A composição que a Tabela 26 dá: obrigatórias 3615 (com 180h de DCExt) +
+# DCExt eletivas 240 + eletivas comuns 60 + atividades complementares 60. Note
+# que essas parcelas somam 3975, não 4035: o PPC tem 60h de folga na própria
+# tabela. Fica o número declarado, que é o que o documento afirma duas vezes.
+chTotalCurso: 4035
 estagioFracao: 0.6
 disciplinas:
   - id: MAT07
