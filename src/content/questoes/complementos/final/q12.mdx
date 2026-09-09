@@ -1,0 +1,127 @@
+---
+origem: "Final 2026.1"
+tema: "EDP · Calor com pulso central, L = π e k = 1"
+temaId: separacao-de-variaveis
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva o seguinte problema de valor inicial e de fronteira,
+
+$$
+\begin{cases}
+u_t = k\,u_{xx}, & \text{em } \mathbb{R}\\
+u(0,t) = u(L,t) = 0, & t > 0\\
+u(x,0) = f(x), & 0 < x < L
+\end{cases}
+$$
+
+fazendo $L = \pi$, $k = 1$ e
+
+$$
+f(x) = \begin{cases}
+0, & 0 < x < 2\pi/5\\
+1, & 2\pi/5 \le x < 3\pi/5\\
+0, & 3\pi/5 < x < \pi
+\end{cases}
+$$
+
+<Gabarito>
+$$
+u(x,t) = \frac{4}{\pi}\sum_{\substack{n=1\\ n\ \text{ímpar}}}^{\infty}
+\frac{\cos\!\left(\frac{2n\pi}{5}\right)}{n}\,\operatorname{sen}(nx)\,e^{-n^2 t}
+$$
+
+Só os harmônicos **ímpares** aparecem, porque o pulso é simétrico em relação a $x = \pi/2$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a solução geral.** É o problema da q11 desta unidade com $L=\pi$ e $k=1$, então $\lambda_n = n^2$:
+
+$$
+u(x,t) = \sum_{n=1}^{\infty}b_n\operatorname{sen}(nx)\,e^{-n^2 t},
+\qquad
+b_n = \frac{2}{\pi}\int_0^{\pi}f(x)\operatorname{sen}(nx)\,dx
+$$
+
+**Passo 2 — a integral, que só vive no pulso.** Como $f$ é zero fora de $[2\pi/5,\,3\pi/5]$ e vale $1$ dentro:
+
+$$
+b_n = \frac2\pi\int_{2\pi/5}^{3\pi/5}\operatorname{sen}(nx)\,dx
+= \frac2\pi\left[\frac{-\cos(nx)}{n}\right]_{2\pi/5}^{3\pi/5}
+$$
+
+$$
+b_n = \frac{2}{n\pi}\left[\cos\!\left(\frac{2n\pi}{5}\right) - \cos\!\left(\frac{3n\pi}{5}\right)\right]
+$$
+
+**Passo 3 — simplificar, usando a simetria.** Note que $\dfrac{3n\pi}{5} = n\pi - \dfrac{2n\pi}{5}$, e portanto
+
+$$
+\cos\!\left(\frac{3n\pi}{5}\right) = \cos(n\pi)\cos\!\left(\frac{2n\pi}{5}\right)
+= (-1)^n\cos\!\left(\frac{2n\pi}{5}\right)
+$$
+
+Substituindo:
+
+$$
+b_n = \frac{2}{n\pi}\cos\!\left(\frac{2n\pi}{5}\right)\Big[1 - (-1)^n\Big]
+$$
+
+O fator $[1-(-1)^n]$ é **zero para $n$ par** e $2$ para $n$ ímpar:
+
+$$
+b_n = \begin{cases}
+\dfrac{4}{n\pi}\cos\!\left(\dfrac{2n\pi}{5}\right), & n \text{ ímpar}\\[8pt]
+0, & n \text{ par}
+\end{cases}
+$$
+
+**Por que isso acontece:** o pulso é **simétrico em relação a $x = \pi/2$** (o intervalo $[0{,}4\pi,\,0{,}6\pi]$ tem centro exatamente em $0{,}5\pi$). Os senos de índice par são **antissimétricos** em torno de $\pi/2$, então a integral contra eles se cancela. É a mesma economia de paridade da série de Fourier, aplicada ao meio-intervalo.
+
+**Passo 4 — a solução.**
+
+$$
+\boxed{\;u(x,t) = \frac{4}{\pi}\sum_{n\ \text{ímpar}}
+\frac{\cos\!\left(\frac{2n\pi}{5}\right)}{n}\operatorname{sen}(nx)\,e^{-n^2t}\;}
+$$
+
+Os primeiros termos, com $\cos(2\pi/5) = 0{,}309$ e $\cos(6\pi/5) = -0{,}809$:
+
+$$
+u \approx \frac{4}{\pi}\left[0{,}309\operatorname{sen}(x)e^{-t}
+- \frac{0{,}809}{3}\operatorname{sen}(3x)e^{-9t}
++ \cdots\right]
+$$
+
+**Conferência 1 — o contorno.** Cada termo tem $\operatorname{sen}(nx)$, que zera em $x=0$ e em $x=\pi$ ✔
+
+**Conferência 2 — a massa total.** A "quantidade de calor" inicial é $\int_0^\pi f = \pi/5 \approx 0{,}628$. Ela **não** se conserva aqui, porque as pontas estão a zero e o calor escapa: $u \to 0$ quando $t\to\infty$ ✔
+
+**Conferência 3 — o decaimento.** O modo $n=3$ decai como $e^{-9t}$, nove vezes mais rápido que o $n=1$. Depois de $t \approx 0{,}3$ o perfil já é praticamente $\operatorname{sen}(x)$ puro — o pulso quadrado se arredonda quase imediatamente, que é o comportamento suavizador da equação parabólica.
+
+<Caixa tipo="macete" rotulo="Pulso é integral em intervalo curto">
+
+Quando $f$ é uma função **indicadora** (vale $1$ num intervalo e $0$ fora), a integral do coeficiente só corre naquele intervalo, e o resultado é sempre uma **diferença de cossenos** nas pontas:
+
+$$
+b_n = \frac{2}{n L}\Big[\cos\big(\mu_n a\big) - \cos\big(\mu_n b\big)\Big]
+\qquad\text{para } f = 1 \text{ em } [a,b]
+$$
+
+E vale sempre olhar se o intervalo é simétrico em relação a $L/2$: se for, metade dos harmônicos morre e a resposta encurta pela metade.
+
+</Caixa>
+</Passos>
