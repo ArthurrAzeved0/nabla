@@ -1,0 +1,117 @@
+---
+origem: "Prova · sem data"
+tema: "Dedução · Derivada material e a aceleração convectiva"
+temaId: derivada-material
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A partir do desenho esquemático da posição e da velocidade de uma partícula $A$ no instante $t$, **deduza a derivada material**.
+
+<Figura>
+  <svg viewBox="0 0 300 160" role="img" aria-label="Partícula A percorrendo uma trajetória curva: no instante t está numa posição com velocidade v, e no instante t mais dt está numa posição deslocada">
+    {/* trajetória */}
+    <path d="M30 120 Q110 40 260 60" fill="none" stroke="var(--line-2)" stroke-width="1.6" stroke-dasharray="4 4"/>
+    {/* partícula em t */}
+    <circle cx="104" cy="66" r="5" fill="var(--accent)"/>
+    <text x="86" y="60" font-size="10" fill="var(--accent)">A (t)</text>
+    <line x1="110" y1="63" x2="150" y2="55" stroke="var(--accent)" stroke-width="1.6"/>
+    <polygon points="156,54 146,50 147,58" fill="var(--accent)"/>
+    <text x="130" y="46" font-size="10" fill="var(--accent)">v</text>
+    {/* partícula em t+dt */}
+    <circle cx="178" cy="54" r="5" fill="var(--ok)"/>
+    <text x="164" y="44" font-size="10" fill="var(--ok)">A (t+δt)</text>
+    {/* deslocamento */}
+    <line x1="104" y1="80" x2="178" y2="80" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="122" y="94" font-size="9" fill="var(--ink-3)">δx = u δt</text>
+    {/* eixos */}
+    <line x1="20" y1="140" x2="20" y2="100" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="10" y="98" font-size="10" fill="var(--ink-3)">y</text>
+    <line x1="20" y1="140" x2="64" y2="140" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="66" y="150" font-size="10" fill="var(--ink-3)">x</text>
+  </svg>
+  <figcaption>
+
+A partícula muda de velocidade por dois motivos: **o tempo passa** e **ela muda de lugar**. A derivada material separa as duas causas.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\frac{D\vec{v}}{Dt} = \underbrace{\frac{\partial \vec{v}}{\partial t}}_{\text{local}} + \underbrace{(\vec{v}\cdot\nabla)\vec{v}}_{\text{convectiva}}
+$$
+
+Em componentes, para a direção $x$:
+
+$$
+a_x = \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o problema.** No enfoque de campo (euleriano), a velocidade é uma função da posição **e** do tempo:
+
+$$
+\vec{v} = \vec{v}(x, y, z, t)
+$$
+
+Mas a segunda lei de Newton precisa da aceleração **da partícula** — e a partícula, enquanto o tempo passa, **muda de posição**. Derivar $\vec{v}$ apenas em relação a $t$ com $x,y,z$ fixos **não** dá a aceleração dela.
+
+**Passo 2 — a regra da cadeia.** Seguindo a partícula, sua posição é função do tempo, então:
+
+$$
+\frac{D\vec{v}}{Dt} = \frac{\partial \vec{v}}{\partial t} + \frac{\partial \vec{v}}{\partial x}\frac{dx}{dt} + \frac{\partial \vec{v}}{\partial y}\frac{dy}{dt} + \frac{\partial \vec{v}}{\partial z}\frac{dz}{dt}
+$$
+
+**Passo 3 — as taxas são as próprias velocidades.** Ao seguir a partícula,
+
+$$
+\frac{dx}{dt} = u
+\qquad
+\frac{dy}{dt} = v
+\qquad
+\frac{dz}{dt} = w
+$$
+
+Substituindo:
+
+$$
+\boxed{\;\frac{D\vec{v}}{Dt} = \frac{\partial \vec{v}}{\partial t} + u\frac{\partial \vec{v}}{\partial x} + v\frac{\partial \vec{v}}{\partial y} + w\frac{\partial \vec{v}}{\partial z}\;}
+$$
+
+que se escreve compactamente como
+
+$$
+\frac{D\vec{v}}{Dt} = \frac{\partial \vec{v}}{\partial t} + (\vec{v}\cdot\nabla)\vec{v}
+$$
+
+**Passo 4 — o nome de cada parcela.**
+
+- $\dfrac{\partial \vec{v}}{\partial t}$ — **aceleração local**: a velocidade **naquele ponto do espaço** está mudando com o tempo. É nula em regime permanente;
+- $(\vec{v}\cdot\nabla)\vec{v}$ — **aceleração convectiva**: a partícula acelera porque **se moveu** para um ponto onde a velocidade do campo é diferente.
+
+<Caixa tipo="macete" rotulo="A pergunta que a prova faz em seguida">
+
+*Pode haver aceleração em regime permanente?*
+
+**Sim.** Em regime permanente a parcela **local** é nula, mas a **convectiva** não. O exemplo é o Venturi: a foto do escoamento é sempre a mesma (permanente), e ainda assim cada partícula acelera ao entrar na garganta, porque mudou de lugar.
+
+E é essa parcela que torna as equações de fluidos **não-lineares** — nela a velocidade multiplica a própria derivada.
+
+</Caixa>
+
+**Conferência —** a dedução tem de: (i) reconhecer que $\vec{v}$ depende de posição e tempo, (ii) aplicar a regra da cadeia seguindo a partícula, (iii) identificar $dx/dt = u$, (iv) nomear as duas parcelas ✔
+</Passos>
