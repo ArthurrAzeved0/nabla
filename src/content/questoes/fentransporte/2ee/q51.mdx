@@ -1,0 +1,168 @@
+---
+origem: "2018.1"
+tema: "Tubo · O perfil logarítmico e a temperatura no meio do raio"
+temaId: resistencia-cilindrica
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q51.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere um tubo cilíndrico de raios interno e externo de $10\ \mathrm{cm}$ e $20\ \mathrm{cm}$, respectivamente, cuja face interna está mantida a $30\ ^\circ\mathrm{C}$, enquanto que a face externa é mantida a $50\ ^\circ\mathrm{C}$. O fluxo de calor acontece apenas no sentido **radial** e **não há geração ou acúmulo** de calor. **Não há fluido escoando** na parte interna ou externa ao tubo.
+
+**a)** (1,0 pt.) Determine a **temperatura no meio do raio** do tubo.
+
+**b)** (1,0 pt.) Determine a **resistência** e o **fluxo de calor** através do tubo. **Dados:** $k = 1{,}5\ \mathrm{W/(m\cdot K)}$; $L = 5{,}0\ \mathrm{m}$.
+
+**c)** (0,5 pts.) Caso esse tubo fosse feito de um material isolante ($k_{iso} = 0{,}5\ \mathrm{W/(m\cdot K)}$) e houvesse um fluido ($h_e = 5{,}0\ \mathrm{W/(m^2\cdot K)}$) escoando na sua parte externa, qual seria o **raio crítico de isolamento**?
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Corte de um tubo com raio interno de 10 centímetros a 30 graus e raio externo de 20 centímetros a 50 graus, com o perfil logarítmico de temperatura marcando 41,7 graus no meio do raio">
+    {/* parede do tubo */}
+    <circle cx="112" cy="106" r="76" fill="var(--line-2)" opacity="0.7" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <circle cx="112" cy="106" r="38" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.3"/>
+    <circle cx="112" cy="106" r="57" fill="none" stroke="var(--warn)" stroke-width="1" stroke-dasharray="4 3"/>
+    {/* raios */}
+    <line x1="112" y1="106" x2="146" y2="106" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="150,106 142,103 142,109" fill="var(--ok)"/>
+    <text x="122" y="96" font-size="9" fill="var(--ok)">r₁ = 10 cm</text>
+    <line x1="112" y1="106" x2="112" y2="34" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="112,30 109,38 115,38" fill="var(--ok)"/>
+    <text x="118" y="44" font-size="9" fill="var(--ok)">r₂ = 20 cm</text>
+    <line x1="112" y1="106" x2="72" y2="146" stroke="var(--warn)" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="26" y="164" font-size="9" fill="var(--warn)">r = 15 cm</text>
+    {/* temperaturas */}
+    <text x="84" y="122" font-size="9" fill="var(--accent)">30 °C</text>
+    <text x="196" y="72" font-size="9" fill="var(--warn)">50 °C (face externa)</text>
+    <line x1="192" y1="70" x2="166" y2="80" stroke="var(--warn)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="196" y="140" font-size="9" fill="var(--warn)">41,7 °C no meio do raio</text>
+    <line x1="192" y1="138" x2="152" y2="134" stroke="var(--warn)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    {/* sentido do calor: de fora para dentro */}
+    <line x1="196" y1="106" x2="172" y2="106" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="166,106 176,102 176,110" fill="var(--ok)"/>
+    <text x="200" y="110" font-size="9" fill="var(--ok)">q (entra)</text>
+    {/* dados */}
+    <text x="14" y="196" font-size="9" fill="var(--ink-3)">k = 1,5 W/(m·K)  ·  L = 5,0 m  ·  sem fluido escoando</text>
+  </svg>
+  <figcaption>
+
+A face **externa** é a mais quente: o calor entra, de fora para dentro. E o perfil de temperatura no tubo é **logarítmico**, não linear.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)** O perfil de temperatura num tubo é **logarítmico**:
+
+$$
+T(r) = T_1 + (T_2 - T_1)\,\frac{\ln(r/r_1)}{\ln(r_2/r_1)}
+$$
+
+Em $r = 15\ \mathrm{cm}$:
+
+$$
+T = 30 + 20\,\frac{\ln(1{,}5)}{\ln(2)} = 30 + 20 \times 0{,}585 \approx \mathbf{41{,}7\ ^\circ C}
+$$
+
+**b)**
+
+$$
+R = \frac{\ln(r_2/r_1)}{2\pi k L} = \frac{\ln 2}{2\pi (1{,}5)(5{,}0)} = \frac{0{,}6931}{47{,}12} \approx \mathbf{0{,}0147\ K/W}
+$$
+
+$$
+q = \frac{\Delta T}{R} = \frac{50 - 30}{0{,}0147} \approx \mathbf{1360\ W}
+$$
+
+entrando (de fora para dentro).
+
+**c)**
+
+$$
+r_c = \frac{k_{iso}}{h_e} = \frac{0{,}5}{5{,}0} = \mathbf{0{,}10\ m} = 10\ \mathrm{cm}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — item (a): por que o perfil não é linear.** Na parede plana, área constante e $q$ constante obrigam $dT/dx$ a ser constante — perfil reto. No tubo, a área **cresce** com o raio:
+
+$$
+q = -k\,(2\pi r L)\,\frac{dT}{dr} = \text{constante}
+\qquad\Longrightarrow\qquad
+\frac{dT}{dr} \propto \frac{1}{r}
+$$
+
+O gradiente **diminui** à medida que se afasta do centro, e integrar $1/r$ dá logaritmo:
+
+$$
+T(r) = T_1 + (T_2 - T_1)\,\frac{\ln(r/r_1)}{\ln(r_2/r_1)}
+$$
+
+**Confira nas pontas:** em $r = r_1$ o logaritmo é zero e $T = T_1$ ✔; em $r = r_2$ a fração é 1 e $T = T_2$ ✔
+
+**Passo 2 — a temperatura no meio do raio.** "Meio do raio" é a média dos dois raios:
+
+$$
+r = \frac{r_1 + r_2}{2} = \frac{10 + 20}{2} = 15\ \mathrm{cm}
+$$
+
+$$
+T(0{,}15) = 30 + (50 - 30)\,\frac{\ln(0{,}15/0{,}10)}{\ln(0{,}20/0{,}10)} = 30 + 20\,\frac{\ln 1{,}5}{\ln 2}
+$$
+
+$$
+= 30 + 20 \times \frac{0{,}4055}{0{,}6931} = 30 + 20 \times 0{,}5850 = 30 + 11{,}7 = 41{,}7\ ^\circ\mathrm{C}
+$$
+
+<Caixa tipo="macete" rotulo="Se o perfil fosse linear daria 40 °C">
+
+A média aritmética das temperaturas é $(30 + 50)/2 = 40\ ^\circ\mathrm{C}$ — e é o que se obteria num perfil reto. O resultado correto é $41{,}7\ ^\circ\mathrm{C}$: quase $2\ ^\circ\mathrm{C}$ **mais quente** que a média.
+
+O motivo: a metade **externa** do tubo tem mais área, então oferece menos resistência, e por isso "gasta" menos $\Delta T$. Sobra mais queda para a metade interna — e o ponto médio fica deslocado para o lado quente.
+
+Responder $40\ ^\circ\mathrm{C}$ é o erro que esta questão está caçando: ela existe justamente para verificar se se sabe que o perfil no tubo é **logarítmico**.
+
+</Caixa>
+
+**Passo 3 — item (b): a resistência.**
+
+$$
+R = \frac{\ln(r_2/r_1)}{2\pi k L} = \frac{\ln(0{,}20/0{,}10)}{2\pi \times 1{,}5 \times 5{,}0} = \frac{0{,}6931}{47{,}124} = 0{,}01471\ \mathrm{K/W}
+$$
+
+Resistência baixíssima — é um tubo curto, grosso e de material relativamente condutor, sem nenhuma convecção no caminho (o enunciado diz que **não há fluido escoando**).
+
+**Passo 4 — o fluxo, e o seu sentido.**
+
+$$
+q = \frac{T_2 - T_1}{R} = \frac{50 - 30}{0{,}01471} = 1359{,}6\ \mathrm{W}
+$$
+
+Quase $1{,}4\ \mathrm{kW}$ com apenas $20\ ^\circ\mathrm{C}$ de diferença. E o sentido: a face **externa** está mais quente, então o calor vai **de fora para dentro** — o tubo está sendo aquecido pelo lado de fora.
+
+<Caixa tipo="dica" rotulo="Por que não há convecção nesta questão">
+
+O enunciado é explícito: "não há fluido escoando na parte interna ou externa". Isso elimina as duas resistências de convecção e deixa **só** a do material. É o que torna o $q$ tão alto, e é também o que dá as temperaturas das **faces** direto (em vez de temperaturas de fluidos).
+
+</Caixa>
+
+**Passo 5 — item (c): o raio crítico hipotético.** É uma pergunta condicional: *se* o tubo fosse isolante e *se* houvesse fluido por fora. Fórmula do **cilindro**:
+
+$$
+r_c = \frac{k_{iso}}{h_e} = \frac{0{,}5}{5{,}0} = 0{,}10\ \mathrm{m} = 10\ \mathrm{cm}
+$$
+
+E há uma coincidência que vale comentar: $r_c = 10\ \mathrm{cm}$ é exatamente o **raio interno** do tubo. Como o raio externo real é $r_2 = 20\ \mathrm{cm} > r_c$, o sistema estaria **depois** do crítico — acrescentar isolante reduziria a perda, como a intuição espera.
+
+**Conferência —** o perfil no tubo é **logarítmico**, e a resposta do item (a) **não** é $40\ ^\circ\mathrm{C}$ ✔ os raios em metros na resistência ✔ sem fluido escoando, não há resistência de convecção ✔ o calor vai de fora para dentro, porque a face externa é a mais quente ✔ o raio crítico do cilindro é $k/h$, **sem** o 2 ✔
+</Passos>

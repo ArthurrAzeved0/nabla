@@ -1,0 +1,158 @@
+---
+origem: "2024.2"
+tema: "Continuidade · Tubo convergente com massa específica variável"
+temaId: vazao-massica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Ar escoa num tubo convergente. A área de maior seção do tubo é $20\ \mathrm{cm^2}$ e a menor, $10\ \mathrm{cm^2}$. A massa específica do ar na seção (1) é $0{,}12\ \mathrm{utm/m^3}$, enquanto na seção (2) é $0{,}09\ \mathrm{utm/m^3}$. Sendo a velocidade na seção (1) igual a $10\ \mathrm{m/s}$, determinar a **velocidade na seção (2)** e a **vazão em massa**.
+
+<Figura>
+  <svg viewBox="0 0 340 170" role="img" aria-label="Tubo convergente: a seção 1 tem 20 centímetros quadrados com ar a 0,12 utm por metro cúbico escoando a 10 metros por segundo, e a seção 2 tem 10 centímetros quadrados com ar a 0,09">
+    {/* tubo convergente */}
+    <path d="M50 36 L150 36 Q200 36 226 62 L290 62" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <path d="M50 122 L150 122 Q200 122 226 96 L290 96" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <path d="M50 36 L150 36 Q200 36 226 62 L290 62 L290 96 L226 96 Q200 122 150 122 L50 122 Z" fill="var(--accent-soft)" opacity="0.4"/>
+    {/* seção 1 */}
+    <line x1="76" y1="30" x2="76" y2="128" stroke="var(--ok)" stroke-width="1.1" stroke-dasharray="4 3"/>
+    <text x="70" y="24" font-size="11" fill="var(--ok)">(1)</text>
+    <text x="14" y="142" font-size="9" fill="var(--ok)">A₁ = 20 cm²</text>
+    <text x="20" y="154" font-size="9" fill="var(--ok)">ρ₁ = 0,12</text>
+    {/* seção 2 */}
+    <line x1="262" y1="56" x2="262" y2="102" stroke="var(--warn)" stroke-width="1.1" stroke-dasharray="4 3"/>
+    <text x="256" y="48" font-size="11" fill="var(--warn)">(2)</text>
+    <text x="246" y="142" font-size="9" fill="var(--warn)">A₂ = 10 cm²</text>
+    <text x="252" y="154" font-size="9" fill="var(--warn)">ρ₂ = 0,09</text>
+    {/* velocidade */}
+    <line x1="94" y1="79" x2="130" y2="79" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="136,79 126,75 126,83" fill="var(--accent)"/>
+    <text x="90" y="70" font-size="9" fill="var(--accent)">v₁ = 10 m/s</text>
+    <line x1="276" y1="79" x2="304" y2="79" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="310,79 300,75 300,83" fill="var(--accent)"/>
+    <text x="272" y="70" font-size="9" fill="var(--accent)">v₂ = ?</text>
+    <text x="150" y="86" font-size="10" fill="var(--ink-2)">ar</text>
+  </svg>
+  <figcaption>
+
+A massa específica **muda** de uma seção para a outra: é escoamento **compressível**, e $A_1 v_1 = A_2 v_2$ não vale.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\rho_1 A_1 v_1 = \rho_2 A_2 v_2
+\qquad\Longrightarrow\qquad
+v_2 = \frac{\rho_1 A_1 v_1}{\rho_2 A_2}
+$$
+
+$$
+v_2 = \frac{0{,}12 \times 20 \times 10}{0{,}09 \times 10} = \frac{24}{0{,}9} \approx \mathbf{26{,}7\ m/s}
+$$
+
+$$
+\dot m = \rho_1 A_1 v_1 = 0{,}12 \times 20\times10^{-4} \times 10 = \mathbf{2{,}4\times10^{-3}\ utm/s}
+$$
+
+(equivalente a $2{,}35\times10^{-2}\ \mathrm{kg/s}$, já que $1\ \mathrm{utm} = 9{,}81\ \mathrm{kg}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — a forma correta da continuidade.** Em regime permanente, o que se conserva é a **massa**, não o volume:
+
+$$
+\dot m_1 = \dot m_2
+\qquad\Longrightarrow\qquad
+\rho_1 A_1 v_1 = \rho_2 A_2 v_2
+$$
+
+<Caixa tipo="macete" rotulo="A armadilha da questão está aqui">
+
+A forma $A_1 v_1 = A_2 v_2$ que se usa em todo exercício de água **só vale se $\rho$ for constante**. Aqui o enunciado dá **duas** massas específicas diferentes, de propósito: é ar, é compressível, e ignorar isso dá
+
+$$
+v_2^{\text{errado}} = \frac{A_1 v_1}{A_2} = \frac{20 \times 10}{10} = 20\ \mathrm{m/s}
+$$
+
+contra os $26{,}7\ \mathrm{m/s}$ corretos. Um erro de $25\ \%$, e ele vem de não ler os dados.
+
+</Caixa>
+
+**Passo 2 — isolar $v_2$.** As áreas aparecem em razão, então **não precisam** ser convertidas — $\mathrm{cm^2}$ se cancela com $\mathrm{cm^2}$. O mesmo para as massas específicas.
+
+$$
+v_2 = \frac{\rho_1}{\rho_2}\cdot\frac{A_1}{A_2}\cdot v_1 = \frac{0{,}12}{0{,}09} \times \frac{20}{10} \times 10
+$$
+
+$$
+v_2 = 1{,}3333 \times 2 \times 10 = 26{,}67\ \mathrm{m/s}
+$$
+
+Vale ler o resultado em duas parcelas: o estreitamento da seção acelera o ar em **2 vezes**, e a expansão do ar (a queda de densidade) acelera outros **1,33** — juntos, $2{,}67$ vezes.
+
+**Passo 3 — a vazão em massa.** Aqui as unidades **importam**, porque o resultado é absoluto:
+
+$$
+A_1 = 20\ \mathrm{cm^2} = 20 \times 10^{-4}\ \mathrm{m^2} = 2{,}0\times10^{-3}\ \mathrm{m^2}
+$$
+
+$$
+\dot m = \rho_1 A_1 v_1 = 0{,}12 \times 2{,}0\times10^{-3} \times 10 = 2{,}4\times10^{-3}\ \mathrm{utm/s}
+$$
+
+<Caixa tipo="simbolos" rotulo="A utm, que só aparece no sistema técnico">
+
+A **unidade técnica de massa** é a massa que, sob $1\ \mathrm{kgf}$, acelera a $1\ \mathrm{m/s^2}$:
+
+$$
+1\ \mathrm{utm} = \frac{1\ \mathrm{kgf}}{1\ \mathrm{m/s^2}} = 9{,}81\ \mathrm{kg}
+$$
+
+Então $\rho_1 = 0{,}12\ \mathrm{utm/m^3}$ é $1{,}18\ \mathrm{kg/m^3}$ — o ar em condições normais, como se esperava. E a vazão em massa em SI:
+
+$$
+\dot m = 2{,}4\times10^{-3} \times 9{,}81 = 2{,}35\times10^{-2}\ \mathrm{kg/s} = 23{,}5\ \mathrm{g/s}
+$$
+
+O enunciado está todo no sistema técnico, então responder em $\mathrm{utm/s}$ está correto; converter é cortesia.
+
+</Caixa>
+
+**Passo 4 — a conferência pela seção 2.** A vazão em massa tem de ser **a mesma** nas duas seções:
+
+$$
+\dot m_2 = \rho_2 A_2 v_2 = 0{,}09 \times 10\times10^{-4} \times 26{,}67 = 0{,}09 \times 10^{-3} \times 26{,}67 = 2{,}4\times10^{-3}\ \mathrm{utm/s}\ \checkmark
+$$
+
+Fecha. Essa checagem custa uma linha e pega qualquer erro de álgebra do Passo 2.
+
+<Caixa tipo="dica" rotulo="E a vazão em volume?">
+
+Ela **não** se conserva num escoamento compressível:
+
+$$
+Q_1 = A_1 v_1 = 2{,}0\times10^{-3} \times 10 = 2{,}0\times10^{-2}\ \mathrm{m^3/s}
+$$
+
+$$
+Q_2 = A_2 v_2 = 1{,}0\times10^{-3} \times 26{,}67 = 2{,}67\times10^{-2}\ \mathrm{m^3/s}
+$$
+
+O ar sai ocupando **33 % mais volume** do que entrou — exatamente a razão $\rho_1/\rho_2$. A massa é a mesma; o volume, não.
+
+</Caixa>
+
+**Conferência —** com $\rho$ variável, a continuidade é a **mássica** ✔ na razão, as áreas podem ficar em $\mathrm{cm^2}$; na vazão, têm de ir para $\mathrm{m^2}$ ✔ $\dot m$ calculado pelas duas seções tem de dar o mesmo ✔ $v_2 > v_1$, porque a seção estreita **e** o ar se expande ✔
+</Passos>

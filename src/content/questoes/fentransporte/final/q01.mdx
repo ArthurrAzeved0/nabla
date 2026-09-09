@@ -1,0 +1,114 @@
+---
+origem: "Final 2023.1 · Final 2023.2"
+tema: "Classificação · Newtonianos e não newtonianos na indústria"
+temaId: fluidos-nao-newtonianos
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Na indústria, os engenheiros frequentemente lidam com uma variedade de fluidos durante o processo de fabricação de produtos como água, molhos, xaropes, cremes, etc. Nesse contexto, **explique a diferença entre fluidos newtonianos e não newtonianos e com que propriedade se relaciona essa classificação.** Forneça **exemplos** de fluidos encontrados na indústria que se enquadram em cada categoria.
+
+<Figura>
+  <svg viewBox="0 0 400 214" role="img" aria-label="Gráfico da tensão de cisalhamento contra a taxa de deformação: o newtoniano é uma reta pela origem, o dilatante curva para cima, o pseudoplástico curva para baixo e o plástico de Bingham parte de uma tensão inicial">
+    {/* eixos */}
+    <line x1="46" y1="168" x2="46" y2="26" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="46,20 43,30 49,30" fill="var(--ink-3)"/>
+    <text x="26" y="34" font-size="10" fill="var(--ink-3)">τ</text>
+    <line x1="46" y1="168" x2="250" y2="168" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="256,168 246,165 246,171" fill="var(--ink-3)"/>
+    <text x="212" y="186" font-size="9" fill="var(--ink-3)">du/dy</text>
+    {/* Bingham: reta que parte de tau0 — a única que não passa pela origem */}
+    <line x1="46" y1="130" x2="246" y2="30" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="6 3"/>
+    <circle cx="46" cy="130" r="3.5" fill="var(--ink-2)"/>
+    <text x="26" y="128" font-size="9" fill="var(--ink-2)">τ₀</text>
+    <text x="256" y="34" font-size="9" fill="var(--ink-2)">Bingham</text>
+    {/* pseudoplástico: côncava para baixo, sempre acima da reta newtoniana */}
+    <path d="M46 168 Q90 90 246 52" fill="none" stroke="var(--ok)" stroke-width="1.8"/>
+    <text x="256" y="56" font-size="9" fill="var(--ok)">pseudoplástico</text>
+    {/* newtoniano: reta pela origem */}
+    <line x1="46" y1="168" x2="246" y2="78" stroke="var(--accent)" stroke-width="2.2"/>
+    <text x="256" y="82" font-size="9" fill="var(--accent)">newtoniano</text>
+    {/* dilatante: côncava para cima, sempre abaixo da reta newtoniana */}
+    <path d="M46 168 Q180 158 246 106" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
+    <text x="256" y="110" font-size="9" fill="var(--warn)">dilatante</text>
+    {/* legenda */}
+    <text x="52" y="204" font-size="8" fill="var(--ink-3)">a inclinação da curva é a viscosidade: constante só no newtoniano</text>
+  </svg>
+  <figcaption>
+
+A classificação é feita pelo **gráfico**: se a relação entre $\tau$ e $du/dy$ é uma reta pela origem, o fluido é newtoniano.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+A classificação se relaciona com a **viscosidade** — mais precisamente, com a **relação entre a tensão de cisalhamento aplicada e a taxa de deformação** resultante:
+
+$$
+\tau = \mu\,\frac{du}{dy}
+$$
+
+**Newtonianos** — obedecem a essa equação de proporcionalidade: há relação **linear** entre $\tau$ e $du/dy$, isto é, o coeficiente de **viscosidade dinâmica $\mu$ é constante**. Exemplos industriais: **água**, líquidos finos assemelhados, óleos leves e os **gases** de maneira geral.
+
+**Não newtonianos** — não seguem essa proporcionalidade: a relação é **variável**, e a viscosidade aparente muda com a taxa de cisalhamento. Podem ser pseudoplásticos, dilatantes, plásticos de Bingham, entre outros. Exemplos industriais: **mel, ketchup, tintas**, cremes, xaropes espessos, lamas e lodos em geral.
+</Gabarito>
+
+<Passos>
+**1 — A propriedade que organiza a classificação.** É a **viscosidade**. Mas a pergunta é mais fina que isso: não é o *valor* da viscosidade que classifica, e sim o fato de ela ser **constante ou não**.
+
+$$
+\mu = \frac{\tau}{du/dy}
+$$
+
+- **constante** → newtoniano;
+- **varia com $du/dy$** → não newtoniano.
+
+<Caixa tipo="macete" rotulo="Água e mel são os dois newtonianos">
+
+Um engano comum é achar que "fluido grosso" é não newtoniano. **Mel é newtoniano**: ele é muito viscoso, mas a sua viscosidade **não muda** com a taxa de cisalhamento — mexer mais rápido não o deixa mais fino.
+
+O que faz um fluido ser não newtoniano é a viscosidade **mudar** quando se muda a agitação. Ketchup é o exemplo clássico: parado ele não escorre, batido no fundo do vidro ele sai de uma vez.
+
+</Caixa>
+
+**2 — Os quatro comportamentos do gráfico.** A classificação se lê direto na curva $\tau$ contra $du/dy$:
+
+| tipo | curva | viscosidade aparente | exemplos industriais |
+|---|---|---|---|
+| **newtoniano** | reta **pela origem** | **constante** | água, ar, óleos leves, mel |
+| **pseudoplástico** | côncava para baixo | **cai** com a agitação | tinta, ketchup, sangue, xampu |
+| **dilatante** | côncava para cima | **cresce** com a agitação | amido em água, areia molhada, pasta de cimento |
+| **plástico de Bingham** | reta a partir de $\tau_0$ | infinita até $\tau_0$ | pasta de dente, lama de perfuração, manteiga |
+
+**3 — Por que isso importa na indústria.** Cada categoria muda o projeto:
+
+- **newtoniano** — a perda de carga e a potência de bombeamento saem das fórmulas usuais (Darcy-Weisbach, Moody), porque $\mu$ é um número;
+- **pseudoplástico** — quanto mais rápido se bombeia, **mais fácil** fica; é por isso que tinta espalha bem sob o rolo e não escorre da parede depois;
+- **dilatante** — quanto mais rápido, **mais difícil**; bombear rápido demais pode travar o sistema;
+- **Bingham** — existe uma **tensão mínima** $\tau_0$ para o escoamento começar. Uma bomba subdimensionada simplesmente não move o fluido, ainda que a vazão pedida seja pequena.
+
+<Caixa tipo="dica" rotulo="A tensão inicial do Bingham é o que se sente na pasta de dente">
+
+Enquanto não se aperta o tubo com força suficiente, nada sai — o fluido se comporta como sólido. Passada a tensão $\tau_0$, ele escoa. É por isso que a pasta fica em pé na escova em vez de escorrer: o próprio peso não gera $\tau_0$.
+
+</Caixa>
+
+**4 — E os que dependem do tempo.** Vale a menção, porque completa o quadro: alguns fluidos mudam de viscosidade **com o tempo de agitação**, e não apenas com a taxa.
+
+- **tixotrópico** — afina com o tempo de agitação (tintas, iogurte batido);
+- **reopético** — engrossa com o tempo (raro; alguns lubrificantes especiais).
+
+**Conferência —** dizer que a propriedade é a **viscosidade**, e que o critério é ela ser **constante** ou não ✔ a diferença é a **linearidade** entre $\tau$ e $du/dy$ ✔ dar exemplos **dos dois** lados, e industriais como o enunciado pede ✔ mencionar que os não newtonianos se subdividem (pseudoplástico, dilatante, Bingham) sobe a resposta de suficiente para completa ✔
+</Passos>

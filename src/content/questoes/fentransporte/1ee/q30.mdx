@@ -1,0 +1,206 @@
+---
+origem: "2022.1"
+tema: "Viscosidade · Perfil quadrático com as placas no mesmo sentido"
+temaId: gradiente-de-velocidade
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere que um líquido newtoniano ($\mu = 0{,}003\ \mathrm{Pa\cdot s}$) está mantido entre duas placas planas horizontais infinitas separadas por uma distância de $40\ \mathrm{mm}$. A placa superior começa a se mover com velocidade de $4{,}0\ \mathrm{m/s}$, enquanto a placa inferior também começa a se mover **na mesma direção**, contudo, com velocidade de $2{,}0\ \mathrm{m/s}$. Admitindo uma distribuição de velocidades no líquido do tipo
+
+$$
+v(y) = A\,y^2 - B\,y + C
+\qquad\text{sendo}\qquad
+B = 10\ \mathrm{s^{-1}}
+$$
+
+e $A$, $C$ constantes, determine:
+
+**a)** (1,0 pt.) A velocidade no meio do fluido (distância média entre as duas placas).
+
+**b)** (1,0 pt.) As tensões cisalhantes nas placas superior e inferior.
+
+<Figura>
+  <svg viewBox="0 0 320 196" role="img" aria-label="Fluido entre duas placas de 40 milímetros de folga movendo-se no mesmo sentido: a inferior a 2 metros por segundo e a superior a 4, com perfil curvo que tem um mínimo perto da placa de baixo">
+    {/* placa superior */}
+    <rect x="40" y="30" width="230" height="11" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="204" y1="24" x2="244" y2="24" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="250,24 240,20 240,28" fill="var(--accent)"/>
+    <text x="122" y="28" font-size="10" fill="var(--accent)">v(L) = 4,0 m/s</text>
+    {/* fluido */}
+    <rect x="40" y="41" width="230" height="98" fill="var(--accent-soft)" opacity="0.4"/>
+    {/* eixo v = 0 */}
+    <line x1="80" y1="41" x2="80" y2="139" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="4 3"/>
+    <text x="48" y="168" font-size="9" fill="var(--ink-3)">eixo v = 0</text>
+    <line x1="72" y1="158" x2="80" y2="142" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    {/* perfil: v(0) = 2 em x = 136; mínimo 1,98 a 3,3 mm; v(L) = 4 em x = 192 */}
+    <path d="M136 139 C135 135 134 131 138 126 C152 104 176 70 192 41" fill="none" stroke="var(--ok)" stroke-width="1.8"/>
+    {/* setas do perfil, do eixo até a curva */}
+    <line x1="80" y1="134" x2="130" y2="134" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="136,134 126,130 126,138" fill="var(--ok)"/>
+    <line x1="80" y1="110" x2="142" y2="110" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="148,110 138,106 138,114" fill="var(--ok)"/>
+    <line x1="80" y1="88" x2="156" y2="88" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="162,88 152,84 152,92" fill="var(--ok)"/>
+    <line x1="80" y1="64" x2="171" y2="64" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="177,64 167,60 167,68" fill="var(--ok)"/>
+    <line x1="80" y1="46" x2="183" y2="46" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="189,46 179,42 179,50" fill="var(--ok)"/>
+    {/* mínimo do perfil */}
+    <circle cx="135" cy="131" r="3.5" fill="var(--warn)"/>
+    <line x1="139" y1="131" x2="166" y2="131" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="170" y="135" font-size="9" fill="var(--warn)">mínimo: dv/dy = 0</text>
+    {/* placa inferior */}
+    <rect x="40" y="139" width="230" height="11" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="204" y1="160" x2="224" y2="160" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="230,160 220,156 220,164" fill="var(--accent)"/>
+    <text x="122" y="164" font-size="10" fill="var(--accent)">v(0) = 2,0 m/s</text>
+    {/* cota da folga */}
+    <line x1="28" y1="41" x2="28" y2="139" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="28,41 24,51 32,51" fill="var(--ink-3)"/>
+    <polygon points="28,139 24,129 32,129" fill="var(--ink-3)"/>
+    <text x="2" y="94" font-size="10" fill="var(--ink-3)">40 mm</text>
+    <text x="286" y="146" font-size="10" fill="var(--ink-3)">y = 0</text>
+    <text x="286" y="38" font-size="10" fill="var(--ink-3)">y = L</text>
+  </svg>
+  <figcaption>
+
+As duas placas vão para o **mesmo lado**, então o perfil nunca cruza o zero — mas o termo $-By$ ainda faz a velocidade **cair** um pouco antes de subir.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+C = v(0) = 2{,}0\ \mathrm{m/s}
+\qquad
+A = \frac{v_L + B\,L - C}{L^2} = \frac{4{,}0 + 10(0{,}04) - 2{,}0}{(0{,}04)^2} = 1500\ \frac{1}{\mathrm{m\cdot s}}
+$$
+
+**a)**
+
+$$
+v(L/2) = 1500(0{,}02)^2 - 10(0{,}02) + 2{,}0 = \mathbf{2{,}4\ m/s}
+$$
+
+**b)**
+
+$$
+\tau(0) = \mu\,(-B) = 0{,}003 \cdot (-10) = \mathbf{-0{,}03\ Pa}
+$$
+
+$$
+\tau(L) = \mu\,(2AL - B) = 0{,}003 \cdot (120 - 10) = \mathbf{+0{,}33\ Pa}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as condições de contorno.** Pelo **não escorregamento**, o fluido em contato com cada placa tem a velocidade dela. Com $L = 40\ \mathrm{mm} = 0{,}04\ \mathrm{m}$:
+
+$$
+v(0) = 2{,}0\ \mathrm{m/s}
+\qquad
+v(L) = 4{,}0\ \mathrm{m/s}
+$$
+
+As duas positivas, porque as placas vão **na mesma direção**.
+
+**Passo 2 — $C$ é a velocidade da placa de baixo.**
+
+$$
+v(0) = A(0)^2 - B(0) + C = C
+\qquad\Longrightarrow\qquad
+C = 2{,}0\ \mathrm{m/s}
+$$
+
+**Passo 3 — $A$ vem da placa de cima.**
+
+$$
+A L^2 - B L + C = v_L
+\qquad\Longrightarrow\qquad
+A = \frac{v_L + B\,L - C}{L^2}
+$$
+
+$$
+A = \frac{4{,}0 + 10 \cdot 0{,}04 - 2{,}0}{(0{,}04)^2} = \frac{4{,}0 + 0{,}4 - 2{,}0}{0{,}0016} = \frac{2{,}4}{0{,}0016} = 1500\ \frac{1}{\mathrm{m\cdot s}}
+$$
+
+<Caixa tipo="simbolos">
+
+- $A = 1500\ \mathrm{1/(m\cdot s)}$ — coeficiente quadrático; a unidade é tal que $Ay^2$ dê $\mathrm{m/s}$
+- $B = 10\ \mathrm{s^{-1}}$ — coeficiente linear; é um **gradiente**
+- $C = 2{,}0\ \mathrm{m/s}$ — velocidade em $y = 0$
+- $\mu = 0{,}003\ \mathrm{Pa\cdot s}$ — viscosidade dinâmica
+
+</Caixa>
+
+**Passo 4 — item (a): o meio da folga.** Com $y = L/2 = 0{,}02\ \mathrm{m}$:
+
+$$
+v(0{,}02) = 1500 \cdot (0{,}02)^2 - 10 \cdot 0{,}02 + 2{,}0
+$$
+
+$$
+v = 1500 \cdot 4\times10^{-4} - 0{,}2 + 2{,}0 = 0{,}6 - 0{,}2 + 2{,}0 = 2{,}4\ \mathrm{m/s}
+$$
+
+Repare que $2{,}4$ é **menor** que a média aritmética das placas ($3{,}0\ \mathrm{m/s}$). O perfil não é linear, então a média não vale — e é justamente isso que a questão quer verificar.
+
+**Passo 5 — item (b): a derivada do perfil.**
+
+$$
+\frac{dv}{dy} = 2Ay - B = 3000\,y - 10
+$$
+
+*Na placa inferior* ($y = 0$):
+
+$$
+\frac{dv}{dy}\bigg|_{0} = -10\ \mathrm{s^{-1}}
+\qquad\Longrightarrow\qquad
+\tau(0) = 0{,}003 \cdot (-10) = -0{,}03\ \mathrm{Pa}
+$$
+
+*Na placa superior* ($y = L = 0{,}04\ \mathrm{m}$):
+
+$$
+\frac{dv}{dy}\bigg|_{L} = 3000 \cdot 0{,}04 - 10 = 120 - 10 = 110\ \mathrm{s^{-1}}
+$$
+
+$$
+\tau(L) = 0{,}003 \cdot 110 = 0{,}33\ \mathrm{Pa}
+$$
+
+**Passo 6 — o que os sinais opostos significam.** Ao contrário do caso de placas em sentidos opostos, aqui as duas tensões têm **sinais diferentes**. Isso porque o perfil tem um **mínimo** dentro da folga:
+
+$$
+\frac{dv}{dy} = 0
+\qquad\Longrightarrow\qquad
+y_{\min} = \frac{B}{2A} = \frac{10}{3000} = 3{,}33\ \mathrm{mm}
+$$
+
+$$
+v_{\min} = 1500(0{,}00333)^2 - 10(0{,}00333) + 2{,}0 \approx 1{,}98\ \mathrm{m/s}
+$$
+
+Abaixo de $3{,}33\ \mathrm{mm}$ o fluido **desacelera** com a altura; acima, acelera. Nas duas paredes o fluido é mais lento que a placa, então **as duas placas são freadas** — e a de cima, onde o gradiente é onze vezes maior, é freada muito mais.
+
+<Caixa tipo="dica">
+
+O módulo maior em $y = L$ tem leitura direta: a placa de cima tem de "arrastar" quase todo o líquido, porque a variação de velocidade se concentra na metade superior da folga.
+
+</Caixa>
+
+**Conferência —** $L$ em metros ($0{,}04$, não $40$) ✔ $C$ é a velocidade da placa **inferior**, não a média ✔ $v(L/2) = 2{,}4$ tem de ficar entre $2{,}0$ e $4{,}0$ ✔ os sinais de $\tau$ nas duas placas saem **opostos**, e isso é consequência do mínimo interno ✔
+</Passos>

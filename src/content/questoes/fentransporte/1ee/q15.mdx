@@ -1,0 +1,130 @@
+---
+origem: "2025.1 · 2025.2"
+tema: "Empuxo · Peso e peso aparente de um corpo submerso"
+temaId: peso-aparente
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O **peso aparente** de um corpo pode ser definido como a diferença entre o seu peso e o empuxo por ele sofrido, ou seja, $P_{\text{aparente}} = P - F_e$. O peso aparente nos dá aquela sensação de alívio de peso quando estamos numa piscina ou na praia.
+
+Imagine um corpo com massa de aproximadamente $150\ \mathrm{g}$ e volume de $19\ \mathrm{cm^3}$ **completamente mergulhado na água**. Calcule o seu peso e o seu peso aparente.
+
+**Dados:** $\rho_{\text{água}} = 1000\ \mathrm{kg/m^3}$; $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 260 170" role="img" aria-label="Corpo totalmente submerso na água pendurado por um fio: o peso aponta para baixo e o empuxo para cima, e a diferença entre eles é a tração no fio">
+    {/* recipiente */}
+    <rect x="40" y="34" width="180" height="112" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    {/* água */}
+    <rect x="41" y="50" width="178" height="95" fill="var(--accent-soft)" opacity="0.5"/>
+    <line x1="41" y1="50" x2="219" y2="50" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="176" y="64" font-size="10" fill="var(--accent)">água</text>
+    {/* fio */}
+    <line x1="130" y1="20" x2="130" y2="84" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="108" y1="20" x2="152" y2="20" stroke="var(--ink-3)" stroke-width="1.6"/>
+    {/* corpo */}
+    <rect x="112" y="84" width="36" height="30" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="120" y="103" font-size="10" fill="var(--ink-2)">V</text>
+    {/* peso */}
+    <line x1="130" y1="114" x2="130" y2="136" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="130,142 126,132 134,132" fill="var(--warn)"/>
+    <text x="138" y="136" font-size="11" fill="var(--warn)">P</text>
+    {/* empuxo */}
+    <line x1="94" y1="84" x2="94" y2="60" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="94,54 90,64 98,64" fill="var(--ok)"/>
+    <text x="68" y="70" font-size="11" fill="var(--ok)">Fₑ</text>
+  </svg>
+  <figcaption>
+
+O corpo está **totalmente** submerso: o volume deslocado é o volume inteiro do corpo, $19\ \mathrm{cm^3}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+P = m\,g = 0{,}150 \cdot 9{,}81 \approx \mathbf{1{,}47\ N}
+$$
+
+$$
+F_e = \rho_{\text{água}}\,g\,V = 1000 \cdot 9{,}81 \cdot 19 \times 10^{-6} \approx 0{,}186\ \mathrm{N}
+$$
+
+$$
+P_{\text{aparente}} = P - F_e = 1{,}47 - 0{,}186 \approx \mathbf{1{,}29\ N}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o peso, que não depende do fluido.**
+
+$$
+P = m\,g = 0{,}150\ \mathrm{kg} \cdot 9{,}81\ \mathrm{m/s^2} = 1{,}4715\ \mathrm{N} \approx 1{,}47\ \mathrm{N}
+$$
+
+**Passo 2 — as unidades do volume, que é onde a questão derruba.** O empuxo vai multiplicar $\rho$ em $\mathrm{kg/m^3}$, então o volume tem de estar em $\mathrm{m^3}$:
+
+$$
+19\ \mathrm{cm^3} = 19 \times (10^{-2}\ \mathrm{m})^3 = 19 \times 10^{-6}\ \mathrm{m^3}
+$$
+
+O fator é $10^{-6}$, não $10^{-2}$ — o expoente vale para **cada** uma das três dimensões.
+
+**Passo 3 — o empuxo é o peso do fluido deslocado.** Princípio de Arquimedes:
+
+$$
+F_e = \rho_{\text{fluido}}\;g\;V_{\text{deslocado}}
+$$
+
+Como o corpo está **completamente** mergulhado, $V_{\text{deslocado}} = V_{\text{corpo}} = 19 \times 10^{-6}\ \mathrm{m^3}$:
+
+$$
+F_e = 1000 \cdot 9{,}81 \cdot 19 \times 10^{-6} = 0{,}18639\ \mathrm{N} \approx 0{,}186\ \mathrm{N}
+$$
+
+<Caixa tipo="dica">
+
+Na fórmula do empuxo, o $\rho$ é o do **fluido** e o $V$ é o do **corpo** (a parte submersa). Trocar um pelo outro é o erro clássico — e o enunciado de prova costuma dar exatamente os dois números para ver quem troca.
+
+</Caixa>
+
+**Passo 4 — o peso aparente.**
+
+$$
+P_{\text{aparente}} = P - F_e = 1{,}4715 - 0{,}18639 = 1{,}2851\ \mathrm{N} \approx 1{,}29\ \mathrm{N}
+$$
+
+O alívio é de $0{,}186\ \mathrm{N}$, ou seja, cerca de **13 %** do peso.
+
+**Passo 5 — a conferência física: esse corpo afunda?** A massa específica do corpo é
+
+$$
+\rho_{\text{corpo}} = \frac{m}{V} = \frac{0{,}150}{19 \times 10^{-6}} \approx 7\,895\ \mathrm{kg/m^3}
+$$
+
+quase 8 vezes a da água — é aço. Logo $P > F_e$, o peso aparente é **positivo** e o corpo afunda se soltarmos o fio. Coerente com a resposta.
+
+<Caixa tipo="macete">
+
+O sinal do peso aparente é o teste de flutuação de graça:
+
+- $P_{\text{ap}} > 0$ → o corpo **afunda** ($\rho_{\text{corpo}} > \rho_{\text{fluido}}$);
+- $P_{\text{ap}} = 0$ → fica em **equilíbrio** em qualquer profundidade;
+- $P_{\text{ap}} < 0$ → **sobe** e flutua na superfície.
+
+</Caixa>
+
+**Conferência —** $\mathrm{cm^3} \to \mathrm{m^3}$ é $10^{-6}$ ✔ o $\rho$ do empuxo é o da água ✔ o peso aparente tem de ser **menor** que o peso, nunca maior ✔
+</Passos>

@@ -1,0 +1,218 @@
+---
+origem: "Prova · turma EM"
+tema: "Dedução · Equação geral da condução em coordenadas cartesianas"
+temaId: lei-de-fourier
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A partir dos diagramas, **deduza a fórmula de transmissão de calor por condução em coordenadas cartesianas**, sabendo que
+
+$$
+Q_{ARM.} = Q_{ENT.} - Q_{SAÍDA} + Q_{GERADO}
+$$
+
+<Figura>
+  <svg viewBox="0 0 340 220" role="img" aria-label="Elemento cúbico de lados dx, dy e dz: os fluxos de calor entram por três faces e saem pelas faces opostas acrescidos da variação, e há geração interna">
+    {/* eixos */}
+    <line x1="66" y1="170" x2="66" y2="126" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <polygon points="66,120 63,130 69,130" fill="var(--ink-3)"/>
+    <text x="58" y="118" font-size="10" fill="var(--ink-3)">z</text>
+    <line x1="66" y1="170" x2="104" y2="170" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <polygon points="110,170 100,167 100,173" fill="var(--ink-3)"/>
+    <text x="112" y="174" font-size="10" fill="var(--ink-3)">x</text>
+    <line x1="66" y1="170" x2="42" y2="190" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <polygon points="37,194 45,187 49,192" fill="var(--ink-3)"/>
+    <text x="26" y="200" font-size="10" fill="var(--ink-3)">y</text>
+    {/* cubo em perspectiva */}
+    <polygon points="150,80 216,80 216,146 150,146" fill="var(--accent-soft)" opacity="0.55" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <polygon points="150,80 178,58 244,58 216,80" fill="var(--line-2)" opacity="0.7" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <polygon points="216,80 244,58 244,124 216,146" fill="var(--line-2)" opacity="0.45" stroke="var(--ink-2)" stroke-width="1.3"/>
+    {/* cotas do elemento */}
+    <text x="194" y="162" font-size="9" fill="var(--ok)">dx</text>
+    <text x="226" y="120" font-size="9" fill="var(--ok)">dy</text>
+    <text x="136" y="98" font-size="9" fill="var(--ok)">dz</text>
+    {/* entradas: faces x, z e y — as três escondidas (esquerda, base e fundo) */}
+    <line x1="108" y1="126" x2="144" y2="126" stroke="var(--warn)" stroke-width="1.9"/>
+    <polygon points="149,126 139,122 139,130" fill="var(--warn)"/>
+    <text x="100" y="120" font-size="9" fill="var(--warn)">q<tspan font-size="7" dy="2">x</tspan></text>
+    <line x1="166" y1="190" x2="166" y2="158" stroke="var(--warn)" stroke-width="1.9"/>
+    <polygon points="166,150 162,160 170,160" fill="var(--warn)"/>
+    <text x="172" y="186" font-size="9" fill="var(--warn)">q<tspan font-size="7" dy="2">z</tspan></text>
+    <line x1="286" y1="40" x2="252" y2="66" stroke="var(--warn)" stroke-width="1.9"/>
+    <polygon points="246,71 254,63 258,68" fill="var(--warn)"/>
+    <text x="290" y="36" font-size="9" fill="var(--warn)">q<tspan font-size="7" dy="2">y</tspan></text>
+    {/* saídas: pelas faces opostas, acrescidas da variação */}
+    <line x1="246" y1="92" x2="286" y2="92" stroke="var(--ok)" stroke-width="1.9"/>
+    <polygon points="292,92 282,88 282,96" fill="var(--ok)"/>
+    <text x="248" y="86" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">x</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">x</tspan><tspan dy="-2">/∂x · dx</tspan></text>
+    <line x1="196" y1="52" x2="196" y2="26" stroke="var(--ok)" stroke-width="1.9"/>
+    <polygon points="196,18 192,28 200,28" fill="var(--ok)"/>
+    <text x="120" y="30" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">z</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">z</tspan><tspan dy="-2">/∂z · dz</tspan></text>
+    <line x1="146" y1="152" x2="124" y2="170" stroke="var(--ok)" stroke-width="1.9"/>
+    <polygon points="118,175 126,168 130,173" fill="var(--ok)"/>
+    <text x="100" y="206" font-size="8" fill="var(--ok)">q<tspan font-size="6" dy="2">y</tspan><tspan dy="-2"> + ∂q</tspan><tspan font-size="6" dy="2">y</tspan><tspan dy="-2">/∂y · dy</tspan></text>
+    {/* geração dentro do volume */}
+    <text x="176" y="118" font-size="11" fill="var(--ink-2)">q̇</text>
+    <text x="232" y="196" font-size="8" fill="var(--ink-3)">q̇ : geração no volume</text>
+  </svg>
+  <figcaption>
+
+O que entra por três faces sai pelas opostas **acrescido da variação** ao longo daquela direção — é a expansão em série truncada no primeiro termo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\frac{\partial}{\partial x}\!\left(k\,\frac{\partial T}{\partial x}\right)
++ \frac{\partial}{\partial y}\!\left(k\,\frac{\partial T}{\partial y}\right)
++ \frac{\partial}{\partial z}\!\left(k\,\frac{\partial T}{\partial z}\right)
++ \dot q
+= \rho\,c_p\,\frac{\partial T}{\partial t}
+$$
+
+e, com $k$ **constante**, dividindo por $k$:
+
+$$
+\boxed{\;
+\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2}
++ \frac{\dot q}{k}
+= \frac{1}{\alpha}\,\frac{\partial T}{\partial t}
+\;}
+\qquad\text{com}\qquad
+\alpha = \frac{k}{\rho\,c_p}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o elemento e o balanço.** Um elemento de volume $dV = dx\,dy\,dz$, e o enunciado do balanço:
+
+$$
+Q_{ARM} = Q_{ENT} - Q_{SAI} + Q_{GER}
+$$
+
+<Caixa tipo="simbolos">
+
+- $q_x,\ q_y,\ q_z$ — taxas de calor **entrando** por cada face, em W
+- $\dot q$ — geração por unidade de **volume**, em $\mathrm{W/m^3}$
+- $c_p$ — calor específico, em $\mathrm{J/(kg\cdot K)}$
+- $\alpha = k/(\rho c_p)$ — **difusividade térmica**, em $\mathrm{m^2/s}$
+
+</Caixa>
+
+**Passo 2 — o que entra.** Pelas três faces "de trás":
+
+$$
+Q_{ENT} = q_x + q_y + q_z
+$$
+
+**Passo 3 — o que sai, por expansão em série.** Na face oposta, a taxa é a mesma acrescida da variação ao longo daquela direção — série de Taylor truncada no primeiro termo, que é exato no limite $dx \to 0$:
+
+$$
+Q_{SAI} = \left(q_x + \frac{\partial q_x}{\partial x}dx\right)
++ \left(q_y + \frac{\partial q_y}{\partial y}dy\right)
++ \left(q_z + \frac{\partial q_z}{\partial z}dz\right)
+$$
+
+**Passo 4 — a subtração, que é o coração da dedução.** Os termos $q_x$, $q_y$ e $q_z$ **se cancelam**, e sobram só as variações:
+
+$$
+Q_{ENT} - Q_{SAI} = -\left(\frac{\partial q_x}{\partial x}dx + \frac{\partial q_y}{\partial y}dy + \frac{\partial q_z}{\partial z}dz\right)
+$$
+
+**Passo 5 — a geração e o acúmulo.**
+
+$$
+Q_{GER} = \dot q\;dx\,dy\,dz
+$$
+
+$$
+Q_{ARM} = \rho\,c_p\,\frac{\partial T}{\partial t}\;dx\,dy\,dz
+$$
+
+O termo de armazenamento é a massa do elemento ($\rho\,dV$) vezes o calor específico vezes a taxa de variação da temperatura.
+
+**Passo 6 — juntar.**
+
+$$
+\rho\,c_p\,\frac{\partial T}{\partial t}\,dV
+= -\left(\frac{\partial q_x}{\partial x}dx + \frac{\partial q_y}{\partial y}dy + \frac{\partial q_z}{\partial z}dz\right)
++ \dot q\,dV
+$$
+
+**Passo 7 — entrar com a lei de Fourier.** Aqui a física entra: cada $q$ é escrito em termos da temperatura, com a **área da face** correspondente.
+
+$$
+q_x = -k\,(dy\,dz)\,\frac{\partial T}{\partial x}
+\qquad
+q_y = -k\,(dx\,dz)\,\frac{\partial T}{\partial y}
+\qquad
+q_z = -k\,(dx\,dy)\,\frac{\partial T}{\partial z}
+$$
+
+Então
+
+$$
+\frac{\partial q_x}{\partial x}\,dx = -\frac{\partial}{\partial x}\!\left(k\,\frac{\partial T}{\partial x}\right) dx\,dy\,dz
+$$
+
+e o mesmo nas outras duas direções. Note que **cada termo carrega $dV$** — é isso que permite dividir tudo por $dV$ no passo seguinte.
+
+<Caixa tipo="dica" rotulo="A área de cada face não é a mesma">
+
+O fluxo em $x$ atravessa a face de área $dy\,dz$; o em $y$, a face $dx\,dz$; o em $z$, a face $dx\,dy$. Trocar as áreas é o erro que quebra a dedução, porque aí os termos não fecham em $dV$ e não dá para dividir.
+
+</Caixa>
+
+**Passo 8 — dividir por $dV = dx\,dy\,dz$.**
+
+$$
+\frac{\partial}{\partial x}\!\left(k\,\frac{\partial T}{\partial x}\right)
++ \frac{\partial}{\partial y}\!\left(k\,\frac{\partial T}{\partial y}\right)
++ \frac{\partial}{\partial z}\!\left(k\,\frac{\partial T}{\partial z}\right)
++ \dot q
+= \rho\,c_p\,\frac{\partial T}{\partial t}
+$$
+
+Esta é a **equação geral da condução** em coordenadas cartesianas, válida com $k$ variável.
+
+**Passo 9 — a forma usual, com $k$ constante.**
+
+$$
+\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2}
++ \frac{\dot q}{k}
+= \frac{1}{\alpha}\,\frac{\partial T}{\partial t}
+$$
+
+ou, em forma vetorial, $\nabla^2 T + \dot q/k = (1/\alpha)\,\partial T/\partial t$.
+
+<Caixa tipo="macete" rotulo="Os casos particulares que a prova usa">
+
+Toda fórmula da unidade sai desta equação, cancelando termos:
+
+| condição | o que cai | resultado |
+|---|---|---|
+| regime permanente | $\partial T/\partial t = 0$ | $\nabla^2 T + \dot q/k = 0$ (Poisson) |
+| sem geração | $\dot q = 0$ | $\nabla^2 T = (1/\alpha)\,\partial T/\partial t$ (difusão) |
+| permanente, sem geração | os dois | $\nabla^2 T = 0$ (Laplace) |
+| 1D, permanente, sem geração | tudo, menos $x$ | $d^2T/dx^2 = 0$ → **perfil linear** |
+| 1D, permanente, **com** geração | só o tempo | $d^2T/dx^2 = -\dot q/k$ → **parábola** |
+
+As duas últimas linhas são a parede plana e a parede com geração — e é por isso que numa o perfil é reto e na outra é parábola. A dedução explica as duas de uma vez.
+
+</Caixa>
+
+**Conferência —** a dedução tem de passar por: balanço no elemento → expansão em série na face de saída → cancelamento dos termos $q_i$ → geração e acúmulo proporcionais a $dV$ → Fourier com a **área correta** de cada face → divisão por $dV$ ✔ Escrever o laplaciano direto não é dedução ✔ Dizer, no fim, quais casos particulares a equação contém mostra para que ela serve ✔
+</Passos>

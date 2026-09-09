@@ -269,6 +269,8 @@ disciplinas:
     categoria: basico
     pre: [CALC2]
     co: [ONDTERM]
+    nota: "O conteúdo de fluidos é o mesmo; a transferência de calor, que em Fenômenos de Transporte vem na 2ª unidade, aqui é a cadeira Transmissão de Calor, do 6º período."
+    cadeira: fentransporte
   - id: MATCONSTR
     codigo: MECN0039
     nome: Materiais de Construção Mecânica

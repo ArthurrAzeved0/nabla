@@ -221,6 +221,7 @@ disciplinas:
     categoria: basico
     pre: [MAT20]
     co: [FIS13]
+    cadeira: fentransporte
   - id: FIS13
     codigo: FIS13
     nome: Fund. da Ondulatória e Termodinâmica

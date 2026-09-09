@@ -1,0 +1,147 @@
+---
+origem: "Prova · sem data"
+tema: "Dedução · Variação da pressão num fluido em repouso"
+temaId: lei-de-stevin
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A partir do desenho esquemático de um elemento infinitesimal de fluido, **deduza a variação da pressão com a posição num fluido em repouso**.
+
+<Figura>
+  <svg viewBox="0 0 300 190" role="img" aria-label="Elemento infinitesimal de fluido em forma de paralelepípedo com as pressões nas faces opostas e o peso apontando para baixo">
+    {/* paralelepípedo em perspectiva */}
+    <rect x="90" y="60" width="90" height="70" fill="var(--accent-soft)" opacity="0.4" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <path d="M90 60 L118 40 L208 40 L180 60" fill="var(--accent-soft)" opacity="0.25" stroke="var(--ink-3)" stroke-width="1"/>
+    <path d="M180 60 L208 40 L208 110 L180 130" fill="var(--accent-soft)" opacity="0.2" stroke="var(--ink-3)" stroke-width="1"/>
+    {/* pressões verticais */}
+    <line x1="135" y1="34" x2="135" y2="56" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="135,60 131,50 139,50" fill="var(--warn)"/>
+    <text x="140" y="32" font-size="9" fill="var(--warn)">p + (∂p/∂y)(dy/2)</text>
+    <line x1="135" y1="156" x2="135" y2="134" stroke="var(--warn)" stroke-width="1.6"/>
+    <polygon points="135,130 131,140 139,140" fill="var(--warn)"/>
+    <text x="140" y="170" font-size="9" fill="var(--warn)">p − (∂p/∂y)(dy/2)</text>
+    {/* peso */}
+    <line x1="200" y1="86" x2="200" y2="120" stroke="var(--ok)" stroke-width="1.6"/>
+    <polygon points="200,126 196,116 204,116" fill="var(--ok)"/>
+    <text x="206" y="106" font-size="10" fill="var(--ok)">δG = γ dV</text>
+    {/* eixos */}
+    <line x1="30" y1="150" x2="30" y2="90" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="30,84 26,94 34,94" fill="var(--ink-3)"/>
+    <text x="20" y="82" font-size="10" fill="var(--ink-3)">y</text>
+    <line x1="30" y1="150" x2="76" y2="150" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="60" y="164" font-size="10" fill="var(--ink-3)">x</text>
+  </svg>
+  <figcaption>
+
+As pressões nas faces opostas diferem por uma expansão em série de Taylor em torno do centro. Na vertical, essa diferença precisa equilibrar o **peso** do elemento.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+-\nabla p - \gamma\,\hat{j} = 0
+\qquad\Longrightarrow\qquad
+\frac{\partial p}{\partial x} = \frac{\partial p}{\partial z} = 0
+\qquad\text{e}\qquad
+\frac{dp}{dy} = -\gamma
+$$
+
+A pressão **não** varia na horizontal e varia na vertical à taxa $-\gamma$. Integrando, $p_2 - p_1 = -\gamma\,(y_2 - y_1)$, que é a **lei de Stevin**.
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas famílias de força no elemento.** Sobre o paralelepípedo de volume $dV = dx\,dy\,dz$ agem:
+
+- forças de **superfície**, devidas à **pressão** nas seis faces;
+- força de **campo**, que aqui é o **peso** do elemento.
+
+Como o fluido está em **repouso**, não há tensão de cisalhamento: a pressão é a única força de superfície.
+
+**Passo 2 — as pressões nas faces, por Taylor.** Sendo $p$ a pressão no **centro** do elemento, as pressões médias nas faces opostas saem de uma expansão em série de Taylor. Na direção $y$:
+
+$$
+p_{\text{topo}} = p + \frac{\partial p}{\partial y}\frac{dy}{2}
+\qquad\qquad
+p_{\text{base}} = p - \frac{\partial p}{\partial y}\frac{dy}{2}
+$$
+
+**Passo 3 — a força resultante de superfície.** Na direção $y$, a resultante é a diferença das pressões vezes a área $dx\,dz$:
+
+$$
+\delta F_{s,y} = \left(p - \frac{\partial p}{\partial y}\frac{dy}{2}\right)dx\,dz - \left(p + \frac{\partial p}{\partial y}\frac{dy}{2}\right)dx\,dz = -\frac{\partial p}{\partial y}\,dx\,dy\,dz
+$$
+
+Análogo em $x$ e $z$. Na forma vetorial:
+
+$$
+\delta \vec{F}_s = -\left(\frac{\partial p}{\partial x}\hat{i} + \frac{\partial p}{\partial y}\hat{j} + \frac{\partial p}{\partial z}\hat{k}\right)dV = -\nabla p\;dV
+$$
+
+O grupo entre parênteses é o **gradiente de pressão**.
+
+**Passo 4 — o peso.** Com $y$ vertical para cima:
+
+$$
+\delta \vec{G} = -\gamma\,dV\,\hat{j}
+$$
+
+O sinal negativo diz que o peso aponta **para baixo**.
+
+**Passo 5 — a segunda lei de Newton.** Somando as forças e igualando a $\delta m\,\vec{a}$, com $\delta m = \rho\,dV$:
+
+$$
+-\nabla p\;dV - \gamma\,dV\,\hat{j} = \rho\,dV\,\vec{a}
+\qquad\Longrightarrow\qquad
+-\nabla p - \gamma\,\hat{j} = \rho\,\vec{a}
+$$
+
+Esta é a **equação geral do movimento** para fluido sem cisalhamento.
+
+**Passo 6 — impondo o repouso.** Em repouso, $\vec{a} = 0$:
+
+$$
+-\nabla p - \gamma\,\hat{j} = 0
+$$
+
+Componente a componente:
+
+$$
+\frac{\partial p}{\partial x} = 0
+\qquad
+\frac{\partial p}{\partial z} = 0
+\qquad
+\frac{\partial p}{\partial y} = -\gamma
+$$
+
+**Passo 7 — o significado.** As duas primeiras dizem que **a pressão não depende de $x$ nem de $z$**: não há variação de pressão entre pontos de um **mesmo plano horizontal**. Logo $p$ é função só de $y$, e a equação diferencial parcial vira ordinária:
+
+$$
+\boxed{\;\frac{dp}{dy} = -\gamma\;}
+$$
+
+Integrando entre dois pontos, com $\gamma$ constante:
+
+$$
+p_2 - p_1 = -\gamma\,(y_2 - y_1)
+\qquad\Longleftrightarrow\qquad
+\Delta p = \gamma\,\Delta h
+$$
+
+que é a **lei de Stevin** — descer aumenta a pressão, subir diminui.
+
+**Conferência —** o sinal fecha: se o ponto 2 está **acima** ($y_2 > y_1$), a pressão nele é **menor** ✔ E as duas derivadas nulas em $x$ e $z$ são exatamente a segunda consequência de Stevin, que resolve manômetro ✔
+</Passos>

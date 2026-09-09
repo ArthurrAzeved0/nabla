@@ -1,0 +1,205 @@
+---
+origem: "2022.1"
+tema: "Manometria · Pressão no ponto M com quatro fluidos em série"
+temaId: equacao-manometrica
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a figura a seguir. Determine a **pressão manométrica no ponto $M$**.
+
+**Dados:** $P_{atm} = 1 \times 10^5\ \mathrm{Pa}$; $\rho_{\text{água}} = 1000\ \mathrm{kg/m^3}$; $\rho_{\text{óleo}} = 800\ \mathrm{kg/m^3}$; $\rho_{Hg} = 13\,600\ \mathrm{kg/m^3}$; $g = 10\ \mathrm{m/s^2}$; $h_1 = 20\ \mathrm{cm}$; $h_2 = 12\ \mathrm{cm}$; $h_3 = 17\ \mathrm{cm}$.
+
+<Figura>
+  <svg viewBox="0 0 420 236" role="img" aria-label="Tubo aberto com água apoiada sobre mercúrio, ligado pelo fundo a um vaso fechado que contém, de baixo para cima, mercúrio, água, óleo e gás; o ponto M fica no meio da camada de óleo">
+    {/* tubo esquerdo, aberto */}
+    <rect x="96" y="14" width="24" height="190" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.3"/>
+    {/* vaso direito, fechado */}
+    <rect x="210" y="16" width="116" height="188" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.3"/>
+    {/* canal do fundo */}
+    <rect x="96" y="190" width="230" height="14" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.3"/>
+    {/* água no tubo esquerdo */}
+    <rect x="97" y="40" width="22" height="80" fill="var(--accent-soft)" opacity="0.8"/>
+    <line x1="97" y1="40" x2="119" y2="40" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="124" y="88" font-size="9" fill="var(--accent)">água</text>
+    {/* mercúrio: tubo esquerdo, fundo e ramo direito */}
+    <rect x="97" y="120" width="22" height="83" fill="var(--ink-2)"/>
+    <rect x="97" y="191" width="228" height="12" fill="var(--ink-2)"/>
+    <rect x="211" y="156" width="114" height="47" fill="var(--ink-2)"/>
+    <text x="124" y="178" font-size="9" fill="var(--ink-3)">Hg</text>
+    <text x="288" y="182" font-size="10" fill="var(--surface-2)">Hg</text>
+    {/* água no vaso direito */}
+    <rect x="211" y="88" width="114" height="68" fill="var(--accent-soft)" opacity="0.8"/>
+    <text x="286" y="126" font-size="10" fill="var(--ink-2)">água</text>
+    {/* óleo */}
+    <rect x="211" y="40" width="114" height="48" fill="var(--warn)" opacity="0.35"/>
+    <text x="288" y="76" font-size="10" fill="var(--ink-2)">óleo</text>
+    {/* gás */}
+    <rect x="211" y="17" width="114" height="23" fill="var(--line-2)" opacity="0.6"/>
+    <text x="290" y="33" font-size="10" fill="var(--ink-2)">gás</text>
+    {/* ponto M */}
+    <circle cx="250" cy="64" r="3.5" fill="var(--ink-2)"/>
+    <text x="256" y="60" font-size="11" fill="var(--ink-2)">M</text>
+    {/* atmosfera no tubo aberto */}
+    <line x1="108" y1="2" x2="108" y2="14" stroke="var(--warn)" stroke-width="1.4"/>
+    <polygon points="108,20 104,10 112,10" fill="var(--warn)"/>
+    <text x="70" y="12" font-size="9" fill="var(--warn)">P atm</text>
+    {/* nível de referência do topo */}
+    <line x1="62" y1="40" x2="210" y2="40" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="4 3"/>
+    {/* cota h1 */}
+    <line x1="70" y1="48" x2="70" y2="112" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="70,40 66,50 74,50" fill="var(--ok)"/>
+    <polygon points="70,120 66,110 74,110" fill="var(--ok)"/>
+    <line x1="62" y1="120" x2="96" y2="120" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <text x="6" y="86" font-size="9" fill="var(--ok)">h₁ = 20 cm</text>
+    {/* cota h2/2 até M */}
+    <line x1="200" y1="48" x2="200" y2="56" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="200,40 196,48 204,48" fill="var(--ink-3)"/>
+    <polygon points="200,64 196,56 204,56" fill="var(--ink-3)"/>
+    <line x1="200" y1="64" x2="246" y2="64" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="168" y="56" font-size="9" fill="var(--ink-3)">h₂/2</text>
+    {/* desnível do mercúrio */}
+    <line x1="160" y1="128" x2="160" y2="148" stroke="var(--warn)" stroke-width="1.2"/>
+    <polygon points="160,120 156,130 164,130" fill="var(--warn)"/>
+    <polygon points="160,156 156,146 164,146" fill="var(--warn)"/>
+    <line x1="120" y1="120" x2="160" y2="120" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <line x1="160" y1="156" x2="210" y2="156" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="126" y="142" font-size="9" fill="var(--warn)">9 cm</text>
+    {/* cotas do vaso direito */}
+    <line x1="348" y1="42" x2="348" y2="86" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="348,40 344,48 352,48" fill="var(--ok)"/>
+    <polygon points="348,88 344,80 352,80" fill="var(--ok)"/>
+    <text x="356" y="68" font-size="9" fill="var(--ok)">h₂ = 12 cm</text>
+    <line x1="348" y1="90" x2="348" y2="154" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="348,88 344,96 352,96" fill="var(--ok)"/>
+    <polygon points="348,156 344,148 352,148" fill="var(--ok)"/>
+    <text x="356" y="126" font-size="9" fill="var(--ok)">h₃ = 17 cm</text>
+    <line x1="348" y1="158" x2="348" y2="202" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="348,156 344,164 352,164" fill="var(--ok)"/>
+    <polygon points="348,204 344,196 352,196" fill="var(--ok)"/>
+    <text x="356" y="184" font-size="9" fill="var(--ok)">h₂ = 12 cm</text>
+    <line x1="326" y1="40" x2="348" y2="40" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <line x1="326" y1="88" x2="348" y2="88" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <line x1="326" y1="204" x2="348" y2="204" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 2"/>
+  </svg>
+  <figcaption>
+
+O nível da **água no tubo aberto** e o **topo do óleo** estão na mesma altura — é o que a linha tracejada do alto marca, e é dela que $h_1$, $h_2$ e $h_3$ são medidos.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+p_M = P_{atm} + \rho_a g h_1 + \rho_{Hg} g (h_2 + h_3 - h_1) - \rho_a g h_3 - \rho_o g \frac{h_2}{2}
+$$
+
+$$
+p_M = 10^5 + 2000 + 12\,240 - 1700 - 480 = 112\,060\ \mathrm{Pa}
+$$
+
+$$
+\boxed{\;p_{M,\text{man}} = p_M - P_{atm} = 12\,060\ \mathrm{Pa} \approx \mathbf{12{,}1\ kPa}\;}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — mapear as alturas a partir da linha do alto.** Tomando o nível tracejado do alto como zero e medindo **para baixo**, a figura dá:
+
+| ponto | profundidade | o que é |
+|---|---|---|
+| ⓐ | $0$ | superfície da água no tubo aberto **e** topo do óleo |
+| M | $h_2/2 = 6\ \mathrm{cm}$ | ponto pedido, no meio do óleo |
+| ⓒ | $h_2 = 12\ \mathrm{cm}$ | interface óleo/água no vaso |
+| ⓑ | $h_1 = 20\ \mathrm{cm}$ | interface água/Hg no tubo aberto |
+| ⓓ | $h_2 + h_3 = 29\ \mathrm{cm}$ | interface Hg/água no vaso |
+| fundo | $h_2 + h_3 + h_2 = 41\ \mathrm{cm}$ | — |
+
+**Passo 2 — o desnível do mercúrio, que não é dado direto.** As duas superfícies de mercúrio estão a profundidades diferentes: $20\ \mathrm{cm}$ no tubo aberto e $29\ \mathrm{cm}$ no vaso. A diferença é
+
+$$
+\Delta z_{Hg} = (h_2 + h_3) - h_1 = 29 - 20 = 9\ \mathrm{cm}
+$$
+
+com o mercúrio **mais alto no tubo aberto**. É este $9\ \mathrm{cm}$ que carrega quase toda a resposta, porque é o único trecho percorrido em mercúrio.
+
+**Passo 3 — caminhar do lado conhecido para o desconhecido.** O único ponto de pressão conhecida é a superfície aberta:
+
+$$
+p_ⓐ = P_{atm}
+$$
+
+Daí se desce e sobe, trocando de fluido em cada interface. A regra é uma só: **descer soma, subir subtrai**, com o $\rho$ do fluido daquele trecho.
+
+**Passo 4 — trecho 1: descer $h_1$ na água do tubo aberto** (ⓐ → ⓑ).
+
+$$
+p_ⓑ = P_{atm} + \rho_a\,g\,h_1 = 10^5 + 1000 \cdot 10 \cdot 0{,}20 = 10^5 + 2000
+$$
+
+**Passo 5 — trecho 2: descer $9\ \mathrm{cm}$ no mercúrio** (ⓑ → ⓓ). O caminho real desce pelo tubo, atravessa o canal do fundo e sobe pelo vaso — mas a pressão só depende da **diferença de nível** entre a entrada e a saída do trecho, e ela é de $9\ \mathrm{cm}$ para baixo.
+
+$$
+p_ⓓ = p_ⓑ + \rho_{Hg}\,g\,(0{,}09) = p_ⓑ + 13\,600 \cdot 10 \cdot 0{,}09 = p_ⓑ + 12\,240
+$$
+
+<Caixa tipo="dica">
+
+Este é o passo que a figura em labirinto tenta esconder. Não importa quantas curvas o canal tenha: dentro de **um mesmo fluido em repouso**, $\Delta p = \rho g \Delta z$, e só o $\Delta z$ entre os dois extremos conta. Percorrer o desenho trecho por trecho é perda de tempo — o que se precisa é da tabela de níveis do Passo 1.
+
+</Caixa>
+
+**Passo 6 — trecho 3: subir $h_3$ na água do vaso** (ⓓ → ⓒ).
+
+$$
+p_ⓒ = p_ⓓ - \rho_a\,g\,h_3 = p_ⓓ - 1000 \cdot 10 \cdot 0{,}17 = p_ⓓ - 1700
+$$
+
+**Passo 7 — trecho 4: subir $h_2/2$ no óleo** (ⓒ → M).
+
+$$
+p_M = p_ⓒ - \rho_o\,g\,\frac{h_2}{2} = p_ⓒ - 800 \cdot 10 \cdot 0{,}06 = p_ⓒ - 480
+$$
+
+**Passo 8 — juntar.**
+
+$$
+p_M = 10^5 + 2000 + 12\,240 - 1700 - 480 = 112\,060\ \mathrm{Pa}
+$$
+
+E a pergunta é pela **manométrica**, que é medida a partir da atmosférica:
+
+$$
+p_{M,\text{man}} = 112\,060 - 100\,000 = 12\,060\ \mathrm{Pa} \approx 12{,}1\ \mathrm{kPa}
+$$
+
+**Passo 9 — o gás é distração.** O gás está **acima** de M e não é atravessado pelo caminho escolhido, então não entra na conta. Se alguém quisesse partir dele, precisaria antes achar a sua pressão — que é justamente o que só se descobre por este mesmo caminho. Além disso, coluna de gás tem peso desprezível: $\rho_{\text{gás}}$ é da ordem de $1\ \mathrm{kg/m^3}$ contra $13\,600$ do mercúrio.
+
+<Caixa tipo="macete">
+
+Nas manométricas com muitos fluidos, monte a **tabela de profundidades** antes de escrever qualquer equação. Cada linha da equação vira então mecânica:
+
+$$
+p_{\text{final}} = p_{\text{inicial}} + \sum_i \rho_i\,g\,\Delta z_i
+$$
+
+com $\Delta z_i > 0$ quando o trecho **desce**. Errar sinal é o defeito mais comum, e a tabela o elimina.
+
+</Caixa>
+
+**Conferência —** os centímetros têm de ir para metros ✔ o trecho de mercúrio é de $9\ \mathrm{cm}$, e esse número vem de $h_2 + h_3 - h_1$, não do enunciado ✔ a resposta é **manométrica**, então a atmosférica sai no fim ✔ o resultado tem de ser positivo e pequeno diante de $P_{atm}$: $12\ \mathrm{kPa}$ contra $100\ \mathrm{kPa}$ ✔
+
+**Sobre o enunciado —** o desenho original vem de um escaneamento de baixa resolução e traz **anteparos internos** no vaso e no canal do fundo, que alongam o caminho sem mudar nenhum nível. A figura acima é a mesma situação redesenhada em U, com as quatro interfaces nas profundidades que as cotas $h_1$, $h_2$ e $h_3$ definem — o que a conta usa.
+</Passos>

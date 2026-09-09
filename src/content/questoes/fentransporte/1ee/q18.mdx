@@ -1,0 +1,98 @@
+---
+origem: "2026.1"
+tema: "Conceitos · Verdadeiro ou falso sobre fluidos, empuxo e perda de carga"
+temaId: propriedades-dos-fluidos
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Assinale com **V** (verdadeiro) ou **F** (falso).
+
+**a)** ( &nbsp; ) Um sólido é uma substância que se deforma sob a ação de uma força cisalhante constante.
+
+**b)** ( &nbsp; ) Em fluidos incompressíveis, o peso específico pode variar com a profundidade.
+
+**c)** ( &nbsp; ) A força de empuxo é o produto entre o peso específico do sólido e o volume submerso do fluido.
+
+**d)** ( &nbsp; ) A pressão aumenta linearmente com a profundidade em um fluido.
+
+**e)** ( &nbsp; ) A perda de carga é responsável por introduzir energia no sistema.
+
+**f)** ( &nbsp; ) Uma bomba é uma máquina hidráulica que fornece energia mecânica ao sistema.
+
+<Gabarito>
+**a)** F &nbsp;·&nbsp; **b)** F &nbsp;·&nbsp; **c)** F &nbsp;·&nbsp; **d)** V &nbsp;·&nbsp; **e)** F &nbsp;·&nbsp; **f)** V
+</Gabarito>
+
+<Passos>
+**a) F — a frase define fluido, não sólido.**
+
+O que caracteriza o **fluido** é deformar-se **continuamente** sob tensão de cisalhamento, por pequena que ela seja. O **sólido** deforma-se até uma **posição de equilíbrio**, em que as tensões internas equilibram a força aplicada, e para ali.
+
+A troca de sujeito é o truque da alternativa: o predicado está certo, o sujeito está errado.
+
+**b) F — incompressível é justamente o contrário.**
+
+$$
+\gamma = \rho\,g
+$$
+
+Se o fluido é **incompressível**, $\rho$ não muda com a pressão — e, como a pressão é o que muda com a profundidade, $\rho$ (e portanto $\gamma$) fica **constante** ao longo da coluna. É exatamente essa hipótese que permite integrar Stevin e obter $p = \gamma h$ com $\gamma$ fora da integral.
+
+Num fluido **compressível** — a atmosfera, por exemplo — $\gamma$ varia com a altitude, e daí a integração ser mais trabalhosa.
+
+**c) F — os dois termos estão trocados.**
+
+O correto é o princípio de Arquimedes:
+
+$$
+F_e = \gamma_{\text{fluido}} \cdot V_{\text{submerso do corpo}}
+$$
+
+- o peso específico é o do **fluido** deslocado, não o do sólido;
+- o volume é o do **corpo** que está submerso, não "do fluido".
+
+A alternativa inverte as duas coisas. O jeito de lembrar: o empuxo é o **peso do fluido que saiu do lugar** — quem pesa é o fluido, e o quanto saiu é o volume do corpo.
+
+<Caixa tipo="dica">
+
+Se o empuxo dependesse do peso específico do sólido, um cubo de chumbo e um de isopor de mesmo volume receberiam empuxos diferentes na mesma água — e um não flutuaria enquanto o outro afunda por causa do **peso**, não do empuxo.
+
+</Caixa>
+
+**d) V — desde que o fluido seja incompressível.**
+
+$$
+p = p_0 + \gamma\,h
+$$
+
+É uma função **afim** de $h$: reta de coeficiente angular $\gamma$. É o que o item (b) garante.
+
+**e) F — a perda de carga retira energia.**
+
+A perda de carga é a energia mecânica **dissipada** por atrito viscoso e por acidentes da tubulação, convertida em calor. Na equação da energia ela entra do lado a **jusante**, somando ao que ainda é preciso ter:
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 + H_B = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2 + H_T + h_p
+$$
+
+Quem **introduz** energia é a bomba ($H_B$). Quem **retira** é a turbina ($H_T$, retira como trabalho útil) e a perda de carga ($h_p$, retira como calor, sem proveito).
+
+**f) V — é a definição de bomba.**
+
+A bomba é a máquina hidráulica que recebe energia mecânica de fora (motor) e a **entrega ao fluido**, elevando sua carga total. A turbina faz o inverso: retira carga do fluido e a devolve como trabalho no eixo.
+
+**Conferência —** os três falsos desta prova são do mesmo tipo: a frase certa com **um termo trocado** (fluido↔sólido em *a*, constante↔variável em *b*, fluido↔sólido de novo em *c*) ✔ ler o **sujeito** de cada afirmação antes do predicado resolve metade delas ✔
+</Passos>

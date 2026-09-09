@@ -1,0 +1,138 @@
+---
+origem: "2022.1"
+tema: "Empuxo · O que é e quando o corpo flutua, equilibra ou afunda"
+temaId: flutuacao
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**O que é empuxo? Em que condições um objeto flutua, permanece em equilíbrio ou afunda em um líquido?**
+
+<Figura>
+  <svg viewBox="0 0 320 170" role="img" aria-label="Três corpos num líquido: o mais leve flutua na superfície, o de mesma massa específica fica em equilíbrio submerso e o mais pesado afunda até o fundo">
+    {/* recipiente */}
+    <rect x="18" y="26" width="284" height="118" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="19" y="42" width="282" height="101" fill="var(--accent-soft)" opacity="0.5"/>
+    <line x1="19" y1="42" x2="301" y2="42" stroke="var(--accent)" stroke-width="1.4"/>
+    {/* corpo 1: flutua */}
+    <rect x="44" y="32" width="34" height="20" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="32" y="76" font-size="9" fill="var(--ok)">ρ<tspan font-size="7" dy="2">c</tspan><tspan dy="-2"> &lt; ρ</tspan><tspan font-size="7" dy="2">f</tspan></text>
+    <text x="38" y="88" font-size="9" fill="var(--ok)">flutua</text>
+    <line x1="61" y1="60" x2="61" y2="48" stroke="var(--ok)" stroke-width="1.4"/>
+    <polygon points="61,42 57,52 65,52" fill="var(--ok)"/>
+    {/* corpo 2: equilíbrio */}
+    <rect x="136" y="76" width="34" height="20" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="118" y="118" font-size="9" fill="var(--accent)">ρ<tspan font-size="7" dy="2">c</tspan><tspan dy="-2"> = ρ</tspan><tspan font-size="7" dy="2">f</tspan></text>
+    <text x="120" y="130" font-size="9" fill="var(--accent)">equilíbrio</text>
+    <line x1="153" y1="76" x2="153" y2="64" stroke="var(--ok)" stroke-width="1.4"/>
+    <polygon points="153,58 149,68 157,68" fill="var(--ok)"/>
+    <line x1="153" y1="96" x2="153" y2="108" stroke="var(--warn)" stroke-width="1.4"/>
+    <polygon points="153,114 149,104 157,104" fill="var(--warn)"/>
+    {/* corpo 3: afunda */}
+    <rect x="232" y="124" width="34" height="20" fill="var(--ink-3)" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="274" y="110" font-size="9" fill="var(--warn)">ρ<tspan font-size="7" dy="2">c</tspan><tspan dy="-2"> &gt; ρ</tspan><tspan font-size="7" dy="2">f</tspan></text>
+    <text x="276" y="122" font-size="9" fill="var(--warn)">afunda</text>
+    <line x1="249" y1="100" x2="249" y2="116" stroke="var(--warn)" stroke-width="1.4"/>
+    <polygon points="249,122 245,112 253,112" fill="var(--warn)"/>
+    {/* legenda das setas */}
+    <text x="162" y="64" font-size="9" fill="var(--ok)">Fₑ</text>
+    <text x="162" y="112" font-size="9" fill="var(--warn)">P</text>
+  </svg>
+  <figcaption>
+
+Os três casos são o mesmo balanço entre **duas** forças: o peso, para baixo, e o empuxo, para cima.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**Empuxo** é a força **vertical, para cima**, que um fluido exerce sobre um corpo nele imerso, total ou parcialmente. Pelo **princípio de Arquimedes**, seu módulo é o **peso do fluido deslocado**:
+
+$$
+F_e = \gamma_{\text{fluido}}\,V_{\text{deslocado}} = \rho_{\text{fluido}}\,g\,V_{\text{submerso}}
+$$
+
+Comparando com o peso $P = \rho_{\text{corpo}}\,g\,V_{\text{corpo}}$, para o corpo **totalmente** submerso:
+
+- $P > F_e$, isto é $\rho_{\text{corpo}} > \rho_{\text{fluido}}$ → **afunda**;
+- $P = F_e$, isto é $\rho_{\text{corpo}} = \rho_{\text{fluido}}$ → **permanece em equilíbrio** em qualquer profundidade;
+- $P < F_e$, isto é $\rho_{\text{corpo}} < \rho_{\text{fluido}}$ → **sobe e flutua**, emergindo até que o volume ainda submerso desloque fluido de peso igual ao seu.
+</Gabarito>
+
+<Passos>
+**1 — De onde o empuxo vem.** Não é uma força nova: é o **resultado** da distribuição de pressão. A pressão cresce com a profundidade, então a face **de baixo** do corpo recebe mais pressão que a de cima, e a diferença é uma resultante para cima.
+
+Para um bloco de área $A$ e altura $h$, com o topo a $z_1$ e a base a $z_2 = z_1 + h$:
+
+$$
+F_e = \underbrace{p_2 A}_{\text{de baixo, para cima}} - \underbrace{p_1 A}_{\text{de cima, para baixo}} = \gamma\,(z_2 - z_1)\,A = \gamma\,h\,A = \gamma\,V
+$$
+
+E $\gamma V$ é exatamente o **peso do fluido** que ocupava aquele volume — o princípio de Arquimedes cai como consequência de Stevin.
+
+<Caixa tipo="simbolos">
+
+- $\gamma_{\text{fluido}}$, $\rho_{\text{fluido}}$ — peso específico e massa específica **do fluido**
+- $V_{\text{deslocado}}$ — o volume do **corpo** que está abaixo da superfície livre
+- $F_e$ — sempre **vertical para cima**, aplicada no centro de empuxo (o centroide do volume deslocado)
+
+</Caixa>
+
+**2 — O critério é um balanço de duas forças.** Sobre o corpo imerso agem o **peso** (para baixo) e o **empuxo** (para cima):
+
+$$
+P = \rho_c\,g\,V_c
+\qquad\qquad
+F_e = \rho_f\,g\,V_{\text{sub}}
+$$
+
+Com o corpo **totalmente** submerso, $V_{\text{sub}} = V_c$, e a comparação se reduz às massas específicas — o volume se cancela:
+
+$$
+\frac{P}{F_e} = \frac{\rho_c}{\rho_f}
+$$
+
+Daí os três casos, e daí o fato de o **tamanho** do corpo não importar: um parafuso de aço e um navio de aço maciço afundariam igual.
+
+**3 — Afunda: $\rho_c > \rho_f$.** A resultante é para baixo. O corpo desce até o fundo e ali o fundo passa a exercer uma **reação normal** que completa o equilíbrio:
+
+$$
+N = P - F_e = P_{\text{aparente}}
+$$
+
+É o peso aparente — o que uma balança marcaria com o corpo submerso.
+
+**4 — Equilíbrio: $\rho_c = \rho_f$.** Peso e empuxo se cancelam **em qualquer profundidade**, e o corpo fica onde for deixado. É o princípio do submarino e da bexiga natatória dos peixes: variando o próprio volume (ou a própria massa), o corpo troca de caso.
+
+**5 — Flutua: $\rho_c < \rho_f$.** A resultante é para cima e o corpo sobe. Ao emergir, o volume submerso **diminui** e com ele o empuxo, até que os dois se igualem:
+
+$$
+\rho_f\,g\,V_{\text{sub}} = \rho_c\,g\,V_c
+\qquad\Longrightarrow\qquad
+\frac{V_{\text{sub}}}{V_c} = \frac{\rho_c}{\rho_f}
+$$
+
+A **fração submersa é a razão das massas específicas** — é por isso que o gelo ($\rho \approx 917$) flutua com $92\ \%$ do volume dentro da água, e só $8\ \%$ aparecendo.
+
+<Caixa tipo="macete">
+
+Quando o corpo **flutua**, é errado usar $V_c$ no empuxo: só o volume submerso desloca fluido. O erro clássico é aplicar $F_e = \rho_f g V_c$ num corpo flutuante e concluir que ele sobe indefinidamente.
+
+Regra prática: **submerso** → compare $\rho$; **flutuando** → o empuxo já é igual ao peso, e a pergunta passa a ser *que fração* está dentro.
+
+</Caixa>
+
+**Conferência —** o $\rho$ do empuxo é do fluido e o $V$ é do corpo ✔ os três casos se decidem por comparação de massas específicas, não de pesos nem de volumes ✔ para corpo flutuante, $V_{\text{sub}} < V_c$ ✔
+</Passos>

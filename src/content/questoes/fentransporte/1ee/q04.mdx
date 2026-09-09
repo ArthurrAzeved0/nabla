@@ -1,0 +1,65 @@
+---
+origem: "2023.2"
+tema: "Perdas de carga · Distribuída e localizada"
+temaId: perda-de-carga
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+No dimensionamento de bombas é importante determinar a potência requerida pelo sistema de transporte do fluido, para que tenhamos a pressão e a velocidade desejadas. A potência da bomba deverá também compensar as perdas de energia que ocorrem no processo, definidas como perdas de carga. Nesse sentido, **determine quais são e explique as perdas de carga**, bem como dê exemplos delas.
+
+<Gabarito>
+São de dois tipos: **distribuída**, que ocorre ao longo dos trechos **retos** de tubulação por atrito com a parede, e **localizada** (ou singular), que ocorre nos **acessórios** — joelhos, curvas, válvulas, registros, derivações, entradas e saídas.
+</Gabarito>
+
+<Passos>
+**O que é perda de carga.** É a parcela de energia mecânica do fluido que o atrito converte em **calor**, e que portanto não volta. Na equação da energia ela entra como o termo $H_p$:
+
+$$
+z_1 + \frac{p_1}{\gamma} + \frac{v_1^2}{2g} + H_M = z_2 + \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + H_p
+$$
+
+É por isso que a bomba tem de ser dimensionada para **mais** que o desnível: ela paga o desnível **e** a perda.
+
+**1 — Perda de carga distribuída ($H_f$).** Ocorre ao longo dos **trechos retos**, distribuída por todo o comprimento, causada pelo atrito do fluido com a parede do tubo e entre suas próprias camadas.
+
+$$
+H_f = f\,\frac{L}{D}\,\frac{v^2}{2g}
+$$
+
+*Exemplos:* o escoamento num trecho reto de tubo de concreto, de PVC ou de ferro fundido. Quanto maior o comprimento e a rugosidade, maior a perda.
+
+**2 — Perda de carga localizada ($H_L$).** Ocorre em **pontos determinados**, onde uma peça obriga o fluido a mudar bruscamente de direção ou de velocidade, gerando turbilhonamento.
+
+$$
+H_L = K\,\frac{v^2}{2g}
+$$
+
+*Exemplos:* joelhos e curvas, válvulas e registros, derivações (tês), reduções e ampliações de seção, entrada e saída de reservatório.
+
+**A perda total** é a soma das duas:
+
+$$
+H_p = H_f + H_L
+$$
+
+<Caixa tipo="dica">
+
+Em **instalação longa** ($L/D > 4000$) as localizadas costumam ficar abaixo de 5 % do total e podem ser desprezadas. Em instalação **curta**, como o recalque de uma casa, desprezá-las subdimensiona a bomba.
+
+</Caixa>
+
+**Conferência —** a resposta completa precisa dos **dois nomes**, do **onde** ocorre cada uma e de **exemplos concretos** ✔ Confere com o gabarito da prova.
+</Passos>

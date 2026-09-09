@@ -1,0 +1,190 @@
+---
+origem: "Final 2023.2"
+tema: "Tubo isolado · Achar a temperatura do fluido interno"
+temaId: conducao-em-tubulacoes
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um tubo de um material $A$ ($k_A = 0{,}1\ \mathrm{W/(m\cdot K)}$) de raios interno e externo de $8\ \mathrm{cm}$ e $10\ \mathrm{cm}$, respectivamente, e $3\ \mathrm{m}$ de comprimento, possui uma camada externa de isolante térmico ($k_{iso} = 0{,}02\ \mathrm{W/(m\cdot K)}$) de raio externo de $12\ \mathrm{cm}$. No exterior da tubulação escoa um fluido ($h_e = 20\ \mathrm{W/(m^2\cdot K)}$) a $400\ \mathrm{K}$. Sabendo que a **taxa de calor** transferido através do sistema é de $50\ \mathrm{W}$, e que outro fluido ($h_i = 30\ \mathrm{W/(m^2\cdot K)}$) escoa na parte interna da tubulação, determine:
+
+**a)** (1,5 pts.) A **temperatura do fluido interno**.
+
+**b)** (1,0 pt.) As **temperaturas nas interfaces** entre os fluidos e os materiais, e entre o material $A$ e o isolante.
+
+<Figura>
+  <svg viewBox="0 0 340 226" role="img" aria-label="Corte de um tubo do material A revestido por isolante térmico, com fluido interno de temperatura desconhecida e fluido externo a 400 kelvin">
+    {/* isolante */}
+    <circle cx="126" cy="112" r="84" fill="var(--line-2)" opacity="0.55" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* material A */}
+    <circle cx="126" cy="112" r="70" fill="var(--warn)" opacity="0.3" stroke="var(--ink-2)" stroke-width="1.2"/>
+    {/* fluido interno */}
+    <circle cx="126" cy="112" r="56" fill="var(--accent-soft)" opacity="0.8" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="92" y="98" font-size="10" fill="var(--ink-2)">fluido i</text>
+    <text x="94" y="120" font-size="9" fill="var(--warn)">T∞₁ = ?</text>
+    <text x="96" y="133" font-size="8" fill="var(--ink-3)">h i = 30</text>
+    {/* chamadas */}
+    <text x="230" y="150" font-size="10" fill="var(--ink-2)">A</text>
+    <line x1="226" y1="147" x2="172" y2="142" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="230" y="180" font-size="10" fill="var(--ink-2)">isolante</text>
+    <line x1="226" y1="177" x2="180" y2="162" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    {/* raios */}
+    <line x1="126" y1="112" x2="178" y2="112" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="182,112 174,109 174,115" fill="var(--ok)"/>
+    <text x="146" y="106" font-size="9" fill="var(--ok)">r₁ = 8 cm</text>
+    <line x1="126" y1="112" x2="176" y2="62" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="180,59 172,61 177,66" fill="var(--ok)"/>
+    <text x="182" y="56" font-size="9" fill="var(--ok)">r₂ = 10 cm</text>
+    <line x1="126" y1="112" x2="126" y2="32" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="126,28 123,36 129,36" fill="var(--ok)"/>
+    <text x="134" y="26" font-size="9" fill="var(--ok)">r₃ = 12 cm</text>
+    {/* fluido externo */}
+    <text x="228" y="44" font-size="10" fill="var(--accent)">fluido e · 400 K</text>
+    <text x="252" y="58" font-size="9" fill="var(--accent)">h e = 20</text>
+    <path d="M222 68 Q232 80 222 92" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M232 60 Q244 80 232 100" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    {/* dados */}
+    <text x="12" y="212" font-size="9" fill="var(--ink-3)">L = 3 m  ·  q = 50 W (dado)</text>
+  </svg>
+  <figcaption>
+
+O **fluxo é dado** e a temperatura é a incógnita: a conta é a de sempre, só que resolvida ao contrário.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+R_{conv,i} = 0{,}02211
+\quad
+R_A = 0{,}11838
+\quad
+R_{iso} = 0{,}48362
+\quad
+R_{conv,e} = 0{,}02211
+\qquad
+R_T = 0{,}64621\ \mathrm{K/W}
+$$
+
+**a)**
+
+$$
+T_{\infty,1} = T_{\infty,2} + q\,R_T = 400 + 50 \times 0{,}64621 \approx \mathbf{432{,}31\ K}
+$$
+
+**b)**
+
+$$
+T_1 = T_{\infty,1} - q\,R_{conv,i} \approx \mathbf{431{,}21\ K}
+$$
+
+$$
+T_2 = T_1 - q\,R_A \approx \mathbf{425{,}29\ K}
+$$
+
+$$
+T_3 = T_2 - q\,R_{iso} \approx \mathbf{401{,}11\ K}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o problema é o de sempre, ao contrário.** Nas questões anteriores, as temperaturas eram dadas e $q$ era a incógnita. Aqui **$q = 50\ \mathrm{W}$ é dado** e a temperatura do fluido interno é o que se busca. A ferramenta é a mesma: somar as resistências.
+
+**Passo 2 — as quatro resistências.** Raios em metros: $r_1 = 0{,}08$, $r_2 = 0{,}10$, $r_3 = 0{,}12$; $L = 3\ \mathrm{m}$.
+
+$$
+R_{conv,i} = \frac{1}{h_i\,2\pi r_1 L} = \frac{1}{30 \times 2\pi (0{,}08)(3)} = \frac{1}{45{,}24} = 0{,}02211\ \mathrm{K/W}
+$$
+
+$$
+R_A = \frac{\ln(r_2/r_1)}{2\pi k_A L} = \frac{\ln(0{,}10/0{,}08)}{2\pi (0{,}1)(3)} = \frac{0{,}22314}{1{,}885} = 0{,}11838\ \mathrm{K/W}
+$$
+
+$$
+R_{iso} = \frac{\ln(r_3/r_2)}{2\pi k_{iso} L} = \frac{\ln(0{,}12/0{,}10)}{2\pi (0{,}02)(3)} = \frac{0{,}18232}{0{,}377} = 0{,}48362\ \mathrm{K/W}
+$$
+
+$$
+R_{conv,e} = \frac{1}{h_e\,2\pi r_3 L} = \frac{1}{20 \times 2\pi (0{,}12)(3)} = \frac{1}{45{,}24} = 0{,}02211\ \mathrm{K/W}
+$$
+
+$$
+R_T = 0{,}64621\ \mathrm{K/W}
+$$
+
+<Caixa tipo="dica" rotulo="Coincidência que vale conferir">
+
+As duas resistências de convecção deram **o mesmo** valor, $0{,}02211$. Não é erro: dentro, $h_i = 30$ com $r_1 = 0{,}08$; fora, $h_e = 20$ com $r_3 = 0{,}12$. Os produtos $h\,r$ dão $2{,}4$ nos dois casos, e é ele que aparece na fórmula.
+
+</Caixa>
+
+**Passo 3 — item (a): a temperatura do fluido interno.** Com $q$ conhecido, basta somar a queda total à temperatura do fluido externo:
+
+$$
+q = \frac{T_{\infty,1} - T_{\infty,2}}{R_T}
+\qquad\Longrightarrow\qquad
+T_{\infty,1} = T_{\infty,2} + q\,R_T
+$$
+
+$$
+T_{\infty,1} = 400 + 50 \times 0{,}64621 = 400 + 32{,}31 = 432{,}31\ \mathrm{K}
+$$
+
+**Passo 4 — item (b): as três interfaces.** Uma resistência por vez, no sentido do fluxo (de dentro para fora, a temperatura **cai**):
+
+$$
+T_1 = T_{\infty,1} - q\,R_{conv,i} = 432{,}31 - 50(0{,}02211) = 432{,}31 - 1{,}11 = 431{,}21\ \mathrm{K}
+$$
+
+$$
+T_2 = T_1 - q\,R_A = 431{,}21 - 50(0{,}11838) = 431{,}21 - 5{,}92 = 425{,}29\ \mathrm{K}
+$$
+
+$$
+T_3 = T_2 - q\,R_{iso} = 425{,}29 - 50(0{,}48362) = 425{,}29 - 24{,}18 = 401{,}11\ \mathrm{K}
+$$
+
+**Passo 5 — a conferência pelo lado externo.**
+
+$$
+T_3 - T_{\infty,2} = q\,R_{conv,e} = 50 \times 0{,}02211 = 1{,}11\ \mathrm{K}
+\qquad\Longrightarrow\qquad
+T_3 = 400 + 1{,}11 = 401{,}11\ \mathrm{K}\ \checkmark
+$$
+
+**Passo 6 — onde a temperatura cai.**
+
+| resistência | valor $[\mathrm{K/W}]$ | fração | $\Delta T$ $[\mathrm{K}]$ |
+|---|---|---|---|
+| convecção interna | $0{,}02211$ | $3{,}4\ \%$ | $1{,}11$ |
+| material $A$ | $0{,}11838$ | $18{,}3\ \%$ | $5{,}92$ |
+| **isolante** | $0{,}48362$ | $\mathbf{74{,}8\ \%}$ | $24{,}18$ |
+| convecção externa | $0{,}02211$ | $3{,}4\ \%$ | $1{,}11$ |
+| **total** | $0{,}64621$ | $100\ \%$ | $\mathbf{32{,}31}$ |
+
+As quatro quedas somam $32{,}31\ \mathrm{K}$ ✔ E o isolante, com $k$ cinco vezes menor que o do material $A$, segura três quartos da queda em apenas $2\ \mathrm{cm}$ de espessura.
+
+<Caixa tipo="dica" rotulo="Repare como o sistema é pouco solicitado">
+
+O $\Delta T$ total é de apenas $32\ \mathrm{K}$ — e é isso que faz $q$ ser só $50\ \mathrm{W}$. Nas questões de forno, o $\Delta T$ passava de $1000\ ^\circ\mathrm{C}$ e o $q$ ia a dezenas de kW.
+
+Vale também notar que o material $A$, com $k_A = 0{,}1$, **não** é metal: é um material isolante ele mesmo (plástico, cerâmica). Num tubo metálico, $R_A$ seria desprezível.
+
+</Caixa>
+
+**Conferência —** raios em metros; os três já vêm dados como **raios** ✔ cada convecção com o raio da sua face ($r_1$ dentro, $r_3$ fora) ✔ com $q$ dado, a temperatura sai somando $q\,R$ ✔ as quatro quedas somam $32{,}31\ \mathrm{K}$ ✔ $T_3$ conferido pelos dois caminhos ✔
+
+**Sobre o gabarito —** a resolução oficial escreve $\ln(0{,}13/0{,}1)$ e $2\pi(0{,}13)$ em duas linhas, mas o resultado que ela apresenta, $432{,}31\ \mathrm{K}$, é o que se obtém com $r_3 = 0{,}12\ \mathrm{m}$ — o valor do enunciado, usado acima. E os números soltos "$568{,}26$" e "$485{,}36$" que aparecem no item (b) dela são restos de outra versão; as temperaturas finais coincidem com as dos passos.
+</Passos>

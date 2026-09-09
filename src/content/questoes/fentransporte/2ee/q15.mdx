@@ -1,0 +1,118 @@
+---
+origem: "2023.1 · 2023.2"
+tema: "Condições de contorno · Dirichlet, Neumann e Robin"
+temaId: condicoes-de-contorno
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+As equações relacionadas com o fenômeno de transferência de calor costumam ser diferenciais e, para se poder resolvê-las, costuma-se lançar mão do que se chama de **condições de contorno**. Defina o que são condições de contorno e **quais os três tipos** de condição de contorno existentes, com os seus parâmetros.
+
+<Gabarito>
+**Condições de contorno** são as informações nas **fronteiras** do domínio que precisam ser conhecidas para que a equação diferencial tenha solução única. As três mais comuns são:
+
+**1º tipo — Dirichlet.** A superfície do corpo é mantida a uma **temperatura fixa**:
+
+$$
+T_s = T(x,t) = T(0,t)
+$$
+
+**2º tipo — Neumann.** O que é mantido constante é a **taxa de calor por condução** na superfície:
+
+$$
+q_s = q(x,t) = q(0,t)
+\qquad\text{isto é}\qquad
+-k\,\frac{\partial T}{\partial x}\bigg|_{0} = q''_s
+$$
+
+**3º tipo — Robin (ou mista).** Ocorre troca de calor por **condução e convecção ao mesmo tempo**:
+
+$$
+q_{\text{condução}} = q_{\text{convecção}}
+\qquad\text{isto é}\qquad
+-k\,\frac{\partial T}{\partial x}\bigg|_{0} = h\,\big[T_\infty - T(0,t)\big]
+$$
+</Gabarito>
+
+<Passos>
+**1 — Por que elas são necessárias.** A equação da condução é diferencial de **segunda ordem** no espaço:
+
+$$
+\frac{\partial^2 T}{\partial x^2} + \frac{\dot q}{k} = \frac{1}{\alpha}\,\frac{\partial T}{\partial t}
+$$
+
+Integrar duas vezes em $x$ produz **duas constantes** de integração. Elas não saem da equação — saem de duas informações nas **fronteiras**. Sem elas, a solução é uma família de perfis, e não um perfil.
+
+(E se o problema for transiente, é preciso também uma **condição inicial**, que diz o campo de temperatura em $t = 0$. Condição inicial e condição de contorno são coisas diferentes: uma no tempo, as outras no espaço.)
+
+**2 — Primeiro tipo: Dirichlet.** Fixa o **valor da função** na fronteira.
+
+$$
+T(0,t) = T_s
+$$
+
+Onde aparece na prática: face em contato com um fluido em **mudança de fase**, que impõe a sua temperatura (água fervendo a $100\ ^\circ\mathrm{C}$, gelo derretendo a $0\ ^\circ\mathrm{C}$); face em contato com um reservatório muito grande; superfície cuja temperatura foi **medida**.
+
+**3 — Segundo tipo: Neumann.** Fixa a **derivada** na fronteira, isto é, o fluxo.
+
+$$
+-k\,\frac{\partial T}{\partial x}\bigg|_{0} = q''_s
+$$
+
+Onde aparece: face aquecida por uma **resistência elétrica** de potência conhecida; face recebendo **radiação** de intensidade conhecida.
+
+E o caso particular mais importante: **superfície adiabática** (isolada), em que $q''_s = 0$ e portanto
+
+$$
+\frac{\partial T}{\partial x}\bigg|_{0} = 0
+$$
+
+É a mesma condição que a **simetria** dá no plano central de uma parede com geração aquecida igualmente dos dois lados.
+
+**4 — Terceiro tipo: Robin, ou mista.** Não fixa nem a temperatura nem o fluxo: fixa a **relação** entre os dois, impondo que o calor que chega por condução é o que sai por convecção.
+
+$$
+\underbrace{-k\,\frac{\partial T}{\partial x}\bigg|_{0}}_{\text{condução no sólido}}
+=
+\underbrace{h\,\big[T_\infty - T(0,t)\big]}_{\text{convecção para o fluido}}
+$$
+
+Os parâmetros dados são $h$ e $T_\infty$; a temperatura da superfície é **resultado**, não dado. É a condição mais realista, e a que aparece em praticamente todo problema de parede ou tubo com fluido escoando.
+
+<Caixa tipo="macete" rotulo="Pela ordem da derivada que cada uma fixa">
+
+| tipo | nome | fixa | exemplo | parâmetro dado |
+|---|---|---|---|---|
+| 1º | **Dirichlet** | $T$ (a função) | face a $100\ ^\circ\mathrm{C}$ | $T_s$ |
+| 2º | **Neumann** | $\partial T/\partial x$ (a derivada) | face isolada, $q'' = 0$ | $q''_s$ |
+| 3º | **Robin** / mista | combinação de $T$ **e** $\partial T/\partial x$ | face trocando com ar | $h$ e $T_\infty$ |
+
+Dirichlet vem primeiro no alfabeto **e** é a de ordem mais baixa; Robin é chamada de "mista" porque mistura as duas anteriores. Com essa dica não se troca os nomes.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Robin contém as outras duas como casos extremos">
+
+Olhe a condição de Robin e faça $h$ ir aos extremos:
+
+- $h \to \infty$ — para o fluxo ficar finito, é preciso $T(0,t) \to T_\infty$: a superfície assume a temperatura do fluido. **Virou Dirichlet**;
+- $h \to 0$ — o fluxo vai a zero, $\partial T/\partial x \to 0$: superfície adiabática. **Virou Neumann**.
+
+Reconhecer isso é o que mostra domínio do assunto, e vale a menção na resposta.
+
+</Caixa>
+
+**Conferência —** definir o que são (informações na fronteira para fechar a solução da equação diferencial) e **depois** listar as três ✔ dar o **nome** de cada uma, porque a questão cobra os nomes ✔ dizer os **parâmetros** de cada uma: $T_s$, $q''_s$, e o par $h$–$T_\infty$ ✔
+</Passos>

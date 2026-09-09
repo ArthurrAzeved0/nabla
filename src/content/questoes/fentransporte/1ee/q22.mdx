@@ -1,0 +1,145 @@
+---
+origem: "2024.2"
+tema: "Stevin · Submarino a 200 m e mergulhador a 100 m"
+temaId: carga-de-pressao
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**a)** No oceano a pressão hidrostática aumenta aproximadamente **uma atmosfera a cada $10\ \mathrm{m}$** de profundidade. Um submarino encontra-se a $200\ \mathrm{m}$ de profundidade, e a pressão do ar no seu interior é de **uma atmosfera**. Nesse contexto, pode-se concluir que a diferença de pressão entre o interior e o exterior do submarino é, aproximadamente, de quanto?
+
+**b)** Qual a variação de pressão sobre um mergulhador que está a uma profundidade de $100\ \mathrm{m}$, considerando que a densidade da água é $1000\ \mathrm{kg/m^3}$ e a aceleração da gravidade, $9{,}8\ \mathrm{m/s^2}$?
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Coluna de água do mar com a superfície no topo: o mergulhador está a 100 metros e o submarino a 200 metros, com a pressão externa crescendo uma atmosfera a cada 10 metros">
+    {/* água */}
+    <rect x="20" y="34" width="300" height="150" fill="var(--accent-soft)" opacity="0.45"/>
+    <line x1="20" y1="34" x2="320" y2="34" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="24" y="28" font-size="9" fill="var(--accent)">superfície · p = 1 atm</text>
+    {/* escala de profundidade */}
+    <line x1="46" y1="34" x2="46" y2="180" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="42" y1="108" x2="50" y2="108" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="8" y="112" font-size="9" fill="var(--ink-3)">100 m</text>
+    <line x1="42" y1="180" x2="50" y2="180" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="8" y="184" font-size="9" fill="var(--ink-3)">200 m</text>
+    {/* mergulhador a 100 m */}
+    <circle cx="118" cy="102" r="6" fill="var(--ink-2)"/>
+    <line x1="118" y1="108" x2="118" y2="122" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="108" y1="114" x2="128" y2="114" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="118" y1="122" x2="110" y2="134" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="118" y1="122" x2="126" y2="134" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="136" y="112" font-size="10" fill="var(--ink-2)">mergulhador</text>
+    <text x="136" y="124" font-size="9" fill="var(--warn)">Δp = ?</text>
+    {/* submarino a 200 m */}
+    <ellipse cx="200" cy="180" rx="42" ry="14" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <path d="M192 166 L208 166 L204 158 L196 158 Z" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="176" y="184" font-size="9" fill="var(--ink-2)">1 atm</text>
+    <text x="250" y="176" font-size="10" fill="var(--ink-2)">submarino</text>
+    <text x="250" y="188" font-size="9" fill="var(--warn)">Δp = ?</text>
+    {/* seta indicando o gradiente */}
+    <line x1="308" y1="46" x2="308" y2="168" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="308,174 304,164 312,164" fill="var(--ok)"/>
+    <text x="216" y="52" font-size="9" fill="var(--ok)">+1 atm a cada 10 m</text>
+  </svg>
+  <figcaption>
+
+Nos dois itens o que se pede é a **diferença** de pressão — e diferença de pressão não depende da atmosférica, que aparece dos dois lados.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)**
+
+$$
+\Delta p = \frac{200\ \mathrm{m}}{10\ \mathrm{m/atm}} = \mathbf{20\ atm} \approx 2{,}03\ \mathrm{MPa}
+$$
+
+**b)**
+
+$$
+\Delta p = \rho\,g\,h = 1000 \cdot 9{,}8 \cdot 100 = \mathbf{980\ kPa} \approx 9{,}8\ \mathrm{atm}
+$$
+</Gabarito>
+
+<Passos>
+**a) Passo 1 — a pressão do lado de fora.** A regra dada é linear: $1\ \mathrm{atm}$ a cada $10\ \mathrm{m}$. A $200\ \mathrm{m}$, a coluna de água contribui com
+
+$$
+p_{\text{coluna}} = \frac{200}{10} = 20\ \mathrm{atm}
+$$
+
+e a pressão **absoluta** do lado de fora é essa mais a atmosférica que age na superfície:
+
+$$
+p_{\text{ext}} = 1 + 20 = 21\ \mathrm{atm}
+$$
+
+**a) Passo 2 — a pressão do lado de dentro.** O enunciado diz: o ar interno está a **uma atmosfera**. É a condição de projeto de um submarino tripulado — dentro se respira à pressão de superfície.
+
+$$
+p_{\text{int}} = 1\ \mathrm{atm}
+$$
+
+**a) Passo 3 — a diferença.**
+
+$$
+\Delta p = p_{\text{ext}} - p_{\text{int}} = 21 - 1 = 20\ \mathrm{atm}
+$$
+
+Repare que a atmosférica **se cancela**: a diferença é exatamente a pressão da coluna de água, e o casco tem de aguentar essas 20 atm empurrando para dentro.
+
+Em pascal, com $1\ \mathrm{atm} \approx 101{,}3\ \mathrm{kPa}$:
+
+$$
+\Delta p = 20 \cdot 101{,}3 = 2026\ \mathrm{kPa} \approx 2{,}03\ \mathrm{MPa}
+$$
+
+<Caixa tipo="dica">
+
+De onde vem a regra dos 10 metros: $\rho g h = 1000 \cdot 9{,}8 \cdot 10 = 98\ \mathrm{kPa}$, que é praticamente $1\ \mathrm{atm}$. Não é coincidência nem convenção — é Stevin com os números da água.
+
+</Caixa>
+
+**b) Passo 1 — a variação de pressão é só a coluna.** Aqui a questão dá $\rho$ e $g$, então é Stevin direto:
+
+$$
+\Delta p = \rho\,g\,h
+$$
+
+<Caixa tipo="simbolos">
+
+- $\rho = 1000\ \mathrm{kg/m^3}$ — massa específica da água
+- $g = 9{,}8\ \mathrm{m/s^2}$
+- $h = 100\ \mathrm{m}$ — profundidade
+- $\Delta p$ — em pascal, porque $\mathrm{kg/m^3 \cdot m/s^2 \cdot m = N/m^2}$
+
+</Caixa>
+
+**b) Passo 2 — o número.**
+
+$$
+\Delta p = 1000 \cdot 9{,}8 \cdot 100 = 980\,000\ \mathrm{Pa} = 980\ \mathrm{kPa}
+$$
+
+**b) Passo 3 — ler o resultado em atmosferas.**
+
+$$
+\frac{980}{101{,}3} \approx 9{,}7\ \mathrm{atm}
+$$
+
+O que fecha com o item (a): metade da profundidade, metade da diferença de pressão. Os dois itens são a mesma física em duas linguagens — um em atm por metro, o outro em $\rho g h$.
+
+**Conferência —** "variação" e "diferença" de pressão nunca levam a atmosférica somada ✔ a $200\ \mathrm{m}$ a pressão absoluta é 21 atm, mas a **diferença** é 20 ✔ o resultado do item (b) é aproximadamente metade do de (a), porque a profundidade é metade ✔
+</Passos>

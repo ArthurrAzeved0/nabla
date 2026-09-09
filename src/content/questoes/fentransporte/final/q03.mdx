@@ -1,0 +1,204 @@
+---
+origem: "Final 2023.1"
+tema: "Parede com geração · Temperatura no centro, extrema e as taxas"
+temaId: perfil-parabolico
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de calor através de uma parede plana ($k = 0{,}4\ \mathrm{W/(m\cdot K)}$) de $40\ \mathrm{cm}$ de largura e área de seção transversal de $2{,}0\ \mathrm{m^2}$, cujas temperaturas nas faces esquerda e direita estão mantidas a $400\ \mathrm{K}$ e $800\ \mathrm{K}$, respectivamente. Na parede, a transferência de calor é unidimensional, **sem acúmulo**, mas com **geração de $6000\ \mathrm{W/m^3}$**. Sabendo que o processo é **exotérmico**, determine:
+
+**a)** (1,0 ponto) As temperaturas **extrema** e **no centro** da parede.
+
+**b)** (1,0 ponto) A **taxa de transferência de calor** nas faces esquerda e direita da parede.
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Parede de 40 centímetros com geração de calor: face esquerda a 400 kelvin, direita a 800, e o perfil parabólico com máximo de 933 kelvin deslocado para o lado direito">
+    {/* parede */}
+    <rect x="90" y="34" width="160" height="122" fill="var(--accent-soft)" opacity="0.32" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="170" y1="28" x2="170" y2="162" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="4 3"/>
+    <text x="152" y="176" font-size="9" fill="var(--ink-3)">x = 0</text>
+    <text x="76" y="176" font-size="9" fill="var(--ink-3)">−L</text>
+    <text x="244" y="176" font-size="9" fill="var(--ink-3)">+L</text>
+    {/* perfil: 400 K na esquerda, 800 na direita, máximo 933 deslocado para a direita */}
+    <path d="M90 142 Q186 24 250 88" fill="none" stroke="var(--warn)" stroke-width="2.2"/>
+    <circle cx="197" cy="61" r="4" fill="var(--warn)"/>
+    <line x1="197" y1="57" x2="197" y2="38" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="196" y="34" font-size="9" fill="var(--warn)">933 K (máx.)</text>
+    <text x="46" y="146" font-size="9" fill="var(--warn)">400 K</text>
+    <text x="256" y="92" font-size="9" fill="var(--warn)">800 K</text>
+    <circle cx="170" cy="66" r="3.5" fill="var(--ok)"/>
+    <text x="84" y="60" font-size="9" fill="var(--ok)">900 K (centro)</text>
+    <line x1="166" y1="65" x2="148" y2="58" stroke="var(--ok)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    {/* fluxos */}
+    <line x1="86" y1="132" x2="58" y2="132" stroke="var(--ok)" stroke-width="2.2"/>
+    <polygon points="52,132 62,128 62,136" fill="var(--ok)"/>
+    <text x="14" y="128" font-size="9" fill="var(--ok)">3200 W</text>
+    <line x1="254" y1="118" x2="286" y2="118" stroke="var(--ok)" stroke-width="2.2"/>
+    <polygon points="292,118 282,114 282,122" fill="var(--ok)"/>
+    <text x="264" y="132" font-size="9" fill="var(--ok)">1600 W</text>
+    {/* geração */}
+    <text x="102" y="22" font-size="9" fill="var(--ink-2)">geração q̇ = 6000 W/m³ (exotérmico)</text>
+    {/* espessura */}
+    <line x1="90" y1="192" x2="250" y2="192" stroke="var(--accent)" stroke-width="1.1"/>
+    <polygon points="90,192 98,189 98,195" fill="var(--accent)"/>
+    <polygon points="250,192 242,189 242,195" fill="var(--accent)"/>
+    <text x="132" y="205" font-size="9" fill="var(--accent)">2L = 40 cm  ·  A = 2,0 m²</text>
+  </svg>
+  <figcaption>
+
+A face **direita** é a mais quente ($800\ \mathrm{K}$), então o máximo se desloca **para ela** — e a face esquerda drena mais calor.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Com a origem no centro e $L = 0{,}20\ \mathrm{m}$ (semiespessura):
+
+$$
+T(x) = \frac{\dot q}{2k}\left(L^2 - x^2\right) + \frac{T_2 - T_1}{2L}\,x + \frac{T_1 + T_2}{2} = -7500\,x^2 + 1000\,x + 900
+$$
+
+**a)**
+
+$$
+T(0) = \mathbf{900\ K} \ \text{(centro)}
+$$
+
+$$
+\frac{dT}{dx} = -15\,000\,x + 1000 = 0
+\;\Rightarrow\;
+x_{máx} = 0{,}0667\ \mathrm{m}
+\;\Rightarrow\;
+T_{máx} \approx \mathbf{933{,}3\ K}
+$$
+
+**b)**
+
+$$
+q(x) = -k\,A\,\frac{dT}{dx} = -0{,}4 \times 2 \times (-15\,000x + 1000) = 12\,000\,x - 800
+$$
+
+$$
+q(-L) = \mathbf{-3{,}2\times10^{3}\ W}
+\qquad\qquad
+q(+L) = \mathbf{+1{,}6\times10^{3}\ W}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a semiespessura, e por que ela é metade.** Com a origem no **centro** da parede, ela vai de $-L$ a $+L$:
+
+$$
+2L = 40\ \mathrm{cm}
+\qquad\Longrightarrow\qquad
+L = 20\ \mathrm{cm} = 0{,}20\ \mathrm{m}
+$$
+
+**Passo 2 — o perfil, montado pelas duas condições de contorno.** Regime permanente ("sem acúmulo") com geração dá parábola, e as duas temperaturas prescritas fixam as constantes:
+
+$$
+T(x) = \frac{\dot q}{2k}\left(L^2 - x^2\right) + \frac{T_2 - T_1}{2L}\,x + \frac{T_1 + T_2}{2}
+$$
+
+Substituindo $\dot q = 6000$, $k = 0{,}4$, $L = 0{,}2$, $T_1 = 400$ e $T_2 = 800$:
+
+$$
+\frac{\dot q}{2k} = \frac{6000}{0{,}8} = 7500
+\qquad
+\frac{T_2 - T_1}{2L} = \frac{400}{0{,}4} = 1000
+\qquad
+\frac{T_1 + T_2}{2} = 600
+$$
+
+$$
+T(x) = 7500\,(0{,}04 - x^2) + 1000\,x + 600 = -7500\,x^2 + 1000\,x + 900
+$$
+
+**Confira nas pontas:** $T(-0{,}2) = -300 - 200 + 900 = 400\ \mathrm{K}$ ✔ e $T(+0{,}2) = -300 + 200 + 900 = 800\ \mathrm{K}$ ✔
+
+**Passo 3 — item (a): a temperatura no centro.** É o termo independente, porque em $x = 0$ os outros dois morrem:
+
+$$
+T(0) = 900\ \mathrm{K}
+$$
+
+<Caixa tipo="dica" rotulo="No centro NÃO está o máximo">
+
+$T(0) = 900\ \mathrm{K}$ é a temperatura no **plano central**, e a questão pede as duas coisas separadamente justamente porque **não** coincidem. Note que $900$ é a média das faces ($600$) mais a contribuição da geração ($7500 \times 0{,}04 = 300$).
+
+</Caixa>
+
+**Passo 4 — a temperatura extrema.** Derivando e igualando a zero:
+
+$$
+\frac{dT}{dx} = -15\,000\,x + 1000 = 0
+\qquad\Longrightarrow\qquad
+x_{máx} = \frac{1000}{15\,000} = 0{,}0667\ \mathrm{m}
+$$
+
+Positivo: o máximo está $6{,}7\ \mathrm{cm}$ **à direita** do centro — deslocado para o lado da face **mais quente** ($800\ \mathrm{K}$), como faz sentido.
+
+$$
+T_{máx} = -7500\,(0{,}0667)^2 + 1000\,(0{,}0667) + 900 = -33{,}3 + 66{,}7 + 900 = 933{,}3\ \mathrm{K}
+$$
+
+Exotérmico confirma que é **máximo**: a parábola abre para baixo e o interior fica mais quente que as duas faces.
+
+**Passo 5 — item (b): a taxa de calor, que aqui é em watt.** O enunciado dá a **área**, então se pede $q$ e não $q''$:
+
+$$
+q(x) = -k\,A\,\frac{dT}{dx} = -0{,}4 \times 2{,}0 \times (-15\,000x + 1000)
+$$
+
+$$
+q(x) = 12\,000\,x - 800\ \ [\mathrm{W}]
+$$
+
+**Passo 6 — avaliar nas duas faces.**
+
+$$
+q(-L) = 12\,000\,(-0{,}2) - 800 = -2400 - 800 = -3200\ \mathrm{W}
+$$
+
+$$
+q(+L) = 12\,000\,(+0{,}2) - 800 = 2400 - 800 = +1600\ \mathrm{W}
+$$
+
+Os sinais dizem que o calor **sai pelas duas faces**: pela esquerda no sentido $-x$ e pela direita no sentido $+x$. E a repartição é **desigual** — a face esquerda leva o dobro.
+
+**Passo 7 — a conferência que fecha tudo.** Todo o calor gerado no volume tem de sair pelas faces:
+
+$$
+|q(-L)| + |q(+L)| = 3200 + 1600 = 4800\ \mathrm{W}
+$$
+
+$$
+\dot q\,V = \dot q\,(2L\,A) = 6000 \times (0{,}4 \times 2{,}0) = 6000 \times 0{,}8 = 4800\ \mathrm{W}\ \checkmark
+$$
+
+<Caixa tipo="macete" rotulo="Por que a face fria drena mais">
+
+O plano de fluxo nulo é o mesmo do máximo, em $x = +0{,}0667\ \mathrm{m}$. Ele divide a parede em duas metades desiguais:
+
+- à **esquerda** dele há $0{,}2 + 0{,}0667 = 0{,}2667\ \mathrm{m}$ de parede, que drenam pela face esquerda: $\dot q \times 0{,}2667 \times 2 = 3200\ \mathrm{W}$ ✔
+- à **direita**, $0{,}2 - 0{,}0667 = 0{,}1333\ \mathrm{m}$, que drenam pela direita: $\dot q \times 0{,}1333 \times 2 = 1600\ \mathrm{W}$ ✔
+
+Cada face leva **exatamente** o calor gerado no pedaço que lhe cabe. Essa é a leitura física do problema, e ela dá as duas respostas do item (b) sem derivar nada.
+
+</Caixa>
+
+**Conferência —** $L$ é a **semi**espessura, $0{,}20\ \mathrm{m}$ ✔ centro e extremo são pontos **diferentes**, e a questão pede os dois ✔ o extremo desloca-se para o lado **mais quente** ✔ o item (b) pede **taxa** em watt, então $A$ entra ✔ os módulos das taxas somam $\dot q\,V$ ✔
+</Passos>

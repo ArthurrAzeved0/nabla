@@ -1,0 +1,162 @@
+---
+origem: "Prova · turma KT"
+tema: "Continuidade · Mistura de dois gases num duto"
+temaId: conservacao-da-massa
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Duas correntes de gás entram num misturador e saem por um único duto, em regime permanente. Os dados de entrada são:
+
+| corrente | $p$ | $T$ | $M$ | $Q$ |
+|---|---|---|---|---|
+| ① | $8 \times 10^5\ \mathrm{Pa}$ | $400\ \mathrm{K}$ | $28\ \mathrm{g/mol}$ | $0{,}03\ \mathrm{m^3/s}$ |
+| ② | $4 \times 10^5\ \mathrm{Pa}$ | $600\ \mathrm{K}$ | $44\ \mathrm{g/mol}$ | $0{,}02\ \mathrm{m^3/s}$ |
+
+Determine a **vazão mássica** na seção de saída ③.
+
+**Dado:** $R = 8{,}314\ \mathrm{J/(mol \cdot K)}$.
+
+<Figura>
+  <svg viewBox="0 0 320 180" role="img" aria-label="Duas correntes de gás, uma acima e outra abaixo, entram num duto em Y e saem misturadas por uma única seção à direita">
+    {/* volume de controle */}
+    <rect x="26" y="24" width="240" height="130" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 4"/>
+    <text x="30" y="18" font-size="9" fill="var(--accent)">volume de controle</text>
+    {/* duto 1 */}
+    <path d="M40 48 L140 48 L176 84" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="4" y1="48" x2="30" y2="48" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="36,48 26,44 26,52" fill="var(--ok)"/>
+    <text x="46" y="40" font-size="10" fill="var(--ink-2)">①</text>
+    <text x="58" y="40" font-size="9" fill="var(--ink-3)">8 bar · 400 K · M = 28</text>
+    <text x="58" y="62" font-size="9" fill="var(--ok)">Q₁ = 0,03 m³/s</text>
+    {/* duto 2 */}
+    <path d="M40 130 L140 130 L176 94" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="4" y1="130" x2="30" y2="130" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="36,130 26,126 26,134" fill="var(--ok)"/>
+    <text x="46" y="146" font-size="10" fill="var(--ink-2)">②</text>
+    <text x="58" y="146" font-size="9" fill="var(--ink-3)">4 bar · 600 K · M = 44</text>
+    <text x="58" y="124" font-size="9" fill="var(--ok)">Q₂ = 0,02 m³/s</text>
+    {/* duto de saída */}
+    <line x1="176" y1="84" x2="256" y2="84" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="176" y1="94" x2="256" y2="94" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="264" y1="89" x2="300" y2="89" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="306,89 296,85 296,93" fill="var(--warn)"/>
+    <text x="228" y="76" font-size="10" fill="var(--ink-2)">③</text>
+    <text x="238" y="110" font-size="9" fill="var(--warn)">ṁ₃ = ?</text>
+  </svg>
+  <figcaption>
+
+O volume de controle envolve o misturador: em regime permanente, o que entra de **massa** tem de sair de massa — mas o que entra de **volume** não tem de sair de volume.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\rho = \frac{p\,M}{R\,T}
+\qquad
+\dot m = \rho\,Q
+$$
+
+$$
+\rho_1 = \frac{8\times10^5 \cdot 0{,}028}{8{,}314 \cdot 400} = 6{,}736\ \mathrm{kg/m^3}
+\qquad
+\dot m_1 = 0{,}202\ \mathrm{kg/s}
+$$
+
+$$
+\rho_2 = \frac{4\times10^5 \cdot 0{,}044}{8{,}314 \cdot 600} = 3{,}528\ \mathrm{kg/m^3}
+\qquad
+\dot m_2 = 0{,}071\ \mathrm{kg/s}
+$$
+
+$$
+\dot m_3 = \dot m_1 + \dot m_2 \approx \mathbf{0{,}273\ kg/s}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a conservação de massa é sobre massa, não sobre volume.** Em regime permanente, para um volume de controle com duas entradas e uma saída:
+
+$$
+\dot m_3 = \dot m_1 + \dot m_2
+$$
+
+O que **não** vale é somar as vazões volumétricas: $Q_3 \ne Q_1 + Q_2$, porque os gases estão a pressões e temperaturas diferentes, logo com massas específicas diferentes. Este é o ponto da questão.
+
+**Passo 2 — a equação de estado dá o $\rho$ de cada corrente.** Para gás ideal,
+
+$$
+p\,V = n\,R\,T
+\qquad\text{com}\qquad
+n = \frac{m}{M}
+$$
+
+$$
+p\,V = \frac{m}{M}\,R\,T
+\qquad\Longrightarrow\qquad
+\rho = \frac{m}{V} = \frac{p\,M}{R\,T}
+$$
+
+<Caixa tipo="simbolos">
+
+- $p$ — pressão **absoluta**, em Pa
+- $M$ — massa molar, em $\mathrm{kg/mol}$ (o enunciado dá em g/mol: dividir por 1000)
+- $R = 8{,}314\ \mathrm{J/(mol\cdot K)}$ — constante universal
+- $T$ — temperatura **absoluta**, em K
+- $\rho$ — em $\mathrm{kg/m^3}$
+
+</Caixa>
+
+**Passo 3 — a corrente ①.** Com $M_1 = 28\ \mathrm{g/mol} = 0{,}028\ \mathrm{kg/mol}$:
+
+$$
+\rho_1 = \frac{8\times10^5 \cdot 0{,}028}{8{,}314 \cdot 400} = \frac{22\,400}{3325{,}6} = 6{,}7356\ \mathrm{kg/m^3}
+$$
+
+$$
+\dot m_1 = \rho_1\,Q_1 = 6{,}7356 \cdot 0{,}03 = 0{,}20207\ \mathrm{kg/s}
+$$
+
+**Passo 4 — a corrente ②.** Com $M_2 = 44\ \mathrm{g/mol} = 0{,}044\ \mathrm{kg/mol}$:
+
+$$
+\rho_2 = \frac{4\times10^5 \cdot 0{,}044}{8{,}314 \cdot 600} = \frac{17\,600}{4988{,}4} = 3{,}5281\ \mathrm{kg/m^3}
+$$
+
+$$
+\dot m_2 = \rho_2\,Q_2 = 3{,}5281 \cdot 0{,}02 = 0{,}07056\ \mathrm{kg/s}
+$$
+
+**Passo 5 — somar.**
+
+$$
+\dot m_3 = 0{,}20207 + 0{,}07056 = 0{,}27263\ \mathrm{kg/s} \approx 0{,}273\ \mathrm{kg/s}
+$$
+
+<Caixa tipo="macete">
+
+Repare no efeito combinado: a corrente ① tem **metade** da vazão volumétrica somada da ②, mas contribui com quase **três vezes** mais massa. Duas razões, ambas na equação de estado:
+
+- está ao **dobro** da pressão (mais moléculas por metro cúbico);
+- está a $400\ \mathrm{K}$ em vez de $600\ \mathrm{K}$ (mais frio, mais denso).
+
+A massa molar maior do gás ② ($44$ contra $28$) puxa no sentido contrário, mas não compensa.
+
+</Caixa>
+
+**Conferência —** a massa molar tem de ir de g/mol para kg/mol ✔ a temperatura em kelvin, nunca em °C ✔ vazões **volumétricas** de gases não se somam ✔
+
+**Sobre o enunciado —** o acervo tem apenas a **resolução** desta prova (turma KT). Os dados acima são exatamente os que ela declara, e o arranjo de duas entradas e uma saída foi reconstruído de $\dot m_3 = \dot m_1 + \dot m_2$, a única linha de conta que ela escreve. A reconstrução se confirmou depois: a **questão 5 da prova de 2022.1**, mais adiante nesta página, é esta mesma questão — "dois tubos de entrada e um de saída" —, só com outros números.
+</Passos>

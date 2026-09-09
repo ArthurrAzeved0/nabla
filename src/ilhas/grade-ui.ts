@@ -187,7 +187,14 @@ export function ligarGrade() {
     return Math.min(1, Math.max(0.2, disponivel) / Math.max(1, medirNatural()));
   }
 
+  /* Enquanto o PDF é gerado o mapa fica em escala 1, e QUALQUER redesenho
+     pendente — o que `definirModo` agenda, o do resize, o do observer —
+     reaplicaria o zoom por cima da captura. Este cadeado é o que garante
+     que a escala não volte no meio do caminho; ver `baixarPdf`. */
+  let exportando = false;
+
   function aplicarEscala() {
+    if (exportando) return;
     const z = escala ?? ajuste();
     if (temZoom) {
       quadro.style.zoom = String(z);
@@ -277,10 +284,25 @@ export function ligarGrade() {
         import("html-to-image"),
         import("jspdf"),
       ]);
-      if (modoAntes !== "quadro") definirModo("quadro");
+      /* No telefone o mapa nasce em modo lista, com a rolagem em
+         `display:none`. Trocar para quadro é obrigatório para capturar —
+         mas `definirModo` AGENDA um redesenho, e era ele que reaplicava o
+         zoom de ajuste (uns 17% numa tela estreita) DEPOIS da limpeza
+         abaixo: o canvas saía do tamanho natural e o desenho, pequeno num
+         canto. Daí esperar o redesenho agendado acontecer antes de travar
+         a escala. */
+      if (modoAntes !== "quadro") {
+        definirModo("quadro");
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      }
+      exportando = true;
       if (semProgresso) raiz.classList.add("sem-estado");
       quadro.style.zoom = "";
       quadro.style.transform = "none";
+      quadro.style.transformOrigin = "";
+      /* no caminho sem `zoom` a altura da rolagem é fixada em pixels da
+         escala anterior; sem limpar, o layout do quadro fica preso a ela */
+      rolagem.style.height = "";
       desenharSetas(grade, svg, cartao, CORREDOR);
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
 
@@ -298,10 +320,18 @@ export function ligarGrade() {
       const altura = quadro.scrollHeight;
       /* limite de canvas dos navegadores móveis fica perto de 4096px */
       const pr = Math.min(2, 4000 / largura, 4000 / altura);
+      /* `width`, `height` e `style` não são luxo: o html-to-image clona o nó
+         e aplica esses valores NO CLONE. Assim a captura sai na escala 1 e
+         no tamanho medido acima mesmo que algo reaplique o zoom no DOM vivo
+         entre a medição e a captura — que era exatamente o defeito no
+         telefone. Terceira barreira, junto do cadeado e da ordem dos rAF. */
       const png = await toJpeg(quadro, {
         backgroundColor: fundoCss,
         pixelRatio: pr,
         quality: 0.92,
+        width: largura,
+        height: altura,
+        style: { zoom: "1", transform: "none", transformOrigin: "0 0" },
       });
       const img = new Image();
       img.src = png;
@@ -346,6 +376,7 @@ export function ligarGrade() {
     } catch (e) {
       window.alert(`Não consegui gerar o PDF.\n\n${(e as Error).message}`);
     } finally {
+      exportando = false;
       raiz.classList.remove("sem-estado");
       quadro.style.zoom = zoomAntes;
       quadro.style.transform = escalaAntes;

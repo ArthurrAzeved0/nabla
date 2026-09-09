@@ -1,0 +1,114 @@
+---
+origem: "2024.2"
+tema: "Bernoulli · A interpretação física da equação"
+temaId: carga-total
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Qual a interpretação física da equação de Bernoulli?**
+
+<Gabarito>
+A equação de Bernoulli é a **conservação da energia mecânica** aplicada a um fluido **ideal** (sem viscosidade), **incompressível**, em **regime permanente**, ao longo de uma **mesma linha de corrente**:
+
+$$
+\frac{p}{\gamma} + \frac{v^2}{2g} + z = \text{constante} = H
+$$
+
+Cada termo é uma **energia por unidade de peso** do fluido — e por isso todos têm unidade de **comprimento** (metro de coluna de fluido), sendo chamados de **cargas**:
+
+- $\dfrac{p}{\gamma}$ — **carga de pressão** (energia de pressão);
+- $\dfrac{v^2}{2g}$ — **carga cinética** (energia cinética);
+- $z$ — **carga geométrica** (energia potencial de posição).
+
+A interpretação: a soma das três é **constante** ao longo do escoamento. O fluido pode **trocar** energia entre as formas — ganhar velocidade perdendo pressão, ganhar altura perdendo velocidade —, mas o total não muda, porque não há atrito para dissipar nem máquina para adicionar ou retirar.
+</Gabarito>
+
+<Passos>
+**1 — De onde a equação vem.** É a segunda lei de Newton (ou o teorema da energia mecânica) aplicada a uma partícula de fluido ao longo de uma linha de corrente. Dividindo tudo pelo **peso** do elemento, cada termo de energia vira energia **por unidade de peso**:
+
+$$
+\underbrace{\frac{p}{\gamma}}_{\mathrm{m}} + \underbrace{\frac{v^2}{2g}}_{\mathrm{m}} + \underbrace{z}_{\mathrm{m}} = H
+$$
+
+<Caixa tipo="dica" rotulo="Por que todos os termos dão metro">
+
+$$
+\left[\frac{p}{\gamma}\right] = \frac{\mathrm{N/m^2}}{\mathrm{N/m^3}} = \mathrm{m}
+\qquad
+\left[\frac{v^2}{2g}\right] = \frac{\mathrm{m^2/s^2}}{\mathrm{m/s^2}} = \mathrm{m}
+$$
+
+É isso que permite somar pressão com velocidade e com altura: as três foram convertidas para **altura de coluna de fluido**. Daí o nome "carga", e daí $H$ ser a **carga total**.
+
+</Caixa>
+
+**2 — O que cada termo significa fisicamente.**
+
+- **carga de pressão** $p/\gamma$ — a altura a que o fluido subiria num tubo vertical aberto ligado ao ponto (um **piezômetro**). É a energia armazenada na compressão do fluido;
+- **carga cinética** $v^2/2g$ — a altura a que o fluido subiria se toda a sua velocidade fosse convertida em subida, como um jato apontado para cima. É a energia do movimento;
+- **carga geométrica** $z$ — a altura do ponto acima do plano de referência. É a energia de posição.
+
+**3 — A leitura central: as trocas.** O que a equação diz é que o fluido **negocia** energia entre as três formas:
+
+| onde | o que acontece |
+|---|---|
+| estreitamento (Venturi) | a velocidade **sobe**, a pressão **cai** |
+| alargamento | a velocidade **cai**, a pressão **sobe** |
+| subida de tubulação | $z$ **sobe**, e pressão ou velocidade **caem** |
+| furo num tanque (Torricelli) | a carga geométrica vira **carga cinética** |
+| asa de avião | ar mais rápido em cima → pressão menor em cima → **sustentação** |
+
+O caso do Venturi é o mais contraintuitivo e o mais cobrado: **onde o fluido corre mais rápido, a pressão é menor** — o oposto do que a intuição sugere.
+
+<Caixa tipo="simbolos" rotulo="As quatro hipóteses, que são metade da resposta">
+
+Bernoulli só vale se:
+
+1. **fluido ideal** — viscosidade nula, logo **sem perda de carga**;
+2. **incompressível** — $\gamma$ constante, senão não se pode dividir por ele;
+3. **regime permanente** — nada muda com o tempo num ponto fixo;
+4. **ao longo de uma mesma linha de corrente** — e sem máquina no caminho.
+
+Citar as hipóteses é obrigatório numa questão de interpretação: elas dizem **quando** a constante é constante.
+
+</Caixa>
+
+**4 — O que muda quando as hipóteses caem.** É essa comparação que mostra que a interpretação foi entendida:
+
+$$
+\underbrace{\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1}_{H_1}
++ \underbrace{H_B}_{\text{bomba}}
+=
+\underbrace{\frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2}_{H_2}
++ \underbrace{H_T}_{\text{turbina}}
++ \underbrace{h_p}_{\text{perda de carga}}
+$$
+
+- com **atrito** (fluido real), $H$ **diminui** no sentido do escoamento: aparece $h_p$, e a energia perdida vira **calor**;
+- com **bomba**, $H$ **aumenta** na máquina;
+- com **turbina**, $H$ **diminui** — mas como trabalho útil, não como calor.
+
+Bernoulli é o caso particular em que os três termos extras são nulos.
+
+<Caixa tipo="macete" rotulo="A frase que resume">
+
+> Bernoulli é a conservação da energia mecânica **por unidade de peso** do fluido: a carga total $H$ é constante ao longo de uma linha de corrente, e os três termos apenas **trocam energia entre si**.
+
+Com essa frase mais as quatro hipóteses e um exemplo de troca (Venturi ou Torricelli), a questão está respondida.
+
+</Caixa>
+
+**Conferência —** dizer que é conservação de energia **por unidade de peso**, e que por isso os termos dão metro ✔ nomear os três termos ✔ listar as hipóteses ✔ dar ao menos um exemplo de troca entre as formas ✔
+</Passos>

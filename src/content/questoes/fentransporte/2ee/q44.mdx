@@ -1,0 +1,234 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Máquina hidráulica · Ferro fundido, tubo estreito e 8 kW de turbina"
+temaId: turbina
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q44.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o sistema de escoamento de água ($\rho = 1000\ \mathrm{kg/m^3}$; $\mu = 0{,}001\ \mathrm{Pa\cdot s}$) apresentado na figura. Um tanque de grandes dimensões (1) está conectado a uma máquina que descarrega água no ponto (2) com uma vazão de $0{,}05\ \mathrm{m^3/s}$, constante ao longo de toda a tubulação. A tubulação de **ferro fundido** (*iron, cast*) tem diâmetro de $15\ \mathrm{cm}$.
+
+**a)** Se a máquina é uma **bomba** ou uma **turbina**.
+
+**b)** A **potência ideal** da máquina.
+
+**Dados:** $g = 10\ \mathrm{m/s^2}$; $k_{\text{joelho}} = 0{,}55$; $k_{\text{válvula}} = 1{,}85$; para ferro fundido, $\varepsilon = 0{,}15\ \mathrm{mm}$.
+
+<Figura>
+  <svg viewBox="0 0 360 230" role="img" aria-label="Tanque de grandes dimensões com 15 metros de coluna e tubulação de ferro fundido de 15 centímetros: segue 5 metros, desce 10, segue 2 até a máquina, 4 até a válvula, 3, sobe 5 e descarrega livremente após 5 metros">
+    {/* tanque */}
+    <path d="M20 26 L20 96 L94 96" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="21" y="34" width="72" height="62" fill="var(--accent-soft)" opacity="0.55"/>
+    <line x1="21" y1="34" x2="93" y2="34" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="30" y1="30" x2="46" y2="30" stroke="var(--accent)" stroke-width="1"/>
+    <text x="96" y="30" font-size="10" fill="var(--ink-2)">①</text>
+    {/* cota 15 m dentro do tanque */}
+    <line x1="64" y1="34" x2="64" y2="96" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="64,34 60,44 68,44" fill="var(--ok)"/>
+    <polygon points="64,96 60,86 68,86" fill="var(--ok)"/>
+    <text x="20" y="70" font-size="9" fill="var(--ok)">15,0 m</text>
+    {/* trecho horizontal de 5 m no topo */}
+    <line x1="94" y1="96" x2="140" y2="96" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="100" y="90" font-size="9" fill="var(--ink-3)">5,0 m</text>
+    {/* descida de 10 m */}
+    <line x1="140" y1="96" x2="140" y2="176" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="130" y1="100" x2="130" y2="172" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="130,96 126,106 134,106" fill="var(--ok)"/>
+    <polygon points="130,176 126,166 134,166" fill="var(--ok)"/>
+    <text x="86" y="140" font-size="9" fill="var(--ok)">10,0 m</text>
+    {/* 2 m até a máquina */}
+    <line x1="140" y1="176" x2="168" y2="176" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="140" y="192" font-size="9" fill="var(--ink-3)">2,0 m</text>
+    {/* máquina */}
+    <circle cx="182" cy="176" r="13" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.7"/>
+    <line x1="173" y1="167" x2="191" y2="185" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <line x1="191" y1="167" x2="173" y2="185" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="164" y="206" font-size="9" fill="var(--ink-2)">bomba ou turbina?</text>
+    {/* 4 m até a válvula */}
+    <line x1="195" y1="176" x2="238" y2="176" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="204" y="192" font-size="9" fill="var(--ink-3)">4,0 m</text>
+    {/* válvula */}
+    <polygon points="238,169 238,183 250,169 250,183" fill="var(--warn)" opacity="0.85" stroke="var(--warn)" stroke-width="1"/>
+    <text x="230" y="162" font-size="8" fill="var(--warn)">válvula</text>
+    {/* 3 m */}
+    <line x1="250" y1="176" x2="282" y2="176" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="252" y="192" font-size="9" fill="var(--ink-3)">3,0 m</text>
+    {/* subida de 5 m */}
+    <line x1="282" y1="176" x2="282" y2="136" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="268" y1="140" x2="268" y2="172" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="268,136 264,146 272,146" fill="var(--ok)"/>
+    <polygon points="268,176 264,166 272,166" fill="var(--ok)"/>
+    <text x="238" y="130" font-size="9" fill="var(--ok)">5,0 m</text>
+    {/* 5 m final e descarga */}
+    <line x1="282" y1="136" x2="326" y2="136" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="288" y="130" font-size="9" fill="var(--ink-3)">5,0 m</text>
+    <path d="M330 130 Q338 136 330 142" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <path d="M336 126 Q346 136 336 146" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <text x="304" y="120" font-size="10" fill="var(--ink-2)">②</text>
+    {/* joelhos */}
+    <circle cx="140" cy="96" r="4.5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+    <circle cx="140" cy="176" r="4.5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+    <circle cx="282" cy="176" r="4.5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+    <circle cx="282" cy="136" r="4.5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+    <text x="150" y="112" font-size="8" fill="var(--warn)">4 joelhos (○)</text>
+    {/* diâmetro */}
+    <text x="182" y="222" font-size="9" fill="var(--ink-3)">tubulação de ferro fundido · d = 15 cm</text>
+  </svg>
+  <figcaption>
+
+Mesmo traçado da prova de 2022.1 — sete trechos somando $34\ \mathrm{m}$, quatro joelhos e uma válvula. O que muda são o diâmetro, o material e a vazão.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+A = \frac{\pi d^2}{4} = 1{,}767\times10^{-2}\ \mathrm{m^2}
+\qquad
+v = \frac{Q}{A} = 2{,}829\ \mathrm{m/s}
+\qquad
+\frac{v^2}{2g} = 0{,}400\ \mathrm{m}
+$$
+
+$$
+Re = \frac{\rho v d}{\mu} = 4{,}24\times10^{5}\ \text{(turbulento)}
+\qquad
+\frac{\varepsilon}{d} = 0{,}001
+\qquad\Longrightarrow\qquad
+f = 0{,}02
+$$
+
+$$
+h_{pd} = 1{,}815\ \mathrm{m}
+\qquad
+h_{pl} = 1{,}621\ \mathrm{m}
+\qquad
+h_p = 3{,}436\ \mathrm{m}
+$$
+
+**a)**
+
+$$
+M = \frac{v_2^2}{2g} + y_2 + h_p - y_1 = 0{,}400 + 5 + 3{,}436 - 25 = \mathbf{-16{,}16\ m}
+\qquad\Longrightarrow\qquad
+\textbf{turbina}
+$$
+
+**b)**
+
+$$
+N_T = \rho\,Q\,g\,|M| = 1000 \times 0{,}05 \times 10 \times 16{,}16 \approx \mathbf{8{,}08\ kW}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — velocidade e carga cinética.**
+
+$$
+A = \frac{\pi (0{,}15)^2}{4} = 1{,}767\times10^{-2}\ \mathrm{m^2}
+\qquad
+v = \frac{0{,}05}{1{,}767\times10^{-2}} = 2{,}829\ \mathrm{m/s}
+$$
+
+$$
+\frac{v^2}{2g} = \frac{2{,}829^2}{2 \times 10} = \frac{8{,}003}{20} = 0{,}400\ \mathrm{m}
+$$
+
+**Passo 2 — o regime e o fator de atrito, no Moody.**
+
+$$
+Re = \frac{\rho\,v\,d}{\mu} = \frac{1000 \times 2{,}829 \times 0{,}15}{0{,}001} = 4{,}24\times10^{5}
+$$
+
+Turbulento. E a rugosidade relativa do **ferro fundido**:
+
+$$
+\frac{\varepsilon}{d} = \frac{1{,}5\times10^{-4}}{0{,}15} = 1{,}0\times10^{-3}
+\qquad\Longrightarrow\qquad
+f \approx 0{,}02
+$$
+
+<Caixa tipo="dica" rotulo="A rugosidade é do material, e vem da tabela do Moody">
+
+O diagrama de Moody traz, ao lado, a lista de rugosidades absolutas:
+
+| material | $\varepsilon$ |
+|---|---|
+| concreto grosseiro | $0{,}25\ \mathrm{mm}$ |
+| **ferro fundido** | $0{,}15\ \mathrm{mm}$ |
+| aço comercial | $0{,}045\ \mathrm{mm}$ |
+| tubo estirado | $0{,}0025\ \mathrm{mm}$ |
+
+O enunciado nomeia o material (*iron, cast*) esperando que se busque o $\varepsilon$ ali. Trocar o material troca o $f$ e todo o resto.
+
+</Caixa>
+
+**Passo 3 — a perda distribuída, com $L = 34\ \mathrm{m}$.** Somando os sete trechos da figura: $5 + 10 + 2 + 4 + 3 + 5 + 5 = 34\ \mathrm{m}$.
+
+$$
+h_{pd} = f\,\frac{L}{d}\,\frac{v^2}{2g} = 0{,}02 \times \frac{34}{0{,}15} \times 0{,}400 = 0{,}02 \times 226{,}7 \times 0{,}400 = 1{,}815\ \mathrm{m}
+$$
+
+**Passo 4 — as perdas localizadas.** Quatro joelhos e uma válvula:
+
+$$
+h_{pl} = \left(4k_j + k_v\right)\frac{v^2}{2g} = (4 \times 0{,}55 + 1{,}85) \times 0{,}400 = 4{,}05 \times 0{,}400 = 1{,}621\ \mathrm{m}
+$$
+
+$$
+h_p = 1{,}815 + 1{,}621 = 3{,}436\ \mathrm{m}
+$$
+
+**Passo 5 — a equação da energia com máquina.** Do tanque (1) até a descarga livre (2):
+
+$$
+\frac{p_1}{\rho g} + \frac{v_1^2}{2g} + y_1 + M = \frac{p_2}{\rho g} + \frac{v_2^2}{2g} + y_2 + h_p
+$$
+
+Com $p_1 = p_2 = p_{atm}$, $v_1 \approx 0$ (grandes dimensões) e $v_2 = v$ (descarga **livre**):
+
+$$
+M = \frac{v^2}{2g} + y_2 + h_p - y_1 = 0{,}400 + 5 + 3{,}436 - 25 = -16{,}164\ \mathrm{m}
+$$
+
+**Passo 6 — item (a): o sinal.** $M < 0$: a máquina **retira** carga. É uma **turbina**.
+
+**Passo 7 — item (b): a potência ideal.** O item pede a **ideal**, então **não** entra rendimento:
+
+$$
+N_T = \rho\,Q\,g\,|M| = 1000 \times 0{,}05 \times 10 \times 16{,}164 = 8082\ \mathrm{W} \approx 8{,}08\ \mathrm{kW}
+$$
+
+<Caixa tipo="macete" rotulo="O mesmo traçado, três resultados diferentes">
+
+Esta é a **terceira** aparição deste sistema nas provas — mesmo desenho, mesmos 34 m, mesmos quatro joelhos:
+
+| | 2022.1 (e turma KT) | 2023.2 · 2ª chamada |
+|---|---|---|
+| $d$ | $50\ \mathrm{cm}$ | $15\ \mathrm{cm}$ |
+| material | concreto grosseiro | ferro fundido |
+| $Q$ | $1{,}2\ \mathrm{m^3/s}$ | $0{,}05\ \mathrm{m^3/s}$ |
+| $v$ | $6{,}11\ \mathrm{m/s}$ | $2{,}83\ \mathrm{m/s}$ |
+| $v^2/2g$ | $1{,}87\ \mathrm{m}$ | $0{,}40\ \mathrm{m}$ |
+| $h_p$ | $9{,}11\ \mathrm{m}$ | $3{,}44\ \mathrm{m}$ |
+| $M$ | $-9{,}03\ \mathrm{m}$ | $-16{,}16\ \mathrm{m}$ |
+| potência | $86{,}7\ \mathrm{kW}$ (com $\eta$) | $8{,}08\ \mathrm{kW}$ (ideal) |
+
+Repare no contraste: aqui a **carga extraída é maior** ($16$ contra $9\ \mathrm{m}$), porque as perdas são menores — mas a **potência é dez vezes menor**, porque a vazão é vinte e quatro vezes menor. Carga e potência não andam juntas: $N = \gamma Q H$ tem os dois fatores.
+
+</Caixa>
+
+**Conferência —** $\varepsilon$ do **ferro fundido**, $0{,}15\ \mathrm{mm}$ ✔ $L = 34\ \mathrm{m}$, somando os sete trechos ✔ descarga livre mantém $v^2/2g$ ✔ $M$ negativo é turbina ✔ o item pede a potência **ideal**, então nada de rendimento ✔
+</Passos>

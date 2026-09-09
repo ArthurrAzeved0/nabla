@@ -1,0 +1,125 @@
+---
+origem: "Banco"
+tema: "Cinemática · Trajetória e linhas de corrente"
+temaId: linha-de-corrente
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**O que são trajetória e linhas de corrente?**
+
+<Figura>
+  <svg viewBox="0 0 340 200" role="img" aria-label="À esquerda, a trajetória de uma partícula ao longo do tempo; à direita, as linhas de corrente de um instante, com os vetores velocidade tangentes a elas">
+    {/* trajetória */}
+    <text x="18" y="20" font-size="10" fill="var(--warn)">trajetória (uma partícula)</text>
+    <path d="M22 74 Q60 40 96 66 Q130 90 152 56" fill="none" stroke="var(--warn)" stroke-width="1.8" stroke-dasharray="5 3"/>
+    <circle cx="22" cy="74" r="4" fill="var(--warn)"/>
+    <text x="14" y="90" font-size="8" fill="var(--warn)">t₀</text>
+    <circle cx="70" cy="49" r="4" fill="var(--warn)"/>
+    <text x="64" y="40" font-size="8" fill="var(--warn)">t₁</text>
+    <circle cx="112" cy="76" r="4" fill="var(--warn)"/>
+    <text x="108" y="92" font-size="8" fill="var(--warn)">t₂</text>
+    <circle cx="152" cy="56" r="4" fill="var(--warn)"/>
+    <text x="156" y="50" font-size="8" fill="var(--warn)">t₃</text>
+    {/* linhas de corrente */}
+    <text x="182" y="20" font-size="10" fill="var(--accent)">linhas de corrente (um instante)</text>
+    <path d="M186 44 Q246 32 318 46" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M186 62 Q246 52 318 64" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M186 80 Q246 74 318 82" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+    {/* vetores tangentes */}
+    <line x1="216" y1="37" x2="240" y2="34" stroke="var(--ok)" stroke-width="1.6"/>
+    <polygon points="246,33 236,30 237,38" fill="var(--ok)"/>
+    <line x1="216" y1="56" x2="240" y2="54" stroke="var(--ok)" stroke-width="1.6"/>
+    <polygon points="246,53 236,50 237,58" fill="var(--ok)"/>
+    <line x1="276" y1="76" x2="300" y2="78" stroke="var(--ok)" stroke-width="1.6"/>
+    <polygon points="306,79 296,75 295,83" fill="var(--ok)"/>
+    <text x="248" y="98" font-size="8" fill="var(--ok)">v tangente à linha</text>
+    {/* regime permanente: coincidem */}
+    <line x1="20" y1="124" x2="320" y2="124" stroke="var(--line-2)" stroke-width="1"/>
+    <text x="20" y="144" font-size="9" fill="var(--ink-2)">em regime PERMANENTE as duas coincidem:</text>
+    <path d="M40 176 Q120 156 200 172 Q260 184 310 168" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <path d="M40 176 Q120 156 200 172 Q260 184 310 168" fill="none" stroke="var(--warn)" stroke-width="1.8" stroke-dasharray="4 6"/>
+    <circle cx="120" cy="164" r="3.5" fill="var(--warn)"/>
+    <text x="130" y="192" font-size="8" fill="var(--ink-3)">a partícula segue a própria linha de corrente</text>
+  </svg>
+  <figcaption>
+
+**Trajetória** é o histórico de **uma** partícula. **Linha de corrente** é uma fotografia do campo de velocidades num **instante**.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**Trajetória** de uma partícula fluida é o **caminho percorrido** por ela em instantes sucessivos. É uma noção **lagrangeana**: acompanha-se **uma** partícula ao longo do **tempo**. Experimentalmente, determina-se com traçadores — um flutuante colorido, por exemplo.
+
+**Linha de corrente**, num dado instante de tempo, é uma **linha imaginária** traçada no campo de velocidades de forma que, em **cada ponto** dela, o vetor velocidade do escoamento é **tangente** a ela. É uma noção **euleriana**: fotografa-se **todo** o campo num **instante**.
+
+Em **regime permanente**, as duas coincidem — a partícula segue a própria linha de corrente, porque o campo não muda com o tempo.
+</Gabarito>
+
+<Passos>
+**1 — Trajetória: uma partícula, muitos instantes.** Escolhe-se uma partícula e registra-se onde ela está em $t_0$, $t_1$, $t_2$, … A curva que une essas posições é a trajetória.
+
+- é o que uma **filmagem** de uma folha na correnteza mostra;
+- na prática, obtém-se com **traçadores**: corante, flutuante colorido, partículas iluminadas;
+- é o ponto de vista de quem **viaja com** o fluido — a descrição **lagrangeana**.
+
+**2 — Linha de corrente: um instante, muitos pontos.** Congela-se o tempo e desenha-se, em todo o domínio, a família de curvas que são **tangentes ao vetor velocidade** em cada ponto:
+
+$$
+\vec v \parallel d\vec r
+\qquad\Longrightarrow\qquad
+\frac{dx}{u} = \frac{dy}{v} = \frac{dz}{w}
+$$
+
+- é o que uma **fotografia** com exposição curta e muitas partículas mostra;
+- é o ponto de vista de quem **fica parado** e observa o campo passar — a descrição **euleriana**.
+
+<Caixa tipo="macete" rotulo="As duas propriedades que caem em prova">
+
+Duas consequências diretas da definição:
+
+1. **linhas de corrente nunca se cruzam.** Se se cruzassem, no ponto de cruzamento haveria **dois** vetores velocidade — impossível, porque o campo tem um só valor por ponto (exceto em pontos de estagnação, onde $v = 0$);
+2. **não há escoamento atravessando uma linha de corrente.** Como a velocidade é tangente a ela, não há componente perpendicular. É por isso que um feixe de linhas de corrente funciona como um **tubo** com paredes imaginárias — o **tubo de corrente**, que é a base de todo balanço em volume de controle.
+
+</Caixa>
+
+**3 — Quando as duas coincidem.** Em **regime permanente**, o campo de velocidades não muda com o tempo: a linha de corrente de agora é a mesma de daqui a um minuto. A partícula, seguindo sempre a tangente, nunca sai da linha em que começou.
+
+$$
+\text{regime permanente}
+\qquad\Longrightarrow\qquad
+\text{trajetória} \equiv \text{linha de corrente}
+$$
+
+Em regime **transiente** elas se separam: o campo muda enquanto a partícula viaja, e ela vai "trocando" de linha.
+
+<Caixa tipo="dica" rotulo="Por que isso importa para Bernoulli">
+
+A equação de Bernoulli vale **ao longo de uma linha de corrente** — não entre dois pontos quaisquer do escoamento. É a hipótese que a dedução usa quando fatia o elemento de fluido "ao longo de $s$".
+
+E como quase todo problema da disciplina é de regime **permanente**, na prática se aplica Bernoulli seguindo a **trajetória** do fluido, que ali é a mesma coisa. Saber que essa igualdade só vale em regime permanente é o que evita usar Bernoulli onde ele não vale.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Há uma terceira, que às vezes aparece">
+
+**Linha de emissão** (ou de filete) é o lugar geométrico das partículas que passaram por um **mesmo ponto** em instantes anteriores — é o rastro de fumaça saindo de uma chaminé, ou de corante injetado num ponto fixo.
+
+Em regime permanente, as **três** coincidem: trajetória, linha de corrente e linha de emissão. Em regime transiente, são três curvas diferentes.
+
+</Caixa>
+
+**Conferência —** trajetória é de **uma** partícula ao longo do **tempo**; linha de corrente é de **um instante** em todo o campo ✔ a definição de linha de corrente precisa da palavra **tangente** ✔ dizer que em regime permanente as duas coincidem fecha a resposta e liga o assunto a Bernoulli ✔
+</Passos>

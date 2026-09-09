@@ -1,0 +1,201 @@
+---
+origem: "2023.1"
+tema: "Fick · Umidade difundindo por uma parede de gesso"
+temaId: coeficiente-de-difusao
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a difusão de umidade (água na forma de vapor, no ar) através de uma parede de gesso de uma casa. Na parte **interna** (lado esquerdo), a casa está mantida a $20\ ^\circ\mathrm{C}$, pressão atmosférica, sendo $70\ \%$ em mol dessa pressão a umidade. A parede possui espessura de $10\ \mathrm{cm}$. Na parte **externa** (lado direito), o ambiente está **seco** (sem umidade no ar), também com pressão atmosférica, a $40\ ^\circ\mathrm{C}$. Considerando essa uma mistura de gases ideais, determine:
+
+**a)** (1,0 ponto) A **concentração molar da água no meio** da espessura da parede.
+
+**b)** (1,0 ponto) A **massa** de água que difundirá através da parede (altura $\times$ comprimento: $3{,}0\ \mathrm{m} \times 8{,}0\ \mathrm{m}$) durante $24\ \mathrm{h}$.
+
+**Dados:** $M_{\text{água}} = 18\ \mathrm{g\cdot mol^{-1}}$; $R = 8{,}314\ \mathrm{J\cdot mol^{-1}K^{-1}}$; $D_{\text{água-gesso}} = 2{,}8\times10^{-5}\ \mathrm{m^2\cdot s^{-1}}$; $P = 1\times10^5\ \mathrm{Pa}$.
+
+<Figura>
+  <svg viewBox="0 0 340 200" role="img" aria-label="Parede de gesso de 10 centímetros: dentro da casa a 20 graus com 70 por cento da pressão em umidade, fora a 40 graus com ar seco, e o perfil linear de concentração caindo até zero">
+    {/* parede */}
+    <rect x="118" y="34" width="86" height="120" fill="var(--line-2)" opacity="0.55" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="132" y="172" font-size="9" fill="var(--ink-3)">gesso · L = 10 cm</text>
+    {/* lados */}
+    <text x="26" y="46" font-size="10" fill="var(--ink-2)">interior</text>
+    <text x="24" y="60" font-size="9" fill="var(--ink-3)">20 °C</text>
+    <text x="24" y="73" font-size="9" fill="var(--ink-3)">x<tspan font-size="7" dy="2">água</tspan><tspan dy="-2"> = 0,70</tspan></text>
+    <text x="240" y="46" font-size="10" fill="var(--ink-2)">exterior</text>
+    <text x="240" y="60" font-size="9" fill="var(--ink-3)">40 °C</text>
+    <text x="240" y="73" font-size="9" fill="var(--ink-3)">ar seco</text>
+    {/* perfil linear de concentração */}
+    <line x1="118" y1="52" x2="204" y2="140" stroke="var(--accent)" stroke-width="1.9"/>
+    <circle cx="118" cy="52" r="3.5" fill="var(--accent)"/>
+    <circle cx="161" cy="96" r="3.5" fill="var(--warn)"/>
+    <circle cx="204" cy="140" r="3.5" fill="var(--accent)"/>
+    <text x="52" y="98" font-size="9" fill="var(--accent)">C₁ = 28,7</text>
+    <text x="62" y="110" font-size="9" fill="var(--accent)">mol/m³</text>
+    <line x1="96" y1="92" x2="114" y2="58" stroke="var(--accent)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="216" y="150" font-size="9" fill="var(--accent)">C₂ = 0</text>
+    <text x="166" y="90" font-size="9" fill="var(--warn)">C(L/2) = ?</text>
+    {/* fluxo */}
+    <line x1="130" y1="128" x2="164" y2="128" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="170,128 160,124 160,132" fill="var(--warn)"/>
+    <text x="146" y="122" font-size="10" fill="var(--warn)">J″</text>
+    {/* área */}
+    <text x="216" y="180" font-size="9" fill="var(--ink-3)">área: 3,0 m × 8,0 m</text>
+  </svg>
+  <figcaption>
+
+O lado externo está **seco**: a concentração de vapor ali é **zero**, e é isso que fixa a segunda ponta do perfil.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)**
+
+$$
+p_1 = 0{,}70\,P = 7\times10^4\ \mathrm{Pa}
+\qquad
+C_1 = \frac{p_1}{R\,T_1} = \frac{7\times10^4}{8{,}314 \times 293} = 28{,}72\ \mathrm{mol/m^3}
+$$
+
+$$
+C(x) = -287{,}21\,x + 28{,}721
+\qquad\Longrightarrow\qquad
+C(0{,}05) \approx \mathbf{14{,}36\ mol/m^3}
+$$
+
+**b)**
+
+$$
+J'' = -D\,\frac{dC}{dx} = -2{,}8\times10^{-5} \times (-287{,}21) = 8{,}04\times10^{-3}\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+m = J''\,A\,t\,M = 8{,}04\times10^{-3} \times 24 \times 8{,}64\times10^{4} \times 0{,}018 \approx \mathbf{300\ kg}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a concentração na face interna, pela pressão parcial.** A mistura é de gases ideais, então a fração molar vale também para as pressões:
+
+$$
+p_1 = x_{\text{água}}\,P = 0{,}70 \times 1\times10^5 = 7\times10^4\ \mathrm{Pa}
+$$
+
+$$
+C_1 = \frac{p_1}{R\,T_1} = \frac{7\times10^4}{8{,}314 \times (273 + 20)} = \frac{7\times10^4}{2436} = 28{,}72\ \mathrm{mol/m^3}
+$$
+
+<Caixa tipo="simbolos">
+
+- $C = \dfrac{p}{R\,T}$ — concentração molar de gás ideal, em $\mathrm{mol/m^3}$
+- $p$ — pressão **parcial** da espécie, em Pa (não a total)
+- $T$ — em **kelvin**
+- $R = 8{,}314\ \mathrm{J/(mol\cdot K)}$ — constante universal
+
+</Caixa>
+
+**Passo 2 — a face externa é o dado mais fácil, e o mais fácil de perder.** O ambiente externo está **seco**: sem umidade no ar significa pressão parcial de vapor nula, logo
+
+$$
+p_2 = 0
+\qquad\Longrightarrow\qquad
+C_2 = 0
+$$
+
+Os $40\ ^\circ\mathrm{C}$ do lado de fora **não** entram na conta da concentração: com $p_2 = 0$, qualquer temperatura dá $C_2 = 0$. É um dado de contexto, não de cálculo.
+
+**Passo 3 — o perfil linear e o gradiente.**
+
+$$
+C(x) = \left(\frac{C_2 - C_1}{L}\right)x + C_1 = \left(\frac{0 - 28{,}721}{0{,}10}\right)x + 28{,}721
+$$
+
+$$
+C(x) = -287{,}21\,x + 28{,}721
+\qquad
+\frac{dC}{dx} = -287{,}21\ \mathrm{mol/m^4}
+$$
+
+**Passo 4 — item (a): o meio da parede.** Com perfil linear, o meio é a média — mas vale escrever a conta:
+
+$$
+x = \frac{L}{2} = 0{,}05\ \mathrm{m}
+\qquad
+C = -287{,}21 \times 0{,}05 + 28{,}721 = -14{,}36 + 28{,}72 = 14{,}36\ \mathrm{mol/m^3}
+$$
+
+Exatamente metade de $C_1$, como tinha de ser num perfil reto que termina em zero.
+
+**Passo 5 — item (b): a densidade de fluxo, por Fick.**
+
+$$
+J'' = -D\,\frac{dC}{dx} = -2{,}8\times10^{-5} \times (-287{,}21) = 8{,}04\times10^{-3}\ \mathrm{mol/(m^2\cdot s)}
+$$
+
+Positivo: a umidade vai **de dentro para fora**, como esperado (dentro há mais vapor). E, sendo o gradiente constante, esse fluxo é o mesmo em qualquer posição da parede — inclusive no meio.
+
+**Passo 6 — de fluxo molar para massa acumulada.** Três multiplicações, cada uma convertendo uma coisa:
+
+$$
+A = 3{,}0 \times 8{,}0 = 24\ \mathrm{m^2}
+\qquad
+t = 24 \times 3600 = 8{,}64\times10^{4}\ \mathrm{s}
+\qquad
+M = 18\ \mathrm{g/mol} = 0{,}018\ \mathrm{kg/mol}
+$$
+
+$$
+m = J''\,A\,t\,M
+$$
+
+$$
+m = 8{,}04\times10^{-3} \times 24 \times 8{,}64\times10^{4} \times 0{,}018
+$$
+
+$$
+m = 0{,}1930 \times 8{,}64\times10^{4} \times 0{,}018 = 16\,672 \times 0{,}018 \approx 300\ \mathrm{kg}
+$$
+
+<Caixa tipo="macete" rotulo="Acompanhe as unidades, que elas fecham sozinhas">
+
+$$
+\underbrace{\frac{\mathrm{mol}}{\mathrm{m^2\,s}}}_{J''}
+\cdot
+\underbrace{\mathrm{m^2}}_{A}
+\cdot
+\underbrace{\mathrm{s}}_{t}
+\cdot
+\underbrace{\frac{\mathrm{kg}}{\mathrm{mol}}}_{M}
+= \mathrm{kg}
+$$
+
+Se a unidade não fechar em quilograma, um dos quatro fatores ficou de fora — e o mais esquecido é a massa molar, que ainda precisa sair de g/mol para kg/mol.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O resultado é fisicamente absurdo, e vale saber por quê">
+
+$300\ \mathrm{kg}$ de água atravessando $24\ \mathrm{m^2}$ de gesso em um dia é impossível — seriam 300 litros. A culpa é do **dado**: $D = 2{,}8\times10^{-5}\ \mathrm{m^2/s}$ é a difusividade de vapor de água **no ar livre**, não no gesso, onde o valor real é da ordem de $10^{-9}$ a $10^{-10}\ \mathrm{m^2/s}$ — quatro a cinco ordens de grandeza menor.
+
+Com $D = 10^{-9}$, a mesma conta daria cerca de $10\ \mathrm{g}$ em 24 h, que é a ordem de grandeza que se mede numa casa real.
+
+Na prova, use o dado que o enunciado deu. Mas reconhecer que a ordem de grandeza não fecha é o tipo de comentário que mostra domínio — e protege de aceitar sem pensar qualquer número que a calculadora entregar.
+
+</Caixa>
+
+**Conferência —** a concentração vem da pressão **parcial**, não da total ✔ o lado seco dá $C_2 = 0$, e os $40\ ^\circ\mathrm{C}$ não entram ✔ temperatura em kelvin ✔ no meio de um perfil linear que acaba em zero, a concentração é **metade** da inicial ✔ massa molar de g/mol para kg/mol ✔
+</Passos>

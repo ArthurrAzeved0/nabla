@@ -1,0 +1,152 @@
+---
+origem: "2025.1"
+tema: "Stevin · Pressão efetiva no fundo de tanque com óleo sobre água"
+temaId: lei-de-stevin
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Óleo com gravidade específica ($\gamma_{\text{óleo}}/\gamma_{\text{água}}$) de $0{,}80$ forma uma camada superior de $0{,}90\ \mathrm{m}$ de profundidade em um tanque aberto, no qual o líquido na camada inferior é água à temperatura de $10\ ^\circ\mathrm{C}$. A profundidade total do líquido no tanque é de $3\ \mathrm{m}$. Qual a **pressão efetiva** ($p$) no fundo do tanque?
+
+**Dado:** $\gamma_{\text{água}} = 9810\ \mathrm{N/m^3}$.
+
+Pontos da figura: **A)** superfície do óleo; **B)** interface óleo/água; **C)** fundo do tanque.
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Tanque aberto com camada de óleo de 0,90 metro sobre camada de água de 2,10 metros: A é a superfície do óleo, B a interface óleo-água e C o fundo do tanque">
+    {/* paredes do tanque */}
+    <path d="M96 30 L96 176 L246 176 L246 30" fill="none" stroke="var(--ink-3)" stroke-width="1.5"/>
+    {/* óleo */}
+    <rect x="97" y="30" width="148" height="44" fill="var(--warn)" opacity="0.3"/>
+    <line x1="97" y1="30" x2="245" y2="30" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="150" y="52" font-size="11" fill="var(--ink-2)">óleo</text>
+    <text x="138" y="66" font-size="9" fill="var(--ink-3)">d = 0,80</text>
+    {/* água */}
+    <rect x="97" y="74" width="148" height="102" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="97" y1="74" x2="245" y2="74" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="5 3"/>
+    <text x="148" y="120" font-size="11" fill="var(--ink-2)">água</text>
+    <text x="140" y="134" font-size="9" fill="var(--ink-3)">T = 10 °C</text>
+    {/* pontos A, B, C */}
+    <circle cx="200" cy="30" r="3" fill="var(--ink-2)"/>
+    <text x="206" y="26" font-size="11" fill="var(--ink-2)">A</text>
+    <circle cx="200" cy="74" r="3" fill="var(--ink-2)"/>
+    <text x="206" y="70" font-size="11" fill="var(--ink-2)">B</text>
+    <circle cx="200" cy="176" r="3" fill="var(--ink-2)"/>
+    <text x="206" y="190" font-size="11" fill="var(--ink-2)">C</text>
+    {/* cotas das camadas, à direita */}
+    <line x1="266" y1="30" x2="266" y2="70" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="266,30 262,40 270,40" fill="var(--ok)"/>
+    <polygon points="266,70 262,60 270,60" fill="var(--ok)"/>
+    <text x="276" y="54" font-size="10" fill="var(--ok)">0,90 m</text>
+    <line x1="266" y1="78" x2="266" y2="176" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="266,78 262,88 270,88" fill="var(--ok)"/>
+    <polygon points="266,176 262,166 270,166" fill="var(--ok)"/>
+    <text x="276" y="130" font-size="10" fill="var(--ok)">2,10 m</text>
+    <line x1="246" y1="30" x2="266" y2="30" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="246" y1="74" x2="266" y2="74" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="246" y1="176" x2="266" y2="176" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    {/* cota total, à esquerda */}
+    <line x1="66" y1="30" x2="66" y2="176" stroke="var(--accent)" stroke-width="1.2"/>
+    <polygon points="66,30 62,40 70,40" fill="var(--accent)"/>
+    <polygon points="66,176 62,166 70,166" fill="var(--accent)"/>
+    <line x1="66" y1="30" x2="96" y2="30" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="66" y1="176" x2="96" y2="176" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="14" y="106" font-size="10" fill="var(--accent)">3,00 m</text>
+    <text x="102" y="22" font-size="9" fill="var(--ink-3)">tanque aberto</text>
+  </svg>
+  <figcaption>
+
+A espessura da água **não** é dada: sai da profundidade total menos a camada de óleo, $3{,}00 - 0{,}90 = 2{,}10\ \mathrm{m}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+p_C = \gamma_{\text{óleo}}\,h_{\text{óleo}} + \gamma_{\text{água}}\,h_{\text{água}}
+$$
+
+$$
+p_C = (0{,}80 \cdot 9810)(0{,}90) + 9810 \cdot 2{,}10 = 7063{,}2 + 20\,601 \approx \mathbf{27{,}7\ kPa}
+$$
+
+De passagem, na interface: $p_B = 7063{,}2\ \mathrm{Pa} \approx 7{,}1\ \mathrm{kPa}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que "efetiva" muda na conta.** Pressão **efetiva** (ou manométrica) é medida a partir da atmosférica. Como o tanque é **aberto**, a pressão no ponto A é a atmosférica, e em efetiva isso vale **zero**:
+
+$$
+p_A = 0
+$$
+
+É isso que dispensa somar $101\ \mathrm{kPa}$ no fim.
+
+**Passo 2 — as duas espessuras.** O enunciado dá a camada de óleo e a **profundidade total**. A água é a diferença:
+
+$$
+h_{\text{óleo}} = 0{,}90\ \mathrm{m}
+\qquad
+h_{\text{água}} = 3{,}00 - 0{,}90 = 2{,}10\ \mathrm{m}
+$$
+
+**Passo 3 — o peso específico do óleo.** A gravidade específica é uma **razão**, então é adimensional, e o peso específico sai multiplicando pelo da água:
+
+$$
+\gamma_{\text{óleo}} = d \cdot \gamma_{\text{água}} = 0{,}80 \cdot 9810 = 7848\ \mathrm{N/m^3}
+$$
+
+<Caixa tipo="simbolos">
+
+- $d = 0{,}80$ — gravidade específica (densidade relativa) do óleo, **adimensional**
+- $\gamma_{\text{água}} = 9810\ \mathrm{N/m^3}$ — peso específico da água a 10 °C
+- $\gamma_{\text{óleo}} = 7848\ \mathrm{N/m^3}$
+- $h$ — espessura de **cada** camada, em metros
+
+</Caixa>
+
+**Passo 4 — descer camada por camada.** Stevin vale dentro de **um** fluido de $\gamma$ constante. Com dois fluidos, aplica-se duas vezes, em série.
+
+*De A até B, dentro do óleo:*
+
+$$
+p_B = p_A + \gamma_{\text{óleo}}\,h_{\text{óleo}} = 0 + 7848 \cdot 0{,}90 = 7063{,}2\ \mathrm{Pa}
+$$
+
+*De B até C, dentro da água:*
+
+$$
+p_C = p_B + \gamma_{\text{água}}\,h_{\text{água}} = 7063{,}2 + 9810 \cdot 2{,}10 = 7063{,}2 + 20\,601
+$$
+
+$$
+p_C = 27\,664{,}2\ \mathrm{Pa} \approx 27{,}7\ \mathrm{kPa}
+$$
+
+<Caixa tipo="macete">
+
+O erro que a questão está caçando é usar a **profundidade total** com o peso específico da água ($9810 \cdot 3 = 29{,}4\ \mathrm{kPa}$) ou com o do óleo. Como o óleo é mais leve, a resposta certa tem de ficar **abaixo** de $29{,}4\ \mathrm{kPa}$ — e $27{,}7$ fica.
+
+</Caixa>
+
+**Passo 5 — a leitura em carga de pressão.** Convertendo para altura de coluna de água:
+
+$$
+\frac{p_C}{\gamma_{\text{água}}} = \frac{27\,664{,}2}{9810} \approx 2{,}82\ \mathrm{m}\ \text{de coluna d'água}
+$$
+
+Menos que os 3 m de líquido de verdade, exatamente porque os 0,90 m de cima pesam só 80 % do que a água pesaria.
+
+**Conferência —** a água é $3{,}00 - 0{,}90$, não $3{,}00$ ✔ a gravidade específica multiplica $\gamma$, não o substitui ✔ "efetiva" significa não somar a atmosférica ✔
+</Passos>

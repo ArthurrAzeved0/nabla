@@ -1,0 +1,120 @@
+---
+origem: "2022.1"
+tema: "Conceitos · Tensão, tensão normal e tensão cisalhante"
+temaId: tensao-de-cisalhamento
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**O que é uma tensão sobre um fluido? E tensão normal? E tensão cisalhante?**
+
+<Figura>
+  <svg viewBox="0 0 300 160" role="img" aria-label="Elemento de área na superfície de um fluido recebendo uma força que se decompõe em uma componente perpendicular à área, que gera tensão normal, e uma componente tangente à área, que gera tensão cisalhante">
+    {/* elemento de área */}
+    <polygon points="60,96 160,96 190,66 90,66" fill="var(--accent-soft)" opacity="0.6" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <text x="96" y="112" font-size="10" fill="var(--ink-3)">área A</text>
+    {/* força resultante */}
+    <line x1="124" y1="82" x2="196" y2="30" stroke="var(--ink-2)" stroke-width="2"/>
+    <polygon points="202,26 190,28 196,38" fill="var(--ink-2)"/>
+    <text x="204" y="24" font-size="11" fill="var(--ink-2)">F</text>
+    {/* componente normal */}
+    <line x1="124" y1="82" x2="140" y2="28" stroke="var(--accent)" stroke-width="1.8" stroke-dasharray="4 3"/>
+    <polygon points="142,22 134,32 146,34" fill="var(--accent)"/>
+    <text x="112" y="24" font-size="10" fill="var(--accent)">Fₙ</text>
+    {/* componente tangencial */}
+    <line x1="124" y1="82" x2="184" y2="66" stroke="var(--warn)" stroke-width="1.8" stroke-dasharray="4 3"/>
+    <polygon points="190,64 179,61 181,71" fill="var(--warn)"/>
+    <text x="190" y="84" font-size="10" fill="var(--warn)">Fₜ</text>
+    {/* legendas das tensões */}
+    <text x="10" y="140" font-size="10" fill="var(--accent)">σ = Fₙ / A</text>
+    <text x="10" y="154" font-size="9" fill="var(--accent)">tensão normal (pressão)</text>
+    <text x="176" y="140" font-size="10" fill="var(--warn)">τ = Fₜ / A</text>
+    <text x="176" y="154" font-size="9" fill="var(--warn)">tensão cisalhante</text>
+  </svg>
+  <figcaption>
+
+Toda força de superfície se decompõe em **perpendicular** e **tangente** à área — e cada componente dá origem a uma tensão de nome próprio.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**Tensão** é a razão entre uma **força de superfície** e a **área** sobre a qual ela atua: $\sigma = F/A$, em $\mathrm{N/m^2} = \mathrm{Pa}$.
+
+**Tensão normal** é a que vem da componente **perpendicular** à área. Num fluido em repouso é a única que existe, e é a **pressão**.
+
+**Tensão cisalhante** é a que vem da componente **tangente** à área. É ela que **deforma** o fluido continuamente — um fluido em repouso não suporta tensão cisalhante alguma.
+</Gabarito>
+
+<Passos>
+**1 — Tensão: força por área, e só de força de superfície.**
+
+$$
+\text{tensão} = \frac{\text{força de superfície}}{\text{área de contato}}
+$$
+
+Duas observações que a resposta precisa carregar:
+
+- a força tem de ser de **superfície** (contato). Peso é força de **corpo**, atua no volume, e não define tensão;
+- a unidade é $\mathrm{N/m^2} = \mathrm{Pa}$, a mesma da pressão — porque a pressão **é** uma tensão.
+
+**2 — A decomposição, que é o coração da pergunta.** Uma força qualquer sobre um elemento de área se separa em duas componentes:
+
+$$
+\vec F = \underbrace{\vec F_n}_{\perp\,\text{à área}} + \underbrace{\vec F_t}_{\parallel\,\text{à área}}
+$$
+
+e cada uma gera a sua tensão:
+
+$$
+\sigma = \frac{F_n}{A}
+\qquad\qquad
+\tau = \frac{F_t}{A}
+$$
+
+**3 — Tensão normal $\sigma$ é a pressão.** Vem da componente perpendicular, isto é, de empurrar (ou puxar) a superfície de frente. Num fluido em repouso:
+
+- é a **única** tensão que existe;
+- é sempre de **compressão** (empurra a superfície) — líquidos não sustentam tração apreciável;
+- é **isotrópica**: no mesmo ponto, tem o mesmo valor em qualquer direção que se oriente a área. É o princípio de Pascal, e é por isso que a pressão pode ser tratada como **escalar**.
+
+**4 — Tensão cisalhante $\tau$ é a que faz o fluido escoar.** Vem da componente tangente, isto é, de arrastar a superfície de lado. Para um fluido newtoniano:
+
+$$
+\tau = \mu\,\frac{du}{dy}
+$$
+
+E aqui está a ligação com a definição de fluido: aplicar $\tau$ num fluido, **por pequena que seja**, produz deformação que **não para**. Logo:
+
+$$
+\text{fluido em repouso}
+\qquad\Longleftrightarrow\qquad
+\tau = 0\ \text{em todo ponto}
+$$
+
+Se houvesse alguma tensão cisalhante, o fluido estaria escoando — não estaria em repouso.
+
+<Caixa tipo="macete">
+
+A frase que fecha as três definições de uma vez:
+
+> Num fluido **estático** só há tensão **normal** (pressão); num fluido em **movimento**, aparece também a tensão **cisalhante**, que é o que a viscosidade transmite entre as camadas.
+
+Ela responde a questão e já emenda com a estática dos fluidos e com a lei de Newton da viscosidade, que são as duas unidades seguintes da ementa.
+
+</Caixa>
+
+**Conferência —** tensão é força **de superfície** por área ✔ normal é perpendicular e é a pressão; cisalhante é tangente e é a que deforma ✔ dizer que num fluido em repouso só existe tensão normal é o ponto que a questão quer ouvir ✔
+</Passos>

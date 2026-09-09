@@ -1,0 +1,130 @@
+---
+origem: "2022.1 · 2ª chamada"
+tema: "Fluxos de massa · Os três fluxos na entrada do tubo"
+temaId: fluxo-absoluto
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q33.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de massa de uma mistura entre duas espécies, $A$ e $B$, ao longo de um tubo. A concentração total da mistura é mantida **constante**, igual a $400\ \mathrm{mol/m^3}$. Na **entrada**, $50\ \%$ em mol dessa mistura é da espécie $A$, e na **saída**, $40\ \%$ em mol dessa mistura é da espécie $B$. A mistura escoa com velocidade de $2{,}0\ \mathrm{m/s}$. O comprimento do tubo é de $1{,}0\ \mathrm{m}$ e o coeficiente de difusão binária é de $2{,}0\times10^{-2}\ \mathrm{m^2/s}$.
+
+Determine para $A$ e para $B$ as densidades de **fluxo difusivo**, as densidades de **fluxo convectivo** e as densidades de **fluxo absoluto** **na entrada do tubo**. Admita regime permanente com perfil **linear** de concentração, para ambas as espécies.
+
+<Gabarito>
+Na entrada: $C_{A1} = C_{B1} = 200\ \mathrm{mol/m^3}$ (a mistura entra meio a meio).
+
+| | difusivo $J''$ | convectivo $N''$ | absoluto |
+|---|---|---|---|
+| $A$ | $-0{,}8$ | $400$ | $\mathbf{399{,}2}$ |
+| $B$ | $+0{,}8$ | $400$ | $\mathbf{400{,}8}$ |
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — completar as frações molares.**
+
+$$
+x_{A1} = 0{,}50 \Rightarrow x_{B1} = 0{,}50
+\qquad\qquad
+x_{B2} = 0{,}40 \Rightarrow x_{A2} = 0{,}60
+$$
+
+**Passo 2 — as concentrações, com $C = 400$ nas duas pontas.**
+
+$$
+C_{A1} = 0{,}50 \times 400 = 200
+\qquad
+C_{A2} = 0{,}60 \times 400 = 240
+$$
+
+$$
+C_{B1} = 0{,}50 \times 400 = 200
+\qquad
+C_{B2} = 0{,}40 \times 400 = 160
+$$
+
+em $\mathrm{mol/m^3}$. Cada par soma $400$ ✔
+
+<Caixa tipo="dica" rotulo="Aqui A GANHA concentração ao longo do tubo">
+
+Diferente das outras versões desta questão, $A$ passa de $200$ para $240$: **cresce** no sentido do escoamento. Não é erro de leitura — é o que os dados dizem, e o sinal do fluxo difusivo vai refletir isso.
+
+</Caixa>
+
+**Passo 3 — os gradientes (perfil linear).**
+
+$$
+\frac{dC_A}{dx} = \frac{240 - 200}{1{,}0} = +40\ \mathrm{mol/m^4}
+\qquad
+\frac{dC_B}{dx} = \frac{160 - 200}{1{,}0} = -40\ \mathrm{mol/m^4}
+$$
+
+Opostos, porque $C$ é constante.
+
+**Passo 4 — os fluxos difusivos.**
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx} = -2{,}0\times10^{-2} \times (+40) = -0{,}8\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_B = -2{,}0\times10^{-2} \times (-40) = +0{,}8\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_A = -J''_B\ \checkmark
+$$
+
+O sinal de $A$ é **negativo**: como $A$ está mais concentrado na **saída**, ele difunde **contra** o escoamento, da saída para a entrada. É o inverso do caso usual, e é a consequência direta do Passo 2.
+
+**Passo 5 — os fluxos convectivos, na entrada.** Como a mistura entra meio a meio, os dois dão o mesmo:
+
+$$
+N''_A = C_{A1}\,v = 200 \times 2{,}0 = 400\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_B = C_{B1}\,v = 200 \times 2{,}0 = 400\ \mathrm{mol/(m^2 s)}
+$$
+
+Confira: $N''_A + N''_B = 800 = C\,v = 400 \times 2$ ✔
+
+**Passo 6 — os fluxos absolutos.**
+
+$$
+N''_{A,abs} = -0{,}8 + 400 = 399{,}2\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_{B,abs} = +0{,}8 + 400 = 400{,}8\ \mathrm{mol/(m^2 s)}
+$$
+
+**Passo 7 — a leitura.** O convectivo é **500 vezes** o difusivo, então os dois absolutos ficam quase idênticos — a mistura é carregada praticamente em bloco. A difusão apenas **redistribui** $0{,}8\ \mathrm{mol/(m^2s)}$ de $B$ para a frente e a mesma quantidade de $A$ para trás, e a soma dos absolutos continua $800$, igual a $C\,v$.
+
+<Caixa tipo="macete" rotulo="Três versões da mesma questão nas provas">
+
+| prova | $C$ | $v$ | onde | resultado |
+|---|---|---|---|---|
+| 2018.1 · 2ª ch. | $20 \to 5$ (varia) | $3{,}0$ ($B$ parada) | meio | $J''_A \ne -J''_B$ |
+| 2022.1 | $200$ constante | $4{,}0$ | saída | $J''_A = -J''_B = 1{,}5$ |
+| 2022.1 · 2ª ch. | $400$ constante | $2{,}0$ | **entrada** | $J''_A = -0{,}8$ |
+
+O roteiro é o mesmo nas três; o que muda é **onde** avaliar, se $C$ é constante e se as duas espécies têm a mesma velocidade. Ler esses três detalhes no enunciado é metade da questão.
+
+</Caixa>
+
+**Conferência —** a fração da saída é de $B$ ✔ os difusivos saem opostos, porque $C$ é constante ✔ o convectivo usa a concentração **da entrada** ✔ $J''_A$ negativo é correto aqui, porque $A$ cresce para a frente ✔ os absolutos somam $C\,v = 800$ ✔
+</Passos>

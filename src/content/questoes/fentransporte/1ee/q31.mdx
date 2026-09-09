@@ -1,0 +1,166 @@
+---
+origem: "2022.1"
+tema: "Continuidade · Vazão mássica da mistura de dois gases"
+temaId: conservacao-da-massa
+pontos: 1,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um sistema de escoamento é composto por **dois tubos de entrada e um de saída**. O tubo ① de entrada admite um gás ($P_1 = 10\ \mathrm{atm}$; $T_1 = 500\ \mathrm{K}$; $\mathcal{M}_1 = 28\ \mathrm{g/mol}$) com uma vazão de $0{,}01\ \mathrm{m^3/s}$ e o tubo ② também de entrada admite outro gás ($P_2 = 3\ \mathrm{atm}$; $T_2 = 750\ \mathrm{K}$; $\mathcal{M}_2 = 44\ \mathrm{g/mol}$) com vazão de $0{,}04\ \mathrm{m^3/s}$. A mistura formada é descarregada pelo tubo ③. **Determinar a vazão mássica da mistura na saída do sistema.** Considere o regime **permanente** e o escoamento **uniforme**.
+
+**Dado:** $R = 8{,}314\ \mathrm{J/(mol\cdot K)}$.
+
+<Figura>
+  <svg viewBox="0 0 320 180" role="img" aria-label="Duas correntes de gás, uma acima e outra abaixo, entram num duto em Y e saem misturadas por uma única seção à direita">
+    {/* volume de controle */}
+    <rect x="26" y="24" width="240" height="130" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 4"/>
+    <text x="30" y="18" font-size="9" fill="var(--accent)">volume de controle</text>
+    {/* duto 1 */}
+    <path d="M40 48 L140 48 L176 84" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="4" y1="48" x2="30" y2="48" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="36,48 26,44 26,52" fill="var(--ok)"/>
+    <text x="46" y="40" font-size="10" fill="var(--ink-2)">①</text>
+    <text x="58" y="40" font-size="9" fill="var(--ink-3)">10 atm · 500 K · ℳ = 28</text>
+    <text x="58" y="62" font-size="9" fill="var(--ok)">Q₁ = 0,01 m³/s</text>
+    {/* duto 2 */}
+    <path d="M40 130 L140 130 L176 94" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <line x1="4" y1="130" x2="30" y2="130" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="36,130 26,126 26,134" fill="var(--ok)"/>
+    <text x="46" y="146" font-size="10" fill="var(--ink-2)">②</text>
+    <text x="58" y="146" font-size="9" fill="var(--ink-3)">3 atm · 750 K · ℳ = 44</text>
+    <text x="58" y="124" font-size="9" fill="var(--ok)">Q₂ = 0,04 m³/s</text>
+    {/* duto de saída */}
+    <line x1="176" y1="84" x2="256" y2="84" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="176" y1="94" x2="256" y2="94" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="264" y1="89" x2="300" y2="89" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="306,89 296,85 296,93" fill="var(--warn)"/>
+    <text x="228" y="76" font-size="10" fill="var(--ink-2)">③</text>
+    <text x="238" y="110" font-size="9" fill="var(--warn)">ṁ₃ = ?</text>
+  </svg>
+  <figcaption>
+
+Regime **permanente** é o que autoriza escrever $\dot m_3 = \dot m_1 + \dot m_2$: nada de massa se acumula dentro do volume de controle.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\rho = \frac{P\,\mathcal{M}}{R\,T}
+\qquad
+\dot m = \rho\,Q
+$$
+
+$$
+\rho_1 = \frac{1{,}013\times10^6 \cdot 0{,}028}{8{,}314 \cdot 500} = 6{,}82\ \mathrm{kg/m^3}
+\qquad
+\dot m_1 = 0{,}0682\ \mathrm{kg/s}
+$$
+
+$$
+\rho_2 = \frac{3{,}04\times10^5 \cdot 0{,}044}{8{,}314 \cdot 750} = 2{,}14\ \mathrm{kg/m^3}
+\qquad
+\dot m_2 = 0{,}0858\ \mathrm{kg/s}
+$$
+
+$$
+\dot m_3 = \dot m_1 + \dot m_2 \approx \mathbf{0{,}154\ kg/s}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a conservação de massa é sobre massa, não sobre volume.** Em regime permanente, para um volume de controle com duas entradas e uma saída:
+
+$$
+\frac{dm_{VC}}{dt} = 0
+\qquad\Longrightarrow\qquad
+\dot m_3 = \dot m_1 + \dot m_2
+$$
+
+O que **não** vale é somar as vazões volumétricas: $Q_3 \ne Q_1 + Q_2$, porque os dois gases entram a pressões e temperaturas diferentes, logo com massas específicas diferentes. Este é o ponto da questão.
+
+**Passo 2 — a equação de estado dá o $\rho$ de cada corrente.** Para gás ideal, com $n = m/\mathcal{M}$:
+
+$$
+P\,V = n\,R\,T = \frac{m}{\mathcal{M}}\,R\,T
+\qquad\Longrightarrow\qquad
+\rho = \frac{m}{V} = \frac{P\,\mathcal{M}}{R\,T}
+$$
+
+**Passo 3 — converter as unidades antes de tudo.** São três conversões, e cada uma derruba a conta se ficar de fora:
+
+$$
+1\ \mathrm{atm} = 1{,}013\times10^5\ \mathrm{Pa}
+\qquad
+\mathcal{M}\ [\mathrm{g/mol}] \to [\mathrm{kg/mol}]:\ \div\,1000
+$$
+
+$$
+P_1 = 10\ \mathrm{atm} = 1{,}013\times10^6\ \mathrm{Pa}
+\qquad
+P_2 = 3\ \mathrm{atm} = 3{,}04\times10^5\ \mathrm{Pa}
+$$
+
+A temperatura já vem em kelvin — é o único dado que não precisa de conversão.
+
+<Caixa tipo="simbolos">
+
+- $P$ — pressão **absoluta**, em Pa
+- $\mathcal{M}$ — massa molar, em $\mathrm{kg/mol}$
+- $R = 8{,}314\ \mathrm{J/(mol\cdot K)}$ — constante **universal** (a mesma para os dois gases)
+- $T$ — temperatura **absoluta**, em K
+
+</Caixa>
+
+**Passo 4 — a corrente ①.**
+
+$$
+\rho_1 = \frac{1{,}013\times10^6 \cdot 0{,}028}{8{,}314 \cdot 500} = \frac{28\,364}{4157} = 6{,}824\ \mathrm{kg/m^3}
+$$
+
+$$
+\dot m_1 = \rho_1\,Q_1 = 6{,}824 \cdot 0{,}01 = 0{,}06824\ \mathrm{kg/s}
+$$
+
+**Passo 5 — a corrente ②.**
+
+$$
+\rho_2 = \frac{3{,}04\times10^5 \cdot 0{,}044}{8{,}314 \cdot 750} = \frac{13\,372}{6235{,}5} = 2{,}145\ \mathrm{kg/m^3}
+$$
+
+$$
+\dot m_2 = \rho_2\,Q_2 = 2{,}145 \cdot 0{,}04 = 0{,}08579\ \mathrm{kg/s}
+$$
+
+**Passo 6 — somar.**
+
+$$
+\dot m_3 = 0{,}06824 + 0{,}08579 = 0{,}15403\ \mathrm{kg/s} \approx 0{,}154\ \mathrm{kg/s}
+$$
+
+<Caixa tipo="macete">
+
+Vale olhar o efeito combinado. A corrente ① tem **um quarto** da vazão volumétrica da ②, mas contribui com quase a mesma massa. Três razões, todas na equação de estado:
+
+- está a **10 atm** contra 3 (mais que o triplo da pressão → mais moléculas por metro cúbico);
+- está a $500\ \mathrm{K}$ contra $750$ (mais fria → mais densa);
+- tem massa molar **menor** ($28$ contra $44$), e essa é a única que puxa no sentido contrário.
+
+O saldo: $\rho_1$ é mais de **três vezes** $\rho_2$, e as duas correntes acabam quase empatadas em massa.
+
+</Caixa>
+
+**Conferência —** atm tem de ir para pascal ✔ g/mol tem de ir para kg/mol ✔ vazões **volumétricas** de gases não se somam, vazões **mássicas** sim ✔ a ordem de grandeza é décimo de $\mathrm{kg/s}$: se saiu $10^2$, ficou faltando dividir a massa molar por 1000 ✔
+</Passos>

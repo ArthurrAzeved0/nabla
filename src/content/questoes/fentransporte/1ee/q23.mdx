@@ -1,0 +1,140 @@
+---
+origem: "2024.2"
+tema: "Derivada material · Aceleração a partir do campo de velocidades"
+temaId: derivada-material
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado o vetor velocidade
+
+$$
+\vec{V} = (0{,}5 + 0{,}8x)\,\hat{i} + (1{,}5 - 0{,}8y)\,\hat{j}
+$$
+
+**a)** Determine o vetor da aceleração total.
+
+**b)** Avalie a aceleração em $(x,\,y,\,z) = (2,\,3,\,0)$.
+
+**c)** Determine o módulo da aceleração em $(2,\,3,\,0)$.
+
+<Gabarito>
+**a)**
+
+$$
+\vec{a} = (0{,}4 + 0{,}64x)\,\hat{i} + (-1{,}2 + 0{,}64y)\,\hat{j}
+$$
+
+**b)** Em $(2,\,3,\,0)$:
+
+$$
+\vec{a} = 1{,}68\,\hat{i} + 0{,}72\,\hat{j}\ \ \mathrm{[m/s^2]}
+$$
+
+**c)**
+
+$$
+|\vec{a}| = \sqrt{1{,}68^2 + 0{,}72^2} \approx \mathbf{1{,}83\ m/s^2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — qual aceleração o enunciado quer.** "Aceleração total" é a **derivada material** da velocidade: a aceleração da *partícula*, não a da posição fixa no espaço.
+
+$$
+\vec{a} = \frac{D\vec{V}}{Dt} = \underbrace{\frac{\partial \vec{V}}{\partial t}}_{\text{local}} + \underbrace{(\vec{V}\cdot\nabla)\vec{V}}_{\text{convectiva}}
+$$
+
+**Passo 2 — o campo é permanente, então a parcela local é nula.** Em $\vec{V}$ não aparece $t$: a velocidade em cada ponto do espaço não muda com o tempo.
+
+$$
+\frac{\partial \vec{V}}{\partial t} = 0
+$$
+
+Cuidado com a leitura: isso **não** significa aceleração nula. A partícula acelera porque **muda de lugar**, e nos lugares novos a velocidade é outra. É a aceleração **convectiva** — e é justamente o ponto que a questão testa.
+
+**Passo 3 — escrever as componentes em duas dimensões.** Com $u = 0{,}5 + 0{,}8x$, $v = 1{,}5 - 0{,}8y$ e $w = 0$:
+
+$$
+a_x = u\,\frac{\partial u}{\partial x} + v\,\frac{\partial u}{\partial y}
+\qquad
+a_y = u\,\frac{\partial v}{\partial x} + v\,\frac{\partial v}{\partial y}
+$$
+
+**Passo 4 — as derivadas parciais.** O campo é bem comportado: cada componente depende só da **sua** coordenada.
+
+$$
+\frac{\partial u}{\partial x} = 0{,}8
+\qquad
+\frac{\partial u}{\partial y} = 0
+\qquad
+\frac{\partial v}{\partial x} = 0
+\qquad
+\frac{\partial v}{\partial y} = -0{,}8
+$$
+
+Os dois termos cruzados são **zero**, o que reduz a conta a um produto em cada componente.
+
+**Passo 5 — montar a aceleração.**
+
+$$
+a_x = (0{,}5 + 0{,}8x)(0{,}8) + (1{,}5 - 0{,}8y)(0) = 0{,}4 + 0{,}64x
+$$
+
+$$
+a_y = (0{,}5 + 0{,}8x)(0) + (1{,}5 - 0{,}8y)(-0{,}8) = -1{,}2 + 0{,}64y
+$$
+
+$$
+\boxed{\;\vec{a} = (0{,}4 + 0{,}64x)\,\hat{i} + (-1{,}2 + 0{,}64y)\,\hat{j}\;}
+$$
+
+**Passo 6 — avaliar em $(2,\,3,\,0)$.**
+
+$$
+a_x = 0{,}4 + 0{,}64 \cdot 2 = 0{,}4 + 1{,}28 = 1{,}68\ \mathrm{m/s^2}
+$$
+
+$$
+a_y = -1{,}2 + 0{,}64 \cdot 3 = -1{,}2 + 1{,}92 = 0{,}72\ \mathrm{m/s^2}
+$$
+
+$$
+\vec{a} = 1{,}68\,\hat{i} + 0{,}72\,\hat{j}
+$$
+
+**Passo 7 — o módulo.**
+
+$$
+|\vec{a}| = \sqrt{a_x^2 + a_y^2} = \sqrt{1{,}68^2 + 0{,}72^2} = \sqrt{2{,}8224 + 0{,}5184} = \sqrt{3{,}3408}
+$$
+
+$$
+|\vec{a}| \approx 1{,}83\ \mathrm{m/s^2}
+$$
+
+<Caixa tipo="macete">
+
+Vale conferir se o campo é **fisicamente possível**, isto é, se conserva massa. Para escoamento incompressível,
+
+$$
+\nabla\cdot\vec{V} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0{,}8 - 0{,}8 = 0 \ \checkmark
+$$
+
+O campo satisfaz a continuidade. Os coeficientes $+0{,}8$ e $-0{,}8$ não são arbitrários: é o que o fluido ganha em $x$ ele perde em $y$.
+
+</Caixa>
+
+**Conferência —** a parcela local ser nula não faz a aceleração ser nula ✔ os termos cruzados morrem porque $u$ não depende de $y$ nem $v$ de $x$ ✔ o módulo tem de ser maior que a maior componente ($1{,}83 > 1{,}68$) e menor que a soma delas ✔
+</Passos>

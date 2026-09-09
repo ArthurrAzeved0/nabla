@@ -1,0 +1,207 @@
+---
+origem: "2023.2"
+tema: "Esfera · Quando o calor entra e o fluxo sai negativo"
+temaId: resistencia-esferica
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere uma esfera de um material $A$ (de temperatura constante), recoberta por uma camada de um material $B$, também recoberta com uma camada de um isolante térmico. Na parte externa da esfera, um fluido escoa fazendo convecção.
+
+**Dados:** $T_1 = 20\ ^\circ\mathrm{C}$; $T_\infty = 120\ ^\circ\mathrm{C}$; $r_1 = 5\ \mathrm{cm}$; $r_2 = 8\ \mathrm{cm}$; $r_3 = 10\ \mathrm{cm}$; $k_B = 4{,}0\ \mathrm{W/(m\cdot K)}$; $k_{iso} = 0{,}07\ \mathrm{W/(m\cdot K)}$; $h_e = 2{,}0\ \mathrm{W/(m^2\cdot K)}$.
+
+Determine:
+
+**a)** (0,5 pontos) O **raio crítico** de isolamento.
+
+**b)** (1,0 ponto) A **taxa de transferência de calor** através do sistema.
+
+**c)** (1,0 ponto) As **temperaturas** entre as interfaces ($B$–iso e iso–fluido).
+
+<Figura>
+  <svg viewBox="0 0 330 232" role="img" aria-label="Esfera do material A a 20 graus recoberta por B e por isolante, com fluido externo a 120 graus: o calor entra de fora para dentro">
+    {/* isolante */}
+    <circle cx="132" cy="112" r="86" fill="var(--line-2)" opacity="0.55" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* material B */}
+    <circle cx="132" cy="112" r="69" fill="var(--warn)" opacity="0.32" stroke="var(--ink-2)" stroke-width="1.2"/>
+    {/* material A */}
+    <circle cx="132" cy="112" r="43" fill="var(--accent-soft)" opacity="0.8" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="116" y="92" font-size="12" fill="var(--ink-2)">A</text>
+    <text x="104" y="134" font-size="9" fill="var(--ink-2)">T₁ = 20 °C</text>
+    {/* chamadas */}
+    <text x="238" y="150" font-size="10" fill="var(--ink-2)">B</text>
+    <line x1="234" y1="147" x2="176" y2="140" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="238" y="182" font-size="10" fill="var(--ink-2)">isolante</text>
+    <line x1="234" y1="179" x2="186" y2="164" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    {/* raios */}
+    <line x1="132" y1="112" x2="171" y2="112" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="174,112 166,109 166,115" fill="var(--ok)"/>
+    <text x="146" y="106" font-size="10" fill="var(--ok)">r₁</text>
+    <line x1="132" y1="112" x2="181" y2="63" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="184,60 176,62 181,67" fill="var(--ok)"/>
+    <text x="186" y="58" font-size="10" fill="var(--ok)">r₂</text>
+    <line x1="132" y1="112" x2="132" y2="30" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="132,26 129,34 135,34" fill="var(--ok)"/>
+    <text x="138" y="40" font-size="10" fill="var(--ok)">r₃</text>
+    {/* convecção externa, mais quente: seta para dentro */}
+    <text x="228" y="42" font-size="10" fill="var(--warn)">T∞ = 120 °C</text>
+    <text x="252" y="56" font-size="9" fill="var(--warn)">h<tspan font-size="7" dy="2">e</tspan><tspan dy="-2"> = 2,0</tspan></text>
+    <line x1="252" y1="72" x2="222" y2="88" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="216,92 226,90 222,82" fill="var(--warn)"/>
+    <text x="10" y="40" font-size="9" fill="var(--warn)">T∞ &gt; T₁:</text>
+    <text x="10" y="53" font-size="9" fill="var(--warn)">o calor entra</text>
+  </svg>
+  <figcaption>
+
+Diferente do caso usual, aqui $T_\infty > T_1$: o fluido **aquece** a esfera, e o fluxo sai **negativo** na convenção de dentro para fora.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)**
+
+$$
+r_c = \frac{2\,k_{iso}}{h_e} = \frac{2 \times 0{,}07}{2{,}0} = \mathbf{0{,}07\ m} = 7\ \mathrm{cm}
+$$
+
+Como $r_3 = 10\ \mathrm{cm} > r_c$, o sistema está **depois** do raio crítico: acrescentar isolante **reduz** a troca.
+
+**b)**
+
+$$
+R_B = 0{,}15
+\qquad
+R_{iso} = 2{,}84
+\qquad
+R_{conv} = 3{,}98
+\qquad
+R_T = 6{,}97\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{293 - 393}{6{,}97} = \mathbf{-14{,}35\ W}
+$$
+
+O sinal negativo diz que o calor **entra** na esfera (o fluido está mais quente).
+
+**c)**
+
+$$
+T_2 = T_1 - q\,R_B = 293 + 14{,}35 \times 0{,}15 \approx \mathbf{295{,}1\ K}\ (22{,}1\ ^\circ\mathrm{C})
+$$
+
+$$
+T_3 = T_2 - q\,R_{iso} = 295{,}1 + 14{,}35 \times 2{,}84 \approx \mathbf{335{,}9\ K}\ (62{,}9\ ^\circ\mathrm{C})
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o raio crítico, item (a).** Para esfera:
+
+$$
+r_c = \frac{2\,k_{iso}}{h_e} = \frac{2 \times 0{,}07}{2{,}0} = 0{,}07\ \mathrm{m} = 7\ \mathrm{cm}
+$$
+
+E o diagnóstico: $r_3 = 10\ \mathrm{cm}$ é **maior** que $r_c = 7\ \mathrm{cm}$, logo o sistema já passou do crítico. Nessa faixa, mais isolante **diminui** a troca de calor — o comportamento que a intuição espera.
+
+<Caixa tipo="dica" rotulo="Compare com a prova de 2022.1">
+
+A mesma questão apareceu em 2022.1 com $k_{iso} = 0{,}7$ e $h_e = 6{,}2$, dando $r_c = 22{,}6\ \mathrm{cm}$ — e ali $r_3 = 10\ \mathrm{cm}$ ficava **antes** do crítico, isto é, o isolante **aumentava** a perda.
+
+Aqui, com um isolante dez vezes melhor ($0{,}07$) e uma convecção três vezes mais fraca ($2{,}0$), o crítico cai para $7\ \mathrm{cm}$ e a situação se inverte. Os mesmos raios, conclusões opostas: é o par $k_{iso}/h_e$ que decide, não a geometria.
+
+</Caixa>
+
+**Passo 2 — as três resistências, item (b).** Os raios em metros: $r_1 = 0{,}05$, $r_2 = 0{,}08$, $r_3 = 0{,}10$.
+
+$$
+R_B = \frac{1/r_1 - 1/r_2}{4\pi k_B} = \frac{20 - 12{,}5}{4\pi \times 4{,}0} = \frac{7{,}5}{50{,}27} = 0{,}149\ \mathrm{K/W}
+$$
+
+$$
+R_{iso} = \frac{1/r_2 - 1/r_3}{4\pi k_{iso}} = \frac{12{,}5 - 10}{4\pi \times 0{,}07} = \frac{2{,}5}{0{,}8796} = 2{,}842\ \mathrm{K/W}
+$$
+
+$$
+R_{conv} = \frac{1}{h_e\,4\pi r_3^2} = \frac{1}{2{,}0 \times 4\pi \times (0{,}10)^2} = \frac{1}{0{,}2513} = 3{,}979\ \mathrm{K/W}
+$$
+
+$$
+R_T = 0{,}149 + 2{,}842 + 3{,}979 = 6{,}970\ \mathrm{K/W}
+$$
+
+**Passo 3 — as temperaturas em kelvin, e o sinal.**
+
+$$
+T_1 = 20 + 273 = 293\ \mathrm{K}
+\qquad
+T_\infty = 120 + 273 = 393\ \mathrm{K}
+$$
+
+$$
+q = \frac{T_1 - T_\infty}{R_T} = \frac{293 - 393}{6{,}970} = \frac{-100}{6{,}970} = -14{,}35\ \mathrm{W}
+$$
+
+<Caixa tipo="macete" rotulo="O sinal negativo é resposta, não erro">
+
+Mantida a convenção "de dentro para fora" ($T_1 - T_\infty$ no numerador), o sinal informa o **sentido**:
+
+- $q > 0$ → o calor **sai** da esfera (a esfera está mais quente);
+- $q < 0$ → o calor **entra** na esfera (o fluido está mais quente).
+
+Aqui $T_\infty = 393 > T_1 = 293$, então o resultado **tem** de ser negativo. Escrever $|q| = 14{,}35\ \mathrm{W}$ "entrando" é igualmente correto — o que não pode é trocar o sentido sem dizer.
+
+E note que $\Delta T$ de $100\ \mathrm{K}$ é o mesmo de $100\ ^\circ\mathrm{C}$: em condução e convecção só a **diferença** entra, e ela não muda de escala. Converter para kelvin aqui é hábito, não necessidade — diferente da radiação.
+
+</Caixa>
+
+**Passo 4 — as temperaturas das interfaces, item (c).** Uma resistência por vez, a partir de $T_1$, mantendo o sinal de $q$:
+
+$$
+T_2 = T_1 - q\,R_B = 293 - (-14{,}35)(0{,}149) = 293 + 2{,}14 = 295{,}1\ \mathrm{K}
+$$
+
+$$
+T_3 = T_2 - q\,R_{iso} = 295{,}1 - (-14{,}35)(2{,}842) = 295{,}1 + 40{,}8 = 335{,}9\ \mathrm{K}
+$$
+
+As temperaturas **crescem** de dentro para fora — como tem de ser, já que o calor entra de fora.
+
+Em Celsius: $T_2 = 22{,}1\ ^\circ\mathrm{C}$ e $T_3 = 62{,}9\ ^\circ\mathrm{C}$.
+
+**Passo 5 — a conferência pela convecção.** Do lado externo:
+
+$$
+T_3 - T_\infty = q\,R_{conv} = -14{,}35 \times 3{,}979 = -57{,}1\ \mathrm{K}
+\qquad\Longrightarrow\qquad
+T_3 = 393 - 57{,}1 = 335{,}9\ \mathrm{K}\ \checkmark
+$$
+
+Fecha pelos dois caminhos.
+
+**Passo 6 — onde o $\Delta T$ se concentra.**
+
+| resistência | valor $[\mathrm{K/W}]$ | fração | $|\Delta T|$ $[\mathrm{K}]$ |
+|---|---|---|---|
+| condução em $B$ | $0{,}149$ | $2{,}1\ \%$ | $2{,}1$ |
+| condução no isolante | $2{,}842$ | $40{,}8\ \%$ | $40{,}8$ |
+| **convecção externa** | $3{,}979$ | $\mathbf{57{,}1\ \%}$ | $57{,}1$ |
+| **total** | $6{,}970$ | $100\ \%$ | $\mathbf{100{,}0}$ |
+
+O material $B$ é praticamente transparente ao calor ($k_B = 4$, cinquenta vezes o do isolante). Quem segura são o isolante e o ar externo, quase em partes iguais.
+
+**Conferência —** raio crítico de esfera com o fator 2 ✔ resistência esférica sem $L$ ✔ convecção com $4\pi r_3^2$ ✔ $q$ **negativo**, porque o fluido é o mais quente ✔ as temperaturas crescem para fora ✔ as quedas somam $100\ \mathrm{K}$ ✔
+</Passos>

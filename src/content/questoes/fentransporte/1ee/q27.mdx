@@ -1,0 +1,233 @@
+---
+origem: "2022.1 · turma KT"
+tema: "Máquina hidráulica · Bomba ou turbina, com perdas e Moody"
+temaId: turbina
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere o sistema de escoamento de água ($\rho = 1000\ \mathrm{kg/m^3}$; $\mu = 0{,}001\ \mathrm{Pa\cdot s}$) a seguir. Um tanque de grandes dimensões ① está conectado a uma máquina que descarrega água no ponto ② com uma vazão de $1{,}2\ \mathrm{m^3/s}$, constante ao longo de toda a tubulação. A tubulação de **concreto grosseiro** (*concrete, coarse*) tem diâmetro interno de $50{,}0\ \mathrm{cm}$.
+
+**a)** (1,0 pt.) A máquina é uma **bomba** ou uma **turbina**? Justifique matematicamente a sua resposta.
+
+**b)** (1,0 pt.) A **potência real** da máquina, considerando que esta tem $80\ \%$ de rendimento.
+
+**Dados:** $g = 10\ \mathrm{m/s^2}$; $k_{\text{joelho}} = 0{,}55$; $k_{\text{válvula}} = 1{,}52$; para concreto grosseiro, $\varepsilon = 0{,}25\ \mathrm{mm}$.
+
+<Figura>
+  <svg viewBox="0 0 360 230" role="img" aria-label="Tanque de grandes dimensões com 15 metros de coluna, tubulação que segue 5 metros na horizontal, desce 10 metros, segue 2 metros até a máquina, 4 metros até a válvula, 3 metros, sobe 5 metros e descarrega livremente após 5 metros">
+    {/* tanque */}
+    <path d="M20 26 L20 96 L94 96" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="21" y="34" width="72" height="62" fill="var(--accent-soft)" opacity="0.55"/>
+    <line x1="21" y1="34" x2="93" y2="34" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="30" y1="30" x2="46" y2="30" stroke="var(--accent)" stroke-width="1"/>
+    <text x="96" y="30" font-size="10" fill="var(--ink-2)">①</text>
+    {/* cota 15 m dentro do tanque */}
+    <line x1="64" y1="34" x2="64" y2="96" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="64,34 60,44 68,44" fill="var(--ok)"/>
+    <polygon points="64,96 60,86 68,86" fill="var(--ok)"/>
+    <text x="20" y="70" font-size="9" fill="var(--ok)">15,0 m</text>
+    {/* trecho horizontal de 5 m no topo */}
+    <line x1="94" y1="96" x2="140" y2="96" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="100" y="90" font-size="9" fill="var(--ink-3)">5,0 m</text>
+    {/* descida de 10 m */}
+    <line x1="140" y1="96" x2="140" y2="176" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="130" y1="100" x2="130" y2="172" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="130,96 126,106 134,106" fill="var(--ok)"/>
+    <polygon points="130,176 126,166 134,166" fill="var(--ok)"/>
+    <text x="86" y="140" font-size="9" fill="var(--ok)">10,0 m</text>
+    {/* 2 m até a máquina */}
+    <line x1="140" y1="176" x2="168" y2="176" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="140" y="192" font-size="9" fill="var(--ink-3)">2,0 m</text>
+    {/* máquina */}
+    <circle cx="182" cy="176" r="13" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.7"/>
+    <line x1="173" y1="167" x2="191" y2="185" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <line x1="191" y1="167" x2="173" y2="185" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="164" y="206" font-size="9" fill="var(--ink-2)">bomba ou turbina?</text>
+    {/* 4 m até a válvula */}
+    <line x1="195" y1="176" x2="238" y2="176" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="204" y="192" font-size="9" fill="var(--ink-3)">4,0 m</text>
+    {/* válvula */}
+    <polygon points="238,169 238,183 250,169 250,183" fill="var(--warn)" opacity="0.85" stroke="var(--warn)" stroke-width="1"/>
+    <text x="230" y="162" font-size="8" fill="var(--warn)">válvula</text>
+    {/* 3 m */}
+    <line x1="250" y1="176" x2="282" y2="176" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="252" y="192" font-size="9" fill="var(--ink-3)">3,0 m</text>
+    {/* subida de 5 m */}
+    <line x1="282" y1="176" x2="282" y2="136" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="268" y1="140" x2="268" y2="172" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="268,136 264,146 272,146" fill="var(--ok)"/>
+    <polygon points="268,176 264,166 272,166" fill="var(--ok)"/>
+    <text x="238" y="130" font-size="9" fill="var(--ok)">5,0 m</text>
+    {/* 5 m final e descarga */}
+    <line x1="282" y1="136" x2="326" y2="136" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <text x="288" y="130" font-size="9" fill="var(--ink-3)">5,0 m</text>
+    <path d="M330 130 Q338 136 330 142" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <path d="M336 126 Q346 136 336 146" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <text x="304" y="120" font-size="10" fill="var(--ink-2)">②</text>
+    {/* joelhos */}
+    <circle cx="140" cy="96" r="4.5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+    <circle cx="140" cy="176" r="4.5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+    <circle cx="282" cy="176" r="4.5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+    <circle cx="282" cy="136" r="4.5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+    <text x="150" y="112" font-size="8" fill="var(--warn)">4 joelhos (○)</text>
+    {/* diâmetro */}
+    <text x="136" y="222" font-size="9" fill="var(--ink-3)">tubulação de concreto grosseiro · d = 50,0 cm</text>
+  </svg>
+  <figcaption>
+
+Os quatro círculos marcam os **joelhos**. Somando os sete trechos: $5 + 10 + 2 + 4 + 3 + 5 + 5 = 34\ \mathrm{m}$ de tubulação.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)** Turbina.
+
+$$
+v = \frac{Q}{A} = \frac{1{,}2}{0{,}196} = 6{,}11\ \mathrm{m/s}
+\qquad
+h_p = h_{pd} + h_{pl} = 2{,}16 + 6{,}95 = 9{,}11\ \mathrm{m}
+$$
+
+$$
+M = y_2 - y_1 + \frac{v^2}{2g} + h_p = 5 - 25 + 1{,}87 + 9{,}11 = \mathbf{-9{,}03\ m}
+$$
+
+O sinal **negativo** significa que a máquina **retira** carga do fluido: é uma **turbina**.
+
+**b)**
+
+$$
+N_T = \rho\,Q\,g\,|M|\,\eta = 1000 \cdot 1{,}2 \cdot 10 \cdot 9{,}03 \cdot 0{,}80 \approx \mathbf{86{,}7\ kW}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas cotas, lidas do desenho.** Tomando como referência o trecho **mais baixo** da tubulação:
+
+- o tanque tem $15{,}0\ \mathrm{m}$ de coluna e sua saída está $10{,}0\ \mathrm{m}$ acima do trecho baixo, logo a superfície livre está em $y_1 = 15 + 10 = 25\ \mathrm{m}$;
+- a descarga ② está $5{,}0\ \mathrm{m}$ acima do trecho baixo, logo $y_2 = 5\ \mathrm{m}$.
+
+**Passo 2 — a velocidade na tubulação.**
+
+$$
+A = \frac{\pi d^2}{4} = \frac{\pi (0{,}5)^2}{4} = 0{,}1963\ \mathrm{m^2}
+\qquad
+v = \frac{Q}{A} = \frac{1{,}2}{0{,}1963} = 6{,}112\ \mathrm{m/s}
+$$
+
+E a carga cinética, que vai aparecer três vezes:
+
+$$
+\frac{v^2}{2g} = \frac{6{,}112^2}{2 \cdot 10} = \frac{37{,}36}{20} = 1{,}868\ \mathrm{m}
+$$
+
+**Passo 3 — o regime, para escolher o fator de atrito no Moody.**
+
+$$
+Re = \frac{\rho\,v\,d}{\mu} = \frac{1000 \cdot 6{,}112 \cdot 0{,}5}{0{,}001} = 3{,}06 \times 10^{6}
+$$
+
+Muito acima de $4000$: **turbulento**, e num Reynolds tão alto o escoamento está na região de **atrito plenamente turbulento** do diagrama, onde $f$ depende só da rugosidade relativa.
+
+$$
+\frac{\varepsilon}{d} = \frac{2{,}5 \times 10^{-4}}{0{,}5} = 5 \times 10^{-4}
+\qquad\Longrightarrow\qquad
+f \approx 0{,}017
+$$
+
+**Passo 4 — a perda distribuída, por Darcy-Weisbach.** Com $L = 34\ \mathrm{m}$:
+
+$$
+h_{pd} = f\,\frac{L}{d}\,\frac{v^2}{2g} = 0{,}017 \cdot \frac{34}{0{,}5} \cdot 1{,}868
+$$
+
+$$
+h_{pd} = 0{,}017 \cdot 68 \cdot 1{,}868 = 1{,}156 \cdot 1{,}868 = 2{,}159\ \mathrm{m}
+$$
+
+**Passo 5 — as perdas localizadas, pelo método dos coeficientes $k$.**
+
+$$
+h_{pl} = \left(4k_j + k_v\right)\frac{v^2}{2g} = \left(4 \cdot 0{,}55 + 1{,}52\right) \cdot 1{,}868
+$$
+
+$$
+h_{pl} = (2{,}20 + 1{,}52) \cdot 1{,}868 = 3{,}72 \cdot 1{,}868 = 6{,}947\ \mathrm{m}
+$$
+
+<Caixa tipo="dica">
+
+As localizadas valem **três vezes** as distribuídas aqui. Não é anomalia: a tubulação é **curta** (34 m para 50 cm de diâmetro, ou seja $L/d = 68$) e tem cinco acidentes. Em rede longa a relação se inverte.
+
+</Caixa>
+
+$$
+h_p = h_{pd} + h_{pl} = 2{,}159 + 6{,}947 = 9{,}106\ \mathrm{m}
+$$
+
+**Passo 6 — a equação da energia com máquina.** Do tanque ① (superfície livre) até a descarga ②:
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + y_1 + M = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + y_2 + h_p
+$$
+
+O que cai e o que fica:
+
+- $p_1 = p_2 = p_{\text{atm}}$ — o tanque é aberto e o jato descarrega no ar;
+- $v_1 \approx 0$ — tanque de **grandes dimensões**;
+- $v_2 = v = 6{,}112\ \mathrm{m/s}$ — a descarga é **livre**, então a carga cinética de saída **fica** na equação. É aqui que a questão separa quem leu o enunciado.
+
+$$
+M = y_2 - y_1 + \frac{v^2}{2g} + h_p
+$$
+
+$$
+M = 5 - 25 + 1{,}868 + 9{,}106 = -9{,}026\ \mathrm{m}
+$$
+
+**Passo 7 — ler o sinal, que é o item (a).** A convenção é: $M > 0$, a máquina **fornece** carga (bomba); $M < 0$, a máquina **retira** carga (turbina).
+
+Aqui $M < 0$: **turbina**. E o sentido físico está claro — a água cai $20\ \mathrm{m}$, e desses $20\ \mathrm{m}$ de energia disponível, $11\ \mathrm{m}$ vão para o atrito e a carga cinética de saída; os $9\ \mathrm{m}$ restantes sobram para a máquina extrair.
+
+**Passo 8 — a potência real, que é o item (b).** Para **turbina**, o rendimento **multiplica**: parte da carga extraída se perde no equipamento, e só $\eta$ dela chega ao eixo.
+
+$$
+N_T = \rho\,Q\,g\,|M|\,\eta = 1000 \cdot 1{,}2 \cdot 10 \cdot 9{,}026 \cdot 0{,}80
+$$
+
+$$
+N_T = 108\,312 \cdot 0{,}80 = 86\,650\ \mathrm{W} \approx 86{,}7\ \mathrm{kW}
+$$
+
+<Caixa tipo="macete">
+
+O rendimento entra de lados opostos nas duas máquinas:
+
+$$
+\underbrace{N_B = \frac{\gamma\,Q\,H_B}{\eta}}_{\text{bomba: pede mais do motor}}
+\qquad
+\underbrace{N_T = \gamma\,Q\,|M|\,\eta}_{\text{turbina: entrega menos no eixo}}
+$$
+
+Em qualquer dos casos, o rendimento sempre **piora** o resultado para quem opera a máquina. Se a conta melhorou, o $\eta$ está do lado errado.
+
+</Caixa>
+
+**Conferência —** $y_1$ é $15 + 10$, não $15$ ✔ a descarga livre mantém $v^2/2g$ na equação ✔ os quatro joelhos são $4 \times 0{,}55$, não $0{,}55$ ✔ $M$ negativo é turbina, e o rendimento multiplica ✔
+
+**Sobre o enunciado —** esta questão aparece **idêntica**, com os mesmos números, na prova de 2022.1 (questão 7) e na resolução da turma KT — foi como a folha de Mathcad da KT pôde ser conferida trecho por trecho.
+</Passos>

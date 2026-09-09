@@ -1,0 +1,219 @@
+---
+origem: "2022.1 · 2ª chamada"
+tema: "Parede com geração · Temperatura extrema e fluxo nas duas faces"
+temaId: perfil-parabolico
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de calor através de uma parede plana ($k = 0{,}5\ \mathrm{W/(m\cdot{}^\circ C)}$) de $1{,}0\ \mathrm{m}$ de largura, cujas temperaturas nas faces esquerda e direita estão mantidas a $80\ ^\circ\mathrm{C}$ e $40\ ^\circ\mathrm{C}$, respectivamente. Na parede, a transferência de calor é unidimensional, **sem acúmulo**, mas com **geração de $1000\ \mathrm{W/m^3}$**. Sabendo que o processo é **exotérmico**, determine:
+
+**a)** (1,0 pt.) A **temperatura extrema** na parede.
+
+**b)** (1,5 pts.) As **densidades de fluxo de calor** nas faces esquerda e direita da parede.
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Parede de 1 metro de largura com geração de calor: a face esquerda está a 80 graus, a direita a 40, e o perfil parabólico tem máximo de 310 graus perto do centro, com calor saindo pelas duas faces">
+    {/* parede */}
+    <rect x="90" y="34" width="160" height="122" fill="var(--accent-soft)" opacity="0.32" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="170" y1="28" x2="170" y2="162" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="4 3"/>
+    <text x="152" y="176" font-size="9" fill="var(--ink-3)">x = 0</text>
+    <text x="76" y="176" font-size="9" fill="var(--ink-3)">−L</text>
+    <text x="244" y="176" font-size="9" fill="var(--ink-3)">+L</text>
+    {/* perfil parabólico, máximo levemente à esquerda do centro */}
+    <path d="M90 130 Q164 22 250 142" fill="none" stroke="var(--warn)" stroke-width="2.2"/>
+    <circle cx="166" cy="78" r="4" fill="var(--warn)"/>
+    <line x1="166" y1="74" x2="166" y2="46" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="178" y="44" font-size="9" fill="var(--warn)">310,4 °C</text>
+    <text x="178" y="56" font-size="8" fill="var(--ink-3)">em x = −0,02 m</text>
+    <text x="48" y="132" font-size="9" fill="var(--warn)">80 °C</text>
+    <text x="256" y="146" font-size="9" fill="var(--warn)">40 °C</text>
+    {/* fluxos saindo pelas duas faces */}
+    <line x1="86" y1="146" x2="58" y2="146" stroke="var(--ok)" stroke-width="2.2"/>
+    <polygon points="52,146 62,142 62,150" fill="var(--ok)"/>
+    <text x="20" y="160" font-size="9" fill="var(--ok)">480 W/m²</text>
+    <line x1="254" y1="120" x2="286" y2="120" stroke="var(--ok)" stroke-width="2.2"/>
+    <polygon points="292,120 282,116 282,124" fill="var(--ok)"/>
+    <text x="262" y="112" font-size="9" fill="var(--ok)">520 W/m²</text>
+    {/* geração */}
+    <text x="108" y="26" font-size="9" fill="var(--ink-2)">geração q̇ = 1000 W/m³ (exotérmico)</text>
+    {/* espessura */}
+    <line x1="90" y1="192" x2="250" y2="192" stroke="var(--accent)" stroke-width="1.1"/>
+    <polygon points="90,192 98,189 98,195" fill="var(--accent)"/>
+    <polygon points="250,192 242,189 242,195" fill="var(--accent)"/>
+    <text x="140" y="205" font-size="9" fill="var(--accent)">2L = 1,0 m</text>
+  </svg>
+  <figcaption>
+
+O máximo **não** fica no centro: as faces estão a temperaturas **diferentes**, e isso desloca o vértice da parábola para o lado mais quente.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Com origem no **centro** da parede e $L = 0{,}5\ \mathrm{m}$ (semiespessura):
+
+$$
+T(x) = \frac{\dot q}{2k}\left(L^2 - x^2\right) + \frac{T_2 - T_1}{2L}\,x + \frac{T_1 + T_2}{2}
+$$
+
+**a)** O extremo está onde $dT/dx = 0$:
+
+$$
+x_{ext} = \frac{k\,(T_2 - T_1)}{2\,\dot q\,L} = -0{,}02\ \mathrm{m}
+\qquad\Longrightarrow\qquad
+T_{ext} \approx \mathbf{310{,}4\ ^\circ C}
+$$
+
+**b)**
+
+$$
+q''(x) = \dot q\,x - \frac{k\,(T_2 - T_1)}{2L} = 1000\,x + 20
+$$
+
+$$
+q''(-L) = \mathbf{-480\ W/m^2}
+\qquad\qquad
+q''(+L) = \mathbf{+520\ W/m^2}
+$$
+
+Os sinais dizem que o calor **sai pelas duas faces**: pela esquerda no sentido $-x$, pela direita no sentido $+x$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — montar a equação e escolher a origem.** Regime permanente ("sem acúmulo") com geração:
+
+$$
+\frac{d^2T}{dx^2} + \frac{\dot q}{k} = 0
+\qquad\Longrightarrow\qquad
+T(x) = -\frac{\dot q}{2k}x^2 + C_1 x + C_2
+$$
+
+Colocando a origem no **centro**, a parede vai de $-L$ a $+L$, com
+
+$$
+2L = 1{,}0\ \mathrm{m}
+\qquad\Longrightarrow\qquad
+L = 0{,}5\ \mathrm{m}
+$$
+
+<Caixa tipo="dica" rotulo="O que é 'largura' aqui">
+
+O enunciado diz "$1{,}0\ \mathrm{m}$ de largura", e é a **espessura total** atravessada pelo calor. Com a origem no centro, a semiespessura é $L = 0{,}5\ \mathrm{m}$ — que é o $L$ que aparece nas fórmulas. Confundir $L$ com $1{,}0$ dobra tudo.
+
+</Caixa>
+
+**Passo 2 — as duas condições de contorno.** São duas temperaturas prescritas (Dirichlet nas duas faces):
+
+$$
+T(-L) = T_1 = 80\ ^\circ\mathrm{C}
+\qquad\qquad
+T(+L) = T_2 = 40\ ^\circ\mathrm{C}
+$$
+
+Resolvendo o sistema para $C_1$ e $C_2$:
+
+$$
+C_1 = \frac{T_2 - T_1}{2L}
+\qquad\qquad
+C_2 = \frac{T_1 + T_2}{2} + \frac{\dot q L^2}{2k}
+$$
+
+o que dá a forma organizada:
+
+$$
+T(x) = \frac{\dot q}{2k}\left(L^2 - x^2\right) + \frac{T_2 - T_1}{2L}\,x + \frac{T_1 + T_2}{2}
+$$
+
+**Confira nas pontas:** em $x = -L$, o primeiro termo zera e sobra $\frac{-40}{1{,}0}(-0{,}5) + 60 = 20 + 60 = 80$ ✔ Em $x = +L$: $-20 + 60 = 40$ ✔
+
+**Passo 3 — item (a): onde está o extremo.** Derivando e igualando a zero:
+
+$$
+\frac{dT}{dx} = -\frac{\dot q}{k}x + \frac{T_2 - T_1}{2L} = 0
+\qquad\Longrightarrow\qquad
+x_{ext} = \frac{k\,(T_2 - T_1)}{2\,\dot q\,L}
+$$
+
+$$
+x_{ext} = \frac{0{,}5 \times (40 - 80)}{2 \times 1000 \times 0{,}5} = \frac{-20}{1000} = -0{,}02\ \mathrm{m}
+$$
+
+**O extremo está $2\ \mathrm{cm}$ à esquerda do centro** — deslocado para o lado **mais quente**, como faz sentido.
+
+<Caixa tipo="macete" rotulo="Com faces a temperaturas iguais, o extremo é o centro">
+
+Se $T_1 = T_2$, então $x_{ext} = 0$: o máximo cai no plano central e o problema fica simétrico. É a assimetria das temperaturas ($80$ contra $40$) que desloca o vértice — e é justamente isso que esta questão testa, em contraste com o caso simétrico do livro.
+
+</Caixa>
+
+**Passo 4 — o valor da temperatura extrema.**
+
+$$
+T(-0{,}02) = \frac{1000}{2 \times 0{,}5}\left[(0{,}5)^2 - (0{,}02)^2\right] + \frac{-40}{1{,}0}(-0{,}02) + 60
+$$
+
+$$
+= 1000\,(0{,}25 - 0{,}0004) + 0{,}8 + 60 = 249{,}6 + 0{,}8 + 60 = 310{,}4\ ^\circ\mathrm{C}
+$$
+
+**Exotérmico** ($\dot q > 0$) confirma que é um **máximo**: a parábola abre para baixo, e $310{,}4\ ^\circ\mathrm{C}$ é muito acima das duas faces. Se o processo fosse endotérmico, seria um **mínimo**, abaixo de $40\ ^\circ\mathrm{C}$.
+
+**Passo 5 — item (b): a densidade de fluxo, que é reta em $x$.**
+
+$$
+q''(x) = -k\,\frac{dT}{dx} = -k\left[-\frac{\dot q}{k}x + \frac{T_2 - T_1}{2L}\right] = \dot q\,x - \frac{k(T_2 - T_1)}{2L}
+$$
+
+$$
+q''(x) = 1000\,x - \frac{0{,}5 \times (-40)}{1{,}0} = 1000\,x + 20
+$$
+
+**Passo 6 — avaliar nas duas faces.**
+
+$$
+q''(-L) = 1000 \times (-0{,}5) + 20 = -480\ \mathrm{W/m^2}
+$$
+
+$$
+q''(+L) = 1000 \times (+0{,}5) + 20 = +520\ \mathrm{W/m^2}
+$$
+
+Leitura dos sinais: na face esquerda o fluxo é **negativo**, isto é, aponta no sentido $-x$ — **sai** da parede. Na direita é positivo, aponta em $+x$ — também **sai**. O calor gerado escapa pelos dois lados.
+
+**Passo 7 — a conferência que fecha tudo.** Todo o calor gerado no volume tem de sair pelas faces:
+
+$$
+|q''(-L)| + |q''(+L)| = 480 + 520 = 1000\ \mathrm{W/m^2}
+$$
+
+$$
+\dot q \times (2L) = 1000 \times 1{,}0 = 1000\ \mathrm{W/m^2}\ \checkmark
+$$
+
+Fecha exatamente. E a repartição desigual ($480$ contra $520$) é coerente com o extremo deslocado: a face **direita**, mais fria, está mais longe do máximo e drena um pouco mais.
+
+<Caixa tipo="dica" rotulo="E o ponto de fluxo nulo">
+
+$$
+q''(x) = 0 \Longrightarrow x = -0{,}02\ \mathrm{m}
+$$
+
+o mesmo $x_{ext}$ — e não é coincidência: onde a temperatura é extrema, o gradiente é nulo, logo o fluxo é nulo. Esse plano funciona como uma **superfície adiabática** interna, e é ele que divide a parede em duas metades, cada uma drenando para o seu lado.
+
+</Caixa>
+
+**Conferência —** $L$ é a **semi**espessura, $0{,}5\ \mathrm{m}$ ✔ com faces a temperaturas diferentes o extremo **não** fica no centro ✔ exotérmico significa **máximo** ✔ os módulos dos fluxos nas faces somam $\dot q \cdot 2L$ ✔ o plano de fluxo nulo coincide com o do extremo ✔
+</Passos>

@@ -1,0 +1,141 @@
+---
+origem: "2026.1"
+tema: "Vazão · Tempo para encher e esvaziar um tanque com vazão variável"
+temaId: vazao
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um tanque cilíndrico de $2\ \mathrm{m}$ de diâmetro e $4\ \mathrm{m}$ de altura foi enchido completamente de água a uma vazão constante de $0{,}01\ \mathrm{m^3/s}$. Após cheio, a alimentação de água foi interrompida e, na sequência, um furo foi feito na sua base, pelo qual a água saía a uma vazão volumétrica $Q = 0{,}01\sqrt{V(t)}\ \mathrm{(m^3/s)}$, sendo $V(t)$ o volume de água dentro do tanque, que varia ao longo do tempo. Qual foi o **tempo total** necessário para encher e esvaziar esse tanque?
+
+<Figura>
+  <svg viewBox="0 0 300 206" role="img" aria-label="Tanque cilíndrico de 2 metros de diâmetro e 4 metros de altura: enche por cima com vazão constante de 0,01 metro cúbico por segundo e esvazia por um furo na base com vazão proporcional à raiz do volume">
+    {/* corpo do tanque */}
+    <rect x="100" y="42" width="100" height="118" fill="var(--accent-soft)" opacity="0.55" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <ellipse cx="150" cy="42" rx="50" ry="12" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <ellipse cx="150" cy="160" rx="50" ry="12" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    {/* entrada */}
+    <line x1="150" y1="6" x2="150" y2="30" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="150,36 146,26 154,26" fill="var(--accent)"/>
+    <text x="158" y="20" font-size="10" fill="var(--accent)">Q₁ = 0,01 m³/s</text>
+    {/* saída pelo furo */}
+    <line x1="200" y1="158" x2="228" y2="158" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="234,158 224,154 224,162" fill="var(--warn)"/>
+    <text x="216" y="150" font-size="10" fill="var(--warn)">Q₂ = 0,01·√V</text>
+    {/* cota do diâmetro, embaixo, para não cruzar o bocal de entrada */}
+    <line x1="100" y1="184" x2="200" y2="184" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="100,184 110,180 110,188" fill="var(--ok)"/>
+    <polygon points="200,184 190,180 190,188" fill="var(--ok)"/>
+    <line x1="100" y1="160" x2="100" y2="184" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="200" y1="160" x2="200" y2="184" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="126" y="200" font-size="10" fill="var(--ok)">⌀ = 2 m</text>
+    {/* cota da altura */}
+    <line x1="74" y1="42" x2="74" y2="160" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="74,42 70,52 78,52" fill="var(--ok)"/>
+    <polygon points="74,160 70,150 78,150" fill="var(--ok)"/>
+    <text x="46" y="105" font-size="10" fill="var(--ok)">4 m</text>
+  </svg>
+  <figcaption>
+
+A vazão de **entrada** é constante; a de **saída** não é — cai à medida que o tanque baixa. São dois problemas diferentes na mesma questão.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+V_{\text{tanque}} = \pi R^2 H = \pi \cdot 1^2 \cdot 4 = 4\pi \approx 12{,}57\ \mathrm{m^3}
+$$
+
+$$
+t_{\text{encher}} = \frac{V}{Q_1} = \frac{4\pi}{0{,}01} = 400\pi \approx 1256{,}6\ \mathrm{s}
+$$
+
+$$
+t_{\text{esvaziar}} = \frac{2\sqrt{4\pi}}{0{,}01} = 200\sqrt{4\pi} \approx 709{,}0\ \mathrm{s}
+$$
+
+$$
+t_{\text{total}} \approx 1256{,}6 + 709{,}0 \approx \mathbf{1965{,}6\ s} \approx 32{,}8\ \mathrm{min}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o volume do tanque.** Diâmetro $2\ \mathrm{m}$ significa **raio** $1\ \mathrm{m}$:
+
+$$
+V_{\text{tanque}} = \pi R^2 H = \pi \cdot (1)^2 \cdot 4 = 4\pi = 12{,}566\ \mathrm{m^3}
+$$
+
+**Passo 2 — encher, que é a parte fácil.** A vazão de entrada é **constante**, então o volume cresce linearmente:
+
+$$
+t_1 = \frac{V_{\text{tanque}}}{Q_1} = \frac{4\pi}{0{,}01} = 400\pi = 1256{,}64\ \mathrm{s}
+$$
+
+**Passo 3 — esvaziar não é dividir volume por vazão.** Aqui está a armadilha da questão. A vazão de saída **depende do volume**:
+
+$$
+Q_2 = 0{,}01\sqrt{V(t)}
+$$
+
+Ela vale $0{,}01\sqrt{4\pi} \approx 0{,}0355\ \mathrm{m^3/s}$ **no primeiro instante** e vai a **zero** quando o tanque esvazia. Usar o valor inicial como se fosse constante dá $4\pi/0{,}0355 \approx 354\ \mathrm{s}$ — resposta errada, e errada **para menos**, porque a vazão real é sempre menor que a inicial.
+
+O caminho certo é a **conservação de massa em forma diferencial**: a taxa de variação do volume dentro do tanque é menos o que sai.
+
+$$
+\frac{dV}{dt} = -\,Q_2 = -\,0{,}01\sqrt{V}
+$$
+
+**Passo 4 — separar as variáveis e integrar.**
+
+$$
+\frac{dV}{\sqrt{V}} = -\,0{,}01\,dt
+$$
+
+$$
+\int_{4\pi}^{0} V^{-1/2}\,dV = -\,0{,}01\int_{0}^{t_2} dt
+$$
+
+$$
+\Big[\,2\sqrt{V}\,\Big]_{4\pi}^{0} = -\,0{,}01\,t_2
+$$
+
+$$
+0 - 2\sqrt{4\pi} = -\,0{,}01\,t_2
+\qquad\Longrightarrow\qquad
+t_2 = \frac{2\sqrt{4\pi}}{0{,}01}
+$$
+
+**Passo 5 — o número.** Com $\sqrt{4\pi} = \sqrt{12{,}566} = 3{,}5449$:
+
+$$
+t_2 = \frac{2 \cdot 3{,}5449}{0{,}01} = 708{,}98\ \mathrm{s}
+$$
+
+**Passo 6 — o total.**
+
+$$
+t_{\text{total}} = t_1 + t_2 = 1256{,}64 + 708{,}98 = 1965{,}62\ \mathrm{s} \approx 32{,}8\ \mathrm{min}
+$$
+
+<Caixa tipo="macete">
+
+Sempre que a vazão de saída **depender** do nível ou do volume, o tempo de esvaziamento pede integração. E há um resultado que vale a pena reconhecer: com $Q \propto \sqrt{V}$ (que é a forma de Torricelli, $v = \sqrt{2gh}$), o volume decai como uma **parábola** no tempo e o esvaziamento acaba em tempo **finito** — diferente de $Q \propto V$, em que o decaimento é exponencial e, na teoria, nunca termina.
+
+</Caixa>
+
+**Conferência —** diâmetro 2 m dá raio 1 m, não 2 ✔ o esvaziamento não é $V/Q_{\text{inicial}}$ ✔ o tempo de esvaziar tem de ser **maior** que $V/Q_{\text{inicial}} = 354\ \mathrm{s}$, porque a vazão só diminui ✔
+</Passos>

@@ -1,0 +1,114 @@
+---
+origem: "2022.1"
+tema: "Transferência de calor · Os três mecanismos, explicados"
+temaId: modos-de-transferencia
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Quais são os mecanismos de transferência de calor? Explique detalhadamente cada um deles.**
+
+<Gabarito>
+São três: **condução**, **convecção** e **radiação**.
+
+**Condução** — precisa de contato entre o meio condutor e a fonte térmica, e o meio deve estar **parado**. A energia passa de molécula a molécula, sem deslocamento de matéria.
+
+$$
+q = -k\,A\,\frac{dT}{dx}
+$$
+
+**Convecção** — também precisa de contato, mas o meio está **escoando**: a matéria se desloca e carrega a energia com ela.
+
+$$
+q = h\,A\,(T_s - T_\infty)
+$$
+
+**Radiação** — **não** precisa de meio material nem de contato com a fonte. A energia viaja como onda eletromagnética.
+
+$$
+q = \varepsilon\,\sigma\,A\,(T_s^4 - T_{viz}^4)
+$$
+</Gabarito>
+
+<Passos>
+**1 — Condução.** Ocorre **dentro** de um sólido, ou num fluido **estacionário**. As moléculas mais quentes vibram mais e transmitem energia às vizinhas por colisão; nos metais, os elétrons livres fazem a maior parte do trabalho — e é por isso que metal conduz muito melhor que madeira.
+
+$$
+q''_x = -k\,\frac{dT}{dx}
+$$
+
+- é a **lei de Fourier**;
+- $k$, a **condutividade térmica**, em $\mathrm{W/(m\cdot K)}$, é propriedade do material;
+- o **sinal negativo** diz que o calor vai do quente para o frio, isto é, no sentido contrário ao gradiente.
+
+Exemplos: o cabo de uma panela esquentando, o calor atravessando a parede de uma casa, o pé sentindo o piso frio.
+
+**2 — Convecção.** Ocorre entre uma **superfície** e um **fluido em movimento**. É a soma de dois efeitos: condução na fina camada de fluido junto à parede, e transporte de energia pelo próprio deslocamento do fluido.
+
+$$
+q = h\,A\,(T_s - T_\infty)
+$$
+
+que é a **lei do resfriamento de Newton**. O $h$ **não** é propriedade do fluido: depende da geometria, da velocidade e do regime do escoamento — achá-lo é o problema difícil da convecção.
+
+Há dois tipos:
+
+- **natural** (ou livre) — o movimento nasce da própria diferença de temperatura: o fluido aquecido fica menos denso e sobe. Não há dispositivo mecânico;
+- **forçada** — o fluido é impulsionado por ventilador, bomba ou vento.
+
+A forçada troca muito mais calor, porque afina a camada limite junto à parede.
+
+**3 — Radiação.** Todo corpo com temperatura acima do zero absoluto **emite** ondas eletromagnéticas. Não é preciso meio material: funciona no vácuo, e é assim que o calor do Sol chega à Terra.
+
+$$
+q = \varepsilon\,\sigma\,A\,(T_s^4 - T_{viz}^4)
+$$
+
+- $\varepsilon$ — **emissividade** da superfície, entre 0 e 1 (1 é o corpo negro ideal);
+- $\sigma = 5{,}67\times10^{-8}\ \mathrm{W/(m^2 K^4)}$ — constante de **Stefan-Boltzmann**;
+- a dependência é com $T^4$: **dobrar** a temperatura absoluta multiplica a emissão por **16**.
+
+<Caixa tipo="macete" rotulo="A resposta em uma tabela">
+
+| mecanismo | precisa de meio? | meio parado ou escoando? | lei |
+|---|---|---|---|
+| **condução** | sim | **parado** | Fourier, $q = -kA\,dT/dx$ |
+| **convecção** | sim | **escoando** | Newton, $q = hA\Delta T$ |
+| **radiação** | **não** | — | Stefan-Boltzmann, $q = \varepsilon\sigma A\,\Delta(T^4)$ |
+
+O que a questão quer ouvir é justamente o par de colunas do meio: **os dois primeiros precisam de contato, o terceiro não**; e o que separa condução de convecção é o meio estar parado ou escoando.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A temperatura em kelvin: só na radiação">
+
+Em condução e convecção só aparece a **diferença** de temperatura, e $\Delta T$ em Celsius e em kelvin **é o mesmo número**. Na radiação, a temperatura está elevada à quarta potência: usar Celsius ali não é aproximação, é erro grosseiro.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Os três juntos, num exemplo só">
+
+Uma estufa agrícola:
+
+- **radiação** — o sol aquece o plástico e as plantas, atravessando o vácuo do espaço;
+- **condução** — o calor atravessa o material da cobertura (plástico, metal);
+- **convecção** — dentro da estufa, o ar aquecido fica menos denso e circula.
+
+Reconhecer os três num sistema real é o formato preferido desta questão nas provas mais recentes.
+
+</Caixa>
+
+**Conferência —** três mecanismos, com **nome, lei e condição de existência** de cada ✔ dizer que a radiação dispensa meio material é o ponto que não pode faltar ✔ a diferença entre condução e convecção é o meio estar parado ou em movimento, não a intensidade ✔
+</Passos>

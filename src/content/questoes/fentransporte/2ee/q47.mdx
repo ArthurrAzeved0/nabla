@@ -1,0 +1,233 @@
+---
+origem: "2022.2"
+tema: "Parede composta · Como o fluxo se divide entre dois ramos em paralelo"
+temaId: paredes-compostas
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q47.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a parede composta apresentada na figura, com fluidos distintos escoando de cada lado.
+
+**Dados:** $T_{\infty,1} = 300\ \mathrm{K}$; $T_{\infty,2} = 500\ \mathrm{K}$; $A_1 = 4{,}0\ \mathrm{m^2}$; $A_2 = 2{,}5\ \mathrm{m^2}$; $A_4 = 1{,}0\ \mathrm{m^2}$; $L_1 = 0{,}2\ \mathrm{m}$; $L_2 = 0{,}4\ \mathrm{m}$; $L_3 = 0{,}5\ \mathrm{m}$; $k_1 = 1{,}0$; $k_2 = 0{,}8$; $k_3 = 1{,}5$; $k_4 = 0{,}7$; $k_5 = 0{,}5\ \mathrm{W/(m\cdot K)}$; $h_A = 1{,}3$; $h_B = 3{,}1\ \mathrm{W/(m^2\cdot K)}$.
+
+Determine:
+
+**a)** (1,5 pts.) As temperaturas $T_3$ e $T_4$.
+
+**b)** (1,0 pt.) O **fluxo de calor que passa através das paredes $(4)$ e $(5)$**.
+
+<Figura>
+  <svg viewBox="0 0 400 216" role="img" aria-label="Parede composta de três camadas: a primeira ocupa toda a área, a segunda é dividida entre os materiais 2 e 3 e a terceira entre os materiais 4 e 5; há convecção com o fluido A à esquerda e com o fluido B à direita">
+    {/* camada 1 */}
+    <rect x="90" y="40" width="40" height="120" fill="var(--accent-soft)" opacity="0.55" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="102" y="96" font-size="10" fill="var(--ink-2)">(1)</text>
+    <text x="94" y="110" font-size="8" fill="var(--ink-3)">k=1,0</text>
+    {/* camada 2: (2) em cima, (3) embaixo */}
+    <rect x="130" y="40" width="80" height="75" fill="var(--line-2)" opacity="0.7" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="158" y="72" font-size="10" fill="var(--ink-2)">(2)</text>
+    <text x="144" y="86" font-size="8" fill="var(--ink-3)">k=0,8 · A=2,5</text>
+    <rect x="130" y="115" width="80" height="45" fill="var(--warn)" opacity="0.28" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="158" y="132" font-size="10" fill="var(--ink-2)">(3)</text>
+    <text x="144" y="146" font-size="8" fill="var(--ink-3)">k=1,5 · A=1,5</text>
+    {/* camada 3: (4) em cima, (5) embaixo */}
+    <rect x="210" y="40" width="100" height="30" fill="var(--warn)" opacity="0.28" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="222" y="59" font-size="10" fill="var(--ink-2)">(4)</text>
+    <text x="240" y="59" font-size="8" fill="var(--ink-3)">k=0,7 · A=1,0</text>
+    <rect x="210" y="70" width="100" height="90" fill="var(--line-2)" opacity="0.7" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="250" y="110" font-size="10" fill="var(--ink-2)">(5)</text>
+    <text x="230" y="124" font-size="8" fill="var(--ink-3)">k=0,5 · A=3,0</text>
+    {/* convecção à esquerda */}
+    <path d="M80 88 Q72 100 80 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M70 82 Q60 100 70 118" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="12" y="90" font-size="9" fill="var(--accent)">h<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = 1,3</tspan></text>
+    <text x="12" y="104" font-size="9" fill="var(--accent)">T∞,1 = 300 K</text>
+    {/* convecção à direita */}
+    <path d="M320 88 Q328 100 320 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M330 82 Q340 100 330 118" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="344" y="90" font-size="9" fill="var(--accent)">h<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 3,1</tspan></text>
+    <text x="344" y="104" font-size="9" fill="var(--accent)">T∞,2 = 500 K</text>
+    {/* faces T1 e T2 */}
+    <circle cx="90" cy="160" r="3" fill="var(--ink-2)"/>
+    <text x="76" y="180" font-size="10" fill="var(--ink-2)">T₁</text>
+    <circle cx="130" cy="160" r="3" fill="var(--ink-2)"/>
+    <text x="124" y="180" font-size="10" fill="var(--ink-2)">T₂</text>
+    {/* cotas */}
+    <line x1="90" y1="196" x2="130" y2="196" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="90,196 97,193 97,199" fill="var(--ok)"/>
+    <polygon points="130,196 123,193 123,199" fill="var(--ok)"/>
+    <text x="86" y="210" font-size="8" fill="var(--ok)">L₁=0,2</text>
+    <line x1="130" y1="196" x2="210" y2="196" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="130,196 137,193 137,199" fill="var(--ok)"/>
+    <polygon points="210,196 203,193 203,199" fill="var(--ok)"/>
+    <text x="150" y="210" font-size="8" fill="var(--ok)">L₂=0,4</text>
+    <line x1="210" y1="196" x2="310" y2="196" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="210,196 217,193 217,199" fill="var(--ok)"/>
+    <polygon points="310,196 303,193 303,199" fill="var(--ok)"/>
+    <text x="238" y="210" font-size="8" fill="var(--ok)">L₃=0,5</text>
+    {/* área total */}
+    <text x="150" y="30" font-size="9" fill="var(--ink-3)">área total da parede: A₁ = 4,0 m²</text>
+  </svg>
+  <figcaption>
+
+A mesma parede da prova de 2022.1 — mas agora o que se pede são as temperaturas do **outro** lado, $T_3$ e $T_4$, e como o fluxo se divide entre $(4)$ e $(5)$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+O circuito é o mesmo da prova de 2022.1, e o fluxo total também:
+
+$$
+R_T = 0{,}6443\ \mathrm{K/W}
+\qquad
+q = \frac{500 - 300}{0{,}6443} = 310{,}4\ \mathrm{W}
+$$
+
+**a)** Caminhando **do fluido B para dentro** (é dele que o calor vem):
+
+$$
+T_4 = T_{\infty,2} - q\,R_{convB} = 500 - 310{,}4 \times 0{,}0806 \approx \mathbf{475{,}0\ K}
+$$
+
+$$
+T_3 = T_4 - q\,R_{eq,2} = 475{,}0 - 310{,}4 \times 0{,}2273 \approx \mathbf{404{,}4\ K}
+$$
+
+**b)** Os dois ramos em paralelo estão sob a **mesma** diferença $T_3 - T_4$:
+
+$$
+q_4 = \frac{T_3 - T_4}{R_4} = \frac{-70{,}55}{0{,}7143} \approx \mathbf{-98{,}8\ W}
+\qquad
+q_5 = \frac{-70{,}55}{0{,}3333} \approx \mathbf{-211{,}6\ W}
+$$
+
+Em módulo, $98{,}8 + 211{,}6 = 310{,}4\ \mathrm{W}$ — o fluxo total ✔ O sinal negativo diz que o calor vai de $(4)$/$(5)$ **para dentro**, isto é, no sentido do lado quente para o frio.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito, que é o mesmo de 2022.1.** As resistências não mudam, então vale reaproveitar:
+
+$$
+A_3 = A_1 - A_2 = 1{,}5\ \mathrm{m^2}
+\qquad
+A_5 = A_1 - A_4 = 3{,}0\ \mathrm{m^2}
+$$
+
+$$
+R_{convA} = 0{,}1923
+\quad
+R_1 = 0{,}05
+\quad
+R_2 = 0{,}2
+\quad
+R_3 = 0{,}1778
+\quad
+R_4 = 0{,}7143
+\quad
+R_5 = 0{,}3333
+\quad
+R_{convB} = 0{,}0806
+$$
+
+$$
+R_{eq,1} = \frac{R_2 R_3}{R_2 + R_3} = 0{,}0941
+\qquad
+R_{eq,2} = \frac{R_4 R_5}{R_4 + R_5} = 0{,}2273
+$$
+
+$$
+R_T = 0{,}1923 + 0{,}05 + 0{,}0941 + 0{,}2273 + 0{,}0806 = 0{,}6443\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{\Delta T}{R_T} = \frac{500 - 300}{0{,}6443} = 310{,}4\ \mathrm{W}
+$$
+
+<Caixa tipo="macete" rotulo="A mesma parede, o outro lado">
+
+Em 2022.1 a prova pedia $T_1$ e $T_2$ — as faces do lado **frio** —, e caminhava-se a partir de $T_{\infty,1} = 300\ \mathrm{K}$. Aqui pede $T_3$ e $T_4$, que estão do lado **quente**, e a conta parte de $T_{\infty,2} = 500\ \mathrm{K}$.
+
+O circuito e o $q$ são idênticos. O que muda é **de onde se começa a caminhar** — e por isso vale reconhecer a questão: metade do trabalho já está feito.
+
+</Caixa>
+
+**Passo 2 — item (a): caminhar do lado quente.** O calor entra pelo lado $B$ ($500\ \mathrm{K}$), então, indo **no sentido do fluxo**, a temperatura **cai**:
+
+$$
+T_4 = T_{\infty,2} - q\,R_{convB} = 500 - 310{,}4 \times 0{,}0806 = 500 - 25{,}0 = 475{,}0\ \mathrm{K}
+$$
+
+$$
+T_3 = T_4 - q\,R_{eq,2} = 475{,}0 - 310{,}4 \times 0{,}2273 = 475{,}0 - 70{,}6 = 404{,}4\ \mathrm{K}
+$$
+
+<Caixa tipo="dica" rotulo="Confira com o resultado da outra prova">
+
+De 2022.1: $T_1 = 359{,}7\ \mathrm{K}$ e $T_2 = 375{,}2\ \mathrm{K}$. Somando todas as quedas de temperatura, de $300$ a $500\ \mathrm{K}$:
+
+$$
+\underbrace{59{,}7}_{convA} + \underbrace{15{,}5}_{(1)} + \underbrace{29{,}2}_{eq1} + \underbrace{70{,}6}_{eq2} + \underbrace{25{,}0}_{convB} = 200{,}0\ \mathrm{K}\ \checkmark
+$$
+
+E as quatro temperaturas internas ficam em ordem: $T_1 = 359{,}7 < T_2 = 375{,}2 < T_3 = 404{,}4 < T_4 = 475{,}0$. Crescem do lado frio para o quente, como tem de ser.
+
+</Caixa>
+
+**Passo 3 — item (b): como o paralelo divide o fluxo.** Este é o ponto novo da questão. Em paralelo, os dois ramos estão sob a **mesma** diferença de temperatura:
+
+$$
+\Delta T_{eq,2} = T_3 - T_4 = 404{,}4 - 475{,}0 = -70{,}6\ \mathrm{K}
+$$
+
+e cada um leva a parcela que a sua resistência permite:
+
+$$
+q_4 = \frac{T_3 - T_4}{R_4} = \frac{-70{,}55}{0{,}7143} = -98{,}8\ \mathrm{W}
+$$
+
+$$
+q_5 = \frac{T_3 - T_4}{R_5} = \frac{-70{,}55}{0{,}3333} = -211{,}6\ \mathrm{W}
+$$
+
+O sinal negativo é consequência de a numeração ir do lado frio para o quente: o calor flui no sentido contrário, de $(4)$/$(5)$ para $(1)$. Em módulo, o que importa é a **repartição**.
+
+**Passo 4 — a conferência, que é obrigatória aqui.**
+
+$$
+|q_4| + |q_5| = 98{,}8 + 211{,}6 = 310{,}4\ \mathrm{W} = q\ \checkmark
+$$
+
+Todo o fluxo que atravessa a parede se divide entre os dois ramos — nada se cria nem se perde no nó.
+
+**Passo 5 — por que a divisão é desigual.** A parcela de cada ramo é **inversamente proporcional** à sua resistência:
+
+$$
+\frac{q_5}{q_4} = \frac{R_4}{R_5} = \frac{0{,}7143}{0{,}3333} = 2{,}14
+\qquad\Longrightarrow\qquad
+\frac{211{,}6}{98{,}8} = 2{,}14\ \checkmark
+$$
+
+O material $(5)$ leva **duas vezes** mais calor que o $(4)$. Duas razões somadas: a área é o **triplo** ($3{,}0$ contra $1{,}0\ \mathrm{m^2}$) — o que puxa a favor de $(5)$ —, mas a condutividade é menor ($0{,}5$ contra $0{,}7$) — o que puxa contra. O saldo dá $2{,}14$.
+
+<Caixa tipo="macete" rotulo="O caminho mais fácil leva mais calor">
+
+É a mesma intuição dos resistores elétricos: em paralelo, a corrente escolhe o ramo de menor resistência. Aqui, "menor resistência" significa **mais área** e **mais condutividade**.
+
+E vale como conferência de sinal: o ramo de **menor** $R$ tem de levar o **maior** $q$. Se saiu o contrário, os dois foram trocados.
+
+</Caixa>
+
+**Conferência —** o $q$ total é o mesmo da prova de 2022.1 ✔ para achar $T_3$ e $T_4$ caminha-se do lado **quente** ✔ os dois ramos em paralelo compartilham o **mesmo** $\Delta T$ ✔ os fluxos dos ramos somam o total ✔ o ramo de menor resistência leva mais calor ✔
+</Passos>

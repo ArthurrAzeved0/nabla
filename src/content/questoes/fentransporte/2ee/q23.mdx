@@ -1,0 +1,217 @@
+---
+origem: "2023.2"
+tema: "Membrana · Perfil exponencial de concentração"
+temaId: fluxo-difusivo
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de massa de uma mistura entre duas espécies, $A$ e $B$, através de uma **membrana porosa**. Na face **esquerda**, a concentração total da mistura é de $100{,}0\ \mathrm{mol/m^3}$ e $85\ \%$ (em mol) dessa mistura é da espécie $A$. Na **outra face**, a concentração total é de $40{,}0\ \mathrm{mol/m^3}$ e $60\ \%$ (em mol) dessa mistura é da espécie $B$. A espessura da membrana é de $20\ \mathrm{cm}$ e sua área lateral é de $5\ \mathrm{m^2}$. O coeficiente de difusão binária de $A$ e $B$ na membrana é de $3{,}0\times10^{-2}\ \mathrm{m^2/s}$.
+
+Determine para $A$ e para $B$ a **taxa de transferência de massa no meio da membrana**. Admita regime permanente, unidimensional na direção $x$. O perfil de concentração de cada espécie é dado por
+
+$$
+C(x) = C_1\,e^{C_2 x}
+$$
+
+no qual $C_1$ e $C_2$ são constantes.
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Membrana porosa de 20 centímetros: na face esquerda a concentração total é 100 mol por metro cúbico com 85 por cento de A, na direita é 40 com 60 por cento de B, e os perfis de cada espécie são exponenciais">
+    {/* membrana */}
+    <rect x="110" y="30" width="120" height="126" fill="var(--line-2)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="120" y="194" font-size="9" fill="var(--ink-3)">membrana · L = 20 cm · A = 5 m²</text>
+    {/* meio da membrana */}
+    <line x1="170" y1="24" x2="170" y2="162" stroke="var(--warn)" stroke-width="1.1" stroke-dasharray="4 3"/>
+    <text x="152" y="20" font-size="9" fill="var(--warn)">x = L/2</text>
+    {/* escala vertical: 85 em y=42, 15 em y=140 — 1,4 px por mol/m³ */}
+    {/* perfil de A: cai de 85 para 16 (exponencial, 36,9 no meio) */}
+    <path d="M110 42 Q170 128 230 139" fill="none" stroke="var(--accent)" stroke-width="1.9"/>
+    <circle cx="110" cy="42" r="3.2" fill="var(--accent)"/>
+    <circle cx="230" cy="139" r="3.2" fill="var(--accent)"/>
+    <text x="44" y="46" font-size="9" fill="var(--accent)">C<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = 85</tspan></text>
+    <text x="236" y="146" font-size="9" fill="var(--accent)">16</text>
+    {/* perfil de B: sobe de 15 para 24 (19,0 no meio) — cruza o de A */}
+    <path d="M110 140 Q170 135 230 127" fill="none" stroke="var(--ok)" stroke-width="1.9"/>
+    <circle cx="110" cy="140" r="3.2" fill="var(--ok)"/>
+    <circle cx="230" cy="127" r="3.2" fill="var(--ok)"/>
+    <text x="44" y="144" font-size="9" fill="var(--ok)">C<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 15</tspan></text>
+    <text x="236" y="124" font-size="9" fill="var(--ok)">24</text>
+    {/* rótulos das faces */}
+    <text x="30" y="70" font-size="9" fill="var(--ink-3)">esquerda</text>
+    <text x="30" y="82" font-size="9" fill="var(--ink-3)">C = 100</text>
+    <text x="30" y="94" font-size="9" fill="var(--ink-3)">x<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = 0,85</tspan></text>
+    <text x="262" y="70" font-size="9" fill="var(--ink-3)">direita</text>
+    <text x="262" y="82" font-size="9" fill="var(--ink-3)">C = 40</text>
+    <text x="262" y="94" font-size="9" fill="var(--ink-3)">x<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 0,60</tspan></text>
+    {/* eixo x */}
+    <line x1="110" y1="166" x2="230" y2="166" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="234,166 226,163 226,169" fill="var(--ink-3)"/>
+    <text x="238" y="170" font-size="9" fill="var(--ink-3)">x</text>
+  </svg>
+  <figcaption>
+
+Os dois perfis são **exponenciais**, e a concentração total **não** é constante ($100 \to 40$): os dois fluxos não são opostos.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Concentrações nas faces: $C_{EA} = 85$, $C_{EB} = 15$, $C_{DA} = 16$, $C_{DB} = 24\ \mathrm{mol/m^3}$.
+
+**Espécie $A$:**
+
+$$
+C_{1A} = 85
+\qquad
+C_{2A} = \frac{1}{L}\ln\!\frac{C_{DA}}{C_{EA}} = \frac{1}{0{,}2}\ln\frac{16}{85} = -8{,}35\ \mathrm{m^{-1}}
+$$
+
+$$
+J_A(x) = -D_{AB}\,A\,\frac{dC_A}{dx} = 106{,}5\,e^{-8{,}35x}
+\qquad\Longrightarrow\qquad
+J_A(0{,}1) \approx \mathbf{46{,}2\ mol/s}
+$$
+
+**Espécie $B$:**
+
+$$
+C_{1B} = 15
+\qquad
+C_{2B} = \frac{1}{0{,}2}\ln\frac{24}{15} = +2{,}35\ \mathrm{m^{-1}}
+$$
+
+$$
+J_B(x) = -5{,}29\,e^{2{,}35x}
+\qquad\Longrightarrow\qquad
+J_B(0{,}1) \approx \mathbf{-6{,}69\ mol/s}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as concentrações nas duas faces.** Cada face tem a **sua** concentração total, e a fração dada é de uma espécie diferente em cada lado — as duas armadilhas de sempre.
+
+*Face esquerda* ($C_E = 100$, $x_{EA} = 0{,}85$):
+
+$$
+C_{EA} = 0{,}85 \times 100 = 85
+\qquad
+C_{EB} = (1 - 0{,}85) \times 100 = 15
+$$
+
+*Face direita* ($C_D = 40$, $x_{DB} = 0{,}60$):
+
+$$
+C_{DB} = 0{,}60 \times 40 = 24
+\qquad
+C_{DA} = (1 - 0{,}60) \times 40 = 16
+$$
+
+todos em $\mathrm{mol/m^3}$. Cada par fecha com a sua total: $85+15 = 100$ ✔ e $16+24 = 40$ ✔
+
+**Passo 2 — achar as constantes do perfil exponencial.** Duas condições de contorno para duas constantes.
+
+*Em $x = 0$* (face esquerda), $e^{0} = 1$, então a constante $C_1$ sai de graça:
+
+$$
+C_A(0) = C_{1A}\,e^{0} = C_{1A} = C_{EA} = 85
+$$
+
+*Em $x = L$* (face direita):
+
+$$
+C_{DA} = C_{1A}\,e^{C_{2A}L}
+\qquad\Longrightarrow\qquad
+\ln C_{DA} = \ln C_{EA} + C_{2A}L
+\qquad\Longrightarrow\qquad
+C_{2A} = \frac{1}{L}\ln\!\frac{C_{DA}}{C_{EA}}
+$$
+
+$$
+C_{2A} = \frac{1}{0{,}2}\ln\!\frac{16}{85} = 5 \times \ln(0{,}1882) = 5 \times (-1{,}6706) = -8{,}353\ \mathrm{m^{-1}}
+$$
+
+$$
+C_A(x) = 85\,e^{-8{,}353x}
+$$
+
+Negativo, como esperado: a concentração de $A$ **cai** ao atravessar a membrana.
+
+**Passo 3 — o mesmo para $B$.**
+
+$$
+C_{1B} = C_{EB} = 15
+\qquad
+C_{2B} = \frac{1}{0{,}2}\ln\!\frac{24}{15} = 5 \times \ln(1{,}6) = 5 \times 0{,}4700 = 2{,}350\ \mathrm{m^{-1}}
+$$
+
+$$
+C_B(x) = 15\,e^{2{,}350x}
+$$
+
+Positivo: a concentração de $B$ **cresce** para a direita.
+
+<Caixa tipo="dica" rotulo="Por que o perfil aqui não é linear">
+
+Nos exercícios anteriores o enunciado mandava admitir perfil **linear**, e o gradiente saía constante. Aqui o perfil é **exponencial**, e a consequência é grande: o gradiente — e portanto o fluxo — **muda de ponto a ponto**. É por isso que a questão especifica **onde** quer a taxa (no meio), e é por isso que ela vale 2,5 pontos.
+
+</Caixa>
+
+**Passo 4 — a taxa, com a área já dentro.** O enunciado pede a **taxa de transferência de massa** (em $\mathrm{mol/s}$), não a densidade de fluxo — então a área entra na conta:
+
+$$
+J_A(x) = -D_{AB}\,A\,\frac{dC_A}{dx}
+$$
+
+Derivando o perfil exponencial:
+
+$$
+\frac{dC_A}{dx} = C_{1A}\,C_{2A}\,e^{C_{2A}x} = 85 \times (-8{,}353)\,e^{-8{,}353x}
+$$
+
+$$
+J_A(x) = -\,(3{,}0\times10^{-2})(5)(85)(-8{,}353)\,e^{-8{,}353x} = 106{,}5\,e^{-8{,}353x}
+$$
+
+**Passo 5 — avaliar no meio, $x = L/2 = 0{,}1\ \mathrm{m}$.**
+
+$$
+J_A(0{,}1) = 106{,}5 \times e^{-0{,}8353} = 106{,}5 \times 0{,}4339 = 46{,}2\ \mathrm{mol/s}
+$$
+
+**Passo 6 — o mesmo para $B$.**
+
+$$
+J_B(x) = -\,(3{,}0\times10^{-2})(5)(15)(2{,}350)\,e^{2{,}350x} = -5{,}29\,e^{2{,}350x}
+$$
+
+$$
+J_B(0{,}1) = -5{,}29 \times e^{0{,}235} = -5{,}29 \times 1{,}2649 = -6{,}69\ \mathrm{mol/s}
+$$
+
+**Passo 7 — ler os sinais.** $J_A > 0$: $A$ migra da esquerda para a direita, onde há menos $A$. $J_B < 0$: $B$ migra da **direita para a esquerda**, onde há menos $B$. Cada espécie desce o **seu** gradiente, em sentidos opostos.
+
+<Caixa tipo="macete" rotulo="Aqui J_A não é −J_B, e vale saber por quê">
+
+$|J_A| = 46{,}2$ contra $|J_B| = 6{,}69$: nada de simetria. A conferência $J_A = -J_B$ exige **concentração total constante**, e aqui ela cai de $100$ para $40\ \mathrm{mol/m^3}$.
+
+Isso descreve uma membrana que **retém** matéria (ou um sistema em que a mistura se dilui ao atravessar) — é fisicamente diferente do tubo de seção constante das outras questões. Reconhecer isso evita "corrigir" um resultado que está certo.
+
+</Caixa>
+
+**Conferência —** cada face com a sua concentração total ✔ a fração da direita é de $B$ ✔ $C_1$ é a concentração da face $x = 0$, sem conta ✔ o perfil exponencial faz o fluxo variar com a posição, então avaliar em $x = L/2$ é obrigatório ✔ a **área** entra, porque se pede taxa e não densidade ✔ $C_{2A} < 0$ e $C_{2B} > 0$ ✔
+
+**Sobre o gabarito —** a resolução oficial chega a $J_A(0{,}1) = 49{,}19\ \mathrm{mol/s}$. Refazendo com os próprios números dela ($106{,}47 \times e^{-0{,}8353}$), o resultado é $46{,}2$ — parece um dígito trocado na digitação ($46{,}19 \to 49{,}19$). O valor de $B$, $-6{,}70$, confere exatamente. O método do gabarito é o mesmo dos passos acima.
+</Passos>

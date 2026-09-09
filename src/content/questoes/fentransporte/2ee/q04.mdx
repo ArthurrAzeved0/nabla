@@ -1,0 +1,177 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Parede composta · Todas as temperaturas a partir do fluxo dado"
+temaId: paredes-compostas
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a parede composta apresentada na figura, com um fluido escoando apenas na lateral **direita** da parede. **Determine todas as temperaturas nas faces, inclusive as internas, da parede.**
+
+**Dados:** $T_\infty = 20\ ^\circ\mathrm{C}$; $h_\infty = 10\ \mathrm{W/(m^2 \cdot {}^\circ C)}$; $k_1 = 15\ \mathrm{W/(m \cdot {}^\circ C)}$; $k_2 = 60\ \mathrm{W/(m \cdot {}^\circ C)}$; $q'' = 0{,}86\ \mathrm{kW/m^2}$.
+
+<Figura>
+  <svg viewBox="0 0 360 220" role="img" aria-label="Parede de três camadas: material 1 com 2 centímetros, material 2 com 1 centímetro e material 1 com 2 centímetros; o fluxo de calor entra pela face esquerda e sai por convecção para um fluido na face direita">
+    {/* cotas das espessuras, em cadeia */}
+    <line x1="96" y1="36" x2="156" y2="36" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="96,36 104,32 104,40" fill="var(--ok)"/>
+    <polygon points="156,36 148,32 148,40" fill="var(--ok)"/>
+    <text x="112" y="28" font-size="9" fill="var(--ok)">2 cm</text>
+    <line x1="156" y1="36" x2="186" y2="36" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="156,36 164,32 164,40" fill="var(--ok)"/>
+    <polygon points="186,36 178,32 178,40" fill="var(--ok)"/>
+    <text x="158" y="18" font-size="9" fill="var(--ok)">1 cm</text>
+    <line x1="171" y1="30" x2="171" y2="20" stroke="var(--ok)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="186" y1="36" x2="246" y2="36" stroke="var(--ok)" stroke-width="1.1"/>
+    <polygon points="186,36 194,32 194,40" fill="var(--ok)"/>
+    <polygon points="246,36 238,32 238,40" fill="var(--ok)"/>
+    <text x="202" y="28" font-size="9" fill="var(--ok)">2 cm</text>
+    {/* camadas */}
+    <rect x="96" y="48" width="60" height="112" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <rect x="156" y="48" width="30" height="112" fill="var(--line-2)" opacity="0.7" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <rect x="186" y="48" width="60" height="112" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="122" y="108" font-size="12" fill="var(--ink-2)">1</text>
+    <text x="167" y="108" font-size="12" fill="var(--ink-2)">2</text>
+    <text x="212" y="108" font-size="12" fill="var(--ink-2)">1</text>
+    {/* fluxo entrando */}
+    <line x1="34" y1="104" x2="84" y2="104" stroke="var(--warn)" stroke-width="2.4"/>
+    <polygon points="94,104 82,99 82,109" fill="var(--warn)"/>
+    <text x="26" y="94" font-size="10" fill="var(--warn)">q″ = 860 W/m²</text>
+    {/* fluido à direita */}
+    <path d="M254 90 Q262 98 254 106" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M262 84 Q272 98 262 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="280" y="88" font-size="11" fill="var(--accent)">Fluido</text>
+    <text x="280" y="103" font-size="10" fill="var(--accent)">h∞ = 10</text>
+    <text x="280" y="117" font-size="10" fill="var(--accent)">T∞ = 20 °C</text>
+    {/* faces, com chamadas embaixo */}
+    <circle cx="96" cy="160" r="3" fill="var(--ink-2)"/>
+    <circle cx="156" cy="160" r="3" fill="var(--ink-2)"/>
+    <circle cx="186" cy="160" r="3" fill="var(--ink-2)"/>
+    <circle cx="246" cy="160" r="3" fill="var(--ink-2)"/>
+    <line x1="96" y1="163" x2="92" y2="170" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <line x1="156" y1="163" x2="152" y2="170" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <line x1="186" y1="163" x2="190" y2="170" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <line x1="246" y1="163" x2="250" y2="170" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="80" y="182" font-size="10" fill="var(--ink-2)">T<tspan font-size="8" dy="2">A</tspan></text>
+    <text x="140" y="182" font-size="10" fill="var(--ink-2)">T<tspan font-size="8" dy="2">B</tspan></text>
+    <text x="188" y="182" font-size="10" fill="var(--ink-2)">T<tspan font-size="8" dy="2">C</tspan></text>
+    <text x="248" y="182" font-size="10" fill="var(--ink-2)">T<tspan font-size="8" dy="2">D</tspan></text>
+    {/* legenda */}
+    <text x="58" y="206" font-size="9" fill="var(--ink-3)">k₁ = 15 W/(m·°C)  ·  k₂ = 60 W/(m·°C)</text>
+  </svg>
+  <figcaption>
+
+Não há convecção do lado **esquerdo**: o fluxo $q''$ é dado e entra direto na face. É por isso que a conta começa pela **direita**.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+T_D = T_\infty + \frac{q''}{h_\infty} = 20 + \frac{860}{10} = \mathbf{106\ ^\circ C}
+$$
+
+$$
+T_C = T_D + q''\,\frac{L_1}{k_1} = 106 + 860\,\frac{0{,}02}{15} = \mathbf{107{,}15\ ^\circ C}
+$$
+
+$$
+T_B = T_C + q''\,\frac{L_2}{k_2} = 107{,}15 + 860\,\frac{0{,}01}{60} = \mathbf{107{,}29\ ^\circ C}
+$$
+
+$$
+T_A = T_B + q''\,\frac{L_1}{k_1} = 107{,}29 + 1{,}15 = \mathbf{108{,}44\ ^\circ C}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que começar pela direita.** Só existe **um** ponto de temperatura conhecida: o fluido, a $20\ ^\circ\mathrm{C}$. Como a densidade de fluxo é dada, a conta caminha da direita para a esquerda, uma resistência por vez.
+
+E há uma simplificação decisiva: em regime permanente, **sem geração**, a **mesma** densidade de fluxo atravessa as três camadas e a convecção. Não é preciso montar a resistência total.
+
+$$
+q'' = 0{,}86\ \mathrm{kW/m^2} = 860\ \mathrm{W/m^2}
+$$
+
+<Caixa tipo="simbolos">
+
+- $q'' = 860\ \mathrm{W/m^2}$ — densidade de fluxo, **a mesma** em todo o caminho
+- $L_1 = 2\ \mathrm{cm} = 0{,}02\ \mathrm{m}$ (camadas externas, material 1)
+- $L_2 = 1\ \mathrm{cm} = 0{,}01\ \mathrm{m}$ (camada central, material 2)
+- resistências **por unidade de área**: $R'' = L/k$ na condução e $R'' = 1/h$ na convecção
+
+</Caixa>
+
+**Passo 2 — a face direita, pela convecção.** O calor que chega à face $D$ por condução sai dela por convecção para o fluido:
+
+$$
+q'' = h_\infty\,(T_D - T_\infty)
+\qquad\Longrightarrow\qquad
+T_D = T_\infty + \frac{q''}{h_\infty}
+$$
+
+$$
+T_D = 20 + \frac{860}{10} = 20 + 86 = 106\ ^\circ\mathrm{C}
+$$
+
+Repare no tamanho do salto: $86\ ^\circ\mathrm{C}$ só na convecção. Com $h_\infty = 10$, a resistência convectiva é $R''_{conv} = 1/10 = 0{,}1\ \mathrm{m^2\,^\circ C/W}$ — muito maior que qualquer uma das camadas.
+
+**Passo 3 — atravessar a camada 1 da direita.**
+
+$$
+R''_{1} = \frac{L_1}{k_1} = \frac{0{,}02}{15} = 1{,}333\times10^{-3}\ \mathrm{m^2\,^\circ C/W}
+$$
+
+$$
+T_C = T_D + q''\,R''_{1} = 106 + 860 \times 1{,}333\times10^{-3} = 106 + 1{,}147 = 107{,}15\ ^\circ\mathrm{C}
+$$
+
+O sinal é **soma** porque estamos caminhando **contra** o fluxo de calor: indo para dentro, a temperatura sobe.
+
+**Passo 4 — atravessar a camada 2 (a central).**
+
+$$
+R''_{2} = \frac{L_2}{k_2} = \frac{0{,}01}{60} = 1{,}667\times10^{-4}\ \mathrm{m^2\,^\circ C/W}
+$$
+
+$$
+T_B = T_C + 860 \times 1{,}667\times10^{-4} = 107{,}15 + 0{,}143 = 107{,}29\ ^\circ\mathrm{C}
+$$
+
+**Passo 5 — atravessar a camada 1 da esquerda.** É idêntica à do Passo 3:
+
+$$
+T_A = T_B + 1{,}147 = 107{,}29 + 1{,}15 = 108{,}44\ ^\circ\mathrm{C}
+$$
+
+**Passo 6 — a leitura do resultado.** Repartindo o $\Delta T$ total de $88{,}44\ ^\circ\mathrm{C}$:
+
+| trecho | $R''$ $[\mathrm{m^2\,^\circ C/W}]$ | $\Delta T$ | fração |
+|---|---|---|---|
+| camada 1 (esquerda) | $1{,}33\times10^{-3}$ | $1{,}15$ | $1{,}3\ \%$ |
+| camada 2 (central) | $1{,}67\times10^{-4}$ | $0{,}14$ | $0{,}2\ \%$ |
+| camada 1 (direita) | $1{,}33\times10^{-3}$ | $1{,}15$ | $1{,}3\ \%$ |
+| **convecção** | $1{,}00\times10^{-1}$ | $86{,}00$ | $\mathbf{97{,}2\ \%}$ |
+
+<Caixa tipo="macete">
+
+A convecção responde por **97 %** da resistência. Isso não é acidente do exercício: os três materiais são bons condutores ($k = 15$ e $60$), então a parede quase não resiste. O gargalo é o **ar do lado de fora**.
+
+É a mesma razão pela qual uma panela de metal esquenta rápido e um cobertor de lã segura calor: o que isola de verdade é o fluido parado, não o metal. E é por isso que, ao conferir uma parede composta, vale sempre olhar **qual resistência é a maior** — ela tem de concentrar a queda de temperatura.
+
+</Caixa>
+
+**Conferência —** as espessuras têm de ir de cm para m ✔ $0{,}86\ \mathrm{kW/m^2}$ são $860\ \mathrm{W/m^2}$ ✔ a mesma $q''$ vale em todos os trechos, então nem é preciso somar resistências ✔ as temperaturas crescem da direita para a esquerda, porque o calor vai da esquerda para a direita ✔ as duas camadas de material 1 têm o **mesmo** $\Delta T$, o que serve de checagem ✔
+</Passos>

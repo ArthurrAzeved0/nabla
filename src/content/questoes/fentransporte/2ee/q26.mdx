@@ -1,0 +1,152 @@
+---
+origem: "2024.2"
+tema: "Torricelli · Velocidade de descarga de um tanque"
+temaId: torricelli
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O tanque da figura tem **grandes dimensões** e descarrega água pelo tubo indicado. Considerando o **fluido ideal**, determinar a **velocidade da água descarregada**, se a seção do tubo é $10\ \mathrm{cm^2}$.
+
+**Dado:** $g = 9{,}8\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Tanque de grandes dimensões com a superfície livre a 10 metros do chão, ligado por tubulação a uma saída livre a 2 metros do chão, com jato de água">
+    {/* chão */}
+    <line x1="14" y1="176" x2="326" y2="176" stroke="var(--ink-3)" stroke-width="1.6"/>
+    {/* tanque */}
+    <path d="M56 46 L56 152 L146 152 L146 46" fill="none" stroke="var(--ink-3)" stroke-width="1.5"/>
+    <rect x="57" y="52" width="88" height="100" fill="var(--accent-soft)" opacity="0.6"/>
+    <line x1="57" y1="52" x2="145" y2="52" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="68" y1="47" x2="86" y2="47" stroke="var(--accent)" stroke-width="1"/>
+    <text x="150" y="48" font-size="11" fill="var(--ink-2)">(1)</text>
+    <text x="72" y="106" font-size="9" fill="var(--ink-2)">grandes</text>
+    <text x="70" y="118" font-size="9" fill="var(--ink-2)">dimensões</text>
+    {/* tubulação: sai do fundo, corre no chão, sobe até 2 m */}
+    <line x1="100" y1="152" x2="100" y2="168" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="100" y1="168" x2="248" y2="168" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="248" y1="168" x2="248" y2="144" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <line x1="248" y1="144" x2="276" y2="144" stroke="var(--ink-2)" stroke-width="2.4"/>
+    {/* jato */}
+    <path d="M280 142 Q294 146 300 160 Q304 170 306 176" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <path d="M280 148 Q292 152 297 164 Q300 171 302 176" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+    <text x="282" y="132" font-size="11" fill="var(--warn)">(2)</text>
+    <text x="256" y="120" font-size="9" fill="var(--warn)">A = 10 cm²</text>
+    {/* cota 10 m: da superfície ao chão */}
+    <line x1="32" y1="52" x2="32" y2="176" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="32,52 28,62 36,62" fill="var(--ok)"/>
+    <polygon points="32,176 28,166 36,166" fill="var(--ok)"/>
+    <line x1="32" y1="52" x2="56" y2="52" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="4" y="112" font-size="10" fill="var(--ok)">10 m</text>
+    {/* cota 2 m: da saída ao chão */}
+    <line x1="318" y1="144" x2="318" y2="176" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="318,144 314,154 322,154" fill="var(--ok)"/>
+    <polygon points="318,176 314,166 322,166" fill="var(--ok)"/>
+    <line x1="276" y1="144" x2="318" y2="144" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="296" y="196" font-size="10" fill="var(--ok)">2 m</text>
+    {/* desnível útil */}
+    <line x1="176" y1="52" x2="176" y2="144" stroke="var(--warn)" stroke-width="1.2"/>
+    <polygon points="176,52 172,62 180,62" fill="var(--warn)"/>
+    <polygon points="176,144 172,134 180,134" fill="var(--warn)"/>
+    <line x1="146" y1="52" x2="176" y2="52" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="176" y1="144" x2="248" y2="144" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="182" y="100" font-size="10" fill="var(--warn)">h = 8 m</text>
+  </svg>
+  <figcaption>
+
+O que move a água é o **desnível entre a superfície livre e a saída**: $10 - 2 = 8\ \mathrm{m}$. As cotas são medidas do chão, mas o chão não entra na conta.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v_2 = \sqrt{2\,g\,h} = \sqrt{2 \times 9{,}8 \times 8} = \sqrt{156{,}8} \approx \mathbf{12{,}5\ m/s}
+$$
+
+E, de passagem, a vazão:
+
+$$
+Q = A\,v_2 = 10\times10^{-4} \times 12{,}52 = 1{,}25\times10^{-2}\ \mathrm{m^3/s} = 12{,}5\ \mathrm{L/s}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — escolher os pontos.** Ponto ① na **superfície livre** do tanque, ponto ② na **saída** do tubo. São os dois únicos lugares em que se conhece a pressão.
+
+**Passo 2 — Bernoulli, e o que cai.** Fluido **ideal** significa **sem perda de carga**:
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2
+$$
+
+- $p_1 = p_2 = p_{atm}$ — o tanque é aberto e o jato descarrega no ar. As duas parcelas de pressão **se cancelam**;
+- $v_1 \approx 0$ — o tanque é de **grandes dimensões**, então a superfície livre desce devagar. É exatamente isso que a expressão do enunciado autoriza.
+
+Sobra:
+
+$$
+z_1 - z_2 = \frac{v_2^2}{2g}
+\qquad\Longrightarrow\qquad
+\boxed{\;v_2 = \sqrt{2\,g\,h}\;}
+$$
+
+que é o **teorema de Torricelli**.
+
+<Caixa tipo="macete" rotulo="Torricelli é a queda livre disfarçada">
+
+$v = \sqrt{2gh}$ é a mesma expressão da velocidade de um corpo que cai de uma altura $h$ no vácuo. Faz sentido: sem atrito, a carga geométrica se converte **integralmente** em carga cinética, exatamente como na queda livre. Uma gota que sai do tanque tem a velocidade que teria se tivesse simplesmente caído os $8\ \mathrm{m}$.
+
+</Caixa>
+
+**Passo 3 — o desnível certo, que é onde a questão derruba.** As duas cotas da figura são medidas do **chão**: a superfície livre a $10\ \mathrm{m}$ e a saída a $2\ \mathrm{m}$. O que importa é a **diferença**:
+
+$$
+h = z_1 - z_2 = 10 - 2 = 8\ \mathrm{m}
+$$
+
+Usar $h = 10\ \mathrm{m}$ (esquecendo que a saída está elevada) daria $v = 14{,}0\ \mathrm{m/s}$ — $12\ \%$ acima. Usar $h = 2\ \mathrm{m}$ daria $6{,}3\ \mathrm{m/s}$.
+
+<Caixa tipo="dica" rotulo="O plano de referência é livre">
+
+Pode-se tomar o **chão** como referência ($z_1 = 10$, $z_2 = 2$) ou a **saída** ($z_1 = 8$, $z_2 = 0$). O resultado é o mesmo, porque só a diferença aparece. O que não pode é usar referências diferentes nos dois pontos.
+
+</Caixa>
+
+**Passo 4 — o número.**
+
+$$
+v_2 = \sqrt{2 \times 9{,}8 \times 8} = \sqrt{156{,}8} = 12{,}52\ \mathrm{m/s}
+$$
+
+**Passo 5 — a vazão, que a área do enunciado permite calcular.** A seção de $10\ \mathrm{cm^2}$ não entra no cálculo da velocidade — Torricelli não depende dela. Ela serve para a vazão:
+
+$$
+A = 10\ \mathrm{cm^2} = 10\times10^{-4}\ \mathrm{m^2} = 1{,}0\times10^{-3}\ \mathrm{m^2}
+$$
+
+$$
+Q = A\,v_2 = 1{,}0\times10^{-3} \times 12{,}52 = 1{,}25\times10^{-2}\ \mathrm{m^3/s} = 12{,}5\ \mathrm{L/s}
+$$
+
+<Caixa tipo="dica" rotulo="Por que o diâmetro do tubo não altera a velocidade">
+
+Porque Bernoulli entre a superfície e a saída não envolve a área: a velocidade de saída depende **só** do desnível. Um tubo mais grosso descarrega **mais vazão** na **mesma** velocidade.
+
+Isso vale enquanto o fluido é ideal. Num fluido real, o tubo mais fino gera mais perda de carga e a velocidade **cai** — e aí a área passa a importar.
+
+</Caixa>
+
+**Conferência —** $v_1 \approx 0$ vem de "grandes dimensões" ✔ as duas pressões se cancelam, porque tanque aberto e descarga livre ✔ $h$ é a **diferença** de cotas, $8\ \mathrm{m}$ e não $10$ ✔ a área não entra na velocidade, só na vazão ✔ $\mathrm{cm^2} \to \mathrm{m^2}$ é $10^{-4}$ ✔
+</Passos>

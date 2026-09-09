@@ -1,0 +1,193 @@
+---
+origem: "2023.2 · 2ª chamada"
+tema: "Forno · Duas camadas de tijolo com convecção nos dois lados"
+temaId: paredes-compostas
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q45.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere um forno cuja parede é constituída de duas camadas adjacentes: a **interna** de $0{,}22\ \mathrm{m}$ de espessura de tijolo refratário ($k_1 = 1{,}5\ \mathrm{W/(m\cdot{}^\circ C)}$) e a **externa** de $0{,}15\ \mathrm{m}$ de espessura de tijolo isolante ($k_2 = 0{,}35\ \mathrm{W/(m\cdot{}^\circ C)}$). A temperatura dos gases dentro do forno ($h_{int} = 45\ \mathrm{W/(m^2\cdot{}^\circ C)}$) é $1200\ ^\circ\mathrm{C}$, enquanto a temperatura dos gases fora do forno ($h_{ext} = 16{,}5\ \mathrm{W/(m^2\cdot{}^\circ C)}$) é $25\ ^\circ\mathrm{C}$. A área lateral da parede é de $10\ \mathrm{m^2}$. Desprezando a resistência térmica das juntas entre os tijolos, determine:
+
+**a)** (1,5 pontos) A **taxa de calor** transferida no sistema.
+
+**b)** (1,5 pontos) As **temperaturas** na face interna, entre camadas e face externa da parede.
+
+<Figura>
+  <svg viewBox="0 0 360 200" role="img" aria-label="Parede de forno com duas camadas de tijolo: refratário de 22 centímetros por dentro e isolante de 15 centímetros por fora, com gases a 1200 graus dentro e a 25 graus fora">
+    {/* refratário */}
+    <rect x="110" y="40" width="66" height="110" fill="var(--warn)" opacity="0.35" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="118" y="92" font-size="9" fill="var(--ink-2)">refratário</text>
+    <text x="124" y="106" font-size="8" fill="var(--ink-3)">k₁ = 1,5</text>
+    {/* isolante */}
+    <rect x="176" y="40" width="46" height="110" fill="var(--line-2)" opacity="0.75" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="180" y="92" font-size="9" fill="var(--ink-2)">isolante</text>
+    <text x="180" y="106" font-size="8" fill="var(--ink-3)">k₂ = 0,35</text>
+    {/* gases internos */}
+    <path d="M98 80 Q90 95 98 110" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
+    <path d="M88 72 Q76 95 88 118" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="10" y="72" font-size="9" fill="var(--warn)">dentro do forno</text>
+    <text x="10" y="85" font-size="9" fill="var(--warn)">1200 °C</text>
+    <text x="10" y="98" font-size="9" fill="var(--warn)">h int = 45</text>
+    {/* gases externos */}
+    <path d="M234 80 Q242 95 234 110" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M244 72 Q256 95 244 118" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="266" y="72" font-size="9" fill="var(--accent)">fora do forno</text>
+    <text x="266" y="85" font-size="9" fill="var(--accent)">25 °C</text>
+    <text x="266" y="98" font-size="9" fill="var(--accent)">h ext = 16,5</text>
+    {/* fluxo */}
+    <line x1="130" y1="62" x2="164" y2="62" stroke="var(--ok)" stroke-width="2.2"/>
+    <polygon points="170,62 160,58 160,66" fill="var(--ok)"/>
+    <text x="128" y="54" font-size="9" fill="var(--ok)">q</text>
+    {/* interfaces */}
+    <circle cx="110" cy="150" r="3" fill="var(--ink-2)"/>
+    <text x="98" y="168" font-size="9" fill="var(--ink-2)">T₂</text>
+    <circle cx="176" cy="150" r="3" fill="var(--ink-2)"/>
+    <text x="170" y="168" font-size="9" fill="var(--ink-2)">T₃</text>
+    <circle cx="222" cy="150" r="3" fill="var(--ink-2)"/>
+    <text x="216" y="168" font-size="9" fill="var(--ink-2)">T₄</text>
+    {/* cotas */}
+    <line x1="110" y1="32" x2="176" y2="32" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="110,32 116,29 116,35" fill="var(--accent)"/>
+    <polygon points="176,32 170,29 170,35" fill="var(--accent)"/>
+    <text x="122" y="24" font-size="8" fill="var(--accent)">0,22 m</text>
+    <line x1="176" y1="32" x2="222" y2="32" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="176,32 182,29 182,35" fill="var(--accent)"/>
+    <polygon points="222,32 216,29 216,35" fill="var(--accent)"/>
+    <text x="180" y="24" font-size="8" fill="var(--accent)">0,15 m</text>
+    <text x="140" y="192" font-size="9" fill="var(--ink-3)">A = 10 m²</text>
+  </svg>
+  <figcaption>
+
+Quatro resistências em série: convecção interna, refratário, isolante e convecção externa.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)**
+
+$$
+q = \frac{T_1 - T_5}{\dfrac{1}{h_{int}A} + \dfrac{L_1}{k_1 A} + \dfrac{L_2}{k_2 A} + \dfrac{1}{h_{ext}A}}
+= \frac{1200 - 25}{0{,}002222 + 0{,}014667 + 0{,}042857 + 0{,}006061}
+$$
+
+$$
+q = \frac{1175}{0{,}065806} \approx \mathbf{1{,}786\times10^{4}\ W} = 17{,}9\ \mathrm{kW}
+$$
+
+**b)**
+
+$$
+T_2 = 1200 - \frac{q}{h_{int}A} \approx \mathbf{1160\ ^\circ C}
+$$
+
+$$
+T_3 = T_2 - \frac{q\,L_1}{k_1 A} \approx \mathbf{898\ ^\circ C}
+$$
+
+$$
+T_4 = T_3 - \frac{q\,L_2}{k_2 A} \approx \mathbf{133\ ^\circ C}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as quatro resistências, todas com a mesma área.**
+
+$$
+R_{int} = \frac{1}{h_{int}A} = \frac{1}{45 \times 10} = 0{,}002222\ ^\circ\mathrm{C/W}
+$$
+
+$$
+R_1 = \frac{L_1}{k_1 A} = \frac{0{,}22}{1{,}5 \times 10} = 0{,}014667\ ^\circ\mathrm{C/W}
+$$
+
+$$
+R_2 = \frac{L_2}{k_2 A} = \frac{0{,}15}{0{,}35 \times 10} = 0{,}042857\ ^\circ\mathrm{C/W}
+$$
+
+$$
+R_{ext} = \frac{1}{h_{ext}A} = \frac{1}{16{,}5 \times 10} = 0{,}006061\ ^\circ\mathrm{C/W}
+$$
+
+$$
+R_{total} = 0{,}065806\ ^\circ\mathrm{C/W}
+$$
+
+<Caixa tipo="simbolos">
+
+- $T_1 = 1200\ ^\circ\mathrm{C}$ — gases **dentro** do forno
+- $T_2$ — face **interna** da parede
+- $T_3$ — interface refratário / isolante
+- $T_4$ — face **externa** da parede
+- $T_5 = 25\ ^\circ\mathrm{C}$ — gases **fora** do forno
+
+Cinco temperaturas, quatro resistências entre elas.
+
+</Caixa>
+
+**Passo 2 — a taxa de calor, item (a).**
+
+$$
+q = \frac{T_1 - T_5}{R_{total}} = \frac{1200 - 25}{0{,}065806} = \frac{1175}{0{,}065806} = 17\,855\ \mathrm{W}
+$$
+
+ou $1{,}786\times10^4\ \mathrm{W}$, cerca de $18\ \mathrm{kW}$ escapando pela parede.
+
+**Passo 3 — as três temperaturas, item (b).** Uma resistência por vez, sempre no sentido do fluxo (de dentro para fora):
+
+$$
+T_2 = T_1 - q\,R_{int} = 1200 - 17\,855 \times 0{,}002222 = 1200 - 39{,}7 = 1160\ ^\circ\mathrm{C}
+$$
+
+$$
+T_3 = T_2 - q\,R_1 = 1160 - 17\,855 \times 0{,}014667 = 1160 - 261{,}8 = 898\ ^\circ\mathrm{C}
+$$
+
+$$
+T_4 = T_3 - q\,R_2 = 898 - 17\,855 \times 0{,}042857 = 898 - 765{,}2 = 133\ ^\circ\mathrm{C}
+$$
+
+**Passo 4 — a conferência pelo lado de fora.**
+
+$$
+T_4 - T_5 = q\,R_{ext} = 17\,855 \times 0{,}006061 = 108{,}2\ ^\circ\mathrm{C}
+\qquad\Longrightarrow\qquad
+T_4 = 25 + 108{,}2 = 133{,}2\ ^\circ\mathrm{C}\ \checkmark
+$$
+
+**Passo 5 — a leitura do projeto.**
+
+| resistência | valor $[^\circ\mathrm{C/W}]$ | fração | $\Delta T$ $[^\circ\mathrm{C}]$ |
+|---|---|---|---|
+| convecção interna | $0{,}002222$ | $3{,}4\ \%$ | $39{,}7$ |
+| refratário | $0{,}014667$ | $22{,}3\ \%$ | $261{,}8$ |
+| **isolante** | $0{,}042857$ | $\mathbf{65{,}1\ \%}$ | $765{,}2$ |
+| convecção externa | $0{,}006061$ | $9{,}2\ \%$ | $108{,}2$ |
+| **total** | $0{,}065806$ | $100\ \%$ | $\mathbf{1175}$ |
+
+As quatro quedas somam $1175\ ^\circ\mathrm{C}$ ✔
+
+E o projeto da parede fica evidente: o **refratário** por dentro existe para **aguentar** os $1200\ ^\circ\mathrm{C}$ (é o que o nome diz), e é ele quem derruba a temperatura de $1160$ para $898\ ^\circ\mathrm{C}$; o **isolante** por fora, com $k$ quatro vezes menor, é quem faz o trabalho térmico, derrubando de $898$ para $133\ ^\circ\mathrm{C}$.
+
+<Caixa tipo="macete" rotulo="Por que não usar só isolante">
+
+Porque o tijolo isolante não sobreviveria a $1200\ ^\circ\mathrm{C}$ — ele é poroso e de baixa resistência mecânica e térmica. O refratário aguenta a temperatura; o isolante segura o calor. **Cada camada para o que serve** — e é a mesma lógica do par aço/isolante da 2ª chamada de 2023.1.
+
+Note também que a face externa a $133\ ^\circ\mathrm{C}$ ainda queima: um forno real levaria uma terceira camada ou um afastamento de segurança.
+
+</Caixa>
+
+**Conferência —** as quatro resistências com a **mesma** área, $10\ \mathrm{m^2}$ ✔ o item (a) pede **taxa** (watt), não densidade ✔ as espessuras já vêm em metros ✔ as quatro quedas somam $1175\ ^\circ\mathrm{C}$ ✔ $T_4$ conferido pelos dois caminhos ✔
+</Passos>

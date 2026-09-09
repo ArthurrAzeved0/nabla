@@ -1,0 +1,128 @@
+---
+origem: "2022.2"
+tema: "Fluxos de massa · A quinta versão, com A ganhando concentração"
+temaId: fluxo-absoluto
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q49.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a transferência de massa de uma mistura entre duas espécies, $A$ e $B$, ao longo de um tubo. A concentração total da mistura é mantida **constante**, igual a $400\ \mathrm{mol/m^3}$. Na **entrada**, $20\ \%$ em mol dessa mistura é da espécie $A$, e na **saída**, $40\ \%$ em mol dessa mistura é da espécie $B$. A mistura escoa com velocidade de $2{,}0\ \mathrm{m/s}$. O comprimento do tubo é de $4{,}0\ \mathrm{m}$ e o coeficiente de difusão binária é de $5{,}0\times10^{-2}\ \mathrm{m^2/s}$.
+
+Determine para $A$ e para $B$ as densidades de **fluxo difusivo**, **convectivo** e **absoluto** **na saída do tubo**. Admita regime permanente com perfil **linear** de concentração.
+
+<Gabarito>
+Entrada: $C_{A1} = 80$, $C_{B1} = 320$. Saída: $C_{A2} = 240$, $C_{B2} = 160\ \mathrm{mol/m^3}$.
+
+| | difusivo $J''$ | convectivo $N''$ | absoluto |
+|---|---|---|---|
+| $A$ | $-2{,}0$ | $480$ | $\mathbf{478}$ |
+| $B$ | $+2{,}0$ | $320$ | $\mathbf{322}$ |
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — completar as frações.**
+
+$$
+x_{A1} = 0{,}20 \Rightarrow x_{B1} = 0{,}80
+\qquad\qquad
+x_{B2} = 0{,}40 \Rightarrow x_{A2} = 0{,}60
+$$
+
+**Passo 2 — as concentrações, com $C = 400$ nas duas pontas.**
+
+$$
+C_{A1} = 0{,}20 \times 400 = 80
+\qquad
+C_{B1} = 0{,}80 \times 400 = 320
+$$
+
+$$
+C_{A2} = 0{,}60 \times 400 = 240
+\qquad
+C_{B2} = 0{,}40 \times 400 = 160
+$$
+
+em $\mathrm{mol/m^3}$. Cada par soma $400$ ✔
+
+<Caixa tipo="dica" rotulo="A inversão mais forte de todas as versões">
+
+A mistura entra com $20\ \%$ de $A$ e sai com $60\ \%$: a concentração de $A$ **triplica** ($80 \to 240$) enquanto a de $B$ cai à metade ($320 \to 160$). É a maior variação entre as cinco versões desta questão nas provas — e é ela que faz o gradiente, e portanto o fluxo difusivo, ser o maior de todos.
+
+</Caixa>
+
+**Passo 3 — os gradientes.**
+
+$$
+\frac{dC_A}{dx} = \frac{240 - 80}{4{,}0} = +40\ \mathrm{mol/m^4}
+\qquad
+\frac{dC_B}{dx} = \frac{160 - 320}{4{,}0} = -40\ \mathrm{mol/m^4}
+$$
+
+**Passo 4 — os fluxos difusivos.**
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx} = -5{,}0\times10^{-2} \times (+40) = -2{,}0\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+J''_B = -5{,}0\times10^{-2} \times (-40) = +2{,}0\ \mathrm{mol/(m^2 s)}
+$$
+
+$J''_A = -J''_B$ ✔ ($C$ constante). E $J''_A$ é **negativo**: $A$ está mais concentrado na saída, então difunde **contra** o escoamento.
+
+**Passo 5 — os fluxos convectivos, na saída.**
+
+$$
+N''_A = C_{A2}\,v = 240 \times 2{,}0 = 480\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_B = C_{B2}\,v = 160 \times 2{,}0 = 320\ \mathrm{mol/(m^2 s)}
+$$
+
+Confira: $480 + 320 = 800 = C\,v = 400 \times 2$ ✔
+
+**Passo 6 — os absolutos.**
+
+$$
+N''_{A,abs} = -2{,}0 + 480 = 478\ \mathrm{mol/(m^2 s)}
+$$
+
+$$
+N''_{B,abs} = +2{,}0 + 320 = 322\ \mathrm{mol/(m^2 s)}
+$$
+
+E a soma dos absolutos continua $800$ ✔ — a difusão apenas **redistribui**, sem alterar o transporte total.
+
+<Caixa tipo="macete" rotulo="As cinco versões desta questão, e o que muda">
+
+| prova | $C$ | $v$ | $L$ | onde | $J''_A$ |
+|---|---|---|---|---|---|
+| 2018.1 · 2ª ch. | $20 \to 5$ | $3{,}0$ ($B$ parada) | $4{,}0$ | meio | $+0{,}31$ |
+| 2022.1 | $200$ | $4{,}0$ | $2{,}0$ | saída | $+1{,}5$ |
+| 2022.1 · 2ª ch. | $400$ | $2{,}0$ | $1{,}0$ | entrada | $-0{,}8$ |
+| **2022.2** | $400$ | $2{,}0$ | $4{,}0$ | saída | $\mathbf{-2{,}0}$ |
+| 2023.2 · 2ª ch. | $500$ | $5{,}0$ | $2{,}0$ | saída | $-0{,}625$ |
+
+O roteiro é sempre o mesmo — frações, concentrações, gradiente, Fick, $C_i v$. As quatro coisas a ler no enunciado: se $C$ é constante, **onde** avaliar, se as espécies têm a mesma velocidade, e se $A$ ganha ou perde concentração (que decide o **sinal**).
+
+Sabendo isso, esta é a questão mais previsível da disciplina — e vale sempre dois pontos ou mais.
+
+</Caixa>
+
+**Conferência —** a fração da saída é de $B$ ✔ os difusivos saem opostos, porque $C$ é constante ✔ o convectivo usa a concentração **da saída** ✔ $J''_A < 0$ é correto, porque $A$ cresce para a frente ✔ os absolutos somam $C\,v = 800$ ✔
+</Passos>

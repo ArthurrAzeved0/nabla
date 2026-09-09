@@ -1,0 +1,246 @@
+---
+origem: "2022.1"
+tema: "Parede composta · Cinco materiais em série e em paralelo"
+temaId: paredes-compostas
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a parede composta apresentada na figura, com fluidos distintos escoando de cada lado.
+
+**Dados:** $T_{\infty,1} = 300\ \mathrm{K}$; $T_{\infty,2} = 500\ \mathrm{K}$; $A_1 = 4{,}0\ \mathrm{m^2}$; $A_2 = 2{,}5\ \mathrm{m^2}$; $A_4 = 1{,}0\ \mathrm{m^2}$; $L_1 = 0{,}2\ \mathrm{m}$; $L_2 = 0{,}4\ \mathrm{m}$; $L_3 = 0{,}5\ \mathrm{m}$; $k_1 = 1{,}0$; $k_2 = 0{,}8$; $k_3 = 1{,}5$; $k_4 = 0{,}7$; $k_5 = 0{,}5\ \mathrm{W/(m\cdot K)}$; $h_A = 1{,}3$; $h_B = 3{,}1\ \mathrm{W/(m^2\cdot K)}$.
+
+Determine:
+
+**a)** (1,5 pts.) O fluxo de calor que passa através da parede.
+
+**b)** (1,0 pt.) As temperaturas $T_1$ e $T_2$.
+
+<Figura>
+  <svg viewBox="0 0 400 216" role="img" aria-label="Parede composta de três camadas: a primeira ocupa toda a área, a segunda é dividida entre os materiais 2 e 3 e a terceira entre os materiais 4 e 5; há convecção com o fluido A à esquerda e com o fluido B à direita">
+    {/* camada 1 */}
+    <rect x="90" y="40" width="40" height="120" fill="var(--accent-soft)" opacity="0.55" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="102" y="96" font-size="10" fill="var(--ink-2)">(1)</text>
+    <text x="94" y="110" font-size="8" fill="var(--ink-3)">k=1,0</text>
+    {/* camada 2: (2) em cima, (3) embaixo */}
+    <rect x="130" y="40" width="80" height="75" fill="var(--line-2)" opacity="0.7" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="158" y="72" font-size="10" fill="var(--ink-2)">(2)</text>
+    <text x="144" y="86" font-size="8" fill="var(--ink-3)">k=0,8 · A=2,5</text>
+    <rect x="130" y="115" width="80" height="45" fill="var(--warn)" opacity="0.28" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="158" y="132" font-size="10" fill="var(--ink-2)">(3)</text>
+    <text x="144" y="146" font-size="8" fill="var(--ink-3)">k=1,5 · A=1,5</text>
+    {/* camada 3: (4) em cima, (5) embaixo */}
+    <rect x="210" y="40" width="100" height="30" fill="var(--warn)" opacity="0.28" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="222" y="59" font-size="10" fill="var(--ink-2)">(4)</text>
+    <text x="240" y="59" font-size="8" fill="var(--ink-3)">k=0,7 · A=1,0</text>
+    <rect x="210" y="70" width="100" height="90" fill="var(--line-2)" opacity="0.7" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="250" y="110" font-size="10" fill="var(--ink-2)">(5)</text>
+    <text x="230" y="124" font-size="8" fill="var(--ink-3)">k=0,5 · A=3,0</text>
+    {/* convecção à esquerda */}
+    <path d="M80 88 Q72 100 80 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M70 82 Q60 100 70 118" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="12" y="90" font-size="9" fill="var(--accent)">h<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = 1,3</tspan></text>
+    <text x="12" y="104" font-size="9" fill="var(--accent)">T∞,1 = 300 K</text>
+    {/* convecção à direita */}
+    <path d="M320 88 Q328 100 320 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M330 82 Q340 100 330 118" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="344" y="90" font-size="9" fill="var(--accent)">h<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 3,1</tspan></text>
+    <text x="344" y="104" font-size="9" fill="var(--accent)">T∞,2 = 500 K</text>
+    {/* faces T1 e T2 */}
+    <circle cx="90" cy="160" r="3" fill="var(--ink-2)"/>
+    <text x="76" y="180" font-size="10" fill="var(--ink-2)">T₁</text>
+    <circle cx="130" cy="160" r="3" fill="var(--ink-2)"/>
+    <text x="124" y="180" font-size="10" fill="var(--ink-2)">T₂</text>
+    {/* cotas */}
+    <line x1="90" y1="196" x2="130" y2="196" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="90,196 97,193 97,199" fill="var(--ok)"/>
+    <polygon points="130,196 123,193 123,199" fill="var(--ok)"/>
+    <text x="86" y="210" font-size="8" fill="var(--ok)">L₁=0,2</text>
+    <line x1="130" y1="196" x2="210" y2="196" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="130,196 137,193 137,199" fill="var(--ok)"/>
+    <polygon points="210,196 203,193 203,199" fill="var(--ok)"/>
+    <text x="150" y="210" font-size="8" fill="var(--ok)">L₂=0,4</text>
+    <line x1="210" y1="196" x2="310" y2="196" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="210,196 217,193 217,199" fill="var(--ok)"/>
+    <polygon points="310,196 303,193 303,199" fill="var(--ok)"/>
+    <text x="238" y="210" font-size="8" fill="var(--ok)">L₃=0,5</text>
+    {/* área total */}
+    <text x="150" y="30" font-size="9" fill="var(--ink-3)">área total da parede: A₁ = 4,0 m²</text>
+  </svg>
+  <figcaption>
+
+As áreas de $(3)$ e de $(5)$ **não** são dadas: saem por diferença, $A_3 = A_1 - A_2$ e $A_5 = A_1 - A_4$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)**
+
+$$
+R_T = R_{convA} + R_1 + R_{eq,1} + R_{eq,2} + R_{convB}
+$$
+
+$$
+R_T = 0{,}1923 + 0{,}05 + 0{,}0941 + 0{,}2273 + 0{,}0806 = 0{,}6443\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{|T_{\infty,2} - T_{\infty,1}|}{R_T} = \frac{200}{0{,}6443} \approx \mathbf{310{,}4\ W}
+$$
+
+fluindo do lado $B$ (500 K) para o lado $A$ (300 K).
+
+**b)**
+
+$$
+T_1 = T_{\infty,1} + q\,R_{convA} = 300 + 310{,}4 \times 0{,}1923 \approx \mathbf{359{,}7\ K}
+$$
+
+$$
+T_2 = T_1 + q\,R_{1} = 359{,}7 + 310{,}4 \times 0{,}05 \approx \mathbf{375{,}2\ K}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas áreas que faltam.** A parede tem área total $A_1 = 4{,}0\ \mathrm{m^2}$, e cada camada dividida reparte essa área entre os seus dois materiais:
+
+$$
+A_3 = A_1 - A_2 = 4{,}0 - 2{,}5 = 1{,}5\ \mathrm{m^2}
+$$
+
+$$
+A_5 = A_1 - A_4 = 4{,}0 - 1{,}0 = 3{,}0\ \mathrm{m^2}
+$$
+
+É o primeiro passo, e sem ele nada anda.
+
+**Passo 2 — montar o circuito.** Lendo a figura da esquerda para a direita:
+
+$$
+\underbrace{h_A}_{\text{convecção}}
+\;\to\;
+\underbrace{(1)}_{\text{série}}
+\;\to\;
+\underbrace{(2)\,\|\,(3)}_{\text{paralelo}}
+\;\to\;
+\underbrace{(4)\,\|\,(5)}_{\text{paralelo}}
+\;\to\;
+\underbrace{h_B}_{\text{convecção}}
+$$
+
+Cinco blocos em série; dois deles são associações em paralelo.
+
+<Caixa tipo="simbolos">
+
+- $R_{conv} = \dfrac{1}{h\,A}$ — nas convecções a área é a da **parede inteira**, $A_1$
+- $R_{cond} = \dfrac{L}{k\,A}$ — na condução, cada material com a **sua** área
+- em **série**: $R_{eq} = \sum R_i$
+- em **paralelo**: $R_{eq} = \dfrac{R_a R_b}{R_a + R_b}$
+
+</Caixa>
+
+**Passo 3 — as duas convecções.**
+
+$$
+R_{convA} = \frac{1}{h_A\,A_1} = \frac{1}{1{,}3 \times 4} = 0{,}1923\ \mathrm{K/W}
+$$
+
+$$
+R_{convB} = \frac{1}{h_B\,A_1} = \frac{1}{3{,}1 \times 4} = 0{,}0806\ \mathrm{K/W}
+$$
+
+**Passo 4 — as cinco conduções.**
+
+$$
+R_1 = \frac{L_1}{k_1 A_1} = \frac{0{,}2}{1{,}0 \times 4{,}0} = 0{,}05
+$$
+
+$$
+R_2 = \frac{L_2}{k_2 A_2} = \frac{0{,}4}{0{,}8 \times 2{,}5} = 0{,}2
+\qquad
+R_3 = \frac{L_2}{k_3 A_3} = \frac{0{,}4}{1{,}5 \times 1{,}5} = 0{,}1778
+$$
+
+$$
+R_4 = \frac{L_3}{k_4 A_4} = \frac{0{,}5}{0{,}7 \times 1{,}0} = 0{,}7143
+\qquad
+R_5 = \frac{L_3}{k_5 A_5} = \frac{0{,}5}{0{,}5 \times 3{,}0} = 0{,}3333
+$$
+
+todos em $\mathrm{K/W}$. Repare que $(2)$ e $(3)$ compartilham a **mesma** espessura $L_2$, e $(4)$ e $(5)$ a mesma $L_3$ — é o que os coloca em paralelo.
+
+**Passo 5 — as duas associações em paralelo.**
+
+$$
+R_{eq,1} = \frac{R_2 R_3}{R_2 + R_3} = \frac{0{,}2 \times 0{,}1778}{0{,}3778} = 0{,}0941\ \mathrm{K/W}
+$$
+
+$$
+R_{eq,2} = \frac{R_4 R_5}{R_4 + R_5} = \frac{0{,}7143 \times 0{,}3333}{1{,}0476} = 0{,}2273\ \mathrm{K/W}
+$$
+
+<Caixa tipo="dica" rotulo="Confira cada paralelo na hora">
+
+$R_{eq}$ em paralelo tem de ser **menor que a menor** das duas: $0{,}0941 < 0{,}1778$ ✔ e $0{,}2273 < 0{,}3333$ ✔. Se saiu maior, a fórmula foi somada em vez de combinada.
+
+</Caixa>
+
+**Passo 6 — o total e o fluxo.**
+
+$$
+R_T = 0{,}1923 + 0{,}05 + 0{,}0941 + 0{,}2273 + 0{,}0806 = 0{,}6443\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{\Delta T}{R_T} = \frac{500 - 300}{0{,}6443} = 310{,}4\ \mathrm{W}
+$$
+
+**O sentido importa:** $T_{\infty,2} = 500\ \mathrm{K}$ é maior que $T_{\infty,1} = 300\ \mathrm{K}$, então o calor entra pelo lado **B** e sai pelo lado **A**. A parede está sendo aquecida pela direita.
+
+**Passo 7 — $T_1$ e $T_2$, item (b).** $T_1$ é a face **esquerda** da camada $(1)$ e $T_2$ a interface entre $(1)$ e a camada dividida. Caminhando **do fluido A para dentro**, contra o fluxo, a temperatura **sobe**:
+
+$$
+T_1 = T_{\infty,1} + q\,R_{convA} = 300 + 310{,}4 \times 0{,}1923 = 300 + 59{,}7 = 359{,}7\ \mathrm{K}
+$$
+
+$$
+T_2 = T_1 + q\,R_1 = 359{,}7 + 310{,}4 \times 0{,}05 = 359{,}7 + 15{,}5 = 375{,}2\ \mathrm{K}
+$$
+
+**Passo 8 — a conferência pelo peso de cada resistência.**
+
+| bloco | $R$ $[\mathrm{K/W}]$ | fração | $\Delta T$ $[\mathrm{K}]$ |
+|---|---|---|---|
+| convecção A | $0{,}1923$ | $29{,}8\ \%$ | $59{,}7$ |
+| camada (1) | $0{,}0500$ | $7{,}8\ \%$ | $15{,}5$ |
+| (2) ‖ (3) | $0{,}0941$ | $14{,}6\ \%$ | $29{,}2$ |
+| (4) ‖ (5) | $0{,}2273$ | $35{,}3\ \%$ | $70{,}6$ |
+| convecção B | $0{,}0806$ | $12{,}5\ \%$ | $25{,}0$ |
+| **total** | $0{,}6443$ | $100\ \%$ | $\mathbf{200{,}0}$ |
+
+A soma das quedas fecha em $200\ \mathrm{K}$ ✔ — é a conferência final do problema.
+
+<Caixa tipo="macete">
+
+Duas armadilhas nesta questão, e são as duas que a banca conta:
+
+1. **as áreas de (3) e (5) não são dadas.** Quem usa $A_1$ para todos os materiais subestima as resistências e erra o $q$ para mais;
+2. **as convecções usam a área total.** É a face inteira da parede que troca com o fluido, não a fração de um material.
+
+</Caixa>
+
+**Conferência —** $A_3$ e $A_5$ por diferença ✔ cada paralelo menor que a sua menor parcela ✔ o calor vai do lado de 500 K para o de 300 K ✔ as quedas somam o $\Delta T$ total ✔
+</Passos>

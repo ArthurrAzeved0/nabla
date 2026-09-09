@@ -1,0 +1,122 @@
+---
+origem: "2025.2"
+tema: "Manometria · Pressão do ar numa tubulação com 4 mm de desnível"
+temaId: manometro-diferencial
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Qual a pressão manométrica dentro de uma tubulação onde circula **ar** se o desnível do nível do mercúrio observado no manômetro de coluna é de $4\ \mathrm{mm}$?
+
+**Dados:** $\rho_{Hg} = 13\,600\ \mathrm{kg/m^3}$; $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 300 200" role="img" aria-label="Tubulação de ar ligada a um manômetro de coluna em U com mercúrio: o mercúrio está mais baixo no ramo ligado ao ar e mais alto no ramo aberto, com desnível de 4 milímetros">
+    {/* tubulação de ar */}
+    <circle cx="60" cy="70" r="34" fill="var(--accent-soft)" opacity="0.5"/>
+    <circle cx="60" cy="70" r="34" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="47" y="74" font-size="11" fill="var(--ink-2)">AR</text>
+    {/* ligação horizontal */}
+    <rect x="94" y="64" width="68" height="12" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* ramo esquerdo do U */}
+    <rect x="150" y="64" width="12" height="86" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* ramo direito, aberto */}
+    <rect x="210" y="40" width="12" height="110" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* base do U */}
+    <rect x="150" y="138" width="72" height="12" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* mercúrio */}
+    <rect x="151" y="122" width="10" height="27" fill="var(--ink-2)"/>
+    <rect x="151" y="139" width="70" height="10" fill="var(--ink-2)"/>
+    <rect x="211" y="96" width="10" height="53" fill="var(--ink-2)"/>
+    <text x="176" y="172" font-size="10" fill="var(--ink-3)">Hg</text>
+    {/* níveis */}
+    <line x1="120" y1="122" x2="246" y2="122" stroke="var(--ok)" stroke-width="1" stroke-dasharray="5 3"/>
+    <text x="88" y="120" font-size="9" fill="var(--ok)">nível ①</text>
+    <line x1="222" y1="96" x2="246" y2="96" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="4 3"/>
+    {/* cota do desnível */}
+    <line x1="256" y1="104" x2="256" y2="114" stroke="var(--accent)" stroke-width="1.2"/>
+    <polygon points="256,96 252,105 260,105" fill="var(--accent)"/>
+    <polygon points="256,122 252,113 260,113" fill="var(--accent)"/>
+    <text x="264" y="112" font-size="10" fill="var(--accent)">4 mm</text>
+    {/* abertura para a atmosfera */}
+    <line x1="216" y1="12" x2="216" y2="26" stroke="var(--warn)" stroke-width="1.2"/>
+    <polygon points="216,34 212,24 220,24" fill="var(--warn)"/>
+    <text x="226" y="24" font-size="10" fill="var(--warn)">p₀</text>
+  </svg>
+  <figcaption>
+
+O ramo aberto está com o mercúrio **mais alto**: sinal de que a tubulação está a uma pressão **acima** da atmosférica. O desnível está fora de escala — 4 mm de verdade seriam quase invisíveis.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+p_{\text{man}} = \rho_{Hg}\,g\,h = 13\,600 \cdot 9{,}81 \cdot 0{,}004 \approx \mathbf{533{,}7\ Pa}
+$$
+
+Ou seja, cerca de $0{,}53\ \mathrm{kPa}$ **acima** da atmosférica — pressão manométrica **positiva**.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que "manométrica" quer dizer.** Pressão manométrica (ou efetiva) é a medida **a partir da atmosférica**:
+
+$$
+p_{\text{man}} = p_{\text{abs}} - p_{0}
+$$
+
+Um manômetro de coluna aberto **já mede isso direto**: como um dos ramos está exposto ao ar, a atmosférica aparece nos dois lados da equação e se cancela. Por isso a resposta sai sem precisar do valor de $p_0$.
+
+**Passo 2 — escolher o nível.** Toma-se o **nível ①** na interface mais baixa do mercúrio (ramo esquerdo). Ele está no mesmo fluido em repouso que o outro ramo, então os dois pontos nesse nível têm a mesma pressão.
+
+**Passo 3 — descer por um lado, subir pelo outro.**
+
+*Pelo ramo da tubulação:*
+
+$$
+p_{①} = p_{\text{ar}} + \underbrace{\rho_{\text{ar}}\,g\,\Delta z}_{\approx\,0}= p_{\text{ar}}
+$$
+
+*Pelo ramo aberto:*
+
+$$
+p_{①} = p_{0} + \rho_{Hg}\,g\,h
+$$
+
+**Passo 4 — igualar e isolar.**
+
+$$
+p_{\text{ar}} = p_{0} + \rho_{Hg}\,g\,h
+\qquad\Longrightarrow\qquad
+p_{\text{ar}} - p_{0} = \rho_{Hg}\,g\,h
+$$
+
+$$
+\boxed{\;p_{\text{man}} = \rho_{Hg}\,g\,h\;}
+$$
+
+**Passo 5 — o número.** Com $h = 4\ \mathrm{mm} = 0{,}004\ \mathrm{m}$:
+
+$$
+p_{\text{man}} = 13\,600 \cdot 9{,}81 \cdot 0{,}004 = 533{,}66\ \mathrm{Pa}
+$$
+
+<Caixa tipo="dica">
+
+A coluna de **ar** entre a tubulação e o mercúrio é desprezada porque $\rho_{\text{ar}} \approx 1{,}2\ \mathrm{kg/m^3}$ contra $13\,600$ do mercúrio: mais de quatro ordens de grandeza. Numa prova, escrever "desprezo a coluna de ar" já vale o passo.
+
+</Caixa>
+
+**Conferência —** o desnível tem de entrar em metros ✔ o sinal sai do lado em que o mercúrio subiu: subiu no ramo **aberto**, então o gás empurrou, e $p_{\text{man}} > 0$ ✔ a resposta não pode depender de $p_0$, porque a pergunta é manométrica ✔
+</Passos>

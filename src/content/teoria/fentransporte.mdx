@@ -1,0 +1,2978 @@
+---
+cadeira: fentransporte
+titulo: "Fenômenos de Transporte"
+unidades:
+  - nome: "Generalidades e propriedades dos fluidos"
+    prova: 1ee
+    secoes:
+      - { id: ft-fluido, titulo: "O que é um fluido: aderência, cisalhamento e a lei de Newton da viscosidade" }
+      - { id: ft-propriedades, titulo: "Massa específica, peso específico, densidade relativa e volume específico" }
+      - { id: ft-viscosidade, titulo: "Viscosidade dinâmica e cinemática" }
+      - { id: ft-classificacao, titulo: "Fluidos newtonianos e não-newtonianos" }
+  - nome: "Estática dos fluidos"
+    prova: 1ee
+    secoes:
+      - { id: ft-pressao, titulo: "Pressão, escalas de medida e carga de pressão" }
+      - { id: ft-stevin, titulo: "Lei de Stevin e lei de Pascal" }
+      - { id: ft-manometros, titulo: "Manômetros e a equação manométrica" }
+      - { id: ft-forca-plana, titulo: "Força em superfície plana submersa e centro de pressão" }
+      - { id: ft-forca-curva, titulo: "Força em superfície curva submersa" }
+      - { id: ft-empuxo, titulo: "Empuxo e equilíbrio de corpos submersos" }
+  - nome: "Cinemática dos fluidos"
+    prova: 1ee
+    secoes:
+      - { id: ft-escoamentos, titulo: "Tipos e regimes de escoamento; número de Reynolds" }
+      - { id: ft-vazao, titulo: "Vazão volumétrica, vazão mássica e velocidade média" }
+      - { id: ft-continuidade, titulo: "Equação da continuidade para regime permanente" }
+  - nome: "Dinâmica dos fluidos: a equação da energia"
+    prova: 2ee
+    secoes:
+      - { id: ft-bernoulli, titulo: "Equação de Bernoulli, carga total e o tubo de Venturi" }
+      - { id: ft-maquina, titulo: "Equação da energia com máquina: bombas e turbinas" }
+      - { id: ft-perdas, titulo: "Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody" }
+      - { id: ft-localizadas, titulo: "Perdas de carga localizadas e comprimento equivalente" }
+  - nome: "Quantidade de movimento e análise"
+    prova: 2ee
+    secoes:
+      - { id: ft-qmov, titulo: "Equação da quantidade de movimento para regime permanente" }
+      - { id: ft-dimensional, titulo: "Análise dimensional, números adimensionais e o teorema dos π" }
+      - { id: ft-semelhanca, titulo: "Semelhança e teoria dos modelos" }
+      - { id: ft-navier, titulo: "Análise diferencial: Navier-Stokes e aplicações" }
+  - nome: "Transferência de calor e de massa"
+    prova: 2ee
+    secoes:
+      - { id: ft-modos, titulo: "Os três modos de transferência de calor" }
+      - { id: ft-fourier, titulo: "Lei de Fourier, condutividade e resistência térmica" }
+      - { id: ft-paredes, titulo: "Condução em paredes compostas e em tubulações" }
+      - { id: ft-esferas, titulo: "Condução em esferas e o raio crítico de isolamento" }
+      - { id: ft-geracao, titulo: "Condução com geração de calor e as condições de contorno" }
+      - { id: ft-conveccao, titulo: "Convecção: natural, forçada e o número de Nusselt" }
+      - { id: ft-massa, titulo: "Fundamentos do transporte de massa" }
+      - { id: ft-fluxos-massa, titulo: "Fluxo difusivo, convectivo e absoluto" }
+
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                       fentransporte.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+<Topico id="ft-fluido" num="01" titulo="O que é um fluido: aderência, cisalhamento e a lei de Newton da viscosidade">
+
+**A ideia.** Em Dinâmica você empurrava blocos: corpos com forma própria, que se deslocam inteiros. Aqui o objeto de estudo **não tem forma própria** e, o que é mais importante, **não para de se deformar** enquanto houver força tangencial sobre ele. Essa única frase é a definição de fluido, e é dela que sai toda a cadeira — inclusive a viscosidade, que é a medida de *quão devagar* essa deformação acontece.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F_t$ — **força tangencial** (paralela à superfície), em newtons ($\mathrm{N}$);
+- $A$ — **área** sobre a qual a força age, em $\mathrm{m^2}$;
+- $\tau = \dfrac{F_t}{A}$ — **tensão de cisalhamento**, em pascals ($\mathrm{Pa} = \mathrm{N/m^2}$);
+- $\dfrac{dv}{dy}$ — **gradiente de velocidade**, em $\mathrm{s^{-1}}$: quanto a velocidade muda por unidade de distância na direção perpendicular ao escoamento;
+- $\mu$ — **viscosidade dinâmica** (ou absoluta), em $\mathrm{Pa \cdot s}$.
+
+</Caixa>
+
+### Sólido para, fluido não
+
+Aplique uma força tangencial **constante** $F_t$ sobre um sólido: ele se deforma até uma posição de equilíbrio e **para**. As tensões internas crescem com a deformação até equilibrarem a força externa.
+
+Aplique a mesma $F_t$ constante sobre um fluido: ele se deforma, e continua se deformando, **indefinidamente**. Não existe posição de equilíbrio estático.
+
+<Caixa tipo="dica">
+
+**Fluido é aquilo que não tem posição de equilíbrio sob força tangencial.** É por isso que "fluido" cobre líquidos *e* gases: a diferença entre eles é o volume (o líquido tem volume definido e superfície livre; o gás se expande até ocupar o recipiente), não o comportamento diante do cisalhamento.
+
+</Caixa>
+
+### Aderência: a condição de contorno de toda a cadeira
+
+<Caixa tipo="macete">
+
+**As partículas de fluido em contato com uma superfície sólida adquirem a velocidade dessa superfície.**
+
+Numa placa que se move com velocidade $v_0$ sobre um fluido:
+
+- o fluido **junto à placa** move-se com $v_0$;
+- o fluido **junto ao fundo parado** tem velocidade **zero**.
+
+Isso não é detalhe: é a condição de contorno que permite calcular tudo. Sem aderência não haveria perfil de velocidade, não haveria cisalhamento e não haveria perda de carga.
+
+</Caixa>
+
+### Tensão de cisalhamento
+
+A força que a placa faz no fluido se distribui pela área de contato. O que interessa é a força **por unidade de área**:
+
+$$
+\tau = \frac{F_t}{A}
+\qquad\Longleftrightarrow\qquad
+F_t = \tau\,A
+$$
+
+Dimensionalmente, $[\tau] = F L^{-2}$ — a mesma dimensão de pressão. A diferença é a direção: pressão age **normal** à superfície, cisalhamento age **tangencial** a ela.
+
+### A lei de Newton da viscosidade
+
+A observação experimental que funda a cadeira: a tensão de cisalhamento é **proporcional ao gradiente de velocidade**.
+
+$$
+\boxed{\;\tau = \mu \,\frac{dv}{dy}\;}
+$$
+
+A constante de proporcionalidade $\mu$ é a **viscosidade dinâmica** — a propriedade que mede a dificuldade de o fluido escoar. Ela depende do fluido e, fortemente, da **temperatura**.
+
+<Caixa tipo="dica" rotulo="O caso linear, que é o que cai na prova">
+
+Quando a folga $\varepsilon$ entre as placas é pequena, admite-se **perfil linear** de velocidades. Aí o gradiente deixa de ser derivada e vira uma razão de números:
+
+$$
+\frac{dv}{dy} = \frac{v_0}{\varepsilon}
+\qquad\Longrightarrow\qquad
+\tau = \mu\,\frac{v_0}{\varepsilon}
+\qquad\Longrightarrow\qquad
+F_t = \mu\,\frac{v_0}{\varepsilon}\,A
+$$
+
+Praticamente toda questão de viscosidade do 1º EE é esta fórmula, com uma das quatro grandezas escondida no enunciado.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a força para arrastar a placa">
+
+Uma placa de $2{,}0\ \mathrm{m^2}$ desliza a $0{,}30\ \mathrm{m/s}$ sobre uma camada de óleo de $2{,}0\ \mathrm{mm}$ de espessura. O óleo tem $\mu = 0{,}10\ \mathrm{Pa \cdot s}$. Qual a força necessária?
+
+Perfil linear, então o gradiente é
+
+$$
+\frac{dv}{dy} = \frac{v_0}{\varepsilon} = \frac{0{,}30}{2{,}0 \times 10^{-3}} = 150\ \mathrm{s^{-1}}
+$$
+
+A tensão de cisalhamento:
+
+$$
+\tau = \mu\,\frac{dv}{dy} = 0{,}10 \times 150 = 15\ \mathrm{Pa}
+$$
+
+E a força:
+
+$$
+F_t = \tau\,A = 15 \times 2{,}0 = 30\ \mathrm{N}
+$$
+
+**Confira as unidades sempre:** $\mathrm{mm}$ virou $\mathrm{m}$ antes da divisão. Esquecer isso multiplica o gradiente por mil — e é o erro mais comum desta conta.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="O sinal e o sentido da tensão">
+
+A tensão que o fluido exerce **na placa** é oposta ao movimento dela (é resistência). A que a placa exerce **no fluido** aponta no sentido do movimento. Em prova, o que se pede quase sempre é o módulo da força necessária para **manter** a placa em movimento uniforme — que é exatamente $F_t = \tau A$, porque em movimento uniforme a resultante é nula.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-propriedades" num="02" titulo="Massa específica, peso específico, densidade relativa e volume específico">
+
+**A ideia.** Quatro grandezas que descrevem "quanto de matéria" há num volume de fluido — e que os enunciados usam de forma intercambiável, de propósito. A prova raramente dá a que você quer: ela dá a densidade relativa e cobra o peso específico, ou dá a viscosidade cinemática e cobra a dinâmica. Saber converter entre elas de cabeça vale mais que decorar as definições.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\rho = \dfrac{m}{V}$ — **massa específica** (ou densidade absoluta), em $\mathrm{kg/m^3}$;
+- $\gamma = \dfrac{G}{V}$ — **peso específico**, em $\mathrm{N/m^3}$, onde $G = mg$ é o **peso**;
+- $d = \dfrac{\rho}{\rho_{ref}}$ — **densidade relativa**, **adimensional**;
+- $v_s = \dfrac{1}{\rho}$ — **volume específico**, em $\mathrm{m^3/kg}$.
+
+</Caixa>
+
+### A ponte entre $\rho$ e $\gamma$
+
+É a única relação que precisa ser memorizada, e sai direto de $G = mg$:
+
+$$
+\gamma = \frac{G}{V} = \frac{m\,g}{V}
+\qquad\Longrightarrow\qquad
+\boxed{\;\gamma = \rho\,g\;}
+$$
+
+<Caixa tipo="dica" rotulo="Os números da água, que aparecem em toda prova">
+
+$$
+\rho_{\text{água}} = 1000\ \mathrm{kg/m^3}
+\qquad\qquad
+\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}
+$$
+
+O segundo valor usa $g = 10\ \mathrm{m/s^2}$, que é o que os enunciados desta cadeira adotam. Com $g = 9{,}81$, seria $9810\ \mathrm{N/m^3}$ — **use o $g$ que o enunciado der**, e não o que você decorou.
+
+</Caixa>
+
+### Densidade relativa: o número sem unidade
+
+Densidade relativa compara o fluido com uma **referência** — água a $4\ ^\circ\mathrm{C}$ para líquidos:
+
+$$
+d = \frac{\rho}{\rho_{\text{água}}} = \frac{\gamma}{\gamma_{\text{água}}}
+$$
+
+As duas razões dão o mesmo número, porque o $g$ cancela. É por isso que o enunciado pode dizer "densidade relativa" ou "peso específico relativo" e estar falando da **mesma** grandeza.
+
+<Caixa tipo="macete">
+
+**Densidade relativa é um fator de multiplicação.** Se o enunciado diz $d = 0{,}8$ para um óleo, então
+
+$$
+\gamma_{\text{óleo}} = 0{,}8 \times \gamma_{\text{água}} = 0{,}8 \times 10\,000 = 8000\ \mathrm{N/m^3}
+$$
+
+E o mercúrio, que aparece em toda questão de manometria, tem $d = 13{,}6$:
+
+$$
+\gamma_{Hg} = 13{,}6 \times 10\,000 = 136\,000\ \mathrm{N/m^3}
+$$
+
+Esse $136\,000$ vai aparecer tantas vezes na cadeira que vale reconhecê-lo de imediato.
+
+</Caixa>
+
+### Compressível ou incompressível
+
+A classificação que decide quais equações você pode usar:
+
+- **incompressível** — $\rho$ não muda com a pressão. É a hipótese para **líquidos** e para a cadeira quase inteira;
+- **compressível** — $\rho$ muda com a pressão. É o caso dos **gases**, e só entra em problemas específicos.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o pulo entre as quatro grandezas">
+
+Um óleo tem densidade relativa $d = 0{,}83$. Com $g = 10\ \mathrm{m/s^2}$, ache $\rho$, $\gamma$ e $v_s$.
+
+$$
+\rho = d \cdot \rho_{\text{água}} = 0{,}83 \times 1000 = 830\ \mathrm{kg/m^3}
+$$
+
+$$
+\gamma = \rho\,g = 830 \times 10 = 8300\ \mathrm{N/m^3}
+$$
+
+$$
+v_s = \frac{1}{\rho} = \frac{1}{830} = 1{,}20 \times 10^{-3}\ \mathrm{m^3/kg}
+$$
+
+Repare que $\gamma$ também sairia de $d \cdot \gamma_{\text{água}} = 0{,}83 \times 10\,000$ — dá o mesmo, e é um caminho mais curto.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-viscosidade" num="03" titulo="Viscosidade dinâmica e cinemática">
+
+**A ideia.** A viscosidade já apareceu como a constante da lei de Newton. Aqui ela ganha uma **segunda versão** — a cinemática —, e é essa dupla que as provas exploram: o enunciado dá $\nu$ (cinemática) e a fórmula do cisalhamento pede $\mu$ (dinâmica). Quem não souber a ponte entre as duas trava numa questão de meio ponto.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\mu$ — **viscosidade dinâmica** (ou absoluta), em $\mathrm{Pa \cdot s}$: a constante da lei de Newton, $\tau = \mu\,dv/dy$;
+- $\nu = \dfrac{\mu}{\rho}$ — **viscosidade cinemática**, em $\mathrm{m^2/s}$;
+- $\rho$ — massa específica, em $\mathrm{kg/m^3}$.
+
+</Caixa>
+
+### A ponte entre as duas
+
+$$
+\boxed{\;\nu = \frac{\mu}{\rho}\;}
+\qquad\Longleftrightarrow\qquad
+\mu = \nu\,\rho
+$$
+
+O nome "cinemática" tem motivo: a unidade $\mathrm{m^2/s}$ não traz massa nem força, só comprimento e tempo — as dimensões da cinemática. E é essa versão que aparece no número de Reynolds, mais adiante na cadeira.
+
+<Caixa tipo="dica" rotulo="As unidades antigas, que ainda aparecem em enunciado">
+
+$$
+1\ \mathrm{poise} = 0{,}1\ \mathrm{Pa \cdot s}
+\qquad\qquad
+1\ \mathrm{stoke} = 10^{-4}\ \mathrm{m^2/s}
+$$
+
+Poise mede a **dinâmica**; stoke, a **cinemática**. Se o enunciado der "centistoke" ($\mathrm{cSt}$), é $10^{-6}\ \mathrm{m^2/s}$ — a viscosidade cinemática da água a $20\ ^\circ\mathrm{C}$ é justamente $1\ \mathrm{cSt}$.
+
+</Caixa>
+
+### Como a temperatura age — e por que líquido e gás são opostos
+
+Esta é a pergunta conceitual mais frequente do 1º EE, e a resposta depende de **de onde vem** a viscosidade em cada caso:
+
+<Caixa tipo="macete">
+
+- Nos **líquidos**, a viscosidade vem das **forças de coesão** entre moléculas. Aquecer afasta as moléculas e enfraquece a coesão → a viscosidade **diminui**;
+- nos **gases**, vem das **colisões** entre moléculas. Aquecer acelera as moléculas e aumenta o número de colisões → a viscosidade **aumenta**.
+
+E, na comparação direta, a viscosidade dinâmica dos **líquidos é muito maior** que a dos gases, porque coesão é um efeito mais forte que colisão.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o caminho que a prova cobra (2023.2)">
+
+Duas placas paralelas a $2\ \mathrm{mm}$ de distância. A superior move-se a $4\ \mathrm{m/s}$, a inferior está fixa, e entre elas há óleo com $\nu = 10^{-5}\ \mathrm{m^2/s}$ e $\rho = 830\ \mathrm{kg/m^3}$.
+
+**a) A viscosidade dinâmica.** É a ponte:
+
+$$
+\mu = \nu\,\rho = 10^{-5} \times 830 = 8{,}3 \times 10^{-3}\ \mathrm{Pa \cdot s}
+$$
+
+**b) A tensão de cisalhamento.** Perfil linear, então $dv/dy = v_0/\varepsilon$:
+
+$$
+\tau = \mu\,\frac{v_0}{\varepsilon} = 8{,}3 \times 10^{-3} \times \frac{4}{2 \times 10^{-3}} = 16{,}6\ \mathrm{Pa}
+$$
+
+Note a estrutura da questão: o item (a) existe **só** para dar o $\mu$ que o item (b) precisa. É o formato clássico desta cadeira.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-classificacao" num="04" titulo="Fluidos newtonianos e não-newtonianos">
+
+**A ideia.** A lei de Newton da viscosidade diz que $\tau$ é **proporcional** a $dv/dy$. Isso é uma hipótese, não uma verdade universal: existem fluidos em que a razão $\tau / (dv/dy)$ **não** é constante. Classificar um fluido é dizer qual é a forma da curva $\tau$ contra $dv/dy$ — e essa curva é o que a prova pede para desenhar ou identificar.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\tau$ — tensão de cisalhamento, em $\mathrm{Pa}$;
+- $dv/dy$ — gradiente de velocidade (taxa de deformação), em $\mathrm{s^{-1}}$;
+- $\mu_{ap} = \dfrac{\tau}{dv/dy}$ — **viscosidade aparente**: a inclinação da reta que liga o ponto à origem;
+- $\tau_0$ — **tensão inicial de escoamento**, dos plásticos de Bingham.
+
+</Caixa>
+
+### Newtoniano: a reta pela origem
+
+$$
+\tau = \mu\,\frac{dv}{dy}
+\qquad \text{com } \mu = \text{constante}
+$$
+
+No diagrama $\tau$ contra $dv/dy$, é uma **reta que passa pela origem**, e a inclinação é $\mu$. Água, ar e óleos lubrificantes são newtonianos — e é essa a hipótese de toda a cadeira, salvo aviso contrário.
+
+### Não-newtoniano: a viscosidade aparente muda
+
+<Caixa tipo="macete" rotulo="Os quatro casos que a prova cobra">
+
+Todos comparados com a reta do newtoniano:
+
+- **pseudoplástico** — a viscosidade aparente **diminui** quando a tensão aumenta. A curva sai da origem e **encurva para baixo** (côncava para baixo). É a maioria dos não-newtonianos: tinta látex, melado, solução de polímero, suspensão coloidal;
+- **dilatante** — a viscosidade aparente **aumenta** com a tensão. A curva **encurva para cima**. Solução de amido, areia movediça — quanto mais rápido você tenta se mover, mais resistência encontra;
+- **plástico de Bingham** (ou plástico ideal) — comporta-se como **sólido** até uma tensão mínima $\tau_0$ e, passada ela, responde linearmente. A reta **não** passa pela origem:
+
+$$
+\tau = \tau_0 + \mu\,\frac{dv}{dy}
+$$
+
+  Pasta de dente, ketchup, maionese, suspensão de argila. É por isso que a pasta não sai do tubo sem um aperto mínimo;
+- **fluido ideal** — modelo teórico **sem viscosidade** ($\mu = 0$, logo $\tau = 0$ sempre). No diagrama, é o **eixo horizontal**. Não existe na natureza, mas é a hipótese que permite usar Bernoulli sem perda de carga.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+**Como identificar no gráfico, sem decorar:** olhe se a curva passa pela origem e como ela encurva.
+
+- reta pela origem → newtoniano;
+- reta que **corta o eixo $\tau$** acima de zero → Bingham;
+- curva côncava **para baixo** → pseudoplástico;
+- curva côncava **para cima** → dilatante;
+- em cima do eixo $dv/dy$ → ideal (sem viscosidade).
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o que a curva diz">
+
+Um fluido tem $\tau = 20\ \mathrm{Pa}$ quando $dv/dy = 100\ \mathrm{s^{-1}}$, e $\tau = 30\ \mathrm{Pa}$ quando $dv/dy = 200\ \mathrm{s^{-1}}$. Newtoniano?
+
+Viscosidades aparentes:
+
+$$
+\mu_{ap,1} = \frac{20}{100} = 0{,}20\ \mathrm{Pa \cdot s}
+\qquad
+\mu_{ap,2} = \frac{30}{200} = 0{,}15\ \mathrm{Pa \cdot s}
+$$
+
+**Não** é newtoniano: a viscosidade aparente caiu quando a tensão subiu — é **pseudoplástico**. (E note que os dois pontos, ligados, dão uma reta que cortaria $\tau = 10\ \mathrm{Pa}$ na origem: se o comportamento for linear a partir de $\tau_0 = 10$, trata-se de um **Bingham**. Dois pontos não distinguem os dois casos — é preciso ver a curva ou um terceiro ponto.)
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-pressao" num="05" titulo="Pressão, escalas de medida e carga de pressão">
+
+**A ideia.** Estática dos fluidos é o estudo do fluido **em repouso**: velocidade nula em todos os pontos e, por consequência, **tensão de cisalhamento nula**. Sem cisalhamento sobra uma única força de superfície — a **pressão**, sempre normal à superfície. Toda esta unidade é a consequência disso.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p = \dfrac{F}{A}$ — **pressão**, em $\mathrm{Pa} = \mathrm{N/m^2}$: força **normal** por unidade de área;
+- $p_{abs}$ — **pressão absoluta**, medida a partir do **vácuo**;
+- $p_{ef}$ — **pressão efetiva** (ou manométrica, ou relativa), medida a partir da **atmosfera**;
+- $p_{atm}$ — pressão atmosférica local ($\approx 101{,}3\ \mathrm{kPa}$ ao nível do mar);
+- $\dfrac{p}{\gamma}$ — **carga de pressão**, em metros de coluna de fluido.
+
+</Caixa>
+
+### Pressão só existe em fluido
+
+O equivalente da pressão num sólido chama-se **tensão normal**. A palavra "pressão" reserva-se a fluidos, e a razão é a do parágrafo de abertura: num fluido em repouso, a força normal é a única que sobra.
+
+<Caixa tipo="dica">
+
+**A pressão num ponto de um fluido em repouso é a mesma em todas as direções.** Ela é uma grandeza **escalar** — não tem direção própria. O que tem direção é a *força* que ela produz, e essa é sempre perpendicular à superfície onde age.
+
+</Caixa>
+
+### As duas escalas, e a soma que as liga
+
+Pressão é sempre medida **em relação a alguma referência**, e há duas em uso:
+
+$$
+\boxed{\;p_{abs} = p_{atm} + p_{ef}\;}
+$$
+
+- **absoluta** — conta do vácuo (zero absoluto) para cima. **Nunca é negativa**;
+- **efetiva** — conta da atmosfera local. **Pode ser negativa**, e aí se diz que há *vácuo parcial* (a pressão está abaixo da atmosférica).
+
+<Caixa tipo="macete">
+
+**Quando o enunciado não diz, é efetiva.** Manômetro mede efetiva — é para isso que ele é calibrado. Se a superfície livre de um reservatório está aberta para a atmosfera, a pressão efetiva ali é **zero**, e é isso que faz as contas de manometria fecharem.
+
+Só troque para absoluta quando o problema pedir explicitamente, ou quando envolver **gás** com lei dos gases (que exige pressão absoluta).
+
+</Caixa>
+
+### Carga de pressão: pressão medida em metros
+
+Divida uma pressão pelo peso específico e o resultado tem dimensão de **comprimento**:
+
+$$
+h = \frac{p}{\gamma}
+$$
+
+Esse $h$ é a **carga de pressão** — a altura da coluna daquele fluido que a pressão $p$ consegue sustentar. É por isso que existem unidades como $\mathrm{mmHg}$ e $\mathrm{mca}$ (metro de coluna de água): elas são pressões **escritas como altura**.
+
+<Caixa tipo="dica" rotulo="As conversões que aparecem em enunciado">
+
+$$
+1\ \mathrm{atm} = 101{,}3\ \mathrm{kPa} = 760\ \mathrm{mmHg} = 10{,}33\ \mathrm{mca}
+$$
+
+O $10{,}33\ \mathrm{mca}$ tem uma leitura física bonita: a atmosfera sustenta uma coluna de água de cerca de dez metros. É o limite teórico de sucção de uma bomba — e a razão de nenhuma bomba conseguir puxar água de um poço muito profundo por sucção.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — pressão no fundo de um recipiente">
+
+Um recipiente de base $0{,}80\ \mathrm{m} \times 0{,}50\ \mathrm{m}$ e altura $0{,}60\ \mathrm{m}$ está cheio de óleo com $d = 0{,}90$. Com $g = 9{,}81\ \mathrm{m/s^2}$, qual a pressão sobre a base?
+
+Primeiro o peso específico, pela densidade relativa:
+
+$$
+\rho = 0{,}90 \times 1000 = 900\ \mathrm{kg/m^3}
+\qquad
+\gamma = \rho\,g = 900 \times 9{,}81 = 8829\ \mathrm{N/m^3}
+$$
+
+A pressão depende **só da altura** (é o que a próxima seção vai formalizar):
+
+$$
+p = \gamma\,h = 8829 \times 0{,}60 = 5297{,}4\ \mathrm{N/m^2}
+$$
+
+**As arestas da base não entraram na conta** — e não é esquecimento. A pressão no fundo não depende da área nem do formato do recipiente, só da coluna de fluido acima. É a pegadinha padrão deste enunciado.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-stevin" num="06" titulo="Lei de Stevin e lei de Pascal">
+
+**A ideia.** Duas leis que parecem próximas e dizem coisas diferentes — e a prova gosta exatamente dessa confusão. **Stevin** governa a variação da pressão na **vertical**; **Pascal** governa a transmissão da pressão para **todos os pontos**. Uma explica por que a pressão cresce com a profundidade; a outra, por que um macaco hidráulico levanta um carro.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p_M,\ p_N$ — pressões em dois pontos do fluido, em $\mathrm{Pa}$;
+- $\gamma$ — peso específico do fluido em repouso, em $\mathrm{N/m^3}$;
+- $\Delta h$ — **diferença de cotas** (vertical) entre os pontos, em $\mathrm{m}$;
+- $p_0$ — pressão na superfície livre, em $\mathrm{Pa}$.
+
+</Caixa>
+
+### Lei de Stevin
+
+> A diferença de pressão entre dois pontos de um fluido em repouso é igual ao produto do peso específico pela diferença de cotas.
+
+$$
+\boxed{\;p_N - p_M = \gamma\,\Delta h\;}
+$$
+
+E, no caso mais comum — superfície livre aberta para a atmosfera, ponto a uma profundidade $h$:
+
+$$
+p = \gamma\,h
+\qquad\text{(efetiva)}
+\qquad\qquad
+p = p_0 + \gamma\,h
+\qquad\text{(com } p_0 \text{ na superfície)}
+$$
+
+<Caixa tipo="macete" rotulo="As cinco consequências que a prova cobra">
+
+1. **Não importa a distância entre os pontos, importa a diferença de cotas.** Dois pontos afastados horizontalmente e na mesma altura têm a mesma pressão;
+2. **pontos no mesmo nível horizontal, no mesmo fluido contínuo, têm a mesma pressão.** É esta que resolve manômetro;
+3. **o formato do recipiente é irrelevante.** Cone, cilindro ou tubo torto: a pressão no fundo é $\gamma h$ com o mesmo $h$;
+4. se a pressão na superfície livre é nula (efetiva), então $p = \gamma h$ na profundidade $h$;
+5. **em gases, a diferença de pressão com a altura pode ser desprezada**, porque $\gamma$ é pequeno. Num manômetro com ar num dos ramos, a coluna de ar não conta.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+A consequência 3 é o **paradoxo hidrostático**, e vale entender por que não é paradoxo: a pressão no fundo depende da altura da coluna, não do peso total do líquido. Um tubo fino de 10 m de água faz no fundo a mesma pressão que uma piscina de 10 m de profundidade.
+
+</Caixa>
+
+### Lei de Pascal
+
+> A pressão aplicada num ponto de um fluido em repouso transmite-se **integralmente** a todos os pontos do fluido.
+
+A aplicação prática é a **prensa hidráulica**: dois êmbolos de áreas diferentes ligados pelo mesmo fluido. A pressão é a mesma nos dois, então
+
+$$
+p_1 = p_2
+\qquad\Longrightarrow\qquad
+\boxed{\;\frac{F_1}{A_1} = \frac{F_2}{A_2}\;}
+$$
+
+<Caixa tipo="dica" rotulo="De onde vem a multiplicação de força">
+
+A força cresce na razão das áreas:
+
+$$
+F_2 = F_1\,\frac{A_2}{A_1}
+$$
+
+Não há energia de graça: o êmbolo grande sobe **menos** na mesma proporção, porque o volume deslocado é o mesmo. É o mesmo compromisso de uma alavanca — força contra deslocamento.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a prensa hidráulica">
+
+Êmbolos de $A_1 = 10\ \mathrm{cm^2}$ e $A_2 = 100\ \mathrm{cm^2}$. Aplicando $F_1 = 200\ \mathrm{N}$ em (1), qual a força em (2)?
+
+A pressão gerada em (1):
+
+$$
+p_1 = \frac{F_1}{A_1} = \frac{200}{10\ \mathrm{cm^2}} = 20\ \mathrm{N/cm^2}
+$$
+
+Por Pascal, essa pressão chega inteira a (2):
+
+$$
+F_2 = p_1\,A_2 = 20 \times 100 = 2000\ \mathrm{N}
+$$
+
+Dez vezes a área, dez vezes a força. Repare que **não foi preciso converter $\mathrm{cm^2}$ para $\mathrm{m^2}$**: como a razão de áreas é adimensional, basta usar a mesma unidade nos dois lados.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Stevin ou Pascal? A pergunta que decide">
+
+- a pressão muda porque **subi ou desci** no fluido → **Stevin** ($\gamma \Delta h$);
+- a pressão é a mesma porque estou **no mesmo nível** ou porque foi **aplicada de fora** → **Pascal**.
+
+Numa frase: **Pascal age em $x$, Stevin age em $y$.**
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-manometros" num="07" titulo="Manômetros e a equação manométrica">
+
+**A ideia.** Aqui a estática deixa de ser conceito e passa a valer 2 pontos de prova. A equação manométrica é uma aplicação repetida de Stevin, feita com **um método mecânico**: caminhar pelo tubo de um ponto ao outro, somando quando desce e subtraindo quando sobe. Quem faz isso com disciplina não erra; quem tenta "ver" a resposta erra o sinal.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p_A,\ p_B$ — pressões nos reservatórios ou pontos de interesse;
+- $\gamma_i$ — peso específico de **cada** fluido atravessado;
+- $h_i$ — desnível **vertical** de cada trecho;
+- fluido manométrico — o líquido do tubo em U, normalmente **mercúrio** ($\gamma = 136\,000\ \mathrm{N/m^3}$).
+
+</Caixa>
+
+### Os instrumentos, e para que serve cada um
+
+- **barômetro** — mede a **pressão atmosférica**. O de mercúrio, de Torricelli (1643): ao nível do mar a coluna sobe $760\ \mathrm{mmHg}$;
+- **manômetro metálico (Bourdon)** — mede pela **deformação** de um tubo metálico. Indica $p_{int} - p_{ext}$, ou seja, pressão **efetiva**;
+- **piezômetro** — tubo de vidro simples ligado ao reservatório; lê-se a carga de pressão direto na altura da coluna, $p = \gamma h$;
+- **manômetro em U** — resolve as três limitações do piezômetro;
+- **manômetro diferencial** — em U mas com os **dois** ramos ligados a reservatórios; mede $p_A - p_B$ quando nenhuma das duas pressões é conhecida.
+
+<Caixa tipo="dica" rotulo="Por que o piezômetro não serve para tudo">
+
+Três limitações, e todas caem em prova conceitual:
+
+1. só serve para **pressões baixas** (senão a coluna fica altíssima);
+2. **não serve para gases** — eles escapam;
+3. **não serve para pressão efetiva negativa** — entraria ar pelo tubo.
+
+O tubo em U com mercúrio resolve as três: o fluido manométrico pesado **encurta a coluna**, e o U impede a entrada de ar.
+
+</Caixa>
+
+### A equação manométrica: o método de caminhar
+
+<Caixa tipo="macete" rotulo="A regra de sinal, que é tudo nesta conta">
+
+Escolha um ponto de partida e caminhe pelo tubo até o destino. Em cada trecho:
+
+- **desceu** no fluido → **soma** $\gamma h$ (a pressão aumenta);
+- **subiu** no fluido → **subtrai** $\gamma h$ (a pressão diminui).
+
+Ao chegar, iguale ao ponto de destino:
+
+$$
+p_A + \sum_{\text{desce}} \gamma_i h_i - \sum_{\text{sobe}} \gamma_j h_j = p_B
+$$
+
+Dois cuidados que valem a questão inteira:
+
+- use o $\gamma$ **do fluido daquele trecho** — trocar o do mercúrio pelo da água é o erro clássico;
+- **ar tem $\gamma$ desprezível**: trecho de gás não entra na soma (consequência 5 de Stevin).
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Antes de caminhar, marque no desenho os **níveis horizontais** dentro de um mesmo fluido contínuo: por Stevin eles têm a mesma pressão. Cada nível marcado é um trecho que você **não** precisa percorrer.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a coluna equivalente">
+
+Um manômetro em U liga dois líquidos que se encontram no mesmo nível. De um lado, fluido com $\gamma_1 = 6000\ \mathrm{N/m^3}$ e coluna $h_1$; do outro, $\gamma_2 = 10\,000\ \mathrm{N/m^3}$ e $h_2 = 5{,}0\ \mathrm{m}$. Qual $h_1$?
+
+No nível de encontro as pressões são iguais:
+
+$$
+\gamma_1 h_1 = \gamma_2 h_2
+\qquad\Longrightarrow\qquad
+h_1 = \frac{10\,000 \times 5{,}0}{6000} = 8{,}33\ \mathrm{m}
+$$
+
+**Leitura física:** o fluido mais leve precisa de uma coluna **mais alta** para fazer a mesma pressão. É por isso que se usa mercúrio como fluido manométrico — para a coluna caber no instrumento.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — achar a densidade de um óleo (prova de 2023.2)">
+
+Um manômetro indica $64\ \mathrm{kPa}$ num sistema com três fluidos: água ($h = 50\ \mathrm{cm}$), óleo ($h = 80\ \mathrm{cm}$) e mercúrio ($h = 46\ \mathrm{cm}$). Com $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$, qual a densidade relativa do óleo?
+
+Igualando as pressões nos dois lados do nível de referência:
+
+$$
+p_{man} + \gamma_{\text{água}}\,h_{\text{água}} = \gamma_{\text{óleo}}\,h_{\text{óleo}} + \gamma_{Hg}\,h_{Hg}
+$$
+
+Escrevendo os pesos específicos como $d \cdot \gamma_{\text{água}}$ e isolando:
+
+$$
+d_{\text{óleo}} = \frac{64 \times 10^3 + 10\,000 \times 0{,}50 - 13{,}6 \times 10\,000 \times 0{,}46}{10\,000 \times 0{,}80} = 0{,}805
+$$
+
+**Confira se o resultado faz sentido:** $d < 1$, como tem de ser para um óleo — ele flutua na água. Se der $d > 1$ num óleo, há erro de sinal no caminho.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-forca-plana" num="08" titulo="Força em superfície plana submersa e centro de pressão">
+
+**A ideia.** A pressão cresce com a profundidade, então a força sobre uma comporta **não** está distribuída por igual: aperta mais embaixo. Essa unidade responde a duas perguntas separadas — **quanto** é a força resultante e **onde** ela age. A primeira resposta é surpreendentemente simples; a segunda é a que derruba prova, porque o ponto de aplicação **não** é o centro de gravidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F$ — **força resultante** das pressões sobre a área, em $\mathrm{N}$;
+- $\bar{h}$ — **profundidade do centro de gravidade** (CG) da área, em $\mathrm{m}$;
+- $\bar{y}$ — distância do **CG** ao eixo onde a superfície corta a superfície livre, medida **ao longo da placa**;
+- $y_{CP}$ — distância do **centro de pressão** (CP) ao mesmo eixo;
+- $A$ — área da superfície submersa, em $\mathrm{m^2}$;
+- $I_{CG}$ — momento de inércia da área em relação ao eixo que passa pelo **CG**;
+- $\theta$ — ângulo da placa com a superfície livre.
+
+</Caixa>
+
+### Quanto: a força resultante
+
+Integrando a pressão sobre a área e reconhecendo a definição de centroide, chega-se a um resultado curto:
+
+$$
+F = \int p\,dA = \gamma \operatorname{sen}\theta \int y\,dA = \gamma \operatorname{sen}\theta\,\bar{y}\,A
+$$
+
+E como $\bar{h} = \bar{y}\operatorname{sen}\theta$:
+
+$$
+\boxed{\;F = \gamma\,\bar{h}\,A = \bar{p}\,A\;}
+$$
+
+<Caixa tipo="macete">
+
+**A força resultante é a pressão no CG multiplicada pela área.** Isso vale para qualquer inclinação e qualquer forma de placa — não precisa integrar nada em prova.
+
+Mas atenção: é a pressão **no CG**, não a pressão média entre topo e fundo (que coincide só quando a placa é retangular e vertical), e não a pressão no CP.
+
+</Caixa>
+
+### Onde: o centro de pressão
+
+O CP é o ponto onde a resultante deveria ser aplicada para produzir **o mesmo momento** que a distribuição real. Igualando os momentos:
+
+$$
+F\,y_{CP} = \gamma \operatorname{sen}\theta \int y^2\,dA = \gamma \operatorname{sen}\theta\,I_0
+\qquad\Longrightarrow\qquad
+y_{CP} = \frac{I_0}{\bar{y}\,A}
+$$
+
+Aplicando o **teorema de Steiner**, $I_0 = I_{CG} + \bar{y}^2 A$:
+
+$$
+\boxed{\;y_{CP} = \bar{y} + \frac{I_{CG}}{\bar{y}\,A}\;}
+$$
+
+<Caixa tipo="dica" rotulo="As duas conclusões que a prova cobra por escrito">
+
+1. **O CP fica sempre ABAIXO do CG** — a parcela $I_{CG}/(\bar{y}A)$ é positiva, sempre. Faz sentido: a pressão é maior embaixo, então o "peso" da distribuição desce o ponto de aplicação;
+2. **quanto mais fundo, mais os dois se aproximam.** Se $\bar{y}$ cresce, a parcela extra encolhe. Numa comporta muito profunda a pressão é quase uniforme, e CP e CG praticamente coincidem.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Momentos de inércia que caem">
+
+Para as formas usuais, em relação ao eixo horizontal pelo CG:
+
+$$
+\text{retângulo } (b \times h): \quad I_{CG} = \frac{b\,h^3}{12}
+\qquad\qquad
+\text{círculo de raio } R: \quad I_{CG} = \frac{\pi R^4}{4}
+$$
+
+$$
+\text{triângulo de base } b \text{ e altura } h: \quad I_{CG} = \frac{b\,h^3}{36}
+$$
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — comporta retangular vertical">
+
+Uma comporta retangular de $b = 2\ \mathrm{m}$ de largura e $h = 3\ \mathrm{m}$ de altura é vertical, com o topo **na** superfície livre da água ($\gamma = 10\,000\ \mathrm{N/m^3}$). Ache $F$ e a profundidade do CP.
+
+**A força.** O CG está no meio da placa, então $\bar{h} = 1{,}5\ \mathrm{m}$ e $A = 6\ \mathrm{m^2}$:
+
+$$
+F = \gamma\,\bar{h}\,A = 10\,000 \times 1{,}5 \times 6 = 90\,000\ \mathrm{N} = 90\ \mathrm{kN}
+$$
+
+**O centro de pressão.** A placa é vertical, então $\bar{y} = \bar{h} = 1{,}5\ \mathrm{m}$, e
+
+$$
+I_{CG} = \frac{b\,h^3}{12} = \frac{2 \times 27}{12} = 4{,}5\ \mathrm{m^4}
+$$
+
+$$
+y_{CP} = \bar{y} + \frac{I_{CG}}{\bar{y}\,A} = 1{,}5 + \frac{4{,}5}{1{,}5 \times 6} = 1{,}5 + 0{,}5 = 2{,}0\ \mathrm{m}
+$$
+
+O CP está a $2\ \mathrm{m}$ de profundidade: **abaixo** do CG (que está a $1{,}5\ \mathrm{m}$), como tinha de ser. E note o resultado clássico: numa placa retangular com o topo na superfície, o CP fica a **dois terços** da altura ($2/3 \times 3 = 2\ \mathrm{m}$).
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Cuidado com o que o enunciado pede">
+
+Duas armadilhas frequentes:
+
+- $y_{CP}$ é medido **ao longo da placa**, a partir da linha onde ela cortaria a superfície livre. Se a placa é **inclinada**, a *profundidade* do CP é $h_{CP} = y_{CP}\operatorname{sen}\theta$ — não confunda os dois;
+- se o topo da placa **não** está na superfície livre, $\bar{y}$ conta desde a superfície livre (não desde o topo da placa). Desenhe e marque a origem antes de aplicar a fórmula.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-forca-curva" num="09" titulo="Força em superfície curva submersa">
+
+**A ideia.** Numa superfície **curva** a pressão continua sempre normal à parede — mas a normal muda de direção ponto a ponto. Somar vetores que giram não dá para fazer com uma fórmula única, então o método é outro: **decompor em duas direções** e tratar cada componente com o que já se sabe. A horizontal cai na seção anterior; a vertical vira um problema de **peso de volume**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F_H$ — **componente horizontal** da força sobre a superfície curva, em $\mathrm{N}$;
+- $F_V$ — **componente vertical**, em $\mathrm{N}$;
+- $A_{proj}$ — **área projetada** da superfície curva num plano vertical, em $\mathrm{m^2}$;
+- $\bar{h}$ — profundidade do CG **da área projetada**;
+- $V$ — volume de líquido **acima** (ou virtualmente acima) da superfície, em $\mathrm{m^3}$;
+- $F_R = \sqrt{F_H^2 + F_V^2}$ — resultante.
+
+</Caixa>
+
+### A componente horizontal: projete e esqueça a curva
+
+$$
+\boxed{\;F_H = \gamma\,\bar{h}\,A_{proj}\;}
+$$
+
+É **a mesma fórmula** da superfície plana, aplicada à **projeção** da superfície curva num plano vertical.
+
+<Caixa tipo="dica">
+
+Por que projetar funciona: a componente horizontal da pressão sobre um pedaço inclinado da parede é a mesma que agiria sobre a sombra vertical daquele pedaço. Ao somar todas as sombras, obtém-se um retângulo plano — e para plano você já tem fórmula.
+
+O ponto de aplicação de $F_H$ também sai da seção anterior: é o CP **da área projetada**.
+
+</Caixa>
+
+### A componente vertical: é peso de líquido
+
+$$
+\boxed{\;F_V = \gamma\,V\;}
+$$
+
+onde $V$ é o volume de líquido **entre a superfície curva e a superfície livre**.
+
+<Caixa tipo="macete" rotulo="O sinal de F_V, que é onde se erra">
+
+Pergunte: **de que lado da parede está o líquido?**
+
+- líquido **acima** da superfície (a parede sustenta o líquido) → $F_V$ aponta para **baixo**, e $V$ é o volume real de líquido ali;
+- líquido **abaixo** da superfície (a parede é empurrada por baixo) → $F_V$ aponta para **cima**, e $V$ é o **volume virtual**: aquele que *estaria* entre a superfície e o nível livre, mesmo que ali não haja líquido.
+
+Nos dois casos o módulo é $\gamma V$. O que muda é o sentido — e é isso que o desenho do enunciado decide.
+
+</Caixa>
+
+### A resultante
+
+$$
+F_R = \sqrt{F_H^2 + F_V^2}
+\qquad\qquad
+\tan\alpha = \frac{F_V}{F_H}
+$$
+
+onde $\alpha$ é o ângulo da resultante com a horizontal.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — comporta em quarto de círculo">
+
+Uma comporta é um quarto de cilindro de raio $R = 2\ \mathrm{m}$ e largura $b = 3\ \mathrm{m}$, com água ($\gamma = 10\,000\ \mathrm{N/m^3}$) apoiada nela e a superfície livre no topo da comporta.
+
+**Horizontal.** A projeção vertical é um retângulo $2\ \mathrm{m} \times 3\ \mathrm{m}$, com CG a $\bar{h} = 1\ \mathrm{m}$:
+
+$$
+F_H = \gamma\,\bar{h}\,A_{proj} = 10\,000 \times 1 \times (2 \times 3) = 60\,000\ \mathrm{N} = 60\ \mathrm{kN}
+$$
+
+**Vertical.** O volume de líquido acima da superfície curva é o quarto de círculo vezes a largura:
+
+$$
+V = \frac{\pi R^2}{4}\,b = \frac{\pi \times 4}{4} \times 3 = 3\pi \approx 9{,}42\ \mathrm{m^3}
+$$
+
+$$
+F_V = \gamma\,V = 10\,000 \times 9{,}42 = 94\,200\ \mathrm{N} \approx 94{,}2\ \mathrm{kN}
+$$
+
+**Resultante:**
+
+$$
+F_R = \sqrt{60^2 + 94{,}2^2} \approx 111{,}7\ \mathrm{kN}
+\qquad
+\tan\alpha = \frac{94{,}2}{60} \Rightarrow \alpha \approx 57{,}5^\circ
+$$
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O roteiro, em quatro passos">
+
+1. **desenhe** a superfície curva e marque de que lado está o líquido;
+2. **projete** num plano vertical → $F_H = \gamma \bar{h} A_{proj}$;
+3. **identifique o volume** (real ou virtual) até a superfície livre → $F_V = \gamma V$;
+4. **componha** com Pitágoras e ache o ângulo.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-empuxo" num="10" titulo="Empuxo e equilíbrio de corpos submersos">
+
+**A ideia.** Empuxo não é uma força nova: é o **resultado líquido** das pressões que o fluido faz na superfície do corpo. Como a pressão cresce com a profundidade, o empurrão de baixo vence o de cima, e sobra uma força para cima. O princípio de Arquimedes é essa conta já resolvida — e ela depende **só do volume deslocado**, não do que há dentro do corpo.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $E$ — **empuxo**, em $\mathrm{N}$;
+- $\gamma_f$ — peso específico do **fluido**, em $\mathrm{N/m^3}$;
+- $V_{des}$ — **volume deslocado**: o volume da parte **submersa** do corpo, em $\mathrm{m^3}$;
+- $G = \gamma_c V_c$ — **peso** do corpo, com $\gamma_c$ o peso específico do corpo;
+- $C$ — **centro de carena**: o centroide do volume deslocado, onde $E$ age.
+
+</Caixa>
+
+### O princípio de Arquimedes
+
+$$
+\boxed{\;E = \gamma_f\,V_{des}\;}
+$$
+
+> Todo corpo imerso num fluido sofre uma força vertical para cima igual ao **peso do fluido deslocado**.
+
+<Caixa tipo="macete" rotulo="Os dois volumes que não são o mesmo">
+
+$V_{des}$ é o volume **submerso**, não o volume do corpo. Eles coincidem só quando o corpo está **totalmente** imerso.
+
+- corpo **totalmente submerso** → $V_{des} = V_c$;
+- corpo **flutuando** → $V_{des} < V_c$, e é justamente a fração submersa que o equilíbrio determina.
+
+Trocar um pelo outro é o erro que mais aparece em prova de empuxo.
+
+</Caixa>
+
+### As três situações
+
+Comparando empuxo com peso, para um corpo **totalmente** imerso:
+
+- $E > G$ (isto é, $\gamma_f > \gamma_c$) → o corpo **sobe** e passa a flutuar;
+- $E = G$ ($\gamma_f = \gamma_c$) → **equilíbrio indiferente**: fica onde for colocado;
+- $E < G$ ($\gamma_f < \gamma_c$) → o corpo **afunda**.
+
+<Caixa tipo="dica" rotulo="A condição de flutuação, e de onde vem a fração submersa">
+
+Um corpo flutuando está em equilíbrio, então $E = G$:
+
+$$
+\gamma_f\,V_{des} = \gamma_c\,V_c
+\qquad\Longrightarrow\qquad
+\boxed{\;\frac{V_{des}}{V_c} = \frac{\gamma_c}{\gamma_f} = \frac{d_c}{d_f}\;}
+$$
+
+**A fração submersa é a razão das densidades.** Um gelo com $d = 0{,}92$ na água tem 92 % do volume submerso — e é daí que vem a imagem do iceberg com um décimo à vista.
+
+</Caixa>
+
+### Peso aparente
+
+Um corpo pendurado numa balança dentro do fluido "pesa" menos:
+
+$$
+G_{ap} = G - E
+$$
+
+É a leitura da balança, e é uma das formas favoritas de o enunciado dar o empuxo sem dizer o nome dele.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o bloco que flutua">
+
+Um bloco de madeira de $0{,}50\ \mathrm{m^3}$ e $d_c = 0{,}70$ flutua em água ($\gamma_f = 10\,000\ \mathrm{N/m^3}$). Que volume fica submerso, e qual o empuxo?
+
+Pela condição de flutuação:
+
+$$
+\frac{V_{des}}{V_c} = \frac{d_c}{d_f} = \frac{0{,}70}{1{,}0} = 0{,}70
+\qquad\Longrightarrow\qquad
+V_{des} = 0{,}70 \times 0{,}50 = 0{,}35\ \mathrm{m^3}
+$$
+
+$$
+E = \gamma_f\,V_{des} = 10\,000 \times 0{,}35 = 3500\ \mathrm{N}
+$$
+
+**Conferência:** o peso do bloco é $G = \gamma_c V_c = 7000 \times 0{,}50 = 3500\ \mathrm{N}$. Igual ao empuxo, como o equilíbrio exige.
+
+</Caixa>
+
+### Estabilidade: onde agem as duas forças
+
+O peso age no **centro de gravidade** ($CG$) do corpo; o empuxo age no **centro de carena** ($C$), que é o centroide da **parte submersa**. Quando o corpo inclina, a parte submersa muda de forma e $C$ **se desloca** — o $CG$ não.
+
+<Caixa tipo="macete" rotulo="O critério do metacentro">
+
+Chamando $M$ o **metacentro** (o ponto onde a linha de ação do empuxo cruza o eixo de simetria do corpo inclinado):
+
+- $M$ **acima** do $CG$ → o par peso–empuxo cria um momento que **desfaz** a inclinação: **estável**;
+- $M$ **abaixo** do $CG$ → o momento **aumenta** a inclinação: **instável**, o corpo tomba;
+- $M$ coincidindo com o $CG$ → equilíbrio indiferente.
+
+É por isso que navio leva lastro no fundo: abaixar o $CG$ é o que garante que ele volte à posição vertical.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-escoamentos" num="11" titulo="Tipos e regimes de escoamento; número de Reynolds">
+
+**A ideia.** Sai o repouso, entra o movimento. Antes de escrever qualquer equação para um fluido escoando é preciso **classificar** o escoamento, porque as hipóteses que você pode usar depois dependem dessa classificação. E o classificador mais importante da cadeira é um número adimensional que compara duas forças: **Reynolds**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v$ — velocidade média do escoamento, em $\mathrm{m/s}$;
+- $D$ — diâmetro interno do conduto, em $\mathrm{m}$;
+- $\rho$ — massa específica, em $\mathrm{kg/m^3}$;
+- $\mu$ — viscosidade dinâmica, em $\mathrm{Pa \cdot s}$;
+- $\nu = \mu/\rho$ — viscosidade cinemática, em $\mathrm{m^2/s}$;
+- $Re$ — **número de Reynolds**, **adimensional**.
+
+</Caixa>
+
+### As classificações que o enunciado usa
+
+<Caixa tipo="dica" rotulo="Quatro pares para arrumar a cabeça">
+
+- **permanente** ou **variado** — as propriedades num ponto **não** mudam com o tempo, ou mudam. A cadeira quase toda é permanente (e é o que "regime permanente" no enunciado quer dizer);
+- **uniforme** ou **não-uniforme** — a velocidade **não** muda de um ponto a outro ao longo do escoamento, ou muda;
+- **incompressível** ou **compressível** — $\rho$ constante ou não;
+- **laminar** ou **turbulento** — é o que Reynolds decide.
+
+</Caixa>
+
+### Trajetória e linha de corrente
+
+- **trajetória** — o caminho percorrido por **uma** partícula ao longo do tempo;
+- **linha de corrente** — a linha **tangente aos vetores velocidade** de várias partículas, num **mesmo instante**.
+
+<Caixa tipo="dica">
+
+Em **regime permanente** as duas coincidem — e é por isso que a distinção parece inútil na prática desta cadeira. Ela existe para o caso variado, e para a pergunta conceitual de prova: *linhas de corrente nunca se cruzam*, porque no ponto de cruzamento a velocidade teria duas direções ao mesmo tempo.
+
+</Caixa>
+
+### Laminar e turbulento: o experimento de Reynolds
+
+Injetando corante num tubo de vidro com água escoando:
+
+- em velocidade baixa, o filete de corante segue **reto**, sem se misturar — as partículas escoam em camadas paralelas. É o **laminar**;
+- aumentando a velocidade, o filete começa a oscilar e depois se **dissolve** por toda a seção. É o **turbulento**, com movimento errático e mistura intensa.
+
+$$
+\boxed{\;Re = \frac{\rho\,v\,D}{\mu} = \frac{v\,D}{\nu}\;}
+$$
+
+<Caixa tipo="macete" rotulo="Os limites para conduto circular">
+
+$$
+Re < 2000 \;\rightarrow\; \textbf{laminar}
+\qquad
+2000 < Re < 4000 \;\rightarrow\; \textbf{transição}
+\qquad
+Re > 4000 \;\rightarrow\; \textbf{turbulento}
+$$
+
+Alguns livros usam $2300$ como o limite crítico único. **Use o valor que o enunciado ou o professor der** — o que não muda é a leitura: Reynolds é a razão entre as **forças de inércia** e as **forças viscosas**.
+
+$Re$ pequeno significa viscosidade dominando (o fluido "se organiza"); $Re$ grande significa inércia dominando (o fluido "se atropela").
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Reynolds é adimensional — e isso se confere">
+
+$$
+[Re] = \frac{(\mathrm{kg/m^3})(\mathrm{m/s})(\mathrm{m})}{\mathrm{Pa \cdot s}} = \frac{\mathrm{kg/(m \cdot s)}}{\mathrm{kg/(m \cdot s)}} = 1
+$$
+
+Se a sua conta de $Re$ sair com unidade, há erro — normalmente $\mathrm{mm}$ que não virou $\mathrm{m}$, ou $\nu$ trocado por $\mu$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — classificar o escoamento">
+
+Água ($\nu = 10^{-6}\ \mathrm{m^2/s}$) escoa a $2\ \mathrm{m/s}$ num tubo de $50\ \mathrm{mm}$ de diâmetro. Laminar ou turbulento?
+
+$$
+Re = \frac{v\,D}{\nu} = \frac{2 \times 0{,}050}{10^{-6}} = 100\,000
+$$
+
+$Re \gg 4000$: **turbulento**. E é o caso da esmagadora maioria dos escoamentos de água em tubulação real — laminar aparece em óleo viscoso, tubo capilar ou velocidade muito baixa.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-vazao" num="12" titulo="Vazão volumétrica, vazão mássica e velocidade média">
+
+**A ideia.** Vazão é a grandeza que amarra a cadeira inteira: ela aparece na continuidade, em Bernoulli, no cálculo de perda de carga e na potência da bomba. E a definição de **velocidade média** é o que permite tratar um perfil de velocidades complicado como se fosse um número só.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $Q$ — **vazão volumétrica**, em $\mathrm{m^3/s}$;
+- $Q_m$ — **vazão mássica**, em $\mathrm{kg/s}$;
+- $A$ — área da **seção transversal** ao escoamento, em $\mathrm{m^2}$;
+- $v$ — **velocidade média** na seção, em $\mathrm{m/s}$;
+- $G$ — vazão em **peso**, em $\mathrm{N/s}$.
+
+</Caixa>
+
+### As três vazões
+
+$$
+\boxed{\;Q = v\,A\;}
+\qquad\qquad
+Q_m = \rho\,Q = \rho\,v\,A
+\qquad\qquad
+G = \gamma\,Q
+$$
+
+<Caixa tipo="dica" rotulo="Qual usar">
+
+- **volumétrica** ($Q$) — é a que o enunciado dá quase sempre, em $\mathrm{L/s}$ ou $\mathrm{m^3/h}$;
+- **mássica** ($Q_m$) — obrigatória quando o fluido é **compressível** ou quando há mistura de fluidos: o que se conserva é massa, não volume;
+- **em peso** ($G$) — aparece em problemas de potência e de balanço de forças.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="As conversões que caem em toda prova">
+
+$$
+1\ \mathrm{m^3} = 1000\ \mathrm{L}
+\qquad\Longrightarrow\qquad
+1\ \mathrm{L/s} = 10^{-3}\ \mathrm{m^3/s}
+$$
+
+$$
+1\ \mathrm{m^3/h} = \frac{1}{3600}\ \mathrm{m^3/s}
+$$
+
+E a área do tubo circular, que é o passo esquecido:
+
+$$
+A = \frac{\pi D^2}{4}
+$$
+
+**Diâmetro, não raio.** Trocar $D$ por $R$ nessa fórmula erra a área por um fator 4 — e é o erro mais comum da cadeira.
+
+</Caixa>
+
+### Velocidade média: a definição que salva a conta
+
+A velocidade **não** é a mesma em todos os pontos da seção: por causa da aderência, ela é zero na parede e máxima no centro. A velocidade média é definida para que a vazão dê certo:
+
+$$
+v = \frac{1}{A}\int_A v_{\text{local}}\,dA
+\qquad\Longleftrightarrow\qquad
+Q = \int_A v_{\text{local}}\,dA = v\,A
+$$
+
+<Caixa tipo="dica" rotulo="A relação com a velocidade máxima">
+
+Para escoamento **laminar** em tubo circular, o perfil é parabólico e vale um resultado exato:
+
+$$
+v = \frac{v_{max}}{2}
+$$
+
+No **turbulento**, o perfil é bem mais "cheio" e a razão fica em torno de $v \approx 0{,}8\,v_{max}$. Se o enunciado der a velocidade **no centro** e pedir a vazão, é esta relação que ele quer.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — vazão num tubo">
+
+Água escoa a $3\ \mathrm{m/s}$ num tubo de $100\ \mathrm{mm}$ de diâmetro. Ache $Q$ em $\mathrm{L/s}$ e $Q_m$.
+
+$$
+A = \frac{\pi D^2}{4} = \frac{\pi (0{,}100)^2}{4} = 7{,}854 \times 10^{-3}\ \mathrm{m^2}
+$$
+
+$$
+Q = v\,A = 3 \times 7{,}854 \times 10^{-3} = 2{,}356 \times 10^{-2}\ \mathrm{m^3/s} = 23{,}6\ \mathrm{L/s}
+$$
+
+$$
+Q_m = \rho\,Q = 1000 \times 2{,}356 \times 10^{-2} = 23{,}6\ \mathrm{kg/s}
+$$
+
+**Coincidência útil:** para água, o número em $\mathrm{L/s}$ é igual ao número em $\mathrm{kg/s}$, porque $\rho = 1\ \mathrm{kg/L}$. Serve de conferência rápida.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-continuidade" num="13" titulo="Equação da continuidade para regime permanente">
+
+**A ideia.** É a conservação da massa escrita para um escoamento. A frase é banal — *o que entra tem de sair* —, mas a consequência não é: se o tubo estreita, o fluido **acelera**. É esse aumento de velocidade que, na próxima unidade, vai fazer a pressão cair (Bernoulli) e explicar o funcionamento de um Venturi.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\rho_1, \rho_2$ — massas específicas nas seções (1) e (2);
+- $v_1, v_2$ — velocidades médias nas seções, em $\mathrm{m/s}$;
+- $A_1, A_2$ — áreas das seções, em $\mathrm{m^2}$;
+- $Q$ — vazão volumétrica, em $\mathrm{m^3/s}$.
+
+</Caixa>
+
+### A forma geral e a que se usa
+
+Em **regime permanente**, a massa que entra por unidade de tempo iguala a que sai:
+
+$$
+\rho_1\,v_1\,A_1 = \rho_2\,v_2\,A_2
+\qquad\Longleftrightarrow\qquad
+Q_{m1} = Q_{m2}
+$$
+
+Para fluido **incompressível** ($\rho_1 = \rho_2$), o $\rho$ cancela:
+
+$$
+\boxed{\;v_1\,A_1 = v_2\,A_2 = Q = \text{constante}\;}
+$$
+
+<Caixa tipo="macete" rotulo="A leitura que resolve a questão">
+
+$$
+\frac{v_2}{v_1} = \frac{A_1}{A_2} = \left(\frac{D_1}{D_2}\right)^2
+$$
+
+**A velocidade varia com o inverso da área — e com o inverso do quadrado do diâmetro.** Metade do diâmetro significa **quatro vezes** a velocidade, não o dobro. Essa potência 2 é a origem de metade dos erros em questões de Venturi e de redução de tubo.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Quando há mais de uma entrada ou saída">
+
+Numa junção (um "tê", uma bifurcação), a conservação vira soma:
+
+$$
+\sum Q_{\text{entra}} = \sum Q_{\text{saem}}
+$$
+
+Ou seja: $Q_1 = Q_2 + Q_3$ para um tubo que se divide em dois. Com $\rho$ variável, a mesma soma vale para $Q_m$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a redução de diâmetro">
+
+Água escoa por um tubo que reduz de $D_1 = 100\ \mathrm{mm}$ para $D_2 = 50\ \mathrm{mm}$. Se $v_1 = 2\ \mathrm{m/s}$, qual $v_2$?
+
+Pela razão dos quadrados dos diâmetros:
+
+$$
+v_2 = v_1\left(\frac{D_1}{D_2}\right)^2 = 2 \times \left(\frac{100}{50}\right)^2 = 2 \times 4 = 8\ \mathrm{m/s}
+$$
+
+**Conferência pela vazão**, que é o teste de sanidade:
+
+$$
+Q_1 = 2 \times \frac{\pi (0{,}1)^2}{4} = 1{,}571 \times 10^{-2}\ \mathrm{m^3/s}
+\qquad
+Q_2 = 8 \times \frac{\pi (0{,}05)^2}{4} = 1{,}571 \times 10^{-2}\ \mathrm{m^3/s}
+$$
+
+Iguais, como tinham de ser.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O fim do 1º EE, e um aviso sobre as provas antigas">
+
+Pelo programa vigente (2026.2), o **1º Exercício Escolar** termina aqui: propriedades, estática e cinemática até a continuidade.
+
+Mas o acervo mostra que **a divisão já foi diferente**: a prova do 1º EE de 2023.2, de outros professores, cobrava Bernoulli e até perdas de carga. Se você estuda por prova antiga, confira o programa do **seu** semestre antes de decidir o que revisar.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-bernoulli" num="14" titulo="Equação de Bernoulli, carga total e o tubo de Venturi">
+
+**A ideia.** Bernoulli é a conservação de energia escrita em **metros**. Cada termo é uma "carga" — uma altura equivalente — e a soma das três é constante ao longo do escoamento de um fluido ideal. A força da equação está em quê ela permite: sabendo a geometria (pela continuidade), você descobre a **pressão** sem saber nada sobre a força que empurra o fluido.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $z$ — **carga de posição** (cota), em $\mathrm{m}$: a altura do ponto em relação a um plano de referência;
+- $\dfrac{p}{\gamma}$ — **carga de pressão**, em $\mathrm{m}$;
+- $\dfrac{v^2}{2g}$ — **carga cinética** (ou de velocidade), em $\mathrm{m}$;
+- $H$ — **carga total**, a soma das três, em $\mathrm{m}$;
+- $g$ — aceleração da gravidade, em $\mathrm{m/s^2}$.
+
+</Caixa>
+
+### A equação
+
+$$
+\boxed{\;z_1 + \frac{p_1}{\gamma} + \frac{v_1^2}{2g} \;=\; z_2 + \frac{p_2}{\gamma} + \frac{v_2^2}{2g} \;=\; H\;}
+$$
+
+<Caixa tipo="dica" rotulo="As hipóteses — que a prova cobra por escrito">
+
+Bernoulli nesta forma vale para escoamento:
+
+1. **permanente**;
+2. **incompressível** ($\gamma$ constante);
+3. **sem atrito** (fluido ideal, **sem perda de carga**);
+4. **sem máquina** (nada de bomba ou turbina no trecho);
+5. ao longo de **uma mesma linha de corrente**.
+
+Cada hipótese quebrada acrescenta um termo à equação — e as duas próximas seções são exatamente sobre isso: máquina (4) e atrito (3).
+
+</Caixa>
+
+### Por que "todos os termos em metros"
+
+Dividir a energia pelo peso do fluido transforma joules em metros:
+
+$$
+\frac{\text{energia}}{\text{peso}} = \frac{\mathrm{J}}{\mathrm{N}} = \frac{\mathrm{N \cdot m}}{\mathrm{N}} = \mathrm{m}
+$$
+
+<Caixa tipo="macete" rotulo="O uso mais frequente: dois termos somem">
+
+Quase toda questão elimina termos antes de calcular:
+
+- **tubo horizontal** → $z_1 = z_2$, e a cota sai dos dois lados;
+- **reservatório grande e aberto** → na superfície, $v \approx 0$ (o nível baixa devagar) e $p = 0$ (efetiva, aberto à atmosfera). Sobra só $z$;
+- **jato livre na saída** → $p = 0$ (efetiva), porque o jato está na atmosfera.
+
+Aplicando as duas últimas a um reservatório com orifício, sobra $z_1 = v_2^2/2g$, isto é o **teorema de Torricelli**:
+
+$$
+v = \sqrt{2\,g\,h}
+$$
+
+</Caixa>
+
+### O tubo de Venturi
+
+É a aplicação clássica, e cai em prova em toda variação possível. Um estrangulamento na tubulação: pela **continuidade** a velocidade aumenta na garganta; por **Bernoulli**, se a carga cinética cresce e a cota não muda, a **carga de pressão tem de cair**.
+
+$$
+\frac{p_1 - p_2}{\gamma} = \frac{v_2^2 - v_1^2}{2g}
+$$
+
+Medindo o desnível num manômetro diferencial ligado entre (1) e (2), obtém-se a vazão — é assim que um Venturi funciona como **medidor**.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — Venturi com manômetro de mercúrio (prova de 2023.2)">
+
+Água ($\gamma = 10\,000\ \mathrm{N/m^3}$) escoa por um Venturi com $A_1 = 20\ \mathrm{cm^2}$ e garganta $A_2 = 10\ \mathrm{cm^2}$. A vazão é $Q = 5{,}8\ \mathrm{L/s}$ e o manômetro é de mercúrio ($\gamma_{Hg} = 136\,000\ \mathrm{N/m^3}$). Qual o desnível $h$?
+
+**Velocidades, pela continuidade:**
+
+$$
+v_1 = \frac{Q}{A_1} = \frac{5{,}8 \times 10^{-3}}{20 \times 10^{-4}} = 2{,}9\ \mathrm{m/s}
+\qquad
+v_2 = \frac{5{,}8 \times 10^{-3}}{10 \times 10^{-4}} = 5{,}8\ \mathrm{m/s}
+$$
+
+**Bernoulli** com $z_1 = z_2$, para achar a diferença de pressão:
+
+$$
+\frac{p_1 - p_2}{\gamma} = \frac{v_2^2 - v_1^2}{2g} = \frac{5{,}8^2 - 2{,}9^2}{2 \times 10} = \frac{33{,}64 - 8{,}41}{20} = 1{,}2615\ \mathrm{m}
+$$
+
+$$
+p_1 - p_2 = 10\,000 \times 1{,}2615 = 12\,615\ \mathrm{Pa}
+$$
+
+**Manometria** para converter em desnível — o mercúrio sobe de um lado e a água desce do outro:
+
+$$
+p_1 - p_2 = h\,(\gamma_{Hg} - \gamma_{\text{água}}) = h \times 126\,000
+$$
+
+$$
+h = \frac{12\,615}{126\,000} = 0{,}100\ \mathrm{m} = 10{,}0\ \mathrm{cm}
+$$
+
+**Note a estrutura:** continuidade → Bernoulli → manometria. É a espinha da questão de 2 pontos desta unidade, e as três seções anteriores entram todas.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-maquina" num="15" titulo="Equação da energia com máquina: bombas e turbinas">
+
+**A ideia.** Bernoulli puro só serve a um mundo sem atrito e sem máquinas. A equação da energia **real** acrescenta dois termos: o que a **máquina** entrega ou retira, e o que o **atrito** dissipa. Com esses dois termos a equação deixa de ser exercício e passa a dimensionar bomba de verdade — que é o que a prova pede quando fala em "potência requerida".
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $H_M$ — **carga da máquina**, em $\mathrm{m}$: energia por unidade de peso que a máquina entrega ($>0$, bomba) ou retira ($<0$, turbina);
+- $H_{p_{1,2}}$ — **perda de carga** entre (1) e (2), em $\mathrm{m}$ — sempre positiva;
+- $N$ — **potência**, em $\mathrm{W}$;
+- $\eta$ — **rendimento** da máquina, adimensional (entre 0 e 1);
+- $\gamma,\ Q$ — peso específico e vazão.
+
+</Caixa>
+
+### A equação completa
+
+$$
+\boxed{\;z_1 + \frac{p_1}{\gamma} + \frac{v_1^2}{2g} + H_M \;=\; z_2 + \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + H_{p_{1,2}}\;}
+$$
+
+Lê-se: **a carga em (1), mais o que a máquina põe, é a carga em (2) mais o que o atrito comeu.**
+
+<Caixa tipo="macete" rotulo="O sinal de H_M, que decide a questão">
+
+- **bomba** → entrega energia ao fluido → $H_M > 0$. Costuma-se escrever $H_B$;
+- **turbina** → retira energia do fluido → $H_M < 0$. Costuma-se escrever $-H_T$.
+
+Se você isolar $H_M$ e o resultado sair **negativo** num problema de bomba, o erro está na ordem dos pontos (1) e (2): o ponto (1) tem de ser **antes** da máquina, no sentido do escoamento.
+
+</Caixa>
+
+### Potência: três versões da mesma fórmula
+
+A potência **útil**, transferida ao fluido:
+
+$$
+N_{\text{útil}} = \gamma\,Q\,H_M
+$$
+
+Máquina real tem perdas internas, e aí entra o rendimento:
+
+$$
+\boxed{\;N_{\text{bomba}} = \frac{\gamma\,Q\,H_B}{\eta}\;}
+\qquad\qquad
+N_{\text{turbina}} = \eta\,\gamma\,Q\,H_T
+$$
+
+<Caixa tipo="dica" rotulo="Por que o rendimento divide numa e multiplica na outra">
+
+Pense em **onde está a perda**:
+
+- na **bomba**, você paga energia elétrica no eixo e só parte dela chega ao fluido. A potência **consumida** é maior que a útil → **divide** por $\eta$;
+- na **turbina**, o fluido entrega energia e só parte dela sai como potência de eixo. A potência **obtida** é menor que a retirada → **multiplica** por $\eta$.
+
+Regra prática: o rendimento sempre **piora** o resultado para quem paga a conta.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Unidades de potência que aparecem">
+
+$$
+1\ \mathrm{CV} = 735{,}5\ \mathrm{W}
+\qquad\qquad
+1\ \mathrm{HP} = 745{,}7\ \mathrm{W}
+\qquad\qquad
+1\ \mathrm{kW} = 1000\ \mathrm{W}
+$$
+
+Enunciado de hidráulica gosta de $\mathrm{CV}$; confira o que ele pede antes de responder.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — dimensionar a bomba">
+
+Uma bomba eleva água ($\gamma = 10\,000\ \mathrm{N/m^3}$) de um reservatório para outro $20\ \mathrm{m}$ acima, com $Q = 10\ \mathrm{L/s}$. A perda de carga total é $H_p = 4\ \mathrm{m}$ e o rendimento é $\eta = 0{,}75$. Qual a potência da bomba, em CV?
+
+**A carga da bomba.** Tomando (1) e (2) nas duas superfícies livres, onde $v \approx 0$ e $p = 0$:
+
+$$
+z_1 + H_B = z_2 + H_p
+\qquad\Longrightarrow\qquad
+H_B = (z_2 - z_1) + H_p = 20 + 4 = 24\ \mathrm{m}
+$$
+
+**A potência:**
+
+$$
+N = \frac{\gamma\,Q\,H_B}{\eta} = \frac{10\,000 \times 10 \times 10^{-3} \times 24}{0{,}75} = 3200\ \mathrm{W}
+$$
+
+$$
+N = \frac{3200}{735{,}5} = 4{,}35\ \mathrm{CV}
+$$
+
+**Leitura:** dos $24\ \mathrm{m}$ de carga, $20$ são o desnível que precisava ser vencido e $4$ foram desperdiçados no atrito. Se a tubulação fosse mais larga, a perda cairia e a bomba seria menor — é esse o compromisso de todo projeto hidráulico.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-perdas" num="16" titulo="Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody">
+
+**A ideia.** O termo $H_p$ da seção anterior apareceu como um número dado. Aqui ele é **calculado**. A perda de carga tem duas origens: o atrito ao longo do tubo reto (**distribuída**) e as singularidades como curvas e válvulas (**localizada**, próxima seção). A distribuída é governada por uma fórmula única, e a dificuldade toda está em achar **um** coeficiente: o fator de atrito.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $H_f$ — **perda de carga distribuída**, em $\mathrm{m}$;
+- $f$ — **fator de atrito**, adimensional;
+- $L$ — comprimento do trecho reto, em $\mathrm{m}$;
+- $D$ — diâmetro interno, em $\mathrm{m}$;
+- $v$ — velocidade média, em $\mathrm{m/s}$;
+- $\varepsilon$ — **rugosidade absoluta** da parede, em $\mathrm{m}$;
+- $\varepsilon/D$ — **rugosidade relativa**, adimensional.
+
+</Caixa>
+
+### A fórmula universal
+
+$$
+\boxed{\;H_f = f\,\frac{L}{D}\,\frac{v^2}{2g}\;}
+$$
+
+<Caixa tipo="dica" rotulo="O que a fórmula diz antes de qualquer conta">
+
+- a perda é **proporcional ao comprimento** — dobrar o tubo dobra a perda;
+- é **proporcional ao quadrado da velocidade** — dobrar a vazão **quadruplica** a perda;
+- é **inversamente proporcional ao diâmetro**, e o efeito é ainda mais forte do que parece: se $D$ dobra, $v$ cai a um quarto (continuidade), então $H_f$ cai por um fator $2 \times 16 = 32$.
+
+É por isso que engrossar o tubo é o remédio mais eficaz contra perda de carga — e o mais caro.
+
+</Caixa>
+
+### Como achar $f$
+
+<Caixa tipo="macete" rotulo="Laminar tem fórmula exata; turbulento precisa de Moody">
+
+**Se $Re < 2000$ (laminar):**
+
+$$
+f = \frac{64}{Re}
+$$
+
+Substituindo na fórmula universal, chega-se à equação de **Hagen-Poiseuille**, em que a perda é proporcional à **primeira** potência da velocidade:
+
+$$
+H_f = \frac{32\,\mu\,L\,v}{\gamma\,D^2}
+$$
+
+**Se $Re > 4000$ (turbulento):** $f$ depende de $Re$ **e** da rugosidade relativa $\varepsilon/D$, e se obtém no **diagrama de Moody** — ou pela equação de Colebrook-White, que é implícita em $f$:
+
+$$
+\frac{1}{\sqrt{f}} = -2\log\left(\frac{\varepsilon/D}{3{,}7} + \frac{2{,}51}{Re\sqrt{f}}\right)
+$$
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Como ler o diagrama de Moody">
+
+1. calcule $Re$ (entra no **eixo horizontal**);
+2. calcule $\varepsilon/D$ (escolhe a **curva**);
+3. leia $f$ no **eixo vertical**, no cruzamento.
+
+Duas regiões valem nome:
+
+- **tubo liso** — a curva de baixo; $f$ depende só de $Re$;
+- **turbulência completa** — à direita, as curvas ficam **horizontais**: $f$ depende só de $\varepsilon/D$ e **não** muda mais com $Re$. Se o seu $Re$ é muito alto, nem precisa de precisão nele.
+
+</Caixa>
+
+### A fórmula de Hazen-Williams
+
+Em hidráulica de água a fórmula empírica de Hazen-Williams aparece com frequência (é a preferida em projeto de redes):
+
+$$
+H_f = 10{,}65\,\frac{Q^{1,85}}{C^{1,85}\,D^{4,87}}\,L
+$$
+
+com $C$ o coeficiente de Hazen-Williams (depende do material: $\approx 130$ para PVC, $\approx 100$ para ferro fundido usado). **Só vale para água** em regime turbulento — não é universal como Darcy.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — perda num trecho reto">
+
+Água ($\nu = 10^{-6}\ \mathrm{m^2/s}$) escoa a $2\ \mathrm{m/s}$ por $500\ \mathrm{m}$ de tubo de $100\ \mathrm{mm}$, com $f = 0{,}02$. Qual a perda de carga?
+
+$$
+H_f = f\,\frac{L}{D}\,\frac{v^2}{2g} = 0{,}02 \times \frac{500}{0{,}100} \times \frac{2^2}{2 \times 10}
+$$
+
+$$
+H_f = 0{,}02 \times 5000 \times 0{,}2 = 20\ \mathrm{m}
+$$
+
+**Vinte metros de coluna de água perdidos só em atrito** — é mais que o desnível de muitas instalações, e mostra por que a perda de carga não é um detalhe do projeto: é o projeto.
+
+Conferindo o regime: $Re = 2 \times 0{,}1/10^{-6} = 2 \times 10^5$, turbulento, coerente com $f$ dado em vez de calculado.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-localizadas" num="17" titulo="Perdas de carga localizadas e comprimento equivalente">
+
+**A ideia.** Cada curva, válvula, registro ou mudança de seção obriga o fluido a **mudar de direção ou de velocidade** bruscamente, e isso gera turbilhonamento — energia que vira calor. Numa instalação curta e cheia de conexões, essas perdas "pontuais" podem passar a distribuída. Há dois métodos para contabilizá-las, e a prova pede saber os dois.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $H_L$ — **perda de carga localizada**, em $\mathrm{m}$;
+- $K$ — **coeficiente de perda localizada** da peça, adimensional (tabelado);
+- $L_{eq}$ — **comprimento equivalente**: o comprimento de tubo reto que causaria a mesma perda, em $\mathrm{m}$;
+- $H_{p_{total}}$ — perda de carga total, em $\mathrm{m}$.
+
+</Caixa>
+
+### Método 1 — o coeficiente $K$
+
+$$
+\boxed{\;H_L = K\,\frac{v^2}{2g}\;}
+$$
+
+Cada peça tem seu $K$, tabelado. Some as perdas de todas:
+
+$$
+H_L = \left(\sum K_i\right)\frac{v^2}{2g}
+$$
+
+<Caixa tipo="dica" rotulo="Valores de K que aparecem em enunciado">
+
+| peça | $K$ aproximado |
+|---|---|
+| curva de 90° (joelho) | $0{,}9$ |
+| curva de 45° | $0{,}4$ |
+| registro de gaveta **aberto** | $0{,}2$ |
+| registro de globo aberto | $10$ |
+| válvula de pé com crivo | $1{,}75$ |
+| entrada de borda (reservatório → tubo) | $0{,}5$ |
+| saída de tubo (tubo → reservatório) | $1{,}0$ |
+
+O registro de globo com $K = 10$ é a razão de ele ser usado para **controlar** vazão, e o de gaveta, com $K = 0{,}2$, para apenas **abrir e fechar**.
+
+</Caixa>
+
+### Método 2 — o comprimento equivalente
+
+Trocar cada peça por um trecho de tubo reto que perderia o mesmo:
+
+$$
+L_{eq} = K\,\frac{D}{f}
+$$
+
+Aí a perda total sai de **uma única** aplicação de Darcy, com o comprimento somado:
+
+$$
+\boxed{\;H_{p_{total}} = f\,\frac{L_{real} + \sum L_{eq}}{D}\,\frac{v^2}{2g}\;}
+$$
+
+<Caixa tipo="macete" rotulo="Qual método usar">
+
+- **coeficiente $K$** — quando o enunciado der uma lista de $K$;
+- **comprimento equivalente** — quando der uma tabela de $L_{eq}$ (comum em hidráulica), ou quando o tubo tiver **um só diâmetro**, porque aí uma conta resolve tudo.
+
+Os dois dão o mesmo resultado. **Não some os dois métodos** para a mesma peça — é contar a perda duas vezes, e é um erro que aparece.
+
+</Caixa>
+
+### A perda total, e quando desprezar as localizadas
+
+$$
+H_{p_{total}} = H_f + H_L
+$$
+
+<Caixa tipo="dica">
+
+Chama-se **instalação longa** aquela em que $L/D > 4000$ — nela as localizadas costumam representar menos de 5 % do total e podem ser desprezadas (o enunciado normalmente autoriza). Em instalação **curta**, como o recalque de uma casa, desprezá-las erra o dimensionamento da bomba.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — os dois métodos dando o mesmo">
+
+Tubo de $D = 100\ \mathrm{mm}$, $f = 0{,}02$, $v = 2\ \mathrm{m/s}$, com **dois** joelhos de 90° ($K = 0{,}9$ cada).
+
+**Por $K$:**
+
+$$
+H_L = \left(\sum K\right)\frac{v^2}{2g} = 1{,}8 \times \frac{4}{20} = 0{,}36\ \mathrm{m}
+$$
+
+**Por comprimento equivalente:**
+
+$$
+L_{eq} = K\,\frac{D}{f} = 0{,}9 \times \frac{0{,}100}{0{,}02} = 4{,}5\ \mathrm{m} \text{ por joelho} \;\Rightarrow\; 9{,}0\ \mathrm{m}
+$$
+
+$$
+H_L = f\,\frac{\sum L_{eq}}{D}\,\frac{v^2}{2g} = 0{,}02 \times \frac{9{,}0}{0{,}100} \times 0{,}2 = 0{,}36\ \mathrm{m}
+$$
+
+Idênticos, como tinham de ser — os métodos são a mesma conta reorganizada. E a leitura prática é boa: **cada joelho de 90° custa 4,5 m de tubo reto.**
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-qmov" num="18" titulo="Equação da quantidade de movimento para regime permanente">
+
+**A ideia.** Continuidade é massa, Bernoulli é energia — falta a **segunda lei de Newton** escrita para um escoamento. Ela responde à pergunta que as outras duas não respondem: **qual força o fluido faz na estrutura?** É o que dimensiona o bloco de ancoragem de uma curva, a força num jato contra uma pá e o esforço num redutor de tubulação.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\vec{F}_R$ — **resultante** das forças externas sobre o volume de controle, em $\mathrm{N}$;
+- $Q_m = \rho\,Q$ — vazão mássica, em $\mathrm{kg/s}$;
+- $\vec{v}_1,\ \vec{v}_2$ — velocidades **médias** na entrada e na saída, em $\mathrm{m/s}$;
+- volume de controle — a região do espaço que se escolhe para analisar.
+
+</Caixa>
+
+### A equação
+
+Para regime permanente, uma entrada e uma saída:
+
+$$
+\boxed{\;\vec{F}_R = Q_m\,(\vec{v}_2 - \vec{v}_1) = \rho\,Q\,(\vec{v}_2 - \vec{v}_1)\;}
+$$
+
+Em componentes, que é como se usa:
+
+$$
+F_{Rx} = \rho\,Q\,(v_{2x} - v_{1x})
+\qquad\qquad
+F_{Ry} = \rho\,Q\,(v_{2y} - v_{1y})
+$$
+
+<Caixa tipo="macete" rotulo="É equação VETORIAL — e é aí que se erra">
+
+Continuidade e Bernoulli são escalares; esta **não é**. Três consequências práticas:
+
+1. **projete em eixos** e resolva uma equação por eixo;
+2. **o sinal da velocidade importa**: fluido entrando para a direita e saindo para a esquerda tem $v_{1x} > 0$ e $v_{2x} < 0$;
+3. uma curva de 180° **não** tem variação nula de quantidade de movimento — tem o **dobro**, porque o vetor inverteu.
+
+</Caixa>
+
+### O que entra em $\vec{F}_R$
+
+A resultante inclui **todas** as forças externas ao volume de controle:
+
+$$
+\vec{F}_R = \vec{F}_{p_1} + \vec{F}_{p_2} + \vec{G} + \vec{F}_{est}
+$$
+
+- $\vec{F}_{p} = p\,A$ — forças de **pressão** nas seções de entrada e saída (use pressão **efetiva**);
+- $\vec{G}$ — **peso** do fluido no volume de controle;
+- $\vec{F}_{est}$ — a força que a **estrutura** faz no fluido. É a incógnita.
+
+<Caixa tipo="dica" rotulo="A pergunta invertida">
+
+O enunciado quase nunca pede a força da *estrutura no fluido* — pede a do **fluido na estrutura**. Pela terceira lei de Newton, é a mesma com o **sinal trocado**. Responder sem inverter é perder a questão tendo feito toda a conta certa.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — jato horizontal contra placa plana">
+
+Um jato de água ($\rho = 1000\ \mathrm{kg/m^3}$) de $A = 10\ \mathrm{cm^2}$ e $v = 20\ \mathrm{m/s}$ atinge perpendicularmente uma placa fixa, espalhando-se lateralmente. Qual a força sobre a placa?
+
+$$
+Q = v\,A = 20 \times 10 \times 10^{-4} = 0{,}02\ \mathrm{m^3/s}
+\qquad
+Q_m = \rho\,Q = 20\ \mathrm{kg/s}
+$$
+
+No eixo $x$ (direção do jato), a saída não tem componente nessa direção ($v_{2x} = 0$):
+
+$$
+F_{Rx} = \rho\,Q\,(0 - 20) = -400\ \mathrm{N}
+$$
+
+A placa faz $400\ \mathrm{N}$ **contra** o jato; logo o jato empurra a placa com $400\ \mathrm{N}$ **no sentido do escoamento**.
+
+**Um caso que vale reconhecer:** para jato contra placa plana, $F = \rho Q v = \rho A v^2$. Se a placa fosse uma **concha** que inverte o jato, a força seria o **dobro**.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Roteiro">
+
+1. **desenhe o volume de controle** cortando entrada e saída;
+2. **escolha os eixos** e marque os sinais das velocidades;
+3. **liste as forças**: pressão nas seções, peso, força da estrutura;
+4. **escreva uma equação por eixo** e resolva para a incógnita;
+5. **inverta o sinal** se o que se pede é a força no sólido.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-dimensional" num="19" titulo="Análise dimensional, números adimensionais e o teorema dos π">
+
+**A ideia.** Alguns problemas de fluidos têm variáveis demais para resolver analiticamente e caro demais para testar em tamanho real. A análise dimensional é a ferramenta que **reduz o número de variáveis** antes de qualquer experimento: em vez de estudar sete grandezas separadas, estuda-se um punhado de **grupos adimensionais**. É o que permite ensaiar um modelo pequeno e extrapolar para a obra.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $[M], [L], [T]$ — **dimensões primárias**: massa, comprimento, tempo (e $[\Theta]$ para temperatura);
+- $n$ — número de **variáveis** do problema;
+- $k$ — número de **dimensões primárias** envolvidas;
+- $n - k$ — número de **grupos adimensionais** independentes ($\pi$);
+- $Re, Fr, Eu, Ma, We$ — os adimensionais clássicos.
+
+</Caixa>
+
+### Dimensões das grandezas usuais
+
+<Caixa tipo="dica" rotulo="A tabela que resolve qualquer equação dimensional">
+
+$$
+[v] = LT^{-1}
+\qquad
+[a] = LT^{-2}
+\qquad
+[F] = MLT^{-2}
+\qquad
+[\rho] = ML^{-3}
+$$
+
+$$
+[p] = [\tau] = ML^{-1}T^{-2}
+\qquad
+[\mu] = ML^{-1}T^{-1}
+\qquad
+[\nu] = L^{2}T^{-1}
+\qquad
+[Q] = L^{3}T^{-1}
+$$
+
+$$
+[\gamma] = ML^{-2}T^{-2}
+\qquad
+[\text{energia}] = ML^{2}T^{-2}
+\qquad
+[\text{potência}] = ML^{2}T^{-3}
+$$
+
+Toda equação dimensional se resolve com essa tabela e a regra de que **os dois lados de uma equação física têm as mesmas dimensões** (homogeneidade dimensional).
+
+</Caixa>
+
+### O teorema dos $\pi$ de Buckingham
+
+> Um problema com $n$ variáveis, envolvendo $k$ dimensões primárias, pode ser reescrito com $n - k$ grupos adimensionais independentes.
+
+<Caixa tipo="macete" rotulo="O roteiro em cinco passos">
+
+1. **liste as $n$ variáveis** relevantes do problema;
+2. **escreva a dimensão** de cada uma e conte quantas dimensões primárias $k$ aparecem;
+3. o número de grupos é $n - k$;
+4. **escolha $k$ variáveis repetentes** — devem conter juntas todas as dimensões e **não** formar um adimensional entre si. Escolha padrão em fluidos: uma **geométrica** ($D$), uma **cinemática** ($v$) e uma de **propriedade** ($\rho$);
+5. monte cada $\pi$ multiplicando as repetentes elevadas a expoentes desconhecidos por uma das variáveis restantes, e **resolva os expoentes** impondo que o grupo seja adimensional.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — de onde sai o número de Reynolds">
+
+Suponha que a força de arrasto $F$ sobre um corpo dependa de $v$, $D$, $\rho$ e $\mu$. Então $n = 5$ variáveis e $k = 3$ dimensões ($M$, $L$, $T$), logo $n - k = 2$ grupos.
+
+Com repetentes $D$, $v$, $\rho$, um dos grupos sai com $\mu$:
+
+$$
+\pi_1 = \frac{\mu}{\rho\,v\,D} = \frac{1}{Re}
+$$
+
+e o outro, com $F$:
+
+$$
+\pi_2 = \frac{F}{\rho\,v^2\,D^2} = C_D \text{ (coeficiente de arrasto)}
+$$
+
+Resultado: em vez de mapear $F(v, D, \rho, \mu)$ com quatro eixos, basta medir **uma curva** $C_D$ contra $Re$. Foi assim que a aerodinâmica ficou viável antes dos computadores.
+
+</Caixa>
+
+### Os adimensionais que têm nome
+
+<Caixa tipo="dica" rotulo="Cada um compara a inércia com uma força diferente">
+
+$$
+Re = \frac{\rho v D}{\mu} \;\text{(inércia / viscosa)}
+\qquad
+Fr = \frac{v}{\sqrt{g\,L}} \;\text{(inércia / gravidade)}
+$$
+
+$$
+Eu = \frac{p}{\rho v^2} \;\text{(pressão / inércia)}
+\qquad
+Ma = \frac{v}{c} \;\text{(inércia / elástica)}
+\qquad
+We = \frac{\rho v^2 L}{\sigma} \;\text{(inércia / tensão superficial)}
+$$
+
+Qual domina o problema decide qual deve ser igualado no ensaio de modelo:
+
+- escoamento **em tubulação**, submerso → **Reynolds**;
+- escoamento com **superfície livre** (canal, vertedouro, navio) → **Froude**;
+- escoamento com **alta velocidade** de gás → **Mach**;
+- gotas, bolhas, jatos finos → **Weber**.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-semelhanca" num="20" titulo="Semelhança e teoria dos modelos">
+
+**A ideia.** Ninguém constrói uma barragem para descobrir se ela funciona. Constrói-se um **modelo** reduzido, ensaia-se, e transfere-se o resultado para o **protótipo**. A teoria dos modelos é o conjunto de regras que garante que essa transferência é legítima — e a regra central é: **os adimensionais relevantes têm de ser iguais nos dois**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- índice $m$ — **modelo** (o que se constrói e ensaia);
+- índice $p$ — **protótipo** (a obra real);
+- $\lambda = \dfrac{L_m}{L_p}$ — **escala geométrica** (razão de comprimentos);
+- $Re, Fr$ — os adimensionais a igualar.
+
+</Caixa>
+
+### Os três níveis de semelhança
+
+<Caixa tipo="dica">
+
+Para o ensaio valer, é preciso ter, nesta ordem:
+
+1. **semelhança geométrica** — mesma forma, todas as dimensões na mesma escala $\lambda$;
+2. **semelhança cinemática** — velocidades homólogas na mesma razão, campos de escoamento com a mesma forma;
+3. **semelhança dinâmica** — forças homólogas na mesma razão. É esta que exige igualar os adimensionais.
+
+Geométrica é condição para a cinemática, que é condição para a dinâmica. Falhar na primeira invalida tudo.
+
+</Caixa>
+
+### A condição de projeto
+
+$$
+\boxed{\;\pi_{i,m} = \pi_{i,p}\;}
+$$
+
+para cada adimensional relevante. Na prática, iguala-se **o que domina** o fenômeno:
+
+$$
+Re_m = Re_p
+\qquad\text{(escoamento confinado, viscosidade dominante)}
+$$
+
+$$
+Fr_m = Fr_p
+\qquad\text{(superfície livre, gravidade dominante)}
+$$
+
+<Caixa tipo="macete" rotulo="Semelhança de Froude — a que cai em hidráulica">
+
+Igualando $Fr$ e usando o mesmo fluido e a mesma gravidade:
+
+$$
+\frac{v_m}{\sqrt{g L_m}} = \frac{v_p}{\sqrt{g L_p}}
+\qquad\Longrightarrow\qquad
+\frac{v_m}{v_p} = \sqrt{\lambda}
+$$
+
+E daí saem as escalas derivadas, que a prova pede:
+
+$$
+\frac{Q_m}{Q_p} = \lambda^{5/2}
+\qquad\qquad
+\frac{t_m}{t_p} = \sqrt{\lambda}
+\qquad\qquad
+\frac{F_m}{F_p} = \lambda^{3}
+$$
+
+**Como lembrar:** $Q = vA$, então a escala de vazão é $\sqrt{\lambda} \times \lambda^2 = \lambda^{5/2}$. Vale mais deduzir do que decorar.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — modelo de vertedouro 1:25">
+
+Um vertedouro é ensaiado em escala $1{:}25$ ($\lambda = 1/25$). No modelo mediu-se $Q_m = 60\ \mathrm{L/s}$. Qual a vazão do protótipo?
+
+Superfície livre → **Froude**:
+
+$$
+\frac{Q_m}{Q_p} = \lambda^{5/2} = \left(\frac{1}{25}\right)^{5/2} = \frac{1}{3125}
+$$
+
+$$
+Q_p = 60 \times 3125 = 187\,500\ \mathrm{L/s} = 187{,}5\ \mathrm{m^3/s}
+$$
+
+E o tempo: um evento que no modelo durou $10\ \mathrm{s}$ corresponde a $10 \times \sqrt{25} = 50\ \mathrm{s}$ na obra. **O modelo é mais rápido que a realidade** — é por isso que ensaio de maré em modelo reduzido comprime dias em horas.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Por que não se consegue igualar tudo">
+
+Igualar $Re$ **e** $Fr$ ao mesmo tempo, com o mesmo fluido, é impossível: $Re$ pede $v_m/v_p = 1/\lambda$ e $Fr$ pede $v_m/v_p = \sqrt{\lambda}$ — só coincidem se $\lambda = 1$, ou seja, se o modelo for do tamanho da obra.
+
+A saída prática é o **efeito de escala**: iguala-se o adimensional dominante, aceita-se o erro no outro e corrige-se por coeficiente empírico. Reconhecer essa limitação é uma pergunta conceitual frequente.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-navier" num="21" titulo="Análise diferencial: Navier-Stokes e aplicações">
+
+**A ideia.** Até aqui a cadeira usou **volumes de controle finitos**: entra em (1), sai em (2), e o que acontece no meio não importa. A análise diferencial faz o oposto — escreve as leis para um **elemento infinitesimal** e obtém o campo de velocidades **ponto a ponto**. O preço é uma equação diferencial parcial não-linear; o ganho é a descrição completa do escoamento.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\vec{v} = (u, v, w)$ — campo de velocidades;
+- $\dfrac{D\vec{v}}{Dt}$ — **derivada material** (ou total) da velocidade: a aceleração da partícula;
+- $\nabla p$ — gradiente de pressão;
+- $\mu\nabla^2\vec{v}$ — termo **viscoso**;
+- $\rho\vec{g}$ — força de **campo** (peso) por unidade de volume.
+
+</Caixa>
+
+### A derivada material
+
+A aceleração de uma partícula de fluido tem duas parcelas — e essa distinção é o coração da análise diferencial:
+
+$$
+\frac{D\vec{v}}{Dt} = \underbrace{\frac{\partial \vec{v}}{\partial t}}_{\text{local}} + \underbrace{(\vec{v} \cdot \nabla)\vec{v}}_{\text{convectiva}}
+$$
+
+<Caixa tipo="dica" rotulo="Por que existe aceleração em regime permanente">
+
+Em regime permanente $\partial \vec{v}/\partial t = 0$, e ainda assim há aceleração: é a parcela **convectiva**. A partícula acelera porque **muda de lugar** e, no lugar novo, a velocidade do campo é outra.
+
+O exemplo é o Venturi: o escoamento é permanente (a foto é sempre a mesma), mas cada partícula acelera ao entrar na garganta. É a convectiva que faz isso — e é ela que torna a equação **não-linear**.
+
+</Caixa>
+
+### A continuidade em forma diferencial
+
+$$
+\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho\vec{v}) = 0
+\qquad\xrightarrow{\ \text{incompressível}\ }\qquad
+\boxed{\;\nabla \cdot \vec{v} = 0\;}
+$$
+
+Ou seja $\dfrac{\partial u}{\partial x} + \dfrac{\partial v}{\partial y} + \dfrac{\partial w}{\partial z} = 0$ — é este o teste que a prova pede para verificar se um campo dado é fisicamente possível.
+
+### A equação de Navier-Stokes
+
+Para fluido **newtoniano** e **incompressível** com $\mu$ constante:
+
+$$
+\boxed{\;\rho\frac{D\vec{v}}{Dt} = -\nabla p + \mu\nabla^2\vec{v} + \rho\vec{g}\;}
+$$
+
+<Caixa tipo="dica" rotulo="É a segunda lei de Newton, termo a termo">
+
+$$
+\underbrace{\rho\frac{D\vec{v}}{Dt}}_{\text{massa} \times \text{aceleração}}
+= \underbrace{-\nabla p}_{\text{força de pressão}}
++ \underbrace{\mu\nabla^2\vec{v}}_{\text{força viscosa}}
++ \underbrace{\rho\vec{g}}_{\text{peso}}
+$$
+
+Zerando o termo viscoso ($\mu = 0$) obtém-se a equação de **Euler**, e integrando Euler ao longo de uma linha de corrente reaparece **Bernoulli**. Toda a cadeira está contida aqui — Bernoulli é um caso particular.
+
+</Caixa>
+
+### A aplicação clássica: escoamento entre placas
+
+Para escoamento **laminar, permanente e unidirecional** entre duas placas paralelas, quase todos os termos morrem e sobra uma equação ordinária simples:
+
+$$
+\frac{d^2u}{dy^2} = \frac{1}{\mu}\frac{dp}{dx}
+$$
+
+Integrando duas vezes com $u = 0$ nas paredes (aderência), obtém-se o **perfil parabólico** — e, dele, o resultado de Hagen-Poiseuille que a seção de perda de carga usou:
+
+$$
+v = \frac{v_{max}}{2}
+\qquad\qquad
+f = \frac{64}{Re}
+$$
+
+<Caixa tipo="macete" rotulo="O que a prova cobra desta seção">
+
+Raramente se pede resolver Navier-Stokes. O que cai é:
+
+1. **identificar os termos** e dizer o que cada um representa;
+2. **simplificar** a equação para um caso dado, justificando quais termos se anulam e por quê;
+3. **verificar** se um campo de velocidades satisfaz a continuidade ($\nabla \cdot \vec{v} = 0$);
+4. explicar a diferença entre aceleração **local** e **convectiva**.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-modos" num="22" titulo="Os três modos de transferência de calor">
+
+**A ideia.** A cadeira muda de assunto, mas não de estrutura: transporte de **calor** obedece à mesma lógica do transporte de quantidade de movimento — um fluxo proporcional a um gradiente. Calor é energia em trânsito **por diferença de temperatura**, e há exatamente três mecanismos para ele viajar. Identificar qual está em jogo é o primeiro passo de qualquer questão desta unidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $q$ — **fluxo de calor** (taxa de transferência), em watts ($\mathrm{W}$);
+- $q''$ — **densidade de fluxo de calor**, em $\mathrm{W/m^2}$: calor por unidade de tempo **e** de área;
+- $k$ — **condutividade térmica** do material, em $\mathrm{W/(m \cdot K)}$;
+- $h$ — **coeficiente de convecção**, em $\mathrm{W/(m^2 \cdot K)}$;
+- $\varepsilon$ — **emissividade** da superfície, adimensional ($0 \le \varepsilon \le 1$);
+- $\sigma = 5{,}67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)}$ — constante de Stefan-Boltzmann.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Fluxo e densidade de fluxo — não confunda">
+
+$$
+q = q''\,A
+$$
+
+O enunciado alterna entre os dois: "**taxa** de transferência" ou "**fluxo de calor**" costuma ser $q$, em $\mathrm{W}$; "**densidade** de fluxo" ou "fluxo **por unidade de área**" é $q''$, em $\mathrm{W/m^2}$. Ler errado erra o resultado pela área.
+
+</Caixa>
+
+### Condução
+
+Transferência **dentro** de um sólido ou de um fluido **estacionário**, por contato direto — a energia passa de molécula a molécula, sem que a matéria se desloque.
+
+$$
+q''_x = -k\,\frac{\partial T}{\partial x}
+\qquad\qquad
+q_x = -k\,A\,\frac{\partial T}{\partial x}
+$$
+
+Esta é a **lei de Fourier**, e a próxima seção a desenvolve.
+
+<Caixa tipo="dica" rotulo="O sinal negativo não é decoração">
+
+O calor flui do **quente para o frio**, isto é, no sentido **contrário** ao gradiente de temperatura. Se $T$ cresce com $x$, então $\partial T/\partial x > 0$ e o calor vai no sentido $-x$: daí o sinal. Em prova, o sinal negativo dá o **sentido**; o módulo dá a intensidade.
+
+</Caixa>
+
+### Convecção
+
+Transferência entre uma superfície e um **fluido em movimento**. Aqui a matéria se desloca e carrega energia com ela.
+
+$$
+\boxed{\;q = h\,A\,(T_s - T_\infty)\;}
+$$
+
+com $T_s$ a temperatura da superfície e $T_\infty$ a do fluido longe dela (**lei do resfriamento de Newton**).
+
+<Caixa tipo="dica">
+
+Dois tipos:
+
+- **natural** (ou livre) — o movimento nasce da própria diferença de densidade causada pelo aquecimento. $h$ é baixo, tipicamente $2$ a $25\ \mathrm{W/(m^2K)}$ para gases;
+- **forçada** — há um agente externo (ventilador, bomba). $h$ é muito maior, $25$ a $250$ para gases e até $20\,000$ para água em ebulição.
+
+É por isso que soprar a comida esfria mais rápido: você troca convecção natural por forçada.
+
+</Caixa>
+
+### Radiação
+
+Transferência por **ondas eletromagnéticas**, emitidas por qualquer corpo com temperatura acima do zero absoluto. **Não precisa de meio material** — é assim que o calor do Sol chega à Terra.
+
+$$
+q = \varepsilon\,\sigma\,A\,(T_s^4 - T_{viz}^4)
+$$
+
+<Caixa tipo="macete" rotulo="A quarta potência, e a temperatura em KELVIN">
+
+Duas armadilhas nesta fórmula:
+
+1. a dependência é com $T^4$ — dobrar a temperatura absoluta multiplica a emissão por **16**. Por isso radiação é desprezível em temperatura ambiente e dominante em fornos e chamas;
+2. **a temperatura tem de estar em kelvin**, sempre. Usar Celsius numa quarta potência não é aproximação, é erro grosseiro: $(300)^4$ e $(27)^4$ diferem por um fator de mais de 15 mil.
+
+Note que na **condução** e na **convecção** aparece apenas a *diferença* de temperatura, e aí $\Delta T$ em Celsius e em kelvin **é o mesmo número**. Só na radiação a escala importa.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — identificar os modos numa parede">
+
+Uma parede de tijolo separa o interior de uma casa a $22\ ^\circ\mathrm{C}$ do ar externo a $35\ ^\circ\mathrm{C}$, sob sol.
+
+- do ar externo **para** a superfície externa: **convecção** (e **radiação** solar sobre ela);
+- **através** do tijolo: **condução**;
+- da superfície interna **para** o ar interno: **convecção**.
+
+Em série, os três mecanismos formam um circuito térmico — e a próxima seção mostra como somar as resistências, exatamente como se faz com resistores.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-fourier" num="23" titulo="Lei de Fourier, condutividade e resistência térmica">
+
+**A ideia.** A lei de Fourier é a lei de Newton da viscosidade com outros nomes: fluxo proporcional a gradiente. E há um ganho enorme escondido nela — se o regime é permanente e o perfil é linear, a condução vira um **circuito elétrico**, com "resistências térmicas" que se somam em série e em paralelo exatamente como resistores. Essa analogia é a ferramenta mais poderosa desta unidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $q$ — fluxo de calor, em $\mathrm{W}$;
+- $k$ — **condutividade térmica**, em $\mathrm{W/(m \cdot K)}$;
+- $L$ — espessura da parede, em $\mathrm{m}$;
+- $A$ — área **normal ao fluxo**, em $\mathrm{m^2}$;
+- $\Delta T$ — diferença de temperatura, em $\mathrm{K}$ (ou $^\circ\mathrm{C}$, tanto faz numa diferença);
+- $R_t$ — **resistência térmica**, em $\mathrm{K/W}$.
+
+</Caixa>
+
+### A lei de Fourier e o caso linear
+
+$$
+q = -k\,A\,\frac{dT}{dx}
+$$
+
+Em **regime permanente**, numa parede plana de espessura $L$ com faces a $T_1$ e $T_2$, o perfil de temperatura é **linear** e a derivada vira razão:
+
+$$
+\boxed{\;q = k\,A\,\frac{T_1 - T_2}{L}\;}
+$$
+
+<Caixa tipo="dica" rotulo="Por que o perfil é linear">
+
+Em regime permanente e sem geração interna, o **mesmo** $q$ atravessa todas as seções da parede. Se $q$, $k$ e $A$ são constantes, $dT/dx$ tem de ser constante — e temperatura com derivada constante é uma reta.
+
+Se o perfil sair **curvo** num problema, é porque uma dessas hipóteses caiu: há geração interna, $k$ varia com $T$, ou a área muda (é o caso do tubo cilíndrico).
+
+</Caixa>
+
+### A analogia elétrica
+
+Reescrevendo a lei de Fourier no formato "corrente = tensão / resistência":
+
+$$
+q = \frac{\Delta T}{R_t}
+\qquad\text{com}\qquad
+\boxed{\;R_t = \frac{L}{k\,A}\;}
+$$
+
+<Caixa tipo="macete" rotulo="O dicionário da analogia">
+
+| térmico | elétrico |
+|---|---|
+| fluxo de calor $q$ | corrente $i$ |
+| diferença de temperatura $\Delta T$ | tensão $v$ |
+| resistência térmica $R_t = L/(kA)$ | resistência $R$ |
+
+E as regras de associação são **as mesmas**:
+
+$$
+\text{série: } R_{eq} = \sum R_i
+\qquad\qquad
+\text{paralelo: } \frac{1}{R_{eq}} = \sum \frac{1}{R_i}
+$$
+
+Quem já fez Circuitos Elétricos 1 não precisa aprender nada de novo aqui — é o mesmo cálculo com outras unidades.
+
+</Caixa>
+
+### A resistência de convecção
+
+A convecção também vira resistência, e é isso que permite montar o circuito completo da parede:
+
+$$
+q = h\,A\,\Delta T = \frac{\Delta T}{R_{conv}}
+\qquad\Longrightarrow\qquad
+\boxed{\;R_{conv} = \frac{1}{h\,A}\;}
+$$
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — parede com convecção nas duas faces">
+
+Uma parede de $L = 0{,}20\ \mathrm{m}$, $k = 0{,}70\ \mathrm{W/(mK)}$ e $A = 10\ \mathrm{m^2}$ separa ar interno a $20\ ^\circ\mathrm{C}$ ($h_i = 8\ \mathrm{W/(m^2K)}$) do externo a $35\ ^\circ\mathrm{C}$ ($h_e = 20\ \mathrm{W/(m^2K)}$). Qual o fluxo de calor?
+
+Três resistências **em série**:
+
+$$
+R_{conv,e} = \frac{1}{h_e A} = \frac{1}{20 \times 10} = 0{,}005\ \mathrm{K/W}
+$$
+
+$$
+R_{cond} = \frac{L}{k A} = \frac{0{,}20}{0{,}70 \times 10} = 0{,}0286\ \mathrm{K/W}
+$$
+
+$$
+R_{conv,i} = \frac{1}{h_i A} = \frac{1}{8 \times 10} = 0{,}0125\ \mathrm{K/W}
+$$
+
+$$
+R_{eq} = 0{,}005 + 0{,}0286 + 0{,}0125 = 0{,}0461\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{\Delta T}{R_{eq}} = \frac{35 - 20}{0{,}0461} = 325\ \mathrm{W}
+$$
+
+**O calor entra na casa** (de fora para dentro), porque o exterior está mais quente. E note qual resistência domina: a **condução** da parede, com 62 % do total — engrossar a parede ou usar material de $k$ menor é o que reduz a carga térmica.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-paredes" num="24" titulo="Condução em paredes compostas e em tubulações">
+
+**A ideia.** Com o dicionário elétrico da seção anterior, resolver uma parede de três camadas é somar resistências. O caso do **tubo** é o único que exige cuidado extra: ali a área **cresce** com o raio, o perfil de temperatura deixa de ser linear e a resistência ganha um logaritmo. É a fórmula que a prova de 2º EE cobra com mais frequência nesta unidade.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $L_i,\ k_i$ — espessura e condutividade de **cada camada**;
+- $r_1,\ r_2$ — raios **interno** e **externo** do tubo, em $\mathrm{m}$;
+- $L$ — **comprimento** do tubo, em $\mathrm{m}$;
+- $R_t$ — resistência térmica, em $\mathrm{K/W}$;
+- $q$ — fluxo de calor, em $\mathrm{W}$.
+
+</Caixa>
+
+### Parede composta: resistências em série
+
+$$
+q = \frac{T_1 - T_{n+1}}{\sum R_i}
+= \frac{\Delta T_{total}}{\dfrac{L_1}{k_1 A} + \dfrac{L_2}{k_2 A} + \dfrac{L_3}{k_3 A} + \ldots}
+$$
+
+<Caixa tipo="macete" rotulo="O mesmo q atravessa todas as camadas">
+
+Em série, o fluxo é **o mesmo** em cada camada — como a corrente num circuito série. Isso dá duas ferramentas:
+
+1. achado $q$ pelo total, a temperatura em **qualquer** interface sai de uma camada só:
+
+$$
+T_2 = T_1 - q\,R_1
+$$
+
+2. **a maior queda de temperatura ocorre na maior resistência.** Se uma camada é o isolante, quase todo o $\Delta T$ cai nela — e isso serve de conferência do resultado.
+
+</Caixa>
+
+### Tubo cilíndrico: onde entra o logaritmo
+
+Na parede plana a área é constante; no tubo, $A = 2\pi r L$ **cresce** com o raio. Integrando a lei de Fourier com essa área variável:
+
+$$
+q = \frac{2\pi k L\,(T_1 - T_2)}{\ln(r_2/r_1)}
+\qquad\Longleftrightarrow\qquad
+\boxed{\;R_{tubo} = \frac{\ln(r_2/r_1)}{2\pi k L}\;}
+$$
+
+<Caixa tipo="dica" rotulo="Por que logaritmo, e o que muda na prática">
+
+O calor se "espalha" por uma área cada vez maior à medida que sai — então a resistência não cresce proporcionalmente à espessura, e sim ao **logaritmo da razão de raios**.
+
+Consequência prática: **dobrar a espessura de um isolamento em tubo rende menos que dobrar em parede plana**. E existe até um *raio crítico de isolamento*, abaixo do qual acrescentar isolante **aumenta** a perda de calor (porque a área externa cresce mais rápido que a resistência).
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Tubo com várias camadas e convecção">
+
+Tudo em série, cada camada com seu logaritmo:
+
+$$
+R_{total} = \underbrace{\frac{1}{h_i\,2\pi r_1 L}}_{\text{convecção interna}} + \frac{\ln(r_2/r_1)}{2\pi k_1 L} + \frac{\ln(r_3/r_2)}{2\pi k_2 L} + \underbrace{\frac{1}{h_e\,2\pi r_3 L}}_{\text{convecção externa}}
+$$
+
+Repare que nas convecções a área é a do **raio daquela face** — usar o raio errado é um erro clássico.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — tubo de vapor com isolamento">
+
+Um tubo de aço ($k_1 = 50\ \mathrm{W/(mK)}$) de $r_1 = 5\ \mathrm{cm}$ e $r_2 = 5{,}5\ \mathrm{cm}$ é isolado com lã de rocha ($k_2 = 0{,}05\ \mathrm{W/(mK)}$) até $r_3 = 10{,}5\ \mathrm{cm}$. Para $L = 10\ \mathrm{m}$, com face interna a $200\ ^\circ\mathrm{C}$ e externa a $30\ ^\circ\mathrm{C}$, qual o fluxo?
+
+$$
+R_{aço} = \frac{\ln(5{,}5/5)}{2\pi \times 50 \times 10} = \frac{0{,}0953}{3141{,}6} = 3{,}03 \times 10^{-5}\ \mathrm{K/W}
+$$
+
+$$
+R_{isol} = \frac{\ln(10{,}5/5{,}5)}{2\pi \times 0{,}05 \times 10} = \frac{0{,}6466}{3{,}1416} = 0{,}2058\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{200 - 30}{3{,}03 \times 10^{-5} + 0{,}2058} = \frac{170}{0{,}2058} = 826\ \mathrm{W}
+$$
+
+**A resistência do aço é 6800 vezes menor que a do isolante** — e é por isso que, num problema com isolamento, desprezar a resistência do metal é aproximação legítima. O isolante é quem manda.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-esferas" num="25" titulo="Condução em esferas e o raio crítico de isolamento">
+
+**A ideia.** O tubo trouxe o logaritmo porque a área cresce com o raio. Na **esfera** a área cresce com o raio **ao quadrado**, e a resistência ganha uma forma ainda diferente. E, nos dois casos curvos, aparece um efeito que não existe na parede plana: acrescentar isolante pode **aumentar** a perda de calor. O limite entre uma coisa e outra é o **raio crítico**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $r_1,\ r_2,\ r_3$ — raios das interfaces, do interior para fora, em $\mathrm{m}$;
+- $k$ — condutividade da camada, em $\mathrm{W/(m \cdot K)}$;
+- $h_e$ — coeficiente de convecção na face **externa**, em $\mathrm{W/(m^2 \cdot K)}$;
+- $r_c$ — **raio crítico de isolamento**, em $\mathrm{m}$;
+- $R$ — resistência térmica, em $\mathrm{K/W}$.
+
+</Caixa>
+
+### A resistência de uma casca esférica
+
+Na esfera, $A = 4\pi r^2$. Integrando Fourier com essa área:
+
+$$
+q = -k\,(4\pi r^2)\,\frac{dT}{dr}
+\qquad\Longrightarrow\qquad
+q\int_{r_1}^{r_2}\frac{dr}{r^2} = -4\pi k\int_{T_1}^{T_2} dT
+$$
+
+$$
+q\left(\frac{1}{r_1} - \frac{1}{r_2}\right) = 4\pi k\,(T_1 - T_2)
+$$
+
+$$
+\boxed{\;R_{esfera} = \frac{\dfrac{1}{r_1} - \dfrac{1}{r_2}}{4\pi k}\;}
+$$
+
+<Caixa tipo="macete" rotulo="As três geometrias, lado a lado">
+
+| geometria | área | resistência |
+|---|---|---|
+| **parede plana** | $A$ constante | $\dfrac{L}{k\,A}$ |
+| **casca cilíndrica** | $2\pi r L$ | $\dfrac{\ln(r_2/r_1)}{2\pi k L}$ |
+| **casca esférica** | $4\pi r^2$ | $\dfrac{1/r_1 - 1/r_2}{4\pi k}$ |
+
+Note que a resistência esférica **não tem $L$**: a esfera não tem comprimento, e a fórmula já dá $\mathrm{K/W}$ direto. Trocar a fórmula do tubo pela da esfera (ou vice-versa) é o erro mais comum desta seção.
+
+</Caixa>
+
+### Convecção na face externa
+
+A convecção sempre usa a **área da face** onde ela acontece:
+
+$$
+R_{conv} = \frac{1}{h_e\,A_{ext}}
+\qquad\text{com}\qquad
+A_{ext} =
+\begin{cases}
+2\pi r_3 L & \text{(cilindro)}\\[4pt]
+4\pi r_3^2 & \text{(esfera)}
+\end{cases}
+$$
+
+Camadas e convecção entram todas **em série**:
+
+$$
+q = \frac{T_1 - T_\infty}{R_1 + R_2 + \ldots + R_{conv}}
+$$
+
+### O raio crítico de isolamento
+
+Aqui está o efeito que não existe na parede plana. Acrescentar isolante faz duas coisas **opostas**:
+
+- **aumenta** a resistência de condução (mais material a atravessar);
+- **diminui** a resistência de convecção, porque a área externa fica maior.
+
+Enquanto o segundo efeito vence, mais isolante significa **mais** perda de calor. O raio em que os dois se equilibram — em que a resistência total é **mínima** e o fluxo é **máximo** — é o raio crítico. Derivando $R_{total}$ em relação a $r$ e igualando a zero:
+
+$$
+\boxed{\;r_c = \frac{k_{iso}}{h_e}\;\text{(cilindro)}
+\qquad\qquad
+r_c = \frac{2\,k_{iso}}{h_e}\;\text{(esfera)}\;}
+$$
+
+<Caixa tipo="dica" rotulo="Como ler o resultado numa prova">
+
+Compare o raio externo real $r_3$ com $r_c$:
+
+- $r_3 < r_c$ → o sistema está **antes** do crítico: acrescentar isolante **aumenta** a perda. Isolar mal é pior que não isolar;
+- $r_3 > r_c$ → o sistema está **depois** do crítico: acrescentar isolante **reduz** a perda, como a intuição espera.
+
+O caso $r_3 < r_c$ é real e importante: é por isso que fio elétrico fino ganha capa isolante — a capa **ajuda a dissipar** o calor do condutor, e não o contrário.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — esfera com duas camadas e convecção">
+
+Uma esfera de material A a $T_1 = 350\ \mathrm{K}$, de raio $r_1 = 5\ \mathrm{cm}$, é revestida por B ($k_B = 4{,}0\ \mathrm{W/(mK)}$) até $r_2 = 8\ \mathrm{cm}$ e por isolante ($k_{iso} = 0{,}7\ \mathrm{W/(mK)}$) até $r_3 = 10\ \mathrm{cm}$. Fora, ar a $T_\infty = 298\ \mathrm{K}$ com $h_e = 6{,}2\ \mathrm{W/(m^2K)}$.
+
+**Raio crítico:**
+
+$$
+r_c = \frac{2 \times 0{,}7}{6{,}2} = 0{,}2258\ \mathrm{m} = 22{,}6\ \mathrm{cm}
+$$
+
+Como $r_3 = 10\ \mathrm{cm} < r_c$, o isolamento **está aumentando** a perda de calor. Diagnóstico que a conta seguinte confirma.
+
+**As resistências:**
+
+$$
+R_B = \frac{1/0{,}05 - 1/0{,}08}{4\pi \times 4} = \frac{7{,}5}{50{,}27} = 0{,}1492\ \mathrm{K/W}
+$$
+
+$$
+R_{iso} = \frac{1/0{,}08 - 1/0{,}10}{4\pi \times 0{,}7} = \frac{2{,}5}{8{,}80} = 0{,}2842\ \mathrm{K/W}
+$$
+
+$$
+R_{conv} = \frac{1}{6{,}2 \times 4\pi (0{,}10)^2} = \frac{1}{0{,}779} = 1{,}2835\ \mathrm{K/W}
+$$
+
+$$
+R_T = 0{,}1492 + 0{,}2842 + 1{,}2835 = 1{,}7169\ \mathrm{K/W}
+\qquad
+q = \frac{350 - 298}{1{,}7169} = 30{,}3\ \mathrm{W}
+$$
+
+**As temperaturas nas interfaces**, uma resistência por vez:
+
+$$
+T_2 = T_1 - q\,R_B = 350 - 30{,}3 \times 0{,}1492 = 345{,}5\ \mathrm{K}
+$$
+
+$$
+T_3 = T_2 - q\,R_{iso} = 345{,}5 - 30{,}3 \times 0{,}2842 = 336{,}9\ \mathrm{K}
+$$
+
+Repare que a **convecção** carrega $75\ \%$ da resistência total: é o ar externo, e não o isolante, que está segurando o calor. Coerente com o diagnóstico do raio crítico.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-geracao" num="26" titulo="Condução com geração de calor e as condições de contorno">
+
+**A ideia.** Tudo até aqui supôs que o calor só **atravessa** o material. Se o material **produz** calor — resistência elétrica dissipando, reação química, decaimento nuclear —, o perfil de temperatura deixa de ser reto e vira **parábola**. E, para resolver a equação diferencial que aparece, é preciso dizer o que acontece nas fronteiras: são as **condições de contorno**, que a prova cobra pelo nome.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\dot q$ — **taxa de geração** de calor por unidade de volume, em $\mathrm{W/m^3}$;
+- $L$ — semiespessura (parede simétrica) ou espessura, em $\mathrm{m}$;
+- $T_s$ — temperatura da **superfície**, em $\mathrm{K}$;
+- $T_0$ — temperatura no **plano central**, em $\mathrm{K}$;
+- $q''(x)$ — densidade de fluxo de calor na posição $x$, em $\mathrm{W/m^2}$.
+
+</Caixa>
+
+### A equação, e por que a parábola
+
+O balanço de energia num elemento de parede plana, em regime permanente (**sem acúmulo**) e com geração, é
+
+$$
+\underbrace{\frac{d^2T}{dx^2}}_{\text{condução}} + \underbrace{\frac{\dot q}{k}}_{\text{geração}} = 0
+$$
+
+Integrando duas vezes:
+
+$$
+\frac{dT}{dx} = -\frac{\dot q}{k}\,x + C_1
+\qquad\qquad
+T(x) = -\frac{\dot q}{2k}\,x^2 + C_1 x + C_2
+$$
+
+$$
+\boxed{\;T(x)\ \text{é uma parábola};\qquad q''(x) = -k\,\frac{dT}{dx} = \dot q\,x - k\,C_1\ \text{é uma reta}\;}
+$$
+
+<Caixa tipo="macete" rotulo="A resposta curta que a prova pede">
+
+Pergunta clássica: *como se comportam o perfil de temperatura e o fluxo de calor numa parede plana com condução unidimensional, com geração, mas sem acúmulo?*
+
+- **temperatura** — perfil **parabólico** (não linear);
+- **fluxo de calor** — varia **linearmente** com a posição, e **não** é constante como no caso sem geração;
+- com **geração** ($\dot q > 0$) a parábola tem **máximo** dentro da parede e o calor sai **para fora** pelas duas faces;
+- com **consumo** ($\dot q < 0$, reação endotérmica) a parábola tem **mínimo** dentro e o calor entra **para dentro** pelas duas faces.
+
+O contraste com o caso sem geração é o que se cobra: lá o perfil é **reto** e o fluxo é **constante**.
+
+</Caixa>
+
+### Parede simétrica: o caso resolvido
+
+Para uma parede de semiespessura $L$ (portanto de $-L$ a $+L$), refrigerada igualmente nas duas faces, a simetria dá $C_1 = 0$ e $T(\pm L) = T_s$:
+
+$$
+T(x) = T_s + \frac{\dot q\,L^2}{2k}\left(1 - \frac{x^2}{L^2}\right)
+$$
+
+$$
+T_0 = T(0) = T_s + \frac{\dot q\,L^2}{2k}
+\qquad\qquad
+q''(L) = \dot q\,L
+$$
+
+<Caixa tipo="dica" rotulo="Conferência física">
+
+Em $x = 0$ a derivada é nula, logo $q''(0) = 0$: no **plano central** não passa calor, porque metade vai para cada lado. E o que sai por uma face, $\dot q L$, é exatamente o calor gerado na metade que ela drena. Se a conta não fechar assim, há erro.
+
+</Caixa>
+
+### As três condições de contorno
+
+Resolver a equação diferencial exige duas informações nas fronteiras. Há três tipos, e cada um tem nome próprio:
+
+**1ª — Dirichlet (primeiro tipo): temperatura prescrita.**
+
+$$
+T(0,t) = T_s
+$$
+
+A superfície é mantida a uma temperatura conhecida. É o caso de uma face em contato com um fluido em mudança de fase (água fervendo, gelo derretendo), que impõe a sua temperatura.
+
+**2ª — Neumann (segundo tipo): fluxo prescrito.**
+
+$$
+-k\,\frac{\partial T}{\partial x}\bigg|_{0} = q''_s
+$$
+
+O que se conhece é a **taxa de calor** na superfície, não a temperatura. Caso particular importantíssimo: **superfície adiabática** (isolada), em que $q''_s = 0$ e portanto $\partial T/\partial x = 0$ — a mesma condição que a simetria dá no plano central.
+
+**3ª — Robin (terceiro tipo, ou mista): convecção na superfície.**
+
+$$
+-k\,\frac{\partial T}{\partial x}\bigg|_{0} = h\,\big[T_\infty - T(0,t)\big]
+$$
+
+O calor que **chega por condução** à superfície é o que **sai por convecção** dela. Nem a temperatura nem o fluxo são dados: dá-se $h$ e $T_\infty$, e a superfície encontra a própria temperatura.
+
+<Caixa tipo="macete" rotulo="Como decorar sem trocar os nomes">
+
+Pela **ordem da derivada** que a condição fixa:
+
+| tipo | nome | fixa | exemplo |
+|---|---|---|---|
+| 1º | **Dirichlet** | $T$ (a função) | face a $100\ ^\circ\mathrm{C}$ |
+| 2º | **Neumann** | $dT/dx$ (a derivada) | face isolada, $q'' = 0$ |
+| 3º | **Robin** / mista | combinação de $T$ e $dT/dx$ | face trocando com ar a $h$ e $T_\infty$ |
+
+Dirichlet vem primeiro no alfabeto e é a mais simples; Robin é "mista" porque mistura as duas anteriores.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — condutividade a partir do perfil">
+
+Uma parede plana de área $5\ \mathrm{m^2}$ e espessura $20\ \mathrm{cm}$ tem a face esquerda a $100\ ^\circ\mathrm{C}$ e o **centro** a $30\ ^\circ\mathrm{C}$. A taxa de calor é $10\,000\ \mathrm{W}$, sem geração nem acúmulo, com perfil **linear**. Qual o $k$?
+
+Sem geração, o perfil é reto e o mesmo $q$ atravessa tudo — então basta usar meia parede:
+
+$$
+q = k\,A\,\frac{\Delta T}{\Delta x}
+\qquad\Longrightarrow\qquad
+k = \frac{q\,\Delta x}{A\,\Delta T} = \frac{10\,000 \times 0{,}10}{5 \times 70} = 2{,}86\ \mathrm{W/(m\cdot K)}
+$$
+
+A armadilha é usar $\Delta x = 0{,}20\ \mathrm{m}$ com $\Delta T = 70\ \mathrm{K}$: a temperatura de $30\ ^\circ\mathrm{C}$ é do **meio**, logo a espessura correspondente é $0{,}10\ \mathrm{m}$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-conveccao" num="27" titulo="Convecção: natural, forçada e o número de Nusselt">
+
+**A ideia.** A lei do resfriamento de Newton, $q = hA\Delta T$, esconde toda a dificuldade dentro do $h$ — que não é propriedade do fluido, e sim resultado do escoamento. Achar $h$ é o problema central da convecção, e o caminho é sempre o mesmo: calcular adimensionais e usar uma correlação. O adimensional que **entrega** o $h$ é o de **Nusselt**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $h$ — coeficiente de convecção, em $\mathrm{W/(m^2 \cdot K)}$;
+- $L$ — **comprimento característico** (diâmetro do tubo, altura da placa), em $\mathrm{m}$;
+- $k$ — condutividade térmica **do fluido**, em $\mathrm{W/(m \cdot K)}$;
+- $\alpha = k/(\rho c_p)$ — difusividade térmica, em $\mathrm{m^2/s}$;
+- $\beta$ — coeficiente de expansão térmica do fluido, em $\mathrm{K^{-1}}$.
+
+</Caixa>
+
+### Os dois tipos de convecção
+
+**Natural (ou livre).** O movimento do fluido nasce **da própria diferença de temperatura**: o fluido aquecido fica menos denso e sobe, o frio desce. Não há nenhum dispositivo mecânico. É o ar subindo de um radiador, a água circulando numa panela antes de ferver.
+
+**Forçada.** O fluido é impulsionado por um agente **externo** — ventilador, bomba, compressor, o vento. O escoamento não depende da diferença de temperatura.
+
+<Caixa tipo="dica" rotulo="Por que a forçada troca muito mais calor">
+
+Porque a resistência à troca está na **camada limite** junto à parede, onde o fluido está quase parado e o calor só passa por **condução**. Quanto mais rápido o escoamento, mais fina essa camada e maior o $h$:
+
+| situação | $h$ típico $[\mathrm{W/(m^2K)}]$ |
+|---|---|
+| gás, convecção **natural** | $2$ a $25$ |
+| gás, convecção **forçada** | $25$ a $250$ |
+| líquido, convecção **forçada** | $100$ a $20\,000$ |
+| ebulição / condensação | $2500$ a $100\,000$ |
+
+Soprar a sopa é trocar natural por forçada — e ganhar uma ordem de grandeza.
+
+</Caixa>
+
+### O número de Nusselt
+
+$$
+\boxed{\;Nu = \frac{h\,L}{k}\;}
+$$
+
+**O que ele compara:** a troca de calor por **convecção** contra a troca por **condução** através da mesma camada de fluido.
+
+- $Nu = 1$ → só há condução: o fluido está parado (é o limite da condução pura);
+- $Nu \gg 1$ → a convecção domina, e tanto mais quanto maior o $Nu$.
+
+<Caixa tipo="macete" rotulo="Nusselt e Biot parecem iguais, mas não são">
+
+$$
+Nu = \frac{h L}{k_{\text{fluido}}}
+\qquad\qquad
+Bi = \frac{h L}{k_{\text{sólido}}}
+$$
+
+A fórmula é a mesma; **o $k$ é de quem muda**. Em Nusselt, $k$ é do **fluido** que escoa; em Biot, do **sólido** que está sendo aquecido ou resfriado. Ler o enunciado para ver de quem é o $k$ resolve a confusão.
+
+</Caixa>
+
+### Os adimensionais que alimentam a correlação
+
+$$
+Re = \frac{\rho\,v\,D}{\mu}
+\qquad
+Pr = \frac{\nu}{\alpha} = \frac{\mu\,c_p}{k}
+\qquad
+Gr = \frac{g\,\beta\,(T_s - T_\infty)\,L^3}{\nu^2}
+$$
+
+- **Reynolds** — inércia contra viscosidade; diz se o escoamento é laminar ou turbulento;
+- **Prandtl** — difusividade de quantidade de movimento contra a de calor; diz qual camada limite é mais espessa, a de velocidade ou a térmica;
+- **Grashof** — empuxo (sustentação térmica) contra viscosidade; é o "Reynolds da convecção natural", já que ali não há velocidade imposta para se usar.
+
+E o roteiro é sempre este:
+
+$$
+\underbrace{Nu = f(Re,\,Pr)}_{\text{convecção forçada}}
+\qquad\qquad
+\underbrace{Nu = f(Gr,\,Pr)}_{\text{convecção natural}}
+\qquad\Longrightarrow\qquad
+h = \frac{Nu\,k}{L}
+\qquad\Longrightarrow\qquad
+q = h\,A\,\Delta T
+$$
+
+<Caixa tipo="dica" rotulo="Por que Grashof no lugar de Reynolds">
+
+Na convecção **natural** não existe velocidade dada no enunciado — ela é consequência do aquecimento. Grashof substitui Reynolds justamente porque monta a mesma comparação (força que move contra força que resiste) usando o **empuxo térmico** $g\beta\Delta T$ em vez de uma velocidade.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — de Nusselt até o calor">
+
+Ar escoa sobre uma placa de $L = 0{,}5\ \mathrm{m}$ e área $2\ \mathrm{m^2}$, e uma correlação dá $Nu = 250$. Para o ar, $k = 0{,}026\ \mathrm{W/(mK)}$. A placa está a $80\ ^\circ\mathrm{C}$ e o ar a $20\ ^\circ\mathrm{C}$.
+
+$$
+h = \frac{Nu\,k}{L} = \frac{250 \times 0{,}026}{0{,}5} = 13\ \mathrm{W/(m^2K)}
+$$
+
+$$
+q = h\,A\,(T_s - T_\infty) = 13 \times 2 \times 60 = 1560\ \mathrm{W}
+$$
+
+O $\Delta T$ pode ficar em Celsius: em convecção só a **diferença** entra, e ela é a mesma nas duas escalas. Diferente da radiação, onde o kelvin é obrigatório.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-massa" num="28" titulo="Fundamentos do transporte de massa">
+
+**A ideia.** O último assunto da cadeira fecha o círculo que o nome dela sempre anunciou: são **três** fenômenos de transporte com a mesma estrutura matemática. Quantidade de movimento (Newton), calor (Fourier) e agora **massa** (Fick) — em todos, um fluxo é proporcional a um gradiente, com uma propriedade do meio como constante. Quem enxerga a analogia aprende esta unidade em minutos.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $J_A$ — **fluxo mássico difusivo** da espécie $A$, em $\mathrm{kg/(m^2 \cdot s)}$;
+- $D_{AB}$ — **coeficiente de difusão** (difusividade mássica) de $A$ em $B$, em $\mathrm{m^2/s}$;
+- $C_A$ — **concentração** da espécie $A$, em $\mathrm{kg/m^3}$;
+- $h_m$ — coeficiente de transferência de massa por convecção, em $\mathrm{m/s}$;
+- $\alpha = \dfrac{k}{\rho c_p}$ — difusividade **térmica**, em $\mathrm{m^2/s}$.
+
+</Caixa>
+
+### A lei de Fick
+
+$$
+\boxed{\;J_A = -D_{AB}\,\frac{dC_A}{dx}\;}
+$$
+
+A massa da espécie $A$ migra da região de **maior** para a de **menor** concentração — daí o sinal negativo, exatamente como em Fourier.
+
+<Caixa tipo="macete" rotulo="A analogia que unifica a cadeira">
+
+| transporte | lei | fluxo | gradiente | propriedade | unidade |
+|---|---|---|---|---|---|
+| **quantidade de movimento** | Newton | $\tau$ | $dv/dy$ | $\nu = \mu/\rho$ | $\mathrm{m^2/s}$ |
+| **calor** | Fourier | $q''$ | $dT/dx$ | $\alpha = k/(\rho c_p)$ | $\mathrm{m^2/s}$ |
+| **massa** | Fick | $J_A$ | $dC_A/dx$ | $D_{AB}$ | $\mathrm{m^2/s}$ |
+
+**As três difusividades têm a mesma unidade** — $\mathrm{m^2/s}$ — e é isso que permite formar adimensionais comparando-as:
+
+$$
+Pr = \frac{\nu}{\alpha} \;\text{(Prandtl)}
+\qquad
+Sc = \frac{\nu}{D_{AB}} \;\text{(Schmidt)}
+\qquad
+Le = \frac{\alpha}{D_{AB}} \;\text{(Lewis)}
+$$
+
+Se a prova pedir "explique a analogia entre os fenômenos de transporte", esta tabela **é** a resposta.
+
+</Caixa>
+
+### Difusão e convecção mássica
+
+Como no calor, há dois mecanismos:
+
+- **difusão** — migração molecular por gradiente de concentração, governada por Fick. É o análogo da condução;
+- **convecção mássica** — transporte pelo movimento do fluido:
+
+$$
+N_A = h_m\,A\,(C_{A,s} - C_{A,\infty})
+$$
+
+que é a lei do resfriamento de Newton com concentração no lugar de temperatura.
+
+<Caixa tipo="dica" rotulo="Exemplos que fixam a diferença">
+
+- uma gota de tinta que se espalha em água **parada** → difusão;
+- a mesma gota em água **mexida** → convecção mássica (muito mais rápida);
+- roupa secando no varal → evaporação na superfície e convecção mássica levando o vapor;
+- açúcar dissolvendo no café sem mexer → difusão, e é por isso que mexer resolve.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — difusão numa membrana">
+
+Oxigênio difunde por uma membrana de $2\ \mathrm{mm}$ de espessura e área $0{,}5\ \mathrm{m^2}$, com $D_{AB} = 1{,}8 \times 10^{-5}\ \mathrm{m^2/s}$. As concentrações nas faces são $0{,}025$ e $0{,}005\ \mathrm{kg/m^3}$. Qual a taxa de transferência?
+
+Perfil linear em regime permanente, como na parede plana:
+
+$$
+J_A = D_{AB}\,\frac{\Delta C_A}{L} = 1{,}8 \times 10^{-5} \times \frac{0{,}025 - 0{,}005}{2 \times 10^{-3}} = 1{,}8 \times 10^{-4}\ \mathrm{kg/(m^2 s)}
+$$
+
+$$
+N_A = J_A\,A = 1{,}8 \times 10^{-4} \times 0{,}5 = 9{,}0 \times 10^{-5}\ \mathrm{kg/s}
+$$
+
+**Compare com a seção anterior:** é exatamente a conta da parede plana, trocando $k$ por $D_{AB}$ e $\Delta T$ por $\Delta C_A$. A analogia não é retórica — é operacional.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Onde isto vai dar">
+
+A próxima seção fecha a cadeira detalhando os **três** fluxos que uma questão de transferência de massa pede: o difusivo (Fick), o convectivo (arrastado pelo escoamento) e o absoluto, que é a soma dos dois.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-fluxos-massa" num="29" titulo="Fluxo difusivo, convectivo e absoluto">
+
+**A ideia.** Numa mistura que **escoa**, uma espécie se move por dois motivos ao mesmo tempo: porque há gradiente de concentração (difusão) e porque o fluido inteiro está indo para algum lado (convecção). A questão típica de 2º EE dá a concentração total, as frações molares nas duas pontas e a velocidade, e pede **os três** fluxos para **as duas** espécies. É contabilidade, não dificuldade — desde que a ordem dos passos seja fixa.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $C$ — **concentração molar total** da mistura, em $\mathrm{mol/m^3}$;
+- $x_A$ — **fração molar** da espécie $A$, adimensional, com $x_A + x_B = 1$;
+- $C_A = x_A\,C$ — concentração molar da espécie $A$, em $\mathrm{mol/m^3}$;
+- $J''_A$ — densidade de fluxo **difusivo** de $A$, em $\mathrm{mol/(m^2 \cdot s)}$;
+- $N''_A$ — densidade de fluxo **convectivo** de $A$, em $\mathrm{mol/(m^2 \cdot s)}$;
+- $N''_{A,abs}$ — densidade de fluxo **absoluto** (total) de $A$;
+- $v$ — velocidade média da mistura, em $\mathrm{m/s}$;
+- $D_{AB}$ — coeficiente de difusão binária, em $\mathrm{m^2/s}$.
+
+</Caixa>
+
+### Os três fluxos
+
+**Difusivo** — é Fick, escrito em base molar:
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx}
+$$
+
+**Convectivo** — a espécie é simplesmente **carregada** pelo escoamento:
+
+$$
+N''_A = C_A\,v
+$$
+
+**Absoluto** — a soma, porque os dois transportes acontecem ao mesmo tempo:
+
+$$
+\boxed{\;N''_{A,abs} = J''_A + C_A\,v\;}
+$$
+
+<Caixa tipo="macete" rotulo="O roteiro, na ordem">
+
+1. **frações molares nas duas pontas.** Se o enunciado dá $x_A$ na entrada e $x_B$ na saída, complete com $x_B = 1 - x_A$ e $x_A = 1 - x_B$. É onde mais se perde ponto: o dado da saída costuma vir da **outra** espécie, de propósito;
+2. **concentrações**: $C_A = x_A C$ em cada ponta (e $C_B = x_B C$);
+3. **o gradiente.** Com perfil **linear**, $\dfrac{dC_A}{dx} = \dfrac{C_{A,2} - C_{A,1}}{L}$ — constante, então $J''_A$ é o mesmo em qualquer posição;
+4. **os três fluxos**, no ponto que a questão pedir (entrada, saída, meio do tubo).
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A conferência que sai de graça">
+
+Se a **concentração total é constante** ao longo do tubo, então $C_A + C_B = C$ em todo ponto, logo
+
+$$
+\frac{dC_A}{dx} = -\frac{dC_B}{dx}
+\qquad\Longrightarrow\qquad
+J''_A = -J''_B
+$$
+
+Os dois fluxos difusivos são **iguais em módulo e opostos em sinal**: o que $A$ difunde para a direita, $B$ difunde para a esquerda. Se a conta não sair assim (e a concentração total for constante), há erro.
+
+Os fluxos **convectivos**, ao contrário, apontam os dois para o **mesmo** lado — o lado em que o fluido escoa.
+
+</Caixa>
+
+### Concentração a partir da pressão parcial
+
+Quando a mistura é de **gases ideais**, a concentração molar sai da equação de estado, e a fração molar vale também para as pressões:
+
+$$
+C = \frac{P}{R\,T}
+\qquad\qquad
+C_A = \frac{p_A}{R\,T} = \frac{x_A\,P}{R\,T}
+$$
+
+E a massa que atravessa uma área $A$ num tempo $t$ é o fluxo molar convertido por massa molar:
+
+$$
+m = J''_A\,A\,t\,\mathcal{M}_A
+$$
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — os três fluxos na saída de um tubo">
+
+Mistura de $A$ e $B$ num tubo de $L = 2{,}0\ \mathrm{m}$, com $C = 200\ \mathrm{mol/m^3}$ **constante**, escoando a $v = 4{,}0\ \mathrm{m/s}$, com $D_{AB} = 5{,}0 \times 10^{-2}\ \mathrm{m^2/s}$. Na entrada, $70\ \%$ em mol é de $A$; na **saída**, $60\ \%$ em mol é de $B$.
+
+**Passo 1 — completar as frações.**
+
+$$
+x_{A1} = 0{,}70 \Rightarrow x_{B1} = 0{,}30
+\qquad
+x_{B2} = 0{,}60 \Rightarrow x_{A2} = 0{,}40
+$$
+
+**Passo 2 — concentrações.**
+
+$$
+C_{A1} = 140,\quad C_{A2} = 80,\quad C_{B1} = 60,\quad C_{B2} = 120
+\qquad [\mathrm{mol/m^3}]
+$$
+
+**Passo 3 — gradientes (perfil linear).**
+
+$$
+\frac{dC_A}{dx} = \frac{80 - 140}{2{,}0} = -30
+\qquad
+\frac{dC_B}{dx} = \frac{120 - 60}{2{,}0} = +30
+\qquad [\mathrm{mol/m^4}]
+$$
+
+**Passo 4 — os três fluxos, na saída.**
+
+$$
+J''_A = -5{,}0\times10^{-2}\,(-30) = +1{,}5
+\qquad
+J''_B = -5{,}0\times10^{-2}\,(+30) = -1{,}5
+$$
+
+$$
+N''_A = C_{A2}\,v = 80 \times 4 = 320
+\qquad
+N''_B = C_{B2}\,v = 120 \times 4 = 480
+$$
+
+$$
+N''_{A,abs} = 1{,}5 + 320 = 321{,}5
+\qquad
+N''_{B,abs} = -1{,}5 + 480 = 478{,}5
+$$
+
+tudo em $\mathrm{mol/(m^2 \cdot s)}$. Note as duas conferências: $J''_A = -J''_B$ ✔ e o convectivo é **centenas de vezes** maior que o difusivo, porque a velocidade de $4\ \mathrm{m/s}$ domina — o escoamento carrega muito mais do que a difusão espalha.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Fim do programa">
+
+Aqui termina o conteúdo da disciplina. Somando as seis unidades: propriedades dos fluidos, estática, cinemática, energia com máquinas e perdas, quantidade de movimento com análise dimensional e diferencial, e transferência de calor e massa.
+
+O **Exercício Final** cobre tudo — 1º e 2º EE juntos.
+
+</Caixa>
+
+</Topico>

@@ -1,0 +1,185 @@
+---
+origem: "Banco"
+tema: "Convecção · Camada limite e o coeficiente h"
+temaId: camada-limite
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q54.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**O que é uma camada limite hidrodinâmica? Do que trata a lei de Newton do resfriamento, e o que é o coeficiente de transferência de calor por convecção?**
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Escoamento sobre uma placa plana: a camada limite cresce a partir do bordo de ataque, com velocidade nula na parede e igual à do escoamento livre na borda da camada">
+    {/* placa */}
+    <rect x="30" y="140" width="280" height="10" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="140" y="164" font-size="9" fill="var(--ink-3)">placa (superfície a T<tspan font-size="7" dy="2">s</tspan><tspan dy="-2">)</tspan></text>
+    {/* escoamento livre */}
+    <line x1="6" y1="40" x2="30" y2="40" stroke="var(--accent)" stroke-width="1.6"/>
+    <polygon points="36,40 26,36 26,44" fill="var(--accent)"/>
+    <line x1="6" y1="60" x2="30" y2="60" stroke="var(--accent)" stroke-width="1.6"/>
+    <polygon points="36,60 26,56 26,64" fill="var(--accent)"/>
+    <line x1="6" y1="80" x2="30" y2="80" stroke="var(--accent)" stroke-width="1.6"/>
+    <polygon points="36,80 26,76 26,84" fill="var(--accent)"/>
+    <text x="4" y="30" font-size="9" fill="var(--accent)">v∞ , T∞</text>
+    {/* borda da camada limite */}
+    <path d="M30 140 Q140 106 306 88" fill="none" stroke="var(--warn)" stroke-width="1.8" stroke-dasharray="5 3"/>
+    <text x="228" y="80" font-size="9" fill="var(--warn)">borda da camada limite</text>
+    {/* perfis dentro da camada */}
+    <line x1="110" y1="140" x2="110" y2="118" stroke="var(--ok)" stroke-width="1"/>
+    <path d="M110 140 Q120 130 130 118" fill="none" stroke="var(--ok)" stroke-width="1.4"/>
+    <line x1="110" y1="134" x2="116" y2="134" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="120,134 113,131 113,137" fill="var(--ok)"/>
+    <line x1="110" y1="124" x2="124" y2="124" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="128,124 121,121 121,127" fill="var(--ok)"/>
+    <line x1="220" y1="140" x2="220" y2="98" stroke="var(--ok)" stroke-width="1"/>
+    <path d="M220 140 Q234 124 248 98" fill="none" stroke="var(--ok)" stroke-width="1.4"/>
+    <line x1="220" y1="132" x2="228" y2="132" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="232,132 225,129 225,135" fill="var(--ok)"/>
+    <line x1="220" y1="116" x2="238" y2="116" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="242,116 235,113 235,119" fill="var(--ok)"/>
+    <line x1="220" y1="104" x2="244" y2="104" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="248,104 241,101 241,107" fill="var(--ok)"/>
+    {/* espessura delta */}
+    <line x1="264" y1="140" x2="264" y2="92" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="264,88 261,96 267,96" fill="var(--ink-3)"/>
+    <text x="268" y="118" font-size="10" fill="var(--ink-3)">δ</text>
+    {/* v = 0 na parede */}
+    <circle cx="160" cy="140" r="3" fill="var(--warn)"/>
+    <text x="140" y="134" font-size="8" fill="var(--warn)">v = 0 (aderência)</text>
+    {/* bordo de ataque */}
+    <text x="26" y="132" font-size="8" fill="var(--ink-3)">bordo</text>
+  </svg>
+  <figcaption>
+
+Junto à parede o fluido está **parado**: é através dessa camada fina que o calor tem de passar por **condução**, e é ela que governa o valor de $h$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**Camada limite hidrodinâmica** é a **fina região**, próxima a um corpo em convecção, na qual os **gradientes de velocidade** são muito significativos. Ao encostar numa superfície, a velocidade do fluido se torna igual à da superfície — nula, se a superfície está em repouso (condição de **não escorregamento**) — e cresce ao longo da espessura $\delta$ até praticamente o valor do escoamento livre $v_\infty$.
+
+**Lei de Newton do resfriamento.** Estabelece uma **proporcionalidade** entre a diferença de temperatura entre a superfície e o fluido e a taxa de transferência de calor entre eles:
+
+$$
+q = h\,A\,(T_s - T_\infty)
+$$
+
+É, em essência, uma "lei de Fourier da convecção".
+
+**Coeficiente de transferência de calor por convecção** ($h$) é a constante que estabelece essa proporcionalidade, cumprindo papel semelhante ao da condutividade térmica na lei de Fourier — a taxa de calor é proporcional a ele. Unidade: $\mathrm{W/(m^2\cdot K)}$.
+</Gabarito>
+
+<Passos>
+**1 — Como a camada limite se forma.** O fluido que chega tem velocidade uniforme $v_\infty$. Ao tocar a placa, a camada em contato **para** (não escorregamento), e ela freia a de cima por viscosidade, que freia a seguinte, e assim por diante. A região afetada é a **camada limite**, e ela **cresce** ao longo da placa:
+
+$$
+v = 0 \ \text{ na parede}
+\qquad\qquad
+v \to v_\infty \ \text{ na borda, } y = \delta
+$$
+
+A espessura $\delta$ é definida convencionalmente onde $v = 0{,}99\,v_\infty$.
+
+<Caixa tipo="dica" rotulo="Há também a camada limite TÉRMICA">
+
+A pergunta fala da **hidrodinâmica** (ou de velocidade), mas existe a **térmica**: a região em que a temperatura varia de $T_s$ até $T_\infty$. As duas crescem juntas, e a razão entre as suas espessuras é dada pelo número de **Prandtl**:
+
+$$
+Pr = \frac{\nu}{\alpha}
+$$
+
+- $Pr \approx 1$ (gases) — as duas têm espessura parecida;
+- $Pr \gg 1$ (óleos) — a de velocidade é muito mais espessa;
+- $Pr \ll 1$ (metais líquidos) — a térmica é muito mais espessa.
+
+</Caixa>
+
+**2 — Por que a camada limite é o que governa a convecção.** Junto à parede, no limite $y \to 0$, o fluido está **parado**. E fluido parado transfere calor por **condução**. Então, exatamente na parede:
+
+$$
+q'' = -k_{\text{fluido}}\,\frac{\partial T}{\partial y}\bigg|_{y=0}
+$$
+
+Igualando isso à lei de Newton:
+
+$$
+h\,(T_s - T_\infty) = -k\,\frac{\partial T}{\partial y}\bigg|_{y=0}
+\qquad\Longrightarrow\qquad
+h = \frac{-k\,\dfrac{\partial T}{\partial y}\bigg|_{0}}{T_s - T_\infty}
+$$
+
+**É essa expressão que explica tudo:** $h$ é grande quando o gradiente de temperatura na parede é grande, isto é, quando a camada limite é **fina**. E a camada limite fica fina quando o escoamento é **rápido**.
+
+$$
+\text{escoamento mais rápido}
+\;\Rightarrow\;
+\delta \text{ menor}
+\;\Rightarrow\;
+h \text{ maior}
+\;\Rightarrow\;
+q \text{ maior}
+$$
+
+<Caixa tipo="macete" rotulo="Por que h NÃO é propriedade do fluido">
+
+A condutividade $k$ é propriedade do material: tabela, e pronto. Já $h$ depende de:
+
+- a **geometria** (placa, tubo, esfera);
+- a **velocidade** e o **regime** do escoamento (laminar ou turbulento);
+- as propriedades do fluido ($\rho$, $\mu$, $k$, $c_p$);
+- se a convecção é **natural** ou **forçada**;
+- até da **posição** ao longo da superfície — $h$ é maior no bordo de ataque, onde $\delta$ é mínima, e cai adiante.
+
+É por isso que achar $h$ é o problema difícil da convecção, e é por isso que se recorre a correlações de **Nusselt**:
+
+$$
+Nu = \frac{h\,L}{k}
+\qquad\Longrightarrow\qquad
+h = \frac{Nu\,k}{L}
+$$
+
+</Caixa>
+
+**3 — A lei de Newton do resfriamento, e o que ela realmente é.**
+
+$$
+q = h\,A\,(T_s - T_\infty)
+$$
+
+Ela **não** é uma lei fundamental como Fourier: é uma **definição** de $h$. Toda a física complicada do escoamento foi empacotada dentro desse coeficiente — e é justamente por isso que ela é tão útil e tão perigosa ao mesmo tempo.
+
+E, em forma de resistência térmica:
+
+$$
+R_{conv} = \frac{1}{h\,A}
+$$
+
+que é a parcela que se soma ao circuito térmico em todo problema de parede ou tubo com fluido escoando.
+
+<Caixa tipo="dica" rotulo="A ordem de grandeza de h, e o que ela diz">
+
+| situação | $h$ $[\mathrm{W/(m^2K)}]$ | por que |
+|---|---|---|
+| gás, natural | $2$–$25$ | camada limite **espessa** |
+| gás, forçada | $25$–$250$ | camada mais fina |
+| líquido, forçada | $100$–$20\,000$ | $k$ do fluido maior e camada fina |
+| ebulição, condensação | $2500$–$100\,000$ | calor latente na própria superfície |
+
+Nos exercícios de parede composta, é sempre a convecção com **ar** que domina a resistência — e agora se sabe por quê: camada limite espessa e $k$ do ar minúsculo.
+
+</Caixa>
+
+**Conferência —** camada limite é a região de **gradientes de velocidade significativos**, com $v = 0$ na parede ✔ a lei de Newton é uma **proporcionalidade** entre $\Delta T$ e a taxa ✔ dizer que $h$ **não** é propriedade do fluido, e sim resultado do escoamento, é o que mostra domínio ✔ ligar $h$ à espessura da camada limite explica todos os valores da tabela ✔
+</Passos>

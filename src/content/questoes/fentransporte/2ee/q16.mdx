@@ -1,0 +1,121 @@
+---
+origem: "2023.1 · 2023.2"
+tema: "Transporte de massa · Difusão e convecção no suco e no chá"
+temaId: difusao
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A transferência de massa é um fenômeno presente em muitas situações do nosso dia a dia, desde a disseminação do aroma de um perfume até processos de dissolução de substâncias. Tomando como exemplo a preparação de uma solução de **suco em água gelada**, analise os processos envolvidos em três condições distintas:
+
+**(i)** adicionando $1\ \mathrm{g}$ do pó do suco na água gelada **sem mexer**;
+
+**(ii)** adicionando $2\ \mathrm{g}$ do pó do suco na água gelada **sem mexer**;
+
+**(iii)** repetindo o mesmo processo (i), mas **agitando vigorosamente** a água.
+
+Além disso, explore como a **temperatura** da água influencia a transferência de massa nesse contexto.
+
+<Gabarito>
+**(i)** Ocorre transferência de massa por **difusão** — o mecanismo mais lento, porque o fluido está parado.
+
+**(ii)** O mesmo mecanismo, **difusão**, mas com **taxa maior**: a maior quantidade de pó dá uma concentração maior e, portanto, um **gradiente de concentração maior**.
+
+**(iii)** A mistura é **muito mais rápida**, porque passa a ocorrer **convecção** — o fluido em movimento carrega o soluto.
+
+**Temperatura:** se a água estiver **mais quente**, a difusão é **mais rápida** (o coeficiente $D_{AB}$ cresce com a temperatura); com a água **gelada**, como no enunciado, o processo é mais lento.
+</Gabarito>
+
+<Passos>
+**1 — Identificar o mecanismo de cada caso.** A pergunta é sempre a mesma: **o fluido está parado ou em movimento?**
+
+$$
+\text{parado} \Rightarrow \text{difusão}
+\qquad\qquad
+\text{em movimento} \Rightarrow \text{convecção}
+$$
+
+- **(i)** e **(ii)** — sem mexer: fluido parado, só **difusão**;
+- **(iii)** — agitando: fluido em movimento, entra a **convecção**, que domina de imediato.
+
+**2 — Caso (i): difusão pura.** A lei de Fick governa:
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx}
+$$
+
+O pó no fundo do copo cria uma região de concentração alta, e o soluto migra para onde há menos. É lento — minutos, não segundos — porque depende do movimento aleatório das moléculas.
+
+**3 — Caso (ii): o mesmo mecanismo, com taxa maior.** Aqui está a sutileza que separa (i) de (ii). O mecanismo **não muda** — continua difusão. O que muda é o **gradiente**: com $2\ \mathrm{g}$ em vez de $1\ \mathrm{g}$, a concentração junto ao pó é maior, então
+
+$$
+\left|\frac{dC_A}{dx}\right| \text{ maior}
+\qquad\Longrightarrow\qquad
+|J''_A| \text{ maior}
+$$
+
+Cuidado com a leitura errada: **dobrar a massa não dobra a velocidade de homogeneização**. O fluxo é maior, mas há também mais soluto a distribuir. O que aumenta de fato é a **taxa** de transferência, não necessariamente o tempo até ficar uniforme.
+
+**4 — Caso (iii): convecção.** Agitar cria um campo de velocidades que **carrega** o soluto:
+
+$$
+N''_A = C_A\,v
+$$
+
+e, na forma de troca com a superfície do grão de pó,
+
+$$
+N_A = h_m\,A\,(C_{A,s} - C_{A,\infty})
+$$
+
+A agitação faz duas coisas: transporta o soluto já dissolvido para longe (o que **mantém** o gradiente alto junto ao grão) e afina a camada limite em volta dele. Por isso a diferença é de ordens de grandeza, não de porcentagem.
+
+**5 — O efeito da temperatura.** O coeficiente de difusão **cresce** com a temperatura, porque as moléculas se movem mais rápido:
+
+$$
+D_{AB} \uparrow \text{ com } T
+\qquad\Longrightarrow\qquad
+|J''_A| \uparrow
+$$
+
+Consequências para o enunciado:
+
+- a água **gelada** dos três casos é o que torna a dissolução lenta;
+- se a água estivesse quente, **(i)** e **(ii)** ficariam sensivelmente mais rápidos;
+- há um efeito adicional: em água quente a **solubilidade** costuma ser maior, o que permite uma concentração de saturação mais alta junto ao grão e, com isso, um gradiente maior ainda.
+
+<Caixa tipo="macete" rotulo="O quadro que responde tudo de uma vez">
+
+| caso | mecanismo | o que muda | velocidade |
+|---|---|---|---|
+| (i) 1 g, sem mexer | **difusão** | referência | lenta |
+| (ii) 2 g, sem mexer | **difusão** | gradiente maior | maior taxa, ainda lenta |
+| (iii) 1 g, agitando | **convecção** | há velocidade | muito rápida |
+| água quente | difusão | $D_{AB}$ maior | mais rápida |
+
+A questão dá **três** situações mais a temperatura: são quatro coisas a comentar, e a que mais se esquece é a distinção entre (i) e (ii), que **não** é de mecanismo, e sim de gradiente.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A mesma questão já apareceu com chá">
+
+Em 2023.1 a versão era com **saquinho de chá em água quente**: (i) sem mexer, (ii) mexendo, e a pergunta final "o que acontece se em (i) a água estiver fria?". A resposta é a mesma estrutura — difusão em (i), convecção em (ii), difusão **mais lenta** com água fria.
+
+Vale reconhecer o padrão: o professor troca o cenário e mantém a física.
+
+</Caixa>
+
+**Conferência —** (i) e (ii) têm o **mesmo** mecanismo, e a diferença está no gradiente ✔ só (iii) muda de mecanismo ✔ a temperatura age sobre $D_{AB}$, e a água do enunciado é **gelada**, o que faz de tudo isso um processo lento ✔
+</Passos>

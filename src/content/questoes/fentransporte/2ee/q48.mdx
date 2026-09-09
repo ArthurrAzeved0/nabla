@@ -1,0 +1,197 @@
+---
+origem: "2022.2"
+tema: "Esfera · Achar o h externo a partir do raio crítico"
+temaId: raio-critico
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q48.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere uma esfera de um material $A$ (homogênea e de temperatura constante), recoberta por uma camada de um material $B$, recoberta novamente com uma camada de um isolante térmico. Na parte externa da esfera, um fluido escoa fazendo convecção.
+
+**Dados:** $T_1 = 250\ \mathrm{K}$; $T_\infty = 400\ \mathrm{K}$; $r_1 = 5\ \mathrm{cm}$; $r_2 = 8\ \mathrm{cm}$; $r_3 = 10\ \mathrm{cm}$; $k_B = 4{,}0\ \mathrm{W/(m\cdot K)}$; $k_{iso} = 0{,}7\ \mathrm{W/(m\cdot K)}$; $r_c = 23\ \mathrm{cm}$.
+
+Determine:
+
+**a)** (0,5 pts.) O **coeficiente de transferência de calor por convecção** do fluido externo, $h_e$.
+
+**b)** (1,0 pt.) O fluxo de calor através do sistema.
+
+**c)** (1,0 pt.) As temperaturas na interface entre o material $B$ e o isolante térmico e na superfície externa do isolante térmico.
+
+<Figura>
+  <svg viewBox="0 0 330 232" role="img" aria-label="Esfera do material A recoberta por uma camada do material B e por um isolante térmico, com um fluido escoando por fora fazendo convecção; os três raios estão marcados">
+    {/* isolante */}
+    <circle cx="132" cy="112" r="86" fill="var(--line-2)" opacity="0.55" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* material B */}
+    <circle cx="132" cy="112" r="69" fill="var(--warn)" opacity="0.32" stroke="var(--ink-2)" stroke-width="1.2"/>
+    {/* material A */}
+    <circle cx="132" cy="112" r="43" fill="var(--accent-soft)" opacity="0.8" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="116" y="92" font-size="12" fill="var(--ink-2)">A</text>
+    <text x="110" y="134" font-size="9" fill="var(--ink-2)">T₁</text>
+    {/* rótulos das camadas, com chamadas */}
+    <text x="238" y="150" font-size="10" fill="var(--ink-2)">B</text>
+    <line x1="234" y1="147" x2="176" y2="140" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="238" y="182" font-size="10" fill="var(--ink-2)">isolante</text>
+    <line x1="234" y1="179" x2="186" y2="164" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    {/* raios */}
+    <line x1="132" y1="112" x2="171" y2="112" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="174,112 166,109 166,115" fill="var(--ok)"/>
+    <text x="146" y="106" font-size="10" fill="var(--ok)">r₁</text>
+    <line x1="132" y1="112" x2="181" y2="63" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="184,60 176,62 181,67" fill="var(--ok)"/>
+    <text x="186" y="58" font-size="10" fill="var(--ok)">r₂</text>
+    <line x1="132" y1="112" x2="132" y2="30" stroke="var(--ok)" stroke-width="1.3"/>
+    <polygon points="132,26 129,34 135,34" fill="var(--ok)"/>
+    <text x="138" y="40" font-size="10" fill="var(--ok)">r₃</text>
+    {/* convecção externa */}
+    <path d="M232 66 Q242 78 232 90" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M242 58 Q254 78 242 98" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="236" y="44" font-size="10" fill="var(--accent)">h<tspan font-size="7" dy="2">e</tspan><tspan dy="-2"> , T∞</tspan></text>
+  </svg>
+  <figcaption>
+
+Aqui o $h_e$ **não** é dado: quem é dado é o **raio crítico**, $r_c = 23\ \mathrm{cm}$. O item (a) inverte a fórmula do crítico para achar o coeficiente de convecção.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)** Invertendo a fórmula do raio crítico para **esfera**:
+
+$$
+r_c = \frac{2\,k_{iso}}{h_e}
+\qquad\Longrightarrow\qquad
+h_e = \frac{2\,k_{iso}}{r_c} = \frac{2 \times 0{,}7}{0{,}23} \approx \mathbf{6{,}087\ W/(m^2 \cdot K)}
+$$
+
+**b)**
+
+$$
+R_B = 0{,}1492
+\qquad
+R_{iso} = 0{,}2842
+\qquad
+R_{conv} = \frac{1}{h_e\,4\pi r_3^2} = 1{,}3073
+\qquad
+R_T = 1{,}7408\ \mathrm{K/W}
+$$
+
+$$
+q = \frac{250 - 400}{1{,}7408} \approx \mathbf{-86{,}2\ W}
+$$
+
+Negativo: o calor **entra** na esfera, porque o fluido externo está mais quente.
+
+**c)**
+
+$$
+T_2 = T_1 - q\,R_B \approx \mathbf{262{,}9\ K}
+\qquad\qquad
+T_3 = T_2 - q\,R_{iso} \approx \mathbf{287{,}3\ K}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — item (a): a fórmula do raio crítico, usada ao contrário.** Nas outras provas, $h_e$ era dado e $r_c$ era a incógnita. Aqui é o inverso — e é por isso que este item vale meio ponto: é uma linha.
+
+$$
+r_c = \frac{2\,k_{iso}}{h_e}
+\qquad\Longrightarrow\qquad
+h_e = \frac{2\,k_{iso}}{r_c}
+$$
+
+$$
+h_e = \frac{2 \times 0{,}7}{0{,}23} = \frac{1{,}4}{0{,}23} = 6{,}087\ \mathrm{W/(m^2\cdot K)}
+$$
+
+<Caixa tipo="macete" rotulo="Use a fórmula da geometria certa">
+
+Com a fórmula do **cilindro** ($r_c = k/h$) sairia $h_e = 0{,}7/0{,}23 = 3{,}04$ — a metade. E aí **todos** os itens seguintes ficariam errados, porque $h_e$ alimenta $R_{conv}$.
+
+Meio ponto que decide dois e meio: é o tipo de item que não se pode errar.
+
+</Caixa>
+
+**Passo 2 — as três resistências, item (b).** Raios em metros: $r_1 = 0{,}05$, $r_2 = 0{,}08$, $r_3 = 0{,}10$.
+
+$$
+R_B = \frac{1/r_1 - 1/r_2}{4\pi k_B} = \frac{20 - 12{,}5}{4\pi \times 4{,}0} = \frac{7{,}5}{50{,}27} = 0{,}1492\ \mathrm{K/W}
+$$
+
+$$
+R_{iso} = \frac{1/r_2 - 1/r_3}{4\pi k_{iso}} = \frac{12{,}5 - 10}{4\pi \times 0{,}7} = \frac{2{,}5}{8{,}796} = 0{,}2842\ \mathrm{K/W}
+$$
+
+$$
+R_{conv} = \frac{1}{h_e\,4\pi r_3^2} = \frac{1}{6{,}087 \times 4\pi (0{,}10)^2} = \frac{1}{0{,}7649} = 1{,}3073\ \mathrm{K/W}
+$$
+
+$$
+R_T = 0{,}1492 + 0{,}2842 + 1{,}3073 = 1{,}7408\ \mathrm{K/W}
+$$
+
+**Passo 3 — o fluxo, e o seu sinal.**
+
+$$
+q = \frac{T_1 - T_\infty}{R_T} = \frac{250 - 400}{1{,}7408} = \frac{-150}{1{,}7408} = -86{,}2\ \mathrm{W}
+$$
+
+Negativo: com $T_\infty = 400\ \mathrm{K}$ contra $T_1 = 250\ \mathrm{K}$, é o fluido que **aquece** a esfera. Em módulo, $86{,}2\ \mathrm{W}$ entrando.
+
+**Passo 4 — item (c): as temperaturas das interfaces.**
+
+$$
+T_2 = T_1 - q\,R_B = 250 - (-86{,}2)(0{,}1492) = 250 + 12{,}9 = 262{,}9\ \mathrm{K}
+$$
+
+$$
+T_3 = T_2 - q\,R_{iso} = 262{,}9 - (-86{,}2)(0{,}2842) = 262{,}9 + 24{,}5 = 287{,}3\ \mathrm{K}
+$$
+
+As temperaturas **crescem** de dentro para fora, coerentemente com o calor entrando.
+
+**Passo 5 — a conferência pela convecção.**
+
+$$
+T_3 - T_\infty = q\,R_{conv} = -86{,}2 \times 1{,}3073 = -112{,}7\ \mathrm{K}
+\qquad\Longrightarrow\qquad
+T_3 = 400 - 112{,}7 = 287{,}3\ \mathrm{K}\ \checkmark
+$$
+
+**Passo 6 — o que o raio crítico dado já anunciava.** Com $r_c = 23\ \mathrm{cm}$ e $r_3 = 10\ \mathrm{cm}$, o sistema está bem **antes** do crítico. E a tabela confirma o motivo:
+
+| resistência | valor $[\mathrm{K/W}]$ | fração | $|\Delta T|$ $[\mathrm{K}]$ |
+|---|---|---|---|
+| condução em $B$ | $0{,}1492$ | $8{,}6\ \%$ | $12{,}9$ |
+| condução no isolante | $0{,}2842$ | $16{,}3\ \%$ | $24{,}5$ |
+| **convecção externa** | $1{,}3073$ | $\mathbf{75{,}1\ \%}$ | $112{,}7$ |
+| **total** | $1{,}7408$ | $100\ \%$ | $\mathbf{150{,}0}$ |
+
+Com $h_e$ baixo (pouco mais de $6$), a convecção externa é o gargalo, e é por isso que aumentar a área externa — pondo mais isolante — ainda **aumentaria** a troca. Os itens (a) e (b) contam a mesma história por dois caminhos.
+
+<Caixa tipo="dica" rotulo="Compare as três versões desta esfera">
+
+| prova | $T_1$ | $T_\infty$ | $h_e$ | $r_c$ | $q$ |
+|---|---|---|---|---|---|
+| 2022.1 | $350$ | $298$ | $6{,}2$ (dado) | $22{,}6\ \mathrm{cm}$ | $+30{,}3\ \mathrm{W}$ |
+| **2022.2** | $250$ | $400$ | $6{,}087$ (**a achar**) | $23\ \mathrm{cm}$ (dado) | $-86{,}2\ \mathrm{W}$ |
+| 2023.2 | $293$ | $393$ | $2{,}0$ (dado) | $7\ \mathrm{cm}$ | $-14{,}4\ \mathrm{W}$ |
+
+Mesma geometria nas três, com o item (a) invertido em 2022.2. E note o $\Delta T$ de $150\ \mathrm{K}$ desta versão: é o que faz o fluxo ser o maior das três.
+
+</Caixa>
+
+**Conferência —** o raio crítico da **esfera** leva o 2 no numerador, e aqui ele é invertido ✔ resistência esférica sem $L$ ✔ convecção com $4\pi r_3^2$ ✔ $q$ **negativo**, porque o fluido é o mais quente ✔ as quedas somam $150\ \mathrm{K}$ ✔
+</Passos>

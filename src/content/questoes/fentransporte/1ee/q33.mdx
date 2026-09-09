@@ -1,0 +1,133 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Escoamentos · Os regimes e do que cada um trata"
+temaId: regimes-de-escoamento
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q33.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Quais são e do que tratam os regimes de escoamento de um fluido?**
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Três tubos: no laminar as linhas de corrente são paralelas, no transição começam a ondular e no turbulento se misturam em turbilhões">
+    {/* laminar */}
+    <rect x="30" y="24" width="276" height="34" fill="var(--accent-soft)" opacity="0.35" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <line x1="36" y1="32" x2="300" y2="32" stroke="var(--accent)" stroke-width="1.2"/>
+    <line x1="36" y1="41" x2="300" y2="41" stroke="var(--accent)" stroke-width="1.2"/>
+    <line x1="36" y1="50" x2="300" y2="50" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="30" y="18" font-size="9" fill="var(--ink-2)">laminar · Re &lt; 2000</text>
+    {/* transição */}
+    <rect x="30" y="76" width="276" height="34" fill="var(--accent-soft)" opacity="0.35" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <path d="M36 84 L150 84 Q190 84 214 90 Q248 98 300 92" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
+    <path d="M36 93 L150 93 Q192 93 218 100 Q250 106 300 100" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
+    <path d="M36 102 L150 102 Q188 102 210 96 Q244 88 300 96" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="30" y="70" font-size="9" fill="var(--ink-2)">transição · 2000 &lt; Re &lt; 4000</text>
+    {/* turbulento */}
+    <rect x="30" y="128" width="276" height="34" fill="var(--accent-soft)" opacity="0.35" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <path d="M36 145 Q60 132 84 145 Q108 158 132 145 Q156 132 180 145 Q204 158 228 145 Q252 132 276 145 Q292 154 300 145" fill="none" stroke="var(--ok)" stroke-width="1.3"/>
+    <circle cx="96" cy="137" r="5" fill="none" stroke="var(--ok)" stroke-width="1"/>
+    <circle cx="160" cy="153" r="5" fill="none" stroke="var(--ok)" stroke-width="1"/>
+    <circle cx="228" cy="135" r="5" fill="none" stroke="var(--ok)" stroke-width="1"/>
+    <circle cx="266" cy="154" r="4" fill="none" stroke="var(--ok)" stroke-width="1"/>
+    <text x="30" y="122" font-size="9" fill="var(--ink-2)">turbulento · Re &gt; 4000</text>
+    {/* sentido */}
+    <line x1="30" y1="178" x2="70" y2="178" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <polygon points="76,178 66,174 66,182" fill="var(--ink-3)"/>
+    <text x="84" y="182" font-size="9" fill="var(--ink-3)">sentido do escoamento</text>
+  </svg>
+  <figcaption>
+
+O que separa os três é a razão entre **inércia** e **viscosidade** — o número de Reynolds.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+São o **laminar**, o de **transição** e o **turbulento**, e o que os separa é o **número de Reynolds**:
+
+$$
+Re = \frac{\rho\,v\,D}{\mu} = \frac{v\,D}{\nu}
+$$
+
+- **laminar** — o fluido escoa como se fosse constituído de **lâminas paralelas** que deslizam umas sobre as outras, **sem mistura macroscópica**. As linhas de corrente são bem definidas e a viscosidade domina. Em tubos, $Re < 2000$;
+- **transição** — regime instável, em que as perturbações começam a crescer mas ainda não dominam. Em tubos, $2000 < Re < 4000$;
+- **turbulento** — as partículas se movem em **trajetórias irregulares**, com **mistura macroscópica** por meio de turbilhões. A inércia domina. Em tubos, $Re > 4000$.
+</Gabarito>
+
+<Passos>
+**1 — O que decide o regime.** O número de Reynolds compara duas tendências:
+
+$$
+Re = \frac{\text{forças de inércia}}{\text{forças de viscosidade}} = \frac{\rho\,v\,D}{\mu}
+$$
+
+- **viscosidade** tende a **organizar**: ela amortece qualquer perturbação que apareça;
+- **inércia** tende a **desorganizar**: ela faz a perturbação seguir em frente e crescer.
+
+Quem vence define o regime. É por isso que um só número, adimensional, classifica escoamentos de fluidos e tubos completamente diferentes.
+
+**2 — Laminar.** O escoamento se dá em lâminas paralelas que deslizam sem se misturar. Características:
+
+- linhas de corrente **bem definidas** e estáveis;
+- o transporte de quantidade de movimento entre camadas é **só molecular** (viscoso);
+- em tubo, o perfil de velocidade é uma **parábola**, e a velocidade máxima é o **dobro** da média;
+- a perda de carga é **proporcional a $v$**, e o fator de atrito vale exatamente $f = 64/Re$.
+
+Exemplos: óleo lubrificante numa folga fina, sangue em capilares, mel escorrendo.
+
+**3 — Transição.** Faixa em que o escoamento **oscila** entre os dois comportamentos: perturbações aparecem, crescem, e às vezes se dissipam. É um regime **instável** e mal comportado — nenhuma correlação funciona bem nele, e é por isso que projetos evitam operar nessa faixa.
+
+**4 — Turbulento.** As partículas se movem de forma irregular e há **mistura macroscópica** por turbilhões (vórtices). Características:
+
+- as linhas de corrente **não** são definidas: há flutuações aleatórias de velocidade em torno de uma média;
+- o transporte entre camadas passa a ser dominado pelos **turbilhões**, muito mais eficiente que o molecular. Por isso o turbulento **troca mais calor e mais massa**;
+- o perfil de velocidade é bem mais **achatado** que a parábola, e a velocidade máxima é só cerca de $1{,}2$ vez a média;
+- a perda de carga é aproximadamente proporcional a $v^2$, e $f$ depende também da **rugosidade** — daí o diagrama de Moody.
+
+Exemplos: água numa adutora, ar num duto de ventilação, fumaça subindo depois de alguns centímetros.
+
+<Caixa tipo="macete" rotulo="A tabela que responde a questão">
+
+| | laminar | transição | turbulento |
+|---|---|---|---|
+| $Re$ (em tubo) | $< 2000$ | $2000$–$4000$ | $> 4000$ |
+| quem domina | viscosidade | disputa | inércia |
+| mistura | **nenhuma** (macroscópica) | intermitente | **intensa** |
+| perfil de velocidade | parábola | instável | achatado |
+| $v_{máx}/v_{média}$ | $2{,}0$ | — | $\approx 1{,}2$ |
+| perda de carga | $\propto v$ | — | $\approx \propto v^2$ |
+| fator de atrito | $f = 64/Re$ | — | Moody, com rugosidade |
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Os limites não são universais">
+
+Os valores $2000$ e $4000$ valem para **escoamento interno em tubo circular**. Em placa plana a transição se dá perto de $Re \approx 5\times10^5$; em torno de esfera, perto de $2\times10^5$. O que muda é o **comprimento característico** e a geometria — o critério continua sendo o mesmo Reynolds.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Não confunda com regime permanente">
+
+"Regime de escoamento" (laminar/turbulento) é diferente de "regime **permanente**/transiente":
+
+- **laminar × turbulento** — sobre a **organização** do movimento;
+- **permanente × transiente** — sobre a dependência do **tempo**: se as grandezas num ponto fixo mudam ou não.
+
+Um escoamento turbulento pode ser permanente **na média** — é o caso da água numa adutora, que é turbulenta e ao mesmo tempo tratada como permanente. Quem responde "permanente e transiente" a esta questão responde outra pergunta.
+
+</Caixa>
+
+**Conferência —** **três** regimes, com nome e faixa de Reynolds ✔ o que caracteriza cada um: lâminas sem mistura, instabilidade, mistura por turbilhões ✔ citar o Reynolds como o critério, e dizer que ele compara inércia com viscosidade ✔
+</Passos>

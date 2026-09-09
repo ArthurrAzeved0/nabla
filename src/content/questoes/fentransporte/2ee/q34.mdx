@@ -1,0 +1,117 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Difusão de calor · O que a equação diz, termo a termo"
+temaId: conducao-unidimensional
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q34.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Explique a equação da difusão de calor.**
+
+<Gabarito>
+A equação da difusão de calor é o **balanço de energia** num elemento de volume, escrito em forma diferencial:
+
+$$
+\underbrace{\frac{\partial}{\partial x}\!\left(k\frac{\partial T}{\partial x}\right)
++ \frac{\partial}{\partial y}\!\left(k\frac{\partial T}{\partial y}\right)
++ \frac{\partial}{\partial z}\!\left(k\frac{\partial T}{\partial z}\right)}_{\text{condução líquida que ENTRA}}
++ \underbrace{\dot q}_{\text{GERAÇÃO}}
+= \underbrace{\rho\,c_p\,\frac{\partial T}{\partial t}}_{\text{ACÚMULO}}
+$$
+
+Com $k$ constante:
+
+$$
+\nabla^2 T + \frac{\dot q}{k} = \frac{1}{\alpha}\frac{\partial T}{\partial t}
+\qquad\text{com}\qquad
+\alpha = \frac{k}{\rho\,c_p}
+$$
+
+Ela diz que **o que entra por condução mais o que é gerado dentro é igual ao que fica armazenado** — e é dela que saem todas as fórmulas da unidade, cancelando os termos que o problema dispensa.
+</Gabarito>
+
+<Passos>
+**1 — O que cada grupo de termos significa.**
+
+- **os três primeiros** — a condução **líquida** (o que entra menos o que sai) em cada direção. Vêm da lei de Fourier aplicada às faces opostas do elemento;
+- $\dot q$ — a **geração interna** por unidade de volume, em $\mathrm{W/m^3}$: efeito Joule, reação química, decaimento nuclear. Positiva se exotérmica, negativa se endotérmica;
+- $\rho c_p\,\partial T/\partial t$ — o **acúmulo**: a energia que fica no elemento e faz a sua temperatura subir. Se a temperatura não muda com o tempo, este termo é zero.
+
+<Caixa tipo="simbolos">
+
+- $k$ — condutividade térmica, em $\mathrm{W/(m\cdot K)}$
+- $\dot q$ — geração por unidade de volume, em $\mathrm{W/m^3}$
+- $\rho$ — massa específica; $c_p$ — calor específico, em $\mathrm{J/(kg\cdot K)}$
+- $\alpha = k/(\rho c_p)$ — **difusividade térmica**, em $\mathrm{m^2/s}$
+
+</Caixa>
+
+**2 — O papel da difusividade térmica.** Escrita com $\alpha$, a equação fica com um só coeficiente, e ele tem leitura física direta:
+
+$$
+\alpha = \frac{k}{\rho\,c_p} = \frac{\text{capacidade de \textbf{conduzir} calor}}{\text{capacidade de \textbf{armazenar} calor}}
+$$
+
+- $\alpha$ **grande** (metais) — o material transmite a mudança de temperatura rapidamente; responde rápido;
+- $\alpha$ **pequeno** (madeira, tijolo) — o material absorve calor e demora a propagá-lo; responde devagar.
+
+É por isso que uma colher de metal esquenta quase de imediato e a parede de tijolo leva horas para sentir o sol.
+
+**3 — Por que "difusão" de calor.** Porque a estrutura é a **mesma** da difusão de massa e da difusão de quantidade de movimento:
+
+$$
+\underbrace{\frac{\partial T}{\partial t} = \alpha\,\nabla^2 T}_{\text{calor}}
+\qquad
+\underbrace{\frac{\partial C_A}{\partial t} = D_{AB}\,\nabla^2 C_A}_{\text{massa}}
+\qquad
+\underbrace{\frac{\partial v}{\partial t} = \nu\,\nabla^2 v}_{\text{q. de movimento}}
+$$
+
+Três fenômenos, uma equação, com $\alpha$, $D_{AB}$ e $\nu$ no mesmo lugar — e as três difusividades na mesma unidade, $\mathrm{m^2/s}$. É o resultado que dá nome à disciplina.
+
+**4 — Os casos particulares, que é para onde a explicação tem de apontar.** Toda fórmula usada nos exercícios sai dela:
+
+| condição | o que cai | resultado |
+|---|---|---|
+| regime permanente | acúmulo | $\nabla^2 T + \dot q/k = 0$ (**Poisson**) |
+| sem geração | $\dot q$ | $\partial T/\partial t = \alpha\nabla^2 T$ (**difusão** pura) |
+| permanente e sem geração | os dois | $\nabla^2 T = 0$ (**Laplace**) |
+| 1D, permanente, sem geração | tudo, menos $x$ | $d^2T/dx^2 = 0$ → **perfil linear** |
+| 1D, permanente, com geração | só o tempo | $d^2T/dx^2 = -\dot q/k$ → **parábola** |
+
+<Caixa tipo="macete" rotulo="A frase que fecha a resposta">
+
+> A equação da difusão de calor é a conservação de energia num elemento de volume: **condução líquida que entra + geração = acúmulo**. Em regime permanente e sem geração, ela se reduz a $\nabla^2 T = 0$, cuja solução unidimensional é o perfil **linear** que usamos na parede plana.
+
+Ligar a equação geral ao caso que se usa na prática é o que mostra que ela foi entendida — e não só transcrita.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Em cilindro e esfera a forma muda">
+
+Em coordenadas cilíndricas e esféricas o laplaciano ganha termos com $1/r$:
+
+$$
+\frac{1}{r}\frac{\partial}{\partial r}\!\left(r\,\frac{\partial T}{\partial r}\right) \quad\text{(cilindro)}
+\qquad
+\frac{1}{r^2}\frac{\partial}{\partial r}\!\left(r^2\,\frac{\partial T}{\partial r}\right) \quad\text{(esfera)}
+$$
+
+E é dali que saem o **logaritmo** da resistência do tubo e o $1/r_1 - 1/r_2$ da esfera. Os fatores $r$ e $r^2$ são as áreas que crescem com o raio.
+
+</Caixa>
+
+**Conferência —** identificar os **três** grupos de termos (condução, geração, acúmulo) ✔ dizer o que é $\alpha$ e o que ela mede ✔ apontar ao menos dois casos particulares, e de preferência o que dá o perfil linear ✔
+</Passos>
