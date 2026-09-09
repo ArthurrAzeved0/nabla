@@ -1,0 +1,87 @@
+---
+origem: "2026.1"
+tema: "Potência complexa · Calcular (−i)^(1+i) pelo ramo principal"
+temaId: potencia-complexa
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que $z^{\alpha} = e^{\alpha\operatorname{Log}(z)}$, $z \in \mathbb{C}$, calcule, usando o ramo principal do logaritmo,
+
+$$
+(-i)^{1+i}
+$$
+
+<Gabarito>
+$$
+(-i)^{1+i} = e^{\pi/2}\,e^{-i\pi/2} = -i\,e^{\pi/2} \approx -4{,}81\,i
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o logaritmo principal da base.** Tudo depende deste passo. O ponto $-i$ está no eixo imaginário negativo:
+
+$$
+|-i| = 1,
+\qquad
+\operatorname{Arg}(-i) = -\frac{\pi}{2}
+$$
+
+$$
+\operatorname{Log}(-i) = \ln 1 + i\left(-\frac{\pi}{2}\right) = -\frac{i\pi}{2}
+$$
+
+Trocar o sinal aqui — escrever $+i\pi/2$, que é o argumento de $+i$ — inverte a resposta inteira.
+
+**Passo 2 — montar o expoente.**
+
+$$
+(-i)^{1+i} = e^{(1+i)\operatorname{Log}(-i)} = \exp\!\left[(1+i)\left(-\frac{i\pi}{2}\right)\right]
+$$
+
+**Passo 3 — abrir o produto**, lembrando que $i\cdot i = -1$:
+
+$$
+(1+i)\left(-\frac{i\pi}{2}\right)
+= -\frac{i\pi}{2} - \frac{i^2\pi}{2}
+= \frac{\pi}{2} - \frac{i\pi}{2}
+$$
+
+**Passo 4 — separar módulo e fase.**
+
+$$
+(-i)^{1+i} = e^{\pi/2 - i\pi/2} = e^{\pi/2}\,e^{-i\pi/2}
+$$
+
+E $e^{-i\pi/2} = \cos\left(-\tfrac\pi2\right) + i\operatorname{sen}\left(-\tfrac\pi2\right) = -i$:
+
+$$
+\boxed{\;(-i)^{1+i} = -i\,e^{\pi/2} \approx -4{,}81\,i\;}
+$$
+
+**Conferência —** o módulo do resultado é $e^{\pi/2} \approx 4{,}81$ e o argumento é $-\pi/2$. Bate com a regra geral: $|z^\alpha| = e^{\operatorname{Re}(\alpha\operatorname{Log} z)}$, que aqui é $e^{\pi/2}$ ✔
+
+<Caixa tipo="dica" rotulo="Por que uma base de módulo 1 dá resultado grande">
+
+O resultado surpreende: a base tem módulo $1$, e ainda assim $|(-i)^{1+i}| \approx 4{,}81$. O motivo é que o expoente é **complexo**: a parte imaginária de $\alpha$ multiplica o **argumento** da base e vira parte **real** do expoente, isto é, vira módulo.
+
+$$
+\operatorname{Re}\big[(1+i)(-i\pi/2)\big] = 1\cdot 0 - 1\cdot\left(-\frac\pi2\right) = \frac\pi2
+$$
+
+É o mesmo mecanismo que faz $i^i = e^{-\pi/2}$ ser um número **real**. Reconhecer isso evita achar que a conta deu errado.
+
+</Caixa>
+</Passos>
