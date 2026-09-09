@@ -269,6 +269,49 @@ export function ligarGrade() {
     pintar();
   });
 
+  /* ---------------------------------------- remendo de @font-face ---
+     No Firefox, `regra.style.fontFamily` de uma regra `@font-face` vem
+     **undefined**: ali o `font-family` é DESCRITOR, não propriedade, e o
+     Firefox só o expõe por `getPropertyValue`. O html-to-image, para
+     decidir quais fontes embutir na captura, faz
+     `normalizeFontFamily(rule.style.fontFamily)` — que chama `.trim()`
+     nesse valor. Daí a exportação morrer com *can't access property
+     "trim", e is undefined*, e **só no Firefox**: o Chrome e o Chromium do
+     celular devolvem a string e passam batido.
+
+     O conserto é dar a cada regra um `fontFamily` próprio, tirado do
+     `getPropertyValue` ou, se ele também vier vazio, do `cssText`, que não
+     mente em navegador nenhum. Sem isso a alternativa era `skipFonts`, que
+     não quebra mas devolve o PDF em fonte de sistema — o mapa sairia
+     diferente do site e diferente do PDF do Chrome.
+
+     Idempotente: onde `fontFamily` já é string, não toca. Pode sair
+     quando o html-to-image consertar isso na origem. */
+  function remendarFontesDoFirefox() {
+    for (const folha of Array.from(document.styleSheets)) {
+      let regras: CSSRule[];
+      try {
+        regras = Array.from(folha.cssRules ?? []);
+      } catch {
+        continue; /* folha de outra origem — nem o html-to-image consegue lê-la */
+      }
+      for (const regra of regras) {
+        if (!(regra instanceof CSSFontFaceRule)) continue;
+        const estilo = regra.style;
+        if (!estilo || typeof estilo.fontFamily === "string") continue;
+        const nome =
+          estilo.getPropertyValue("font-family") ||
+          regra.cssText.match(/font-family:\s*([^;}]+)/i)?.[1] ||
+          "";
+        try {
+          Object.defineProperty(estilo, "fontFamily", { value: nome, configurable: true });
+        } catch {
+          /* objeto que não aceita: cai no catch de `baixarPdf`, como antes */
+        }
+      }
+    }
+  }
+
   /* --------------------------------------------------------------- PDF ---
      Import dinâmico: as duas libs juntas passam de 300 KB, e só quem clica
      precisa delas. No fluxograma solto vinham embutidas no arquivo. */
@@ -284,6 +327,7 @@ export function ligarGrade() {
         import("html-to-image"),
         import("jspdf"),
       ]);
+      remendarFontesDoFirefox();
       /* No telefone o mapa nasce em modo lista, com a rolagem em
          `display:none`. Trocar para quadro é obrigatório para capturar —
          mas `definirModo` AGENDA um redesenho, e era ele que reaplicava o
@@ -325,14 +369,25 @@ export function ligarGrade() {
          no tamanho medido acima mesmo que algo reaplique o zoom no DOM vivo
          entre a medição e a captura — que era exatamente o defeito no
          telefone. Terceira barreira, junto do cadeado e da ordem dos rAF. */
-      const png = await toJpeg(quadro, {
+      const opcoes = {
         backgroundColor: fundoCss,
         pixelRatio: pr,
         quality: 0.92,
         width: largura,
         height: altura,
         style: { zoom: "1", transform: "none", transformOrigin: "0 0" },
-      });
+      };
+      let png: string;
+      try {
+        png = await toJpeg(quadro, opcoes);
+      } catch (erro) {
+        /* Rede de segurança: embutir fonte é a parte frágil da captura —
+           depende do CSSOM de cada navegador (ver o remendo do Firefox
+           acima). Se falhar de novo, é melhor entregar o PDF em fonte de
+           sistema do que entregar um alerta de erro. */
+        console.warn("captura com fontes falhou; repetindo sem embuti-las", erro);
+        png = await toJpeg(quadro, { ...opcoes, skipFonts: true });
+      }
       const img = new Image();
       img.src = png;
       await img.decode();
