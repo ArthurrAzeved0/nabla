@@ -7,6 +7,7 @@ unidades:
       - { id: cm-complexos, titulo: "Números complexos: forma algébrica, conjugado e módulo" }
       - { id: cm-polar, titulo: "Forma polar, fórmula de Euler, De Moivre e raízes" }
       - { id: cm-exp-log, titulo: "Exponencial, logaritmo e potências complexas" }
+      - { id: cm-trig-hip, titulo: "Funções trigonométricas e hiperbólicas complexas" }
 ---
 
 {/* **************************************************************************
@@ -384,6 +385,130 @@ Perder o $2k\pi i$ numa questão de "todas as soluções" custa a questão intei
 <Caixa tipo="dica">
 
 As identidades do logaritmo real **não sobrevivem inteiras**: $\operatorname{Log}(z_1 z_2) = \operatorname{Log} z_1 + \operatorname{Log} z_2$ pode falhar por $2\pi i$, porque a soma dos argumentos principais pode sair de $(-\pi, \pi]$. Teste com $z_1 = z_2 = -1$: $\operatorname{Log}(1) = 0$, mas $\operatorname{Log}(-1) + \operatorname{Log}(-1) = 2\pi i$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-trig-hip" num="04" titulo="Funções trigonométricas e hiperbólicas complexas">
+
+### A ideia
+
+Nos reais, $\cos x$ vive preso entre $-1$ e $1$. No plano complexo essa prisão desaparece: $\cos z = 2$ **tem** solução. O motivo é que seno e cosseno complexos não são "ondas" — são combinações de exponenciais, e a exponencial cresce sem limite na direção imaginária.
+
+A definição vem de inverter a fórmula de Euler. De $e^{iz} = \cos z + i\operatorname{sen} z$ e $e^{-iz} = \cos z - i\operatorname{sen} z$, somando e subtraindo:
+
+<Formula rotulo="Seno e cosseno complexos">
+
+$$
+\cos z = \frac{e^{iz} + e^{-iz}}{2},
+\qquad
+\operatorname{sen} z = \frac{e^{iz} - e^{-iz}}{2i}
+$$
+
+</Formula>
+
+<Formula rotulo="Seno e cosseno hiperbólicos">
+
+$$
+\cosh z = \frac{e^{z} + e^{-z}}{2},
+\qquad
+\operatorname{senh} z = \frac{e^{z} - e^{-z}}{2}
+$$
+
+</Formula>
+
+### A ponte entre as duas famílias
+
+Trocar $z$ por $iz$ leva uma família na outra — e é essa troca que faz o cosseno complexo estourar o intervalo $[-1,1]$:
+
+$$
+\cos(iz) = \cosh z,
+\qquad
+\operatorname{sen}(iz) = i\operatorname{senh} z,
+\qquad
+\cosh(iz) = \cos z,
+\qquad
+\operatorname{senh}(iz) = i\operatorname{sen} z
+$$
+
+Separando em parte real e imaginária, com $z = x + iy$:
+
+$$
+\operatorname{sen} z = \operatorname{sen} x \cosh y + i \cos x \operatorname{senh} y
+$$
+
+$$
+\cos z = \cos x \cosh y - i \operatorname{sen} x \operatorname{senh} y
+$$
+
+<Caixa tipo="simbolos">
+
+- $\cosh y = \dfrac{e^y + e^{-y}}{2}$ — cresce como $e^{|y|}/2$: é o fator que **não é limitado**;
+- $\operatorname{senh} y$ — ímpar, zero só em $y = 0$;
+- $\cosh^2 z - \operatorname{senh}^2 z = 1$ — a identidade hiperbólica, com **menos** no lugar do mais;
+- $\operatorname{sen}^2 z + \cos^2 z = 1$ — esta sobrevive intacta no plano complexo.
+
+</Caixa>
+
+### Os zeros continuam nos mesmos lugares
+
+Um fato que decide questão de singularidade mais adiante: apesar de tudo, os zeros não se multiplicam.
+
+$$
+\operatorname{sen} z = 0 \iff z = k\pi,
+\qquad
+\cos z = 0 \iff z = \frac{\pi}{2} + k\pi,
+\qquad k \in \mathbb{Z}
+$$
+
+$$
+\operatorname{senh} z = 0 \iff z = k\pi i,
+\qquad
+\cosh z = 0 \iff z = \frac{\pi}{2}i + k\pi i
+$$
+
+Ou seja: seno e cosseno **só** têm zeros reais; seno e cosseno hiperbólicos, **só** zeros imaginários puros. Não há outros no plano.
+
+<Caixa tipo="exemplo">
+
+Da 2ª chamada de 2023.2: todas as soluções de $\cos z = 2$.
+
+Escreva na exponencial e chame $w = e^{iz}$:
+
+$$
+\frac{w + w^{-1}}{2} = 2
+\quad\Longrightarrow\quad
+w^2 - 4w + 1 = 0
+\quad\Longrightarrow\quad
+w = 2 \pm \sqrt3
+$$
+
+Os dois valores são **reais e positivos**, então $iz = \log w$ dá
+
+$$
+iz = \ln(2\pm\sqrt3) + 2k\pi i
+\quad\Longrightarrow\quad
+z = 2k\pi - i\,\ln(2\pm\sqrt3)
+$$
+
+E como $(2+\sqrt3)(2-\sqrt3) = 1$, vale $\ln(2-\sqrt3) = -\ln(2+\sqrt3)$: as soluções são $z = 2k\pi \pm i\ln(2+\sqrt3)$. Note que são complexas com **parte real múltipla de $2\pi$** — nenhuma é real, como tinha de ser.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Toda equação com seno, cosseno, $\cosh$ ou $\operatorname{senh}$ segue o mesmo roteiro de três passos: **escreva em exponencial**, **chame $w = e^{iz}$** (ou $w = e^z$ no caso hiperbólico) e resolva a **quadrática em $w$**. Depois volte com o logaritmo completo, para não perder o $2k\pi i$.
+
+Nunca tente inverter com $\arccos$ — no plano complexo essa função é multivalorada e o caminho da quadrática é mais curto e mais seguro.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+$|\operatorname{sen} z|$ e $|\cos z|$ **não são limitados por 1**. Da separação acima, $|\cos z|^2 = \cos^2 x + \operatorname{senh}^2 y$, que cresce sem limite quando $y \to \pm\infty$. Usar "$|\cos z| \le 1$" para majorar uma integral é o erro clássico de estimativa nesta cadeira.
+
+A questão 04 do 1º EE de 2025.2 dá a definição de $\operatorname{senh}$ no enunciado exatamente por isso: ela quer que você troque $\cosh$ por exponenciais em vez de tratá-lo como o hiperbólico real.
 
 </Caixa>
 

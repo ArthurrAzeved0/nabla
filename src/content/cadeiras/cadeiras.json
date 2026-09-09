@@ -458,7 +458,12 @@
       "ramo-principal": "cm-exp-log",
       "superficie-de-riemann": "cm-exp-log",
       "potencia-complexa": "cm-exp-log",
-      "equacao-exponencial": "cm-exp-log"
+      "equacao-exponencial": "cm-exp-log",
+      "seno-e-cosseno-complexos": "cm-trig-hip",
+      "funcoes-hiperbolicas": "cm-trig-hip",
+      "identidades-complexas": "cm-trig-hip",
+      "zeros-do-seno-e-cosseno": "cm-trig-hip",
+      "equacao-trigonometrica-complexa": "cm-trig-hip"
     }
   }
 ]
