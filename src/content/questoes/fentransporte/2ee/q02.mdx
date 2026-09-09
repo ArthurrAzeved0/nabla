@@ -1,0 +1,108 @@
+---
+origem: "2018.1 · 2ª chamada"
+tema: "Transporte de massa · Fluxo difusivo e densidade de fluxo difusivo"
+temaId: fluxo-difusivo
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+**Explique o que é fluxo difusivo e densidade de fluxo difusivo. Em que condições pode haver o fluxo difusivo de massa?**
+
+<Gabarito>
+**Densidade de fluxo difusivo** ($J''_A$) é a quantidade da espécie $A$ que atravessa uma **unidade de área** por **unidade de tempo**, por difusão molecular — em $\mathrm{mol/(m^2 \cdot s)}$ ou $\mathrm{kg/(m^2 \cdot s)}$. É o que a lei de Fick dá:
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx}
+$$
+
+**Fluxo difusivo** ($J_A$) é a quantidade total por unidade de tempo, isto é, a densidade multiplicada pela área atravessada — em $\mathrm{mol/s}$ ou $\mathrm{kg/s}$:
+
+$$
+J_A = J''_A\,A
+$$
+
+**Condição para existir:** é preciso haver **gradiente de concentração** da espécie, $dC_A/dx \ne 0$. Sem diferença de concentração entre dois pontos do meio, não há difusão — o meio está em equilíbrio.
+</Gabarito>
+
+<Passos>
+**1 — A distinção é a mesma que em calor.** A disciplina usa o mesmo par de grandezas nos três transportes, e a diferença é sempre a **área**:
+
+| grandeza | calor | massa | o que é |
+|---|---|---|---|
+| **densidade de fluxo** | $q''$ $[\mathrm{W/m^2}]$ | $J''_A$ $[\mathrm{mol/(m^2 s)}]$ | por unidade de área |
+| **fluxo** (taxa) | $q$ $[\mathrm{W}]$ | $J_A$ $[\mathrm{mol/s}]$ | total, já multiplicado pela área |
+
+$$
+q = q''\,A
+\qquad\qquad
+J_A = J''_A\,A
+$$
+
+<Caixa tipo="dica" rotulo="Como o enunciado sinaliza qual dos dois quer">
+
+- "densidade de fluxo", "fluxo **por unidade de área**", "por metro quadrado" → $J''$;
+- "fluxo", "**taxa** de transferência", "quantidade que atravessa a parede" → $J$.
+
+Ler errado erra o resultado exatamente pelo fator da área — e a área costuma ser um número redondo dado no enunciado justamente para separar quem leu.
+
+</Caixa>
+
+**2 — A lei de Fick, e o que cada termo faz.**
+
+$$
+J''_A = -D_{AB}\,\frac{dC_A}{dx}
+$$
+
+- $D_{AB}$ — coeficiente de **difusão binária** de $A$ em $B$, em $\mathrm{m^2/s}$. É propriedade do **par** de espécies e do meio, e cresce com a temperatura;
+- $dC_A/dx$ — o **gradiente** de concentração. É o motor do processo;
+- o **sinal negativo** — a massa vai do **mais concentrado para o menos** concentrado, isto é, no sentido contrário ao gradiente. Idêntico ao sinal de Fourier.
+
+**3 — A condição de existência, que é o que a questão realmente cobra.** A resposta é direta: **só há fluxo difusivo se houver gradiente de concentração.**
+
+$$
+\frac{dC_A}{dx} = 0
+\qquad\Longrightarrow\qquad
+J''_A = 0
+$$
+
+Vale detalhar as condições em que isso se dá:
+
+- é preciso ser uma **mistura** (ao menos duas espécies) — numa substância pura não há concentração de "$A$" a variar;
+- é preciso **não estar em equilíbrio**: enquanto a concentração for diferente de um ponto a outro, há difusão, e ela só cessa quando a mistura fica **homogênea**;
+- o processo **não exige** movimento do fluido. A difusão é molecular e ocorre em meio **parado** — é justamente o que a distingue da convecção mássica.
+
+<Caixa tipo="macete" rotulo="Difusão contra convecção mássica, em uma frase">
+
+- **difusão** — a espécie se move **em relação à mistura**, empurrada pelo gradiente de concentração. Acontece com o fluido parado;
+- **convecção mássica** — a espécie é **carregada** pela mistura em movimento. Não precisa de gradiente de concentração, precisa de velocidade.
+
+Açúcar no café sem mexer é difusão; mexendo, entra convecção — e é por isso que mexer é tão mais rápido.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Um detalhe que aparece em prova">
+
+Num meio de concentração total **constante**, o gradiente de $A$ é o oposto do de $B$, logo
+
+$$
+J''_A = -J''_B
+$$
+
+Os dois difundem ao mesmo tempo, em sentidos opostos: enquanto $A$ vai para onde há menos $A$, $B$ vai para onde há menos $B$.
+
+</Caixa>
+
+**Conferência —** a diferença entre fluxo e densidade de fluxo é a **área**, com as unidades corretas ✔ Fick com o sinal negativo e a explicação dele ✔ a condição é **gradiente de concentração**, e a difusão não exige escoamento ✔
+</Passos>
