@@ -18,7 +18,7 @@
 #
 # Perfil de 2012, de quando o curso se chamava apenas Engenharia
 # Eletrônica — é o mesmo curso da matriz de 2020, renomeado. A Tabela 11
-# escreve pré e co-requisito POR NOME em
+# escreve pré e correquisito POR NOME em
 # linhas próprias — o formato mais legível dos seis PPCs lidos — e não
 # tem coluna de código: os códigos aqui foram herdados por nome das
 # outras grades.
@@ -29,7 +29,7 @@
 #
 # Este PPC não publica piso de CH para o estágio.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia Elétrica Eletrônica

@@ -26,7 +26,7 @@
 #
 # Códigos no formato curto da época, como o PPC os imprime.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia Elétrica de Telecomunicações
@@ -163,7 +163,7 @@ disciplinas:
     categoria: basico
     pre: [FIS01]
     co: [MAT04]
-    nota: "É a física do eletromagnetismo: Eletricidade Aplicada é co-requisito dela, e Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como pré."
+    nota: "É a física do eletromagnetismo: Eletricidade Aplicada é correquisito dela, e Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como pré."
     cadeira: eletromag
   - id: FIS03
     codigo: FIS03
@@ -529,7 +529,7 @@ disciplinas:
     pre: []
     co: [SEG01]
     estagio: true
-    nota: "A Tabela 15 põe \"60% curso\" no lugar do pré-requisito, e Engenharia de Segurança do Trabalho como co-requisito."
+    nota: "A Tabela 15 põe \"60% curso\" no lugar do pré-requisito, e Engenharia de Segurança do Trabalho como correquisito."
   - id: PFC01
     codigo: PFC01
     nome: Projeto Final de Curso

@@ -421,7 +421,7 @@ export function ligarGrade() {
       pdf.setTextColor(sub[0]!, sub[1]!, sub[2]!);
       pdf.text(
         semProgresso
-          ? "Mapa completo · seta contínua = pré-requisito · tracejada = co-requisito"
+          ? "Mapa completo · seta contínua = pré-requisito · tracejada = correquisito"
           : `Progresso: ${mapa.feitas}/${mapa.total} disciplinas · ${mapa.chFeita()}h concluídas`,
         M,
         M + 9,

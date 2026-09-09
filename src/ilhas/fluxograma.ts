@@ -91,7 +91,7 @@ export function criarMapa(g: Grade) {
 
   const chFeita = () => [...feitas].reduce((s, id) => s + (por.has(id) ? ch(por.get(id)!) : 0), 0);
 
-  /* co-requisito: basta estar sendo cursada junto, ou seja, os PRÉ dela
+  /* correquisito: basta estar sendo cursada junto, ou seja, os PRÉ dela
      já cumpridos — não a própria disciplina concluída. */
   const coOk = (id: string) => {
     const d = por.get(id);

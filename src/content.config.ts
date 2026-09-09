@@ -152,7 +152,7 @@ const grade = defineCollection({
             teorica: z.number().int().min(0),
             pratica: z.number().int().min(0),
             categoria: z.enum(["basico", "prof", "espec", "eletiva", "compl"]),
-            /* pré-requisito: seta contínua. co-requisito: tracejada. */
+            /* pré-requisito: seta contínua. correquisito: tracejada. */
             pre: z.array(z.string()).default([]),
             co: z.array(z.string()).default([]),
             /* disciplina de curricularização da extensão */

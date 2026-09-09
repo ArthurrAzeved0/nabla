@@ -28,7 +28,7 @@
 # Este PPC não publica a regra de CH mínima para o estágio; os 60% vêm
 # da norma da UPE, que é o que o PPC de 2021 exige no mesmo curso.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia de Controle e Automação
@@ -204,7 +204,7 @@ disciplinas:
     categoria: basico
     pre: [FIS01]
     co: []
-    nota: "É a física do eletromagnetismo: o laboratório de Eletricidade Aplicada é co-requisito dela, e Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como pré."
+    nota: "É a física do eletromagnetismo: o laboratório de Eletricidade Aplicada é correquisito dela, e Circuitos Elétricos 1 e Eletromagnetismo 1 a têm como pré."
     cadeira: eletromag
   - id: MEC01
     codigo: MEC01
@@ -355,7 +355,7 @@ disciplinas:
     categoria: espec
     pre: [MEC01, ECA06]
     co: []
-    nota: "A Tabela 18 lista MEC01 como pré-requisito E como co-requisito; ficou só como pré. O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
+    nota: "A Tabela 18 lista MEC01 como pré-requisito E como correquisito; ficou só como pré. O PPC não diz a que ciclo esta disciplina pertence, e as Tabelas 14 e 15 somam mais do que os ciclos da Tabela 13."
   - id: ELE04
     codigo: ELE04
     nome: Conversão Eletromecânica de Energia
@@ -478,7 +478,7 @@ disciplinas:
     categoria: prof
     pre: []
     co: []
-    nota: "A Tabela 18 deixa em branco o tipo, o pré e o co-requisito desta disciplina."
+    nota: "A Tabela 18 deixa em branco o tipo, o pré e o correquisito desta disciplina."
   - id: ECA18
     codigo: ECA18
     nome: Elementos de Robótica

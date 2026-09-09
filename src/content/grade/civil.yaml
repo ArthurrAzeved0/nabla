@@ -17,7 +17,7 @@
 # schema valida o grafo no build: requisito apontando para código
 # inexistente é erro, não seta que simplesmente não aparece.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia Civil

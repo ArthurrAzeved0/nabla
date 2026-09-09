@@ -27,7 +27,7 @@
 # Este PPC não publica piso de CH para o estágio: ele é liberado por
 # pré-requisito, e por isso o mapa não mostra régua de porcentagem.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia Mecânica
@@ -553,7 +553,7 @@ disciplinas:
     categoria: prof
     pre: []
     co: [ECON0001]
-    nota: "Economia Empresarial e Gestão da Qualidade são co-requisito uma da outra na Tabela 18: têm de ser cursadas juntas."
+    nota: "Economia Empresarial e Gestão da Qualidade são correquisito uma da outra na Tabela 18: têm de ser cursadas juntas."
   - id: REFR0001
     codigo: REFR0001
     nome: Refrigeração

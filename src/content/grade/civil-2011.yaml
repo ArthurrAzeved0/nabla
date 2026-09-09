@@ -24,7 +24,7 @@
 # quebra em linhas que caem ACIMA e ABAIXO da linha da disciplina, porque
 # o PDF centraliza a célula na vertical.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia Civil
@@ -566,7 +566,7 @@ disciplinas:
     categoria: basico
     pre: []
     co: []
-    nota: "A Tabela 18 dá a esta disciplina o co-requisito \"CC02\", que não é código desta matriz; os candidatos são CCI02 e GCC02, e com dois plausíveis a seta ficou de fora."
+    nota: "A Tabela 18 dá a esta disciplina o correquisito \"CC02\", que não é código desta matriz; os candidatos são CCI02 e GCC02, e com dois plausíveis a seta ficou de fora."
   - id: PFC01
     codigo: PFC01
     nome: Projeto Final de Curso

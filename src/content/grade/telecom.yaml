@@ -28,7 +28,7 @@
 # A Tabela 7 não tem coluna de código. Os que aparecem no mapa vieram da
 # consulta do SIGA ao perfil EL03-1 do mesmo curso, por nome.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia Elétrica de Telecomunicações

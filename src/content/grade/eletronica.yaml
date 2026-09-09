@@ -28,7 +28,7 @@
 # Sem coluna de código: os que aparecem no mapa foram herdados por nome
 # das outras grades.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia Elétrica Eletrônica

@@ -26,7 +26,7 @@
 # A regra de carga horária deste curso é do PFC (80% integralizados), e
 # não do estágio — por isso `estagio: true` está no Projeto Final.
 #
-# `pre` = pré-requisito (seta contínua) · `co` = co-requisito (tracejada)
+# `pre` = pré-requisito (seta contínua) · `co` = correquisito (tracejada)
 # `cadeira` liga o nó à página da cadeira no site, quando ela existe.
 # ************************************************************************
 curso: Engenharia Mecânica
