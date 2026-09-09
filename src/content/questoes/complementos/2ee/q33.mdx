@@ -1,0 +1,122 @@
+---
+origem: "2024.2"
+tema: "Demonstração · A identidade de Parseval, passo a passo"
+temaId: identidade-de-parseval
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q33.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $f(x)$ definida em $(-L, L)$ e suponha que a série de Fourier de $f$ convirja uniformemente para $f(x)$. Mostre que
+
+$$
+\frac1L\int_{-L}^{L}\big[f(x)\big]^2dx = \frac{a_0^2}{2} + \sum_{n=1}^{\infty}\left(a_n^2 + b_n^2\right)
+$$
+
+com $f$ de quadrado integrável. Explique os passos.
+
+<Gabarito>
+Escrever a série de Fourier, multiplicar os dois membros por $f(x)$, justificar a troca de soma com integral pela convergência uniforme, integrar, e reconhecer que as integrais que sobram são os próprios coeficientes.
+</Gabarito>
+
+<Passos>
+**Passo 1 — escrever a série.**
+
+$$
+f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty}\left[a_n\cos\frac{n\pi x}{L} + b_n\operatorname{sen}\frac{n\pi x}{L}\right]
+$$
+
+com
+
+$$
+a_n = \frac1L\int_{-L}^{L}f(x)\cos\frac{n\pi x}{L}\,dx,
+\qquad
+b_n = \frac1L\int_{-L}^{L}f(x)\operatorname{sen}\frac{n\pi x}{L}\,dx
+$$
+
+**Passo 2 — multiplicar os dois lados por $f(x)$.** É o movimento central da demonstração:
+
+$$
+\big[f(x)\big]^2 = \frac{a_0}{2}f(x)
++ \sum_{n=1}^{\infty}\left[a_n f(x)\cos\frac{n\pi x}{L} + b_n f(x)\operatorname{sen}\frac{n\pi x}{L}\right]
+$$
+
+**Passo 3 — integrar em $(-L,L)$, trocando soma com integral.** Aqui entra a hipótese: a convergência **uniforme** da série é o que autoriza integrar termo a termo.
+
+$$
+\int_{-L}^{L}\big[f(x)\big]^2dx
+= \frac{a_0}{2}\int_{-L}^{L}f\,dx
++ \sum_{n=1}^{\infty}\left[a_n\int_{-L}^{L}f\cos\frac{n\pi x}{L}dx + b_n\int_{-L}^{L}f\operatorname{sen}\frac{n\pi x}{L}dx\right]
+$$
+
+**Passo 4 — reconhecer que cada integral É um coeficiente.** Comparando com as fórmulas do passo 1:
+
+$$
+\int_{-L}^{L}f\,dx = L\,a_0,
+\qquad
+\int_{-L}^{L}f\cos\frac{n\pi x}{L}dx = L\,a_n,
+\qquad
+\int_{-L}^{L}f\operatorname{sen}\frac{n\pi x}{L}dx = L\,b_n
+$$
+
+Substituindo:
+
+$$
+\int_{-L}^{L}\big[f(x)\big]^2dx
+= \frac{a_0}{2}\cdot L a_0 + \sum_{n=1}^{\infty}\left[a_n\cdot L a_n + b_n\cdot L b_n\right]
+$$
+
+$$
+= L\left[\frac{a_0^2}{2} + \sum_{n=1}^{\infty}\left(a_n^2 + b_n^2\right)\right]
+$$
+
+**Passo 5 — dividir por $L$.**
+
+$$
+\boxed{\;\frac1L\int_{-L}^{L}\big[f(x)\big]^2dx = \frac{a_0^2}{2} + \sum_{n=1}^{\infty}\left(a_n^2 + b_n^2\right)\;}
+$$
+
+como se queria demonstrar.
+
+**Onde cada hipótese foi usada** — é o "explique os passos" do enunciado:
+
+- **convergência uniforme**: autoriza a troca do somatório com a integral no passo 3. Sem ela, a igualdade termo a termo não se justifica;
+- **quadrado integrável**: garante que o lado esquerdo é finito, e portanto que a série do lado direito **converge**;
+- **as relações de ortogonalidade** entram implicitamente — elas são o que faz $\int f\cos$ ser exatamente $La_n$, e não uma mistura de coeficientes.
+
+<Caixa tipo="macete" rotulo="Um caminho alternativo, mais explícito">
+
+Em vez de multiplicar por $f$, eleve a série ao quadrado e integre. Aí a ortogonalidade aparece na cara: no produto de duas séries, **todos** os termos cruzados se anulam,
+
+$$
+\int_{-L}^{L}\cos\frac{n\pi x}{L}\cos\frac{m\pi x}{L}dx = 0
+\quad (n\ne m),
+\qquad
+\int_{-L}^{L}\cos\frac{n\pi x}{L}\operatorname{sen}\frac{m\pi x}{L}dx = 0
+$$
+
+e sobram só os quadrados, cada um contribuindo $L$. Dá o mesmo resultado com mais linhas, e é o caminho que **mostra** de onde vem o $a_n^2 + b_n^2$.
+
+O caminho do gabarito (multiplicar por $f$) é mais curto porque usa as fórmulas dos coeficientes como atalho — a ortogonalidade já está embutida nelas.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="O significado físico">
+
+Parseval é **conservação de energia**. O lado esquerdo é a energia média do sinal $f$ no período; o direito é a soma das energias de cada harmônico. Decompor em Fourier não cria nem destrói energia — só a distribui entre as frequências.
+
+É por isso que a identidade é a ferramenta natural para calcular somas de **quadrados** ($1/n^2$, $1/n^4$) — ver a q19 desta unidade, onde ela entrega $\sum 1/n^4 = \pi^4/90$.
+
+</Caixa>
+</Passos>
