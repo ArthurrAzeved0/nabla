@@ -261,6 +261,7 @@ disciplinas:
     categoria: basico
     pre: [CALCVET]
     co: [EQDIF]
+    cadeira: complementos
   - id: LABFIS
     codigo: —
     nome: Laboratório de Física Básica

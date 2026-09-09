@@ -259,6 +259,7 @@ disciplinas:
     categoria: basico
     pre: [CALC3]
     co: []
+    cadeira: complementos
   - id: FENTR
     codigo: —
     nome: Fenômeno de Transporte

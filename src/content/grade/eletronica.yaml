@@ -260,6 +260,7 @@ disciplinas:
     categoria: basico
     pre: [CALCVET]
     co: [EQDIF]
+    cadeira: complementos
   - id: DINAM
     codigo: FISC0008
     nome: Dinâmica

@@ -262,6 +262,7 @@ disciplinas:
     categoria: basico
     pre: [MAT04]
     co: []
+    cadeira: complementos
   - id: ECA06
     codigo: ECA06
     nome: Desenho de Máquinas

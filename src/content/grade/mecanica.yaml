@@ -260,6 +260,7 @@ disciplinas:
     categoria: basico
     pre: [CALCVET]
     co: [EQDIF]
+    cadeira: complementos
   - id: MECFLU
     codigo: FISC0017
     nome: Mecânica dos Fluidos

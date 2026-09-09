@@ -257,6 +257,7 @@ disciplinas:
     categoria: basico
     pre: [MAT04]
     co: []
+    cadeira: complementos
   - id: ELE01
     codigo: ELE01
     nome: Circuitos Elétricos 1
