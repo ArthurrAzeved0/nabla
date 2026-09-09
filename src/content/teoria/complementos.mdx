@@ -24,6 +24,7 @@ unidades:
       - { id: cm-gama, titulo: "Funções Gama e Beta: as integrais que a prova exige" }
       - { id: cm-series-potencias, titulo: "Solução de EDO por séries de potências" }
       - { id: cm-frobenius, titulo: "Método de Frobenius e a equação indicial" }
+      - { id: cm-ortogonalidade, titulo: "Funções periódicas, paridade e ortogonalidade" }
 ---
 
 {/* **************************************************************************
@@ -1916,6 +1917,99 @@ Não decore a equação indicial — **obtenha** $p_0$ e $q_0$ pelos dois limite
 <Caixa tipo="dica">
 
 Reconheça os nomes: a hipergeométrica confluente ($xy'' + (c-x)y' - ay = 0$), a de **Bessel** ($x^2y'' + xy' + (x^2-\nu^2)y=0$) e a de **Legendre** aparecem com nome próprio porque as soluções são funções tabeladas. Se o enunciado der o nome, ele já está dizendo que a resposta é uma série — não procure função elementar.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="cm-ortogonalidade" num="19" titulo="Funções periódicas, paridade e ortogonalidade">
+
+### A ideia
+
+A série de Fourier funciona porque senos e cossenos formam uma base **ortogonal** — e "ortogonal" aqui é literalmente o mesmo conceito de vetores perpendiculares, com a integral no papel do produto escalar. Entendida a ortogonalidade, a fórmula dos coeficientes deixa de ser mágica: ela é a projeção de $f$ em cada elemento da base.
+
+<Formula rotulo="Produto interno de funções">
+
+$$
+\langle f, g\rangle = \int_{a}^{b} f(x)\,g(x)\,dx
+$$
+
+</Formula>
+
+Duas funções são **ortogonais** em $[a,b]$ quando $\langle f,g\rangle = 0$.
+
+<Caixa tipo="simbolos">
+
+- $T$ — **período**: $f(x+T) = f(x)$ para todo $x$. O período **fundamental** é o menor deles;
+- **par** — $f(-x) = f(x)$: gráfico simétrico em relação ao eixo $y$ ($\cos$, $x^2$);
+- **ímpar** — $f(-x) = -f(x)$: simétrico em relação à origem ($\operatorname{sen}$, $x$, $x^3$);
+- $\langle f,g\rangle = 0$ — ortogonais; um conjunto todo ortogonal é um **sistema ortogonal**.
+
+</Caixa>
+
+### As relações de ortogonalidade
+
+São elas que fazem tudo funcionar. Em $[-\pi, \pi]$, com $m, n$ inteiros positivos:
+
+$$
+\int_{-\pi}^{\pi}\cos(nx)\cos(mx)\,dx =
+\begin{cases}
+0, & n \ne m\\
+\pi, & n = m
+\end{cases}
+\qquad
+\int_{-\pi}^{\pi}\operatorname{sen}(nx)\operatorname{sen}(mx)\,dx =
+\begin{cases}
+0, & n \ne m\\
+\pi, & n = m
+\end{cases}
+$$
+
+$$
+\int_{-\pi}^{\pi}\operatorname{sen}(nx)\cos(mx)\,dx = 0
+\qquad\text{sempre}
+$$
+
+Ou seja: **seno é ortogonal a cosseno sempre**, e seno com seno (ou cosseno com cosseno) só sobrevive quando os índices coincidem. Multiplicar a série por $\cos(mx)$ e integrar mata todos os termos menos um — e é dessa faxina que sai a fórmula do coeficiente na seção 20.
+
+### Paridade, e por que ela poupa metade da conta
+
+Três fatos que a questão 02 do 2º EE de 2025.2 cobra explicitamente:
+
+- **par $\times$ par = par**, **ímpar $\times$ ímpar = par**, **par $\times$ ímpar = ímpar**;
+- a integral de função **ímpar** em intervalo **simétrico** é **zero**;
+- a integral de função **par** em intervalo simétrico é o **dobro** da metade: $\int_{-L}^{L} = 2\int_0^L$.
+
+<Caixa tipo="exemplo">
+
+Da questão 02 do 2º EE de 2025.2: mostre que $f(z) = z^2$ é par e $f(z) = z^3$ é ímpar.
+
+$$
+f(-z) = (-z)^2 = z^2 = f(z) \;\Rightarrow\; \text{par}
+$$
+
+$$
+f(-z) = (-z)^3 = -z^3 = -f(z) \;\Rightarrow\; \text{ímpar}
+$$
+
+Parece trivial — e o gabarito diz "trivial" mesmo. Mas o item seguinte usa isso: se $f$ é par e $g$ é ímpar, o produto é **ímpar**, e a integral dele num intervalo simétrico é **zero**. É este fato que zera metade dos coeficientes de Fourier antes de qualquer integração.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+Antes de calcular qualquer coeficiente de Fourier, **classifique a paridade de $f$**:
+
+- $f$ **par** → todos os $b_n$ são zero, e a série é **de cossenos**;
+- $f$ **ímpar** → $a_0$ e todos os $a_n$ são zero, e a série é **de senos**.
+
+Metade das integrais desaparece de graça. E é o primeiro movimento do gabarito de 2025.2, que abre com "note que $f$ é par" — cuidado, ali o gabarito diz "par" para a onda quadrada $f = \operatorname{sign}(x)$, que é **ímpar**; o resultado que ele obtém ($a_n = 0$, série só de senos) é o da função ímpar. Ver a nota na seção 20.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Função definida só em $[0,L]$ **não tem** paridade — quem a define é você, ao escolher como estendê-la. Estender como par dá série de cossenos; como ímpar, série de senos. É a **extensão de meia-onda**, e é o que se usa nos problemas de EDP da seção 27, onde a condição de contorno escolhe a extensão.
 
 </Caixa>
 

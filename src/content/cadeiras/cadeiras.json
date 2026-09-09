@@ -535,7 +535,13 @@
       "metodo-de-frobenius": "cm-frobenius",
       "ponto-singular-regular": "cm-frobenius",
       "equacao-indicial": "cm-frobenius",
-      "hipergeometrica-confluente": "cm-frobenius"
+      "hipergeometrica-confluente": "cm-frobenius",
+      "funcao-periodica": "cm-ortogonalidade",
+      "paridade": "cm-ortogonalidade",
+      "funcao-par-e-impar": "cm-ortogonalidade",
+      "ortogonalidade-de-funcoes": "cm-ortogonalidade",
+      "relacoes-de-ortogonalidade": "cm-ortogonalidade",
+      "extensao-de-meia-onda": "cm-ortogonalidade"
     }
   }
 ]
