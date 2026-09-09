@@ -1,0 +1,67 @@
+---
+origem: "2024.2"
+tema: "Conceitual · Cauchy-Riemann e o critério necessidade-suficiência"
+temaId: cauchy-riemann
+pontos: 0,2 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Escreva as equações de Cauchy-Riemann e comente o critério necessidade-suficiência.
+
+<Gabarito>
+$$
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y},
+\qquad
+\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+$$
+
+**Necessária:** se $f = u+iv$ é derivável em $z_0$, as equações valem ali. **Suficiente:** se, além das equações, as parciais de $u$ e $v$ forem **contínuas numa vizinhança** de $z_0$, então $f$ é analítica em $z_0$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — as equações.** Com $f(z) = u(x,y) + i\,v(x,y)$:
+
+$$
+u_x = v_y,
+\qquad
+u_y = -v_x
+$$
+
+Guarde como *iguais em cruz, com um sinal negativo* — o menos fica na equação que deriva $u$ em $y$.
+
+**Passo 2 — de onde elas vêm, em uma frase.** Calcular $f'(z_0)$ pelo caminho horizontal ($\Delta z = \Delta x$) dá $u_x + iv_x$; pelo vertical ($\Delta z = i\Delta y$) dá $v_y - iu_y$. Se a derivada existe, os dois têm de coincidir — e igualar parte real com parte real e imaginária com imaginária **é** o par de equações.
+
+**Passo 3 — necessidade.** O argumento acima já prova: **derivável $\Rightarrow$ Cauchy-Riemann**. É condição necessária, e serve para **descartar**: se as equações falham num ponto, $f$ não é derivável ali. O exemplo canônico é $f(z) = \bar z$, com $u_x = 1$ e $v_y = -1$ — não derivável em ponto nenhum do plano.
+
+**Passo 4 — suficiência, e o que falta.** A recíproca **não** vale só com as equações: existem funções que as satisfazem num ponto isolado e não são deriváveis ali. O que fecha o teorema é a **continuidade das parciais** numa vizinhança:
+
+$$
+u,v \text{ com parciais contínuas numa vizinhança de } z_0
+\;\;+\;\;
+\text{Cauchy-Riemann em } z_0
+\;\;\Longrightarrow\;\;
+f \text{ analítica em } z_0
+$$
+
+**Passo 5 — a diferença entre derivável e analítica**, que o mesmo teorema esconde. Derivável **num ponto** é pouco; **analítica** exige derivabilidade em todo um disco em torno dele. Por isso o teorema pede as equações numa vizinhança, e não num ponto só.
+
+<Caixa tipo="dica" rotulo="Onde o ponto se perde">
+
+Nas provas desta cadeira, quase toda questão de verificação usa polinômios, exponenciais e trigonométricas — funções cujas parciais são obviamente contínuas. É tentador então parar em "as equações valem, logo é analítica".
+
+Vale, mas **escreva a frase**: *"e as parciais são contínuas, logo pela condição suficiente $f$ é analítica"*. Esta questão de 2024.2 cobra exatamente isso, e é uma linha.
+
+</Caixa>
+</Passos>
