@@ -45,12 +45,22 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   como o resto da cadeira. As questões em que a escolha muda o número dizem
   quanto daria pela outra constante.
 
-### Observação
-
-- **A questão de capilaridade (q38) aponta para "Propriedades dos fluidos"**
-  porque a teoria da cadeira **não tem** seção de tensão superficial e
-  capilaridade — o assunto não está no conteúdo programático de 2026.2, mas a
-  lista o cobra. Fica registrado; nenhuma seção foi escrita.
+- **Uma seção nova na teoria de Fenômenos: "Tensão superficial e
+  capilaridade".** A lista cobra o assunto e a teoria não o tinha. Entrou como
+  **seção 05**, na ordem do conhecimento — depois das propriedades, da
+  viscosidade e da classificação dos fluidos, e antes de a estática começar —,
+  o que renumerou de 05 a 29 para 06 a 30, sem mexer em nenhum `id` nem em
+  nenhum link. Cobre tensão superficial como força por comprimento, molhamento e
+  ângulo de contato, a lei de Jurin (com as duas armadilhas: raio contra
+  diâmetro, e o $h$ negativo do rebaixamento), a sobrepressão da gota, da bolha
+  de sabão e do jato, e o efeito na leitura de manômetros de tubo fino. A
+  cadeira vai de 29 para **30 seções**, e o site de 152 para **153**. Ela cabe em
+  "Generalidades e Propriedades Físicas dos Fluidos", a primeira linha do
+  programa de 2026.2.
+- **A primeira figura da teoria de Fenômenos**, que até aqui era a única cadeira
+  sem nenhuma: os dois capilares lado a lado, água com menisco côncavo subindo e
+  mercúrio com menisco convexo descendo, com o $h$ trocando de sinal junto com o
+  cosseno do ângulo de contato.
 
 ## [2.15.0] — 2026-09-09
 
