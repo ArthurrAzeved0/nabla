@@ -1,0 +1,100 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Empuxo · Peso e peso aparente de um corpo submerso"
+temaId: peso-aparente
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q48.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O peso aparente de um corpo pode ser definido como a diferença entre o seu peso e o empuxo por ele sofrido, ou seja, $P_{ap} = P - F_e$. O peso aparente nos dá aquela sensação de alívio de peso quando estamos numa piscina ou na praia, por exemplo. A figura ilustra o peso aparente de um corpo mergulhado num fluido.
+
+Imagine um corpo com uma massa de aproximadamente $150\ \mathrm{g}$ e um volume de $19\ \mathrm{cm^3}$, completamente mergulhado na água. Calcule o seu peso e o seu peso aparente. Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 400 190" role="img" aria-label="À esquerda, o corpo submerso com duas forças opostas: o empuxo para cima e o peso para baixo; à direita, o mesmo corpo com uma única força para baixo, menor, o peso aparente">
+    {/* quadro da esquerda */}
+    <rect x="20" y="30" width="150" height="130" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <circle cx="72" cy="95" r="26" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <line x1="120" y1="90" x2="120" y2="54" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="120,46 116,58 124,58" fill="var(--ok)"/>
+    <text x="128" y="62" font-size="12" font-style="italic" fill="var(--ok)">F</text>
+    <text x="137" y="66" font-size="8" fill="var(--ok)">e</text>
+    <line x1="120" y1="104" x2="120" y2="134" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="120,142 116,130 124,130" fill="var(--warn)"/>
+    <text x="128" y="132" font-size="12" font-style="italic" fill="var(--warn)">P</text>
+    {/* seta de passagem */}
+    <line x1="186" y1="95" x2="214" y2="95" stroke="var(--ink-2)" stroke-width="2.4"/>
+    <polygon points="222,95 210,90 210,100" fill="var(--ink-2)"/>
+    {/* quadro da direita */}
+    <rect x="236" y="30" width="150" height="130" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <circle cx="288" cy="95" r="26" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <line x1="336" y1="96" x2="336" y2="118" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="336,126 332,114 340,114" fill="var(--warn)"/>
+    <text x="300" y="146" font-size="12" font-style="italic" fill="var(--warn)">P</text>
+    <text x="310" y="150" font-size="8" fill="var(--warn)">aparente</text>
+  </svg>
+  <figcaption>
+
+À esquerda, as duas forças reais sobre o corpo submerso: o peso, para baixo, e o empuxo, para cima. À direita, o que uma balança acusaria — a diferença entre elas. **A seta da direita é mais curta que a da esquerda**, e é esse encurtamento que o problema pede em números.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$P = 1{,}47\ \mathrm{N}$ e $P_{ap} \approx 1{,}29\ \mathrm{N}$ (empuxo de $0{,}186\ \mathrm{N}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — o peso.** Converta a massa para quilogramas antes de multiplicar:
+
+$$
+P = m\,g = 0{,}150 \times 9{,}81
+$$
+
+$$
+\boxed{P = 1{,}4715 \approx 1{,}47\ \mathrm{N}}
+$$
+
+**Passo 2 — o empuxo, pelo princípio de Arquimedes.** O empuxo é o peso do fluido **deslocado**, e como o corpo está totalmente submerso, o volume deslocado é o volume do corpo:
+
+$$
+F_e = \gamma_{\text{água}}\,V_{desl} = \rho_{\text{água}}\,g\,V = 1000 \times 9{,}81 \times 19 \times 10^{-6}
+$$
+
+$$
+\boxed{F_e = 0{,}18639 \approx 0{,}186\ \mathrm{N}}
+$$
+
+Os $19\ \mathrm{cm^3}$ viram $19 \times 10^{-6}\ \mathrm{m^3}$ — há um fator $10^6$ nessa conversão, e não $10^3$: são centímetros **cúbicos**.
+
+**Passo 3 — o peso aparente.**
+
+$$
+P_{ap} = P - F_e = 1{,}4715 - 0{,}18639
+$$
+
+$$
+\boxed{P_{ap} \approx 1{,}285\ \mathrm{N}}
+$$
+
+**Passo 4 — o que o resultado conta sobre o corpo.** A massa específica dele é
+
+$$
+\rho = \frac{m}{V} = \frac{150\ \mathrm{g}}{19\ \mathrm{cm^3}} \approx 7{,}9\ \mathrm{g/cm^3}
+$$
+
+quase oito vezes a da água — é aço. Por isso o alívio é pequeno: o empuxo derruba só $12{,}7\%$ do peso, e o corpo afunda. Se ele fosse de madeira ($\rho \approx 0{,}6$), o empuxo superaria o peso e a conta daria negativa, que é a forma algébrica de dizer "isto flutua".
+
+**Conferência —** a fração aliviada tem de ser exatamente $\rho_{\text{água}}/\rho_{corpo} = 1000/7895 = 0{,}127$, e $0{,}186/1{,}4715 = 0{,}127$ ✔ Repare que $g$ aparece nos dois termos e some nessa razão — o alívio relativo é o mesmo na Terra e na Lua ✔ Com $g = 10\ \mathrm{m/s^2}$ os valores seriam $1{,}50$, $0{,}19$ e $1{,}31\ \mathrm{N}$.
+</Passos>
