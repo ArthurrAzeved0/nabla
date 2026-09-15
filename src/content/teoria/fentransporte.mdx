@@ -9,6 +9,7 @@ unidades:
       - { id: ft-propriedades, titulo: "Massa específica, peso específico, densidade relativa e volume específico" }
       - { id: ft-viscosidade, titulo: "Viscosidade dinâmica e cinemática" }
       - { id: ft-classificacao, titulo: "Fluidos newtonianos e não newtonianos" }
+      - { id: ft-tensao-superficial, titulo: "Tensão superficial e capilaridade" }
   - nome: "Estática dos fluidos"
     prova: 1ee
     secoes:
@@ -410,7 +411,160 @@ $$
 
 </Topico>
 
-<Topico id="ft-pressao" num="05" titulo="Pressão, escalas de medida e carga de pressão">
+<Topico id="ft-tensao-superficial" num="05" titulo="Tensão superficial e capilaridade">
+
+**A ideia.** Uma molécula no **meio** do líquido é puxada igualmente em todas as direções pelas vizinhas, e a resultante é nula. Uma molécula na **superfície** não tem vizinhas acima: a resultante aponta para dentro. O efeito é que a superfície se comporta como uma **membrana esticada** — é ela que segura a gota redonda, o inseto sobre a água e a coluna que sobe sozinha num tubo fino. Tudo nesta seção é consequência desse desequilíbrio.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\sigma$ — **tensão superficial**, em $\mathrm{N/m}$: a força que a membrana exerce por unidade de **comprimento** de linha de contato. Também se lê como energia por unidade de área, $\mathrm{J/m^2}$ — é o mesmo número;
+- $\theta$ — **ângulo de contato**, medido **dentro do líquido**, entre a parede e a superfície;
+- $r$, $d$ — raio e diâmetro internos do tubo, em $\mathrm{m}$;
+- $h$ — **ascensão capilar**, em $\mathrm{m}$: positiva quando o líquido sobe, negativa quando desce;
+- $\gamma$ — peso específico do líquido, em $\mathrm{N/m^3}$.
+
+</Caixa>
+
+### A tensão superficial é força por comprimento, não por área
+
+Esta é a primeira armadilha da seção: $\sigma$ **não** é pressão. A unidade é $\mathrm{N/m}$, e o comprimento em questão é o da **linha** onde a superfície se prende — o perímetro do tubo, a borda da gota, o contorno da lâmina.
+
+$$
+\boxed{\;\sigma = \frac{F}{L}\;}
+$$
+
+Alguns valores a $20\ ^\circ\mathrm{C}$, que dão a escala do fenômeno:
+
+| líquido (em contato com ar) | tensão superficial |
+| --- | --- |
+| água | $0{,}0728\ \mathrm{N/m}$ |
+| glicerina | $0{,}063\ \mathrm{N/m}$ |
+| álcool etílico | $0{,}022\ \mathrm{N/m}$ |
+| mercúrio | $\approx 0{,}48\ \mathrm{N/m}$ |
+
+A tensão superficial **cai** quando a temperatura sobe — é o mesmo motivo da viscosidade dos líquidos: aquecer enfraquece a coesão. E cai bastante com detergente, que é exatamente o que um tensoativo faz.
+
+### Molhamento: o ângulo de contato decide tudo
+
+Na linha onde líquido, sólido e ar se encontram, duas forças disputam: a **coesão** (líquido com líquido) e a **adesão** (líquido com a parede). Quem vencer define o formato do menisco e o sinal de tudo o que vem depois.
+
+<Caixa tipo="macete" rotulo="A regra que resolve o sinal">
+
+- **adesão maior que coesão** → o líquido **molha** a parede → $\theta < 90^\circ$ → menisco **côncavo** (curva para baixo, como uma tigela) → o líquido **sobe**. É a água no vidro, com $\theta \approx 0^\circ$;
+- **coesão maior que adesão** → o líquido **não molha** → $\theta > 90^\circ$ → menisco **convexo** (bojudo para cima) → o líquido **desce**. É o mercúrio no vidro, com $\theta \approx 130^\circ$ a $140^\circ$.
+
+Em uma frase: **molha, sobe; não molha, desce.** E o que carrega esse sinal na fórmula é o $\cos\theta$, que muda de positivo para negativo justamente em $90^\circ$.
+
+</Caixa>
+
+<Figura>
+  <svg viewBox="0 0 440 290" role="img" aria-label="À esquerda, um tubo capilar numa cuba de água: o menisco é côncavo e a coluna sobe uma altura h acima do nível da cuba. À direita, o mesmo tubo em mercúrio: o menisco é convexo e a coluna desce abaixo do nível da cuba">
+    {/* ---------- água: molha e sobe ---------- */}
+    <path d="M20 150 L20 245 L195 245 L195 150" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <rect x="21" y="172" width="173" height="73" fill="var(--accent)" opacity="0.38"/>
+    <line x1="21" y1="172" x2="194" y2="172" stroke="var(--accent)" stroke-width="1.3"/>
+    <path d="M96 104 Q105 116 114 104 L114 236 L96 236 Z" fill="var(--accent)" opacity="0.6"/>
+    <path d="M95 104 Q105 116 115 104" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+    <line x1="95" y1="60" x2="95" y2="236" stroke="var(--ink-3)" stroke-width="1.6"/>
+    <line x1="115" y1="60" x2="115" y2="236" stroke="var(--ink-3)" stroke-width="1.6"/>
+    <text x="100" y="134" font-size="12" font-style="italic" fill="var(--ink-2)">θ</text>
+    <line x1="115" y1="110" x2="156" y2="110" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="150" y1="172" x2="162" y2="172" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="152" y1="116" x2="152" y2="166" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="152,110 149,119 155,119" fill="var(--ink-3)"/>
+    <polygon points="152,172 149,163 155,163" fill="var(--ink-3)"/>
+    <text x="160" y="146" font-size="12" font-style="italic" fill="var(--ink-3)">h &gt; 0</text>
+    <text x="34" y="272" font-size="11" fill="var(--accent)">água · molha · θ &lt; 90°</text>
+    {/* ---------- mercúrio: não molha e desce ---------- */}
+    <path d="M250 150 L250 245 L425 245 L425 150" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <rect x="251" y="172" width="173" height="73" fill="var(--warn)" opacity="0.42"/>
+    <line x1="251" y1="172" x2="424" y2="172" stroke="var(--warn)" stroke-width="1.3"/>
+    {/* o trecho de tubo acima do menisco tem ar, e não mercúrio */}
+    <rect x="326" y="170" width="18" height="30" fill="var(--surface-2)"/>
+    <path d="M326 197 Q335 185 344 197 L344 236 L326 236 Z" fill="var(--warn)" opacity="0.65"/>
+    <path d="M325 197 Q335 185 345 197" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
+    <line x1="325" y1="60" x2="325" y2="236" stroke="var(--ink-3)" stroke-width="1.6"/>
+    <line x1="345" y1="60" x2="345" y2="236" stroke="var(--ink-3)" stroke-width="1.6"/>
+    <text x="330" y="220" font-size="12" font-style="italic" fill="var(--ink-2)">θ</text>
+    <line x1="345" y1="197" x2="386" y2="197" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="380" y1="172" x2="392" y2="172" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="382" y1="178" x2="382" y2="191" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="382,172 379,181 385,181" fill="var(--ink-3)"/>
+    <polygon points="382,197 379,188 385,188" fill="var(--ink-3)"/>
+    <text x="390" y="192" font-size="12" font-style="italic" fill="var(--ink-3)">h &lt; 0</text>
+    <text x="254" y="272" font-size="11" fill="var(--warn)">mercúrio · não molha · θ &gt; 90°</text>
+  </svg>
+  <figcaption>
+
+O mesmo tubo, o mesmo diâmetro, dois líquidos. O que muda é o ângulo de contato: à esquerda ele é agudo e o menisco é côncavo, à direita é obtuso e o menisco é convexo. **A altura troca de sinal junto com o $\cos\theta$.**
+
+  </figcaption>
+</Figura>
+
+### Capilaridade: a lei de Jurin
+
+Num tubo fino mergulhado num líquido, a membrana superficial se prende à parede ao longo de todo o perímetro $2\pi r$ e puxa a coluna, inclinada de $\theta$. Só a componente **vertical** sustenta o peso:
+
+$$
+\underbrace{\sigma\,(2\pi r)\cos\theta}_{\text{o que a membrana segura}}
+\;=\;
+\underbrace{\gamma\,(\pi r^2 h)}_{\text{peso da coluna}}
+$$
+
+Cortando $\pi r$ dos dois lados:
+
+$$
+\boxed{\;h = \frac{2\sigma\cos\theta}{\gamma\,r} = \frac{4\sigma\cos\theta}{\gamma\,d}\;}
+$$
+
+<Caixa tipo="dica" rotulo="As duas armadilhas da fórmula">
+
+1. **Raio ou diâmetro?** As duas formas estão certas, e diferem por um fator 2. O enunciado quase sempre dá o **diâmetro** do capilar — então a que serve é a do $4$. Usar o $d$ na fórmula do $2$ erra por metade;
+2. **$h$ negativo não é erro de conta.** Com $\theta > 90^\circ$, o $\cos\theta$ é negativo e a fórmula devolve $h < 0$: é o **rebaixamento capilar**, o líquido dentro do tubo fica abaixo do nível da cuba. Escreva o sinal na resposta e diga o que ele significa.
+
+</Caixa>
+
+### A gota, a bolha e o jato
+
+A mesma membrana comprime o que ela envolve. Equilibrando metade de uma gota — a pressão empurra a área $\pi R^2$, a tensão segura o perímetro $2\pi R$:
+
+$$
+\Delta p\,(\pi R^2) = \sigma\,(2\pi R)
+\qquad\Longrightarrow\qquad
+\Delta p = \frac{2\sigma}{R}
+$$
+
+| geometria | diferença de pressão |
+| --- | --- |
+| gota, ou bolha dentro do líquido | $\Delta p = 2\sigma/R$ |
+| bolha de sabão (duas superfícies) | $\Delta p = 4\sigma/R$ |
+| jato cilíndrico | $\Delta p = \sigma/R$ |
+
+A bolha de sabão tem **duas** superfícies, a de dentro e a de fora, e por isso dobra. O jato tem uma curvatura só, e por isso cai pela metade. Em todos, o que importa é o $1/R$: **quanto menor a gota, maior a pressão interna** — é por isso que gotas pequenas se juntam nas grandes, e não o contrário.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — quanto a água sobe num tubo de 1 mm">
+
+Água a $20\ ^\circ\mathrm{C}$ ($\sigma = 0{,}0728\ \mathrm{N/m}$, $\gamma = 9810\ \mathrm{N/m^3}$) num capilar de vidro de $d = 1\ \mathrm{mm}$, com $\theta \approx 0^\circ$:
+
+$$
+h = \frac{4\sigma\cos\theta}{\gamma\,d} = \frac{4 \times 0{,}0728 \times 1}{9810 \times 0{,}001} = \frac{0{,}2912}{9{,}81} \approx 0{,}0297\ \mathrm{m}
+$$
+
+Quase $3\ \mathrm{cm}$ — num tubo de $1\ \mathrm{mm}$. Repetindo com $d = 10\ \mathrm{mm}$, a altura cai para $3\ \mathrm{mm}$; com $d = 25\ \mathrm{mm}$, para $1{,}2\ \mathrm{mm}$. O efeito é **inversamente proporcional ao diâmetro**, e some depressa.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Por que isso importa em manometria">
+
+A leitura de um piezômetro ou de um manômetro em U é falseada pela capilaridade: com água num tubo de $2\ \mathrm{mm}$, a coluna sobe $15\ \mathrm{mm}$ **a mais** do que a pressão manda. Daí a recomendação prática de usar tubos com **pelo menos $10\ \mathrm{mm}$** de diâmetro, onde o erro cai para poucos milímetros — e, com mercúrio, o erro é para **menos**, porque o menisco desce.
+
+E é por isso que nas questões de manometria desta cadeira a capilaridade é ignorada: os tubos são grandes o bastante.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ft-pressao" num="06" titulo="Pressão, escalas de medida e carga de pressão">
 
 **A ideia.** Estática dos fluidos é o estudo do fluido **em repouso**: velocidade nula em todos os pontos e, por consequência, **tensão de cisalhamento nula**. Sem cisalhamento sobra uma única força de superfície — a **pressão**, sempre normal à superfície. Toda esta unidade é a consequência disso.
 
@@ -497,7 +651,7 @@ $$
 
 </Topico>
 
-<Topico id="ft-stevin" num="06" titulo="Lei de Stevin e lei de Pascal">
+<Topico id="ft-stevin" num="07" titulo="Lei de Stevin e lei de Pascal">
 
 **A ideia.** Duas leis que parecem próximas e dizem coisas diferentes — e a prova gosta exatamente dessa confusão. **Stevin** governa a variação da pressão na **vertical**; **Pascal** governa a transmissão da pressão para **todos os pontos**. Uma explica por que a pressão cresce com a profundidade; a outra, por que um macaco hidráulico levanta um carro.
 
@@ -599,7 +753,7 @@ Numa frase: **Pascal age em $x$, Stevin age em $y$.**
 
 </Topico>
 
-<Topico id="ft-manometros" num="07" titulo="Manômetros e a equação manométrica">
+<Topico id="ft-manometros" num="08" titulo="Manômetros e a equação manométrica">
 
 **A ideia.** Aqui a estática deixa de ser conceito e passa a valer 2 pontos de prova. A equação manométrica é uma aplicação repetida de Stevin, feita com **um método mecânico**: caminhar pelo tubo de um ponto ao outro, somando quando desce e subtraindo quando sobe. Quem faz isso com disciplina não erra; quem tenta "ver" a resposta erra o sinal.
 
@@ -698,7 +852,7 @@ $$
 
 </Topico>
 
-<Topico id="ft-forca-plana" num="08" titulo="Força em superfície plana submersa e centro de pressão">
+<Topico id="ft-forca-plana" num="09" titulo="Força em superfície plana submersa e centro de pressão">
 
 **A ideia.** A pressão cresce com a profundidade, então a força sobre uma comporta **não** está distribuída por igual: aperta mais embaixo. Essa unidade responde a duas perguntas separadas — **quanto** é a força resultante e **onde** ela age. A primeira resposta é surpreendentemente simples; a segunda é a que derruba prova, porque o ponto de aplicação **não** é o centro de gravidade.
 
@@ -810,7 +964,7 @@ Duas armadilhas frequentes:
 
 </Topico>
 
-<Topico id="ft-forca-curva" num="09" titulo="Força em superfície curva submersa">
+<Topico id="ft-forca-curva" num="10" titulo="Força em superfície curva submersa">
 
 **A ideia.** Numa superfície **curva** a pressão continua sempre normal à parede — mas a normal muda de direção ponto a ponto. Somar vetores que giram não dá para fazer com uma fórmula única, então o método é outro: **decompor em duas direções** e tratar cada componente com o que já se sabe. A horizontal cai na seção anterior; a vertical vira um problema de **peso de volume**.
 
@@ -911,7 +1065,7 @@ $$
 
 </Topico>
 
-<Topico id="ft-empuxo" num="10" titulo="Empuxo e equilíbrio de corpos submersos">
+<Topico id="ft-empuxo" num="11" titulo="Empuxo e equilíbrio de corpos submersos">
 
 **A ideia.** Empuxo não é uma força nova: é o **resultado líquido** das pressões que o fluido faz na superfície do corpo. Como a pressão cresce com a profundidade, o empurrão de baixo vence o de cima, e sobra uma força para cima. O princípio de Arquimedes é essa conta já resolvida — e ela depende **só do volume deslocado**, não do que há dentro do corpo.
 
@@ -1014,7 +1168,7 @@ Chamando $M$ o **metacentro** (o ponto onde a linha de ação do empuxo cruza o 
 
 </Topico>
 
-<Topico id="ft-escoamentos" num="11" titulo="Tipos e regimes de escoamento; número de Reynolds">
+<Topico id="ft-escoamentos" num="12" titulo="Tipos e regimes de escoamento; número de Reynolds">
 
 **A ideia.** Sai o repouso, entra o movimento. Antes de escrever qualquer equação para um fluido escoando é preciso **classificar** o escoamento, porque as hipóteses que você pode usar depois dependem dessa classificação. E o classificador mais importante da cadeira é um número adimensional que compara duas forças: **Reynolds**.
 
@@ -1102,7 +1256,7 @@ $Re \gg 4000$: **turbulento**. E é o caso da esmagadora maioria dos escoamentos
 
 </Topico>
 
-<Topico id="ft-vazao" num="12" titulo="Vazão volumétrica, vazão mássica e velocidade média">
+<Topico id="ft-vazao" num="13" titulo="Vazão volumétrica, vazão mássica e velocidade média">
 
 **A ideia.** Vazão é a grandeza que amarra a cadeira inteira: ela aparece na continuidade, em Bernoulli, no cálculo de perda de carga e na potência da bomba. E a definição de **velocidade média** é o que permite tratar um perfil de velocidades complicado como se fosse um número só.
 
@@ -1200,7 +1354,7 @@ $$
 
 </Topico>
 
-<Topico id="ft-continuidade" num="13" titulo="Equação da continuidade para regime permanente">
+<Topico id="ft-continuidade" num="14" titulo="Equação da continuidade para regime permanente">
 
 **A ideia.** É a conservação da massa escrita para um escoamento. A frase é banal — *o que entra tem de sair* —, mas a consequência não é: se o tubo estreita, o fluido **acelera**. É esse aumento de velocidade que, na próxima unidade, vai fazer a pressão cair (Bernoulli) e explicar o funcionamento de um Venturi.
 
@@ -1283,7 +1437,7 @@ Mas o acervo mostra que **a divisão já foi diferente**: a prova do 1º EE de 2
 
 </Topico>
 
-<Topico id="ft-bernoulli" num="14" titulo="Equação de Bernoulli, carga total e o tubo de Venturi">
+<Topico id="ft-bernoulli" num="15" titulo="Equação de Bernoulli, carga total e o tubo de Venturi">
 
 **A ideia.** Bernoulli é a conservação de energia escrita em **metros**. Cada termo é uma "carga" — uma altura equivalente — e a soma das três é constante ao longo do escoamento de um fluido ideal. A força da equação está em quê ela permite: sabendo a geometria (pela continuidade), você descobre a **pressão** sem saber nada sobre a força que empurra o fluido.
 
@@ -1389,7 +1543,7 @@ $$
 
 </Topico>
 
-<Topico id="ft-maquina" num="15" titulo="Equação da energia com máquina: bombas e turbinas">
+<Topico id="ft-maquina" num="16" titulo="Equação da energia com máquina: bombas e turbinas">
 
 **A ideia.** Bernoulli puro só serve a um mundo sem atrito e sem máquinas. A equação da energia **real** acrescenta dois termos: o que a **máquina** entrega ou retira, e o que o **atrito** dissipa. Com esses dois termos a equação deixa de ser exercício e passa a dimensionar bomba de verdade — que é o que a prova pede quando fala em "potência requerida".
 
@@ -1489,7 +1643,7 @@ $$
 
 </Topico>
 
-<Topico id="ft-perdas" num="16" titulo="Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody">
+<Topico id="ft-perdas" num="17" titulo="Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody">
 
 **A ideia.** O termo $H_p$ da seção anterior apareceu como um número dado. Aqui ele é **calculado**. A perda de carga tem duas origens: o atrito ao longo do tubo reto (**distribuída**) e as singularidades como curvas e válvulas (**localizada**, próxima seção). A distribuída é governada por uma fórmula única, e a dificuldade toda está em achar **um** coeficiente: o fator de atrito.
 
@@ -1588,7 +1742,7 @@ Conferindo o regime: $Re = 2 \times 0{,}1/10^{-6} = 2 \times 10^5$, turbulento, 
 
 </Topico>
 
-<Topico id="ft-localizadas" num="17" titulo="Perdas de carga localizadas e comprimento equivalente">
+<Topico id="ft-localizadas" num="18" titulo="Perdas de carga localizadas e comprimento equivalente">
 
 **A ideia.** Cada curva, válvula, registro ou mudança de seção obriga o fluido a **mudar de direção ou de velocidade** bruscamente, e isso gera turbilhonamento — energia que vira calor. Numa instalação curta e cheia de conexões, essas perdas "pontuais" podem passar a distribuída. Há dois métodos para contabilizá-las, e a prova pede saber os dois.
 
@@ -1690,7 +1844,7 @@ Idênticos, como tinham de ser — os métodos são a mesma conta reorganizada. 
 
 </Topico>
 
-<Topico id="ft-qmov" num="18" titulo="Equação da quantidade de movimento para regime permanente">
+<Topico id="ft-qmov" num="19" titulo="Equação da quantidade de movimento para regime permanente">
 
 **A ideia.** Continuidade é massa, Bernoulli é energia — falta a **segunda lei de Newton** escrita para um escoamento. Ela responde à pergunta que as outras duas não respondem: **qual força o fluido faz na estrutura?** É o que dimensiona o bloco de ancoragem de uma curva, a força num jato contra uma pá e o esforço num redutor de tubulação.
 
@@ -1781,7 +1935,7 @@ A placa faz $400\ \mathrm{N}$ **contra** o jato; logo o jato empurra a placa com
 
 </Topico>
 
-<Topico id="ft-dimensional" num="19" titulo="Análise dimensional, números adimensionais e o teorema dos π">
+<Topico id="ft-dimensional" num="20" titulo="Análise dimensional, números adimensionais e o teorema dos π">
 
 **A ideia.** Alguns problemas de fluidos têm variáveis demais para resolver analiticamente e caro demais para testar em tamanho real. A análise dimensional é a ferramenta que **reduz o número de variáveis** antes de qualquer experimento: em vez de estudar sete grandezas separadas, estuda-se um punhado de **grupos adimensionais**. É o que permite ensaiar um modelo pequeno e extrapolar para a obra.
 
@@ -1894,7 +2048,7 @@ Qual domina o problema decide qual deve ser igualado no ensaio de modelo:
 
 </Topico>
 
-<Topico id="ft-semelhanca" num="20" titulo="Semelhança e teoria dos modelos">
+<Topico id="ft-semelhanca" num="21" titulo="Semelhança e teoria dos modelos">
 
 **A ideia.** Ninguém constrói uma barragem para descobrir se ela funciona. Constrói-se um **modelo** reduzido, ensaia-se, e transfere-se o resultado para o **protótipo**. A teoria dos modelos é o conjunto de regras que garante que essa transferência é legítima — e a regra central é: **os adimensionais relevantes têm de ser iguais nos dois**.
 
@@ -1991,7 +2145,7 @@ A saída prática é o **efeito de escala**: iguala-se o adimensional dominante,
 
 </Topico>
 
-<Topico id="ft-navier" num="21" titulo="Análise diferencial: Navier-Stokes e aplicações">
+<Topico id="ft-navier" num="22" titulo="Análise diferencial: Navier-Stokes e aplicações">
 
 **A ideia.** Até aqui a cadeira usou **volumes de controle finitos**: entra em (1), sai em (2), e o que acontece no meio não importa. A análise diferencial faz o oposto — escreve as leis para um **elemento infinitesimal** e obtém o campo de velocidades **ponto a ponto**. O preço é uma equação diferencial parcial não linear; o ganho é a descrição completa do escoamento.
 
@@ -2081,7 +2235,7 @@ Raramente se pede resolver Navier-Stokes. O que cai é:
 
 </Topico>
 
-<Topico id="ft-modos" num="22" titulo="Os três modos de transferência de calor">
+<Topico id="ft-modos" num="23" titulo="Os três modos de transferência de calor">
 
 **A ideia.** A cadeira muda de assunto, mas não de estrutura: transporte de **calor** obedece à mesma lógica do transporte de quantidade de movimento — um fluxo proporcional a um gradiente. Calor é energia em trânsito **por diferença de temperatura**, e há exatamente três mecanismos para ele viajar. Identificar qual está em jogo é o primeiro passo de qualquer questão desta unidade.
 
@@ -2178,7 +2332,7 @@ Em série, os três mecanismos formam um circuito térmico — e a próxima seç
 
 </Topico>
 
-<Topico id="ft-fourier" num="23" titulo="Lei de Fourier, condutividade e resistência térmica">
+<Topico id="ft-fourier" num="24" titulo="Lei de Fourier, condutividade e resistência térmica">
 
 **A ideia.** A lei de Fourier é a lei de Newton da viscosidade com outros nomes: fluxo proporcional a gradiente. E há um ganho enorme escondido nela — se o regime é permanente e o perfil é linear, a condução vira um **circuito elétrico**, com "resistências térmicas" que se somam em série e em paralelo exatamente como resistores. Essa analogia é a ferramenta mais poderosa desta unidade.
 
@@ -2285,7 +2439,7 @@ $$
 
 </Topico>
 
-<Topico id="ft-paredes" num="24" titulo="Condução em paredes compostas e em tubulações">
+<Topico id="ft-paredes" num="25" titulo="Condução em paredes compostas e em tubulações">
 
 **A ideia.** Com o dicionário elétrico da seção anterior, resolver uma parede de três camadas é somar resistências. O caso do **tubo** é o único que exige cuidado extra: ali a área **cresce** com o raio, o perfil de temperatura deixa de ser linear e a resistência ganha um logaritmo. É a fórmula que a prova de 2º EE cobra com mais frequência nesta unidade.
 
@@ -2372,7 +2526,7 @@ $$
 
 </Topico>
 
-<Topico id="ft-esferas" num="25" titulo="Condução em esferas e o raio crítico de isolamento">
+<Topico id="ft-esferas" num="26" titulo="Condução em esferas e o raio crítico de isolamento">
 
 **A ideia.** O tubo trouxe o logaritmo porque a área cresce com o raio. Na **esfera** a área cresce com o raio **ao quadrado**, e a resistência ganha uma forma ainda diferente. E, nos dois casos curvos, aparece um efeito que não existe na parede plana: acrescentar isolante pode **aumentar** a perda de calor. O limite entre uma coisa e outra é o **raio crítico**.
 
@@ -2510,7 +2664,7 @@ Repare que a **convecção** carrega $75\ \%$ da resistência total: é o ar ext
 
 </Topico>
 
-<Topico id="ft-geracao" num="26" titulo="Condução com geração de calor e as condições de contorno">
+<Topico id="ft-geracao" num="27" titulo="Condução com geração de calor e as condições de contorno">
 
 **A ideia.** Tudo até aqui supôs que o calor só **atravessa** o material. Se o material **produz** calor — resistência elétrica dissipando, reação química, decaimento nuclear —, o perfil de temperatura deixa de ser reto e vira **parábola**. E, para resolver a equação diferencial que aparece, é preciso dizer o que acontece nas fronteiras: são as **condições de contorno**, que a prova cobra pelo nome.
 
@@ -2637,7 +2791,7 @@ A armadilha é usar $\Delta x = 0{,}20\ \mathrm{m}$ com $\Delta T = 70\ \mathrm{
 
 </Topico>
 
-<Topico id="ft-conveccao" num="27" titulo="Convecção: natural, forçada e o número de Nusselt">
+<Topico id="ft-conveccao" num="28" titulo="Convecção: natural, forçada e o número de Nusselt">
 
 **A ideia.** A lei do resfriamento de Newton, $q = hA\Delta T$, esconde toda a dificuldade dentro do $h$ — que não é propriedade do fluido, e sim resultado do escoamento. Achar $h$ é o problema central da convecção, e o caminho é sempre o mesmo: calcular adimensionais e usar uma correlação. O adimensional que **entrega** o $h$ é o de **Nusselt**.
 
@@ -2745,7 +2899,7 @@ O $\Delta T$ pode ficar em Celsius: em convecção só a **diferença** entra, e
 
 </Topico>
 
-<Topico id="ft-massa" num="28" titulo="Fundamentos do transporte de massa">
+<Topico id="ft-massa" num="29" titulo="Fundamentos do transporte de massa">
 
 **A ideia.** O último assunto da cadeira fecha o círculo que o nome dela sempre anunciou: são **três** fenômenos de transporte com a mesma estrutura matemática. Quantidade de movimento (Newton), calor (Fourier) e agora **massa** (Fick) — em todos, um fluxo é proporcional a um gradiente, com uma propriedade do meio como constante. Quem enxerga a analogia aprende esta unidade em minutos.
 
@@ -2837,7 +2991,7 @@ A próxima seção fecha a cadeira detalhando os **três** fluxos que uma quest�
 
 </Topico>
 
-<Topico id="ft-fluxos-massa" num="29" titulo="Fluxo difusivo, convectivo e absoluto">
+<Topico id="ft-fluxos-massa" num="30" titulo="Fluxo difusivo, convectivo e absoluto">
 
 **A ideia.** Numa mistura que **escoa**, uma espécie se move por dois motivos ao mesmo tempo: porque há gradiente de concentração (difusão) e porque o fluido inteiro está indo para algum lado (convecção). A questão típica de 2º EE dá a concentração total, as frações molares nas duas pontas e a velocidade, e pede **os três** fluxos para **as duas** espécies. É contabilidade, não dificuldade — desde que a ordem dos passos seja fixa.
 
