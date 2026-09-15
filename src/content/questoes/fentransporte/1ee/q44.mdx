@@ -1,0 +1,115 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Manometria · Achar a altura diferencial da coluna de mercúrio"
+temaId: equacao-manometrica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q44.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A pressão manométrica do ar no tanque, mostrado na figura abaixo, é medida em $20\ \mathrm{kPa}$. Determine a altura diferencial $h$ da coluna de mercúrio.
+
+<Figura>
+  <svg viewBox="0 0 430 300" role="img" aria-label="Tanque com ar a 20 kPa sobre água; do tanque sai um tubo em que a água desce 30 cm até encontrar o mercúrio, que sobe a altura h no outro ramo, onde há 75 cm de óleo até o topo aberto">
+    {/* ---- tanque ---- */}
+    <rect x="20" y="130" width="130" height="120" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <rect x="21" y="157" width="128" height="92" fill="var(--accent)" opacity="0.4"/>
+    <line x1="21" y1="157" x2="149" y2="157" stroke="var(--accent)" stroke-width="1.4"/>
+    <text x="72" y="148" font-size="12" fill="var(--ink-2)">Ar</text>
+    {/* manômetro */}
+    <line x1="84" y1="118" x2="84" y2="130" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <circle cx="84" cy="106" r="12" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="84" y1="106" x2="91" y2="99" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="54" y="84" font-size="11" fill="var(--accent)">20 kPa</text>
+    {/* ---- tubulação ---- */}
+    <path d="M150 138 L178 138 L178 250 A30 30 0 0 0 238 250 L238 52" fill="none" stroke="var(--ink-3)" stroke-width="15"/>
+    <path d="M150 138 L178 138 L178 250 A30 30 0 0 0 238 250 L238 52" fill="none" stroke="var(--surface-2)" stroke-width="12.2"/>
+    {/* água no ramo descendente */}
+    <path d="M178 157 L178 210" fill="none" stroke="var(--accent)" stroke-width="12.2" opacity="0.5"/>
+    {/* mercúrio */}
+    <path d="M178 210 L178 250 A30 30 0 0 0 238 250 L238 187" fill="none" stroke="var(--warn)" stroke-width="12.2" opacity="0.6"/>
+    {/* óleo */}
+    <path d="M238 187 L238 52" fill="none" stroke="var(--ok)" stroke-width="12.2" opacity="0.45"/>
+    {/* interfaces */}
+    <line x1="171" y1="157" x2="185" y2="157" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="231" y1="187" x2="245" y2="187" stroke="var(--warn)" stroke-width="1.5"/>
+    {/* ---- cotas ---- */}
+    <line x1="120" y1="210" x2="300" y2="210" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line x1="160" y1="163" x2="160" y2="204" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="160,157 157,166 163,166" fill="var(--ink-3)"/>
+    <polygon points="160,210 157,201 163,201" fill="var(--ink-3)"/>
+    <text x="114" y="188" font-size="11" fill="var(--ink-3)">30 cm</text>
+    <line x1="268" y1="58" x2="268" y2="181" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="268,52 265,61 271,61" fill="var(--ink-3)"/>
+    <polygon points="268,187 265,178 271,178" fill="var(--ink-3)"/>
+    <text x="274" y="124" font-size="11" fill="var(--ink-3)">75 cm</text>
+    <line x1="268" y1="187" x2="268" y2="210" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="268,187 265,196 271,196" fill="var(--ink-3)"/>
+    <polygon points="268,210 265,201 271,201" fill="var(--ink-3)"/>
+    <text x="274" y="204" font-size="12" font-style="italic" fill="var(--ink-3)">h</text>
+    {/* ---- chamadas ---- */}
+    <text x="192" y="150" font-size="10" fill="var(--accent)">água</text>
+    <line x1="190" y1="146" x2="184" y2="160" stroke="var(--accent)" stroke-width="0.7"/>
+    <text x="300" y="86" font-size="10" fill="var(--ok)">óleo</text>
+    <text x="300" y="99" font-size="10" fill="var(--ok)">δ = 0,72</text>
+    <line x1="296" y1="84" x2="246" y2="92" stroke="var(--ok)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="300" y="232" font-size="10" fill="var(--warn)">mercúrio</text>
+    <text x="300" y="245" font-size="10" fill="var(--warn)">δ = 13,6</text>
+    <line x1="296" y1="230" x2="246" y2="238" stroke="var(--warn)" stroke-width="0.7" stroke-dasharray="3 2"/>
+  </svg>
+  <figcaption>
+
+A linha tracejada é a **interface água/mercúrio**, e é dela que partem as duas cotas do lado direito: $h$ de mercúrio para cima e, acima do menisco, $75\ \mathrm{cm}$ de óleo até a boca aberta do tubo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$h \approx 12{,}9\ \mathrm{cm}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os pesos específicos.** Com $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$, que é a convenção da cadeira quando o enunciado não dá $g$:
+
+$$
+\gamma_{Hg} = 13{,}6 \times 10\,000 = 136\,000\ \mathrm{N/m^3}
+\qquad
+\gamma_{\text{óleo}} = 0{,}72 \times 10\,000 = 7200\ \mathrm{N/m^3}
+$$
+
+**Passo 2 — o caminho.** Saia do ar do tanque (onde a pressão efetiva é $20\ \mathrm{kPa}$, medida pelo manômetro) e chegue à boca aberta do tubo, onde ela é zero. Descendo soma, subindo subtrai:
+
+$$
+p_{ar} + \gamma_{\text{água}}(0{,}30) - \gamma_{Hg}\,h - \gamma_{\text{óleo}}(0{,}75) = 0
+$$
+
+A coluna de ar dentro do tanque não entra: o peso específico de um gás é desprezível diante do de qualquer líquido daqui.
+
+**Passo 3 — isolar $h$.**
+
+$$
+\gamma_{Hg}\,h = p_{ar} + \gamma_{\text{água}}(0{,}30) - \gamma_{\text{óleo}}(0{,}75)
+$$
+
+$$
+136\,000\,h = 20\,000 + 3000 - 5400 = 17\,600
+$$
+
+$$
+\boxed{h = 0{,}1294\ \mathrm{m} \approx 12{,}9\ \mathrm{cm}}
+$$
+
+**Passo 4 — por que o óleo entra subtraindo.** Ele está **acima** do mercúrio no ramo aberto, ou seja, empurra o mercúrio para baixo e ajuda a segurar a pressão do tanque. Quanto mais óleo, menos mercúrio o tanque precisa deslocar — e por isso o termo aparece com sinal contrário ao de $h$.
+
+**Conferência —** vale o teste de plausibilidade: $20\ \mathrm{kPa}$ sozinhos equivaleriam a $20\,000/136\,000 = 14{,}7\ \mathrm{cm}$ de mercúrio. Os $30\ \mathrm{cm}$ de água acrescentam pouco ($3\ \mathrm{kPa}$) e os $75\ \mathrm{cm}$ de óleo descontam um pouco mais ($5{,}4\ \mathrm{kPa}$), então a resposta tem de ficar **um pouco abaixo** de $14{,}7\ \mathrm{cm}$ ✔ Com $g = 9{,}81$ o resultado seria $13{,}2\ \mathrm{cm}$ — mesma ordem, muda só a constante adotada.
+</Passos>
