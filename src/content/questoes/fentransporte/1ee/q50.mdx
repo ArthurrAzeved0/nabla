@@ -1,0 +1,82 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Continuidade · Tubo convergente com ar em massas específicas diferentes"
+temaId: equacao-da-continuidade
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q50.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Ar escoa em um tubo convergente. A área da maior seção do tubo é $40\ \mathrm{cm^2}$ (seção 1) e a da menor seção é $15\ \mathrm{cm^2}$ (seção 2). A massa específica do ar na seção 1 é $0{,}12\ \mathrm{utm/m^3}$, enquanto na seção 2 é $0{,}09\ \mathrm{utm/m^3}$. Sendo a velocidade na seção 1 igual a $10\ \mathrm{m/s}$, determinar a velocidade na seção 2 e a vazão em volume, em massa e em peso, no SI.
+
+<Gabarito>
+$v_2 \approx 35{,}6\ \mathrm{m/s}$ · $Q_1 = 0{,}04\ \mathrm{m^3/s}$ (e $Q_2 = 0{,}053\ \mathrm{m^3/s}$) · $Q_m = 0{,}0471\ \mathrm{kg/s}$ · $Q_G = 0{,}462\ \mathrm{N/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — qual continuidade vale aqui.** O ar muda de massa específica entre as duas seções, então o escoamento **não** é incompressível. A forma $A_1 v_1 = A_2 v_2$ está proibida. O que se conserva é a **massa**:
+
+$$
+\rho_1 A_1 v_1 = \rho_2 A_2 v_2 = Q_m
+$$
+
+Esse é o ponto da questão: quem entrega $0{,}04 \times 10/0{,}0015$ caiu na armadilha.
+
+**Passo 2 — a velocidade na seção 2.** As áreas podem ficar em $\mathrm{cm^2}$ dos dois lados, porque a unidade se cancela:
+
+$$
+v_2 = \frac{\rho_1 A_1 v_1}{\rho_2 A_2} = \frac{0{,}12 \times 40 \times 10}{0{,}09 \times 15} = \frac{48}{1{,}35}
+$$
+
+$$
+\boxed{v_2 \approx 35{,}6\ \mathrm{m/s}}
+$$
+
+**Passo 3 — o utm, que é o detalhe que derruba a conta.** O enunciado dá $\rho$ em $\mathrm{utm/m^3}$ — unidade técnica de massa, do sistema MK*S. A conversão é
+
+$$
+1\ \mathrm{utm} = 9{,}81\ \mathrm{kg}
+\qquad\Longrightarrow\qquad
+\rho_1 = 0{,}12 \times 9{,}81 = 1{,}177\ \mathrm{kg/m^3}
+$$
+
+O valor faz sentido: é a massa específica do ar em condições ambientes, $\approx 1{,}2\ \mathrm{kg/m^3}$. É esse o teste de que a conversão foi feita no sentido certo.
+
+**Passo 4 — as três vazões.** Vazão em volume, na seção 1:
+
+$$
+Q_1 = A_1 v_1 = 0{,}004 \times 10 = 0{,}04\ \mathrm{m^3/s}
+$$
+
+Vazão em massa, que é a mesma nas duas seções:
+
+$$
+Q_m = \rho_1 A_1 v_1 = 1{,}177 \times 0{,}04 = 0{,}0471\ \mathrm{kg/s}
+$$
+
+Vazão em peso, que é a vazão em massa vezes $g$:
+
+$$
+Q_G = Q_m\,g = 0{,}0471 \times 9{,}81 = 0{,}462\ \mathrm{N/s}
+$$
+
+**Passo 5 — a vazão em volume não é única.** Conferindo na seção 2:
+
+$$
+Q_2 = A_2 v_2 = 0{,}0015 \times 35{,}6 = 0{,}0533\ \mathrm{m^3/s}
+$$
+
+São $33\%$ a mais que na seção 1 — o mesmo ar, ocupando mais volume por segundo porque ficou menos denso. Em escoamento compressível a pergunta "qual a vazão em volume?" só tem resposta se disser **em que seção**; a vazão em massa, não: essa é uma só.
+
+**Conferência —** a razão $Q_2/Q_1 = 0{,}0533/0{,}04 = 1{,}333$ tem de ser igual a $\rho_1/\rho_2 = 0{,}12/0{,}09 = 1{,}333$ ✔ É a mesma conservação de massa vista por outro ângulo, e fecha ✔
+</Passos>
