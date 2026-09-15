@@ -1,0 +1,86 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Propriedades · Julgar cinco afirmações sobre viscosidade e estática"
+temaId: viscosidade
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q36.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A respeito das propriedades dos fluidos e da estática dos meios fluidos, julgue os itens a seguir com **CERTO** ou **ERRADO** e justifique.
+
+**I.** Viscosidade é a propriedade que indica a dificuldade de um fluido em escoar, sendo proporcional à razão entre a força de cisalhamento e o gradiente de velocidade do fluido.
+
+**II.** Em um fluido newtoniano, a tensão de cisalhamento é proporcional à deformação do fluido.
+
+**III.** As viscosidades dos líquidos decrescem com o aumento da temperatura e são fortemente afetadas pelo aumento da pressão.
+
+**IV.** Escoamentos de líquidos podem sempre ser tratados como incompressíveis.
+
+**V.** A relação entre a viscosidade dinâmica ($\mu$) e a viscosidade cinemática ($\nu$) de um mesmo fluido é $\mu = \rho \cdot \nu$, onde $\rho$ é a massa específica. Considerando $[\nu]$ em $\mathrm{m^2/s}$ e $[\rho]$ em $\mathrm{kg/m^3}$, a unidade de viscosidade dinâmica mais coerente pode ser dada por $[\mathrm{N \cdot s^2/m}]$.
+
+<Gabarito>
+**I — ERRADO** · **II — ERRADO** · **III — ERRADO** · **IV — ERRADO** · **V — ERRADO** — os cinco itens estão errados.
+</Gabarito>
+
+<Passos>
+**Item I — ERRADO, e quem decide é a dimensão.** A primeira metade está certa: viscosidade é mesmo a medida da dificuldade de um fluido em escoar. A segunda troca **tensão** por **força**, e isso não é preciosismo de redação. A lei de Newton da viscosidade é
+
+$$
+\tau = \mu \frac{dv}{dy}
+\qquad\Longrightarrow\qquad
+\mu = \frac{\tau}{dv/dy} = \frac{F/A}{dv/dy}
+$$
+
+Quem entra na razão é a força **por unidade de área**. Sem a área, a conta nem fecha dimensionalmente:
+
+$$
+\left[\frac{F}{dv/dy}\right] = \frac{\mathrm{N}}{\mathrm{s^{-1}}} = \mathrm{N \cdot s}
+\qquad\text{e não}\qquad
+[\mu] = \frac{\mathrm{N \cdot s}}{\mathrm{m^2}}
+$$
+
+Sobra exatamente um $\mathrm{m^2}$ — a área que o item esqueceu.
+
+Há um segundo argumento, físico. Se a viscosidade fosse proporcional à razão entre a **força** e o gradiente, ela mudaria ao trocar o tamanho da placa do experimento: dobrando a área, dobraria a força necessária para manter o mesmo gradiente, e o item concluiria que o óleo ficou duas vezes mais viscoso. Viscosidade é **propriedade do fluido** — não pode depender do tamanho do aparato. É a tensão, e só ela, que normaliza isso.
+
+**Item II — ERRADO, e é o erro clássico.** No fluido newtoniano a tensão é proporcional à **taxa** de deformação, não à deformação:
+
+$$
+\tau = \mu \frac{dv}{dy} = \mu \frac{d}{dt}\!\left(\frac{d\ell}{dy}\right)
+$$
+
+A diferença separa fluido de sólido. No sólido elástico vale $\tau = G\gamma$ — tensão proporcional à deformação, e ele **para** de deformar quando alcança o equilíbrio. O fluido não para: enquanto houver tensão, ele continua se deformando, e o que a tensão fixa é a **velocidade** dessa deformação.
+
+**Item III — ERRADO pela segunda metade.** A primeira metade está certa: em líquidos, $\mu$ **cai** com a temperatura (as moléculas vencem mais facilmente a coesão que as prende). Nos gases é o contrário — $\mu$ sobe com $T$, porque ali o mecanismo é a troca de quantidade de movimento entre camadas.
+
+O que derruba o item é "fortemente afetadas pelo aumento da pressão": a viscosidade dos líquidos é **praticamente insensível** à pressão nas faixas usuais de engenharia. Precisa-se de centenas de atmosferas para mudá-la de forma apreciável.
+
+**Item IV — ERRADO por causa do "sempre".** Tratar líquido como incompressível é uma **aproximação** excelente na maioria dos casos, não uma lei. Ela cai, por exemplo, no golpe de aríete (fechamento brusco de válvula, em que a compressibilidade da água é justamente o que propaga a onda de pressão) e em qualquer problema acústico ou de escoamento a pressões muito altas.
+
+**Item V — ERRADO na unidade.** Fazendo a análise dimensional da própria expressão do item:
+
+$$
+[\mu] = [\rho][\nu] = \frac{\mathrm{kg}}{\mathrm{m^3}} \cdot \frac{\mathrm{m^2}}{\mathrm{s}} = \frac{\mathrm{kg}}{\mathrm{m \cdot s}}
+$$
+
+Para chegar ao newton, use $\mathrm{N} = \mathrm{kg \cdot m/s^2}$, ou seja, $\mathrm{kg} = \mathrm{N \cdot s^2/m}$:
+
+$$
+[\mu] = \frac{\mathrm{N \cdot s^2/m}}{\mathrm{m \cdot s}} = \frac{\mathrm{N \cdot s}}{\mathrm{m^2}} = \mathrm{Pa \cdot s}
+$$
+
+A unidade correta é $\mathrm{N \cdot s/m^2}$, e não $\mathrm{N \cdot s^2/m}$ — que, aliás, é a unidade de **massa** (o utm).
+
+**Conferência —** os itens I e V caem pela mesma porta, a análise dimensional, e é bom fechá-los pelo caminho curto: $[\mu] = \mathrm{Pa} \div \mathrm{s^{-1}} = \mathrm{Pa \cdot s} = \mathrm{N \cdot s/m^2}$ ✔ No item I falta um $\mathrm{m^2}$ no denominador; no item V, o $\mathrm{m^2}$ virou $\mathrm{s^2}$ no lugar errado, e o que sobrou ($\mathrm{N \cdot s^2/m}$) é unidade de **massa** — é o utm, a unidade técnica de massa, que vale $9{,}81\ \mathrm{kg}$ ✔ Vale ler o item V com atenção: o expoente está no **segundo**, não no metro. Trocada a ordem, $\mathrm{N \cdot s/m^2}$ estaria certo, e o item seria CERTO.
+</Passos>
