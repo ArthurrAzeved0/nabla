@@ -1,0 +1,64 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Pressão · Pressão absoluta sobre um mergulhador"
+temaId: pressao-absoluta
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q40.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um mergulhador se encontra a $4{,}5\ \mathrm{m}$ de profundidade no oceano. Qual a pressão absoluta que atua no corpo desse mergulhador?
+
+**Dados:** $\rho_{\text{água}} = 1025\ \mathrm{kg/m^3}$; $g = 9{,}81\ \mathrm{m/s^2}$; $p_{atm} = 680\ \mathrm{mmHg}$.
+
+<Gabarito>
+$p_{abs} \approx 136\ \mathrm{kPa}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que a palavra "absoluta" exige.** Pressão efetiva (ou manométrica) conta a partir da atmosfera; pressão absoluta conta a partir do vácuo:
+
+$$
+p_{abs} = p_{atm} + p_{ef}
+$$
+
+Como o enunciado deu a atmosférica local, ela **tem** de entrar na conta. Parar em $p_{ef}$ é o erro que a questão está caçando.
+
+**Passo 2 — converter os 680 mmHg.** Uma altura de coluna vira pressão pela lei de Stevin, com o peso específico do mercúrio:
+
+$$
+p_{atm} = \rho_{Hg}\,g\,h = 13\,600 \times 9{,}81 \times 0{,}680 = 90\,715\ \mathrm{Pa} \approx 90{,}7\ \mathrm{kPa}
+$$
+
+Repare que $680\ \mathrm{mmHg}$ é **menos** que a atmosfera padrão ($760\ \mathrm{mmHg}$, $101{,}3\ \mathrm{kPa}$) — o enunciado escolheu um dia ou um local de pressão mais baixa, e é esse o valor que vale.
+
+**Passo 3 — a coluna de água do mar.**
+
+$$
+p_{ef} = \rho\,g\,h = 1025 \times 9{,}81 \times 4{,}5 = 45\,249\ \mathrm{Pa} \approx 45{,}2\ \mathrm{kPa}
+$$
+
+A massa específica é $1025\ \mathrm{kg/m^3}$, e não $1000$: a água do mar é mais densa por causa do sal, e o enunciado faz questão de dar esse número.
+
+**Passo 4 — somar.**
+
+$$
+p_{abs} = 90\,715 + 45\,249
+$$
+
+$$
+\boxed{p_{abs} \approx 135{,}96 \times 10^{3}\ \mathrm{Pa} \approx 136\ \mathrm{kPa}}
+$$
+
+**Conferência —** a regra de bolso do mergulho diz que cada $10\ \mathrm{m}$ de água valem aproximadamente $1\ \mathrm{atm}$. A $4{,}5\ \mathrm{m}$, espera-se cerca de meia atmosfera acima da local — e $45\ \mathrm{kPa}$ é meia atmosfera ✔ O total, $1{,}36\ \mathrm{bar}$, é o que um manômetro de mergulho marcaria ✔
+</Passos>
