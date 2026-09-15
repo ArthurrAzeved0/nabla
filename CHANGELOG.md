@@ -21,6 +21,37 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [Não publicado]
+
+### Adicionado
+
+- **A 1ª lista de exercícios de Fenômenos de Transporte (2026.2), resolvida
+  inteira.** É a lista do **Prof. Marcos Barbosa da Silva Junior** sobre estática
+  e cinemática dos fluidos, que vale de $0{,}0$ a $2{,}0$ pontos na nota do 1º EE.
+  As **16 questões** entraram no banco do 1º EE (q36 a q51), com
+  `origem: "1ª lista · 2026.2"`: a cadeira vai de 97 para **113 questões**, e o
+  site, de 535 para **551**.
+- **Onze figuras novas em SVG**, redesenhadas a partir do PDF com os tokens do
+  tema: o plano inclinado da película lubrificante, as três estruturas do
+  paradoxo hidrostático, os dois manômetros em U em série, o manômetro de cinco
+  fluidos entre A e B, o de coluna diferencial com óleo, a parede a 45°, as três
+  comportas (a articulada no topo, o quarto de círculo e a do limitador), o par
+  peso/peso aparente e os dois reservatórios cúbicos. Conferidas uma a uma **ao
+  lado do enunciado**, e não isoladas — o método que a auditoria de setembro
+  firmou.
+- **A convenção de constantes ficou explícita em cada questão.** Onde o
+  enunciado dá $g$ ou massas específicas de tabela, vale $g = 9{,}81\ \mathrm{m/s^2}$;
+  onde dá só densidade relativa, vale $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$,
+  como o resto da cadeira. As questões em que a escolha muda o número dizem
+  quanto daria pela outra constante.
+
+### Observação
+
+- **A questão de capilaridade (q38) aponta para "Propriedades dos fluidos"**
+  porque a teoria da cadeira **não tem** seção de tensão superficial e
+  capilaridade — o assunto não está no conteúdo programático de 2026.2, mas a
+  lista o cobra. Fica registrado; nenhuma seção foi escrita.
+
 ## [2.15.0] — 2026-09-09
 
 ### Adicionado
