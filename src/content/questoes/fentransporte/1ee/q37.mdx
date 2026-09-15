@@ -1,0 +1,110 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Viscosidade · Placa de vidro descendo um plano inclinado"
+temaId: lei-de-newton-da-viscosidade
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q37.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma placa de vidro quadrada de $0{,}8\ \mathrm{m}$ de lado desliza sobre um plano inclinado também de vidro. Sabendo-se que a placa pesa $100\ \mathrm{N}$ e que adquire uma velocidade constante de $5\ \mathrm{cm/s}$, quando o plano tem inclinação de $30^\circ$ em relação à horizontal, determinar a viscosidade dinâmica da película lubrificante de $0{,}1\ \mathrm{mm}$, que está entre as duas placas.
+
+<Figura>
+  <svg viewBox="0 0 420 230" role="img" aria-label="Placa quadrada descendo um plano inclinado de 30 graus, separada dele por uma película de 0,1 mm, com velocidade constante de 5 cm/s apontando para baixo ao longo do plano">
+    {/* plano inclinado e hachura do sólido */}
+    <line x1="120" y1="200" x2="380" y2="50" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="128.7" y1="195.0" x2="134.2" y2="204.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="142.5" y1="187.0" x2="148.0" y2="196.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="156.4" y1="179.0" x2="161.9" y2="188.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="170.2" y1="171.0" x2="175.7" y2="180.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="184.1" y1="163.0" x2="189.6" y2="172.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="197.9" y1="155.0" x2="203.4" y2="164.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="211.8" y1="147.0" x2="217.3" y2="156.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="225.7" y1="139.0" x2="231.2" y2="148.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="239.5" y1="131.0" x2="245.0" y2="140.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="253.4" y1="123.0" x2="258.9" y2="132.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="267.2" y1="115.0" x2="272.7" y2="124.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="281.1" y1="107.0" x2="286.6" y2="116.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="294.9" y1="99.0" x2="300.4" y2="108.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="308.8" y1="91.0" x2="314.3" y2="100.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="322.6" y1="83.0" x2="328.1" y2="92.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="336.5" y1="75.0" x2="342.0" y2="84.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="350.4" y1="67.0" x2="355.9" y2="76.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="364.2" y1="59.0" x2="369.7" y2="68.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="378.1" y1="51.0" x2="383.6" y2="60.5" stroke="var(--ink-3)" stroke-width="0.8"/>
+    {/* horizontal de referência e o ângulo */}
+    <line x1="120" y1="200" x2="330" y2="200" stroke="var(--ink-3)" stroke-width="1.1"/>
+    <path d="M175 200 A 55 55 0 0 0 167.6 172.5" fill="none" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="180" y="194" font-size="11" fill="var(--ink-3)">30°</text>
+    {/* a placa, sobre a película */}
+    <polygon points="247.9,121.5 295.5,94.0 289.5,83.6 241.9,111.1" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    {/* velocidade, ao longo do plano, no sentido da descida */}
+    <line x1="235.7" y1="120.5" x2="190.7" y2="146.5" stroke="var(--accent)" stroke-width="1.6"/>
+    <polygon points="190.7,146.5 197.2,140.2 199.4,144.0" fill="var(--accent)"/>
+    <text x="118" y="140" font-size="11" fill="var(--accent)">v = 5 cm/s</text>
+    {/* película: chamada puxada para a região seca, abaixo do plano */}
+    <line x1="296" y1="96" x2="330" y2="146" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="300" y="162" font-size="11" fill="var(--warn)">ε = 0,1 mm</text>
+    {/* peso */}
+    <text x="252" y="58" font-size="11" fill="var(--ink-2)">G = 100 N</text>
+    <line x1="268" y1="62" x2="268" y2="86" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <polygon points="268,94 264,84 272,84" fill="var(--ink-2)"/>
+  </svg>
+  <figcaption>
+
+A placa desce em **velocidade constante**: a resultante é nula, então a componente do peso ao longo do plano é equilibrada pela força viscosa da película. É esse equilíbrio que dá a tensão de cisalhamento.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\mu = 0{,}156\ \mathrm{N \cdot s/m^2}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que "velocidade constante" entrega.** Aceleração nula significa resultante nula na direção do plano. As duas forças ali são a componente do peso, que puxa a placa para baixo, e a força viscosa da película, que resiste:
+
+$$
+F_{\text{visc}} = G \operatorname{sen} 30^\circ = 100 \times 0{,}5 = 50\ \mathrm{N}
+$$
+
+O peso total é $100\ \mathrm{N}$, mas só a **componente ao longo do plano** entra — a componente normal é equilibrada pelo próprio plano.
+
+**Passo 2 — a tensão de cisalhamento.** A área de contato é a da placa quadrada:
+
+$$
+A = 0{,}8 \times 0{,}8 = 0{,}64\ \mathrm{m^2}
+\qquad
+\tau = \frac{F_{\text{visc}}}{A} = \frac{50}{0{,}64} = 78{,}125\ \mathrm{Pa}
+$$
+
+**Passo 3 — o gradiente de velocidade.** A película é fina, então o perfil dentro dela é linear: zero na parede fixa (aderência) e $v$ na placa que desliza. O gradiente vira uma divisão simples:
+
+$$
+\frac{dv}{dy} \approx \frac{v}{\varepsilon} = \frac{0{,}05}{0{,}1 \times 10^{-3}} = 500\ \mathrm{s^{-1}}
+$$
+
+Os dois valores precisam entrar em unidades do SI: $5\ \mathrm{cm/s} = 0{,}05\ \mathrm{m/s}$ e $0{,}1\ \mathrm{mm} = 10^{-4}\ \mathrm{m}$.
+
+**Passo 4 — a lei de Newton da viscosidade.**
+
+$$
+\mu = \frac{\tau}{dv/dy} = \frac{78{,}125}{500}
+$$
+
+$$
+\boxed{\mu = 0{,}15625 \approx 0{,}156\ \mathrm{N \cdot s/m^2}}
+$$
+
+**Conferência —** a ordem de grandeza fecha: $0{,}156\ \mathrm{Pa \cdot s}$ é cerca de $150$ vezes a viscosidade da água a $20\ ^\circ\mathrm{C}$ ($10^{-3}\ \mathrm{Pa \cdot s}$), o que é razoável para um óleo lubrificante ✔ E repare que a espessura da película entra **dividindo** o gradiente e, portanto, multiplicando $\mu$: película mais fina, mesma velocidade, exige um óleo menos viscoso para segurar a mesma placa ✔
+</Passos>
