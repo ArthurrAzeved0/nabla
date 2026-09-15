@@ -1,0 +1,163 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Manometria · Diferença de pressão entre A e B com cinco fluidos"
+temaId: manometro-diferencial
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q43.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Na figura abaixo todos os fluidos estão a $20\ ^\circ\mathrm{C}$. Determine a diferença de pressão, em $\mathrm{Pa}$, entre os pontos A e B.
+
+**Dados:** $\rho_{Hg} = 13\,600\ \mathrm{kg/m^3}$, $\rho_{\text{água}} = 998\ \mathrm{kg/m^3}$, $\rho_{\text{querosene}} = 820\ \mathrm{kg/m^3}$, $\rho_{\text{benzeno}} = 880\ \mathrm{kg/m^3}$, $\rho_{ar} = 1{,}204\ \mathrm{kg/m^3}$. Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 460 350" role="img" aria-label="O reservatório A liga-se por benzeno a um tubo em U com mercúrio; do outro ramo sobe querosene, que passa por um arco e desce até encontrar a água 40 cm acima da base; a água desce pelo segundo U e sobe até 14 cm, onde o ar a leva ao reservatório B, 9 cm acima">
+    {/* ---- reservatórios ---- */}
+    <circle cx="48" cy="196" r="34" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <text x="42" y="201" font-size="13" font-style="italic" fill="var(--ink-2)">A</text>
+    <circle cx="362" cy="201" r="34" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <text x="356" y="206" font-size="13" font-style="italic" fill="var(--ink-2)">B</text>
+    {/* ---- tubulação ---- */}
+    <path d="M80 210 L110 210 L110 300 A30 30 0 0 0 170 300 L170 90 A30 30 0 0 1 230 90 L230 300 A30 30 0 0 0 290 300 L290 201 L328 201"
+          fill="none" stroke="var(--ink-3)" stroke-width="15"/>
+    <path d="M80 210 L110 210 L110 300 A30 30 0 0 0 170 300 L170 90 A30 30 0 0 1 230 90 L230 300 A30 30 0 0 0 290 300 L290 201 L328 201"
+          fill="none" stroke="var(--surface-2)" stroke-width="12.2"/>
+    {/* benzeno */}
+    <path d="M80 210 L110 210 L110 270" fill="none" stroke="var(--ok)" stroke-width="12.2" opacity="0.5"/>
+    {/* mercúrio */}
+    <path d="M110 270 L110 300 A30 30 0 0 0 170 300 L170 246" fill="none" stroke="var(--warn)" stroke-width="12.2" opacity="0.6"/>
+    {/* querosene */}
+    <path d="M170 246 L170 90 A30 30 0 0 1 230 90 L230 150" fill="none" stroke="var(--line-2)" stroke-width="12.2" opacity="0.9"/>
+    {/* água */}
+    <path d="M230 150 L230 300 A30 30 0 0 0 290 300 L290 228" fill="none" stroke="var(--accent)" stroke-width="12.2" opacity="0.55"/>
+    {/* interfaces */}
+    <line x1="103" y1="270" x2="117" y2="270" stroke="var(--warn)" stroke-width="1.5"/>
+    <line x1="163" y1="246" x2="177" y2="246" stroke="var(--warn)" stroke-width="1.5"/>
+    <line x1="223" y1="150" x2="237" y2="150" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="283" y1="228" x2="297" y2="228" stroke="var(--accent)" stroke-width="1.5"/>
+    {/* ---- nomes dos fluidos ---- */}
+    <text x="168" y="46" font-size="10" fill="var(--ink-2)">querosene</text>
+    <line x1="196" y1="50" x2="200" y2="62" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="118" y="192" font-size="10" fill="var(--ok)">benzeno</text>
+    <line x1="116" y1="188" x2="107" y2="196" stroke="var(--ok)" stroke-width="0.7"/>
+    <text x="18" y="322" font-size="10" fill="var(--warn)">mercúrio</text>
+    <line x1="62" y1="318" x2="112" y2="306" stroke="var(--warn)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="304" y="324" font-size="10" fill="var(--accent)">água</text>
+    <line x1="302" y1="320" x2="282" y2="312" stroke="var(--accent)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="298" y="176" font-size="10" fill="var(--ink-3)">ar</text>
+    <line x1="300" y1="180" x2="292" y2="196" stroke="var(--ink-3)" stroke-width="0.7"/>
+    {/* ---- linha de base e cotas ---- */}
+    <line x1="88" y1="270" x2="410" y2="270" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <line x1="140" y1="216" x2="140" y2="264" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="140,210 137,219 143,219" fill="var(--ink-3)"/>
+    <polygon points="140,270 137,261 143,261" fill="var(--ink-3)"/>
+    <text x="123" y="290" font-size="10" fill="var(--ink-3)">20 cm</text>
+    <line x1="196" y1="252" x2="196" y2="264" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="196,246 193,255 199,255" fill="var(--ink-3)"/>
+    <polygon points="196,270 193,261 199,261" fill="var(--ink-3)"/>
+    <text x="184" y="288" font-size="10" fill="var(--ink-3)">8 cm</text>
+    <line x1="256" y1="156" x2="256" y2="264" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="256,150 253,159 259,159" fill="var(--ink-3)"/>
+    <polygon points="256,270 253,261 259,261" fill="var(--ink-3)"/>
+    <text x="240" y="142" font-size="10" fill="var(--ink-3)">40 cm</text>
+    <line x1="290" y1="228" x2="410" y2="228" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <line x1="396" y1="201" x2="410" y2="201" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <line x1="410" y1="207" x2="410" y2="222" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="410,201 407,210 413,210" fill="var(--ink-3)"/>
+    <polygon points="410,228 407,219 413,219" fill="var(--ink-3)"/>
+    <text x="416" y="218" font-size="10" fill="var(--ink-3)">9 cm</text>
+    <line x1="410" y1="234" x2="410" y2="264" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="410,228 407,237 413,237" fill="var(--ink-3)"/>
+    <polygon points="410,270 407,261 413,261" fill="var(--ink-3)"/>
+    <text x="416" y="256" font-size="10" fill="var(--ink-3)">14 cm</text>
+  </svg>
+  <figcaption>
+
+Todas as cotas se referem à **mesma linha de base**, a do menisco de mercúrio do lado de A. Em ordem, do ponto A até o ponto B: benzeno, mercúrio, querosene, água e ar — cinco fluidos, cinco trechos.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$p_A - p_B \approx 8{,}98\ \mathrm{kPa}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os pesos específicos, de uma vez.** Com $\gamma = \rho g$ e $g = 9{,}81\ \mathrm{m/s^2}$:
+
+$$
+\gamma_{\text{benzeno}} = 8632{,}8
+\qquad
+\gamma_{Hg} = 133\,416
+\qquad
+\gamma_{\text{querosene}} = 8044{,}2
+$$
+
+$$
+\gamma_{\text{água}} = 9790{,}4
+\qquad
+\gamma_{ar} = 11{,}81
+\qquad (\text{todos em } \mathrm{N/m^3})
+$$
+
+**Passo 2 — marcar as cotas antes de escrever qualquer equação.** Tomando a linha de base como $z = 0$, o desenho dá cinco alturas:
+
+| ponto | cota |
+| --- | --- |
+| saída de A (benzeno) | $z = +0{,}20\ \mathrm{m}$ |
+| mercúrio, ramo direito | $z = +0{,}08\ \mathrm{m}$ |
+| interface querosene/água | $z = +0{,}40\ \mathrm{m}$ |
+| interface água/ar | $z = +0{,}14\ \mathrm{m}$ |
+| ponto B | $z = +0{,}23\ \mathrm{m}$ |
+
+A cota de B sai da soma $0{,}14 + 0{,}09$.
+
+**Passo 3 — a caminhada, trecho a trecho.** Descendo soma, subindo subtrai:
+
+$$
+p_A + \gamma_b(0{,}20) - \gamma_{Hg}(0{,}08) - \gamma_q(0{,}40 - 0{,}08) + \gamma_a(0{,}40 - 0{,}14) - \gamma_{ar}(0{,}09) = p_B
+$$
+
+Os desníveis são $0{,}20$ de benzeno (descendo), $0{,}08$ de mercúrio (subindo), $0{,}32$ de querosene (subindo), $0{,}26$ de água (descendo) e $0{,}09$ de ar (subindo).
+
+**Passo 4 — os números, um trecho por linha.**
+
+$$
+\gamma_b(0{,}20) = 1726{,}6
+\qquad
+\gamma_{Hg}(0{,}08) = 10\,673{,}3
+\qquad
+\gamma_q(0{,}32) = 2574{,}1
+$$
+
+$$
+\gamma_a(0{,}26) = 2545{,}5
+\qquad
+\gamma_{ar}(0{,}09) = 1{,}1
+$$
+
+Isolando a diferença:
+
+$$
+p_A - p_B = -1726{,}6 + 10\,673{,}3 + 2574{,}1 - 2545{,}5 + 1{,}1
+$$
+
+$$
+\boxed{p_A - p_B \approx 8976\ \mathrm{Pa} \approx 8{,}98\ \mathrm{kPa}}
+$$
+
+**Passo 5 — o ar valia a pena?** O trecho de ar contribuiu com $1{,}1\ \mathrm{Pa}$ num total de quase $9000\ \mathrm{Pa}$: uma parte em oito mil. É a demonstração numérica de por que se despreza a coluna de gás na manometria — e por que **não** se despreza a de mercúrio, que sozinha vale mais que o resultado final.
+
+**Conferência —** o sinal diz que A está a pressão maior, o que era de esperar: é o lado que tem de sustentar os $8\ \mathrm{cm}$ de mercúrio ✔ E o resultado é da ordem de $0{,}09\ \mathrm{atm}$, coerente com desníveis de dezenas de centímetros em líquidos comuns ✔
+</Passos>
