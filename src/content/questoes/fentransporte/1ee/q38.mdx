@@ -1,0 +1,80 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Propriedades · Capilaridade com glicerina e com mercúrio"
+temaId: propriedades-dos-fluidos
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q38.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Analise as duas situações a seguir e responda.
+
+**a)** Um tubo capilar com $0{,}05\ \mathrm{mm}$ de diâmetro interno é mergulhado numa cuba com glicerina, e a glicerina sobe $45\ \mathrm{mm}$ no tubo. Qual é a sua tensão superficial? **Dados:** massa específica $= 1260\ \mathrm{kg/m^3}$; ângulo de contato $= 0^\circ$.
+
+**b)** Para o mesmo tubo capilar de $0{,}05\ \mathrm{mm}$ de diâmetro, qual seria a altura atingida no tubo se o líquido fosse mercúrio? **Dados:** tensão superficial $= 0{,}90\ \mathrm{N/m}$; massa específica $= 13\,600\ \mathrm{kg/m^3}$; ângulo de contato $= 140^\circ$.
+
+Adote $g = 9{,}81\ \mathrm{m/s^2}$.
+
+<Gabarito>
+**a)** $\sigma \approx 6{,}95 \times 10^{-3}\ \mathrm{N/m}$ · **b)** $h \approx -41{,}3\ \mathrm{cm}$ (o mercúrio **desce** $41{,}3\ \mathrm{cm}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — de onde vem a lei da capilaridade.** Numa coluna de raio $r$, a tensão superficial age ao longo de todo o perímetro de contato $2\pi r$, inclinada do ângulo $\theta$ em relação à parede. Só a componente vertical sustenta o líquido:
+
+$$
+\underbrace{\sigma\,(2\pi r)\cos\theta}_{\text{o que segura}} \;=\; \underbrace{\gamma\,(\pi r^2 h)}_{\text{peso da coluna}}
+$$
+
+$$
+h = \frac{2\sigma\cos\theta}{\gamma\,r} = \frac{4\sigma\cos\theta}{\gamma\,d}
+$$
+
+A segunda forma, com o **diâmetro**, é a que serve aqui: os dois enunciados dão $d$, não $r$. Trocar um pelo outro erra por um fator 2 — é o deslize mais comum nesta conta.
+
+**Passo 2 — item (a): isolar a tensão superficial.** Primeiro o peso específico da glicerina:
+
+$$
+\gamma = \rho g = 1260 \times 9{,}81 = 12\,360{,}6\ \mathrm{N/m^3}
+$$
+
+Invertendo a fórmula, com $\theta = 0^\circ$ ($\cos\theta = 1$), $h = 45\ \mathrm{mm} = 0{,}045\ \mathrm{m}$ e $d = 0{,}05\ \mathrm{mm} = 5 \times 10^{-5}\ \mathrm{m}$:
+
+$$
+\sigma = \frac{h\,\gamma\,d}{4\cos\theta} = \frac{0{,}045 \times 12\,360{,}6 \times 5 \times 10^{-5}}{4}
+$$
+
+$$
+\boxed{\sigma \approx 6{,}95 \times 10^{-3}\ \mathrm{N/m}}
+$$
+
+**Passo 3 — item (b): agora a incógnita é a altura.** Para o mercúrio:
+
+$$
+\gamma = 13\,600 \times 9{,}81 = 133\,416\ \mathrm{N/m^3}
+\qquad
+\cos 140^\circ = -0{,}766
+$$
+
+$$
+h = \frac{4 \times 0{,}90 \times (-0{,}766)}{133\,416 \times 5 \times 10^{-5}} = \frac{-2{,}758}{6{,}671}
+$$
+
+$$
+\boxed{h \approx -0{,}413\ \mathrm{m} = -41{,}3\ \mathrm{cm}}
+$$
+
+**Passo 4 — o que o sinal negativo quer dizer.** Ele não é erro de conta: é o **rebaixamento capilar**. Com $\theta > 90^\circ$ o líquido não molha o vidro — a coesão entre as moléculas de mercúrio vence a adesão à parede, o menisco fica convexo (bojudo para cima) e o nível dentro do tubo fica **abaixo** do nível da cuba. Com $\theta < 90^\circ$, como na glicerina e na água, acontece o oposto: menisco côncavo e ascensão.
+
+**Conferência —** os dois resultados são coerentes entre si, mas vale registrar uma observação sobre o item (a): a tensão superficial tabelada da glicerina é da ordem de $0{,}063\ \mathrm{N/m}$, umas dez vezes maior que a encontrada. Quem manda na conta é o dado do enunciado — se a glicerina subisse os $45\ \mathrm{mm}$ informados num tubo de $0{,}05\ \mathrm{mm}$, seria essa a tensão superficial. Com o valor tabelado, a mesma fórmula daria uma ascensão de cerca de $41\ \mathrm{cm}$ ✔ Repare também que a resposta de (b) tem quase o mesmo módulo: é o mesmo tubo, e $\sigma/\gamma$ é parecido nos dois casos ✔
+</Passos>
