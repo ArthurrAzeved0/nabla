@@ -1,0 +1,111 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Força em superfície plana · Resultante e centro de pressão numa parede a 45°"
+temaId: centro-de-pressao
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q45.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a resultante $P$ devido à ação da água na área AB retangular de $1\ \mathrm{m} \times 2\ \mathrm{m}$, indicada na figura abaixo. Qual o ponto de atuação na coordenada $y$?
+
+<Figura>
+  <svg viewBox="0 0 440 260" role="img" aria-label="Reservatório de água com a parede direita inclinada a 45 graus; sobre ela está a área retangular AB, com B a 1,0 metro abaixo da superfície livre e A dois metros abaixo de B, medidos ao longo da parede">
+    {/* massa de água */}
+    <polygon points="20,40 360,40 170,230 20,230" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <line x1="20" y1="40" x2="360" y2="40" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="52" y1="52" x2="118" y2="52" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="62" y1="59" x2="108" y2="59" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="72" y1="66" x2="98" y2="66" stroke="var(--accent)" stroke-width="1"/>
+    <text x="54" y="160" font-size="14" fill="var(--accent)">Água</text>
+    {/* ângulo de 45° com a superfície */}
+    <path d="M320 40 A 40 40 0 0 0 332 68" fill="none" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="300" y="66" font-size="11" fill="var(--ink-3)">45°</text>
+    {/* a área AB, sobre a parede inclinada */}
+    <line x1="295" y1="105" x2="203" y2="197" stroke="var(--ink-2)" stroke-width="8" stroke-linecap="butt"/>
+    <text x="301" y="102" font-size="13" font-weight="600" fill="var(--ink-2)">B</text>
+    <text x="180" y="202" font-size="13" font-weight="600" fill="var(--ink-2)">A</text>
+    {/* cota de 1,0 m: da superfície até B */}
+    <line x1="360" y1="40" x2="392" y2="40" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="295" y1="105" x2="392" y2="105" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="386" y1="46" x2="386" y2="99" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="386,40 383,49 389,49" fill="var(--ink-3)"/>
+    <polygon points="386,105 383,96 389,96" fill="var(--ink-3)"/>
+    <text x="394" y="78" font-size="11" fill="var(--ink-3)">1,0 m</text>
+    {/* cota de 2,0 m: ao longo da placa */}
+    <line x1="315" y1="125" x2="223" y2="217" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="319,121 308,124 316,132" fill="var(--ink-3)"/>
+    <polygon points="219,221 222,210 230,218" fill="var(--ink-3)"/>
+    <text x="276" y="186" font-size="11" fill="var(--ink-3)">2,0 m</text>
+  </svg>
+  <figcaption>
+
+A largura de $1\ \mathrm{m}$ é perpendicular ao papel. Os $2{,}0\ \mathrm{m}$ são medidos **ao longo da parede**, não na vertical — e é essa distinção que separa as duas coordenadas do problema: $h$ (profundidade, na vertical) e $y$ (posição sobre a placa, na inclinada).
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$P \approx 34{,}1\ \mathrm{kN}$, aplicada em $y_{CP} = 2{,}55\ \mathrm{m}$ ao longo da placa (profundidade de $1{,}80\ \mathrm{m}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas réguas.** Numa superfície inclinada existem duas coordenadas, e confundi-las é o erro que domina esta questão:
+
+- $h$ — **profundidade**, medida na vertical a partir da superfície livre. É ela que entra na pressão, $p = \gamma h$;
+- $y$ — **posição sobre a placa**, medida ao longo do plano inclinado a partir da linha onde ele encontra a superfície livre. É ela que entra no momento de inércia.
+
+As duas se ligam por $h = y \operatorname{sen}\theta$, com $\theta = 45^\circ$.
+
+**Passo 2 — o centro de gravidade da área.** A placa tem $2{,}0\ \mathrm{m}$ ao longo do plano, então seu meio está a $1{,}0\ \mathrm{m}$ de B, medido na inclinada. Na vertical, isso são $1{,}0 \operatorname{sen}45^\circ = 0{,}707\ \mathrm{m}$:
+
+$$
+h_{CG} = 1{,}0 + 0{,}707 = 1{,}707\ \mathrm{m}
+\qquad
+y_{CG} = \frac{h_{CG}}{\operatorname{sen}45^\circ} = 2{,}414\ \mathrm{m}
+$$
+
+**Passo 3 — a resultante.** Com $\gamma = 10\,000\ \mathrm{N/m^3}$ e $A = 1 \times 2 = 2\ \mathrm{m^2}$:
+
+$$
+P = \gamma\,h_{CG}\,A = 10\,000 \times 1{,}707 \times 2
+$$
+
+$$
+\boxed{P \approx 34\,142\ \mathrm{N} \approx 34{,}1\ \mathrm{kN}}
+$$
+
+Note que na força entra a profundidade **vertical** do CG, mesmo a placa sendo inclinada. A inclinação não reduz a pressão: ela só muda a direção da força, que sai sempre **perpendicular** à superfície.
+
+**Passo 4 — o centro de pressão.** A resultante não passa pelo CG: como a pressão cresce com a profundidade, o ponto de aplicação desce. A correção é
+
+$$
+y_{CP} = y_{CG} + \frac{I_{CG}}{y_{CG}\,A}
+\qquad\text{com}\qquad
+I_{CG} = \frac{b\,L^3}{12} = \frac{1 \times 2^3}{12} = 0{,}667\ \mathrm{m^4}
+$$
+
+O $L$ do momento de inércia é o lado medido **ao longo do plano** ($2\ \mathrm{m}$), e $b$ é a largura ($1\ \mathrm{m}$).
+
+$$
+y_{CP} = 2{,}414 + \frac{0{,}667}{2{,}414 \times 2} = 2{,}414 + 0{,}138
+$$
+
+$$
+\boxed{y_{CP} = 2{,}552\ \mathrm{m}}
+$$
+
+Em profundidade, isso equivale a $h_{CP} = 2{,}552 \operatorname{sen}45^\circ = 1{,}805\ \mathrm{m}$; medido a partir de B, ao longo da placa, o ponto fica a $2{,}552 - 1{,}414 = 1{,}14\ \mathrm{m}$.
+
+**Conferência —** três testes rápidos. O termo de correção é positivo, então o CP está **abaixo** do CG ✔ Ele caiu $0{,}138\ \mathrm{m}$, menos de um décimo da placa, o que é o esperado para uma placa funda (quanto mais funda, mais uniforme a pressão e mais o CP se aproxima do CG) ✔ E o CP ficou **dentro** da placa, entre $y = 1{,}414$ (B) e $y = 3{,}414$ (A) ✔
+</Passos>
