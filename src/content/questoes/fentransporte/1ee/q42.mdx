@@ -1,0 +1,110 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Manometria · Tanque de ar com dois tubos em U e água entre eles"
+temaId: equacao-manometrica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q42.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Qual é a pressão efetiva no tanque mostrado na figura abaixo? **Dado:** $\delta_{Hg} = 13{,}6$ (o tanque contém ar).
+
+<Figura>
+  <svg viewBox="0 0 400 320" role="img" aria-label="Tanque de ar ligado a um primeiro tubo em U com mercúrio, que sobe até 40 cm; dali a água sobe, passa por um arco e desce até 30 cm, onde começa o segundo tubo em U com mercúrio, que sobe até 60 cm num ramo aberto para a atmosfera">
+    {/* ---- tanque de ar ---- */}
+    <rect x="20" y="54" width="76" height="96" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <text x="48" y="106" font-size="12" fill="var(--ink-2)">Ar</text>
+    {/* ---- tubulação: parede externa, interior e depois os fluidos ---- */}
+    <path d="M95 96 L156 96 L156 262 A 30 30 0 0 0 216 262 L216 66 A 30 30 0 0 1 276 66 L276 262 A 30 30 0 0 0 336 262 L336 84"
+          fill="none" stroke="var(--ink-3)" stroke-width="15" stroke-linecap="butt"/>
+    <path d="M95 96 L156 96 L156 262 A 30 30 0 0 0 216 262 L216 66 A 30 30 0 0 1 276 66 L276 262 A 30 30 0 0 0 336 262 L336 84"
+          fill="none" stroke="var(--surface-2)" stroke-width="12.2" stroke-linecap="butt"/>
+    {/* mercúrio do primeiro U */}
+    <path d="M156 208 L156 262 A 30 30 0 0 0 216 262 L216 156" fill="none" stroke="var(--warn)" stroke-width="12.2" opacity="0.6"/>
+    {/* água, subindo pelo arco */}
+    <path d="M216 156 L216 66 A 30 30 0 0 1 276 66 L276 182" fill="none" stroke="var(--accent)" stroke-width="12.2" opacity="0.55"/>
+    {/* mercúrio do segundo U */}
+    <path d="M276 182 L276 262 A 30 30 0 0 0 336 262 L336 104" fill="none" stroke="var(--warn)" stroke-width="12.2" opacity="0.6"/>
+    {/* interfaces */}
+    <line x1="149" y1="208" x2="163" y2="208" stroke="var(--warn)" stroke-width="1.5"/>
+    <line x1="209" y1="156" x2="223" y2="156" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="269" y1="182" x2="283" y2="182" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="329" y1="104" x2="343" y2="104" stroke="var(--warn)" stroke-width="1.5"/>
+    {/* nomes dos fluidos */}
+    <text x="230" y="22" font-size="11" fill="var(--accent)">Água</text>
+    <text x="176" y="250" font-size="11" fill="var(--warn)">Hg</text>
+    <text x="296" y="250" font-size="11" fill="var(--warn)">Hg</text>
+    {/* ---- linha de base e cotas ---- */}
+    <line x1="110" y1="292" x2="368" y2="292" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="126" y1="214" x2="126" y2="286" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="126,208 123,217 129,217" fill="var(--ink-3)"/>
+    <polygon points="126,292 123,283 129,283" fill="var(--ink-3)"/>
+    <line x1="126" y1="208" x2="149" y2="208" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="80" y="254" font-size="11" fill="var(--ink-3)">20 cm</text>
+    <line x1="238" y1="162" x2="238" y2="286" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="238,156 235,165 241,165" fill="var(--ink-3)"/>
+    <polygon points="238,292 235,283 241,283" fill="var(--ink-3)"/>
+    <text x="224" y="148" font-size="11" fill="var(--ink-3)">40 cm</text>
+    <line x1="258" y1="188" x2="258" y2="286" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="258,182 255,191 261,191" fill="var(--ink-3)"/>
+    <polygon points="258,292 255,283 261,283" fill="var(--ink-3)"/>
+    <text x="241" y="308" font-size="11" fill="var(--ink-3)">30 cm</text>
+    <line x1="356" y1="110" x2="356" y2="286" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="356,104 353,113 359,113" fill="var(--ink-3)"/>
+    <polygon points="356,292 353,283 359,283" fill="var(--ink-3)"/>
+    <text x="348" y="92" font-size="11" fill="var(--ink-3)">60 cm</text>
+  </svg>
+  <figcaption>
+
+As quatro cotas saem todas da **mesma linha de base**, no fundo dos dois tubos em U. O ramo da direita é **aberto** para a atmosfera. Repare que o mercúrio do primeiro U sobe até $40\ \mathrm{cm}$ e a água desce até $30\ \mathrm{cm}$ no segundo: são $10\ \mathrm{cm}$ de desnível de água entre as duas interfaces.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$p_{ar} = 67\ \mathrm{kPa}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os pesos específicos.** Sem $g$ no enunciado, vale a convenção da cadeira, $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$:
+
+$$
+\gamma_{Hg} = \delta_{Hg}\,\gamma_{\text{água}} = 13{,}6 \times 10\,000 = 136\,000\ \mathrm{N/m^3}
+$$
+
+**Passo 2 — o percurso.** A equação manométrica é uma caminhada do ponto conhecido até o desconhecido: **descendo soma, subindo subtrai**, e cada trecho usa o $\gamma$ do fluido que está ali. Comece no ar do tanque e termine na boca aberta, onde a pressão efetiva é zero.
+
+O ar não pesa o que conte: a pressão do tanque chega inteira à primeira interface, a $20\ \mathrm{cm}$.
+
+**Passo 3 — trecho a trecho.** Da interface a $20\ \mathrm{cm}$ até a interface a $40\ \mathrm{cm}$, **subindo** $20\ \mathrm{cm}$ de mercúrio; dali até a interface a $30\ \mathrm{cm}$, **descendo** $10\ \mathrm{cm}$ de água; e dali até os $60\ \mathrm{cm}$ do topo aberto, **subindo** $30\ \mathrm{cm}$ de mercúrio:
+
+$$
+p_{ar} - \gamma_{Hg}(0{,}40 - 0{,}20) + \gamma_{\text{água}}(0{,}40 - 0{,}30) - \gamma_{Hg}(0{,}60 - 0{,}30) = 0
+$$
+
+**Passo 4 — as contas.** Os dois trechos de mercúrio somam $0{,}20 + 0{,}30 = 0{,}50\ \mathrm{m}$:
+
+$$
+p_{ar} = 0{,}50\,\gamma_{Hg} - 0{,}10\,\gamma_{\text{água}} = 0{,}50 \times 136\,000 - 0{,}10 \times 10\,000
+$$
+
+$$
+p_{ar} = 68\,000 - 1000
+$$
+
+$$
+\boxed{p_{ar} = 67\,000\ \mathrm{Pa} = 67\ \mathrm{kPa}}
+$$
+
+**Conferência —** o sinal fecha com a física: para empurrar mercúrio para cima nos dois U, o ar tem de estar **acima** da atmosférica, e deu positivo ✔ A ordem de grandeza também: meio metro de mercúrio equivale a cerca de $0{,}5/0{,}76 \approx 0{,}66$ atmosfera, e $67\ \mathrm{kPa}$ é isso ✔ Com $g = 9{,}81$ (ou seja, $\gamma_{\text{água}} = 9810\ \mathrm{N/m^3}$) o mesmo caminho daria $65{,}7\ \mathrm{kPa}$ — a diferença é só a constante adotada.
+</Passos>
