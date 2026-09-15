@@ -1,0 +1,74 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Lei de Pascal · Elevador de carros com dois pistões"
+temaId: prensa-hidraulica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q41.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Em uma oficina mecânica existe um elevador de carros que utiliza ar comprimido, o qual exerce uma força num pistão de seção circular de raio $4\ \mathrm{cm}$. A pressão se transmite para um outro pistão maior, também de seção circular, mas de raio $20\ \mathrm{cm}$. Assim, calcule:
+
+**a)** a força com que o ar comprimido consegue erguer um carro de $16\,000\ \mathrm{N}$;
+
+**b)** a respectiva pressão exercida no interior do elevador hidráulico.
+
+<Gabarito>
+**a)** $F_1 = 640\ \mathrm{N}$ · **b)** $p \approx 127{,}3\ \mathrm{kPa}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a lei de Pascal.** O acréscimo de pressão dado num ponto de um fluido em equilíbrio se transmite integralmente a todos os pontos. Com os dois pistões na mesma cota, a pressão que age em um é a mesma que age no outro:
+
+$$
+p_1 = p_2
+\qquad\Longrightarrow\qquad
+\frac{F_1}{A_1} = \frac{F_2}{A_2}
+$$
+
+**Passo 2 — a razão de áreas é o ganho da máquina.** As seções são circulares, então $A = \pi r^2$ e a razão só depende dos raios:
+
+$$
+\frac{A_1}{A_2} = \frac{\pi r_1^2}{\pi r_2^2} = \left(\frac{r_1}{r_2}\right)^2 = \left(\frac{4}{20}\right)^2 = \frac{1}{25}
+$$
+
+O raio entra ao **quadrado**: cinco vezes maior em raio são vinte e cinco vezes maiores em área. Usar a razão dos raios sem elevar ao quadrado dá $3200\ \mathrm{N}$, e é o erro típico aqui.
+
+**Passo 3 — item (a): a força no pistão pequeno.**
+
+$$
+F_1 = F_2\,\frac{A_1}{A_2} = 16\,000 \times \frac{1}{25}
+$$
+
+$$
+\boxed{F_1 = 640\ \mathrm{N}}
+$$
+
+**Passo 4 — item (b): a pressão.** Ela é a mesma nos dois lados, então dá para calcular por qualquer um. Pelo pistão pequeno, com $r_1 = 0{,}04\ \mathrm{m}$:
+
+$$
+p = \frac{F_1}{A_1} = \frac{640}{\pi (0{,}04)^2} = \frac{640}{5{,}027 \times 10^{-3}}
+$$
+
+$$
+\boxed{p \approx 127{,}3\ \mathrm{kPa}}
+$$
+
+**Conferência —** refazendo pelo pistão grande, que é o teste que fecha a questão:
+
+$$
+p = \frac{16\,000}{\pi (0{,}20)^2} = \frac{16\,000}{0{,}1257} \approx 127{,}3\ \mathrm{kPa} \;\checkmark
+$$
+
+Os dois caminhos dão o mesmo número — se dessem diferente, o erro estaria na razão de áreas. E note o sentido físico: $640\ \mathrm{N}$ (uns $65\ \mathrm{kgf}$, o peso de uma pessoa) erguem $16\,000\ \mathrm{N}$. O que não se ganha é trabalho: o pistão pequeno precisa descer $25$ vezes mais do que o grande sobe.
+</Passos>
