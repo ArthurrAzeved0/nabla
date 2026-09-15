@@ -1,0 +1,117 @@
+---
+origem: "1ª lista · 2026.2"
+tema: "Estática · Pressão em três estruturas de formas diferentes"
+temaId: paradoxo-hidrostatico
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q39.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+As estruturas apresentadas na figura estão cheias de óleo, e seu peso específico é $850\ \mathrm{kgf/m^3}$. As áreas das seções transversais indicadas (na metade da altura) são $1\ \mathrm{m^2}$, $5\ \mathrm{m^2}$ e $6\ \mathrm{m^2}$, para as estruturas I, II e III, respectivamente.
+
+<Figura>
+  <svg viewBox="0 0 440 260" role="img" aria-label="Três estruturas cheias de óleo com a mesma superfície livre: a I é um tubo estreito, a II é mais larga e a III tem forma de V; os pontos M de cada uma estão na mesma cota, 2 m abaixo da superfície e 2 m acima do fundo">
+    {/* cotas de referência: superfície, meia altura e fundo */}
+    <line x1="25" y1="40" x2="400" y2="40" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line x1="25" y1="130" x2="400" y2="130" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line x1="25" y1="220" x2="400" y2="220" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="5 3"/>
+    {/* estrutura I: tubo estreito */}
+    <path d="M45 40 L45 220 L85 220 L85 40" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="52" y1="52" x2="78" y2="52" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="57" y1="57" x2="73" y2="57" stroke="var(--accent)" stroke-width="1"/>
+    <circle cx="65" cy="130" r="3.5" fill="var(--ink-2)"/>
+    <text x="55" y="148" font-size="11" fill="var(--ink-2)">M<tspan font-size="7" dy="2">I</tspan></text>
+    <text x="22" y="118" font-size="11" fill="var(--ink-2)">A<tspan font-size="7" dy="2">I</tspan></text>
+    <path d="M40 118 Q58 108 66 124" fill="none" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <polygon points="66,127 62,119 70,119" fill="var(--ink-3)"/>
+    <text x="61" y="243" font-size="11" fill="var(--ink-3)">I</text>
+    {/* estrutura II: mais larga */}
+    <path d="M125 40 L125 220 L205 220 L205 40" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="152" y1="52" x2="178" y2="52" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="157" y1="57" x2="173" y2="57" stroke="var(--accent)" stroke-width="1"/>
+    <circle cx="165" cy="130" r="3.5" fill="var(--ink-2)"/>
+    <text x="155" y="148" font-size="11" fill="var(--ink-2)">M<tspan font-size="7" dy="2">II</tspan></text>
+    <text x="100" y="118" font-size="11" fill="var(--ink-2)">A<tspan font-size="7" dy="2">II</tspan></text>
+    <path d="M120 118 Q145 106 166 124" fill="none" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <polygon points="166,127 162,119 170,119" fill="var(--ink-3)"/>
+    <text x="161" y="243" font-size="11" fill="var(--ink-3)">II</text>
+    {/* estrutura III: em V */}
+    <path d="M245 40 L315 220 L385 40" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="302" y1="52" x2="328" y2="52" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="307" y1="57" x2="323" y2="57" stroke="var(--accent)" stroke-width="1"/>
+    <circle cx="315" cy="130" r="3.5" fill="var(--ink-2)"/>
+    <text x="305" y="148" font-size="11" fill="var(--ink-2)">M<tspan font-size="7" dy="2">III</tspan></text>
+    <text x="238" y="118" font-size="11" fill="var(--ink-2)">A<tspan font-size="7" dy="2">III</tspan></text>
+    <path d="M262 118 Q292 106 316 124" fill="none" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <polygon points="316,127 312,119 320,119" fill="var(--ink-3)"/>
+    <text x="309" y="243" font-size="11" fill="var(--ink-3)">III</text>
+    {/* cotas verticais */}
+    <line x1="412" y1="46" x2="412" y2="124" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="412,40 409,49 415,49" fill="var(--ink-3)"/>
+    <polygon points="412,130 409,121 415,121" fill="var(--ink-3)"/>
+    <text x="418" y="90" font-size="11" fill="var(--ink-3)">2 m</text>
+    <line x1="412" y1="136" x2="412" y2="214" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="412,130 409,139 415,139" fill="var(--ink-3)"/>
+    <polygon points="412,220 409,211 415,211" fill="var(--ink-3)"/>
+    <text x="418" y="180" font-size="11" fill="var(--ink-3)">2 m</text>
+  </svg>
+  <figcaption>
+
+As três estruturas têm a **mesma superfície livre** e os três pontos M estão na **mesma cota**, $2\ \mathrm{m}$ abaixo dela. As áreas $A$ mudam de uma para a outra; a profundidade, não.
+
+  </figcaption>
+</Figura>
+
+Sabendo-se que a pressão relativa no ponto $M_I$ é $1700\ \mathrm{kgf/m^2}$, os valores das pressões relativas, em $\mathrm{kgf/m^2}$, nos pontos $M_{II}$ e $M_{III}$ são, respectivamente:
+
+**[A]** 400 e 333 · **[B]** 2000 e 2000 · **[C]** 1700 e 1700 · **[D]** 10000 e 12000 · **[E]** 10000 e 24000
+
+<Gabarito>
+Alternativa **[C]**: $p_{M_{II}} = p_{M_{III}} = 1700\ \mathrm{kgf/m^2}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a pergunta por trás da pergunta.** A lei de Stevin diz que, dentro de um mesmo fluido em repouso, a pressão depende **só da profundidade**:
+
+$$
+p = \gamma\,h
+$$
+
+Não aparece área nessa fórmula. Não aparece volume. Não aparece o formato do recipiente. É o chamado **paradoxo hidrostático** — paradoxo só no nome, porque de estranho não tem nada depois que se olha para a equação.
+
+**Passo 2 — confirmando com o dado.** Os três pontos estão $2\ \mathrm{m}$ abaixo da superfície livre, e o fluido é o mesmo óleo:
+
+$$
+p = 850 \times 2 = 1700\ \mathrm{kgf/m^2}
+$$
+
+É exatamente o valor que o enunciado dá para $M_I$ — sinal de que a leitura está certa. E, como $M_{II}$ e $M_{III}$ estão na **mesma profundidade**, a pressão é a mesma nos três:
+
+$$
+\boxed{p_{M_{II}} = p_{M_{III}} = 1700\ \mathrm{kgf/m^2} \quad \text{— alternativa [C]}}
+$$
+
+**Passo 3 — para que servem, então, as áreas?** Para armar as alternativas erradas, e para separar **pressão** de **força**. A força que cada fundo recebe é $F = p\,A$, e essa sim muda:
+
+$$
+F_I = 1700 \times 1 = 1700\ \mathrm{kgf}
+\qquad
+F_{II} = 1700 \times 5 = 8500\ \mathrm{kgf}
+\qquad
+F_{III} = 1700 \times 6 = 10\,200\ \mathrm{kgf}
+$$
+
+Quem lê "pressão" e responde força cai em [D] ou [E]. Quem divide em vez de multiplicar cai em [A].
+
+**Conferência —** o teste rápido: a resposta certa **tem** de ser um par de números iguais entre si e iguais ao dado, porque os três pontos estão na mesma cota do mesmo fluido ✔ Só a alternativa [C] tem essa cara.
+</Passos>
