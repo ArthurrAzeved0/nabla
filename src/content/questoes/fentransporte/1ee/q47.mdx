@@ -20,24 +20,24 @@ temaId: forca-superficie-curva
 Qual a força resultante que age na comporta AB, que consiste em um quarto de círculo? A largura é de $1{,}20\ \mathrm{m}$.
 
 <Figura>
-  <svg viewBox="0 0 420 250" role="img" aria-label="Reservatório de água cuja parede direita é vertical até o ponto B, 60 cm abaixo da superfície, e daí desce como um quarto de círculo de 90 cm de raio até o ponto A, no fundo">
-    <path d="M40 40 L300 40 L300 106 A 99 99 0 0 1 201 205 L40 205 Z" fill="var(--accent-soft)" opacity="0.55" stroke="none"/>
+  <svg viewBox="0 0 420 250" role="img" aria-label="Reservatório de água com parede vertical até o ponto B, 60 cm abaixo da superfície; de B a comporta sai horizontal e curva-se como um quarto de círculo de 90 cm de raio até o ponto A, no fundo, onde chega vertical. O centro do arco fica no canto de baixo, na vertical de B e na cota de A">
+    <path d="M40 40 L300 40 L300 106 A 99 99 0 0 0 201 205 L40 205 Z" fill="var(--accent-soft)" opacity="0.55" stroke="none"/>
     <line x1="40" y1="40" x2="300" y2="40" stroke="var(--accent)" stroke-width="1.6"/>
     <line x1="68" y1="52" x2="134" y2="52" stroke="var(--accent)" stroke-width="1"/>
     <line x1="78" y1="59" x2="124" y2="59" stroke="var(--accent)" stroke-width="1"/>
     <line x1="88" y1="66" x2="114" y2="66" stroke="var(--accent)" stroke-width="1"/>
-    <text x="66" y="160" font-size="14" fill="var(--accent)">Água</text>
-    {/* parede e comporta */}
+    <text x="62" y="150" font-size="14" fill="var(--accent)">Água</text>
+    {/* parede acima de B, fundo à esquerda de A, e a comporta entre os dois */}
     <line x1="300" y1="40" x2="300" y2="106" stroke="var(--ink-2)" stroke-width="2"/>
     <line x1="40" y1="205" x2="201" y2="205" stroke="var(--ink-2)" stroke-width="2"/>
-    <path d="M300 106 A 99 99 0 0 1 201 205" fill="none" stroke="var(--ink-2)" stroke-width="4"/>
-    <text x="306" y="102" font-size="13" font-weight="600" fill="var(--ink-2)">B</text>
-    <text x="196" y="222" font-size="13" font-weight="600" fill="var(--ink-2)">A</text>
-    {/* centro do arco, para leitura da geometria */}
-    <circle cx="201" cy="106" r="2.5" fill="var(--ink-3)"/>
-    <line x1="201" y1="106" x2="300" y2="106" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
-    <line x1="201" y1="106" x2="201" y2="205" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
-    <text x="238" y="100" font-size="10" fill="var(--ink-3)">R = 90 cm</text>
+    <path d="M300 106 A 99 99 0 0 0 201 205" fill="none" stroke="var(--ink-2)" stroke-width="4"/>
+    <text x="278" y="101" font-size="13" font-weight="600" fill="var(--ink-2)">B</text>
+    <text x="180" y="198" font-size="13" font-weight="600" fill="var(--ink-2)">A</text>
+    {/* centro do arco: na vertical de B e na cota de A */}
+    <circle cx="300" cy="205" r="2.5" fill="var(--ink-3)"/>
+    <line x1="300" y1="106" x2="300" y2="205" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="300" y1="205" x2="201" y2="205" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <text x="236" y="186" font-size="10" fill="var(--ink-3)">R = 90 cm</text>
     {/* cotas */}
     <line x1="340" y1="46" x2="340" y2="100" stroke="var(--ink-3)" stroke-width="1"/>
     <polygon points="340,40 337,49 343,49" fill="var(--ink-3)"/>
@@ -47,18 +47,19 @@ Qual a força resultante que age na comporta AB, que consiste em um quarto de c�
     <polygon points="340,106 337,115 343,115" fill="var(--ink-3)"/>
     <polygon points="340,205 337,196 343,196" fill="var(--ink-3)"/>
     <text x="348" y="160" font-size="11" fill="var(--ink-3)">90 cm</text>
+    <line x1="300" y1="40" x2="336" y2="40" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
     <line x1="300" y1="106" x2="336" y2="106" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
-    <line x1="201" y1="205" x2="336" y2="205" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="300" y1="205" x2="336" y2="205" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
   </svg>
   <figcaption>
 
-O quarto de círculo tem tangente **vertical** em B e **horizontal** em A: o centro do arco fica na mesma cota de B, $90\ \mathrm{cm}$ à esquerda dele, e A cai exatamente abaixo desse centro. Daí sair $R = 90\ \mathrm{cm}$ e a profundidade de A igual a $60 + 90 = 150\ \mathrm{cm}$.
+A comporta sai da parede em B com tangente **horizontal** e chega ao fundo em A com tangente **vertical**: o centro do arco fica no canto de baixo — na vertical de B e na cota de A. Daí $R = 90\ \mathrm{cm}$ e a profundidade de A igual a $60 + 90 = 150\ \mathrm{cm}$. Repare de que lado está a água: ela banha a face **convexa** da comporta.
 
   </figcaption>
 </Figura>
 
 <Gabarito>
-$F_H = 11{,}34\ \mathrm{kN}$, $F_V = 14{,}11\ \mathrm{kN}$ e resultante $R \approx 18{,}1\ \mathrm{kN}$, inclinada $51{,}2^\circ$ abaixo da horizontal
+$F_H = 11{,}34\ \mathrm{kN}$, $F_V = 8{,}57\ \mathrm{kN}$ e resultante $R \approx 14{,}2\ \mathrm{kN}$, inclinada $37^\circ$ abaixo da horizontal
 </Gabarito>
 
 <Passos>
@@ -67,7 +68,19 @@ $F_H = 11{,}34\ \mathrm{kN}$, $F_V = 14{,}11\ \mathrm{kN}$ e resultante $R \appr
 - a **componente horizontal** é a força sobre a **projeção vertical** da superfície (um retângulo);
 - a **componente vertical** é o **peso do volume de líquido** que está acima da superfície, real ou imaginário.
 
-**Passo 2 — a componente horizontal.** A projeção vertical da comporta é um retângulo de altura $R = 0{,}90\ \mathrm{m}$ (de B, a $0{,}60\ \mathrm{m}$, até A, a $1{,}50\ \mathrm{m}$) e largura $1{,}20\ \mathrm{m}$:
+**Passo 2 — ler a geometria antes de calcular.** A comporta sai da parede em B com tangente horizontal e chega ao fundo em A com tangente vertical. Isso põe o **centro do arco no canto de baixo**: na vertical de B, na mesma cota de A. Consequências diretas:
+
+$$
+R = 90\ \mathrm{cm}
+\qquad
+h_B = 60\ \mathrm{cm}
+\qquad
+h_A = 60 + 90 = 150\ \mathrm{cm}
+$$
+
+E, o que mais importa para a componente vertical: a comporta **avança para dentro da água**, e não para fora dela. É a face convexa que fica molhada.
+
+**Passo 3 — a componente horizontal.** A projeção vertical não depende da curvatura: é o retângulo de altura $R = 0{,}90\ \mathrm{m}$ (de B, a $0{,}60\ \mathrm{m}$, até A, a $1{,}50\ \mathrm{m}$) por $1{,}20\ \mathrm{m}$ de largura:
 
 $$
 A_{proj} = 0{,}90 \times 1{,}20 = 1{,}08\ \mathrm{m^2}
@@ -83,35 +96,37 @@ $$
 \boxed{F_H = 11\,340\ \mathrm{N} = 11{,}34\ \mathrm{kN}}
 $$
 
-**Passo 3 — a componente vertical.** É o peso da água que está **diretamente acima** da comporta, até a superfície livre. Esse volume se lê em duas fatias: um bloco retangular de $0{,}60\ \mathrm{m}$ de altura sobre toda a extensão horizontal de $0{,}90\ \mathrm{m}$, mais o quarto de disco entre a cota de B e o arco:
+**Passo 4 — a componente vertical, que é onde a curvatura decide.** Suba de cada ponto da comporta até a superfície livre: o volume varrido é o que pesa sobre ela. Sobre a faixa horizontal de $0{,}90\ \mathrm{m}$ em que a comporta se estende, esse volume é o **retângulo cheio até o fundo, menos o quarto de disco** que a barriga da comporta ocupa:
 
 $$
-A_{\text{seção}} = \underbrace{0{,}90 \times 0{,}60}_{0{,}54} + \underbrace{\frac{\pi R^2}{4}}_{0{,}636} = 1{,}176\ \mathrm{m^2}
+A_{\text{seção}} = \underbrace{1{,}50 \times 0{,}90}_{1{,}35} - \underbrace{\frac{\pi R^2}{4}}_{0{,}636} = 0{,}714\ \mathrm{m^2}
 $$
 
 $$
-V = 1{,}176 \times 1{,}20 = 1{,}411\ \mathrm{m^3}
+V = 0{,}714 \times 1{,}20 = 0{,}857\ \mathrm{m^3}
 \qquad
-F_V = \gamma\,V = 10\,000 \times 1{,}411
+F_V = \gamma\,V = 10\,000 \times 0{,}857
 $$
 
 $$
-\boxed{F_V = 14\,114\ \mathrm{N} = 14{,}11\ \mathrm{kN}, \text{ para baixo}}
+\boxed{F_V = 8566\ \mathrm{N} = 8{,}57\ \mathrm{kN}, \text{ para baixo}}
 $$
 
-**Passo 4 — a resultante.** As duas componentes são perpendiculares:
+**Aqui mora o erro mais comum desta questão.** Se a comporta curvasse para o outro lado — barriga para fora da água —, o volume acima dela seria o retângulo **mais** o quarto de disco, e $F_V$ daria $14{,}1\ \mathrm{kN}$ em vez de $8{,}57$. Os dois valores diferem por $2 \times 0{,}636 \times 1{,}20 \times \gamma$, que é o dobro do quarto de disco. Antes de somar ou subtrair, olhe **de que lado está a água**.
+
+**Passo 5 — a resultante.** As duas componentes são perpendiculares:
 
 $$
-R = \sqrt{F_H^2 + F_V^2} = \sqrt{11\,340^2 + 14\,114^2}
-$$
-
-$$
-\boxed{R \approx 18\,105\ \mathrm{N} \approx 18{,}1\ \mathrm{kN}}
+R = \sqrt{F_H^2 + F_V^2} = \sqrt{11\,340^2 + 8566^2}
 $$
 
 $$
-\theta = \arctan\frac{F_V}{F_H} = \arctan\frac{14\,114}{11\,340} = 51{,}2^\circ \text{ abaixo da horizontal}
+\boxed{R \approx 14\,212\ \mathrm{N} \approx 14{,}2\ \mathrm{kN}}
 $$
 
-**Conferência —** dois testes. O primeiro: a linha de ação da resultante numa superfície **circular** tem de passar pelo centro do arco, porque toda pressão é radial e radial significa "apontando para o centro" — é assim que se confere o ponto de aplicação sem integrar nada ✔ O segundo: o quarto de disco ($0{,}636\ \mathrm{m^2}$) é $78\%$ do quadrado $R \times R$ ($0{,}81$), que é a razão $\pi/4$ ✔ Se essa fração sair diferente disso, o erro está na área.
+$$
+\theta = \arctan\frac{F_V}{F_H} = \arctan\frac{8566}{11\,340} = 37{,}1^\circ \text{ abaixo da horizontal}
+$$
+
+**Conferência —** dois testes. O primeiro: numa superfície **circular** a linha de ação passa pelo **centro do arco**, porque toda pressão é radial — aqui, pelo canto de baixo, na vertical de B. É assim que se acha o ponto de aplicação sem integrar nada ✔ O segundo: o quarto de disco vale $\pi/4 = 78\%$ do quadrado $R \times R$ ($0{,}636$ contra $0{,}81$) ✔ Se essa fração sair diferente, o erro está na área.
 </Passos>
