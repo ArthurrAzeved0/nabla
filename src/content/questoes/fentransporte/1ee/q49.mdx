@@ -34,7 +34,7 @@ A comporta de largura igual a $2\ \mathrm{m}$, na figura abaixo, está articulad
     <rect x="60" y="240" width="270" height="12" fill="var(--line-2)" opacity="0.6" stroke="var(--ink-3)" stroke-width="1"/>
     {/* comporta: painel acima da articulação e trecho até o limitador */}
     <rect x="250" y="40" width="16" height="116" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
-    <line x1="252" y1="156" x2="252" y2="240" stroke="var(--ink-2)" stroke-width="3"/>
+    <line x1="252" y1="156" x2="252" y2="240" stroke="var(--warn)" stroke-width="4.5"/>
     <circle cx="252" cy="156" r="6" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
     <circle cx="252" cy="156" r="2" fill="var(--ink-2)"/>
     <text x="232" y="152" font-size="13" font-style="italic" fill="var(--ink-2)">A</text>
@@ -62,53 +62,75 @@ A comporta recebe água em toda a altura $h$, mas gira em torno de A, que está 
 </Figura>
 
 <Gabarito>
-$F_B \approx 16{,}9\ \mathrm{kN}$
+$F_B \approx 29{,}4\ \mathrm{kN}$
 </Gabarito>
 
 <Passos>
-**Passo 1 — a força da água sobre a comporta.** A superfície é plana, vertical e vai da superfície livre até o fundo, então o CG está na metade da profundidade:
+**Passo 1 — qual é a comporta, exatamente.** Esta é a decisão que resolve ou perde a questão. Olhando a figura: o bloco grosso desce da superfície e **termina** na articulação; a articulação está no pé dele; e de A até B desce uma **placa fina**, travada pelo calço em B. A comporta é essa placa — $1{,}2\ \mathrm{m}$ de altura por $2\ \mathrm{m}$ de largura.
+
+A parede acima de A também recebe água, e muita: ela pega a faixa de $0$ a $1{,}65\ \mathrm{m}$ de profundidade. Mas essa carga vai para a **estrutura fixa**, não para a articulação nem para o calço. Quem usa a profundidade inteira ($2{,}85\ \mathrm{m}$) como altura da comporta está somando à comporta uma força que não passa por ela.
+
+**Passo 2 — as duas profundidades da placa.** Com o fundo a $h = 2{,}85\ \mathrm{m}$ e a placa medindo $1{,}2\ \mathrm{m}$ para cima a partir dele:
 
 $$
-A = h \times b = 2{,}85 \times 2 = 5{,}70\ \mathrm{m^2}
+h_A = 2{,}85 - 1{,}2 = 1{,}65\ \mathrm{m}
 \qquad
-h_{CG} = \frac{2{,}85}{2} = 1{,}425\ \mathrm{m}
-$$
-
-$$
-F = \gamma\,h_{CG}\,A = 10\,000 \times 1{,}425 \times 5{,}70 = 81\,225\ \mathrm{N}
-$$
-
-**Passo 2 — onde essa força se aplica.** Como a comporta chega até a superfície livre, o diagrama de pressões é um **triângulo** cheio: zero no topo, máximo no fundo. O centroide de um triângulo fica a um terço da base, ou seja:
-
-$$
-\text{o CP está a } \frac{h}{3} = \frac{2{,}85}{3} = 0{,}95\ \mathrm{m} \text{ acima do fundo}
-$$
-
-Esse é o caso particular em que não é preciso usar a fórmula do $I_{CG}/(h_{CG}A)$ — ela daria exatamente o mesmo, porque o topo da superfície coincide com a superfície livre.
-
-**Passo 3 — o equilíbrio de momentos em torno de A.** A articulação A está $1{,}2\ \mathrm{m}$ acima do fundo, e o limitador B está **no** fundo. Os braços, medidos a partir de A:
-
-$$
-d_F = 1{,}2 - 0{,}95 = 0{,}25\ \mathrm{m}
+h_B = 2{,}85\ \mathrm{m}
 \qquad
-d_B = 1{,}2\ \mathrm{m}
+h_{CG} = \frac{1{,}65 + 2{,}85}{2} = 2{,}25\ \mathrm{m}
 $$
+
+**Passo 3 — a força sobre a placa.**
+
+$$
+A = 1{,}2 \times 2 = 2{,}4\ \mathrm{m^2}
+$$
+
+$$
+F = \gamma\,h_{CG}\,A = 10\,000 \times 2{,}25 \times 2{,}4 = 54\,000\ \mathrm{N} = 54\ \mathrm{kN}
+$$
+
+**Passo 4 — onde ela se aplica, e por que o atalho do terço NÃO vale aqui.** A placa está inteiramente submersa: a pressão vai de $\gamma h_A = 16{,}5\ \mathrm{kPa}$ no topo a $\gamma h_B = 28{,}5\ \mathrm{kPa}$ no pé. O diagrama é um **trapézio**, não um triângulo, e o centroide de trapézio não fica a um terço da base. Vale a fórmula geral:
+
+$$
+y_{CP} - y_{CG} = \frac{I_{CG}}{h_{CG}\,A} = \frac{2 \times 1{,}2^3/12}{2{,}25 \times 2{,}4} = \frac{0{,}288}{5{,}4} = 0{,}0533\ \mathrm{m}
+$$
+
+A resultante fica $0{,}60 + 0{,}0533 = 0{,}6533\ \mathrm{m}$ abaixo de A.
+
+O atalho $h/3$ só vale quando o topo da superfície coincide com a **superfície livre** — aí o trapézio degenera em triângulo. Não é o caso desta placa, que começa a $1{,}65\ \mathrm{m}$ de profundidade.
+
+**Passo 5 — momentos em torno da articulação.** O calço B está $1{,}2\ \mathrm{m}$ abaixo de A:
 
 $$
 \sum M_A = 0
 \qquad\Longrightarrow\qquad
-F \times 0{,}25 = F_B \times 1{,}2
-$$
-
-**Passo 4 — a força no limitador.**
-
-$$
-F_B = \frac{81\,225 \times 0{,}25}{1{,}2}
+F_B \times 1{,}2 = 54\,000 \times 0{,}6533
 $$
 
 $$
-\boxed{F_B \approx 16\,922\ \mathrm{N} \approx 16{,}9\ \mathrm{kN}}
+\boxed{F_B = \frac{35\,280}{1{,}2} = 29\,400\ \mathrm{N} \approx 29{,}4\ \mathrm{kN}}
 $$
 
-**Conferência —** o braço da resultante é pequeno ($0{,}25\ \mathrm{m}$) porque o CP está **quase** na altura da articulação: por isso $F_B$ sai bem menor que $F$, na razão $0{,}25/1{,}2 \approx 21\%$ ✔ Se a articulação estivesse **abaixo** do CP, o momento inverteria de sinal e a comporta empurraria o limitador para o outro lado ✔ Com o valor tabelado da água a $20\ ^\circ\mathrm{C}$ ($\gamma = 9790\ \mathrm{N/m^3}$), o resultado seria $16{,}6\ \mathrm{kN}$ — a diferença é só a constante adotada.
+**Conferência — refazendo por partes, sem a fórmula do $I_{CG}$.** Corte o trapézio de pressões em um retângulo e um triângulo:
+
+$$
+F_{ret} = (\gamma h_A)\,A = 16\,500 \times 2{,}4 = 39\,600\ \mathrm{N}
+\quad \text{a } 0{,}60\ \mathrm{m} \text{ de A}
+$$
+
+$$
+F_{tri} = \tfrac{1}{2}(\gamma h_B - \gamma h_A)\,A = \tfrac{1}{2}(12\,000)(2{,}4) = 14\,400\ \mathrm{N}
+\quad \text{a } \tfrac{2}{3}(1{,}2) = 0{,}80\ \mathrm{m} \text{ de A}
+$$
+
+Somando: $39\,600 + 14\,400 = 54\,000\ \mathrm{N}$ ✔ mesma força. E o momento:
+
+$$
+M_A = 39\,600(0{,}60) + 14\,400(0{,}80) = 35\,280\ \mathrm{N \cdot m}
+\qquad
+F_B = \frac{35\,280}{1{,}2} = 29\,400\ \mathrm{N} \;\checkmark
+$$
+
+Dois caminhos independentes, o mesmo número. Com o valor tabelado da água a $20\ ^\circ\mathrm{C}$ ($\gamma = 9790\ \mathrm{N/m^3}$), o resultado seria $28{,}8\ \mathrm{kN}$ — muda só a constante adotada.
 </Passos>
