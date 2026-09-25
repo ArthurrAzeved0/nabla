@@ -44,6 +44,14 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   onde dá só densidade relativa, vale $\gamma_{\text{água}} = 10\,000\ \mathrm{N/m^3}$,
   como o resto da cadeira. As questões em que a escolha muda o número dizem
   quanto daria pela outra constante.
+- **A 2ª chamada do 1º EE de 2025.1 de Complementos**, do Prof. César Leonardo, com as
+  quatro questões: o logaritmo de $(1+i\tan z)/(1-i\tan z)$, que simplifica para o próprio
+  $z$ porque é a definição do arco-tangente complexo; $u = \operatorname{sen}(x)\cosh(y)$ e
+  sua conjugada, que reconstroem $\operatorname{sen} z$; e quatro integrais pela teoria de
+  Cauchy, uma por ferramenta (polo simples, polo duplo, dois polos e polo de ordem 11). A
+  questão de $(-i)^{1+i}$ **não virou questão nova**: é a mesma que já estava no banco vinda
+  de 2026.1, e a procedência dela passou a citar as duas provas. O 1º EE da cadeira vai de 37
+  para **40 questões**, e o site para **554**.
 
 - **Uma seção nova na teoria de Fenômenos: "Tensão superficial e
   capilaridade".** A lista cobra o assunto e a teoria não o tinha. Entrou como
