@@ -1,0 +1,109 @@
+---
+origem: "2025.1 · 2ª chamada"
+tema: "Harmônicas · u = sen(x)cosh(y) e a conjugada"
+temaId: conjugada-harmonica
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q39.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $u(x,y) = \operatorname{sen}(x)\cosh(y)$. Mostre que $u(x,y)$ é harmônica e determine sua função harmônica conjugada, $v(x,y)$.
+
+<Gabarito>
+$u$ é harmônica ($u_{xx} + u_{yy} = 0$) e $v(x,y) = \cos(x)\operatorname{senh}(y) + C$, com $f(z) = u + iv = \operatorname{sen} z$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as quatro derivadas.** Harmônica significa satisfazer a equação de Laplace, então o caminho é derivar duas vezes em cada variável:
+
+$$
+u_x = \cos(x)\cosh(y)
+\qquad\qquad
+u_{xx} = -\operatorname{sen}(x)\cosh(y)
+$$
+
+$$
+u_y = \operatorname{sen}(x)\operatorname{senh}(y)
+\qquad\qquad
+u_{yy} = \operatorname{sen}(x)\cosh(y)
+$$
+
+Repare no que muda entre as duas colunas: derivar $\cosh$ dá $\operatorname{senh}$ e derivar $\operatorname{senh}$ dá $\cosh$, **sem troca de sinal** — ao contrário do par $\operatorname{sen}/\cos$. É desse descompasso que sai o cancelamento.
+
+**Passo 2 — Laplace.**
+
+$$
+u_{xx} + u_{yy} = -\operatorname{sen}(x)\cosh(y) + \operatorname{sen}(x)\cosh(y) = 0
+$$
+
+$$
+\boxed{u \text{ é harmônica em todo } \mathbb{R}^2}
+$$
+
+**Passo 3 — a primeira equação de Cauchy-Riemann.** A conjugada $v$ é aquela que faz $f = u + iv$ analítica, e isso é exatamente pedir Cauchy-Riemann:
+
+$$
+u_x = v_y
+\qquad\qquad
+u_y = -v_x
+$$
+
+Da primeira, integrando em $y$ com $x$ tratado como constante:
+
+$$
+v_y = \cos(x)\cosh(y)
+\qquad\Longrightarrow\qquad
+v = \cos(x)\operatorname{senh}(y) + \varphi(x)
+$$
+
+A "constante" de integração é uma função de $x$, porque a derivada foi em $y$ — é aqui que quase toda resolução erra, escrevendo só $+\,C$.
+
+**Passo 4 — a segunda equação fecha quem é $\varphi$.** Derive o $v$ recém-achado em $x$ e compare com $-u_y$:
+
+$$
+v_x = -\operatorname{sen}(x)\operatorname{senh}(y) + \varphi'(x)
+\qquad
+-u_y = -\operatorname{sen}(x)\operatorname{senh}(y)
+$$
+
+$$
+\varphi'(x) = 0
+\qquad\Longrightarrow\qquad
+\varphi(x) = C
+$$
+
+$$
+\boxed{v(x,y) = \cos(x)\operatorname{senh}(y) + C}
+$$
+
+A constante fica mesmo indeterminada: somar uma constante real a $v$ não estraga Cauchy-Riemann. Ela só se fixa se o enunciado der um valor de $f$ em algum ponto.
+
+**Passo 5 — que função é essa, afinal.** Juntando as partes:
+
+$$
+f(z) = \operatorname{sen}(x)\cosh(y) + i\cos(x)\operatorname{senh}(y)
+$$
+
+e essa é exatamente a fórmula de $\operatorname{sen}(x + iy)$:
+
+$$
+\operatorname{sen}(x+iy) = \operatorname{sen} x \cos(iy) + \cos x \operatorname{sen}(iy) = \operatorname{sen} x \cosh y + i\cos x \operatorname{senh} y
+$$
+
+$$
+\boxed{f(z) = \operatorname{sen} z}
+$$
+
+**Conferência —** identificar a $f$ é o teste que fecha a questão: $\operatorname{sen} z$ é inteira, logo suas partes real e imaginária **têm** de ser harmônicas e conjugadas uma da outra ✔ E dá para conferir o sinal de $v$ sem refazer nada: se você tivesse escrito $-\cos(x)\operatorname{senh}(y)$, a $f$ sairia $\operatorname{sen}(\bar{z})$, que não é analítica ✔
+</Passos>
