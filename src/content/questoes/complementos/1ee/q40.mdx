@@ -1,0 +1,151 @@
+---
+origem: "2025.1 · 2ª chamada"
+tema: "Fórmula de Cauchy · Quatro integrais, quatro ferramentas diferentes"
+temaId: formula-integral-de-cauchy
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q40.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule as integrais abaixo, usando a teoria de Cauchy.
+
+**1)** $\displaystyle\oint_{\gamma:\,|z|=2} \frac{z}{1-z}\,dz$
+
+**2)** $\displaystyle\oint_{\gamma:\,|z|=2} \frac{e^{-z}\operatorname{sen}(z)}{z^{2}}\,dz$
+
+**3)** $\displaystyle\oint_{\gamma:\,|z|=a} \frac{e^{iz}}{z^{2}+a^{2}}\,dz$
+
+**4)** $\displaystyle\frac{1}{2\pi i}\oint_{\gamma:\,|z|=2} \frac{z^{10}}{(z-1)^{11}}\,dz$
+
+<Gabarito>
+**1)** $-2\pi i$  ·  **2)** $2\pi i$  ·  **3)** $-\dfrac{2\pi\operatorname{senh}(a)}{a}$  ·  **4)** $1$
+</Gabarito>
+
+<Passos>
+**A estratégia, antes das contas.** As quatro saem das mesmas duas fórmulas — o que muda é a ordem do polo:
+
+$$
+\oint_\gamma \frac{f(z)}{z - z_0}\,dz = 2\pi i\,f(z_0)
+\qquad\qquad
+\oint_\gamma \frac{f(z)}{(z - z_0)^{n+1}}\,dz = \frac{2\pi i}{n!}\,f^{(n)}(z_0)
+$$
+
+com $f$ analítica **dentro e sobre** $\gamma$. O trabalho é sempre o mesmo: achar o polo, conferir se ele está dentro da curva, e separar quem é o $f$ analítico.
+
+---
+
+**Item 1 — polo simples, e um sinal que se perde fácil.** Primeiro arrume o denominador na forma $z - z_0$:
+
+$$
+\frac{z}{1-z} = \frac{-z}{z-1}
+\qquad\Longrightarrow\qquad
+f(z) = -z, \quad z_0 = 1
+$$
+
+O sinal sai daí: $1 - z = -(z-1)$. Quem esquece isso erra o sinal da resposta inteira.
+
+O polo $z_0 = 1$ tem $|1| = 1 < 2$, então está **dentro** de $\gamma$. E $f(z) = -z$ é inteira. Pela fórmula de Cauchy:
+
+$$
+\oint_{|z|=2} \frac{-z}{z-1}\,dz = 2\pi i\,f(1) = 2\pi i\,(-1)
+$$
+
+$$
+\boxed{-2\pi i}
+$$
+
+---
+
+**Item 2 — polo duplo: entra a fórmula das derivadas.** O denominador é $z^2 = (z-0)^{1+1}$, logo $n = 1$ e $z_0 = 0$, com
+
+$$
+f(z) = e^{-z}\operatorname{sen}(z)
+$$
+
+que é inteira (produto de inteiras). A origem está dentro de $|z| = 2$. A fórmula pede **uma** derivada:
+
+$$
+f'(z) = -e^{-z}\operatorname{sen}(z) + e^{-z}\cos(z) = e^{-z}\left[\cos(z) - \operatorname{sen}(z)\right]
+$$
+
+$$
+f'(0) = 1 \cdot (1 - 0) = 1
+$$
+
+$$
+\oint_{|z|=2} \frac{e^{-z}\operatorname{sen}(z)}{z^{2}}\,dz = \frac{2\pi i}{1!}\,f'(0) = 2\pi i \cdot 1
+$$
+
+$$
+\boxed{2\pi i}
+$$
+
+---
+
+**Item 3 — dois polos, e uma observação sobre a curva.** Fatorando o denominador:
+
+$$
+z^{2} + a^{2} = (z - ia)(z + ia)
+$$
+
+Os polos são $z = \pm ia$, ambos com **módulo exatamente $a$** — isto é, eles caem **sobre** a circunferência $|z| = a$, e não dentro dela. Uma integral de contorno com singularidade em cima do caminho não está definida no sentido usual; o que a prova quer é a curva que **envolve os dois polos**, e é assim que a questão se resolve.
+
+Com os dois dentro, vale o teorema dos resíduos (ou a fórmula de Cauchy aplicada duas vezes):
+
+$$
+\operatorname{Res}_{z=ia} = \frac{e^{i(ia)}}{2ia} = \frac{e^{-a}}{2ia}
+\qquad\qquad
+\operatorname{Res}_{z=-ia} = \frac{e^{i(-ia)}}{-2ia} = -\frac{e^{a}}{2ia}
+$$
+
+$$
+\sum \operatorname{Res} = \frac{e^{-a} - e^{a}}{2ia} = \frac{-2\operatorname{senh}(a)}{2ia} = \frac{i\operatorname{senh}(a)}{a}
+$$
+
+$$
+\oint \frac{e^{iz}}{z^{2}+a^{2}}\,dz = 2\pi i \cdot \frac{i\operatorname{senh}(a)}{a}
+$$
+
+$$
+\boxed{-\frac{2\pi\operatorname{senh}(a)}{a}}
+$$
+
+Se o enunciado for lido ao pé da letra, com os polos sobre a curva, o que existe é o **valor principal de Cauchy**, que para polos simples no caminho vale $\pi i$ vezes a soma dos resíduos — ou seja, metade: $-\pi\operatorname{senh}(a)/a$.
+
+---
+
+**Item 4 — o fatorial cancela, e sobra 1.** Aqui $(z-1)^{11} = (z - z_0)^{n+1}$ com $z_0 = 1$ e $n = 10$, e $f(z) = z^{10}$, inteira. O polo está dentro de $|z| = 2$.
+
+A décima derivada de $z^{10}$ é constante:
+
+$$
+f^{(10)}(z) = 10!
+$$
+
+$$
+\frac{1}{2\pi i}\oint_{|z|=2} \frac{z^{10}}{(z-1)^{11}}\,dz = \frac{1}{2\pi i}\cdot\frac{2\pi i}{10!}\,f^{(10)}(1) = \frac{10!}{10!}
+$$
+
+$$
+\boxed{1}
+$$
+
+O $1/2\pi i$ na frente não é decoração: ele existe justamente para deixar a resposta limpa. Sem ele, seria $2\pi i$.
+
+---
+
+**Conferência —** o item 3 tem um teste que vale ouro: faça $a \to 0$. A integral vira $\oint e^{iz}/z^{2}\,dz$, um polo duplo na origem, que pelo item 2 dá $2\pi i\,f'(0)$ com $f = e^{iz}$, ou seja $2\pi i\cdot i = -2\pi$. E o resultado geral, com $\operatorname{senh}(a) \approx a$ para $a$ pequeno, dá $-2\pi a/a = -2\pi$ ✔ Os dois caminhos concordam, o que confirma o sinal e o fator.
+
+E, nos quatro itens, a pergunta que evita o erro mais comum: **o polo está dentro da curva?** Se estivesse fora, a resposta seria zero por Cauchy-Goursat, sem conta nenhuma.
+</Passos>
