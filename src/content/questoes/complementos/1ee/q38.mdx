@@ -1,0 +1,83 @@
+---
+origem: "2025.1 · 2ª chamada"
+tema: "Logaritmo complexo · Simplificar uma expressão que é o arco-tangente"
+temaId: logaritmo-complexo
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q38.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcule, simplificando,
+
+$$
+w = \frac{1}{2i}\,\log\frac{1 + i\tan z}{1 - i\tan z}
+$$
+
+<Gabarito>
+$w = z$ (pelo ramo principal; em geral, $w = z + k\pi$, com $k \in \mathbb{Z}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — tirar a tangente da frente.** O que trava a expressão é a tangente dentro do logaritmo. Escreva-a como quociente e ponha tudo sobre o mesmo denominador:
+
+$$
+1 + i\tan z = 1 + i\,\frac{\operatorname{sen} z}{\cos z} = \frac{\cos z + i\operatorname{sen} z}{\cos z}
+$$
+
+$$
+1 - i\tan z = \frac{\cos z - i\operatorname{sen} z}{\cos z}
+$$
+
+**Passo 2 — reconhecer Euler nos dois numeradores.** Aqui a questão se abre:
+
+$$
+\cos z + i\operatorname{sen} z = e^{iz}
+\qquad\qquad
+\cos z - i\operatorname{sen} z = e^{-iz}
+$$
+
+As duas identidades valem para $z$ **complexo**, e não só para real — é a definição de $\cos$ e $\operatorname{sen}$ em $\mathbb{C}$ que garante isso.
+
+**Passo 3 — o quociente.** Os dois $\cos z$ se cancelam, e sobra uma razão de exponenciais:
+
+$$
+\frac{1 + i\tan z}{1 - i\tan z} = \frac{e^{iz}/\cos z}{e^{-iz}/\cos z} = \frac{e^{iz}}{e^{-iz}} = e^{2iz}
+$$
+
+**Passo 4 — o logaritmo desfaz a exponencial.**
+
+$$
+\log\left(e^{2iz}\right) = 2iz + 2k\pi i, \qquad k \in \mathbb{Z}
+$$
+
+O termo $2k\pi i$ é a multivalência do logaritmo complexo: $e^{w}$ não é injetora, então $\log$ devolve uma família de valores. Pelo **ramo principal**, $k = 0$.
+
+$$
+w = \frac{1}{2i}\left(2iz + 2k\pi i\right) = z + k\pi
+$$
+
+$$
+\boxed{w = z}
+$$
+
+**Passo 5 — o que a expressão era o tempo todo.** A definição do arco-tangente complexo é
+
+$$
+\arctan \zeta = \frac{1}{2i}\log\frac{1 + i\zeta}{1 - i\zeta}
+$$
+
+Com $\zeta = \tan z$, a expressão do enunciado é literalmente $\arctan(\tan z)$ — e a resposta $z + k\pi$ é a mesma ressalva que já existe no caso real: a tangente tem período $\pi$, então o arco-tangente só devolve $z$ dentro de um ramo.
+
+**Conferência —** teste com um valor: $z = 0$ dá $\tan 0 = 0$, o quociente vale $1$, $\log 1 = 0$ e $w = 0 = z$ ✔ E a estrutura da resposta tem de ter período $\pi$ (não $2\pi$), porque é a tangente que está dentro — e tem ✔
+</Passos>
