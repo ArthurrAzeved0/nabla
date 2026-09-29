@@ -1,0 +1,72 @@
+---
+origem: "2026.2"
+tema: "Equação exata"
+temaId: equacoes-exatas
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+a) (1,5 ponto) Encontre a solução geral da EDO
+
+$$
+(2y^2x - 3)\,dx + (2yx^2 + 4)\,dy = 0
+$$
+
+b) (0,5 ponto) Prove que a solução obtida está correta;<br />
+       c) (0,5 ponto) Encontre a solução particular que satisfaz $y(1) = 1$.
+
+<Gabarito>
+a) $x^2y^2 - 3x + 4y = C$; c) $x^2y^2 - 3x + 4y = 2$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Com $M = 2xy^2 - 3$ e $N = 2x^2y + 4$, o teste de exatidão:
+
+$$
+\frac{\partial M}{\partial y} = 4xy = \frac{\partial N}{\partial x} \;\Rightarrow\; \text{a EDO é exata}
+$$
+
+**Passo 2 —** Existe $f(x,y)$ com $f_x = M$. Integrando $M$ em $x$, com a "constante" dependendo de $y$:
+
+$$
+f(x,y) = \int (2xy^2 - 3)\,dx = x^2y^2 - 3x + g(y)
+$$
+
+**Passo 3 —** Derivando em $y$ e igualando a $N$:
+
+$$
+\frac{\partial f}{\partial y} = 2x^2y + g'(y) = 2x^2y + 4 \;\Rightarrow\; g'(y) = 4 \;\Rightarrow\; g(y) = 4y
+$$
+
+**Passo 4 —** A solução geral é a família $f(x,y) = C$:
+
+$$
+\boxed{x^2y^2 - 3x + 4y = C}
+$$
+
+**Passo 5 (b) —** Para provar, deriva-se a solução implicitamente em $x$ (lembrando que $y = y(x)$):
+
+$$
+2xy^2 + x^2\cdot 2y\,y' - 3 + 4y' = 0 \;\Rightarrow\; (2xy^2 - 3) + (2x^2y + 4)\,y' = 0
+$$
+
+Multiplicando por $dx$ (com $y'\,dx = dy$), volta-se à equação original $(2xy^2 - 3)\,dx + (2x^2y + 4)\,dy = 0$.
+
+**Passo 6 (c) —** Com $x = 1$ e $y = 1$: $1\cdot 1 - 3 + 4 = C \Rightarrow C = 2$:
+
+$$
+\boxed{x^2y^2 - 3x + 4y = 2}
+$$
+</Passos>
