@@ -1,0 +1,67 @@
+---
+origem: "2026.2"
+tema: "Linear · fator integrante"
+temaId: fator-integrante
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+a) (1,5 ponto) Encontre a solução geral da EDO linear
+
+$$
+\frac{dy}{dx} + \frac{y}{x} - \frac{\operatorname{cotg} x}{x} = 0
+$$
+
+b) (1,0 ponto) Encontre a solução particular que satisfaz $y\left(\tfrac{\pi}{2}\right) = 0$.
+
+<Gabarito>
+a) $y = \dfrac{\ln|\operatorname{sen} x| + C}{x}$; b) $y = \dfrac{\ln|\operatorname{sen} x|}{x}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Passando o termo sem $y$ para a direita, a equação fica na forma padrão $y' + P(x)\,y = Q(x)$:
+
+$$
+y' + \frac{1}{x}\,y = \frac{\operatorname{cotg} x}{x}, \qquad P(x) = \frac1x,\quad Q(x) = \frac{\operatorname{cotg} x}{x}
+$$
+
+**Passo 2 —** Fator integrante:
+
+$$
+\mu(x) = e^{\int \frac1x\,dx} = e^{\ln|x|} = x
+$$
+
+**Passo 3 —** Multiplicando a equação por $\mu = x$, o lado esquerdo vira a derivada de um produto:
+
+$$
+x\,y' + y = (x\,y)' = \operatorname{cotg} x
+$$
+
+**Passo 4 —** Integrando, com $\displaystyle\int \operatorname{cotg} x\,dx = \int \frac{\cos x}{\operatorname{sen} x}\,dx = \ln|\operatorname{sen} x|$ (substituição $u = \operatorname{sen} x$):
+
+$$
+x\,y = \ln|\operatorname{sen} x| + C \;\Rightarrow\; \boxed{y = \frac{\ln|\operatorname{sen} x| + C}{x}}
+$$
+
+**Passo 5 (b) —** Impondo $y(\pi/2) = 0$, com $\operatorname{sen}(\pi/2) = 1$ e $\ln 1 = 0$:
+
+$$
+0 = \frac{\ln 1 + C}{\pi/2} = \frac{C}{\pi/2} \;\Rightarrow\; C = 0
+$$
+
+$$
+\boxed{y = \frac{\ln|\operatorname{sen} x|}{x}}
+$$
+</Passos>
