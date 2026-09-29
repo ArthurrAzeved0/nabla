@@ -1,0 +1,80 @@
+---
+origem: "2026.2"
+tema: "Redução de ordem"
+temaId: reducao-de-ordem
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a equação
+
+$$
+x^2y'' + xy' + \left(x^2 - \frac14\right)y = 0, \qquad x > 0.
+$$
+
+a) (1,0 ponto) Verifique que $\Phi_1(x) = x^{-1/2}\operatorname{sen} x$ é solução da equação;<br />
+       b) (1,5 ponto) Determine uma segunda solução, $\Phi_2(x)$, tal que $\Phi_1(x)$ e $\Phi_2(x)$ sejam linearmente independentes.
+
+<Gabarito>
+b) $\Phi_2(x) = x^{-1/2}\cos x$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Derivadas de $\Phi_1 = x^{-1/2}\operatorname{sen} x$ (regra do produto):
+
+$$
+\Phi_1' = -\tfrac12 x^{-3/2}\operatorname{sen} x + x^{-1/2}\cos x
+$$
+
+$$
+\Phi_1'' = \tfrac34 x^{-5/2}\operatorname{sen} x - x^{-3/2}\cos x - x^{-1/2}\operatorname{sen} x
+$$
+
+**Passo 2 —** Multiplicando cada uma pelo seu coeficiente:
+
+$$
+x^2\Phi_1'' = \tfrac34 x^{-1/2}\operatorname{sen} x - x^{1/2}\cos x - x^{3/2}\operatorname{sen} x
+$$
+
+$$
+x\,\Phi_1' = -\tfrac12 x^{-1/2}\operatorname{sen} x + x^{1/2}\cos x
+$$
+
+$$
+\left(x^2 - \tfrac14\right)\Phi_1 = x^{3/2}\operatorname{sen} x - \tfrac14 x^{-1/2}\operatorname{sen} x
+$$
+
+**Passo 3 —** Somando, os termos em $x^{1/2}\cos x$ e em $x^{3/2}\operatorname{sen} x$ se cancelam, e os de $x^{-1/2}\operatorname{sen} x$ dão $\tfrac34 - \tfrac12 - \tfrac14 = 0$. A soma é zero: $\Phi_1$ é solução.
+
+**Passo 4 (b) —** Redução de ordem: procura-se $\Phi_2 = v(x)\,\Phi_1(x)$. Na forma padrão (dividindo por $x^2$), o coeficiente de $y'$ é $P(x) = \dfrac1x$, e a fórmula é
+
+$$
+v'(x) = \frac{e^{-\int P\,dx}}{\Phi_1^2} = \frac{e^{-\ln x}}{x^{-1}\operatorname{sen}^2 x} = \frac{1/x}{\operatorname{sen}^2 x / x} = \operatorname{cossec}^2 x
+$$
+
+**Passo 5 —** Integrando:
+
+$$
+v(x) = \int \operatorname{cossec}^2 x\,dx = -\operatorname{cotg} x
+$$
+
+**Passo 6 —** Então $\Phi_2 = -\operatorname{cotg} x\cdot x^{-1/2}\operatorname{sen} x = -x^{-1/2}\cos x$. A constante $-1$ não muda a independência linear, e pode-se ficar com
+
+$$
+\boxed{\Phi_2(x) = x^{-1/2}\cos x}
+$$
+
+Como $\Phi_2/\Phi_1 = \operatorname{cotg} x$ não é constante, as duas são linearmente independentes.
+</Passos>
