@@ -52,6 +52,15 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   questão de $(-i)^{1+i}$ **não virou questão nova**: é a mesma que já estava no banco vinda
   de 2026.1, e a procedência dela passou a citar as duas provas. O 1º EE da cadeira vai de 37
   para **40 questões**, e o site para **554**.
+- **O 1º EE de 2026.2 de Equações Diferenciais**, dos Profs. César Leonardo, Valdson Jesus e
+  Willames Soares, com as quatro questões e o gabarito oficial conferido: a linear com
+  $\operatorname{cotg} x / x$, cujo fator integrante é o próprio $x$; a exata
+  $(2xy^2-3)\,dx + (2x^2y+4)\,dy = 0$, com a prova por derivação implícita; a segunda solução
+  de $x^2y'' + xy' + (x^2 - \tfrac14)y = 0$ por redução de ordem, a partir de
+  $x^{-1/2}\operatorname{sen} x$; e a Cauchy-Euler $x^2y'' + xy' - y = x^3$ por variação de
+  parâmetros. O cabeçalho da prova diz "2026.1", mas é molde antigo: a prova é deste semestre,
+  e entrou com `origem: "2026.2"`. O 1º EE da cadeira vai de 16 para **20 questões**, e o site
+  para **558**.
 
 - **Uma seção nova na teoria de Fenômenos: "Tensão superficial e
   capilaridade".** A lista cobra o assunto e a teoria não o tinha. Entrou como
