@@ -1,0 +1,81 @@
+---
+origem: "2026.2"
+tema: "Cauchy-Euler · variação de parâmetros"
+temaId: cauchy-euler
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q20.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dada a equação
+
+$$
+x^2y'' + xy' - y = x^3
+$$
+
+a) (1,0 ponto) Determine a solução da equação homogênea associada;<br />
+       b) (1,0 ponto) Determine a solução da equação não homogênea;<br />
+       c) (0,5 ponto) Determine a solução geral da equação.
+
+<Gabarito>
+a) $y_h = c_1x + c_2x^{-1}$; b) $y_p = \dfrac{x^3}{8}$; c) $y = c_1x + c_2x^{-1} + \dfrac{x^3}{8}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** É Cauchy-Euler. Tentando $y = x^m$ na homogênea $x^2y'' + xy' - y = 0$:
+
+$$
+m(m-1) + m - 1 = m^2 - 1 = 0 \;\Rightarrow\; m = \pm 1
+$$
+
+$$
+\boxed{y_h = c_1x + c_2x^{-1}}
+$$
+
+**Passo 2 (b) —** Para a variação de parâmetros, a equação precisa estar na forma padrão (coeficiente $1$ em $y''$). Dividindo por $x^2$:
+
+$$
+y'' + \frac1x\,y' - \frac1{x^2}\,y = x \;\Rightarrow\; g(x) = x
+$$
+
+**Passo 3 —** Wronskiano de $y_1 = x$ e $y_2 = x^{-1}$:
+
+$$
+W = \begin{vmatrix} x & x^{-1} \\ 1 & -x^{-2} \end{vmatrix} = -\frac1x - \frac1x = -\frac2x
+$$
+
+**Passo 4 —** Os dois parâmetros:
+
+$$
+u_1' = \frac{-y_2\,g}{W} = \frac{-x^{-1}\cdot x}{-2/x} = \frac x2 \;\Rightarrow\; u_1 = \frac{x^2}{4}
+$$
+
+$$
+u_2' = \frac{y_1\,g}{W} = \frac{x\cdot x}{-2/x} = -\frac{x^3}{2} \;\Rightarrow\; u_2 = -\frac{x^4}{8}
+$$
+
+**Passo 5 —** Solução particular:
+
+$$
+y_p = u_1y_1 + u_2y_2 = \frac{x^2}{4}\cdot x - \frac{x^4}{8}\cdot\frac1x = \frac{x^3}{4} - \frac{x^3}{8} = \boxed{\frac{x^3}{8}}
+$$
+
+Conferindo: com $y_p' = \tfrac38x^2$ e $y_p'' = \tfrac34x$, fica $x^2\cdot\tfrac34x + x\cdot\tfrac38x^2 - \tfrac18x^3 = \left(\tfrac68 + \tfrac38 - \tfrac18\right)x^3 = x^3$.
+
+**Passo 6 (c) —** Solução geral $= y_h + y_p$:
+
+$$
+\boxed{y = c_1x + c_2x^{-1} + \frac{x^3}{8}}
+$$
+</Passos>
