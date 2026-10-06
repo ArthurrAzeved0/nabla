@@ -79,6 +79,16 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   mercúrio com menisco convexo descendo, com o $h$ trocando de sinal junto com o
   cosseno do ângulo de contato.
 
+### Alterado
+
+- **O glifo ∇ do rodapé agora abre `/humans/`, uma página com o humans.txt.**
+  O Web Analytics da Cloudflare só conta uma visita quando o beacon dele roda,
+  e o beacon só é injetado em HTML: o `humans.txt`, texto puro, era visitado
+  sem nunca aparecer nas métricas. A página lê o próprio `public/humans.txt` no
+  build, então o texto é sempre o mesmo dos dois lados. O `/humans.txt`
+  continua no ar, e o `<link rel="author">` segue apontando para ele, como
+  manda a convenção.
+
 ## [2.15.0] — 2026-09-09
 
 ### Adicionado
