@@ -1,0 +1,49 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                            humans.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* O humans.txt em forma de página. Existe por causa das métricas: o Web
+   Analytics da Cloudflare só conta o que roda o beacon dele, e o beacon só
+   entra em HTML — o arquivo de texto puro era visitado sem nunca aparecer no
+   painel. O glifo do rodapé aponta para cá; o /humans.txt continua no ar,
+   intacto, para quem procura pela convenção humanstxt.org.
+
+   O texto vem do próprio public/humans.txt, lido no build: uma fonte só, e
+   nenhuma chance de as duas versões se separarem. */
+import Base from "~/layouts/Base.astro";
+import bruto from "../../public/humans.txt?raw";
+
+const base = import.meta.env.BASE_URL;
+const texto = bruto.replace(/^﻿/, "");
+---
+
+<Base titulo="humans.txt" descricao="As pessoas por trás do Nabla.">
+  <pre class="humans">{texto}</pre>
+  <p class="fonte"><a href={`${base}humans.txt`}>humans.txt</a></p>
+</Base>
+
+<style>
+  .humans {
+    font-family: var(--f-mono);
+    font-size: var(--t-sm);
+    line-height: 1.55;
+    color: var(--ink-2);
+    white-space: pre;
+    overflow-x: auto;
+    margin: 0;
+  }
+  .fonte {
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    margin-top: var(--e-4);
+  }
+</style>
