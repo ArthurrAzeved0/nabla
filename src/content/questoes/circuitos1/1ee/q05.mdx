@@ -65,24 +65,42 @@ v = v_3 - v_R,
 v_R = -3i = \frac{3v_2}{4}
 $$
 
-**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $5\ \mathrm{A}$ vira **circuito aberto**), pela Análise de Malhas. Com $v_3 = v_2 + 10$, a LKC no supernó formado pelos nós $2$ e $3$ dá
+**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $5\ \mathrm{A}$ vira **circuito aberto**), pela Análise de Malhas. Com o ramo dos $5\ \mathrm{A}$ aberto, a janela de baixo à esquerda se funde com a de cima, e sobram três malhas, todas com corrente no sentido horário: $i_1$ na janela fundida (fio de cima com a controlada $2v$, $10\ \Omega$, fonte de $10\ \mathrm{V}$, $4\ \Omega$ e $5\ \Omega$); $i_2$ na janela de baixo do meio ($4\ \Omega$, fonte de $10\ \mathrm{V}$ e $2\ \Omega$); e $i_3$ na janela da direita ($2\ \Omega$, $10\ \Omega$ e controlada $3i$). As variáveis de controle, em correntes de malha:
 
 $$
-\frac{v_2}{4} + \frac{v_2 + 10}{2} + \frac{v'}{10} = 0
-\qquad\text{com}\qquad
-v' = \frac{v_2}{4} + 10
-$$
-
-$$
-15{,}5\,v_2 = -120
-\quad\Longrightarrow\quad
-v_2 = -\frac{240}{31}\ \mathrm{V}
-$$
-
-$$
-\boxed{v' = \frac{250}{31} \approx 8{,}06\ \mathrm{V}}
+i' = i_2 - i_1,
 \qquad
-\boxed{i' = \frac{60}{31} \approx 1{,}94\ \mathrm{A}}
+v' = 10\,(i_3 - i_1)
+$$
+
+porque $i_2$ sobe pelo $4\ \Omega$ e $i_1$ desce, e porque no $10\ \Omega$ o sentido do nó $3$ para o nó $R$ (do $+$ para o $-$ de $v$) é o de $i_3$. A controlada $2v$ fica só na borda da malha $1$ e aponta no sentido horário, então não há supermalha: ela fixa $i_1$, e a LKT da malha $1$ (que teria a tensão desconhecida sobre a fonte de corrente) não é escrita. Somando as quedas no sentido de cada malha:
+
+$$
+\text{malha 1:}\quad i_1 = 2v' = 20\,(i_3 - i_1)
+$$
+
+$$
+\text{malha 2:}\quad -10 + 2\,(i_2 - i_3) + 4\,(i_2 - i_1) = 0
+$$
+
+$$
+\text{malha 3:}\quad 10\,(i_3 - i_1) - 3i' + 2\,(i_3 - i_2) = 0
+$$
+
+O $-3i'$ aparece porque a malha $3$ desce pela controlada entrando pelo $-$, que está em cima. Com $i' = i_2 - i_1$, o sistema fica $21i_1 = 20i_3$, $\ -4i_1 + 6i_2 - 2i_3 = 10\ $ e $\ -7i_1 - 5i_2 + 12i_3 = 0$, e dá
+
+$$
+i_1 = \frac{500}{31}\ \mathrm{A},
+\qquad
+i_2 = \frac{560}{31}\ \mathrm{A},
+\qquad
+i_3 = \frac{525}{31}\ \mathrm{A}
+$$
+
+$$
+\boxed{v' = 10 \cdot \frac{25}{31} = \frac{250}{31} \approx 8{,}06\ \mathrm{V}}
+\qquad
+\boxed{i' = \frac{560 - 500}{31} = \frac{60}{31} \approx 1{,}94\ \mathrm{A}}
 $$
 
 **Passo 2 — subcircuito da fonte de $5\ \mathrm{A}$** (a de $10\ \mathrm{V}$ vira **curto**), pela Análise de Nós. Agora $v_3 = v_2$, e portanto $v'' = v_2 - \tfrac{3v_2}{4} = \tfrac{v_2}{4}$:
