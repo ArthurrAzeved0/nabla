@@ -57,7 +57,11 @@ $v = -\dfrac{20}{79} \approx -0{,}25\ \mathrm{V}$  ·  $i = \dfrac{405}{158} \ap
 </Gabarito>
 
 <Passos>
-**Passo 0 — convenções.** Fio de baixo como referência; a fonte de $10\ \mathrm{V}$ ($+$ em cima) fixa o trilho da esquerda. Chame $x$ o potencial do nó do meio (o mesmo do $8\ \Omega$ de cima, dos dois $4\ \Omega$ e da fonte controlada) e $v_Q$ o do nó da direita. Então
+**Passo 0 — convenções.** Fio de baixo como referência; a fonte de $10\ \mathrm{V}$ ($+$ em cima) fixa o trilho da esquerda. Em qualquer dos dois subcircuitos, $v$ é a tensão no $8\ \Omega$ da esquerda (com o $+$ em cima) e $i$ é a corrente para baixo no $4\ \Omega$ da direita. Cada subcircuito tem o seu método.
+
+**Para o Passo 1 (malhas)**, cinco correntes de malha, todas no sentido horário: $i_1$ na janela da fonte (a fonte e os dois resistores da esquerda, o $8\ \Omega$ e o $4\ \Omega$); $i_2$ na janelinha entre os dois $4\ \Omega$; $i_3$ na janela de cima, fechada pelo $8\ \Omega$ da esquerda, pelo $5\ \Omega$, pelo fio que desce da direita e pela fonte controlada; $i_4$ na janela de baixo, entre o $4\ \Omega$ da direita, a controlada e o $8\ \Omega$ do meio; e $i_5$ na janela entre o $8\ \Omega$ do meio e o da direita.
+
+**Para o Passo 2 (nós)**, chame $v_T$ o potencial do trilho da esquerda, $x$ o do nó do meio (o mesmo do $8\ \Omega$ da esquerda, dos dois $4\ \Omega$ e da fonte controlada) e $v_Q$ o do nó da direita. Então
 
 $$
 v = v_T - x
@@ -67,25 +71,59 @@ i = \frac{x}{4}
 v_Q = x - 2v
 $$
 
-**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $8\ \mathrm{A}$ vira **circuito aberto**), com $v_T = 10\ \mathrm{V}$ e $v_Q = 3x - 20$. LKC no supernó formado pelo nó do meio e pelo da direita:
+**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$, pela Análise de Malhas** (a de $8\ \mathrm{A}$ vira **circuito aberto**, e a janela dela some). As variáveis da questão, em correntes de malha:
 
 $$
-\frac{x - 10}{8} + \frac{x}{4} + \frac{x}{4} + 2\cdot\frac{3x - 20}{8} + \frac{3x - 30}{5} = 0
+v = 8\,(i_1 - i_3)
+\qquad\qquad
+i = i_2 - i_4
 $$
 
+LKT nas cinco malhas, somando as quedas no sentido horário. A controlada fica entre a malha 3, que a percorre da direita para a esquerda (do $-$ para o $+$, sobe $2v$), e a malha 4, que a percorre da esquerda para a direita (desce $2v$):
+
 $$
-\times 40:\quad 79x = 490
+\begin{aligned}
+\text{malha 1:}&\quad -10 + 8\,(i_1 - i_3) + 4\,(i_1 - i_2) = 0 \\
+\text{malha 2:}&\quad 4\,(i_2 - i_1) + 4\,(i_2 - i_4) = 0 \\
+\text{malha 3:}&\quad 8\,(i_3 - i_1) + 5\,i_3 - 2v = 0 \\
+\text{malha 4:}&\quad 4\,(i_4 - i_2) + 2v + 8\,(i_4 - i_5) = 0 \\
+\text{malha 5:}&\quad 8\,(i_5 - i_4) + 8\,i_5 = 0
+\end{aligned}
+$$
+
+Vá escrevendo tudo em função de $i_1$. Na malha 3, com $2v = 16\,(i_1 - i_3)$, sai $29\,i_3 = 24\,i_1$; logo $i_1 - i_3 = \tfrac{5}{29}\,i_1$ e $v = \tfrac{40}{29}\,i_1$. A malha 5 dá $i_5 = i_4/2$, e a malha 4 vira
+
+$$
+-4\,i_2 + 8\,i_4 + 16\,(i_1 - i_3) = 0
 \qquad\Longrightarrow\qquad
-x = \frac{490}{79}\ \mathrm{V}
+i_2 = 2\,i_4 + \frac{20}{29}\,i_1
 $$
 
+Com a malha 2, que diz $i_2 = \tfrac{1}{2}(i_1 + i_4)$:
+
 $$
-\boxed{v' = 10 - \frac{490}{79} = \frac{300}{79} \approx 3{,}80\ \mathrm{V}}
+2\,i_4 + \frac{20}{29}\,i_1 = \frac{i_1 + i_4}{2}
+\qquad\Longrightarrow\qquad
+i_4 = -\frac{11}{87}\,i_1
 \qquad
-\boxed{i' = \frac{245}{158} \approx 1{,}55\ \mathrm{A}}
+i_2 = \frac{38}{87}\,i_1
 $$
 
-**Passo 2 — subcircuito da fonte de $8\ \mathrm{A}$** (a de $10\ \mathrm{V}$ vira **curto**, $v_T = 0$). Agora $v = -x$ e $v_Q = 3x$:
+Por fim, a malha 1, $12\,i_1 - 4\,i_2 - 8\,i_3 = 10$:
+
+$$
+\left(12 - \frac{152}{87} - \frac{576}{87}\right) i_1 = \frac{316}{87}\,i_1 = 10
+\qquad\Longrightarrow\qquad
+i_1 = \frac{435}{158}\ \mathrm{A}
+$$
+
+$$
+\boxed{v' = \frac{40}{29}\cdot\frac{435}{158} = \frac{300}{79} \approx 3{,}80\ \mathrm{V}}
+\qquad
+\boxed{i' = i_2 - i_4 = \frac{49}{87}\cdot\frac{435}{158} = \frac{245}{158} \approx 1{,}55\ \mathrm{A}}
+$$
+
+**Passo 2 — subcircuito da fonte de $8\ \mathrm{A}$, pela Análise de Nós** (a de $10\ \mathrm{V}$ vira **curto**, $v_T = 0$). Agora $v = -x$ e $v_Q = 3x$; LKC no supernó formado pelo nó do meio e pelo da direita:
 
 $$
 \frac{x}{8} + \frac{x}{4} + \frac{x}{4} + 2\cdot\frac{3x}{8} + \frac{3x}{5} - 8 = 0
