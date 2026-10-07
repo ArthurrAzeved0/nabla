@@ -63,28 +63,42 @@ $$
 
 e $v = v_3 - v_R$, com o $+$ do lado do nó $3$.
 
-**Passo 1 — subcircuito da fonte de $18\ \mathrm{V}$** (a de $4\ \mathrm{A}$ vira **circuito aberto**). Sem o ramo dos $4\ \mathrm{A}$, os dois lados só se comunicam pelo fio de cima. As fontes amarram
+**Passo 1 — subcircuito da fonte de $18\ \mathrm{V}$** (a de $4\ \mathrm{A}$ vira **circuito aberto**), pela Análise de Malhas. Com o ramo dos $4\ \mathrm{A}$ aberto, a janela de cima e a janela de baixo do meio viram uma só, e sobram três malhas, todas com corrente no sentido horário: $i_1$ na janela de baixo à esquerda ($2\ \Omega$, fonte de $18\ \mathrm{V}$ e $1\ \Omega$ vertical); $i_2$ na janela fundida (fio de cima com a controlada $4i$, $1\ \Omega$ horizontal, $2\ \Omega$ do meio, $1\ \Omega$ vertical e fonte de $18\ \mathrm{V}$); e $i_3$ na janela de baixo à direita ($2\ \Omega$ do meio, $1\ \Omega$ horizontal e controlada $3v/2$). As duas variáveis de controle, escritas em correntes de malha, são
 
 $$
-v_2' = v_L' + 18,
+i' = i_2 - i_1,
 \qquad
-v_R' = v_L' + 4i' = v_L' - 4\,(v_L' + 18)
+v' = 1\,(i_3 - i_2)
 $$
 
-Escrevendo a LKT da malha externa (que é a supermalha em torno das duas fontes de tensão) e a LKC no nó $3$, chega-se a
+porque $i_2$ sobe pelo $1\ \Omega$ vertical e $i_1$ desce, e porque no $1\ \Omega$ horizontal o sentido do nó $3$ para o nó $R$ (do $+$ para o $-$ de $v$) é o de $i_3$. A fonte controlada $3v/2$ fica só na borda da malha $3$, então não há supermalha: ela apenas fixa $i_3$. Somando as quedas de tensão no sentido de cada malha:
 
 $$
-v_L' = -15\ \mathrm{V}
-\quad\Longrightarrow\quad
-i' = -(v_L' + 18) = \boxed{-3\ \mathrm{A}}
+\text{malha 1:}\quad -18 + 1\,(i_1 - i_2) + 2\,i_1 = 0
 $$
 
 $$
-v_R' = -27\ \mathrm{V},
+\text{malha 2:}\quad -4i' + 1\,(i_2 - i_3) + 2\,(i_2 - i_3) + 1\,(i_2 - i_1) + 18 = 0
+$$
+
+$$
+\text{malha 3:}\quad i_3 = \frac{3}{2}\,v' = \frac{3}{2}\,(i_3 - i_2)
+$$
+
+Com $i' = i_2 - i_1$, o sistema fica $3i_1 - i_2 = 18$, $\ i_1 - i_3 = -6\ $ e $\ i_3 = 3i_2$, e dá
+
+$$
+i_1 = \frac{15}{2}\ \mathrm{A},
 \qquad
-v_3' = -18\ \mathrm{V}
-\quad\Longrightarrow\quad
-v' = -18 - (-27) = \boxed{9\ \mathrm{V}}
+i_2 = \frac{9}{2}\ \mathrm{A},
+\qquad
+i_3 = \frac{27}{2}\ \mathrm{A}
+$$
+
+$$
+i' = \frac{9}{2} - \frac{15}{2} = \boxed{-3\ \mathrm{A}}
+\qquad\qquad
+v' = \frac{27}{2} - \frac{9}{2} = \boxed{9\ \mathrm{V}}
 $$
 
 **Passo 2 — subcircuito da fonte de $4\ \mathrm{A}$** (a de $18\ \mathrm{V}$ vira **curto-circuito**). Agora $v_L'' = v_2''$, e a análise de nós pede a LKC no supernó que envolve $v_L''$, $v_2''$ e $v_R''$ mais a LKC no nó $3$:
