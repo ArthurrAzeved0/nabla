@@ -80,24 +80,50 @@ v_1' = 9\ \mathrm{V}, \quad v_3' = 19\ \mathrm{V}
 \boxed{v' = -10\ \mathrm{V}}, \quad \boxed{i' = 9{,}5\ \mathrm{A}}
 $$
 
-**Passo 2 — subcircuito da fonte de $2\ \mathrm{A}$** (a de $4\ \mathrm{V}$ vira **curto**, então $v_2'' = 0$):
+**Passo 2 — subcircuito da fonte de $2\ \mathrm{A}$** (a de $4\ \mathrm{V}$ vira **curto**), pela Análise de Malhas. São quatro malhas, todas com corrente no sentido horário: $i_1$ na janela de baixo à esquerda (fonte de $2\ \mathrm{A}$, $2\ \Omega$ horizontal e o curto no lugar da fonte de $4\ \mathrm{V}$); $i_2$ na janela de baixo do meio (curto, $1\ \Omega$ e $2\ \Omega$ vertical); $i_3$ na janela da direita ($2\ \Omega$ vertical e controlada $3v_1$); e $i_4$ na janela de cima ($4\ \Omega$, $2\ \Omega$ horizontal e $1\ \Omega$). As duas fontes de corrente ficam cada uma na borda de uma só malha, então não há supermalha: a de $2\ \mathrm{A}$ aponta para cima, no sentido horário da malha $1$, e a controlada também aponta para cima, contra o sentido horário da malha $3$:
 
 $$
-\text{nó 1:}\quad 2 = \frac{v_1''}{2} + \frac{v_1'' - v_3''}{4}
-\qquad\Longrightarrow\qquad
-v_3'' = 3v_1'' - 8
+i_1 = 2\ \mathrm{A},
+\qquad
+i_3 = -3v_1''
+$$
+
+A variável de controle $v_1''$ é a tensão do nó da esquerda; descendo do nó $1$ à referência pelo $2\ \Omega$ horizontal e pelo curto, ela vale
+
+$$
+v_1'' = 2\,(i_1 - i_4) + 0
+\quad\Longrightarrow\quad
+i_3 = -6\,(2 - i_4)
+$$
+
+As malhas $2$ e $4$ não têm fonte de corrente e recebem a LKT, somando as quedas no sentido horário:
+
+$$
+\text{malha 2:}\quad 1\,(i_2 - i_4) + 2\,(i_2 - i_3) = 0
 $$
 
 $$
-\text{nó 3:}\quad \frac{v_1'' - v_3''}{4} - v_3'' + 3v_1'' = \frac{v_3''}{2}
-\qquad\Longrightarrow\qquad
-4v_1'' = 28
+\text{malha 4:}\quad 4\,i_4 + 1\,(i_4 - i_2) + 2\,(i_4 - i_1) = 0
 $$
 
+Substituindo $i_1$ e $i_3$, fica $3i_2 - 13i_4 = -24$ e $-i_2 + 7i_4 = 4$, logo $8i_4 = -12$:
+
 $$
-v_1'' = 7\ \mathrm{V}, \quad v_3'' = 13\ \mathrm{V}
-\qquad\Longrightarrow\qquad
-\boxed{v'' = -6\ \mathrm{V}}, \quad \boxed{i'' = 6{,}5\ \mathrm{A}}
+i_4 = -\frac{3}{2}\ \mathrm{A},
+\qquad
+i_2 = -\frac{29}{2}\ \mathrm{A},
+\qquad
+i_3 = -21\ \mathrm{A},
+\qquad
+v_1'' = 7\ \mathrm{V}
+$$
+
+Por fim, $v''$ é a queda no $4\ \Omega$ do nó $1$ para o nó $3$, que é o sentido de $i_4$, e $i''$ desce pelo $2\ \Omega$ vertical, onde $i_2$ desce e $i_3$ sobe:
+
+$$
+v'' = 4\,i_4 = \boxed{-6\ \mathrm{V}}
+\qquad\qquad
+i'' = i_2 - i_3 = -\frac{29}{2} + 21 = \boxed{6{,}5\ \mathrm{A}}
 $$
 
 **Passo 3 — soma:**
