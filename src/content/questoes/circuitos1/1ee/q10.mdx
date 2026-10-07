@@ -89,9 +89,53 @@ $$
 \boxed{i = \frac{v_T - v_C}{4} = \frac{4}{4} = 1\ \mathrm{A}}
 $$
 
-**Passo 2 — método 2: LKC por inspeção, para conferir.** Com $v_1 = 16\ \mathrm{V}$, a fonte controlada entrega $16/8 = 2\ \mathrm{A}$. Esses $2\ \mathrm{A}$ se dividem no nó de cima: $20/20 = 1\ \mathrm{A}$ pelo $20\ \Omega$ e $1\ \mathrm{A}$ pelo $4\ \Omega$ — que é exatamente $i$.
+**Passo 2 — método 2: análise de malhas.** O circuito tem três janelas, todas com corrente de malha no sentido horário: $i_1$ na janela da esquerda (fonte controlada, $4\ \Omega$ e fonte de $7\ \mathrm{A}$); $i_2$ na janela de baixo, entre a fonte de $7\ \mathrm{A}$ e o $2\ \Omega$; e $i_3$ na janela da direita ($4\ \Omega$, $20\ \Omega$ e $2\ \Omega$).
 
-No nó do meio chegam $7\ \mathrm{A}$ da fonte e $1\ \mathrm{A}$ do $4\ \Omega$, e saem $16/2 = 8\ \mathrm{A}$ pelo $2\ \Omega$ ✔ Fecha.
+A fonte controlada está só na malha 1, que sobe por ela no sentido da seta, então ela **fixa** $i_1$. A variável de controle é a tensão do $2\ \Omega$, por onde descem $i_2 - i_3$:
 
-**Conferência de potência —** a fonte de $7\ \mathrm{A}$ entrega $16 \times 7 = 112\ \mathrm{W}$ e a controlada $20 \times 2 = 40\ \mathrm{W}$, total $152\ \mathrm{W}$. Os resistores absorvem $2(16)^2/... $ — direto: $20\ \Omega$ com $1\ \mathrm{A}$ dá $20\ \mathrm{W}$, $4\ \Omega$ com $1\ \mathrm{A}$ dá $4\ \mathrm{W}$, $2\ \Omega$ com $8\ \mathrm{A}$ dá $128\ \mathrm{W}$ — total $152\ \mathrm{W}$ ✔
+$$
+i_1 = \frac{v_1}{8}
+\qquad\qquad
+v_1 = 2\,(i_2 - i_3)
+\qquad\Longrightarrow\qquad
+i_1 = \frac{i_2 - i_3}{4}
+$$
+
+A fonte de $7\ \mathrm{A}$ fica no ramo comum às malhas 1 e 2; a malha 2 sobe por ela, a malha 1 desce:
+
+$$
+i_2 - i_1 = 7
+$$
+
+A supermalha $1 + 2$ não rende LKT, porque o seu contorno passa pela fonte controlada, cuja tensão não se conhece — e nem precisa: as duas restrições acima já bastam. Falta a LKT da malha 3, a única sem fonte de corrente:
+
+$$
+4\,(i_3 - i_1) + 20\,i_3 + 2\,(i_3 - i_2) = 0
+\qquad\Longrightarrow\qquad
+26\,i_3 - 4\,i_1 - 2\,i_2 = 0
+$$
+
+Com $i_2 = i_1 + 7$, a primeira restrição vira $4i_1 = i_1 + 7 - i_3$, isto é, $3i_1 = 7 - i_3$, e a LKT vira $26\,i_3 - 6\,i_1 = 14$:
+
+$$
+26\,i_3 - 2\,(7 - i_3) = 14
+\qquad\Longrightarrow\qquad
+28\,i_3 = 28
+\qquad\Longrightarrow\qquad
+i_3 = 1\ \mathrm{A},
+\quad i_1 = 2\ \mathrm{A},
+\quad i_2 = 9\ \mathrm{A}
+$$
+
+O $20\ \Omega$ só é percorrido pela malha 3, descendo; no $4\ \Omega$ descem $i_1 - i_3$:
+
+$$
+\boxed{v = 20\,i_3 = 20\ \mathrm{V}}
+\qquad\qquad
+\boxed{i = i_1 - i_3 = 1\ \mathrm{A}}
+$$
+
+Os mesmos valores do método 1, e $v_1 = 2\,(9 - 1) = 16\ \mathrm{V}$ também bate ✔ A fonte controlada entrega $i_1 = 2\ \mathrm{A}$ e pelo $2\ \Omega$ descem $i_2 - i_3 = 8\ \mathrm{A}$.
+
+**Conferência de potência —** a fonte de $7\ \mathrm{A}$ entrega $16 \times 7 = 112\ \mathrm{W}$ e a controlada $20 \times 2 = 40\ \mathrm{W}$, total $152\ \mathrm{W}$. Os resistores absorvem: $20\ \Omega$ com $1\ \mathrm{A}$ dá $20\ \mathrm{W}$, $4\ \Omega$ com $1\ \mathrm{A}$ dá $4\ \mathrm{W}$, $2\ \Omega$ com $8\ \mathrm{A}$ dá $128\ \mathrm{W}$ — total $152\ \mathrm{W}$ ✔
 </Passos>
