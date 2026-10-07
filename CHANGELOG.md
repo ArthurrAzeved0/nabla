@@ -89,6 +89,24 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   continua no ar, e o `<link rel="author">` segue apontando para ele, como
   manda a convenção.
 
+### Corrigido
+
+- **Doze resoluções do 1º EE de Circuitos 1 usavam um método diferente do que
+  o enunciado manda.** Nas questões de superposição, o enunciado fixa o método
+  de cada subcircuito ("o circuito com a fonte de tensão deve ser resolvido pela
+  Análise de Malhas e o com a fonte de corrente pela Análise de Nós"), e nove
+  delas (q02, q05, q08, q14, q18, q21, q28, q31, q35) resolviam um dos
+  subcircuitos pelo outro método — quase sempre por supernó onde se pedia
+  malhas; a q05 chegava a anunciar malhas no título e fazer LKC. E três que
+  pedem "dois métodos quaisquer" (q10, q25, q39) faziam os dois por nós, sendo
+  o segundo só uma LKC num outro nó. Todas foram refeitas pelo método pedido
+  (o segundo método das três é agora análise de malhas), com supermalha onde a
+  fonte controlada de corrente cai no ramo comum. **Nenhuma resposta mudou**:
+  cada sistema novo foi resolvido em frações exatas e conferido contra o
+  circuito completo.
+- **Uma frase quebrada na conferência de potência da q10**, que tinha ficado
+  com um pedaço de fórmula pela metade ("absorvem $2(16)^2/\ldots$ — direto").
+
 ## [2.15.0] — 2026-09-09
 
 ### Adicionado
