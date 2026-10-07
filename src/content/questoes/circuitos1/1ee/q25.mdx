@@ -99,13 +99,39 @@ $$
 \boxed{i = 3\ \mathrm{A}}
 $$
 
-**Passo 3 — método 2: conferência pela LKC no nó $N$.** Chegam $i = 3\ \mathrm{A}$ pela fonte de $6\ \mathrm{V}$; saem $2\ \mathrm{A}$ pelo $3\ \Omega$ de cima (de $N$ para $M$), $-1\ \mathrm{A}$ pelo $2\ \Omega$ e $2\ \mathrm{A}$ pela fonte de corrente:
+**Passo 3 — método 2: análise de malhas.** O circuito tem quatro janelas, todas com corrente de malha no sentido horário: $i_1$ na janela da esquerda (fonte de $17\ \mathrm{V}$, $3\ \Omega$ e $2\ \Omega$ da esquerda); $i_2$ na janela de cima, fechada pelo $3\ \Omega$ de cima e pela fonte de $6\ \mathrm{V}$; $i_3$ na janela do meio, embaixo da fonte de $6\ \mathrm{V}$, entre os dois $2\ \Omega$; e $i_4$ na janela da direita ($2\ \Omega$ da direita e fonte de $2\ \mathrm{A}$).
+
+A fonte de $2\ \mathrm{A}$ está só na malha 4, que desce por ela no sentido da seta, então ela **fixa** $i_4 = 2\ \mathrm{A}$. As outras três malhas dão LKT, somando as quedas de tensão no sentido horário. Na malha 1 a fonte de $17\ \mathrm{V}$ é atravessada de baixo para cima, do $+$ para o $-$, e conta $+17$; nas malhas 2 e 3 a fonte de $6\ \mathrm{V}$ é atravessada do $+$ para o $-$ pela malha 2 (que volta pela base da janela) e do $-$ para o $+$ pela malha 3:
 
 $$
-2 + (-1) + 2 = 3\ \mathrm{A}
+\text{malha 1:}\quad 17 + 3\,i_1 + 2\,(i_1 - i_3) = 0
 $$
 
-Fecha ✔
+$$
+\text{malha 2:}\quad 3\,i_2 + 6 = 0
+$$
+
+$$
+\text{malha 3:}\quad 2\,(i_3 - i_1) - 6 + 2\,(i_3 - i_4) = 0
+$$
+
+A malha 2 se resolve sozinha: $i_2 = -2\ \mathrm{A}$. Com $i_4 = 2$, sobram $5i_1 - 2i_3 = -17$ e $-i_1 + 2i_3 = 5$; somando as duas, $4i_1 = -12$:
+
+$$
+i_1 = -3\ \mathrm{A},
+\qquad
+i_3 = 1\ \mathrm{A}
+$$
+
+Pelo $2\ \Omega$ da direita descem $i_3 - i_4$, e pela fonte de $6\ \mathrm{V}$, da esquerda para a direita, passam $i_3 - i_2$:
+
+$$
+\boxed{v = 2\,(i_3 - i_4) = 2\,(1 - 2) = -2\ \mathrm{V}}
+\qquad\qquad
+\boxed{i = i_3 - i_2 = 1 - (-2) = 3\ \mathrm{A}}
+$$
+
+Os mesmos valores do método 1 ✔ E as outras correntes também batem: o $3\ \Omega$ de cima conduz $i_2 = -2\ \mathrm{A}$ da esquerda para a direita, ou seja, $2\ \mathrm{A}$ de $N$ para $M$; e o $2\ \Omega$ da esquerda conduz $i_1 - i_3 = -4\ \mathrm{A}$ para baixo, isto é, $v_M = 2 \times (-4) = -8\ \mathrm{V}$.
 
 **Conferência de sinais —** $v$ dá negativo porque o nó da direita está **abaixo** da referência, empurrado para lá pela fonte de $2\ \mathrm{A}$ que retira corrente. E o $3\ \Omega$ da esquerda conduz $9/3 = 3\ \mathrm{A}$ **para** o nó da fonte de $17\ \mathrm{V}$, que é a única que entrega energia neste circuito.
 </Passos>
