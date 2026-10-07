@@ -74,22 +74,46 @@ v_L' = -28\ \mathrm{V},\quad v_D' = -100\ \mathrm{V}
 v' = -28\ \mathrm{V},\quad i' = 50\ \mathrm{A},\quad i_{8\Omega}' = 9\ \mathrm{A}
 $$
 
-**Passo 2 — subcircuito da fonte de $4\ \mathrm{V}$** (a de $2\ \mathrm{A}$ vira **aberto**):
+**Passo 2 — subcircuito da fonte de $4\ \mathrm{V}$** (a de $2\ \mathrm{A}$ vira **aberto**), pela Análise de Malhas. Correntes de malha no sentido horário: $i_1$ na janela de cima ($8\ \Omega$, $2\ \Omega$ e o $4\ \Omega$ do meio); $i_2$ na janela de baixo do meio (fonte de $4\ \mathrm{V}$, $2\ \Omega$ e o $4\ \Omega$ da direita); e $i_3$ na janela da direita ($4\ \Omega$ e controlada $3v_1$). A janela de baixo à esquerda só tem de seu a fonte de $2\ \mathrm{A}$, que está aberta, então a corrente dela é **zero** — e pelo $4\ \Omega$ do meio passa só $i_1$, de $M$ para $L$. A variável de controle, pela LKT que sobe pela fonte de $4\ \mathrm{V}$ e volta pelo $4\ \Omega$:
 
 $$
-\text{nó } L:\ 0 = \frac{v_L'' - 4}{4} + \frac{v_L'' - v_D''}{8}
+v_1'' = v_L'' = 4 - 4i_1
+$$
+
+A controlada fica só na borda da malha $3$ e aponta para cima, contra o sentido de $i_3$; não há supermalha, ela apenas fixa $i_3$. Somando as quedas no sentido de cada malha:
+
+$$
+\text{malha 1:}\quad 8i_1 + 2\,(i_1 - i_2) + 4i_1 = 0
 \quad\Longrightarrow\quad
-v_D'' = 3v_L'' - 8
+i_2 = 7i_1
 $$
 
 $$
-\text{nó } D:\ 25v_L'' + 16 = 7v_D''
+\text{malha 2:}\quad -4 + 2\,(i_2 - i_1) + 4\,(i_2 - i_3) = 0
 $$
 
 $$
-v_L'' = -18\ \mathrm{V},\quad v_D'' = -62\ \mathrm{V}
-\qquad\Longrightarrow\qquad
-v'' = -22\ \mathrm{V},\quad i'' = 33\ \mathrm{A},\quad i_{8\Omega}'' = 5{,}5\ \mathrm{A}
+\text{malha 3:}\quad i_3 = -3v_1'' = 12i_1 - 12
+$$
+
+Levando a malha $1$ e a malha $3$ para a malha $2$:
+
+$$
+-4 + 12i_1 + 4\,(7i_1 - 12i_1 + 12) = 0
+\quad\Longrightarrow\quad
+44 - 8i_1 = 0
+\quad\Longrightarrow\quad
+i_1 = 5{,}5\ \mathrm{A},\quad i_2 = 38{,}5\ \mathrm{A},\quad i_3 = 54\ \mathrm{A}
+$$
+
+O $8\ \Omega$ conduz $i_1$ de $L$ para $D$, o $2\ \Omega$ conduz $i_2 - i_1$ de $M$ para $D$, e o $4\ \Omega$ do meio conduz $i_1$ de $M$ para $L$:
+
+$$
+v'' = -4i_1 = -22\ \mathrm{V},
+\qquad
+i'' = i_2 - i_1 = 33\ \mathrm{A},
+\qquad
+i_{8\Omega}'' = i_1 = 5{,}5\ \mathrm{A}
 $$
 
 **Passo 3 — soma das grandezas lineares:**
