@@ -50,7 +50,11 @@ $v = 225\ \mathrm{V}$  ·  $i = 90\ \mathrm{A}$
 </Gabarito>
 
 <Passos>
-**Passo 0 — convenções.** Fio de baixo como referência. Chame $v_M$ o nó do $15\ \Omega$ (que é a própria variável de controle, $v = v_M$) e $v_N$ o nó do $10\ \Omega$ da direita. A fonte controlada, com o $+$ do lado de $M$, impõe
+**Passo 0 — convenções.** Fio de baixo como referência. Em qualquer dos dois subcircuitos, $i$ é a corrente no $5\ \Omega$, da esquerda para a direita, e $v$ é a tensão no $15\ \Omega$, com o $+$ em cima. Cada subcircuito tem o seu método.
+
+**Para o Passo 1 (malhas)**, as correntes de malha, todas no sentido horário: $i_1$ na janela da fonte de $50\ \mathrm{V}$ (fonte, $10\ \Omega$ de cima e $15\ \Omega$), $i_2$ na janela de baixo entre o $15\ \Omega$ e o $10\ \Omega$ da direita (com a fonte controlada no topo) e $i_3$ na janelinha de cima, entre a controlada e o $5\ \Omega$.
+
+**Para o Passo 2 (nós)**, chame $v_M$ o nó do $15\ \Omega$ (que é a própria variável de controle, $v = v_M$) e $v_N$ o nó do $10\ \Omega$ da direita. A fonte controlada, com o $+$ do lado de $M$, impõe
 
 $$
 v_M - v_N = 2v = 2v_M
@@ -60,23 +64,43 @@ $$
 
 e daí $i = \dfrac{v_M - v_N}{5} = \dfrac{2 v_M}{5}$.
 
-**Passo 1 — subcircuito da fonte de $50\ \mathrm{V}$** (a de $10\ \mathrm{A}$ vira **circuito aberto**). LKC no supernó $\{M, N\}$ — o $5\ \Omega$ é interno e se cancela:
+**Passo 1 — subcircuito da fonte de $50\ \mathrm{V}$, pela Análise de Malhas** (a de $10\ \mathrm{A}$ vira **circuito aberto**, e a janela dela some). As variáveis da questão, em correntes de malha:
 
 $$
-\frac{v_M - 50}{10} + \frac{v_M}{15} + \frac{-v_M}{10} = 0
-\qquad\Longrightarrow\qquad
-\frac{v_M}{15} = 5
-$$
-
-$$
-\boxed{v' = 75\ \mathrm{V}}
+v = 15\,(i_1 - i_2)
 \qquad\qquad
-\boxed{i' = \frac{2(75)}{5} = 30\ \mathrm{A}}
+i = i_3
 $$
 
-Repare que os termos dos dois resistores de $10\ \Omega$ se cancelam — é a marca de $v_N = -v_M$.
+LKT nas três malhas, somando as quedas no sentido horário. A controlada fica entre a malha 2 e a malha 3; quem a percorre de $M$ para $N$ (malha 2) desce $2v$, e quem a percorre de $N$ para $M$ (malha 3) sobe $2v$:
 
-**Passo 2 — subcircuito da fonte de $10\ \mathrm{A}$** (a de $50\ \mathrm{V}$ vira **curto**):
+$$
+\begin{aligned}
+\text{malha 1:}&\quad -50 + 10\,i_1 + 15\,(i_1 - i_2) = 0 \\
+\text{malha 2:}&\quad 15\,(i_2 - i_1) + 2v + 10\,i_2 = 0 \\
+\text{malha 3:}&\quad 5\,i_3 - 2v = 0
+\end{aligned}
+$$
+
+Na malha 2, $15\,(i_2 - i_1) = -v$, e ela vira $v + 10\,i_2 = 0$, ou $15\,(i_1 - i_2) = -10\,i_2$, isto é, $i_2 = 3\,i_1$. Na malha 1:
+
+$$
+25\,i_1 - 15\,(3\,i_1) = 50
+\qquad\Longrightarrow\qquad
+i_1 = -2{,}5\ \mathrm{A}
+\qquad
+i_2 = -7{,}5\ \mathrm{A}
+$$
+
+$$
+\boxed{v' = 15\,(-2{,}5 + 7{,}5) = 75\ \mathrm{V}}
+\qquad\qquad
+\boxed{i' = i_3 = \frac{2(75)}{5} = 30\ \mathrm{A}}
+$$
+
+As duas correntes de malha negativas só dizem que, na prática, elas circulam no sentido anti-horário.
+
+**Passo 2 — subcircuito da fonte de $10\ \mathrm{A}$, pela Análise de Nós** (a de $50\ \mathrm{V}$ vira **curto**). LKC no supernó $\{M, N\}$, com $v_N = -v_M$:
 
 $$
 \frac{v_M}{10} + \frac{v_M}{15} + \frac{-v_M}{10} - 10 = 0
