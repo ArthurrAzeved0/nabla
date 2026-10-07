@@ -54,24 +54,44 @@ $v = -\dfrac{21}{17} \approx -1{,}24\ \mathrm{V}$  ·  $i = -\dfrac{15}{17} \app
 <Passos>
 **Passo 0 — convenções.** Fio de baixo como referência. A fonte de $17\ \mathrm{V}$ com o $-$ em cima dá $v_L = -17\ \mathrm{V}$. Chame $v_M$ o nó da fonte controlada e $v_N$ o nó do $2\ \Omega$; a fonte de $6\ \mathrm{V}$ ($-$ à esquerda) impõe $v_N = v_M + 6$. As grandezas pedidas são $v = v_L - v_M$ e $i$, a corrente do ramo da fonte de $6\ \mathrm{V}$.
 
-**Passo 1 — subcircuito das duas fontes de tensão** (a de $2\ \mathrm{A}$ vira **circuito aberto**). LKC no supernó $\{M, N\}$, com a controlada injetando $2v'$:
+**Passo 1 — subcircuito das duas fontes de tensão** (a de $2\ \mathrm{A}$ vira **circuito aberto**), pela Análise de Malhas. Correntes de malha no sentido horário: $i_1$ na janela de baixo à esquerda (fonte de $17\ \mathrm{V}$, $3\ \Omega$ e controlada $2v$); $i_2$ na janela de baixo do meio (controlada, fonte de $6\ \mathrm{V}$ e $2\ \Omega$); e $i_3$ na janelinha de cima ($3\ \Omega$ de cima e fonte de $6\ \mathrm{V}$). A janela da direita só tem de seu a fonte de $2\ \mathrm{A}$, que está aberta, então a corrente dela é **zero**. Pelo $3\ \Omega$ da esquerda passa só $i_1$, de $L$ para $M$, e a variável de controle fica
 
 $$
-\frac{v_M' + 17}{3} - 2v' + \frac{v_M' + 6}{2} = 0
-\qquad\text{com}\qquad
-v' = -17 - v_M'
+v' = 3i_1
 $$
 
-$$
-\times 6:\quad 17\,v_M' + 256 = 0
-\qquad\Longrightarrow\qquad
-v_M' = -\frac{256}{17}\ \mathrm{V}
-$$
+A controlada está no ramo comum às malhas $1$ e $2$: é uma **supermalha**. A seta aponta para cima, que é o sentido de $i_2$ naquele ramo, então a restrição é
 
 $$
-\boxed{v' = -\frac{33}{17} \approx -1{,}94\ \mathrm{V}}
+i_2 - i_1 = 2v' = 6i_1
+\quad\Longrightarrow\quad
+i_2 = 7i_1
+$$
+
+A LKT da supermalha percorre o contorno das malhas $1$ e $2$ sem o ramo da controlada: sobe pela fonte de $17\ \mathrm{V}$ do $+$ para o $-$ (queda de $17\ \mathrm{V}$) e atravessa a de $6\ \mathrm{V}$ do $-$ para o $+$ (subida de $6\ \mathrm{V}$). A malha $3$ passa pela fonte de $6\ \mathrm{V}$ no sentido contrário, do $+$ para o $-$:
+
+$$
+\text{supermalha:}\quad 17 + 3i_1 - 6 + 2i_2 = 0
 \qquad\qquad
-\boxed{i' = -\frac{43}{17} \approx -2{,}53\ \mathrm{A}}
+\text{malha 3:}\quad 3i_3 + 6 = 0
+$$
+
+$$
+17i_1 = -11
+\quad\Longrightarrow\quad
+i_1 = -\frac{11}{17}\ \mathrm{A},
+\qquad
+i_2 = -\frac{77}{17}\ \mathrm{A},
+\qquad
+i_3 = -2\ \mathrm{A}
+$$
+
+No ramo da fonte de $6\ \mathrm{V}$, $i_2$ corre de $M$ para $N$ e $i_3$ no sentido contrário, logo $i' = i_2 - i_3$:
+
+$$
+\boxed{v' = 3i_1 = -\frac{33}{17} \approx -1{,}94\ \mathrm{V}}
+\qquad\qquad
+\boxed{i' = -\frac{77}{17} + 2 = -\frac{43}{17} \approx -2{,}53\ \mathrm{A}}
 $$
 
 **Passo 2 — subcircuito da fonte de $2\ \mathrm{A}$** (as duas de tensão viram **curto**). Com a de $6\ \mathrm{V}$ em curto, $M$ e $N$ passam a ser o **mesmo nó**, e o $3\ \Omega$ de cima fica em paralelo com esse curto — logo **não conduz**:
