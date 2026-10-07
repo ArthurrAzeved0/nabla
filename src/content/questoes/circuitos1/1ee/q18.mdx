@@ -60,22 +60,48 @@ $$
 
 e as grandezas pedidas são $v = v_L - v_M$ e $i = (v_M - v_D)/5$.
 
-**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $5\ \mathrm{A}$ vira **circuito aberto**), com $v_L' = 10\ \mathrm{V}$. A LKC no nó $M$ é a única equação:
+**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $5\ \mathrm{A}$ vira **circuito aberto**), pela Análise de Malhas. Com o ramo dos $5\ \mathrm{A}$ aberto, as duas janelas de baixo à esquerda se fundem, e sobram três malhas, todas com corrente no sentido horário: $i_1$ na janela de cima ($10\ \Omega$, $5\ \Omega$ e $2\ \Omega$); $i_2$ na janela fundida de baixo (fonte de $10\ \mathrm{V}$, $2\ \Omega$, $5\ \Omega$ e $4\ \Omega$); e $i_3$ na janela da direita ($4\ \Omega$ e controlada $2v_1$). O $2\ \Omega$ e o $5\ \Omega$ estão em série e conduzem $i_2 - i_1$ da esquerda para a direita. A variável de controle é a tensão sobre o ramo aberto; pela LKT que sobe pela fonte de $10\ \mathrm{V}$ e atravessa o $2\ \Omega$:
 
 $$
-0 = \frac{v_M' - 10}{2} + \frac{v_M' - 2v_M'}{5}
-\qquad\xrightarrow{\times 10}\qquad
-0 = 5v_M' - 50 - 2v_M'
+v_1' = 10 - 2\,(i_2 - i_1)
+$$
+
+Somando as quedas no sentido de cada malha — a malha $2$ sobe pela fonte de $10\ \mathrm{V}$ do $-$ para o $+$, e a malha $3$ desce pela controlada do $+$ para o $-$:
+
+$$
+\text{malha 1:}\quad 10i_1 + 5\,(i_1 - i_2) + 2\,(i_1 - i_2) = 0
+\quad\Longrightarrow\quad
+17i_1 = 7i_2
 $$
 
 $$
-v_M' = \frac{50}{3}\ \mathrm{V}
-\qquad\Longrightarrow\qquad
-\boxed{v' = 10 - \frac{50}{3} = -\frac{20}{3} \approx -6{,}67\ \mathrm{V}}
+\text{malha 2:}\quad -10 + 2\,(i_2 - i_1) + 5\,(i_2 - i_1) + 4\,(i_2 - i_3) = 0
 $$
 
 $$
-\boxed{i' = \frac{1}{5}\left(\frac{50}{3} - \frac{100}{3}\right) = -\frac{10}{3} \approx -3{,}33\ \mathrm{A}}
+\text{malha 3:}\quad 4\,(i_3 - i_2) + 2v_1' = 0
+\quad\Longrightarrow\quad
+4\,(i_2 - i_3) = 2v_1'
+$$
+
+Com a malha $3$ na malha $2$ e $x = i_2 - i_1$, a corrente do $2\ \Omega$ e do $5\ \Omega$:
+
+$$
+-10 + 7x + 2\,\bigl[10 - 2x\bigr] = 0
+\quad\Longrightarrow\quad
+3x = -10
+\quad\Longrightarrow\quad
+x = -\frac{10}{3}\ \mathrm{A}
+$$
+
+e a malha $1$ completa o sistema: $i_1 = -\tfrac{7}{3}\ \mathrm{A}$, $i_2 = -\tfrac{17}{3}\ \mathrm{A}$ e $i_3 = -14\ \mathrm{A}$, com $v_1' = 10 + \tfrac{20}{3} = \tfrac{50}{3}\ \mathrm{V}$. Como $v$ é a queda no $2\ \Omega$ de $L$ para $M$, e $i$ é a corrente do $5\ \Omega$ de $M$ para $D$:
+
+$$
+\boxed{v' = 2\,(i_2 - i_1) = -\frac{20}{3} \approx -6{,}67\ \mathrm{V}}
+$$
+
+$$
+\boxed{i' = i_2 - i_1 = -\frac{10}{3} \approx -3{,}33\ \mathrm{A}}
 $$
 
 **Passo 2 — subcircuito da fonte de $5\ \mathrm{A}$** (a de $10\ \mathrm{V}$ vira **curto**, $v_L'' = 0$):
