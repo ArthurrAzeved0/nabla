@@ -55,7 +55,7 @@ $v = \dfrac{10}{3} \approx 3{,}33\ \mathrm{V}$  ·  $i = \dfrac{10}{3} \approx 3
 </Gabarito>
 
 <Passos>
-**Passo 0 — a simplificação que abre a questão.** Fio de baixo como referência. Chame $v_2$ o potencial do nó do meio (dos dois $2\ \Omega$) e $v_3$ o do nó da direita. Como
+**Passo 0 — a simplificação que abre a questão.** Fio de baixo como referência. Chame $v_1$ o potencial do nó de cima da fonte de $10\ \mathrm{V}$, $v_2$ o do nó do meio (dos dois $2\ \Omega$) e $v_3$ o do nó da direita. Como
 
 $$
 i = \frac{v_2}{2}
@@ -63,25 +63,44 @@ i = \frac{v_2}{2}
 v_2 - v_3 = 2i = v_2
 $$
 
-resulta $\boxed{v_3 = 0}$ **em qualquer subcircuito** — o $8\ \Omega$ não conduz nada, e o $10\ \Omega$ enxerga a referência do lado direito.
+resulta $\boxed{v_3 = 0}$ **em qualquer subcircuito** — o $8\ \Omega$ não conduz nada, e o $10\ \Omega$ enxerga a referência do lado direito. A conta é de Análise de Nós e serve direto ao Passo 2; no Passo 1, que pede malhas, ela não entra nas equações — reaparece só como conferência.
 
-**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$** (a de $5\ \mathrm{A}$ vira **circuito aberto**), com $v_1 = 10\ \mathrm{V}$. LKC no supernó do meio e da direita:
-
-$$
-\frac{v_2 - 10}{5} + \frac{v_2}{2} + \frac{v_2}{2} + \frac{0 - 10}{10} = 0
-\qquad\xrightarrow{\times 5}\qquad
-6 v_2 = 15
-$$
+**Passo 1 — subcircuito da fonte de $10\ \mathrm{V}$, pela Análise de Malhas** (a de $5\ \mathrm{A}$ vira **circuito aberto**, e a janela dela some). Quatro correntes de malha, todas no sentido horário: $i_1$ na janela da fonte (a fonte, o $5\ \Omega$ e o $2\ \Omega$ da esquerda); $i_2$ na janelinha entre os dois $2\ \Omega$; $i_3$ na janela de cima, fechada pelo $5\ \Omega$, pelo $10\ \Omega$, pelo fio que desce da direita e pela fonte controlada; e $i_4$ na janela de baixo, entre o $2\ \Omega$ da direita, a controlada e o $8\ \Omega$. As variáveis da questão, em correntes de malha:
 
 $$
-v_2 = 2{,}5\ \mathrm{V}
+v = 5\,(i_1 - i_3)
+\qquad\qquad
+i = i_2 - i_4
+$$
+
+LKT nas quatro malhas, somando as quedas no sentido horário. A controlada fica entre a malha 3, que a percorre da direita para a esquerda (do $-$ para o $+$, sobe $2i$), e a malha 4, que a percorre da esquerda para a direita (desce $2i$):
+
+$$
+\begin{aligned}
+\text{malha 1:}&\quad -10 + 5\,(i_1 - i_3) + 2\,(i_1 - i_2) = 0 \\
+\text{malha 2:}&\quad 2\,(i_2 - i_1) + 2\,(i_2 - i_4) = 0 \\
+\text{malha 3:}&\quad 5\,(i_3 - i_1) + 10\,i_3 - 2i = 0 \\
+\text{malha 4:}&\quad 2\,(i_4 - i_2) + 2i + 8\,i_4 = 0
+\end{aligned}
+$$
+
+A malha 4 se resolve sozinha: com $2i = 2\,(i_2 - i_4)$, os dois primeiros termos se cancelam e sobra $8\,i_4 = 0$, ou $i_4 = 0$. Nenhuma corrente no $8\ \Omega$ — é o $v_3 = 0$ do Passo 0, agora saído das malhas. Daí $i = i_2$, e a malha 2 dá $4\,i_2 = 2\,i_1$, ou $i_2 = i_1/2$. A malha 3 fica $15\,i_3 = 5\,i_1 + 2\,i_2 = 6\,i_1$, ou $i_3 = \tfrac{2}{5}\,i_1$. Na malha 1:
+
+$$
+-10 + 5\left(i_1 - \tfrac{2}{5}\,i_1\right) + 2\left(i_1 - \tfrac{1}{2}\,i_1\right) = 0
 \qquad\Longrightarrow\qquad
-\boxed{v' = 10 - 2{,}5 = 7{,}5\ \mathrm{V}}
-\qquad
-\boxed{i' = 1{,}25\ \mathrm{A}}
+4\,i_1 = 10
+\qquad\Longrightarrow\qquad
+i_1 = 2{,}5\ \mathrm{A}
 $$
 
-**Passo 2 — subcircuito da fonte de $5\ \mathrm{A}$** (a de $10\ \mathrm{V}$ vira **curto**, $v_1 = 0$):
+$$
+\boxed{v' = 5\,(2{,}5 - 1) = 7{,}5\ \mathrm{V}}
+\qquad
+\boxed{i' = i_2 = 1{,}25\ \mathrm{A}}
+$$
+
+**Passo 2 — subcircuito da fonte de $5\ \mathrm{A}$, pela Análise de Nós** (a de $10\ \mathrm{V}$ vira **curto**, $v_1 = 0$). LKC no supernó do meio e da direita, com $v_3 = 0$:
 
 $$
 \frac{v_2}{5} + \frac{v_2}{2} + \frac{v_2}{2} + 0 - 5 = 0
