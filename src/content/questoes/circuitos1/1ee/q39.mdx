@@ -107,14 +107,41 @@ $$
 \boxed{i = 3\ \mathrm{A}}
 $$
 
-**Passo 6 — o segundo método (conferência pela LKC do nó $B$).** Entram os $3\ \mathrm{A}$ da fonte de $6\ \mathrm{V}$; saem $2\ \mathrm{A}$ pelo $3\ \Omega$ de cima (de $B$ para $A$), $-1\ \mathrm{A}$ pelo $2\ \Omega$ e $2\ \mathrm{A}$ pela fonte de corrente:
+**Passo 6 — método 2: análise de malhas.** Os Passos 1 a 5 foram o método 1 (supernó). Para o segundo, o circuito tem quatro janelas, todas com corrente de malha no sentido horário: $i_1$ na janela da esquerda (fonte de $17\ \mathrm{V}$, $3\ \Omega$ e $2\ \Omega$ do nó $A$); $i_2$ na janela de cima, fechada pelo $3\ \Omega$ de cima e pela fonte de $6\ \mathrm{V}$; $i_3$ na janela do meio, embaixo da fonte de $6\ \mathrm{V}$, entre os dois $2\ \Omega$; e $i_4$ na janela da direita ($2\ \Omega$ do nó $B$ e fonte de $2\ \mathrm{A}$).
+
+A fonte de $2\ \mathrm{A}$ está só na malha 4, que desce por ela no sentido da seta, então ela **fixa** $i_4 = 2\ \mathrm{A}$. As outras três malhas dão LKT, somando as quedas de tensão no sentido horário. A malha 1 sobe pela fonte de $17\ \mathrm{V}$ do "+" para o "−", e ela conta $+17$; a fonte de $6\ \mathrm{V}$ é atravessada de $B$ para $A$ (do "+" para o "−") pela malha 2, que volta pela base da sua janela, e de $A$ para $B$ (do "−" para o "+") pela malha 3:
 
 $$
-3 = 2 + (-1) + 2 = 3
-\qquad\checkmark
+\text{malha 1:}\quad 17 + 3\,i_1 + 2\,(i_1 - i_3) = 0
 $$
+
+$$
+\text{malha 2:}\quad 3\,i_2 + 6 = 0
+$$
+
+$$
+\text{malha 3:}\quad 2\,(i_3 - i_1) - 6 + 2\,(i_3 - i_4) = 0
+$$
+
+A malha 2 se resolve sozinha: $i_2 = -2\ \mathrm{A}$. Com $i_4 = 2$, sobram $5i_1 - 2i_3 = -17$ e $-i_1 + 2i_3 = 5$; somando as duas, $4i_1 = -12$:
+
+$$
+i_1 = -3\ \mathrm{A},
+\qquad
+i_3 = 1\ \mathrm{A}
+$$
+
+Pelo $2\ \Omega$ da direita descem $i_3 - i_4$, e pela fonte de $6\ \mathrm{V}$, de $A$ para $B$, passam $i_3 - i_2$:
+
+$$
+\boxed{v = 2\,(i_3 - i_4) = 2\,(1 - 2) = -2\ \mathrm{V}}
+\qquad\qquad
+\boxed{i = i_3 - i_2 = 1 - (-2) = 3\ \mathrm{A}}
+$$
+
+Os mesmos valores do método 1 ✔ E as correntes de ramo também batem com as do Passo 5: o $3\ \Omega$ da esquerda conduz $i_1 = -3\ \mathrm{A}$ para a direita, o $2\ \Omega$ do nó $A$ conduz $i_1 - i_3 = -4\ \mathrm{A}$ para baixo, e o $3\ \Omega$ de cima conduz $i_2 = -2\ \mathrm{A}$ de $A$ para $B$, isto é, $2\ \mathrm{A}$ de $B$ para $A$.
 
 **Conferência —** os dois nós saem negativos porque a fonte de $17\ \mathrm{V}$ está de cabeça para baixo — quem esquecer isso acha $+8$ e $+2$ ✔ E repare no papel do $3\ \Omega$ de cima: invisível para o supernó, essencial para achar $i$ ✔
 
-**Sobre o gabarito —** esta prova não tem resolução no acervo. O resultado foi obtido por supernó e conferido pela LKC do nó $B$ (o "segundo método" que o enunciado pede), fechando exatamente.
+**Sobre o gabarito —** esta prova não tem resolução no acervo. O resultado foi obtido por supernó (método 1) e refeito por análise de malhas (método 2, o segundo método que o enunciado pede), com os mesmos valores.
 </Passos>
