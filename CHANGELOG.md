@@ -79,6 +79,21 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   mercúrio com menisco convexo descendo, com o $h$ trocando de sinal junto com o
   cosseno do ângulo de contato.
 
+- **Passo a passo visual no 1º EE de Circuitos 1: 150 figuras de etapa nas
+  43 questões.** A resolução era só texto, e circuito se entende vendo. Agora,
+  depois dos passos que mudam o circuito, entra o desenho dele naquele estado:
+  na redução, o circuito a cada associação, com o equivalente recém-formado em
+  destaque e o caminho de volta com as correntes; na análise nodal, a
+  referência, os potenciais e as correntes de cada LKC, com o supernó numa
+  moldura; na superposição, um subcircuito por fonte (tensão desligada vira
+  fio, corrente vira aberto, a controlada fica, com a variável renomeada); nas
+  malhas, as correntes ↻ de cada janela; em Thévenin, os terminais em aberto, o
+  curto, o circuito morto e o equivalente final; no amp. op., o $v_+$, o curto
+  virtual e a saída. São desenhos do mesmo gerador das figuras do site, usam
+  as cores do tema (claro e escuro) e foram conferidos um a um contra o texto
+  do passo. Ao redesenhar, todas as contas das 43 resoluções foram refeitas, e
+  nenhuma resposta mudou.
+
 ### Alterado
 
 - **O glifo ∇ do rodapé agora abre `/humans/`, uma página com o humans.txt.**
