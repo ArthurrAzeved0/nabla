@@ -67,6 +67,36 @@ $$
 \boxed{\frac{d^2 v_C}{dt^2} + 7\,\frac{dv_C}{dt} + 8\,v_C = 32}
 $$
 
+<Circuito
+  alt="O circuito com as variáveis: i_C no ramo de 4 Ω e capacitor, v_1 no 4 Ω da fonte, i no ramo do indutor"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "4 A" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "R", de: [1.4, 0], para: [1.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "tensao", de: [1.4, 3.4], para: [1.4, 0], rotulo: "v_1", abaixo: false },
+    { t: "fio", pts: [[1.4, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [2.4, -1.4]] },
+    { t: "Id", de: [2.4, -1.4], para: [5.4, -1.4], rotulo: "v_1/4 A" },
+    { t: "fio", pts: [[5.4, -1.4], [5.4, 0]] },
+    { t: "R", de: [2.4, 0], para: [4, 0], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2.6, 0], para: [3.8, 0], rotulo: "i_C", abaixo: false },
+    { t: "C", de: [4, 0], para: [5.4, 0], rotulo: "v_C", valor: "1/8 F", abaixo: true },
+    { t: "no", em: [5.4, 0] },
+    { t: "fio", pts: [[5.4, 0], [6.6, 0]] },
+    { t: "corrente", de: [5.5, 0], para: [6.3, 0], rotulo: "i", abaixo: false },
+    { t: "L", de: [6.6, 0], para: [6.6, 1.7], valor: "2 H", abaixo: true, destaque: true },
+    { t: "R", de: [6.6, 1.7], para: [6.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+    { t: "texto", em: [3.3, 4.1], texto: "i = v_1/4 + i_C = 2 + 0,5 i_C", ancora: "middle", destaque: true },
+  ]}
+>
+
+**As variáveis da equação.** LKC no nó da esquerda: $4 = \tfrac{v_1}{4} + \tfrac{v_1}{4} + i_C$, logo $v_1 = 8 - 2i_C$; LKC no nó da direita: $i = \tfrac{v_1}{4} + i_C = 2 + \tfrac{i_C}{2}$. A LKT pela malha do $4\ \Omega$, do capacitor e do ramo $L$–$2\ \Omega$ fecha a conta, com $v_C$ positivo do lado do nó da esquerda.
+
+</Circuito>
+
 **Passo 3 — as frequências naturais.** $2\alpha = 7$ e $\omega_0^2 = 8$:
 
 $$
@@ -91,6 +121,37 @@ $$
 v_C(t) = A_1 e^{-1,44t} + A_2 e^{-5,56t} + 4
 $$
 
+<Circuito
+  alt="Para t tendendo a infinito: capacitor aberto, indutor em curto; i = 2 A, v_1 = 8 V e v_C = 4 V"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "4 A" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "R", de: [1.4, 0], para: [1.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "tensao", de: [1.4, 3.4], para: [1.4, 0], rotulo: "v_1", abaixo: false },
+    { t: "fio", pts: [[1.4, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [2.4, -1.4]] },
+    { t: "Id", de: [2.4, -1.4], para: [5.4, -1.4], rotulo: "v_1/4 A" },
+    { t: "fio", pts: [[5.4, -1.4], [5.4, 0]] },
+    { t: "R", de: [2.4, 0], para: [4, 0], valor: "4 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 0], para: [4, 0], rotulo: "v_C", abaixo: false },
+    { t: "texto", em: [4.7, 0.65], texto: "aberto", ancora: "middle" },
+    { t: "no", em: [5.4, 0] },
+    { t: "fio", pts: [[5.4, 0], [6.6, 0]] },
+    { t: "corrente", de: [5.5, 0], para: [6.3, 0], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[6.6, 0], [6.6, 1.7]] },
+    { t: "texto", em: [6.75, 0.85], texto: "curto", ancora: "start" },
+    { t: "R", de: [6.6, 1.7], para: [6.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+    { t: "texto", em: [3.3, 4.1], texto: "i(∞) = 2 A   ·   v_1 = 8 V   ·   v_C(∞) = 4 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Para $t \to \infty$.** Com $i_C = 0$, $v_1 = 8\ \mathrm{V}$ e $i = 2\ \mathrm{A}$, que cai sobre o $2\ \Omega$ ($4\ \mathrm{V}$); o capacitor fica com o resto, $v_C = 8 - 4 = 4\ \mathrm{V}$ — a forçada $32/8$.
+
+</Circuito>
+
 **Passo 5 — as duas constantes.** De $v_C(0) = 0$:
 
 $$
@@ -114,6 +175,36 @@ A_1 = -13{,}165,
 \quad
 A_2 = 9{,}165
 $$
+
+<Circuito
+  alt="Em 0⁺: capacitor como fonte de 0 V, indutor como fonte de 0 A; i_C(0⁺) = −4 A"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "4 A" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "R", de: [1.4, 0], para: [1.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "tensao", de: [1.4, 3.4], para: [1.4, 0], rotulo: "v_1", abaixo: false },
+    { t: "fio", pts: [[1.4, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [2.4, -1.4]] },
+    { t: "Id", de: [2.4, -1.4], para: [5.4, -1.4], rotulo: "v_1/4 A" },
+    { t: "fio", pts: [[5.4, -1.4], [5.4, 0]] },
+    { t: "R", de: [2.4, 0], para: [4, 0], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2.6, 0], para: [3.8, 0], rotulo: "i_C", abaixo: false },
+    { t: "V", de: [5.4, 0], para: [4, 0], valor: "0 V", abaixo: true, destaque: true },
+    { t: "no", em: [5.4, 0] },
+    { t: "fio", pts: [[5.4, 0], [6.6, 0]] },
+    { t: "corrente", de: [5.5, 0], para: [6.3, 0], rotulo: "i", abaixo: false },
+    { t: "I", de: [6.6, 0], para: [6.6, 1.7], valor: "0 A", abaixo: true, destaque: true },
+    { t: "R", de: [6.6, 1.7], para: [6.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+    { t: "texto", em: [3.3, 4.1], texto: "i_C(0⁺) = −4 A   ·   v_C′(0⁺) = −32 V/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** Sem energia inicial, o capacitor é uma fonte de $0\ \mathrm{V}$ e o indutor, uma de $0\ \mathrm{A}$. Com $i = 2 + i_C/2 = 0$, sai $i_C(0^+) = -4\ \mathrm{A}$, e $dv_C/dt = 8\,i_C = -32\ \mathrm{V/s}$ — a segunda condição do Passo 5.
+
+</Circuito>
 
 **Passo 6 — de $v_C$ para $i$:**
 
