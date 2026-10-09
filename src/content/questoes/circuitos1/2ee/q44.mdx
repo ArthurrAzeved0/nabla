@@ -77,7 +77,49 @@ $$
 i_n(t) = A\,e^{-\frac{5}{2}t}
 $$
 
+<Circuito
+  alt="Fonte de 10 V em curto; o indutor sai e, pelos seus terminais, o 4 Ω fica em série com os dois 2 Ω em paralelo: R_eq = 5 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "10 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "2 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "2 Ω" },
+    { t: "R", de: [2.4, 0], para: [5, 0], valor: "4 Ω" },
+    { t: "no", em: [5, 0] },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+    { t: "no", em: [5, 3.4] },
+    { t: "texto", em: [5.25, 1.75], texto: "R_{eq} = 5 Ω", ancora: "start", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte em curto, os dois $2\ \Omega$ ficam em paralelo ($1\ \Omega$) e em série com o $4\ \Omega$: $R_{eq} = 5\ \Omega$ e $\tau = 2/5\ \mathrm{s}$, o mesmo $s = -5/2$.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** $5K = 5$, logo $i_f = 1\ \mathrm{A}$.
+
+<Circuito
+  alt="Em t tendendo a infinito o indutor vira curto: 4 Ω em paralelo com 2 Ω, divisor com o 2 Ω de cima, v = 4 V e i = 1 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "2 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [2.4, 0], para: [5, 0], valor: "4 Ω" },
+    { t: "no", em: [5, 0] },
+    { t: "fio", pts: [[5, 0], [5, 3.4]] },
+    { t: "corrente", de: [5, 0.4], para: [5, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [5.25, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+    { t: "texto", em: [2.5, 4.15], texto: "v(∞) = 10 · (4/3)/(2 + 4/3) = 4 V   ·   i(∞) = 4/4 = 1 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final.** O indutor vira fio, o $4\ \Omega$ fica em paralelo com o $2\ \Omega$ vertical ($4/3\ \Omega$) e o divisor dá $v = 4\ \mathrm{V}$; pelo ramo do indutor passa $i = 4/4 = 1\ \mathrm{A}$ — a resposta forçada.
+
+</Circuito>
 
 **Passo 5 — a constante.** De $i(0) = 2$:
 
@@ -88,6 +130,27 @@ A = 1
 \qquad\Longrightarrow\qquad
 i(t) = e^{-\frac{5}{2}t} + 1\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em t = 0⁺ o indutor vira fonte de corrente de 2 A; a LKC no nó dá v(0⁺) = 3 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "2 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i_T" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [2.4, 0], para: [5, 0], valor: "4 Ω" },
+    { t: "no", em: [5, 0] },
+    { t: "I", de: [5, 0], para: [5, 3.4], valor: "2 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+    { t: "texto", em: [2.5, 4.15], texto: "(10 − v)/2 = v/2 + 2  →  v(0⁺) = 3 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante inicial.** O indutor vira fonte de $2\ \mathrm{A}$. A LKC no nó do meio, $\frac{10 - v}{2} = \frac{v}{2} + 2$, dá $v(0^+) = 3\ \mathrm{V}$ — o que $v(t) = 4 - e^{-5t/2}$ tem de dar em $t = 0$.
+
+</Circuito>
 
 **Passo 6 — volte para $v$.** Pela LKT do ramo do indutor:
 
