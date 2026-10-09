@@ -61,6 +61,33 @@ i_L(0^-) = \frac{20}{8} = 2{,}5\ \mathrm{A}
 i_L(0^+) = 2{,}5\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: só a fonte de 20 V ligada, 8 Ω, 2 Ω e o indutor em curto, com i_L = 2,5 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.25], texto: "aberta" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "8 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "texto", em: [4.95, 2.5], texto: "i = 0", ancora: "start" },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "fio", pts: [[6.8, 0], [6.8, 3.4]] },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], abaixo: false },
+    { t: "texto", em: [7.1, 1.0], texto: "i_L(0⁻) = 2,5 A", ancora: "start", destaque: true },
+    { t: "texto", em: [7.1, 2.3], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [6.8, 3.4]] },
+  ]}
+>
+
+**Em $t = 0^-$.** A fonte de $20\ \mathrm{V}$ está ligada e o indutor é um fio, que põe o $2\ \Omega$ em curto: só o $8\ \Omega$ limita a corrente, $i_L(0^-) = 20/8 = 2{,}5\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Com a fonte de $50\ \mathrm{V}$:
 
 $$
@@ -71,6 +98,32 @@ i_T = i + i_L
 2\,i = \frac{di_L}{dt}
 $$
 
+<Circuito
+  alt="Para t maior que 0: fonte de 50 V ligada, ramo de 20 V aberto, correntes i_T no 8 Ω, i no 2 Ω e i_L no indutor"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "corrente", de: [0.3, 0], para: [1.3, 0], rotulo: "i_T" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "texto", em: [2.05, 1.0], texto: "aberta", ancora: "start" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "8 Ω" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "L", de: [6.8, 0], para: [6.8, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6.8, 3.4]] },
+  ]}
+>
+
+**Para $t \gt 0$.** A fonte de $50\ \mathrm{V}$ entra e a de $20\ \mathrm{V}$ sai. A corrente $i_T$ do $8\ \Omega$ se divide entre o $2\ \Omega$ e o indutor, que estão em paralelo: $i_T = i + i_L$ e $2i = v_L$.
+
+</Circuito>
+
 **Passo 3 — a equação em $i_L$.** De $i = \dfrac12\dfrac{di_L}{dt}$:
 
 $$
@@ -80,6 +133,25 @@ $$
 $$
 
 **Passo 4 — resposta natural e forçada.** De $5s + 8 = 0$ vem $s = -1{,}6$; e $8K = 50$ dá $i_{L,f} = 6{,}25\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 50 V desligada (curto): o indutor enxerga o 8 Ω em paralelo com o 2 Ω, 1,6 Ω"
+  itens={[
+    { t: "fio", pts: [[1.8, 3.4], [1.8, 0]] },
+    { t: "texto", em: [1.55, 1.75], texto: "50 V: curto", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "8 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "L", de: [6.8, 0], para: [6.8, 3.4], valor: "1 H", abaixo: true, destaque: true },
+    { t: "fio", pts: [[1.8, 3.4], [6.8, 3.4]] },
+    { t: "texto", em: [4.3, 4.2], texto: "R_{eq} = 8 ∥ 2 = 1,6 Ω   ·   τ = L/R_{eq} = 1/1,6 s", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte desligada, o indutor vê o $8\ \Omega$ e o $2\ \Omega$ em paralelo: $R_{eq} = 1{,}6\ \Omega$, e $s = -R_{eq}/L = -1{,}6$, a mesma raiz de $5s + 8 = 0$.
+
+</Circuito>
 
 **Passo 5 — a constante.** De $i_L(0) = 2{,}5$:
 
@@ -104,6 +176,30 @@ $$
 $$
 \boxed{v(t) = 50 - 6\,e^{-1,6t}\ \mathrm{V}}
 $$
+
+<Circuito
+  alt="Em t = 0⁺: fonte de 50 V, 8 Ω com 44 V, 2 Ω com 3 A e o indutor como fonte de corrente de 2,5 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "corrente", de: [0.3, 0], para: [1.3, 0], rotulo: "5,5 A" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "8 Ω" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [2.45, 1.05], texto: "v(0⁺) = 44 V", destaque: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], abaixo: false },
+    { t: "texto", em: [4.45, 0.8], texto: "i(0⁺) = 3 A", ancora: "start", destaque: true },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "I", de: [6.8, 0], para: [6.8, 3.4], valor: "2,5 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [6.8, 3.4]] },
+  ]}
+>
+
+**Em $t = 0^+$.** O indutor vira uma fonte de corrente de $2{,}5\ \mathrm{A}$. A LKC no nó, $(50 - v_n)/8 = v_n/2 + 2{,}5$, dá $v_n = v_L = 6\ \mathrm{V}$: daí $v(0^+) = 44\ \mathrm{V}$ e $i(0^+) = 3\ \mathrm{A}$, os valores das respostas em $t = 0$.
+
+</Circuito>
 
 **Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{1}{8 \parallel 2} = \dfrac{1}{1{,}6}$ s, e de fato $s = -1{,}6$ ✔ Em $t = 0$: $v = 44$ V, então $i_T = 5{,}5$ A, e como $i_L = 2{,}5$ A sobra $i = 3$ A ✔ com $v_L = 50 - 44 = 6$ V, que dá $i = 6/2 = 3$ A ✔ Em $t \to \infty$: $i \to 0$, $v \to 50$ V e $i_L \to 6{,}25$ A ✔
 
