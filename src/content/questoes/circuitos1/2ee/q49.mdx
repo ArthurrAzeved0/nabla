@@ -64,6 +64,32 @@ $$
 i(0) = \frac{20}{10} = 2\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em 0⁻: fonte de 20 V, 10 Ω, indutor em curto levando 2 A; chave da esquerda aberta; capacitor aberto, ligado ao 3 Ω e à fonte de 4 V, com 4 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "10 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [2.4, 3.4]] },
+    { t: "corrente", de: [2.4, 0.9], para: [2.4, 1.8], rotulo: "i", abaixo: false },
+    { t: "texto", em: [2.6, 2.5], texto: "L: curto", ancora: "start" },
+    { t: "texto", em: [3.8, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [5.2, 0] },
+    { t: "tensao", de: [5.2, 3.4], para: [5.2, 0], rotulo: "v_C", abaixo: true },
+    { t: "texto", em: [5.0, 1.75], texto: "C: aberto", ancora: "end" },
+    { t: "fio", pts: [[5.2, 0], [7.2, 0]] },
+    { t: "R", de: [7.2, 0], para: [9.6, 0], valor: "3 Ω" },
+    { t: "no", em: [9.6, 0] },
+    { t: "V", de: [9.6, 3.4], para: [9.6, 0], valor: "4 V", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+    { t: "texto", em: [4.8, 4.1], texto: "i(0⁻) = 2 A   ·   v_C(0⁻) = 4 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente antes da chave ($t = 0^-$).** O indutor é fio e leva $20/10 = 2\ \mathrm{A}$; o capacitor, aberto e sem corrente, fica com a tensão inteira da fonte de $4\ \mathrm{V}$, porque o $3\ \Omega$ não tem queda.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Com o capacitor agora em paralelo com o indutor:
 
 $$
@@ -100,6 +126,27 @@ $$
 i_n(t) = e^{-t}\left(A_1\cos 2t + A_2\operatorname{sen} 2t\right)
 $$
 
+<Circuito
+  alt="Para t maior que 0, fontes desligadas: 20 V vira fio, e 10 Ω, indutor de 4 H e capacitor de 1/20 F ficam em paralelo; o ramo do 3 Ω saiu"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "20 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "10 Ω", destaque: true },
+    { t: "no", em: [2.4, 0] },
+    { t: "L", de: [2.4, 0], para: [2.4, 3.4], valor: "4 H", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5.2, 0]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "C", de: [5.2, 0], para: [5.2, 3.4], valor: "1/20 F", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.2, 3.4]] },
+    { t: "no", em: [2.4, 3.4] },
+    { t: "texto", em: [2.6, 4.1], texto: "α = 1   ·   ω₀ = √5   ·   ω_d = 2", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O RLC que sobra para $t \gt 0$.** Com a fonte de $20\ \mathrm{V}$ zerada, o $10\ \Omega$, o indutor e o capacitor ficam em paralelo (o ramo do $3\ \Omega$ saiu na comutação): $\alpha = \dfrac{1}{2RC} = \dfrac{1}{2 \cdot 10 \cdot \frac{1}{20}} = 1$ e $\omega_0 = \dfrac{1}{\sqrt{LC}} = \sqrt{5}$, logo $\omega_d = \sqrt{5 - 1} = 2$ — as raízes $-1 \pm j2$.
+
+</Circuito>
+
 **Passo 5 — resposta forçada.** $5K = 10$, logo $i_f = 2\ \mathrm{A}$.
 
 **Passo 6 — a primeira constante.** De $i(0) = 2$:
@@ -109,6 +156,27 @@ $$
 \qquad\Longrightarrow\qquad
 A_1 = 0
 $$
+
+<Circuito
+  alt="Em 0⁺: fonte de 20 V, 10 Ω com v igual a 16 V, chave fechada; o indutor virou fonte de corrente de 2 A e o capacitor fonte de tensão de 4 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "10 Ω" },
+    { t: "tensao", de: [2.4, 0], para: [0, 0], rotulo: "v" },
+    { t: "no", em: [2.4, 0] },
+    { t: "I", de: [2.4, 0], para: [2.4, 3.4], valor: "2 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[2.4, 0], [5.2, 0]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "V", de: [5.2, 3.4], para: [5.2, 0], valor: "4 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [5.2, 3.4]] },
+    { t: "no", em: [2.4, 3.4] },
+    { t: "texto", em: [2.6, 4.1], texto: "v(0⁺) = 16 V   ·   v_L(0⁺) = 4 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante $t = 0^+$.** O indutor vira fonte de $2\ \mathrm{A}$ e o capacitor fonte de $4\ \mathrm{V}$, agora em paralelo com o indutor. A tensão do indutor é a do capacitor: $4\,di/dt(0^+) = 4$, ou $di/dt(0^+) = 1\ \mathrm{A/s}$ — é a condição que fixa $A_2$.
+
+</Circuito>
 
 **Passo 7 — a segunda.** A tensão do capacitor é $4\,di/dt$, e em $t = 0$, com $A_1 = 0$:
 
