@@ -63,6 +63,39 @@ $$
 
 O $10\ \Omega$ não conduz nada, porque não cai tensão nele.
 
+<Circuito
+  alt="Em t = 0⁻: fonte de 10 V ligada, a de 20 V desligada pela chave aberta, indutor em curto e capacitor aberto"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.35], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "10 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [2.5, 0], para: [3.3, 0], rotulo: "2 A", abaixo: false },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6.2, 0]] },
+    { t: "no", em: [6.2, 0] },
+    { t: "fio", pts: [[6.2, 0], [6.2, 3.4]] },
+    { t: "corrente", de: [6.2, 1.2], para: [6.2, 2.2], rotulo: "i_L" },
+    { t: "texto", em: [6.45, 0.6], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[6.2, 0], [10.4, 0]] },
+    { t: "no", em: [10.4, 0] },
+    { t: "fio", pts: [[10.4, 0], [10.4, 1.1]] },
+    { t: "fio", pts: [[10.4, 2.3], [10.4, 3.4]] },
+    { t: "texto", em: [10.65, 1.75], texto: "aberto", ancora: "start" },
+    { t: "tensao", de: [10.4, 3.4], para: [10.4, 0], rotulo: "v_C", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [10.4, 3.4]] },
+    { t: "texto", em: [5.2, 4.1], texto: "i_L(0⁻) = 10/5 = 2 A   ·   v_C(0⁻) = 0   ·   10 Ω sem corrente", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^-$: capacitor aberto, indutor em curto.** O indutor aterra o nó do meio, então o $10\ \Omega$ e o capacitor ficam sem tensão, $v_C(0^-) = 0$, e os $10\ \mathrm{V}$ caem inteiros no $5\ \Omega$: $i_L(0^-) = 2\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Agora a fonte é de $20\ \mathrm{V}$:
 
 $$
@@ -92,6 +125,29 @@ $$
 \frac{d^2 i_L}{dt^2} + 6\frac{di_L}{dt} + 5\,i_L = 20
 $$
 
+<Circuito
+  alt="Fonte zerada: o 5 Ω desce para o terra e fica em paralelo com o 10 Ω, o indutor de 4 H e o capacitor, um RLC paralelo"
+  itens={[
+    { t: "fio", pts: [[1.8, 3.4], [1.8, 0]] },
+    { t: "texto", em: [1.55, 1.75], texto: "20 V: curto", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "5 Ω", abaixo: true, destaque: true },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "10 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[4, 0], [6.2, 0]] },
+    { t: "no", em: [6.2, 0] },
+    { t: "L", de: [6.2, 0], para: [6.2, 3.4], valor: "4 H", abaixo: true },
+    { t: "fio", pts: [[6.2, 0], [10.4, 0]] },
+    { t: "C", de: [10.4, 0], para: [10.4, 3.4], valor: "1/20 F" },
+    { t: "fio", pts: [[1.8, 3.4], [10.4, 3.4]] },
+    { t: "texto", em: [6.1, 4.1], texto: "RLC paralelo:  R = 5 ∥ 10 = 10/3 Ω", ancora: "middle", destaque: true },
+    { t: "texto", em: [6.1, 4.6], texto: "α = 1/(2RC) = 3   ·   ω_0 = 1/√(LC) = √5", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Fonte em curto: RLC paralelo.** Com a fonte zerada, o $5\ \Omega$ passa a ir do nó ao terra e fica em paralelo com o $10\ \Omega$: $R = 10/3\ \Omega$. Daí $\alpha = 1/(2RC) = 3$ e $\omega_0 = 1/\sqrt{LC} = \sqrt{5}$, que é a equação $s^2 + 6s + 5 = 0$.
+
+</Circuito>
+
 **Passo 4 — resposta natural.** De $s^2 + 6s + 5 = 0$:
 
 $$
@@ -109,6 +165,37 @@ i_{L,n}(t) = A_1 e^{-t} + A_2 e^{-5t}
 $$
 
 **Passo 5 — resposta forçada.** $5K = 20$, logo $i_{L,f} = 4\ \mathrm{A}$.
+
+<Circuito
+  alt="t tendendo ao infinito: fonte de 20 V ligada, indutor em curto e capacitor aberto; i_L vale 4 A e v vale 20 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "10 V", abaixo: true },
+    { t: "texto", em: [1.6, 0.75], texto: "aberta", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "5 Ω", abaixo: true },
+    { t: "tensao", de: [4, 0], para: [1.8, 0], rotulo: "v", abaixo: false },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6.2, 0]] },
+    { t: "no", em: [6.2, 0] },
+    { t: "fio", pts: [[6.2, 0], [6.2, 3.4]] },
+    { t: "corrente", de: [6.2, 1.2], para: [6.2, 2.2], rotulo: "i_L" },
+    { t: "texto", em: [6.45, 0.6], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[6.2, 0], [10.4, 0]] },
+    { t: "no", em: [10.4, 0] },
+    { t: "fio", pts: [[10.4, 0], [10.4, 1.1]] },
+    { t: "fio", pts: [[10.4, 2.3], [10.4, 3.4]] },
+    { t: "texto", em: [10.65, 1.75], texto: "aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [10.4, 3.4]] },
+    { t: "texto", em: [5.2, 4.1], texto: "i_L(∞) = 20/5 = 4 A   ·   v(∞) = 20 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t \to \infty$: de novo capacitor aberto e indutor em curto.** Agora com $20\ \mathrm{V}$: o indutor aterra o nó do meio, $i_{L,f} = 20/5 = 4\ \mathrm{A}$, e os $20\ \mathrm{V}$ inteiros ficam no $5\ \Omega$.
+
+</Circuito>
 
 **Passo 6 — as constantes.** De $i_L(0) = 2$:
 
@@ -137,6 +224,33 @@ $$
 $$
 i_L(t) = 4 - \frac{5}{2}\,e^{-t} + \frac{1}{2}\,e^{-5t}\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em t = 0⁺: fonte de 20 V, capacitor como fonte de 0 V e indutor como fonte de 2 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "10 V", abaixo: true },
+    { t: "texto", em: [1.6, 0.75], texto: "aberta", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "5 Ω", abaixo: true },
+    { t: "tensao", de: [4, 0], para: [1.8, 0], rotulo: "v", abaixo: false },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6.2, 0]] },
+    { t: "no", em: [6.2, 0] },
+    { t: "I", de: [6.2, 0], para: [6.2, 3.4], valor: "2 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[6.2, 0], [10.4, 0]] },
+    { t: "no", em: [10.4, 0] },
+    { t: "V", de: [10.4, 3.4], para: [10.4, 0], valor: "0 V", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [10.4, 3.4]] },
+    { t: "texto", em: [5.2, 4.1], texto: "di_L(0)/dt = v_C(0)/4 = 0   ·   v(0⁺) = 20 − 0 = 20 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^+$: o capacitor é uma fonte de 0 V, o indutor uma de 2 A.** O nó do meio continua no terra, então $di_L(0)/dt = v_C(0)/4 = 0$ — a segunda condição do Passo 6 — e o $5\ \Omega$ recebe os $20\ \mathrm{V}$ inteiros: $v(0^+) = 20\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 7 — volte para $v$.** Primeiro a tensão do capacitor:
 
