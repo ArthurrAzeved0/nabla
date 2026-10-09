@@ -63,6 +63,34 @@ $$
 i_1(0) = i_2(0) = \frac{5}{2}\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em 0⁻: chave aberta, indutores em curto; 5 A da fonte divididos em 5/2 A por ramo"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V", destaque: true },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "4 Ω" },
+    { t: "corrente", de: [0.3, 0], para: [1.7, 0], rotulo: "5 A" },
+    { t: "no", em: [2, 0] },
+    { t: "texto", em: [2.15, 2], texto: "aberta", ancora: "start" },
+    { t: "fio", pts: [[2, 0], [3.6, 0]] },
+    { t: "no", em: [3.6, 0] },
+    { t: "R", de: [3.6, 0], para: [3.6, 1.7], valor: "8 Ω" },
+    { t: "fio", pts: [[3.6, 1.7], [3.6, 3.4]] },
+    { t: "corrente", de: [3.6, 2.2], para: [3.6, 2.9] },
+    { t: "texto", em: [4.35, 2.65], texto: "5/2 A", ancora: "start" },
+    { t: "fio", pts: [[3.6, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 1.7], valor: "8 Ω", abaixo: true },
+    { t: "fio", pts: [[5.4, 1.7], [5.4, 3.4]] },
+    { t: "corrente", de: [5.4, 2.2], para: [5.4, 2.9] },
+    { t: "texto", em: [6.15, 2.65], texto: "5/2 A", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [5.4, 3.4]] },
+    { t: "texto", em: [4.5, 4.05], texto: "1 H e 2 H: curto", ancora: "middle" },
+  ]}
+>
+
+**Em $t = 0^-$.** Chave aberta e indutores em curto: $40\ \mathrm{V}$ sobre $4 + (8 \parallel 8) = 8\ \Omega$ dá $5\ \mathrm{A}$, metade em cada ramo — $i_1(0) = i_2(0) = 5/2\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 2 — o circuito para $t > 0$.** A chave fecha e **aterra** o nó comum. Consequências:
 
 - a fonte com o $4\ \Omega$ passa a entregar $\dfrac{40}{4} = 10\ \mathrm{A}$ direto para a chave;
@@ -83,6 +111,36 @@ $$
 i_2(t) = \frac{5}{2}\,e^{-4t}\ \mathrm{A}
 \qquad (\tau_2 = \tfrac14\ \mathrm{s})
 $$
+
+<Circuito
+  alt="Para t maior que 0: chave fechada aterrando o nó comum; a fonte manda 10 A para a chave e cada ramo RL se descarrega sozinho, com τ de 1/8 s e 1/4 s"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "4 Ω" },
+    { t: "corrente", de: [0.3, 0], para: [1.7, 0], rotulo: "10 A" },
+    { t: "no", em: [2, 0] },
+    { t: "fio", pts: [[2, 0], [2, 3.4]] },
+    { t: "corrente", de: [2, 1], para: [2, 1.6], rotulo: "i", abaixo: false },
+    { t: "texto", em: [1.85, 2.5], texto: "fechada", ancora: "end" },
+    { t: "fio", pts: [[2, 0], [3.6, 0]] },
+    { t: "no", em: [3.6, 0] },
+    { t: "R", de: [3.6, 0], para: [3.6, 1.7], valor: "8 Ω" },
+    { t: "L", de: [3.6, 1.7], para: [3.6, 3.4], valor: "1 H", destaque: true },
+    { t: "corrente", de: [3.6, 1.35], para: [3.6, 2.05], rotulo: "i_1" },
+    { t: "fio", pts: [[3.6, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 1.7], valor: "8 Ω", abaixo: true },
+    { t: "L", de: [5.4, 1.7], para: [5.4, 3.4], valor: "2 H", abaixo: true, destaque: true },
+    { t: "corrente", de: [5.4, 1.35], para: [5.4, 2.05], rotulo: "i_2" },
+    { t: "fio", pts: [[0, 3.4], [5.4, 3.4]] },
+    { t: "no", em: [2, 3.4] },
+    { t: "texto", em: [3.6, 4.05], texto: "τ_1 = 1/8 s", ancora: "middle", destaque: true },
+    { t: "texto", em: [5.6, 4.05], texto: "τ_2 = 1/4 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Para $t \gt 0$.** A chave põe o nó comum no potencial do fio de baixo: a fonte com o $4\ \Omega$ entrega $10\ \mathrm{A}$, e cada ramo RL fica com tensão nula nos terminais e se descarrega sozinho, com $\tau = L/R$. Com $i_1$ e $i_2$ descendo pelos ramos, a LKC no nó comum dá $10 = i + i_1 + i_2$.
+
+</Circuito>
 
 **Passo 4 — a corrente da chave**, pela LKC no nó comum:
 
