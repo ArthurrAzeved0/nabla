@@ -77,6 +77,40 @@ $$
 
 Em regime permanente as duas derivadas em $0^-$ valem **zero**.
 
+<Circuito
+  alt="Em 0⁻: as duas chaves abertas; divisor de 40 V com os dois 4 Ω e o capacitor aberto com 20 V; indutor em curto levando os 10 A da fonte; 10 Ω sem corrente; fonte de 20 A isolada"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "4 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.2, 0], [4.6, 0]] },
+    { t: "no", em: [4.6, 0] },
+    { t: "tensao", de: [4.6, 3.4], para: [4.6, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [4.45, 2.9], texto: "C: aberto", ancora: "end" },
+    { t: "texto", em: [5.6, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "R", de: [6.6, 0], para: [9.2, 0], valor: "10 Ω" },
+    { t: "no", em: [9.2, 0] },
+    { t: "fio", pts: [[9.2, 0], [9.2, 3.4]] },
+    { t: "corrente", de: [9.2, 0.4], para: [9.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [9.4, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[9.2, 0], [12.4, 0]] },
+    { t: "no", em: [12.4, 0] },
+    { t: "I", de: [12.4, 3.4], para: [12.4, 0], valor: "10 A" },
+    { t: "texto", em: [13.5, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [14.6, 0] },
+    { t: "I", de: [14.6, 3.4], para: [14.6, 0], valor: "20 A" },
+    { t: "fio", pts: [[0, 3.4], [14.6, 3.4]] },
+    { t: "texto", em: [7.3, 4.1], texto: "v(0⁻) = 40 · 4/8 = 20 V   ·   i(0⁻) = 10 A   ·   derivadas nulas", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente com as chaves abertas ($t = 0^-$).** Capacitor aberto: a fonte de $40\ \mathrm{V}$ só alimenta o divisor dos dois $4\ \Omega$, e $v = 20\ \mathrm{V}$. Indutor em curto: o nó dele fica no terra, os $10\ \Omega$ não conduzem e os $10\ \mathrm{A}$ da fonte descem todos pelo indutor.
+
+</Circuito>
+
 **Passo 3 — continuidade.**
 
 $$
@@ -113,6 +147,39 @@ i_C(0^+) = 18\ \mathrm{A}
 \qquad\Longrightarrow\qquad
 \boxed{\frac{dv(0^+)}{dt} = \frac{18}{1} = 18\ \mathrm{V/s}}
 $$
+
+<Circuito
+  alt="Em 0⁺: chaves fechadas; capacitor como fonte de 20 V, indutor como fonte de corrente de 10 A; as fontes de 10 A e 20 A despejam 30 A no nó do indutor, que sobe a 220 V, e 20 A voltam pelo 10 Ω horizontal"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "4 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.2, 0], [4.6, 0]] },
+    { t: "no", em: [4.6, 0] },
+    { t: "V", de: [4.6, 3.4], para: [4.6, 0], valor: "20 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[4.6, 0], [6.6, 0]] },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "R", de: [6.6, 0], para: [9.2, 0], valor: "10 Ω" },
+    { t: "corrente", de: [8.4, 0], para: [7.4, 0], rotulo: "20 A" },
+    { t: "no", em: [9.2, 0] },
+    { t: "texto", em: [9.35, -0.3], texto: "v_D = 220 V", ancora: "start", destaque: true },
+    { t: "I", de: [9.2, 0], para: [9.2, 3.4], valor: "10 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[9.2, 0], [12.4, 0]] },
+    { t: "no", em: [12.4, 0] },
+    { t: "I", de: [12.4, 3.4], para: [12.4, 0], valor: "10 A" },
+    { t: "fio", pts: [[12.4, 0], [14.6, 0]] },
+    { t: "no", em: [14.6, 0] },
+    { t: "I", de: [14.6, 3.4], para: [14.6, 0], valor: "20 A" },
+    { t: "fio", pts: [[0, 3.4], [14.6, 3.4]] },
+    { t: "texto", em: [7.3, 4.1], texto: "di/dt(0⁺) = 220/4 = 55 A/s   ·   i_C(0⁺) = 18 A, dv/dt(0⁺) = 18 V/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante $t = 0^+$.** Capacitor como fonte de $20\ \mathrm{V}$, indutor como fonte de $10\ \mathrm{A}$. No nó do indutor entram $30\ \mathrm{A}$ e saem $10$: os $20\ \mathrm{A}$ restantes voltam pelo $10\ \Omega$ horizontal, o que exige $v_D = 20 + 10 \cdot 20 = 220\ \mathrm{V}$. No nó do capacitor, $5 + 20 = 5 + 2 + i_C$, ou $i_C = 18\ \mathrm{A}$.
+
+</Circuito>
 
 **Conferência —** o sinal de $v_D$ é o que dá o tom: as fontes de corrente empurram $30\ \mathrm{A}$ num nó que só sabe escoar $10\ \mathrm{A}$, e a tensão desse nó **explode** para $220\ \mathrm{V}$ — daí a derivada grande da corrente do indutor ✔ E os $20\ \mathrm{A}$ que sobem pelo $10\ \Omega$ são o que alimenta a subida do capacitor ✔
 
