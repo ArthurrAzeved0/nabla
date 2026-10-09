@@ -84,6 +84,35 @@ i_L(0^-) = \frac{34 - 5}{100} - \frac{5}{20} = 0{,}29 - 0{,}25
 \boxed{i_L(0^-) = 0{,}04\ \mathrm{A}}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: fonte de 34 V, 100 Ω, 20 Ω, indutor em fio, fonte controlada, chave fechada, 25 Ω, 75 Ω e capacitor aberto; um só nó de 5 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "34 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "100 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "20 Ω" },
+    { t: "fio", pts: [[2.2, 0], [7, 0]] },
+    { t: "corrente", de: [2.4, 0], para: [3.4, 0], rotulo: "i_L" },
+    { t: "texto", em: [3.6, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "no", em: [5, 0] },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "0,8i_x A" },
+    { t: "texto", em: [6, -0.3], texto: "chave fechada", ancora: "middle" },
+    { t: "no", em: [7, 0] },
+    { t: "R", de: [7, 0], para: [7, 3.4], valor: "25 Ω", abaixo: true },
+    { t: "corrente", de: [7, 0.4], para: [7, 1.4], rotulo: "i_x", abaixo: false },
+    { t: "R", de: [7, 0], para: [10, 0], valor: "75 Ω: i = 0" },
+    { t: "no", em: [10, 0] },
+    { t: "texto", em: [9.75, 1.75], texto: "C: aberto", ancora: "end" },
+    { t: "tensao", de: [10, 3.4], para: [10, 0], rotulo: "v_C", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [10, 3.4]] },
+    { t: "texto", em: [5, 4.2], texto: "v₁ = 5 V  ·  i_L(0⁻) = 0,04 A  ·  v_C(0⁻) = 5 V  ·  i_x = 0,2 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Chave fechada, indutor em fio e capacitor aberto: o $20\ \Omega$, a controlada e o $25\ \Omega$ ficam no mesmo nó, $v_1 = 5\ \mathrm{V}$. O $75\ \Omega$ não conduz, então $v_C = 5\ \mathrm{V}$; e $i_L = 0{,}29 - 0{,}25 = 0{,}04\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 3 — continuidade.**
 
 $$
@@ -99,6 +128,35 @@ $$
 \qquad\Longrightarrow\qquad
 \boxed{i_x(0^+) = -0{,}05\ \mathrm{A}}
 $$
+
+<Circuito
+  alt="Em t = 0⁺: o indutor virou fonte de 0,04 A e o capacitor fonte de 5 V; a chave aberta deixa o indutor em série com a fonte controlada"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "34 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "100 Ω" },
+    { t: "no", em: [2.2, 0] },
+    { t: "R", de: [2.2, 0], para: [2.2, 3.4], valor: "20 Ω" },
+    { t: "I", de: [2.2, 0], para: [5, 0], valor: "i_L = 0,04 A", destaque: true },
+    { t: "no", em: [5, 0] },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "0,8i_x A", destaque: true },
+    { t: "fio", pts: [[5, 0], [5.6, 0]] },
+    { t: "fio", pts: [[6.4, 0], [7, 0]] },
+    { t: "texto", em: [6, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [7, 0] },
+    { t: "R", de: [7, 0], para: [7, 3.4], valor: "25 Ω", abaixo: true },
+    { t: "corrente", de: [7, 0.4], para: [7, 1.4], rotulo: "i_x", abaixo: false },
+    { t: "R", de: [7, 0], para: [10, 0], valor: "75 Ω" },
+    { t: "tensao", de: [10, 0], para: [7, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [10, 0] },
+    { t: "V", de: [10, 3.4], para: [10, 0], valor: "v_C = 5 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [10, 3.4]] },
+    { t: "texto", em: [5, 4.2], texto: "nó da controlada:  0,8 i_x = −i_L = −0,04   →   i_x(0⁺) = −0,05 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** O indutor vira fonte de $0{,}04\ \mathrm{A}$ e o capacitor fonte de $5\ \mathrm{V}$. Com a chave aberta, o nó da controlada só tem o indutor entrando e a controlada saindo, e é essa LKC que fixa $i_x = -0{,}05\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 5 — a tensão do $75\ \Omega$.** Do lado direito da chave, a corrente que atravessa o $75\ \Omega$ é $-i_x$:
 
