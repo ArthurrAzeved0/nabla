@@ -60,6 +60,33 @@ i(0^-) = \frac{20}{5} = 4\ \mathrm{A}
 i(0^+) = 4\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: fonte de 20 V ligada, indutor em curto, a fonte controlada vale zero e os 20 V caem no 5 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.35], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "fio", pts: [[1.8, 0], [5, 0]] },
+    { t: "corrente", de: [2, 0], para: [2.8, 0], rotulo: "i" },
+    { t: "texto", em: [4, -0.35], texto: "curto: v = 0", ancora: "middle" },
+    { t: "no", em: [5, 0] },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "2v = 0" },
+    { t: "fio", pts: [[5, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [7.4, 0.4], para: [7.4, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+    { t: "texto", em: [3.7, 4.1], texto: "i(0⁻) = i_R = 20/5 = 4 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^-$: indutor em curto, controlada sem efeito.** Com $v = 0$, a fonte $2v$ entrega zero, e os $20\ \mathrm{V}$ caem inteiros no $5\ \Omega$: $i(0^-) = 4\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Com a fonte de $50\ \mathrm{V}$:
 
 $$
@@ -86,7 +113,58 @@ $$
 i_n(t) = A\,e^{-\frac{5}{22}t}
 $$
 
+<Circuito
+  alt="Fonte de 50 V em curto, indutor retirado: a resistência vista pelos terminais dele, com a controlada, é 5/11 Ω"
+  itens={[
+    { t: "fio", pts: [[1.8, 3.4], [1.8, 0]] },
+    { t: "texto", em: [1.55, 1.75], texto: "50 V: curto", ancora: "end" },
+    { t: "fio", pts: [[1.8, 0], [2.8, 0]] },
+    { t: "corrente", de: [1.9, 0], para: [2.7, 0], rotulo: "i", abaixo: false },
+    { t: "no", em: [2.8, 0] },
+    { t: "no", em: [5, 0] },
+    { t: "tensao", de: [5, 0], para: [2.8, 0], rotulo: "v" },
+    { t: "texto", em: [3.9, -0.4], texto: "R_{Th} = 5/11 Ω", ancora: "middle", destaque: true },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "2v A" },
+    { t: "fio", pts: [[5, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [7.4, 0.4], para: [7.4, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[1.8, 3.4], [7.4, 3.4]] },
+    { t: "texto", em: [4.6, 4.1], texto: "τ = L/R_{Th} = 2 · 11/5 = 22/5 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo, vista pelo indutor.** Fonte de $50\ \mathrm{V}$ em curto; a controlada fica. Com uma tensão de teste $v$ no lugar do indutor, $i_R = -v/5$ e $i = i_R - 2v = -11v/5$: a rede vale $R_{Th} = 5/11\ \Omega$, e $\tau = L/R_{Th} = 22/5\ \mathrm{s}$ — o $s = -5/22$ do Passo 4.
+
+</Circuito>
+
 **Passo 5 — resposta forçada.** $5K = 50$, logo $i_f = 10\ \mathrm{A}$.
+
+<Circuito
+  alt="t tendendo ao infinito: fonte de 50 V, indutor em curto, controlada nula e 10 A no 5 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", abaixo: true },
+    { t: "texto", em: [1.6, 0.75], texto: "aberta", ancora: "end" },
+    { t: "fio", pts: [[1.8, 0], [5, 0]] },
+    { t: "corrente", de: [2, 0], para: [2.8, 0], rotulo: "i" },
+    { t: "texto", em: [4, -0.35], texto: "curto: v = 0", ancora: "middle" },
+    { t: "no", em: [5, 0] },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "2v = 0" },
+    { t: "fio", pts: [[5, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [7.4, 0.4], para: [7.4, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+    { t: "texto", em: [3.7, 4.1], texto: "i(∞) = 50/5 = 10 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t \to \infty$: indutor em curto de novo.** $v = 0$ e a controlada volta a não entregar nada: $i_f = 50/5 = 10\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 6 — a constante.** De $i(0) = 4$:
 
@@ -109,4 +187,30 @@ $$
 $$
 
 **Conferência —** em $t \to \infty$ o indutor vira fio, $v \to 0$, a fonte controlada morre e $i \to 50/5 = 10$ A ✔ Em $t = 0$: $v = 30/11 \approx 2{,}73$ V, então $i_R = i + 2v = 4 + 5{,}45 = 9{,}45$ A e a LKT fecha em $2{,}73 + 5 \cdot 9{,}45 \approx 50$ V ✔ Confere com a resolução da prova.
+
+<Circuito
+  alt="Em t = 0⁺: fonte de 50 V, o indutor como fonte de 4 A, a controlada 2v e o 5 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", abaixo: true },
+    { t: "texto", em: [1.6, 0.75], texto: "aberta", ancora: "end" },
+    { t: "fio", pts: [[1.8, 0], [2.8, 0]] },
+    { t: "I", de: [2.8, 0], para: [5, 0], valor: "4 A", abaixo: true, destaque: true },
+    { t: "tensao", de: [5, -0.3], para: [2.8, -0.3], rotulo: "v", abaixo: false },
+    { t: "no", em: [5, 0] },
+    { t: "Id", de: [5, 3.4], para: [5, 0], rotulo: "2v A" },
+    { t: "fio", pts: [[5, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [7.4, 0.4], para: [7.4, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+    { t: "texto", em: [3.7, 4.1], texto: "50 = v + 5(4 + 2v)   →   v(0⁺) = 30/11 ≈ 2,73 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^+$: o indutor é uma fonte de 4 A.** LKC no nó da controlada, $i_R = 4 + 2v$; LKT na malha, $50 = v + 5(4 + 2v)$, ou $11v = 30$ — o mesmo $v(0^+) = 30/11\ \mathrm{V}$ da fórmula.
+
+</Circuito>
 </Passos>
