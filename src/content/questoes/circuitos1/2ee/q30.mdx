@@ -64,6 +64,34 @@ $$
 
 Por continuidade, $i(0^+) = 5\ \mathrm{A}$ e $v(0^+) = 25\ \mathrm{V}$.
 
+<Circuito
+  alt="Circuito em 0⁻: fonte de 50 V ligada, ramo de 20 V aberto, capacitor aberto, indutor em curto; i = 5 A e v = 25 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "texto", em: [1.65, 0.75], texto: "aberta", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "5 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "texto", em: [3.85, 1.7], texto: "C: aberto", ancora: "end" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6.2, 0]] },
+    { t: "no", em: [6.2, 0] },
+    { t: "corrente", de: [6.2, 0.2], para: [6.2, 0.8], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[6.2, 0], [6.2, 1]] },
+    { t: "R", de: [6.2, 1], para: [6.2, 2.2], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[6.2, 2.2], [6.2, 3.4]] },
+    { t: "texto", em: [6.35, 2.95], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [6.2, 3.4]] },
+    { t: "texto", em: [3.1, 4.0], texto: "i(0⁻) = 50/(5 + 5) = 5 A   ·   v(0⁻) = 5 · 5 = 25 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime em $0^-$.** Capacitor aberto e indutor em fio: a fonte de $50\ \mathrm{V}$ enxerga os dois $5\ \Omega$ em série, $i = 5\ \mathrm{A}$, e o capacitor fica com a tensão do $5\ \Omega$ de baixo, $v = 25\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Com a fonte de $20\ \mathrm{V}$, chamando $i_g$ a corrente da fonte:
 
 $$
@@ -114,6 +142,35 @@ $$
 i_f(t) = 2\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Regime final com a fonte de 20 V: capacitor aberto, indutor em curto; i = 2 A e v = 10 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "5 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "texto", em: [3.85, 1.7], texto: "C: aberto", ancora: "end" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6.2, 0]] },
+    { t: "no", em: [6.2, 0] },
+    { t: "corrente", de: [6.2, 0.2], para: [6.2, 0.8], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[6.2, 0], [6.2, 1]] },
+    { t: "R", de: [6.2, 1], para: [6.2, 2.2], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[6.2, 2.2], [6.2, 3.4]] },
+    { t: "texto", em: [6.35, 2.95], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [6.2, 3.4]] },
+    { t: "texto", em: [3.1, 4.0], texto: "i(∞) = 20/(5 + 5) = 2 A   ·   v(∞) = 5 · 2 = 10 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final.** Com a fonte de $20\ \mathrm{V}$, o capacitor volta a abrir e o indutor a ser fio: $i \to 2\ \mathrm{A}$, a resposta forçada, e $v \to 10\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 6 — as duas constantes.** A primeira equação sai de $i(0) = 5$:
 
 $$
@@ -141,6 +198,33 @@ $$
 $$
 \boxed{i(t) = 4{,}08\,e^{-1,15t} - 1{,}08\,e^{-4,35t} + 2\ \mathrm{A}}
 $$
+
+<Circuito
+  alt="Circuito em 0⁺: fonte de 20 V, capacitor como fonte de 25 V, indutor como fonte de 5 A; o 5 Ω do ramo cai 25 V e sobra 0 V no indutor"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "5 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "V", de: [4, 3.4], para: [4, 0], valor: "25 V", destaque: true },
+    { t: "fio", pts: [[4, 0], [6.2, 0]] },
+    { t: "no", em: [6.2, 0] },
+    { t: "corrente", de: [6.2, 0.2], para: [6.2, 0.8], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[6.2, 0], [6.2, 1]] },
+    { t: "R", de: [6.2, 1], para: [6.2, 2.2], valor: "5 Ω", abaixo: true },
+    { t: "I", de: [6.2, 2.2], para: [6.2, 3.4], valor: "5 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [6.2, 3.4]] },
+    { t: "texto", em: [3.1, 4.0], texto: "v_L(0⁺) = 25 − 5 · 5 = 0   ·   di/dt(0⁺) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $0^+$.** O capacitor vira fonte de $25\ \mathrm{V}$ e o indutor, fonte de $5\ \mathrm{A}$. O $5\ \Omega$ do ramo cai $5 \cdot 5 = 25\ \mathrm{V}$ — tudo o que o capacitor oferece —, sobra $v_L(0^+) = 0$ e por isso $di(0)/dt = 0$, a segunda condição do Passo 6.
+
+</Circuito>
 
 **Passo 7 — a tensão.** Basta $v = 5i + 10\,di/dt$, agrupando cada exponencial:
 
