@@ -61,6 +61,31 @@ i(0^-) = \frac{48}{6} = 8\ \mathrm{A}
 i(0^+) = 8\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Circuito em t = 0⁻: fonte de 48 V ligada, ramo de 12 V aberto, 6 Ω, indutor em curto sobre o 2 Ω, i = 8 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "48 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "12 V" },
+    { t: "texto", em: [2, 0.8], texto: "aberta", ancora: "start" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "6 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "fio", pts: [[4.2, 0], [4.2, 3.4]] },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [4.45, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[4.2, 0], [6.6, 0]] },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+    { t: "texto", em: [3.3, 4.15], texto: "i(0⁻) = 48/6 = 8 A   ·   2 Ω sem corrente", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** O indutor em fio curto-circuita o $2\ \Omega$, e a fonte de $48\ \mathrm{V}$ vê só o $6\ \Omega$: $i(0^-) = 8\ \mathrm{A}$, que o indutor carrega para $t = 0^+$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Agora a fonte é de $12\ \mathrm{V}$:
 
 $$
@@ -82,6 +107,25 @@ $$
 \frac{di}{dt} + 6\,i = 12
 $$
 
+<Circuito
+  alt="Fonte em curto; o indutor sai e, pelos seus terminais, o 6 Ω fica em paralelo com o 2 Ω: R_eq = 1,5 Ω"
+  itens={[
+    { t: "fio", pts: [[1.8, 3.4], [1.8, 0]] },
+    { t: "texto", em: [1.55, 1.7], texto: "12 V: curto", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "6 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "no", em: [4.2, 3.4] },
+    { t: "texto", em: [4.45, 1.7], texto: "R_{eq} = 6 ∥ 2 = 1,5 Ω", ancora: "start", destaque: true },
+    { t: "fio", pts: [[4.2, 0], [7.4, 0]] },
+    { t: "R", de: [7.4, 0], para: [7.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[1.8, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte em curto, os terminais do indutor enxergam o $6\ \Omega$ em paralelo com o $2\ \Omega$: $R_{eq} = 3/2\ \Omega$ e $\tau = \frac{1/4}{3/2} = \frac16\ \mathrm{s}$, o $s = -6$ da equação.
+
+</Circuito>
+
 **Passo 4 — resposta natural e forçada.** De $s + 6 = 0$ vem $s = -6$; e $6K = 12$ dá $i_f = 2\ \mathrm{A}$:
 
 $$
@@ -97,6 +141,32 @@ A = 6
 \qquad\Longrightarrow\qquad
 \boxed{i(t) = 2 + 6\,e^{-6t}\ \mathrm{A}}
 $$
+
+<Circuito
+  alt="Circuito em t = 0⁺: fonte de 12 V ligada, indutor como fonte de corrente de 8 A; a tensão do nó é −9 V e v = 21 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "48 V" },
+    { t: "fio", pts: [[0, 0], [0.5, 0]] },
+    { t: "texto", em: [0.75, -0.35], texto: "aberta", ancora: "start" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "12 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "6 Ω" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: false },
+    { t: "no", em: [4.2, 0] },
+    { t: "I", de: [4.2, 0], para: [4.2, 3.4], valor: "8 A", destaque: true },
+    { t: "texto", em: [4.4, -0.3], texto: "v_n", ancora: "start" },
+    { t: "fio", pts: [[4.2, 0], [6.6, 0]] },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+    { t: "texto", em: [3.3, 4.15], texto: "(12 − v_n)/6 = 8 + v_n/2  →  v_n = −9 V   ·   v(0⁺) = 12 + 9 = 21 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** O indutor vira fonte de $8\ \mathrm{A}$ e a fonte agora é de $12\ \mathrm{V}$. A LKC no nó dá $v_n = -9\ \mathrm{V}$, logo $v(0^+) = 21\ \mathrm{V}$ e $di/dt = -9/(1/4) = -36\ \mathrm{A/s}$ — os valores que $v(t)$ e $i(t)$ têm de reproduzir em $t = 0$.
+
+</Circuito>
 
 **Passo 6 — a tensão do $6\ \Omega$.** Ela é $6\,i_T = 6\,(i + i_R)$, e $i_R = \dfrac{1}{8}\dfrac{di}{dt}$, com $\dfrac{di}{dt} = -36\,e^{-6t}$:
 
