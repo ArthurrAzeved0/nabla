@@ -94,7 +94,53 @@ $$
 i_{L,n}(t) = e^{-2,5t}\left(A_1\cos 2{,}96t + A_2\operatorname{sen} 2{,}96t\right)
 $$
 
+<Circuito
+  alt="Fonte de 50 A desligada (aberto): 6 Ω, indutor de 2 H e capacitor de 1/30 F em paralelo, um RLC paralelo"
+  itens={[
+    { t: "fio", pts: [[0, 0], [2.6, 0]] },
+    { t: "texto", em: [-0.15, 1.75], texto: "50 A: aberto", ancora: "end" },
+    { t: "no", em: [2.6, 0] },
+    { t: "R", de: [2.6, 0], para: [2.6, 3.4], valor: "6 Ω", destaque: true },
+    { t: "fio", pts: [[2.6, 0], [5.2, 0]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "L", de: [5.2, 0], para: [5.2, 3.4], valor: "2 H", abaixo: true, destaque: true },
+    { t: "fio", pts: [[5.2, 0], [7.8, 0]] },
+    { t: "C", de: [7.8, 0], para: [7.8, 3.4], valor: "1/30 F", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [7.8, 3.4]] },
+    { t: "no", em: [2.6, 3.4] },
+    { t: "no", em: [5.2, 3.4] },
+    { t: "texto", em: [5.2, 4.1], texto: "α = 2,5   ·   ω₀ = √15 ≈ 3,87   ·   ω_d ≈ 2,96", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O RLC paralelo.** Com a fonte de corrente aberta, sobram $R$, $L$ e $C$ em paralelo: $\alpha = \dfrac{1}{2RC} = 2{,}5$ e $\omega_0 = \dfrac{1}{\sqrt{LC}} = \sqrt{15}$. Como $\alpha \lt \omega_0$, subamortecido, com $\omega_d = \sqrt{15 - 6{,}25} \approx 2{,}96$.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** $15K = 750$, logo $i_{L,f} = 50\ \mathrm{A}$ — no fim o indutor vira fio e leva os $50\ \mathrm{A}$ inteiros.
+
+<Circuito
+  alt="Em t tendendo a infinito: capacitor aberto, indutor em curto levando os 50 A, 6 Ω sem corrente, v igual a 0"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "50 A" },
+    { t: "fio", pts: [[0, 0], [2.6, 0]] },
+    { t: "no", em: [2.6, 0] },
+    { t: "R", de: [2.6, 0], para: [2.6, 3.4], valor: "6 Ω" },
+    { t: "fio", pts: [[2.6, 0], [5.2, 0]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "fio", pts: [[5.2, 0], [5.2, 3.4]] },
+    { t: "corrente", de: [5.2, 0.2], para: [5.2, 0.9], rotulo: "i_L", abaixo: false },
+    { t: "texto", em: [5.4, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[5.2, 0], [7.8, 0]] },
+    { t: "texto", em: [7.8, 1.75], texto: "C: aberto", ancora: "middle" },
+    { t: "fio", pts: [[0, 3.4], [7.8, 3.4]] },
+    { t: "texto", em: [3.9, 4.1], texto: "i_L(∞) = 50 A   ·   v(∞) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final ($t \to \infty$).** O indutor vira fio e curto-circuita o $6\ \Omega$ e o capacitor: $v = 0$, e os $50\ \mathrm{A}$ da fonte passam inteiros pelo indutor — a resposta forçada $i_{L,f} = 50\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 5 — a primeira constante.** De $i_L(0) = 10$:
 
@@ -133,6 +179,29 @@ $$
 $$
 \boxed{i_C = 50 - i_R - i_L = e^{-2,5t}\left(31{,}67\cos 2{,}96t - 35{,}21\operatorname{sen} 2{,}96t\right)\ \mathrm{A}}
 $$
+
+<Circuito
+  alt="Em 0⁺: fonte de 50 A, 6 Ω com 8,33 A, indutor como fonte de corrente de 10 A, capacitor como fonte de tensão de 50 V que absorve 31,67 A"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "50 A" },
+    { t: "fio", pts: [[0, 0], [2.6, 0]] },
+    { t: "no", em: [2.6, 0] },
+    { t: "R", de: [2.6, 0], para: [2.6, 3.4], valor: "6 Ω" },
+    { t: "corrente", de: [2.6, 0.2], para: [2.6, 0.9], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[2.6, 0], [5.2, 0]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "I", de: [5.2, 0], para: [5.2, 3.4], valor: "10 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[5.2, 0], [7.8, 0]] },
+    { t: "V", de: [7.8, 3.4], para: [7.8, 0], valor: "50 V", abaixo: true, destaque: true },
+    { t: "corrente", de: [7.8, 0.2], para: [7.8, 0.9], rotulo: "i_C", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7.8, 3.4]] },
+    { t: "texto", em: [3.9, 4.1], texto: "i_R(0⁺) = 50/6 ≈ 8,33 A   ·   i_C(0⁺) = 50 − 8,33 − 10 ≈ 31,67 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante $t = 0^+$.** O indutor é fonte de $10\ \mathrm{A}$ e o capacitor fonte de $50\ \mathrm{V}$, que fixa $v$ para todos. O $6\ \Omega$ leva $50/6$ e a LKC entrega o resto ao capacitor — os valores das respostas em $t = 0$.
+
+</Circuito>
 
 **Conferência —** em $t = 0$: $v = 50$ V ✔, $i_L = 10$ A ✔, $i_R = 50/6 = 8{,}33$ A ✔ e $i_C = 50 - 8{,}33 - 10 = 31{,}67$ A ✔ Em $t \to \infty$ tudo vai a zero menos $i_L$, que fica com os $50\ \mathrm{A}$ ✔
 
