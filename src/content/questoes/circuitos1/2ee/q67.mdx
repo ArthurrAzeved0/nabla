@@ -72,6 +72,36 @@ $$
 
 Regime permanente: as duas derivadas em $0^-$ são **zero**.
 
+<Circuito
+  alt="Em t = 0⁻: chave fechada aterrando o nó da esquerda, capacitor aberto, indutor em fio; a fonte de 16 V alimenta o 2 Ω com 8 A"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [2.2, 0]] },
+    { t: "no", em: [2.2, 0] },
+    { t: "fio", pts: [[2.2, 0], [2.2, 3.4]] },
+    { t: "texto", em: [2.45, 1.75], texto: "chave fechada", ancora: "start" },
+    { t: "fio", pts: [[2.2, 0], [2.2, -1.6]] },
+    { t: "R", de: [2.2, -1.6], para: [5.2, -1.6], valor: "8 Ω" },
+    { t: "fio", pts: [[5.2, -1.6], [5.2, 0]] },
+    { t: "texto", em: [3.7, -0.35], texto: "C: aberto", ancora: "middle" },
+    { t: "tensao", de: [2.2, 0], para: [5.2, 0], rotulo: "v_C", abaixo: true },
+    { t: "no", em: [5.2, 0] },
+    { t: "V", de: [5.2, 3.4], para: [5.2, 0], valor: "16 V", abaixo: true },
+    { t: "fio", pts: [[5.2, 0], [8, 0]] },
+    { t: "texto", em: [6.6, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "no", em: [8, 0] },
+    { t: "R", de: [8, 0], para: [8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [8, 0.2], para: [8, 0.9], rotulo: "i_L", abaixo: false },
+    { t: "tensao", de: [8, 3.4], para: [8, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [8, 3.4]] },
+    { t: "texto", em: [4, 4.2], texto: "v(0⁻) = 16 V  ·  i_L(0⁻) = 8 A  ·  v_C(0⁻) = 16 − 0 = 16 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Chave fechada (nó da esquerda no terra), capacitor aberto, indutor em fio. A fonte de $16\ \mathrm{V}$ fixa o nó do meio: $v = 16\ \mathrm{V}$, $i_L = 16/2 = 8\ \mathrm{A}$ e $v_C = 16 - 0 = 16\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — quem fica onde estava.** A chave, ao abrir, não muda nem a fonte de $16\ \mathrm{V}$ nem o ramo do indutor. Por continuidade e por não haver o que mudar:
 
 $$
@@ -107,6 +137,34 @@ Esses $7\ \mathrm{A}$ atravessam o capacitor **entrando pelo "−"**, o que o de
 $$
 \boxed{\frac{dv_C(0^+)}{dt} = \frac{-7}{1/10} = -70\ \mathrm{V/s}}
 $$
+
+<Circuito
+  alt="Em t = 0⁺: chave aberta, o capacitor virou fonte de 16 V e o indutor fonte de 8 A; o 8 Ω traz 2 A e o capacitor recebe 7 A pelo terminal negativo"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [2.2, 0]] },
+    { t: "no", em: [2.2, 0] },
+    { t: "texto", em: [2.45, 1.75], texto: "chave aberta", ancora: "start" },
+    { t: "fio", pts: [[2.2, 0], [2.2, -1.6]] },
+    { t: "R", de: [2.2, -1.6], para: [5.2, -1.6], valor: "8 Ω" },
+    { t: "corrente", de: [4.2, -1.6], para: [3.2, -1.6], rotulo: "2 A" },
+    { t: "fio", pts: [[5.2, -1.6], [5.2, 0]] },
+    { t: "V", de: [2.2, 0], para: [5.2, 0], valor: "v_C = 16 V", destaque: true },
+    { t: "corrente", de: [2.4, 0], para: [3.1, 0], rotulo: "7 A" },
+    { t: "no", em: [5.2, 0] },
+    { t: "V", de: [5.2, 3.4], para: [5.2, 0], valor: "16 V", abaixo: true },
+    { t: "I", de: [5.2, 0], para: [8, 0], valor: "i_L = 8 A", destaque: true },
+    { t: "no", em: [8, 0] },
+    { t: "R", de: [8, 0], para: [8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "tensao", de: [8, 3.4], para: [8, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [8, 3.4]] },
+    { t: "texto", em: [4, 4.2], texto: "7 A entrando pelo “−”:  dv_C/dt = −7/(1/10) = −70 V/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** Chave aberta: o capacitor vira fonte de $16\ \mathrm{V}$ e o indutor fonte de $8\ \mathrm{A}$. O nó da esquerda fica em zero, o $8\ \Omega$ traz $2\ \mathrm{A}$, e os $5 + 2 = 7\ \mathrm{A}$ atravessam o capacitor do "−" para o "+": $dv_C/dt = -70\ \mathrm{V/s}$.
+
+</Circuito>
 
 **Conferência —** a questão é uma lição sobre o que uma chave **não** faz: com uma fonte de tensão ideal segurando o nó do meio, o lado direito nem percebe a comutação, e das cinco grandezas pedidas só uma muda ✔ E o sinal negativo é o recado: o capacitor estava sustentando os $5\ \mathrm{A}$ pela chave e agora tem de absorvê-los, então sua tensão **cai** ✔ Confere com a resolução da prova.
 </Passos>
