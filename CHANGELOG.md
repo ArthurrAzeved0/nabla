@@ -95,6 +95,15 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   do passo. Ao redesenhar, todas as contas das 43 resoluções foram refeitas, e
   nenhuma resposta mudou.
 
+- **Passo a passo visual também no 2º EE de Circuitos 1: 186 figuras nas 69
+  questões.** É o mesmo tratamento do 1º EE, agora para transitórios: o
+  circuito em $0^-$ (capacitor aberto, indutor em curto, chave na posição de
+  antes) com as condições iniciais marcadas; em $0^+$, com o capacitor virando
+  fonte de tensão e o indutor fonte de corrente; em $t\to\infty$; e o circuito
+  morto, visto pelo armazenador, que dá $\tau$ ou o RLC série/paralelo com
+  $\alpha$ e $\omega_0$. Todas como lista de itens do gerador, no `.mdx`. As 69
+  resoluções foram refeitas na revisão.
+
 ### Alterado
 
 - **O glifo ∇ do rodapé agora abre `/humans/`, uma página com o humans.txt.**
@@ -107,6 +116,20 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Corrigido
 
+- **Três figuras do 2º EE de Circuitos 1 desenhavam um circuito diferente do
+  da prova**, e a resolução só fechava com o original. Na **q05** (2023.2) a
+  chave da esquerda tem a seta apontando para longe do contato — ela **abre**
+  em $t=0$ e tira a fonte de $80\ \mathrm{V}$ —, mas estava como se fechasse;
+  com as duas fechando, $v(0^+)$ daria $37{,}5\ \mathrm{V}$ e não os $10\ \mathrm{V}$
+  do gabarito, e o Passo 3 escondia a contradição numa frase vaga. Na **q17**
+  (2021.1) a chave é **comutadora** (o $3\ \Omega$ passa da fonte de $9\ \mathrm{A}$
+  para a de $5\ \mathrm{V}$), e estava desenhada como chave simples com a fonte
+  de $5\ \mathrm{V}$ sempre ligada — o que deixaria o circuito sem transitório.
+  Na **q66** (2ª chamada de 2017.2) a fonte de $10\ \mathrm{V}$ do ramo de
+  $200\ \Omega$ estava com a polaridade invertida, e as duas fontes se somariam
+  em vez de se cancelar. As três foram conferidas na prova escaneada; os
+  gabaritos não mudam. Em duas outras (**q31**, **q36**) uma seta de corrente do
+  enunciado estava solta, ao lado do elemento a que se refere.
 - **Doze resoluções do 1º EE de Circuitos 1 usavam um método diferente do que
   o enunciado manda.** Nas questões de superposição, o enunciado fixa o método
   de cada subcircuito ("o circuito com a fonte de tensão deve ser resolvido pela
