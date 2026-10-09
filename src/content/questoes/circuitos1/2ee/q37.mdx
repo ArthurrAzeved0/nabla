@@ -67,6 +67,39 @@ $$
 i_1(0^-) = 5\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: fonte de 60 V, capacitor aberto e indutor em curto; a controlada vale 10 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "60 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", abaixo: true },
+    { t: "texto", em: [1.6, 0.75], texto: "aberta", ancora: "end" },
+    { t: "fio", pts: [[1.8, 0], [2.8, 0]] },
+    { t: "corrente", de: [1.9, 0], para: [2.7, 0], rotulo: "i_1" },
+    { t: "R", de: [2.8, 0], para: [5, 0], valor: "5 Ω" },
+    { t: "no", em: [5, 0] },
+    { t: "fio", pts: [[5, 0], [5, 1.1]] },
+    { t: "fio", pts: [[5, 2.3], [5, 3.4]] },
+    { t: "texto", em: [5.25, 1.75], texto: "aberto", ancora: "start" },
+    { t: "tensao", de: [5, 3.4], para: [5, 0], rotulo: "v", abaixo: false },
+    { t: "R", de: [5, 0], para: [7.6, 0], valor: "5 Ω" },
+    { t: "no", em: [7.6, 0] },
+    { t: "Vd", de: [7.6, 3.4], para: [7.6, 0], rotulo: "10 V", abaixo: true },
+    { t: "R", de: [7.6, 0], para: [10.2, 0], valor: "10 Ω" },
+    { t: "no", em: [10.2, 0] },
+    { t: "fio", pts: [[10.2, 0], [10.2, 3.4]] },
+    { t: "corrente", de: [10.2, 1.2], para: [10.2, 2.2], rotulo: "i", abaixo: false },
+    { t: "texto", em: [10.45, 0.6], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [10.2, 3.4]] },
+    { t: "texto", em: [5.1, 4.1], texto: "60 = 12 i_1  →  i_1 = 5 A   ·   v(0⁻) = 35 V   ·   i(0⁻) = 10/10 = 1 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^-$: capacitor aberto, indutor em curto.** A mesma $i_1$ passa pelos dois $5\ \Omega$ e pela controlada: $60 = 12\,i_1$, $i_1 = 5\ \mathrm{A}$. A controlada vale $2i_1 = 10\ \mathrm{V}$ e empurra $1\ \mathrm{A}$ pelo $10\ \Omega$ até o indutor.
+
+</Circuito>
+
 **Passo 2 — as condições iniciais.** A fonte controlada vale $2i_1 = 10\ \mathrm{V}$, e o $10\ \Omega$ liga esse nó ao terra:
 
 $$
@@ -98,6 +131,36 @@ A corrente inverteu: agora é o capacitor que empurra corrente **de volta** para
 $$
 i_2(0^+) = \frac{35 - (-6)}{5} = \frac{41}{5} = 8{,}2\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em t = 0⁺: fonte de 20 V, capacitor como fonte de 35 V e indutor como fonte de 1 A; i1 inverte e a controlada vale −6 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "60 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.35], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "fio", pts: [[1.8, 0], [2.8, 0]] },
+    { t: "corrente", de: [2.1, 0], para: [2.7, 0], rotulo: "i_1" },
+    { t: "R", de: [2.8, 0], para: [5, 0], valor: "5 Ω" },
+    { t: "no", em: [5, 0] },
+    { t: "V", de: [5, 3.4], para: [5, 0], valor: "35 V", abaixo: true, destaque: true },
+    { t: "R", de: [5, 0], para: [7.6, 0], valor: "5 Ω" },
+    { t: "corrente", de: [5.9, 0], para: [6.7, 0], rotulo: "i_2" },
+    { t: "no", em: [7.6, 0] },
+    { t: "Vd", de: [7.6, 3.4], para: [7.6, 0], rotulo: "2i_1 = −6 V", abaixo: true },
+    { t: "R", de: [7.6, 0], para: [10.2, 0], valor: "10 Ω" },
+    { t: "no", em: [10.2, 0] },
+    { t: "I", de: [10.2, 0], para: [10.2, 3.4], valor: "1 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [10.2, 3.4]] },
+    { t: "texto", em: [5.1, 4.1], texto: "i_1 = (20 − 35)/5 = −3 A   ·   i_2 = (35 + 6)/5 = 8,2 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^+$: o capacitor é uma fonte de 35 V, o indutor uma de 1 A.** Com só $20\ \mathrm{V}$ na entrada, $i_1 = (20 - 35)/5 = -3\ \mathrm{A}$; a controlada cai para $-6\ \mathrm{V}$, e $i_2 = (35 + 6)/5 = 8{,}2\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 5 — a derivada da tensão.** LKC no nó do capacitor: entra $i_1$, sai $i_2$ e sai $i_C$:
 
