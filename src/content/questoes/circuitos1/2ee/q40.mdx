@@ -91,6 +91,47 @@ $$
 
 Em regime permanente nada varia, então as duas derivadas em $0^-$ valem **zero**.
 
+<Circuito
+  alt="Em t = 0⁻: fonte de 20 V, chave do meio fechada, capacitor aberto e indutor em curto; todo o fio de cima a 20 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "40 V", abaixo: true },
+    { t: "texto", em: [1.6, 0.75], texto: "aberta", ancora: "end" },
+    { t: "fio", pts: [[1.8, 0], [4.2, 0]] },
+    { t: "corrente", de: [2.2, 0], para: [3, 0], rotulo: "i_g" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 1.7], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[4.2, 1.7], [4.2, 2.1]] },
+    { t: "fio", pts: [[4.2, 3], [4.2, 3.4]] },
+    { t: "texto", em: [4.45, 2.6], texto: "aberto", ancora: "start" },
+    { t: "tensao", de: [4.2, 3.4], para: [4.2, 1.7], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "R", de: [6.8, 0], para: [6.8, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i_1", abaixo: false },
+    { t: "fio", pts: [[6.8, 0], [8.8, 0]] },
+    { t: "no", em: [8.8, 0] },
+    { t: "fio", pts: [[8.8, 0], [8.8, 1.7]] },
+    { t: "texto", em: [9.05, 0.85], texto: "curto", ancora: "start" },
+    { t: "R", de: [8.8, 1.7], para: [8.8, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "corrente", de: [8.8, 0.4], para: [8.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[8.8, 0], [11.6, 0]] },
+    { t: "no", em: [11.6, 0] },
+    { t: "Id", de: [11.6, 3.4], para: [11.6, 0], rotulo: "2i_1 = 8 A" },
+    { t: "fio", pts: [[11.6, 0], [14.2, 0]] },
+    { t: "no", em: [14.2, 0] },
+    { t: "R", de: [14.2, 0], para: [14.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [14.2, 3.4]] },
+    { t: "texto", em: [7.1, 4.1], texto: "v = 20 V  ·  i_1 = 4 A  ·  i = 2 A  ·  i_{4Ω} = 5 A  ·  i_g + 8 = 4 + 2 + 5 → i_g = 3 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^-$: capacitor aberto, indutor em curto.** O $2\ \Omega$ não conduz, e todo o fio de cima fica a $20\ \mathrm{V}$. LKC no nó de cima, com a controlada injetando $8\ \mathrm{A}$: $i_g + 8 = 4 + 2 + 5$, ou $i_g = 3\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 3 — o lado esquerdo em $0^+$.** A chave do meio abriu e a fonte virou $40\ \mathrm{V}$. Sobram, à esquerda, o ramo $2\ \Omega$ + capacitor e o $5\ \Omega$.
 
 O capacitor **não salta**: $\boxed{v(0^+) = 20\ \mathrm{V}}$. Então o $2\ \Omega$ passa a conduzir:
@@ -120,6 +161,45 @@ i_{4\Omega}(0^+) = 16 - 2 = 14\ \mathrm{A}
 \qquad\Longrightarrow\qquad
 v_{n\acute{o}} = 4 \cdot 14 = 56\ \mathrm{V}
 $$
+
+<Circuito
+  alt="Em t = 0⁺: fonte de 40 V, chave do meio aberta; à esquerda o capacitor como fonte de 20 V, à direita o indutor como fonte de 2 A e a controlada de 16 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.35], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "40 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "fio", pts: [[1.8, 0], [4.2, 0]] },
+    { t: "corrente", de: [2.2, 0], para: [3, 0], rotulo: "i_g" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 1.7], valor: "2 Ω", abaixo: true },
+    { t: "V", de: [4.2, 3.4], para: [4.2, 1.7], valor: "20 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "R", de: [6.8, 0], para: [6.8, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i_1", abaixo: false },
+    { t: "texto", em: [7.8, -0.35], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [8.8, 0] },
+    { t: "I", de: [8.8, 0], para: [8.8, 1.7], valor: "2 A", abaixo: true, destaque: true },
+    { t: "R", de: [8.8, 1.7], para: [8.8, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[8.8, 0], [11.6, 0]] },
+    { t: "texto", em: [10.2, -0.35], texto: "nó a 4 · 14 = 56 V", ancora: "middle", destaque: true },
+    { t: "no", em: [11.6, 0] },
+    { t: "Id", de: [11.6, 3.4], para: [11.6, 0], rotulo: "2i_1 = 16 A" },
+    { t: "fio", pts: [[11.6, 0], [14.2, 0]] },
+    { t: "no", em: [14.2, 0] },
+    { t: "R", de: [14.2, 0], para: [14.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [14.2, 0.4], para: [14.2, 1.4], rotulo: "14 A", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [14.2, 3.4]] },
+    { t: "texto", em: [7.1, 4.1], texto: "i_C = (40 − 20)/2 = 10 A  ·  i_1 = 8 A  ·  i_g = 18 A  ·  dv/dt = 100 V/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^+$: dois pedaços, cada um com sua fonte.** À esquerda, o capacitor é uma fonte de $20\ \mathrm{V}$: $i_C = (40 - 20)/2 = 10\ \mathrm{A}$ e $i_1 = 8\ \mathrm{A}$. À direita, a controlada vale $16\ \mathrm{A}$, o indutor segura $2\ \mathrm{A}$ e o $4\ \Omega$ fica com $14\ \mathrm{A}$, o que põe o nó em $56\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 5 — a derivada da corrente.** Desse nó, o $10\ \Omega$ cai $10 \cdot 2 = 20\ \mathrm{V}$, e o que sobra é do indutor:
 
