@@ -21,11 +21,11 @@ pontos: 3 pts
 O circuito está em **regime permanente** em $t = 0^-$. Determine os valores de $v$, $i$ e $di/dt$ em $0^-$ e em $0^+$.
 
 <Circuito
-  alt="Fonte de 80 V com 10 Ω, chave, indutor de 2 H, 5 Ω, 10 Ω, segunda chave, 10 Ω e fonte de 10 A"
+  alt="Fonte de 80 V com 10 Ω, chave que abre, indutor de 2 H, 5 Ω, 10 Ω, segunda chave que fecha, 10 Ω e fonte de 10 A"
   itens={[
     { t: "V", de: [0, 3], para: [0, 0], valor: "80 V" },
     { t: "R", de: [0, 0], para: [2, 0], valor: "10 Ω" },
-    { t: "S", de: [2, 0], para: [3.2, 0], rotulo: "fecha" },
+    { t: "S", de: [2, 0], para: [3.2, 0], rotulo: "abre" },
     { t: "no", em: [3.2, 0] },
     { t: "L", de: [3.2, 0], para: [3.2, 3], valor: "2 H" },
     { t: "corrente", de: [3.2, 0.4], para: [3.2, 1.4], rotulo: "i" },
@@ -42,7 +42,7 @@ O circuito está em **regime permanente** em $t = 0^-$. Determine os valores de 
   ]}
 >
 
-Pela convenção da apostila (seção 4.3), a seta das duas chaves aponta **para** o contato: elas estão **abertas** antes de $t=0$ e **fecham** no instante zero. Antes disso o circuito está partido em três pedaços.
+Pela convenção da apostila (seção 4.3), é a **seta** que manda. Na chave da esquerda ela aponta **para longe** do contato: a chave está **fechada** antes de $t=0$ e **abre** no instante zero, tirando a fonte de $80\ \mathrm{V}$ do circuito. Na da direita a seta aponta **para** o contato: ela está **aberta** antes e **fecha** em $t=0$, trazendo a fonte de $10\ \mathrm{A}$. A troca é completa: uma fonte sai, a outra entra.
 
 </Circuito>
 
@@ -53,21 +53,21 @@ Em $0^+$: $v = 10\ \mathrm{V}$, $i = 8\ \mathrm{A}$, $di/dt = -15\ \mathrm{A/s}$
 </Gabarito>
 
 <Passos>
-**Passo 1 — circuito em $0^-$** (chaves abertas, regime permanente, **indutor vira fio**). Com as duas chaves abertas há três pedaços independentes:
+**Passo 1 — circuito em $0^-$** (chave da esquerda **fechada**, chave da direita **aberta**, regime permanente, **indutor vira fio**).
 
-*Esquerda:* $80\ \mathrm{V}$ em série com $10\ \Omega$ e o indutor em curto —
+*Esquerda e meio:* a fonte de $80\ \mathrm{V}$ com o $10\ \Omega$ chega ao nó do indutor, que, sendo um fio, põe esse nó em $0\ \mathrm{V}$. Toda a corrente desce pelo indutor —
 
 $$
 i(0^-) = \frac{80}{10} = \boxed{8\ \mathrm{A}}
 $$
 
-*Meio* ($5\ \Omega$ e $10\ \Omega$ isolados pelas duas chaves): sem fonte, não circula nada —
+e o $5\ \Omega$ e o $10\ \Omega$ do meio, com as duas pontas em $0\ \mathrm{V}$, não conduzem:
 
 $$
 \boxed{v(0^-) = 0}
 $$
 
-*Direita:* a fonte de $10\ \mathrm{A}$ com o seu $10\ \Omega$, que não influencia nada do que se pede.
+*Direita:* a fonte de $10\ \mathrm{A}$ com o seu $10\ \Omega$, isolada pela chave aberta, não influencia nada do que se pede.
 
 E como estamos em regime permanente, $v_L(0^-) = 0$, logo
 
@@ -75,22 +75,47 @@ $$
 \boxed{\frac{di(0^-)}{dt} = 0}
 $$
 
+<Circuito
+  alt="Circuito em 0 menos: chave da esquerda fechada, indutor em curto, chave da direita aberta"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "80 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "10 Ω" },
+    { t: "fio", pts: [[2, 0], [3.2, 0]] },
+    { t: "texto", em: [2.6, -0.45], texto: "fechada" },
+    { t: "no", em: [3.2, 0] },
+    { t: "fio", pts: [[3.2, 0], [3.2, 3]] },
+    { t: "texto", em: [3.55, 1.5], texto: "L: curto", ancora: "start" },
+    { t: "corrente", de: [3.2, 0.4], para: [3.2, 1.2], rotulo: "8 A", abaixo: false },
+    { t: "R", de: [3.2, 0], para: [5.2, 0], valor: "5 Ω" },
+    { t: "no", em: [5.2, 0] },
+    { t: "R", de: [5.2, 0], para: [5.2, 3], valor: "10 Ω", abaixo: true },
+    { t: "texto", em: [6.2, -0.45], texto: "aberta" },
+    { t: "R", de: [6.8, 0], para: [6.8, 3], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[6.8, 0], [8.4, 0]] },
+    { t: "I", de: [8.4, 3], para: [8.4, 0], valor: "10 A", abaixo: true },
+    { t: "fio", pts: [[0, 3], [8.4, 3]] },
+    { t: "texto", em: [4.2, 3.6], texto: "i(0⁻) = 80/10 = 8 A · v(0⁻) = 0", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** O indutor é um fio e põe o nó dele em $0\ \mathrm{V}$: toda a corrente da fonte de $80\ \mathrm{V}$ desce por ele, e o $5\ \Omega$ e o $10\ \Omega$ do meio, sem tensão, não conduzem. A fonte de $10\ \mathrm{A}$ fica isolada pela chave aberta.
+
+</Circuito>
+
 **Passo 2 — continuidade:** $i(0^+) = 8\ \mathrm{A}$.
 
-**Passo 3 — circuito em $0^+$** (chaves fechadas). O indutor vira **fonte de corrente de $8\ \mathrm{A}$**, e agora o circuito é um só. A fonte de $10\ \mathrm{A}$ alimenta os dois $10\ \Omega$ (que ficam em paralelo, portanto com a mesma tensão $v$) e o que sobra atravessa o $5\ \Omega$ para a esquerda.
-
-Chamando de $x$ a corrente que vai para a esquerda pelo $5\ \Omega$:
+**Passo 3 — circuito em $0^+$** (a chave da esquerda **abriu** e a da direita **fechou**). A fonte de $80\ \mathrm{V}$ e o seu $10\ \Omega$ saem do circuito; o indutor vira **fonte de corrente de $8\ \mathrm{A}$**, e a fonte de $10\ \mathrm{A}$ passa a alimentar o meio. O nó do indutor agora só se liga ao $5\ \Omega$, então **toda** a corrente do indutor vem por ele:
 
 $$
-10 = \frac{v}{10} + \frac{v}{10} + x
+i_{5\Omega} = 8\ \mathrm{A} \quad \text{(da direita para a esquerda)}
 $$
 
-Do outro lado, o nó do indutor recebe essa corrente $x$ e entrega $8\ \mathrm{A}$ ao indutor. Como a fonte de $80\ \mathrm{V}$ com o seu $10\ \Omega$ também alimenta esse nó, e o nó do indutor está no potencial $80 - 10\,i_{10\Omega}$… o caminho mais curto é notar que **toda** a corrente do indutor tem de vir do $5\ \Omega$ mais o $10\ \Omega$ de entrada. Resolvendo, sai
+No nó da direita, os dois $10\ \Omega$ ficam em paralelo (mesma tensão $v$) e a LKC é
 
 $$
-x = 8\ \mathrm{A}
+10 = \frac{v}{10} + \frac{v}{10} + 8
 \qquad\Longrightarrow\qquad
-\frac{v}{10} = 1\ \mathrm{A} \ \text{em cada } 10\ \Omega
+\frac{v}{5} = 2
 \qquad\Longrightarrow\qquad
 \boxed{v(0^+) = 10\ \mathrm{V}}
 $$
@@ -111,5 +136,36 @@ $$
 \boxed{\frac{di(0^+)}{dt} = \frac{-30}{2} = -15\ \mathrm{A/s}}
 $$
 
-**Conferência —** a LKC no nó da direita fecha: $10 = 1 + 1 + 8$ ✔ E o sinal negativo da derivada faz sentido: com as chaves fechadas o $5\ \Omega$ passa a se opor à corrente do indutor, que começa a cair. Todos os valores conferem com a resolução da prova.
+<Circuito
+  alt="Circuito em 0 mais: fonte de 80 V desligada, indutor como fonte de 8 A, chave da direita fechada"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "80 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "10 Ω" },
+    { t: "texto", em: [2.6, -0.45], texto: "aberta" },
+    { t: "no", em: [3.2, 0] },
+    { t: "I", de: [3.2, 0], para: [3.2, 3], valor: "8 A", destaque: true },
+    { t: "texto", em: [2.75, 0.5], texto: "−30 V", destaque: true },
+    { t: "R", de: [3.2, 0], para: [5.2, 0], valor: "5 Ω" },
+    { t: "corrente", de: [4.9, 0], para: [3.6, 0], rotulo: "8 A" },
+    { t: "no", em: [5.2, 0] },
+    { t: "R", de: [5.2, 0], para: [5.2, 3], valor: "10 Ω", abaixo: true },
+    { t: "tensao", de: [5.2, 3], para: [5.2, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[5.2, 0], [6.8, 0]] },
+    { t: "texto", em: [6.0, -0.45], texto: "fechada" },
+    { t: "no", em: [6.8, 0] },
+    { t: "R", de: [6.8, 0], para: [6.8, 3], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[6.8, 0], [8.4, 0]] },
+    { t: "I", de: [8.4, 3], para: [8.4, 0], valor: "10 A", abaixo: true },
+    { t: "fio", pts: [[3.2, 3], [8.4, 3]] },
+    { t: "texto", em: [5.8, 3.6], texto: "v(0⁺) = 10 V · v_L = −30 V", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** O ramo de $80\ \mathrm{V}$ saiu, e o indutor é uma fonte de $8\ \mathrm{A}$. Os dois $10\ \Omega$ ficam em paralelo com a fonte de $10\ \mathrm{A}$; dos $10\ \mathrm{A}$, $8$ seguem pelo $5\ \Omega$ para o indutor e sobra $1\ \mathrm{A}$ para cada $10\ \Omega$.
+
+</Circuito>
+
+**Conferência —** a LKC no nó da direita fecha: $10 = 1 + 1 + 8$ ✔ E o sinal negativo da derivada faz sentido: sem a fonte de $80\ \mathrm{V}$, o indutor passa a empurrar sua corrente contra o $5\ \Omega$ e os dois $10\ \Omega$, e ela começa a cair. Todos os valores conferem com a resolução da prova.
+
+**Sobre a leitura das chaves —** esta questão já esteve no site com as **duas** chaves fechando em $t=0$. Assim, a fonte de $80\ \mathrm{V}$ ficaria ligada depois do chaveamento e a resposta não fecharia: daria $v(0^+) = 37{,}5\ \mathrm{V}$, e não os $10\ \mathrm{V}$ da resolução da prova. A seta da chave da esquerda, no original, aponta para longe do contato: ela **abre**.
 </Passos>
