@@ -71,6 +71,27 @@ $$
 \frac{d^2v}{dt^2} + 4\frac{dv}{dt} + 4\,v = 40
 $$
 
+<Circuito
+  alt="Fonte de 10 V em curto: o indutor liga o nó de saída ao terra e fica em paralelo com o 5 Ω e o capacitor, um RLC paralelo"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "10 V: curto", ancora: "end" },
+    { t: "fio", pts: [[0, 0], [1, 0]] },
+    { t: "L", de: [1, 0], para: [3.2, 0], valor: "5 H", destaque: true },
+    { t: "no", em: [3.2, 0] },
+    { t: "R", de: [3.2, 0], para: [3.2, 3.4], valor: "5 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[3.2, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "C", de: [7, 0], para: [7, 3.4], valor: "1/20 F", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+    { t: "texto", em: [3.5, 4.1], texto: "RLC paralelo:  α = 1/(2RC) = 2  ·  ω_0 = 1/√(LC) = 2", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Fonte em curto: RLC paralelo.** Com a fonte zerada, o indutor vai do terra ao nó de saída e fica em paralelo com o $5\ \Omega$ e o capacitor: $\alpha = 1/(2RC) = 2$ e $\omega_0 = 1/\sqrt{LC} = 2$. Iguais: amortecimento crítico.
+
+</Circuito>
+
 **Passo 3 — resposta natural.** De $s^2 + 4s + 4 = 0$:
 
 $$
@@ -84,6 +105,30 @@ v_n(t) = A_1 e^{-2t} + A_2\,t\,e^{-2t}
 $$
 
 **Passo 4 — resposta forçada.** $4K = 40$, logo $v_f = 10\ \mathrm{V}$.
+
+<Circuito
+  alt="t tendendo ao infinito: indutor em curto e capacitor aberto; v vale 10 V e i vale 2 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [3.2, 0]] },
+    { t: "corrente", de: [0.1, 0], para: [0.9, 0], rotulo: "i" },
+    { t: "texto", em: [2.1, -0.35], texto: "curto", ancora: "middle" },
+    { t: "no", em: [3.2, 0] },
+    { t: "R", de: [3.2, 0], para: [3.2, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[3.2, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "fio", pts: [[7, 0], [7, 1.1]] },
+    { t: "fio", pts: [[7, 2.3], [7, 3.4]] },
+    { t: "texto", em: [7.25, 1.75], texto: "aberto", ancora: "start" },
+    { t: "tensao", de: [7, 3.4], para: [7, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+    { t: "texto", em: [3.5, 4.1], texto: "v(∞) = 10 V   ·   i(∞) = 10/5 = 2 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t \to \infty$: indutor em curto, capacitor aberto.** A fonte fica direto sobre o $5\ \Omega$: $v_f = 10\ \mathrm{V}$ e $i = 10/5 = 2\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 5 — a primeira constante.** De $v(0) = 5$:
 
@@ -112,6 +157,28 @@ $$
 $$
 \boxed{v(t) = 10 - 5\,e^{-2t} + 10\,t\,e^{-2t}\ \mathrm{V}}
 $$
+
+<Circuito
+  alt="Em t = 0: indutor como fonte de 2 A, capacitor como fonte de 5 V; o 5 Ω leva 1 A e o capacitor 1 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [1, 0]] },
+    { t: "I", de: [1, 0], para: [3.2, 0], valor: "2 A", destaque: true },
+    { t: "no", em: [3.2, 0] },
+    { t: "R", de: [3.2, 0], para: [3.2, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [3.2, 0.4], para: [3.2, 1.4], rotulo: "1 A", abaixo: false },
+    { t: "fio", pts: [[3.2, 0], [7, 0]] },
+    { t: "corrente", de: [4.7, 0], para: [5.5, 0], rotulo: "i_C" },
+    { t: "no", em: [7, 0] },
+    { t: "V", de: [7, 3.4], para: [7, 0], valor: "5 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+    { t: "texto", em: [3.5, 4.1], texto: "i_C = 2 − 5/5 = 1 A   ·   dv(0)/dt = 1/(1/20) = 20 V/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0$: as condições dadas viram fontes.** O indutor é uma fonte de $2\ \mathrm{A}$ e o capacitor uma de $5\ \mathrm{V}$; o $5\ \Omega$ leva $1\ \mathrm{A}$, sobra $i_C = 1\ \mathrm{A}$ e $dv(0)/dt = 1/(1/20) = 20\ \mathrm{V/s}$.
+
+</Circuito>
 
 **Passo 7 — a corrente.** Volte na LKC, com $\dfrac{dv}{dt} = e^{-2t}(20 - 20t)$:
 
