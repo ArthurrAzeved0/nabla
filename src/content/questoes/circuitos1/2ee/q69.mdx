@@ -84,7 +84,50 @@ $$
 
 Duas raízes reais distintas: **superamortecido**.
 
+<Circuito
+  alt="Fonte de 2 A desligada (aberta): os dois ramos formam um laço só, um RLC série com 4 Ω, 2 H, 8 Ω e 1/4 F"
+  itens={[
+    { t: "fio", pts: [[0, 1.1], [0, 0], [5.8, 0]] },
+    { t: "fio", pts: [[0, 2.3], [0, 3.4], [2.8, 3.4]] },
+    { t: "texto", em: [0.25, 1.8], texto: "2 A: aberto", ancora: "start" },
+    { t: "R", de: [2.8, 0], para: [2.8, 1.7], valor: "4 Ω", abaixo: true, destaque: true },
+    { t: "L", de: [2.8, 1.7], para: [2.8, 3.4], valor: "2 H", abaixo: true, destaque: true },
+    { t: "R", de: [5.8, 0], para: [5.8, 1.7], valor: "8 Ω", abaixo: true, destaque: true },
+    { t: "C", de: [5.8, 1.7], para: [5.8, 3.4], valor: "1/4 F", destaque: true },
+    { t: "fio", pts: [[2.8, 3.4], [5.8, 3.4]] },
+    { t: "texto", em: [4.3, 4.2], texto: "RLC série:  α = R/2L = 12/4 = 3   ·   ω₀² = 1/LC = 2", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Fonte desligada.** A fonte de corrente vira aberto, e os dois ramos fecham um laço só: um RLC série com $R = 4 + 8 = 12\ \Omega$. Daí $\alpha = 3$, $\omega_0^2 = 2$ e $s = -3 \pm \sqrt{9 - 2} = -3 \pm \sqrt7$.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** $2K = 16$, logo $v_f = 8\ \mathrm{V}$ — em regime o capacitor abre, os $2\ \mathrm{A}$ vão todos pelo ramo do indutor e $v = 4 \cdot 2 = 8\ \mathrm{V}$.
+
+<Circuito
+  alt="Em t → ∞: o capacitor abre e o indutor vira fio; os 2 A vão todos pelo 4 Ω e a tensão do capacitor é a do ramo, 8 V"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2.8, 0]] },
+    { t: "no", em: [2.8, 0] },
+    { t: "R", de: [2.8, 0], para: [2.8, 1.7], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.8, 1.7], [2.8, 3.4]] },
+    { t: "texto", em: [3.05, 2.55], texto: "L: curto", ancora: "start" },
+    { t: "corrente", de: [2.8, 0.2], para: [2.8, 0.9], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[2.8, 0], [5.8, 0]] },
+    { t: "R", de: [5.8, 0], para: [5.8, 1.7], valor: "8 Ω: i = 0", abaixo: true },
+    { t: "texto", em: [6.05, 2.55], texto: "C: aberto", ancora: "start" },
+    { t: "tensao", de: [5.8, 3.4], para: [5.8, 1.7], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [2.8, 3.4]] },
+    { t: "fio", pts: [[5.8, 3.4], [2.8, 3.4]] },
+    { t: "texto", em: [2.9, 4.2], texto: "i(∞) = 2 A   ·   v(∞) = 4 · 2 = 8 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t \to \infty$.** Capacitor aberto, indutor em fio: os $2\ \mathrm{A}$ vão todos pelo $4\ \Omega$, o $8\ \Omega$ não conduz e o capacitor fica com a tensão do ramo, $v_f = 8\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 5 — a primeira equação.** De $v(0) = 2$:
 
@@ -113,6 +156,28 @@ $$
 $$
 \boxed{v(t) = 8 - 5{,}65\,e^{-0,354t} - 0{,}35\,e^{-5,646t}\ \mathrm{V}}
 $$
+
+<Circuito
+  alt="Em t = 0⁺: o indutor virou fonte de corrente de 1 A e o capacitor fonte de tensão de 2 V; o ramo do capacitor leva o 1 A que sobra"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2.8, 0]] },
+    { t: "no", em: [2.8, 0] },
+    { t: "R", de: [2.8, 0], para: [2.8, 1.7], valor: "4 Ω", abaixo: true },
+    { t: "I", de: [2.8, 1.7], para: [2.8, 3.4], valor: "i = 1 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[2.8, 0], [5.8, 0]] },
+    { t: "no", em: [5.8, 0] },
+    { t: "R", de: [5.8, 0], para: [5.8, 1.7], valor: "8 Ω", abaixo: true },
+    { t: "V", de: [5.8, 3.4], para: [5.8, 1.7], valor: "v = 2 V", abaixo: true, destaque: true },
+    { t: "corrente", de: [5.8, 0.2], para: [5.8, 0.9], rotulo: "i_C", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+    { t: "texto", em: [2.9, 4.2], texto: "i_C(0⁺) = 2 − 1 = 1 A   →   dv/dt(0) = 1/(1/4) = 4 V/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** O indutor vira fonte de $1\ \mathrm{A}$ e o capacitor fonte de $2\ \mathrm{V}$. Pela LKC, o ramo do capacitor leva o que sobra, $i_C = 2 - 1 = 1\ \mathrm{A}$, e $dv(0)/dt = 4 \cdot 1 = 4\ \mathrm{V/s}$.
+
+</Circuito>
 
 **Passo 7 — a corrente.** Como $A_1 s_1 = A_2 s_2 = s_1 s_2 = 2$, a derivada fica simétrica:
 
