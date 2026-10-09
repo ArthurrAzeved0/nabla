@@ -60,6 +60,35 @@ i(0^-) = 1\ \mathrm{A}
 i(0^+) = 1\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: chave da esquerda aberta, da direita fechada; o indutor em fio leva o 1 A da fonte e o 6 Ω e o 4 Ω ficam sem corrente"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "1 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "4 Ω" },
+    { t: "fio", pts: [[2.2, 0], [2.7, 0]] },
+    { t: "fio", pts: [[3.5, 0], [4, 0]] },
+    { t: "texto", em: [3.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "6 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [4, 0], para: [6.6, 0], valor: "4 Ω" },
+    { t: "no", em: [6.6, 0] },
+    { t: "fio", pts: [[6.6, 0], [6.6, 3.4]] },
+    { t: "texto", em: [6.35, 1.75], texto: "L: curto", ancora: "end" },
+    { t: "corrente", de: [6.6, 0.4], para: [6.6, 1.4], rotulo: "i", abaixo: true },
+    { t: "fio", pts: [[6.6, 0], [9, 0]] },
+    { t: "texto", em: [7.8, -0.3], texto: "fechada", ancora: "middle" },
+    { t: "no", em: [9, 0] },
+    { t: "I", de: [9, 3.4], para: [9, 0], valor: "1 A" },
+    { t: "fio", pts: [[0, 3.4], [9, 3.4]] },
+    { t: "texto", em: [4.5, 4.2], texto: "i(0⁻) = 1 A   ·   6 Ω e 4 Ω: sem corrente", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Só a fonte de $1\ \mathrm{A}$ ligada, e o indutor em fio leva toda ela: $i(0^-) = 1\ \mathrm{A}$. O par $4\ \Omega + 6\ \Omega$ tem os dois extremos no terra e não conduz.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Agora só a fonte de $1\ \mathrm{V}$ alimenta. Com $i_T$ na entrada e $i_1$ no $6\ \Omega$:
 
 $$
@@ -90,6 +119,28 @@ $$
 
 **Passo 4 — resposta natural e forçada.** De $5s + 32 = 0$ vem $s = -\dfrac{32}{5} = -6{,}4$; e $32K = 3$ dá $i_f = \dfrac{3}{32}$ A.
 
+<Circuito
+  alt="Fonte de 1 V desligada, chave da esquerda fechada e da direita aberta: o indutor enxerga o 4 Ω em série com o paralelo de 4 Ω e 6 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "1 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "4 Ω", destaque: true },
+    { t: "fio", pts: [[2.2, 0], [4, 0]] },
+    { t: "texto", em: [3.1, -0.3], texto: "fechada", ancora: "middle" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "6 Ω", destaque: true },
+    { t: "R", de: [4, 0], para: [6.6, 0], valor: "4 Ω", destaque: true },
+    { t: "L", de: [6.6, 0], para: [6.6, 3.4], valor: "1 H", abaixo: true },
+    { t: "texto", em: [8.4, 1.75], texto: "1 A: chave aberta", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+    { t: "texto", em: [3.6, 4.2], texto: "R_{eq} = 4 + 4 ∥ 6 = 6,4 Ω   →   τ = L/R_{eq} = 1/6,4 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte de $1\ \mathrm{V}$ em curto, o indutor vê o $4\ \Omega$ da direita em série com o paralelo do $4\ \Omega$ da esquerda com o $6\ \Omega$, $4 \parallel 6 = 2{,}4\ \Omega$: $R_{eq} = 6{,}4\ \Omega$ e $s = -R_{eq}/L = -6{,}4$, como saiu da equação.
+
+</Circuito>
+
 **Passo 5 — a constante.** De $i(0) = 1$:
 
 $$
@@ -101,6 +152,28 @@ $$
 $$
 \boxed{i(t) = \frac{3}{32} + \frac{29}{32}\,e^{-\frac{32}{5}t}\ \mathrm{A}}
 $$
+
+<Circuito
+  alt="Em t → ∞: só a fonte de 1 V, o indutor em fio; o 6 Ω e o 4 Ω da direita ficam em paralelo"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "1 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "4 Ω" },
+    { t: "fio", pts: [[2.2, 0], [4, 0]] },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "6 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "R", de: [4, 0], para: [6.6, 0], valor: "4 Ω" },
+    { t: "fio", pts: [[6.6, 0], [6.6, 3.4]] },
+    { t: "texto", em: [6.85, 1.75], texto: "L: curto", ancora: "start" },
+    { t: "corrente", de: [6.6, 0.4], para: [6.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6.6, 3.4]] },
+    { t: "texto", em: [3.3, 4.2], texto: "v(∞) = 1 · 2,4/6,4 = 0,375 V   ·   i(∞) = 3/32 ≈ 0,094 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t \to \infty$.** O indutor volta a ser fio: o $6\ \Omega$ e o $4\ \Omega$ ficam em paralelo ($2{,}4\ \Omega$), $v_f = 0{,}375\ \mathrm{V}$ e $i_f = 0{,}375/4 = 3/32\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 6 — a tensão.** De $v = 4i + di/dt$, com $\dfrac{di}{dt} = -\dfrac{29}{5}\,e^{-\frac{32}{5}t}$:
 
