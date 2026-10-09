@@ -49,6 +49,27 @@ $i(t) = 4 - (2 + 3t)\,e^{-2t}\ \mathrm{A}$  ·  $v(t) = 5\,(1 + 6t)\,e^{-2t}\ \m
 <Passos>
 **Passo 1 — simplifique a fonte.** Os $10\ \mathrm{A}$ em paralelo com o $2\ \Omega$ equivalem a $20\ \mathrm{V}$ em série com $2\ \Omega$; somando o $3\ \Omega$, o par $L$–$C$ é alimentado por **$20\ \mathrm{V}$ através de $5\ \Omega$**.
 
+<Circuito
+  alt="Equivalente: fonte de 20 V em série com 5 Ω alimentando o indutor de 5 H em paralelo com o capacitor de 1/20 F"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 + 3 = 5 Ω", destaque: true },
+    { t: "caixa", de: [-1.1, -0.8], para: [2.5, 3.4], rotulo: "fonte equivalente" },
+    { t: "fio", pts: [[2, 0], [3.6, 0]] },
+    { t: "no", em: [3.6, 0] },
+    { t: "L", de: [3.6, 0], para: [3.6, 3], valor: "5 H", abaixo: true },
+    { t: "corrente", de: [3.6, 0.4], para: [3.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[3.6, 0], [6, 0]] },
+    { t: "C", de: [6, 0], para: [6, 3], valor: "1/20 F", abaixo: true },
+    { t: "tensao", de: [6, 3], para: [6, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [6, 3]] },
+  ]}
+>
+
+**A fonte simplificada.** $10\ \mathrm{A}$ em paralelo com $2\ \Omega$ viram $20\ \mathrm{V}$ em série com $2\ \Omega$; somado o $3\ \Omega$, o par $L$–$C$ é alimentado por $20\ \mathrm{V}$ através de $5\ \Omega$.
+
+</Circuito>
+
 **Passo 2 — a equação.** Com $v = 5\,di/dt$ e $i_C = \tfrac{1}{20}\,dv/dt$, a LKC no nó do capacitor dá
 
 $$
@@ -70,6 +91,26 @@ $$
 \quad
 s_1 = s_2 = -2
 $$
+
+<Circuito
+  alt="Fonte desligada: 5 Ω, indutor de 5 H e capacitor de 1/20 F em paralelo, um RLC paralelo"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 3], valor: "5 Ω", destaque: true },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "L", de: [2, 0], para: [2, 3], valor: "5 H", abaixo: true },
+    { t: "fio", pts: [[2, 0], [4, 0]] },
+    { t: "C", de: [4, 0], para: [4, 3], valor: "1/20 F", abaixo: true },
+    { t: "fio", pts: [[0, 3], [4, 3]] },
+    { t: "no", em: [2, 3] },
+    { t: "texto", em: [2, -0.6], texto: "20 V: curto → RLC paralelo", ancora: "middle" },
+    { t: "texto", em: [2, 3.75], texto: "α = 1/(2RC) = 2   ·   ω₀ = 1/√(LC) = 2", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O RLC paralelo.** Desligando a fonte equivalente, o $5\ \Omega$ fica em paralelo com $L$ e $C$: $\alpha = \dfrac{1}{2RC} = \dfrac{1}{2 \cdot 5 \cdot 1/20} = 2$ e $\omega_0 = \dfrac{1}{\sqrt{LC}} = \dfrac{1}{\sqrt{5/20}} = 2$ — iguais, criticamente amortecido.
+
+</Circuito>
 
 **Passo 4 — resposta completa.** Forçada $i_f = 16/4 = 4\ \mathrm{A}$:
 
@@ -103,4 +144,23 @@ v = 5\,\frac{di}{dt} = 5\big[-3\,e^{-2t} + 2(2 + 3t)\,e^{-2t}\big]
 $$
 
 **Conferência —** $i(0) = 4 - 2 = 2\ \mathrm{A}$ ✔ e $v(0) = 5\ \mathrm{V}$ ✔ Para $t$ grande, o indutor vira fio e o capacitor abre, então toda a corrente equivalente atravessa: $i \to 20/5 = 4\ \mathrm{A}$ e $v \to 0$ ✔ Note que $v$ **sobe** antes de cair — o termo $30t\,e^{-2t}$ tem máximo em $t = 0{,}5\ \mathrm{s}$: é o capacitor sendo carregado enquanto a corrente do indutor ainda não chegou ao valor final. Confere com a resolução da prova.
+<Circuito
+  alt="Em regime final: indutor em curto, capacitor aberto, i tende a 4 A e v a zero"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "5 Ω" },
+    { t: "fio", pts: [[2, 0], [3.6, 0]] },
+    { t: "fio", pts: [[3.6, 0], [3.6, 3]] },
+    { t: "corrente", de: [3.6, 0.4], para: [3.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [3.85, 2.1], texto: "L: curto", ancora: "start" },
+    { t: "texto", em: [3.85, 1.1], texto: "C: aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3], [3.6, 3]] },
+    { t: "texto", em: [2.7, 3.75], texto: "i(∞) = 20/5 = 4 A   ·   v(∞) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t \to \infty$.** O indutor vira fio e o capacitor abre: toda a corrente da fonte equivalente passa pelo indutor, $i \to 4\ \mathrm{A}$, e o fio põe $v \to 0$.
+
+</Circuito>
+
 </Passos>
