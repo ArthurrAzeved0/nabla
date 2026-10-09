@@ -86,6 +86,46 @@ i_C(0^-) = 0 \Rightarrow \boxed{\frac{dv(0^-)}{dt} = 0}
 v_L(0^-) = 0 \Rightarrow \boxed{\frac{di(0^-)}{dt} = 0}
 $$
 
+<Circuito
+  alt="Em 0⁻: fonte de 20 V e fonte de 5 A ligadas, chave do trilho aberta, capacitor retirado e indutor trocado por fio"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "2 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω" },
+    { t: "fio", pts: [[4.2, 0], [5.8, 0], [5.8, 0.9]] },
+    { t: "fio", pts: [[5.8, 2.5], [5.8, 3.4]] },
+    { t: "tensao", de: [5.8, 3.4], para: [5.8, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [5.65, 1.75], texto: "aberto", ancora: "end" },
+    { t: "texto", em: [6.7, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "5 Ω" },
+    { t: "R", de: [7.6, 0], para: [9.8, 0], valor: "5 Ω" },
+    { t: "no", em: [9.8, 0] },
+    { t: "fio", pts: [[9.8, 0], [9.8, 3.4]] },
+    { t: "corrente", de: [9.8, 0.4], para: [9.8, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [9.65, 2.4], texto: "curto", ancora: "end" },
+    { t: "fio", pts: [[9.8, 0], [11.2, 0]] },
+    { t: "no", em: [11.2, 0] },
+    { t: "I", de: [11.2, 3.4], para: [11.2, 1.4], valor: "5 A", destaque: true },
+    { t: "fio", pts: [[11.2, 1.4], [11.2, 0]] },
+    { t: "texto", em: [12, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "fio", pts: [[12.8, 0], [12.8, 0.3]] },
+    { t: "I", de: [12.8, 3.4], para: [12.8, 0.3], valor: "10 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [12.8, 3.4]] },
+    { t: "texto", em: [6.4, 4.1], texto: "v(0⁻) = 10 V   ·   i(0⁻) = 5 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Fonte de $20\ \mathrm{V}$, chave do trilho aberta, fonte de $5\ \mathrm{A}$; capacitor aberto e indutor em curto. À esquerda, o divisor dá $v = 10\ \mathrm{V}$; à direita, o indutor curto-circuita o ramo dos dois $5\ \Omega$ e leva os $5\ \mathrm{A}$ inteiros.
+
+</Circuito>
+
 **Passo 2 — continuidade:** $v(0^+) = 10\ \mathrm{V}$ e $i(0^+) = 5\ \mathrm{A}$.
 
 **Passo 3 — circuito em $0^+$.** Agora: $50\ \mathrm{V}$, chave do trilho **fechada**, $10\ \mathrm{A}$. O capacitor vira **fonte de $10\ \mathrm{V}$** e o indutor, **fonte de $5\ \mathrm{A}$**. Com a chave fechada, os dois $5\ \Omega$ e o $2\ \Omega$ passam a compartilhar o mesmo nó de $10\ \mathrm{V}$:
@@ -101,6 +141,45 @@ A fonte de $50\ \mathrm{V}$ entrega, pelo $2\ \Omega$ de cima,
 $$
 i_T = \frac{50 - 10}{2} = 20\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em 0⁺: fonte de 50 V e fonte de 10 A ligadas, chave do trilho fechada; capacitor como fonte de 10 V e indutor como fonte de 5 A, com as correntes dos resistores"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", abaixo: true },
+    { t: "texto", em: [1.65, 0.75], texto: "aberta", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "2 Ω" },
+    { t: "corrente", de: [2.4, 0], para: [3.6, 0], rotulo: "20 A" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω" },
+    { t: "fio", pts: [[4.2, 0], [5.8, 0]] },
+    { t: "no", em: [5.8, 0] },
+    { t: "V", de: [5.8, 3.4], para: [5.8, 0], valor: "10 V", destaque: true },
+    { t: "fio", pts: [[5.8, 0], [7.6, 0]] },
+    { t: "texto", em: [6.7, -0.3], texto: "fechada", ancora: "middle" },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "5 Ω" },
+    { t: "R", de: [7.6, 0], para: [9.8, 0], valor: "5 Ω" },
+    { t: "corrente", de: [9.2, 0], para: [8.2, 0], rotulo: "5 A" },
+    { t: "no", em: [9.8, 0] },
+    { t: "texto", em: [9.8, -0.75], texto: "35 V", ancora: "middle", destaque: true },
+    { t: "I", de: [9.8, 0], para: [9.8, 3.4], valor: "5 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[9.8, 0], [12.8, 0]] },
+    { t: "no", em: [11.2, 0] },
+    { t: "fio", pts: [[11.2, 0], [11.2, 0.3]] },
+    { t: "texto", em: [11.35, 0.75], texto: "aberta", ancora: "start" },
+    { t: "I", de: [11.2, 3.4], para: [11.2, 1.4], valor: "5 A", abaixo: true },
+    { t: "I", de: [12.8, 3.4], para: [12.8, 0], valor: "10 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [12.8, 3.4]] },
+    { t: "texto", em: [6.4, 4.1], texto: "i_C = 20 + 5 − 5 − 2 = 18 A   ·   v_L = 10 + 25 = 35 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** Fonte de $50\ \mathrm{V}$, chave do trilho fechada, fonte de $10\ \mathrm{A}$; o capacitor é uma fonte de $10\ \mathrm{V}$ e o indutor, uma de $5\ \mathrm{A}$. Pelo $2\ \Omega$ de cima chegam $20\ \mathrm{A}$; da direita, $10 - 5 = 5\ \mathrm{A}$ pelo $5\ \Omega$ horizontal; saem $5\ \mathrm{A}$ e $2\ \mathrm{A}$ pelos resistores verticais, e sobram $18\ \mathrm{A}$ para o capacitor.
+
+</Circuito>
 
 **Passo 4 — a derivada da tensão.** No nó do capacitor: chegam $20\ \mathrm{A}$ da fonte e mais o que vem da direita pelo $5\ \Omega$ horizontal; saem $5\ \mathrm{A}$ pelo $2\ \Omega$, $2\ \mathrm{A}$ pelo $5\ \Omega$ vertical e $i_C$ pelo capacitor.
 
