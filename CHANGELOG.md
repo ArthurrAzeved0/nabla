@@ -89,8 +89,9 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   fio, corrente vira aberto, a controlada fica, com a variável renomeada); nas
   malhas, as correntes ↻ de cada janela; em Thévenin, os terminais em aberto, o
   curto, o circuito morto e o equivalente final; no amp. op., o $v_+$, o curto
-  virtual e a saída. São desenhos do mesmo gerador das figuras do site, usam
-  as cores do tema (claro e escuro) e foram conferidos um a um contra o texto
+  virtual e a saída. São desenhos do mesmo gerador das figuras do site, escritos
+  no `.mdx` como lista de itens (`<Circuito itens={[...]}>`, editável como os
+  circuitos do enunciado), usam as cores do tema (claro e escuro) e foram conferidos um a um contra o texto
   do passo. Ao redesenhar, todas as contas das 43 resoluções foram refeitas, e
   nenhuma resposta mudou.
 
