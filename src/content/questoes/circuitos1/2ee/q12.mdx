@@ -74,6 +74,29 @@ $$
 \boxed{\frac{dv}{dt} + 4v = 20}
 $$
 
+<Circuito
+  alt="Para t > 0: chave fechada; i sobe pelo 5 Ω, 1 A sai pela fonte de corrente e o resto carrega o capacitor"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 1.4], valor: "5 Ω" },
+    { t: "corrente", de: [0, 1.15], para: [0, 0.25], rotulo: "i" },
+    { t: "V", de: [0, 3], para: [0, 1.4], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "I", de: [2, 0], para: [2, 1.4], valor: "1 A", abaixo: true },
+    { t: "R", de: [2, 1.4], para: [2, 3], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[2, 0], [4.4, 0]] },
+    { t: "texto", em: [3.2, -0.3], texto: "chave fechada", ancora: "middle" },
+    { t: "C", de: [4.4, 0], para: [4.4, 3], valor: "1/20 F", abaixo: true },
+    { t: "tensao", de: [4.4, 3], para: [4.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [4.4, 3]] },
+    { t: "texto", em: [2.2, 3.75], texto: "i = 1 + i_C   ·   −10 + 5i + v = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O circuito depois de $t = 0$.** A LKC no nó de cima reparte $i$ entre a fonte de $1\ \mathrm{A}$ e o capacitor; a LKT no laço da fonte de $10\ \mathrm{V}$ amarra $i$ a $v$. O $10\ \Omega$, em série com a fonte de corrente, não entra em nenhuma das duas.
+
+</Circuito>
+
 **Passo 2 — natural e forçada.** A característica é $s + 4 = 0$, logo $s = -4$ e $v_n = A\,e^{-4t}$. A forçada é constante:
 
 $$
@@ -81,6 +104,24 @@ $$
 \qquad\Longrightarrow\qquad
 v_f = 5\ \mathrm{V}
 $$
+
+<Circuito
+  alt="Fontes desligadas: a de 10 V vira fio, a de 1 A abre e leva o 10 Ω junto; o capacitor vê só o 5 Ω"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 1.4], valor: "5 Ω", destaque: true },
+    { t: "fio", pts: [[0, 1.4], [0, 3]] },
+    { t: "texto", em: [-0.25, 2.2], texto: "10 V: curto", ancora: "end" },
+    { t: "fio", pts: [[0, 0], [4.4, 0]] },
+    { t: "texto", em: [2, 0.55], texto: "1 A: aberto", ancora: "middle" },
+    { t: "C", de: [4.4, 0], para: [4.4, 3], valor: "1/20 F", abaixo: true },
+    { t: "fio", pts: [[0, 3], [4.4, 3]] },
+    { t: "texto", em: [2.2, 3.75], texto: "R_{eq} = 5 Ω   ·   τ = 5 · 1/20 = 1/4 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte de tensão em curto e a de corrente aberta (o $10\ \Omega$ fica pendurado e sai), o capacitor vê só o $5\ \Omega$: $\tau = R_{eq}C = \tfrac14\ \mathrm{s}$, que é o $s = -4$.
+
+</Circuito>
 
 **Passo 3 — a constante:**
 
@@ -107,4 +148,28 @@ v = 10 - 5(1) = 5\ \mathrm{V}
 $$
 
 Igual ao valor inicial ✔ E a resolução da prova chega no mesmo $A = 0$.
+<Circuito
+  alt="Regime permanente: capacitor aberto, 1 A pelo 5 Ω, v = 5 V"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 1.4], valor: "5 Ω" },
+    { t: "corrente", de: [0, 1.15], para: [0, 0.25], rotulo: "1 A" },
+    { t: "V", de: [0, 3], para: [0, 1.4], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "I", de: [2, 0], para: [2, 1.4], valor: "1 A", abaixo: true },
+    { t: "R", de: [2, 1.4], para: [2, 3], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[2, 0], [4.4, 0]] },
+    { t: "no", em: [4.4, 0] },
+    { t: "no", em: [4.4, 3] },
+    { t: "tensao", de: [4.4, 3], para: [4.4, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [4.65, 1.55], texto: "C: aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3], [4.4, 3]] },
+    { t: "texto", em: [2.2, 3.75], texto: "v(∞) = 10 − 5 · 1 = 5 V = v(0)", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O valor final já é o inicial.** Com o capacitor aberto, a corrente do $5\ \Omega$ só pode ir para a fonte de $1\ \mathrm{A}$, e $v = 10 - 5 = 5\ \mathrm{V}$ — exatamente o $v(0)$ dado.
+
+</Circuito>
+
 </Passos>
