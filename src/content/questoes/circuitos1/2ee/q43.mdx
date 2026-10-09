@@ -71,6 +71,39 @@ $$
 
 A única solução é o zero: a fonte controlada não consegue se sustentar sozinha.
 
+<Circuito
+  alt="Circuito em t = 0⁻: fonte de 10 V ligada, ramo de 15 V aberto, capacitor aberto com v = 10 V, segunda chave fechada, v1 = 0, fonte controlada nula e indutor em curto com i = 0"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "15 V" },
+    { t: "texto", em: [1.6, 0.8], texto: "aberta", ancora: "end" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [3, 0.45], texto: "C: aberto", ancora: "middle" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "5 Ω" },
+    { t: "tensao", de: [4.2, 3.4], para: [4.2, 0], rotulo: "v_1", abaixo: true },
+    { t: "fio", pts: [[4.2, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "Id", de: [7, 3.4], para: [7, 0], rotulo: "2v_1" },
+    { t: "fio", pts: [[7, 0], [9.8, 0]] },
+    { t: "no", em: [9.8, 0] },
+    { t: "R", de: [9.8, 0], para: [9.8, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [9.8, 0], para: [12.4, 0], valor: "6 Ω" },
+    { t: "no", em: [12.4, 0] },
+    { t: "fio", pts: [[12.4, 0], [12.4, 3.4]] },
+    { t: "corrente", de: [12.4, 0.4], para: [12.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [12.65, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [12.4, 3.4]] },
+    { t: "texto", em: [6.2, 4.15], texto: "v_1 = 0   ·   2v_1 = 0   ·   v(0⁻) = 10 V   ·   i(0⁻) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Capacitor aberto, indutor em fio, segunda chave fechada. A LKC no nó do $5\ \Omega$ dá $2v_1 = \frac{v_1}{5} + \frac{v_1}{6} + \frac{v_1}{6}$, logo $v_1 = 0$: a controlada entrega zero, $i(0^-) = 0$ e o capacitor fica com a fonte inteira, $v(0^-) = 10\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — as condições iniciais.** Com o nó a zero, o capacitor enxerga a fonte inteira e o indutor não conduz:
 
 $$
@@ -97,6 +130,39 @@ i_C(0^+) = \frac{5}{5} = 1\ \mathrm{A}
 \boxed{\frac{dv(0^+)}{dt} = \frac{1}{1/5} = 5\ \mathrm{V/s}}
 $$
 
+<Circuito
+  alt="Circuito em t = 0⁺: a fonte de 15 V entra, o capacitor vira fonte de 10 V, v1 = 5 V; a segunda chave abre e a controlada vale 10 A; o indutor vira fonte de 0 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [0.5, 0]] },
+    { t: "texto", em: [0.75, -0.35], texto: "aberta", ancora: "start" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "15 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "V", de: [4.2, 0], para: [1.8, 0], valor: "v = 10 V", destaque: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "5 Ω" },
+    { t: "tensao", de: [4.2, 3.4], para: [4.2, 0], rotulo: "v_1", abaixo: true },
+    { t: "fio", pts: [[4.2, 0], [4.8, 0]] },
+    { t: "texto", em: [5.9, -0.35], texto: "aberta", ancora: "middle" },
+    { t: "fio", pts: [[6.4, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "Id", de: [7, 3.4], para: [7, 0], rotulo: "10 A", destaque: true },
+    { t: "fio", pts: [[7, 0], [9.8, 0]] },
+    { t: "no", em: [9.8, 0] },
+    { t: "R", de: [9.8, 0], para: [9.8, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [9.8, 0], para: [12.4, 0], valor: "6 Ω" },
+    { t: "no", em: [12.4, 0] },
+    { t: "I", de: [12.4, 0], para: [12.4, 3.4], valor: "i = 0", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [12.4, 3.4]] },
+    { t: "texto", em: [6.2, 4.15], texto: "v_1(0⁺) = 15 − 10 = 5 V   ·   i_C(0⁺) = 5/5 = 1 A   ·   2v_1 = 10 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$, lado esquerdo.** O capacitor vira fonte de $10\ \mathrm{V}$ em série com a de $15\ \mathrm{V}$: sobram $v_1 = 15 - 10 = 5\ \mathrm{V}$ no $5\ \Omega$, que leva $i_C = 1\ \mathrm{A}$, e $dv/dt = 1/(1/5) = 5\ \mathrm{V/s}$. Com a segunda chave aberta, essa corrente não tem outro caminho.
+
+</Circuito>
+
 **Passo 4 — o lado direito em $0^+$.** Isolado pela chave aberta, ele é alimentado só pela fonte controlada, que agora vale
 
 $$
@@ -108,6 +174,30 @@ O indutor mantém $i = 0$, então o $6\ \Omega$ **horizontal** não conduz e os 
 $$
 v_{n\acute{o}} = 6 \cdot 10 = 60\ \mathrm{V}
 $$
+
+<Circuito
+  alt="Lado direito em t = 0⁺: fonte controlada de 10 A, 6 Ω vertical com 60 V, 6 Ω horizontal sem corrente, indutor como fonte de 0 A com 60 V"
+  itens={[
+    { t: "fio", pts: [[6.4, 0], [7, 0]] },
+    { t: "texto", em: [6.2, 0.1], texto: "aberta", ancora: "end" },
+    { t: "Id", de: [7, 3.4], para: [7, 0], rotulo: "10 A", destaque: true },
+    { t: "fio", pts: [[7, 0], [9.8, 0]] },
+    { t: "no", em: [9.8, 0] },
+    { t: "R", de: [9.8, 0], para: [9.8, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "tensao", de: [9.8, 3.4], para: [9.8, 0], rotulo: "60 V", abaixo: false },
+    { t: "R", de: [9.8, 0], para: [12.4, 0], valor: "6 Ω" },
+    { t: "texto", em: [11.1, 0.5], texto: "0 A", ancora: "middle" },
+    { t: "no", em: [12.4, 0] },
+    { t: "I", de: [12.4, 0], para: [12.4, 3.4], valor: "i = 0", abaixo: true, destaque: true },
+    { t: "tensao", de: [12.4, 3.4], para: [12.4, 0], rotulo: "v_L", abaixo: false },
+    { t: "fio", pts: [[7, 3.4], [12.4, 3.4]] },
+    { t: "texto", em: [9.7, 4.15], texto: "v_L(0⁺) = 60 V  →  di/dt = 60/2 = 30 A/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O lado direito, isolado.** A controlada injeta $10\ \mathrm{A}$; o indutor segura $i = 0$, o $6\ \Omega$ horizontal não conduz e os $10\ \mathrm{A}$ vão todos para o vertical: $6 \cdot 10 = 60\ \mathrm{V}$, que caem inteiros no indutor.
+
+</Circuito>
 
 **Passo 5 — a derivada da corrente.** Sem queda no $6\ \Omega$ horizontal, esses $60\ \mathrm{V}$ caem inteiros no indutor:
 
