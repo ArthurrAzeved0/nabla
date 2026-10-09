@@ -76,6 +76,27 @@ $$
 
 Raízes complexas: **subamortecido**, com $\alpha = 3{,}5$ e $\omega_d = \dfrac{\sqrt7}{2} \approx 1{,}323$.
 
+<Circuito
+  alt="A fonte de 20 V virou fio; o 5 Ω e o indutor de 1 H em série alimentam o capacitor de 1/4 F em paralelo com o 2 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "20 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "5 Ω", destaque: true },
+    { t: "L", de: [2.2, 0], para: [4.4, 0], valor: "1 H", destaque: true },
+    { t: "no", em: [4.4, 0] },
+    { t: "C", de: [4.4, 0], para: [4.4, 3.4], valor: "1/4 F", destaque: true },
+    { t: "fio", pts: [[4.4, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "R", de: [7, 0], para: [7, 3.4], valor: "2 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+    { t: "texto", em: [3.5, 4.2], texto: "s² + 7s + 14 = 0   →   s = −3,5 ± j1,323", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Fonte desligada.** A de 20 V vira fio. Sobra o $5\ \Omega$ em série com o indutor, fechando no paralelo do capacitor com o $2\ \Omega$ — nem RLC série nem paralelo puro, por isso as raízes saem da EDO: $\alpha = 3{,}5$ e $\omega_d = \sqrt7/2 \approx 1{,}323$.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** $14K = 80$, logo
 
 $$
@@ -83,6 +104,27 @@ v_f = \frac{80}{14} = \frac{40}{7} \approx 5{,}714\ \mathrm{V}
 $$
 
 Confere pelo regime: indutor em fio, capacitor aberto, e o divisor $20 \cdot \frac{2}{5 + 2} = \frac{40}{7}$ ✓
+
+<Circuito
+  alt="Regime final: fonte de 20 V, 5 Ω, o indutor virou fio e o capacitor foi retirado (aberto); o 2 Ω fica com v"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "5 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "fio", pts: [[2.2, 0], [7, 0]] },
+    { t: "texto", em: [3.3, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "texto", em: [4.4, 1.75], texto: "C: aberto", ancora: "middle" },
+    { t: "no", em: [7, 0] },
+    { t: "R", de: [7, 0], para: [7, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "tensao", de: [7, 3.4], para: [7, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+    { t: "texto", em: [3.5, 4.2], texto: "v(∞) = 40/7 ≈ 5,71 V   ·   i(∞) = 20/7 ≈ 2,86 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t \to \infty$.** Indutor em fio e capacitor aberto: o $5\ \Omega$ e o $2\ \Omega$ formam um divisor, $v_f = 20 \cdot 2/7 = 40/7\ \mathrm{V}$, com $i_f = 20/7\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 5 — a primeira constante.** De $v(0) = 10$:
 
@@ -97,6 +139,28 @@ $$
 \qquad\Longrightarrow\qquad
 \frac{dv(0)}{dt} = 0
 $$
+
+<Circuito
+  alt="Em t = 0⁺: fonte de 20 V, 5 Ω, o indutor virou fonte de corrente de 5 A e o capacitor fonte de tensão de 10 V, em paralelo com o 2 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "5 Ω" },
+    { t: "I", de: [2.2, 0], para: [4.4, 0], valor: "i(0⁺) = 5 A", destaque: true },
+    { t: "no", em: [4.4, 0] },
+    { t: "V", de: [4.4, 3.4], para: [4.4, 0], rotulo: "v(0⁺)", valor: "10 V", destaque: true },
+    { t: "corrente", de: [4.4, 0.3], para: [4.4, 1.1], rotulo: "i_C", abaixo: false },
+    { t: "fio", pts: [[4.4, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "R", de: [7, 0], para: [7, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [7, 0.3], para: [7, 1.1], rotulo: "5 A", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+    { t: "texto", em: [3.5, 4.2], texto: "i_C(0⁺) = 5 − 10/2 = 0   →   dv/dt(0) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** O indutor vira fonte de $5\ \mathrm{A}$ e o capacitor fonte de $10\ \mathrm{V}$. O $2\ \Omega$ leva $10/2 = 5\ \mathrm{A}$, exatamente o que chega: $i_C(0^+) = 0$, e a tensão parte com derivada nula.
+
+</Circuito>
 
 E como $\dfrac{dv(0)}{dt} = -\alpha A_1 + \omega_d A_2 = 0$:
 
