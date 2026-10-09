@@ -54,6 +54,28 @@ $$
 i(0) = \frac{16}{4} = 4\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em 0⁻: chave fechada curto-circuita o segundo 4 Ω, indutor virou fio, i(0⁻) = 4 A"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "16 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "4 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "no", em: [2, 0] },
+    { t: "fio", pts: [[2, 0], [2, -1.3], [4.4, -1.3], [4.4, 0]] },
+    { t: "texto", em: [3.2, -1.6], texto: "chave fechada", ancora: "middle" },
+    { t: "R", de: [2, 0], para: [4.4, 0], valor: "4 Ω", abaixo: true },
+    { t: "no", em: [4.4, 0] },
+    { t: "fio", pts: [[4.4, 0], [5.6, 0], [5.6, 3]] },
+    { t: "texto", em: [5.85, 1.55], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3], [5.6, 3]] },
+    { t: "texto", em: [2.8, 3.75], texto: "i(0⁻) = 16/4 = 4 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente antes da chave.** A chave fechada põe o segundo $4\ \Omega$ em curto e o indutor é um fio: só o primeiro $4\ \Omega$ limita a corrente, $i(0^-) = 4\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 2 — a equação para $t > 0$.** Chave aberta, os dois $4\ \Omega$ em série com o indutor:
 
 $$
@@ -61,6 +83,25 @@ $$
 \qquad\Longrightarrow\qquad
 \boxed{\frac{di}{dt} + 16\,i = 32}
 $$
+
+<Circuito
+  alt="Fonte de 16 V em curto, chave aberta: o indutor vê os dois 4 Ω em série, 8 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.55], texto: "16 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "4 Ω", destaque: true },
+    { t: "texto", em: [3.2, -0.95], texto: "chave aberta", ancora: "middle" },
+    { t: "R", de: [2, 0], para: [4.4, 0], valor: "4 Ω", destaque: true },
+    { t: "fio", pts: [[4.4, 0], [5.6, 0]] },
+    { t: "L", de: [5.6, 0], para: [5.6, 3], valor: "1/2 H", abaixo: true },
+    { t: "fio", pts: [[0, 3], [5.6, 3]] },
+    { t: "texto", em: [2.8, 3.75], texto: "R_{eq} = 4 + 4 = 8 Ω   ·   τ = L/R_{eq} = 1/16 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O que o indutor enxerga depois de $t = 0$.** Com a fonte desligada e a chave aberta, os dois $4\ \Omega$ ficam em série: $R_{eq} = 8\ \Omega$ e $\tau = \tfrac{1/2}{8} = \tfrac{1}{16}\ \mathrm{s}$, que é o $s = -16$ da equação.
+
+</Circuito>
 
 **Passo 3 — resposta completa.** Característica $s = -16$, forçada $i_f = 32/16 = 2\ \mathrm{A}$:
 
@@ -80,4 +121,24 @@ v = \frac{1}{2}\frac{di}{dt} = \frac{1}{2}\left(-32\,e^{-16t}\right)
 $$
 
 **Conferência —** $v$ **salta**: valia $0$ em $0^-$ (regime permanente, indutor é fio) e vale $-16\ \mathrm{V}$ em $0^+$. E tem de valer, pela LKT: em $0^+$ a corrente ainda é $4\ \mathrm{A}$, os dois $4\ \Omega$ juntos caem $32\ \mathrm{V}$, e a fonte só tem $16\ \mathrm{V}$ — a diferença de $-16\ \mathrm{V}$ é exatamente o indutor ✔ O sinal negativo é a assinatura da corrente caindo de $4$ para $2\ \mathrm{A}$. Confere com a resolução da prova.
+
+<Circuito
+  alt="Em 0⁺: chave aberta, indutor como fonte de 4 A; a tensão nele é −16 V"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "16 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "4 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "texto", em: [3.2, -0.95], texto: "chave aberta", ancora: "middle" },
+    { t: "R", de: [2, 0], para: [4.4, 0], valor: "4 Ω" },
+    { t: "fio", pts: [[4.4, 0], [5.6, 0]] },
+    { t: "I", de: [5.6, 0], para: [5.6, 3], valor: "4 A", abaixo: true, destaque: true },
+    { t: "tensao", de: [5.6, 3], para: [5.6, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [5.6, 3]] },
+    { t: "texto", em: [2.8, 3.75], texto: "v(0⁺) = 16 − 8 · 4 = −16 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O salto em $0^+$.** O indutor segura os $4\ \mathrm{A}$ e vira fonte de corrente; os dois $4\ \Omega$ caem $32\ \mathrm{V}$ e a LKT deixa para ele $v(0^+) = 16 - 32 = -16\ \mathrm{V}$.
+
+</Circuito>
 </Passos>
