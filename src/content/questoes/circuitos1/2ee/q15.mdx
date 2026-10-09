@@ -62,6 +62,35 @@ i(0) = \frac{4}{3}\ \mathrm{A}
 v(0) = 10\,i = \frac{40}{3}\ \mathrm{V}
 $$
 
+<Circuito
+  alt="Em 0⁻: fonte de 20 V ligada, capacitor aberto, indutor em curto; 5 Ω e 10 Ω em série, i(0⁻) = 4/3 A e v(0⁻) = 40/3 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [3.8, 0], valor: "5 Ω" },
+    { t: "no", em: [3.8, 0] },
+    { t: "R", de: [3.8, 0], para: [3.8, 1.7], valor: "10 Ω" },
+    { t: "corrente", de: [3.8, 0.3], para: [3.8, 1.3], rotulo: "i" },
+    { t: "fio", pts: [[3.8, 1.7], [3.8, 3.4]] },
+    { t: "texto", em: [3.6, 2.6], texto: "L: curto", ancora: "end" },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "no", em: [5.6, 3.4] },
+    { t: "tensao", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [5.85, 1.75], texto: "C: aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [5.6, 3.4]] },
+    { t: "texto", em: [2.8, 4.15], texto: "i(0⁻) = 20/15 = 4/3 A   ·   v(0⁻) = 10 · 4/3 = 40/3 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente com $20\ \mathrm{V}$.** Capacitor aberto e indutor em curto deixam um só caminho, $5 + 10 = 15\ \Omega$: $i(0) = \tfrac43\ \mathrm{A}$, e o capacitor fica com a tensão do $10\ \Omega$, $v(0) = \tfrac{40}{3}\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — a equação para $t > 0$**, agora com $100\ \mathrm{V}$. Com $v = 10i + 2\,\dfrac{di}{dt}$ e $i_C = \tfrac{1}{10}\,\dfrac{dv}{dt}$, a LKT e a LKC dão
 
 $$
@@ -90,6 +119,27 @@ s_{1,2} = \frac{-7 \pm j\sqrt{11}}{2} = -3{,}5 \pm j\,1{,}658
 \omega_d = \frac{\sqrt{11}}{2} \approx 1{,}658\ \mathrm{rad/s}
 $$
 
+<Circuito
+  alt="Fonte de 100 V desligada: o 5 Ω vai ao fio de baixo e fica em paralelo com o capacitor e com o ramo 10 Ω mais 2 H"
+  itens={[
+    { t: "fio", pts: [[1.8, 0], [1.8, 3.4]] },
+    { t: "texto", em: [1.6, 1.75], texto: "100 V: curto", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [3.8, 0], valor: "5 Ω", destaque: true },
+    { t: "no", em: [3.8, 0] },
+    { t: "R", de: [3.8, 0], para: [3.8, 1.7], valor: "10 Ω", destaque: true },
+    { t: "L", de: [3.8, 1.7], para: [3.8, 3.4], valor: "2 H", destaque: true },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0]] },
+    { t: "C", de: [5.6, 0], para: [5.6, 3.4], valor: "1/10 F", abaixo: true, destaque: true },
+    { t: "fio", pts: [[1.8, 3.4], [5.6, 3.4]] },
+    { t: "no", em: [3.8, 3.4] },
+    { t: "texto", em: [3.7, 4.15], texto: "α = 3,5   ·   ω₀ = √15 ≈ 3,87   ·   α < ω₀", ancora: "middle", destaque: true },
+  ]}
+>
+
+**As frequências naturais.** Com a fonte em curto, o capacitor vê o $5\ \Omega$ em paralelo com o ramo $10\ \Omega + 2\ \mathrm{H}$ — não é um RLC série nem paralelo puro, por isso $\alpha$ e $\omega_0$ saem da equação ($2\alpha = 7$, $\omega_0^2 = 15$), e não de fórmula pronta.
+
+</Circuito>
+
 **Passo 4 — resposta completa.** Forçada $i_f = 100/15 = 20/3 \approx 6{,}67\ \mathrm{A}$:
 
 $$
@@ -116,6 +166,30 @@ $$
 \boxed{i(t) = 6{,}67 - e^{-3,5t}\big[5{,}33\cos(1{,}658\,t) + 11{,}26\,\mathrm{sen}(1{,}658\,t)\big]\ \mathrm{A}}
 $$
 
+<Circuito
+  alt="Em 0⁺: fonte de 100 V ligada, capacitor como fonte de 40/3 V, indutor como fonte de 4/3 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "texto", em: [1.65, 0.8], texto: "aberta", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [3.8, 0], valor: "5 Ω" },
+    { t: "no", em: [3.8, 0] },
+    { t: "R", de: [3.8, 0], para: [3.8, 1.7], valor: "10 Ω" },
+    { t: "corrente", de: [3.8, 0.3], para: [3.8, 1.3], rotulo: "i" },
+    { t: "I", de: [3.8, 1.7], para: [3.8, 3.4], valor: "4/3 A", destaque: true },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0]] },
+    { t: "V", de: [5.6, 3.4], para: [5.6, 0], valor: "40/3 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [5.6, 3.4]] },
+    { t: "texto", em: [2.8, 4.15], texto: "v_L(0⁺) = 40/3 − 10 · 4/3 = 0   ⇒   di(0⁺)/dt = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O circuito em $0^+$.** O capacitor segura $\tfrac{40}{3}\ \mathrm{V}$ e o indutor $\tfrac43\ \mathrm{A}$; no ramo do indutor, o $10\ \Omega$ já consome os $\tfrac{40}{3}\ \mathrm{V}$ inteiros e não sobra nada para ele: $di(0^+)/dt = 0$.
+
+</Circuito>
+
 **Passo 6 — a tensão.** Derivando e montando $v = 10i + 2\,di/dt$:
 
 $$
@@ -127,4 +201,29 @@ $$
 $$
 
 **Conferência —** em $t=0$: $i = 6{,}67 - 5{,}33 = 1{,}33 = \tfrac43\ \mathrm{A}$ ✔ e $v = 66{,}67 - 53{,}33 = 13{,}33 = \tfrac{40}{3}\ \mathrm{V}$ ✔ Para $t$ grande, $i \to 100/15 = 6{,}67\ \mathrm{A}$ e $v \to 10(6{,}67) = 66{,}7\ \mathrm{V}$ ✔ E repare que $di/dt$ começa em **zero**: é o que o valor de $v(0)$ força, e é de lá que sai $A_2$. Confere com a resolução da prova.
+<Circuito
+  alt="Regime final com 100 V: capacitor aberto, indutor em curto; i tende a 20/3 A e v a 200/3 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [3.8, 0], valor: "5 Ω" },
+    { t: "no", em: [3.8, 0] },
+    { t: "R", de: [3.8, 0], para: [3.8, 1.7], valor: "10 Ω" },
+    { t: "corrente", de: [3.8, 0.3], para: [3.8, 1.3], rotulo: "i" },
+    { t: "fio", pts: [[3.8, 1.7], [3.8, 3.4]] },
+    { t: "texto", em: [3.6, 2.6], texto: "L: curto", ancora: "end" },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "no", em: [5.6, 3.4] },
+    { t: "tensao", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [5.85, 1.75], texto: "C: aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [5.6, 3.4]] },
+    { t: "texto", em: [2.8, 4.15], texto: "i(∞) = 100/15 = 20/3 A   ·   v(∞) = 10 · 20/3 = 200/3 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t \to \infty$.** O mesmo caminho de $15\ \Omega$ do Passo 1, agora com $100\ \mathrm{V}$: $i \to \tfrac{20}{3}\ \mathrm{A}$ e $v \to \tfrac{200}{3} \approx 66{,}7\ \mathrm{V}$.
+
+</Circuito>
+
 </Passos>
