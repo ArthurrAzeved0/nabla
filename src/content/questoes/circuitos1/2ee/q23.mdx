@@ -58,6 +58,32 @@ $$
 v(0) = 21 \cdot \frac{12}{7} = 36\ \mathrm{V}
 $$
 
+<Circuito
+  alt="Em 0⁻: chave fechada curto-circuitando o 2 Ω, capacitor aberto; 4 Ω em paralelo com 3 Ω, v = 36 V e i = 9 A"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "21 A", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3.4], valor: "4 Ω" },
+    { t: "corrente", de: [1.6, 0.4], para: [1.6, 1.4], rotulo: "i" },
+    { t: "fio", pts: [[1.6, 0], [1.6, -1.4], [3.8, -1.4], [3.8, 0]] },
+    { t: "texto", em: [2.7, -1.65], texto: "fechada", ancora: "middle" },
+    { t: "R", de: [1.6, 0], para: [3.8, 0], valor: "2 Ω" },
+    { t: "no", em: [3.8, 0] },
+    { t: "R", de: [3.8, 0], para: [3.8, 3.4], valor: "3 Ω" },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0], [5.6, 0.9]] },
+    { t: "fio", pts: [[5.6, 2.5], [5.6, 3.4]] },
+    { t: "tensao", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [5.75, 1.75], texto: "aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [5.6, 3.4]] },
+    { t: "texto", em: [2.8, 4.1], texto: "v(0) = 21 · 12/7 = 36 V   ·   i(0⁻) = 9 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** A chave curto-circuita o $2\ \Omega$ e o capacitor é aberto: os $21\ \mathrm{A}$ entram em $4 \parallel 3 = 12/7\ \Omega$, e $v(0) = 36\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — valor final** (chave aberta, capacitor aberto). Agora o caminho da direita é $2 + 3 = 5\ \Omega$, em paralelo com o $4\ \Omega$:
 
 $$
@@ -72,6 +98,32 @@ $$
 v(\infty) = 3 \cdot \frac{28}{3} = 28\ \mathrm{V}
 $$
 
+<Circuito
+  alt="Para t tendendo a infinito: chave aberta, capacitor aberto; 4 Ω em paralelo com 2 Ω + 3 Ω, v_A = 140/3 V e v = 28 V"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "21 A", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3.4], valor: "4 Ω" },
+    { t: "texto", em: [1.75, -0.45], texto: "v_A", ancora: "end" },
+    { t: "texto", em: [2.7, -1.2], texto: "chave aberta", ancora: "middle" },
+    { t: "R", de: [1.6, 0], para: [3.8, 0], valor: "2 Ω" },
+    { t: "corrente", de: [2, 0], para: [3.4, 0], rotulo: "28/3 A" },
+    { t: "no", em: [3.8, 0] },
+    { t: "R", de: [3.8, 0], para: [3.8, 3.4], valor: "3 Ω" },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0], [5.6, 0.9]] },
+    { t: "fio", pts: [[5.6, 2.5], [5.6, 3.4]] },
+    { t: "tensao", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [5.75, 1.75], texto: "aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [5.6, 3.4]] },
+    { t: "texto", em: [2.8, 4.1], texto: "v_A(∞) = 140/3 V   ·   v(∞) = 3 · 28/3 = 28 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Para $t \to \infty$.** Chave aberta e capacitor aberto: o ramo da direita tem $2 + 3 = 5\ \Omega$, em paralelo com o $4\ \Omega$. Dos $140/3\ \mathrm{V}$ do nó da fonte, o $3\ \Omega$ fica com $28\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 3 — constante de tempo.** Desativando a fonte de corrente (**circuito aberto**), o capacitor vê, do seu nó: o $3\ \Omega$, e o $2 + 4 = 6\ \Omega$ do outro caminho —
 
 $$
@@ -79,6 +131,27 @@ R_{\mathrm{eq}} = 3 \parallel 6 = 2\ \Omega
 \qquad\Longrightarrow\qquad
 \tau = 2 \cdot \frac14 = 0{,}5\ \mathrm{s}
 $$
+
+<Circuito
+  alt="Constante de tempo: fonte de corrente desligada (aberta); o capacitor vê 3 Ω em paralelo com 2 Ω + 4 Ω, R_eq = 2 Ω"
+  itens={[
+    { t: "texto", em: [1.05, 1.75], texto: "21 A: aberto", ancora: "end" },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "R", de: [1.6, 0], para: [3.8, 0], valor: "2 Ω", abaixo: true },
+    { t: "texto", em: [2.7, -0.75], texto: "chave aberta", ancora: "middle" },
+    { t: "no", em: [3.8, 0] },
+    { t: "R", de: [3.8, 0], para: [3.8, 3.4], valor: "3 Ω", abaixo: true },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0]] },
+    { t: "C", de: [5.6, 0], para: [5.6, 3.4], valor: "1/4 F", abaixo: true, destaque: true },
+    { t: "fio", pts: [[1.6, 3.4], [5.6, 3.4]] },
+    { t: "texto", em: [3.6, 4.1], texto: "R_eq = 3 ∥ (2 + 4) = 2 Ω   ·   τ = 2 · 1/4 = 0,5 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte de corrente desligada (aberta), o $2\ \Omega$ e o $4\ \Omega$ ficam em série, e o capacitor vê esse $6\ \Omega$ em paralelo com o $3\ \Omega$: $R_{\mathrm{eq}} = 2\ \Omega$, $\tau = 0{,}5\ \mathrm{s}$.
+
+</Circuito>
 
 **Passo 4 — a fórmula dos três valores:**
 
