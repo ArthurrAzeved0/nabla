@@ -86,11 +86,49 @@ i(t) = \frac{40}{3}\left(1 - e^{-15t/2}\right)\ \mathrm{A}
 \boxed{v(t) = 5\,i(t) = \frac{200}{3}\left(1 - e^{-15t/2}\right)\ \mathrm{V}}
 $$
 
+<Circuito
+  alt="Regime do primeiro trecho: fonte de 20 A, indutor em curto, 10 Ω e 5 Ω em paralelo; i tende a 40/3 A"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "20 A", destaque: true },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "10 Ω" },
+    { t: "fio", pts: [[2, 0], [5.4, 0]] },
+    { t: "texto", em: [3.1, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "corrente", de: [4.3, 0], para: [5.1, 0], rotulo: "i", abaixo: false },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "5 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3], para: [5.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3], [5.4, 3]] },
+    { t: "texto", em: [2.7, 3.75], texto: "i → 20 · 10/15 = 40/3 A   ·   v → 200/3 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Para onde o primeiro trecho caminha.** Com o indutor em curto, os $20\ \mathrm{A}$ se dividem entre $10\ \Omega$ e $5\ \Omega$: $i_f = 20 \cdot \tfrac{10}{15} = \tfrac{40}{3}\ \mathrm{A}$ — a forçada do Passo 3.
+
+</Circuito>
+
 **Passo 4 — a costura em $t = 5\ \mathrm{s}$.** A constante de tempo é $\tau = \tfrac{2}{15} \approx 0{,}133\ \mathrm{s}$, então $5\ \mathrm{s}$ são cerca de **37 $\tau$**: o primeiro trecho chegou ao regime permanente com folga.
 
 $$
 i(5) = \frac{40}{3}\left(1 - e^{-37{,}5}\right) \approx \frac{40}{3}\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Fonte desligada, aberta: o indutor vê 10 Ω e 5 Ω em série, 15 Ω"
+  itens={[
+    { t: "texto", em: [2.25, 2.5], texto: "i_g: aberto", ancora: "start" },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "10 Ω", abaixo: true, destaque: true },
+    { t: "L", de: [2, 0], para: [4.2, 0], valor: "2 H" },
+    { t: "fio", pts: [[4.2, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "5 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[2, 3], [5.4, 3]] },
+    { t: "texto", em: [3.7, 3.75], texto: "R_{eq} = 10 + 5 = 15 Ω   ·   τ = 2/15 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O que o indutor enxerga.** A fonte de corrente desligada é um aberto, e o indutor fica num laço com $10 + 5 = 15\ \Omega$: $\tau = \tfrac{2}{15} \approx 0{,}133\ \mathrm{s}$ — vale para os dois trechos, porque a fonte de corrente nunca entra nesse cálculo.
+
+</Circuito>
 
 **Passo 5 — o segundo trecho ($t > 5$), com a fonte desligada.** Sem fonte, sobra a resposta natural. A LKT no laço fechado que resta ($5\ \Omega$, indutor, $10\ \Omega$):
 
@@ -109,4 +147,22 @@ i(t) = \frac{40}{3}\,e^{-\frac{15}{2}(t-5)}\ \mathrm{A}
 $$
 
 **Conferência —** em $t=5$ os dois trechos dão o mesmo valor, $\tfrac{200}{3} \approx 66{,}7\ \mathrm{V}$ ✔ E note o detalhe que a questão cobra: o expoente do segundo trecho é $-(t-5)/\tau$, **não** $-t/\tau$ — cada trecho tem o seu próprio relógio. Confere com a resolução da prova.
+<Circuito
+  alt="Em t = 5⁺: fonte zerada, aberta; o indutor como fonte de 40/3 A alimenta o laço de 10 Ω e 5 Ω"
+  itens={[
+    { t: "texto", em: [2.25, 2.5], texto: "i_g = 0: aberto", ancora: "start" },
+    { t: "R", de: [2, 0], para: [2, 3], valor: "10 Ω", abaixo: true },
+    { t: "I", de: [2, 0], para: [4.2, 0], valor: "40/3 A", destaque: true },
+    { t: "fio", pts: [[4.2, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "5 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3], para: [5.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[2, 3], [5.4, 3]] },
+    { t: "texto", em: [3.7, 3.75], texto: "v(5⁺) = 5 · 40/3 = 200/3 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A costura em $t = 5^+$.** A corrente do indutor não salta: ele vira fonte de $\tfrac{40}{3}\ \mathrm{A}$ e o $5\ \Omega$ continua com $\tfrac{200}{3}\ \mathrm{V}$, o mesmo valor do fim do primeiro trecho.
+
+</Circuito>
+
 </Passos>
