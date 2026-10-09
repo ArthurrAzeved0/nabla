@@ -61,6 +61,34 @@ i_L(0) = 2\ \mathrm{A}
 v_C(0) = 10 \cdot 2 = 20\ \mathrm{V}
 $$
 
+<Circuito
+  alt="Circuito em t = 0⁻: fonte de 2 A ligada, ramo de 5 A aberto, indutor em curto com i_L = 2 A, capacitor aberto com v_C = 20 V"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "I", de: [1.8, 3.4], para: [1.8, 1.4], valor: "5 A" },
+    { t: "texto", em: [2, 0.8], texto: "aberta", ancora: "start" },
+    { t: "fio", pts: [[1.8, 0], [4.4, 0]] },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 1.7], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[4.4, 1.7], [4.4, 3.4]] },
+    { t: "corrente", de: [4.4, 2.1], para: [4.4, 3], rotulo: "i_L", abaixo: false },
+    { t: "texto", em: [4.65, 2.6], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[4.4, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "tensao", de: [7.2, 3.4], para: [7.2, 0], rotulo: "v_C", abaixo: false },
+    { t: "texto", em: [7.45, 1.7], texto: "C: aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+    { t: "no", em: [7.2, 3.4] },
+    { t: "texto", em: [3.6, 4.15], texto: "i_L(0⁻) = 2 A   ·   v_C(0⁻) = 10 · 2 = 20 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Capacitor aberto e indutor em fio: os $2\ \mathrm{A}$ inteiros passam pelo $10\ \Omega$, que fica com $20\ \mathrm{V}$ — a tensão do capacitor. Por continuidade, $i_L(0^+) = 2\ \mathrm{A}$ e $v_C(0^+) = 20\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Com a fonte de $5\ \mathrm{A}$, chamando $v_C$ a tensão do nó:
 
 $$
@@ -91,7 +119,52 @@ $$
 
 Duas raízes reais distintas: **superamortecido**.
 
+<Circuito
+  alt="Fontes de corrente desligadas (abertas); sobra o laço 10 Ω, 2 H e 1/10 F: RLC série com alfa 2,5 e ômega zero raiz de 5"
+  itens={[
+    { t: "texto", em: [3.9, 1.7], texto: "fontes: aberto", ancora: "end" },
+    { t: "fio", pts: [[4.4, 0], [7.2, 0]] },
+    { t: "R", de: [4.4, 0], para: [4.4, 1.7], valor: "10 Ω", abaixo: true },
+    { t: "L", de: [4.4, 1.7], para: [4.4, 3.4], valor: "2 H", abaixo: true },
+    { t: "C", de: [7.2, 0], para: [7.2, 3.4], valor: "1/10 F", abaixo: true },
+    { t: "fio", pts: [[4.4, 3.4], [7.2, 3.4]] },
+    { t: "caixa", de: [4.1, -0.4], para: [8.9, 3.8], rotulo: "RLC série" },
+    { t: "texto", em: [6.5, 4.45], texto: "α = R/(2L) = 2,5   ·   ω₀ = 1/√(LC) = √5", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O RLC série reconhecido.** Com as fontes de corrente abertas, o $10\ \Omega$, o indutor e o capacitor formam um laço só: $\alpha = 10/4 = 2{,}5$ e $\omega_0^2 = 1/(2 \cdot 0{,}1) = 5$. Como $\alpha^2 = 6{,}25 \gt 5$, é superamortecido, com $s = -2{,}5 \pm \sqrt{1{,}25}$.
+
+</Circuito>
+
 **Passo 5 — resposta forçada.** $5K = 25$, logo $i_{L,f} = 5\ \mathrm{A}$ — coerente, porque no fim o indutor vira fio e leva os $5\ \mathrm{A}$ inteiros.
+
+<Circuito
+  alt="Circuito em t = 0⁺: fonte de 5 A ligada, indutor como fonte de 2 A, capacitor como fonte de 20 V; v = 0 e i = 3 A"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [0.5, 0]] },
+    { t: "texto", em: [0.75, -0.35], texto: "aberta", ancora: "start" },
+    { t: "no", em: [1.8, 0] },
+    { t: "I", de: [1.8, 3.4], para: [1.8, 1.4], valor: "5 A", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "fio", pts: [[1.8, 0], [4.4, 0]] },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 1.7], valor: "10 Ω", abaixo: true },
+    { t: "I", de: [4.4, 1.7], para: [4.4, 3.4], valor: "2 A", destaque: true },
+    { t: "tensao", de: [4.4, 3.4], para: [4.4, 1.7], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4.4, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "V", de: [7.2, 3.4], para: [7.2, 0], valor: "20 V", abaixo: true, destaque: true },
+    { t: "corrente", de: [7.2, 0.4], para: [7.2, 1.2], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+    { t: "texto", em: [3.6, 4.15], texto: "v(0⁺) = 20 − 10 · 2 = 0   ·   i(0⁺) = 5 − 2 = 3 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** Indutor como fonte de $2\ \mathrm{A}$, capacitor como fonte de $20\ \mathrm{V}$: o $10\ \Omega$ consome os $20\ \mathrm{V}$ inteiros, então $v(0^+) = 0$ e $di_L(0)/dt = 0$; o capacitor leva o que sobra dos $5\ \mathrm{A}$, $i(0^+) = 3\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 6 — as constantes.** De $i_L(0) = 2$:
 
