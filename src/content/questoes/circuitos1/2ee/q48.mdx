@@ -79,11 +79,57 @@ Duas raízes reais distintas: **superamortecido**.
 
 **Passo 4 — resposta forçada.** $6K = 30$, logo $v_{C,f} = 5\ \mathrm{V}$.
 
+<Circuito
+  alt="Em t tendendo a infinito o indutor vira curto e o capacitor abre: divisor de 30 V entre 10 Ω e 2 Ω, v_C = 5 V e i = 2,5 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "30 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "10 Ω" },
+    { t: "fio", pts: [[2.2, 0], [4.6, 0]] },
+    { t: "texto", em: [3.4, -0.35], texto: "L: curto", ancora: "middle" },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [4.6, 0.4], para: [4.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.6, 0], [7.6, 0]] },
+    { t: "no", em: [7.6, 0] },
+    { t: "tensao", de: [7.6, 3.4], para: [7.6, 0], rotulo: "v_C", abaixo: true },
+    { t: "texto", em: [7.35, 1.7], texto: "C: aberto", ancora: "end" },
+    { t: "fio", pts: [[0, 3.4], [7.6, 3.4]] },
+    { t: "no", em: [7.6, 3.4] },
+    { t: "texto", em: [3.8, 4.15], texto: "v_C(∞) = 30 · 2/12 = 5 V   ·   i(∞) = 2,5 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final.** Capacitor aberto e indutor em fio: sobra o divisor do $10\ \Omega$ com o $2\ \Omega$, $v_C = 30 \cdot 2/12 = 5\ \mathrm{V}$ — a resposta forçada — e $i = 2{,}5\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 5 — a primeira equação.** De $v_C(0) = 8$:
 
 $$
 A_1 + A_2 = 3
 $$
+
+<Circuito
+  alt="Em t = 0⁺ o indutor vira fonte de corrente de 4 A e o capacitor fonte de tensão de 8 V; o 2 Ω leva 4 A e o capacitor 0 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "30 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "10 Ω" },
+    { t: "I", de: [2.2, 0], para: [4.6, 0], valor: "i_L = 4 A", destaque: true },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [4.6, 0.4], para: [4.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.6, 0], [8.4, 0]] },
+    { t: "corrente", de: [7.4, 0], para: [8.2, 0], rotulo: "i_C" },
+    { t: "no", em: [8.4, 0] },
+    { t: "V", de: [8.4, 3.4], para: [8.4, 0], valor: "v_C = 8 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [8.4, 3.4]] },
+    { t: "texto", em: [4.2, 4.15], texto: "i(0⁺) = 8/2 = 4 A   ·   i_C(0⁺) = 4 − 4 = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante inicial.** Indutor como fonte de $4\ \mathrm{A}$, capacitor como fonte de $8\ \mathrm{V}$: o $2\ \Omega$ leva $8/2 = 4\ \mathrm{A}$, que é toda a corrente do indutor. Sobra $i_C(0^+) = 0$, ou seja, $dv_C(0)/dt = 0$ — a segunda condição para as constantes.
+
+</Circuito>
 
 **Passo 6 — a segunda.** A corrente inicial do indutor entra pela LKC. Com $\dfrac{dv_C}{dt} = -A_1 e^{-t} - 6A_2 e^{-6t}$,
 
