@@ -64,6 +64,32 @@ $$
 v(0^-) = 4000 \cdot \left(10 - 8\right)\ \mathrm{mA} = 8\ \mathrm{V}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: fonte de 10 mA, 4 kΩ, capacitor aberto, indutor em fio, 1 kΩ com 8 mA, chave aberta"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 mA" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3.4], valor: "4 kΩ", abaixo: true },
+    { t: "fio", pts: [[2, 0], [8.8, 0]] },
+    { t: "texto", em: [4.95, 1.75], texto: "C: aberto", ancora: "end" },
+    { t: "tensao", de: [5.2, 3.4], para: [5.2, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [6.4, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "corrente", de: [7.7, 0], para: [8.7, 0], rotulo: "i" },
+    { t: "no", em: [8.8, 0] },
+    { t: "R", de: [8.8, 0], para: [8.8, 3.4], valor: "1 kΩ", abaixo: true },
+    { t: "texto", em: [5.6, 4.2], texto: "v(0⁻) = 8 V   ·   i(0⁻) = 8 mA   ·   4 kΩ: 2 mA", ancora: "middle", destaque: true },
+    { t: "fio", pts: [[8.8, 0], [8.8, -1.6], [9.4, -1.6]] },
+    { t: "fio", pts: [[10.6, -1.6], [11.2, -1.6], [11.2, 3.4]] },
+    { t: "texto", em: [10, -1.5], texto: "aberta", ancora: "middle" },
+    { t: "fio", pts: [[0, 3.4], [11.2, 3.4]] },
+  ]}
+>
+
+**Em $t = 0^-$.** Chave aberta, capacitor aberto, indutor em fio: a fonte se divide entre o $4\ \mathrm{k\Omega}$ ($2\ \mathrm{mA}$) e o $1\ \mathrm{k\Omega}$ ($8\ \mathrm{mA}$), e os dois ficam com $8\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — o circuito em $t > 0$.** A chave fechou e o $1\ \mathrm{k}\Omega$ saiu de cena. Sobram a fonte, o $4\ \mathrm{k}\Omega$, o capacitor e o indutor:
 
 $$
@@ -71,6 +97,30 @@ $$
 \qquad\qquad
 v = \frac{4}{13}\frac{di}{dt}
 $$
+
+<Circuito
+  alt="Para t > 0: a chave fechada curto-circuita o 1 kΩ; sobra o RLC paralelo de 4 kΩ, 1/8 µF e 4/13 H alimentado pela fonte de 10 mA"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 mA" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3.4], valor: "4 kΩ", abaixo: true, destaque: true },
+    { t: "fio", pts: [[2, 0], [5.2, 0]] },
+    { t: "no", em: [5.2, 0] },
+    { t: "C", de: [5.2, 0], para: [5.2, 3.4], valor: "1/8 µF", destaque: true },
+    { t: "tensao", de: [5.2, 3.4], para: [5.2, 0], rotulo: "v", abaixo: true },
+    { t: "L", de: [5.2, 0], para: [7.6, 0], valor: "4/13 H", destaque: true },
+    { t: "fio", pts: [[7.6, 0], [8.8, 0], [8.8, 3.4]] },
+    { t: "corrente", de: [8.8, 0.6], para: [8.8, 1.6], rotulo: "i", abaixo: true },
+    { t: "texto", em: [9.1, 2.2], texto: "1 kΩ: em curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [8.8, 3.4]] },
+    { t: "texto", em: [4.4, 4.2], texto: "RLC paralelo:  α = 1/(2RC) = 1000   ·   ω₀² = 1/(LC) = 26·10⁶", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O circuito em $t > 0$.** Com a chave fechada, o $1\ \mathrm{k\Omega}$ sai de cena e o que fica é um RLC paralelo puro alimentado pela fonte de $10\ \mathrm{mA}$: $\alpha = 1000$ e $\omega_0^2 = 26 \cdot 10^6$.
+
+</Circuito>
 
 **Passo 3 — a equação em $i$.** Substituindo $v$ e multiplicando por $26 \cdot 10^{6}$:
 
@@ -91,6 +141,27 @@ i_n(t) = e^{-1000t}\left(A_1\cos 5000t + A_2\operatorname{sen} 5000t\right)
 $$
 
 **Passo 5 — resposta forçada.** $26 \cdot 10^6 K = 26 \cdot 10^4$, logo $i_f = 10^{-2} = 10\ \mathrm{mA}$ — no fim o capacitor abre, o indutor vira fio sem resistência e leva **toda** a corrente da fonte.
+
+<Circuito
+  alt="Em t → ∞: capacitor aberto e indutor em fio; o fio do indutor curto-circuita o 4 kΩ e leva os 10 mA da fonte"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 mA" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3.4], valor: "4 kΩ", abaixo: true },
+    { t: "fio", pts: [[2, 0], [8.8, 0], [8.8, 3.4]] },
+    { t: "texto", em: [4.95, 1.75], texto: "C: aberto", ancora: "end" },
+    { t: "tensao", de: [5.2, 3.4], para: [5.2, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [6.4, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "corrente", de: [8.8, 0.6], para: [8.8, 1.6], rotulo: "i", abaixo: true },
+    { t: "texto", em: [4.4, 4.2], texto: "i(∞) = 10 mA   ·   v(∞) = 0   ·   4 kΩ: 0", ancora: "middle", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [8.8, 3.4]] },
+  ]}
+>
+
+**Em $t \to \infty$.** Capacitor aberto e indutor em fio, sem resistência no caminho: o fio põe o $4\ \mathrm{k\Omega}$ em curto e leva os $10\ \mathrm{mA}$ inteiros, $i_f = 10\ \mathrm{mA}$ e $v \to 0$.
+
+</Circuito>
 
 **Passo 6 — a primeira constante.** De $i(0) = 8\ \mathrm{mA}$:
 
