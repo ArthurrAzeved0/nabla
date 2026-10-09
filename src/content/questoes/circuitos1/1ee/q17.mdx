@@ -56,15 +56,27 @@ $$
 6 \parallel 3 = \frac{6 \cdot 3}{9} = 2\ \Omega
 $$
 
-{/* passo-visual */}
-<Figura>
-  <svg viewBox="-65.76 -46 482.16 193.4" role="img" aria-label="Circuito com o 6 Ω e o 3 Ω da direita trocados por um único resistor de 2 Ω entre o nó à direita do 8 Ω e o fio de baixo"><line x1="0" y1="114.4" x2="0" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(0 57.2) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="-24" y="61.2" font-size="12" fill="var(--accent)" text-anchor="end">10 A</text><polyline points="0,0 105.6,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="105.6" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="105.6" y1="0" x2="105.6" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(105.6 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="81.6" y="61.2" font-size="12" fill="var(--accent)" text-anchor="end">10 Ω</text><polyline points="105.6,0 246.4,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="246.4" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="246.4" y1="0" x2="246.4" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(246.4 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><polygon points="0,-12 12,0 0,12 -12,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="270.4" y="61.2" font-size="12" fill="var(--accent)" text-anchor="start">2i<tspan font-size="0.72em" dy="0.24em">1</tspan><tspan dy="-0.24em"></tspan> A</text><line x1="246.4" y1="0" x2="343.2" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(294.8 0) rotate(0)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="294.8" y="-22" font-size="12" fill="var(--accent)" text-anchor="middle">8 Ω</text><circle cx="343.2" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="176" y1="114.4" x2="176" y2="123.4" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="165" y1="123.4" x2="187" y2="123.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="169" y1="128.4" x2="183" y2="128.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="173" y1="133.4" x2="179" y2="133.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="343.2" y1="0" x2="343.2" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(343.2 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="367.2" y="54.2" font-size="12" fill="var(--ink-3)" text-anchor="start">6 ∥ 3</text><text x="367.2" y="68.2" font-size="12" fill="var(--accent)" text-anchor="start">2 Ω</text><polyline points="0,114.4 343.2,114.4" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></svg>
-  <figcaption>
+<Circuito
+  alt="Circuito com o 6 Ω e o 3 Ω da direita trocados por um único resistor de 2 Ω entre o nó à direita do 8 Ω e o fio de baixo"
+  itens={[
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 2.6], valor: "10 Ω" },
+    { t: "fio", pts: [[2.4, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 0], para: [5.6, 2.6], rotulo: "2i_1 A", abaixo: true, destaque: false },
+    { t: "R", de: [5.6, 0], para: [7.8, 0], valor: "8 Ω" },
+    { t: "no", em: [7.8, 0] },
+    { t: "terra", em: [4, 2.6] },
+    { t: "R", de: [7.8, 0], para: [7.8, 2.6], rotulo: "6 ∥ 3", valor: "2 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 2.6], [7.8, 2.6]] },
+  ]}
+>
 
 **O 6 Ω e o 3 Ω viram um 2 Ω.** Os dois resistores ligam o mesmo par de nós, então ficam em paralelo: $6 \parallel 3 = 2\ \Omega$. Sobram só dois nós acima da referência.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 **Passo 2 — dois nós, duas equações.** Fio de baixo como referência; chame $v_A$ o nó da esquerda (que é também o do $10\ \Omega$ e da fonte controlada, ligados por fio) e $v_C$ o nó à direita do $8\ \Omega$. Note que $v = v_A$ e $i_1 = v_C/3$.
 
@@ -76,15 +88,32 @@ $$
 v_A = 5\,v_C
 $$
 
-{/* passo-visual */}
-<Figura>
-  <svg viewBox="-65.76 -46 482.16 193.4" role="img" aria-label="Circuito reduzido com o fio de baixo aterrado, o nó da esquerda v_A (que é v) e o nó à direita do 8 Ω v_C; a corrente (v_A−v_C)/8 chega em C e v_C/2 desce pelo 2 Ω"><line x1="0" y1="114.4" x2="0" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(0 57.2) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="-24" y="61.2" font-size="12" fill="var(--accent)" text-anchor="end">10 A</text><polyline points="0,0 105.6,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="105.6" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="105.6" y1="0" x2="105.6" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(105.6 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="81.6" y="61.2" font-size="12" fill="var(--accent)" text-anchor="end">10 Ω</text><polyline points="105.6,0 246.4,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="246.4" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="246.4" y1="0" x2="246.4" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(246.4 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><polygon points="0,-12 12,0 0,12 -12,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="270.4" y="61.2" font-size="12" fill="var(--accent)" text-anchor="start">2i<tspan font-size="0.72em" dy="0.24em">1</tspan><tspan dy="-0.24em"></tspan> A</text><line x1="246.4" y1="0" x2="343.2" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(294.8 0) rotate(0)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="294.8" y="-22" font-size="12" fill="var(--accent)" text-anchor="middle">8 Ω</text><circle cx="343.2" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="176" y1="114.4" x2="176" y2="123.4" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="165" y1="123.4" x2="187" y2="123.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="169" y1="128.4" x2="183" y2="128.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="173" y1="133.4" x2="179" y2="133.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="343.2" y1="0" x2="343.2" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(343.2 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="367.2" y="54.2" font-size="12" fill="var(--ink-3)" text-anchor="start">6 ∥ 3</text><text x="367.2" y="68.2" font-size="12" fill="var(--accent)" text-anchor="start">2 Ω</text><polyline points="0,114.4 343.2,114.4" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><text x="176" y="-15.4" font-size="12" fill="var(--accent)" text-anchor="middle">v<tspan font-size="0.72em" dy="0.24em">A</tspan><tspan dy="-0.24em"></tspan> = v</text><text x="356.4" y="-13.2" font-size="12" fill="var(--accent)" text-anchor="start">v<tspan font-size="0.72em" dy="0.24em">C</tspan><tspan dy="-0.24em"></tspan></text><line x1="282.8" y1="15" x2="306.8" y2="15" stroke="var(--accent)" stroke-width="1.5"/><polygon points="306.8,15 300.8,11.4 300.8,18.6" fill="var(--accent)"/><text x="294.8" y="30" font-size="12" fill="var(--accent)" text-anchor="middle">(v<tspan font-size="0.72em" dy="0.24em">A</tspan><tspan dy="-0.24em"></tspan>−v<tspan font-size="0.72em" dy="0.24em">C</tspan><tspan dy="-0.24em"></tspan>)/8</text><line x1="319.2" y1="69.4" x2="319.2" y2="93.4" stroke="var(--accent)" stroke-width="1.5"/><polygon points="319.2,93.4 315.6,87.4 322.8,87.4" fill="var(--accent)"/><text x="311.52" y="85.8" font-size="12" fill="var(--accent)" text-anchor="end">v<tspan font-size="0.72em" dy="0.24em">C</tspan><tspan dy="-0.24em"></tspan>/2</text></svg>
-  <figcaption>
+<Circuito
+  alt="Circuito reduzido com o fio de baixo aterrado, o nó da esquerda v_A (que é v) e o nó à direita do 8 Ω v_C; a corrente (v_A−v_C)/8 chega em C e v_C/2 desce pelo 2 Ω"
+  itens={[
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 2.6], valor: "10 Ω" },
+    { t: "fio", pts: [[2.4, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 0], para: [5.6, 2.6], rotulo: "2i_1 A", abaixo: true, destaque: false },
+    { t: "R", de: [5.6, 0], para: [7.8, 0], valor: "8 Ω" },
+    { t: "no", em: [7.8, 0] },
+    { t: "terra", em: [4, 2.6] },
+    { t: "R", de: [7.8, 0], para: [7.8, 2.6], rotulo: "6 ∥ 3", valor: "2 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 2.6], [7.8, 2.6]] },
+    { t: "texto", em: [4, -0.35], texto: "v_A = v", destaque: true },
+    { t: "texto", em: [8.1, -0.3], texto: "v_C", ancora: "start", destaque: true },
+    { t: "corrente", de: [5.9, 0], para: [7.5, 0], rotulo: "(v_A−v_C)/8" },
+    { t: "corrente", de: [7.8, 1.5], para: [7.8, 2.2], abaixo: false },
+    { t: "texto", em: [7.08, 1.9500000000000002], texto: "v_C/2", ancora: "end", destaque: true },
+  ]}
+>
 
 **Os dois nós e a LKC no nó C.** No nó $C$ o que chega pelo $8\ \Omega$ desce todo pelo $2\ \Omega$: $(v_A-v_C)/8 = v_C/2$, logo $v_A = 5v_C$.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 **Passo 3 — LKC no nó $A$**, com a fonte controlada **saindo** (a seta dela aponta para baixo):
 
@@ -108,24 +137,74 @@ $$
 $$
 
 **Conferência —** no nó $A$: $30/10 = 3\ \mathrm{A}$ pelo $10\ \Omega$, $2i_1 = 4\ \mathrm{A}$ pela controlada e $(30-6)/8 = 3\ \mathrm{A}$ pelo $8\ \Omega$ — total $10\ \mathrm{A}$ ✔ No nó $C$: chegam $3\ \mathrm{A}$, saem $6/6 = 1\ \mathrm{A}$ pelo $6\ \Omega$ e $6/3 = 2\ \mathrm{A}$ pelo $3\ \Omega$ ✔
-{/* passo-visual */}
-<Figura>
-  <svg viewBox="-65.76 -46 555.28 193.4" role="img" aria-label="Circuito original: 10 A entram no nó A; saem v_A/10 pelo 10 Ω, 2i_1 pela fonte controlada (seta para baixo) e (v_A−v_C)/8 pelo 8 Ω; a corrente de controle i_1 = v_C/3 desce pelo 3 Ω"><line x1="0" y1="114.4" x2="0" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(0 57.2) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="-24" y="61.2" font-size="12" fill="var(--accent)" text-anchor="end">10 A</text><polyline points="0,0 105.6,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="105.6" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="105.6" y1="0" x2="105.6" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(105.6 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="81.6" y="61.2" font-size="12" fill="var(--accent)" text-anchor="end">10 Ω</text><polyline points="105.6,0 246.4,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="246.4" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="246.4" y1="0" x2="246.4" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(246.4 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><polygon points="0,-12 12,0 0,12 -12,0" fill="none" stroke="var(--accent)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--accent)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--accent)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--accent)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--accent)"/></g><text x="270.4" y="61.2" font-size="12" fill="var(--accent)" text-anchor="start">2i<tspan font-size="0.72em" dy="0.24em">1</tspan><tspan dy="-0.24em"></tspan> A</text><line x1="246.4" y1="0" x2="343.2" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(294.8 0) rotate(0)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="294.8" y="-22" font-size="12" fill="var(--accent)" text-anchor="middle">8 Ω</text><circle cx="343.2" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="176" y1="114.4" x2="176" y2="123.4" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="165" y1="123.4" x2="187" y2="123.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="169" y1="128.4" x2="183" y2="128.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="173" y1="133.4" x2="179" y2="133.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="343.2" y1="0" x2="343.2" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(343.2 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="367.2" y="61.2" font-size="12" fill="var(--accent)" text-anchor="start">6 Ω</text><polyline points="343.2,0 431.2,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><line x1="431.2" y1="0" x2="431.2" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(431.2 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="455.2" y="61.2" font-size="12" fill="var(--accent)" text-anchor="start">3 Ω</text><polyline points="0,114.4 431.2,114.4" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><text x="176" y="-15.4" font-size="12" fill="var(--accent)" text-anchor="middle">v<tspan font-size="0.72em" dy="0.24em">A</tspan><tspan dy="-0.24em"></tspan></text><text x="387.2" y="-13.2" font-size="12" fill="var(--accent)" text-anchor="middle">v<tspan font-size="0.72em" dy="0.24em">C</tspan><tspan dy="-0.24em"></tspan></text><line x1="40.8" y1="-15" x2="64.8" y2="-15" stroke="var(--accent)" stroke-width="1.5"/><polygon points="64.8,-15 58.8,-18.6 58.8,-11.4" fill="var(--accent)"/><text x="52.8" y="-22" font-size="12" fill="var(--accent)" text-anchor="middle">10 A</text><line x1="129.6" y1="16.6" x2="129.6" y2="40.6" stroke="var(--accent)" stroke-width="1.5"/><polygon points="129.6,40.6 126,34.6 133.2,34.6" fill="var(--accent)"/><text x="137.28" y="33" font-size="12" fill="var(--accent)" text-anchor="start">v<tspan font-size="0.72em" dy="0.24em">A</tspan><tspan dy="-0.24em"></tspan>/10</text><line x1="222.4" y1="69.4" x2="222.4" y2="93.4" stroke="var(--accent)" stroke-width="1.5"/><polygon points="222.4,93.4 218.8,87.4 226,87.4" fill="var(--accent)"/><text x="214.72" y="85.8" font-size="12" fill="var(--accent)" text-anchor="end">2i<tspan font-size="0.72em" dy="0.24em">1</tspan><tspan dy="-0.24em"></tspan> = 2v<tspan font-size="0.72em" dy="0.24em">C</tspan><tspan dy="-0.24em"></tspan>/3</text><line x1="282.8" y1="15" x2="306.8" y2="15" stroke="var(--accent)" stroke-width="1.5"/><polygon points="306.8,15 300.8,11.4 300.8,18.6" fill="var(--accent)"/><text x="294.8" y="30" font-size="12" fill="var(--accent)" text-anchor="middle">(v<tspan font-size="0.72em" dy="0.24em">A</tspan><tspan dy="-0.24em"></tspan>−v<tspan font-size="0.72em" dy="0.24em">C</tspan><tspan dy="-0.24em"></tspan>)/8</text><line x1="407.2" y1="16.6" x2="407.2" y2="40.6" stroke="var(--accent)" stroke-width="1.5"/><polygon points="407.2,40.6 403.6,34.6 410.8,34.6" fill="var(--accent)"/><text x="399.52" y="33" font-size="12" fill="var(--accent)" text-anchor="end">i<tspan font-size="0.72em" dy="0.24em">1</tspan><tspan dy="-0.24em"></tspan> = v<tspan font-size="0.72em" dy="0.24em">C</tspan><tspan dy="-0.24em"></tspan>/3</text></svg>
-  <figcaption>
+<Circuito
+  alt="Circuito original: 10 A entram no nó A; saem v_A/10 pelo 10 Ω, 2i_1 pela fonte controlada (seta para baixo) e (v_A−v_C)/8 pelo 8 Ω; a corrente de controle i_1 = v_C/3 desce pelo 3 Ω"
+  itens={[
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 2.6], valor: "10 Ω" },
+    { t: "fio", pts: [[2.4, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 0], para: [5.6, 2.6], rotulo: "2i_1 A", abaixo: true, destaque: true },
+    { t: "R", de: [5.6, 0], para: [7.8, 0], valor: "8 Ω" },
+    { t: "no", em: [7.8, 0] },
+    { t: "terra", em: [4, 2.6] },
+    { t: "R", de: [7.8, 0], para: [7.8, 2.6], valor: "6 Ω", abaixo: true },
+    { t: "fio", pts: [[7.8, 0], [9.8, 0]] },
+    { t: "R", de: [9.8, 0], para: [9.8, 2.6], valor: "3 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 2.6], [9.8, 2.6]] },
+    { t: "texto", em: [4, -0.35], texto: "v_A", destaque: true },
+    { t: "texto", em: [8.8, -0.3], texto: "v_C", destaque: true },
+    { t: "corrente", de: [0.4, 0], para: [2, 0], rotulo: "10 A", abaixo: false },
+    { t: "corrente", de: [2.4, 0.3], para: [2.4, 1] },
+    { t: "texto", em: [3.12, 0.75], texto: "v_A/10", ancora: "start", destaque: true },
+    { t: "corrente", de: [5.6, 1.5], para: [5.6, 2.2], abaixo: false },
+    { t: "texto", em: [4.88, 1.9500000000000002], texto: "2i_1 = 2v_C/3", ancora: "end", destaque: true },
+    { t: "corrente", de: [5.9, 0], para: [7.5, 0], rotulo: "(v_A−v_C)/8" },
+    { t: "corrente", de: [9.8, 0.3], para: [9.8, 1], abaixo: false },
+    { t: "texto", em: [9.08, 0.75], texto: "i_1 = v_C/3", ancora: "end", destaque: true },
+  ]}
+>
 
 **A LKC no nó A, com a controlada saindo.** A variável de controle $i_1$ é a corrente do $3\ \Omega$, que tem $v_C$ nos terminais: $i_1 = v_C/3$. Com $v_A = 5v_C$, a LKC em $A$ dá $\tfrac53 v_C = 10$.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
-{/* passo-visual */}
-<Figura>
-  <svg viewBox="-65.76 -46 555.28 193.4" role="img" aria-label="Circuito original com v_A = 30 V e v_C = 6 V: 3 A pelo 10 Ω, 4 A pela controlada, 3 A pelo 8 Ω, 1 A pelo 6 Ω e i_1 = 2 A pelo 3 Ω"><line x1="0" y1="114.4" x2="0" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(0 57.2) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="-24" y="61.2" font-size="12" fill="var(--accent)" text-anchor="end">10 A</text><polyline points="0,0 105.6,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="105.6" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="105.6" y1="0" x2="105.6" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(105.6 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="81.6" y="61.2" font-size="12" fill="var(--accent)" text-anchor="end">10 Ω</text><polyline points="105.6,0 246.4,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="246.4" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="246.4" y1="0" x2="246.4" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(246.4 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><polygon points="0,-12 12,0 0,12 -12,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="270.4" y="61.2" font-size="12" fill="var(--accent)" text-anchor="start">2i<tspan font-size="0.72em" dy="0.24em">1</tspan><tspan dy="-0.24em"></tspan> A</text><line x1="246.4" y1="0" x2="343.2" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(294.8 0) rotate(0)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="294.8" y="-22" font-size="12" fill="var(--accent)" text-anchor="middle">8 Ω</text><circle cx="343.2" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="176" y1="114.4" x2="176" y2="123.4" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="165" y1="123.4" x2="187" y2="123.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="169" y1="128.4" x2="183" y2="128.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="173" y1="133.4" x2="179" y2="133.4" stroke="var(--ink-2)" stroke-width="2"/><line x1="343.2" y1="0" x2="343.2" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(343.2 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="367.2" y="61.2" font-size="12" fill="var(--accent)" text-anchor="start">6 Ω</text><polyline points="343.2,0 431.2,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><line x1="431.2" y1="0" x2="431.2" y2="114.4" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(431.2 57.2) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="455.2" y="61.2" font-size="12" fill="var(--accent)" text-anchor="start">3 Ω</text><polyline points="0,114.4 431.2,114.4" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><text x="176" y="-15.4" font-size="12" fill="var(--accent)" text-anchor="middle">v = v<tspan font-size="0.72em" dy="0.24em">A</tspan><tspan dy="-0.24em"></tspan> = 30 V</text><text x="387.2" y="-13.2" font-size="12" fill="var(--accent)" text-anchor="middle">v<tspan font-size="0.72em" dy="0.24em">C</tspan><tspan dy="-0.24em"></tspan> = 6 V</text><line x1="40.8" y1="-15" x2="64.8" y2="-15" stroke="var(--accent)" stroke-width="1.5"/><polygon points="64.8,-15 58.8,-18.6 58.8,-11.4" fill="var(--accent)"/><text x="52.8" y="-22" font-size="12" fill="var(--accent)" text-anchor="middle">10 A</text><line x1="129.6" y1="16.6" x2="129.6" y2="40.6" stroke="var(--accent)" stroke-width="1.5"/><polygon points="129.6,40.6 126,34.6 133.2,34.6" fill="var(--accent)"/><text x="137.28" y="33" font-size="12" fill="var(--accent)" text-anchor="start">3 A</text><line x1="222.4" y1="69.4" x2="222.4" y2="93.4" stroke="var(--accent)" stroke-width="1.5"/><polygon points="222.4,93.4 218.8,87.4 226,87.4" fill="var(--accent)"/><text x="214.72" y="85.8" font-size="12" fill="var(--accent)" text-anchor="end">4 A</text><line x1="282.8" y1="15" x2="306.8" y2="15" stroke="var(--accent)" stroke-width="1.5"/><polygon points="306.8,15 300.8,11.4 300.8,18.6" fill="var(--accent)"/><text x="294.8" y="30" font-size="12" fill="var(--accent)" text-anchor="middle">3 A</text><line x1="319.2" y1="69.4" x2="319.2" y2="93.4" stroke="var(--accent)" stroke-width="1.5"/><polygon points="319.2,93.4 315.6,87.4 322.8,87.4" fill="var(--accent)"/><text x="311.52" y="85.8" font-size="12" fill="var(--accent)" text-anchor="end">1 A</text><line x1="407.2" y1="16.6" x2="407.2" y2="40.6" stroke="var(--accent)" stroke-width="1.5"/><polygon points="407.2,40.6 403.6,34.6 410.8,34.6" fill="var(--accent)"/><text x="399.52" y="33" font-size="12" fill="var(--accent)" text-anchor="end">i<tspan font-size="0.72em" dy="0.24em">1</tspan><tspan dy="-0.24em"></tspan> = 2 A</text></svg>
-  <figcaption>
+<Circuito
+  alt="Circuito original com v_A = 30 V e v_C = 6 V: 3 A pelo 10 Ω, 4 A pela controlada, 3 A pelo 8 Ω, 1 A pelo 6 Ω e i_1 = 2 A pelo 3 Ω"
+  itens={[
+    { t: "I", de: [0, 2.6], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 2.6], valor: "10 Ω" },
+    { t: "fio", pts: [[2.4, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 0], para: [5.6, 2.6], rotulo: "2i_1 A", abaixo: true, destaque: false },
+    { t: "R", de: [5.6, 0], para: [7.8, 0], valor: "8 Ω" },
+    { t: "no", em: [7.8, 0] },
+    { t: "terra", em: [4, 2.6] },
+    { t: "R", de: [7.8, 0], para: [7.8, 2.6], valor: "6 Ω", abaixo: true },
+    { t: "fio", pts: [[7.8, 0], [9.8, 0]] },
+    { t: "R", de: [9.8, 0], para: [9.8, 2.6], valor: "3 Ω", abaixo: true, destaque: false },
+    { t: "fio", pts: [[0, 2.6], [9.8, 2.6]] },
+    { t: "texto", em: [4, -0.35], texto: "v = v_A = 30 V", destaque: true },
+    { t: "texto", em: [8.8, -0.3], texto: "v_C = 6 V", destaque: true },
+    { t: "corrente", de: [0.4, 0], para: [2, 0], rotulo: "10 A", abaixo: false },
+    { t: "corrente", de: [2.4, 0.3], para: [2.4, 1] },
+    { t: "texto", em: [3.12, 0.75], texto: "3 A", ancora: "start", destaque: true },
+    { t: "corrente", de: [5.6, 1.5], para: [5.6, 2.2], abaixo: false },
+    { t: "texto", em: [4.88, 1.9500000000000002], texto: "4 A", ancora: "end", destaque: true },
+    { t: "corrente", de: [5.9, 0], para: [7.5, 0], rotulo: "3 A" },
+    { t: "corrente", de: [7.8, 1.5], para: [7.8, 2.2], abaixo: false },
+    { t: "texto", em: [7.08, 1.9500000000000002], texto: "1 A", ancora: "end", destaque: true },
+    { t: "corrente", de: [9.8, 0.3], para: [9.8, 1], abaixo: false },
+    { t: "texto", em: [9.08, 0.75], texto: "i_1 = 2 A", ancora: "end", destaque: true },
+  ]}
+>
 
 **Os valores encontrados.** No nó $A$: $3 + 4 + 3 = 10$ A. No nó $C$: os $3$ A do $8\ \Omega$ se dividem em $1$ A pelo $6\ \Omega$ e $i_1 = 2$ A pelo $3\ \Omega$.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 </Passos>
