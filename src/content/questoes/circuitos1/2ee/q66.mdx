@@ -27,7 +27,7 @@ Dado que o circuito abaixo está em **regime permanente** em $t = 0^-$, determin
     { t: "no", em: [0, 0] },
     { t: "R", de: [0, 0], para: [2.4, 0], valor: "200 Ω" },
     { t: "corrente", de: [2.3, 0], para: [1.3, 0], rotulo: "i_A" },
-    { t: "V", de: [2.4, 0], para: [4.4, 0], valor: "10 V" },
+    { t: "V", de: [4.4, 0], para: [2.4, 0], valor: "10 V" },
     { t: "no", em: [4.4, 0] },
     { t: "fio", pts: [[0, 0], [0, -1.8]] },
     { t: "S", de: [0, -1.8], para: [4.4, -1.8], rotulo: "abre" },
@@ -59,6 +59,30 @@ v_C(0^-) = 10\ \mathrm{V}
 \qquad\Longrightarrow\qquad
 v_C(0^+) = 10\ \mathrm{V}
 $$
+
+<Circuito
+  alt="Em t = 0⁻: a chave fechada curto-circuita o ramo de 200 Ω com a fonte de 10 V; o 50 Ω fica com a fonte inteira e o capacitor, aberto, com a mesma tensão"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "no", em: [0, 0] },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "200 Ω" },
+    { t: "V", de: [4.4, 0], para: [2.4, 0], valor: "10 V" },
+    { t: "no", em: [4.4, 0] },
+    { t: "fio", pts: [[0, 0], [0, -1.8], [4.4, -1.8], [4.4, 0]] },
+    { t: "texto", em: [2.2, -2.1], texto: "chave fechada: ramo em curto", ancora: "middle" },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "50 Ω", abaixo: true },
+    { t: "R", de: [4.4, 0], para: [7, 0], valor: "10 Ω: i = 0" },
+    { t: "no", em: [7, 0] },
+    { t: "texto", em: [7, 2.8], texto: "C: aberto", ancora: "middle" },
+    { t: "tensao", de: [7, 3.4], para: [7, 0], rotulo: "v_C", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+    { t: "texto", em: [3.5, 4.2], texto: "v_C(0⁻) = 10 V = v_C(0⁺)", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Chave fechada e capacitor aberto: o ramo do $200\ \Omega$ está em curto, o $10\ \Omega$ não conduz, e o capacitor fica com a tensão da fonte, $v_C(0^-) = 10\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 2 — as leis para $t > 0$.** Chave aberta, três ramos saindo do nó de cima ($i_A$ pelo $200\ \Omega$, $i_B$ pelo $50\ \Omega$, $i_C$ pelo $10\ \Omega$):
 
@@ -111,6 +135,29 @@ $$
 $$
 
 Sem termo constante: é **resposta natural** pura, com $\tau = 50\ \mu\mathrm{s}$.
+
+<Circuito
+  alt="Fontes desligadas, chave aberta: visto do capacitor, o 10 Ω em série com o paralelo de 200 Ω e 50 Ω, 50 Ω no total"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "10 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "200 Ω", destaque: true },
+    { t: "fio", pts: [[2.4, 0], [4.4, 0]] },
+    { t: "texto", em: [3.4, -0.3], texto: "10 V: curto", ancora: "middle" },
+    { t: "no", em: [4.4, 0] },
+    { t: "texto", em: [2.2, -1.1], texto: "chave aberta", ancora: "middle" },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "50 Ω", abaixo: true, destaque: true },
+    { t: "R", de: [4.4, 0], para: [7, 0], valor: "10 Ω", destaque: true },
+    { t: "no", em: [7, 0] },
+    { t: "C", de: [7, 0], para: [7, 3.4], valor: "1 µF" },
+    { t: "fio", pts: [[0, 3.4], [7, 3.4]] },
+    { t: "texto", em: [3.5, 4.2], texto: "R_{eq} = 10 + 200 ∥ 50 = 50 Ω   →   τ = 50 µs", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com as duas fontes em curto, o capacitor enxerga o $10\ \Omega$ em série com $200 \parallel 50 = 40\ \Omega$: $R_{eq} = 50\ \Omega$ e $\tau = R_{eq}C = 50\ \mu\mathrm{s}$, o mesmo $20000\ \mathrm{s^{-1}}$ da equação.
+
+</Circuito>
 
 **Passo 6 — a resposta.** De $v_C(0) = 10$:
 
