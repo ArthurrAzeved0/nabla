@@ -74,6 +74,34 @@ $$
 \boxed{\frac{dv(0^-)}{dt} = 0}
 $$
 
+<Circuito
+  alt="Em 0⁻: chave da esquerda fechada, da direita aberta; capacitor aberto e indutor em curto; i = 1 A, v = v_R = 10 V"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "10 Ω" },
+    { t: "fio", pts: [[2, 0], [3.4, 0]] },
+    { t: "texto", em: [2.7, -0.3], texto: "fechada", ancora: "middle" },
+    { t: "no", em: [3.4, 0] },
+    { t: "fio", pts: [[3.4, 0], [3.4, 0.8]] },
+    { t: "fio", pts: [[3.4, 2.2], [3.4, 3]] },
+    { t: "tensao", de: [3.4, 3], para: [3.4, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [3.25, 1.55], texto: "aberto", ancora: "end" },
+    { t: "fio", pts: [[3.4, 0], [5.4, 0]] },
+    { t: "corrente", de: [3.6, 0], para: [5.2, 0], rotulo: "i" },
+    { t: "texto", em: [4.4, -0.3], texto: "curto", ancora: "middle" },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "10 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3], para: [5.4, 0], rotulo: "v_R", abaixo: false },
+    { t: "texto", em: [6.4, 0.4], texto: "aberta: 1 A fora", ancora: "start" },
+    { t: "fio", pts: [[0, 3], [5.4, 3]] },
+    { t: "texto", em: [2.7, 3.7], texto: "i = 1 A   ·   v = 10 V   ·   v_R = 10 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Capacitor aberto e indutor em curto: a fonte de $20\ \mathrm{V}$ vê os dois $10\ \Omega$ em série, $i = 1\ \mathrm{A}$, e o capacitor, ligado ao mesmo nó do $10\ \Omega$ da direita, fica com $v = v_R = 10\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — continuidade:** $i(0^+) = 1\ \mathrm{A}$ e $v(0^+) = 10\ \mathrm{V}$.
 
 **Passo 3 — circuito em $0^+$.** A chave da esquerda abriu (a fonte de $20\ \mathrm{V}$ saiu) e a da direita fechou (entrou a de $1\ \mathrm{A}$). No nó do $10\ \Omega$ chegam **duas** correntes: $1\ \mathrm{A}$ do indutor e $1\ \mathrm{A}$ da fonte.
@@ -81,6 +109,28 @@ $$
 $$
 \boxed{v_R(0^+) = 10 \cdot 2 = 20\ \mathrm{V}}
 $$
+
+<Circuito
+  alt="Em 0⁺: a fonte de 20 V saiu, capacitor como fonte de 10 V, indutor como fonte de 1 A, a fonte de 1 A entrou; v_R = 20 V"
+  itens={[
+    { t: "texto", em: [3.1, -0.35], texto: "20 V: fora", ancora: "end" },
+    { t: "V", de: [3.4, 3], para: [3.4, 0], valor: "v = 10 V", destaque: true },
+    { t: "corrente", de: [3.4, 2.1], para: [3.4, 2.8], rotulo: "i_C" },
+    { t: "I", de: [3.4, 0], para: [5.4, 0], valor: "i = 1 A", destaque: true },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "10 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3], para: [5.4, 0], rotulo: "v_R", abaixo: false },
+    { t: "fio", pts: [[5.4, 0], [7.4, 0]] },
+    { t: "texto", em: [6.4, -0.3], texto: "fechada", ancora: "middle" },
+    { t: "I", de: [7.4, 3], para: [7.4, 0], valor: "1 A", abaixo: true },
+    { t: "fio", pts: [[3.4, 3], [7.4, 3]] },
+    { t: "texto", em: [5.4, 3.7], texto: "v_R = 20 V   ·   i_C = −1 A   ·   v_L = 10 − 20 = −10 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** O capacitor vira uma fonte de $10\ \mathrm{V}$ e o indutor, uma de $1\ \mathrm{A}$. O $10\ \Omega$ recebe $1 + 1 = 2\ \mathrm{A}$ ($v_R = 20\ \mathrm{V}$); o capacitor, sozinho com o indutor no seu nó, fornece $i_C = -1\ \mathrm{A}$, e o indutor fica com $v_L = 10 - 20 = -10\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 4 — a derivada da tensão.** Com a chave da esquerda aberta, o nó do capacitor só tem dois ramos: o capacitor e o indutor. O indutor **retira** $1\ \mathrm{A}$ dali, então o capacitor o fornece:
 
