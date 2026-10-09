@@ -60,6 +60,33 @@ i(0^-) = \frac{100}{50} = 2\ \mathrm{A}
 i(0^+) = 2\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em 0⁻: fonte de 100 V ligada, a de 200 V desconectada; 50 Ω em série, indutor em curto levando 2 A, 25 Ω curto-circuitado"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "200 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "100 V" },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.4, 0], valor: "50 Ω" },
+    { t: "no", em: [4.4, 0] },
+    { t: "fio", pts: [[4.4, 0], [4.4, 3.4]] },
+    { t: "corrente", de: [4.4, 0.4], para: [4.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [4.6, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[4.4, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3.4], valor: "25 Ω" },
+    { t: "tensao", de: [7.2, 3.4], para: [7.2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+    { t: "texto", em: [3.6, 4.1], texto: "i(0⁻) = 100/50 = 2 A   ·   v(0⁻) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente com a fonte de 100 V ($t = 0^-$).** O indutor é fio e curto-circuita o $25\ \Omega$: a fonte só enxerga o $50\ \Omega$, e $i(0^-) = 2\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Com a fonte de $200\ \mathrm{V}$:
 
 $$
@@ -84,6 +111,26 @@ $$
 
 **Passo 4 — resposta natural e forçada.** De $s + \frac53 = 0$ vem $s = -\dfrac53$; e $\frac53 K = \frac{20}{3}$ dá $i_f = 4\ \mathrm{A}$.
 
+<Circuito
+  alt="Fonte desligada (200 V vira fio): vistos dos terminais do indutor, 50 Ω e 25 Ω em paralelo, R_eq = 50/3 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0], [1.8, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "200 V: curto", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4.4, 0], valor: "50 Ω", destaque: true },
+    { t: "no", em: [4.4, 0] },
+    { t: "texto", em: [4.55, 1.75], texto: "L retirado", ancora: "start", destaque: true },
+    { t: "no", em: [4.4, 3.4] },
+    { t: "fio", pts: [[4.4, 0], [7.2, 0]] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3.4], valor: "25 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+    { t: "texto", em: [3.6, 4.1], texto: "R_{eq} = 50 ∥ 25 = 50/3 Ω   ·   τ = 10/(50/3) = 0,6 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Indutor retirado e fonte zerada: dos terminais dele se veem o $50\ \Omega$ e o $25\ \Omega$ em paralelo, $R_{eq} = 50/3\ \Omega$, e $\tau = L/R_{eq} = 0{,}6\ \mathrm{s}$ — a raiz $s = -5/3$.
+
+</Circuito>
+
 **Passo 5 — a constante.** De $i(0) = 2$:
 
 $$
@@ -101,6 +148,27 @@ v = 10\frac{di}{dt} = 10 \cdot 2 \cdot \frac{5}{3}\,e^{-\frac{5}{3}t}
 \qquad\Longrightarrow\qquad
 \boxed{v(t) = \frac{100}{3}\,e^{-\frac{5}{3}t} \approx 33{,}3\,e^{-1,67t}\ \mathrm{V}}
 $$
+
+<Circuito
+  alt="Em 0⁺: fonte de 200 V, 50 Ω, indutor como fonte de corrente de 2 A, 25 Ω com v igual a 100/3 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "200 V" },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.4, 0], valor: "50 Ω" },
+    { t: "no", em: [4.4, 0] },
+    { t: "I", de: [4.4, 0], para: [4.4, 3.4], valor: "2 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[4.4, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3.4], valor: "25 Ω" },
+    { t: "tensao", de: [7.2, 3.4], para: [7.2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+    { t: "texto", em: [3.6, 4.1], texto: "v(0⁺) = 100/3 ≈ 33,3 V   ·   i(0⁺) = 2 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante $t = 0^+$.** A fonte sobe para $200\ \mathrm{V}$ e o indutor vira fonte de $2\ \mathrm{A}$. Nó de cima: $\frac{200 - v}{50} = 2 + \frac{v}{25}$, ou $v(0^+) = 100/3\ \mathrm{V}$ — o coeficiente da exponencial de $v$.
+
+</Circuito>
 
 **Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{10}{50 \parallel 25} = \dfrac{10}{50/3} = 0{,}6$ s, e de fato $s = -5/3$ ✔ Em $t = 0$: $v = 33{,}3$ V, então $i_R = 1{,}33$ A, $i_T = 3{,}33$ A e a LKT fecha em $50 \cdot 3{,}33 + 33{,}3 = 200$ V ✔ Em $t \to \infty$ o indutor volta a curto-circuitar o $25\ \Omega$: $v \to 0$ e $i \to 200/50 = 4$ A ✔
 
