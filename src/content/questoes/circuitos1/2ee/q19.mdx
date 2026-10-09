@@ -86,6 +86,35 @@ $$
 \boxed{\frac{di(0^-)}{dt} = 0}
 $$
 
+<Circuito
+  alt="Em 0⁻: chave aberta, capacitor aberto, indutor em curto; i = 50/7 A, i_1 = 20/7 A e v = −620/7 V"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "10 A", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "texto", em: [1.55, 2.2], texto: "aberta", ancora: "start" },
+    { t: "fio", pts: [[1.4, 0], [1.4, -1.4], [2.6, -1.4]] },
+    { t: "fio", pts: [[5.2, -1.4], [6.4, -1.4], [6.4, 0]] },
+    { t: "tensao", de: [2.6, -1.4], para: [5.2, -1.4], rotulo: "v", abaixo: false },
+    { t: "texto", em: [3.9, -0.85], texto: "aberto", ancora: "middle" },
+    { t: "R", de: [1.4, 0], para: [4, 0], valor: "6 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3], valor: "10 Ω", abaixo: true },
+    { t: "corrente", de: [4, 0.4], para: [4, 1.4], rotulo: "i_1", abaixo: false },
+    { t: "R", de: [4, 0], para: [6.4, 0], valor: "4 Ω" },
+    { t: "no", em: [6.4, 0] },
+    { t: "fio", pts: [[6.4, 0], [6.4, 3]] },
+    { t: "corrente", de: [6.4, 0.4], para: [6.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [6.55, 2.2], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3], [6.4, 3]] },
+    { t: "texto", em: [3.2, 3.7], texto: "i = 50/7 A   ·   i_1 = 20/7 A   ·   v = −620/7 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Chave aberta, capacitor aberto, indutor em curto: os $10\ \mathrm{A}$ passam pelo $6\ \Omega$ e se dividem entre o $10\ \Omega$ e o $4\ \Omega$ ($10 \parallel 4 = 20/7\ \Omega$). A tensão $v$, com o $+$ à direita, soma as quedas no $6\ \Omega$ e no $4\ \Omega$ com sinal trocado.
+
+</Circuito>
+
 **Passo 2 — continuidade:** $i(0^+) = \tfrac{50}{7}\ \mathrm{A}$ e $v(0^+) = -\tfrac{620}{7}\ \mathrm{V}$.
 
 **Passo 3 — circuito em $0^+$.** A chave fecha e **aterra o nó da esquerda**, tirando a fonte do jogo. O capacitor vira fonte de $-\tfrac{620}{7}\ \mathrm{V}$ e o indutor, fonte de $\tfrac{50}{7}\ \mathrm{A}$. Chamando $i_{R1}$ a corrente do $6\ \Omega$ e $i_{R2}$ a do $4\ \Omega$, as leis dão
@@ -109,6 +138,33 @@ i_{R1} = \frac{50}{7}\ \mathrm{A},
 \qquad
 i_{R2} = \frac{80}{7}\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em 0⁺: chave fechada aterrando o nó da esquerda; capacitor como fonte de −620/7 V e indutor como fonte de 50/7 A; i_1 = −30/7 A"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [1.4, 0]] },
+    { t: "no", em: [1.4, 0] },
+    { t: "fio", pts: [[1.4, 0], [1.4, 3]] },
+    { t: "texto", em: [1.55, 2.2], texto: "fechada", ancora: "start" },
+    { t: "fio", pts: [[1.4, 0], [1.4, -1.4]] },
+    { t: "V", de: [1.4, -1.4], para: [6.4, -1.4], valor: "v = −620/7 V", destaque: true },
+    { t: "fio", pts: [[6.4, -1.4], [6.4, 0]] },
+    { t: "R", de: [1.4, 0], para: [4, 0], valor: "6 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3], valor: "10 Ω", abaixo: true },
+    { t: "corrente", de: [4, 0.4], para: [4, 1.4], rotulo: "i_1", abaixo: false },
+    { t: "R", de: [4, 0], para: [6.4, 0], valor: "4 Ω" },
+    { t: "no", em: [6.4, 0] },
+    { t: "I", de: [6.4, 0], para: [6.4, 3], valor: "50/7 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3], [6.4, 3]] },
+    { t: "texto", em: [3.2, 3.7], texto: "i_1(0⁺) = −30/7 A   ·   i_C(0⁺) = 30/7 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** A chave aterra o nó da esquerda e a fonte de $10\ \mathrm{A}$ sai do jogo. O capacitor é uma fonte de $-620/7\ \mathrm{V}$ ($+$ à direita) e o indutor, uma de $50/7\ \mathrm{A}$; LKC no nó do meio dá $v_{\text{meio}} = -300/7\ \mathrm{V}$, logo $i_1 = -30/7\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 4 — as duas derivadas:**
 
