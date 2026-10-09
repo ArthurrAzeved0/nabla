@@ -74,7 +74,49 @@ $$
 i_{L,n}(t) = A\,e^{-t/2}
 $$
 
+<Circuito
+  alt="Fonte de 10 V em curto; o indutor sai e, pelos seus terminais, 12 Ω fica em paralelo com 4 Ω: R_eq = 3 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "10 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "12 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+    { t: "no", em: [5, 3.4] },
+    { t: "texto", em: [5.25, 1.75], texto: "R_{eq} = 3 Ω", ancora: "start", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte em curto, os terminais do indutor enxergam o $12\ \Omega$ em paralelo com o $4\ \Omega$: $R_{eq} = 3\ \Omega$ e $\tau = 6/3 = 2\ \mathrm{s}$, o mesmo $s = -1/2$.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** $\dfrac{K}{2} = \dfrac{10}{24}$, logo $i_{L,f} = \dfrac{20}{24} = \dfrac{5}{6}\ \mathrm{A}$.
+
+<Circuito
+  alt="Em t tendendo a infinito o indutor vira curto sobre o 4 Ω, e a fonte de 10 V vê só o 12 Ω: i = 5/6 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "12 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "fio", pts: [[5, 0], [5, 3.4]] },
+    { t: "texto", em: [5.25, 1.75], texto: "L: curto", ancora: "start" },
+    { t: "corrente", de: [5, 0.4], para: [5, 1.2], rotulo: "i_L", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+    { t: "texto", em: [2.5, 4.15], texto: "i(∞) = i_L(∞) = 10/12 = 5/6 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final.** O indutor vira fio e curto-circuita o $4\ \Omega$, que fica sem corrente; a fonte vê só o $12\ \Omega$ e $i_L = i = 10/12 = 5/6\ \mathrm{A}$ — a resposta forçada.
+
+</Circuito>
 
 **Passo 5 — a constante.** De $i_L(0) = 3$:
 
@@ -85,6 +127,27 @@ A = \frac{13}{6}
 \qquad\Longrightarrow\qquad
 i_L(t) = \frac{13}{6}\,e^{-t/2} + \frac{5}{6}\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em t = 0⁺ o indutor vira fonte de corrente de 3 A para baixo; a tensão do nó é −6,5 V e i(0⁺) = 1,375 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "12 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "I", de: [5, 0], para: [5, 3.4], valor: "3 A", abaixo: true, destaque: true },
+    { t: "texto", em: [3.7, -0.3], texto: "v_L = −6,5 V", ancora: "middle" },
+    { t: "fio", pts: [[0, 3.4], [5, 3.4]] },
+    { t: "texto", em: [2.5, 4.15], texto: "i(0⁺) = (10 + 6,5)/12 = 1,375 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante inicial.** O indutor vira fonte de $3\ \mathrm{A}$. A LKC no nó, $\frac{10 - v_L}{12} = \frac{v_L}{4} + 3$, dá $v_L(0^+) = -6{,}5\ \mathrm{V}$ e $i(0^+) = 1{,}375\ \mathrm{A}$ — é o valor que a expressão final tem de reproduzir em $t = 0$.
+
+</Circuito>
 
 **Passo 6 — volte para $i$.** Some a corrente do resistor:
 
