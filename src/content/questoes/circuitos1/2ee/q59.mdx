@@ -71,6 +71,37 @@ i_L(0^-) = \frac{12}{6} = 2\ \mathrm{A}
 i_L(0^+) = 2\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: chave fechada, fonte de 2 A, 12 Ω, 20 Ω, 5 Ω com a fonte de 20 V, 6 Ω e indutor em curto com 2 A"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3.4], valor: "12 Ω", abaixo: true },
+    { t: "fio", pts: [[2, 0], [4.2, 0]] },
+    { t: "texto", em: [3.1, -0.3], texto: "fechada" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "20 Ω", abaixo: true },
+    { t: "R", de: [4.2, 0], para: [7.6, 0], valor: "6 Ω" },
+    { t: "no", em: [7.6, 0] },
+    { t: "fio", pts: [[7.6, 0], [7.6, 3.4]] },
+    { t: "corrente", de: [7.6, 0.4], para: [7.6, 1.4], abaixo: false },
+    { t: "texto", em: [7.85, 1.0], texto: "i_L(0⁻) = 2 A", ancora: "start", destaque: true },
+    { t: "texto", em: [7.85, 2.3], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[4.2, 0], [4.2, -1.8]] },
+    { t: "texto", em: [4.45, -1.25], texto: "v_Q(0⁻) = 12 V", ancora: "start", destaque: true },
+    { t: "R", de: [4.2, -1.8], para: [10.4, -1.8], valor: "5 Ω" },
+    { t: "fio", pts: [[10.4, -1.8], [10.4, 0]] },
+    { t: "no", em: [10.4, 0] },
+    { t: "V", de: [10.4, 3.4], para: [10.4, 0], valor: "20 V", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [10.4, 3.4]] },
+  ]}
+>
+
+**Em $t = 0^-$.** Chave fechada e indutor em fio: o nó do meio recebe os quatro ramos, e a LKC dá $v_Q = 12\ \mathrm{V}$. O ramo do $6\ \Omega$ vai direto ao terra, com $i_L = 12/6 = 2\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 2 — o circuito em $t > 0$.** A chave abriu: a fonte de $2\ \mathrm{A}$ e o $12\ \Omega$ saíram. No nó do meio ficam o $20\ \Omega$, o $5\ \Omega$ com a fonte e o ramo do indutor:
 
 $$
@@ -81,6 +112,36 @@ $$
 16 = v_Q + 4\,i_L
 $$
 
+<Circuito
+  alt="Para t maior que 0: chave aberta, fonte de 2 A e 12 Ω isolados; 20 Ω, 5 Ω com a fonte de 20 V e o ramo de 6 Ω com o indutor"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 3.4], valor: "12 Ω", abaixo: true },
+    { t: "texto", em: [3.1, -0.3], texto: "aberta" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "20 Ω", abaixo: true },
+    { t: "R", de: [4.2, 0], para: [7.6, 0], valor: "6 Ω" },
+    { t: "no", em: [7.6, 0] },
+    { t: "L", de: [7.6, 0], para: [7.6, 3.4], valor: "1/2 H" },
+    { t: "tensao", de: [7.6, 3.4], para: [7.6, 0], rotulo: "v", abaixo: true },
+    { t: "corrente", de: [7.6, 0.4], para: [7.6, 1.2], abaixo: false },
+    { t: "texto", em: [6.85, 0.85], texto: "i_L", ancora: "end", destaque: true },
+    { t: "fio", pts: [[4.2, 0], [4.2, -1.8]] },
+    { t: "texto", em: [4.45, -1.25], texto: "v_Q", ancora: "start" },
+    { t: "R", de: [4.2, -1.8], para: [10.4, -1.8], valor: "5 Ω" },
+    { t: "fio", pts: [[10.4, -1.8], [10.4, 0]] },
+    { t: "no", em: [10.4, 0] },
+    { t: "V", de: [10.4, 3.4], para: [10.4, 0], valor: "20 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [10.4, 3.4]] },
+  ]}
+>
+
+**Para $t \gt 0$.** A chave abriu e a fonte de $2\ \mathrm{A}$ ficou presa no $12\ \Omega$, sem ligação com o resto. No nó $v_Q$ sobram o $20\ \Omega$, o $5\ \Omega$ com a fonte de $20\ \mathrm{V}$ e o ramo do indutor: $16 = v_Q + 4i_L$.
+
+</Circuito>
+
 **Passo 3 — a equação.** Pelo ramo do indutor, $v_Q = 6\,i_L + \dfrac12\dfrac{di_L}{dt}$:
 
 $$
@@ -90,6 +151,26 @@ $$
 $$
 
 **Passo 4 — resposta natural e forçada.** De $s + 20 = 0$ vem $s = -20$; e $20K = 32$ dá $i_{L,f} = 1{,}6\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte de 20 V desligada (curto): o indutor enxerga 6 Ω em série com 20 Ω em paralelo com 5 Ω, 10 Ω"
+  itens={[
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "20 Ω", abaixo: true },
+    { t: "R", de: [4.2, 0], para: [7.6, 0], valor: "6 Ω" },
+    { t: "L", de: [7.6, 0], para: [7.6, 3.4], valor: "1/2 H", destaque: true },
+    { t: "fio", pts: [[4.2, 0], [4.2, -1.8]] },
+    { t: "R", de: [4.2, -1.8], para: [10.4, -1.8], valor: "5 Ω" },
+    { t: "fio", pts: [[10.4, -1.8], [10.4, 3.4]] },
+    { t: "texto", em: [10.65, 1.75], texto: "20 V: curto", ancora: "start" },
+    { t: "fio", pts: [[4.2, 3.4], [10.4, 3.4]] },
+    { t: "texto", em: [7.3, 4.2], texto: "R_{eq} = 6 + (20 ∥ 5) = 10 Ω   ·   τ = L/R_{eq} = 0,05 s", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte de tensão em curto, o $20\ \Omega$ e o $5\ \Omega$ ficam em paralelo ($4\ \Omega$) e em série com o $6\ \Omega$: $R_{eq} = 10\ \Omega$, $s = -R_{eq}/L = -20$.
+
+</Circuito>
 
 **Passo 5 — a constante.** De $i_L(0) = 2$:
 
