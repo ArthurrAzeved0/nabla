@@ -71,6 +71,34 @@ i(0^-) = \frac{8}{2} = 4\ \mathrm{A}
 v(0^-) = 8\ \mathrm{V}
 $$
 
+<Circuito
+  alt="Em 0⁻: chave fechada, indutor trocado por fio, capacitor retirado; 18 V com 2 Ω alimentando o 8 Ω em paralelo com o 2 Ω"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 3.4], valor: "8 Ω" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "R", de: [2, 0], para: [2, 1.1], valor: "2 Ω", abaixo: true },
+    { t: "V", de: [2, 2.3], para: [2, 1.1], valor: "18 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[2, 2.3], [2, 3.4]] },
+    { t: "texto", em: [2.25, 2.95], texto: "chave fechada", ancora: "start" },
+    { t: "fio", pts: [[2, 0], [4.4, 0]] },
+    { t: "texto", em: [3.2, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "corrente", de: [2.9, 0], para: [3.9, 0], rotulo: "i" },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "2 Ω" },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0], [6.2, 1]] },
+    { t: "fio", pts: [[6.2, 2.4], [6.2, 3.4]] },
+    { t: "tensao", de: [6.2, 3.4], para: [6.2, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [6.05, 1.75], texto: "C: aberto", ancora: "end" },
+    { t: "fio", pts: [[0, 3.4], [6.2, 3.4]] },
+    { t: "texto", em: [3.1, 4.1], texto: "i(0⁻) = 4 A   ·   v(0⁻) = 8 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Chave fechada, indutor em curto, capacitor aberto. O $8\ \Omega$ fica em paralelo com o $2\ \Omega$ da direita ($1{,}6\ \Omega$), a fonte entrega $18/3{,}6 = 5\ \mathrm{A}$ e o nó de cima fica em $8\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — continuidade:**
 
 $$
@@ -86,6 +114,32 @@ $$
 $$
 
 O sinal é negativo porque a corrente sobe pelo $8\ \Omega$, contra a seta de $i_1$.
+
+<Circuito
+  alt="Em 0⁺: o ramo da fonte de 18 V foi retirado (chave aberta); o indutor virou fonte de 4 A e o capacitor fonte de 8 V"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 3.4], valor: "8 Ω" },
+    { t: "corrente", de: [0, 0.4], para: [0, 1.4], rotulo: "i_1" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "no", em: [2, 0] },
+    { t: "texto", em: [2, 1.6], texto: "ramo de 18 V", ancora: "middle" },
+    { t: "texto", em: [2, 2.0], texto: "(chave aberta)", ancora: "middle" },
+    { t: "I", de: [2, 0], para: [4.4, 0], valor: "4 A", destaque: true },
+    { t: "texto", em: [2, -0.75], texto: "−32 V", ancora: "middle", destaque: true },
+    { t: "no", em: [4.4, 0] },
+    { t: "texto", em: [4.4, -0.75], texto: "8 V", ancora: "middle", destaque: true },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "2 Ω" },
+    { t: "corrente", de: [4.4, 0.4], para: [4.4, 1.4], rotulo: "i_2" },
+    { t: "fio", pts: [[4.4, 0], [6.2, 0]] },
+    { t: "V", de: [6.2, 3.4], para: [6.2, 0], valor: "8 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [6.2, 3.4]] },
+    { t: "texto", em: [3.1, 4.1], texto: "i_1 = −4 A   ·   i_2 = 4 A   ·   i_C = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** O indutor é uma fonte de $4\ \mathrm{A}$ e o capacitor, uma de $8\ \mathrm{V}$. Os $4\ \mathrm{A}$ só voltam pelo $8\ \Omega$, subindo ($i_1 = -4\ \mathrm{A}$, nó da esquerda em $-32\ \mathrm{V}$); à direita o $2\ \Omega$ absorve os $4\ \mathrm{A}$ inteiros e não sobra nada para o capacitor.
+
+</Circuito>
 
 **Passo 4 — $i_2$ e a derivada da tensão.** O $2\ \Omega$ da direita está direto sobre o capacitor:
 
