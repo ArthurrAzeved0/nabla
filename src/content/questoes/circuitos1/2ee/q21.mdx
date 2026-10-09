@@ -57,7 +57,52 @@ i(0) = 10\ \mathrm{A}
 v_C(0) = 0
 $$
 
+<Circuito
+  alt="Em 0⁻: chave fechada curto-circuitando o 3 Ω, indutor em curto, capacitor aberto; i = 10 A e v_C = 0"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "i_g = 10 A", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3.4], valor: "2 Ω" },
+    { t: "fio", pts: [[1.6, 0], [1.6, -1.4], [3.8, -1.4], [3.8, 0]] },
+    { t: "texto", em: [2.7, -1.65], texto: "fechada", ancora: "middle" },
+    { t: "R", de: [1.6, 0], para: [3.8, 0], valor: "3 Ω", abaixo: true },
+    { t: "no", em: [3.8, 0] },
+    { t: "fio", pts: [[3.8, 0], [3.8, 3.4]] },
+    { t: "corrente", de: [3.8, 1.2], para: [3.8, 1.9], rotulo: "i" },
+    { t: "texto", em: [3.95, 2.6], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[3.8, 0], [5.6, 0], [5.6, 0.9]] },
+    { t: "fio", pts: [[5.6, 2.5], [5.6, 3.4]] },
+    { t: "texto", em: [5.75, 1.75], texto: "aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [5.6, 3.4]] },
+    { t: "texto", em: [2.8, 4.1], texto: "i(0) = 10 A   ·   v_C(0) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** A chave curto-circuita o $3\ \Omega$ e o indutor é um fio: o nó de cima fica em $0\ \mathrm{V}$, o $2\ \Omega$ não conduz e os $10\ \mathrm{A}$ vão todos para o indutor.
+
+</Circuito>
+
 **Passo 2 — o circuito para $t > 0$.** A chave abre e o $3\ \Omega$ entra. A fonte de $10\ \mathrm{A}$ em paralelo com o $2\ \Omega$ equivale a $20\ \mathrm{V}$ em série com $2\ \Omega$; somando o $3\ \Omega$, o par $L$–$C$ é alimentado por **$20\ \mathrm{V}$ através de $5\ \Omega$**.
+
+<Circuito
+  alt="Para t maior que 0: equivalente de 20 V em série com 5 Ω alimentando o indutor de 5 H em paralelo com o capacitor de 1/20 F"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "2 Ω + 3 Ω = 5 Ω", destaque: true },
+    { t: "no", em: [2.4, 0] },
+    { t: "L", de: [2.4, 0], para: [2.4, 3.4], valor: "5 H" },
+    { t: "corrente", de: [2.4, 0.3], para: [2.4, 1], rotulo: "i" },
+    { t: "fio", pts: [[2.4, 0], [4.2, 0]] },
+    { t: "C", de: [4.2, 0], para: [4.2, 3.4], valor: "1/20 F", abaixo: true },
+    { t: "tensao", de: [4.2, 3.4], para: [4.2, 0], rotulo: "v_C", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [4.2, 3.4]] },
+  ]}
+>
+
+**Para $t \gt 0$.** A chave abre e o $3\ \Omega$ entra em série. A fonte de $10\ \mathrm{A}$ com o $2\ \Omega$ vira $20\ \mathrm{V}$ em série com $2\ \Omega$ (Norton para Thévenin), e o par $L$–$C$ vê $20\ \mathrm{V}$ através de $5\ \Omega$.
+
+</Circuito>
 
 **Passo 3 — a equação.** Com $v_C = 5\,\dfrac{di}{dt}$ e $i_C = \tfrac1{20}\,\dfrac{dv_C}{dt}$, a LKC dá
 
@@ -100,6 +145,27 @@ $$
 $$
 \boxed{i(t) = 4 + (6 + 12\,t)\,e^{-2t}\ \mathrm{A}}
 $$
+
+<Circuito
+  alt="Para t tendendo a infinito: indutor em curto e capacitor aberto; i = 20/5 = 4 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "5 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [2.4, 3.4]] },
+    { t: "corrente", de: [2.4, 1.2], para: [2.4, 1.9], rotulo: "i" },
+    { t: "texto", em: [2.55, 2.6], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[2.4, 0], [4.2, 0], [4.2, 0.9]] },
+    { t: "fio", pts: [[4.2, 2.5], [4.2, 3.4]] },
+    { t: "texto", em: [4.35, 1.75], texto: "aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [4.2, 3.4]] },
+    { t: "texto", em: [2.1, 4.1], texto: "i(∞) = 20/5 = 4 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Para $t \to \infty$.** Indutor em curto, capacitor aberto: $i(\infty) = 20/5 = 4\ \mathrm{A}$, a forçada da equação.
+
+</Circuito>
 
 **Conferência —** $i(0) = 4 + 6 = 10\ \mathrm{A}$ ✔ e $i(\infty) = 4\ \mathrm{A}$, que é $20/5$ ✔ A tensão do capacitor sai da relação do indutor:
 
