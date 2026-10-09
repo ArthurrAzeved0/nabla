@@ -64,6 +64,23 @@ $$
 \frac{d^2i}{dt^2} + 4\frac{di}{dt} + 5\,i = 10
 $$
 
+<Circuito
+  alt="Fonte de 2 A desligada (aberta): sobra o laço do 4 Ω, do indutor de 1 H e do capacitor de 1/5 F, um RLC série"
+  itens={[
+    { t: "texto", em: [1.2, 1.75], texto: "2 A: aberta", ancora: "middle" },
+    { t: "R", de: [2.4, 0], para: [2.4, 1.7], valor: "4 Ω", abaixo: true, destaque: true },
+    { t: "L", de: [2.4, 1.7], para: [2.4, 3.4], valor: "1 H", abaixo: true, destaque: true },
+    { t: "fio", pts: [[2.4, 0], [5.8, 0]] },
+    { t: "C", de: [5.8, 0], para: [5.8, 3.4], valor: "1/5 F", destaque: true },
+    { t: "fio", pts: [[2.4, 3.4], [5.8, 3.4]] },
+    { t: "texto", em: [3.9, 4.1], texto: "RLC série:  α = R/2L = 2  ·  ω_0 = 1/√(LC) = √5", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Fonte desligada: sobra um RLC série.** Com a fonte de corrente aberta, o $4\ \Omega$, o $1\ \mathrm{H}$ e o $1/5\ \mathrm{F}$ formam um único laço: $\alpha = R/2L = 2$ e $\omega_0 = 1/\sqrt{LC} = \sqrt{5}$, que é a equação $s^2 + 4s + 5 = 0$.
+
+</Circuito>
+
 **Passo 3 — resposta natural.** De $s^2 + 4s + 5 = 0$:
 
 $$
@@ -81,6 +98,31 @@ $$
 $$
 i_f(t) = 2\ \mathrm{A}
 $$
+
+<Circuito
+  alt="t tendendo ao infinito: capacitor aberto, indutor em curto, os 2 A passam pelo 4 Ω e v vale 8 V"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 1.7], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2.4, 0.2], para: [2.4, 0.8], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[2.4, 1.7], [2.4, 3.4]] },
+    { t: "texto", em: [2.65, 2.6], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[2.4, 0], [5.8, 0]] },
+    { t: "no", em: [5.8, 0] },
+    { t: "fio", pts: [[5.8, 0], [5.8, 1.1]] },
+    { t: "fio", pts: [[5.8, 2.3], [5.8, 3.4]] },
+    { t: "texto", em: [6.05, 1.75], texto: "aberto", ancora: "start" },
+    { t: "tensao", de: [5.8, 3.4], para: [5.8, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+    { t: "texto", em: [2.9, 4.1], texto: "i(∞) = 2 A   ·   v(∞) = 4 · 2 = 8 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t \to \infty$: capacitor aberto, indutor em curto.** Os $2\ \mathrm{A}$ inteiros descem pelo $4\ \Omega$: $i_f = 2\ \mathrm{A}$ e $v(\infty) = 4 \cdot 2 = 8\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 5 — a primeira constante.** Com $i(0) = 2$:
 
@@ -105,6 +147,27 @@ A_2 = -4
 \qquad\Longrightarrow\qquad
 i(t) = 2 - 4\,e^{-2t}\operatorname{sen} t\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em t = 0 o capacitor vira fonte de 4 V e o indutor fonte de 2 A; o indutor fica com −4 V"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "2 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 1.7], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2.4, 0.2], para: [2.4, 0.8], rotulo: "i", abaixo: false },
+    { t: "I", de: [2.4, 1.7], para: [2.4, 3.4], valor: "2 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[2.4, 0], [5.8, 0]] },
+    { t: "no", em: [5.8, 0] },
+    { t: "V", de: [5.8, 3.4], para: [5.8, 0], valor: "4 V", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+    { t: "texto", em: [2.9, 4.1], texto: "v_L = 4 − 4 · 2 = −4 V   ·   di(0)/dt = −4 A/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0$: as condições dadas viram fontes.** O capacitor é uma fonte de $4\ \mathrm{V}$ e o indutor uma de $2\ \mathrm{A}$. O $4\ \Omega$ cai $8\ \mathrm{V}$, então sobra $v_L = 4 - 8 = -4\ \mathrm{V}$ no indutor, e $di(0)/dt = -4\ \mathrm{A/s}$.
+
+</Circuito>
 
 **Passo 7 — a tensão.** De volta em $v = 4i + \frac{di}{dt}$:
 
