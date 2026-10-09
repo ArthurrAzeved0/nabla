@@ -60,6 +60,34 @@ i_g(0^-) = \frac{20}{6 + 4} = 2\ \mathrm{A}
 v(0^-) = 4 \cdot 2 = 8\ \mathrm{V}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: fonte de 20 V ligada e capacitor aberto; 6 Ω e 4 Ω em série, 2 A, e v vale 8 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "10 V", abaixo: true },
+    { t: "texto", em: [1.6, 0.75], texto: "aberta", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "6 Ω" },
+    { t: "corrente", de: [2.0, 0], para: [2.8, 0], rotulo: "i_g" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [8, 0]] },
+    { t: "no", em: [8, 0] },
+    { t: "fio", pts: [[8, 0], [8, 1.1]] },
+    { t: "fio", pts: [[8, 2.3], [8, 3.4]] },
+    { t: "texto", em: [8.25, 1.75], texto: "aberto", ancora: "start" },
+    { t: "tensao", de: [8, 3.4], para: [8, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [8, 3.4]] },
+    { t: "texto", em: [4, 4.1], texto: "i_g(0⁻) = 20/(6 + 4) = 2 A   ·   v(0⁻) = 4 · 2 = 8 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t = 0^-$: capacitor aberto.** O $6\ \Omega$ e o $4\ \Omega$ ficam em série com a fonte de $20\ \mathrm{V}$: $i_g = 2\ \mathrm{A}$, e o capacitor guarda a tensão do $4\ \Omega$, $v(0^-) = 8\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Com a fonte de $10\ \mathrm{V}$:
 
 $$
@@ -86,7 +114,56 @@ $$
 v_n(t) = A\,e^{-\frac{25}{6}t}
 $$
 
+<Circuito
+  alt="Fonte em curto e capacitor retirado: pelos terminais dele, o 6 Ω em paralelo com o 4 Ω, 2,4 Ω"
+  itens={[
+    { t: "fio", pts: [[1.8, 3.4], [1.8, 0]] },
+    { t: "texto", em: [1.55, 1.75], texto: "10 V: curto", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "6 Ω", destaque: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "4 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[4.2, 0], [8, 0]] },
+    { t: "no", em: [8, 0] },
+    { t: "no", em: [8, 3.4] },
+    { t: "texto", em: [7.75, 1.75], texto: "R_{eq} = 6 ∥ 4 = 2,4 Ω", ancora: "end", destaque: true },
+    { t: "fio", pts: [[1.8, 3.4], [8, 3.4]] },
+    { t: "texto", em: [4.9, 4.1], texto: "τ = R_{eq} C = 2,4 · 1/10 = 6/25 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte em curto, o capacitor vê o $6\ \Omega$ em paralelo com o $4\ \Omega$: $R_{eq} = 2{,}4\ \Omega$ e $\tau = R_{eq}C = 6/25\ \mathrm{s}$ — o $s = -25/6$ do Passo 4.
+
+</Circuito>
+
 **Passo 5 — resposta forçada.** $25K = 100$, logo $v_f = 4\ \mathrm{V}$.
+
+<Circuito
+  alt="t tendendo ao infinito: fonte de 10 V ligada e capacitor aberto; v vale 4 V e i vale 1 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.35], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "10 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "6 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [8, 0]] },
+    { t: "no", em: [8, 0] },
+    { t: "fio", pts: [[8, 0], [8, 1.1]] },
+    { t: "fio", pts: [[8, 2.3], [8, 3.4]] },
+    { t: "texto", em: [8.25, 1.75], texto: "aberto", ancora: "start" },
+    { t: "tensao", de: [8, 3.4], para: [8, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [8, 3.4]] },
+    { t: "texto", em: [4, 4.1], texto: "v(∞) = 10 · 4/(6 + 4) = 4 V   ·   i(∞) = 1 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**$t \to \infty$: capacitor aberto, agora com 10 V.** Divisor de tensão: $v_f = 10 \cdot 4/(6 + 4) = 4\ \mathrm{V}$, e o $4\ \Omega$ leva $i = 1\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 6 — a constante.** De $v(0) = 8$:
 
