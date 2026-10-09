@@ -61,6 +61,34 @@ $$
 
 onde $v_p$ é a tensão do bloco $4\ \Omega \parallel C$ (a mesma do capacitor).
 
+<Circuito
+  alt="Em t = 0⁺: chave fechada, capacitor em curto por estar descarregado, indutor aberto por ter corrente zero, 20 V inteiros sobre o indutor"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "texto", em: [1.3, -0.3], texto: "fechada" },
+    { t: "R", de: [2, 0], para: [4.6, 0], valor: "6 Ω" },
+    { t: "tensao", de: [4.6, 0], para: [2, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [3.3, 1.05], texto: "v(0⁺) = 0", destaque: true },
+    { t: "no", em: [4.6, 0] },
+    { t: "fio", pts: [[4.6, 0], [7.4, 0]] },
+    { t: "texto", em: [6.0, 0.5], texto: "C: curto (v_C = 0)", destaque: true },
+    { t: "fio", pts: [[4.6, 0], [4.6, -1.8]] },
+    { t: "R", de: [4.6, -1.8], para: [7.4, -1.8], valor: "4 Ω" },
+    { t: "texto", em: [6.0, -1.2], texto: "i = 0" },
+    { t: "fio", pts: [[7.4, -1.8], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "no", em: [7.4, 3.4] },
+    { t: "tensao", de: [7.4, 3.4], para: [7.4, 0], rotulo: "v_L = 20 V", abaixo: true },
+    { t: "texto", em: [7.65, 2.75], texto: "L: aberto (i_L = 0)", ancora: "start", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+**Em $t = 0^+$.** Capacitor descarregado vira curto e indutor sem corrente vira aberto. Nenhuma corrente circula: $v = 0$, $i = 0$ e $i_C = 0$, logo $dv_p(0)/dt = 0$. Os $20\ \mathrm{V}$ caem inteiros sobre o indutor.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Chamando $i_L$ a corrente da malha (a mesma no $6\ \Omega$ e no indutor):
 
 $$
@@ -68,6 +96,32 @@ $$
 \qquad\qquad
 i_L = \underbrace{\frac{v_p}{4}}_{i} + \underbrace{\frac{1}{25}\frac{dv_p}{dt}}_{i_C}
 $$
+
+<Circuito
+  alt="Para t maior que 0: corrente de malha i_L pelo 6 Ω e pelo indutor, dividida entre o 4 Ω (i) e o capacitor (i_C) no bloco de tensão v_p"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "corrente", de: [0.4, 0], para: [1.4, 0], rotulo: "i_L" },
+    { t: "R", de: [2, 0], para: [4.6, 0], valor: "6 Ω" },
+    { t: "tensao", de: [4.6, 0], para: [2, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [4.6, 0] },
+    { t: "C", de: [4.6, 0], para: [7.4, 0], valor: "1/25 F", abaixo: true },
+    { t: "corrente", de: [4.8, 0], para: [5.5, 0], rotulo: "i_C", abaixo: false },
+    { t: "fio", pts: [[4.6, 0], [4.6, -1.8]] },
+    { t: "R", de: [4.6, -1.8], para: [7.4, -1.8], valor: "4 Ω" },
+    { t: "fio", pts: [[7.4, -1.8], [7.4, 0]] },
+    { t: "corrente", de: [4.6, -0.3], para: [4.6, -1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [7.65, -0.85], texto: "bloco 4 Ω ∥ C: tensão v_p", ancora: "start" },
+    { t: "no", em: [7.4, 0] },
+    { t: "L", de: [7.4, 0], para: [7.4, 3.4], valor: "1/4 H", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+**Para $t \gt 0$.** Uma só malha, com a corrente $i_L$ no $6\ \Omega$ e no indutor; no bloco $4\ \Omega \parallel C$, de tensão $v_p$, ela se divide em $i = v_p/4$ e $i_C = \tfrac{1}{25}\,dv_p/dt$.
+
+</Circuito>
 
 **Passo 3 — a equação em $v_p$.** Substituindo $i_L$ e sua derivada:
 
@@ -91,6 +145,34 @@ $$
 Raízes complexas: **subamortecido**.
 
 **Passo 5 — resposta forçada.** $250K = 2000$, logo $v_{p,f} = 8\ \mathrm{V}$ — coerente: em regime o capacitor abre, o indutor vira fio e o divisor entre $6$ e $4\ \Omega$ dá $20 \cdot \frac{4}{10} = 8\ \mathrm{V}$.
+
+<Circuito
+  alt="Em regime permanente: capacitor aberto, indutor em curto, divisor de 6 Ω e 4 Ω com 12 V e 8 V, corrente de 2 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "fio", pts: [[0, 0], [2, 0]] },
+    { t: "corrente", de: [0.4, 0], para: [1.4, 0], rotulo: "2 A" },
+    { t: "R", de: [2, 0], para: [4.6, 0], valor: "6 Ω" },
+    { t: "tensao", de: [4.6, 0], para: [2, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [3.3, 1.05], texto: "v → 12 V", destaque: true },
+    { t: "no", em: [4.6, 0] },
+    { t: "texto", em: [6.0, 0.05], texto: "C aberto" },
+    { t: "fio", pts: [[4.6, 0], [4.6, -1.8]] },
+    { t: "R", de: [4.6, -1.8], para: [7.4, -1.8], valor: "4 Ω" },
+    { t: "texto", em: [6.0, -1.2], texto: "v_p → 8 V", destaque: true },
+    { t: "fio", pts: [[7.4, -1.8], [7.4, 0]] },
+    { t: "corrente", de: [4.6, -0.3], para: [4.6, -1.4], abaixo: false },
+    { t: "texto", em: [3.95, -1.2], texto: "i → 2 A", ancora: "end", destaque: true },
+    { t: "no", em: [7.4, 0] },
+    { t: "fio", pts: [[7.4, 0], [7.4, 3.4]] },
+    { t: "texto", em: [7.65, 1.75], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [7.4, 3.4]] },
+  ]}
+>
+
+**$t \to \infty$.** Capacitor aberto e indutor em fio: a malha é só $6 + 4 = 10\ \Omega$, com $2\ \mathrm{A}$. Daí $v_p = 8\ \mathrm{V}$, $i = 2\ \mathrm{A}$ e $v = 12\ \mathrm{V}$, os valores finais.
+
+</Circuito>
 
 **Passo 6 — as constantes.** De $v_p(0) = 0$:
 
