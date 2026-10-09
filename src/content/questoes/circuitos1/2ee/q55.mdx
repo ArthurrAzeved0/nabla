@@ -82,6 +82,45 @@ $$
 
 Em regime permanente, as duas derivadas em $0^-$ valem **zero**.
 
+<Circuito
+  alt="Em 0⁻: fonte de 50 V ligada e a de 100 V desconectada; divisor do 5 Ω com o 2 Ω e o capacitor aberto com 100/7 V; chaves do topo abertas; indutor em curto levando os 10 A; 2 Ω e 10 Ω sem corrente; fonte de 50 A isolada"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "50 V" },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "5 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[4.2, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "tensao", de: [7.4, 3.4], para: [7.4, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [7.2, 2.9], texto: "C: aberto", ancora: "end" },
+    { t: "texto", em: [8.4, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [9.4, 0] },
+    { t: "R", de: [9.4, 0], para: [9.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "R", de: [9.4, 0], para: [12, 0], valor: "10 Ω" },
+    { t: "no", em: [12, 0] },
+    { t: "fio", pts: [[12, 0], [12, 3.4]] },
+    { t: "corrente", de: [12, 0.4], para: [12, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [12.2, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[12, 0], [14.8, 0]] },
+    { t: "no", em: [14.8, 0] },
+    { t: "I", de: [14.8, 3.4], para: [14.8, 0], valor: "10 A" },
+    { t: "texto", em: [15.8, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [16.8, 0] },
+    { t: "I", de: [16.8, 3.4], para: [16.8, 0], valor: "50 A" },
+    { t: "fio", pts: [[0, 3.4], [16.8, 3.4]] },
+    { t: "texto", em: [8.4, 4.1], texto: "v(0⁻) = 50 · 2/7 = 100/7 V   ·   i(0⁻) = 10 A   ·   derivadas nulas", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente antes das chaves ($t = 0^-$).** Capacitor aberto: a fonte de $50\ \mathrm{V}$ só alimenta o divisor $5\ \Omega$ / $2\ \Omega$, e $v = 100/7\ \mathrm{V}$. Indutor em curto: o nó dele fica no terra, o segundo $2\ \Omega$ e o $10\ \Omega$ não conduzem, e os $10\ \mathrm{A}$ da fonte descem pelo indutor.
+
+</Circuito>
+
 **Passo 3 — continuidade.**
 
 $$
@@ -115,6 +154,40 @@ $$
 $$
 \boxed{\frac{dv(0^+)}{dt} = \frac{i_C}{C} = \frac{370/7}{1/5} = \frac{1850}{7} \approx 264{,}3\ \mathrm{V/s}}
 $$
+
+<Circuito
+  alt="Em 0⁺: fonte de 100 V ligada, chaves fechadas; capacitor como fonte de 100/7 V, indutor como fonte de corrente de 10 A; as fontes de 10 A e 50 A despejam 60 A no nó do indutor, que sobe a 3600/7 V, e 50 A voltam pelo 10 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "5 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[4.2, 0], [7.4, 0]] },
+    { t: "no", em: [7.4, 0] },
+    { t: "V", de: [7.4, 3.4], para: [7.4, 0], valor: "100/7 V", destaque: true },
+    { t: "fio", pts: [[7.4, 0], [9.4, 0]] },
+    { t: "no", em: [9.4, 0] },
+    { t: "R", de: [9.4, 0], para: [9.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "R", de: [9.4, 0], para: [12, 0], valor: "10 Ω" },
+    { t: "corrente", de: [11.2, 0], para: [10.2, 0], rotulo: "50 A" },
+    { t: "no", em: [12, 0] },
+    { t: "texto", em: [12.15, -0.3], texto: "v_D = 3600/7 V", ancora: "start", destaque: true },
+    { t: "I", de: [12, 0], para: [12, 3.4], valor: "10 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[12, 0], [14.8, 0]] },
+    { t: "no", em: [14.8, 0] },
+    { t: "I", de: [14.8, 3.4], para: [14.8, 0], valor: "10 A" },
+    { t: "fio", pts: [[14.8, 0], [16.8, 0]] },
+    { t: "no", em: [16.8, 0] },
+    { t: "I", de: [16.8, 3.4], para: [16.8, 0], valor: "50 A" },
+    { t: "fio", pts: [[0, 3.4], [16.8, 3.4]] },
+    { t: "texto", em: [8.4, 4.1], texto: "di/dt(0⁺) = 900/7 ≈ 128,6 A/s   ·   i_C(0⁺) = 370/7 A, dv/dt(0⁺) = 1850/7 ≈ 264,3 V/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante $t = 0^+$.** A fonte sobe para $100\ \mathrm{V}$, o capacitor é fonte de $100/7\ \mathrm{V}$ e o indutor fonte de $10\ \mathrm{A}$. No nó do indutor entram $60\ \mathrm{A}$ e saem $10$: os $50\ \mathrm{A}$ voltam pelo $10\ \Omega$ e levam $v_D$ a $3600/7\ \mathrm{V}$. No nó do capacitor, $\frac{120}{7} + 50 = \frac{50}{7} + \frac{50}{7} + i_C$.
+
+</Circuito>
 
 **Conferência —** o mecanismo é o mesmo de 2024.2: fontes de corrente entopem um nó cuja única saída é um indutor que ainda não mudou, e a tensão desse nó vai às alturas ✔ E são justamente os $50\ \mathrm{A}$ de refluxo pelo $10\ \Omega$ que fazem o capacitor subir tão rápido ✔
 
