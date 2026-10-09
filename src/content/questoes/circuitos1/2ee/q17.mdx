@@ -21,26 +21,28 @@ pontos: 3 pts
 Determinar a tensão $v$ para $t > 0$, sabendo que o circuito está em **regime permanente** em $t = 0^-$.
 
 <Circuito
-  alt="Fonte de 9 A com 6 Ω, chave, fonte de 5 V, 3 Ω, indutor de 1/2 H e 5 Ω"
+  alt="Fonte de 9 A com 6 Ω; chave comutadora que leva o 3 Ω da fonte de 9 A para a fonte de 5 V; indutor de 1/2 H em paralelo com 5 Ω"
   itens={[
     { t: "I", de: [0, 3], para: [0, 0], valor: "9 A" },
     { t: "fio", pts: [[0, 0], [1.6, 0]] },
     { t: "no", em: [1.6, 0] },
     { t: "R", de: [1.6, 0], para: [1.6, 3], valor: "6 Ω", abaixo: true },
-    { t: "S", de: [1.6, 0], para: [3, 0], rotulo: "fecha" },
-    { t: "no", em: [3, 0] },
-    { t: "V", de: [3, 3], para: [3, 0], valor: "5 V", abaixo: true },
-    { t: "R", de: [3, 0], para: [5, 0], valor: "3 Ω" },
-    { t: "tensao", de: [5, 0], para: [3, 0], rotulo: "v" },
-    { t: "no", em: [5, 0] },
-    { t: "L", de: [5, 0], para: [5, 3], valor: "1/2 H", abaixo: true },
-    { t: "fio", pts: [[5, 0], [6.6, 0]] },
-    { t: "R", de: [6.6, 0], para: [6.6, 3], valor: "5 Ω", abaixo: true },
-    { t: "fio", pts: [[0, 3], [6.6, 3]] },
+    { t: "fio", pts: [[1.6, 0], [2.2, 0]] },
+    { t: "S", de: [2.2, 0], para: [3.4, 0], rotulo: "abre" },
+    { t: "no", em: [3.4, 0] },
+    { t: "S", de: [3.4, 1.4], para: [3.4, 0], rotulo: "fecha" },
+    { t: "V", de: [3.4, 3], para: [3.4, 1.4], valor: "5 V", abaixo: true },
+    { t: "R", de: [3.4, 0], para: [5.4, 0], valor: "3 Ω" },
+    { t: "tensao", de: [5.4, 0], para: [3.4, 0], rotulo: "v" },
+    { t: "no", em: [5.4, 0] },
+    { t: "L", de: [5.4, 0], para: [5.4, 3], valor: "1/2 H", abaixo: true },
+    { t: "fio", pts: [[5.4, 0], [7, 0]] },
+    { t: "R", de: [7, 0], para: [7, 3], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3], [7, 3]] },
   ]}
 >
 
-Antes de $t=0$ manda a fonte de $9\ \mathrm{A}$ com o $6\ \Omega$; a chave, ao **fechar**, põe a fonte de $5\ \mathrm{V}$ no comando. A condição inicial sai de um **divisor de corrente**, porque em regime o indutor é um fio.
+A chave é **comutadora** (no original, um só polo com dois contatos; aqui, as duas metades dela). Antes de $t=0$ ela liga o $3\ \Omega$ à fonte de $9\ \mathrm{A}$ com o $6\ \Omega$; em $t=0$ a seta a leva para baixo, e quem passa a alimentar o $3\ \Omega$ é a fonte de $5\ \mathrm{V}$. A condição inicial sai de um **divisor de corrente**, porque em regime o indutor é um fio.
 
 </Circuito>
 
@@ -55,7 +57,34 @@ $$
 i_L(0) = \frac{6}{6+3}\cdot 9 = \frac{2}{3}\cdot 9 = 6\ \mathrm{A}
 $$
 
-**Passo 2 — a equação para $t > 0$.** Com a chave fechada e a fonte de $5\ \mathrm{V}$ no comando, chame $i$ a corrente do $3\ \Omega$, $i_L$ a do indutor e $i_R$ a do $5\ \Omega$. Então
+<Circuito
+  alt="Em 0⁻: chave na fonte de 9 A, 6 Ω e o ramo de 3 Ω com o indutor em curto; a fonte de 5 V desligada; i_L = 6 A"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "9 A", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3], valor: "6 Ω", abaixo: true },
+    { t: "fio", pts: [[1.6, 0], [3.4, 0]] },
+    { t: "no", em: [3.4, 0] },
+    { t: "V", de: [3.4, 3], para: [3.4, 1.4], valor: "5 V", abaixo: true },
+    { t: "texto", em: [3.6, 0.85], texto: "desligada", ancora: "start" },
+    { t: "R", de: [3.4, 0], para: [5.4, 0], valor: "3 Ω" },
+    { t: "no", em: [5.4, 0] },
+    { t: "fio", pts: [[5.4, 0], [5.4, 3]] },
+    { t: "corrente", de: [5.4, 2.1], para: [5.4, 2.8], rotulo: "i_L" },
+    { t: "texto", em: [5.55, 1.2], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[5.4, 0], [7, 0]] },
+    { t: "R", de: [7, 0], para: [7, 3], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3], [7, 3]] },
+    { t: "texto", em: [3.5, 3.7], texto: "i_L(0⁻) = 6 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** A chave está na fonte de $9\ \mathrm{A}$ e a de $5\ \mathrm{V}$ está desligada. O indutor é um fio e curto-circuita o $5\ \Omega$; a fonte de $9\ \mathrm{A}$ se divide entre o $6\ \Omega$ e o ramo de $3\ \Omega$: $i_L(0) = \tfrac{6}{9}\cdot 9 = 6\ \mathrm{A}$.
+
+</Circuito>
+
+**Passo 2 — a equação para $t > 0$.** Com a chave na fonte de $5\ \mathrm{V}$, chame $i$ a corrente do $3\ \Omega$, $i_L$ a do indutor e $i_R$ a do $5\ \Omega$. Então
 
 $$
 5 = 3i + v_L,
@@ -79,12 +108,61 @@ $$
 \boxed{4\,\frac{di_L}{dt} + 15\,i_L = 25}
 $$
 
+<Circuito
+  alt="Para t maior que 0: a chave passou para a fonte de 5 V; 3 Ω com i, indutor de 1/2 H com i_L e 5 Ω com i_R; a fonte de 9 A ficou isolada"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "9 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "R", de: [1.6, 0], para: [1.6, 3], valor: "6 Ω", abaixo: true },
+    { t: "fio", pts: [[1.6, 0], [2.2, 0]] },
+    { t: "texto", em: [2.8, -0.45], texto: "aberta" },
+    { t: "no", em: [3.4, 0] },
+    { t: "fio", pts: [[3.4, 0], [3.4, 1.4]] },
+    { t: "V", de: [3.4, 3], para: [3.4, 1.4], valor: "5 V", abaixo: true, destaque: true },
+    { t: "R", de: [3.4, 0], para: [5.4, 0], valor: "3 Ω" },
+    { t: "corrente", de: [3.8, 0], para: [5, 0], rotulo: "i" },
+    { t: "no", em: [5.4, 0] },
+    { t: "L", de: [5.4, 0], para: [5.4, 3], valor: "1/2 H", abaixo: true, destaque: true },
+    { t: "corrente", de: [5.4, 2.1], para: [5.4, 2.8], rotulo: "i_L" },
+    { t: "fio", pts: [[5.4, 0], [7, 0]] },
+    { t: "R", de: [7, 0], para: [7, 3], valor: "5 Ω", abaixo: true },
+    { t: "corrente", de: [7, 2.1], para: [7, 2.8], rotulo: "i_R" },
+    { t: "fio", pts: [[0, 3], [7, 3]] },
+  ]}
+>
+
+**Para $t \gt 0$.** A chave passou para a fonte de $5\ \mathrm{V}$, e a de $9\ \mathrm{A}$ com o $6\ \Omega$ ficou isolada do resto. LKT e LKC dão $5 = 3i + v_L$ e $i = i_L + i_R$, com $v_L = 5\,i_R$, até $4\,di_L/dt + 15\,i_L = 25$.
+
+</Circuito>
+
 **Passo 3 — resolvendo.** Característica $4s + 15 = 0 \Rightarrow s = -3{,}75$, e forçada $i_f = \tfrac{25}{15} = \tfrac53\ \mathrm{A}$:
 
 $$
 i_L(t) = \frac{5}{3} + \left(6 - \frac{5}{3}\right)e^{-3,75t}
 = \frac{5}{3} + \frac{13}{3}\,e^{-3,75t}\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Para t tendendo a infinito: indutor em curto, 5 Ω sem corrente; i_L = 5/3 A e v = 5 V"
+  itens={[
+    { t: "V", de: [3, 3], para: [3, 0], valor: "5 V" },
+    { t: "R", de: [3, 0], para: [5, 0], valor: "3 Ω" },
+    { t: "tensao", de: [5, 0], para: [3, 0], rotulo: "v" },
+    { t: "no", em: [5, 0] },
+    { t: "fio", pts: [[5, 0], [5, 3]] },
+    { t: "corrente", de: [5, 2.1], para: [5, 2.8], rotulo: "i_L" },
+    { t: "texto", em: [5.15, 1.2], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[5, 0], [6.6, 0]] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[3, 3], [6.6, 3]] },
+    { t: "texto", em: [4.8, 3.7], texto: "i_L(∞) = 5/3 A   ·   v(∞) = 5 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Para $t \to \infty$.** O indutor volta a ser fio e o $5\ \Omega$ fica em curto: toda a fonte cai sobre o $3\ \Omega$, $i_L(\infty) = 5/3\ \mathrm{A}$ — a forçada da equação.
+
+</Circuito>
 
 **Passo 4 — a tensão pedida.** Primeiro a do indutor:
 
@@ -100,5 +178,5 @@ $$
 \boxed{v = 5 - v_L = 5 + \frac{65}{8}\,e^{-3,75t} = 5 + 8{,}125\,e^{-3,75t}\ \mathrm{V}}
 $$
 
-**Conferência —** em $t=0$: $v = 13{,}125\ \mathrm{V}$, logo $i = v/3 = 4{,}375\ \mathrm{A}$. E de fato $i = i_L + v_L/5 = 6 - 1{,}625 = 4{,}375\ \mathrm{A}$ ✔ Para $t$ grande, $v \to 5\ \mathrm{V}$: o indutor vira fio, o $5\ \Omega$ fica em curto e todo o $5\ \mathrm{V}$ da fonte aparece sobre o $3\ \Omega$… na verdade $v \to 5\ \mathrm{V}$ com $i \to 5/3\ \mathrm{A}$, que é $3 \times \tfrac53 = 5\ \mathrm{V}$ ✔
+**Conferência —** em $t=0$: $v = 13{,}125\ \mathrm{V}$, logo $i = v/3 = 4{,}375\ \mathrm{A}$. E de fato $i = i_L + v_L/5 = 6 - 1{,}625 = 4{,}375\ \mathrm{A}$ ✔ Para $t$ grande, $v \to 5\ \mathrm{V}$: o indutor vira fio, o $5\ \Omega$ fica em curto e os $5\ \mathrm{V}$ da fonte caem inteiros sobre o $3\ \Omega$, com $i \to 5/3\ \mathrm{A}$: $3 \times \tfrac53 = 5\ \mathrm{V}$ ✔
 </Passos>
