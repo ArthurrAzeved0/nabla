@@ -75,6 +75,39 @@ i(0^-) = 0
 v(0^-) = 12 - 0 = 12\ \mathrm{V}
 $$
 
+<Circuito
+  alt="Circuito em 0⁻: fonte de 12 V ligada, ramo de 20 V aberto, capacitor aberto, segunda chave fechada, indutor em curto; v1 = 0, fonte controlada nula, i = 0"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "12 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "texto", em: [1.65, 0.75], texto: "aberta", ancora: "end" },
+    { t: "texto", em: [2.9, -0.3], texto: "C: aberto", ancora: "middle" },
+    { t: "tensao", de: [4, 0], para: [1.8, 0], rotulo: "v" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "4 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v_1", abaixo: true },
+    { t: "fio", pts: [[4, 0], [5.6, 0]] },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 3.4], para: [5.6, 0], rotulo: "0 A", abaixo: true },
+    { t: "fio", pts: [[5.6, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "R", de: [7.2, 0], para: [9.2, 0], valor: "6 Ω" },
+    { t: "no", em: [9.2, 0] },
+    { t: "fio", pts: [[9.2, 0], [9.2, 3.4]] },
+    { t: "texto", em: [9.4, 2.3], texto: "L: curto", ancora: "start" },
+    { t: "corrente", de: [9.2, 0.4], para: [9.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [9.2, 3.4]] },
+    { t: "texto", em: [4.6, 4.0], texto: "v(0⁻) = 12 V   ·   v_1 = 0   ·   i(0⁻) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime em $0^-$.** Capacitor aberto e indutor em curto: sem corrente no $4\ \Omega$, $v_1 = 0$ e a fonte controlada entrega $0\ \mathrm{A}$. Nada circula, $i(0^-) = 0$, e o capacitor fica com toda a fonte, $v(0^-) = 12\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — continuidade:**
 
 $$
@@ -90,6 +123,39 @@ v_1(0^+) = 20 - 12 = 8\ \mathrm{V}
 \qquad\Longrightarrow\qquad
 \text{fonte controlada} = 8\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Circuito em 0⁺: fonte de 20 V ligada, 12 V desligada, capacitor como fonte de 12 V, segunda chave aberta, indutor como fonte de 0 A; v1 = 8 V, 2 A no 4 Ω e 8 A no 6 Ω vertical"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "12 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "V", de: [4, 0], para: [1.8, 0], valor: "12 V", destaque: true },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "4 Ω" },
+    { t: "corrente", de: [4, 0.3], para: [4, 1.1], rotulo: "2 A", abaixo: false },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v_1", abaixo: true },
+    { t: "texto", em: [4.8, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 3.4], para: [5.6, 0], rotulo: "8 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[5.6, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "R", de: [7.2, 0], para: [7.2, 3.4], valor: "6 Ω", abaixo: true },
+    { t: "corrente", de: [7.2, 0.3], para: [7.2, 1.1], rotulo: "8 A" },
+    { t: "R", de: [7.2, 0], para: [9.2, 0], valor: "6 Ω" },
+    { t: "no", em: [9.2, 0] },
+    { t: "I", de: [9.2, 0], para: [9.2, 3.4], valor: "0 A", abaixo: true, destaque: true },
+    { t: "texto", em: [4.6, 4.0], texto: "v_1 = 8 V   ·   v_L = 48 V", ancora: "middle", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [9.2, 3.4]] },
+  ]}
+>
+
+**Circuito em $0^+$.** A chave comutou para $20\ \mathrm{V}$ e a do meio abriu. O capacitor vira fonte de $12\ \mathrm{V}$, logo $v_1 = 20 - 12 = 8\ \mathrm{V}$ e passam $2\ \mathrm{A}$ pelo $4\ \Omega$; o indutor vira fonte de $0\ \mathrm{A}$, e os $8\ \mathrm{A}$ da controlada descem todos pelo $6\ \Omega$ vertical, deixando $v_L = 48\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 4 — a derivada da tensão.** Com a chave aberta, o nó do $4\ \Omega$ só tem o capacitor e o resistor, então toda a corrente do $4\ \Omega$ vem do capacitor:
 
