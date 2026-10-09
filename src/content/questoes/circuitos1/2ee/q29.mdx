@@ -60,6 +60,32 @@ i(0^-) = \frac{10}{2} = 5\ \mathrm{A}
 i(0^+) = 5\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Circuito em 0⁻: fonte de 10 V ligada, ramo de 8 V aberto, 2 Ω em série, 2 Ω vertical em curto pelo indutor; i = 5 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "8 V" },
+    { t: "texto", em: [1.65, 0.75], texto: "aberta", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "2 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6, 0]] },
+    { t: "no", em: [6, 0] },
+    { t: "fio", pts: [[6, 0], [6, 3.4]] },
+    { t: "texto", em: [6.15, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "corrente", de: [6, 0.4], para: [6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6, 3.4]] },
+    { t: "texto", em: [3, 4.0], texto: "v(0⁻) = 0   ·   i(0⁻) = 10/2 = 5 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime em $0^-$.** O indutor em fio curto-circuita o $2\ \Omega$ vertical, que fica sem tensão: a fonte de $10\ \mathrm{V}$ cai toda no $2\ \Omega$ horizontal, e $i(0^-) = 5\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 2 — a equação para $t > 0$.** Agora a fonte é de $8\ \mathrm{V}$. Chamando $i_T$ a corrente que vem da fonte e $i_R$ a do $2\ \Omega$ vertical, a LKT da malha da esquerda e a LKC no nó dão
 
 $$
@@ -84,11 +110,58 @@ $$
 i_n(t) = A\,e^{-t}
 $$
 
+<Circuito
+  alt="Fonte de 8 V desligada (fio): o indutor enxerga os dois 2 Ω em paralelo, 1 Ω"
+  itens={[
+    { t: "fio", pts: [[1.8, 3.4], [1.8, 0]] },
+    { t: "texto", em: [1.65, 1.7], texto: "8 V: curto", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "2 Ω", destaque: true },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "2 Ω", destaque: true },
+    { t: "fio", pts: [[4, 0], [6, 0]] },
+    { t: "no", em: [6, 0] },
+    { t: "L", de: [6, 0], para: [6, 3.4], valor: "1 H", abaixo: true },
+    { t: "fio", pts: [[1.8, 3.4], [6, 3.4]] },
+    { t: "texto", em: [3.9, 4.0], texto: "R_{eq} = 2 ∥ 2 = 1 Ω   ·   τ = L/R_{eq} = 1 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte desligada, o indutor enxerga os dois $2\ \Omega$ em paralelo, $R_{eq} = 1\ \Omega$: $\tau = 1/1 = 1\ \mathrm{s}$, a mesma raiz $s = -1/\tau = -1$ da equação característica.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** Constante $i_f = K$, logo $2K = 8$:
 
 $$
 i_f(t) = 4\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Regime final com a fonte de 8 V: indutor em curto, 2 Ω vertical sem tensão, i = 4 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "8 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4, 0], valor: "2 Ω" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4, 0], [6, 0]] },
+    { t: "no", em: [6, 0] },
+    { t: "fio", pts: [[6, 0], [6, 3.4]] },
+    { t: "texto", em: [6.15, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "corrente", de: [6, 0.4], para: [6, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6, 3.4]] },
+    { t: "texto", em: [3, 4.0], texto: "v(∞) = 0   ·   i(∞) = 8/2 = 4 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final.** Com a fonte de $8\ \mathrm{V}$, o indutor volta a ser fio e o $2\ \Omega$ vertical de novo fica em curto: $i \to 8/2 = 4\ \mathrm{A}$, a resposta forçada.
+
+</Circuito>
 
 **Passo 5 — junte e use a condição inicial.**
 
