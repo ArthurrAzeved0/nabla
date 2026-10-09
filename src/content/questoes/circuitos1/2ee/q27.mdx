@@ -55,6 +55,29 @@ $$
 i = \frac{1}{2}\frac{dv}{dt} + \frac{v}{2}
 $$
 
+<Circuito
+  alt="O circuito com as correntes da LKC: i chega ao nó do capacitor e se divide em iC pelo capacitor e v/2 pelo 2 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "32 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "6 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "L", de: [2, 0], para: [4, 0], valor: "1/2 H" },
+    { t: "no", em: [4, 0] },
+    { t: "C", de: [4, 0], para: [4, 3.4], valor: "1/2 F" },
+    { t: "corrente", de: [4, 0.3], para: [4, 1.0], rotulo: "i_C", abaixo: false },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[4, 0], [5.8, 0]] },
+    { t: "corrente", de: [4.5, 0], para: [5.3, 0], rotulo: "v/2" },
+    { t: "R", de: [5.8, 0], para: [5.8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+    { t: "texto", em: [2.9, 4.0], texto: "LKC:  i = ½ dv/dt + v/2", ancora: "middle", destaque: true },
+  ]}
+>
+
+**As duas relações no desenho.** A malha da esquerda carrega $i$ pelo $6\ \Omega$ e pelo indutor; no nó de saída ela se divide entre o capacitor, $i_C = \tfrac12\,dv/dt$, e o $2\ \Omega$, $v/2$.
+
+</Circuito>
+
 **Passo 2 — elimine $i$.** Da LKC, $\dfrac{dv}{dt} = 2i - v$, e derivando,
 
 $$
@@ -119,6 +142,27 @@ $$
 \boxed{v(t) = 8 + 0{,}39\,e^{-1,38t} - 0{,}39\,e^{-11,62t}\ \mathrm{V}}
 $$
 
+<Circuito
+  alt="Circuito em t = 0: indutor como fonte de 6 A, capacitor como fonte de 8 V, 4 A no 2 Ω e 2 A no capacitor"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "32 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "6 Ω" },
+    { t: "I", de: [2, 0], para: [4, 0], valor: "6 A", destaque: true },
+    { t: "no", em: [4, 0] },
+    { t: "V", de: [4, 3.4], para: [4, 0], valor: "8 V", destaque: true },
+    { t: "corrente", de: [4, 0.55], para: [4, 1.2], rotulo: "2 A", abaixo: false },
+    { t: "fio", pts: [[4, 0], [5.8, 0]] },
+    { t: "corrente", de: [4.5, 0], para: [5.3, 0], rotulo: "4 A" },
+    { t: "R", de: [5.8, 0], para: [5.8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+    { t: "texto", em: [2.9, 4.0], texto: "i_C(0) = 6 − 8/2 = 2 A   ·   dv/dt = 2/(1/2) = 4 V/s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0$.** O indutor vira fonte de $6\ \mathrm{A}$ e o capacitor, fonte de $8\ \mathrm{V}$. O $2\ \Omega$ leva $8/2 = 4\ \mathrm{A}$, sobram $2\ \mathrm{A}$ para o capacitor, e $dv(0)/dt = 2/(1/2) = 4\ \mathrm{V/s}$ — a segunda condição do Passo 5.
+
+</Circuito>
+
 **Passo 6 — a corrente**, de volta pela LKC:
 
 $$
@@ -130,4 +174,26 @@ $$
 **Conferência —** em $t=0$: $v = 8 + 0{,}39 - 0{,}39 = 8\ \mathrm{V}$ ✔ e $i = 4 - 0{,}07 + 2{,}07 = 6\ \mathrm{A}$ ✔ Para $t$ grande, o indutor vira fio e o capacitor abre: $i \to 32/(6+2) = 4\ \mathrm{A}$ e $v \to 2 \cdot 4 = 8\ \mathrm{V}$ ✔
 
 Note que $v(0)$ **já é** o valor final, mas ainda existe transitório — porque a segunda condição, $i(0) = 6 \neq 4\ \mathrm{A}$, não está no regime. Basta **uma** das duas estar fora para o transitório aparecer. Confere com a resolução da prova.
+
+<Circuito
+  alt="Regime final: indutor em curto, capacitor aberto, 4 A pelo 6 Ω e pelo 2 Ω, v = 8 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "32 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "6 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "fio", pts: [[2, 0], [4, 0]] },
+    { t: "texto", em: [3, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "no", em: [4, 0] },
+    { t: "texto", em: [4, 1.75], texto: "C: aberto", ancora: "middle" },
+    { t: "fio", pts: [[4, 0], [5.8, 0]] },
+    { t: "R", de: [5.8, 0], para: [5.8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "tensao", de: [5.8, 3.4], para: [5.8, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [5.8, 3.4]] },
+    { t: "texto", em: [2.9, 4.0], texto: "i(∞) = 32/(6 + 2) = 4 A   ·   v(∞) = 2 · 4 = 8 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final.** Indutor em fio e capacitor aberto: sobra o divisor $6\ \Omega$ + $2\ \Omega$, com $i \to 4\ \mathrm{A}$ e $v \to 8\ \mathrm{V}$ — as partes constantes de $i(t)$ e de $v(t)$.
+
+</Circuito>
 </Passos>
