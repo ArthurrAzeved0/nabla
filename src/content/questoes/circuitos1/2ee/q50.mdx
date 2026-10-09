@@ -61,6 +61,33 @@ i_L(0^-) = \frac{20}{4} = 5\ \mathrm{A}
 i_L(0^+) = 5\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em 0⁻: fonte de 20 V ligada, a de 100 V desconectada; 4 Ω em série, 4 Ω vertical sem corrente, indutor em curto levando 5 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "20 V" },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "4 Ω" },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "fio", pts: [[6.8, 0], [6.8, 3.4]] },
+    { t: "corrente", de: [6.8, 0.4], para: [6.8, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "texto", em: [7.0, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [6.8, 3.4]] },
+    { t: "texto", em: [3.4, 4.1], texto: "i_L(0⁻) = 20/4 = 5 A   ·   i(0⁻) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente com a fonte de 20 V ($t = 0^-$).** O indutor é fio e põe o $4\ \Omega$ vertical em curto: toda a corrente $20/4 = 5\ \mathrm{A}$ passa pelo indutor, e $i(0^-) = 0$.
+
+</Circuito>
+
 **Passo 2 — as relações para $t > 0$.** Agora a fonte é de $100\ \mathrm{V}$:
 
 $$
@@ -83,6 +110,26 @@ $$
 $$
 
 **Passo 4 — resposta natural e forçada.** De $s + 2 = 0$ vem $s = -2$; e $2K = 50$ dá $i_{L,f} = 25\ \mathrm{A}$.
+
+<Circuito
+  alt="Fonte desligada (100 V vira fio): vistos dos terminais do indutor, os dois 4 Ω ficam em paralelo, R_eq = 2 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0], [1.8, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "100 V: curto", ancora: "end" },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "4 Ω", destaque: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "4 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[4.2, 0], [6.4, 0]] },
+    { t: "no", em: [6.4, 0] },
+    { t: "fio", pts: [[0, 3.4], [6.4, 3.4]] },
+    { t: "no", em: [6.4, 3.4] },
+    { t: "texto", em: [6.6, 1.8], texto: "← R_{eq} = 4 ∥ 4 = 2 Ω", ancora: "start", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte zerada, o indutor enxerga os dois $4\ \Omega$ em paralelo: $R_{eq} = 2\ \Omega$ e $\tau = L/R_{eq} = 1/2\ \mathrm{s}$ — a raiz $s = -2$.
+
+</Circuito>
 
 **Passo 5 — a constante.** De $i_L(0) = 5$:
 
@@ -111,6 +158,28 @@ $$
 $$
 \boxed{v(t) = 100 - 40\,e^{-2t}\ \mathrm{V}}
 $$
+
+<Circuito
+  alt="Em 0⁺: fonte de 100 V, 4 Ω com v igual a 60 V, 4 Ω vertical com i igual a 10 A, indutor como fonte de corrente de 5 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "100 V" },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.2, 0], valor: "4 Ω" },
+    { t: "tensao", de: [4.2, 0], para: [1.8, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [4.2, 0] },
+    { t: "R", de: [4.2, 0], para: [4.2, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [4.2, 0.4], para: [4.2, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[4.2, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "I", de: [6.8, 0], para: [6.8, 3.4], valor: "5 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [6.8, 3.4]] },
+    { t: "texto", em: [3.4, 4.1], texto: "v(0⁺) = 60 V   ·   i(0⁺) = 10 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante $t = 0^+$.** A fonte sobe para $100\ \mathrm{V}$ e o indutor vira fonte de $5\ \mathrm{A}$. Nó do meio: $\frac{100 - v_x}{4} = \frac{v_x}{4} + 5$, ou $v_x = 40\ \mathrm{V}$; daí $i(0^+) = 10\ \mathrm{A}$ e $v(0^+) = 60\ \mathrm{V}$, os valores das respostas em $t = 0$.
+
+</Circuito>
 
 **Conferência —** $\tau = \dfrac{L}{R_{eq}} = \dfrac{1}{4 \parallel 4} = \dfrac12$ s, e de fato $s = -2$ ✔ Em $t = 0$: $v = 60$ V, então $i_T = 15$ A e a tensão do indutor é $100 - 60 = 40$ V — exatamente o que dá $i(0) = 40/4 = 10$ A ✔ Em $t \to \infty$ o indutor volta a curto-circuitar o $4\ \Omega$: $i \to 0$ e $v \to 100$ V ✔ Confere com a resolução da prova.
 </Passos>
