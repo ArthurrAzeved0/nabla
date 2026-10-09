@@ -89,7 +89,54 @@ $$
 
 e $\alpha^2 = 9 > \omega_0^2 = 8$, com $s = -3 \pm \sqrt{9 - 8} = -3 \pm 1$.
 
+<Circuito
+  alt="Fonte de 10 A desligada (aberto); sobram 4 Ω, 3 H e 1/24 F em paralelo: RLC paralelo com alfa 3 e ômega zero 2√2"
+  itens={[
+    { t: "texto", em: [0.6, 1.75], texto: "10 A: aberto", ancora: "middle" },
+    { t: "fio", pts: [[1.6, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "L", de: [5, 0], para: [5, 3.4], valor: "3 H", abaixo: true },
+    { t: "fio", pts: [[5, 0], [7.6, 0]] },
+    { t: "C", de: [7.6, 0], para: [7.6, 3.4], valor: "1/24 F", abaixo: true },
+    { t: "fio", pts: [[1.6, 3.4], [7.6, 3.4]] },
+    { t: "caixa", de: [1.9, -0.45], para: [9.8, 3.85], rotulo: "RLC paralelo" },
+    { t: "texto", em: [5.4, 4.5], texto: "α = 1/(2RC) = 3   ·   ω₀ = 1/√(LC) = 2√2", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O RLC paralelo reconhecido.** Com a fonte de corrente aberta, os três elementos ficam em paralelo puro: $\alpha = 3$ e $\omega_0 = 2\sqrt2$, com $\alpha^2 = 9 \gt \omega_0^2 = 8$ — superamortecido, $s = -2$ e $s = -4$.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** $8K = 80$, logo $i_{L,f} = 10\ \mathrm{A}$.
+
+<Circuito
+  alt="Em t tendendo a infinito o indutor vira curto e o capacitor abre: os 10 A passam todos pelo indutor e v = 0"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "fio", pts: [[5, 0], [5, 3.4]] },
+    { t: "corrente", de: [5, 0.4], para: [5, 1.4], rotulo: "i_L", abaixo: false },
+    { t: "texto", em: [5.25, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[5, 0], [8, 0]] },
+    { t: "no", em: [8, 0] },
+    { t: "texto", em: [8, 1.75], texto: "C: aberto", ancora: "middle" },
+    { t: "fio", pts: [[0, 3.4], [8, 3.4]] },
+    { t: "no", em: [8, 3.4] },
+    { t: "texto", em: [4, 4.15], texto: "v(∞) = 0   ·   i(∞) = 0   ·   i_L(∞) = 10 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final.** O indutor em fio curto-circuita o $4\ \Omega$ e o capacitor: a tensão comum zera e os $10\ \mathrm{A}$ da fonte passam inteiros por ele — a resposta forçada $i_{L,f} = 10\ \mathrm{A}$.
+
+</Circuito>
 
 **Passo 5 — as constantes.** De $i_L(0) = 2$:
 
@@ -116,6 +163,30 @@ $$
 $$
 i_L(t) = -\frac{46}{3}\,e^{-2t} + \frac{22}{3}\,e^{-4t} + 10\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em t = 0⁺ o indutor vira fonte de corrente de 2 A e o capacitor fonte de tensão de 4 V; i(0⁺) = 1 A e i_C(0⁺) = 7 A"
+  itens={[
+    { t: "I", de: [0, 3.4], para: [0, 0], valor: "10 A" },
+    { t: "fio", pts: [[0, 0], [2.4, 0]] },
+    { t: "no", em: [2.4, 0] },
+    { t: "R", de: [2.4, 0], para: [2.4, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [2.4, 0.4], para: [2.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[2.4, 0], [5, 0]] },
+    { t: "no", em: [5, 0] },
+    { t: "I", de: [5, 0], para: [5, 3.4], valor: "2 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[5, 0], [9, 0]] },
+    { t: "no", em: [9, 0] },
+    { t: "V", de: [9, 3.4], para: [9, 0], valor: "4 V", abaixo: true, destaque: true },
+    { t: "corrente", de: [8.2, 0], para: [8.8, 0], rotulo: "i_C" },
+    { t: "texto", em: [4.5, 4.15], texto: "i(0⁺) = 4/4 = 1 A   ·   i_C(0⁺) = 10 − 1 − 2 = 7 A", ancora: "middle", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [9, 3.4]] },
+  ]}
+>
+
+**O instante inicial.** Indutor como fonte de $2\ \mathrm{A}$, capacitor como fonte de $4\ \mathrm{V}$: $i(0^+) = 4/4 = 1\ \mathrm{A}$ e sobram $i_C = 10 - 1 - 2 = 7\ \mathrm{A}$, ou $dv/dt = 7 \cdot 24 = 168\ \mathrm{V/s}$ — o que $v = 92e^{-2t} - 88e^{-4t}$ de fato dá em $t = 0$.
+
+</Circuito>
 
 **Passo 6 — chegue em $i$.** Primeiro a tensão:
 
