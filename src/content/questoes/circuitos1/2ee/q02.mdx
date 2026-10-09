@@ -59,6 +59,32 @@ $$
 
 Pela continuidade, $v(0^+) = 12\ \mathrm{V}$.
 
+<Circuito
+  alt="Em 0⁻: só a fonte de 20 V ligada, chave da de 50 V aberta, capacitor retirado; 4 Ω e 6 Ω em série"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.6, 0] },
+    { t: "V", de: [1.6, 3], para: [1.6, 1.4], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[1.6, 1.4], [1.6, 0]] },
+    { t: "R", de: [1.6, 0], para: [3.6, 0], valor: "4 Ω" },
+    { t: "fio", pts: [[3.6, 0], [3.6, 0.8]] },
+    { t: "fio", pts: [[3.6, 2.2], [3.6, 3]] },
+    { t: "tensao", de: [3.6, 3], para: [3.6, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [3.45, 1.55], texto: "C: aberto", ancora: "end" },
+    { t: "fio", pts: [[3.6, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "6 Ω", abaixo: true },
+    { t: "corrente", de: [5.4, 0.4], para: [5.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3], [5.4, 3]] },
+    { t: "texto", em: [2.7, 3.7], texto: "i(0⁻) = 2 A   ·   v(0⁻) = 12 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Só a fonte de $20\ \mathrm{V}$ age, e o capacitor está aberto: $4\ \Omega$ e $6\ \Omega$ em série, $i = 20/10 = 2\ \mathrm{A}$ e $v = 6 \cdot 2 = 12\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — valor final, com a fonte de $50\ \mathrm{V}$.** De novo o capacitor abre:
 
 $$
@@ -66,6 +92,32 @@ i(\infty) = \frac{50}{10} = 5\ \mathrm{A}
 \qquad\Longrightarrow\qquad
 v(\infty) = 6 \cdot 5 = 30\ \mathrm{V}
 $$
+
+<Circuito
+  alt="Para t tendendo a infinito: fonte de 50 V ligada, ramo de 20 V aberto, capacitor retirado; 4 Ω e 6 Ω em série"
+  itens={[
+    { t: "V", de: [0, 3], para: [0, 0], valor: "50 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "texto", em: [0.8, -0.3], texto: "fechada", ancora: "middle" },
+    { t: "no", em: [1.6, 0] },
+    { t: "V", de: [1.6, 3], para: [1.6, 1.4], valor: "20 V" },
+    { t: "texto", em: [1.75, 0.75], texto: "aberta", ancora: "start" },
+    { t: "R", de: [1.6, 0], para: [3.6, 0], valor: "4 Ω" },
+    { t: "fio", pts: [[3.6, 0], [3.6, 0.8]] },
+    { t: "fio", pts: [[3.6, 2.2], [3.6, 3]] },
+    { t: "tensao", de: [3.6, 3], para: [3.6, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [3.45, 1.9], texto: "C: aberto", ancora: "end" },
+    { t: "fio", pts: [[3.6, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "6 Ω", abaixo: true },
+    { t: "corrente", de: [5.4, 0.4], para: [5.4, 1.4], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[0, 3], [5.4, 3]] },
+    { t: "texto", em: [2.7, 3.7], texto: "i(∞) = 5 A   ·   v(∞) = 30 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t \to \infty$.** Agora age a fonte de $50\ \mathrm{V}$ e o ramo de $20\ \mathrm{V}$ ficou pendurado. Capacitor aberto de novo: $i = 50/10 = 5\ \mathrm{A}$ e $v = 30\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 3 — constante de tempo.** Desativando a fonte de $50\ \mathrm{V}$, o capacitor vê os $4\ \Omega$ **em paralelo** com os $6\ \Omega$:
 
@@ -76,6 +128,26 @@ R_{\mathrm{eq}} = 4 \parallel 6 = 2{,}4\ \Omega
 \qquad\Longrightarrow\qquad
 \frac{1}{\tau} = \frac{10}{3}\ \mathrm{s^{-1}}
 $$
+
+<Circuito
+  alt="Para a constante de tempo: fonte de 50 V trocada por fio; o capacitor vê o 4 Ω em paralelo com o 6 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3], [0, 0], [1.6, 0]] },
+    { t: "texto", em: [-0.2, 1.55], texto: "50 V: curto", ancora: "end" },
+    { t: "R", de: [1.6, 0], para: [3.6, 0], valor: "4 Ω", destaque: true },
+    { t: "no", em: [3.6, 0] },
+    { t: "C", de: [3.6, 0], para: [3.6, 3], valor: "1/8 F" },
+    { t: "fio", pts: [[3.6, 0], [5.4, 0]] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3], valor: "6 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3], [5.4, 3]] },
+    { t: "no", em: [3.6, 3] },
+    { t: "texto", em: [2.7, 3.7], texto: "R_eq = 4 ∥ 6 = 2,4 Ω   ·   τ = 0,3 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Fonte de $50\ \mathrm{V}$ desligada (vira fio): pelos terminais do capacitor, o $4\ \Omega$ e o $6\ \Omega$ ficam em paralelo, $R_{\mathrm{eq}} = 2{,}4\ \Omega$ e $\tau = 2{,}4 \cdot \tfrac{1}{8} = 0{,}3\ \mathrm{s}$.
+
+</Circuito>
 
 **Passo 4 — a fórmula dos três valores, aplicada a $v$** (que é a grandeza contínua):
 
