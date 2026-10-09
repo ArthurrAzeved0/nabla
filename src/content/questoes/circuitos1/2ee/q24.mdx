@@ -110,6 +110,26 @@ $$
 \boxed{v(t) = 0}
 $$
 
+<Circuito
+  alt="Em 0⁺: indutor como fonte de 2 A, capacitor como fonte de 0 V; o 8 Ω leva 2 A, todos para o indutor, e o capacitor fica com corrente nula"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "16 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "8 Ω" },
+    { t: "corrente", de: [0.4, 0], para: [2, 0], rotulo: "(16 − 0)/8 = 2 A" },
+    { t: "no", em: [2.4, 0] },
+    { t: "I", de: [2.4, 0], para: [2.4, 3.4], valor: "i = 2 A", destaque: true },
+    { t: "fio", pts: [[2.4, 0], [4.2, 0]] },
+    { t: "V", de: [4.2, 3.4], para: [4.2, 0], valor: "v = 0 V", abaixo: true, destaque: true },
+    { t: "corrente", de: [4.2, 0.3], para: [4.2, 1], rotulo: "i_C", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [4.2, 3.4]] },
+    { t: "texto", em: [2.1, 4.1], texto: "i_C(0⁺) = 2 − 2 = 0   ·   v′(0⁺) = 0   ·   i′(0⁺) = v/5 = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** Com $v(0) = 0$, o $8\ \Omega$ leva $16/8 = 2\ \mathrm{A}$, que é exatamente a corrente do indutor: o capacitor recebe zero e $dv/dt = 0$; com $v = 0$, também $di/dt = 0$. Nada começa a mudar.
+
+</Circuito>
+
 **O que a questão está ensinando —** as **duas** constantes saem nulas, e portanto não existe transitório: o circuito já nasceu no regime permanente. Faz sentido conferir por outro caminho: em regime, o indutor é fio e o capacitor abre, então
 
 $$
@@ -119,4 +139,27 @@ v(\infty) = 0
 $$
 
 — exatamente os valores iniciais dados ✔ Quando isso acontece, montar a equação diferencial ainda vale a nota, mas a resposta é a linha reta. Confere com a resolução da prova.
+
+<Circuito
+  alt="Para t tendendo a infinito: indutor em curto, capacitor aberto; i = 16/8 = 2 A e v = 0"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "16 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "8 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "fio", pts: [[2.4, 0], [2.4, 3.4]] },
+    { t: "corrente", de: [2.4, 1.2], para: [2.4, 1.9], rotulo: "i", abaixo: false },
+    { t: "texto", em: [2.55, 2.6], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[2.4, 0], [4.2, 0], [4.2, 0.9]] },
+    { t: "fio", pts: [[4.2, 2.5], [4.2, 3.4]] },
+    { t: "tensao", de: [4.2, 3.4], para: [4.2, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [4.35, 1.75], texto: "aberto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [4.2, 3.4]] },
+    { t: "texto", em: [2.1, 4.1], texto: "i(∞) = 2 A = i(0)   ·   v(∞) = 0 = v(0)", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Para $t \to \infty$.** Indutor em curto e capacitor aberto: $i(\infty) = 16/8 = 2\ \mathrm{A}$ e $v(\infty) = 0$ — os mesmos valores do instante inicial.
+
+</Circuito>
+
 </Passos>
