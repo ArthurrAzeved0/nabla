@@ -71,6 +71,37 @@ $$
 
 Regime permanente: as duas derivadas em $0^-$ são **zero**.
 
+<Circuito
+  alt="Em t = 0⁻: fonte de 24 V, 6 Ω, 3 Ω com v = 4 V, capacitor aberto, 2 Ω e indutor em curto com i = 2 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "60 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.25], texto: "aberta" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "24 V", destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "R", de: [1.8, 0], para: [4.4, 0], valor: "6 Ω" },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "3 Ω" },
+    { t: "tensao", de: [4.4, 3.4], para: [4.4, 0], rotulo: "v", abaixo: true },
+    { t: "texto", em: [4.4, 4.0], texto: "v(0⁻) = 4 V", destaque: true },
+    { t: "fio", pts: [[4.4, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "texto", em: [7, 1.75], texto: "C aberto" },
+    { t: "R", de: [7, 0], para: [9.6, 0], valor: "2 Ω" },
+    { t: "no", em: [9.6, 0] },
+    { t: "fio", pts: [[9.6, 0], [9.6, 3.4]] },
+    { t: "corrente", de: [9.6, 0.4], para: [9.6, 1.4], abaixo: false },
+    { t: "texto", em: [9.85, 1.0], texto: "i(0⁻) = 2 A", ancora: "start", destaque: true },
+    { t: "texto", em: [9.85, 2.3], texto: "curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+  ]}
+>
+
+**Em $t = 0^-$.** Capacitor aberto, indutor em fio: o $2\ \Omega$ fica em paralelo com o $3\ \Omega$, e a LKC dá $v = 4\ \mathrm{V}$, com $i = 4/2 = 2\ \mathrm{A}$ descendo pelo indutor.
+
+</Circuito>
+
 **Passo 2 — continuidade.**
 
 $$
@@ -100,6 +131,38 @@ i_C(0^+) = \frac{28}{3} - \frac{4}{3} - 2 = 6\ \mathrm{A}
 \qquad\Longrightarrow\qquad
 \boxed{\frac{dv(0^+)}{dt} = \frac{6}{2} = 3\ \mathrm{V/s}}
 $$
+
+<Circuito
+  alt="Em t = 0⁺: fonte de 60 V, 6 Ω com 28/3 A, 3 Ω com 4/3 A, o capacitor como fonte de 4 V recebendo 6 A, 2 Ω com 2 A e o indutor como fonte de 2 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "60 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "corrente", de: [0.3, 0], para: [1.3, 0], rotulo: "28/3 A" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "24 V" },
+    { t: "texto", em: [2.0, 0.75], texto: "aberta", ancora: "start" },
+    { t: "R", de: [1.8, 0], para: [4.4, 0], valor: "6 Ω" },
+    { t: "no", em: [4.4, 0] },
+    { t: "R", de: [4.4, 0], para: [4.4, 3.4], valor: "3 Ω", abaixo: true },
+    { t: "corrente", de: [4.4, 0.4], para: [4.4, 1.3], abaixo: false },
+    { t: "texto", em: [3.6, 1.15], texto: "4/3 A", ancora: "end" },
+    { t: "fio", pts: [[4.4, 0], [7, 0]] },
+    { t: "no", em: [7, 0] },
+    { t: "V", de: [7, 3.4], para: [7, 0], valor: "4 V", destaque: true },
+    { t: "corrente", de: [7, 0.4], para: [7, 1.3], abaixo: false },
+    { t: "texto", em: [6.2, 0.95], texto: "i_C = 6 A", ancora: "end", destaque: true },
+    { t: "R", de: [7, 0], para: [9.6, 0], valor: "2 Ω" },
+    { t: "corrente", de: [7.15, 0], para: [7.85, 0], rotulo: "2 A" },
+    { t: "no", em: [9.6, 0] },
+    { t: "I", de: [9.6, 0], para: [9.6, 3.4], valor: "2 A", abaixo: true, destaque: true },
+    { t: "texto", em: [9.85, -0.35], texto: "4 − 2·2 = 0 V", ancora: "start", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+  ]}
+>
+
+**Em $t = 0^+$.** Capacitor como fonte de $4\ \mathrm{V}$, indutor como fonte de $2\ \mathrm{A}$. O nó da direita fica em $0\ \mathrm{V}$, então $di/dt = 0$; dos $28/3\ \mathrm{A}$ que entram pelo $6\ \Omega$, sobram $i_C = 6\ \mathrm{A}$ para o capacitor, e $dv/dt = 6/2 = 3\ \mathrm{V/s}$.
+
+</Circuito>
 
 **Conferência —** a corrente do indutor **não** salta e sua derivada também é zero: como o $2\ \Omega$ está preso entre um capacitor que não mudou e um indutor que não mudou, nada nele mudou ✔ Toda a corrente extra da fonte vai para o capacitor, que é o único elemento livre para reagir ✔
 
