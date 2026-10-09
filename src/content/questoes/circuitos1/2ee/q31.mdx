@@ -35,7 +35,7 @@ Sabendo que o circuito encontra-se em **regime permanente** em $t = 0^-$, determ
     { t: "L", de: [5.4, 0], para: [7.6, 0], valor: "4 H" },
     { t: "no", em: [7.6, 0] },
     { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "2 Ω", abaixo: true },
-    { t: "corrente", de: [6.6, 0.4], para: [6.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "corrente", de: [7.6, 0.4], para: [7.6, 1.2], rotulo: "i", abaixo: false },
     { t: "fio", pts: [[7.6, 0], [10.6, 0]] },
     { t: "no", em: [10.6, 0] },
     { t: "C", de: [10.6, 0], para: [10.6, 3.4], valor: "1/4 F" },
@@ -89,6 +89,35 @@ $$
 \boxed{i_L(0^-) = i(0^-) = \frac{40}{9}\ \mathrm{A}}
 $$
 
+<Circuito
+  alt="Circuito em 0⁻: chave fechada, indutor em curto, capacitor aberto; os três nós de cima são um só, a 80/9 V"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 3.4], valor: "8 Ω", abaixo: true },
+    { t: "corrente", de: [0, 0.4], para: [0, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[0, 0], [3.4, 0]] },
+    { t: "no", em: [3.4, 0] },
+    { t: "R", de: [3.4, 0], para: [3.4, 1.2], valor: "2 Ω", abaixo: true },
+    { t: "V", de: [3.4, 2.4], para: [3.4, 1.2], valor: "20 V", destaque: true },
+    { t: "fio", pts: [[3.4, 2.4], [3.4, 3.4]] },
+    { t: "fio", pts: [[3.4, 0], [7.6, 0]] },
+    { t: "texto", em: [6.5, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "corrente", de: [4.4, 0], para: [5.3, 0], rotulo: "i_L" },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [7.6, 0.3], para: [7.6, 1.0], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[7.6, 0], [10.6, 0]] },
+    { t: "no", em: [10.6, 0] },
+    { t: "texto", em: [10.45, 1.7], texto: "C: aberto", ancora: "end" },
+    { t: "tensao", de: [10.6, 3.4], para: [10.6, 0], rotulo: "v_C", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [10.6, 3.4]] },
+    { t: "texto", em: [5.3, 4.0], texto: "v_C = 80/9 V   ·   i_R = 10/9 A   ·   i_L = i = 40/9 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime em $0^-$.** Indutor em fio e capacitor aberto: o $8\ \Omega$ e o $2\ \Omega$ da direita ficam em paralelo ($1{,}6\ \Omega$), em série com o $2\ \Omega$ da fonte. O nó de cima vale $80/9\ \mathrm{V}$, e dele saem $10/9\ \mathrm{A}$ pelo $8\ \Omega$ e $40/9\ \mathrm{A}$ pelo indutor até o $2\ \Omega$.
+
+</Circuito>
+
 **Passo 3 — continuidade.**
 
 $$
@@ -104,6 +133,34 @@ Como $i_R$ foi marcada **descendo** e a corrente agora **sobe** pelo $8\ \Omega$
 $$
 \boxed{i_R(0^+) = -i_L(0^+) = -\frac{40}{9} \approx -4{,}44\ \mathrm{A}}
 $$
+
+<Circuito
+  alt="Circuito em 0⁺: ramo da fonte aberto, indutor como fonte de 40/9 A, capacitor como fonte de 80/9 V; a corrente do indutor volta subindo pelo 8 Ω"
+  itens={[
+    { t: "R", de: [0, 0], para: [0, 3.4], valor: "8 Ω", abaixo: true },
+    { t: "corrente", de: [0, 0.4], para: [0, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[0, 0], [3.4, 0]] },
+    { t: "no", em: [3.4, 0] },
+    { t: "R", de: [3.4, 0], para: [3.4, 1.2], valor: "2 Ω", abaixo: true },
+    { t: "V", de: [3.4, 2.4], para: [3.4, 1.2], valor: "20 V" },
+    { t: "texto", em: [3.55, 2.95], texto: "aberta", ancora: "start" },
+    { t: "fio", pts: [[3.4, 0], [5.4, 0]] },
+    { t: "I", de: [5.4, 0], para: [7.6, 0], valor: "40/9 A", destaque: true },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [7.6, 0.3], para: [7.6, 1.0], rotulo: "i", abaixo: false },
+    { t: "fio", pts: [[7.6, 0], [10.6, 0]] },
+    { t: "no", em: [10.6, 0] },
+    { t: "V", de: [10.6, 3.4], para: [10.6, 0], valor: "80/9 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [3.4, 3.4]] },
+    { t: "fio", pts: [[3.4, 3.4], [10.6, 3.4]] },
+    { t: "texto", em: [5.3, 4.0], texto: "i_R = −40/9 A (sobe)   ·   i = (80/9)/2 = 40/9 A   ·   i_C = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Circuito em $0^+$.** A chave abriu e o ramo da fonte ficou pendurado. O indutor vira fonte de $40/9\ \mathrm{A}$, e o único caminho de volta dessa corrente é o $8\ \Omega$, agora **subindo**: $i_R = -40/9\ \mathrm{A}$. O capacitor vira fonte de $80/9\ \mathrm{V}$ e fixa $i = 40/9\ \mathrm{A}$ no $2\ \Omega$ da direita.
+
+</Circuito>
 
 **Passo 5 — a corrente do $2\ \Omega$ da direita.** O capacitor, valendo $80/9$ V, fixa a tensão do nó da direita, e o $2\ \Omega$ está em paralelo com ele:
 
