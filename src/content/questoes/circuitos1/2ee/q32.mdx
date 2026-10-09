@@ -75,11 +75,52 @@ $$
 v_n(t) = A\,e^{-\frac{32}{15}t}
 $$
 
+<Circuito
+  alt="Fonte de 40 V desligada (fio): o capacitor enxerga 6 Ω em paralelo com 10 Ω"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.15, 1.7], texto: "40 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "6 Ω", destaque: true },
+    { t: "no", em: [2.4, 0] },
+    { t: "C", de: [2.4, 0], para: [2.4, 3.4], valor: "1/8 F" },
+    { t: "fio", pts: [[2.4, 0], [4.6, 0]] },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "10 Ω", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [4.6, 3.4]] },
+    { t: "texto", em: [2.3, 4.0], texto: "R_{eq} = 6 ∥ 10 = 15/4 Ω   ·   τ = R_{eq}C = 15/32 s", ancora: "middle", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte desligada, o capacitor enxerga o $6\ \Omega$ em paralelo com o $10\ \Omega$, $R_{eq} = 15/4\ \Omega$, e $\tau = \tfrac{15}{4} \cdot \tfrac18 = \tfrac{15}{32}\ \mathrm{s}$ — o inverso de $|s| = 32/15$.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** Constante $v_f = K$, logo $32K = 800$:
 
 $$
 v_f(t) = 25\ \mathrm{V}
 $$
+
+<Circuito
+  alt="Regime final: capacitor aberto, 6 Ω e 10 Ω em série com a fonte de 40 V; i = 2,5 A e v = 25 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "6 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "no", em: [2.4, 0] },
+    { t: "texto", em: [2.25, 1.7], texto: "C: aberto", ancora: "end" },
+    { t: "tensao", de: [2.4, 3.4], para: [2.4, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[2.4, 0], [4.6, 0]] },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [4.6, 3.4]] },
+    { t: "texto", em: [2.3, 4.0], texto: "i(∞) = 40/16 = 2,5 A   ·   v(∞) = 10 · 2,5 = 25 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final.** Capacitor aberto: a fonte enxerga $6 + 10 = 16\ \Omega$, $i \to 2{,}5\ \mathrm{A}$ e o capacitor fica com a tensão do $10\ \Omega$, $v_f = 25\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 5 — a constante.** Com $v(0) = 10$:
 
@@ -90,6 +131,28 @@ A = -15
 \qquad\Longrightarrow\qquad
 v(t) = 25 - 15\,e^{-\frac{32}{15}t}\ \mathrm{V}
 $$
+
+<Circuito
+  alt="Circuito em 0⁺: capacitor como fonte de 10 V; 5 A pelo 6 Ω, 1 A pelo 10 Ω e 4 A carregando o capacitor"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "40 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "6 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "no", em: [2.4, 0] },
+    { t: "V", de: [2.4, 3.4], para: [2.4, 0], valor: "10 V", destaque: true },
+    { t: "corrente", de: [2.4, 0.3], para: [2.4, 1.0], rotulo: "4 A", abaixo: false },
+    { t: "fio", pts: [[2.4, 0], [4.6, 0]] },
+    { t: "corrente", de: [3.1, 0], para: [3.9, 0], rotulo: "1 A" },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "10 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [4.6, 3.4]] },
+    { t: "texto", em: [2.3, 4.0], texto: "i(0⁺) = (40 − 10)/6 = 5 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0$.** O capacitor vira fonte de $10\ \mathrm{V}$, e a LKT da malha da fonte dá direto $i = (40 - v)/6 = 5\ \mathrm{A}$ — a mesma relação que o Passo 6 usa para todo $t$. Desses $5\ \mathrm{A}$, $1\ \mathrm{A}$ vai para o $10\ \Omega$ e $4\ \mathrm{A}$ carregam o capacitor.
+
+</Circuito>
 
 **Passo 6 — volte para $i$.** Pela LKT da malha da fonte, $i = \dfrac{40 - v}{6}$:
 
