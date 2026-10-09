@@ -63,6 +63,34 @@ $$
 i(0^-) = \frac{10}{2} = 5\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em 0⁻: chave fechada aterra o nó da esquerda, capacitor aberto, indutor em curto; v(0⁻) = −10 V e i(0⁻) = 5 A"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "fio", pts: [[1.6, 0], [1.6, 3]] },
+    { t: "texto", em: [1.75, 1.55], texto: "fechada", ancora: "start" },
+    { t: "fio", pts: [[1.6, 0], [1.6, -1.4]] },
+    { t: "R", de: [1.6, -1.4], para: [4, -1.4], valor: "8 Ω" },
+    { t: "fio", pts: [[4, -1.4], [4, 0]] },
+    { t: "texto", em: [2.8, -0.3], texto: "C: aberto", ancora: "middle" },
+    { t: "tensao", de: [4, 0], para: [1.6, 0], rotulo: "v" },
+    { t: "no", em: [4, 0] },
+    { t: "V", de: [4, 3], para: [4, 0], valor: "10 V", abaixo: true },
+    { t: "fio", pts: [[4, 0], [7.2, 0]] },
+    { t: "texto", em: [5.1, -0.3], texto: "L: curto", ancora: "middle" },
+    { t: "corrente", de: [6.1, 0], para: [6.9, 0], rotulo: "i", abaixo: false },
+    { t: "R", de: [7.2, 0], para: [7.2, 3], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3], [7.2, 3]] },
+    { t: "texto", em: [3.6, 3.75], texto: "v(0⁻) = 0 − 10 = −10 V   ·   i(0⁻) = 10/2 = 5 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente com a chave fechada.** O nó da esquerda está aterrado e a fonte de $10\ \mathrm{V}$ fixa o da direita: $v(0^-) = 0 - 10 = -10\ \mathrm{V}$. O indutor em curto leva os $10\ \mathrm{V}$ ao $2\ \Omega$: $i(0^-) = 5\ \mathrm{A}$. A fonte de $5\ \mathrm{A}$ escoa toda pela chave.
+
+</Circuito>
+
 **Passo 2 — continuidade:**
 
 $$
@@ -72,6 +100,32 @@ $$
 $$
 
 **Passo 3 — circuito em $0^+$.** A chave abre. O capacitor vira **fonte de $-10\ \mathrm{V}$** (com o $+$ à esquerda), o que mantém o nó da esquerda em $10 + (-10) = 0\ \mathrm{V}$; o indutor vira **fonte de $5\ \mathrm{A}$**.
+
+<Circuito
+  alt="Em 0⁺: chave aberta, capacitor como fonte de −10 V com o + à esquerda, indutor como fonte de 5 A"
+  itens={[
+    { t: "I", de: [0, 3], para: [0, 0], valor: "5 A" },
+    { t: "fio", pts: [[0, 0], [1.6, 0]] },
+    { t: "no", em: [1.6, 0] },
+    { t: "texto", em: [1.75, 1.55], texto: "aberta", ancora: "start" },
+    { t: "fio", pts: [[1.6, 0], [1.6, -1.4]] },
+    { t: "R", de: [1.6, -1.4], para: [4, -1.4], valor: "8 Ω" },
+    { t: "fio", pts: [[4, -1.4], [4, 0]] },
+    { t: "V", de: [4, 0], para: [1.6, 0], valor: "−10 V", destaque: true },
+    { t: "no", em: [4, 0] },
+    { t: "V", de: [4, 3], para: [4, 0], valor: "10 V", abaixo: true },
+    { t: "I", de: [4, 0], para: [6, 0], valor: "5 A", destaque: true },
+    { t: "fio", pts: [[6, 0], [7.2, 0]] },
+    { t: "corrente", de: [6.1, 0], para: [6.9, 0], rotulo: "i", abaixo: false },
+    { t: "R", de: [7.2, 0], para: [7.2, 3], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 3], [7.2, 3]] },
+    { t: "texto", em: [3.6, 3.75], texto: "i_C(0⁺) = 5 + 10/8 = 6,25 A   ·   v_L(0⁺) = 10 − 2 · 5 = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O circuito em $0^+$.** Capacitor como fonte de $-10\ \mathrm{V}$ (o $+$ à esquerda), indutor como fonte de $5\ \mathrm{A}$. O nó da esquerda fica em $10 + (-10) = 0$: recebe $5\ \mathrm{A}$ da fonte e $10/8 = 1{,}25\ \mathrm{A}$ pelo $8\ \Omega$, e tudo atravessa o capacitor.
+
+</Circuito>
 
 **Passo 4 — a derivada da tensão.** LKC no nó da esquerda, que agora só tem três ramos — a fonte de $5\ \mathrm{A}$, o $8\ \Omega$ e o capacitor:
 
