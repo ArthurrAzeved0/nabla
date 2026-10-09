@@ -61,15 +61,28 @@ $$
 \boxed{V_{\mathrm{Th}} = 8 \cdot \frac{4}{4 + 4} = 4\ \mathrm{V}}
 $$
 
-{/* passo-visual */}
-<Figura>
-  <svg viewBox="-58.32 -46 363.04 206.8" role="img" aria-label="Fonte de 8 V com 4 Ω até a, e 12 Ω em paralelo com 6 Ω de a até a referência; terminais a e b em aberto com V_Th de 4 V"><line x1="0" y1="123.2" x2="0" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(0 61.6) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><text x="6" y="4.5" font-size="13" fill="var(--warn)" text-anchor="middle">+</text><text x="-6" y="4.5" font-size="15" fill="var(--warn)" text-anchor="middle">−</text></g><text x="-24" y="65.6" font-size="12" fill="var(--accent)" text-anchor="end">8 V</text><line x1="0" y1="0" x2="105.6" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(52.8 0) rotate(0)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="52.8" y="-22" font-size="12" fill="var(--accent)" text-anchor="middle">4 Ω</text><circle cx="105.6" cy="0" r="3.4" fill="var(--ink-2)"/><text x="105.6" y="-22" font-size="12" fill="var(--ink-3)" text-anchor="middle">a</text><circle cx="105.6" cy="123.2" r="3.4" fill="var(--ink-2)"/><text x="105.6" y="145.2" font-size="12" fill="var(--ink-3)" text-anchor="middle">b</text><text x="81.6" y="81.6" font-size="14" fill="var(--warn)" text-anchor="middle">−</text><text x="81.6" y="49.6" font-size="12" fill="var(--warn)" text-anchor="middle">+</text><text x="81.6" y="65.6" font-size="12" fill="var(--accent)" text-anchor="middle">V<tspan font-size="0.72em" dy="0.24em">Th</tspan><tspan dy="-0.24em"></tspan> = 4 V</text><polyline points="105.6,0 246.4,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><line x1="176" y1="0" x2="176" y2="123.2" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(176 61.6) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="200" y="65.6" font-size="12" fill="var(--accent)" text-anchor="start">12 Ω</text><circle cx="176" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="246.4" y1="0" x2="246.4" y2="123.2" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(246.4 61.6) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="270.4" y="65.6" font-size="12" fill="var(--accent)" text-anchor="start">6 Ω</text><polyline points="0,123.2 246.4,123.2" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="176" cy="123.2" r="3.4" fill="var(--ink-2)"/></svg>
-  <figcaption>
+<Circuito
+  alt="Fonte de 8 V com 4 Ω até a, e 12 Ω em paralelo com 6 Ω de a até a referência; terminais a e b em aberto com V_Th de 4 V"
+  itens={[
+    { t: "V", de: [0, 2.8], para: [0, 0], valor: "8 V" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "4 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "texto", em: [2.4, -0.5], texto: "a" },
+    { t: "no", em: [2.4, 2.8] },
+    { t: "texto", em: [2.4, 3.3], texto: "b" },
+    { t: "tensao", de: [2.4, 2.8], para: [2.4, 0], rotulo: "V_{Th} = 4 V", abaixo: false },
+    { t: "fio", pts: [[2.4, 0], [5.6, 0]] },
+    { t: "R", de: [4, 0], para: [4, 2.8], valor: "12 Ω", abaixo: true },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [5.6, 0], para: [5.6, 2.8], valor: "6 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 2.8], [5.6, 2.8]] },
+    { t: "no", em: [4, 2.8] },
+  ]}
+>
 
 **V_Th: a carga (fonte de 1 A) fora, a–b em aberto.** Sem a fonte de $1\ \mathrm{A}$, o $12 \parallel 6 = 4\ \Omega$ e o $4\ \Omega$ de cima dividem os $8\ \mathrm{V}$ ao meio: $V_{Th} = 4\ \mathrm{V}$.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 **Passo 3 — $R_{\mathrm{Th}}$.** A fonte de $8\ \mathrm{V}$ vira **fio**, e de $a$ para dentro ficam dois caminhos de $4\ \Omega$ em paralelo:
 
@@ -77,15 +90,28 @@ $$
 \boxed{R_{\mathrm{Th}} = R_N = 4 \parallel 4 = 2\ \Omega}
 $$
 
-{/* passo-visual */}
-<Figura>
-  <svg viewBox="-26 -46 330.72 233.2" role="img" aria-label="Fonte de 8 V trocada por fio; de a saem o 4 Ω e o par 12 Ω e 6 Ω até b"><polyline points="0,123.2 0,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><line x1="0" y1="0" x2="105.6" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(52.8 0) rotate(0)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="52.8" y="-22" font-size="12" fill="var(--accent)" text-anchor="middle">4 Ω</text><circle cx="105.6" cy="0" r="3.4" fill="var(--ink-2)"/><text x="105.6" y="-22" font-size="12" fill="var(--ink-3)" text-anchor="middle">a</text><circle cx="105.6" cy="123.2" r="3.4" fill="var(--ink-2)"/><text x="105.6" y="145.2" font-size="12" fill="var(--ink-3)" text-anchor="middle">b</text><text x="105.6" y="171.6" font-size="12" fill="var(--accent)" text-anchor="middle">R<tspan font-size="0.72em" dy="0.24em">Th</tspan><tspan dy="-0.24em"></tspan> vista de a–b = 2 Ω</text><polyline points="105.6,0 246.4,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><line x1="176" y1="0" x2="176" y2="123.2" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(176 61.6) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="200" y="65.6" font-size="12" fill="var(--accent)" text-anchor="start">12 Ω</text><circle cx="176" cy="0" r="3.4" fill="var(--ink-2)"/><line x1="246.4" y1="0" x2="246.4" y2="123.2" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(246.4 61.6) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="270.4" y="65.6" font-size="12" fill="var(--accent)" text-anchor="start">6 Ω</text><polyline points="0,123.2 246.4,123.2" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="176" cy="123.2" r="3.4" fill="var(--ink-2)"/></svg>
-  <figcaption>
+<Circuito
+  alt="Fonte de 8 V trocada por fio; de a saem o 4 Ω e o par 12 Ω e 6 Ω até b"
+  itens={[
+    { t: "fio", pts: [[0, 2.8], [0, 0]] },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "4 Ω" },
+    { t: "no", em: [2.4, 0] },
+    { t: "texto", em: [2.4, -0.5], texto: "a" },
+    { t: "no", em: [2.4, 2.8] },
+    { t: "texto", em: [2.4, 3.3], texto: "b" },
+    { t: "texto", em: [2.4, 3.9], texto: "R_{Th} vista de a–b = 2 Ω", ancora: "middle", destaque: true },
+    { t: "fio", pts: [[2.4, 0], [5.6, 0]] },
+    { t: "R", de: [4, 0], para: [4, 2.8], valor: "12 Ω", abaixo: true },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [5.6, 0], para: [5.6, 2.8], valor: "6 Ω", abaixo: true },
+    { t: "fio", pts: [[0, 2.8], [5.6, 2.8]] },
+    { t: "no", em: [4, 2.8] },
+  ]}
+>
 
 **R_Th: a fonte de 8 V vira fio.** Olhando de $a$–$b$: o $4\ \Omega$ (agora ligado a $b$ pelo fio) em paralelo com $12 \parallel 6 = 4\ \Omega$, logo $R_{Th} = 4 \parallel 4 = 2\ \Omega$.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 **Passo 4 — Norton:**
 
@@ -93,15 +119,32 @@ $$
 \boxed{I_N = \frac{4}{2} = 2\ \mathrm{A}}
 $$
 
-{/* passo-visual */}
-<Figura>
-  <svg viewBox="-58.32 -46 427.56 193.6" role="img" aria-label="À esquerda, fonte de 4 V em série com 2 Ω até a e b; à direita, fonte de 2 A em paralelo com 2 Ω"><line x1="0" y1="96.8" x2="0" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(0 48.4) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><text x="6" y="4.5" font-size="13" fill="var(--warn)" text-anchor="middle">+</text><text x="-6" y="4.5" font-size="15" fill="var(--warn)" text-anchor="middle">−</text></g><text x="-24" y="45.4" font-size="12" fill="var(--ink-3)" text-anchor="end">V<tspan font-size="0.72em" dy="0.24em">Th</tspan><tspan dy="-0.24em"></tspan></text><text x="-24" y="59.4" font-size="12" fill="var(--accent)" text-anchor="end">4 V</text><line x1="0" y1="0" x2="105.6" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(52.8 0) rotate(0)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="52.8" y="-22" font-size="12" fill="var(--ink-3)" text-anchor="middle">R<tspan font-size="0.72em" dy="0.24em">Th</tspan><tspan dy="-0.24em"></tspan></text><text x="52.8" y="-8" font-size="12" fill="var(--accent)" text-anchor="middle">2 Ω</text><circle cx="105.6" cy="0" r="3.4" fill="var(--ink-2)"/><text x="121" y="4.4" font-size="12" fill="var(--ink-3)" text-anchor="start">a</text><polyline points="0,96.8 105.6,96.8" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="105.6" cy="96.8" r="3.4" fill="var(--ink-2)"/><text x="121" y="101.2" font-size="12" fill="var(--ink-3)" text-anchor="start">b</text><text x="52.8" y="132" font-size="12" fill="var(--accent)" text-anchor="middle">Thévenin</text><line x1="220" y1="96.8" x2="220" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(220 48.4) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="196" y="45.4" font-size="12" fill="var(--ink-3)" text-anchor="end">I<tspan font-size="0.72em" dy="0.24em">N</tspan><tspan dy="-0.24em"></tspan></text><text x="196" y="59.4" font-size="12" fill="var(--accent)" text-anchor="end">2 A</text><polyline points="220,0 334.4,0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><polyline points="220,96.8 334.4,96.8" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><line x1="281.6" y1="0" x2="281.6" y2="96.8" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(281.6 48.4) rotate(90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="305.6" y="45.4" font-size="12" fill="var(--ink-3)" text-anchor="start">R<tspan font-size="0.72em" dy="0.24em">N</tspan><tspan dy="-0.24em"></tspan></text><text x="305.6" y="59.4" font-size="12" fill="var(--accent)" text-anchor="start">2 Ω</text><circle cx="334.4" cy="0" r="3.4" fill="var(--ink-2)"/><text x="349.8" y="4.4" font-size="12" fill="var(--ink-3)" text-anchor="start">a</text><circle cx="334.4" cy="96.8" r="3.4" fill="var(--ink-2)"/><text x="349.8" y="101.2" font-size="12" fill="var(--ink-3)" text-anchor="start">b</text><text x="277.2" y="132" font-size="12" fill="var(--accent)" text-anchor="middle">Norton</text></svg>
-  <figcaption>
+<Circuito
+  alt="À esquerda, fonte de 4 V em série com 2 Ω até a e b; à direita, fonte de 2 A em paralelo com 2 Ω"
+  itens={[
+    { t: "V", de: [0, 2.2], para: [0, 0], valor: "4 V", rotulo: "V_{Th}" },
+    { t: "R", de: [0, 0], para: [2.4, 0], valor: "2 Ω", rotulo: "R_{Th}" },
+    { t: "no", em: [2.4, 0] },
+    { t: "texto", em: [2.75, 0.1], texto: "a", ancora: "start" },
+    { t: "fio", pts: [[0, 2.2], [2.4, 2.2]] },
+    { t: "no", em: [2.4, 2.2] },
+    { t: "texto", em: [2.75, 2.3], texto: "b", ancora: "start" },
+    { t: "texto", em: [1.2, 3.0], texto: "Thévenin", destaque: true },
+    { t: "I", de: [5, 2.2], para: [5, 0], valor: "2 A", rotulo: "I_N" },
+    { t: "fio", pts: [[5, 0], [7.6, 0]] },
+    { t: "fio", pts: [[5, 2.2], [7.6, 2.2]] },
+    { t: "R", de: [6.4, 0], para: [6.4, 2.2], valor: "2 Ω", rotulo: "R_N", abaixo: true },
+    { t: "no", em: [7.6, 0] },
+    { t: "texto", em: [7.95, 0.1], texto: "a", ancora: "start" },
+    { t: "no", em: [7.6, 2.2] },
+    { t: "texto", em: [7.95, 2.3], texto: "b", ancora: "start" },
+    { t: "texto", em: [6.3, 3.0], texto: "Norton", destaque: true },
+  ]}
+>
 
 **Os equivalentes de Thévenin e de Norton.** $V_{Th} = 4\ \mathrm{V}$ com $R_{Th} = 2\ \Omega$, ou $I_N = 4/2 = 2\ \mathrm{A}$ com $R_N = 2\ \Omega$.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 **Passo 5 — a tensão na fonte de $1\ \mathrm{A}$.** Ligando-a ao equivalente de Thévenin: a fonte injeta $1\ \mathrm{A}$ **entrando** por $a$, então ela levanta o potencial de $a$ acima de $V_{\mathrm{Th}}$:
 
@@ -110,14 +153,25 @@ v = V_{\mathrm{Th}} + R_{\mathrm{Th}} \cdot 1 = 4 + 2 = \boxed{6\ \mathrm{V}}
 $$
 
 **Conferência —** direto no circuito original, a LKC no nó $a$ dá $1 + \dfrac{8 - v_a}{4} = \dfrac{v_a}{4}$, ou $12 = 2v_a$, logo $v_a = 6\ \mathrm{V}$ ✔ Por Norton, as duas fontes de corrente se somam: $(2 + 1) \times 2 = 6\ \mathrm{V}$ ✔ E note que a fonte de $1\ \mathrm{A}$ **entrega** $6\ \mathrm{W}$ ao circuito.
-{/* passo-visual */}
-<Figura>
-  <svg viewBox="-58.32 -46 287.4 206.8" role="img" aria-label="Fonte de 4 V em série com 2 Ω até a; entre b e a, a fonte de 1 A apontando para a, com a tensão v de 6 V"><line x1="0" y1="123.2" x2="0" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(0 61.6) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><text x="6" y="4.5" font-size="13" fill="var(--warn)" text-anchor="middle">+</text><text x="-6" y="4.5" font-size="15" fill="var(--warn)" text-anchor="middle">−</text></g><text x="-24" y="58.6" font-size="12" fill="var(--ink-3)" text-anchor="end">V<tspan font-size="0.72em" dy="0.24em">Th</tspan><tspan dy="-0.24em"></tspan></text><text x="-24" y="72.6" font-size="12" fill="var(--accent)" text-anchor="end">4 V</text><line x1="0" y1="0" x2="123.2" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(61.6 0) rotate(0)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><path d="M -15 0 L -12.5 -7 L -7.5 7 L -2.5 -7 L 2.5 7 L 7.5 -7 L 12.5 7 L 15 0" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/></g><text x="61.6" y="-22" font-size="12" fill="var(--ink-3)" text-anchor="middle">R<tspan font-size="0.72em" dy="0.24em">Th</tspan><tspan dy="-0.24em"></tspan></text><text x="61.6" y="-8" font-size="12" fill="var(--accent)" text-anchor="middle">2 Ω</text><line x1="82.4" y1="15" x2="58.4" y2="15" stroke="var(--accent)" stroke-width="1.5"/><polygon points="58.4,15 64.4,11.4 64.4,18.6" fill="var(--accent)"/><text x="70.4" y="30" font-size="12" fill="var(--accent)" text-anchor="middle">1 A</text><circle cx="123.2" cy="0" r="3.4" fill="var(--ink-2)"/><text x="123.2" y="-22" font-size="12" fill="var(--ink-3)" text-anchor="middle">a</text><line x1="123.2" y1="123.2" x2="123.2" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><g transform="translate(123.2 61.6) rotate(-90)"><rect x="-15" y="-13" width="30" height="26" fill="var(--surface-2)"/><circle cx="0" cy="0" r="12" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-15" y1="0" x2="-12" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="12" y1="0" x2="15" y2="0" stroke="var(--ink-2)" stroke-width="1.8"/><line x1="-7" y1="0" x2="5" y2="0" stroke="var(--ink-2)" stroke-width="1.6"/><polygon points="9,0 3,-3.4 3,3.4" fill="var(--ink-2)"/></g><text x="99.2" y="65.6" font-size="12" fill="var(--accent)" text-anchor="end">1 A</text><text x="147.2" y="81.6" font-size="14" fill="var(--warn)" text-anchor="middle">−</text><text x="147.2" y="49.6" font-size="12" fill="var(--warn)" text-anchor="middle">+</text><text x="147.2" y="65.6" font-size="12" fill="var(--accent)" text-anchor="middle">v</text><circle cx="123.2" cy="123.2" r="3.4" fill="var(--ink-2)"/><text x="123.2" y="145.2" font-size="12" fill="var(--ink-3)" text-anchor="middle">b</text><polyline points="0,123.2 123.2,123.2" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-linejoin="round"/><text x="165" y="66" font-size="12" fill="var(--accent)" text-anchor="start">v = 6 V</text></svg>
-  <figcaption>
+<Circuito
+  alt="Fonte de 4 V em série com 2 Ω até a; entre b e a, a fonte de 1 A apontando para a, com a tensão v de 6 V"
+  itens={[
+    { t: "V", de: [0, 2.8], para: [0, 0], valor: "4 V", rotulo: "V_{Th}" },
+    { t: "R", de: [0, 0], para: [2.8, 0], valor: "2 Ω", rotulo: "R_{Th}" },
+    { t: "corrente", de: [2.0, 0], para: [1.2, 0], rotulo: "1 A" },
+    { t: "no", em: [2.8, 0] },
+    { t: "texto", em: [2.8, -0.5], texto: "a" },
+    { t: "I", de: [2.8, 2.8], para: [2.8, 0], valor: "1 A" },
+    { t: "tensao", de: [2.8, 2.8], para: [2.8, 0], rotulo: "v", abaixo: true },
+    { t: "no", em: [2.8, 2.8] },
+    { t: "texto", em: [2.8, 3.3], texto: "b" },
+    { t: "fio", pts: [[0, 2.8], [2.8, 2.8]] },
+    { t: "texto", em: [3.75, 1.5], texto: "v = 6 V", ancora: "start", destaque: true },
+  ]}
+>
 
 **A fonte de 1 A ligada ao equivalente de Thévenin.** A fonte empurra $1\ \mathrm{A}$ para dentro de $a$, que volta pelo $R_{Th}$ contra a fonte de $4\ \mathrm{V}$: $v = 4 + 2 \cdot 1 = 6\ \mathrm{V}$.
 
-  </figcaption>
-</Figura>
+</Circuito>
 
 </Passos>
