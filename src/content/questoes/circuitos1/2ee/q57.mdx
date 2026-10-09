@@ -56,6 +56,31 @@ $$
 i = \frac{v}{4} + \frac18\frac{dv}{dt}
 $$
 
+<Circuito
+  alt="Malha da fonte com a corrente i, e o nó de saída onde i se divide entre o 4 Ω e o capacitor"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "L", de: [0, 0], para: [2.2, 0], valor: "2 H" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "i" },
+    { t: "R", de: [2.2, 0], para: [4.6, 0], valor: "12 Ω" },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [4.6, 0.4], para: [4.6, 1.3], abaixo: false },
+    { t: "texto", em: [3.8, 0.95], texto: "v/4", ancora: "end", destaque: true },
+    { t: "fio", pts: [[4.6, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "C", de: [7.2, 0], para: [7.2, 3.4], valor: "1/8 F" },
+    { t: "corrente", de: [7.2, 0.4], para: [7.2, 1.3], abaixo: false },
+    { t: "texto", em: [6.45, 0.95], texto: "(1/8) dv/dt", ancora: "end", destaque: true },
+    { t: "tensao", de: [7.2, 3.4], para: [7.2, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+  ]}
+>
+
+**As duas incógnitas.** A corrente $i$ do indutor percorre a malha da fonte inteira e chega ao nó de saída, onde se divide: $v/4$ pelo resistor e $\tfrac18\,dv/dt$ pelo capacitor.
+
+</Circuito>
+
 **Passo 2 — elimine $i$.** Levando a LKC (e sua derivada) na LKT:
 
 $$
@@ -82,6 +107,29 @@ $$
 
 **Passo 4 — resposta forçada.** $16K = 200$, logo $v_f = 12{,}5\ \mathrm{V}$ — e faz sentido: em regime o indutor é fio, o capacitor abre e o divisor dá $50 \cdot \frac{4}{16} = 12{,}5\ \mathrm{V}$.
 
+<Circuito
+  alt="Em regime permanente: indutor em curto, capacitor aberto, divisor de 12 Ω e 4 Ω com 12,5 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "fio", pts: [[0, 0], [2.2, 0]] },
+    { t: "texto", em: [1.6, 0.5], texto: "curto" },
+    { t: "corrente", de: [0.2, 0], para: [1, 0], rotulo: "3,125 A", abaixo: false },
+    { t: "R", de: [2.2, 0], para: [4.6, 0], valor: "12 Ω" },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "fio", pts: [[4.6, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "no", em: [7.2, 3.4] },
+    { t: "texto", em: [7.2, -0.35], texto: "C aberto" },
+    { t: "tensao", de: [7.2, 3.4], para: [7.2, 0], rotulo: "v_f = 12,5 V", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+  ]}
+>
+
+**$t \to \infty$.** Indutor em curto, capacitor aberto: sobra o divisor $50 \cdot 4/16 = 12{,}5\ \mathrm{V}$, com $i_f = 50/16 = 3{,}125\ \mathrm{A}$.
+
+</Circuito>
+
 **Passo 5 — a primeira constante.** De $v(0) = 10$:
 
 $$
@@ -97,6 +145,29 @@ $$
 \qquad\Longrightarrow\qquad
 \frac{dv(0)}{dt} = 20\ \mathrm{V/s}
 $$
+
+<Circuito
+  alt="Em t = 0: o indutor como fonte de corrente de 5 A e o capacitor como fonte de tensão de 10 V; 2,5 A no 4 Ω e 2,5 A no capacitor"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "50 V" },
+    { t: "I", de: [0, 0], para: [2.2, 0], valor: "5 A", destaque: true },
+    { t: "R", de: [2.2, 0], para: [4.6, 0], valor: "12 Ω" },
+    { t: "no", em: [4.6, 0] },
+    { t: "R", de: [4.6, 0], para: [4.6, 3.4], valor: "4 Ω", abaixo: true },
+    { t: "corrente", de: [4.6, 0.4], para: [4.6, 1.3], abaixo: false },
+    { t: "texto", em: [3.8, 0.95], texto: "2,5 A", ancora: "end" },
+    { t: "fio", pts: [[4.6, 0], [7.2, 0]] },
+    { t: "no", em: [7.2, 0] },
+    { t: "V", de: [7.2, 3.4], para: [7.2, 0], valor: "10 V", destaque: true },
+    { t: "corrente", de: [7.2, 0.4], para: [7.2, 1.3], abaixo: false },
+    { t: "texto", em: [6.45, 0.95], texto: "i_C = 2,5 A", ancora: "end", destaque: true },
+    { t: "fio", pts: [[0, 3.4], [7.2, 3.4]] },
+  ]}
+>
+
+**Em $t = 0$.** Indutor como fonte de $5\ \mathrm{A}$, capacitor como fonte de $10\ \mathrm{V}$. O $4\ \Omega$ leva $10/4 = 2{,}5\ \mathrm{A}$; o resto, $2{,}5\ \mathrm{A}$, carrega o capacitor: $dv(0)/dt = 2{,}5/(1/8) = 20\ \mathrm{V/s}$.
+
+</Circuito>
 
 Derivando e avaliando em zero, $\dfrac{dv(0)}{dt} = A_2 - 4A_1 = A_2 + 10$:
 
