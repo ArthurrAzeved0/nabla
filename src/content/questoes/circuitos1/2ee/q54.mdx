@@ -86,7 +86,47 @@ $$
 
 Duas raízes reais distintas: **superamortecido**.
 
+<Circuito
+  alt="Fonte desligada (500 V vira fio): 50 Ω, indutor de 15 H e capacitor de 1/750 F em paralelo, um RLC paralelo"
+  itens={[
+    { t: "fio", pts: [[0, 3.4], [0, 0]] },
+    { t: "texto", em: [-0.25, 1.75], texto: "500 V: curto", ancora: "end" },
+    { t: "R", de: [0, 0], para: [3.4, 0], valor: "50 Ω", destaque: true },
+    { t: "no", em: [3.4, 0] },
+    { t: "L", de: [3.4, 0], para: [3.4, 3.4], valor: "15 H", destaque: true },
+    { t: "fio", pts: [[3.4, 0], [6.4, 0]] },
+    { t: "C", de: [6.4, 0], para: [6.4, 3.4], valor: "1/750 F", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [6.4, 3.4]] },
+    { t: "no", em: [3.4, 3.4] },
+    { t: "texto", em: [3.2, 4.1], texto: "α = 7,5   ·   ω₀ = √50 ≈ 7,07   ·   α > ω₀", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O RLC paralelo escondido.** Com a fonte zerada, o $50\ \Omega$ fica em paralelo com o indutor e o capacitor: $\alpha = \dfrac{1}{2RC} = \dfrac{750}{100} = 7{,}5$ e $\omega_0 = \dfrac{1}{\sqrt{LC}} = \sqrt{50}$. Como $\alpha \gt \omega_0$, superamortecido: $s = -7{,}5 \pm \sqrt{56{,}25 - 50} = -7{,}5 \pm 2{,}5$.
+
+</Circuito>
+
 **Passo 4 — resposta forçada.** $50K = 500$, logo $i_{L,f} = 10\ \mathrm{A}$ — no fim o indutor vira fio, o capacitor abre e a fonte vê só o $50\ \Omega$: $500/50 = 10\ \mathrm{A}$ ✓
+
+<Circuito
+  alt="Em t tendendo a infinito: indutor em curto levando 10 A, capacitor aberto, v igual a 0"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "500 V" },
+    { t: "R", de: [0, 0], para: [3.4, 0], valor: "50 Ω" },
+    { t: "no", em: [3.4, 0] },
+    { t: "fio", pts: [[3.4, 0], [3.4, 3.4]] },
+    { t: "corrente", de: [3.4, 0.2], para: [3.4, 0.9], rotulo: "i_L", abaixo: true },
+    { t: "texto", em: [3.6, 2.4], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[3.4, 0], [6.4, 0]] },
+    { t: "texto", em: [6.4, 1.75], texto: "C: aberto", ancora: "middle" },
+    { t: "fio", pts: [[0, 3.4], [6.4, 3.4]] },
+    { t: "texto", em: [3.2, 4.1], texto: "i_L(∞) = 500/50 = 10 A   ·   v(∞) = 0", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime final ($t \to \infty$).** O indutor vira fio, o capacitor abre, e a fonte vê só o $50\ \Omega$: $i_{L,f} = 10\ \mathrm{A}$ e $v \to 0$.
+
+</Circuito>
 
 **Passo 5 — as constantes.** De $i_L(0) = 10$:
 
@@ -127,6 +167,27 @@ i_C = \frac{1}{750}\frac{dv}{dt} = \frac{1}{750}\left(750\,e^{-5t} - 3000\,e^{-1
 \qquad\Longrightarrow\qquad
 \boxed{i_C(t) = e^{-5t} - 4\,e^{-10t}\ \mathrm{A}}
 $$
+
+<Circuito
+  alt="Em 0⁺: fonte de 500 V, 50 Ω levando 7 A, indutor como fonte de corrente de 10 A, capacitor como fonte de tensão de 150 V fornecendo 3 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "500 V" },
+    { t: "R", de: [0, 0], para: [3.4, 0], valor: "50 Ω" },
+    { t: "corrente", de: [0.2, 0], para: [1.2, 0], rotulo: "i" },
+    { t: "no", em: [3.4, 0] },
+    { t: "I", de: [3.4, 0], para: [3.4, 3.4], valor: "10 A", destaque: true },
+    { t: "fio", pts: [[3.4, 0], [6.4, 0]] },
+    { t: "no", em: [6.4, 0] },
+    { t: "V", de: [6.4, 3.4], para: [6.4, 0], valor: "150 V", abaixo: true, destaque: true },
+    { t: "corrente", de: [6.4, 0.2], para: [6.4, 0.9], rotulo: "i_C", abaixo: false },
+    { t: "fio", pts: [[0, 3.4], [6.4, 3.4]] },
+    { t: "texto", em: [3.2, 4.1], texto: "i(0⁺) = (500 − 150)/50 = 7 A   ·   i_C(0⁺) = 7 − 10 = −3 A", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O instante $t = 0^+$.** O indutor é fonte de $10\ \mathrm{A}$ e o capacitor fonte de $150\ \mathrm{V}$. O $50\ \Omega$ só deixa passar $7\ \mathrm{A}$, menos do que o indutor exige: o capacitor completa com $3\ \mathrm{A}$, e $i_C(0^+) = -3\ \mathrm{A}$.
+
+</Circuito>
 
 **Conferência —** em $t = 0$: $v = 300 - 150 = 150$ V ✔, $i_L = 10$ A ✔ e $i_C = 1 - 4 = -3$ A, que fecha a LKC com $i(0) = \frac{500 - 150}{50} = 7$ A: $7 = 10 - 3$ ✔ Em $t \to \infty$: $v \to 0$, $i_C \to 0$ e $i_L \to 10$ A ✔
 
