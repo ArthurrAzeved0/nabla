@@ -83,6 +83,39 @@ $$
 \boxed{\frac{di(0^-)}{dt} = 0}
 $$
 
+<Circuito
+  alt="Em 0⁻: fonte de 30 V ligada, capacitor aberto, chave do meio fechada, indutor em curto; v1 = 0, i = 0, v = 30 V"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "30 V", destaque: true },
+    { t: "fio", pts: [[0, 0], [1.8, 0]] },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "50 V", abaixo: true },
+    { t: "texto", em: [1.95, 1.05], texto: "aberta", ancora: "start" },
+    { t: "texto", em: [2.9, -0.3], texto: "C: aberto", ancora: "middle" },
+    { t: "tensao", de: [4, 0], para: [1.8, 0], rotulo: "v" },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v_1", abaixo: true },
+    { t: "fio", pts: [[4, 0], [5.6, 0]] },
+    { t: "texto", em: [4.8, -0.3], texto: "fechada", ancora: "middle" },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v_1/2 A", abaixo: true },
+    { t: "fio", pts: [[5.6, 0], [7.6, 0]] },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "3 Ω", abaixo: true },
+    { t: "R", de: [7.6, 0], para: [9.6, 0], valor: "3 Ω" },
+    { t: "fio", pts: [[9.6, 0], [9.6, 3.4]] },
+    { t: "corrente", de: [9.6, 0.4], para: [9.6, 1.4], rotulo: "i", abaixo: false },
+    { t: "texto", em: [9.85, 2.1], texto: "L: curto", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+    { t: "texto", em: [4.8, 4.15], texto: "v_1 = 0   ·   i(0⁻) = 0   ·   v(0⁻) = 30 − 0 = 30 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime permanente com $30\ \mathrm{V}$.** Com a chave do meio fechada, o $2\ \Omega$, a controlada e os dois ramos de $3\ \Omega$ dividem o mesmo nó; a LKC nele, $\tfrac{v_1}{2} = \tfrac{v_1}{2} + \tfrac{v_1}{3} + \tfrac{v_1}{3}$, só fecha com $v_1 = 0$. Nada circula à direita e o capacitor aberto segura os $30\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — continuidade:** $v(0^+) = 30\ \mathrm{V}$ e $i(0^+) = 0$.
 
 **Passo 3 — circuito em $0^+$.** Fonte de $50\ \mathrm{V}$, chave do meio **aberta**. O capacitor, valendo $30\ \mathrm{V}$, deixa o nó do $2\ \Omega$ em
@@ -92,6 +125,36 @@ v_1(0^+) = 50 - 30 = 20\ \mathrm{V}
 \qquad\Longrightarrow\qquad
 \frac{v_1}{2} = 10\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Em 0⁺: fonte de 50 V ligada, capacitor como fonte de 30 V, chave do meio aberta, controlada de 10 A, indutor como fonte de 0 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "30 V" },
+    { t: "fio", pts: [[0, 0], [0.4, 0]] },
+    { t: "texto", em: [1.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [1.8, 0] },
+    { t: "V", de: [1.8, 3.4], para: [1.8, 1.4], valor: "50 V", abaixo: true, destaque: true },
+    { t: "fio", pts: [[1.8, 1.4], [1.8, 0]] },
+    { t: "V", de: [4, 0], para: [1.8, 0], valor: "v(0⁺) = 30 V", destaque: true },
+    { t: "no", em: [4, 0] },
+    { t: "R", de: [4, 0], para: [4, 3.4], valor: "2 Ω" },
+    { t: "tensao", de: [4, 3.4], para: [4, 0], rotulo: "v_1", abaixo: true },
+    { t: "texto", em: [4.8, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [5.6, 0] },
+    { t: "Id", de: [5.6, 3.4], para: [5.6, 0], rotulo: "v_1/2 A", abaixo: true },
+    { t: "fio", pts: [[5.6, 0], [7.6, 0]] },
+    { t: "no", em: [7.6, 0] },
+    { t: "R", de: [7.6, 0], para: [7.6, 3.4], valor: "3 Ω", abaixo: true },
+    { t: "R", de: [7.6, 0], para: [9.6, 0], valor: "3 Ω" },
+    { t: "I", de: [9.6, 0], para: [9.6, 3.4], valor: "0 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [9.6, 3.4]] },
+    { t: "texto", em: [4.8, 4.15], texto: "v_1 = 50 − 30 = 20 V   ·   i_C = 20/2 = 10 A   ·   v_L = 3 · 10 = 30 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**O circuito em $0^+$.** Fonte de $50\ \mathrm{V}$, capacitor como fonte de $30\ \mathrm{V}$ e chave do meio aberta: $v_1 = 20\ \mathrm{V}$, e os $10\ \mathrm{A}$ do $2\ \Omega$ vêm todos pelo capacitor. À direita, a controlada injeta $v_1/2 = 10\ \mathrm{A}$; com o indutor como fonte de $0\ \mathrm{A}$, tudo desce pelo $3\ \Omega$ vertical, que fica com $30\ \mathrm{V}$ — a tensão do indutor.
+
+</Circuito>
 
 **Passo 4 — a derivada da tensão.** Com a chave aberta, o nó do $2\ \Omega$ só tem o capacitor e o resistor, então toda a corrente do $2\ \Omega$ vem pelo capacitor:
 
