@@ -74,6 +74,38 @@ $$
 \boxed{v(0^+) = 4\ \mathrm{V}}
 $$
 
+<Circuito
+  alt="Circuito em t = 0⁻: fonte de 20 V com 8 Ω ligada, ramo de 3 Ω aberto, indutor em curto com i = 2 A, capacitor aberto com v = 4 V, 2 Ω, fonte de 5 A aberta"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V", destaque: true },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "8 Ω" },
+    { t: "fio", pts: [[2.2, 0], [3.6, 0]] },
+    { t: "no", em: [3.6, 0] },
+    { t: "R", de: [3.6, 3.4], para: [3.6, 1.2], valor: "3 Ω" },
+    { t: "texto", em: [3.35, 0.75], texto: "aberta", ancora: "end" },
+    { t: "fio", pts: [[3.6, 0], [6.8, 0]] },
+    { t: "corrente", de: [3.7, 0], para: [4.5, 0], rotulo: "i" },
+    { t: "texto", em: [5.7, -0.35], texto: "L: curto", ancora: "middle" },
+    { t: "no", em: [6.8, 0] },
+    { t: "texto", em: [6.55, 1.7], texto: "C: aberto", ancora: "end" },
+    { t: "tensao", de: [6.8, 3.4], para: [6.8, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[6.8, 0], [9.4, 0]] },
+    { t: "no", em: [9.4, 0] },
+    { t: "R", de: [9.4, 0], para: [9.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[9.4, 0], [12, 0]] },
+    { t: "no", em: [12, 0] },
+    { t: "I", de: [12, 3.4], para: [12, 1.2], valor: "5 A" },
+    { t: "texto", em: [12.25, 0.7], texto: "aberta", ancora: "start" },
+    { t: "fio", pts: [[0, 3.4], [12, 3.4]] },
+    { t: "no", em: [6.8, 3.4] },
+    { t: "texto", em: [6, 4.15], texto: "i(0⁻) = 20/(8 + 2) = 2 A   ·   v(0⁻) = 2 · 2 = 4 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^-$.** Indutor em fio, capacitor aberto, ramos do $3\ \Omega$ e da fonte de $5\ \mathrm{A}$ abertos: sobram o $8\ \Omega$ e o $2\ \Omega$ em série com a fonte, $i = 2\ \mathrm{A}$ e $v = 4\ \mathrm{V}$.
+
+</Circuito>
+
 **Passo 2 — o circuito em $0^+$.** A fonte de tensão saiu, o $3\ \Omega$ e a fonte de $5\ \mathrm{A}$ entraram. O indutor mantém $2\ \mathrm{A}$ e o capacitor mantém $4\ \mathrm{V}$.
 
 A corrente do $2\ \Omega$ sai direto da lei de Ohm:
@@ -81,6 +113,37 @@ A corrente do $2\ \Omega$ sai direto da lei de Ohm:
 $$
 i_R(0^+) = \frac{4}{2} = 2\ \mathrm{A}
 $$
+
+<Circuito
+  alt="Circuito em t = 0⁺: a fonte de 20 V sai, o 3 Ω e a fonte de 5 A entram; indutor como fonte de 2 A, capacitor como fonte de 4 V, 2 A no 2 Ω"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "20 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "8 Ω" },
+    { t: "fio", pts: [[2.2, 0], [2.5, 0]] },
+    { t: "texto", em: [3.05, -0.35], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [3.6, 0] },
+    { t: "R", de: [3.6, 3.4], para: [3.6, 1.2], valor: "3 Ω", destaque: true },
+    { t: "fio", pts: [[3.6, 1.2], [3.6, 0]] },
+    { t: "fio", pts: [[3.6, 0], [4.6, 0]] },
+    { t: "I", de: [4.6, 0], para: [6.8, 0], valor: "i = 2 A", destaque: true },
+    { t: "no", em: [6.8, 0] },
+    { t: "V", de: [6.8, 3.4], para: [6.8, 0], valor: "v = 4 V", destaque: true },
+    { t: "fio", pts: [[6.8, 0], [9.4, 0]] },
+    { t: "no", em: [9.4, 0] },
+    { t: "R", de: [9.4, 0], para: [9.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "corrente", de: [9.4, 0.4], para: [9.4, 1.4], rotulo: "i_R", abaixo: false },
+    { t: "fio", pts: [[9.4, 0], [12, 0]] },
+    { t: "no", em: [12, 0] },
+    { t: "fio", pts: [[12, 0], [12, 1.2]] },
+    { t: "I", de: [12, 3.4], para: [12, 1.2], valor: "5 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [12, 3.4]] },
+    { t: "texto", em: [6, 4.15], texto: "i_R = 4/2 = 2 A   ·   i_C = 2 + 5 − 2 = 5 A   ·   v_L = −3 · 2 − 4 = −10 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Em $t = 0^+$.** O indutor vira fonte de $2\ \mathrm{A}$ e o capacitor fonte de $4\ \mathrm{V}$. No nó do capacitor sobram $i_C = 5\ \mathrm{A}$; na malha da esquerda, os $2\ \mathrm{A}$ sobem pelo $3\ \Omega$ ($6\ \mathrm{V}$), e o indutor fica com $v_L = -10\ \mathrm{V}$.
+
+</Circuito>
 
 **Passo 3 — a derivada da tensão.** LKC no nó do capacitor: entram os $2\ \mathrm{A}$ do indutor e os $5\ \mathrm{A}$ da fonte; saem $2\ \mathrm{A}$ pelo $2\ \Omega$:
 
