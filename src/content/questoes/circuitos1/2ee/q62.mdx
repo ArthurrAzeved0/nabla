@@ -62,6 +62,36 @@ i(0^-) = \frac{10}{5} = 2\ \mathrm{A}
 i(0^+) = 2\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Em t = 0⁻: chave da esquerda fechada, fonte de 10 V com 5 Ω, indutor em curto com 2 A, 10 Ω e 1 Ω sem tensão, chave da direita aberta"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V", destaque: true },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "5 Ω" },
+    { t: "fio", pts: [[2.2, 0], [4, 0]] },
+    { t: "texto", em: [3.1, -0.3], texto: "fechada" },
+    { t: "no", em: [4, 0] },
+    { t: "fio", pts: [[4, 0], [4, 3.4]] },
+    { t: "corrente", de: [4, 0.4], para: [4, 1.4], abaixo: false },
+    { t: "texto", em: [4.25, 1.0], texto: "i(0⁻) = 2 A", ancora: "start", destaque: true },
+    { t: "texto", em: [4.25, 2.3], texto: "curto", ancora: "start" },
+    { t: "R", de: [4, 0], para: [6.6, 0], valor: "10 Ω" },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "1 Ω", abaixo: true },
+    { t: "texto", em: [6.95, 2.7], texto: "v = 0", ancora: "start" },
+    { t: "texto", em: [7.6, -0.3], texto: "aberta" },
+    { t: "no", em: [8.6, 0] },
+    { t: "R", de: [8.6, 0], para: [8.6, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[8.6, 0], [11, 0]] },
+    { t: "no", em: [11, 0] },
+    { t: "I", de: [11, 3.4], para: [11, 0], valor: "5 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [11, 3.4]] },
+  ]}
+>
+
+**Em $t = 0^-$.** O indutor em fio aterra o seu nó: o $10\ \Omega$ e o $1\ \Omega$ ficam sem tensão, e a fonte de $10\ \mathrm{V}$ só vê o $5\ \Omega$, $i(0^-) = 10/5 = 2\ \mathrm{A}$. A fonte de $5\ \mathrm{A}$ circula só pelo seu $5\ \Omega$, isolada pela chave aberta.
+
+</Circuito>
+
 **Passo 2 — o circuito em $t > 0$.** Sobram o ramo do indutor com o $10\ \Omega$, o $1\ \Omega$, o $5\ \Omega$ e a fonte de $5\ \mathrm{A}$ — tudo em paralelo no nó de $v$. A LKC dá
 
 $$
@@ -69,6 +99,34 @@ $$
 \qquad \times 5 \qquad
 25 = v + 5\,v + 5\,i = 6\,v + 5\,i
 $$
+
+<Circuito
+  alt="Para t maior que 0: chave da esquerda aberta, chave da direita fechada; fonte de 5 A, 5 Ω, 1 Ω com v e o ramo do 10 Ω com o indutor, todos no mesmo nó"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "10 V" },
+    { t: "R", de: [0, 0], para: [2.2, 0], valor: "5 Ω" },
+    { t: "texto", em: [3.1, -0.3], texto: "aberta" },
+    { t: "no", em: [4, 0] },
+    { t: "L", de: [4, 0], para: [4, 3.4], valor: "1 H", abaixo: true },
+    { t: "corrente", de: [4, 0.4], para: [4, 1.4], rotulo: "i", abaixo: false },
+    { t: "R", de: [4, 0], para: [6.6, 0], valor: "10 Ω" },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "1 Ω" },
+    { t: "tensao", de: [6.6, 3.4], para: [6.6, 0], rotulo: "v", abaixo: true },
+    { t: "fio", pts: [[6.6, 0], [8.6, 0]] },
+    { t: "texto", em: [7.6, -0.3], texto: "fechada" },
+    { t: "no", em: [8.6, 0] },
+    { t: "R", de: [8.6, 0], para: [8.6, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "fio", pts: [[8.6, 0], [11, 0]] },
+    { t: "no", em: [11, 0] },
+    { t: "I", de: [11, 3.4], para: [11, 0], valor: "5 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[0, 3.4], [11, 3.4]] },
+  ]}
+>
+
+**Para $t \gt 0$.** A fonte de $10\ \mathrm{V}$ com o seu $5\ \Omega$ fica pendurada e sai do circuito. No nó de $v$ ficam a fonte de $5\ \mathrm{A}$, o $5\ \Omega$, o $1\ \Omega$ e o ramo $10\ \Omega$ + indutor: $5 = v/5 + v + i$.
+
+</Circuito>
 
 **Passo 3 — a equação.** Pelo ramo do indutor, $v = 10\,i + \dfrac{di}{dt}$:
 
@@ -83,6 +141,26 @@ $$
 **Passo 4 — resposta natural.** De $6s + 65 = 0$ vem $s = -\dfrac{65}{6} \approx -10{,}83$.
 
 Confere: com as fontes desligadas, o indutor enxerga $10 + (1 \parallel 5) = 10 + \frac56 = \frac{65}{6}\ \Omega$, e $\tau = L/R = \frac{6}{65}$ s ✓
+
+<Circuito
+  alt="Fonte de 5 A desligada (aberto): o indutor enxerga 10 Ω em série com 1 Ω em paralelo com 5 Ω, 65/6 Ω"
+  itens={[
+    { t: "L", de: [4, 0], para: [4, 3.4], valor: "1 H", abaixo: true, destaque: true },
+    { t: "R", de: [4, 0], para: [6.6, 0], valor: "10 Ω" },
+    { t: "no", em: [6.6, 0] },
+    { t: "R", de: [6.6, 0], para: [6.6, 3.4], valor: "1 Ω" },
+    { t: "fio", pts: [[6.6, 0], [8.6, 0]] },
+    { t: "R", de: [8.6, 0], para: [8.6, 3.4], valor: "5 Ω", abaixo: true },
+    { t: "no", em: [6.6, 3.4] },
+    { t: "texto", em: [10.0, 1.75], texto: "5 A: aberto", ancora: "start" },
+    { t: "fio", pts: [[4, 3.4], [8.6, 3.4]] },
+    { t: "texto", em: [6.3, 4.2], texto: "R_{eq} = 10 + (1 ∥ 5) = 65/6 Ω   ·   τ = L/R_{eq} = 6/65 s", destaque: true },
+  ]}
+>
+
+**A constante de tempo.** Com a fonte de corrente aberta, o $1\ \Omega$ e o $5\ \Omega$ ficam em paralelo ($5/6\ \Omega$), em série com o $10\ \Omega$: $R_{eq} = 65/6\ \Omega$ e $s = -65/6$.
+
+</Circuito>
 
 **Passo 5 — resposta forçada.** $65K = 25$, logo
 
