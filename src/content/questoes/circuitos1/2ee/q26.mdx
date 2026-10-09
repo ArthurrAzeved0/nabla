@@ -57,6 +57,34 @@ $$
 i(0) = \frac{16}{2} = 8\ \mathrm{A}
 $$
 
+<Circuito
+  alt="Circuito em 0⁻: fonte de 16 V com 2 Ω, primeira chave fechada, indutor em curto com i = 8 A, ramo de 1 Ω e 2 Ω sem corrente, segunda chave aberta"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "16 V", destaque: true },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 Ω" },
+    { t: "fio", pts: [[2, 0], [3.4, 0]] },
+    { t: "no", em: [3.4, 0] },
+    { t: "fio", pts: [[3.4, 0], [3.4, 3.4]] },
+    { t: "texto", em: [3.25, 2.4], texto: "L: curto", ancora: "end" },
+    { t: "corrente", de: [3.4, 0.4], para: [3.4, 1.4], rotulo: "i", abaixo: true },
+    { t: "texto", em: [3.4, 4.0], texto: "i(0⁻) = 8 A   ·   v(0⁻) = 0", ancora: "start", destaque: true },
+    { t: "R", de: [3.4, 0], para: [5.4, 0], valor: "1 Ω" },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3.4], para: [5.4, 0], rotulo: "v", abaixo: false },
+    { t: "texto", em: [6.1, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [6.8, 0] },
+    { t: "R", de: [6.8, 0], para: [6.8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[6.8, 0], [8.4, 0]] },
+    { t: "I", de: [8.4, 3.4], para: [8.4, 0], valor: "16 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [8.4, 3.4]] },
+  ]}
+>
+
+**Regime em $0^-$.** O indutor é fio e aterra o seu nó: o ramo de $1\ \Omega$ e $2\ \Omega$ fica sem tensão e a fonte inteira cai no $2\ \Omega$ de entrada, $i(0^-) = 16/2 = 8\ \mathrm{A}$. A fonte de $16\ \mathrm{A}$, ainda isolada pela chave aberta, circula só no seu $2\ \Omega$.
+
+</Circuito>
+
 **Passo 2 — o circuito para $t > 0$.** A primeira chave abre e a segunda fecha. Os dois $2\ \Omega$ passam a ligar o mesmo par de nós:
 
 $$
@@ -64,6 +92,34 @@ $$
 $$
 
 Sobra: fonte de $16\ \mathrm{A}$, o $1\ \Omega$ horizontal, o indutor de $2\ \mathrm{H}$ e o $1\ \Omega$ equivalente.
+
+<Circuito
+  alt="Circuito para t maior que 0: fonte de 16 V desligada, indutor de 2 H, 1 Ω, os dois 2 Ω agora em paralelo (1 Ω) e a fonte de 16 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "16 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 Ω" },
+    { t: "texto", em: [2.7, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [3.4, 0] },
+    { t: "L", de: [3.4, 0], para: [3.4, 3.4], valor: "2 H" },
+    { t: "corrente", de: [3.4, 0.4], para: [3.4, 1.4], rotulo: "i", abaixo: true },
+    { t: "R", de: [3.4, 0], para: [5.4, 0], valor: "1 Ω" },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3.4], valor: "2 Ω", abaixo: true, destaque: true },
+    { t: "tensao", de: [5.4, 3.4], para: [5.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[5.4, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "R", de: [6.8, 0], para: [6.8, 3.4], valor: "2 Ω", abaixo: true, destaque: true },
+    { t: "texto", em: [6.15, 4.0], texto: "2 ∥ 2 = 1 Ω", ancora: "middle", destaque: true },
+    { t: "fio", pts: [[6.8, 0], [8.4, 0]] },
+    { t: "I", de: [8.4, 3.4], para: [8.4, 0], valor: "16 A", abaixo: true, destaque: true },
+    { t: "fio", pts: [[3.4, 3.4], [8.4, 3.4]] },
+    { t: "fio", pts: [[0, 3.4], [3.4, 3.4]] },
+  ]}
+>
+
+**Depois da troca.** A primeira chave abre e a segunda fecha: os dois $2\ \Omega$ ligam o mesmo par de nós e valem $1\ \Omega$. Sobra a fonte de $16\ \mathrm{A}$ alimentando o $1\ \Omega$ equivalente em paralelo com o ramo $1\ \Omega$ + $2\ \mathrm{H}$.
+
+</Circuito>
 
 **Passo 3 — a equação.** Chamando $i'$ a corrente do $1\ \Omega$ equivalente:
 
@@ -96,6 +152,34 @@ $$
 \qquad\Longrightarrow\qquad
 \boxed{v = 1\cdot i + 2\,\frac{di}{dt} = 8 + 0 = 8\ \mathrm{V}}
 $$
+
+<Circuito
+  alt="Regime final: fonte de 16 V desligada, indutor em curto com i = 8 A, 1 Ω, os dois 2 Ω em paralelo com v = 8 V e a fonte de 16 A"
+  itens={[
+    { t: "V", de: [0, 3.4], para: [0, 0], valor: "16 V" },
+    { t: "R", de: [0, 0], para: [2, 0], valor: "2 Ω" },
+    { t: "texto", em: [2.7, -0.3], texto: "aberta", ancora: "middle" },
+    { t: "no", em: [3.4, 0] },
+    { t: "fio", pts: [[3.4, 0], [3.4, 3.4]] },
+    { t: "texto", em: [3.25, 2.4], texto: "L: curto", ancora: "end" },
+    { t: "corrente", de: [3.4, 0.4], para: [3.4, 1.4], rotulo: "i", abaixo: true },
+    { t: "R", de: [3.4, 0], para: [5.4, 0], valor: "1 Ω" },
+    { t: "no", em: [5.4, 0] },
+    { t: "R", de: [5.4, 0], para: [5.4, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "tensao", de: [5.4, 3.4], para: [5.4, 0], rotulo: "v", abaixo: false },
+    { t: "fio", pts: [[5.4, 0], [6.8, 0]] },
+    { t: "no", em: [6.8, 0] },
+    { t: "R", de: [6.8, 0], para: [6.8, 3.4], valor: "2 Ω", abaixo: true },
+    { t: "fio", pts: [[6.8, 0], [8.4, 0]] },
+    { t: "I", de: [8.4, 3.4], para: [8.4, 0], valor: "16 A", abaixo: true },
+    { t: "fio", pts: [[0, 3.4], [8.4, 3.4]] },
+    { t: "texto", em: [4.2, 4.0], texto: "i(∞) = 8 A   ·   v(∞) = 1 · 8 = 8 V", ancora: "middle", destaque: true },
+  ]}
+>
+
+**Regime novo, igual ao antigo.** Com o indutor de novo em fio, os $16\ \mathrm{A}$ se dividem meio a meio entre os dois ramos de $1\ \Omega$: $i = 8\ \mathrm{A}$ e $v = 8\ \mathrm{V}$ — exatamente o valor de $0^-$, por isso $A = 0$.
+
+</Circuito>
 
 **O que a questão ensina —** a troca de fonte foi calibrada para que o valor de regime **novo** seja igual ao **antigo**: $16\ \mathrm{V}/2\ \Omega$ e $16\ \mathrm{A}$ com $1\ \Omega$ equivalente dão a mesma corrente de $8\ \mathrm{A}$ no indutor. Com $A = 0$, o transitório não existe — o circuito troca de alimentação sem sentir.
 
