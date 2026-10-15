@@ -23,6 +23,8 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ## [Não publicado]
 
+## [2.16.0] — 2026-10-14
+
 ### Adicionado
 
 - **A 1ª lista de exercícios de Fenômenos de Transporte (2026.2), resolvida
@@ -1321,6 +1323,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.16.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.16.0
 [2.15.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.15.0
 [2.14.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.14.0
 [2.13.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.13.0
