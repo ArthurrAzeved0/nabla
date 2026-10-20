@@ -1,0 +1,41 @@
+---
+origem: "Final 2024.1"
+tema: "Calor específico · Tempo de um aquecedor de imersão"
+temaId: calor-especifico
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Para preparar uma xícara de café solúvel, usa-se um pequeno aquecedor elétrico de imersão para esquentar $100\ \mathrm{g}$ de água. O rótulo diz que o aparelho é de $200\ \mathrm{W}$ — a taxa com que ele converte energia elétrica em energia térmica. Desprezando as perdas de calor, quanto tempo leva para aquecer a água de $23{,}0\ \mathrm{^\circ C}$ a $100\ \mathrm{^\circ C}$? O calor específico da água é $4{,}19\ \mathrm{kJ/(kg\cdot K)}$.
+
+<Gabarito>
+$t \approx 161\ \mathrm{s}$ (cerca de $2{,}7\ \mathrm{min}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — o calor necessário.** Sem mudança de fase, $Q = mc\,\Delta T$, e uma variação de $77{,}0\ \mathrm{^\circ C}$ é uma variação de $77{,}0\ \mathrm{K}$:
+
+$$
+Q = 0{,}100\ \mathrm{kg} \cdot 4190\ \mathrm{\frac{J}{kg\cdot K}} \cdot 77{,}0\ \mathrm{K} = 3{,}23\times10^4\ \mathrm{J}
+$$
+
+**Passo 2 — o tempo.** Potência constante e sem perdas: toda a energia entregue vai para a água, $Q = P\,t$:
+
+$$
+t = \frac{Q}{P} = \frac{3{,}23\times10^4\ \mathrm{J}}{200\ \mathrm{J/s}} = \boxed{161\ \mathrm{s}}
+$$
+
+**Conferência —** em ordem de grandeza: $200\ \mathrm{W}$ elevam $100\ \mathrm{g}$ de água em $200/(0{,}1\cdot4190) \approx 0{,}48\ \mathrm{K}$ por segundo, e $77/0{,}48 \approx 161\ \mathrm{s}$ ✔ Na prática o tempo é um pouco maior, porque parte do calor escapa para a xícara e o ar. (O gabarito oficial arredonda para $160\ \mathrm{s}$.)
+</Passos>
