@@ -44,6 +44,14 @@ unidades:
       - { id: ot-interferencia, titulo: "Superposição e interferência de ondas" }
       - { id: ot-fasores, titulo: "Fasores" }
       - { id: ot-estacionarias, titulo: "Ondas estacionárias e ressonância" }
+  - nome: "Temperatura, calor e a primeira lei da termodinâmica"
+    prova: 2ee
+    secoes:
+      - { id: ot-temperatura, titulo: "Temperatura, lei zero e escalas termométricas" }
+      - { id: ot-dilatacao, titulo: "Dilatação térmica" }
+      - { id: ot-calor, titulo: "Calor, calor específico e calor latente" }
+      - { id: ot-primeira-lei, titulo: "Trabalho, calor e a primeira lei da termodinâmica" }
+      - { id: ot-transferencia, titulo: "Mecanismos de transferência de calor" }
 ---
 
 {/* **************************************************************************
@@ -3378,6 +3386,624 @@ f_3 = 3 f_1 \approx 119\ \mathrm{Hz}
 $$
 
 No terceiro harmônico, $\lambda_3 = 2L/3 = 0{,}80\ \mathrm{m}$, há quatro nós (em $x = 0$; $0{,}40$; $0{,}80$ e $1{,}2\ \mathrm{m}$) e três ventres. É praticamente o $\lambda \approx 0{,}79\ \mathrm{m}$ que a mesma corda tinha com o vibrador a $120\ \mathrm{Hz}$ — por isso, a essa frequência, ela entra quase em ressonância no terceiro harmônico.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-temperatura" num="28" titulo="Temperatura, lei zero e escalas termométricas">
+
+**A ideia.** Temperatura é a grandeza que diz **para onde o calor vai**: quando dois corpos se tocam, a energia passa do mais quente para o mais frio até as temperaturas ficarem iguais. Nesse ponto eles estão em **equilíbrio térmico**. Toda a termodinâmica começa aqui, e a primeira coisa a dominar é a parte que parece boba e derruba muita gente na prova: converter entre escalas e não confundir **uma temperatura** com **uma variação de temperatura**.
+
+### A lei zero: por que termômetro funciona
+
+Se o corpo $A$ está em equilíbrio térmico com $T$, e o corpo $B$ também está em equilíbrio com $T$, então $A$ e $B$ estão em equilíbrio entre si. Parece óbvio, mas é exatamente isso que permite usar um terceiro corpo — o **termômetro** — como juiz: ele entra em equilíbrio com cada um e compara os dois sem que eles se toquem.
+
+### A escala Kelvin e o ponto triplo da água
+
+A escala oficial da física é a **Kelvin**, a escala absoluta: o zero dela é o zero absoluto, abaixo do qual não há temperatura. Para fixar o tamanho do grau, escolheu-se um estado da água fácil de reproduzir em laboratório: o **ponto triplo**, a única combinação de pressão e temperatura em que gelo, água líquida e vapor convivem em equilíbrio. Por definição,
+
+$$
+\boxed{\;T_3 = 273{,}16\ \mathrm{K}\;}
+$$
+
+Na prática, quem mede isso é o **termômetro de gás a volume constante**: a pressão $p$ do gás, mantido num volume fixo, é proporcional à temperatura. Comparando com a pressão $p_3$ no ponto triplo,
+
+$$
+T = (273{,}16\ \mathrm{K})\,\lim_{\text{gás}\to 0}\frac{p}{p_3}
+$$
+
+O limite (gás cada vez mais rarefeito) existe porque, com pouco gás, todos os gases dão a mesma leitura — o termômetro deixa de depender da substância.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $T$ — temperatura na escala Kelvin, em $\mathrm{K}$ (sem o símbolo de grau);
+- $T_C$ — temperatura na escala Celsius, em $^\circ\mathrm{C}$;
+- $T_F$ — temperatura na escala Fahrenheit, em $^\circ\mathrm{F}$;
+- $T_3$ — temperatura do ponto triplo da água, $273{,}16\ \mathrm{K}$;
+- $p$, $p_3$ — pressão do gás no termômetro na medida e no ponto triplo, em $\mathrm{Pa}$.
+
+</Caixa>
+
+### Celsius e Fahrenheit
+
+A Celsius tem o **mesmo tamanho de grau** que a Kelvin; só o zero está deslocado. A Fahrenheit tem grau menor: cabem $180$ graus Fahrenheit entre o gelo e a água fervendo, contra $100$ graus Celsius.
+
+$$
+\boxed{\;T_C = T - 273{,}15 \qquad\qquad T_F = \tfrac{9}{5}\,T_C + 32\;}
+$$
+
+| referência | Kelvin | Celsius | Fahrenheit |
+| --- | --- | --- | --- |
+| água fervendo (1 atm) | $373{,}15$ | $100$ | $212$ |
+| corpo humano | $310$ | $37$ | $98{,}6$ |
+| gelo fundindo (1 atm) | $273{,}15$ | $0$ | $32$ |
+| Celsius e Fahrenheit coincidem | $233{,}15$ | $-40$ | $-40$ |
+| zero absoluto | $0$ | $-273{,}15$ | $-459{,}67$ |
+
+<Figura>
+  <svg viewBox="0 0 420 240" role="img" aria-label="Três termômetros lado a lado, Kelvin, Celsius e Fahrenheit, com linhas tracejadas ligando o ponto de ebulição da água (373,15 K, 100 °C, 212 °F) e o ponto de fusão do gelo (273,15 K, 0 °C, 32 °F); entre as duas linhas cabem 100 graus Kelvin, 100 Celsius e 180 Fahrenheit">
+    {/* linhas de referência */}
+    <line x1="30" y1="50" x2="400" y2="50" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="30" y1="170" x2="400" y2="170" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="30" y="42" font-size="11" fill="var(--ink-3)">água fervendo</text>
+    <text x="30" y="188" font-size="11" fill="var(--ink-3)">gelo fundindo</text>
+    {/* termômetros */}
+    <rect x="112" y="30" width="16" height="170" rx="8" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <rect x="232" y="30" width="16" height="170" rx="8" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <rect x="352" y="30" width="16" height="170" rx="8" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <rect x="116" y="50" width="8" height="146" fill="var(--accent)" opacity="0.55"/>
+    <rect x="236" y="50" width="8" height="146" fill="var(--accent)" opacity="0.55"/>
+    <rect x="356" y="50" width="8" height="146" fill="var(--accent)" opacity="0.55"/>
+    {/* valores */}
+    <text x="134" y="44" font-size="11" fill="var(--ink-2)">373,15</text>
+    <text x="134" y="186" font-size="11" fill="var(--ink-2)">273,15</text>
+    <text x="254" y="44" font-size="11" fill="var(--ink-2)">100</text>
+    <text x="254" y="186" font-size="11" fill="var(--ink-2)">0</text>
+    <text x="374" y="44" font-size="11" fill="var(--ink-2)">212</text>
+    <text x="374" y="186" font-size="11" fill="var(--ink-2)">32</text>
+    {/* intervalos */}
+    <text x="134" y="114" font-size="11" fill="var(--warn)">100 graus</text>
+    <text x="254" y="114" font-size="11" fill="var(--warn)">100 graus</text>
+    <text x="374" y="114" font-size="11" fill="var(--warn)">180</text>
+    <text x="104" y="226" font-size="13" fill="var(--accent)">K</text>
+    <text x="226" y="226" font-size="13" fill="var(--accent)">°C</text>
+    <text x="346" y="226" font-size="13" fill="var(--accent)">°F</text>
+  </svg>
+  <figcaption>
+
+Entre os mesmos dois estados da água cabem $100$ graus Kelvin, $100$ graus Celsius e $180$ graus Fahrenheit. É daí que vem o fator $9/5$.
+
+  </figcaption>
+</Figura>
+
+### Temperatura não é variação de temperatura
+
+Como Kelvin e Celsius têm o mesmo tamanho de grau, **uma variação** vale o mesmo número nas duas:
+
+$$
+\Delta T_C = \Delta T \qquad\qquad \Delta T_F = \tfrac{9}{5}\,\Delta T_C
+$$
+
+Repare que o $+32$ e o $-273{,}15$ **somem** na variação: eles só deslocam o zero.
+
+<Caixa tipo="macete" rotulo="Quando dá para usar °C direto, e quando é obrigatório Kelvin">
+
+- Em fórmula que só tem **variação** — $Q = mc\,\Delta T$, $\Delta L = L\alpha\,\Delta T$, condução com $T_Q - T_F$ — tanto faz Celsius ou Kelvin: o número é o mesmo;
+- em fórmula que tem a **temperatura em si** — $pV = nRT$, radiação com $T^4$, eficiência de Carnot $1 - T_F/T_Q$, entropia com $\ln(T_f/T_i)$ — é **obrigatório Kelvin**. Usar Celsius ali dá número errado, às vezes negativo.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Escala inventada pelo enunciado">
+
+Toda escala termométrica comum é **linear**, então qualquer conversão sai da proporção entre os dois pontos fixos: a fração do caminho entre o gelo e o vapor é a mesma em qualquer escala.
+
+$$
+\frac{X - X_{\text{gelo}}}{X_{\text{vapor}} - X_{\text{gelo}}} = \frac{T_C - 0}{100 - 0}
+$$
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — uma escala nova e uma variação">
+
+Uma escala $Z$ marca $-20\ ^\circ\mathrm{Z}$ no gelo fundindo e $180\ ^\circ\mathrm{Z}$ na água fervendo. Quanto ela marca a $40\ ^\circ\mathrm{C}$?
+
+$$
+\frac{Z - (-20)}{180 - (-20)} = \frac{40}{100}
+\quad\Longrightarrow\quad
+Z = -20 + 200 \times 0{,}4 = 60\ ^\circ\mathrm{Z}
+$$
+
+E se um corpo esquenta $30\ ^\circ\mathrm{C}$, a variação em Kelvin é $30\ \mathrm{K}$ e em Fahrenheit é $\tfrac{9}{5}\times 30 = 54\ ^\circ\mathrm{F}$ — sem o $32$, porque é variação.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-dilatacao" num="29" titulo="Dilatação térmica">
+
+**A ideia.** Quase todo material **aumenta de tamanho quando esquenta**: os átomos vibram com mais amplitude e, em média, ficam mais afastados. O efeito é pequeno — milímetros num trilho de dezenas de metros —, mas é ele que obriga a deixar juntas nas pontes, que estoura copo de vidro com água fervendo e que faz a tampa de metal soltar debaixo da torneira quente. Para variações moderadas de temperatura, o aumento é **proporcional** ao tamanho original e à variação de temperatura.
+
+### Dilatação linear
+
+Uma barra de comprimento $L$ que sofre uma variação de temperatura $\Delta T$ muda de comprimento por
+
+$$
+\boxed{\;\Delta L = L\,\alpha\,\Delta T\;}
+$$
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $L$ — comprimento inicial, em $\mathrm{m}$;
+- $\Delta L$ — variação do comprimento, em $\mathrm{m}$;
+- $\alpha$ — **coeficiente de dilatação linear**, em $\mathrm{K^{-1}}$ (ou $(^\circ\mathrm{C})^{-1}$, que é o mesmo número);
+- $\Delta T$ — variação de temperatura, em $\mathrm{K}$ ou $^\circ\mathrm{C}$;
+- $A$, $\Delta A$ — área inicial e sua variação, em $\mathrm{m^2}$;
+- $V$, $\Delta V$ — volume inicial e sua variação, em $\mathrm{m^3}$;
+- $\beta$ — **coeficiente de dilatação volumétrica**, em $\mathrm{K^{-1}}$.
+
+</Caixa>
+
+Ordens de grandeza, para ter noção: aço $\approx 11 \times 10^{-6}\ \mathrm{K^{-1}}$, alumínio $23 \times 10^{-6}$, cobre $17 \times 10^{-6}$, vidro comum $9 \times 10^{-6}$, Pyrex $3{,}2 \times 10^{-6}$ — por isso o Pyrex aguenta choque térmico e o vidro comum não.
+
+### Dilatação superficial e volumétrica
+
+Uma placa dilata nas duas direções, e um bloco nas três. Fazendo a conta para um cubo de lado $L$, $V = L^3$, e $\Delta V \approx 3L^2\,\Delta L = 3V\alpha\,\Delta T$ (o resto são termos com $\alpha^2$, desprezíveis). O mesmo raciocínio para a área dá o fator $2$:
+
+$$
+\boxed{\;\Delta A = A\,(2\alpha)\,\Delta T \qquad\qquad \Delta V = V\,\beta\,\Delta T, \quad \beta = 3\alpha\;}
+$$
+
+Para **líquidos** só faz sentido o $\beta$: eles não têm forma própria, então o livro e as tabelas dão o coeficiente volumétrico direto.
+
+<Caixa tipo="macete" rotulo="O furo dilata como se fosse feito do material">
+
+Uma placa com um furo, ao esquentar, **aumenta o furo**, não diminui. Imagine que o furo estivesse tampado por um disco do mesmo metal: tudo dilata igual, como uma fotografia ampliada. Vale para o anel, para o vão da porca e para o volume interno de um recipiente — o "buraco" dilata com o coeficiente da parede.
+
+</Caixa>
+
+### Líquido num recipiente: o transbordamento
+
+É o caso que a prova gosta: um recipiente cheio até a boca é aquecido. O recipiente também dilata, então o que transborda é só a **diferença**:
+
+$$
+V_{\text{transb.}} = V\,(\beta_{\text{líq}} - \beta_{\text{rec}})\,\Delta T, \qquad \beta_{\text{rec}} = 3\alpha_{\text{rec}}
+$$
+
+Esquecer a dilatação do recipiente dá a "dilatação aparente" errada.
+
+### A anomalia da água
+
+A água é a exceção famosa: entre $0\ ^\circ\mathrm{C}$ e $4\ ^\circ\mathrm{C}$ ela **contrai** ao esquentar. A massa específica máxima é a $4\ ^\circ\mathrm{C}$. Consequência: num lago no inverno, a água a $4\ ^\circ\mathrm{C}$, mais densa, vai para o fundo, e a água mais fria fica em cima e congela primeiro. O gelo, ainda menos denso, boia e isola o resto — por isso lagos congelam **de cima para baixo** e a vida no fundo sobrevive.
+
+<Caixa tipo="dica" rotulo="Dilatação impedida vira tensão">
+
+Se a barra está presa entre duas paredes e não pode dilatar, ela empurra as paredes com a força que seria necessária para comprimi-la de volta em $\Delta L$. Com o módulo de Young $E$: $F/A = E\,\alpha\,\Delta T$. É essa tensão que entorta trilho sem junta de dilatação.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — barra de alumínio e copo que transborda">
+
+Uma barra de alumínio ($\alpha = 23 \times 10^{-6}\ \mathrm{K^{-1}}$) de $2{,}000\ \mathrm{m}$ vai de $20\ ^\circ\mathrm{C}$ a $120\ ^\circ\mathrm{C}$:
+
+$$
+\Delta L = 2{,}000 \times 23 \times 10^{-6} \times 100 = 4{,}6 \times 10^{-3}\ \mathrm{m} = 4{,}6\ \mathrm{mm}
+$$
+
+Agora um copo **do mesmo alumínio**, de $200\ \mathrm{cm^3}$, cheio de glicerina ($\beta = 5{,}1 \times 10^{-4}\ \mathrm{K^{-1}}$), é aquecido em $30\ ^\circ\mathrm{C}$. O copo tem $\beta_{\text{rec}} = 3 \times 23 \times 10^{-6} = 6{,}9 \times 10^{-5}\ \mathrm{K^{-1}}$, e transborda
+
+$$
+V_{\text{transb.}} = 200 \times (5{,}1 \times 10^{-4} - 0{,}69 \times 10^{-4}) \times 30 \approx 2{,}65\ \mathrm{cm^3}
+$$
+
+Sem descontar o copo, a resposta seria $3{,}06\ \mathrm{cm^3}$ — erro de uns $15\%$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-calor" num="30" titulo="Calor, calor específico e calor latente">
+
+**A ideia.** **Calor** é energia **em trânsito** por causa de uma diferença de temperatura — não é algo que o corpo "tem", é algo que passa de um corpo para outro. Quando o calor entra num corpo, duas coisas podem acontecer: a temperatura sobe (calor **sensível**) ou o corpo muda de fase com a temperatura parada (calor **latente**). A calorimetria é só a contabilidade disso, com uma regra: num sistema isolado, **o calor que um perde é o calor que o outro ganha**.
+
+### Unidades
+
+O calor é energia, e no SI se mede em joule. A unidade histórica é a **caloria**, o calor que eleva $1\ \mathrm{g}$ de água de $14{,}5\ ^\circ\mathrm{C}$ para $15{,}5\ ^\circ\mathrm{C}$:
+
+$$
+1\ \mathrm{cal} = 4{,}1868\ \mathrm{J} \qquad\qquad 1\ \mathrm{Cal}\ (\text{nutricional}) = 1\ \mathrm{kcal} = 1000\ \mathrm{cal}
+$$
+
+### Calor sensível: capacidade térmica e calor específico
+
+A **capacidade térmica** $C$ de um objeto diz quanto calor ele precisa por grau. Dividindo pela massa, sai uma propriedade do **material**, o **calor específico** $c$:
+
+$$
+\boxed{\;Q = C\,\Delta T = m\,c\,\Delta T\;}
+$$
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $Q$ — calor trocado, em $\mathrm{J}$: **positivo** quando o corpo **recebe**, negativo quando cede;
+- $C$ — capacidade térmica do objeto, em $\mathrm{J/K}$;
+- $m$ — massa, em $\mathrm{kg}$;
+- $c$ — calor específico do material, em $\mathrm{J/(kg\cdot K)}$;
+- $\Delta T = T_f - T_i$ — variação de temperatura, em $\mathrm{K}$ ou $^\circ\mathrm{C}$;
+- $L$ — calor latente, em $\mathrm{J/kg}$: $L_F$ para fusão, $L_V$ para vaporização.
+
+</Caixa>
+
+Os valores da água que aparecem em toda prova:
+
+| grandeza | valor |
+| --- | --- |
+| $c$ da água líquida | $4187\ \mathrm{J/(kg\cdot K)} = 1\ \mathrm{cal/(g\cdot ^\circ C)}$ |
+| $c$ do gelo | $2220\ \mathrm{J/(kg\cdot K)} \approx 0{,}53\ \mathrm{cal/(g\cdot ^\circ C)}$ |
+| $L_F$ (fusão a $0\ ^\circ\mathrm{C}$) | $333\ \mathrm{kJ/kg} \approx 79{,}5\ \mathrm{cal/g}$ |
+| $L_V$ (vaporização a $100\ ^\circ\mathrm{C}$) | $2256\ \mathrm{kJ/kg} \approx 539\ \mathrm{cal/g}$ |
+
+O calor específico da água é enorme comparado ao dos metais (cobre: $386$; alumínio: $900$), e é por isso que ela é o fluido de arrefecimento de tudo.
+
+### Calor latente: a temperatura para enquanto a fase muda
+
+Durante a fusão ou a ebulição, o calor que entra vai todo para **desfazer ligações**, e a temperatura fica parada. A quantidade depende só da massa que muda de fase:
+
+$$
+\boxed{\;Q = L\,m\;}
+$$
+
+<Figura>
+  <svg viewBox="0 0 440 250" role="img" aria-label="Gráfico da temperatura em função do calor fornecido a uma amostra de gelo: a temperatura sobe de abaixo de zero até 0 °C, fica parada num patamar curto enquanto o gelo derrete, sobe até 100 °C e fica parada num patamar bem mais longo enquanto a água vira vapor, e depois volta a subir">
+    {/* eixos */}
+    <line x1="50" y1="210" x2="420" y2="210" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="50" y1="210" x2="50" y2="20" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="420,210 412,206 412,214" fill="var(--ink-3)"/>
+    <polygon points="50,20 46,28 54,28" fill="var(--ink-3)"/>
+    <text x="404" y="230" font-size="12" font-style="italic" fill="var(--ink-2)">Q</text>
+    <text x="20" y="30" font-size="12" font-style="italic" fill="var(--ink-2)">T</text>
+    {/* referências */}
+    <line x1="50" y1="160" x2="130" y2="160" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="50" y1="70" x2="190" y2="70" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="14" y="164" font-size="11" fill="var(--ink-3)">0 °C</text>
+    <text x="6" y="74" font-size="11" fill="var(--ink-3)">100 °C</text>
+    {/* curva */}
+    <polyline points="55,190 80,160 125,160 190,70 360,70 400,40" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+    {/* patamares destacados */}
+    <line x1="80" y1="160" x2="125" y2="160" stroke="var(--warn)" stroke-width="3.2"/>
+    <line x1="190" y1="70" x2="360" y2="70" stroke="var(--warn)" stroke-width="3.2"/>
+    <text x="62" y="200" font-size="10" fill="var(--ink-3)">gelo</text>
+    <text x="84" y="150" font-size="11" fill="var(--warn)">fusão</text>
+    <text x="84" y="182" font-size="10" fill="var(--warn)">Q = L<tspan font-size="7" dy="3">F</tspan><tspan dy="-3"> m</tspan></text>
+    <text x="166" y="140" font-size="10" fill="var(--ink-3)">água</text>
+    <text x="220" y="60" font-size="11" fill="var(--warn)">vaporização: Q = L<tspan font-size="8" dy="3">V</tspan><tspan dy="-3"> m</tspan></text>
+    <text x="370" y="72" font-size="10" fill="var(--ink-3)">vapor</text>
+  </svg>
+  <figcaption>
+
+A curva de aquecimento da água. Nas rampas, $Q = mc\,\Delta T$; nos patamares, a temperatura não sai do lugar e $Q = Lm$. O patamar da vaporização é quase **sete vezes** mais longo que o da fusão, porque $L_V \approx 6{,}8\,L_F$.
+
+  </figcaption>
+</Figura>
+
+### Calorimetria: a soma de todos os calores é zero
+
+Num recipiente isolado, nada entra nem sai, então a soma algébrica dos calores de todos os corpos é nula. Escrevendo cada $Q$ como $mc(T_f - T_i)$, com o $T_f$ **comum** a todos, os sinais se acertam sozinhos:
+
+$$
+\boxed{\;\sum Q = 0\;}
+$$
+
+Com dois corpos sem mudança de fase, isso dá a média ponderada pelas capacidades térmicas:
+
+$$
+T_f = \frac{m_1c_1T_1 + m_2c_2T_2}{m_1c_1 + m_2c_2}
+$$
+
+<Caixa tipo="macete" rotulo="Gelo na mistura: teste antes de equacionar">
+
+O erro clássico é escrever $\sum Q = 0$ supondo que **todo** o gelo derrete, achar um $T_f$ negativo — água líquida abaixo de zero, o que é absurdo — e entregar isso. O roteiro seguro tem três passos:
+
+1. **Quanto o gelo precisa** para chegar a $0\ ^\circ\mathrm{C}$ **e** derreter todo: $Q_{\text{gelo}} = m_g c_g (0 - T_g) + m_g L_F$;
+2. **Quanto a água tem** para dar até chegar a $0\ ^\circ\mathrm{C}$: $Q_{\text{água}} = m_a c_a (T_a - 0)$;
+3. **Compare.** Se $Q_{\text{água}} \gt Q_{\text{gelo}}$, todo o gelo derrete e aí sim se resolve $\sum Q = 0$ com $T_f$ acima de zero. Se $Q_{\text{água}} \lt Q_{\text{gelo}}$, a mistura **para em $0\ ^\circ\mathrm{C}$** com gelo sobrando, e a pergunta passa a ser **quanto** gelo derreteu.
+
+O mesmo teste vale com vapor no lugar do gelo: será que todo o vapor condensa?
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — gelo que não derrete todo">
+
+Joga-se $0{,}200\ \mathrm{kg}$ de gelo a $-10\ ^\circ\mathrm{C}$ em $0{,}500\ \mathrm{kg}$ de água a $20\ ^\circ\mathrm{C}$, num recipiente isolado de capacidade térmica desprezível.
+
+**Passo 1 — o que o gelo precisa:**
+
+$$
+Q_{\text{gelo}} = \underbrace{0{,}200 \times 2220 \times 10}_{4440\ \mathrm{J}} + \underbrace{0{,}200 \times 333\,000}_{66\,600\ \mathrm{J}} = 71\,040\ \mathrm{J}
+$$
+
+**Passo 2 — o que a água tem para dar até $0\ ^\circ\mathrm{C}$:**
+
+$$
+Q_{\text{água}} = 0{,}500 \times 4187 \times 20 = 41\,870\ \mathrm{J}
+$$
+
+**Passo 3 — comparar.** $41\,870 \lt 71\,040$: a água não dá conta, e o equilíbrio é a $0\ ^\circ\mathrm{C}$ com gelo sobrando. Dos $41\,870\ \mathrm{J}$, $4440\ \mathrm{J}$ vão para aquecer o gelo; o resto derrete
+
+$$
+m_{\text{derretida}} = \frac{41\,870 - 4440}{333\,000} \approx 0{,}112\ \mathrm{kg}
+$$
+
+Sobram $\approx 0{,}088\ \mathrm{kg}$ de gelo boiando em $\approx 0{,}612\ \mathrm{kg}$ de água, tudo a $0\ ^\circ\mathrm{C}$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-primeira-lei" num="31" titulo="Trabalho, calor e a primeira lei da termodinâmica">
+
+**A ideia.** Um gás num cilindro troca energia com o resto do mundo de dois jeitos: recebendo **calor** (pela diferença de temperatura) e realizando **trabalho** (empurrando o pistão). A primeira lei é a conservação da energia escrita para esse caso: o que entra como calor e não sai como trabalho fica guardado como **energia interna**. Calor e trabalho dependem do **caminho** que o gás percorreu; a energia interna, não — ela só depende do estado.
+
+### O trabalho é a área no diagrama p–V
+
+Quando o gás empurra um pistão de área $A$ por uma distância $ds$, faz o trabalho $dW = F\,ds = (pA)\,ds = p\,dV$. Somando ao longo da transformação:
+
+$$
+\boxed{\;W = \int_{V_i}^{V_f} p\,dV\;}
+$$
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $W$ — trabalho **realizado pelo gás**, em $\mathrm{J}$: positivo na expansão, negativo na compressão;
+- $p$ — pressão do gás, em $\mathrm{Pa}$;
+- $V_i$, $V_f$ — volumes inicial e final, em $\mathrm{m^3}$ ($1\ \mathrm{L} = 10^{-3}\ \mathrm{m^3}$);
+- $Q$ — calor **recebido pelo gás**, em $\mathrm{J}$: positivo quando entra;
+- $E_{\text{int}}$ — energia interna do gás, em $\mathrm{J}$; $\Delta E_{\text{int}} = E_{\text{int},f} - E_{\text{int},i}$.
+
+</Caixa>
+
+Geometricamente, a integral é a **área sob a curva** no diagrama $p$–$V$. Daí sai tudo:
+
+- **volume constante** → $W = 0$, não importa o que a pressão faça;
+- **pressão constante** → $W = p\,(V_f - V_i)$, a área de um retângulo;
+- **pressão como função do volume** → integra a função.
+
+Se o enunciado dá $p = aV^2$, por exemplo:
+
+$$
+W = \int_{V_i}^{V_f} aV^2\,dV = \frac{a}{3}\left(V_f^{3} - V_i^{3}\right)
+$$
+
+e com $p = C\,V^{1/2}$ seria $W = \tfrac{2C}{3}\left(V_f^{3/2} - V_i^{3/2}\right)$. É só cálculo de primeiro período — a armadilha é a unidade: volume em $\mathrm{m^3}$, não em litros, e a constante $a$ na unidade que fecha ($\mathrm{Pa/m^6}$).
+
+<Figura>
+  <svg viewBox="0 0 420 250" role="img" aria-label="Diagrama p–V com a curva p = aV² subindo de um estado inicial i para um estado final f; a área sob a curva entre V_i e V_f está sombreada e representa o trabalho W realizado pelo gás">
+    {/* área sob a curva */}
+    <path d="M110 180 Q220 172 290 56 L290 210 L110 210 Z" fill="var(--accent)" opacity="0.25"/>
+    {/* eixos */}
+    <line x1="60" y1="210" x2="390" y2="210" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="60" y1="210" x2="60" y2="20" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="390,210 382,206 382,214" fill="var(--ink-3)"/>
+    <polygon points="60,20 56,28 64,28" fill="var(--ink-3)"/>
+    <text x="378" y="232" font-size="13" font-style="italic" fill="var(--ink-2)">V</text>
+    <text x="38" y="30" font-size="13" font-style="italic" fill="var(--ink-2)">p</text>
+    {/* curva p = aV² */}
+    <path d="M110 180 Q220 172 290 56" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+    <polygon points="216,141 210.6,150.8 205,142.6" fill="var(--accent)"/>
+    {/* estados */}
+    <circle cx="110" cy="180" r="4" fill="var(--warn)"/>
+    <circle cx="290" cy="56" r="4" fill="var(--warn)"/>
+    <text x="98" y="172" font-size="12" font-style="italic" fill="var(--warn)">i</text>
+    <text x="298" y="54" font-size="12" font-style="italic" fill="var(--warn)">f</text>
+    <line x1="110" y1="180" x2="110" y2="210" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="290" y1="56" x2="290" y2="210" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="102" y="228" font-size="12" font-style="italic" fill="var(--ink-2)">V</text>
+    <text x="111" y="232" font-size="9" font-style="italic" fill="var(--ink-2)">i</text>
+    <text x="282" y="228" font-size="12" font-style="italic" fill="var(--ink-2)">V</text>
+    <text x="291" y="232" font-size="9" font-style="italic" fill="var(--ink-2)">f</text>
+    <text x="176" y="196" font-size="14" font-style="italic" fill="var(--ink-2)">W &gt; 0</text>
+    <text x="300" y="110" font-size="12" font-style="italic" fill="var(--accent)">p = aV²</text>
+  </svg>
+  <figcaption>
+
+O trabalho do gás é a área sombreada sob a curva, de $V_i$ até $V_f$. Percorrida da esquerda para a direita (expansão), a área conta como positiva; de volta (compressão), como negativa. Outro caminho entre os mesmos $i$ e $f$ teria outra área — por isso $W$ depende do caminho.
+
+  </figcaption>
+</Figura>
+
+### A primeira lei e a convenção de sinais
+
+$$
+\boxed{\;\Delta E_{\text{int}} = Q - W\;}
+$$
+
+Lida em voz alta: a energia interna cresce com o calor que **entra** e diminui com o trabalho que o gás **faz**. $Q$ e $W$ separadamente dependem do caminho; a diferença $Q - W$ não, e é isso que define $E_{\text{int}}$ como função de estado.
+
+<Caixa tipo="macete" rotulo="Os sinais, de uma vez">
+
+| | positivo | negativo |
+| --- | --- | --- |
+| $Q$ | o gás **recebe** calor | o gás **cede** calor |
+| $W$ | o gás **expande** (faz trabalho) | o gás é **comprimido** (recebe trabalho) |
+| $\Delta E_{\text{int}}$ | a energia interna sobe (num gás ideal, a temperatura sobe) | a energia interna desce |
+
+Alguns livros de química e de engenharia escrevem $\Delta U = Q + W$, com $W$ sendo o trabalho **feito sobre** o gás. Não é outra lei, é outro sinal para $W$. Nesta cadeira vale o Halliday: $Q - W$, com $W$ do gás.
+
+</Caixa>
+
+### Os quatro casos especiais
+
+| processo | o que se anula | a primeira lei vira |
+| --- | --- | --- |
+| **adiabático** (isolado, ou rápido demais para trocar calor) | $Q = 0$ | $\Delta E_{\text{int}} = -W$ |
+| **isocórico** (volume constante) | $W = 0$ | $\Delta E_{\text{int}} = Q$ |
+| **ciclo fechado** (volta ao estado inicial) | $\Delta E_{\text{int}} = 0$ | $Q = W$ |
+| **expansão livre** (gás escapa para o vácuo, isolado) | $Q = 0$ e $W = 0$ | $\Delta E_{\text{int}} = 0$ |
+
+Dois comentários que caem em prova:
+
+- **no ciclo**, o trabalho líquido é a **área dentro do laço** no diagrama $p$–$V$: positivo se o ciclo é percorrido no sentido **horário** (o gás faz mais trabalho na expansão do que recebe na compressão), negativo se anti-horário. E como $Q = W$, o calor líquido do ciclo tem o mesmo valor;
+- **na expansão livre** o gás não empurra nada (do outro lado é vácuo), então $W = 0$ mesmo com o volume aumentando. Não é processo quase-estático: não dá para desenhar o caminho no $p$–$V$, só os estados inicial e final.
+
+<Caixa tipo="dica" rotulo="Adiabático esfria na expansão">
+
+Com $Q = 0$, se o gás expande ($W \gt 0$), a energia interna **cai** e a temperatura cai junto. É o ar que sai gelado do bico da lata de spray, e o ar que sobe numa montanha e esfria. A fórmula exata da adiabática ($pV^\gamma$ constante) vem no capítulo da teoria cinética.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — trabalho com p = aV² e a energia interna">
+
+Um gás expande de $1{,}0\ \mathrm{L}$ para $3{,}0\ \mathrm{L}$ seguindo $p = aV^2$, com $a = 5{,}0 \times 10^{10}\ \mathrm{Pa/m^6}$, e recebe $1000\ \mathrm{J}$ de calor no processo. A pressão vai de $a(10^{-3})^2 = 5{,}0 \times 10^4\ \mathrm{Pa}$ a $a(3 \times 10^{-3})^2 = 4{,}5 \times 10^5\ \mathrm{Pa}$. O trabalho:
+
+$$
+W = \frac{a}{3}\left(V_f^{3} - V_i^{3}\right) = \frac{5{,}0 \times 10^{10}}{3}\left(27 - 1\right)\times 10^{-9} \approx 433\ \mathrm{J}
+$$
+
+E a energia interna:
+
+$$
+\Delta E_{\text{int}} = Q - W = 1000 - 433 \approx 567\ \mathrm{J}
+$$
+
+Positivo: dos $1000\ \mathrm{J}$ que entraram, $433\ \mathrm{J}$ saíram empurrando o pistão e $567\ \mathrm{J}$ ficaram no gás, que esquentou.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-transferencia" num="32" titulo="Mecanismos de transferência de calor">
+
+**A ideia.** O calor sai do quente para o frio por três caminhos. Na **condução**, a energia passa de molécula para molécula dentro de um material parado — é a panela esquentando o cabo. Na **convecção**, o próprio fluido aquecido se move e leva a energia junto — é a água subindo na panela e o ar quente subindo do aquecedor. Na **radiação**, a energia vai em ondas eletromagnéticas e não precisa de meio nenhum — é o Sol aquecendo a Terra através do vácuo. A prova cobra conta de condução e de radiação; a convecção entra como conceito.
+
+### Condução através de uma placa
+
+Uma placa de espessura $L$ e área $A$, com uma face a $T_Q$ e a outra a $T_F$, deixa passar calor a uma taxa constante (regime estacionário):
+
+$$
+\boxed{\;P_{\text{cond}} = \frac{Q}{t} = k\,A\,\frac{T_Q - T_F}{L}\;}
+$$
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $P_{\text{cond}}$ — taxa de condução (potência), em $\mathrm{W}$;
+- $k$ — **condutividade térmica** do material, em $\mathrm{W/(m\cdot K)}$;
+- $A$ — área da face, em $\mathrm{m^2}$;
+- $L$ — espessura da placa, em $\mathrm{m}$;
+- $T_Q$, $T_F$ — temperaturas da face quente e da face fria, em $\mathrm{K}$ ou $^\circ\mathrm{C}$ (só a diferença importa);
+- $R = L/k$ — **resistência térmica** da placa por unidade de área, em $\mathrm{m^2\cdot K/W}$.
+
+</Caixa>
+
+Para ter escala: cobre $401\ \mathrm{W/(m\cdot K)}$, aço $\approx 14$ a $50$, vidro $\approx 1$, madeira $\approx 0{,}1$, ar parado $0{,}026$, espuma de poliestireno $\approx 0{,}03$ a $0{,}04$. Os isolantes bons são quase todos "ar preso" num material que impede o ar de circular.
+
+### Placas em série: some as resistências
+
+Quando o calor atravessa duas ou mais camadas, uma depois da outra, a **mesma** taxa $P$ passa por todas (senão alguma interface acumularia energia). Cada camada tem a sua queda de temperatura, e somando as quedas:
+
+$$
+\boxed{\;P = \frac{A\,(T_Q - T_F)}{\displaystyle\sum_i \frac{L_i}{k_i}}\;}
+$$
+
+É exatamente um circuito de resistores em série: a diferença de temperatura faz o papel da tensão, a taxa de calor o da corrente e $L/k$ o da resistência.
+
+<Figura>
+  <svg viewBox="0 0 420 230" role="img" aria-label="Duas placas encostadas em série: a da esquerda, de espessura L1 e condutividade k1, tem a face externa a T_Q; a da direita, de espessura L2 e condutividade k2, tem a face externa a T_F; a interface entre elas está à temperatura T_x; uma seta mostra a taxa de calor P atravessando as duas da esquerda para a direita">
+    {/* placas */}
+    <rect x="110" y="40" width="90" height="140" fill="var(--warn)" opacity="0.30" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <rect x="200" y="40" width="110" height="140" fill="var(--accent)" opacity="0.25" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="140" y="116" font-size="13" font-style="italic" fill="var(--ink-2)">k₁</text>
+    <text x="244" y="116" font-size="13" font-style="italic" fill="var(--ink-2)">k₂</text>
+    {/* temperaturas das faces */}
+    <text x="52" y="116" font-size="13" font-style="italic" fill="var(--warn)">T</text>
+    <text x="61" y="120" font-size="10" font-style="italic" fill="var(--warn)">Q</text>
+    <text x="330" y="116" font-size="13" font-style="italic" fill="var(--accent)">T</text>
+    <text x="339" y="120" font-size="10" font-style="italic" fill="var(--accent)">F</text>
+    <text x="190" y="30" font-size="13" font-style="italic" fill="var(--ink-2)">T</text>
+    <text x="199" y="34" font-size="10" font-style="italic" fill="var(--ink-2)">x</text>
+    {/* espessuras */}
+    <line x1="110" y1="196" x2="200" y2="196" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="200" y1="196" x2="310" y2="196" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="110" y1="190" x2="110" y2="202" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="200" y1="190" x2="200" y2="202" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="310" y1="190" x2="310" y2="202" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="146" y="216" font-size="12" font-style="italic" fill="var(--ink-3)">L₁</text>
+    <text x="246" y="216" font-size="12" font-style="italic" fill="var(--ink-3)">L₂</text>
+    {/* seta de calor */}
+    <line x1="120" y1="150" x2="290" y2="150" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="300,150 288,144 288,156" fill="var(--ok)"/>
+    <text x="150" y="140" font-size="12" font-style="italic" fill="var(--ok)">P</text>
+  </svg>
+  <figcaption>
+
+Duas camadas em série. A mesma taxa $P$ atravessa as duas; a temperatura cai de $T_Q$ até $T_x$ na primeira e de $T_x$ até $T_F$ na segunda. A camada de **maior** $L/k$ fica com a **maior** queda de temperatura.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="macete" rotulo="Temperatura da interface">
+
+Achado o $P$, aplique a fórmula de uma placa só a qualquer uma das camadas: $P = k_1 A\,(T_Q - T_x)/L_1$, e daí sai $T_x$. Para conferir, faça o mesmo pela outra camada — tem de dar o mesmo $T_x$.
+
+</Caixa>
+
+### Convecção
+
+Um fluido em contato com uma superfície quente esquenta, fica **menos denso** e sobe; o fluido frio, mais denso, desce para ocupar o lugar. Forma-se uma corrente que carrega calor muito mais depressa do que a condução no fluido parado. É convecção **natural**; quando um ventilador ou uma bomba move o fluido, é convecção **forçada**. É por causa dela que o aquecedor fica embaixo da janela e o ar-condicionado fica no alto.
+
+### Radiação: Stefan-Boltzmann
+
+Todo corpo acima do zero absoluto emite radiação térmica, com uma potência que cresce com a **quarta potência** da temperatura:
+
+$$
+\boxed{\;P_{\text{rad}} = \sigma\,\varepsilon\,A\,T^4\;}
+$$
+
+O mesmo corpo, num ambiente à temperatura $T_{\text{amb}}$, **absorve** $P_{\text{abs}} = \sigma\varepsilon A\,T_{\text{amb}}^4$, e a troca líquida é
+
+$$
+P_{\text{líq}} = P_{\text{abs}} - P_{\text{rad}} = \sigma\,\varepsilon\,A\left(T_{\text{amb}}^{4} - T^{4}\right)
+$$
+
+positiva se o corpo está ganhando energia, negativa se está perdendo.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $P_{\text{rad}}$, $P_{\text{abs}}$, $P_{\text{líq}}$ — potência emitida, absorvida e líquida, em $\mathrm{W}$;
+- $\sigma = 5{,}6704 \times 10^{-8}\ \mathrm{W/(m^2\cdot K^4)}$ — constante de Stefan-Boltzmann;
+- $\varepsilon$ — **emissividade** da superfície, entre $0$ e $1$ (o **corpo negro** ideal tem $\varepsilon = 1$); o mesmo $\varepsilon$ vale para emitir e para absorver;
+- $A$ — área da superfície que irradia, em $\mathrm{m^2}$;
+- $T$, $T_{\text{amb}}$ — temperaturas **absolutas** do corpo e do ambiente, em $\mathrm{K}$.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Aqui o Kelvin é obrigatório">
+
+Com $T^4$, usar Celsius não é um erro pequeno, é outro número. E atenção: $T_{\text{amb}}^4 - T^4$ **não** é $(T_{\text{amb}} - T)^4$ — eleve cada temperatura à quarta separadamente e só depois subtraia.
+
+Para comparar: uma pessoa ($\varepsilon \approx 0{,}97$, $A \approx 1{,}5\ \mathrm{m^2}$, pele a $32\ ^\circ\mathrm{C}$) numa sala a $20\ ^\circ\mathrm{C}$ perde por radiação $\sigma\varepsilon A\,(305^4 - 293^4) \approx 106\ \mathrm{W}$ — da ordem do próprio metabolismo em repouso.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — parede de concreto com isolante">
+
+Uma parede de $10\ \mathrm{m^2}$ tem $20\ \mathrm{cm}$ de concreto ($k_1 = 1{,}0\ \mathrm{W/(m\cdot K)}$) do lado de dentro, a $25\ ^\circ\mathrm{C}$, e $5\ \mathrm{cm}$ de isopor ($k_2 = 0{,}04\ \mathrm{W/(m\cdot K)}$) do lado de fora, a $5\ ^\circ\mathrm{C}$. As resistências:
+
+$$
+\frac{L_1}{k_1} = \frac{0{,}20}{1{,}0} = 0{,}20 \qquad \frac{L_2}{k_2} = \frac{0{,}05}{0{,}04} = 1{,}25 \qquad \sum = 1{,}45\ \mathrm{m^2\cdot K/W}
+$$
+
+A taxa de calor:
+
+$$
+P = \frac{A\,(T_Q - T_F)}{\sum L/k} = \frac{10 \times 20}{1{,}45} \approx 138\ \mathrm{W}
+$$
+
+E a interface, pela camada de concreto:
+
+$$
+T_x = T_Q - \frac{P\,L_1}{k_1 A} = 25 - \frac{137{,}9 \times 0{,}20}{1{,}0 \times 10} \approx 22{,}2\ ^\circ\mathrm{C}
+$$
+
+O concreto, quatro vezes mais grosso, segura só $2{,}8\ ^\circ\mathrm{C}$; os outros $17{,}2\ ^\circ\mathrm{C}$ caem nos $5\ \mathrm{cm}$ de isopor. É a camada de maior $L/k$ que manda.
 
 </Caixa>
 
