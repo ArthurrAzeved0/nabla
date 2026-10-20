@@ -1,0 +1,125 @@
+---
+origem: "2024.2"
+tema: "Máquina térmica · Ciclo isotérmica–isobárica–isocórica"
+temaId: maquina-termica
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dez mols de um gás ideal percorrem o ciclo da figura. No estado $1$ a pressão vale $2{,}0\ \mathrm{atm}$ e a temperatura, $80\ \mathrm{°C}$. O gás sofre primeiro uma compressão **isotérmica** que reduz seu volume à metade (estado $2$); depois, uma expansão **isobárica** até o estado $3$; e o ciclo se fecha com uma transformação **isocórica** de volta ao estado $1$. Determine:<br />(a) os volumes nos pontos $1$, $2$ e $3$;<br />(b) as temperaturas nos pontos $2$ e $3$;<br />(c) o trabalho total;<br />(d) o calor no ciclo;<br />(e) o rendimento do ciclo como máquina térmica, comparado com o de uma máquina de Carnot entre as mesmas temperaturas extremas.<br />Use $R = 8{,}31\ \mathrm{J/(mol \cdot K)}$ e $1\ \mathrm{atm} = 1{,}013 \times 10^{5}\ \mathrm{Pa}$.
+
+<Figura>
+  <svg viewBox="0 0 320 210" role="img" aria-label="Diagrama p–V do ciclo: do ponto 1, embaixo à direita, uma isotérmica curva sobe até o ponto 2, em cima à esquerda; dali uma isobárica horizontal vai até o ponto 3, em cima à direita; e uma isocórica vertical desce do 3 ao 1">
+    {/* eixos */}
+    <line x1="50" y1="180" x2="300" y2="180" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="50" y1="180" x2="50" y2="15" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="306,180 297,176 297,184" fill="var(--ink-3)"/>
+    <polygon points="50,9 46,18 54,18" fill="var(--ink-3)"/>
+    <text x="300" y="196" font-size="11" fill="var(--ink-3)" font-style="italic">V</text>
+    <text x="34" y="18" font-size="11" fill="var(--ink-3)" font-style="italic">p</text>
+    {/* marcas */}
+    <g stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3">
+      <line x1="50" y1="110" x2="267.3" y2="110"/>
+      <line x1="158.7" y1="40" x2="158.7" y2="180"/>
+    </g>
+    <g font-size="9" fill="var(--ink-3)">
+      <text x="44" y="113" text-anchor="end">2,0 atm</text>
+      <text x="44" y="43" text-anchor="end">4,0 atm</text>
+      <text x="158.7" y="192" text-anchor="middle">V<tspan font-size="8" dy="3">1</tspan><tspan dy="-3">/2</tspan></text>
+      <text x="267.3" y="192" text-anchor="middle">V<tspan font-size="8" dy="3">1</tspan><tspan dy="-3"></tspan></text>
+    </g>
+    {/* ciclo */}
+    <polyline points="158.7,40.0 167.7,50.8 176.8,60.0 185.8,68.0 194.9,75.0 203.9,81.2 213.0,86.7 222.1,91.6 231.1,96.0 240.2,100.0 249.2,103.6 258.3,107.0 267.3,110.0" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+    <line x1="158.7" y1="40" x2="267.3" y2="40" stroke="var(--warn)" stroke-width="1.8"/>
+    <line x1="267.3" y1="40" x2="267.3" y2="110" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="207.6,83.4 217.4,84.7 213.2,91.5" fill="var(--accent)"/>
+    <polygon points="218.0,40.0 209.0,44.0 209.0,36.0" fill="var(--warn)"/>
+    <polygon points="267.3,80.0 263.3,71.0 271.3,71.0" fill="var(--ok)"/>
+    <circle cx="267.3" cy="110" r="3" fill="var(--ink-2)"/>
+    <circle cx="158.7" cy="40" r="3" fill="var(--ink-2)"/>
+    <circle cx="267.3" cy="40" r="3" fill="var(--ink-2)"/>
+    <g font-size="11" fill="var(--ink-2)">
+      <text x="273" y="124">1</text>
+      <text x="148" y="34">2</text>
+      <text x="273" y="34">3</text>
+    </g>
+    <text x="176" y="118" font-size="9" fill="var(--accent)" transform="rotate(30 176 118)">isotérmica</text>
+    <text x="190" y="32" font-size="9" fill="var(--warn)">isobárica</text>
+    <text x="274" y="78" font-size="9" fill="var(--ok)">isocórica</text>
+  </svg>
+  <figcaption>
+
+O ciclo em escala: a isotérmica $p = p_1V_1/V$ liga $1$ a $2$, onde a pressão dobra para $4{,}0\ \mathrm{atm}$; o sentido $1 \to 2 \to 3 \to 1$ é **horário**, de máquina térmica.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $V_1 = V_3 \approx 0{,}145\ \mathrm{m^3}$, $V_2 \approx 0{,}0724\ \mathrm{m^3}$  ·  (b) $T_2 = 353\ \mathrm{K}$, $T_3 = 706\ \mathrm{K}$  ·  (c) $W \approx 9{,}0\ \mathrm{kJ}$  ·  (d) $Q \approx 9{,}0\ \mathrm{kJ}$  ·  (e) supondo gás monoatômico, $\eta \approx 12\%$, contra $50\%$ de Carnot
+</Gabarito>
+
+<Passos>
+**Passo 1 — (a) os volumes.** No estado $1$, $T_1 = 80 + 273 = 353\ \mathrm{K}$ e $p_1 = 2{,}0\ \mathrm{atm} = 2{,}026 \times 10^{5}\ \mathrm{Pa}$:
+
+$$
+V_1 = \frac{nRT_1}{p_1} = \frac{10 \cdot 8{,}31 \cdot 353}{2{,}026 \times 10^{5}} \approx 0{,}145\ \mathrm{m^3}
+$$
+
+A isotérmica reduz o volume à metade, $V_2 = V_1/2 \approx 0{,}0724\ \mathrm{m^3}$; e a isocórica $3 \to 1$ obriga $V_3 = V_1 \approx 0{,}145\ \mathrm{m^3}$.
+
+**Passo 2 — (b) as temperaturas.** O trecho $1 \to 2$ é isotérmico: $T_2 = T_1 = 353\ \mathrm{K}$, e a pressão dobra, $p_2 = 4{,}0\ \mathrm{atm}$. Na isobárica $2 \to 3$ o volume dobra, logo a temperatura também:
+
+$$
+T_3 = T_2\,\frac{V_3}{V_2} = 2 \cdot 353 = 706\ \mathrm{K}
+$$
+
+**Passo 3 — (c) o trabalho de cada trecho.** Chamando $nRT_1 = 10 \cdot 8{,}31 \cdot 353 \approx 29{,}3\ \mathrm{kJ}$:
+
+$$
+W_{12} = nRT_1\ln\frac{V_2}{V_1} = -29{,}3\ln 2 \approx -20{,}3\ \mathrm{kJ}
+$$
+
+$$
+W_{23} = p_2\,(V_3 - V_2) = p_2V_2 = nRT_1 \approx +29{,}3\ \mathrm{kJ}
+\qquad
+W_{31} = 0
+$$
+
+$$
+W = nRT_1\,(1 - \ln 2) \approx 9{,}0\ \mathrm{kJ}
+$$
+
+**Passo 4 — (d) o calor no ciclo.** O gás volta ao estado $1$, então $\Delta E_{\mathrm{int}} = 0$ e o calor líquido é igual ao trabalho: $Q = W \approx 9{,}0\ \mathrm{kJ}$.
+
+**Passo 5 — (e) o calor absorvido.** O rendimento é $\eta = W/Q_Q$, com $Q_Q$ o calor que **entra**. Na isotérmica de compressão e na isocórica de resfriamento o gás **cede** calor; ele só recebe na isobárica $2 \to 3$. O enunciado não diz o tipo de gás; supondo **monoatômico**, $C_p = \tfrac{5}{2}R$:
+
+$$
+Q_Q = nC_p\,(T_3 - T_2) = \tfrac{5}{2}\,nR\,T_1 \approx 2{,}5 \cdot 29{,}3 \approx 73{,}3\ \mathrm{kJ}
+$$
+
+$$
+\eta = \frac{W}{Q_Q} = \frac{1 - \ln 2}{5/2} \approx 0{,}123 \approx 12\%
+$$
+
+**Passo 6 — comparar com Carnot.** Entre as temperaturas extremas do ciclo, $706\ \mathrm{K}$ e $353\ \mathrm{K}$:
+
+$$
+\eta_{\mathrm{C}} = 1 - \frac{T_F}{T_Q} = 1 - \frac{353}{706} = 0{,}50 = 50\%
+$$
+
+O ciclo rende cerca de um quarto do limite de Carnot, como a segunda lei exige ($\eta \lt \eta_{\mathrm{C}}$). Se o gás fosse diatômico, $C_p = \tfrac{7}{2}R$, e o rendimento cairia para $(1 - \ln 2)/3{,}5 \approx 8{,}8\%$, ainda abaixo de Carnot.
+
+**Conferência —** o balanço de calor fecha com o trabalho: $Q_{12} = W_{12} \approx -20{,}3\ \mathrm{kJ}$, $Q_{23} \approx +73{,}3\ \mathrm{kJ}$ e $Q_{31} = nC_V(T_1 - T_3) = -\tfrac{3}{2} \cdot 29{,}3 \approx -44{,}0\ \mathrm{kJ}$, somando $\approx 9{,}0\ \mathrm{kJ}$ ✔ O trabalho é positivo porque o ciclo é horário no diagrama $p$–$V$ ✔
+</Passos>
