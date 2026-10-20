@@ -1,0 +1,75 @@
+---
+origem: "2025.1"
+tema: "Trabalho de um gás · Expansão com p proporcional a raiz de V"
+temaId: trabalho-de-um-gas
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um cilindro com pistão contém $4{,}00$ mols de ar a $25{,}0\ \mathrm{^\circ C}$ e $200\ \mathrm{kPa}$. O ar recebe calor e se expande, e durante toda a expansão a pressão e o volume obedecem a $p = C\,V^{1/2}$, com $C$ constante, até a pressão chegar a $400\ \mathrm{kPa}$. Trate o ar como gás ideal, com $C_V = \tfrac{5}{2}R$ e $R = 8{,}31\ \mathrm{J/(mol\cdot K)}$. Encontre (a) o volume inicial; (b) o volume final; (c) a temperatura final; (d) o trabalho realizado pelo ar; (e) o calor transferido para o ar.
+
+<Gabarito>
+(a) $V_1 \approx 0{,}0495\ \mathrm{m^3} = 49{,}5\ \mathrm{L}$  ·  (b) $V_2 \approx 0{,}198\ \mathrm{m^3}$  ·  (c) $T_2 \approx 2{,}38\times10^{3}\ \mathrm{K}$  ·  (d) $W \approx 46{,}2\ \mathrm{kJ}$  ·  (e) $Q \approx 220\ \mathrm{kJ}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — volume inicial.** Com $T_1 = 298\ \mathrm{K}$, a equação dos gases ideais dá
+
+$$
+V_1 = \frac{nRT_1}{p_1} = \frac{(4{,}00)(8{,}31)(298)}{2{,}00\times10^{5}} = 0{,}0495\ \mathrm{m^3}
+$$
+
+**Passo 2 — volume final.** A constante $C = p/\sqrt{V}$ é a mesma no início e no fim:
+
+$$
+\frac{p_1}{\sqrt{V_1}} = \frac{p_2}{\sqrt{V_2}}
+\qquad\Longrightarrow\qquad
+V_2 = V_1\left(\frac{p_2}{p_1}\right)^{2} = 4\,V_1 = 0{,}198\ \mathrm{m^3}
+$$
+
+Dobrar a pressão exige **quadruplicar** o volume, porque $p$ cresce só com a raiz de $V$.
+
+**Passo 3 — temperatura final.** Como $p_2V_2 = (2p_1)(4V_1) = 8\,p_1V_1$,
+
+$$
+T_2 = 8\,T_1 = 8(298) = 2384\ \mathrm{K} \approx 2{,}38\times10^{3}\ \mathrm{K}
+$$
+
+**Passo 4 — o trabalho é a área sob a curva.**
+
+$$
+W = \int_{V_1}^{V_2} C\,V^{1/2}\,dV = \tfrac{2}{3}C\left(V_2^{3/2} - V_1^{3/2}\right) = \tfrac{2}{3}\left(p_2V_2 - p_1V_1\right)
+$$
+
+usando $C\,V^{3/2} = pV$ em cada extremo. Com $p_1V_1 = nRT_1 = 9{,}906\ \mathrm{kJ}$:
+
+$$
+W = \tfrac{2}{3}(8 - 1)\,p_1V_1 = \tfrac{14}{3}(9{,}906\ \mathrm{kJ}) = 46{,}2\ \mathrm{kJ}
+$$
+
+**Passo 5 — o calor pela primeira lei.**
+
+$$
+\Delta E_{\text{int}} = nC_V\,\Delta T = (4{,}00)\left(\tfrac{5}{2}\cdot 8{,}31\right)(2384 - 298) = 173{,}3\ \mathrm{kJ}
+$$
+
+$$
+Q = \Delta E_{\text{int}} + W = 173{,}3 + 46{,}2 = 219{,}6\ \mathrm{kJ} \approx 220\ \mathrm{kJ}
+$$
+
+**Conferência —** a integral numérica de $C\sqrt{V}$ entre $0{,}0495$ e $0{,}198\ \mathrm{m^3}$, com $C = p_1/\sqrt{V_1} = 8{,}99\times10^{5}\ \mathrm{Pa/m^{3/2}}$, dá os mesmos $46{,}2\ \mathrm{kJ}$ ✔ E o sinal faz sentido: o gás se expande **e** esquenta muito, então recebe calor para pagar as duas coisas ✔
+
+**Sobre o gabarito oficial —** as respostas coincidem até o arredondamento ($T_2 = 2382{,}7\ \mathrm{K}$, $W = 46\ \mathrm{kJ}$, $Q = 219\ \mathrm{kJ}$, de contas com valores intermediários arredondados). Na passagem do volume final ele escreve "$V_2 = 2{,}0 \times V_1$" e em seguida multiplica por $4{,}0$: o fator $2$ é o de $\sqrt{V_2/V_1}$, e o volume final é de fato $4V_1$.
+</Passos>
