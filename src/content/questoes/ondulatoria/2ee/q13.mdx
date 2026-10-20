@@ -1,0 +1,65 @@
+---
+origem: "2026.1"
+tema: "Graus de liberdade · Gás diatômico aquecido a pressão constante"
+temaId: graus-de-liberdade
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q13.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A temperatura de $3{,}00$ mols de um gás ideal **diatômico** aumenta $40{,}0\ \mathrm{^\circ C}$ sem que a pressão mude. As moléculas giram, mas não oscilam. Calcule (a) o calor transferido para o gás; (b) a variação da energia interna; (c) o trabalho realizado pelo gás; (d) o aumento da energia cinética de **rotação** do gás. Use $R = 8{,}31\ \mathrm{J/(mol\cdot K)}$.
+
+<Gabarito>
+(a) $Q \approx 3{,}49\ \mathrm{kJ}$  ·  (b) $\Delta E_{\text{int}} \approx 2{,}49\ \mathrm{kJ}$  ·  (c) $W \approx 997\ \mathrm{J}$  ·  (d) $\Delta K_{\text{rot}} \approx 997\ \mathrm{J}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os graus de liberdade.** Uma molécula diatômica que gira mas não oscila tem $3$ graus de translação e $2$ de rotação, $f = 5$. Pela equipartição, cada grau contribui com $\tfrac{1}{2}R$ por mol para $C_V$:
+
+$$
+C_V = \tfrac{5}{2}R
+\qquad
+C_p = C_V + R = \tfrac{7}{2}R
+$$
+
+Uma variação de $40{,}0\ \mathrm{^\circ C}$ é também uma variação de $40{,}0\ \mathrm{K}$.
+
+**Passo 2 — o calor, a pressão constante.**
+
+$$
+Q = nC_p\,\Delta T = (3{,}00)\left(\tfrac{7}{2}\cdot 8{,}31\right)(40{,}0) = 3{,}49\times10^{3}\ \mathrm{J}
+$$
+
+**Passo 3 — a energia interna.**
+
+$$
+\Delta E_{\text{int}} = nC_V\,\Delta T = (3{,}00)\left(\tfrac{5}{2}\cdot 8{,}31\right)(40{,}0) = 2{,}49\times10^{3}\ \mathrm{J}
+$$
+
+**Passo 4 — o trabalho.** A pressão constante, $W = p\,\Delta V = nR\,\Delta T$:
+
+$$
+W = (3{,}00)(8{,}31)(40{,}0) = 997\ \mathrm{J}
+$$
+
+**Passo 5 — a parte de rotação.** A energia interna se reparte entre translação ($3$ graus) e rotação ($2$ graus):
+
+$$
+\Delta K_{\text{trans}} = n\left(\tfrac{3}{2}R\right)\Delta T = 1{,}50\times10^{3}\ \mathrm{J}
+\qquad
+\Delta K_{\text{rot}} = n\left(\tfrac{2}{2}R\right)\Delta T = nR\,\Delta T = 997\ \mathrm{J}
+$$
+
+**Conferência —** primeira lei: $\Delta E_{\text{int}} + W = 2493 + 997 = 3490\ \mathrm{J} = Q$ ✔ E a soma das partes: $1496 + 997 = 2493\ \mathrm{J} = \Delta E_{\text{int}}$ ✔ Não é coincidência que $\Delta K_{\text{rot}} = W$: os dois valem $nR\,\Delta T$, um porque a rotação tem dois graus de $\tfrac{1}{2}R$, o outro porque $p\,\Delta V = nR\,\Delta T$.
+</Passos>
