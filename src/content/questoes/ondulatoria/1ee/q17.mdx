@@ -1,0 +1,59 @@
+---
+origem: "2023.2"
+tema: "Interferência · Resultante com metade da amplitude"
+temaId: interferencia
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Duas ondas iguais (mesma amplitude $y_m$, mesmo comprimento de onda e mesma frequência), defasadas e propagando-se no mesmo sentido, interferem. A amplitude da onda resultante é metade da amplitude de cada onda componente. Determine a diferença de fase entre elas, expressa em comprimentos de onda.
+
+<Gabarito>
+$\phi = 2\arccos(1/4) = 2{,}64\ \mathrm{rad} \approx 151^\circ$, isto é, $\approx 0{,}42$ comprimento de onda
+</Gabarito>
+
+<Passos>
+**Passo 1 — a amplitude da resultante.** Somando $y_1 = y_m\operatorname{sen}(kx - \omega t)$ e $y_2 = y_m\operatorname{sen}(kx - \omega t + \phi)$, a resultante é
+
+$$
+y = \left[2\,y_m\cos\frac{\phi}{2}\right]\operatorname{sen}\!\left(kx - \omega t + \frac{\phi}{2}\right)
+$$
+
+e a amplitude é $y'_m = 2\,y_m\,\lvert\cos(\phi/2)\rvert$.
+
+**Passo 2 — impor metade da amplitude.**
+
+$$
+2\,y_m\cos\frac{\phi}{2} = \frac{y_m}{2}
+\quad\Longrightarrow\quad
+\cos\frac{\phi}{2} = \frac14
+\quad\Longrightarrow\quad
+\frac{\phi}{2} = 75{,}5^\circ
+$$
+
+$$
+\phi = 151^\circ = 2{,}64\ \mathrm{rad}
+$$
+
+**Passo 3 — converter para comprimentos de onda.** Uma diferença de fase de $2\pi$ corresponde a um comprimento de onda inteiro:
+
+$$
+\frac{\phi}{2\pi} = \frac{2{,}636}{6{,}283} = \boxed{0{,}42\ \text{comprimento de onda}}
+$$
+
+A defasagem $2\pi - \phi$, isto é, $0{,}58$ comprimento de onda, dá a mesma amplitude; é a mesma situação vista pelo outro lado, com $y_2$ atrasada em vez de adiantada.
+
+**Conferência —** com $\phi = 2{,}636\ \mathrm{rad}$, $2\cos(1{,}318) = 2 \cdot 0{,}250 = 0{,}500$: a resultante tem metade da amplitude ✔ E $\phi$ ficou entre $2\pi/3$ e $\pi$, o que faz sentido: em $\pi$ a resultante some, em $2\pi/3$ ela já é igual a $y_m$; metade fica entre os dois ✔
+</Passos>
