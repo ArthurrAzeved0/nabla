@@ -1,0 +1,73 @@
+---
+origem: "2026.1"
+tema: "MHS · Amplitude e condições iniciais a partir de um instante"
+temaId: fase-do-mhs
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um oscilador harmônico simples é formado por um bloco de $2{,}00\ \mathrm{kg}$ preso a uma mola de constante $100\ \mathrm{N/m}$. No instante $t = 1{,}00\ \mathrm{s}$, o bloco está em $x = 0{,}129\ \mathrm{m}$ com velocidade $v = 3{,}415\ \mathrm{m/s}$.
+
+(a) Qual é a amplitude das oscilações?<br />
+(b) Qual era a posição do bloco em $t = 0$?<br />
+(c) Qual era a velocidade do bloco em $t = 0$?
+
+<Gabarito>
+(a) $x_m \approx 0{,}500\ \mathrm{m}$  ·  (b) $x_0 \approx -0{,}251\ \mathrm{m}$  ·  (c) $v_0 \approx 3{,}06\ \mathrm{m/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a frequência angular.**
+
+$$
+\omega = \sqrt{\frac{k}{m}} = \sqrt{\frac{100}{2{,}00}} = 7{,}07\ \mathrm{rad/s}
+$$
+
+**Passo 2 — a fase em $t = 1{,}00\ \mathrm{s}$.** Com $x = x_m\cos(\omega t + \phi)$ e $v = -\omega x_m\operatorname{sen}(\omega t + \phi)$, dividir uma pela outra elimina a amplitude:
+
+$$
+\tan(\omega t + \phi) = -\frac{v}{\omega x} = -\frac{3{,}415}{7{,}07\cdot 0{,}129} = -3{,}744
+\;\Longrightarrow\;
+\omega t + \phi = -1{,}31\ \mathrm{rad}
+$$
+
+O quadrante está certo: $x \gt 0$ pede cosseno positivo e $v \gt 0$ pede seno negativo, ou seja, o quarto quadrante. A calculadora tem de estar em **radianos**.
+
+**Passo 3 — (a) a amplitude.**
+
+$$
+x_m = \frac{x}{\cos(\omega t + \phi)} = \frac{0{,}129}{\cos(-1{,}31)} = \boxed{0{,}500\ \mathrm{m}}
+$$
+
+**Passo 4 — a constante de fase.** Em $t = 1{,}00\ \mathrm{s}$, $\omega t = 7{,}07\ \mathrm{rad}$, então
+
+$$
+\phi = -1{,}31 - 7{,}07 = -8{,}38\ \mathrm{rad}
+$$
+
+(somar $2\pi$ dá a fase equivalente $-2{,}10\ \mathrm{rad}$; o resultado não muda).
+
+**Passo 5 — (b) e (c) o instante inicial.** Em $t = 0$ o argumento é só $\phi$:
+
+$$
+x_0 = x_m\cos\phi = 0{,}500\cos(-8{,}38) = \boxed{-0{,}251\ \mathrm{m}}
+$$
+
+$$
+v_0 = -\omega x_m\operatorname{sen}\phi = -7{,}07\cdot 0{,}500\cdot\operatorname{sen}(-8{,}38) = \boxed{3{,}06\ \mathrm{m/s}}
+$$
+
+**Conferência —** pela energia: $\tfrac12 k x^2 + \tfrac12 m v^2 = 0{,}832 + 11{,}66 = 12{,}49\ \mathrm{J}$, e $\tfrac12 k x_m^2 = \tfrac12\cdot 100\cdot 0{,}500^2 = 12{,}5\ \mathrm{J}$ ✔ Em $t = 0$ a amplitude tem de ser a mesma: $\sqrt{0{,}251^2 + (3{,}06/7{,}07)^2} = 0{,}500\ \mathrm{m}$ ✔ E voltando no tempo sem usar a fase, $x_0 = x\cos\omega - (v/\omega)\operatorname{sen}\omega = -0{,}251\ \mathrm{m}$ com $\omega\cdot 1{,}00\ \mathrm{s} = 7{,}07\ \mathrm{rad}$ ✔
+</Passos>
