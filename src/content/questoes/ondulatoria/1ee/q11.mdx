@@ -1,0 +1,91 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Tubo em U · Água sobre mercúrio"
+temaId: tubo-em-u
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q11.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um tubo em forma de U, aberto nas duas extremidades e de seção uniforme, contém mercúrio. Despejam-se $11{,}2\ \mathrm{cm}$ de água no ramo direito. Quanto o mercúrio sobe no ramo esquerdo em relação ao nível que tinha antes? Use $\rho_{\text{Hg}} = 13{,}6\ \mathrm{g/cm^3}$ e $\rho_{\text{água}} = 1{,}00\ \mathrm{g/cm^3}$.
+
+<Figura>
+  <svg viewBox="0 0 320 230" role="img" aria-label="Tubo em U com mercúrio; no ramo direito, uma coluna de água de 11,2 cm empurra o mercúrio para baixo de h, e no ramo esquerdo o mercúrio sobe h acima do nível inicial">
+    {/* mercúrio: ramo esquerdo até y=86, ramo direito até y=114, fundo */}
+    <rect x="80" y="86" width="40" height="104" fill="var(--line-2)"/>
+    <rect x="180" y="114" width="40" height="76" fill="var(--line-2)"/>
+    <rect x="80" y="170" width="140" height="40" fill="var(--line-2)"/>
+    {/* água no ramo direito: 11,2 cm acima da interface */}
+    <rect x="180" y="34" width="40" height="80" fill="var(--accent)" opacity="0.35"/>
+    <text x="186" y="70" font-size="10" fill="var(--accent)">água</text>
+    <text x="134" y="198" font-size="10" fill="var(--ink-2)">Hg</text>
+    {/* paredes do tubo */}
+    <path d="M80 20 V200 Q80 210 90 210 H210 Q220 210 220 200 V20" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <path d="M120 20 V170 H180 V20" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    {/* nível inicial */}
+    <line x1="60" y1="100" x2="240" y2="100" stroke="var(--warn)" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="242" y="103" font-size="9" fill="var(--warn)">nível inicial</text>
+    {/* nível da interface (mesma pressão) */}
+    <line x1="70" y1="114" x2="230" y2="114" stroke="var(--ok)" stroke-width="1" stroke-dasharray="2 3"/>
+    {/* cota h à esquerda */}
+    <line x1="66" y1="86" x2="66" y2="100" stroke="var(--warn)" stroke-width="1"/>
+    <line x1="62" y1="86" x2="80" y2="86" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <text x="52" y="97" font-size="10" fill="var(--warn)" font-style="italic">h</text>
+    {/* cota 2h */}
+    <line x1="134" y1="86" x2="134" y2="114" stroke="var(--ok)" stroke-width="1"/>
+    <polygon points="134,86 131,92 137,92" fill="var(--ok)"/>
+    <polygon points="134,114 131,108 137,108" fill="var(--ok)"/>
+    <line x1="120" y1="86" x2="140" y2="86" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="2 2"/>
+    <text x="139" y="112" font-size="10" fill="var(--ok)">2h</text>
+    {/* cota h à direita */}
+    <line x1="226" y1="100" x2="226" y2="114" stroke="var(--warn)" stroke-width="1"/>
+    <text x="230" y="124" font-size="10" fill="var(--warn)" font-style="italic">h</text>
+    {/* cota da água */}
+    <line x1="262" y1="34" x2="262" y2="114" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="262,34 259,40 265,40" fill="var(--accent)"/>
+    <polygon points="262,114 259,108 265,108" fill="var(--accent)"/>
+    <line x1="220" y1="34" x2="268" y2="34" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="2 2"/>
+    <text x="268" y="70" font-size="10" fill="var(--accent)">11,2 cm</text>
+  </svg>
+  <figcaption>
+
+O mercúrio desce $h$ à direita e sobe $h$ à esquerda; na altura da interface água–mercúrio (linha verde), as pressões nos dois ramos são iguais. Desenho fora de escala.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+O mercúrio sobe $h = 0{,}412\ \mathrm{cm}$ no ramo esquerdo.
+</Gabarito>
+
+<Passos>
+A foto da prova corta a margem direita do enunciado; o trecho que falta foi completado pelo problema 14.74 do Halliday (vol. 2, 10ª ed.), de onde a questão foi tirada. As massas específicas são as da Tabela 14-1 do livro.
+
+**Passo 1 — a geometria do U.** Com os dois ramos de mesma seção, o volume de mercúrio que sai do ramo direito entra no esquerdo: se ele desce $h$ de um lado, sobe $h$ do outro. O desnível entre as duas superfícies de mercúrio é $2h$.
+
+**Passo 2 — igualar pressões na altura da interface.** Tome o nível da interface água–mercúrio, no ramo direito. No mesmo líquido contínuo e na mesma altura a pressão é a mesma nos dois ramos. À direita, acima desse nível, há a coluna de água; à esquerda, a coluna de mercúrio de altura $2h$:
+
+$$
+p_0 + \rho_{\text{água}}\,g\,L = p_0 + \rho_{\text{Hg}}\,g\,(2h)
+$$
+
+com $L = 11{,}2\ \mathrm{cm}$.
+
+**Passo 3 — isolar $h$.**
+
+$$
+h = \frac{\rho_{\text{água}}\,L}{2\,\rho_{\text{Hg}}} = \frac{1{,}00 \cdot 11{,}2}{2 \cdot 13{,}6} = \boxed{0{,}412\ \mathrm{cm}}
+$$
+
+**Conferência —** o desnível total entre as superfícies de mercúrio é $2h = 0{,}824\ \mathrm{cm}$, e $13{,}6 \times 0{,}824 = 11{,}2$: a coluna de mercúrio equilibra a de água ✔ Responder $0{,}824\ \mathrm{cm}$ seria dar o desnível entre os ramos, não o quanto o lado esquerdo sobe ✔
+</Passos>
