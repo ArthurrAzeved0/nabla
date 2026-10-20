@@ -1,0 +1,62 @@
+---
+origem: "Final 2024.1"
+tema: "Calorimetria · Gelo que derrete no café"
+temaId: calorimetria
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma garrafa térmica contém $130\ \mathrm{cm^3}$ de café a $80{,}0\ \mathrm{^\circ C}$. Para esfriá-lo, coloca-se um cubo de gelo de $12{,}0\ \mathrm{g}$ à temperatura de fusão ($0\ \mathrm{^\circ C}$). De quantos graus o café esfria depois que todo o gelo derrete e o equilíbrio térmico é atingido? Trate o café como água pura ($c = 4190\ \mathrm{J/(kg\cdot K)}$, $1{,}00\ \mathrm{g/cm^3}$) e despreze as trocas com o ambiente. O calor latente de fusão da água é $L_F = 333\ \mathrm{kJ/kg}$.
+
+<Gabarito>
+O café esfria $13{,}5\ \mathrm{^\circ C}$ (de $80{,}0$ para $66{,}5\ \mathrm{^\circ C}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — as massas.** O café, tratado como água, tem $m_c = 130\ \mathrm{g} = 0{,}130\ \mathrm{kg}$; o gelo, $m_g = 0{,}0120\ \mathrm{kg}$.
+
+**Passo 2 — o calor que o gelo absorve.** Primeiro ele derrete a $0\ \mathrm{^\circ C}$; depois, a água do gelo esquenta até a temperatura final $T_f$:
+
+$$
+Q_g = L_F\,m_g + m_g c\,(T_f - 0)
+$$
+
+**Passo 3 — o calor que o café cede.**
+
+$$
+Q_c = m_c c\,(80{,}0 - T_f)
+$$
+
+**Passo 4 — o balanço.** Sem trocas com o ambiente, $Q_g = Q_c$. Isolando $T_f$:
+
+$$
+T_f = \frac{m_c c\,(80{,}0) - L_F m_g}{(m_c + m_g)\,c}
+= \frac{0{,}130\cdot4190\cdot80{,}0 - 333\times10^3\cdot0{,}0120}{0{,}142\cdot4190}
+$$
+
+$$
+T_f = \frac{43\,576 - 3996}{595{,}0} = 66{,}5\ \mathrm{^\circ C}
+$$
+
+e o café esfria
+
+$$
+\Delta T = 80{,}0 - 66{,}5 = \boxed{13{,}5\ \mathrm{^\circ C}}
+$$
+
+**Conferência —** com $T_f = 66{,}5\ \mathrm{^\circ C}$, o café cede $0{,}130\cdot4190\cdot13{,}5 \approx 7{,}34\ \mathrm{kJ}$, e o gelo absorve $3{,}996 + 0{,}012\cdot4190\cdot66{,}5\cdot10^{-3} \approx 3{,}99 + 3{,}34 = 7{,}34\ \mathrm{kJ}$ ✔ A fusão sozinha consome mais da metade do calor cedido, por isso o gelo esfria tanto mais que a mesma massa de água a $0\ \mathrm{^\circ C}$.
+
+A prova escreve o calor latente como "$333\ \mathrm{kJ/g}$"; o valor da água é $333\ \mathrm{kJ/kg}$ ($333\ \mathrm{J/g}$), que é o que a resolução oficial usa.
+</Passos>
