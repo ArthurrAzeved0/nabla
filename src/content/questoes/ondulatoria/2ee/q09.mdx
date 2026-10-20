@@ -1,0 +1,57 @@
+---
+origem: "2025.1"
+tema: "Máquina de Carnot · Taxas de calor absorvido e rejeitado"
+temaId: carnot
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma máquina de Carnot entrega $500\ \mathrm{W}$ de potência operando entre duas fontes de calor a temperaturas constantes, $100\ \mathrm{^\circ C}$ e $60{,}0\ \mathrm{^\circ C}$. Com que taxa a máquina (a) **absorve** energia na forma de calor e (b) **rejeita** energia na forma de calor?
+
+<Gabarito>
+(a) $Q_Q/t \approx 4{,}66\ \mathrm{kW}$  ·  (b) $|Q_F|/t \approx 4{,}16\ \mathrm{kW}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — temperaturas em kelvin.** A eficiência de Carnot só vale com temperatura absoluta:
+
+$$
+T_Q = 100 + 273 = 373\ \mathrm{K}
+\qquad
+T_F = 60{,}0 + 273 = 333\ \mathrm{K}
+$$
+
+**Passo 2 — a eficiência de Carnot.**
+
+$$
+\varepsilon_C = 1 - \frac{T_F}{T_Q} = 1 - \frac{333}{373} = \frac{40}{373} = 0{,}1072
+$$
+
+**Passo 3 — a taxa de calor absorvido.** Como $\varepsilon = W/Q_Q$, dividindo pelo tempo a mesma relação vale entre as potências:
+
+$$
+\frac{Q_Q}{t} = \frac{P}{\varepsilon_C} = \frac{500}{0{,}1072} = 4{,}66\times10^{3}\ \mathrm{W} = 4{,}66\ \mathrm{kW}
+$$
+
+**Passo 4 — a taxa de calor rejeitado.** Num ciclo, $Q_Q = W + |Q_F|$; em potências,
+
+$$
+\frac{|Q_F|}{t} = \frac{Q_Q}{t} - P = 4{,}66 - 0{,}500 = 4{,}16\ \mathrm{kW}
+$$
+
+**Conferência —** no ciclo de Carnot $|Q_F|/Q_Q = T_F/T_Q$, então $|Q_F|/t = P\,T_F/(T_Q - T_F) = 500 \cdot 333/40 = 4{,}16\ \mathrm{kW}$ ✔ Uma máquina com fontes tão próximas tem eficiência baixa, e por isso rejeita quase nove vezes a potência que entrega.
+
+**Sobre o gabarito oficial —** ele escreve $\varepsilon = 1 - 333/273$, o que daria um número negativo; o denominador é $373\ \mathrm{K}$, e o valor $0{,}107$ que ele usa já é o de $1 - 333/373$. Arredondar a eficiência para $0{,}107$ antes de dividir leva aos $4{,}67\ \mathrm{kW}$ e $4{,}17\ \mathrm{kW}$ do gabarito; com $0{,}1072$ saem $4{,}66\ \mathrm{kW}$ e $4{,}16\ \mathrm{kW}$.
+</Passos>
