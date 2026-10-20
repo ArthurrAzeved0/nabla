@@ -61,6 +61,14 @@ unidades:
       - { id: ot-maxwell, titulo: "A distribuição de velocidades de Maxwell" }
       - { id: ot-calores-molares, titulo: "Calores específicos molares e graus de liberdade" }
       - { id: ot-adiabatica, titulo: "A expansão adiabática de um gás ideal" }
+  - nome: "Entropia e a segunda lei da termodinâmica"
+    prova: 2ee
+    secoes:
+      - { id: ot-entropia, titulo: "Processos irreversíveis e variação de entropia" }
+      - { id: ot-segunda-lei, titulo: "A segunda lei da termodinâmica" }
+      - { id: ot-maquinas, titulo: "Máquinas térmicas e o ciclo de Carnot" }
+      - { id: ot-refrigeradores, titulo: "Refrigeradores e o limite das máquinas reais" }
+      - { id: ot-entropia-estatistica, titulo: "Uma visão estatística da entropia" }
 ---
 
 {/* **************************************************************************
@@ -4682,6 +4690,525 @@ $$
 Conferindo pela outra forma: $p_i = nRT_i/V_i = 1{,}662 \times 10^{6}\ \mathrm{Pa}$, $p_f = p_i\,(1/3)^{5/3} \approx 2{,}66 \times 10^{5}\ \mathrm{Pa}$, e $\dfrac{p_iV_i - p_fV_f}{\gamma - 1}$ dá os mesmos $2589\ \mathrm{J}$.
 
 Se a mesma expansão fosse isotérmica a $400\ \mathrm{K}$, o trabalho seria $nRT\ln 3 \approx 3652\ \mathrm{J}$, maior, como a figura antecipa.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-entropia" num="39" titulo="Processos irreversíveis e variação de entropia">
+
+**A ideia.** Muita coisa na natureza só acontece num sentido: o café esfria sozinho e nunca reaquece sozinho; o gás que escapa para uma câmara vazia não volta sozinho para o canto de onde saiu. A primeira lei não proíbe o caminho de volta — a energia se conservaria nos dois sentidos. Quem decide o sentido é a **entropia**, uma grandeza do estado do sistema que, num sistema isolado, **nunca diminui**. Esta seção ensina a calculá-la; a próxima, a usá-la como lei.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $S$ — **entropia** do sistema, em $\mathrm{J/K}$;
+- $\Delta S = S_f - S_i$ — variação de entropia entre o estado inicial e o final, em $\mathrm{J/K}$;
+- $dQ$ — calor trocado num trecho infinitesimal do processo, em $\mathrm{J}$ (positivo quando o sistema **recebe**);
+- $T$ — temperatura **absoluta** do sistema durante a troca, em $\mathrm{K}$;
+- $m$ — massa, em $\mathrm{kg}$; $c$ — calor específico, em $\mathrm{J/(kg\cdot K)}$; $L$ — calor latente, em $\mathrm{J/kg}$;
+- $n$ — número de mols; $R = 8{,}314\ \mathrm{J/(mol\cdot K)}$; $C_V$ — calor específico molar a volume constante, em $\mathrm{J/(mol\cdot K)}$.
+
+</Caixa>
+
+### A definição, e o caminho que ela exige
+
+$$
+\boxed{\;\Delta S = S_f - S_i = \int_i^f \frac{dQ}{T}\;}
+$$
+
+O detalhe que separa quem acerta de quem erra: **essa integral só vale ao longo de um processo reversível**. Num processo irreversível — expansão livre, calor passando entre corpos a temperaturas diferentes — a temperatura do sistema nem é bem definida durante o processo, e a integral não tem como ser feita.
+
+A saída é que **a entropia é uma função de estado**, como a pressão, o volume e a energia interna. Ela depende só de onde o sistema está, não de como chegou lá. Então:
+
+1. identifique o estado inicial e o final do processo real;
+2. invente **qualquer** processo reversível que ligue esses mesmos dois estados;
+3. calcule $\int dQ/T$ por esse caminho inventado. O resultado vale para o processo real.
+
+<Caixa tipo="macete" rotulo="Expansão livre: Q = 0, mas a entropia sobe">
+
+Na expansão livre o gás não troca calor ($Q = 0$), não realiza trabalho e não muda de temperatura. A tentação é escrever $\Delta S = 0$ — **errado**. Como a temperatura não muda, o caminho reversível que liga os mesmos estados é uma **isotérmica**, e por ela o gás recebe calor. Resultado: $\Delta S = nR\ln(V_f/V_i) \gt 0$. O $Q = 0$ do processo real não entra em lugar nenhum.
+
+</Caixa>
+
+### Os quatro casos que resolvem quase tudo
+
+**Processo isotérmico** (incluindo um reservatório, que troca calor sem mudar de temperatura): o $T$ sai da integral.
+
+$$
+\Delta S = \frac{Q}{T}
+$$
+
+**Mudança de fase**: fusão e vaporização acontecem a temperatura constante, então é o caso isotérmico com $Q = mL$.
+
+$$
+\boxed{\;\Delta S = \frac{mL}{T}\;}
+$$
+
+Com sinal: positivo para fundir e vaporizar (o sistema recebe calor), negativo para solidificar e condensar.
+
+**Aquecimento sem mudança de fase**: aqui a temperatura varia, e $dQ = mc\,dT$.
+
+$$
+\Delta S = \int_{T_i}^{T_f} \frac{mc\,dT}{T}
+\qquad\Longrightarrow\qquad
+\boxed{\;\Delta S = mc\,\ln\frac{T_f}{T_i}\;}
+$$
+
+**Gás ideal entre dois estados quaisquer**: pela primeira lei num trecho reversível, $dQ = dE_{int} + p\,dV = nC_V\,dT + nRT\,\dfrac{dV}{V}$. Dividindo por $T$ e integrando:
+
+$$
+\boxed{\;\Delta S = nR\ln\frac{V_f}{V_i} + nC_V\ln\frac{T_f}{T_i}\;}
+$$
+
+Cada termo tem leitura própria: o primeiro é o efeito de dar mais espaço ao gás; o segundo, o de aquecê-lo. Numa isotérmica sobra só o primeiro; numa isocórica, só o segundo; numa **adiabática reversível** os dois se cancelam e $\Delta S = 0$ — por isso ela também se chama **isentrópica**.
+
+<Caixa tipo="dica" rotulo="As duas armadilhas de conta">
+
+1. **Temperatura sempre em kelvin.** Num $\ln(T_f/T_i)$ com graus Celsius, a razão sai completamente errada — e, em $mL/T$, pôr $T = 0$ para o gelo daria divisão por zero;
+2. **$\ln$ de razão dispensa conversão de unidade** — $V_f/V_i$ pode estar em litros, $T_f/T_i$ não pode estar em Celsius (porque Celsius não é proporcional a kelvin, só deslocado).
+
+</Caixa>
+
+### Dois blocos em contato até o equilíbrio
+
+É a questão de entropia que mais cai. Dois corpos, um quente e um frio, isolados do resto, trocam calor até a mesma temperatura $T_f$. O roteiro:
+
+1. **calorimetria primeiro**: $\sum m c\,(T_f - T_i) = 0$ dá o $T_f$. Para dois blocos iguais, é a média;
+2. **cada bloco separado**, com $\Delta S = mc\ln(T_f/T_i)$ — o quente dá negativo, o frio dá positivo;
+3. **soma**: $\Delta S_{total} \gt 0$, sempre.
+
+Por que a soma é positiva, se o calor que um perde é o que o outro ganha? Porque o mesmo calor é dividido por temperaturas diferentes: o corpo frio recebe o calor a uma temperatura **menor**, então o $Q/T$ dele pesa mais. O ganho do frio supera a perda do quente.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — dois blocos de cobre">
+
+Dois blocos de cobre de $1{,}0\ \mathrm{kg}$ cada ($c = 386\ \mathrm{J/(kg\cdot K)}$), um a $80\ ^\circ\mathrm{C}$ e outro a $20\ ^\circ\mathrm{C}$, são postos em contato numa caixa isolada.
+
+Massas e calores específicos iguais: o equilíbrio é a média, $50\ ^\circ\mathrm{C}$. Em kelvin: $T_Q = 353{,}15\ \mathrm{K}$, $T_F = 293{,}15\ \mathrm{K}$, $T_f = 323{,}15\ \mathrm{K}$.
+
+$$
+\Delta S_Q = 1{,}0 \times 386 \times \ln\frac{323{,}15}{353{,}15} \approx -34{,}3\ \mathrm{J/K}
+$$
+
+$$
+\Delta S_F = 1{,}0 \times 386 \times \ln\frac{323{,}15}{293{,}15} \approx +37{,}6\ \mathrm{J/K}
+$$
+
+$$
+\Delta S_{total} \approx +3{,}3\ \mathrm{J/K}
+$$
+
+Positivo, como tinha de ser. O processo ao contrário — os blocos se separando sozinhos em $80$ e $20\ ^\circ\mathrm{C}$ — teria $\Delta S = -3{,}3\ \mathrm{J/K}$, e é isso que o proíbe.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-segunda-lei" num="40" titulo="A segunda lei da termodinâmica">
+
+**A ideia.** A seção anterior mostrou que, nos exemplos irreversíveis, a entropia total sempre sobe. A segunda lei transforma essa observação em princípio: **num sistema fechado, a entropia nunca diminui**. É ela que dá uma direção ao tempo — a "seta do tempo" — e é dela que sai o limite de toda máquina térmica e de todo refrigerador das próximas seções.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\Delta S$ — variação de entropia de um **sistema fechado** (tudo o que troca calor ou trabalho entra na conta), em $\mathrm{J/K}$;
+- $\Delta S_{sis}$, $\Delta S_{viz}$ — variações do sistema estudado e da vizinhança (reservatórios, ambiente), em $\mathrm{J/K}$;
+- $|Q|$ — módulo de um calor trocado, em $\mathrm{J}$;
+- $T_Q$, $T_F$ — temperaturas da fonte quente e da fonte fria, em $\mathrm{K}$.
+
+</Caixa>
+
+### O enunciado
+
+$$
+\boxed{\;\Delta S \geq 0 \qquad \text{(sistema fechado)}\;}
+$$
+
+- **igual a zero** se todos os processos forem **reversíveis**;
+- **maior que zero** se houver qualquer processo **irreversível** — o que, no mundo real, é sempre.
+
+<Caixa tipo="macete" rotulo="A entropia de uma parte pode cair">
+
+A segunda lei fala do sistema **fechado inteiro**. A entropia de uma **parte** pode diminuir à vontade: a água que congela no freezer perde entropia, o gás comprimido isotermicamente também. O que a lei garante é que, em outro lugar (o ar da cozinha, o reservatório), a entropia sobe **pelo menos** o mesmo tanto.
+
+Na prova, quando um sistema dá $\Delta S \lt 0$, não é erro: é sinal de que falta somar a vizinhança.
+
+</Caixa>
+
+### Calor do quente para o frio, e nunca o contrário
+
+O caso mais simples mostra o mecanismo. Um calor $|Q|$ passa de um reservatório a $T_Q$ para outro a $T_F$. Cada reservatório troca calor a temperatura constante:
+
+$$
+\Delta S = -\frac{|Q|}{T_Q} + \frac{|Q|}{T_F} = |Q|\left(\frac{1}{T_F} - \frac{1}{T_Q}\right)
+$$
+
+Com $T_Q \gt T_F$, isso é **positivo**: o fluxo é permitido. Invertido o sentido, o sinal troca e a segunda lei o proíbe. É a formulação de **Clausius**, que se lê assim: calor não passa sozinho de um corpo frio para um corpo quente.
+
+### As três formas da mesma lei
+
+| forma | o que proíbe |
+| --- | --- |
+| entropia: $\Delta S \geq 0$ | qualquer processo que diminua a entropia de um sistema fechado |
+| Kelvin–Planck | uma máquina que transforme **todo** o calor de uma fonte em trabalho |
+| Clausius | um refrigerador que leve calor do frio ao quente **sem gastar trabalho** |
+
+As três são equivalentes: violar uma permite construir um aparelho que viola as outras. As duas últimas aparecem com conta nas seções de máquinas e refrigeradores.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — calor vazando por uma parede">
+
+Em certo intervalo de tempo, $1200\ \mathrm{J}$ atravessam uma barra que liga um reservatório a $400\ \mathrm{K}$ a outro a $300\ \mathrm{K}$. O estado da barra não muda, então só os reservatórios contam:
+
+$$
+\Delta S = -\frac{1200}{400} + \frac{1200}{300} = -3{,}0 + 4{,}0 = +1{,}0\ \mathrm{J/K}
+$$
+
+A fonte quente perde $3\ \mathrm{J/K}$, a fria ganha $4\ \mathrm{J/K}$, e o saldo é positivo. Se o enunciado dissesse que o calor foi do reservatório de $300\ \mathrm{K}$ para o de $400\ \mathrm{K}$ sem nada mais acontecer, o saldo seria $-1{,}0\ \mathrm{J/K}$ — e o processo, impossível.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-maquinas" num="41" titulo="Máquinas térmicas e o ciclo de Carnot">
+
+**A ideia.** Uma **máquina térmica** é um aparelho que tira calor de uma fonte quente, transforma parte dele em trabalho e joga o resto numa fonte fria — repetindo um **ciclo**, para poder funcionar indefinidamente. Motor de carro, turbina de usina e locomotiva a vapor são todos isso. A pergunta da seção é quanto do calor vira trabalho, e a resposta da segunda lei é: **nunca tudo**, e no máximo o que uma máquina ideal, a de **Carnot**, consegue.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $|Q_Q|$ — calor **recebido** da fonte quente por ciclo, em $\mathrm{J}$;
+- $|Q_F|$ — calor **cedido** à fonte fria por ciclo, em $\mathrm{J}$;
+- $|W|$ — trabalho líquido realizado pela máquina por ciclo, em $\mathrm{J}$;
+- $\varepsilon$ — **eficiência** (ou rendimento) térmica, adimensional, entre $0$ e $1$;
+- $T_Q$, $T_F$ — temperaturas das fontes quente e fria, em $\mathrm{K}$;
+- $\varepsilon_C$ — eficiência da máquina de Carnot entre essas temperaturas.
+
+</Caixa>
+
+### O balanço de um ciclo
+
+Ao fim de um ciclo a substância de trabalho volta ao estado inicial, então $\Delta E_{int} = 0$ e a primeira lei fica:
+
+$$
+|W| = |Q_Q| - |Q_F|
+$$
+
+A **eficiência** é o que se ganha (trabalho) sobre o que se paga (calor da fonte quente — o combustível):
+
+$$
+\boxed{\;\varepsilon = \frac{|W|}{|Q_Q|} = 1 - \frac{|Q_F|}{|Q_Q|}\;}
+$$
+
+<Caixa tipo="dica" rotulo="Taxas: a mesma conta, em watts">
+
+Divida tudo pelo tempo de um ciclo e as energias viram **potências**: $P = \varepsilon\,\dot Q_Q$ e $\dot Q_F = \dot Q_Q - P$, todas em $\mathrm{W}$. Quando a prova pede "a taxa com que a máquina recebe calor", é $\dot Q_Q$ em $\mathrm{J/s}$ — as fórmulas não mudam.
+
+</Caixa>
+
+### O ciclo de Carnot
+
+A máquina ideal opera num ciclo com **dois processos isotérmicos e dois adiabáticos**, todos reversíveis:
+
+- $a \to b$: **expansão isotérmica** a $T_Q$ — o gás recebe $|Q_Q|$ da fonte quente;
+- $b \to c$: **expansão adiabática** — o gás esfria de $T_Q$ até $T_F$ sem trocar calor;
+- $c \to d$: **compressão isotérmica** a $T_F$ — o gás cede $|Q_F|$ à fonte fria;
+- $d \to a$: **compressão adiabática** — o gás volta a $T_Q$.
+
+<Figura>
+  <svg viewBox="0 0 420 262" role="img" aria-label="Diagrama p-V do ciclo de Carnot: expansão isotérmica de a a b na temperatura quente, expansão adiabática de b a c, compressão isotérmica de c a d na temperatura fria e compressão adiabática de d de volta a a; a área interna é o trabalho">
+    {/* eixos */}
+    <line x1="60" y1="240" x2="400" y2="240" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="60" y1="240" x2="60" y2="20" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <polygon points="400,240 392,236 392,244" fill="var(--ink-3)"/>
+    <polygon points="60,20 56,28 64,28" fill="var(--ink-3)"/>
+    <text x="388" y="256" font-size="12" font-style="italic" fill="var(--ink-2)">V</text>
+    <text x="42" y="30" font-size="12" font-style="italic" fill="var(--ink-2)">p</text>
+    {/* área do trabalho */}
+    <polygon points="100.0,45.0 106.7,58.1 113.3,69.3 120.0,79.0 126.7,87.5 133.3,95.0 140.0,101.7 146.7,107.6 153.3,113.0 160.0,117.9 166.7,122.3 173.3,126.3 180.0,130.0 195.4,142.0 210.7,151.6 226.1,159.2 241.4,165.5 256.8,170.8 272.1,175.2 287.5,178.9 302.8,182.1 318.2,184.9 333.6,187.3 348.9,189.4 364.3,191.3 349.9,190.3 335.6,189.1 321.2,187.9 306.9,186.6 292.5,185.1 278.2,183.4 263.9,181.5 249.5,179.4 235.2,177.1 220.8,174.4 206.5,171.2 192.1,167.6 184.5,163.8 176.8,159.6 169.1,154.8 161.4,149.2 153.7,142.8 146.1,135.3 138.4,126.5 130.7,116.1 123.0,103.5 115.4,88.1 107.7,69.1" fill="var(--accent)" opacity="0.15"/>
+    {/* isotérmica quente a-b */}
+    <polyline points="100.0,45.0 106.7,58.1 113.3,69.3 120.0,79.0 126.7,87.5 133.3,95.0 140.0,101.7 146.7,107.6 153.3,113.0 160.0,117.9 166.7,122.3 173.3,126.3 180.0,130.0" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    {/* adiabática b-c */}
+    <polyline points="180.0,130.0 195.4,142.0 210.7,151.6 226.1,159.2 241.4,165.5 256.8,170.8 272.1,175.2 287.5,178.9 302.8,182.1 318.2,184.9 333.6,187.3 348.9,189.4 364.3,191.3" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    {/* isotérmica fria c-d */}
+    <polyline points="364.3,191.3 349.9,190.3 335.6,189.1 321.2,187.9 306.9,186.6 292.5,185.1 278.2,183.4 263.9,181.5 249.5,179.4 235.2,177.1 220.8,174.4 206.5,171.2 192.1,167.6" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    {/* adiabática d-a */}
+    <polyline points="192.1,167.6 184.5,163.8 176.8,159.6 169.1,154.8 161.4,149.2 153.7,142.8 146.1,135.3 138.4,126.5 130.7,116.1 123.0,103.5 115.4,88.1 107.7,69.1 100.0,45.0" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    {/* pontos */}
+    <circle cx="100" cy="45" r="3" fill="var(--ink-2)"/>
+    <circle cx="180" cy="130" r="3" fill="var(--ink-2)"/>
+    <circle cx="364.3" cy="191.3" r="3" fill="var(--ink-2)"/>
+    <circle cx="192.1" cy="167.6" r="3" fill="var(--ink-2)"/>
+    <text x="86" y="44" font-size="12" fill="var(--ink-2)">a</text>
+    <text x="186" y="126" font-size="12" fill="var(--ink-2)">b</text>
+    <text x="370" y="190" font-size="12" fill="var(--ink-2)">c</text>
+    <text x="180" y="182" font-size="12" fill="var(--ink-2)">d</text>
+    {/* calores */}
+    <line x1="175" y1="70" x2="148" y2="96" stroke="var(--warn)" stroke-width="1.4"/>
+    <polygon points="144,100 147,91 153,97" fill="var(--warn)"/>
+    <text x="178" y="66" font-size="12" fill="var(--warn)">|Q<tspan baseline-shift="sub" font-size="9">Q</tspan>| entra, a T<tspan baseline-shift="sub" font-size="9">Q</tspan></text>
+    <line x1="280" y1="186" x2="290" y2="208" stroke="var(--accent)" stroke-width="1.4"/>
+    <polygon points="293,215 285,209 293,205" fill="var(--accent)"/>
+    <text x="298" y="226" font-size="12" fill="var(--accent)">|Q<tspan baseline-shift="sub" font-size="9">F</tspan>| sai, a T<tspan baseline-shift="sub" font-size="9">F</tspan></text>
+    <text x="196" y="160" font-size="11" fill="var(--ink-3)">W</text>
+  </svg>
+  <figcaption>
+
+O ciclo de Carnot no plano $p$–$V$, percorrido no sentido horário. As isotérmicas (laranja e azul) são onde há troca de calor; as adiabáticas (cinza), onde a temperatura muda sem calor. **A área interna é o trabalho líquido por ciclo.**
+
+  </figcaption>
+</Figura>
+
+### A eficiência de Carnot
+
+O ciclo é reversível, então a entropia do gás volta ao valor inicial: o que ele ganha na isotérmica quente é o que perde na fria.
+
+$$
+\frac{|Q_Q|}{T_Q} = \frac{|Q_F|}{T_F}
+\qquad\Longrightarrow\qquad
+\frac{|Q_F|}{|Q_Q|} = \frac{T_F}{T_Q}
+$$
+
+Levando à definição de eficiência:
+
+$$
+\boxed{\;\varepsilon_C = 1 - \frac{T_F}{T_Q}\;}
+$$
+
+Ela depende **só das temperaturas** das fontes — nem do gás, nem do tamanho da máquina. E nunca chega a $1$: seria preciso $T_F = 0\ \mathrm{K}$ ou $T_Q$ infinita. É a forma de Kelvin–Planck da segunda lei: não existe máquina térmica perfeita.
+
+<Caixa tipo="macete" rotulo="Rendimento de um ciclo qualquer × Carnot">
+
+A prova dá um ciclo $p$–$V$ (isobáricas, isocóricas, adiabáticas) e pede para comparar com Carnot. O roteiro:
+
+1. calcule $Q$ em **cada** trecho; some só os **positivos** — isso é $|Q_Q|$ (não é o calor líquido!);
+2. $|W|$ é a soma dos trabalhos, ou a área do ciclo; então $\varepsilon = |W|/|Q_Q|$;
+3. para Carnot, use as temperaturas **extremas** do ciclo: a maior como $T_Q$, a menor como $T_F$ — que, num ciclo qualquer, costumam ser vértices diferentes, achados por $T = pV/(nR)$.
+
+O ciclo real sempre dá **menos** que esse Carnot. Se a sua conta der mais, há erro — em geral, usar o calor líquido no denominador.
+
+</Caixa>
+
+### O ciclo de Stirling, de passagem
+
+O ciclo de Stirling troca as duas adiabáticas de Carnot por **duas isocóricas**. Nelas também há troca de calor, e em temperaturas intermediárias entre $T_Q$ e $T_F$. Com as mesmas fontes, a máquina de Stirling ideal recebe mais calor por ciclo para o mesmo trabalho, e sua eficiência fica **abaixo** da de Carnot. É um exemplo concreto da regra do macete.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — temperaturas a partir da eficiência">
+
+Uma máquina de Carnot tem eficiência de $25\%$, e a diferença entre as temperaturas das fontes é $100\ \mathrm{K}$. Ela entrega $500\ \mathrm{W}$. Quais são as temperaturas e as taxas de calor?
+
+Da eficiência, $\varepsilon_C = (T_Q - T_F)/T_Q = \Delta T / T_Q$:
+
+$$
+T_Q = \frac{\Delta T}{\varepsilon_C} = \frac{100}{0{,}25} = 400\ \mathrm{K}
+\qquad
+T_F = 400 - 100 = 300\ \mathrm{K}
+$$
+
+As taxas, pela definição de eficiência e pelo balanço:
+
+$$
+\dot Q_Q = \frac{P}{\varepsilon} = \frac{500}{0{,}25} = 2000\ \mathrm{W}
+\qquad
+\dot Q_F = 2000 - 500 = 1500\ \mathrm{W}
+$$
+
+Três quartos do calor que entra vão para a fonte fria. A escrita $\varepsilon_C = \Delta T/T_Q$ é o atalho deste tipo de questão.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-refrigeradores" num="42" titulo="Refrigeradores e o limite das máquinas reais">
+
+**A ideia.** Um **refrigerador** é uma máquina térmica rodando ao contrário: gasta trabalho para tirar calor de um lugar frio e jogá-lo num lugar quente. Geladeira, ar-condicionado e bomba de calor fazem isso. A segunda lei, na forma de Clausius, diz que esse trabalho **não pode ser zero** — e, junto com a entropia, dá o argumento de por que nenhuma máquina real supera a de Carnot.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $|Q_F|$ — calor **retirado** da fonte fria (o interior da geladeira) por ciclo, em $\mathrm{J}$;
+- $|Q_Q|$ — calor **entregue** à fonte quente (a cozinha) por ciclo, em $\mathrm{J}$;
+- $|W|$ — trabalho **consumido** por ciclo (o motor do compressor), em $\mathrm{J}$;
+- $K$ — **coeficiente de desempenho**, adimensional, pode ser maior que $1$;
+- $K_C$ — coeficiente de desempenho do refrigerador de Carnot;
+- $T_Q$, $T_F$ — temperaturas das fontes, em $\mathrm{K}$.
+
+</Caixa>
+
+<Figura>
+  <svg viewBox="0 0 440 250" role="img" aria-label="À esquerda, a máquina térmica: o calor desce da fonte quente para a máquina, parte sai como trabalho e o resto desce para a fonte fria. À direita, o refrigerador: o trabalho entra, o calor sobe da fonte fria e o total é entregue à fonte quente">
+    {/* ---------- máquina térmica ---------- */}
+    <rect x="30" y="15" width="160" height="34" rx="4" fill="var(--warn)" opacity="0.25" stroke="var(--warn)"/>
+    <text x="72" y="37" font-size="12" fill="var(--ink-2)">fonte quente, T<tspan baseline-shift="sub" font-size="9">Q</tspan></text>
+    <rect x="30" y="196" width="160" height="34" rx="4" fill="var(--accent)" opacity="0.25" stroke="var(--accent)"/>
+    <text x="78" y="218" font-size="12" fill="var(--ink-2)">fonte fria, T<tspan baseline-shift="sub" font-size="9">F</tspan></text>
+    <circle cx="110" cy="122" r="26" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <text x="96" y="126" font-size="11" fill="var(--ink-2)">máq.</text>
+    <line x1="110" y1="50" x2="110" y2="88" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="110,96 105,86 115,86" fill="var(--warn)"/>
+    <text x="118" y="76" font-size="12" fill="var(--warn)">|Q<tspan baseline-shift="sub" font-size="9">Q</tspan>|</text>
+    <line x1="110" y1="148" x2="110" y2="186" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="110,194 105,184 115,184" fill="var(--accent)"/>
+    <text x="118" y="176" font-size="12" fill="var(--accent)">|Q<tspan baseline-shift="sub" font-size="9">F</tspan>|</text>
+    <line x1="136" y1="122" x2="176" y2="122" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="184,122 174,117 174,127" fill="var(--ok)"/>
+    <text x="160" y="112" font-size="12" fill="var(--ok)">|W|</text>
+    <text x="52" y="246" font-size="11" fill="var(--ink-3)">máquina: produz trabalho</text>
+    {/* ---------- refrigerador ---------- */}
+    <rect x="250" y="15" width="160" height="34" rx="4" fill="var(--warn)" opacity="0.25" stroke="var(--warn)"/>
+    <text x="292" y="37" font-size="12" fill="var(--ink-2)">fonte quente, T<tspan baseline-shift="sub" font-size="9">Q</tspan></text>
+    <rect x="250" y="196" width="160" height="34" rx="4" fill="var(--accent)" opacity="0.25" stroke="var(--accent)"/>
+    <text x="298" y="218" font-size="12" fill="var(--ink-2)">fonte fria, T<tspan baseline-shift="sub" font-size="9">F</tspan></text>
+    <circle cx="330" cy="122" r="26" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.5"/>
+    <text x="317" y="126" font-size="11" fill="var(--ink-2)">refr.</text>
+    <line x1="330" y1="96" x2="330" y2="58" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="330,50 325,60 335,60" fill="var(--warn)"/>
+    <text x="338" y="76" font-size="12" fill="var(--warn)">|Q<tspan baseline-shift="sub" font-size="9">Q</tspan>|</text>
+    <line x1="330" y1="194" x2="330" y2="156" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="330,148 325,158 335,158" fill="var(--accent)"/>
+    <text x="338" y="176" font-size="12" fill="var(--accent)">|Q<tspan baseline-shift="sub" font-size="9">F</tspan>|</text>
+    <line x1="398" y1="122" x2="364" y2="122" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="356,122 366,117 366,127" fill="var(--ok)"/>
+    <text x="378" y="112" font-size="12" fill="var(--ok)">|W|</text>
+    <text x="268" y="246" font-size="11" fill="var(--ink-3)">refrigerador: consome trabalho</text>
+  </svg>
+  <figcaption>
+
+O mesmo esquema com as setas invertidas. Na máquina, $|Q_Q| = |W| + |Q_F|$; no refrigerador, $|Q_Q| = |W| + |Q_F|$ também — só que agora é a fonte quente que **recebe** a soma.
+
+  </figcaption>
+</Figura>
+
+### O coeficiente de desempenho
+
+No refrigerador, o que se quer é **tirar calor do frio**, e o que se paga é o **trabalho**:
+
+$$
+\boxed{\;K = \frac{|Q_F|}{|W|} = \frac{|Q_F|}{|Q_Q| - |Q_F|}\;}
+$$
+
+Repare que o denominador é o trabalho, não o calor: por isso $K$ **pode ser maior que $1$** — e uma geladeira doméstica tem $K$ por volta de $5$. Não é energia de graça; o refrigerador não *produz* $|Q_F|$, só o *transporta*.
+
+### O refrigerador de Carnot
+
+Rodando o ciclo de Carnot ao contrário, vale a mesma relação $|Q_F|/|Q_Q| = T_F/T_Q$, e então
+
+$$
+\boxed{\;K_C = \frac{T_F}{T_Q - T_F}\;}
+$$
+
+Quanto **mais próximas** as temperaturas, maior o $K_C$: é fácil bombear calor através de uma diferença pequena. Um ar-condicionado trabalha melhor num dia ameno do que num dia de $40\ ^\circ\mathrm{C}$.
+
+<Caixa tipo="macete" rotulo="O refrigerador perfeito não existe">
+
+$K \to \infty$ seria tirar calor do frio com $|W| = 0$. A entropia diz por que não dá: num ciclo, o fluido de trabalho volta ao estado inicial, e as fontes variam $-|Q|/T_F$ e $+|Q|/T_Q$. Como $T_F \lt T_Q$, a soma é **negativa** — proibido. Essa é a forma de **Clausius**: sem trabalho, o calor não sobe do frio para o quente.
+
+</Caixa>
+
+### Por que nenhuma máquina supera Carnot
+
+O argumento mais direto usa a entropia. Num ciclo de qualquer máquina, o fluido de trabalho volta ao estado inicial ($\Delta S_{fluido} = 0$); sobram as fontes, que trocam calor a temperatura constante. A segunda lei exige
+
+$$
+\Delta S = -\frac{|Q_Q|}{T_Q} + \frac{|Q_F|}{T_F} \geq 0
+\qquad\Longrightarrow\qquad
+\frac{|Q_F|}{|Q_Q|} \geq \frac{T_F}{T_Q}
+$$
+
+e portanto
+
+$$
+\varepsilon = 1 - \frac{|Q_F|}{|Q_Q|} \;\leq\; 1 - \frac{T_F}{T_Q} = \varepsilon_C
+$$
+
+A igualdade só vale para a máquina reversível — a de Carnot. Toda máquina real tem atrito, turbulência e calor trocado com diferença finita de temperatura, gera entropia, e fica **abaixo**.
+
+O livro também conta a versão por absurdo: se existisse uma máquina $X$ com $\varepsilon_X \gt \varepsilon_C$, bastaria acoplá-la a um refrigerador de Carnot, usando o trabalho de uma para mover o outro. O conjunto tiraria calor da fonte fria e o entregaria à quente **sem trabalho externo** — um refrigerador perfeito, que acabamos de ver que não existe.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o motor mínimo de um freezer">
+
+Um freezer mantém o interior a $-3\ ^\circ\mathrm{C}$ numa cozinha a $27\ ^\circ\mathrm{C}$ e precisa retirar $900\ \mathrm{W}$ de calor. Qual a menor potência do motor?
+
+A menor potência é a do refrigerador de Carnot, com $T_F = 270\ \mathrm{K}$ e $T_Q = 300\ \mathrm{K}$:
+
+$$
+K_C = \frac{270}{300 - 270} = 9{,}0
+$$
+
+$$
+P_{min} = \frac{\dot Q_F}{K_C} = \frac{900}{9{,}0} = 100\ \mathrm{W}
+\qquad
+\dot Q_Q = 900 + 100 = 1000\ \mathrm{W}
+$$
+
+A cozinha recebe $1000\ \mathrm{W}$ — **mais** do que o freezer retira. É por isso que deixar a porta da geladeira aberta esquenta a cozinha em vez de esfriá-la.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-entropia-estatistica" num="43" titulo="Uma visão estatística da entropia">
+
+**A ideia.** Até aqui a entropia foi calor dividido por temperatura — uma definição macroscópica. Boltzmann mostrou que ela também **conta** alguma coisa: o número de jeitos microscópicos de as moléculas realizarem o mesmo estado que a gente mede. Estados com mais jeitos são mais prováveis, e "a entropia aumenta" passa a significar simplesmente "o sistema vai para o estado mais provável".
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $N$ — número total de moléculas;
+- $n_1$, $n_2$ — quantas moléculas estão em cada metade da caixa ($n_1 + n_2 = N$);
+- $W$ — **multiplicidade**: quantos microestados realizam a mesma configuração, adimensional;
+- $k = 1{,}38 \times 10^{-23}\ \mathrm{J/K}$ — constante de Boltzmann;
+- $S$ — entropia, em $\mathrm{J/K}$.
+
+</Caixa>
+
+### Configurações e microestados
+
+Ponha $N$ moléculas numa caixa dividida em duas metades iguais. Uma **configuração** diz só **quantas** moléculas estão de cada lado — "3 à esquerda, 1 à direita". Um **microestado** diz **quais** — "a molécula A está à direita, as outras à esquerda".
+
+Configurações diferentes têm números diferentes de microestados. A multiplicidade de uma configuração é
+
+$$
+\boxed{\;W = \frac{N!}{n_1!\;n_2!}\;}
+$$
+
+Com $N = 4$: a configuração $(4, 0)$ tem $W = 1$; a $(3, 1)$ tem $W = 4$; a $(2, 2)$ tem $W = 6$. São $16$ microestados ao todo, e — a **hipótese básica** da mecânica estatística — todos são igualmente prováveis. Logo a configuração meio a meio aparece $6$ vezes em $16$, e "todas de um lado" só $1$ vez em $16$.
+
+<Caixa tipo="dica" rotulo="O que acontece quando N é grande">
+
+Com $4$ moléculas, achar todas num lado é raro mas acontece. Com $N$ da ordem de $10^{23}$, a configuração meio a meio e suas vizinhas concentram praticamente **todos** os microestados, e a chance de o gás se juntar num canto sozinho é tão pequena que nunca vai ser observada. É por isso que a expansão livre é irreversível: voltar não é proibido por nenhuma lei de força, é só absurdamente improvável.
+
+</Caixa>
+
+### A equação de Boltzmann
+
+$$
+\boxed{\;S = k\ln W\;}
+$$
+
+O logaritmo é o que torna a entropia **aditiva**: juntando dois sistemas, as multiplicidades se **multiplicam** e as entropias se **somam**. E a configuração de maior $W$ é, ao mesmo tempo, a mais provável e a de maior entropia — as duas afirmações viram uma só.
+
+Para $N$ grande, os fatoriais se calculam pela **aproximação de Stirling**:
+
+$$
+\ln N! \approx N\ln N - N
+$$
+
+<Caixa tipo="macete" rotulo="As duas definições dão o mesmo número">
+
+Na expansão livre de $V$ para $2V$, cada molécula passa a ter o dobro de lugares, então $W$ fica multiplicado por $2^N$ e $\Delta S = k\ln 2^N = Nk\ln 2$. A conta termodinâmica da seção de entropia dava $nR\ln 2$. Como $Nk = nR$, **é o mesmo resultado** — a visão estatística não é outra teoria, é a explicação da mesma grandeza.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — seis moléculas numa caixa">
+
+Seis moléculas começam todas na metade esquerda e se espalham até a configuração $(3, 3)$. Qual a variação de entropia?
+
+$$
+W_i = \frac{6!}{6!\;0!} = 1
+\qquad
+W_f = \frac{6!}{3!\;3!} = \frac{720}{36} = 20
+$$
+
+$$
+\Delta S = k\ln W_f - k\ln W_i = 1{,}38 \times 10^{-23} \times \ln 20 \approx 4{,}14 \times 10^{-23}\ \mathrm{J/K}
+$$
+
+Minúscula, porque são só seis moléculas. Num mol, o mesmo raciocínio dá $R\ln 2 \approx 5{,}76\ \mathrm{J/K}$ — e aí a seta do tempo fica impossível de ignorar.
 
 </Caixa>
 
