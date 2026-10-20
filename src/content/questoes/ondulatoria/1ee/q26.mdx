@@ -1,0 +1,66 @@
+---
+origem: "2025.2"
+tema: "MHS · Aceleração máxima, energia e força"
+temaId: mhs
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma partícula de massa $10\ \mathrm{g}$ executa um movimento harmônico simples de amplitude $2{,}0\ \mathrm{mm}$. O módulo da aceleração máxima é $8{,}0\times10^3\ \mathrm{m/s^2}$, e a constante de fase $\phi$ não é conhecida.
+
+(a) Qual é o período do movimento?<br />
+(b) Qual é a velocidade máxima da partícula?<br />
+(c) Qual é a energia mecânica total do oscilador?<br />
+Qual é o módulo da força sobre a partícula quando (d) o deslocamento é máximo e (e) o deslocamento é metade do máximo?
+
+<Gabarito>
+(a) $T \approx 3{,}1\times10^{-3}\ \mathrm{s}$  ·  (b) $v_m = 4{,}0\ \mathrm{m/s}$  ·  (c) $E = 0{,}080\ \mathrm{J}$  ·  (d) $F = 80\ \mathrm{N}$  ·  (e) $F = 40\ \mathrm{N}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a frequência angular pela aceleração máxima.** No MHS $x = x_m\cos(\omega t + \phi)$, a aceleração é $a = -\omega^2 x$, e o seu módulo máximo é $a_m = \omega^2 x_m$. A fase $\phi$ não entra em nenhum item:
+
+$$
+\omega = \sqrt{\frac{a_m}{x_m}} = \sqrt{\frac{8{,}0\times10^3}{2{,}0\times10^{-3}}} = 2{,}0\times10^3\ \mathrm{rad/s}
+$$
+
+**Passo 2 — (a) o período.**
+
+$$
+T = \frac{2\pi}{\omega} = \frac{2\pi}{2000} = 3{,}14\times10^{-3}\ \mathrm{s} \approx \boxed{3{,}1\times10^{-3}\ \mathrm{s}}
+$$
+
+**Passo 3 — (b) a velocidade máxima.** A velocidade é máxima na posição de equilíbrio e vale $\omega x_m$:
+
+$$
+v_m = \omega x_m = 2000\cdot 2{,}0\times10^{-3} = \boxed{4{,}0\ \mathrm{m/s}}
+$$
+
+**Passo 4 — (c) a energia total.** A constante elástica equivalente é $k = m\omega^2 = 0{,}010\cdot(2000)^2 = 4{,}0\times10^4\ \mathrm{N/m}$, e a energia total é a potencial no extremo:
+
+$$
+E = \tfrac12 k x_m^2 = \tfrac12\cdot 4{,}0\times10^4\cdot(2{,}0\times10^{-3})^2 = \boxed{0{,}080\ \mathrm{J}}
+$$
+
+**Passo 5 — (d) e (e) a força.** A força restauradora tem módulo $F = k|x|$. No extremo, $|x| = x_m$; na metade, $|x| = x_m/2$:
+
+$$
+F_{\max} = k x_m = 4{,}0\times10^4\cdot 2{,}0\times10^{-3} = \boxed{80\ \mathrm{N}}
+\qquad
+F_{1/2} = k\,\frac{x_m}{2} = \boxed{40\ \mathrm{N}}
+$$
+
+**Conferência —** a energia pela cinética no equilíbrio: $\tfrac12 m v_m^2 = \tfrac12\cdot 0{,}010\cdot 4{,}0^2 = 0{,}080\ \mathrm{J}$, a mesma do Passo 4 ✔ E a força máxima pela segunda lei: $m a_m = 0{,}010\cdot 8{,}0\times10^3 = 80\ \mathrm{N}$ ✔
+</Passos>
