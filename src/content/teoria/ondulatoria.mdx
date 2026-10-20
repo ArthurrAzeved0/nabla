@@ -16,6 +16,15 @@ unidades:
       - { id: ot-energia-grav, titulo: "Energia potencial gravitacional e velocidade de escape" }
       - { id: ot-kepler, titulo: "As leis de Kepler" }
       - { id: ot-orbitas, titulo: "Satélites: órbitas, energia e a órbita geoestacionária" }
+  - nome: "Fluidos"
+    prova: 1ee
+    secoes:
+      - { id: ot-pressao, titulo: "Massa específica e pressão" }
+      - { id: ot-stevin, titulo: "Fluidos em repouso: lei de Stevin, barômetro e manômetro" }
+      - { id: ot-pascal, titulo: "O princípio de Pascal" }
+      - { id: ot-arquimedes, titulo: "O princípio de Arquimedes: empuxo, flutuação e peso aparente" }
+      - { id: ot-continuidade, titulo: "Fluidos ideais em movimento e a equação da continuidade" }
+      - { id: ot-bernoulli, titulo: "A equação de Bernoulli e suas aplicações" }
 ---
 
 {/* **************************************************************************
@@ -1080,6 +1089,811 @@ $$
 $$
 
 Quase toda essa energia vai para **subir** — a energia de movimento na órbita é menos de um décimo dela.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-pressao" num="09" titulo="Massa específica e pressão">
+
+**A ideia.** Um fluido não tem forma própria: escoa e ocupa o recipiente. Por isso não faz sentido falar da massa ou da força "do corpo" como na mecânica de partículas — o que descreve um fluido são grandezas **por unidade**: massa por unidade de volume (a **massa específica**) e força por unidade de área (a **pressão**). Todo o capítulo é escrito com essas duas, e quem entende bem a pressão como grandeza escalar já resolve metade das questões de fluidos.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\rho = \dfrac{\Delta m}{\Delta V}$ — **massa específica**, em $\mathrm{kg/m^3}$; para fluido homogêneo, simplesmente $\rho = m/V$;
+- $p = \dfrac{\Delta F}{\Delta A}$ — **pressão**, em $\mathrm{Pa} = \mathrm{N/m^2}$: módulo da força **normal** por unidade de área;
+- $\Delta F$ — módulo da força que o fluido faz sobre a área $\Delta A$, em $\mathrm{N}$;
+- $p_0$ — pressão atmosférica ao nível do mar, $\approx 1{,}01 \times 10^{5}\ \mathrm{Pa}$.
+
+</Caixa>
+
+### Massa específica
+
+Pegue um elemento de volume $\Delta V$ pequeno do fluido, meça a massa $\Delta m$ dentro dele e divida. Se o fluido é homogêneo, a razão é a mesma em qualquer ponto e vale $\rho = m/V$. Valores que convém ter de cabeça:
+
+- água: $1{,}00 \times 10^{3}\ \mathrm{kg/m^3}$ (ou $1\ \mathrm{g/cm^3}$);
+- água do mar: $\approx 1{,}03 \times 10^{3}\ \mathrm{kg/m^3}$;
+- mercúrio: $13{,}6 \times 10^{3}\ \mathrm{kg/m^3}$;
+- ar ao nível do mar: $\approx 1{,}2\ \mathrm{kg/m^3}$ — quase mil vezes menos que a água.
+
+Líquidos são praticamente **incompressíveis**: a massa específica quase não muda com a pressão. Gases, ao contrário, se comprimem com facilidade. Neste capítulo os líquidos são tratados sempre com $\rho$ constante.
+
+### Pressão é escalar
+
+Mergulhe um sensor pequeno num fluido em repouso e gire-o: a leitura **não muda** com a orientação. A pressão num ponto não tem direção — é uma grandeza **escalar**. O que tem direção é a **força** que ela produz numa superfície, e essa força é sempre **perpendicular** à superfície:
+
+$$
+\boxed{\;F = p\,A\;}
+\qquad\text{(pressão uniforme sobre uma área plana)}
+$$
+
+<Caixa tipo="dica" rotulo="As unidades que aparecem em enunciado">
+
+$$
+1\ \mathrm{atm} = 1{,}01 \times 10^{5}\ \mathrm{Pa} = 760\ \mathrm{torr} = 14{,}7\ \mathrm{lb/in^2}
+\qquad
+1\ \mathrm{bar} = 10^{5}\ \mathrm{Pa}
+$$
+
+O $\mathrm{torr}$ é o antigo milímetro de mercúrio ($\mathrm{mmHg}$): pressão escrita como a altura de uma coluna de mercúrio. Ao converter, passe tudo para $\mathrm{Pa}$ antes de qualquer conta.
+
+</Caixa>
+
+<Caixa tipo="macete">
+
+**Quando o fluido age dos dois lados, quem conta é a diferença de pressão.** Uma janela, a tampa de uma panela de pressão, uma escotilha de submarino: a força resultante é $F = (p_{dentro} - p_{fora})\,A$. A atmosfera inteira empurrando um lado é equilibrada pela atmosfera empurrando o outro — e esquecer isso dá forças absurdas.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a atmosfera sobre uma mesa">
+
+Qual a força que o ar faz sobre o tampo de uma mesa de $1{,}2\ \mathrm{m} \times 0{,}80\ \mathrm{m}$, com $p_0 = 1{,}013 \times 10^{5}\ \mathrm{Pa}$?
+
+$$
+F = p_0\,A = 1{,}013 \times 10^{5} \times (1{,}2 \times 0{,}80) = 9{,}7 \times 10^{4}\ \mathrm{N}
+$$
+
+É o peso de uns dez mil quilos. A mesa não quebra porque o ar também está **embaixo** do tampo e empurra para cima com praticamente a mesma força: a resultante é quase nula. É o macete acima em forma de número.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-stevin" num="10" titulo="Fluidos em repouso: lei de Stevin, barômetro e manômetro">
+
+**A ideia.** Quanto mais fundo, maior a pressão — porque cada camada de fluido tem de sustentar o peso de todas as que estão acima dela. Essa frase, escrita em equação, é a **lei de Stevin**, e dela saem o barômetro, o manômetro e todos os problemas de tubo em U. A pressão num fluido em repouso depende **só da profundidade**: não do formato do recipiente, não da distância horizontal.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p$ — pressão a uma profundidade $h$ abaixo da superfície, em $\mathrm{Pa}$;
+- $p_0$ — pressão na superfície livre (em geral a atmosférica), em $\mathrm{Pa}$;
+- $\rho$ — massa específica do fluido, em $\mathrm{kg/m^3}$;
+- $g$ — aceleração da gravidade, em $\mathrm{m/s^2}$;
+- $h$ — **profundidade**, medida na vertical a partir da superfície, em $\mathrm{m}$;
+- $y_1,\ y_2$ — cotas (alturas) de dois pontos, com o eixo $y$ para cima, em $\mathrm{m}$.
+
+</Caixa>
+
+### De onde vem a lei
+
+Isole um cilindro de fluido em repouso, de área de base $A$, entre as cotas $y_1$ (embaixo) e $y_2$ (em cima). Três forças verticais agem nele: a pressão de baixo empurrando para cima ($p_1 A$), a pressão de cima empurrando para baixo ($p_2 A$) e o peso $\rho A (y_2 - y_1)\,g$. Equilíbrio:
+
+$$
+p_1 A = p_2 A + \rho\,A\,(y_2 - y_1)\,g
+\qquad\Longrightarrow\qquad
+p_2 = p_1 - \rho\,g\,(y_2 - y_1)
+$$
+
+Tomando o ponto 2 na superfície ($p_2 = p_0$) e o ponto 1 a uma profundidade $h$ abaixo dela:
+
+$$
+\boxed{\;p = p_0 + \rho\,g\,h\;}
+$$
+
+<Caixa tipo="macete" rotulo="As três consequências que resolvem a maioria das questões">
+
+1. **pontos no mesmo nível, no mesmo fluido contínuo, têm a mesma pressão.** É a regra que resolve todo tubo em U — mas só vale enquanto o fluido entre os dois pontos for o **mesmo**;
+2. **o formato do recipiente não importa**: só a profundidade entra na conta;
+3. **subir diminui, descer aumenta**: atravessando um trecho de altura $h$ de um fluido $\rho$, some ou subtraia $\rho g h$ conforme desça ou suba.
+
+</Caixa>
+
+### Pressão absoluta e manométrica
+
+O $p$ da fórmula acima é a **pressão absoluta** (medida a partir do vácuo). A diferença $p - p_0 = \rho g h$ é a **pressão manométrica** — a que um medidor calibrado pela atmosfera lê, como o calibrador de pneu. A manométrica pode ser negativa (abaixo da atmosférica, como dentro de um canudo quando se suga); a absoluta nunca.
+
+### Barômetro de mercúrio
+
+Um tubo cheio de mercúrio é emborcado numa cuba de mercúrio. A coluna desce até parar a uma altura $h$; acima dela fica praticamente **vácuo** ($p \approx 0$). Aplicando Stevin entre o topo da coluna e a superfície da cuba:
+
+$$
+\boxed{\;p_0 = \rho\,g\,h\;}
+$$
+
+O barômetro mede a pressão **atmosférica** como uma altura: ao nível do mar, $h \approx 760\ \mathrm{mm}$ de mercúrio.
+
+<Caixa tipo="dica">
+
+Com água no lugar do mercúrio, a coluna teria $13{,}6$ vezes mais: cerca de $10{,}3\ \mathrm{m}$. É esse o teto de qualquer coisa que "suga" água — canudo, bomba de sucção, sifão. A atmosfera não consegue empurrar água mais alto que isso.
+
+</Caixa>
+
+### Manômetro de tubo aberto
+
+Um tubo em U com líquido manométrico ($\rho$) tem um ramo ligado ao recipiente e o outro aberto para o ar. O desnível $h$ entre as duas superfícies dá direto a pressão manométrica do gás:
+
+$$
+p_{man} = p - p_0 = \rho\,g\,h
+$$
+
+### Tubo em U com dois líquidos que não se misturam
+
+Num tubo em U com água, despeja-se num dos ramos um líquido mais leve que não se mistura (óleo). O óleo fica por cima, e os dois ramos param em alturas diferentes. Para resolver, **escolha o nível da interface óleo–água**: abaixo dele, o fluido é só água e contínuo, então a pressão nesse nível é a mesma nos dois ramos. Acima dele, cada ramo tem a sua coluna:
+
+$$
+p_0 + \rho_{\text{óleo}}\,g\,h_{\text{óleo}} = p_0 + \rho_{\text{água}}\,g\,h_{\text{água}}
+\qquad\Longrightarrow\qquad
+\rho_{\text{óleo}}\,h_{\text{óleo}} = \rho_{\text{água}}\,h_{\text{água}}
+$$
+
+O líquido mais leve precisa de uma coluna **mais alta** para fazer a mesma pressão — por isso a superfície do óleo fica acima da superfície da água.
+
+### E se os ramos têm áreas diferentes?
+
+Aqui está a armadilha que a prova adora. Quando o líquido de um ramo desce, o que ele desloca é **volume**, e o volume que sai de um ramo é o mesmo que entra no outro (o líquido é incompressível):
+
+$$
+\boxed{\;A_1\,x_1 = A_2\,x_2\;}
+$$
+
+Se o ramo da esquerda desce $x_1$ e o da direita sobe $x_2$, os dois **só são iguais se as áreas forem iguais**. Num ramo três vezes mais largo, o nível sobe um terço do que o outro desce. O desnível entre as duas superfícies de água é $x_1 + x_2$, e não $2x_1$.
+
+<Figura>
+  <svg viewBox="0 0 420 250" role="img" aria-label="Tubo em U com ramo esquerdo estreito e ramo direito três vezes mais largo. Óleo foi despejado no ramo estreito: a água desse ramo desceu x1 abaixo do nível inicial e a do ramo largo subiu x2, menor que x1. Uma linha tracejada marca o nível da interface óleo-água, onde a pressão é a mesma nos dois ramos">
+    {/* ---------- paredes do tubo ---------- */}
+    <path d="M70 40 L70 226 L330 226 L330 40" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <path d="M100 40 L100 200 L240 200 L240 40" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    {/* ---------- água e óleo ---------- */}
+    <polygon points="71,162 99,162 99,201 241,201 241,106 329,106 329,225 71,225" fill="var(--accent)" opacity="0.4"/>
+    <rect x="71" y="92" width="28" height="70" fill="var(--warn)" opacity="0.55"/>
+    <line x1="241" y1="106" x2="329" y2="106" stroke="var(--accent)" stroke-width="1.4"/>
+    {/* ---------- nível inicial e nível de mesma pressão ---------- */}
+    <line x1="45" y1="120" x2="345" y2="120" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <text x="350" y="124" font-size="11" fill="var(--ink-3)">nível inicial</text>
+    <line x1="45" y1="162" x2="345" y2="162" stroke="var(--ok)" stroke-width="1" stroke-dasharray="5 3"/>
+    <text x="350" y="160" font-size="11" fill="var(--ok)">mesma</text>
+    <text x="350" y="173" font-size="11" fill="var(--ok)">pressão</text>
+    {/* ---------- cotas ---------- */}
+    <line x1="56" y1="123" x2="56" y2="159" stroke="var(--ink-2)" stroke-width="1"/>
+    <polygon points="56,120 53,127 59,127" fill="var(--ink-2)"/>
+    <polygon points="56,162 53,155 59,155" fill="var(--ink-2)"/>
+    <text x="30" y="146" font-size="12" font-style="italic" fill="var(--ink-2)">x₁</text>
+    <line x1="118" y1="95" x2="118" y2="159" stroke="var(--warn)" stroke-width="1"/>
+    <polygon points="118,92 115,99 121,99" fill="var(--warn)"/>
+    <polygon points="118,162 115,155 121,155" fill="var(--warn)"/>
+    <text x="125" y="132" font-size="12" font-style="italic" fill="var(--warn)">h óleo</text>
+    <line x1="228" y1="106" x2="228" y2="120" stroke="var(--ink-2)" stroke-width="1"/>
+    <text x="204" y="117" font-size="12" font-style="italic" fill="var(--ink-2)">x₂</text>
+    {/* ---------- rótulos ---------- */}
+    <text x="78" y="32" font-size="12" font-style="italic" fill="var(--ink-2)">A₁</text>
+    <text x="262" y="32" font-size="12" font-style="italic" fill="var(--ink-2)">A₂ = 3A₁</text>
+    <text x="20" y="100" font-size="11" fill="var(--warn)">óleo</text>
+    <text x="262" y="190" font-size="11" fill="var(--accent)">água</text>
+  </svg>
+  <figcaption>
+
+Óleo no ramo estreito. A água desce $x_1$ de um lado e sobe $x_2$ do outro, com $A_1 x_1 = A_2 x_2$: no ramo três vezes mais largo, $x_2 = x_1/3$. Abaixo da linha verde só há água contínua, por isso a pressão nesse nível é igual nos dois ramos.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="macete" rotulo="O roteiro do tubo em U">
+
+1. desenhe o **nível inicial** e marque quanto cada superfície se moveu, com $A_1 x_1 = A_2 x_2$;
+2. escolha o nível horizontal **mais baixo** em que ainda há um mesmo líquido contínuo dos dois lados — normalmente a interface entre os líquidos;
+3. iguale as pressões nesse nível, somando $\rho g h$ de cada coluna acima dele em cada ramo.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — óleo num tubo em U de ramos desiguais">
+
+Um tubo em U contém água ($\rho_a = 1000\ \mathrm{kg/m^3}$). O ramo esquerdo tem área $A_1 = 4{,}0\ \mathrm{cm^2}$ e o direito $A_2 = 12\ \mathrm{cm^2}$. Despejam-se $40\ \mathrm{cm^3}$ de óleo ($\rho_o = 800\ \mathrm{kg/m^3}$) no ramo esquerdo. Quanto sobe a água no ramo direito?
+
+A coluna de óleo ocupa o ramo estreito:
+
+$$
+h_o = \frac{40\ \mathrm{cm^3}}{4{,}0\ \mathrm{cm^2}} = 10\ \mathrm{cm}
+$$
+
+A água desce $x_1$ à esquerda e sobe $x_2$ à direita, com volume conservado:
+
+$$
+4{,}0\,x_1 = 12\,x_2
+\qquad\Longrightarrow\qquad
+x_1 = 3\,x_2
+$$
+
+No nível da interface óleo–água, a pressão é a mesma nos dois ramos. À esquerda há $10\ \mathrm{cm}$ de óleo acima dele; à direita, uma coluna de água de altura $x_1 + x_2$:
+
+$$
+\rho_o\,h_o = \rho_a\,(x_1 + x_2)
+\qquad\Longrightarrow\qquad
+x_1 + x_2 = 0{,}8 \times 10 = 8{,}0\ \mathrm{cm}
+$$
+
+Com $x_1 = 3x_2$: $4x_2 = 8{,}0$, logo $x_2 = 2{,}0\ \mathrm{cm}$ e $x_1 = 6{,}0\ \mathrm{cm}$.
+
+**A água sobe $2{,}0\ \mathrm{cm}$ no ramo largo.** Quem supõe ramos iguais ($x_1 = x_2 = 4\ \mathrm{cm}$) erra a resposta pelo dobro. E a superfície do óleo fica a $-6 + 10 = 4\ \mathrm{cm}$ acima do nível inicial, ou seja, $2{,}0\ \mathrm{cm}$ acima da superfície da água do outro ramo.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-pascal" num="11" titulo="O princípio de Pascal">
+
+**A ideia.** Num fluido incompressível confinado, uma variação de pressão aplicada em qualquer ponto chega **inteira** a todos os outros pontos e às paredes. É uma consequência direta de Stevin: se $p = p_{ext} + \rho g h$ e você aumenta $p_{ext}$ em $\Delta p$, a pressão em todo ponto aumenta os mesmos $\Delta p$. A aplicação que importa é a **alavanca hidráulica** — macaco de oficina, freio de carro, prensa — que multiplica força.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F_e,\ A_e$ — força aplicada no êmbolo de **entrada** (o pequeno) e sua área, em $\mathrm{N}$ e $\mathrm{m^2}$;
+- $F_s,\ A_s$ — força no êmbolo de **saída** (o grande) e sua área;
+- $d_e,\ d_s$ — deslocamentos dos dois êmbolos, em $\mathrm{m}$;
+- $\Delta p$ — variação de pressão transmitida pelo fluido, em $\mathrm{Pa}$.
+
+</Caixa>
+
+### A alavanca hidráulica
+
+Dois êmbolos de áreas diferentes, ligados pelo mesmo líquido e na mesma altura. Empurrar o pequeno com $F_e$ cria $\Delta p = F_e/A_e$, que Pascal leva até o grande:
+
+$$
+\frac{F_e}{A_e} = \frac{F_s}{A_s}
+\qquad\Longrightarrow\qquad
+\boxed{\;F_s = F_e\,\frac{A_s}{A_e}\;}
+$$
+
+### Força multiplicada, deslocamento dividido
+
+O líquido é incompressível: o volume que o êmbolo pequeno empurra é o volume que o grande recebe.
+
+$$
+A_e\,d_e = A_s\,d_s
+\qquad\Longrightarrow\qquad
+d_s = d_e\,\frac{A_e}{A_s}
+$$
+
+Multiplicando as duas relações, $F_s d_s = F_e d_e$: **o trabalho é o mesmo** dos dois lados. A alavanca hidráulica não cria energia — troca força por deslocamento, como uma alavanca comum.
+
+<Caixa tipo="macete">
+
+**Com êmbolos circulares, a razão das áreas é o quadrado da razão dos diâmetros.** Diâmetro dez vezes maior dá área cem vezes maior, e força cem vezes maior. Esquecer o quadrado é o erro mais comum desta conta. E como só entra a razão, não precisa converter $\mathrm{cm}$ para $\mathrm{m}$.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Se os êmbolos estão em **alturas diferentes**, Pascal sozinho não basta: some o $\rho g h$ do desnível (Stevin). Nos problemas de macete hidráulico, o desnível costuma ser desprezado.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o elevador da oficina">
+
+Um elevador hidráulico tem êmbolo de entrada com $2{,}0\ \mathrm{cm}$ de diâmetro e de saída com $20\ \mathrm{cm}$. Que força no êmbolo pequeno sustenta um carro de $1200\ \mathrm{kg}$? Para erguer o carro $15\ \mathrm{cm}$, quanto o êmbolo pequeno precisa percorrer no total?
+
+A razão das áreas é $(20/2{,}0)^2 = 100$:
+
+$$
+F_e = \frac{m\,g}{100} = \frac{1200 \times 9{,}8}{100} = 117{,}6\ \mathrm{N} \approx 1{,}2 \times 10^{2}\ \mathrm{N}
+$$
+
+O peso de uns $12\ \mathrm{kg}$ segura um carro. O preço aparece no deslocamento:
+
+$$
+d_e = d_s \times 100 = 0{,}15 \times 100 = 15\ \mathrm{m}
+$$
+
+Quinze metros de curso, feitos em muitas bombadas curtas — é o que o macaco de oficina faz.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-arquimedes" num="12" titulo="O princípio de Arquimedes: empuxo, flutuação e peso aparente">
+
+**A ideia.** Um corpo mergulhado num fluido recebe uma força para cima, o **empuxo**, porque a pressão embaixo dele é maior que em cima (Stevin). O valor dessa força tem uma forma surpreendentemente simples: é o **peso do fluido que o corpo desloca**. Com isso se explica por que navio de aço boia, por que se sente mais leve dentro da piscina e — o que a prova cobra — quanto uma corda ou mola presa ao fundo precisa segurar.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F_E$ — **empuxo**, em $\mathrm{N}$, sempre vertical e para cima;
+- $\rho_f$ — massa específica do **fluido**, em $\mathrm{kg/m^3}$;
+- $\rho_c$ — massa específica do **corpo**, em $\mathrm{kg/m^3}$;
+- $V_{sub}$ — volume **submerso** do corpo (= volume de fluido deslocado), em $\mathrm{m^3}$;
+- $m_f$ — massa do fluido deslocado, em $\mathrm{kg}$;
+- $P_{ap}$ — **peso aparente**, o que uma balança lê com o corpo mergulhado, em $\mathrm{N}$.
+
+</Caixa>
+
+### O princípio
+
+Imagine, no lugar do corpo, uma porção do próprio fluido com o mesmo formato. Ela fica parada, então as forças de pressão à sua volta equilibram exatamente o seu peso. Agora troque essa porção pelo corpo: as pressões em volta não mudam (dependem só da profundidade), e a resultante delas continua sendo o peso daquele fluido:
+
+$$
+\boxed{\;F_E = m_f\,g = \rho_f\,V_{sub}\,g\;}
+$$
+
+<Caixa tipo="macete">
+
+**No empuxo, a massa específica é a do fluido e o volume é o submerso.** A densidade do corpo nunca entra em $F_E$. Um bloco de chumbo e um de madeira totalmente submersos, com o mesmo volume, recebem **o mesmo empuxo** — a diferença está no peso de cada um.
+
+</Caixa>
+
+### Flutuação
+
+Um corpo boia em equilíbrio quando o empuxo iguala o peso. Isso dá o volume submerso:
+
+$$
+\rho_f\,V_{sub}\,g = \rho_c\,V\,g
+\qquad\Longrightarrow\qquad
+\boxed{\;\frac{V_{sub}}{V} = \frac{\rho_c}{\rho_f}\;}
+$$
+
+A fração submersa é a razão das massas específicas. Um gelo ($\rho \approx 917\ \mathrm{kg/m^3}$) em água fica com cerca de $92\ \%$ do volume para baixo. Se $\rho_c \gt \rho_f$, a fração daria maior que 1: o corpo afunda.
+
+### Peso aparente
+
+Pendurado num dinamômetro e mergulhado, o corpo "pesa" menos, porque o empuxo ajuda a segurá-lo:
+
+$$
+\boxed{\;P_{ap} = m\,g - F_E\;}
+$$
+
+<Caixa tipo="dica" rotulo="A densidade com uma balança">
+
+Totalmente submerso, $F_E = \rho_f V g$ e $mg = \rho_c V g$. Dividindo:
+
+$$
+\frac{\rho_c}{\rho_f} = \frac{m\,g}{m\,g - P_{ap}}
+$$
+
+Basta pesar no ar e na água para saber a densidade — é o método de Arquimedes com a coroa.
+
+</Caixa>
+
+### Corpo preso ao fundo por corda ou mola
+
+Um corpo **menos denso** que o fluido, preso ao fundo e totalmente submerso, quer subir; quem o segura é a corda (ou a mola). No corpo agem três forças: empuxo para cima, peso e tração para baixo. Equilíbrio:
+
+$$
+\boxed{\;T = F_E - m\,g = (\rho_f - \rho_c)\,V\,g\;}
+$$
+
+Com mola de constante $k$, é a mesma conta com $T = k\,\Delta x$: a mola fica **esticada** de $\Delta x = (F_E - mg)/k$.
+
+<Figura>
+  <svg viewBox="0 0 420 250" role="img" aria-label="À esquerda, um bloco totalmente submerso num tanque de água, preso ao fundo por uma mola esticada. À direita, o diagrama de forças do bloco: empuxo para cima, peso e força da mola para baixo">
+    {/* ---------- tanque ---------- */}
+    <path d="M20 40 L20 230 L250 230 L250 40" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <rect x="21" y="62" width="228" height="167" fill="var(--accent)" opacity="0.3"/>
+    <line x1="21" y1="62" x2="249" y2="62" stroke="var(--accent)" stroke-width="1.3"/>
+    {/* ---------- bloco ---------- */}
+    <rect x="100" y="90" width="70" height="70" fill="var(--warn)" opacity="0.7" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="126" y="130" font-size="12" font-style="italic" fill="var(--ink-2)">ρ<tspan font-size="9" dy="3">c</tspan></text>
+    {/* ---------- mola ---------- */}
+    <polyline points="135,160 135,168 125,173 145,181 125,189 145,197 125,205 145,213 135,218 135,230" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="152" y="200" font-size="11" fill="var(--ink-3)">mola (ou corda)</text>
+    <text x="30" y="222" font-size="11" fill="var(--accent)">fluido ρ<tspan font-size="9" dy="3">f</tspan></text>
+    {/* ---------- diagrama de forças ---------- */}
+    <rect x="320" y="110" width="40" height="40" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="340" y1="110" x2="340" y2="48" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="340,40 335,52 345,52" fill="var(--ok)"/>
+    <text x="350" y="56" font-size="12" font-style="italic" fill="var(--ok)">F<tspan font-size="9" dy="3">E</tspan></text>
+    <line x1="330" y1="150" x2="330" y2="200" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="330,208 325,196 335,196" fill="var(--warn)"/>
+    <text x="306" y="214" font-size="12" font-style="italic" fill="var(--warn)">mg</text>
+    <line x1="350" y1="150" x2="350" y2="180" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="350,188 345,176 355,176" fill="var(--accent)"/>
+    <text x="358" y="190" font-size="12" font-style="italic" fill="var(--accent)">T = kΔx</text>
+  </svg>
+  <figcaption>
+
+Corpo menos denso que o fluido, preso ao fundo. O empuxo $F_E$ equilibra o peso **e** a força da mola: $F_E = mg + k\,\Delta x$. Se a mola se romper, sobra a resultante $F_E - mg$ para cima.
+
+  </figcaption>
+</Figura>
+
+### Corpo solto que sobe
+
+Se a corda arrebenta (ou o corpo é solto do fundo), a força resultante é $F_E - mg$, para cima. Desprezando o atrito com o fluido, a aceleração inicial é
+
+$$
+a = \frac{F_E - m\,g}{m} = g\left(\frac{\rho_f}{\rho_c} - 1\right)
+$$
+
+Ela não depende do tamanho do corpo, só da razão de densidades. Ao chegar à superfície, o corpo emerge até o volume submerso cair para $V_{sub} = (\rho_c/\rho_f)\,V$ e para de subir quando o empuxo volta a igualar o peso.
+
+<Caixa tipo="macete" rotulo="Os erros que custam a questão">
+
+- **mola esticada ou comprimida?** Corpo menos denso que o fluido, preso **embaixo**: a mola puxa para baixo, logo está **esticada**. Corpo mais denso pendurado **de cima**: a mola também segura, agora puxando para cima;
+- o empuxo usa o volume **submerso**. Corpo preso ao fundo e coberto pelo líquido: volume inteiro. Corpo boiando: só a parte de baixo d'água;
+- a balança sob um copo com um corpo pendurado dentro (sem tocar o fundo) lê o peso do copo com a água **mais** o empuxo — é a reação do empuxo sobre o líquido.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — bloco de madeira preso por mola">
+
+Um cubo de madeira de $10\ \mathrm{cm}$ de aresta e $\rho_c = 600\ \mathrm{kg/m^3}$ está totalmente submerso em água, preso ao fundo do tanque por uma mola de $k = 200\ \mathrm{N/m}$. Use $g = 9{,}8\ \mathrm{m/s^2}$. Quanto a mola está esticada? Se ela se romper, qual a aceleração inicial do bloco?
+
+Volume $V = 1{,}0 \times 10^{-3}\ \mathrm{m^3}$, massa $m = 0{,}60\ \mathrm{kg}$:
+
+$$
+F_E = 1000 \times 1{,}0 \times 10^{-3} \times 9{,}8 = 9{,}8\ \mathrm{N}
+\qquad
+m\,g = 0{,}60 \times 9{,}8 = 5{,}88\ \mathrm{N}
+$$
+
+A mola segura a diferença:
+
+$$
+\Delta x = \frac{F_E - m\,g}{k} = \frac{3{,}92}{200} = 1{,}96 \times 10^{-2}\ \mathrm{m} \approx 2{,}0\ \mathrm{cm}
+$$
+
+Rompida a mola, a resultante de $3{,}92\ \mathrm{N}$ age sobre $0{,}60\ \mathrm{kg}$:
+
+$$
+a = \frac{3{,}92}{0{,}60} = 6{,}5\ \mathrm{m/s^2}
+\qquad\text{para cima}
+$$
+
+Confira pela fórmula das densidades: $9{,}8\,(1000/600 - 1) = 6{,}5\ \mathrm{m/s^2}$. E quando o bloco chegar à superfície, ficará com $60\ \%$ do volume submerso: $6{,}0\ \mathrm{cm}$ abaixo da linha d'água.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-continuidade" num="13" titulo="Fluidos ideais em movimento e a equação da continuidade">
+
+**A ideia.** Quando o fluido se move, a pergunta muda de "quanto vale a pressão" para "quanto passa por segundo". Num cano sem vazamento, **o que entra numa ponta sai na outra**: se o cano estreita, o fluido tem de andar mais depressa para dar conta da mesma vazão. É isso que diz a equação da continuidade — e é ela que explica por que o jorro de uma torneira afina enquanto cai.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $A$ — área da seção reta do tubo (ou do jorro), em $\mathrm{m^2}$;
+- $v$ — velocidade do fluido nessa seção, em $\mathrm{m/s}$;
+- $R_V = A\,v$ — **vazão volumétrica**, em $\mathrm{m^3/s}$: volume que atravessa a seção por segundo;
+- $R_m = \rho\,A\,v$ — **vazão mássica**, em $\mathrm{kg/s}$: massa que atravessa a seção por segundo;
+- $\rho$ — massa específica do fluido, em $\mathrm{kg/m^3}$.
+
+</Caixa>
+
+### O fluido ideal
+
+Escoamento real é complicado. O modelo do capítulo é o **fluido ideal**, com quatro hipóteses:
+
+1. **escoamento estacionário** (laminar): a velocidade em cada ponto não muda com o tempo;
+2. **incompressível**: $\rho$ constante;
+3. **não viscoso**: sem atrito interno, logo sem perda de energia;
+4. **irrotacional**: um pequeno grão levado pelo fluido não gira em torno do próprio centro.
+
+Num escoamento estacionário, cada partícula segue uma **linha de corrente**, tangente à velocidade em cada ponto. Linhas de corrente nunca se cruzam, e um feixe delas forma um **tubo de corrente**: fluido não entra nem sai pelas paredes laterais.
+
+### A equação da continuidade
+
+Num intervalo $\Delta t$, entra pela seção 1 o volume $A_1 v_1 \Delta t$ e sai pela seção 2 o volume $A_2 v_2 \Delta t$. Fluido incompressível não se acumula no meio, então os dois volumes são iguais:
+
+$$
+\boxed{\;A_1\,v_1 = A_2\,v_2\;}
+\qquad\Longleftrightarrow\qquad
+R_V = A\,v = \text{constante}
+$$
+
+Multiplicando por $\rho$, a vazão mássica $R_m = \rho A v$ também é constante. Onde o tubo afina, a velocidade aumenta; onde alarga, diminui. Por isso as linhas de corrente ficam **mais juntas** onde o fluido é mais rápido.
+
+<Caixa tipo="macete">
+
+**Com seção circular, a velocidade varia com o inverso do quadrado do diâmetro.** Reduzir o diâmetro à metade **quadruplica** a velocidade: $v_2 = v_1\,(d_1/d_2)^2$. Mesma armadilha do quadrado da alavanca hidráulica.
+
+</Caixa>
+
+### O jorro que afina ao cair
+
+Uma torneira solta água com velocidade $v_0$ por uma seção $A_0$. Fora da torneira, a água está em queda livre: depois de cair uma altura $h$,
+
+$$
+v^2 = v_0^2 + 2\,g\,h
+$$
+
+O jorro é um tubo de corrente, então a vazão se conserva e a seção tem de diminuir:
+
+$$
+A = A_0\,\frac{v_0}{v}
+\qquad\Longrightarrow\qquad
+\boxed{\;d = d_0\,\sqrt{\frac{v_0}{v}}\;}
+\qquad\text{(jorro circular)}
+$$
+
+<Figura>
+  <svg viewBox="0 0 420 240" role="img" aria-label="Torneira de onde sai um jorro de água que afina enquanto cai. No alto, seção A0 com velocidade v0; uma altura h abaixo, seção A menor com velocidade v maior">
+    {/* ---------- torneira ---------- */}
+    <rect x="120" y="14" width="150" height="20" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <rect x="175" y="34" width="50" height="20" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    {/* ---------- jorro ---------- */}
+    <path d="M178 54 C182 110 192 160 194 214 L206 214 C208 160 218 110 222 54 Z" fill="var(--accent)" opacity="0.5"/>
+    <line x1="178" y1="54" x2="222" y2="54" stroke="var(--accent)" stroke-width="2"/>
+    <line x1="194" y1="214" x2="206" y2="214" stroke="var(--accent)" stroke-width="2"/>
+    {/* ---------- velocidades ---------- */}
+    <line x1="250" y1="58" x2="250" y2="80" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="250,88 245,77 255,77" fill="var(--ok)"/>
+    <text x="260" y="78" font-size="12" font-style="italic" fill="var(--ok)">v₀ · seção A₀</text>
+    <line x1="250" y1="170" x2="250" y2="214" stroke="var(--ok)" stroke-width="2.4"/>
+    <polygon points="250,224 244,210 256,210" fill="var(--ok)"/>
+    <text x="260" y="206" font-size="12" font-style="italic" fill="var(--ok)">v &gt; v₀ · seção A &lt; A₀</text>
+    {/* ---------- altura ---------- */}
+    <line x1="100" y1="54" x2="174" y2="54" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="100" y1="214" x2="190" y2="214" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="110" y1="58" x2="110" y2="210" stroke="var(--ink-2)" stroke-width="1"/>
+    <polygon points="110,54 107,62 113,62" fill="var(--ink-2)"/>
+    <polygon points="110,214 107,206 113,206" fill="var(--ink-2)"/>
+    <text x="90" y="138" font-size="12" font-style="italic" fill="var(--ink-2)">h</text>
+  </svg>
+  <figcaption>
+
+A água acelera na queda e a vazão $A v$ é a mesma em toda seção do jorro: se $v$ cresce, $A$ diminui. É por isso que o fio de água afina.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="dica">
+
+O mesmo raciocínio vale para o jorro que sai do furo de um tanque: primeiro se acha a velocidade de saída (Torricelli, na próxima seção), depois a queda livre dá $v$ mais abaixo, e a continuidade dá a área.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a torneira que enche um balde">
+
+Uma torneira enche um balde de $10\ \mathrm{L}$ em $50\ \mathrm{s}$. A boca da torneira tem $1{,}6\ \mathrm{cm}$ de diâmetro. Ache a velocidade de saída e o diâmetro do jorro $30\ \mathrm{cm}$ abaixo da boca ($g = 9{,}8\ \mathrm{m/s^2}$).
+
+As vazões:
+
+$$
+R_V = \frac{10 \times 10^{-3}\ \mathrm{m^3}}{50\ \mathrm{s}} = 2{,}0 \times 10^{-4}\ \mathrm{m^3/s}
+\qquad
+R_m = \rho\,R_V = 0{,}20\ \mathrm{kg/s}
+$$
+
+Área da boca, $A_0 = \pi\,(0{,}008)^2 = 2{,}01 \times 10^{-4}\ \mathrm{m^2}$, e a velocidade de saída:
+
+$$
+v_0 = \frac{R_V}{A_0} = \frac{2{,}0 \times 10^{-4}}{2{,}01 \times 10^{-4}} = 0{,}995\ \mathrm{m/s}
+$$
+
+Depois de cair $0{,}30\ \mathrm{m}$:
+
+$$
+v = \sqrt{0{,}995^2 + 2 \times 9{,}8 \times 0{,}30} = 2{,}62\ \mathrm{m/s}
+$$
+
+E o diâmetro, pela continuidade:
+
+$$
+d = 1{,}6\ \mathrm{cm} \times \sqrt{\frac{0{,}995}{2{,}62}} = 0{,}99\ \mathrm{cm}
+$$
+
+O jorro perde quase $40\ \%$ do diâmetro em trinta centímetros de queda.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-bernoulli" num="14" titulo="A equação de Bernoulli e suas aplicações">
+
+**A ideia.** A equação de Bernoulli é a **conservação da energia** escrita por unidade de volume para um fluido ideal. Ao longo de uma linha de corrente, três parcelas trocam entre si — pressão, energia cinética e energia potencial — e a soma não muda. Consequência imediata: **onde o fluido anda mais depressa, a pressão é menor**. Com a continuidade da seção anterior, ela resolve o tanque furado, o Venturi, o Pitot, o sifão e a bomba.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p$ — pressão no ponto, em $\mathrm{Pa}$ (absoluta ou manométrica, desde que a mesma dos dois lados);
+- $\tfrac{1}{2}\rho v^2$ — energia cinética por unidade de volume (a **pressão dinâmica**), em $\mathrm{Pa}$;
+- $\rho g y$ — energia potencial gravitacional por unidade de volume, em $\mathrm{Pa}$;
+- $y$ — cota do ponto, com o eixo para cima e origem à sua escolha, em $\mathrm{m}$;
+- $v$ — velocidade do fluido no ponto, em $\mathrm{m/s}$;
+- $\rho$ — massa específica do fluido, em $\mathrm{kg/m^3}$.
+
+</Caixa>
+
+### A equação
+
+Para dois pontos de uma mesma linha de corrente de um fluido ideal:
+
+$$
+\boxed{\;p_1 + \tfrac{1}{2}\rho v_1^2 + \rho g y_1 = p_2 + \tfrac{1}{2}\rho v_2^2 + \rho g y_2\;}
+$$
+
+**De onde vem.** Acompanhe uma porção de fluido de volume $\Delta V$ indo de 1 a 2. O fluido de trás empurra com $p_1$ e realiza trabalho $p_1 \Delta V$; o da frente resiste e tira $p_2 \Delta V$. Esse trabalho líquido, $(p_1 - p_2)\Delta V$, vira variação de energia cinética e potencial da porção. Dividindo tudo por $\Delta V$, sai a equação acima.
+
+Dois casos particulares:
+
+- **fluido parado** ($v_1 = v_2 = 0$): sobra $p_2 = p_1 + \rho g (y_1 - y_2)$ — a lei de Stevin;
+- **mesma altura** ($y_1 = y_2$): $p + \tfrac{1}{2}\rho v^2$ constante. **Mais velocidade, menos pressão.**
+
+<Caixa tipo="macete" rotulo="O roteiro de toda questão de Bernoulli">
+
+1. escolha os pontos 1 e 2 onde você conhece mais coisas — superfície livre de tanque aberto ($p = p_0$, $v \approx 0$) e jato saindo para o ar ($p = p_0$) são os favoritos;
+2. **pressão de jato livre é a atmosférica**: no ar, $p = p_0$;
+3. se faltar uma velocidade, use a continuidade $A_1 v_1 = A_2 v_2$;
+4. ponha a origem de $y$ num dos pontos para zerar uma parcela.
+
+</Caixa>
+
+### Torricelli: o tanque furado
+
+Tanque aberto, furo a uma profundidade $h$ abaixo da superfície. Ponto 1 na superfície ($p_0$, $v \approx 0$ se o tanque é largo), ponto 2 no jato logo depois do furo ($p_0$, velocidade $v$):
+
+$$
+p_0 + 0 + \rho g h = p_0 + \tfrac{1}{2}\rho v^2 + 0
+\qquad\Longrightarrow\qquad
+\boxed{\;v = \sqrt{2\,g\,h}\;}
+$$
+
+É a velocidade de um corpo que cai em queda livre de altura $h$. Daí em diante o jato é um **lançamento horizontal**: furo a uma altura $H$ do chão chega a uma distância $x = v\,\sqrt{2H/g}$. E se o enunciado pedir a seção do jato mais abaixo, é o jorro que afina da seção anterior.
+
+<Caixa tipo="dica">
+
+Se o tanque **não** é largo comparado com o furo, a velocidade da superfície não é desprezível: use $A_{tanque}\,v_1 = A_{furo}\,v$ e resolva as duas equações juntas.
+
+</Caixa>
+
+### Medidor Venturi
+
+Um tubo de área $A$ estreita para uma garganta de área $a$. Pela continuidade, a velocidade na garganta é maior; por Bernoulli (mesma altura), a pressão ali é menor. Medindo a queda de pressão $\Delta p = p_1 - p_2$, acha-se a velocidade no tubo largo:
+
+$$
+\boxed{\;v_1 = a\,\sqrt{\frac{2\,\Delta p}{\rho\,(A^2 - a^2)}}\;}
+$$
+
+Se $\Delta p$ é lido num manômetro em U com líquido $\rho_{man}$ e desnível $h$, então $\Delta p = (\rho_{man} - \rho)\,g\,h$.
+
+### Tubo de Pitot
+
+Mede a velocidade de um gás (o avião usa um). Uma abertura voltada **de frente** para o escoamento faz o ar parar ali (ponto de estagnação, $v = 0$); aberturas **laterais** sentem o ar passando com velocidade $v$. A diferença de pressão entre as duas é a pressão dinâmica, lida num manômetro com líquido $\rho_{man}$:
+
+$$
+\tfrac{1}{2}\rho_{ar}\,v^2 = \rho_{man}\,g\,h
+\qquad\Longrightarrow\qquad
+\boxed{\;v = \sqrt{\frac{2\,\rho_{man}\,g\,h}{\rho_{ar}}}\;}
+$$
+
+<Caixa tipo="macete">
+
+**No Pitot, as duas massas específicas são de fluidos diferentes e não se cancelam.** No numerador vai a do líquido do manômetro; no denominador, a do gás que escoa. Como o ar tem $\rho \approx 1{,}2\ \mathrm{kg/m^3}$, um desnível de poucos centímetros de álcool já corresponde a dezenas de metros por segundo.
+
+</Caixa>
+
+### O sifão, e o limite $p \geq 0$
+
+Um tubo de seção constante, cheio de líquido, sai de um tanque aberto, passa por cima da borda e desce do lado de fora até uma saída a uma distância $d$ **abaixo** da superfície do tanque. Chame de $H$ a altura do ponto mais alto do tubo **acima** da superfície.
+
+**Velocidade de saída.** Superfície (1) até saída (2), ambas na atmosfera: é Torricelli com o desnível $d$,
+
+$$
+v = \sqrt{2\,g\,d}
+$$
+
+E como a seção é constante, **a velocidade é a mesma em todo o tubo** (continuidade).
+
+**Pressão no topo.** Da superfície até o topo, com a origem de $y$ na superfície:
+
+$$
+p_0 = p_{topo} + \tfrac{1}{2}\rho v^2 + \rho g H
+\qquad\Longrightarrow\qquad
+\boxed{\;p_{topo} = p_0 - \rho\,g\,(H + d)\;}
+$$
+
+O topo é o ponto de **menor pressão** do sifão. Pressão absoluta não pode ser negativa — na prática o líquido ferve ou o ar sai de solução antes de chegar a zero, e a coluna se rompe. Exigir $p_{topo} \geq 0$ dá a altura máxima do topo:
+
+$$
+H_{max} = \frac{p_0}{\rho\,g} - d
+$$
+
+<Figura>
+  <svg viewBox="0 0 420 250" role="img" aria-label="Tanque aberto com um sifão de seção constante. O topo do tubo fica uma altura H acima da superfície do líquido e a saída fica uma distância d abaixo dela. O topo é o ponto de menor pressão">
+    {/* ---------- tanque e líquido ---------- */}
+    <path d="M30 70 L30 232 L210 232 L210 70" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <rect x="31" y="110" width="178" height="121" fill="var(--accent)" opacity="0.35"/>
+    <line x1="31" y1="110" x2="209" y2="110" stroke="var(--accent)" stroke-width="1.3"/>
+    <text x="44" y="102" font-size="11" fill="var(--ink-2)">1 · p₀, v ≈ 0</text>
+    {/* ---------- tubo do sifão ---------- */}
+    <path d="M160 215 L160 52 Q160 32 180 32 L270 32 Q290 32 290 52 L290 200" fill="none" stroke="var(--accent)" stroke-width="10" stroke-opacity="0.55"/>
+    <path d="M160 215 L160 52 Q160 32 180 32 L270 32 Q290 32 290 52 L290 200" fill="none" stroke="var(--ink-2)" stroke-width="0.8"/>
+    <circle cx="225" cy="32" r="3.5" fill="var(--warn)"/>
+    <text x="196" y="18" font-size="11" fill="var(--warn)">topo · p mínima</text>
+    {/* ---------- saída ---------- */}
+    <line x1="290" y1="206" x2="290" y2="230" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="290,238 285,226 295,226" fill="var(--ok)"/>
+    <text x="300" y="232" font-size="11" fill="var(--ok)">2 · p₀, v = √(2gd)</text>
+    {/* ---------- cotas H e d ---------- */}
+    <line x1="210" y1="110" x2="350" y2="110" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="296" y1="32" x2="350" y2="32" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="296" y1="200" x2="350" y2="200" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="340" y1="36" x2="340" y2="106" stroke="var(--ink-2)" stroke-width="1"/>
+    <polygon points="340,32 337,40 343,40" fill="var(--ink-2)"/>
+    <polygon points="340,110 337,102 343,102" fill="var(--ink-2)"/>
+    <text x="348" y="76" font-size="12" font-style="italic" fill="var(--ink-2)">H</text>
+    <line x1="340" y1="114" x2="340" y2="196" stroke="var(--ink-2)" stroke-width="1"/>
+    <polygon points="340,110 337,118 343,118" fill="var(--ink-2)"/>
+    <polygon points="340,200 337,192 343,192" fill="var(--ink-2)"/>
+    <text x="348" y="160" font-size="12" font-style="italic" fill="var(--ink-2)">d</text>
+  </svg>
+  <figcaption>
+
+No sifão de seção constante, a velocidade é a mesma em todo o tubo e só depende de $d$. A pressão é mínima no topo, $p_{topo} = p_0 - \rho g (H + d)$, e não pode ficar negativa.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="macete" rotulo="As armadilhas do sifão">
+
+- a velocidade de saída depende de $d$ (saída abaixo da superfície), **não** de $H$;
+- na pressão do topo entram **as duas** alturas: $H$ pela subida e $d$ pela energia cinética que o líquido já tem. Quem esquece o $\tfrac{1}{2}\rho v^2$ acha $p_0 - \rho g H$, que está errado;
+- a condição $p \geq 0$ é sobre a pressão **absoluta**. Em manométrica, o limite é $p_{man} \geq -p_0$.
+
+</Caixa>
+
+### Potência de uma bomba
+
+Uma bomba é o que faz o fluido **ganhar** energia entre dois pontos, contra Bernoulli. A soma $p + \tfrac{1}{2}\rho v^2 + \rho g y$ é energia por unidade de volume; multiplicando pela vazão volumétrica (volume por segundo), vira energia por segundo:
+
+$$
+\boxed{\;P = R_V\left[(p_2 - p_1) + \tfrac{1}{2}\rho\,(v_2^2 - v_1^2) + \rho\,g\,(y_2 - y_1)\right]\;}
+$$
+
+<Caixa tipo="dica">
+
+Se a bomba retira água de um reservatório aberto e despeja num jato livre, $p_1 = p_2 = p_0$ e o primeiro termo some: sobra elevar a água ($\rho g \Delta y$) e acelerá-la ($\tfrac{1}{2}\rho v^2$). Essa é a potência **útil**; com rendimento $\eta$, a potência consumida é $P/\eta$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o sifão de um aquário">
+
+Um sifão de $2{,}0\ \mathrm{cm}$ de diâmetro esvazia um tanque aberto de água. A saída fica $0{,}60\ \mathrm{m}$ abaixo da superfície e o topo do tubo $0{,}40\ \mathrm{m}$ acima dela. Use $g = 9{,}8\ \mathrm{m/s^2}$ e $p_0 = 1{,}013 \times 10^{5}\ \mathrm{Pa}$. Ache a velocidade de saída, a vazão, a pressão no topo e a altura máxima que o topo poderia ter.
+
+Velocidade, igual em todo o tubo:
+
+$$
+v = \sqrt{2 \times 9{,}8 \times 0{,}60} = 3{,}43\ \mathrm{m/s}
+$$
+
+Vazão:
+
+$$
+R_V = \pi\,(0{,}010)^2 \times 3{,}43 = 1{,}08 \times 10^{-3}\ \mathrm{m^3/s} \approx 1{,}1\ \mathrm{L/s}
+$$
+
+Pressão no topo, com $H + d = 1{,}0\ \mathrm{m}$:
+
+$$
+p_{topo} = 1{,}013 \times 10^{5} - 1000 \times 9{,}8 \times 1{,}0 = 9{,}15 \times 10^{4}\ \mathrm{Pa}
+$$
+
+Altura máxima do topo, fazendo $p_{topo} = 0$:
+
+$$
+H_{max} = \frac{1{,}013 \times 10^{5}}{1000 \times 9{,}8} - 0{,}60 = 10{,}34 - 0{,}60 = 9{,}7\ \mathrm{m}
+$$
+
+Repare que o limite fica abaixo dos $10{,}3\ \mathrm{m}$ do barômetro de água: a parte da pressão que virou energia cinética não está disponível para sustentar a coluna.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a bomba que enche a caixa d'água">
+
+Uma bomba retira $2{,}0\ \mathrm{L/s}$ de água de um reservatório aberto e a despeja, com velocidade de $3{,}0\ \mathrm{m/s}$, numa caixa d'água $12\ \mathrm{m}$ acima. Qual a potência útil?
+
+As duas pontas estão na atmosfera e a água parte do repouso:
+
+$$
+P = 2{,}0 \times 10^{-3}\left[\,1000 \times 9{,}8 \times 12 + \tfrac{1}{2} \times 1000 \times 3{,}0^2\,\right]
+= 2{,}0 \times 10^{-3} \times 1{,}221 \times 10^{5} = 244\ \mathrm{W}
+$$
+
+Quase tudo ($235\ \mathrm{W}$) vai para subir a água; só $9\ \mathrm{W}$ vão para a energia cinética do jato.
 
 </Caixa>
 
