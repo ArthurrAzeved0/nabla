@@ -1,0 +1,106 @@
+---
+origem: "2023.2"
+tema: "MHS · Duas partículas presas a molas que colidem"
+temaId: fase-do-mhs
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q16.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Duas partículas pontuais de mesma massa $m = 0{,}01\ \mathrm{kg}$ estão em contato na origem, cada uma presa a uma parede vertical por uma mola de constante $k = 100\ \mathrm{N/m}$, comprimento relaxado $l$ e massa desprezível; as paredes ficam a $2l$ uma da outra, e as partículas deslizam sem atrito sobre a superfície horizontal. Em $t = 0$, a partícula 1 (a da esquerda) está deslocada $1\ \mathrm{cm}$ para a esquerda e a partícula 2, $1\ \mathrm{cm}$ para a direita; nesse instante as duas têm velocidade de módulo $\sqrt3\ \mathrm{m/s}$, a 1 para a esquerda e a 2 para a direita. O sentido positivo do eixo $x$ é para a direita, e num instante $t_{\text{col}} \gt 0$ as partículas se chocam.<br />(a) Calcule as energias totais e, a partir delas, as amplitudes $x_{1m}$ e $x_{2m}$ dos movimentos enquanto não há colisão.<br />(b) Determine a constante de fase $\phi$ a partir das condições iniciais e escreva $x_2(t) = x_{2m}\cos(\omega t + \phi)$ para $0 \lt t \le t_{\text{col}}$.<br />(c) Em que instante as partículas colidem?
+
+<Figura>
+  <svg viewBox="0 0 320 110" role="img" aria-label="Duas paredes separadas por 2l; cada uma tem uma mola presa a uma partícula, e as duas partículas se tocam no meio, na origem">
+    {/* cota 2l */}
+    <line x1="30" y1="24" x2="290" y2="24" stroke="var(--ink-2)" stroke-width="1"/>
+    <polygon points="30,24 38,20 38,28" fill="var(--ink-2)"/>
+    <polygon points="290,24 282,20 282,28" fill="var(--ink-2)"/>
+    <text x="152" y="18" font-size="11" fill="var(--ink-2)" font-style="italic">2l</text>
+    {/* paredes */}
+    <rect x="22" y="40" width="8" height="46" fill="var(--line-2)"/>
+    <rect x="290" y="40" width="8" height="46" fill="var(--line-2)"/>
+    <line x1="22" y1="86" x2="298" y2="86" stroke="var(--ink-3)" stroke-width="1.2"/>
+    {/* molas */}
+    <polyline points="30,72 40,72 46,64 54,80 62,64 70,80 78,64 86,80 94,64 102,80 110,64 118,80 126,64 134,80 140,72 151,72" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <polyline points="290,72 280,72 274,64 266,80 258,64 250,80 242,64 234,80 226,64 218,80 210,64 202,80 194,64 186,80 180,72 169,72" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    {/* partículas */}
+    <circle cx="151" cy="72" r="9" fill="var(--accent)"/>
+    <circle cx="169" cy="72" r="9" fill="var(--warn)"/>
+    <text x="146" y="58" font-size="10" fill="var(--accent)">1</text>
+    <text x="166" y="58" font-size="10" fill="var(--warn)">2</text>
+    {/* eixo */}
+    <line x1="160" y1="92" x2="160" y2="102" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="164" y="102" font-size="9" fill="var(--ink-3)">x = 0</text>
+    <line x1="230" y1="100" x2="270" y2="100" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="274,100 266,97 266,103" fill="var(--ink-3)"/>
+    <text x="278" y="103" font-size="9" fill="var(--ink-3)">+x</text>
+  </svg>
+  <figcaption>
+
+Com as duas molas relaxadas, as partículas se tocam em $x = 0$. Cada uma oscila em torno da origem com a sua mola, e a colisão acontece quando as duas voltam a ela ao mesmo tempo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $E_1 = E_2 = 0{,}020\ \mathrm{J}$; $x_{1m} = x_{2m} = 2{,}0\ \mathrm{cm}$<br />(b) $\omega = 100\ \mathrm{rad/s}$, $\phi = -\pi/3$: $x_2(t) = 0{,}020\cos(100\,t - \pi/3)$ (m, s)<br />(c) $t_{\text{col}} = \pi/120\ \mathrm{s} \approx 2{,}6\times10^{-2}\ \mathrm{s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — (a) a energia de cada partícula.** Cada uma é um oscilador massa–mola independente até a colisão, com deslocamento inicial de $1\ \mathrm{cm}$ e velocidade de $\sqrt3\ \mathrm{m/s}$ em módulo:
+
+$$
+E = \tfrac12 k x_0^2 + \tfrac12 m v_0^2 = \tfrac12 \cdot 100 \cdot (0{,}01)^2 + \tfrac12 \cdot 0{,}01 \cdot 3 = 0{,}005 + 0{,}015 = \boxed{0{,}020\ \mathrm{J}}
+$$
+
+igual para as duas, porque os dados têm o mesmo módulo.
+
+**Passo 2 — (a) as amplitudes.** No extremo, toda a energia é potencial, $E = \tfrac12 k x_m^2$:
+
+$$
+x_{1m} = x_{2m} = \sqrt{\frac{2E}{k}} = \sqrt{\frac{2 \cdot 0{,}020}{100}} = 0{,}020\ \mathrm{m} = \boxed{2{,}0\ \mathrm{cm}}
+$$
+
+**Passo 3 — (b) a frequência angular.**
+
+$$
+\omega = \sqrt{\frac{k}{m}} = \sqrt{\frac{100}{0{,}01}} = 100\ \mathrm{rad/s}
+$$
+
+**Passo 4 — (b) a fase da partícula 2.** Em $t = 0$, $x_2 = +0{,}01\ \mathrm{m}$ e $v_2 = +\sqrt3\ \mathrm{m/s}$. Com $x_2 = x_{2m}\cos(\omega t + \phi)$ e $v_2 = -\omega x_{2m}\operatorname{sen}(\omega t + \phi)$:
+
+$$
+\cos\phi = \frac{0{,}01}{0{,}02} = \frac12
+\qquad
+\operatorname{sen}\phi = -\frac{\sqrt3}{100 \cdot 0{,}02} = -\frac{\sqrt3}{2}
+$$
+
+O cosseno positivo e o seno negativo põem $\phi$ no quarto quadrante: $\phi = -\pi/3$. Então
+
+$$
+\boxed{x_2(t) = 0{,}020\cos\!\left(100\,t - \frac{\pi}{3}\right)}\quad(\mathrm{m},\ \mathrm{s})
+$$
+
+A partícula 1 faz o movimento espelhado, $x_1(t) = -x_2(t) = 0{,}020\cos(100\,t + 2\pi/3)$.
+
+**Passo 5 — (c) o instante da colisão.** As partículas começam se afastando, vão aos extremos ($\pm 2\ \mathrm{cm}$), voltam e se encontram na origem quando $x_2 = 0$ pela primeira vez. Isso ocorre quando a fase, que parte de $-\pi/3$, chega a $\pi/2$:
+
+$$
+100\,t_{\text{col}} - \frac{\pi}{3} = \frac{\pi}{2}
+\quad\Longrightarrow\quad
+t_{\text{col}} = \frac{5\pi/6}{100} = \frac{\pi}{120} = \boxed{2{,}6\times10^{-2}\ \mathrm{s}}
+$$
+
+**Conferência —** em $t = 0$ a fórmula dá $x_2 = 0{,}02\cos(-\pi/3) = 0{,}01\ \mathrm{m}$ e $v_2 = -2\operatorname{sen}(-\pi/3) = +\sqrt3\ \mathrm{m/s}$ ✔ A fase percorrida até a colisão, $5\pi/6$, é $5/12$ do ciclo; com $T = 2\pi/100 = 0{,}0628\ \mathrm{s}$, $\tfrac{5}{12} \cdot 0{,}0628 = 0{,}0262\ \mathrm{s}$ ✔ Na colisão a partícula 2 passa pela origem com velocidade $-\omega x_{2m} = -2\ \mathrm{m/s}$, a máxima, e a 1 com $+2\ \mathrm{m/s}$: elas se aproximam ✔
+</Passos>
