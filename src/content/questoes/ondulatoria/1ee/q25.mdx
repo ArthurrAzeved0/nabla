@@ -1,0 +1,117 @@
+---
+origem: "2025.2"
+tema: "Bernoulli · Sifão"
+temaId: sifao
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um sifão é um tubo $ABC$ usado para passar líquido de um recipiente para outro. O tubo começa cheio e, a partir daí, o líquido escoa sozinho até que a superfície no recipiente desça ao nível da boca $A$. O líquido tem massa específica $\rho = 1000\ \mathrm{kg/m^3}$ e viscosidade desprezível. Na figura, $h_1 = 25\ \mathrm{cm}$ é a altura do ponto mais alto $B$ acima da superfície livre, $d = 12\ \mathrm{cm}$ é a profundidade da boca $A$ abaixo da superfície e $h_2 = 40\ \mathrm{cm}$ é o desnível entre $A$ e a saída $C$.
+
+(a) Com que velocidade o líquido sai do tubo em $C$?<br />
+(b) Se a pressão atmosférica é $1{,}0\times10^5\ \mathrm{Pa}$, qual é a pressão do líquido em $B$?<br />
+(c) Em teoria, qual é o maior valor de $h_1$ com que o sifão ainda funciona?
+
+<Figura>
+  <svg viewBox="0 0 320 260" role="img" aria-label="Recipiente com água; um tubo entra pela superfície até a boca A, sobe até o ponto mais alto B, passa por cima da parede e desce até a saída C, abaixo do recipiente; à direita, as cotas h1 de B à superfície, d da superfície até A e h2 de A até C">
+    {/* água no recipiente */}
+    <rect x="42" y="95" width="106" height="81" fill="var(--accent)" opacity="0.22"/>
+    <line x1="42" y1="95" x2="148" y2="95" stroke="var(--accent)" stroke-width="1.4"/>
+    {/* recipiente */}
+    <path d="M40,72 L40,170 Q40,178 48,178 L142,178 Q150,178 150,170 L150,72" fill="none" stroke="var(--ink-3)" stroke-width="3"/>
+    {/* tubo */}
+    <path d="M120,126 L120,60 A55,30 0 0 1 230,60 L230,230" fill="none" stroke="var(--line-2)" stroke-width="11"/>
+    <path d="M120,126 L120,60 A55,30 0 0 1 230,60 L230,230" fill="none" stroke="var(--accent)" stroke-width="6" opacity="0.6"/>
+    {/* jato em C */}
+    <line x1="230" y1="236" x2="230" y2="252" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>
+    {/* rótulos dos pontos */}
+    <text x="104" y="132" font-size="12" fill="var(--ink-2)" font-style="italic">A</text>
+    <text x="170" y="22" font-size="12" fill="var(--ink-2)" font-style="italic">B</text>
+    <text x="240" y="250" font-size="12" fill="var(--ink-2)" font-style="italic">C</text>
+    {/* linhas de referência */}
+    <line x1="175" y1="30" x2="285" y2="30" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="150" y1="95" x2="285" y2="95" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="120" y1="126" x2="285" y2="126" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="236" y1="230" x2="285" y2="230" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    {/* cotas */}
+    <line x1="272" y1="32" x2="272" y2="93" stroke="var(--warn)" stroke-width="1.2"/>
+    <polygon points="272,30 268.5,38 275.5,38" fill="var(--warn)"/>
+    <polygon points="272,95 268.5,87 275.5,87" fill="var(--warn)"/>
+    <text x="280" y="66" font-size="12" fill="var(--warn)" font-style="italic">h<tspan font-size="9" dy="3">1</tspan><tspan dy="-3"></tspan></text>
+    <line x1="272" y1="97" x2="272" y2="124" stroke="var(--warn)" stroke-width="1.2"/>
+    <polygon points="272,95 268.5,103 275.5,103" fill="var(--warn)"/>
+    <polygon points="272,126 268.5,118 275.5,118" fill="var(--warn)"/>
+    <text x="280" y="115" font-size="12" fill="var(--warn)" font-style="italic">d</text>
+    <line x1="272" y1="128" x2="272" y2="228" stroke="var(--warn)" stroke-width="1.2"/>
+    <polygon points="272,126 268.5,134 275.5,134" fill="var(--warn)"/>
+    <polygon points="272,230 268.5,222 275.5,222" fill="var(--warn)"/>
+    <text x="280" y="182" font-size="12" fill="var(--warn)" font-style="italic">h<tspan font-size="9" dy="3">2</tspan><tspan dy="-3"></tspan></text>
+  </svg>
+  <figcaption>
+
+O líquido sobe de $A$ até $B$, acima da superfície, e desce até $C$, abaixo do fundo do recipiente. O que move o escoamento é o desnível $d + h_2$ entre a superfície livre e a saída.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $v_C \approx 3{,}2\ \mathrm{m/s}$  ·  (b) $p_B \approx 9{,}2\times10^4\ \mathrm{Pa}$  ·  (c) $h_{1,\max} \approx 9{,}7\ \mathrm{m}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — Bernoulli da superfície até a saída.** Tome um ponto $D$ na superfície livre. Em $D$ e em $C$ o líquido está exposto ao ar, então $p_D = p_C = p_{\text{atm}}$; e o recipiente é largo, então $v_D \approx 0$. O desnível entre $D$ e $C$ é $d + h_2$:
+
+$$
+p_{\text{atm}} + \rho g(d + h_2) = p_{\text{atm}} + \tfrac12\rho v_C^2
+\;\Longrightarrow\;
+v_C = \sqrt{2g(d + h_2)}
+$$
+
+$$
+v_C = \sqrt{2\cdot 9{,}8\cdot 0{,}52} = 3{,}19\ \mathrm{m/s} \approx \boxed{3{,}2\ \mathrm{m/s}}
+$$
+
+É o resultado de Torricelli: o sifão se comporta como um furo aberto na altura de $C$.
+
+**Passo 2 — Bernoulli de $B$ até $C$.** O tubo tem seção constante, então pela continuidade $v_B = v_C$ e os termos cinéticos se cancelam. O ponto $B$ fica $h_1 + d + h_2 = 0{,}77\ \mathrm{m}$ acima de $C$:
+
+$$
+p_B + \rho g(h_1 + d + h_2) = p_{\text{atm}}
+\;\Longrightarrow\;
+p_B = p_{\text{atm}} - \rho g(h_1 + d + h_2)
+$$
+
+$$
+p_B = 1{,}0\times10^5 - 1000\cdot 9{,}8\cdot 0{,}77 = 9{,}245\times10^4\ \mathrm{Pa} \approx \boxed{9{,}2\times10^4\ \mathrm{Pa}}
+$$
+
+A pressão em $B$ fica **abaixo** da atmosférica: é a atmosfera, agindo na superfície livre, que empurra o líquido para cima até $B$.
+
+**Passo 3 — o limite do sifão.** A pressão de um líquido não pode ficar negativa; se $p_B$ chegasse a zero, a coluna se romperia em $B$ e o escoamento pararia. A condição $p_B \ge 0$ dá
+
+$$
+p_{\text{atm}} - \rho g(h_1 + d + h_2) \ge 0
+\;\Longrightarrow\;
+h_1 \le \frac{p_{\text{atm}}}{\rho g} - d - h_2
+$$
+
+$$
+h_{1,\max} = \frac{1{,}0\times10^5}{1000\cdot 9{,}8} - 0{,}12 - 0{,}40 = 10{,}20 - 0{,}52 = 9{,}68\ \mathrm{m} \approx \boxed{9{,}7\ \mathrm{m}}
+$$
+
+**Conferência —** pelo caminho da estática: com o líquido parado, a pressão em $B$ seria $p_{\text{atm}} - \rho g h_1 = 1{,}0\times10^5 - 2450 = 9{,}755\times10^4\ \mathrm{Pa}$; com escoamento, a energia cinética $\tfrac12\rho v_C^2 = \rho g(d + h_2) = 1000\cdot 9{,}8\cdot 0{,}52 = 5096\ \mathrm{Pa}$ sai da pressão, e $9{,}755\times10^4 - 5096 = 9{,}245\times10^4\ \mathrm{Pa}$ ✔ No limite $p_B = 0$, o mesmo balanço fica $p_{\text{atm}} = \rho g h_1 + \rho g(d + h_2)$ — a condição do Passo 3 ✔
+
+**Sobre o gabarito oficial —** a resolução escreve a desigualdade certa, $h_1 \le p_{\text{atm}}/\rho g - d - h_2$, mas dá como resposta o termo seguinte, $h_1 \le p_{\text{atm}}/\rho g = 10{,}3\ \mathrm{m}$. Esse número é só um teto grosseiro, que ignora $d$ e $h_2$ (e, com $g = 9{,}8\ \mathrm{m/s^2}$, dá $10{,}2\ \mathrm{m}$, não $10{,}3$). Descontando os $0{,}52\ \mathrm{m}$ de $d + h_2$, o máximo é $9{,}7\ \mathrm{m}$.
+</Passos>
