@@ -1,0 +1,53 @@
+---
+origem: "2024.1"
+tema: "Calores molares · Aquecimento a volume constante"
+temaId: calores-molares
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A temperatura de $2{,}00$ mols de um gás ideal **monoatômico** aumenta $15{,}0\ \mathrm{K}$ a **volume constante**. Determine:<br />(a) o trabalho $W$ realizado pelo gás;<br />(b) o calor $Q$ transferido para o gás;<br />(c) a variação $\Delta E_{\mathrm{int}}$ da energia interna;<br />(d) a variação $\Delta K$ da energia cinética média por átomo.<br />Use $R = 8{,}31\ \mathrm{J/(mol \cdot K)}$.
+
+<Gabarito>
+(a) $W = 0$  ·  (b) $Q \approx +374\ \mathrm{J}$  ·  (c) $\Delta E_{\mathrm{int}} \approx +374\ \mathrm{J}$  ·  (d) $\Delta K \approx 3{,}11 \times 10^{-22}\ \mathrm{J}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — (a) sem variação de volume, sem trabalho.** Como $W = \int p\,dV$ e $dV = 0$ em todo o processo,
+
+$$
+W = 0
+$$
+
+**Passo 2 — (b) o calor a volume constante.** Para um gás monoatômico, $C_V = \tfrac{3}{2}R$:
+
+$$
+Q = nC_V\,\Delta T = 2{,}00 \cdot \tfrac{3}{2} \cdot 8{,}31 \cdot 15{,}0 \approx 374\ \mathrm{J}
+$$
+
+**Passo 3 — (c) a primeira lei.** Com $W = 0$, todo o calor vira energia interna:
+
+$$
+\Delta E_{\mathrm{int}} = Q - W \approx 374\ \mathrm{J}
+$$
+
+**Passo 4 — (d) dividir pelos átomos.** Dois mols têm $N = 2{,}00 \cdot 6{,}02 \times 10^{23} = 1{,}204 \times 10^{24}$ átomos, e no gás monoatômico a energia interna é só cinética de translação:
+
+$$
+\Delta K = \frac{\Delta E_{\mathrm{int}}}{N} = \frac{374}{1{,}204 \times 10^{24}} \approx 3{,}11 \times 10^{-22}\ \mathrm{J}
+$$
+
+**Conferência —** pela teoria cinética, $K_{\mathrm{méd}} = \tfrac{3}{2}kT$, logo $\Delta K = \tfrac{3}{2}k\,\Delta T$, ou seja, $1{,}5 \cdot 1{,}381 \times 10^{-23} \cdot 15{,}0 \approx 3{,}11 \times 10^{-22}\ \mathrm{J}$, sem passar pelo número de mols ✔
+</Passos>
