@@ -1,0 +1,76 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Gás ideal · Expansão isotérmica e adiabática"
+temaId: adiabatica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um gás ideal, inicialmente a $32\ \mathrm{atm}$, $1{,}0\ \mathrm{L}$ e $300\ \mathrm{K}$, expande-se até o volume final de $4{,}0\ \mathrm{L}$.<br />Se o gás é monoatômico e a expansão é isotérmica, determine (a) a pressão final $p_f$, (b) a temperatura final $T_f$ e (c) o trabalho $W$ realizado pelo gás.<br />Se o gás é monoatômico e a expansão é adiabática, determine (d) $p_f$, (e) $T_f$ e (f) $W$.<br />Se o gás é diatômico e a expansão é adiabática, determine (g) $p_f$, (h) $T_f$ e (i) $W$.
+
+<Gabarito>
+Isotérmica: (a) $8{,}0\ \mathrm{atm}$  ·  (b) $300\ \mathrm{K}$  ·  (c) $4{,}5\ \mathrm{kJ}$
+
+Monoatômico adiabático: (d) $3{,}2\ \mathrm{atm}$  ·  (e) $119\ \mathrm{K}$  ·  (f) $2{,}9\ \mathrm{kJ}$
+
+Diatômico adiabático: (g) $4{,}6\ \mathrm{atm}$  ·  (h) $172\ \mathrm{K}$  ·  (i) $3{,}5\ \mathrm{kJ}$
+</Gabarito>
+
+<Passos>
+A foto da prova corta a margem direita do enunciado (some o volume inicial e os itens g e h); o texto foi completado pelo problema 83 do capítulo 19 do Halliday (10ª ed.), que é o mesmo: o volume inicial é $1{,}0\ \mathrm{L}$ e o final, $4{,}0\ \mathrm{L}$.
+
+**Passo 1 — unidades.** Dá para trabalhar em $\mathrm{atm\cdot L}$ e converter só no fim: $1\ \mathrm{atm\cdot L} = 1{,}013\times10^{5}\ \mathrm{Pa} \cdot 10^{-3}\ \mathrm{m^3} = 101{,}3\ \mathrm{J}$. A razão de volumes é $V_i/V_f = 1/4$.
+
+**Passo 2 — isotérmica (a), (b), (c).** Com $T$ constante, $pV$ é constante:
+
+$$
+p_f = p_i\frac{V_i}{V_f} = \frac{32}{4} = \boxed{8{,}0\ \mathrm{atm}}
+\qquad
+T_f = \boxed{300\ \mathrm{K}}
+$$
+
+$$
+W = nRT\ln\frac{V_f}{V_i} = p_iV_i\ln 4 = 32 \cdot 1{,}386 \approx 44{,}4\ \mathrm{atm\cdot L} \approx \boxed{4{,}5\ \mathrm{kJ}}
+$$
+
+Na isotérmica, o tipo de gás não importa: nem $\gamma$ nem $C_V$ entram.
+
+**Passo 3 — adiabática, monoatômico (d), (e), (f).** Para gás monoatômico, $\gamma = 5/3$. Valem $pV^\gamma$ e $TV^{\gamma-1}$ constantes:
+
+$$
+p_f = p_i\left(\frac{V_i}{V_f}\right)^{\gamma} = 32\cdot 4^{-5/3} \approx \boxed{3{,}2\ \mathrm{atm}}
+\qquad
+T_f = T_i\left(\frac{V_i}{V_f}\right)^{\gamma-1} = 300\cdot 4^{-2/3} \approx \boxed{119\ \mathrm{K}}
+$$
+
+Sem calor, o trabalho sai todo da energia interna:
+
+$$
+W = \frac{p_iV_i - p_fV_f}{\gamma - 1} = \frac{32 - 3{,}17\cdot 4{,}0}{2/3} \approx 28{,}8\ \mathrm{atm\cdot L} \approx \boxed{2{,}9\ \mathrm{kJ}}
+$$
+
+**Passo 4 — adiabática, diatômico (g), (h), (i).** Agora $\gamma = 7/5 = 1{,}4$:
+
+$$
+p_f = 32\cdot 4^{-1{,}4} \approx \boxed{4{,}6\ \mathrm{atm}}
+\qquad
+T_f = 300\cdot 4^{-0{,}4} \approx \boxed{172\ \mathrm{K}}
+$$
+
+$$
+W = \frac{32 - 4{,}59\cdot 4{,}0}{0{,}4} \approx 34{,}1\ \mathrm{atm\cdot L} \approx \boxed{3{,}5\ \mathrm{kJ}}
+$$
+
+**Conferência —** pelo outro caminho, $W = -\Delta E_{\text{int}} = n C_V (T_i - T_f)$ com $n = p_iV_i/(RT_i) \approx 1{,}30\ \mathrm{mol}$: no monoatômico, $1{,}30 \cdot 1{,}5 \cdot 8{,}314 \cdot 181 \approx 2{,}93\ \mathrm{kJ}$, e no diatômico, $1{,}30 \cdot 2{,}5 \cdot 8{,}314 \cdot 128 \approx 3{,}45\ \mathrm{kJ}$ ✔ A ordem também faz sentido: a isotérmica, que recebe calor, rende mais trabalho que qualquer adiabática; e o diatômico esfria menos, porque divide a energia por mais graus de liberdade ✔ (O livro imprime $4{,}4\ \mathrm{kJ}$ para o item c e $3{,}4\ \mathrm{kJ}$ para o i; as contas dão $4{,}49$ e $3{,}45\ \mathrm{kJ}$, que arredondam para $4{,}5$ e $3{,}5\ \mathrm{kJ}$.)
+</Passos>
