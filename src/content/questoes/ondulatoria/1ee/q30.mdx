@@ -1,0 +1,82 @@
+---
+origem: "2026.1"
+tema: "Ondas · Leitura da equação de uma onda progressiva"
+temaId: onda-progressiva
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma onda transversal se propaga numa corda muito longa segundo
+
+$$
+y = 6{,}0\,\operatorname{sen}(0{,}020\pi x + 4{,}0\pi t)
+$$
+
+com $x$ e $y$ em centímetros e $t$ em segundos. Determine (a) a amplitude, (b) o comprimento de onda, (c) a frequência, (d) a velocidade de propagação, (e) o sentido de propagação e (f) a velocidade transversal máxima de um ponto da corda.<br />
+(g) Qual é o deslocamento transversal em $x = 3{,}5\ \mathrm{cm}$ no instante $t = 0{,}26\ \mathrm{s}$?
+
+<Gabarito>
+(a) $y_m = 6{,}0\ \mathrm{cm}$  ·  (b) $\lambda = 1{,}0\times10^2\ \mathrm{cm}$  ·  (c) $f = 2{,}0\ \mathrm{Hz}$  ·  (d) $v = 2{,}0\times10^2\ \mathrm{cm/s}$  ·  (e) sentido negativo de $x$  ·  (f) $u_{\max} \approx 75\ \mathrm{cm/s}$  ·  (g) $y \approx -2{,}0\ \mathrm{cm}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — ler os parâmetros.** Comparando com $y = y_m\operatorname{sen}(kx \pm \omega t)$:
+
+$$
+y_m = 6{,}0\ \mathrm{cm}
+\qquad
+k = 0{,}020\pi\ \mathrm{rad/cm}
+\qquad
+\omega = 4{,}0\pi\ \mathrm{rad/s}
+$$
+
+o que já responde (a): $y_m = \boxed{6{,}0\ \mathrm{cm}}$.
+
+**Passo 2 — (b) e (c) comprimento de onda e frequência.**
+
+$$
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{0{,}020\pi} = \boxed{1{,}0\times10^2\ \mathrm{cm}}
+\qquad
+f = \frac{\omega}{2\pi} = \frac{4{,}0\pi}{2\pi} = \boxed{2{,}0\ \mathrm{Hz}}
+$$
+
+**Passo 3 — (d) a velocidade.**
+
+$$
+v = \lambda f = 100\cdot 2{,}0 = \boxed{2{,}0\times10^2\ \mathrm{cm/s}} = 2{,}0\ \mathrm{m/s}
+$$
+
+**Passo 4 — (e) o sentido.** Uma fase constante $kx + \omega t = \text{const.}$ exige que $x$ diminua quando $t$ cresce: $dx/dt = -\omega/k$. Com o sinal $+$ entre $kx$ e $\omega t$, a onda anda no **sentido negativo do eixo $x$**.
+
+**Passo 5 — (f) a velocidade transversal máxima.** Derivando em $t$ com $x$ fixo, $u = \omega y_m\cos(kx + \omega t)$, cujo máximo é
+
+$$
+u_{\max} = \omega y_m = 4{,}0\pi\cdot 6{,}0 = 75{,}4\ \mathrm{cm/s} \approx \boxed{75\ \mathrm{cm/s}}
+$$
+
+Não confundir com a velocidade de propagação: $u_{\max}$ é a rapidez com que um ponto da corda sobe e desce, $v$ é a rapidez com que o formato avança.
+
+**Passo 6 — (g) o deslocamento num ponto e instante.** O argumento, em **radianos**:
+
+$$
+0{,}020\pi\cdot 3{,}5 + 4{,}0\pi\cdot 0{,}26 = 0{,}07\pi + 1{,}04\pi = 1{,}11\pi\ \mathrm{rad}
+$$
+
+$$
+y = 6{,}0\,\operatorname{sen}(1{,}11\pi) = 6{,}0\cdot(-0{,}339) = \boxed{-2{,}0\ \mathrm{cm}}
+$$
+
+**Conferência —** a velocidade pela razão direta $v = \omega/k = 4{,}0\pi/0{,}020\pi = 200\ \mathrm{cm/s}$, a mesma do Passo 3 ✔ No item (g), $1{,}11\pi$ fica logo depois de $\pi$, onde o seno acabou de ficar negativo; $\operatorname{sen}(0{,}11\pi) = 0{,}339$ e o sinal é trocado, o que dá $-2{,}0\ \mathrm{cm}$ ✔
+</Passos>
