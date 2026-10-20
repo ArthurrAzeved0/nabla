@@ -52,6 +52,15 @@ unidades:
       - { id: ot-calor, titulo: "Calor, calor específico e calor latente" }
       - { id: ot-primeira-lei, titulo: "Trabalho, calor e a primeira lei da termodinâmica" }
       - { id: ot-transferencia, titulo: "Mecanismos de transferência de calor" }
+  - nome: "A teoria cinética dos gases"
+    prova: 2ee
+    secoes:
+      - { id: ot-gas-ideal, titulo: "Gases ideais e o trabalho nas transformações" }
+      - { id: ot-cinetica, titulo: "Pressão, temperatura e velocidade média quadrática" }
+      - { id: ot-energia-cinetica, titulo: "Energia cinética de translação e livre caminho médio" }
+      - { id: ot-maxwell, titulo: "A distribuição de velocidades de Maxwell" }
+      - { id: ot-calores-molares, titulo: "Calores específicos molares e graus de liberdade" }
+      - { id: ot-adiabatica, titulo: "A expansão adiabática de um gás ideal" }
 ---
 
 {/* **************************************************************************
@@ -4004,6 +4013,675 @@ T_x = T_Q - \frac{P\,L_1}{k_1 A} = 25 - \frac{137{,}9 \times 0{,}20}{1{,}0 \time
 $$
 
 O concreto, quatro vezes mais grosso, segura só $2{,}8\ ^\circ\mathrm{C}$; os outros $17{,}2\ ^\circ\mathrm{C}$ caem nos $5\ \mathrm{cm}$ de isopor. É a camada de maior $L/k$ que manda.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-gas-ideal" num="33" titulo="Gases ideais e o trabalho nas transformações">
+
+**A ideia.** Um gás é uma multidão de moléculas voando em todas as direções. Quando ele está rarefeito o bastante para que as moléculas quase não se "enxerguem", todo gás obedece à mesma lei simples, $pV = nRT$, não importa se é ar, hélio ou vapor. É esse **gás ideal** que a termodinâmica de prova usa, e é com ele que se calcula o trabalho que o gás faz ao se expandir, peça central de qualquer ciclo $p$–$V$.
+
+### Quantidade de matéria: o número de Avogadro
+
+Contar moléculas uma a uma é inviável, então elas se contam em **mols**. Um mol é o número de átomos que há em $12\ \mathrm{g}$ de carbono-12, o **número de Avogadro**:
+
+$$
+N_A = 6{,}02 \times 10^{23}\ \mathrm{mol^{-1}}
+$$
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $n$ — **número de mols** da amostra, em $\mathrm{mol}$;
+- $N$ — **número de moléculas** da amostra (adimensional);
+- $N_A$ — número de Avogadro, $6{,}02 \times 10^{23}\ \mathrm{mol^{-1}}$;
+- $m$ — massa de **uma** molécula, em $\mathrm{kg}$;
+- $M$ — **massa molar** (massa de um mol), em $\mathrm{kg/mol}$;
+- $M_{am}$ — massa da amostra inteira, em $\mathrm{kg}$.
+
+</Caixa>
+
+As três relações que ligam essas grandezas:
+
+$$
+n = \frac{N}{N_A}
+\qquad\qquad
+M = m\,N_A
+\qquad\qquad
+n = \frac{M_{am}}{M}
+$$
+
+### A lei dos gases ideais
+
+$$
+\boxed{\;pV = nRT = NkT\;}
+$$
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $p$ — pressão **absoluta** do gás, em $\mathrm{Pa}$;
+- $V$ — volume ocupado, em $\mathrm{m^3}$;
+- $T$ — temperatura **absoluta**, em $\mathrm{K}$;
+- $R$ — constante dos gases, $8{,}31\ \mathrm{J/(mol \cdot K)}$;
+- $k$ — **constante de Boltzmann**, $k = R/N_A = 1{,}38 \times 10^{-23}\ \mathrm{J/K}$: é o $R$ "por molécula" em vez de "por mol".
+
+</Caixa>
+
+As duas formas dizem a mesma coisa: $nR = Nk$, porque $n = N/N_A$ e $k = R/N_A$. Use $nRT$ quando o enunciado der mols e $NkT$ quando der número de moléculas.
+
+<Caixa tipo="macete">
+
+**Kelvin e pressão absoluta, sempre.** $T$ em graus Celsius na lei dos gases é o erro mais caro da prova: $27\ \mathrm{°C}$ é $300\ \mathrm{K}$, e não $27$. E volume em $\mathrm{m^3}$: $1\ \mathrm{L} = 10^{-3}\ \mathrm{m^3}$.
+
+Com $n$ fixo, a lei vira uma proporção que dispensa $R$: $\dfrac{p_iV_i}{T_i} = \dfrac{p_fV_f}{T_f}$.
+
+</Caixa>
+
+### Trabalho feito pelo gás
+
+Quando o gás empurra um pistão e o volume varia de $dV$, ele faz o trabalho $dW = p\,dV$. Somando ao longo da transformação:
+
+$$
+\boxed{\;W = \int_{V_i}^{V_f} p\,dV\;}
+$$
+
+No diagrama $p$–$V$, esse trabalho é a **área sob a curva**. É positivo na expansão ($V_f \gt V_i$) e negativo na compressão. Como a área depende do caminho, **o trabalho depende do caminho**, e não só dos estados inicial e final.
+
+<Figura>
+  <svg viewBox="0 0 420 220" role="img" aria-label="Diagrama p-V com uma isoterma descendo da esquerda para a direita; a área sob a curva entre os volumes inicial e final está sombreada e representa o trabalho">
+    {/* área sob a isoterma entre Vi e Vf */}
+    <path d="M146.0 65.0 L150.0 70.0 L154.0 74.6 L158.0 78.9 L162.0 82.9 L166.0 86.6 L170.0 90.0 L174.0 93.2 L178.0 96.2 L182.0 99.1 L186.0 101.8 L190.0 104.3 L194.0 106.7 L198.0 108.9 L202.0 111.1 L206.0 113.1 L210.0 115.0 L214.0 116.8 L218.0 118.6 L222.0 120.2 L226.0 121.8 L230.0 123.3 L234.0 124.8 L238.0 126.2 L242.0 127.5 L246.0 128.8 L250.0 130.0 L254.0 131.2 L258.0 132.3 L262.0 133.4 L266.0 134.4 L270.0 135.5 L274.0 136.4 L278.0 137.4 L282.0 138.3 L286.0 139.2 L290.0 140.0 L294.0 140.8 L298.0 141.6 L302.0 142.4 L306.0 143.1 L306.0 190 L146.0 190 Z" fill="var(--accent)" opacity="0.25"/>
+    {/* eixos */}
+    <line x1="50" y1="190" x2="400" y2="190" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="50" y1="190" x2="50" y2="15" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="400,190 391,186 391,194" fill="var(--ink-2)"/>
+    <polygon points="50,15 46,24 54,24" fill="var(--ink-2)"/>
+    <text x="388" y="208" font-size="13" font-style="italic" fill="var(--ink-2)">V</text>
+    <text x="30" y="24" font-size="13" font-style="italic" fill="var(--ink-2)">p</text>
+    {/* isoterma */}
+    <path d="M122.0 23.3 L128.4 36.9 L134.8 48.5 L141.2 58.4 L147.6 67.0 L154.0 74.6 L160.4 81.3 L166.8 87.3 L173.2 92.6 L179.6 97.4 L186.0 101.8 L192.4 105.7 L198.8 109.4 L205.2 112.7 L211.6 115.7 L218.0 118.6 L224.4 121.2 L230.8 123.6 L237.2 125.9 L243.6 128.0 L250.0 130.0 L256.4 131.9 L262.8 133.6 L269.2 135.3 L275.6 136.8 L282.0 138.3 L288.4 139.7 L294.8 141.0 L301.2 142.2 L307.6 143.4 L314.0 144.5 L320.4 145.6 L326.8 146.6 L333.2 147.6 L339.6 148.6 L346.0 149.5 L352.4 150.3 L358.8 151.1 L365.2 151.9 L371.6 152.7 L378.0 153.4" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    {/* estados i e f */}
+    <circle cx="146" cy="65" r="4" fill="var(--warn)"/>
+    <circle cx="306" cy="143.1" r="4" fill="var(--warn)"/>
+    <text x="154" y="60" font-size="13" font-style="italic" fill="var(--warn)">i</text>
+    <text x="310" y="134" font-size="13" font-style="italic" fill="var(--warn)">f</text>
+    <line x1="146" y1="69" x2="146" y2="190" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <line x1="306" y1="147" x2="306" y2="190" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="139" y="207" font-size="12" font-style="italic" fill="var(--ink-3)">V<tspan font-size="9" dy="3">i</tspan></text>
+    <text x="299" y="207" font-size="12" font-style="italic" fill="var(--ink-3)">V<tspan font-size="9" dy="3">f</tspan></text>
+    <text x="200" y="165" font-size="13" fill="var(--ink-2)">W = área</text>
+    <text x="340" y="140" font-size="12" fill="var(--accent)">T constante</text>
+  </svg>
+  <figcaption>
+
+Expansão isotérmica de $i$ até $f$. O trabalho feito pelo gás é a área sombreada sob a curva; outro caminho entre os mesmos $i$ e $f$ cobriria outra área e daria outro $W$.
+
+  </figcaption>
+</Figura>
+
+### As três transformações de prova
+
+**Isotérmica** ($T$ constante). Com $p = nRT/V$ na integral:
+
+$$
+\boxed{\;W = nRT \ln\frac{V_f}{V_i}\;}
+$$
+
+**Isobárica** ($p$ constante). O $p$ sai da integral:
+
+$$
+\boxed{\;W = p\,(V_f - V_i) = nR\,\Delta T\;}
+$$
+
+**Isocórica** ($V$ constante). Sem variação de volume não há trabalho:
+
+$$
+\boxed{\;W = 0\;}
+$$
+
+<Caixa tipo="macete" rotulo="Quando a prova dá p como função de V">
+
+Enunciados do tipo "o gás se expande segundo $p = aV^2$" (ou $p = C\,V^{1/2}$) são só a integral de definição com outra função. Para $p = aV^2$:
+
+$$
+W = \int_{V_i}^{V_f} aV^2\,dV = \frac{a}{3}\left(V_f^{3} - V_i^{3}\right)
+$$
+
+Se o enunciado der só os estados, ache a constante com um deles: $a = p_i/V_i^{2}$.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+Num **ciclo** (volta ao estado inicial), o trabalho líquido é a **área dentro** da curva fechada: positivo se o ciclo é percorrido no sentido horário no diagrama $p$–$V$, negativo se no anti-horário.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — expansão isotérmica e volta isobárica">
+
+Dois mols de gás ideal a $300\ \mathrm{K}$ se expandem isotermicamente de $10\ \mathrm{L}$ para $30\ \mathrm{L}$. Depois são comprimidos à pressão constante de volta a $10\ \mathrm{L}$. Qual o trabalho em cada etapa?
+
+Na isotérmica:
+
+$$
+W_1 = nRT\ln\frac{V_f}{V_i} = 2 \times 8{,}31 \times 300 \times \ln 3 \approx 5478\ \mathrm{J}
+$$
+
+A pressão no fim da expansão, que é a da etapa isobárica:
+
+$$
+p = \frac{nRT}{V} = \frac{2 \times 8{,}31 \times 300}{0{,}030} = 1{,}662 \times 10^{5}\ \mathrm{Pa}
+$$
+
+$$
+W_2 = p\,(V_f - V_i) = 1{,}662 \times 10^{5} \times (0{,}010 - 0{,}030) = -3324\ \mathrm{J}
+$$
+
+O sinal negativo diz que, na compressão, é o ambiente que faz trabalho **sobre** o gás. Os litros viraram $\mathrm{m^3}$ antes de entrar na conta; no logaritmo isso não importa, porque só a razão $V_f/V_i$ aparece.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-cinetica" num="34" titulo="Pressão, temperatura e velocidade média quadrática">
+
+**A ideia.** A pressão que um gás faz numa parede não é uma força contínua: é o efeito somado de bilhões de choques de moléculas por segundo. A teoria cinética faz essa conta e chega a um resultado de peso: a **temperatura** mede o quão rápido as moléculas se movem. É a ponte entre o mundo macroscópico ($p$, $V$, $T$) e o microscópico (massa e velocidade das moléculas).
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v_{rms}$ — **velocidade média quadrática** das moléculas, em $\mathrm{m/s}$;
+- $(v^2)_{med}$ — média dos quadrados das velocidades, em $\mathrm{m^2/s^2}$;
+- $M$ — massa molar do gás, em $\mathrm{kg/mol}$;
+- $m$ — massa de uma molécula, em $\mathrm{kg}$;
+- $T$ — temperatura absoluta, em $\mathrm{K}$;
+- $R$ — $8{,}31\ \mathrm{J/(mol \cdot K)}$; $k$ — $1{,}38 \times 10^{-23}\ \mathrm{J/K}$.
+
+</Caixa>
+
+### De onde vem a pressão
+
+Pense numa molécula de massa $m$ dentro de uma caixa cúbica de aresta $L$, batendo elasticamente na parede perpendicular a $x$. Em cada choque, a componente $v_x$ inverte o sinal, e a molécula entrega à parede o momento $2mv_x$. Ela volta à mesma parede a cada intervalo $2L/v_x$, então a força média que faz nessa parede é
+
+$$
+F = \frac{2mv_x}{2L/v_x} = \frac{mv_x^{2}}{L}
+$$
+
+Somando sobre todas as $N$ moléculas e dividindo pela área $L^2$ da parede, a pressão fica $p = \dfrac{Nm\,(v_x^2)_{med}}{V}$. Como nenhuma direção é privilegiada, $(v_x^2)_{med} = \tfrac{1}{3}(v^2)_{med}$, e com $Nm = nM$:
+
+$$
+p = \frac{nM\,v_{rms}^{2}}{3V}
+\qquad\text{com}\qquad
+v_{rms} = \sqrt{(v^2)_{med}}
+$$
+
+### Temperatura é velocidade
+
+Igualando a expressão acima com $p = nRT/V$, o volume e o número de mols somem:
+
+$$
+\boxed{\;v_{rms} = \sqrt{\frac{3RT}{M}} = \sqrt{\frac{3kT}{m}}\;}
+$$
+
+<Caixa tipo="macete">
+
+**$M$ em $\mathrm{kg/mol}$, não em $\mathrm{g/mol}$.** O nitrogênio tem $M = 28\ \mathrm{g/mol} = 0{,}028\ \mathrm{kg/mol}$. Esquecer essa conversão multiplica a velocidade por $\sqrt{1000} \approx 31{,}6$, e a resposta sai absurda (milhares de metros por segundo para ar ambiente).
+
+E a dependência é com a **raiz** de $T$: para dobrar $v_{rms}$, é preciso **quadruplicar** a temperatura absoluta.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+$v_{rms}$ não é a velocidade média comum: primeiro se tira a média dos **quadrados**, depois a raiz. Por isso ela é um pouco maior que a média simples. A seção da distribuição de Maxwell, adiante, mostra as três velocidades lado a lado.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — moléculas de nitrogênio no ar">
+
+Qual a velocidade média quadrática das moléculas de $\mathrm{N_2}$ ($M = 28\ \mathrm{g/mol}$) a $27\ \mathrm{°C}$? A que temperatura ela dobra?
+
+Com $T = 300\ \mathrm{K}$ e $M = 0{,}028\ \mathrm{kg/mol}$:
+
+$$
+v_{rms} = \sqrt{\frac{3 \times 8{,}31 \times 300}{0{,}028}} \approx 517\ \mathrm{m/s}
+$$
+
+Mais rápido que o som no ar. Para dobrar a velocidade, $T$ precisa ficar quatro vezes maior:
+
+$$
+T' = 4 \times 300 = 1200\ \mathrm{K}
+$$
+
+ou seja, cerca de $927\ \mathrm{°C}$, e não $54\ \mathrm{°C}$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-energia-cinetica" num="35" titulo="Energia cinética de translação e livre caminho médio">
+
+**A ideia.** Se a temperatura mede a velocidade das moléculas, ela mede também a **energia cinética** delas, e de um jeito ainda mais limpo: a energia média de translação de uma molécula depende **só** da temperatura, não do tipo de gás. A seção fecha com o outro lado da história: apesar de rápidas, as moléculas andam muito pouco entre um choque e outro, e essa distância é o **livre caminho médio**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $K_{med}$ — energia cinética **média de translação** de uma molécula, em $\mathrm{J}$;
+- $k$ — constante de Boltzmann, $1{,}38 \times 10^{-23}\ \mathrm{J/K}$;
+- $T$ — temperatura absoluta, em $\mathrm{K}$;
+- $\lambda$ — **livre caminho médio**, em $\mathrm{m}$;
+- $d$ — diâmetro de uma molécula, em $\mathrm{m}$;
+- $N/V$ — número de moléculas por unidade de volume, em $\mathrm{m^{-3}}$.
+
+</Caixa>
+
+### Energia cinética média por molécula
+
+Partindo de $K_{med} = \tfrac{1}{2}m\,v_{rms}^2$ e trocando $v_{rms}^2 = 3kT/m$, a massa da molécula cancela:
+
+$$
+\boxed{\;K_{med} = \frac{3}{2}\,kT\;}
+$$
+
+Numa mesma temperatura, uma molécula de hidrogênio e uma de oxigênio têm, em média, **a mesma** energia de translação. A de hidrogênio é leve e rápida; a de oxigênio, pesada e lenta, e as duas coisas se compensam exatamente.
+
+Para a amostra inteira, multiplica-se por $N$, e com $Nk = nR$:
+
+$$
+K_{tot} = \frac{3}{2}\,NkT = \frac{3}{2}\,nRT
+$$
+
+<Caixa tipo="macete" rotulo="ΔK por partícula: a pergunta que a prova sempre faz">
+
+Os ciclos do 2º EE costumam terminar com "qual a variação da energia cinética de translação **por átomo** (ou por molécula)?". A resposta depende **só** de $\Delta T$:
+
+$$
+\Delta K_{med} = \frac{3}{2}\,k\,\Delta T
+$$
+
+O fator é $\tfrac{3}{2}$ **mesmo para gás diatômico**: a pergunta é sobre translação, e translação tem três direções em qualquer molécula. A rotação entra em $\Delta E_{int}$, não aqui. E não importa se a transformação foi isotérmica, adiabática ou qualquer outra: só os estados inicial e final contam.
+
+</Caixa>
+
+### Livre caminho médio
+
+Uma molécula a $500\ \mathrm{m/s}$ não atravessa uma sala em milissegundos, porque esbarra nas vizinhas o tempo todo e anda em zigue-zague. A distância média percorrida entre duas colisões é
+
+$$
+\boxed{\;\lambda = \frac{1}{\sqrt{2}\,\pi\,d^{2}\,N/V}\;}
+$$
+
+A leitura é intuitiva: $\pi d^2$ é a "seção de choque" (o alvo que cada molécula representa), e $N/V$ diz quantos alvos há por volume. Mais moléculas ou moléculas maiores, menos caminho livre. O $\sqrt{2}$ vem de as outras moléculas também estarem em movimento.
+
+<Caixa tipo="dica">
+
+Se o enunciado der $p$ e $T$ em vez de $N/V$, use a lei dos gases na forma por molécula: $\dfrac{N}{V} = \dfrac{p}{kT}$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — energia e caminho livre no ar">
+
+Ar a $27\ \mathrm{°C}$ e $1\ \mathrm{atm}$; trate as moléculas como esferas de diâmetro $d = 3{,}0 \times 10^{-10}\ \mathrm{m}$.
+
+Energia média de translação, com $T = 300\ \mathrm{K}$:
+
+$$
+K_{med} = \frac{3}{2} \times 1{,}38 \times 10^{-23} \times 300 = 6{,}21 \times 10^{-21}\ \mathrm{J}
+$$
+
+Se o gás for aquecido até $500\ \mathrm{K}$, cada molécula ganha em média
+
+$$
+\Delta K_{med} = \frac{3}{2} \times 1{,}38 \times 10^{-23} \times 200 = 4{,}14 \times 10^{-21}\ \mathrm{J}
+$$
+
+Para o livre caminho médio, primeiro a densidade de moléculas:
+
+$$
+\frac{N}{V} = \frac{p}{kT} = \frac{101\,325}{1{,}38 \times 10^{-23} \times 300} \approx 2{,}45 \times 10^{25}\ \mathrm{m^{-3}}
+$$
+
+$$
+\lambda = \frac{1}{\sqrt{2}\,\pi\,(3{,}0 \times 10^{-10})^{2} \times 2{,}45 \times 10^{25}} \approx 1{,}0 \times 10^{-7}\ \mathrm{m}
+$$
+
+Cerca de um décimo de micrômetro, ou umas 340 vezes o diâmetro da própria molécula.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-maxwell" num="36" titulo="A distribuição de velocidades de Maxwell">
+
+**A ideia.** Nem todas as moléculas de um gás têm a mesma velocidade: umas estão quase paradas, outras muito rápidas, e a maioria fica no meio. Maxwell descobriu a forma exata dessa distribuição. Dela saem três velocidades "típicas" diferentes, e a prova gosta de pedir uma no lugar da outra.
+
+### A distribuição
+
+A fração de moléculas com velocidade entre $v$ e $v + dv$ é $P(v)\,dv$, com
+
+$$
+P(v) = 4\pi\left(\frac{M}{2\pi RT}\right)^{3/2} v^{2}\, e^{-Mv^{2}/2RT}
+$$
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $P(v)$ — **função distribuição** de velocidades, em $\mathrm{s/m}$ (fração de moléculas por unidade de velocidade);
+- $v$ — módulo da velocidade de uma molécula, em $\mathrm{m/s}$;
+- $M$ — massa molar, em $\mathrm{kg/mol}$;
+- $T$ — temperatura absoluta, em $\mathrm{K}$;
+- $R$ — $8{,}31\ \mathrm{J/(mol \cdot K)}$.
+
+</Caixa>
+
+O fator $v^2$ faz a curva começar em zero (há poucas moléculas quase paradas), e a exponencial a derruba para velocidades altas. A área total sob a curva vale $1$, porque soma todas as moléculas. A fração com velocidade entre $v_1$ e $v_2$ é a área entre esses dois valores:
+
+$$
+\text{fração} = \int_{v_1}^{v_2} P(v)\,dv
+$$
+
+<Figura>
+  <svg viewBox="0 0 420 220" role="img" aria-label="Duas curvas de Maxwell: a de temperatura menor é alta e estreita, com pico à esquerda; a de temperatura maior é baixa e larga, com pico deslocado para a direita. Na curva de temperatura menor estão marcadas três velocidades próximas: a mais provável, a média e a média quadrática, nessa ordem">
+    {/* eixos */}
+    <line x1="50" y1="190" x2="405" y2="190" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="50" y1="190" x2="50" y2="20" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="405,190 396,186 396,194" fill="var(--ink-2)"/>
+    <polygon points="50,20 46,29 54,29" fill="var(--ink-2)"/>
+    <text x="394" y="208" font-size="13" font-style="italic" fill="var(--ink-2)">v</text>
+    <text x="14" y="30" font-size="13" font-style="italic" fill="var(--ink-2)">P(v)</text>
+    {/* curva de T maior */}
+    <path d="M50.0 190.0 L55.8 189.7 L61.5 188.8 L67.3 187.2 L73.1 185.1 L78.9 182.5 L84.7 179.3 L90.4 175.7 L96.2 171.6 L102.0 167.2 L107.8 162.5 L113.5 157.6 L119.3 152.5 L125.1 147.3 L130.8 142.1 L136.6 136.9 L142.4 131.9 L148.2 127.0 L153.9 122.3 L159.7 117.9 L165.5 113.8 L171.3 110.1 L177.1 106.9 L182.8 104.0 L188.6 101.6 L194.4 99.7 L200.1 98.2 L205.9 97.2 L211.7 96.7 L217.5 96.7 L223.2 97.1 L229.0 98.0 L234.8 99.2 L240.6 100.8 L246.3 102.8 L252.1 105.1 L257.9 107.7 L263.7 110.5 L269.5 113.5 L275.2 116.6 L281.0 120.0 L286.8 123.4 L292.5 126.8 L298.3 130.3 L304.1 133.8 L309.9 137.3 L315.6 140.8 L321.4 144.1 L327.2 147.4 L333.0 150.6 L338.8 153.7 L344.5 156.6 L350.3 159.4 L356.1 162.0 L361.9 164.5 L367.6 166.9 L373.4 169.1 L379.2 171.1 L384.9 173.0 L390.7 174.8 L396.5 176.4" fill="none" stroke="var(--ink-3)" stroke-width="1.6" stroke-dasharray="5 3"/>
+    <text x="300" y="118" font-size="12" fill="var(--ink-3)">T maior</text>
+    {/* curva de T menor */}
+    <path d="M50.0 190.0 L55.8 189.0 L61.5 185.9 L67.3 180.8 L73.1 173.9 L78.9 165.5 L84.7 155.8 L90.4 145.1 L96.2 133.7 L102.0 122.0 L107.8 110.4 L113.5 99.1 L119.3 88.4 L125.1 78.7 L130.8 70.2 L136.6 63.1 L142.4 57.4 L148.2 53.3 L153.9 50.9 L159.7 50.0 L165.5 50.7 L171.3 52.8 L177.1 56.3 L182.8 60.9 L188.6 66.5 L194.4 72.9 L200.1 80.0 L205.9 87.5 L211.7 95.2 L217.5 103.1 L223.2 111.0 L229.0 118.7 L234.8 126.1 L240.6 133.2 L246.3 139.9 L252.1 146.1 L257.9 151.8 L263.7 157.0 L269.5 161.7 L275.2 165.9 L281.0 169.6 L286.8 172.9 L292.5 175.7 L298.3 178.1 L304.1 180.2 L309.9 182.0 L315.6 183.5 L321.4 184.7 L327.2 185.8 L333.0 186.6 L338.8 187.3 L344.5 187.9 L350.3 188.4 L356.1 188.7 L361.9 189.0 L367.6 189.2 L373.4 189.4 L379.2 189.6 L384.9 189.7 L390.7 189.8 L396.5 189.8" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <text x="56" y="84" font-size="12" fill="var(--accent)">T menor</text>
+    {/* as três velocidades */}
+    <line x1="160" y1="50" x2="160" y2="190" stroke="var(--ink-2)" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <line x1="174.1" y1="54.4" x2="174.1" y2="190" stroke="var(--ok)" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <line x1="184.7" y1="62.6" x2="184.7" y2="190" stroke="var(--warn)" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="300" y="36" font-size="12" fill="var(--ink-2)">v<tspan font-size="9" dy="3">p</tspan><tspan dy="-3"> (mais provável)</tspan></text>
+    <text x="300" y="54" font-size="12" fill="var(--ok)">v<tspan font-size="9" dy="3">méd</tspan><tspan dy="-3"> (média)</tspan></text>
+    <text x="300" y="72" font-size="12" fill="var(--warn)">v<tspan font-size="9" dy="3">rms</tspan><tspan dy="-3"> (quadrática)</tspan></text>
+    <line x1="284" y1="32" x2="296" y2="32" stroke="var(--ink-2)" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <line x1="284" y1="50" x2="296" y2="50" stroke="var(--ok)" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <line x1="284" y1="68" x2="296" y2="68" stroke="var(--warn)" stroke-width="1.2" stroke-dasharray="3 2"/>
+  </svg>
+  <figcaption>
+
+A curva não é simétrica: a cauda das velocidades altas puxa a média para a direita do pico, e é por isso que $v_p \lt v_{med} \lt v_{rms}$. Esquentando o gás, o pico anda para a direita e abaixa, porque a área continua valendo $1$.
+
+  </figcaption>
+</Figura>
+
+### As três velocidades
+
+$$
+\boxed{\;v_p = \sqrt{\frac{2RT}{M}}
+\qquad
+v_{med} = \sqrt{\frac{8RT}{\pi M}}
+\qquad
+v_{rms} = \sqrt{\frac{3RT}{M}}\;}
+$$
+
+- $v_p$ — **velocidade mais provável**, a do pico da curva (onde $dP/dv = 0$);
+- $v_{med}$ — **velocidade média**, a média simples dos módulos;
+- $v_{rms}$ — **velocidade média quadrática**, a raiz da média dos quadrados.
+
+<Caixa tipo="macete" rotulo="Decore os números 2, 8/π e 3">
+
+As três têm a forma $\sqrt{c\,RT/M}$, e só o $c$ muda: $2$, $8/\pi \approx 2{,}55$ e $3$. Daí a ordem fixa e as razões, que não dependem do gás nem da temperatura:
+
+$$
+v_p : v_{med} : v_{rms} = 1 : 1{,}128 : 1{,}225
+$$
+
+Calculou uma, as outras saem por proporção.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — as três velocidades do oxigênio">
+
+Para $\mathrm{O_2}$ ($M = 0{,}032\ \mathrm{kg/mol}$) a $300\ \mathrm{K}$:
+
+$$
+v_p = \sqrt{\frac{2 \times 8{,}31 \times 300}{0{,}032}} \approx 395\ \mathrm{m/s}
+$$
+
+$$
+v_{med} = \sqrt{\frac{8 \times 8{,}31 \times 300}{\pi \times 0{,}032}} \approx 445\ \mathrm{m/s}
+$$
+
+$$
+v_{rms} = \sqrt{\frac{3 \times 8{,}31 \times 300}{0{,}032}} \approx 483\ \mathrm{m/s}
+$$
+
+Confira pelas razões: $395 \times 1{,}128 \approx 445$ e $395 \times 1{,}225 \approx 483$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-calores-molares" num="37" titulo="Calores específicos molares e graus de liberdade">
+
+**A ideia.** Aquecer um gás de $1\ \mathrm{K}$ custa uma quantidade de calor que depende de duas coisas: **do processo** (a volume constante ou à pressão constante) e **da molécula** (quantas formas ela tem de guardar energia). Esta seção é a mais cobrada da termodinâmica de gases: é ela que dá $Q$, $W$ e $\Delta E_{int}$ em cada etapa de um ciclo.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $C_V$ — **calor específico molar a volume constante**, em $\mathrm{J/(mol \cdot K)}$;
+- $C_p$ — **calor específico molar à pressão constante**, em $\mathrm{J/(mol \cdot K)}$;
+- $E_{int}$ — **energia interna** do gás, em $\mathrm{J}$;
+- $f$ — número de **graus de liberdade** da molécula;
+- $\gamma = C_p/C_V$ — razão entre os calores específicos (adimensional);
+- $n$ — número de mols; $\Delta T$ — variação de temperatura, em $\mathrm{K}$.
+
+</Caixa>
+
+### A volume constante: $C_V$ e a energia interna
+
+Com o volume fixo, $W = 0$, e pela primeira lei todo o calor vira energia interna: $Q = \Delta E_{int} = nC_V\,\Delta T$. Para o gás ideal, a energia interna depende **só da temperatura**, e por isso
+
+$$
+\boxed{\;\Delta E_{int} = n\,C_V\,\Delta T\;}
+\qquad\text{em qualquer transformação}
+$$
+
+Num gás **monoatômico** a energia interna é só a translação, $E_{int} = \tfrac{3}{2}nRT$, e então $C_V = \tfrac{3}{2}R \approx 12{,}5\ \mathrm{J/(mol \cdot K)}$.
+
+<Caixa tipo="macete">
+
+**$\Delta E_{int} = nC_V\Delta T$ vale mesmo quando o volume muda.** O "$V$" do $C_V$ diz como o calor específico foi medido, não restringe onde a fórmula se aplica. Numa isobárica, numa adiabática ou numa curva qualquer, a variação de energia interna é sempre essa. Numa isotérmica, $\Delta E_{int} = 0$.
+
+</Caixa>
+
+### À pressão constante: $C_p = C_V + R$
+
+À pressão constante, o gás se expande enquanto esquenta, e parte do calor sai como trabalho, $W = p\,\Delta V = nR\,\Delta T$. A primeira lei, $Q = \Delta E_{int} + W$, fica
+
+$$
+nC_p\,\Delta T = nC_V\,\Delta T + nR\,\Delta T
+\qquad\Longrightarrow\qquad
+\boxed{\;C_p = C_V + R\;}
+$$
+
+E o calor numa isobárica:
+
+$$
+\boxed{\;Q = n\,C_p\,\Delta T\;}
+$$
+
+<Caixa tipo="dica">
+
+Numa isobárica, o calor se divide sempre na mesma proporção. Para o monoatômico, de cada $5$ partes de calor, $3$ viram energia interna e $2$ viram trabalho; para o diatômico, $5$ de $7$ ficam e $2$ de $7$ saem como trabalho.
+
+</Caixa>
+
+### Equipartição: contando graus de liberdade
+
+Cada forma independente de uma molécula guardar energia é um **grau de liberdade**, e o **teorema da equipartição** diz que cada um recebe, em média, $\tfrac{1}{2}kT$ por molécula ($\tfrac{1}{2}RT$ por mol). Daí
+
+$$
+\boxed{\;C_V = \frac{f}{2}\,R\;}
+$$
+
+| Molécula | Translação | Rotação | Oscilação | $f$ | $C_V$ | $C_p$ | $\gamma$ |
+|---|---|---|---|---|---|---|---|
+| Monoatômica (He, Ar) | 3 | 0 | — | 3 | $\tfrac{3}{2}R$ | $\tfrac{5}{2}R$ | $\tfrac{5}{3}$ |
+| Diatômica que gira mas não oscila ($\mathrm{O_2}$, $\mathrm{N_2}$) | 3 | 2 | — | 5 | $\tfrac{5}{2}R$ | $\tfrac{7}{2}R$ | $\tfrac{7}{5}$ |
+| Diatômica que gira e oscila | 3 | 2 | 2 | 7 | $\tfrac{7}{2}R$ | $\tfrac{9}{2}R$ | $\tfrac{9}{7}$ |
+
+Por que a diatômica só gira em **dois** eixos: o terceiro eixo é o que passa pelos dois átomos, e girar em torno dele praticamente não envolve inércia. A oscilação (os átomos vibrando como se presos por uma mola) conta **dois** graus, um de energia cinética e outro de potencial.
+
+<Caixa tipo="macete" rotulo="Energia de rotação e o diatômico de prova">
+
+A frase "**giram mas não oscilam**" no enunciado é o código para $f = 5$: $C_V = \tfrac{5}{2}R$, $C_p = \tfrac{7}{2}R$. Quando a prova pedir a energia de **rotação**, ela é a parte da energia interna que vem dos dois graus rotacionais:
+
+$$
+E_{rot} = 2 \times \frac{1}{2}\,nRT = nRT
+\qquad\text{(por molécula: } kT\text{)}
+$$
+
+Sem frase nenhuma, "gás ideal diatômico" também se lê como $f = 5$.
+
+</Caixa>
+
+### Os efeitos quânticos, em uma linha
+
+A equipartição falha em temperaturas extremas porque a rotação e a oscilação são **quantizadas**: só "ligam" quando $kT$ é grande o bastante. O hidrogênio, por exemplo, se comporta como monoatômico ($C_V = \tfrac{3}{2}R$) abaixo de uns $80\ \mathrm{K}$, passa a $\tfrac{5}{2}R$ perto da temperatura ambiente e só chega a $\tfrac{7}{2}R$ acima de alguns milhares de kelvins. Por isso o padrão de prova, à temperatura ambiente, é o diatômico que gira e não oscila.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — diatômico aquecido à pressão constante">
+
+Três mols de um gás diatômico cujas moléculas giram mas não oscilam são aquecidos em $40\ \mathrm{K}$ à pressão constante. Ache $Q$, $\Delta E_{int}$, $W$ e a variação da energia cinética de translação por molécula.
+
+Com $C_p = \tfrac{7}{2}R$ e $C_V = \tfrac{5}{2}R$:
+
+$$
+Q = nC_p\,\Delta T = 3 \times \tfrac{7}{2} \times 8{,}31 \times 40 \approx 3490\ \mathrm{J}
+$$
+
+$$
+\Delta E_{int} = nC_V\,\Delta T = 3 \times \tfrac{5}{2} \times 8{,}31 \times 40 \approx 2493\ \mathrm{J}
+$$
+
+$$
+W = nR\,\Delta T = 3 \times 8{,}31 \times 40 \approx 997\ \mathrm{J}
+$$
+
+Confira pela primeira lei: $2493 + 997 = 3490$. Por molécula, a translação ganha
+
+$$
+\Delta K_{med} = \tfrac{3}{2}\,k\,\Delta T = \tfrac{3}{2} \times 1{,}38 \times 10^{-23} \times 40 = 8{,}28 \times 10^{-22}\ \mathrm{J}
+$$
+
+com $\tfrac{3}{2}$, e não $\tfrac{5}{2}$: a rotação está em $\Delta E_{int}$, não na translação.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-adiabatica" num="38" titulo="A expansão adiabática de um gás ideal">
+
+**A ideia.** Uma transformação é **adiabática** quando não há troca de calor com o ambiente: ou o recipiente é bem isolado, ou tudo acontece rápido demais para o calor fluir (a compressão num motor, uma onda sonora). Sem calor, o trabalho que o gás faz sai **da própria energia interna**, e por isso o gás esfria ao se expandir e esquenta ao ser comprimido.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\gamma = C_p/C_V$ — razão dos calores específicos: $\tfrac{5}{3}$ para monoatômico, $\tfrac{7}{5}$ para diatômico;
+- $p_i,\ V_i,\ T_i$ — estado inicial (pressão em $\mathrm{Pa}$, volume em $\mathrm{m^3}$, temperatura em $\mathrm{K}$);
+- $p_f,\ V_f,\ T_f$ — estado final;
+- $C_V$ — calor específico molar a volume constante, em $\mathrm{J/(mol \cdot K)}$.
+
+</Caixa>
+
+### As duas relações da adiabática
+
+Com $Q = 0$, a primeira lei dá $nC_V\,dT = -p\,dV$. Diferenciando $pV = nRT$ e eliminando $dT$, sai uma equação separável cuja integral é
+
+$$
+\boxed{\;pV^{\gamma} = \text{constante}\;}
+\qquad\Longrightarrow\qquad
+p_iV_i^{\gamma} = p_fV_f^{\gamma}
+$$
+
+Trocando $p = nRT/V$, a mesma relação escrita com a temperatura:
+
+$$
+\boxed{\;TV^{\gamma - 1} = \text{constante}\;}
+\qquad\Longrightarrow\qquad
+T_iV_i^{\gamma - 1} = T_fV_f^{\gamma - 1}
+$$
+
+<Figura>
+  <svg viewBox="0 0 420 220" role="img" aria-label="Diagrama p-V com duas curvas saindo do mesmo estado inicial: uma isoterma e uma adiabática; a adiabática desce mais rápido e fica abaixo da isoterma">
+    {/* eixos */}
+    <line x1="50" y1="190" x2="400" y2="190" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="50" y1="190" x2="50" y2="15" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="400,190 391,186 391,194" fill="var(--ink-2)"/>
+    <polygon points="50,15 46,24 54,24" fill="var(--ink-2)"/>
+    <text x="388" y="208" font-size="13" font-style="italic" fill="var(--ink-2)">V</text>
+    <text x="30" y="24" font-size="13" font-style="italic" fill="var(--ink-2)">p</text>
+    {/* isoterma */}
+    <path d="M130.0 40.0 L136.2 50.8 L142.4 60.1 L148.6 68.3 L154.8 75.5 L161.0 81.9 L167.2 87.6 L173.4 92.8 L179.6 97.4 L185.8 101.6 L192.0 105.5 L198.2 109.0 L204.4 112.3 L210.6 115.3 L216.8 118.1 L223.0 120.6 L229.2 123.0 L235.4 125.3 L241.6 127.4 L247.8 129.3 L254.0 131.2 L260.2 132.9 L266.4 134.5 L272.6 136.1 L278.8 137.6 L285.0 138.9 L291.2 140.2 L297.4 141.5 L303.6 142.7 L309.8 143.8 L316.0 144.9 L322.2 145.9 L328.4 146.9 L334.6 147.8 L340.8 148.7 L347.0 149.6 L353.2 150.4 L359.4 151.2 L365.6 152.0 L371.8 152.7 L378.0 153.4" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    {/* adiabática */}
+    <path d="M130.0 40.0 L136.2 57.5 L142.4 72.0 L148.6 84.1 L154.8 94.4 L161.0 103.1 L167.2 110.6 L173.4 117.2 L179.6 122.9 L185.8 127.9 L192.0 132.4 L198.2 136.3 L204.4 139.9 L210.6 143.0 L216.8 145.9 L223.0 148.5 L229.2 150.9 L235.4 153.0 L241.6 155.0 L247.8 156.8 L254.0 158.5 L260.2 160.0 L266.4 161.4 L272.6 162.8 L278.8 164.0 L285.0 165.1 L291.2 166.2 L297.4 167.1 L303.6 168.1 L309.8 168.9 L316.0 169.7 L322.2 170.5 L328.4 171.2 L334.6 171.9 L340.8 172.5 L347.0 173.1 L353.2 173.7 L359.4 174.3 L365.6 174.8 L371.8 175.3 L378.0 175.7" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    <circle cx="130" cy="40" r="4" fill="var(--ink-2)"/>
+    <text x="138" y="36" font-size="13" font-style="italic" fill="var(--ink-2)">i</text>
+    <text x="250" y="118" font-size="12" fill="var(--accent)">isoterma: pV = cte</text>
+    <text x="92" y="178" font-size="12" fill="var(--warn)">adiabática: pV<tspan font-size="9" dy="-5">γ</tspan><tspan dy="5"> = cte</tspan></text>
+  </svg>
+  <figcaption>
+
+Saindo do mesmo estado $i$, a adiabática cai mais depressa que a isoterma, porque além do volume crescer a temperatura também diminui. Para a mesma expansão, a área sob ela (o trabalho) é menor.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="macete">
+
+**Temperatura sempre em kelvin e volumes podem ficar em litros.** Nas relações $p_iV_i^{\gamma} = p_fV_f^{\gamma}$ e $T_iV_i^{\gamma-1} = T_fV_f^{\gamma-1}$, só a **razão** $V_i/V_f$ aparece, então qualquer unidade de volume serve, desde que seja a mesma dos dois lados. Já $T$ tem de ser absoluta, porque aparece sozinha.
+
+O expoente da temperatura é $\gamma - 1$: $\tfrac{2}{3}$ para monoatômico, $\tfrac{2}{5}$ para diatômico.
+
+</Caixa>
+
+### O trabalho na adiabática
+
+Sem calor, a primeira lei diz que o trabalho é a perda de energia interna:
+
+$$
+\boxed{\;W = -\Delta E_{int} = -nC_V\,(T_f - T_i) = \frac{p_iV_i - p_fV_f}{\gamma - 1}\;}
+$$
+
+A primeira forma é a mais rápida quando você já tem as temperaturas; a segunda, quando tem pressões e volumes.
+
+### Expansão livre: a adiabática que não segue $pV^\gamma$
+
+Na **expansão livre**, o gás está numa metade de um recipiente isolado e a outra metade é vácuo; rompe-se a divisória e ele ocupa tudo. Não há calor ($Q = 0$, isolado) e não há trabalho ($W = 0$, nada para empurrar), então $\Delta E_{int} = 0$ e, para o gás ideal,
+
+$$
+T_f = T_i
+\qquad\qquad
+p_iV_i = p_fV_f
+$$
+
+<Caixa tipo="dica">
+
+A expansão livre é adiabática, mas **não** obedece a $pV^{\gamma} = \text{constante}$: ela não passa por estados de equilíbrio, então não existe curva no diagrama $p$–$V$ entre o início e o fim. Os dois estados ficam na mesma isoterma, embora o processo não seja isotérmico.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — monoatômico que triplica de volume">
+
+Um mol de gás monoatômico a $400\ \mathrm{K}$ ocupa $2{,}0\ \mathrm{L}$ e se expande adiabaticamente até $6{,}0\ \mathrm{L}$. Ache a temperatura final e o trabalho feito pelo gás.
+
+Com $\gamma - 1 = \tfrac{2}{3}$:
+
+$$
+T_f = T_i\left(\frac{V_i}{V_f}\right)^{\gamma - 1} = 400 \times \left(\frac{1}{3}\right)^{2/3} \approx 192\ \mathrm{K}
+$$
+
+$$
+W = -nC_V\,\Delta T = 1 \times \tfrac{3}{2} \times 8{,}31 \times (400 - 192{,}3) \approx 2589\ \mathrm{J}
+$$
+
+Conferindo pela outra forma: $p_i = nRT_i/V_i = 1{,}662 \times 10^{6}\ \mathrm{Pa}$, $p_f = p_i\,(1/3)^{5/3} \approx 2{,}66 \times 10^{5}\ \mathrm{Pa}$, e $\dfrac{p_iV_i - p_fV_f}{\gamma - 1}$ dá os mesmos $2589\ \mathrm{J}$.
+
+Se a mesma expansão fosse isotérmica a $400\ \mathrm{K}$, o trabalho seria $nRT\ln 3 \approx 3652\ \mathrm{J}$, maior, como a figura antecipa.
 
 </Caixa>
 
