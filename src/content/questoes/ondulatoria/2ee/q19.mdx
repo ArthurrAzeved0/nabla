@@ -1,0 +1,131 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "Ciclos · Isocórica, isotérmica e isobárica"
+temaId: ciclos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dois mols de um gás diatômico, inicialmente a $300\ \mathrm{K}$, percorrem o ciclo: (1) aquecimento a volume constante até $800\ \mathrm{K}$; (2) expansão isotérmica até voltar à pressão inicial; (3) contração a pressão constante até o estado inicial. As moléculas não giram nem oscilam, de modo que $C_V = \tfrac32 R$ e $C_p = \tfrac52 R$. Determine (a) o calor líquido recebido pelo gás, (b) o trabalho líquido realizado pelo gás, (c) a eficiência do ciclo e (d) a variação de entropia em cada processo e no ciclo completo.
+
+<Figura>
+  <svg viewBox="0 0 320 220" role="img" aria-label="Diagrama p–V do ciclo: do estado 1 sobe na vertical até o estado 2, desce pela isoterma de 800 K até o estado 3 e volta na horizontal ao estado 1">
+    {/* eixos */}
+    <line x1="40" y1="190" x2="300" y2="190" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="304,190 296,186 296,194" fill="var(--ink-3)"/>
+    <line x1="40" y1="190" x2="40" y2="20" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="40,16 36,24 44,24" fill="var(--ink-3)"/>
+    <text x="296" y="206" font-size="11" fill="var(--ink-2)">V</text>
+    <text x="24" y="22" font-size="11" fill="var(--ink-2)">p</text>
+    {/* marcas */}
+    <line x1="120" y1="190" x2="120" y2="136.7" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="253.3" y1="190" x2="253.3" y2="136.7" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="40" y1="136.7" x2="120" y2="136.7" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="40" y1="47.8" x2="120" y2="47.8" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="112" y="204" font-size="10" fill="var(--ink-3)">V<tspan font-size="9" dy="3">1</tspan><tspan dy="-3"></tspan></text>
+    <text x="236" y="204" font-size="10" fill="var(--ink-3)">8V<tspan font-size="9" dy="3">1</tspan><tspan dy="-3">/3</tspan></text>
+    <text x="18" y="140" font-size="10" fill="var(--ink-3)">p<tspan font-size="9" dy="3">1</tspan><tspan dy="-3"></tspan></text>
+    <text x="4" y="51" font-size="10" fill="var(--ink-3)">8p<tspan font-size="9" dy="3">1</tspan><tspan dy="-3">/3</tspan></text>
+    {/* 1 → 2 isocórica */}
+    <line x1="120" y1="136.7" x2="120" y2="47.8" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="120,86 115.5,96 124.5,96" fill="var(--warn)"/>
+    {/* 2 → 3 isoterma de 800 K */}
+    <polyline points="120.0,47.8 126.7,58.7 133.3,68.1 140.0,76.2 146.7,83.3 153.3,89.6 160.0,95.2 166.7,100.2 173.3,104.7 180.0,108.7 186.7,112.4 193.3,115.8 200.0,118.9 206.7,121.7 213.3,124.4 220.0,126.8 226.7,129.0 233.3,131.1 240.0,133.1 246.7,134.9 253.3,136.7" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="172.1,104.0 161.6,101.6 166.2,95.0" fill="var(--accent)"/>
+    <text x="180" y="96" font-size="10" fill="var(--accent)">T = 800 K</text>
+    {/* 3 → 1 isobárica */}
+    <line x1="253.3" y1="136.7" x2="120" y2="136.7" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="182,136.7 192,132.2 192,141.2" fill="var(--ok)"/>
+    {/* estados */}
+    <circle cx="120" cy="136.7" r="3.5" fill="var(--ink-2)"/>
+    <circle cx="120" cy="47.8" r="3.5" fill="var(--ink-2)"/>
+    <circle cx="253.3" cy="136.7" r="3.5" fill="var(--ink-2)"/>
+    <text x="104" y="152" font-size="11" fill="var(--ink-2)">1 (300 K)</text>
+    <text x="126" y="44" font-size="11" fill="var(--ink-2)">2 (800 K)</text>
+    <text x="258" y="130" font-size="11" fill="var(--ink-2)">3 (800 K)</text>
+  </svg>
+  <figcaption>
+
+O ciclo no plano $p$–$V$, desenhado em escala: a pressão sobe na razão $800/300 = 8/3$ na isocórica, e a isoterma traz o volume para $8V_1/3$. O sentido é horário, então o trabalho líquido é positivo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $Q_{\text{liq}} \approx 4{,}73\ \mathrm{kJ}$  ·  (b) $W_{\text{liq}} \approx 4{,}73\ \mathrm{kJ}$  ·  (c) $\varepsilon \approx 18{,}5\%$
+
+(d) $\Delta S_{12} \approx +24{,}5\ \mathrm{J/K}$  ·  $\Delta S_{23} \approx +16{,}3\ \mathrm{J/K}$  ·  $\Delta S_{31} \approx -40{,}8\ \mathrm{J/K}$  ·  $\Delta S_{\text{ciclo}} = 0$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os estados.** Na isocórica, $p \propto T$: $p_2 = \tfrac83 p_1$. Na isotérmica a $800\ \mathrm{K}$, o gás volta a $p_1$, então $V_3 = \tfrac83 V_1$. A razão $800/300$ aparece em toda parte, e é ela que entra nos logaritmos.
+
+**Passo 2 — processo 1→2, volume constante.** Não há trabalho, e todo o calor vai para a energia interna:
+
+$$
+Q_{12} = n C_V \Delta T = 2 \cdot \tfrac32 \cdot 8{,}314 \cdot 500 \approx 12{,}47\ \mathrm{kJ}
+\qquad W_{12} = 0
+$$
+
+**Passo 3 — processo 2→3, isotérmico.** A energia interna não muda, e o calor recebido vira trabalho:
+
+$$
+Q_{23} = W_{23} = nRT\ln\frac{V_3}{V_2} = 2 \cdot 8{,}314 \cdot 800 \cdot \ln\frac83 \approx 13{,}05\ \mathrm{kJ}
+$$
+
+**Passo 4 — processo 3→1, pressão constante.** O gás é comprimido e esfria de $800$ para $300\ \mathrm{K}$:
+
+$$
+Q_{31} = n C_p \Delta T = 2 \cdot \tfrac52 \cdot 8{,}314 \cdot (-500) \approx -20{,}79\ \mathrm{kJ}
+$$
+
+$$
+W_{31} = p_1(V_1 - V_3) = nR\,\Delta T = 2 \cdot 8{,}314 \cdot (-500) \approx -8{,}31\ \mathrm{kJ}
+$$
+
+**Passo 5 — calor e trabalho líquidos (a) e (b).**
+
+$$
+Q_{\text{liq}} = 12{,}47 + 13{,}05 - 20{,}79 \approx \boxed{4{,}73\ \mathrm{kJ}}
+\qquad
+W_{\text{liq}} = 0 + 13{,}05 - 8{,}31 \approx \boxed{4{,}73\ \mathrm{kJ}}
+$$
+
+Num ciclo, $\Delta E_{\text{int}} = 0$, e a primeira lei obriga $Q_{\text{liq}} = W_{\text{liq}}$.
+
+**Passo 6 — a eficiência (c).** Entra calor nos processos 1→2 e 2→3; o 3→1 só rejeita:
+
+$$
+\varepsilon = \frac{W_{\text{liq}}}{Q_{\text{abs}}} = \frac{4{,}73}{12{,}47 + 13{,}05} \approx \boxed{18{,}5\%}
+$$
+
+**Passo 7 — as entropias (d).** Para o gás ideal, cada trecho reversível dá
+
+$$
+\Delta S_{12} = n C_V \ln\frac{T_2}{T_1} = 2 \cdot \tfrac32 \cdot 8{,}314 \cdot \ln\frac{800}{300} \approx \boxed{+24{,}5\ \mathrm{J/K}}
+$$
+
+$$
+\Delta S_{23} = nR\ln\frac{V_3}{V_2} = 2 \cdot 8{,}314 \cdot \ln\frac83 \approx \boxed{+16{,}3\ \mathrm{J/K}}
+$$
+
+$$
+\Delta S_{31} = n C_p \ln\frac{T_1}{T_3} = 2 \cdot \tfrac52 \cdot 8{,}314 \cdot \ln\frac{300}{800} \approx \boxed{-40{,}8\ \mathrm{J/K}}
+$$
+
+e no ciclo $\Delta S = 24{,}5 + 16{,}3 - 40{,}8 = \boxed{0}$, como tem de ser: a entropia é função de estado e o gás volta ao estado inicial.
+
+**Conferência —** o zero do ciclo é exato, e não coincidência de arredondamento: os três termos são $(\tfrac32 + 1 - \tfrac52)\,nR\ln\tfrac83 = 0$, porque $C_p = C_V + R$ ✔ E a eficiência fica bem abaixo da de Carnot entre as mesmas temperaturas, $1 - 300/800 = 62{,}5\%$, como exige a segunda lei ✔
+</Passos>
