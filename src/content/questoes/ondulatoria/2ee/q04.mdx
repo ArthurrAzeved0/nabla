@@ -1,0 +1,65 @@
+---
+origem: "2024.1"
+tema: "Entropia · Dois blocos numa caixa isolada"
+temaId: entropia
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um bloco de cobre de $50{,}0\ \mathrm{g}$ a $400\ \mathrm{K}$ é posto numa caixa isolada junto com um bloco de chumbo de $100\ \mathrm{g}$ a $200\ \mathrm{K}$. Os calores específicos são $c_{\mathrm{Cu}} = 386\ \mathrm{J/(kg \cdot K)}$ e $c_{\mathrm{Pb}} = 128\ \mathrm{J/(kg \cdot K)}$.<br />(a) Qual é a temperatura de equilíbrio do sistema dos dois blocos?<br />(b) Qual é a variação da energia interna do sistema entre o estado inicial e o de equilíbrio?<br />(c) Qual é a variação de entropia do sistema?
+
+<Gabarito>
+(a) $T_f \approx 320\ \mathrm{K}$  ·  (b) $\Delta E_{\mathrm{int}} = 0$  ·  (c) $\Delta S \approx +1{,}73\ \mathrm{J/K}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — (a) o balanço de calor.** A caixa é isolada: o calor que o cobre perde é o que o chumbo ganha,
+
+$$
+m_{\mathrm{Cu}}c_{\mathrm{Cu}}(T_f - 400) + m_{\mathrm{Pb}}c_{\mathrm{Pb}}(T_f - 200) = 0
+$$
+
+Com $m_{\mathrm{Cu}}c_{\mathrm{Cu}} = 0{,}0500 \cdot 386 = 19{,}3\ \mathrm{J/K}$ e $m_{\mathrm{Pb}}c_{\mathrm{Pb}} = 0{,}100 \cdot 128 = 12{,}8\ \mathrm{J/K}$:
+
+$$
+T_f = \frac{19{,}3 \cdot 400 + 12{,}8 \cdot 200}{19{,}3 + 12{,}8} = \frac{10\,280}{32{,}1} \approx 320\ \mathrm{K}
+$$
+
+**Passo 2 — (b) sistema isolado.** Não entra calor ($Q = 0$) nem há trabalho ($W = 0$, sólidos de volume praticamente constante), então
+
+$$
+\Delta E_{\mathrm{int}} = Q - W = 0
+$$
+
+A energia só muda de bloco: o cobre perde $19{,}3 \cdot 79{,}75 \approx 1{,}54\ \mathrm{kJ}$ e o chumbo ganha o mesmo.
+
+**Passo 3 — (c) a entropia de cada bloco.** Troca-se o processo real por um aquecimento reversível entre as mesmas temperaturas, $dS = mc\,dT/T$:
+
+$$
+\Delta S_{\mathrm{Cu}} = 19{,}3\,\ln\frac{320{,}25}{400} \approx -4{,}29\ \mathrm{J/K}
+\qquad
+\Delta S_{\mathrm{Pb}} = 12{,}8\,\ln\frac{320{,}25}{200} \approx +6{,}03\ \mathrm{J/K}
+$$
+
+**Passo 4 — somar.**
+
+$$
+\Delta S = -4{,}29 + 6{,}03 \approx +1{,}73\ \mathrm{J/K}
+$$
+
+**Conferência —** o processo é irreversível (calor passando por uma diferença finita de temperatura) num sistema isolado, então $\Delta S$ tem de ser **positivo**, e é ✔ O chumbo ganha mais entropia do que o cobre perde porque recebe o mesmo calor a temperaturas mais baixas ✔
+
+**Sobre o gabarito oficial —** ele dá $+1{,}72\ \mathrm{J/K}$. A diferença está só no arredondamento: $\Delta S$ é a diferença de dois termos de $4$ a $6\ \mathrm{J/K}$, e a centésima depende de quantas casas se guardam em $T_f = 320{,}25\ \mathrm{K}$ (com $T_f = 320\ \mathrm{K}$ redondo sai $1{,}71$). Com dois algarismos, todos dão $+1{,}7\ \mathrm{J/K}$.
+</Passos>
