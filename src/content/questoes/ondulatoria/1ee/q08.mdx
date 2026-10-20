@@ -1,0 +1,117 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Ondas estacionárias · Fio com vibrador e roldana"
+temaId: harmonicos
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Num laboratório de ensino, quer-se medir a densidade linear de um fio. Uma das extremidades é presa a um vibrador de amplitude $1{,}0\ \mathrm{cm}$ e frequência $50\ \mathrm{Hz}$; o fio passa por uma roldana e a outra extremidade sustenta um corpo de $300\ \mathrm{g}$. Com o vibrador a $2{,}4\ \mathrm{m}$ da roldana, observa-se no fio o **segundo harmônico** da onda estacionária.
+
+(a) Determine o comprimento de onda, a velocidade de propagação da onda no fio e a densidade linear do fio. (1,5)<br />
+(b) Escreva o deslocamento transversal $y$, em função do tempo $t$, de um ponto do fio a uma distância $x$ da extremidade que oscila, depois de formada a onda estacionária. (1,0)
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Vibrador à esquerda preso a um fio horizontal que passa por uma roldana na ponta de uma mesa e sustenta um corpo de 300 g; entre o vibrador e a roldana, a 2,4 m, o fio vibra no segundo harmônico, com dois ventres">
+    {/* cota 2,4 m */}
+    <line x1="60" y1="18" x2="288" y2="18" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <polygon points="60,18 67,15 67,21" fill="var(--ink-3)"/>
+    <polygon points="288,18 281,15 281,21" fill="var(--ink-3)"/>
+    <line x1="60" y1="12" x2="60" y2="50" stroke="var(--ink-3)" stroke-width="0.6" stroke-dasharray="2 2"/>
+    <line x1="288" y1="12" x2="288" y2="56" stroke="var(--ink-3)" stroke-width="0.6" stroke-dasharray="2 2"/>
+    <text x="160" y="13" font-size="10" fill="var(--ink-3)">2,4 m</text>
+    {/* vibrador */}
+    <rect x="14" y="53" width="46" height="14" rx="2" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="14" y="84" font-size="9" fill="var(--ink-3)">vibrador</text>
+    {/* fio: envoltória do 2º harmônico */}
+    <polyline points="60.0,60.0 65.5,57.8 71.0,55.7 76.5,53.6 82.0,51.8 87.5,50.1 93.0,48.7 98.5,47.5 104.0,46.7 109.5,46.2 115.0,46.0 120.5,46.2 126.0,46.7 131.5,47.5 137.0,48.7 142.5,50.1 148.0,51.8 153.5,53.6 159.0,55.7 164.5,57.8 170.0,60.0 175.5,62.2 181.0,64.3 186.5,66.4 192.0,68.2 197.5,69.9 203.0,71.3 208.5,72.5 214.0,73.3 219.5,73.8 225.0,74.0 230.5,73.8 236.0,73.3 241.5,72.5 247.0,71.3 252.5,69.9 258.0,68.2 263.5,66.4 269.0,64.3 274.5,62.2 280.0,60.0" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <polyline points="60.0,60.0 65.5,62.2 71.0,64.3 76.5,66.4 82.0,68.2 87.5,69.9 93.0,71.3 98.5,72.5 104.0,73.3 109.5,73.8 115.0,74.0 120.5,73.8 126.0,73.3 131.5,72.5 137.0,71.3 142.5,69.9 148.0,68.2 153.5,66.4 159.0,64.3 164.5,62.2 170.0,60.0 175.5,57.8 181.0,55.7 186.5,53.6 192.0,51.8 197.5,50.1 203.0,48.7 208.5,47.5 214.0,46.7 219.5,46.2 225.0,46.0 230.5,46.2 236.0,46.7 241.5,47.5 247.0,48.7 252.5,50.1 258.0,51.8 263.5,53.6 269.0,55.7 274.5,57.8 280.0,60.0" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 3"/>
+    <line x1="280" y1="60" x2="288" y2="60" stroke="var(--accent)" stroke-width="1.4"/>
+    <text x="104" y="40" font-size="9" fill="var(--accent)">ventre</text>
+    <text x="158" y="80" font-size="9" fill="var(--ok)">nó</text>
+    <circle cx="170" cy="60" r="2.5" fill="var(--ok)"/>
+    {/* mesa */}
+    <rect x="90" y="96" width="196" height="8" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="280" y1="104" x2="280" y2="140" stroke="var(--ink-3)" stroke-width="1.5"/>
+    <line x1="100" y1="104" x2="100" y2="140" stroke="var(--ink-3)" stroke-width="1.5"/>
+    {/* roldana */}
+    <line x1="288" y1="70" x2="282" y2="96" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <circle cx="288" cy="70" r="10" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <circle cx="288" cy="70" r="1.8" fill="var(--ink-2)"/>
+    <path d="M 288 60 A 10 10 0 0 1 298 70" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    <line x1="298" y1="70" x2="298" y2="140" stroke="var(--accent)" stroke-width="1.4"/>
+    {/* corpo */}
+    <circle cx="298" cy="154" r="14" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <text x="248" y="158" font-size="10" fill="var(--ink-3)">300 g</text>
+  </svg>
+  <figcaption>
+
+No segundo harmônico cabem dois ventres entre o vibrador e a roldana: o trecho de $2{,}4\ \mathrm{m}$ vale exatamente um comprimento de onda.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $\lambda = 2{,}4\ \mathrm{m}$ · $v = 120\ \mathrm{m/s}$ · $\mu = 2{,}0\times10^{-4}\ \mathrm{kg/m}$<br />
+(b) $y(x,t) = (0{,}020\ \mathrm{m})\,\mathrm{sen}\!\left(\tfrac{5\pi}{6}x\right)\cos(100\pi t)$, com $x$ em metros e $t$ em segundos
+</Gabarito>
+
+<Passos>
+**Passo 1 — o comprimento de onda pelo harmônico.** Com as duas pontas funcionando como nós (a amplitude do vibrador é pequena), o $n$-ésimo harmônico tem $n$ meios comprimentos de onda no trecho $L$. Para $n = 2$:
+
+$$
+L = 2\cdot\frac{\lambda}{2} = \lambda
+\qquad\Longrightarrow\qquad
+\lambda = \boxed{2{,}4\ \mathrm{m}}
+$$
+
+**Passo 2 — a velocidade.** A frequência da onda é a do vibrador:
+
+$$
+v = \lambda f = 2{,}4 \cdot 50 = \boxed{120\ \mathrm{m/s}}
+$$
+
+**Passo 3 — a densidade linear.** A tração no fio é o peso do corpo pendurado, $\tau = mg = 0{,}300 \cdot 9{,}8 = 2{,}94\ \mathrm{N}$ (a prova não dá $g$; usamos $9{,}8\ \mathrm{m/s^2}$). De $v = \sqrt{\tau/\mu}$:
+
+$$
+\mu = \frac{\tau}{v^2} = \frac{2{,}94}{120^2} = \boxed{2{,}0\times10^{-4}\ \mathrm{kg/m}}
+$$
+
+**Passo 4 — as duas ondas que formam a estacionária (b).** Os parâmetros são
+
+$$
+k = \frac{2\pi}{\lambda} = \frac{2\pi}{2{,}4} = \frac{5\pi}{6}\ \mathrm{rad/m}
+\qquad
+\omega = 2\pi f = 100\pi\ \mathrm{rad/s}
+$$
+
+O vibrador manda pelo fio a onda $y_1 = y_m\,\mathrm{sen}(kx - \omega t)$, com $y_m = 1{,}0\ \mathrm{cm}$; a roldana a reflete de volta, invertida, como $y_2 = y_m\,\mathrm{sen}(kx + \omega t)$. Com $kL = 2\pi$, a soma se anula na roldana em qualquer instante, como deve ser num nó.
+
+**Passo 5 — a superposição.** Pela identidade $\mathrm{sen}\,a + \mathrm{sen}\,b = 2\,\mathrm{sen}\frac{a+b}{2}\cos\frac{a-b}{2}$:
+
+$$
+y = y_1 + y_2 = 2y_m\,\mathrm{sen}(kx)\cos(\omega t)
+$$
+
+$$
+y(x,t) = \boxed{(0{,}020\ \mathrm{m})\,\mathrm{sen}\!\left(\frac{5\pi}{6}\,x\right)\cos(100\pi t)}
+$$
+
+Cada ponto oscila com amplitude $2y_m\,|\mathrm{sen}\,kx|$, que depende da posição: a forma da onda não anda.
+
+**Conferência —** os nós de $\mathrm{sen}(5\pi x/6)$ caem em $x = 0$, $1{,}2$ e $2{,}4\ \mathrm{m}$ — as duas pontas e o meio, e os ventres em $0{,}6$ e $1{,}8\ \mathrm{m}$: dois ventres, como no 2º harmônico ✔ E a fundamental desse fio seria $f_1 = v/2L = 120/4{,}8 = 25\ \mathrm{Hz}$, com $50 = 2 \times 25$ ✔
+
+**Sobre a resolução manuscrita —** no item (b), a resolução que acompanha a prova escreve $y = 10^{-2}\,\mathrm{sen}\!\left(\tfrac{5\pi}{6}x - 100\pi t\right)$, que é uma onda **progressiva** de $1\ \mathrm{cm}$ andando para $+x$ — a onda que o vibrador manda antes de haver reflexão. O enunciado pede o deslocamento **depois** de formada a estacionária, e aí a dependência em $x$ e em $t$ se separa: $y = 2y_m\,\mathrm{sen}(kx)\cos(\omega t)$. Os itens do (a) conferem com a resolução ($\mu = 2{,}04\times10^{-4}\ \mathrm{kg/m}$).
+</Passos>
