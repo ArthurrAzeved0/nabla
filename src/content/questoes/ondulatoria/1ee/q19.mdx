@@ -1,0 +1,49 @@
+---
+origem: "2024.1"
+tema: "Oscilações · Grandezas máximas do MHS de um alto-falante"
+temaId: mhs
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O diafragma de um alto-falante vibra em movimento harmônico simples com frequência de $440\ \mathrm{Hz}$ e deslocamento máximo de $7{,}5\times10^{-4}\ \mathrm{m}$. Calcule:<br />(a) a frequência angular;<br />(b) a velocidade máxima do diafragma;<br />(c) o módulo da sua aceleração máxima.
+
+<Gabarito>
+(a) $\omega \approx 2{,}8\times10^3\ \mathrm{rad/s}$ (2765 rad/s)  ·  (b) $v_m \approx 2{,}1\ \mathrm{m/s}$  ·  (c) $a_m \approx 5{,}7\times10^3\ \mathrm{m/s^2}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — A frequência angular.** Ela converte ciclos por segundo em radianos por segundo:
+
+$$
+\omega = 2\pi f = 2\pi \cdot 440 = 2765\ \mathrm{rad/s} \approx \boxed{2{,}8\times10^3\ \mathrm{rad/s}}
+$$
+
+**Passo 2 — A velocidade máxima.** Em $x(t) = x_m\cos(\omega t + \phi)$, a velocidade é $v = -\omega x_m \operatorname{sen}(\omega t + \phi)$, cujo módulo máximo é a amplitude da velocidade, atingida quando o diafragma passa pelo equilíbrio:
+
+$$
+v_m = \omega x_m = 2765 \cdot 7{,}5\times10^{-4} = \boxed{2{,}1\ \mathrm{m/s}}
+$$
+
+**Passo 3 — A aceleração máxima.** Como $a = -\omega^2 x$, o módulo é máximo nos extremos, onde $|x| = x_m$:
+
+$$
+a_m = \omega^2 x_m = 2765^2 \cdot 7{,}5\times10^{-4} = 5{,}73\times10^3 \approx \boxed{5{,}7\times10^3\ \mathrm{m/s^2}}
+$$
+
+Use o valor completo de $\omega$: com $2{,}8\times10^3$ arredondado, sairia $5{,}9\times10^3\ \mathrm{m/s^2}$.
+
+**Conferência —** a razão $a_m/v_m$ tem de ser $\omega$: $5733/2{,}07 = 2765\ \mathrm{rad/s}$ ✔ Unidades: $(\mathrm{rad/s})^2 \cdot \mathrm{m} = \mathrm{m/s^2}$ ✔ A aceleração é quase 600 vezes a da gravidade, o que é normal em vibrações de áudio, com amplitude pequena e frequência alta.
+</Passos>
