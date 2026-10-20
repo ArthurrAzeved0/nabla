@@ -1,0 +1,52 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Empuxo · Bola que sobe e salta da água"
+temaId: empuxo
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma pequena bola é solta, a partir do repouso, a $0{,}600\ \mathrm{m}$ abaixo da superfície de uma piscina. A massa específica da bola é $0{,}300$ vez a da água, e o arrasto da água sobre a bola pode ser desprezado. Que altura acima da superfície a bola alcança depois de sair da água? Despreze a energia perdida em ondas e respingos no momento em que ela emerge.
+
+<Gabarito>
+$h = 1{,}40\ \mathrm{m}$ acima da superfície
+</Gabarito>
+
+<Passos>
+A foto da prova corta a margem direita do enunciado; o trecho que falta foi completado pelo problema 14.46 do Halliday (vol. 2, 10ª ed.), de onde a questão foi tirada.
+
+**Passo 1 — a força resultante dentro d'água.** Com volume $V$ e massa específica $\rho_b = 0{,}300\,\rho_a$, a bola sofre empuxo $E = \rho_a V g$ para cima e peso $P = \rho_b V g$ para baixo. A resultante, para cima, é constante:
+
+$$
+F = (\rho_a - \rho_b)\,V g
+\qquad\Longrightarrow\qquad
+a = \frac{F}{\rho_b V} = \left(\frac{\rho_a}{\rho_b} - 1\right) g = \left(\frac{1}{0{,}300} - 1\right) g = 2{,}33\,g
+$$
+
+**Passo 2 — a velocidade ao chegar à superfície.** Movimento uniformemente acelerado ao longo de $d = 0{,}600\ \mathrm{m}$, a partir do repouso:
+
+$$
+v^2 = 2\,a\,d = 2\,(2{,}33\,g)(0{,}600)
+$$
+
+**Passo 3 — o voo acima da água.** Fora da água só o peso age, e a bola sobe até parar:
+
+$$
+h = \frac{v^2}{2g} = \frac{a\,d}{g} = 2{,}33 \cdot 0{,}600 = \boxed{1{,}40\ \mathrm{m}}
+$$
+
+O valor de $g$ se cancela: a resposta vale em qualquer planeta.
+
+**Conferência —** por energia, de uma vez só: o trabalho da resultante dentro d'água, $(\rho_a - \rho_b)Vg\,d$, vira energia potencial $\rho_b V g\,h$ no topo. Daí $h = d\,(\rho_a - \rho_b)/\rho_b = 0{,}600 \cdot 0{,}700/0{,}300 = 1{,}40\ \mathrm{m}$ ✔ No limite $\rho_b \to \rho_a$ a bola não sobe nada, como deve ser ✔
+</Passos>
