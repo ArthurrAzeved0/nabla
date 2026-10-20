@@ -1,0 +1,61 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "Teoria cinética · Energia das moléculas que evaporam"
+temaId: energia-cinetica-media
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Água exposta ao ar a $32{,}0\ ^\circ\mathrm{C}$ evapora porque algumas moléculas escapam da superfície. O calor de vaporização, $L_V = 539\ \mathrm{cal/g}$, é aproximadamente igual ao produto $\varepsilon n$, em que $\varepsilon$ é a energia média de cada molécula que escapa e $n$ é o número de moléculas em um grama de água.<br />(a) Determine $\varepsilon$.<br />(b) Qual é a razão entre $\varepsilon$ e a energia cinética média de translação das moléculas de $\mathrm{H_2O}$, supondo que esta última dependa da temperatura do mesmo modo que nos gases ideais?
+
+<Gabarito>
+(a) $\varepsilon \approx 6{,}75 \times 10^{-20}\ \mathrm{J}$  ·  (b) $\varepsilon/K_{\text{méd}} \approx 10{,}7$
+</Gabarito>
+
+<Passos>
+**Passo 1 — quantas moléculas há em um grama.** A massa molar da água é $M = 18{,}0\ \mathrm{g/mol}$:
+
+$$
+n = \frac{N_A}{M} = \frac{6{,}02\times10^{23}}{18{,}0} \approx 3{,}34\times10^{22}\ \text{moléculas/g}
+$$
+
+**Passo 2 — o calor de vaporização em joules.** Com $1\ \mathrm{cal} = 4{,}186\ \mathrm{J}$:
+
+$$
+L_V = 539 \cdot 4{,}186 \approx 2{,}256\times10^{3}\ \mathrm{J/g}
+$$
+
+**Passo 3 — a energia de cada molécula que escapa.**
+
+$$
+\varepsilon = \frac{L_V}{n} = \frac{2{,}256\times10^{3}}{3{,}34\times10^{22}} \approx \boxed{6{,}75\times10^{-20}\ \mathrm{J}}
+$$
+
+**Passo 4 — a energia cinética média a 32,0 °C.** Com $T = 305\ \mathrm{K}$ e a relação dos gases ideais:
+
+$$
+K_{\text{méd}} = \tfrac32 k_B T = \tfrac32 \cdot 1{,}38\times10^{-23} \cdot 305 \approx 6{,}32\times10^{-21}\ \mathrm{J}
+$$
+
+**Passo 5 — a razão.**
+
+$$
+\frac{\varepsilon}{K_{\text{méd}}} = \frac{6{,}75\times10^{-20}}{6{,}32\times10^{-21}} \approx \boxed{10{,}7}
+$$
+
+Só as moléculas muito mais rápidas que a média — a cauda da distribuição de Maxwell — vencem a atração das vizinhas e escapam. Por isso a evaporação **resfria** o líquido: saem as moléculas de maior energia.
+
+**Conferência —** por mol, sem passar por moléculas: $L_V M = 2{,}256\times10^{3} \cdot 18{,}0 \approx 4{,}06\times10^{4}\ \mathrm{J/mol}$, contra $\tfrac32 RT = 1{,}5 \cdot 8{,}31 \cdot 305 \approx 3{,}80\times10^{3}\ \mathrm{J/mol}$; a razão é $10{,}7$ de novo ✔
+</Passos>
