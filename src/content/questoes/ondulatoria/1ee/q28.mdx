@@ -1,0 +1,69 @@
+---
+origem: "2026.1"
+tema: "Gravitação · Lançamento vertical e velocidade de escape"
+temaId: velocidade-de-escape
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um projétil é lançado verticalmente para cima a partir da superfície da Terra; despreze a rotação da Terra. Em múltiplos do raio terrestre $R_T$, a que distância do centro da Terra o projétil chega
+
+(a) se a velocidade inicial for $0{,}500$ da velocidade de escape;<br />
+(b) se a energia cinética inicial for $0{,}500$ da energia cinética necessária para escapar?<br />
+(c) Qual é a menor energia mecânica inicial com que o projétil escapa da Terra?
+
+<Gabarito>
+(a) $r = \tfrac43 R_T \approx 1{,}33\,R_T$  ·  (b) $r = 2{,}00\,R_T$  ·  (c) $E_{\min} = 0$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a conservação da energia.** O projétil se afasta muito da superfície, então a energia potencial é $U = -GMm/r$, não $mgh$. Entre a superfície ($r = R_T$, velocidade $v_0$) e o ponto mais alto ($r$, velocidade nula):
+
+$$
+\tfrac12 m v_0^2 - \frac{GMm}{R_T} = -\frac{GMm}{r}
+$$
+
+A velocidade de escape é a que zera a energia mecânica, $\tfrac12 m v_e^2 = GMm/R_T$, isto é, $v_e^2 = 2GM/R_T$.
+
+**Passo 2 — (a) metade da velocidade de escape.** Com $v_0 = \tfrac12 v_e$, $v_0^2 = \tfrac14 v_e^2 = GM/2R_T$. Substituindo e dividindo tudo por $GMm$:
+
+$$
+\frac{1}{4R_T} - \frac{1}{R_T} = -\frac{1}{r}
+\;\Longrightarrow\;
+\frac{3}{4R_T} = \frac{1}{r}
+\;\Longrightarrow\;
+r = \frac43 R_T \approx \boxed{1{,}33\,R_T}
+$$
+
+**Passo 3 — (b) metade da energia de escape.** A energia cinética de escape é $K_e = GMm/R_T$; com $K_0 = \tfrac12 K_e = GMm/2R_T$:
+
+$$
+\frac{1}{2R_T} - \frac{1}{R_T} = -\frac{1}{r}
+\;\Longrightarrow\;
+r = \boxed{2{,}00\,R_T}
+$$
+
+Os itens (a) e (b) dão respostas diferentes porque $K \propto v^2$: metade da velocidade de escape é só **um quarto** da energia de escape.
+
+**Passo 4 — (c) a menor energia para escapar.** Escapar é chegar ao infinito, onde $U = 0$; o caso limite é chegar lá com velocidade nula, $K = 0$. Como a energia mecânica se conserva, a energia inicial mínima é a final:
+
+$$
+E_{\min} = K_\infty + U_\infty = \boxed{0}
+$$
+
+Qualquer energia mecânica negativa deixa o projétil preso à Terra; qualquer energia positiva o faz chegar ao infinito com velocidade sobrando.
+
+**Conferência —** a fórmula geral $1/r = (1 - K_0/K_e)/R_T$ dá $r = R_T/(1 - \tfrac14) = 1{,}33\,R_T$ em (a) e $r = R_T/(1 - \tfrac12) = 2\,R_T$ em (b) ✔ E com $K_0 \to K_e$ ela dá $r \to \infty$, coerente com (c) ✔ As distâncias são medidas do **centro** da Terra; acima da superfície, o projétil sobe $R_T/3$ em (a) e $R_T$ em (b).
+</Passos>
