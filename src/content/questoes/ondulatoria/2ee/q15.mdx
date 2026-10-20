@@ -1,0 +1,69 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "MHS · Energia potencial igual à metade da total"
+temaId: energia-do-mhs
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma partícula de $3{,}0\ \mathrm{kg}$ executa um movimento harmônico simples em uma dimensão, segundo a equação
+
+$$
+x(t) = (5{,}0\ \mathrm{m})\cos\!\left[\left(\frac{\pi}{3}\ \mathrm{rad/s}\right)t - \frac{\pi}{4}\ \mathrm{rad}\right]
+$$
+
+com $t$ em segundos. (a) Em que posição $x$ a energia potencial da partícula vale metade da energia mecânica total? (b) Quanto tempo a partícula leva para ir da posição de equilíbrio até a posição encontrada em (a)?
+
+<Gabarito>
+(a) $x = \pm\dfrac{x_m}{\sqrt{2}} \approx \pm 3{,}5\ \mathrm{m}$  ·  (b) $\Delta t = 0{,}75\ \mathrm{s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as energias do MHS.** Com $k = m\omega^2$, a energia potencial e a energia total são
+
+$$
+U = \tfrac12 k x^2
+\qquad\qquad
+E = \tfrac12 k x_m^2
+$$
+
+e a total é constante: no extremo é toda potencial, no equilíbrio é toda cinética.
+
+**Passo 2 — impor U = E/2.** A constante $k$ se cancela, e a massa não entra:
+
+$$
+\tfrac12 k x^2 = \tfrac12\cdot\tfrac12 k x_m^2
+\quad\Longrightarrow\quad
+x = \pm\frac{x_m}{\sqrt{2}} = \pm\frac{5{,}0}{\sqrt{2}} = \boxed{\pm 3{,}5\ \mathrm{m}}
+$$
+
+**Passo 3 — traduzir posição em fase.** Chame de $\theta = \omega t - \pi/4$ a fase. No equilíbrio, $\cos\theta = 0$, ou seja, $\theta = \pi/2$ (a menos de múltiplos de $\pi$). Na posição do item (a), $|\cos\theta| = 1/\sqrt{2}$, ou seja, $\theta = \pi/4$ (ou $3\pi/4$). Do equilíbrio até lá, a fase anda o menor trecho possível:
+
+$$
+\Delta\theta = \frac{\pi}{2} - \frac{\pi}{4} = \frac{\pi}{4}\ \mathrm{rad}
+$$
+
+e isso vale para qualquer um dos lados, porque o cosseno é simétrico em torno do zero.
+
+**Passo 4 — o tempo.** A fase cresce à taxa $\omega = \pi/3\ \mathrm{rad/s}$:
+
+$$
+\Delta t = \frac{\Delta\theta}{\omega} = \frac{\pi/4}{\pi/3} = \frac34 = \boxed{0{,}75\ \mathrm{s}}
+$$
+
+A constante de fase $-\pi/4$ não importa aqui: ela só diz em que ponto o movimento estava em $t = 0$, e a pergunta é sobre um intervalo.
+
+**Conferência —** com $k = m\omega^2 = 3{,}0\,(\pi/3)^2 \approx 3{,}29\ \mathrm{N/m}$, a energia total é $\tfrac12 \cdot 3{,}29 \cdot 5{,}0^2 \approx 41{,}1\ \mathrm{J}$, e em $x = 3{,}54\ \mathrm{m}$ a potencial é $\tfrac12 \cdot 3{,}29 \cdot 3{,}54^2 \approx 20{,}6\ \mathrm{J}$, a metade ✔ E o período é $T = 2\pi/\omega = 6{,}0\ \mathrm{s}$: o trecho do equilíbrio ao extremo leva $T/4 = 1{,}5\ \mathrm{s}$, e $0{,}75\ \mathrm{s}$ é metade disso, coerente com $\Delta\theta = \pi/4$ ser metade de $\pi/2$ ✔
+</Passos>
