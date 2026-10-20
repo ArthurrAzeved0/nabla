@@ -23,6 +23,28 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ## [Não publicado]
 
+### Adicionado
+
+- **Fundamentos da Ondulatória e Termodinâmica, a oitava cadeira: 43 seções de
+  teoria.** É a Física 3 (FISC0013) do Halliday, vol. 2. O programa foi tirado
+  das provas, e não da ementa do acervo, que é a antiga (com óptica e ondas
+  eletromagnéticas): o **1º EE** cobre os capítulos **12 a 16** — equilíbrio e
+  elasticidade, gravitação, fluidos, oscilações e ondas numa corda — e o
+  **2º EE**, os capítulos **18 a 20** — temperatura e calor com a primeira lei,
+  teoria cinética dos gases, e entropia com a segunda lei. O capítulo 17 (ondas
+  sonoras) fica de fora: não é cobrado, e nenhuma das provas do acervo o usa.
+  Cada seção segue o padrão do site ("A ideia.", o que é cada símbolo, macetes
+  e um exemplo resolvido), e os macetes apontam para o que as provas de 2023 a
+  2026 de fato cobram: a órbita geoestacionária, o tanque com o jorro que
+  afina, o sifão com $p \geq 0$, a fase do MHS pelo quadrante, a onda lida da
+  equação, a mistura com gelo, $W = \int p\,dV$ com $p = aV^2$, o diatômico que
+  "gira mas não oscila" e a comparação de um ciclo com o de Carnot. **27
+  figuras** acompanham o texto, do diagrama de corpo livre da escada ao ciclo
+  de Carnot no plano $p$–$V$ com as curvas calculadas.
+- **O nó da cadeira acende em cinco grades**, as do perfil vigente de
+  Automação, Eletrônica, Mecânica, Telecomunicações e Civil. O site vai de 153
+  para **196 seções** de teoria. As questões de prova ainda não entraram.
+
 ## [2.16.0] — 2026-10-14
 
 ### Adicionado
