@@ -1,0 +1,65 @@
+---
+origem: "2026.1"
+tema: "Calorimetria · Chá quente com gelo no ponto de fusão"
+temaId: calorimetria
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Para fazer chá gelado, mistura-se $500\ \mathrm{g}$ de chá quente, que se comporta como água pura, com $500\ \mathrm{g}$ de gelo a $0\ \mathrm{^\circ C}$. A troca de energia com o ambiente é desprezível. Use $c_{\text{água}} = 4{,}19\ \mathrm{kJ/(kg\cdot{}^\circ C)}$ e $L_F = 333\ \mathrm{kJ/kg}$.<br />Se o chá está inicialmente a $T_i = 90\ \mathrm{^\circ C}$, encontre (a) a temperatura final $T_f$ da mistura e (b) a massa $m_f$ de gelo que resta no equilíbrio.<br />Se $T_i = 70\ \mathrm{^\circ C}$, encontre (c) $T_f$ e (d) $m_f$.
+
+<Gabarito>
+(a) $T_f \approx 5{,}3\ \mathrm{^\circ C}$  ·  (b) $m_f = 0$ (todo o gelo derrete)  ·  (c) $T_f = 0\ \mathrm{^\circ C}$  ·  (d) $m_f \approx 60\ \mathrm{g}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o teste: o chá consegue derreter todo o gelo?** Derreter $0{,}500\ \mathrm{kg}$ de gelo custa
+
+$$
+L_F\,m_g = (333)(0{,}500) = 166{,}5\ \mathrm{kJ}
+$$
+
+Esfriando até $0\ \mathrm{^\circ C}$, o chá a $90\ \mathrm{^\circ C}$ pode ceder $c\,m\,\Delta T = (4{,}19)(0{,}500)(90) = 188{,}6\ \mathrm{kJ}$ — mais do que o necessário. O gelo derrete todo e a mistura termina **acima** de $0\ \mathrm{^\circ C}$.
+
+**Passo 2 — a temperatura final para $T_i = 90\ \mathrm{^\circ C}$.** O calor que o gelo recebe (fundir e depois aquecer de $0$ a $T_f$) é o que o chá perde:
+
+$$
+L_F\,m_g + c\,m_g\,(T_f - 0) = c\,m_c\,(T_i - T_f)
+\qquad\Longrightarrow\qquad
+T_f = \frac{c\,m_c\,T_i - L_F\,m_g}{c\,(m_c + m_g)}
+$$
+
+$$
+T_f = \frac{(4190)(0{,}500)(90) - (333\times10^{3})(0{,}500)}{(4190)(1{,}000)} = \frac{22\,050}{4190} = 5{,}3\ \mathrm{^\circ C}
+$$
+
+e, como tudo derreteu, $m_f = 0$.
+
+**Passo 3 — o mesmo teste para $T_i = 70\ \mathrm{^\circ C}$.** Agora o chá só pode ceder $(4{,}19)(0{,}500)(70) = 146{,}7\ \mathrm{kJ}$, **menos** que os $166{,}5\ \mathrm{kJ}$ da fusão completa. A fórmula do Passo 2 daria $T_f = -4{,}7\ \mathrm{^\circ C}$, o que é impossível: sobra gelo, e gelo e água juntos só coexistem a $0\ \mathrm{^\circ C}$. Logo $T_f = 0\ \mathrm{^\circ C}$.
+
+**Passo 4 — quanto gelo derrete.** Toda a energia que o chá cede até $0\ \mathrm{^\circ C}$ vai para a fusão:
+
+$$
+m_{\text{fund}} = \frac{c\,m_c\,(T_i - 0)}{L_F} = \frac{(4190)(0{,}500)(70)}{333\times10^{3}} = 0{,}440\ \mathrm{kg}
+$$
+
+$$
+m_f = 500 - 440 = 60\ \mathrm{g}
+$$
+
+(sem arredondar a massa fundida, $440{,}4\ \mathrm{g}$, sobram $59{,}6\ \mathrm{g}$).
+
+**Conferência —** no caso de $90\ \mathrm{^\circ C}$: o chá cede $(4{,}19)(0{,}500)(90 - 5{,}26) = 177{,}5\ \mathrm{kJ}$, e o gelo recebe $166{,}5 + (4{,}19)(0{,}500)(5{,}26) = 177{,}5\ \mathrm{kJ}$ ✔ No de $70\ \mathrm{^\circ C}$: $0{,}440\ \mathrm{kg} \times 333\ \mathrm{kJ/kg} = 146{,}7\ \mathrm{kJ}$, exatamente o que o chá cede ✔
+</Passos>
