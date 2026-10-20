@@ -1,0 +1,120 @@
+---
+origem: "2025.2"
+tema: "Ondas estacionárias · Corda no segundo harmônico"
+temaId: ondas-estacionarias
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma corda presa nas duas extremidades está sob uma tração de $200\ \mathrm{N}$ e oscila no **segundo harmônico**. O deslocamento é
+
+$$
+y = (0{,}10\ \mathrm{m})\,\operatorname{sen}\!\left(\frac{\pi x}{2}\right)\operatorname{sen}(12\pi t)
+$$
+
+com $x = 0$ numa das extremidades, $x$ em metros e $t$ em segundos.
+
+(a) Qual é o comprimento da corda?<br />
+(b) Qual é a velocidade das ondas na corda?<br />
+(c) Qual é a massa da corda?<br />
+(d) Se a corda passar a oscilar no terceiro harmônico, qual será o período de oscilação?
+
+<Figura>
+  <svg viewBox="0 0 340 175" role="img" aria-label="Gráfico de y contra x de 0 a 4 metros: a corda no segundo harmônico, com nós em x igual a 0, 2 e 4 metros e ventres em 1 e 3 metros, de amplitude 0,10 metro">
+    {/* eixos */}
+    <line x1="40" y1="85" x2="316" y2="85" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="322,85 314,81.5 314,88.5" fill="var(--ink-3)"/>
+    <text x="306" y="102" font-size="10" fill="var(--ink-3)">x (m)</text>
+    <line x1="40" y1="150" x2="40" y2="22" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="40,16 36.5,24 43.5,24" fill="var(--ink-3)"/>
+    <text x="46" y="20" font-size="10" fill="var(--ink-3)">y (m)</text>
+    {/* marcas */}
+    <line x1="36" y1="35" x2="300" y2="35" stroke="var(--line-2)" stroke-width="0.7" stroke-dasharray="2 3"/>
+    <line x1="36" y1="135" x2="300" y2="135" stroke="var(--line-2)" stroke-width="0.7" stroke-dasharray="2 3"/>
+    <text x="32" y="38" font-size="9" fill="var(--ink-3)" text-anchor="end">0,10</text>
+    <text x="32" y="138" font-size="9" fill="var(--ink-3)" text-anchor="end">−0,10</text>
+    <text x="36" y="99" font-size="9" fill="var(--ink-3)" text-anchor="end">0</text>
+    <line x1="105" y1="82" x2="105" y2="88" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="105" y="150" font-size="9" fill="var(--ink-3)" text-anchor="middle">1</text>
+    <line x1="170" y1="82" x2="170" y2="88" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="170" y="150" font-size="9" fill="var(--ink-3)" text-anchor="middle">2</text>
+    <line x1="235" y1="82" x2="235" y2="88" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="235" y="150" font-size="9" fill="var(--ink-3)" text-anchor="middle">3</text>
+    <line x1="300" y1="82" x2="300" y2="88" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="300" y="150" font-size="9" fill="var(--ink-3)" text-anchor="middle">4</text>
+    {/* corda nos dois extremos da oscilação */}
+    <polyline points="40,85.0 46.5,77.2 53,69.5 59.5,62.3 66,55.6 72.5,49.6 79,44.5 85.5,40.4 92,37.4 98.5,35.6 105,35.0 111.5,35.6 118,37.4 124.5,40.4 131,44.5 137.5,49.6 144,55.6 150.5,62.3 157,69.5 163.5,77.2 170,85.0 176.5,92.8 183,100.5 189.5,107.7 196,114.4 202.5,120.4 209,125.5 215.5,129.6 222,132.6 228.5,134.4 235,135.0 241.5,134.4 248,132.6 254.5,129.6 261,125.5 267.5,120.4 274,114.4 280.5,107.7 287,100.5 293.5,92.8 300,85.0" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <polyline points="40,85.0 46.5,92.8 53,100.5 59.5,107.7 66,114.4 72.5,120.4 79,125.5 85.5,129.6 92,132.6 98.5,134.4 105,135.0 111.5,134.4 118,132.6 124.5,129.6 131,125.5 137.5,120.4 144,114.4 150.5,107.7 157,100.5 163.5,92.8 170,85.0 176.5,77.2 183,69.5 189.5,62.3 196,55.6 202.5,49.6 209,44.5 215.5,40.4 222,37.4 228.5,35.6 235,35.0 241.5,35.6 248,37.4 254.5,40.4 261,44.5 267.5,49.6 274,55.6 280.5,62.3 287,69.5 293.5,77.2 300,85.0" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 4"/>
+    <polyline points="40,85.0 46.5,81.1 53,77.3 59.5,73.7 66,70.3 72.5,67.3 79,64.8 85.5,62.7 92,61.2 98.5,60.3 105,60.0 111.5,60.3 118,61.2 124.5,62.7 131,64.8 137.5,67.3 144,70.3 150.5,73.7 157,77.3 163.5,81.1 170,85.0 176.5,88.9 183,92.7 189.5,96.3 196,99.7 202.5,102.7 209,105.2 215.5,107.3 222,108.8 228.5,109.7 235,110.0 241.5,109.7 248,108.8 254.5,107.3 261,105.2 267.5,102.7 274,99.7 280.5,96.3 287,92.7 293.5,88.9 300,85.0" fill="none" stroke="var(--ink-3)" stroke-width="1" opacity="0.7"/>
+    {/* nós e ventres */}
+    <circle cx="40" cy="85" r="3.5" fill="var(--warn)"/>
+    <circle cx="170" cy="85" r="3.5" fill="var(--warn)"/>
+    <circle cx="300" cy="85" r="3.5" fill="var(--warn)"/>
+    <text x="170" y="111" font-size="10" fill="var(--warn)" text-anchor="middle">nó</text>
+    <text x="105" y="28" font-size="10" fill="var(--ok)" text-anchor="middle">ventre</text>
+    <text x="235" y="167" font-size="10" fill="var(--ok)" text-anchor="middle">ventre</text>
+  </svg>
+  <figcaption>
+
+No segundo harmônico cabe **um comprimento de onda inteiro** na corda: dois ventres e três nós, em $x = 0$, $2$ e $4\ \mathrm{m}$. A linha cheia e a tracejada são os dois extremos da oscilação; a fina, um instante intermediário.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $L = 4{,}0\ \mathrm{m}$  ·  (b) $v = 24\ \mathrm{m/s}$  ·  (c) $m \approx 1{,}4\ \mathrm{kg}$  ·  (d) $T_3 \approx 0{,}11\ \mathrm{s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — ler $k$ e $\omega$.** A onda estacionária tem a forma $y = 2y_m\operatorname{sen}(kx)\cos(\omega t)$ (aqui com $\operatorname{sen}(\omega t)$, o que só muda a origem do tempo). Comparando,
+
+$$
+k = \frac{\pi}{2}\ \mathrm{rad/m}
+\qquad
+\omega = 12\pi\ \mathrm{rad/s}
+$$
+
+**Passo 2 — (a) o comprimento.** O comprimento de onda é $\lambda = 2\pi/k = 4{,}0\ \mathrm{m}$. Numa corda presa nas duas pontas, o harmônico $n$ tem $L = n\lambda/2$; no segundo harmônico, $L = \lambda$:
+
+$$
+L = \lambda = \boxed{4{,}0\ \mathrm{m}}
+$$
+
+Os nós ficam onde $\operatorname{sen}(\pi x/2) = 0$: $x = 0$, $2$ e $4\ \mathrm{m}$ — as duas pontas e o meio, como deve ser no segundo harmônico.
+
+**Passo 3 — (b) a velocidade.** As ondas que se superpõem para formar a estacionária andam com
+
+$$
+v = \frac{\omega}{k} = \frac{12\pi}{\pi/2} = \boxed{24\ \mathrm{m/s}}
+$$
+
+**Passo 4 — (c) a massa.** A velocidade numa corda é $v = \sqrt{\tau/\mu}$, com $\mu = m/L$:
+
+$$
+\mu = \frac{\tau}{v^2} = \frac{200}{24^2} = 0{,}347\ \mathrm{kg/m}
+\qquad
+m = \mu L = 0{,}347\cdot 4{,}0 = 1{,}39\ \mathrm{kg} \approx \boxed{1{,}4\ \mathrm{kg}}
+$$
+
+**Passo 5 — (d) o terceiro harmônico.** A tração e a corda não mudam, então $v$ continua $24\ \mathrm{m/s}$. As frequências são $f_n = nv/2L$:
+
+$$
+f_3 = \frac{3\cdot 24}{2\cdot 4{,}0} = 9{,}0\ \mathrm{Hz}
+\qquad
+T_3 = \frac{1}{f_3} = 0{,}111\ \mathrm{s} \approx \boxed{0{,}11\ \mathrm{s}}
+$$
+
+**Conferência —** a frequência dada na equação é $f = \omega/2\pi = 6{,}0\ \mathrm{Hz}$, e pela fórmula dos harmônicos $f_2 = 2\cdot 24/(2\cdot 4{,}0) = 6{,}0\ \mathrm{Hz}$ ✔ Como $f_n \propto n$, $f_3 = \tfrac32 f_2 = 9{,}0\ \mathrm{Hz}$ ✔
+</Passos>
