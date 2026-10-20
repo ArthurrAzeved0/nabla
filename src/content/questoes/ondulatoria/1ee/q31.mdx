@@ -1,0 +1,51 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "Fluidos em movimento · Continuidade na junção de dois riachos"
+temaId: continuidade
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q31.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dois riachos se juntam para formar um rio. O primeiro tem $8{,}2\ \mathrm{m}$ de largura, $3{,}4\ \mathrm{m}$ de profundidade e água a $2{,}3\ \mathrm{m/s}$; o segundo tem $6{,}8\ \mathrm{m}$ de largura, $3{,}2\ \mathrm{m}$ de profundidade e água a $2{,}6\ \mathrm{m/s}$. O rio que se forma tem $10{,}5\ \mathrm{m}$ de largura e a água corre nele a $2{,}9\ \mathrm{m/s}$. Qual é a profundidade do rio?
+
+<Gabarito>
+$d \approx 4{,}0\ \mathrm{m}$ (3,96 m)
+</Gabarito>
+
+<Passos>
+**Passo 1 — O que se conserva.** A água é incompressível e não some na junção: a vazão volumétrica do rio é a soma das vazões dos dois riachos. Cada canal tem seção retangular, de área largura × profundidade, e a vazão é $R_V = A\,v$:
+
+$$
+w_1 d_1 v_1 + w_2 d_2 v_2 = w\,d\,v
+$$
+
+**Passo 2 — As vazões dos riachos.**
+
+$$
+R_1 = 8{,}2 \cdot 3{,}4 \cdot 2{,}3 = 64{,}1\ \mathrm{m^3/s},
+\qquad
+R_2 = 6{,}8 \cdot 3{,}2 \cdot 2{,}6 = 56{,}6\ \mathrm{m^3/s}
+$$
+
+Juntas, $R_V = 120{,}7\ \mathrm{m^3/s}$.
+
+**Passo 3 — A profundidade do rio.**
+
+$$
+d = \frac{R_V}{w\,v} = \frac{120{,}7}{10{,}5 \cdot 2{,}9} = \frac{120{,}7}{30{,}45} = \boxed{3{,}96\ \mathrm{m} \approx 4{,}0\ \mathrm{m}}
+$$
+
+**Conferência —** unidade: $\mathrm{(m^3/s)/(m \cdot m/s)} = \mathrm{m}$ ✔. E a ordem de grandeza: o rio é mais estreito ($10{,}5\ \mathrm{m}$ contra $15\ \mathrm{m}$ somados) e só um pouco mais rápido, então tem de ser mais fundo que os riachos ($3{,}2$ a $3{,}4\ \mathrm{m}$) — e é.
+</Passos>
