@@ -1,0 +1,106 @@
+---
+origem: "Final 2023.1"
+tema: "Primeira lei · Expansão com pressão linear no volume"
+temaId: primeira-lei
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Num laboratório, $1\ \mathrm{mol}$ de um gás ideal **monoatômico** sofre uma expansão de $V_i = 1{,}0\ \mathrm{L}$ a $V_f = 2{,}0\ \mathrm{L}$ em que a pressão varia linearmente com o volume, segundo $p(V) = (1{,}0\ \mathrm{atm/L})\,V$. Determine a variação de **temperatura**, o **trabalho** realizado pelo gás, o **calor** absorvido (ou rejeitado) e a variação de **energia interna**. Use $R = 8{,}31\ \mathrm{L\cdot kPa/(mol\cdot K)}$ e $1\ \mathrm{atm} = 1{,}0\times10^5\ \mathrm{Pa}$.
+
+<Figura>
+  <svg viewBox="0 0 300 200" role="img" aria-label="Diagrama p–V: reta passando pela origem, do estado i em 1 L e 1 atm ao estado f em 2 L e 2 atm; a área sob a reta, um trapézio, é o trabalho">
+    {/* eixos */}
+    <line x1="50" y1="165" x2="270" y2="165" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="50" y1="165" x2="50" y2="15" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <text x="262" y="182" font-size="10" fill="var(--ink-3)">V (L)</text>
+    <text x="14" y="20" font-size="10" fill="var(--ink-3)">p (atm)</text>
+    {/* escala: 1 L = 90 px a partir de x=50; 1 atm = 65 px a partir de y=165 */}
+    <text x="140" y="180" font-size="10" fill="var(--ink-3)" text-anchor="middle">1,0</text>
+    <text x="230" y="180" font-size="10" fill="var(--ink-3)" text-anchor="middle">2,0</text>
+    <text x="44" y="104" font-size="10" fill="var(--ink-3)" text-anchor="end">1,0</text>
+    <text x="44" y="39" font-size="10" fill="var(--ink-3)" text-anchor="end">2,0</text>
+    <line x1="50" y1="100" x2="140" y2="100" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="50" y1="35" x2="230" y2="35" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    {/* área = trabalho */}
+    <polygon points="140,165 140,100 230,35 230,165" fill="var(--surface-2)" stroke="none"/>
+    <text x="172" y="135" font-size="10" fill="var(--ok)">W</text>
+    {/* reta p = V */}
+    <line x1="50" y1="165" x2="140" y2="100" stroke="var(--ink-3)" stroke-width="0.9" stroke-dasharray="3 3"/>
+    <line x1="140" y1="100" x2="230" y2="35" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="190,64 180,66 186,74" fill="var(--accent)"/>
+    <line x1="140" y1="100" x2="140" y2="165" stroke="var(--line-2)" stroke-width="0.8"/>
+    <line x1="230" y1="35" x2="230" y2="165" stroke="var(--line-2)" stroke-width="0.8"/>
+    <circle cx="140" cy="100" r="3.5" fill="var(--warn)"/>
+    <circle cx="230" cy="35" r="3.5" fill="var(--warn)"/>
+    <text x="146" y="114" font-size="11" fill="var(--warn)">i</text>
+    <text x="238" y="38" font-size="11" fill="var(--warn)">f</text>
+  </svg>
+  <figcaption>
+
+A reta $p = (1{,}0\ \mathrm{atm/L})\,V$ passa pela origem; o trabalho é a área do trapézio sob ela, entre $1{,}0$ e $2{,}0\ \mathrm{L}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$\Delta T \approx 36\ \mathrm{K}$ (de $12\ \mathrm{K}$ a $48\ \mathrm{K}$)  ·  $W = 150\ \mathrm{J}$  ·  $\Delta E_{\text{int}} = 450\ \mathrm{J}$  ·  $Q = 600\ \mathrm{J}$ absorvidos
+</Gabarito>
+
+<Passos>
+**Passo 1 — as pressões nos extremos.** Com $p = (1{,}0\ \mathrm{atm/L})\,V$: $p_i = 1{,}0\ \mathrm{atm} = 100\ \mathrm{kPa}$ e $p_f = 2{,}0\ \mathrm{atm} = 200\ \mathrm{kPa}$.
+
+**Passo 2 — as temperaturas.** Pela lei dos gases ideais, $T = pV/(nR)$, e o $R$ em $\mathrm{L\cdot kPa/(mol\cdot K)}$ casa direto com $p$ em kPa e $V$ em L:
+
+$$
+T_i = \frac{100 \cdot 1{,}0}{1 \cdot 8{,}31} = 12{,}0\ \mathrm{K}
+\qquad
+T_f = \frac{200 \cdot 2{,}0}{1 \cdot 8{,}31} = 48{,}1\ \mathrm{K}
+$$
+
+$$
+\Delta T = \frac{400 - 100}{8{,}31} = \boxed{36{,}1\ \mathrm{K}}
+$$
+
+**Passo 3 — o trabalho.** Integrando a pressão no volume, com $a = 1{,}0\ \mathrm{atm/L}$:
+
+$$
+W = \int_{V_i}^{V_f} aV\,dV = \frac{a}{2}\left(V_f^2 - V_i^2\right) = \frac{1{,}0}{2}\,(4{,}0 - 1{,}0) = 1{,}5\ \mathrm{atm\cdot L}
+$$
+
+Como $1\ \mathrm{atm\cdot L} = 10^5\ \mathrm{Pa}\cdot10^{-3}\ \mathrm{m^3} = 100\ \mathrm{J}$,
+
+$$
+W = \boxed{150\ \mathrm{J}}
+$$
+
+positivo: o gás se expande e **realiza** trabalho.
+
+**Passo 4 — a energia interna.** Para gás monoatômico, $\Delta E_{\text{int}} = \tfrac32 nR\,\Delta T$. Como $nR\,\Delta T = \Delta(pV) = 400 - 100 = 300\ \mathrm{J}$, nem é preciso arredondar $\Delta T$:
+
+$$
+\Delta E_{\text{int}} = \tfrac32 \cdot 300 = \boxed{450\ \mathrm{J}}
+$$
+
+**Passo 5 — o calor.** Pela primeira lei, $\Delta E_{\text{int}} = Q - W$:
+
+$$
+Q = 450 + 150 = \boxed{600\ \mathrm{J}}
+$$
+
+positivo: o gás **absorve** calor.
+
+**Conferência —** o trabalho é a área do trapézio da figura: $\tfrac12(1{,}0 + 2{,}0)\ \mathrm{atm} \times 1{,}0\ \mathrm{L} = 1{,}5\ \mathrm{atm\cdot L} = 150\ \mathrm{J}$ ✔ E ao longo de $p = aV$ vale $W = \tfrac12\Delta(pV)$, então $Q = \tfrac32\Delta(pV) + \tfrac12\Delta(pV) = 2\,\Delta(pV) = 600\ \mathrm{J}$ ✔ (a capacidade molar desse processo é $2R$).
+</Passos>
