@@ -43,7 +43,35 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   de Carnot no plano $p$–$V$ com as curvas calculadas.
 - **O nó da cadeira acende em cinco grades**, as do perfil vigente de
   Automação, Eletrônica, Mecânica, Telecomunicações e Civil. O site vai de 153
-  para **196 seções** de teoria. As questões de prova ainda não entraram.
+  para **196 seções** de teoria.
+- **64 questões de prova da cadeira**, com gabarito e passo a passo: 35 do
+  1º EE, 22 do 2º EE e 7 da final, das provas de 2023.1 a 2026.1, da 2ª
+  chamada de 2023.1 e das duas provas colegiadas. A questão que caiu igual em
+  dois semestres vira um cartão só, com as duas origens. Onde a foto da 2ª
+  chamada corta o texto, o trecho veio do problema correspondente do Halliday,
+  e o passo a passo diz qual. **22 questões têm figura**, redesenhada em SVG e
+  conferida ao lado da original. Nenhuma das provas cobra o capítulo 17. O site
+  vai de 558 para **622 questões**.
+
+### Notas de acervo
+
+- **Os gabaritos oficiais erram em oito lugares**, e cada questão afetada
+  explica o erro num parágrafo próprio:
+  - o tubo em U de 2024.2 dá 1,47 cm, que é o desnível total; o pedido é
+    $h = 0{,}490$ cm;
+  - o sifão de 2025.2 dá 10,3 m, que é só $p_{atm}/\rho g$; descontada a
+    altura do tubo, sobram 9,7 m;
+  - o aquecimento isobárico de 2025.1 dá $Q = 249$ J, que repete o trabalho; o
+    certo é 623 J, o único valor que fecha a primeira lei;
+  - a máquina de Carnot de 2025.1 escreve $1 - 333/273$ no lugar de
+    $1 - 333/373$ (o resultado está certo);
+  - a prova de 2024.2 dá os calores específicos em "J/K·mol", que são
+    J/(kg·K);
+  - a mola da final de 2023.1 estica 9,0 cm, não os 7 cm da resolução;
+  - o gabarito do massa–mola de 2024.2 troca as letras dos itens;
+  - a final de 2024.1 escreve o calor latente em "kJ/g", que é kJ/kg.
+- **O arquivo "2023.2 1EE Gabarito" do acervo é de outra cadeira**
+  (Eletromagnetismo) e não foi usado.
 
 ## [2.16.0] — 2026-10-14
 

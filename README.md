@@ -27,7 +27,7 @@ No ar em <https://nabla-poli.pages.dev>
 | | |
 |---|---|
 | **8 cadeiras** | Cálculo Vetorial, Equações Diferenciais, Fundamentos do Eletromagnetismo, Dinâmica, Circuitos Elétricos 1, Fenômenos de Transporte, Complementos de Matemática, Fundamentos da Ondulatória e Termodinâmica |
-| **558 questões** | provas reais e listas (1º EE, 2º EE, Final), com gabarito e passo a passo |
+| **622 questões** | provas reais e listas (1º EE, 2º EE, Final), com gabarito e passo a passo |
 | **196 seções de teoria** | na ordem da ementa oficial de cada cadeira |
 | **10 mapas de grade** | 5 cursos, o perfil atual e o anterior de cada: 645 disciplinas e 646 requisitos |
 
