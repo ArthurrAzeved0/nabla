@@ -1,0 +1,86 @@
+---
+origem: "2024.2"
+tema: "Oscilações · Sistema massa–mola solto do repouso"
+temaId: energia-do-mhs
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um corpo de $2{,}00\ \mathrm{kg}$ está preso a uma mola sobre uma superfície horizontal sem atrito. Para mantê-lo parado a $0{,}200\ \mathrm{m}$ da posição de equilíbrio (a origem do eixo $x$), é preciso uma força horizontal de $20{,}0\ \mathrm{N}$. O corpo é então solto do repouso nessa posição e passa a oscilar em MHS. Encontre:<br />(a) a constante da mola;<br />(b) a frequência das oscilações;<br />(c) a velocidade máxima do corpo e (d) onde ela ocorre;<br />(e) a aceleração máxima e (f) onde ela ocorre;<br />(g) a energia total do oscilador;<br />(h) a velocidade e (i) a aceleração do corpo quando sua posição é um terço do valor máximo.
+
+<Gabarito>
+(a) $k = 100\ \mathrm{N/m}$  ·  (b) $f = 1{,}13\ \mathrm{Hz}$ ($\omega = 7{,}07\ \mathrm{rad/s}$)  ·  (c) $v_{\max} = 1{,}41\ \mathrm{m/s}$, (d) em $x = 0$  ·  (e) $a_{\max} = 10{,}0\ \mathrm{m/s^2}$, (f) em $x = \pm 0{,}200\ \mathrm{m}$  ·  (g) $E = 2{,}00\ \mathrm{J}$  ·  (h) $|v| = 1{,}33\ \mathrm{m/s}$  ·  (i) $|a| = 3{,}33\ \mathrm{m/s^2}$, apontando para a origem
+</Gabarito>
+
+<Passos>
+**Passo 1 — (a) A constante da mola.** Parado, o corpo está em equilíbrio: a força aplicada equilibra a força da mola, $F = kx$:
+
+$$
+k = \frac{F}{x} = \frac{20{,}0}{0{,}200} = \boxed{100\ \mathrm{N/m}}
+$$
+
+**Passo 2 — (b) A frequência.**
+
+$$
+\omega = \sqrt{\frac{k}{m}} = \sqrt{\frac{100}{2{,}00}} = 7{,}07\ \mathrm{rad/s}
+\qquad\Longrightarrow\qquad
+f = \frac{\omega}{2\pi} = \boxed{1{,}13\ \mathrm{Hz}}
+$$
+
+**Passo 3 — A amplitude.** Solto do **repouso** em $x = 0{,}200\ \mathrm{m}$, esse ponto é um extremo do movimento: $x_m = 0{,}200\ \mathrm{m}$.
+
+**Passo 4 — (c) e (d) A velocidade máxima.**
+
+$$
+v_{\max} = \omega x_m = 7{,}07 \cdot 0{,}200 = \boxed{1{,}41\ \mathrm{m/s}}
+$$
+
+e ela ocorre na passagem pela posição de equilíbrio, $x = 0$, onde toda a energia é cinética.
+
+**Passo 5 — (e) e (f) A aceleração máxima.** Como $a = -\omega^2 x$, o módulo é máximo nos extremos:
+
+$$
+a_{\max} = \omega^2 x_m = 50{,}0 \cdot 0{,}200 = \boxed{10{,}0\ \mathrm{m/s^2}}
+\qquad\text{em}\qquad x = \pm 0{,}200\ \mathrm{m}
+$$
+
+**Passo 6 — (g) A energia total.** No extremo o corpo está parado, e toda a energia é potencial elástica:
+
+$$
+E = \tfrac{1}{2}k x_m^2 = \tfrac{1}{2} \cdot 100 \cdot 0{,}200^2 = \boxed{2{,}00\ \mathrm{J}}
+$$
+
+**Passo 7 — (h) A velocidade em $x = x_m/3$.** A energia se conserva; em $x = 0{,}0667\ \mathrm{m}$:
+
+$$
+\tfrac{1}{2}mv^2 = E - \tfrac{1}{2}kx^2 = 2{,}00 - \tfrac{1}{2} \cdot 100 \cdot 0{,}0667^2 = 2{,}00 - 0{,}222 = 1{,}78\ \mathrm{J}
+$$
+
+$$
+|v| = \sqrt{\frac{2 \cdot 1{,}78}{2{,}00}} = \boxed{1{,}33\ \mathrm{m/s}}
+$$
+
+**Passo 8 — (i) A aceleração em $x = x_m/3$.** A aceleração é proporcional ao deslocamento:
+
+$$
+|a| = \omega^2\,\frac{x_m}{3} = \frac{a_{\max}}{3} = \frac{10{,}0}{3} = \boxed{3{,}33\ \mathrm{m/s^2}}
+$$
+
+apontando para a origem (oposta ao deslocamento).
+
+**Conferência —** a fórmula direta $|v| = \omega\sqrt{x_m^2 - x^2} = v_{\max}\sqrt{1 - 1/9} = 1{,}41 \cdot 0{,}943 = 1{,}33\ \mathrm{m/s}$ repete o Passo 7 ✔ E a energia cinética máxima $\tfrac{1}{2} \cdot 2{,}00 \cdot 1{,}414^2 = 2{,}00\ \mathrm{J}$ é igual à energia total ✔
+
+**Sobre o gabarito oficial —** as contas estão certas, mas a resolução embaralha as letras: chama de (d) a aceleração máxima, de (e) a energia e de (f) o item (h), e não resolve o item (i). Onde diz que a aceleração máxima ocorre na "posição de equilíbrio em $x = \pm 2$", leia nos extremos, $x = \pm 0{,}2\ \mathrm{m}$. A frequência aparece como $1{,}12\ \mathrm{Hz}$ (e rotulada $\omega$); $7{,}071/2\pi = 1{,}125$, que arredonda para $1{,}13\ \mathrm{Hz}$.
+</Passos>
