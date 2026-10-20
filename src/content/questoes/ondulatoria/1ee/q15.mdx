@@ -1,0 +1,93 @@
+---
+origem: "2023.2"
+tema: "Empuxo · Corda que afunda um bloco flutuante"
+temaId: empuxo
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q15.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma peça de um material $A$, com $10\ \mathrm{cm}$ de altura e seção uniforme, flutua num tanque com água com metade da altura submersa (figura A). Para que $\tfrac23$ da sua altura fiquem submersos, foi preciso prendê-la ao fundo do tanque por uma corda vertical (figura B). Determine a tensão na corda. O enunciado não dá a área da base da peça: expresse a tensão como fração do peso da peça. Use $\rho_{\text{água}} = 1{,}0\times10^{3}\ \mathrm{kg/m^3}$.
+
+<Figura>
+  <svg viewBox="0 0 340 190" role="img" aria-label="Figura A: bloco de 10 cm de altura boiando com metade submersa. Figura B: o mesmo bloco preso ao fundo por uma corda vertical, com dois terços da altura submersos">
+    {/* tanque A */}
+    <rect x="30" y="66" width="120" height="94" fill="var(--accent)" opacity="0.25"/>
+    <path d="M30 30 V160 H150 V30" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="30" y1="66" x2="150" y2="66" stroke="var(--accent)" stroke-width="1.2"/>
+    <rect x="66" y="36" width="48" height="60" fill="var(--ink-3)" stroke="var(--ink-2)" stroke-width="1"/>
+    <line x1="56" y1="36" x2="56" y2="96" stroke="var(--warn)" stroke-width="1"/>
+    <line x1="52" y1="36" x2="60" y2="36" stroke="var(--warn)" stroke-width="1"/>
+    <line x1="52" y1="96" x2="60" y2="96" stroke="var(--warn)" stroke-width="1"/>
+    <text x="52" y="30" font-size="9" fill="var(--warn)" text-anchor="middle">10 cm</text>
+    <line x1="120" y1="66" x2="120" y2="96" stroke="var(--ok)" stroke-width="1"/>
+    <text x="124" y="85" font-size="9" fill="var(--ok)">H/2</text>
+    <text x="78" y="132" font-size="9" fill="var(--accent)">água</text>
+    <text x="62" y="178" font-size="10" fill="var(--ink-2)">Figura A</text>
+    {/* tanque B */}
+    <rect x="190" y="66" width="120" height="94" fill="var(--accent)" opacity="0.25"/>
+    <path d="M190 30 V160 H310 V30" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="190" y1="66" x2="310" y2="66" stroke="var(--accent)" stroke-width="1.2"/>
+    <rect x="226" y="46" width="48" height="60" fill="var(--ink-3)" stroke="var(--ink-2)" stroke-width="1"/>
+    <line x1="250" y1="106" x2="250" y2="160" stroke="var(--warn)" stroke-width="1.4"/>
+    <text x="254" y="140" font-size="9" fill="var(--warn)">T</text>
+    <line x1="280" y1="66" x2="280" y2="106" stroke="var(--ok)" stroke-width="1"/>
+    <text x="284" y="90" font-size="9" fill="var(--ok)">2H/3</text>
+    <text x="200" y="132" font-size="9" fill="var(--accent)">água</text>
+    <text x="222" y="178" font-size="10" fill="var(--ink-2)">Figura B</text>
+  </svg>
+  <figcaption>
+
+Em A, só peso e empuxo; em B, a corda puxa a peça para baixo e o empuxo cresce porque mais volume fica submerso.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$T = \dfrac{P}{3}$, um terço do peso da peça (com a área da base $A$ em $\mathrm{m^2}$: $T \approx 163\,A$ newtons).
+</Gabarito>
+
+<Passos>
+**Passo 1 — figura A: peso igual ao empuxo.** Com área da base $A$ e altura $H = 0{,}10\ \mathrm{m}$, metade submersa:
+
+$$
+P = E_A = \rho_{\text{água}}\,g\,A\,\frac{H}{2}
+$$
+
+De quebra, a peça tem massa específica $\rho_{\text{água}}/2 = 5{,}0\times10^{2}\ \mathrm{kg/m^3}$.
+
+**Passo 2 — figura B: a corda entra no balanço.** A corda puxa para baixo, e com $\tfrac23$ da altura submersa:
+
+$$
+E_B = P + T
+\qquad\text{com}\qquad
+E_B = \rho_{\text{água}}\,g\,A\,\frac{2H}{3}
+$$
+
+**Passo 3 — isolar a tensão.**
+
+$$
+T = E_B - P = \rho_{\text{água}}\,g\,A\,H\left(\frac23 - \frac12\right) = \frac{\rho_{\text{água}}\,g\,A\,H}{6}
+$$
+
+Dividindo pelo peso do Passo 1, $P = \rho_{\text{água}}\,g\,A\,H/2$:
+
+$$
+\boxed{T = \frac{P}{3}}
+$$
+
+Com números, $T = 1{,}0\times10^{3} \cdot 9{,}8 \cdot A \cdot 0{,}10/6 \approx 163\,A$ newtons, com $A$ em $\mathrm{m^2}$ — falta só a área, que a prova não dá.
+
+**Conferência —** o empuxo é proporcional ao volume submerso: passar de $\tfrac12$ para $\tfrac23$ da altura multiplica o empuxo por $\tfrac{2/3}{1/2} = \tfrac43$. Se o empuxo vale $\tfrac43 P$ e o peso $P$, sobra $\tfrac13 P$ para a corda ✔
+</Passos>
