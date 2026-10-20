@@ -1,0 +1,76 @@
+---
+origem: "Final 2024.1"
+tema: "Calores molares · Gás diatômico aquecido a pressão constante"
+temaId: calores-molares
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Suponha que $4{,}00\ \mathrm{mol}$ de um gás ideal **diatômico**, com rotação molecular mas sem oscilação, sofram um aumento de temperatura de $60{,}0\ \mathrm{K}$ a **pressão constante**. Determine:
+
+(a) a energia $Q$ transferida como calor;
+
+(b) a variação $\Delta E_{\text{int}}$ da energia interna do gás;
+
+(c) o trabalho $W$ realizado pelo gás;
+
+(d) a variação $\Delta K$ da energia cinética de translação do gás.
+
+Use $R = 8{,}31\ \mathrm{J/(mol\cdot K)}$.
+
+<Gabarito>
+(a) $Q = 6{,}98\times10^3\ \mathrm{J}$<br />
+(b) $\Delta E_{\text{int}} = 4{,}99\times10^3\ \mathrm{J}$<br />
+(c) $W = 1{,}99\times10^3\ \mathrm{J}$<br />
+(d) $\Delta K = 2{,}99\times10^3\ \mathrm{J}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os graus de liberdade.** Uma molécula diatômica que translada e gira, sem oscilar, tem $3 + 2 = 5$ graus de liberdade. Pela equipartição,
+
+$$
+C_V = \tfrac52 R
+\qquad
+C_p = C_V + R = \tfrac72 R
+$$
+
+**Passo 2 — (a) o calor a pressão constante.**
+
+$$
+Q = nC_p\,\Delta T = \tfrac72 \cdot 4{,}00 \cdot 8{,}31 \cdot 60{,}0 = \boxed{6{,}98\times10^3\ \mathrm{J}}
+$$
+
+**Passo 3 — (b) a energia interna.** A energia interna de um gás ideal só depende de $T$, e $\Delta E_{\text{int}} = nC_V\,\Delta T$ vale para **qualquer** processo:
+
+$$
+\Delta E_{\text{int}} = \tfrac52 \cdot 4{,}00 \cdot 8{,}31 \cdot 60{,}0 = \boxed{4{,}99\times10^3\ \mathrm{J}}
+$$
+
+**Passo 4 — (c) o trabalho.** Pela primeira lei, $W = Q - \Delta E_{\text{int}}$:
+
+$$
+W = 6980 - 4986 = \boxed{1{,}99\times10^3\ \mathrm{J}}
+$$
+
+**Passo 5 — (d) a energia cinética de translação.** Só $3$ dos $5$ graus de liberdade são de translação, cada um com $\tfrac12 kT$ por molécula, ou $\tfrac12 RT$ por mol:
+
+$$
+\Delta K = \tfrac32 nR\,\Delta T = \tfrac32 \cdot 4{,}00 \cdot 8{,}31 \cdot 60{,}0 = \boxed{2{,}99\times10^3\ \mathrm{J}}
+$$
+
+Os $\tfrac22 nR\,\Delta T \approx 1{,}99\times10^3\ \mathrm{J}$ restantes de $\Delta E_{\text{int}}$ vão para a rotação.
+
+**Conferência —** a pressão constante, $W = p\,\Delta V = nR\,\Delta T = 4{,}00\cdot8{,}31\cdot60{,}0 = 1994\ \mathrm{J}$, o mesmo do Passo 4 ✔ E as partes somam: $\Delta K + \Delta K_{\text{rot}} = 2992 + 1994 = 4986\ \mathrm{J} = \Delta E_{\text{int}}$ ✔
+</Passos>
