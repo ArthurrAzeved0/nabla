@@ -1,0 +1,71 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "Entropia · Gelo derretendo numa garrafa térmica"
+temaId: entropia
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma garrafa térmica isolada contém $130\ \mathrm{g}$ de água a $80{,}0\ ^\circ\mathrm{C}$. Coloca-se dentro dela um cubo de gelo de $12{,}0\ \mathrm{g}$ a $0\ ^\circ\mathrm{C}$, formando o sistema *gelo + água original*. Use $L_F = 333\ \mathrm{kJ/kg}$ e $c = 4187\ \mathrm{J/(kg\cdot K)}$ para a água.<br />(a) Qual é a temperatura de equilíbrio do sistema?<br />Qual é a variação de entropia da água que antes era gelo (b) ao derreter e (c) ao se aquecer até a temperatura de equilíbrio?<br />(d) Qual é a variação de entropia da água original ao esfriar até a temperatura de equilíbrio?<br />(e) Qual é a variação total de entropia do sistema ao atingir o equilíbrio?
+
+<Gabarito>
+(a) $T_f \approx 66{,}5\ ^\circ\mathrm{C} = 339{,}7\ \mathrm{K}$  ·  (b) $+14{,}6\ \mathrm{J/K}$  ·  (c) $+11{,}0\ \mathrm{J/K}$  ·  (d) $-21{,}2\ \mathrm{J/K}$  ·  (e) $+4{,}4\ \mathrm{J/K}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o balanço de energia.** A garrafa é isolada, então a soma dos calores trocados é zero. O gelo derrete inteiro (a água quente tem energia de sobra: esfriar até $0\ ^\circ\mathrm{C}$ liberaria $0{,}130 \cdot 4187 \cdot 80 \approx 43{,}5\ \mathrm{kJ}$, contra $0{,}012 \cdot 333 \approx 4{,}0\ \mathrm{kJ}$ para derreter o gelo). Com $T_f$ em graus Celsius:
+
+$$
+m_g L_F + m_g c\,(T_f - 0) + m_a c\,(T_f - 80{,}0) = 0
+$$
+
+**Passo 2 — isolar a temperatura final.**
+
+$$
+T_f = \frac{m_a c \cdot 80{,}0 - m_g L_F}{(m_a + m_g)\,c}
+= \frac{0{,}130 \cdot 4187 \cdot 80{,}0 - 0{,}012 \cdot 333\,000}{0{,}142 \cdot 4187}
+\approx \boxed{66{,}5\ ^\circ\mathrm{C}}
+$$
+
+ou seja, $T_f \approx 339{,}7\ \mathrm{K}$.
+
+**Passo 3 — entropia do gelo derretendo (b).** A fusão é isotérmica, a $273{,}15\ \mathrm{K}$:
+
+$$
+\Delta S_b = \frac{m_g L_F}{T_0} = \frac{0{,}012 \cdot 333\,000}{273{,}15} \approx \boxed{+14{,}6\ \mathrm{J/K}}
+$$
+
+**Passo 4 — entropia da água de gelo esquentando (c).** Com $dQ = mc\,dT$, integra-se $dQ/T$:
+
+$$
+\Delta S_c = m_g c \ln\frac{T_f}{T_0} = 0{,}012 \cdot 4187 \cdot \ln\frac{339{,}7}{273{,}15} \approx \boxed{+11{,}0\ \mathrm{J/K}}
+$$
+
+**Passo 5 — entropia da água original esfriando (d).** Mesmo cálculo, de $353{,}15\ \mathrm{K}$ até $T_f$:
+
+$$
+\Delta S_d = m_a c \ln\frac{T_f}{T_a} = 0{,}130 \cdot 4187 \cdot \ln\frac{339{,}7}{353{,}15} \approx \boxed{-21{,}2\ \mathrm{J/K}}
+$$
+
+**Passo 6 — o total (e).**
+
+$$
+\Delta S = 14{,}6 + 11{,}0 - 21{,}2 \approx \boxed{+4{,}4\ \mathrm{J/K}}
+$$
+
+Positivo, como a segunda lei exige para um processo espontâneo num sistema isolado: a água quente perde menos entropia do que o gelo ganha, porque cede o calor a uma temperatura mais alta.
+
+**Conferência —** os calores fecham: o gelo recebe $3{,}996 + 0{,}012 \cdot 4187 \cdot 66{,}5 \approx 7{,}34\ \mathrm{kJ}$ e a água original cede $0{,}130 \cdot 4187 \cdot 13{,}5 \approx 7{,}34\ \mathrm{kJ}$ ✔ A temperatura de equilíbrio ficou entre $0$ e $80\ ^\circ\mathrm{C}$, e mais perto de $80$, porque a água quente é quase onze vezes mais massa ✔
+</Passos>
