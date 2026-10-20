@@ -1,0 +1,51 @@
+---
+origem: "2024.1"
+tema: "Primeira lei · Trabalho com p = aV²"
+temaId: trabalho-de-um-gas
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma amostra de gás se expande do volume inicial $V_i = 1{,}0\ \mathrm{m^3}$, onde a pressão é $10\ \mathrm{Pa}$, até o volume final $V_f = 2{,}0\ \mathrm{m^3}$. Durante toda a expansão, pressão e volume obedecem a $p = aV^2$, com $a = 10\ \mathrm{N/m^8}$. Qual é o trabalho realizado pelo gás?
+
+<Gabarito>
+$W \approx 23\ \mathrm{J}$ (exatamente $70/3\ \mathrm{J}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — o trabalho é a área sob a curva.** Num processo quase estático, o trabalho do gás é
+
+$$
+W = \int_{V_i}^{V_f} p\,dV
+$$
+
+e, como a pressão não é constante, não dá para usar $p\,\Delta V$: é preciso integrar a lei $p(V)$ dada.
+
+**Passo 2 — integrar $p = aV^2$.**
+
+$$
+W = \int_{V_i}^{V_f} aV^2\,dV = \frac{a}{3}\left(V_f^3 - V_i^3\right)
+$$
+
+**Passo 3 — substituir.**
+
+$$
+W = \frac{10}{3}\left(2{,}0^3 - 1{,}0^3\right) = \frac{10 \cdot 7}{3} \approx 23\ \mathrm{J}
+$$
+
+A unidade fecha: $\mathrm{N/m^8} \cdot \mathrm{m^9} = \mathrm{N \cdot m} = \mathrm{J}$.
+
+**Conferência —** a pressão inicial bate com o enunciado, $p_i = 10 \cdot 1{,}0^2 = 10\ \mathrm{Pa}$, e a final é $p_f = 10 \cdot 2{,}0^2 = 40\ \mathrm{Pa}$. O trabalho tem de ficar entre os retângulos $p_i\,\Delta V = 10\ \mathrm{J}$ e $p_f\,\Delta V = 40\ \mathrm{J}$; e, como a curva é convexa, abaixo do trapézio $\tfrac{1}{2}(10 + 40) \cdot 1{,}0 = 25\ \mathrm{J}$. Os $23\ \mathrm{J}$ estão lá ✔
+</Passos>
