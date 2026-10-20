@@ -34,6 +34,16 @@ unidades:
       - { id: ot-mhs-circular, titulo: "MHS e movimento circular uniforme" }
       - { id: ot-amortecido, titulo: "Oscilações amortecidas" }
       - { id: ot-forcadas, titulo: "Oscilações forçadas e ressonância" }
+  - nome: "Ondas"
+    prova: 1ee
+    secoes:
+      - { id: ot-ondas, titulo: "Ondas transversais e a onda progressiva senoidal" }
+      - { id: ot-velocidade-corda, titulo: "A velocidade de uma onda numa corda esticada" }
+      - { id: ot-energia-onda, titulo: "Energia e potência de uma onda numa corda" }
+      - { id: ot-equacao-onda, titulo: "A equação de onda" }
+      - { id: ot-interferencia, titulo: "Superposição e interferência de ondas" }
+      - { id: ot-fasores, titulo: "Fasores" }
+      - { id: ot-estacionarias, titulo: "Ondas estacionárias e ressonância" }
 ---
 
 {/* **************************************************************************
@@ -2705,6 +2715,669 @@ x_m = \frac{0{,}80}{\sqrt{(400 - 100)^2 + \left(\dfrac{0{,}50 \times 10}{0{,}25}
 $$
 
 A deflexão estática seria $F_0/k = 0{,}0020\ \mathrm{m}$. Na ressonância a mesma força produz **dez vezes** isso — e $Q = m\omega/b = 0{,}25 \times 20/0{,}50 = 10$. Fora dela, a amplitude mal passa da estática.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-ondas" num="21" titulo="Ondas transversais e a onda progressiva senoidal">
+
+**A ideia.** Uma onda é uma **perturbação que viaja** levando energia de um lugar para outro **sem levar matéria junto**. Sacuda a ponta de uma corda: cada pedacinho dela só sobe e desce no mesmo lugar, mas o formato do "calombo" corre ao longo da corda. Toda a matemática deste capítulo serve para descrever essas duas coisas ao mesmo tempo — o que **um ponto** da corda faz no tempo e o **formato** da corda num instante.
+
+### Os tipos de onda
+
+- **Ondas mecânicas** precisam de um meio material: som, ondas na água, ondas numa corda. Obedecem às leis de Newton;
+- **ondas eletromagnéticas** não precisam de meio: luz, rádio, raios X. Todas viajam no vácuo com a mesma velocidade $c$;
+- **ondas de matéria** são as associadas a elétrons, prótons e átomos, assunto da física quântica.
+
+Quanto à direção do movimento:
+
+- **transversal**: cada elemento do meio oscila **perpendicularmente** à direção de propagação — a corda sacudida;
+- **longitudinal**: cada elemento oscila **na mesma direção** da propagação — o som num tubo, uma mola comprimida e esticada.
+
+Este capítulo trata da onda **transversal numa corda**; o som (longitudinal) é o capítulo seguinte.
+
+### A onda senoidal progressiva
+
+Se a mão que sacode a corda faz um MHS, a corda inteira assume um formato senoidal que anda. O deslocamento transversal $y$ de um elemento que está na posição $x$, no instante $t$, é
+
+$$
+\boxed{\;y(x,t) = y_m\,\mathrm{sen}(kx - \omega t + \phi)\;}
+$$
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $y$ — deslocamento transversal do elemento da corda, em $\mathrm{m}$;
+- $y_m$ — **amplitude**, o deslocamento máximo, em $\mathrm{m}$ (sempre positiva);
+- $x$ — posição ao longo da corda, em $\mathrm{m}$; $t$ — tempo, em $\mathrm{s}$;
+- $k$ — **número de onda**, em $\mathrm{rad/m}$;
+- $\omega$ — **frequência angular**, em $\mathrm{rad/s}$;
+- $\phi$ — **constante de fase**, em $\mathrm{rad}$: só desloca a onda, não muda seu formato;
+- $kx - \omega t + \phi$ — a **fase** da onda, em $\mathrm{rad}$.
+
+</Caixa>
+
+<Figura>
+  <svg viewBox="0 0 440 230" role="img" aria-label="Instantâneo de uma onda senoidal numa corda: o comprimento de onda lambda está marcado entre duas cristas, a amplitude y m entre o eixo e um vale, e uma seta indica que a onda anda para a direita com velocidade v">
+    {/* eixos */}
+    <line x1="30" y1="105" x2="418" y2="105" stroke="var(--line-2)" stroke-width="1.2"/>
+    <polygon points="424,105 414,101 414,109" fill="var(--line-2)"/>
+    <text x="410" y="124" font-size="12" font-style="italic" fill="var(--ink-3)">x</text>
+    <line x1="40" y1="190" x2="40" y2="22" stroke="var(--line-2)" stroke-width="1.2"/>
+    <polygon points="40,16 36,26 44,26" fill="var(--line-2)"/>
+    <text x="24" y="28" font-size="12" font-style="italic" fill="var(--ink-3)">y</text>
+    {/* a corda */}
+    <polyline points="40,105.0 45,93.3 50,82.0 55,71.7 60,62.6 65,55.1 70,49.6 75,46.2 80,45.0 85,46.2 90,49.6 95,55.1 100,62.6 105,71.7 110,82.0 115,93.3 120,105.0 125,116.7 130,128.0 135,138.3 140,147.4 145,154.9 150,160.4 155,163.8 160,165.0 165,163.8 170,160.4 175,154.9 180,147.4 185,138.3 190,128.0 195,116.7 200,105.0 205,93.3 210,82.0 215,71.7 220,62.6 225,55.1 230,49.6 235,46.2 240,45.0 245,46.2 250,49.6 255,55.1 260,62.6 265,71.7 270,82.0 275,93.3 280,105.0 285,116.7 290,128.0 295,138.3 300,147.4 305,154.9 310,160.4 315,163.8 320,165.0 325,163.8 330,160.4 335,154.9 340,147.4 345,138.3 350,128.0 355,116.7 360,105.0 365,93.3 370,82.0 375,71.7 380,62.6 385,55.1 390,49.6 395,46.2 400,45.0" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+    {/* lambda entre duas cristas */}
+    <line x1="80" y1="40" x2="80" y2="24" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <line x1="240" y1="40" x2="240" y2="24" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <line x1="88" y1="30" x2="232" y2="30" stroke="var(--warn)" stroke-width="1.2"/>
+    <polygon points="80,30 89,27 89,33" fill="var(--warn)"/>
+    <polygon points="240,30 231,27 231,33" fill="var(--warn)"/>
+    <text x="155" y="22" font-size="14" font-style="italic" fill="var(--warn)">λ</text>
+    {/* amplitude num vale */}
+    <line x1="320" y1="111" x2="320" y2="159" stroke="var(--ok)" stroke-width="1.2"/>
+    <polygon points="320,105 317,113 323,113" fill="var(--ok)"/>
+    <polygon points="320,165 317,157 323,157" fill="var(--ok)"/>
+    <text x="327" y="142" font-size="13" font-style="italic" fill="var(--ok)">yₘ</text>
+    {/* sentido de propagação */}
+    <line x1="250" y1="205" x2="304" y2="205" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="312,205 302,201 302,209" fill="var(--ink-2)"/>
+    <text x="318" y="210" font-size="13" font-style="italic" fill="var(--ink-2)">v</text>
+    <text x="60" y="210" font-size="11" fill="var(--ink-3)">instantâneo em t fixo</text>
+  </svg>
+  <figcaption>
+
+Uma "fotografia" da corda num instante. O **comprimento de onda** $\lambda$ é a distância entre duas cristas (ou entre dois pontos quaisquer na mesma fase); a **amplitude** $y_m$ vai do eixo até a crista ou até o vale — **não** de crista a vale.
+
+  </figcaption>
+</Figura>
+
+### Comprimento de onda, período, frequência
+
+Congelando o tempo, a forma se repete a cada $\lambda$; como o seno se repete a cada $2\pi$, isso exige $k\lambda = 2\pi$. Fixando um ponto da corda, ele repete o movimento a cada período $T$, e então $\omega T = 2\pi$:
+
+$$
+\boxed{\;k = \frac{2\pi}{\lambda}
+\qquad
+\omega = \frac{2\pi}{T} = 2\pi f
+\qquad
+f = \frac{1}{T}\;}
+$$
+
+### A velocidade da onda
+
+Um ponto da forma (uma crista, por exemplo) mantém a fase constante: $kx - \omega t = \text{cte}$. Derivando no tempo, $k\,\dfrac{dx}{dt} - \omega = 0$, e a velocidade com que a forma anda é
+
+$$
+\boxed{\;v = \frac{\omega}{k} = \frac{\lambda}{T} = \lambda f\;}
+$$
+
+A onda anda **um comprimento de onda por período** — é só isso que a fórmula diz.
+
+<Caixa tipo="macete" rotulo="O sinal entre kx e ωt dá o sentido">
+
+- $y = y_m\,\mathrm{sen}(kx - \omega t)$ → a onda anda no sentido **positivo** de $x$;
+- $y = y_m\,\mathrm{sen}(kx + \omega t)$ → a onda anda no sentido **negativo** de $x$.
+
+Para lembrar: com o sinal de menos, se $t$ aumenta, $x$ tem de aumentar para a fase ficar igual. Na prova, "ler" a equação é sempre o mesmo ritual: **o que multiplica $x$ é $k$, o que multiplica $t$ é $\omega$, e o sinal entre eles é o sentido.** Daí sai tudo: $\lambda = 2\pi/k$, $f = \omega/2\pi$, $v = \omega/k$.
+
+</Caixa>
+
+### Velocidade transversal: a do pedaço de corda, não a da onda
+
+Cada elemento da corda sobe e desce, com velocidade **transversal** $u$. Ela se obtém derivando $y$ em relação a $t$ com $x$ fixo:
+
+$$
+u = \frac{\partial y}{\partial t} = -\omega\,y_m\cos(kx - \omega t + \phi)
+\qquad\Longrightarrow\qquad
+\boxed{\;u_{\text{máx}} = \omega\,y_m\;}
+$$
+
+E a aceleração transversal, derivando mais uma vez:
+
+$$
+a_y = \frac{\partial^2 y}{\partial t^2} = -\omega^2\,y
+\qquad\Longrightarrow\qquad
+a_{y,\text{máx}} = \omega^2\,y_m
+$$
+
+Cada elemento faz um **MHS** — tudo o que você sabe do capítulo de oscilações vale aqui.
+
+<Caixa tipo="dica" rotulo="Não confunda v com u">
+
+- $v = \omega/k$ é a velocidade da **onda**: constante, depende só do meio (próxima seção);
+- $u = \partial y/\partial t$ é a velocidade de um **elemento** da corda: varia o tempo todo, é **máxima quando $y = 0$** e **nula nas cristas e nos vales**.
+
+Uma não tem nada a ver com a outra: dá para ter $u_{\text{máx}}$ maior ou menor que $v$, dependendo da amplitude.
+
+</Caixa>
+
+### Ler $\lambda$, $T$ e $y_m$ de um gráfico
+
+A prova às vezes dá um gráfico em vez da equação. Veja **o que está no eixo horizontal**:
+
+- gráfico $y \times x$ (instantâneo, $t$ fixo): a distância entre duas cristas é $\lambda$;
+- gráfico $y \times t$ (um ponto fixo da corda): a distância entre duas cristas é $T$.
+
+Nos dois, a altura da crista medida a partir do eixo é $y_m$. Para a fase $\phi$, leia o valor de $y$ (e o sentido de movimento) em $x = 0$, $t = 0$: $y(0,0) = y_m\,\mathrm{sen}\,\phi$.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — tirar tudo de uma equação">
+
+Uma onda numa corda é $y = 0{,}020\,\mathrm{sen}(4{,}0\,x - 60\,t)$, no SI. Então $y_m = 0{,}020\ \mathrm{m} = 2{,}0\ \mathrm{cm}$, $k = 4{,}0\ \mathrm{rad/m}$ e $\omega = 60\ \mathrm{rad/s}$, e a onda anda no sentido $+x$ (sinal de menos).
+
+$$
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{4{,}0} \approx 1{,}57\ \mathrm{m}
+\qquad
+f = \frac{\omega}{2\pi} = \frac{60}{2\pi} \approx 9{,}55\ \mathrm{Hz}
+\qquad
+T = \frac{1}{f} \approx 0{,}105\ \mathrm{s}
+$$
+
+$$
+v = \frac{\omega}{k} = \frac{60}{4{,}0} = 15\ \mathrm{m/s}
+\qquad
+u_{\text{máx}} = \omega\,y_m = 60 \times 0{,}020 = 1{,}2\ \mathrm{m/s}
+$$
+
+A onda corre a $15\ \mathrm{m/s}$, mas cada pedaço da corda nunca passa de $1{,}2\ \mathrm{m/s}$ no seu sobe-e-desce.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-velocidade-corda" num="22" titulo="A velocidade de uma onda numa corda esticada">
+
+**A ideia.** A velocidade de uma onda **não depende de como você sacode** a corda: depende só da corda. Dois ingredientes decidem: a **tração**, que puxa o elemento deslocado de volta (quanto mais esticada, mais rápida a resposta), e a **inércia**, a massa por comprimento que resiste a ser acelerada (quanto mais pesada, mais lenta).
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v$ — velocidade da onda na corda, em $\mathrm{m/s}$;
+- $\tau$ — **tração** (tensão) na corda, em $\mathrm{N}$;
+- $\mu$ — **massa específica linear**, a massa por unidade de comprimento, em $\mathrm{kg/m}$: $\mu = m/L$.
+
+</Caixa>
+
+### A fórmula
+
+$$
+\boxed{\;v = \sqrt{\frac{\tau}{\mu}}\;}
+$$
+
+Uma dedução rápida, sem perder a física: olhe para um pequeno trecho de comprimento $\Delta\ell$ no alto de um pulso, que visto de um referencial que anda com o pulso percorre um arco de raio $R$ com velocidade $v$. As duas trações nas pontas, cada uma inclinada de um ângulo pequeno $\theta \approx \Delta\ell/2R$, somam uma força para o centro $F \approx \tau\,\Delta\ell/R$. A massa do trecho é $\mu\,\Delta\ell$, e a resultante centrípeta tem de ser $\mu\,\Delta\ell\,v^2/R$. Igualando,
+
+$$
+\frac{\tau\,\Delta\ell}{R} = \frac{\mu\,\Delta\ell\,v^2}{R}
+\qquad\Longrightarrow\qquad
+v^2 = \frac{\tau}{\mu}
+$$
+
+O $R$ e o $\Delta\ell$ somem: a velocidade não depende da forma do pulso.
+
+<Caixa tipo="macete" rotulo="Quem decide v, quem decide f, quem decide λ">
+
+- **$v$ é do meio**: só $\tau$ e $\mu$. Mudar a frequência do vibrador **não** muda $v$;
+- **$f$ é da fonte**: quem impõe a frequência é quem sacode. Se a onda passa para outra corda emendada, $f$ continua a mesma;
+- **$\lambda$ é a consequência**: $\lambda = v/f$. Ao passar para uma corda mais pesada, $v$ cai e $\lambda$ encolhe na mesma proporção.
+
+Dobrar a frequência, mantida a corda, **divide $\lambda$ por 2** e deixa $v$ igual.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Massa pendurada e corda dada em gramas">
+
+Dois tropeços clássicos: se a tração vem de um bloco pendurado por uma polia, $\tau = Mg$ (com o bloco em equilíbrio); e se o enunciado dá a massa da corda inteira em gramas e o comprimento em centímetros, converta **antes** de dividir: $\mu = m/L$ em $\mathrm{kg/m}$. A raiz amplifica qualquer erro de potência de 10.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — corda de 2 m e 20 g">
+
+Uma corda de $2{,}0\ \mathrm{m}$ e massa $20\ \mathrm{g}$ está sob tração de $90\ \mathrm{N}$. Então $\mu = 0{,}020/2{,}0 = 0{,}010\ \mathrm{kg/m}$ e
+
+$$
+v = \sqrt{\frac{\tau}{\mu}} = \sqrt{\frac{90}{0{,}010}} = \sqrt{9000} \approx 94{,}9\ \mathrm{m/s}
+$$
+
+Se um vibrador sacode a ponta a $f = 120\ \mathrm{Hz}$, o comprimento de onda é
+
+$$
+\lambda = \frac{v}{f} = \frac{94{,}9}{120} \approx 0{,}79\ \mathrm{m}
+$$
+
+Para **dobrar** $v$ seria preciso **quadruplicar** a tração (para $360\ \mathrm{N}$): a velocidade cresce com a raiz.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-energia-onda" num="23" titulo="Energia e potência de uma onda numa corda">
+
+**A ideia.** A onda não leva matéria, mas leva **energia**: a mão que sacode a corda faz trabalho, e esse trabalho viaja corda afora. Cada elemento tem energia **cinética** (porque se mexe) e **potencial elástica** (porque está esticado). A pergunta útil é quanta energia passa por segundo — a **potência** transmitida.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $P_{\text{méd}}$ — potência média transmitida pela onda, em $\mathrm{W}$;
+- $\mu$ — massa específica linear da corda, em $\mathrm{kg/m}$;
+- $v$ — velocidade da onda, em $\mathrm{m/s}$;
+- $\omega$ — frequência angular, em $\mathrm{rad/s}$;
+- $y_m$ — amplitude, em $\mathrm{m}$.
+
+</Caixa>
+
+### Onde está a energia
+
+Um contraste com o MHS de um bloco que costuma surpreender: no bloco, a energia cinética é máxima quando a potencial é mínima. **Na corda não.** Um elemento que passa por $y = 0$ está com a velocidade máxima **e** com a maior inclinação, isto é, o mais esticado possível; nas cristas, está parado **e** sem esticamento. Cinética e potencial são máximas juntas e nulas juntas — a energia anda em "pacotes" concentrados onde a corda cruza o eixo.
+
+### A potência média
+
+Somando a cinética e a potencial e fazendo a média num período (a média de $\cos^2$ é $\tfrac{1}{2}$), a taxa com que a energia passa por um ponto é
+
+$$
+\boxed{\;P_{\text{méd}} = \frac{1}{2}\,\mu\,v\,\omega^2\,y_m^2\;}
+$$
+
+Metade dela é cinética e metade é potencial. Leia a fórmula como um produto de dois fatores: $\mu$ e $v$ dependem **da corda**; $\omega$ e $y_m$ dependem **de como ela é sacudida**.
+
+<Caixa tipo="macete" rotulo="As proporcionalidades que a prova testa">
+
+- $P \propto y_m^2$: dobrar a amplitude **quadruplica** a potência;
+- $P \propto \omega^2$: dobrar a frequência também **quadruplica**;
+- dobrar os dois ao mesmo tempo multiplica por $16$.
+
+Com $v = \sqrt{\tau/\mu}$, dá para escrever $\mu v = \sqrt{\mu\tau}$ e $P_{\text{méd}} = \tfrac{1}{2}\sqrt{\mu\tau}\,\omega^2 y_m^2$ — útil quando o enunciado muda a tração e pergunta o que acontece com a potência.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — quanto a corda transporta">
+
+A mesma corda da seção anterior ($\mu = 0{,}010\ \mathrm{kg/m}$, $v \approx 94{,}9\ \mathrm{m/s}$), sacudida a $f = 120\ \mathrm{Hz}$ com amplitude $y_m = 3{,}0\ \mathrm{mm}$. A frequência angular é $\omega = 2\pi f \approx 754\ \mathrm{rad/s}$, e
+
+$$
+P_{\text{méd}} = \frac{1}{2}\,(0{,}010)(94{,}9)(754)^2(0{,}0030)^2 \approx 2{,}4\ \mathrm{W}
+$$
+
+Com a amplitude dobrada para $6{,}0\ \mathrm{mm}$, a potência vai a $\approx 9{,}7\ \mathrm{W}$ — quatro vezes mais, como manda o $y_m^2$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-equacao-onda" num="24" titulo="A equação de onda">
+
+**A ideia.** Todas as ondas — numa corda, no ar, a luz — obedecem à **mesma** equação diferencial. Ela liga a **curvatura** da forma no espaço com a **aceleração** de cada ponto no tempo, e a constante que faz a ponte é a velocidade da onda. Saber essa equação permite reconhecer uma onda só de olhar e conferir se uma função proposta é ou não uma onda.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $y(x,t)$ — deslocamento transversal, em $\mathrm{m}$;
+- $\dfrac{\partial^2 y}{\partial x^2}$ — curvatura da forma da corda num instante, em $\mathrm{1/m}$;
+- $\dfrac{\partial^2 y}{\partial t^2}$ — aceleração transversal de um elemento, em $\mathrm{m/s^2}$;
+- $v$ — velocidade da onda, em $\mathrm{m/s}$.
+
+</Caixa>
+
+### A equação
+
+$$
+\boxed{\;\frac{\partial^2 y}{\partial x^2} = \frac{1}{v^2}\,\frac{\partial^2 y}{\partial t^2}\;}
+$$
+
+### De onde ela vem
+
+Pegue um elemento de comprimento $dx$ e massa $dm = \mu\,dx$. As trações nas duas pontas têm o mesmo módulo $\tau$, mas inclinações diferentes se a corda está curvada. Para ângulos pequenos, a componente vertical da tração é $\tau$ vezes a inclinação $\partial y/\partial x$, e a resultante vertical é a **diferença** entre as inclinações nas duas pontas:
+
+$$
+F_y = \tau\left(\frac{\partial y}{\partial x}\bigg|_{x+dx} - \frac{\partial y}{\partial x}\bigg|_{x}\right) = \tau\,\frac{\partial^2 y}{\partial x^2}\,dx
+$$
+
+A segunda lei, $F_y = dm\,a_y$, dá
+
+$$
+\tau\,\frac{\partial^2 y}{\partial x^2}\,dx = \mu\,dx\,\frac{\partial^2 y}{\partial t^2}
+\qquad\Longrightarrow\qquad
+\frac{\partial^2 y}{\partial x^2} = \frac{\mu}{\tau}\,\frac{\partial^2 y}{\partial t^2}
+$$
+
+Comparando com a forma geral, $1/v^2 = \mu/\tau$, e reaparece $v = \sqrt{\tau/\mu}$ — agora como consequência da equação, e não de um argumento especial sobre pulsos.
+
+<Caixa tipo="dica" rotulo="Qualquer função de x − vt serve">
+
+A senoide não é a única solução. **Qualquer** função da forma $y = h(x - vt)$ ou $y = h(x + vt)$ satisfaz a equação de onda — um pulso gaussiano, um degrau, o que for. O que define uma onda que viaja sem se deformar é $x$ e $t$ aparecerem **só** na combinação $x \pm vt$. É por isso que $\mathrm{sen}(kx - \omega t)$ funciona: ela é $\mathrm{sen}\big(k(x - vt)\big)$ com $v = \omega/k$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — conferir uma onda e achar v">
+
+Seja $y = 0{,}05\,\mathrm{sen}(2x - 10t)$, no SI. As derivadas segundas são
+
+$$
+\frac{\partial^2 y}{\partial x^2} = -4\,y
+\qquad\qquad
+\frac{\partial^2 y}{\partial t^2} = -100\,y
+$$
+
+Substituindo na equação de onda, $-4y = \dfrac{1}{v^2}(-100\,y)$, ou seja, $v^2 = 25$ e $v = 5\ \mathrm{m/s}$. É exatamente $\omega/k = 10/2$: a equação e a leitura direta concordam.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-interferencia" num="25" titulo="Superposição e interferência de ondas">
+
+**A ideia.** Duas ondas que passam pela mesma corda **não se chocam**: cada uma segue seu caminho como se a outra não existisse, e onde se sobrepõem o deslocamento é simplesmente a **soma** dos deslocamentos. Quando as duas têm a mesma frequência e andam no mesmo sentido, essa soma é outra senoide, cuja amplitude depende só da **diferença de fase** entre elas. É esse o fenômeno da **interferência**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $y_1,\ y_2$ — as duas ondas, em $\mathrm{m}$, com a mesma amplitude $y_m$, o mesmo $k$ e o mesmo $\omega$;
+- $\phi$ — **diferença de fase** entre elas, em $\mathrm{rad}$;
+- $y'$ — a onda resultante, em $\mathrm{m}$;
+- $y'_m$ — amplitude da onda resultante, em $\mathrm{m}$.
+
+</Caixa>
+
+### O princípio de superposição
+
+$$
+y'(x,t) = y_1(x,t) + y_2(x,t)
+$$
+
+Ondas que se sobrepõem **se somam algebricamente** e depois cada uma segue intacta. Vale para ondas de pequena amplitude, que são as deste curso.
+
+### Duas ondas iguais defasadas
+
+Tome $y_1 = y_m\,\mathrm{sen}(kx - \omega t)$ e $y_2 = y_m\,\mathrm{sen}(kx - \omega t + \phi)$. Com a identidade $\mathrm{sen}\,\alpha + \mathrm{sen}\,\beta = 2\,\mathrm{sen}\tfrac{\alpha+\beta}{2}\cos\tfrac{\alpha-\beta}{2}$,
+
+$$
+\boxed{\;y'(x,t) = \Big[\,2\,y_m\cos\tfrac{\phi}{2}\,\Big]\,\mathrm{sen}\!\left(kx - \omega t + \tfrac{\phi}{2}\right)\;}
+$$
+
+A resultante é **uma onda do mesmo tipo**: mesmo $k$, mesmo $\omega$, mesma velocidade, andando no mesmo sentido. Mudam duas coisas: a fase, que fica em $\phi/2$, e a amplitude, que passa a ser
+
+$$
+\boxed{\;y'_m = 2\,y_m\left|\cos\frac{\phi}{2}\right|\;}
+$$
+
+### Construtiva, destrutiva, intermediária
+
+| diferença de fase $\phi$ | em comprimentos de onda | amplitude $y'_m$ | tipo |
+| --- | --- | --- | --- |
+| $0,\ 2\pi,\ 4\pi,\ \dots$ | $0,\ 1,\ 2,\ \dots$ | $2\,y_m$ | **construtiva** total |
+| $\pi,\ 3\pi,\ 5\pi,\ \dots$ | $0{,}5;\ 1{,}5;\ 2{,}5;\ \dots$ | $0$ | **destrutiva** total |
+| qualquer outro valor | — | entre $0$ e $2\,y_m$ | intermediária |
+
+<Caixa tipo="macete" rotulo="Diferença de fase em comprimentos de onda">
+
+Uma volta completa, $2\pi\ \mathrm{rad}$, corresponde a **um comprimento de onda**. Então, para converter:
+
+$$
+\phi\ (\mathrm{rad}) = 2\pi \times (\text{diferença em comprimentos de onda})
+$$
+
+Um atraso de $0{,}25\,\lambda$ é $\phi = \pi/2$; de $0{,}5\,\lambda$ é $\phi = \pi$ (destrutiva). E só o que **sobra** depois de tirar voltas inteiras importa: uma diferença de $2{,}3\,\lambda$ interfere exatamente como uma de $0{,}3\,\lambda$.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="A pergunta ao contrário">
+
+A prova costuma dar a amplitude resultante e pedir a fase. É só inverter: $\cos(\phi/2) = y'_m/(2y_m)$. Atenção à calculadora em **radianos**, e lembre que $-\phi$ dá a mesma amplitude — a resposta "a menor diferença de fase" é a positiva entre $0$ e $\pi$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — fase e amplitude nos dois sentidos">
+
+Duas ondas de amplitude $y_m = 4{,}0\ \mathrm{mm}$, iguais, viajam na mesma corda.
+
+**(a)** Com $\phi = \pi/3$:
+
+$$
+y'_m = 2 \times 4{,}0 \times \cos\frac{\pi}{6} \approx 6{,}93\ \mathrm{mm}
+$$
+
+**(b)** Com uma defasagem de $0{,}25\,\lambda$, isto é, $\phi = 2\pi \times 0{,}25 = \pi/2$:
+
+$$
+y'_m = 8{,}0\cos\frac{\pi}{4} \approx 5{,}66\ \mathrm{mm}
+$$
+
+**(c)** Qual diferença de fase faz a resultante ter a **mesma** amplitude de cada onda, $4{,}0\ \mathrm{mm}$?
+
+$$
+\cos\frac{\phi}{2} = \frac{4{,}0}{8{,}0} = 0{,}5
+\qquad\Longrightarrow\qquad
+\frac{\phi}{2} = \frac{\pi}{3}
+\qquad\Longrightarrow\qquad
+\phi = \frac{2\pi}{3} \approx 2{,}09\ \mathrm{rad}
+$$
+
+Em comprimentos de onda, $\phi/2\pi \approx 0{,}333$ — um terço de $\lambda$.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-fasores" num="26" titulo="Fasores">
+
+**A ideia.** A fórmula $2y_m\cos(\phi/2)$ só vale quando as duas ondas têm a **mesma amplitude**. Com amplitudes diferentes, a trigonometria fica feia — e o **fasor** resolve com geometria. Cada onda vira uma **seta** de comprimento igual à sua amplitude, girando com velocidade angular $\omega$; somar ondas vira somar setas, como vetores.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $y_{m1},\ y_{m2}$ — amplitudes das duas ondas (comprimentos dos fasores), em $\mathrm{m}$;
+- $\phi$ — diferença de fase entre elas, que é o **ângulo entre os fasores**, em $\mathrm{rad}$;
+- $y'_m$ — amplitude da resultante (comprimento do fasor soma), em $\mathrm{m}$;
+- $\beta$ — fase da resultante em relação à onda 1, em $\mathrm{rad}$.
+
+</Caixa>
+
+### Como funciona
+
+Um fasor de comprimento $y_m$ girando com velocidade angular $\omega$ em torno da origem tem **projeção vertical** $y_m\,\mathrm{sen}(\omega t)$: é exatamente o MHS de um elemento da corda. Duas ondas de **mesma frequência** são dois fasores que giram juntos, com um ângulo fixo $\phi$ entre eles. Como giram juntos, a figura não se deforma, e dá para somá-los parados, num instante qualquer.
+
+<Figura>
+  <svg viewBox="0 0 420 220" role="img" aria-label="Soma de fasores: o fasor y m 1 deitado na horizontal, o fasor y m 2 começando na ponta do primeiro e inclinado de um ângulo fi, e o fasor resultante y m linha ligando a origem à ponta do segundo, formando o ângulo beta com a horizontal">
+    {/* referência horizontal */}
+    <line x1="40" y1="170" x2="320" y2="170" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <circle cx="60" cy="170" r="3" fill="var(--ink-2)"/>
+    {/* fasor 1 */}
+    <line x1="60" y1="170" x2="200" y2="170" stroke="var(--accent)" stroke-width="2.4"/>
+    <polygon points="210,170 198,165 198,175" fill="var(--accent)"/>
+    <text x="118" y="190" font-size="13" font-style="italic" fill="var(--accent)">yₘ₁</text>
+    {/* fasor 2, a 60 graus */}
+    <line x1="210" y1="170" x2="265" y2="74.7" stroke="var(--warn)" stroke-width="2.4"/>
+    <polygon points="270,66.1 259.4,73.5 268.0,78.5" fill="var(--warn)"/>
+    <text x="250" y="130" font-size="13" font-style="italic" fill="var(--warn)">yₘ₂</text>
+    {/* resultante */}
+    <line x1="60" y1="170" x2="261.0" y2="70.5" stroke="var(--ok)" stroke-width="2.4"/>
+    <polygon points="270,66.1 261.6,76.0 257.2,67.0" fill="var(--ok)"/>
+    <text x="128" y="105" font-size="13" font-style="italic" fill="var(--ok)">y′ₘ</text>
+    {/* ângulo phi */}
+    <path d="M240 170 A30 30 0 0 0 225 144" fill="none" stroke="var(--warn)" stroke-width="1"/>
+    <text x="244" y="160" font-size="13" font-style="italic" fill="var(--warn)">φ</text>
+    {/* ângulo beta */}
+    <path d="M115 170 A55 55 0 0 0 109.3 145.6" fill="none" stroke="var(--ok)" stroke-width="1"/>
+    <text x="120" y="160" font-size="13" font-style="italic" fill="var(--ok)">β</text>
+    <text x="300" y="40" font-size="11" fill="var(--ink-3)">tudo gira com ω</text>
+    <path d="M330 52 A40 40 0 0 1 360 80" fill="none" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="333,48 342,49 337,57" fill="var(--ink-3)"/>
+  </svg>
+  <figcaption>
+
+O fasor da onda 2 é desenhado a partir da ponta do fasor da onda 1, girado de $\phi$. A resultante liga a origem à ponta do segundo: seu comprimento é a amplitude $y'_m$, e seu ângulo $\beta$ é a fase da onda resultante.
+
+  </figcaption>
+</Figura>
+
+### A amplitude resultante
+
+Pela lei dos cossenos no triângulo da figura (o ângulo interno oposto à resultante é $\pi - \phi$):
+
+$$
+\boxed{\;{y'_m}^{2} = y_{m1}^2 + y_{m2}^2 + 2\,y_{m1}\,y_{m2}\cos\phi\;}
+$$
+
+E a fase, decompondo nas componentes horizontal e vertical:
+
+$$
+\mathrm{tg}\,\beta = \frac{y_{m2}\,\mathrm{sen}\,\phi}{y_{m1} + y_{m2}\cos\phi}
+$$
+
+A onda resultante é $y' = y'_m\,\mathrm{sen}(kx - \omega t + \beta)$.
+
+<Caixa tipo="macete" rotulo="Os três casos que se fazem de cabeça">
+
+- $\phi = 0$ (em fase): as setas se alinham, $y'_m = y_{m1} + y_{m2}$;
+- $\phi = \pi$ (oposição): as setas se opõem, $y'_m = |y_{m1} - y_{m2}|$ — a destrutiva **não zera** se as amplitudes forem diferentes;
+- $\phi = \pi/2$ (quadratura): triângulo retângulo, $y'_m = \sqrt{y_{m1}^2 + y_{m2}^2}$.
+
+Com amplitudes iguais, a fórmula geral volta a $2y_m|\cos(\phi/2)|$ — confira: $2y_m^2(1+\cos\phi) = 4y_m^2\cos^2(\phi/2)$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — amplitudes 3 mm e 4 mm">
+
+Duas ondas de mesma frequência, com $y_{m1} = 3{,}0\ \mathrm{mm}$ e $y_{m2} = 4{,}0\ \mathrm{mm}$.
+
+**Em quadratura** ($\phi = \pi/2$): o triângulo 3-4-5,
+
+$$
+y'_m = \sqrt{3{,}0^2 + 4{,}0^2} = 5{,}0\ \mathrm{mm}
+\qquad
+\beta = \mathrm{arctg}\,\frac{4{,}0}{3{,}0} \approx 53{,}1^\circ
+$$
+
+**Com $\phi = \pi/3$**:
+
+$$
+y'_m = \sqrt{9{,}0 + 16 + 2(3{,}0)(4{,}0)(0{,}5)} = \sqrt{37} \approx 6{,}08\ \mathrm{mm}
+\qquad
+\beta = \mathrm{arctg}\,\frac{4{,}0 \times 0{,}866}{3{,}0 + 4{,}0 \times 0{,}5} \approx 34{,}7^\circ
+$$
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-estacionarias" num="27" titulo="Ondas estacionárias e ressonância">
+
+**A ideia.** Quando duas ondas iguais andam em **sentidos opostos** na mesma corda — tipicamente uma onda e o seu próprio reflexo —, a soma não anda mais: forma um desenho fixo, com pontos que **nunca se mexem** (os nós) e pontos que oscilam com amplitude máxima (os ventres). Numa corda presa nas duas pontas, isso só acontece para certas frequências bem definidas: são as frequências de **ressonância**, e é delas que vem o som de um violão.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $y_m$ — amplitude de cada uma das duas ondas que se somam, em $\mathrm{m}$;
+- $L$ — comprimento da corda entre as duas pontas fixas, em $\mathrm{m}$;
+- $n$ — **número harmônico**, inteiro: $n = 1, 2, 3, \dots$;
+- $\lambda_n,\ f_n$ — comprimento de onda e frequência do $n$-ésimo harmônico;
+- $v$ — velocidade da onda na corda, $v = \sqrt{\tau/\mu}$, em $\mathrm{m/s}$.
+
+</Caixa>
+
+### Somando duas ondas em sentidos opostos
+
+Com $y_1 = y_m\,\mathrm{sen}(kx - \omega t)$ e $y_2 = y_m\,\mathrm{sen}(kx + \omega t)$, a mesma identidade da seção de interferência dá
+
+$$
+\boxed{\;y'(x,t) = \big[\,2\,y_m\,\mathrm{sen}(kx)\,\big]\cos(\omega t)\;}
+$$
+
+Repare: $x$ e $t$ aparecem **separados**, não na combinação $kx - \omega t$. Não há mais onda viajando. Cada ponto faz um MHS com frequência $\omega$ e com uma amplitude própria, $|2y_m\,\mathrm{sen}(kx)|$, que depende de onde ele está.
+
+### Nós e ventres
+
+- **Nós** (amplitude nula): $\mathrm{sen}(kx) = 0$, ou seja, $x = 0,\ \dfrac{\lambda}{2},\ \lambda,\ \dfrac{3\lambda}{2},\ \dots$
+- **Ventres** (amplitude $2y_m$): $|\mathrm{sen}(kx)| = 1$, ou seja, $x = \dfrac{\lambda}{4},\ \dfrac{3\lambda}{4},\ \dfrac{5\lambda}{4},\ \dots$
+
+<Caixa tipo="macete" rotulo="As distâncias que valem decorar">
+
+- de **nó a nó** (ou de ventre a ventre): $\lambda/2$;
+- de **nó ao ventre vizinho**: $\lambda/4$.
+
+Cada "gomo" da corda tem meio comprimento de onda. Contar gomos é o jeito mais rápido de achar $\lambda$ num desenho.
+
+</Caixa>
+
+<Figura>
+  <svg viewBox="0 0 440 215" role="img" aria-label="Corda presa nas duas pontas vibrando no terceiro harmônico: três gomos, quatro nós marcados com N e três ventres marcados com V; o comprimento L da corda vale três meios comprimentos de onda">
+    {/* apoios */}
+    <rect x="48" y="60" width="10" height="80" fill="var(--ink-3)"/>
+    <rect x="382" y="60" width="10" height="80" fill="var(--ink-3)"/>
+    <line x1="60" y1="100" x2="380" y2="100" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    {/* os dois extremos da oscilação */}
+    <polyline points="60,100.0 65,91.9 70,84.0 75,76.5 80,69.4 85,63.1 90,57.5 95,52.8 100,49.2 105,46.6 110,45.3 115,45.1 120,46.1 125,48.2 130,51.5 135,55.8 140,61.1 145,67.2 150,74.1 155,81.5 160,89.3 165,97.3 170,105.4 175,113.4 180,121.0 185,128.3 190,134.9 195,140.8 200,145.7 205,149.7 210,152.6 215,154.4 220,155.0 225,154.4 230,152.6 235,149.7 240,145.7 245,140.8 250,134.9 255,128.3 260,121.0 265,113.4 270,105.4 275,97.3 280,89.3 285,81.5 290,74.1 295,67.2 300,61.1 305,55.8 310,51.5 315,48.2 320,46.1 325,45.1 330,45.3 335,46.6 340,49.2 345,52.8 350,57.5 355,63.1 360,69.4 365,76.5 370,84.0 375,91.9 380,100.0" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+    <polyline points="60,100.0 65,108.1 70,116.0 75,123.5 80,130.6 85,136.9 90,142.5 95,147.2 100,150.8 105,153.4 110,154.7 115,154.9 120,153.9 125,151.8 130,148.5 135,144.2 140,138.9 145,132.8 150,125.9 155,118.5 160,110.7 165,102.7 170,94.6 175,86.6 180,79.0 185,71.7 190,65.1 195,59.2 200,54.3 205,50.3 210,47.4 215,45.6 220,45.0 225,45.6 230,47.4 235,50.3 240,54.3 245,59.2 250,65.1 255,71.7 260,79.0 265,86.6 270,94.6 275,102.7 280,110.7 285,118.5 290,125.9 295,132.8 300,138.9 305,144.2 310,148.5 315,151.8 320,153.9 325,154.9 330,154.7 335,153.4 340,150.8 345,147.2 350,142.5 355,136.9 360,130.6 365,123.5 370,116.0 375,108.1 380,100.0" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="5 4" opacity="0.7"/>
+    {/* nós */}
+    <circle cx="60" cy="100" r="4" fill="var(--warn)"/>
+    <circle cx="166.7" cy="100" r="4" fill="var(--warn)"/>
+    <circle cx="273.3" cy="100" r="4" fill="var(--warn)"/>
+    <circle cx="380" cy="100" r="4" fill="var(--warn)"/>
+    <text x="161" y="122" font-size="12" fill="var(--warn)">N</text>
+    <text x="268" y="122" font-size="12" fill="var(--warn)">N</text>
+    <text x="64" y="122" font-size="12" fill="var(--warn)">N</text>
+    <text x="364" y="122" font-size="12" fill="var(--warn)">N</text>
+    {/* ventres */}
+    <text x="108" y="36" font-size="12" fill="var(--ok)">V</text>
+    <text x="215" y="36" font-size="12" fill="var(--ok)">V</text>
+    <text x="321" y="36" font-size="12" fill="var(--ok)">V</text>
+    {/* L */}
+    <line x1="60" y1="178" x2="60" y2="196" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="380" y1="178" x2="380" y2="196" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="68" y1="187" x2="372" y2="187" stroke="var(--ink-2)" stroke-width="1"/>
+    <polygon points="60,187 69,184 69,190" fill="var(--ink-2)"/>
+    <polygon points="380,187 371,184 371,190" fill="var(--ink-2)"/>
+    <rect x="194" y="178" width="52" height="18" fill="var(--surface-2)"/>
+    <text x="199" y="192" font-size="12" font-style="italic" fill="var(--ink-2)">L = 3λ/2</text>
+  </svg>
+  <figcaption>
+
+O terceiro harmônico ($n = 3$): três gomos de $\lambda/2$ cada. A linha cheia e a tracejada são os dois extremos do movimento; os **nós** (N) ficam parados, os **ventres** (V) oscilam com amplitude $2y_m$. As pontas presas são sempre nós.
+
+  </figcaption>
+</Figura>
+
+### Corda presa nas duas pontas
+
+As pontas não podem se mexer, então **as duas têm de ser nós**. Isso só é possível se um número inteiro de gomos couber em $L$:
+
+$$
+L = n\,\frac{\lambda}{2}
+\qquad\Longrightarrow\qquad
+\lambda_n = \frac{2L}{n}
+$$
+
+E como $v$ é fixa pela corda, as frequências permitidas são
+
+$$
+\boxed{\;f_n = \frac{v}{\lambda_n} = n\,\frac{v}{2L} = \frac{n}{2L}\sqrt{\frac{\tau}{\mu}},\qquad n = 1, 2, 3, \dots\;}
+$$
+
+Esse conjunto é a **série harmônica**. O modo $n = 1$, um gomo só, é o **modo fundamental** (ou primeiro harmônico), com $f_1 = v/2L$; todos os outros são múltiplos inteiros dele, $f_n = n f_1$. Se o vibrador sacode a corda numa dessas frequências, a onda estacionária cresce até uma amplitude grande: é a **ressonância**. Em qualquer outra frequência, a corda mal se mexe.
+
+<Caixa tipo="macete" rotulo="Duas ressonâncias consecutivas dão a fundamental">
+
+Se o enunciado diz que a corda ressoa em duas frequências **consecutivas** $f_n$ e $f_{n+1}$, a diferença entre elas é a fundamental:
+
+$$
+f_{n+1} - f_n = f_1
+$$
+
+Ressonâncias em $120\ \mathrm{Hz}$ e $160\ \mathrm{Hz}$, sem nada entre elas, significam $f_1 = 40\ \mathrm{Hz}$ — e então $120$ é o $3^\circ$ harmônico e $160$ é o $4^\circ$. Com $f_1$ e $L$, sai $v = 2Lf_1$; com $\mu$, sai a tração.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Número harmônico, nós e ventres">
+
+No harmônico $n$, a corda tem **$n$ ventres** e **$n + 1$ nós** (contando as duas pontas). A prova costuma descrever o desenho ("a corda vibra com quatro nós") em vez de dar $n$: quatro nós são três ventres, isto é, $n = 3$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — os harmônicos de uma corda de 1,2 m">
+
+A corda das seções anteriores ($\mu = 0{,}010\ \mathrm{kg/m}$, $\tau = 90\ \mathrm{N}$, $v \approx 94{,}9\ \mathrm{m/s}$) é presa entre dois suportes separados por $L = 1{,}2\ \mathrm{m}$.
+
+$$
+f_1 = \frac{v}{2L} = \frac{94{,}9}{2{,}4} \approx 39{,}5\ \mathrm{Hz}
+\qquad
+f_3 = 3 f_1 \approx 119\ \mathrm{Hz}
+$$
+
+No terceiro harmônico, $\lambda_3 = 2L/3 = 0{,}80\ \mathrm{m}$, há quatro nós (em $x = 0$; $0{,}40$; $0{,}80$ e $1{,}2\ \mathrm{m}$) e três ventres. É praticamente o $\lambda \approx 0{,}79\ \mathrm{m}$ que a mesma corda tinha com o vibrador a $120\ \mathrm{Hz}$ — por isso, a essa frequência, ela entra quase em ressonância no terceiro harmônico.
 
 </Caixa>
 
