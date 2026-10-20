@@ -1,0 +1,111 @@
+---
+origem: "2023.1"
+tema: "Bernoulli · Tubo de Pitot com manômetro de mercúrio"
+temaId: pitot
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Água de massa específica $\rho_a$ escoa em regime estacionário por um duto de diâmetro $D$. No duto há duas tomadas de pressão ligadas a um tubo em U com mercúrio ($\rho_{Hg}$): uma na parede, e outra na ponta de um tubo dobrado cuja boca fica virada **contra** o escoamento. O mercúrio mostra um desnível $h$ entre os dois ramos, e o diâmetro $D$ é pequeno diante de $h$ (as diferenças de altura dentro do duto podem ser desprezadas). Com a gravidade local $g$, **determine a vazão volumétrica $Q$** no duto em termos de $\rho_a$, $\rho_{Hg}$, $D$, $h$ e $g$.
+
+<Figura>
+  <svg viewBox="0 0 340 200" role="img" aria-label="Duto horizontal de diâmetro D com água indo da esquerda para a direita; uma tomada na parede e um tubo dobrado com a boca contra o fluxo descem até um tubo em U com mercúrio; o mercúrio fica mais alto no ramo da parede, com desnível h">
+    {/* duto */}
+    <line x1="20" y1="30" x2="320" y2="30" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="20" y1="70" x2="320" y2="70" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <rect x="20" y="31" width="300" height="38" fill="var(--surface-2)"/>
+    <line x1="32" y1="50" x2="72" y2="50" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="78,50 68,46 68,54" fill="var(--accent)"/>
+    <text x="30" y="44" font-size="10" fill="var(--accent)">v</text>
+    <text x="22" y="22" font-size="10" fill="var(--ink-3)">água, ρ<tspan font-size="9" dy="3">a</tspan><tspan dy="-3"></tspan></text>
+    {/* cota D */}
+    <line x1="300" y1="32" x2="300" y2="68" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <polygon points="300,32 297,39 303,39" fill="var(--ink-3)"/>
+    <polygon points="300,68 297,61 303,61" fill="var(--ink-3)"/>
+    <text x="306" y="54" font-size="10" fill="var(--ink-3)">D</text>
+    {/* tubo em U: ramo esquerdo (parede) x=130, ramo direito (Pitot) x=200 */}
+    <rect x="125" y="70" width="10" height="110" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <rect x="195" y="70" width="10" height="110" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <rect x="125" y="170" width="80" height="12" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.2"/>
+    {/* mercúrio */}
+    <rect x="126" y="110" width="8" height="71" fill="var(--warn)" opacity="0.75"/>
+    <rect x="196" y="150" width="8" height="31" fill="var(--warn)" opacity="0.75"/>
+    <rect x="126" y="171" width="78" height="10" fill="var(--warn)" opacity="0.75"/>
+    {/* Pitot: tubo dobrado dentro do duto com a boca para a esquerda */}
+    <polyline points="200,70 200,50 160,50" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+    <text x="150" y="44" font-size="9" fill="var(--ink-3)">boca</text>
+    {/* níveis e cota h */}
+    <line x1="110" y1="110" x2="235" y2="110" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="110" y1="150" x2="235" y2="150" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="228" y1="111" x2="228" y2="149" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <polygon points="228,111 225,118 231,118" fill="var(--ink-3)"/>
+    <polygon points="228,149 225,142 231,142" fill="var(--ink-3)"/>
+    <text x="234" y="134" font-size="10" fill="var(--ink-3)">h</text>
+    <text x="240" y="186" font-size="10" fill="var(--warn)">mercúrio, ρ<tspan font-size="9" dy="3">Hg</tspan><tspan dy="-3"></tspan></text>
+    {/* g */}
+    <line x1="60" y1="110" x2="60" y2="145" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <polygon points="60,152 56,142 64,142" fill="var(--ink-3)"/>
+    <text x="68" y="134" font-size="10" fill="var(--ink-3)">g</text>
+  </svg>
+  <figcaption>
+
+O ramo da esquerda sente a pressão estática $p$ do escoamento; o da direita, a pressão de estagnação na boca do tubo dobrado. A estagnação é maior e empurra o mercúrio para baixo nesse ramo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+
+$$
+Q = \frac{\pi D^2}{4}\sqrt{\frac{2\,(\rho_{Hg}-\rho_a)\,g\,h}{\rho_a}}
+$$
+
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que cada tomada mede.** Na boca do tubo dobrado a água bate e para ($v = 0$). Bernoulli entre um ponto do escoamento livre e a boca, na mesma altura (o duto é fino, $D \ll h$):
+
+$$
+p + \tfrac12\rho_a v^2 = p_0
+\qquad\Longrightarrow\qquad
+p_0 - p = \tfrac12\rho_a v^2
+$$
+
+A tomada na parede não perturba o escoamento e mede a pressão estática $p$.
+
+**Passo 2 — o manômetro.** Os dois ramos estão cheios de água acima do mercúrio. Igualando a pressão no nível da superfície mais baixa do mercúrio (ramo do Pitot): desse lado só há água acima; do outro, há água até $h$ acima desse nível e, abaixo disso, uma coluna $h$ de mercúrio. As colunas de água comuns aos dois lados se cancelam, e sobra
+
+$$
+p_0 - p = (\rho_{Hg} - \rho_a)\,g\,h
+$$
+
+O $-\rho_a$ aparece porque, no ramo do Pitot, o trecho de altura $h$ é ocupado por água, e não por mercúrio.
+
+**Passo 3 — a velocidade.** Igualando os dois resultados:
+
+$$
+\tfrac12\rho_a v^2 = (\rho_{Hg}-\rho_a)\,g\,h
+\qquad\Longrightarrow\qquad
+v = \sqrt{\frac{2\,(\rho_{Hg}-\rho_a)\,g\,h}{\rho_a}}
+$$
+
+**Passo 4 — a vazão.** A seção do duto é $A = \pi D^2/4$, então
+
+$$
+Q = A\,v = \boxed{\frac{\pi D^2}{4}\sqrt{\frac{2\,(\rho_{Hg}-\rho_a)\,g\,h}{\rho_a}}}
+$$
+
+**Conferência —** unidade: $\sqrt{(\mathrm{kg/m^3})(\mathrm{m/s^2})(\mathrm{m})/(\mathrm{kg/m^3})} = \mathrm{m/s}$, vezes $\mathrm{m^2}$ dá $\mathrm{m^3/s}$ ✔ Limite: se o líquido do manômetro fosse a própria água ($\rho_{Hg} \to \rho_a$), não haveria desnível para nenhuma velocidade, e a fórmula dá $Q = 0$ ✔ Ordem de grandeza: com $h = 1\ \mathrm{cm}$ de mercúrio, $v = \sqrt{2 \cdot 12{,}6 \cdot 9{,}8 \cdot 0{,}01} \approx 1{,}6\ \mathrm{m/s}$, velocidade típica de água em tubulação ✔
+</Passos>
