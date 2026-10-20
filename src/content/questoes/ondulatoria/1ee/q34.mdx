@@ -1,0 +1,57 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "Gravitação · Aceleração da gravidade de um planeta modificado"
+temaId: gravidade-na-superficie
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q34.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Suponha que a massa da Terra fosse reduzida à metade e que o seu raio fosse diminuído de um quarto do valor real. Determine o módulo da aceleração da gravidade na superfície nessa situação. (Dado: na Terra real, $g = 10\ \mathrm{m/s^2}$.)
+
+<Gabarito>
+$g' = \tfrac{8}{9}\,g \approx 8{,}9\ \mathrm{m/s^2}$ (lendo "diminuído de um quarto" como $R' = \tfrac34 R$; se fosse "reduzido a um quarto", $R' = R/4$, daria $80\ \mathrm{m/s^2}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — A gravidade na superfície.** Na superfície de um corpo esférico de massa $M$ e raio $R$, desprezando a rotação, a força gravitacional sobre uma massa $m$ é $GMm/R^2 = mg$, então
+
+$$
+g = \frac{GM}{R^2}
+\qquad\Longrightarrow\qquad
+\frac{g'}{g} = \frac{M'/M}{(R'/R)^2}
+$$
+
+Trabalhar com a razão evita precisar de $G$, $M$ e $R$: basta o $g = 10\ \mathrm{m/s^2}$ dado.
+
+**Passo 2 — Ler o enunciado.** "Diminuído **de** um quarto" quer dizer que o raio perde um quarto do seu valor, ficando com três quartos: $R' = \tfrac34 R$. A massa fica $M' = \tfrac12 M$.
+
+**Passo 3 — A conta.**
+
+$$
+g' = \frac{1/2}{(3/4)^2} \cdot 10 = \frac{1/2}{9/16} \cdot 10 = \frac{8}{9} \cdot 10 = \boxed{8{,}9\ \mathrm{m/s^2}}
+$$
+
+Os dois efeitos competem: metade da massa divide $g$ por $2$, mas o raio menor aproxima a superfície do centro e multiplica $g$ por $16/9 \approx 1{,}78$. A massa ganha por pouco.
+
+**Passo 4 — A outra leitura.** Se a intenção fosse "reduzido **a** um quarto", $R' = R/4$, e o raio pesaria muito mais:
+
+$$
+g' = \frac{1/2}{(1/4)^2} \cdot 10 = 8 \cdot 10 = 80\ \mathrm{m/s^2}
+$$
+
+Na prova, vale escrever qual leitura se usou.
+
+**Conferência —** limites: com só a massa pela metade ($R' = R$), $g' = 5\ \mathrm{m/s^2}$; com só o raio a $\tfrac34$ ($M' = M$), $g' = 17{,}8\ \mathrm{m/s^2}$. O resultado $8{,}9$ é o produto dos dois fatores, $\tfrac12 \cdot \tfrac{16}{9} = 0{,}889$, e fica entre os dois extremos ✔.
+</Passos>
