@@ -1,0 +1,104 @@
+---
+origem: "Final 2023.1"
+tema: "Onda progressiva · Equação a partir de dois instantâneos"
+temaId: onda-progressiva
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Num laboratório, gera-se uma onda senoidal numa corda delgada. O gráfico mostra o deslocamento vertical $y$ (em cm) em função da posição $x$ (em m) em dois instantes: $t = 0$ (curva contínua) e $t = 1{,}0\ \mathrm{s}$ (curva tracejada). A partir dos gráficos, determine:
+
+(a) a **amplitude**, o **comprimento de onda** e a **frequência** da onda;
+
+(b) a **equação da onda**, $y(x,t)$.
+
+<Figura>
+  <svg viewBox="0 0 340 210" role="img" aria-label="Gráfico de y em centímetros contra x em metros, de 0 a 2 m: a curva contínua em t igual a zero sai de y zero subindo, com picos de 2 cm em x 0,25 e 1,25 m; a curva tracejada em t igual a 1 s está deslocada 0,25 m para a direita, com mínimos em x 0, 1 e 2 m e picos em 0,5 e 1,5 m">
+    {/* grade e eixos */}
+    <rect x="50" y="25" width="260" height="140" fill="none" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="50" y1="60" x2="310" y2="60" stroke="var(--line-2)" stroke-width="0.6" stroke-dasharray="2 3"/>
+    <line x1="50" y1="130" x2="310" y2="130" stroke="var(--line-2)" stroke-width="0.6" stroke-dasharray="2 3"/>
+    <line x1="115" y1="25" x2="115" y2="165" stroke="var(--line-2)" stroke-width="0.6" stroke-dasharray="2 3"/>
+    <line x1="180" y1="25" x2="180" y2="165" stroke="var(--line-2)" stroke-width="0.6" stroke-dasharray="2 3"/>
+    <line x1="245" y1="25" x2="245" y2="165" stroke="var(--line-2)" stroke-width="0.6" stroke-dasharray="2 3"/>
+    <line x1="50" y1="95" x2="310" y2="95" stroke="var(--ink-3)" stroke-width="1"/>
+    {/* marcas do eixo y */}
+    <text x="40" y="29" font-size="10" fill="var(--ink-3)" text-anchor="end">2</text>
+    <text x="40" y="64" font-size="10" fill="var(--ink-3)" text-anchor="end">1</text>
+    <text x="40" y="99" font-size="10" fill="var(--ink-3)" text-anchor="end">0</text>
+    <text x="40" y="134" font-size="10" fill="var(--ink-3)" text-anchor="end">−1</text>
+    <text x="40" y="169" font-size="10" fill="var(--ink-3)" text-anchor="end">−2</text>
+    <text x="14" y="99" font-size="10" fill="var(--ink-3)" transform="rotate(-90 14 95)" text-anchor="middle">y (cm)</text>
+    {/* marcas do eixo x */}
+    <text x="50" y="180" font-size="10" fill="var(--ink-3)" text-anchor="middle">0</text>
+    <text x="115" y="180" font-size="10" fill="var(--ink-3)" text-anchor="middle">0,5</text>
+    <text x="180" y="180" font-size="10" fill="var(--ink-3)" text-anchor="middle">1,0</text>
+    <text x="245" y="180" font-size="10" fill="var(--ink-3)" text-anchor="middle">1,5</text>
+    <text x="310" y="180" font-size="10" fill="var(--ink-3)" text-anchor="middle">2,0</text>
+    <text x="180" y="198" font-size="10" fill="var(--ink-3)" text-anchor="middle">x (m)</text>
+    {/* t = 0: y = 2 sen(2πx) */}
+    <path d="M50.0,95.0 55.4,76.9 60.8,60.0 66.2,45.5 71.7,34.4 77.1,27.4 82.5,25.0 87.9,27.4 93.3,34.4 98.8,45.5 104.2,60.0 109.6,76.9 115.0,95.0 120.4,113.1 125.8,130.0 131.2,144.5 136.7,155.6 142.1,162.6 147.5,165.0 152.9,162.6 158.3,155.6 163.8,144.5 169.2,130.0 174.6,113.1 180.0,95.0 185.4,76.9 190.8,60.0 196.2,45.5 201.7,34.4 207.1,27.4 212.5,25.0 217.9,27.4 223.3,34.4 228.8,45.5 234.2,60.0 239.6,76.9 245.0,95.0 250.4,113.1 255.8,130.0 261.2,144.5 266.7,155.6 272.1,162.6 277.5,165.0 282.9,162.6 288.3,155.6 293.8,144.5 299.2,130.0 304.6,113.1 310.0,95.0" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+    {/* t = 1 s: y = 2 sen(2πx − π/2) */}
+    <path d="M50.0,165.0 55.4,162.6 60.8,155.6 66.2,144.5 71.7,130.0 77.1,113.1 82.5,95.0 87.9,76.9 93.3,60.0 98.8,45.5 104.2,34.4 109.6,27.4 115.0,25.0 120.4,27.4 125.8,34.4 131.2,45.5 136.7,60.0 142.1,76.9 147.5,95.0 152.9,113.1 158.3,130.0 163.8,144.5 169.2,155.6 174.6,162.6 180.0,165.0 185.4,162.6 190.8,155.6 196.2,144.5 201.7,130.0 207.1,113.1 212.5,95.0 217.9,76.9 223.3,60.0 228.8,45.5 234.2,34.4 239.6,27.4 245.0,25.0 250.4,27.4 255.8,34.4 261.2,45.5 266.7,60.0 272.1,76.9 277.5,95.0 282.9,113.1 288.3,130.0 293.8,144.5 299.2,155.6 304.6,162.6 310.0,165.0" fill="none" stroke="var(--warn)" stroke-width="1.6" stroke-dasharray="5 3"/>
+    {/* legendas */}
+    <text x="56" y="40" font-size="10" fill="var(--accent)">t = 0</text>
+    <text x="134" y="40" font-size="10" fill="var(--warn)">t = 1 s</text>
+  </svg>
+  <figcaption>
+
+Picos da curva contínua em $x = 0{,}25$ e $1{,}25\ \mathrm{m}$; os da tracejada em $0{,}50$ e $1{,}50\ \mathrm{m}$ — o padrão andou $0{,}25\ \mathrm{m}$ para a direita em $1{,}0\ \mathrm{s}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $y_m = 2{,}0\ \mathrm{cm}$, $\lambda = 1{,}0\ \mathrm{m}$, $f = 0{,}25\ \mathrm{Hz}$<br />
+(b) $y(x,t) = 2{,}0\,\operatorname{sen}(2\pi x - 0{,}5\pi t)$, com $y$ em cm, $x$ em m e $t$ em s
+</Gabarito>
+
+<Passos>
+**Passo 1 — amplitude e comprimento de onda.** As duas curvas oscilam entre $+2$ e $-2\ \mathrm{cm}$, então $y_m = 2{,}0\ \mathrm{cm}$. A curva de $t = 0$ repete o padrão a cada metro (picos em $0{,}25$ e $1{,}25\ \mathrm{m}$; zeros subindo em $0$, $1{,}0$ e $2{,}0\ \mathrm{m}$): cabem **duas ondas completas** em $2\ \mathrm{m}$, logo
+
+$$
+\lambda = 1{,}0\ \mathrm{m}
+$$
+
+**Passo 2 — o deslocamento entre os instantâneos.** O pico que estava em $x = 0{,}25\ \mathrm{m}$ aparece em $x = 0{,}50\ \mathrm{m}$ na curva tracejada: o padrão andou $\Delta x = 0{,}25\ \mathrm{m}$ para a direita em $\Delta t = 1{,}0\ \mathrm{s}$. Tomando esse deslocamento (o menor compatível com os gráficos),
+
+$$
+v = \frac{\Delta x}{\Delta t} = \frac{0{,}25}{1{,}0} = 0{,}25\ \mathrm{m/s}
+\qquad\Longrightarrow\qquad
+f = \frac{v}{\lambda} = \frac{0{,}25}{1{,}0} = \boxed{0{,}25\ \mathrm{Hz}}
+$$
+
+**Passo 3 — (b) número de onda e frequência angular.**
+
+$$
+k = \frac{2\pi}{\lambda} = 2\pi\ \mathrm{rad/m}
+\qquad
+\omega = 2\pi f = 2\pi \cdot 0{,}25 = 0{,}5\pi\ \mathrm{rad/s}
+$$
+
+**Passo 4 — a forma e a fase.** A onda anda no sentido $+x$, então a forma é $y_m\operatorname{sen}(kx - \omega t + \phi)$. Em $t = 0$ a curva passa por $y = 0$ **subindo** em $x = 0$, exatamente como $\operatorname{sen}(2\pi x)$: $\phi = 0$. Assim,
+
+$$
+y(x,t) = 2{,}0\,\operatorname{sen}(2\pi x - 0{,}5\pi t)
+\qquad (y \text{ em cm},\ x \text{ em m},\ t \text{ em s})
+$$
+
+**Conferência —** em $t = 1{,}0\ \mathrm{s}$ a equação dá $2\operatorname{sen}(2\pi x - \pi/2) = -2\cos(2\pi x)$: vale $-2\ \mathrm{cm}$ em $x = 0$, $1{,}0$ e $2{,}0\ \mathrm{m}$ e $+2\ \mathrm{cm}$ em $0{,}5$ e $1{,}5\ \mathrm{m}$, que é a curva tracejada ✔ E o período $T = 1/f = 4{,}0\ \mathrm{s}$: em $1{,}0\ \mathrm{s}$ passa um quarto de período, e a onda anda um quarto de $\lambda$, os $0{,}25\ \mathrm{m}$ lidos ✔
+
+Os dois instantâneos sozinhos não excluem que a onda tenha andado $0{,}25 + n\lambda$ para a direita (ou $0{,}75\ \mathrm{m}$ para a esquerda); a leitura pedida, como na resolução do acervo, é a do menor deslocamento.
+</Passos>
