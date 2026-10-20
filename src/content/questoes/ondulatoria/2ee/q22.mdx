@@ -1,0 +1,61 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Ciclos · Eficiência de um ciclo de três etapas"
+temaId: ciclos
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um ciclo de três etapas é percorrido por $3{,}4\ \mathrm{mol}$ de um gás ideal diatômico: (1) a temperatura sobe de $200\ \mathrm{K}$ para $500\ \mathrm{K}$ a volume constante; (2) o gás se expande isotermicamente até voltar à pressão original; (3) o gás é contraído a pressão constante até o volume original. As moléculas giram, mas não oscilam. Qual é a eficiência do ciclo?
+
+<Gabarito>
+$\varepsilon \approx 0{,}131 = 13{,}1\%$
+</Gabarito>
+
+<Passos>
+A foto da prova corta a margem direita do enunciado; o texto foi completado pelo problema 60 do capítulo 20 do Halliday (10ª ed.), que é o mesmo e diz que as moléculas giram mas não oscilam, de modo que $C_V = \tfrac52 R$ e $C_p = \tfrac72 R$.
+
+**Passo 1 — os estados.** Na etapa 1, $p \propto T$ e a pressão sobe na razão $500/200 = 2{,}5$. Na isotérmica a $500\ \mathrm{K}$ o gás volta à pressão original, então o volume cresce na mesma razão: $V_3/V_2 = 2{,}5$.
+
+**Passo 2 — etapa 1, volume constante.** Entra calor e não há trabalho:
+
+$$
+Q_1 = n C_V \Delta T = 3{,}4 \cdot \tfrac52 \cdot 8{,}314 \cdot 300 \approx 21{,}20\ \mathrm{kJ}
+\qquad W_1 = 0
+$$
+
+**Passo 3 — etapa 2, isotérmica.** Entra calor, e ele sai todo como trabalho:
+
+$$
+Q_2 = W_2 = nRT\ln\frac{V_3}{V_2} = 3{,}4 \cdot 8{,}314 \cdot 500 \cdot \ln 2{,}5 \approx 12{,}95\ \mathrm{kJ}
+$$
+
+**Passo 4 — etapa 3, pressão constante.** O gás é comprimido de $500$ para $200\ \mathrm{K}$, rejeita calor e recebe trabalho:
+
+$$
+W_3 = nR\,\Delta T = 3{,}4 \cdot 8{,}314 \cdot (-300) \approx -8{,}48\ \mathrm{kJ}
+\qquad
+Q_3 = n C_p \Delta T \approx -29{,}68\ \mathrm{kJ}
+$$
+
+**Passo 5 — a eficiência.** O trabalho líquido é $W = 12{,}95 - 8{,}48 \approx 4{,}47\ \mathrm{kJ}$, e o calor absorvido é o das etapas 1 e 2:
+
+$$
+\varepsilon = \frac{W}{Q_1 + Q_2} = \frac{4{,}47}{21{,}20 + 12{,}95} \approx \boxed{0{,}131 = 13{,}1\%}
+$$
+
+O número de mols se cancela: a eficiência só depende das temperaturas e de $C_V$.
+
+**Conferência —** pela primeira lei, o calor líquido do ciclo tem de igualar o trabalho líquido: $21{,}20 + 12{,}95 - 29{,}68 \approx 4{,}47\ \mathrm{kJ}$ ✔ E a eficiência fica abaixo da de Carnot entre $200$ e $500\ \mathrm{K}$, $1 - 200/500 = 60\%$ ✔ Se as moléculas não girassem ($C_V = \tfrac32 R$), o calor absorvido seria menor e a eficiência subiria para cerca de $17{,}4\%$ — por isso a hipótese sobre os graus de liberdade importa.
+</Passos>
