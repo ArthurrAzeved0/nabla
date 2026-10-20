@@ -1,0 +1,95 @@
+---
+origem: "2024.1 · 2026.1"
+tema: "Fluidos em movimento · Jorro de um tanque com furo no fundo"
+temaId: torricelli
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um tanque cilíndrico de diâmetro muito grande contém água até a profundidade $D = 0{,}30\ \mathrm{m}$. No fundo há um furo de seção reta $A = 6{,}5\ \mathrm{cm^2}$, por onde a água escoa para fora.<br />(a) Qual é a vazão da água que sai pelo furo, em metros cúbicos por segundo?<br />(b) À medida que cai, o jorro se afina. A que distância abaixo do fundo do tanque a seção reta do jorro vale a metade da área do furo?
+
+<Figura>
+  <svg viewBox="0 0 320 230" role="img" aria-label="Tanque com água até a profundidade D; pelo furo de área A2 no fundo sai um jorro que se afina até a seção A3, uma distância h abaixo do fundo">
+    {/* água */}
+    <rect x="90" y="40" width="140" height="70" fill="var(--surface-2)"/>
+    <line x1="90" y1="40" x2="230" y2="40" stroke="var(--accent)" stroke-width="1.4"/>
+    {/* paredes e fundo */}
+    <line x1="90" y1="14" x2="90" y2="112" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="230" y1="14" x2="230" y2="112" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="90" y1="111" x2="149" y2="111" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="171" y1="111" x2="230" y2="111" stroke="var(--ink-2)" stroke-width="2"/>
+    {/* jorro */}
+    <path d="M150,111 C153,140 155,165 156,200 L164,200 C165,165 167,140 170,111 Z" fill="var(--accent)" opacity="0.55"/>
+    <line x1="146" y1="111" x2="174" y2="111" stroke="var(--warn)" stroke-width="2.2"/>
+    <text x="178" y="124" font-size="10" fill="var(--warn)">A<tspan font-size="9" dy="3">2</tspan><tspan dy="-3"> (furo)</tspan></text>
+    <line x1="152" y1="190" x2="168" y2="190" stroke="var(--ok)" stroke-width="2.2"/>
+    <text x="174" y="194" font-size="10" fill="var(--ok)">A<tspan font-size="9" dy="3">3</tspan><tspan dy="-3"> = A</tspan><tspan font-size="9" dy="3">2</tspan><tspan dy="-3">/2</tspan></text>
+    {/* cota D */}
+    <line x1="72" y1="40" x2="72" y2="111" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="66" y1="40" x2="78" y2="40" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="66" y1="111" x2="78" y2="111" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="56" y="80" font-size="11" fill="var(--ink-2)">D</text>
+    {/* cota h */}
+    <line x1="120" y1="111" x2="120" y2="190" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="114" y1="190" x2="150" y2="190" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="106" y="155" font-size="11" fill="var(--ink-2)">h</text>
+    <text x="132" y="220" font-size="10" fill="var(--ink-3)">jorro em queda livre</text>
+  </svg>
+  <figcaption>
+
+O jorro acelera ao cair e, como a vazão não muda, sua seção diminui: onde a velocidade dobra, a área cai à metade.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $R_V \approx 1{,}6\times10^{-3}\ \mathrm{m^3/s}$ (com $v_2 = 2{,}42\ \mathrm{m/s}$)  ·  (b) $h = 0{,}90\ \mathrm{m}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — A velocidade de saída (Torricelli).** Aplique Bernoulli entre a superfície livre e o furo. Os dois pontos estão à pressão atmosférica, e a superfície de um tanque largo quase não se move, então a energia potencial vira toda energia cinética:
+
+$$
+\rho g D = \tfrac{1}{2}\rho v_2^2
+\quad\Longrightarrow\quad
+v_2 = \sqrt{2gD} = \sqrt{2 \cdot 9{,}8 \cdot 0{,}30} = 2{,}42\ \mathrm{m/s}
+$$
+
+A questão não dá $g$; usamos $9{,}8\ \mathrm{m/s^2}$, como o gabarito.
+
+**Passo 2 — A vazão.** Com $A_2 = 6{,}5\ \mathrm{cm^2} = 6{,}5\times10^{-4}\ \mathrm{m^2}$:
+
+$$
+R_V = A_2 v_2 = 6{,}5\times10^{-4} \cdot 2{,}42 = 1{,}58\times10^{-3} \approx \boxed{1{,}6\times10^{-3}\ \mathrm{m^3/s}}
+$$
+
+O enunciado fala em "velocidade de escoamento" mas pede a resposta em metros cúbicos por segundo: o que se quer é a vazão.
+
+**Passo 3 — Onde a seção é a metade.** A vazão é a mesma em toda seção do jorro (continuidade). Se $A_3 = A_2/2$, a velocidade ali é o dobro:
+
+$$
+A_2 v_2 = A_3 v_3
+\quad\Longrightarrow\quad
+v_3 = \frac{A_2}{A_3}\,v_2 = 2v_2 = 4{,}85\ \mathrm{m/s}
+$$
+
+**Passo 4 — A queda livre até essa velocidade.** Fora do tanque a pressão no jorro é sempre a atmosférica, então Bernoulli (ou Torricelli da cinemática) entre o furo e a seção $A_3$ dá
+
+$$
+h = \frac{v_3^2 - v_2^2}{2g} = \frac{(2v_2)^2 - v_2^2}{2g} = \frac{3v_2^2}{2g} = 3D = 3 \cdot 0{,}30 = \boxed{0{,}90\ \mathrm{m}}
+$$
+
+**Conferência —** o resultado $h = 3D$ não depende de $g$ nem da área do furo, e dá para ver por energia: a água sai do furo com a energia de quem caiu $D$; para ter quatro vezes essa energia cinética (velocidade dupla) precisa cair, ao todo, $4D$ a partir da superfície, isto é, $3D$ abaixo do fundo ✔ Numericamente, $(4{,}85^2 - 2{,}42^2)/19{,}6 = 0{,}90\ \mathrm{m}$ ✔
+</Passos>
