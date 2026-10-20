@@ -1,0 +1,104 @@
+---
+origem: "2024.1"
+tema: "Primeira lei · Calor num ciclo fechado"
+temaId: ciclos
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um gás numa câmara fechada percorre o ciclo $A \to B \to C \to A$ do diagrama $p$–$V$ abaixo. A escala horizontal é definida por $V_s = 4{,}0\ \mathrm{m^3}$, e a vertical vai de $0$ a $40\ \mathrm{N/m^2}$, com marcas de $10$ em $10$. Os estados são $A\,(1{,}0\ \mathrm{m^3};\ 10\ \mathrm{Pa})$, $B\,(4{,}0\ \mathrm{m^3};\ 30\ \mathrm{Pa})$ e $C\,(1{,}0\ \mathrm{m^3};\ 30\ \mathrm{Pa})$: de $A$ a $B$ a pressão cresce em linha reta, de $B$ a $C$ é constante e de $C$ a $A$ o volume é constante. Qual é a energia adicionada ao gás na forma de calor durante um ciclo completo?
+
+<Figura>
+  <svg viewBox="0 0 320 210" role="img" aria-label="Diagrama p–V com grade: A em 1 metro cúbico e 10 pascals, B em 4 metros cúbicos e 30 pascals, C em 1 metro cúbico e 30 pascals; o ciclo vai de A a B em linha reta, de B a C na horizontal e de C a A na vertical">
+    {/* grade */}
+    <g stroke="var(--line-2)" stroke-width="0.8">
+      <line x1="110" y1="170" x2="110" y2="30"/>
+      <line x1="160" y1="170" x2="160" y2="30"/>
+      <line x1="210" y1="170" x2="210" y2="30"/>
+      <line x1="260" y1="170" x2="260" y2="30"/>
+      <line x1="60" y1="135" x2="285" y2="135"/>
+      <line x1="60" y1="100" x2="285" y2="100"/>
+      <line x1="60" y1="65" x2="285" y2="65"/>
+      <line x1="60" y1="30" x2="285" y2="30"/>
+    </g>
+    {/* eixos */}
+    <line x1="60" y1="170" x2="290" y2="170" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <line x1="60" y1="170" x2="60" y2="22" stroke="var(--ink-3)" stroke-width="1.2"/>
+    <g font-size="10" fill="var(--ink-3)" text-anchor="end">
+      <text x="54" y="173">0</text>
+      <text x="54" y="138">10</text>
+      <text x="54" y="103">20</text>
+      <text x="54" y="68">30</text>
+      <text x="54" y="33">40</text>
+    </g>
+    <text x="260" y="184" font-size="10" fill="var(--ink-3)" text-anchor="middle">V<tspan font-size="9" dy="3">s</tspan><tspan dy="-3"></tspan></text>
+    <text x="175" y="202" font-size="10" fill="var(--ink-3)" text-anchor="middle">Volume (m³)</text>
+    <text x="18" y="100" font-size="10" fill="var(--ink-3)" text-anchor="middle" transform="rotate(-90 18 100)">Pressão (N/m²)</text>
+    {/* ciclo */}
+    <polyline points="110,135 260,65 110,65 110,135" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="190.0,97.7 183.5,105.1 180.2,97.9" fill="var(--accent)"/>
+    <polygon points="180.0,65.0 189.0,61.0 189.0,69.0" fill="var(--accent)"/>
+    <polygon points="110.0,104.0 106.0,95.0 114.0,95.0" fill="var(--accent)"/>
+    <circle cx="110" cy="135" r="3" fill="var(--ink-2)"/>
+    <circle cx="260" cy="65" r="3" fill="var(--ink-2)"/>
+    <circle cx="110" cy="65" r="3" fill="var(--ink-2)"/>
+    <g font-size="11" fill="var(--ink-2)" font-style="italic">
+      <text x="98" y="150">A</text>
+      <text x="264" y="58">B</text>
+      <text x="98" y="58">C</text>
+    </g>
+  </svg>
+  <figcaption>
+
+O ciclo é percorrido no sentido **anti-horário**: o gás volta pela parte de cima com mais trabalho recebido do que fez na ida.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$Q = -30\ \mathrm{J}$: o gás **perde** $30\ \mathrm{J}$ na forma de calor a cada ciclo.
+</Gabarito>
+
+<Passos>
+**Passo 1 — num ciclo, calor = trabalho.** O gás volta ao estado $A$, então $\Delta E_{\mathrm{int}} = 0$ e a primeira lei dá
+
+$$
+Q = W = W_{AB} + W_{BC} + W_{CA}
+$$
+
+**Passo 2 — trecho $A \to B$, reta.** O trabalho é a área do trapézio sob a reta:
+
+$$
+W_{AB} = \frac{p_A + p_B}{2}\,(V_B - V_A) = \frac{10 + 30}{2}\,(4{,}0 - 1{,}0) = 60\ \mathrm{J}
+$$
+
+**Passo 3 — trecho $B \to C$, isobárico.** O volume diminui, então o trabalho é negativo:
+
+$$
+W_{BC} = p_B\,(V_C - V_B) = 30\,(1{,}0 - 4{,}0) = -90\ \mathrm{J}
+$$
+
+**Passo 4 — trecho $C \to A$, isocórico.** Sem variação de volume, $W_{CA} = 0$.
+
+**Passo 5 — somar.**
+
+$$
+Q = W = 60 - 90 + 0 = -30\ \mathrm{J}
+$$
+
+O sinal negativo quer dizer que, no balanço do ciclo, o gás **cede** $30\ \mathrm{J}$ de calor à vizinhança.
+
+**Conferência —** o módulo do trabalho de um ciclo é a área que ele encerra. O triângulo $ABC$ tem catetos $V_B - V_C = 3{,}0\ \mathrm{m^3}$ e $p_C - p_A = 20\ \mathrm{Pa}$, logo área $\tfrac{1}{2} \cdot 3{,}0 \cdot 20 = 30\ \mathrm{J}$; e o sentido anti-horário dá o sinal negativo ✔
+</Passos>
