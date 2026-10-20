@@ -1,0 +1,61 @@
+---
+origem: "2024.2"
+tema: "Entropia · Tungstênio e prata em contato"
+temaId: entropia
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q06.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um bloco de tungstênio de $45{,}0\ \mathrm{g}$ a $30{,}0\ \mathrm{°C}$ e um bloco de prata de $25{,}0\ \mathrm{g}$ a $120\ \mathrm{°C}$ são postos juntos num recipiente isolado. Os calores específicos são $c_{\mathrm{W}} = 132\ \mathrm{J/(kg \cdot K)}$ e $c_{\mathrm{Ag}} = 234\ \mathrm{J/(kg \cdot K)}$.<br />(a) Qual é a temperatura de equilíbrio?<br />Qual é a variação de entropia (b) do tungstênio, (c) da prata e (d) do sistema tungstênio–prata até o equilíbrio?
+
+<Gabarito>
+(a) $T_f \approx 347{,}8\ \mathrm{K} \approx 74{,}7\ \mathrm{°C}$  ·  (b) $\Delta S_{\mathrm{W}} \approx +0{,}816\ \mathrm{J/K}$  ·  (c) $\Delta S_{\mathrm{Ag}} \approx -0{,}717\ \mathrm{J/K}$  ·  (d) $\Delta S \approx +0{,}099\ \mathrm{J/K}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as capacidades térmicas.** A prova escreve os calores específicos em "J/K·mol", mas os valores são os do tungstênio e da prata **por quilograma**; e o enunciado dá as massas, não os mols. Então:
+
+$$
+m_{\mathrm{W}}c_{\mathrm{W}} = 0{,}0450 \cdot 132 = 5{,}94\ \mathrm{J/K}
+\qquad
+m_{\mathrm{Ag}}c_{\mathrm{Ag}} = 0{,}0250 \cdot 234 = 5{,}85\ \mathrm{J/K}
+$$
+
+**Passo 2 — (a) o equilíbrio.** Em kelvin, $T_{\mathrm{W}} = 303{,}15\ \mathrm{K}$ e $T_{\mathrm{Ag}} = 393{,}15\ \mathrm{K}$; o calor que a prata perde é o que o tungstênio ganha:
+
+$$
+T_f = \frac{5{,}94 \cdot 303{,}15 + 5{,}85 \cdot 393{,}15}{5{,}94 + 5{,}85} \approx 347{,}8\ \mathrm{K} \approx 74{,}7\ \mathrm{°C}
+$$
+
+As duas capacidades são quase iguais, e por isso o equilíbrio fica quase na média das temperaturas.
+
+**Passo 3 — (b) e (c) a entropia de cada bloco.** Trocando o processo por um aquecimento reversível entre as mesmas temperaturas, $\Delta S = mc\,\ln(T_f/T_i)$, **sempre em kelvin**:
+
+$$
+\Delta S_{\mathrm{W}} = 5{,}94\,\ln\frac{347{,}8}{303{,}15} \approx +0{,}816\ \mathrm{J/K}
+\qquad
+\Delta S_{\mathrm{Ag}} = 5{,}85\,\ln\frac{347{,}8}{393{,}15} \approx -0{,}717\ \mathrm{J/K}
+$$
+
+**Passo 4 — (d) o sistema.**
+
+$$
+\Delta S = 0{,}816 - 0{,}717 \approx +0{,}099\ \mathrm{J/K}
+$$
+
+**Conferência —** o calor trocado é o mesmo nos dois sentidos, $5{,}94 \cdot 44{,}66 \approx 265\ \mathrm{J}$; dividido pela temperatura média de cada bloco, dá $265/325{,}5 \approx 0{,}815$ e $265/370{,}5 \approx 0{,}716\ \mathrm{J/K}$, e a soma positiva confirma a segunda lei para um sistema isolado ✔
+
+**Sobre o enunciado —** a unidade "J/K·mol" está errada. Calores molares do tungstênio e da prata ficam perto de $25\ \mathrm{J/(mol \cdot K)}$, e não na casa das centenas; os números $132$ e $234$ são calores específicos em $\mathrm{J/(kg \cdot K)}$ (o Halliday tabela $134$ e $236$, que dariam $\Delta S \approx +0{,}101\ \mathrm{J/K}$).
+</Passos>
