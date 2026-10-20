@@ -1,0 +1,57 @@
+---
+origem: "2023.2"
+tema: "Gravitação · O planeta do Pequeno Príncipe"
+temaId: gravidade-na-superficie
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O visitante de *O Pequeno Príncipe* viria de um planeta "pouco maior do que uma casa" — estime seu raio em $R_P \approx 10\ \mathrm{m}$. Suponha que a massa específica desse planeta seja praticamente igual à da Terra e despreze a rotação. Com $M_T = 6{,}0\times10^{24}\ \mathrm{kg}$, $R_T = 6{,}4\times10^{6}\ \mathrm{m}$ e $G = 6{,}7\times10^{-11}\ \mathrm{m^3/(kg\cdot s^2)}$, estime:<br />(a) a aceleração de queda livre na superfície do planeta;<br />(b) a velocidade de escape do planeta.
+
+<Gabarito>
+(a) $g_P \approx 1{,}5\times10^{-5}\ \mathrm{m/s^2}$  ·  (b) $v_e \approx 1{,}8\times10^{-2}\ \mathrm{m/s}$ (menos de $2\ \mathrm{cm/s}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — $g$ em termos da massa específica.** Uma esfera homogênea de raio $R$ e massa específica $\rho$ tem $M = \rho \cdot \tfrac43\pi R^3$, então
+
+$$
+g = \frac{GM}{R^2} = \frac43\pi G\rho R
+$$
+
+Com o mesmo $\rho$, **$g$ é proporcional ao raio**.
+
+**Passo 2 — o $g$ da Terra com os dados da prova.**
+
+$$
+g_T = \frac{GM_T}{R_T^2} = \frac{6{,}7\times10^{-11} \cdot 6{,}0\times10^{24}}{(6{,}4\times10^{6})^2} = 9{,}81\ \mathrm{m/s^2}
+$$
+
+**Passo 3 — (a) a proporção.**
+
+$$
+g_P = g_T\,\frac{R_P}{R_T} = 9{,}81 \cdot \frac{10}{6{,}4\times10^{6}} = \boxed{1{,}5\times10^{-5}\ \mathrm{m/s^2}}
+$$
+
+**Passo 4 — (b) a velocidade de escape.** Escapar é chegar ao infinito com energia total nula: $\tfrac12 v_e^2 = GM_P/R_P$. Como $GM_P/R_P = g_P R_P$,
+
+$$
+v_e = \sqrt{2\,g_P\,R_P} = \sqrt{2 \cdot 1{,}53\times10^{-5} \cdot 10} = \boxed{1{,}8\times10^{-2}\ \mathrm{m/s}}
+$$
+
+Menos de dois centímetros por segundo: um passo lento já bastaria para deixar o planeta.
+
+**Conferência —** pela massa específica direto: $\rho_T = M_T/(\tfrac43\pi R_T^3) = 5{,}5\times10^{3}\ \mathrm{kg/m^3}$, e $\tfrac43\pi \cdot 6{,}7\times10^{-11} \cdot 5{,}5\times10^{3} \cdot 10 = 1{,}5\times10^{-5}\ \mathrm{m/s^2}$ ✔ A velocidade de escape também é proporcional a $R$ com $\rho$ fixo: $11{,}2\ \mathrm{km/s} \times 10/6{,}4\times10^{6} = 1{,}8\ \mathrm{cm/s}$ ✔
+</Passos>
