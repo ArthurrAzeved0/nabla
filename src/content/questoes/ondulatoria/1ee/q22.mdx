@@ -1,0 +1,103 @@
+---
+origem: "2024.2"
+tema: "Fluidos em repouso · Água sobre mercúrio num tubo em U de braços desiguais"
+temaId: tubo-em-u
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Despeja-se mercúrio num tubo em U (figura **a**). O braço esquerdo tem seção reta $A_1 = 10{,}0\ \mathrm{cm^2}$ e o direito, $A_2 = 5{,}00\ \mathrm{cm^2}$. Em seguida, despejam-se $100\ \mathrm{g}$ de água no braço direito (figura **b**). A massa específica do mercúrio é $13{,}6\ \mathrm{g/cm^3}$ e a da água, $1{,}00\ \mathrm{g/cm^3}$.<br />(a) Qual é o comprimento da coluna de água no braço direito?<br />(b) Quanto o mercúrio sobe, $h$, no braço esquerdo?
+
+<Figura>
+  <svg viewBox="0 0 340 225" role="img" aria-label="Dois tubos em U com o braço esquerdo mais largo. Em a, só mercúrio, no mesmo nível nos dois braços. Em b, uma coluna de água L no braço direito empurra o mercúrio para baixo, e no braço esquerdo o mercúrio sobe h acima do nível original, marcado por uma linha tracejada">
+    {/* ---- tubo a ---- */}
+    <path d="M40,110 L70,110 L70,150 A15,15 0 0 0 100,150 L100,110 L115,110 L115,150 A37.5,37.5 0 0 1 40,150 Z" fill="var(--ink-3)" opacity="0.7"/>
+    <g fill="none" stroke="var(--ink-2)" stroke-width="1.6">
+      <path d="M40,30 L40,150 A37.5,37.5 0 0 0 115,150 L115,30"/>
+      <path d="M70,30 L70,150 A15,15 0 0 0 100,150 L100,30"/>
+    </g>
+    <text x="49" y="22" font-size="10" fill="var(--ink-2)">A<tspan font-size="9" dy="3">1</tspan><tspan dy="-3"></tspan></text>
+    <text x="100" y="22" font-size="10" fill="var(--ink-2)">A<tspan font-size="9" dy="3">2</tspan><tspan dy="-3"></tspan></text>
+    <text x="70" y="214" font-size="11" fill="var(--ink-2)">a</text>
+    {/* ---- tubo b ---- */}
+    <line x1="150" y1="110" x2="310" y2="110" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="20" y1="110" x2="135" y2="110" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="4 3"/>
+    <path d="M220,98 L250,98 L250,150 A15,15 0 0 0 280,150 L280,134 L295,134 L295,150 A37.5,37.5 0 0 1 220,150 Z" fill="var(--ink-3)" opacity="0.7"/>
+    <rect x="280" y="54" width="15" height="80" fill="var(--accent)" opacity="0.5"/>
+    <g fill="none" stroke="var(--ink-2)" stroke-width="1.6">
+      <path d="M220,30 L220,150 A37.5,37.5 0 0 0 295,150 L295,30"/>
+      <path d="M250,30 L250,150 A15,15 0 0 0 280,150 L280,30"/>
+    </g>
+    <text x="229" y="22" font-size="10" fill="var(--ink-2)">A<tspan font-size="9" dy="3">1</tspan><tspan dy="-3"></tspan></text>
+    <text x="280" y="22" font-size="10" fill="var(--ink-2)">A<tspan font-size="9" dy="3">2</tspan><tspan dy="-3"></tspan></text>
+    <text x="250" y="214" font-size="11" fill="var(--ink-2)">b</text>
+    {/* cota h */}
+    <line x1="208" y1="98" x2="208" y2="110" stroke="var(--warn)" stroke-width="1.4"/>
+    <line x1="203" y1="98" x2="213" y2="98" stroke="var(--warn)" stroke-width="1.2"/>
+    <text x="194" y="108" font-size="11" fill="var(--warn)">h</text>
+    {/* cota L */}
+    <line x1="307" y1="54" x2="307" y2="134" stroke="var(--accent)" stroke-width="1.2"/>
+    <line x1="302" y1="54" x2="312" y2="54" stroke="var(--accent)" stroke-width="1.2"/>
+    <line x1="302" y1="134" x2="312" y2="134" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="314" y="98" font-size="11" fill="var(--accent)">L</text>
+    <text x="300" y="46" font-size="9" fill="var(--accent)">água</text>
+    <text x="146" y="196" font-size="9" fill="var(--ink-3)">mercúrio</text>
+  </svg>
+  <figcaption>
+
+A linha tracejada é o nível do mercúrio antes da água. Os desníveis estão exagerados: na escala real, $h$ é 40 vezes menor que $L$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) $L = 20{,}0\ \mathrm{cm}$  ·  (b) $h = 0{,}490\ \mathrm{cm}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — (a) A coluna de água.** O volume de água é $V = m/\rho_a = 100/1{,}00 = 100\ \mathrm{cm^3}$, e ele ocupa o braço direito, de seção $A_2$:
+
+$$
+L = \frac{V}{A_2} = \frac{100}{5{,}00} = \boxed{20{,}0\ \mathrm{cm}}
+$$
+
+**Passo 2 — Como o mercúrio se redistribui.** A água empurra o mercúrio do braço direito para baixo de uma distância $x$, e ele sobe $h$ no esquerdo. O volume que sai de um braço entra no outro:
+
+$$
+A_2\,x = A_1\,h
+\quad\Longrightarrow\quad
+x = \frac{A_1}{A_2}\,h = 2h
+$$
+
+O braço esquerdo é mais largo, então o mercúrio sobe ali **metade** do que desce do outro lado.
+
+**Passo 3 — Igualar pressões num mesmo nível.** Tome o nível da interface água–mercúrio, no braço direito. Abaixo dele só há mercúrio contínuo, então a pressão nesse nível é a mesma nos dois braços. Acima dele, à direita, há a coluna de água $L$; à esquerda, mercúrio até a altura $x + h = 3h$. Com a mesma pressão atmosférica no topo dos dois:
+
+$$
+\rho_a\,g\,L = \rho_{Hg}\,g\,(3h)
+$$
+
+**Passo 4 — (b) Quanto o mercúrio sobe.**
+
+$$
+h = \frac{\rho_a\,L}{3\,\rho_{Hg}} = \frac{1{,}00 \cdot 20{,}0}{3 \cdot 13{,}6} = \boxed{0{,}490\ \mathrm{cm}}
+$$
+
+Esse é o problema 14.21 do Halliday, cuja resposta é a mesma.
+
+**Conferência —** o desnível total entre as duas superfícies de mercúrio é $3h = 1{,}47\ \mathrm{cm}$, e a pressão dessa coluna de mercúrio, $13{,}6 \cdot 1{,}47 = 20{,}0\ \mathrm{g/cm^2}$ (em unidades de $\rho\,\Delta y$), é igual à da coluna de água, $1{,}00 \cdot 20{,}0$ ✔ Os volumes conferem: sobem $10{,}0 \cdot 0{,}490 = 4{,}90\ \mathrm{cm^3}$ à esquerda e descem $5{,}00 \cdot 0{,}980 = 4{,}90\ \mathrm{cm^3}$ à direita ✔
+
+**Sobre o gabarito oficial —** ele dá $h = 1{,}47\ \mathrm{cm}$, pela conta $h = m/(A_2\,\rho_{Hg}) = 100/(13{,}6 \cdot 5{,}0)$. Essa conta iguala o peso da água a uma coluna de mercúrio sobre $A_2$ e, por isso, acha o **desnível total** $3h$ entre as duas superfícies de mercúrio, não o quanto o mercúrio sobe no braço esquerdo. Falta o Passo 2: o mercúrio desce $2h$ de um lado e sobe só $h$ do outro, o que divide o desnível por três.
+</Passos>
