@@ -1,0 +1,49 @@
+---
+origem: "2026.1 · Final 2024.1"
+tema: "Máquina de Carnot · Temperaturas das fontes pela eficiência"
+temaId: carnot
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q14.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma máquina de Carnot trabalha entre duas fontes de calor com eficiência de $22{,}0\%$. A diferença de temperatura entre as fontes é de $75{,}0\ \mathrm{^\circ C}$. Determine a temperatura (a) da fonte fria e (b) da fonte quente.
+
+<Gabarito>
+(a) $T_F \approx 266\ \mathrm{K}$ ($\approx -7\ \mathrm{^\circ C}$)  ·  (b) $T_Q \approx 341\ \mathrm{K}$ ($\approx 68\ \mathrm{^\circ C}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — a diferença é a mesma em kelvin.** Um intervalo de $75{,}0\ \mathrm{^\circ C}$ é também um intervalo de $75{,}0\ \mathrm{K}$, porque as duas escalas têm o mesmo tamanho de grau. Então $T_Q - T_F = 75{,}0\ \mathrm{K}$.
+
+**Passo 2 — a eficiência de Carnot em função da diferença.** Escrevendo $1 - T_F/T_Q$ sobre um denominador comum,
+
+$$
+\varepsilon_C = \frac{T_Q - T_F}{T_Q}
+\qquad\Longrightarrow\qquad
+T_Q = \frac{T_Q - T_F}{\varepsilon_C} = \frac{75{,}0}{0{,}220} = 341\ \mathrm{K}
+$$
+
+É por isso que convém resolver primeiro o item (b): a fonte quente sai direto da razão.
+
+**Passo 3 — a fonte fria.**
+
+$$
+T_F = T_Q - 75{,}0 = 340{,}9 - 75{,}0 = 266\ \mathrm{K}
+$$
+
+Em Celsius, $T_Q \approx 67{,}8\ \mathrm{^\circ C}$ e $T_F \approx -7{,}2\ \mathrm{^\circ C}$.
+
+**Conferência —** $1 - T_F/T_Q = 1 - 265{,}9/340{,}9 = 0{,}220$ ✔ Usar as temperaturas em Celsius na fórmula da eficiência não funciona: com $T_Q = 68\ \mathrm{^\circ C}$ e $T_F = -7\ \mathrm{^\circ C}$, a razão $T_F/T_Q$ seria negativa e a "eficiência" passaria de $100\%$.
+</Passos>
