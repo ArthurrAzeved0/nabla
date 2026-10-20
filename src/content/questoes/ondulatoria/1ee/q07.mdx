@@ -1,0 +1,67 @@
+---
+origem: "2023.1 · 2ª chamada"
+tema: "Gravitação · Massa do sistema binário Alfa Centauro"
+temaId: estrela-dupla
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q07.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um sistema binário é formado por duas estrelas ligadas gravitacionalmente, que giram em torno do centro de massa comum. No sistema Alfa Centauro, as duas estrelas descrevem órbitas circulares, a distância entre os seus centros é $35{,}6\times10^{11}\ \mathrm{m}$ e o período de revolução é $79{,}92$ anos. **Determine a massa total do sistema binário.** Use $G = 6{,}67\times10^{-11}\ \mathrm{m^3\cdot kg^{-1}\cdot s^{-2}}$.
+
+<Gabarito>
+$m_1 + m_2 = 4{,}2\times10^{30}\ \mathrm{kg}$ (cerca de duas massas solares)
+</Gabarito>
+
+<Passos>
+**Passo 1 — cada estrela gira em torno do centro de massa.** Sejam $r_1$ e $r_2$ as distâncias das estrelas ao centro de massa, com $r_1 + r_2 = r$. A definição de centro de massa dá $m_1 r_1 = m_2 r_2$, e daí
+
+$$
+r_2 = \frac{m_1\,r}{m_1 + m_2}
+$$
+
+As duas estrelas têm o mesmo período e, portanto, a mesma velocidade angular $\omega$: estão sempre em lados opostos do centro de massa.
+
+**Passo 2 — gravidade como centrípeta.** A força de atração depende da distância **entre as estrelas**, $r$, mas a estrela 2 gira num círculo de raio $r_2$:
+
+$$
+\frac{G m_1 m_2}{r^2} = m_2\,\omega^2 r_2
+\qquad\Longrightarrow\qquad
+\omega^2 = \frac{G m_1}{r^2\,r_2} = \frac{G\,(m_1+m_2)}{r^3}
+$$
+
+**Passo 3 — a terceira lei de Kepler com a massa total.** Com $\omega = 2\pi/T$:
+
+$$
+T^2 = \frac{4\pi^2 r^3}{G\,(m_1+m_2)}
+\qquad\Longrightarrow\qquad
+M = m_1 + m_2 = \frac{4\pi^2 r^3}{G\,T^2}
+$$
+
+**Passo 4 — converter o período.** Com $1\ \text{ano} = 3{,}156\times10^7\ \mathrm{s}$:
+
+$$
+T = 79{,}92 \cdot 3{,}156\times10^7 = 2{,}522\times10^9\ \mathrm{s}
+$$
+
+**Passo 5 — a massa.**
+
+$$
+M = \frac{4\pi^2\,(35{,}6\times10^{11})^3}{6{,}67\times10^{-11}\,(2{,}522\times10^9)^2} = \boxed{4{,}2\times10^{30}\ \mathrm{kg}}
+$$
+
+**Conferência —** pela velocidade relativa: as estrelas giram uma em torno da outra com $v = 2\pi r/T = 8{,}87\times10^3\ \mathrm{m/s}$, e $M = v^2 r/G = 4{,}2\times10^{30}\ \mathrm{kg}$ ✔ Dividindo pela massa do Sol, $2{,}0\times10^{30}\ \mathrm{kg}$, dá cerca de $2{,}1$ massas solares — Alfa Centauro A e B são, de fato, duas estrelas parecidas com o Sol ✔
+
+**Sobre a resolução manuscrita —** a resolução que acompanha a prova chega a $4{,}3\times10^{30}\ \mathrm{kg}$ porque arredonda o período para $2{,}5\times10^9\ \mathrm{s}$ antes de elevá-lo ao quadrado. Com $T = 2{,}522\times10^9\ \mathrm{s}$ o resultado é $4{,}2\times10^{30}\ \mathrm{kg}$; a diferença é só de arredondamento, o método é o mesmo.
+</Passos>
