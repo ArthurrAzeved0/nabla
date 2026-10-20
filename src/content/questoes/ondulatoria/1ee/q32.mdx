@@ -1,0 +1,45 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "Princípio de Arquimedes · Massa específica pela balança de mola"
+temaId: empuxo
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q32.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um objeto está pendurado numa balança de mola. A balança marca $30\ \mathrm{N}$ com o objeto no ar, $20\ \mathrm{N}$ com ele totalmente imerso em água e $24\ \mathrm{N}$ com ele totalmente imerso num outro líquido, de massa específica desconhecida. Qual é a massa específica desse outro líquido? (Água: $\rho_a = 1000\ \mathrm{kg/m^3}$.)
+
+<Gabarito>
+$\rho_\ell = 6{,}0 \times 10^2\ \mathrm{kg/m^3}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — O que a balança mede.** Com o objeto em equilíbrio, a balança equilibra o peso menos o empuxo: $T = P - E$. No ar o empuxo é desprezível, então $P = 30\ \mathrm{N}$, e o empuxo em cada líquido é o que a leitura "perde":
+
+$$
+E_a = 30 - 20 = 10\ \mathrm{N},
+\qquad
+E_\ell = 30 - 24 = 6\ \mathrm{N}
+$$
+
+**Passo 2 — O mesmo volume deslocado.** Pelo princípio de Arquimedes, $E = \rho\,g\,V$, e o volume $V$ do objeto (todo submerso) é o mesmo nos dois líquidos. A razão dos empuxos é a razão das massas específicas:
+
+$$
+\frac{\rho_\ell}{\rho_a} = \frac{E_\ell}{E_a} = \frac{6}{10}
+\qquad\Longrightarrow\qquad
+\rho_\ell = 0{,}6 \cdot 1000 = \boxed{6{,}0 \times 10^2\ \mathrm{kg/m^3}}
+$$
+
+**Conferência —** pelo caminho longo, com $g = 9{,}8\ \mathrm{m/s^2}$: da água, $V = E_a/(\rho_a g) = 10/9800 = 1{,}02 \times 10^{-3}\ \mathrm{m^3}$; então $\rho_\ell = E_\ell/(gV) = 6/(9{,}8 \cdot 1{,}02 \times 10^{-3}) = 600\ \mathrm{kg/m^3}$ ✔ — o $g$ cancela, e por isso a resposta não depende dele. De quebra, o objeto tem $\rho = P/(gV) = 3000\ \mathrm{kg/m^3}$, mais denso que os dois líquidos, como precisa ser para afundar inteiro em ambos.
+</Passos>
