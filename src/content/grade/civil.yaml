@@ -241,6 +241,7 @@ disciplinas:
     categoria: basico
     pre: [FIS11]
     co: [MAT21]
+    cadeira: ondulatoria
   - id: FIS15
     codigo: FIS15
     nome: Laboratório de Física Básica

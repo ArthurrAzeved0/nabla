@@ -1,0 +1,401 @@
+---
+cadeira: ondulatoria
+titulo: "Fundamentos da Ondulatória e Termodinâmica"
+unidades:
+  - nome: "Equilíbrio e elasticidade"
+    prova: 1ee
+    secoes:
+      - { id: ot-equilibrio, titulo: "Equilíbrio estático: força resultante e torque resultante nulos" }
+      - { id: ot-equilibrio-problemas, titulo: "Resolvendo problemas de equilíbrio: vigas, escadas e apoios" }
+      - { id: ot-elasticidade, titulo: "Elasticidade: tensão, deformação e os três módulos" }
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                         ondulatoria.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+<Topico id="ot-equilibrio" num="01" titulo="Equilíbrio estático: força resultante e torque resultante nulos">
+
+**A ideia.** Um corpo está em **equilíbrio estático** quando está parado e continua parado: não acelera e não começa a girar. Para isso não basta que as forças se cancelem — elas também precisam não produzir giro. São duas condições, uma para a translação e outra para a rotação, e todo problema de estática (viga, escada, prateleira, ponte) é só a aplicação delas. É a base de qualquer disciplina de estruturas que vem depois.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\vec F_{res}$ — **força resultante** sobre o corpo, em $\mathrm{N}$;
+- $\vec\tau_{res}$ — **torque resultante** em relação a um ponto qualquer, em $\mathrm{N\cdot m}$;
+- $\vec P$ — **momento linear** do corpo, em $\mathrm{kg\cdot m/s}$;
+- $\vec L$ — **momento angular** do corpo, em $\mathrm{kg\cdot m^2/s}$;
+- $\tau = r_\perp F$ — módulo do torque de uma força $F$ cujo **braço de alavanca** (distância perpendicular do ponto à linha de ação) é $r_\perp$, em $\mathrm{m}$;
+- $x_{CG}$ — posição do **centro de gravidade**, em $\mathrm{m}$.
+
+</Caixa>
+
+### As duas condições
+
+Pela segunda lei de Newton nas versões de translação e de rotação, um corpo em repouso precisa ter momento linear e momento angular constantes. Isso dá:
+
+$$
+\boxed{\;\vec F_{res} = \sum \vec F = \vec 0\;}
+\qquad\qquad
+\boxed{\;\vec\tau_{res} = \sum \vec\tau = \vec 0\;}
+$$
+
+Com as forças todas num plano (o caso de quase toda prova), elas viram **três equações escalares**:
+
+$$
+\sum F_x = 0
+\qquad
+\sum F_y = 0
+\qquad
+\sum \tau_z = 0
+$$
+
+Três equações, três incógnitas no máximo. Se o problema tiver mais do que isso, ele é **indeterminado** — a estática sozinha não resolve, e é preciso olhar a deformação dos apoios (a última seção do capítulo).
+
+<Caixa tipo="dica">
+
+**Equilíbrio estático é mais do que velocidade constante.** Um corpo andando em linha reta com velocidade constante também tem $\vec F_{res} = \vec 0$, mas não está em equilíbrio *estático*. Aqui a exigência é velocidade linear **e** angular nulas.
+
+</Caixa>
+
+### Centro de gravidade
+
+O peso age em cada pedacinho do corpo, mas para calcular forças e torques dá para trocá-lo por **uma única força** $M\vec g$ aplicada num ponto só, o **centro de gravidade**. Quando $\vec g$ é o mesmo em todo o corpo — e para qualquer objeto do tamanho de uma viga ou de uma escada ele é —, o centro de gravidade **coincide com o centro de massa**:
+
+$$
+x_{CG} = x_{CM} = \frac{\sum m_i\,x_i}{\sum m_i}
+$$
+
+Para uma barra homogênea, isso é o **ponto médio**. É por isso que o peso de uma viga uniforme de comprimento $L$ entra nas contas com braço $L/2$.
+
+### O ponto do torque é livre — e é aí que mora o atalho
+
+Se a força resultante é nula, o torque resultante dá o mesmo valor em relação a **qualquer** ponto. Então escolha o ponto que mais simplifica: uma força que passa pelo ponto escolhido tem braço nulo e **some da equação de torque**.
+
+<Caixa tipo="macete" rotulo="Onde tomar o torque">
+
+**Tome o torque em cima da força que você não conhece e não quer.** Num apoio com reação horizontal e vertical desconhecidas, escolher o ponto ali elimina as duas de uma vez, e a equação de torque sai com uma incógnita só.
+
+Convenção de sinal: anti-horário positivo, horário negativo — ou o contrário, desde que seja o mesmo do começo ao fim da conta.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — onde apoiar a barra">
+
+Uma barra homogênea de $2{,}0\ \mathrm{m}$ e $3{,}0\ \mathrm{kg}$ tem um bloco de $5{,}0\ \mathrm{kg}$ na ponta esquerda e outro de $2{,}0\ \mathrm{kg}$ na ponta direita. Em que ponto um único apoio a equilibra, e com que força? Use $g = 9{,}8\ \mathrm{m/s^2}$.
+
+O apoio tem de estar exatamente sob o centro de gravidade do conjunto, medindo $x$ a partir da ponta esquerda (o peso da barra fica no meio, em $x = 1{,}0\ \mathrm{m}$):
+
+$$
+x_{CG} = \frac{5{,}0 \cdot 0 + 3{,}0 \cdot 1{,}0 + 2{,}0 \cdot 2{,}0}{5{,}0 + 3{,}0 + 2{,}0} = \frac{7{,}0}{10} = 0{,}70\ \mathrm{m}
+$$
+
+A força do apoio vem de $\sum F_y = 0$: ele sustenta o peso de tudo,
+
+$$
+N = (10\ \mathrm{kg})(9{,}8\ \mathrm{m/s^2}) = 98\ \mathrm{N}
+$$
+
+Confira pelo torque em torno do apoio: o lado esquerdo dá $5{,}0 \cdot 9{,}8 \cdot 0{,}70 = 34{,}3\ \mathrm{N\cdot m}$; o direito dá $(3{,}0 \cdot 0{,}30 + 2{,}0 \cdot 1{,}30)\cdot 9{,}8 = 34{,}3\ \mathrm{N\cdot m}$. Iguais, e a barra não gira.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-equilibrio-problemas" num="02" titulo="Resolvendo problemas de equilíbrio: vigas, escadas e apoios">
+
+**A ideia.** Problema de estática não pede criatividade, pede **método**. Desenhe o corpo isolado com todas as forças, escreva as três equações e escolha bem o ponto do torque. Quem segue o roteiro resolve viga, escada, placa pendurada e lança de guindaste do mesmo jeito; quem tenta pular o diagrama esquece uma força ou erra um braço.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F_A,\ F_B$ — **reações dos apoios**, em $\mathrm{N}$;
+- $F_N$ — força **normal** de uma superfície, em $\mathrm{N}$;
+- $f_s$ — força de **atrito estático**, em $\mathrm{N}$;
+- $\mu_s$ — **coeficiente de atrito estático**, adimensional;
+- $m g$ — peso de cada corpo, aplicado no seu centro de gravidade, em $\mathrm{N}$.
+
+</Caixa>
+
+### O roteiro
+
+1. **Escolha o corpo** e isole-o: desenhe só ele, sem paredes nem chão;
+2. **desenhe o diagrama de corpo livre**: todos os pesos (no centro de gravidade), todas as normais (perpendiculares à superfície), atritos (ao longo da superfície), trações (ao longo do fio) e as reações dos apoios — num pino, uma componente horizontal e uma vertical;
+3. **escolha os eixos** e escreva $\sum F_x = 0$ e $\sum F_y = 0$;
+4. **escolha o ponto do torque** sobre a incógnita mais incômoda e escreva $\sum \tau = 0$;
+5. **resolva** e confira o sinal: reação que sai negativa aponta para o lado oposto ao que você desenhou — não é erro, é informação.
+
+<Caixa tipo="dica">
+
+**Sentido chutado não precisa estar certo.** Desenhe a reação de um pino para onde achar mais provável; se a conta devolver um número negativo, ela aponta para o outro lado. O que não pode é trocar o sentido no meio da resolução.
+
+</Caixa>
+
+### Viga apoiada nas duas pontas
+
+Uma viga homogênea de $4{,}0\ \mathrm{m}$ e $20\ \mathrm{kg}$ está apoiada em $A$ (ponta esquerda) e $B$ (ponta direita) e carrega um bloco de $50\ \mathrm{kg}$ a $1{,}0\ \mathrm{m}$ de $A$. As forças são verticais: as reações $F_A$ e $F_B$ para cima, o peso da viga no meio e o peso do bloco.
+
+Torque em torno de $A$ — $F_A$ passa ali e some:
+
+$$
+F_B\,(4{,}0) - (20)(9{,}8)(2{,}0) - (50)(9{,}8)(1{,}0) = 0
+\qquad\Longrightarrow\qquad
+F_B = 220{,}5\ \mathrm{N}
+$$
+
+E $\sum F_y = 0$ dá o resto:
+
+$$
+F_A = (70)(9{,}8) - 220{,}5 = 465{,}5\ \mathrm{N}
+$$
+
+O apoio mais perto da carga leva a maior parte dela — exatamente o que a intuição diz.
+
+### Escada encostada na parede
+
+É o problema clássico com atrito. A escada toca o **chão**, que dá uma normal vertical e um atrito horizontal, e a **parede**, que (sem atrito) dá só uma normal horizontal. Como nada mais empurra na horizontal, **o atrito do chão é igual à normal da parede**:
+
+$$
+f_s = F_{N,parede}
+\qquad\qquad
+F_{N,chão} = \text{soma dos pesos}
+$$
+
+Falta uma equação para achar $F_{N,parede}$, e ela vem do torque em torno do **pé da escada** — ponto onde atuam duas incógnitas (normal e atrito do chão), que somem juntas.
+
+<Figura>
+  <svg viewBox="0 0 420 260" role="img" aria-label="Escada apoiada no chão e numa parede sem atrito, com o peso no meio, a normal da parede horizontal no topo e, no pé, a normal do chão para cima e o atrito apontando para a parede">
+    {/* parede e chão */}
+    <line x1="300" y1="20" x2="300" y2="230" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="40" y1="230" x2="320" y2="230" stroke="var(--ink-2)" stroke-width="2"/>
+    {/* escada: pé em (120,230), topo em (300,50) */}
+    <line x1="120" y1="230" x2="300" y2="50" stroke="var(--ink-3)" stroke-width="5"/>
+    {/* peso no centro (210,140) */}
+    <circle cx="210" cy="140" r="3.5" fill="var(--warn)"/>
+    <line x1="210" y1="140" x2="210" y2="198" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="210,206 205,196 215,196" fill="var(--warn)"/>
+    <text x="218" y="196" font-size="13" font-style="italic" fill="var(--warn)">mg</text>
+    {/* normal da parede no topo, para a esquerda */}
+    <line x1="300" y1="50" x2="236" y2="50" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="228,50 238,45 238,55" fill="var(--accent)"/>
+    <text x="214" y="40" font-size="13" font-style="italic" fill="var(--accent)">F<tspan font-size="10" dy="4">N,parede</tspan></text>
+    {/* normal do chão no pé, para cima */}
+    <line x1="120" y1="230" x2="120" y2="158" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="120,150 115,160 125,160" fill="var(--accent)"/>
+    <text x="70" y="146" font-size="13" font-style="italic" fill="var(--accent)">F<tspan font-size="10" dy="4">N,chão</tspan></text>
+    {/* atrito no pé, para a direita (para a parede) */}
+    <line x1="120" y1="230" x2="176" y2="230" stroke="var(--ok)" stroke-width="2.4"/>
+    <polygon points="184,230 174,225 174,235" fill="var(--ok)"/>
+    <text x="158" y="222" font-size="13" font-style="italic" fill="var(--ok)">f<tspan font-size="10" dy="4">s</tspan></text>
+    {/* cotas */}
+    <line x1="120" y1="244" x2="300" y2="244" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="3 2"/>
+    <line x1="120" y1="239" x2="120" y2="249" stroke="var(--line-2)" stroke-width="1"/>
+    <line x1="300" y1="239" x2="300" y2="249" stroke="var(--line-2)" stroke-width="1"/>
+    <text x="236" y="258" font-size="12" font-style="italic" fill="var(--ink-3)">a</text>
+    <line x1="316" y1="50" x2="316" y2="230" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="324" y="145" font-size="12" font-style="italic" fill="var(--ink-3)">h</text>
+    <text x="60" y="226" font-size="12" fill="var(--ink-3)">pé</text>
+  </svg>
+  <figcaption>
+
+Diagrama de corpo livre da escada: o peso no meio, a normal da parede (horizontal, porque a parede é lisa) e, no pé, a normal do chão e o atrito; $a$ é a distância do pé à parede e $h$ a altura do topo. **O atrito aponta para a parede**: sem ele, o pé escorregaria para fora. Tomando o torque no pé, só sobram $mg$ e $F_{N,parede}$.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="macete" rotulo="Os braços na escada">
+
+O braço de cada força é a distância **perpendicular** à linha de ação dela, não o comprimento ao longo da escada:
+
+- **pesos** (verticais) → braço é a distância **horizontal** do pé até o ponto onde o peso age;
+- **normal da parede** (horizontal) → braço é a **altura** $h$ do topo da escada.
+
+E na hora de escorregar: o atrito estático tem um teto, $f_s \le \mu_s\,F_N$. A escada fica no lugar enquanto o atrito **necessário** não passar desse teto; o $\mu_s$ mínimo é $f_s / F_{N,chão}$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o pintor na escada">
+
+Uma escada homogênea de $5{,}0\ \mathrm{m}$ e $12\ \mathrm{kg}$ está encostada numa parede lisa, com o pé a $3{,}0\ \mathrm{m}$ da parede (o topo fica a $4{,}0\ \mathrm{m}$ de altura). Um pintor de $60\ \mathrm{kg}$ subiu $3{,}0\ \mathrm{m}$ ao longo da escada. Qual o menor $\mu_s$ do chão que segura tudo? Use $g = 9{,}8\ \mathrm{m/s^2}$.
+
+As distâncias horizontais a partir do pé: o centro da escada está a $1{,}5\ \mathrm{m}$; o pintor, a $3{,}0 \cdot \tfrac{3}{5} = 1{,}8\ \mathrm{m}$. Torque em torno do pé:
+
+$$
+F_{N,parede}\,(4{,}0) = (12)(9{,}8)(1{,}5) + (60)(9{,}8)(1{,}8) = 1234{,}8\ \mathrm{N\cdot m}
+$$
+
+$$
+F_{N,parede} = 308{,}7\ \mathrm{N}
+$$
+
+Das forças, $f_s = F_{N,parede} = 308{,}7\ \mathrm{N}$ e $F_{N,chão} = (72)(9{,}8) = 705{,}6\ \mathrm{N}$. Então
+
+$$
+\mu_{s,\min} = \frac{f_s}{F_{N,chão}} = \frac{308{,}7}{705{,}6} \approx 0{,}44
+$$
+
+Quanto mais alto o pintor sobe, maior o braço do peso dele e maior o atrito exigido — é por isso que a escada escorrega quando a pessoa já está perto do topo.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-elasticidade" num="03" titulo="Elasticidade: tensão, deformação e os três módulos">
+
+**A ideia.** Nas seções anteriores os corpos eram **rígidos**: as forças não os deformavam. Na vida real todo sólido cede um pouco — estica, encurta, entorta ou é espremido — e, se a força não for grande demais, volta ao formato original quando ela sai. A elasticidade mede esse "ceder" com uma regra simples: **tensão é proporcional à deformação**, e a constante de proporcionalidade é um **módulo** que depende só do material.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $\dfrac{F}{A}$ — **tensão**: força por unidade de área, em $\mathrm{N/m^2} = \mathrm{Pa}$;
+- $\dfrac{\Delta L}{L}$ — **deformação** (relativa): variação de comprimento sobre o comprimento original, adimensional;
+- $E$ — **módulo de Young** (tração e compressão), em $\mathrm{Pa}$;
+- $G$ — **módulo de cisalhamento**, em $\mathrm{Pa}$;
+- $B$ — **módulo de elasticidade volumétrico**, em $\mathrm{Pa}$;
+- $\Delta x$ — deslocamento lateral de uma face no cisalhamento, em $\mathrm{m}$;
+- $p$ — pressão hidrostática aplicada em todas as faces, em $\mathrm{Pa}$;
+- $\dfrac{\Delta V}{V}$ — variação relativa de volume, adimensional.
+
+</Caixa>
+
+### A regra geral
+
+Toda deformação elástica segue a mesma forma — é a lei de Hooke escrita por unidade de área, para não depender do tamanho da peça:
+
+$$
+\boxed{\;\text{tensão} = \text{módulo} \times \text{deformação}\;}
+$$
+
+O que muda de um caso para o outro é **como a força é aplicada**, e cada jeito tem o seu módulo.
+
+### Tração e compressão: módulo de Young
+
+Força **perpendicular** à seção, puxando (tração) ou empurrando (compressão) a peça ao longo do comprimento:
+
+$$
+\boxed{\;\frac{F}{A} = E\,\frac{\Delta L}{L}\;}
+$$
+
+Para o aço estrutural, $E \approx 200\ \mathrm{GPa}$; para o alumínio, $\approx 70\ \mathrm{GPa}$. O mesmo $E$ vale, na prática, para tração e para compressão.
+
+### Cisalhamento: módulo $G$
+
+Força **paralela** à face, como empurrar a capa de um livro grosso de lado. A face desliza $\Delta x$ em relação à oposta, que está a uma distância $L$:
+
+$$
+\boxed{\;\frac{F}{A} = G\,\frac{\Delta x}{L}\;}
+$$
+
+Aqui $A$ é a área da face **onde a força é paralela** — não a seção perpendicular. Para metais, $G$ costuma ficar entre um terço e metade de $E$.
+
+### Compressão por todos os lados: módulo volumétrico $B$
+
+Quando o corpo é espremido igualmente em todas as faces — mergulhado num fluido a pressão $p$ —, a tensão é a própria pressão, e o que muda é o volume:
+
+$$
+\boxed{\;p = B\,\frac{\Delta V}{V}\;}
+$$
+
+Esse é o único dos três módulos que também faz sentido para **líquidos** (a água tem $B \approx 2{,}2\ \mathrm{GPa}$), porque fluido não resiste a cisalhamento nem tem comprimento próprio, mas resiste a ser comprimido.
+
+<Figura>
+  <svg viewBox="0 0 420 240" role="img" aria-label="Curva de tensão contra deformação de um metal: um trecho reto até o limite elástico, depois uma curva que sobe mais devagar até o ponto de ruptura">
+    {/* eixos */}
+    <line x1="50" y1="200" x2="400" y2="200" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="50" y1="200" x2="50" y2="20" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <polygon points="404,200 394,195 394,205" fill="var(--ink-2)"/>
+    <polygon points="50,16 45,26 55,26" fill="var(--ink-2)"/>
+    <text x="300" y="222" font-size="12" fill="var(--ink-2)">deformação ΔL/L</text>
+    <text x="58" y="24" font-size="12" fill="var(--ink-2)">tensão F/A</text>
+    {/* trecho linear */}
+    <line x1="50" y1="200" x2="130" y2="90" stroke="var(--accent)" stroke-width="2.6"/>
+    {/* trecho plástico */}
+    <path d="M130 90 C 170 60, 260 48, 330 62" fill="none" stroke="var(--warn)" stroke-width="2.6"/>
+    {/* pontos */}
+    <circle cx="130" cy="90" r="4" fill="var(--accent)"/>
+    <circle cx="330" cy="62" r="4" fill="var(--warn)"/>
+    <line x1="330" y1="62" x2="338" y2="76" stroke="var(--warn)" stroke-width="1.6"/>
+    <line x1="334" y1="64" x2="342" y2="78" stroke="var(--warn)" stroke-width="1.6"/>
+    <text x="64" y="80" font-size="12" fill="var(--accent)">limite elástico</text>
+    <text x="300" y="44" font-size="12" fill="var(--warn)">ruptura</text>
+    {/* rótulos das regiões */}
+    <text x="82" y="170" font-size="11" fill="var(--ink-3)">elástica</text>
+    <text x="82" y="183" font-size="11" fill="var(--ink-3)">(volta)</text>
+    <text x="200" y="120" font-size="11" fill="var(--ink-3)">plástica (fica deformado)</text>
+    {/* inclinação = E */}
+    <text x="102" y="140" font-size="12" font-style="italic" fill="var(--accent)">inclinação E</text>
+  </svg>
+  <figcaption>
+
+No trecho reto, tensão e deformação são proporcionais e a inclinação é o módulo de Young $E$; soltando a carga, a peça volta. Passado o **limite elástico**, ela deforma de vez; no **limite de ruptura**, quebra.
+
+  </figcaption>
+</Figura>
+
+### Limite elástico e limite de ruptura
+
+A proporcionalidade só vale até certo ponto:
+
+- até o **limite elástico** (ou de escoamento), a peça volta ao formato original quando a carga sai;
+- acima dele, a deformação vira **permanente** — a peça fica torta ou alongada;
+- no **limite de ruptura**, ela quebra. Para o aço estrutural, os valores típicos são cerca de $250\ \mathrm{MPa}$ (elástico) e $400\ \mathrm{MPa}$ (ruptura).
+
+<Caixa tipo="macete" rotulo="Qual módulo usar">
+
+Olhe **a direção da força em relação à área** e o que se pede:
+
+- força **perpendicular** à seção, pede $\Delta L$ → **Young**, $E$;
+- força **paralela** à face, pede deslocamento lateral → **cisalhamento**, $G$;
+- **pressão** em todas as faces, pede $\Delta V$ → **volumétrico**, $B$.
+
+E as unidades: tensão e módulo em pascal; deformação sem unidade. Diâmetro dado em milímetro precisa virar metro **antes** de calcular a área — esquecer isso erra a resposta por um fator de um milhão.
+
+</Caixa>
+
+<Caixa tipo="dica">
+
+**Por que tão pouco?** Com $E$ na casa dos $10^{11}\ \mathrm{Pa}$, mesmo uma tensão grande dá deformação de milésimos. É isso que justifica tratar vigas e escadas como **rígidas** nas seções anteriores — e é a deformação, pequena mas não nula, que resolve as estruturas **indeterminadas**, com mais apoios do que equações.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o cabo de aço e o bloco no fundo do mar">
+
+**(a)** Um tirante de aço ($E = 200\ \mathrm{GPa}$) de $2{,}0\ \mathrm{m}$ e $1{,}0\ \mathrm{cm}$ de diâmetro sustenta uma carga de $500\ \mathrm{kg}$. Quanto ele estica? Use $g = 9{,}8\ \mathrm{m/s^2}$.
+
+A área da seção, com o raio em metros:
+
+$$
+A = \pi\,(0{,}0050)^2 = 7{,}85\times 10^{-5}\ \mathrm{m^2}
+$$
+
+A tensão:
+
+$$
+\frac{F}{A} = \frac{(500)(9{,}8)}{7{,}85\times 10^{-5}} = 6{,}24\times 10^{7}\ \mathrm{Pa}
+$$
+
+E o alongamento, isolando $\Delta L$ em $F/A = E\,\Delta L/L$:
+
+$$
+\Delta L = \frac{F}{A}\,\frac{L}{E} = \frac{(6{,}24\times 10^{7})(2{,}0)}{2{,}0\times 10^{11}} = 6{,}2\times 10^{-4}\ \mathrm{m} \approx 0{,}62\ \mathrm{mm}
+$$
+
+A tensão, $62\ \mathrm{MPa}$, está cerca de quatro vezes abaixo dos $250\ \mathrm{MPa}$ do limite elástico: o tirante volta ao comprimento original quando a carga sai.
+
+**(b)** Um bloco de cobre ($B = 1{,}4\times 10^{11}\ \mathrm{Pa}$) desce a um ponto do oceano onde a pressão vale $4{,}0\times 10^{7}\ \mathrm{Pa}$. Qual a variação relativa do volume?
+
+$$
+\frac{\Delta V}{V} = \frac{p}{B} = \frac{4{,}0\times 10^{7}}{1{,}4\times 10^{11}} = 2{,}9\times 10^{-4}
+$$
+
+Menos de três centésimos por cento — mesmo a quatro quilômetros de profundidade.
+
+</Caixa>
+
+</Topico>

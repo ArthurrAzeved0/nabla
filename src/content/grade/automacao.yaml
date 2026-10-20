@@ -281,6 +281,7 @@ disciplinas:
     pre: [FUNDEM]
     co: []
     nota: "No perfil vigente: Física 3."
+    cadeira: ondulatoria
   - id: CIRC1
     codigo: ELET0013
     nome: Circuitos Elétricos 1

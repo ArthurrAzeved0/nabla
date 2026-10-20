@@ -251,6 +251,7 @@ disciplinas:
     categoria: basico
     pre: [FUNDEM]
     co: []
+    cadeira: ondulatoria
   - id: COMPMAT
     codigo: MATM0006
     nome: Complementos de Matemática

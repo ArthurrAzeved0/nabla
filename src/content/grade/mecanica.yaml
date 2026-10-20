@@ -222,6 +222,7 @@ disciplinas:
     categoria: basico
     pre: [FUNDEM]
     co: []
+    cadeira: ondulatoria
   - id: LABFIS
     codigo: —
     nome: Laboratório de Física Básica
