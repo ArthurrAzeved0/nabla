@@ -1,0 +1,64 @@
+---
+origem: "2024.2 · 2025.2"
+tema: "Gravitação · Altitude da órbita geoestacionária"
+temaId: orbita-geoestacionaria
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um satélite em órbita circular fica o tempo todo acima do mesmo ponto do equador terrestre: é a chamada **órbita geoestacionária**. Qual é a altitude dessa órbita? Use a massa da Terra $M = 5{,}9722\times10^{24}\ \mathrm{kg}$, o raio da Terra $R = 6371\ \mathrm{km}$ e $G = 6{,}6743\times10^{-11}\ \mathrm{m^3\,kg^{-1}\,s^{-2}}$.
+
+Em 2025.2 a mesma questão (valendo 2,5 pontos) deu $G = 6{,}67\times10^{-11}\ \mathrm{N\,m^2/kg^2}$ e $M = 5{,}98\times10^{24}\ \mathrm{kg}$, sem o raio da Terra; com $R = 6{,}37\times10^6\ \mathrm{m}$, a resposta é a mesma no terceiro algarismo.
+
+<Gabarito>
+$r - R \approx 3{,}59\times10^7\ \mathrm{m}$ (cerca de $35\,900\ \mathrm{km}$), com $r = 4{,}22\times10^7\ \mathrm{m}$. O gabarito escreve $3{,}58\times10^7\ \mathrm{m}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — O período da órbita.** Para ficar parado em relação ao solo, o satélite tem de girar junto com a Terra, no plano do equador, e dar uma volta no mesmo tempo que ela:
+
+$$
+T = 24\ \mathrm{h} = 24 \cdot 3600 = 86\,400\ \mathrm{s}
+$$
+
+**Passo 2 — A lei dos períodos.** Numa órbita circular, a gravidade faz o papel de força centrípeta:
+
+$$
+\frac{GMm}{r^2} = m\,\frac{4\pi^2 r}{T^2}
+\quad\Longrightarrow\quad
+T^2 = \frac{4\pi^2}{GM}\,r^3
+$$
+
+que é a terceira lei de Kepler. A massa do satélite cancela.
+
+**Passo 3 — O raio da órbita.** Isolando $r$:
+
+$$
+r = \left(\frac{GM\,T^2}{4\pi^2}\right)^{1/3} = \left(\frac{6{,}6743\times10^{-11} \cdot 5{,}9722\times10^{24} \cdot 86\,400^2}{4\pi^2}\right)^{1/3} = 4{,}224\times10^7\ \mathrm{m}
+$$
+
+Esse $r$ é medido a partir do **centro** da Terra.
+
+**Passo 4 — A altitude.** A pergunta é a altura acima da superfície, então desconte o raio da Terra:
+
+$$
+r - R = 4{,}224\times10^7 - 6{,}371\times10^6 = 3{,}587\times10^7 \approx \boxed{3{,}59\times10^7\ \mathrm{m}}
+$$
+
+Com os dados de 2025.2, $r = 4{,}225\times10^7\ \mathrm{m}$ e $r - R = 3{,}59\times10^7\ \mathrm{m}$ também.
+
+**Conferência —** a velocidade orbital $2\pi r/T = 3{,}07\ \mathrm{km/s}$ tem de bater com $\sqrt{GM/r} = 3{,}07\ \mathrm{km/s}$ ✔ A altitude dá uns $5{,}6$ raios terrestres, a ordem de grandeza conhecida dos satélites de TV.
+
+**Sobre o gabarito oficial —** os dois gabaritos escrevem $3{,}58\times10^7\ \mathrm{m}$, que é o valor do manual do Halliday; a conta com $86\,400\ \mathrm{s}$ dá $3{,}587\times10^7$, que arredonda para $3{,}59$. A diferença está no terceiro algarismo e não muda a questão. A rigor, a Terra completa uma volta em relação às estrelas num **dia sideral**, $86\,164\ \mathrm{s}$; com esse período sai $3{,}58\times10^7\ \mathrm{m}$, o valor real da órbita geoestacionária ($35\,786\ \mathrm{km}$). A questão, como o livro, usa 24 h.
+</Passos>
