@@ -8,6 +8,14 @@ unidades:
       - { id: ot-equilibrio, titulo: "Equilíbrio estático: força resultante e torque resultante nulos" }
       - { id: ot-equilibrio-problemas, titulo: "Resolvendo problemas de equilíbrio: vigas, escadas e apoios" }
       - { id: ot-elasticidade, titulo: "Elasticidade: tensão, deformação e os três módulos" }
+  - nome: "Gravitação"
+    prova: 1ee
+    secoes:
+      - { id: ot-newton-grav, titulo: "A lei da gravitação de Newton e o princípio da superposição" }
+      - { id: ot-g-terra, titulo: "A gravidade perto da superfície e no interior da Terra" }
+      - { id: ot-energia-grav, titulo: "Energia potencial gravitacional e velocidade de escape" }
+      - { id: ot-kepler, titulo: "As leis de Kepler" }
+      - { id: ot-orbitas, titulo: "Satélites: órbitas, energia e a órbita geoestacionária" }
 ---
 
 {/* **************************************************************************
@@ -395,6 +403,683 @@ $$
 $$
 
 Menos de três centésimos por cento — mesmo a quatro quilômetros de profundidade.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-newton-grav" num="04" titulo="A lei da gravitação de Newton e o princípio da superposição">
+
+**A ideia.** Toda partícula com massa atrai toda outra partícula com massa. É a mesma força que segura você no chão, a Lua em volta da Terra e a Terra em volta do Sol — Newton percebeu que é **uma lei só**. Ela é fraquíssima entre objetos do dia a dia e só fica relevante quando uma das massas é enorme. Quando há várias massas, a força de cada uma é calculada como se as outras não existissem, e o resultado é a **soma vetorial**.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $F$ — módulo da força gravitacional entre as duas partículas, em $\mathrm{N}$;
+- $m_1,\ m_2$ — massas das partículas, em $\mathrm{kg}$;
+- $r$ — distância entre os **centros** das partículas, em $\mathrm{m}$;
+- $G = 6{,}67 \times 10^{-11}\ \mathrm{N\cdot m^2/kg^2}$ — **constante gravitacional**, a mesma no universo inteiro;
+- $\vec F_{1,\text{res}}$ — força resultante sobre a partícula 1, em $\mathrm{N}$.
+
+</Caixa>
+
+### A lei
+
+$$
+\boxed{\;F = G\,\frac{m_1\,m_2}{r^2}\;}
+$$
+
+A força é sempre **atrativa** e aponta ao longo da reta que liga as duas partículas. Pela terceira lei de Newton, a força que 1 faz em 2 tem o mesmo módulo e sentido oposto à que 2 faz em 1 — a Terra puxa uma maçã com a mesma força com que a maçã puxa a Terra; só que a aceleração da Terra é desprezível, porque a massa dela é imensa.
+
+<Caixa tipo="dica" rotulo="Corpo extenso como se fosse partícula">
+
+A lei vale para **partículas**. Mas uma **casca esférica uniforme** atrai uma partícula do lado de fora como se toda a massa estivesse no centro dela (é o **teorema das cascas**, de Newton). Como uma esfera maciça é um empilhado de cascas, um planeta ou uma estrela também se comportam como partícula para quem está fora. É por isso que $r$ é medido **até o centro** da Terra, e não até a superfície.
+
+</Caixa>
+
+### Superposição: várias massas puxando ao mesmo tempo
+
+Com $n$ partículas, a força sobre a partícula 1 é a soma das forças que cada uma das outras faria sozinha:
+
+$$
+\boxed{\;\vec F_{1,\text{res}} = \sum_{i=2}^{n} \vec F_{1i}\;}
+$$
+
+**A soma é vetorial.** O roteiro é sempre o mesmo: calcule cada módulo pela lei de Newton, desenhe cada força apontando **para** a partícula que atrai, decomponha em $x$ e $y$, some componente com componente e só no fim tire o módulo e o ângulo.
+
+<Caixa tipo="macete" rotulo="As armadilhas de sempre">
+
+- **Somar módulos é o erro clássico.** Duas forças de $5\ \mathrm{N}$ em sentidos opostos dão resultante zero, não $10\ \mathrm{N}$;
+- **simetria economiza conta**: partícula no centro de um arranjo simétrico de massas iguais tem resultante nula; partículas simétricas em relação a um eixo cancelam as componentes perpendiculares a ele;
+- $r$ vai **ao quadrado**: dobrar a distância divide a força por quatro, e não por dois;
+- distância em **metros**. Enunciado em centímetros é a fonte de erro de um fator $10^4$.
+
+</Caixa>
+
+<Figura>
+  <svg viewBox="0 0 420 250" role="img" aria-label="Partícula B na origem, partícula A à direita sobre o eixo x e partícula C acima sobre o eixo y. De B saem duas setas, uma para A e uma para C, e a seta tracejada da resultante na diagonal do paralelogramo">
+    {/* ---------- cotas ---------- */}
+    <line x1="100" y1="232" x2="360" y2="232" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="100" y1="227" x2="100" y2="237" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="360" y1="227" x2="360" y2="237" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <text x="212" y="247" font-size="11" fill="var(--ink-3)">0,20 m</text>
+    <line x1="40" y1="30" x2="40" y2="200" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="35" y1="30" x2="45" y2="30" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="35" y1="200" x2="45" y2="200" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <text x="46" y="112" font-size="11" fill="var(--ink-3)">0,15 m</text>
+    {/* ---------- paralelogramo ---------- */}
+    <line x1="200" y1="200" x2="200" y2="67" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="100" y1="67" x2="200" y2="67" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    {/* ---------- forças sobre B ---------- */}
+    <line x1="100" y1="200" x2="191" y2="200" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="200,200 189,195 189,205" fill="var(--accent)"/>
+    <text x="134" y="218" font-size="12" font-style="italic" fill="var(--accent)">F<tspan font-size="9" dy="3">BA</tspan></text>
+    <line x1="100" y1="200" x2="100" y2="77" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="100,67 95,78 105,78" fill="var(--accent)"/>
+    <text x="106" y="128" font-size="12" font-style="italic" fill="var(--accent)">F<tspan font-size="9" dy="3">BC</tspan></text>
+    <line x1="100" y1="200" x2="194" y2="75" stroke="var(--warn)" stroke-width="2" stroke-dasharray="6 3"/>
+    <polygon points="200,67 198,78 190,72" fill="var(--warn)"/>
+    <text x="166" y="132" font-size="12" font-style="italic" fill="var(--warn)">F<tspan font-size="9" dy="3">res</tspan></text>
+    <path d="M130 200 A30 30 0 0 0 118 176" fill="none" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="134" y="188" font-size="10" fill="var(--ink-3)">53°</text>
+    {/* ---------- partículas ---------- */}
+    <circle cx="100" cy="200" r="9" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="62" y="222" font-size="11" fill="var(--ink-2)">B · 1,0 kg</text>
+    <circle cx="360" cy="200" r="14" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="330" y="180" font-size="11" fill="var(--ink-2)">A · 4,0 kg</text>
+    <circle cx="100" cy="30" r="12" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="120" y="34" font-size="11" fill="var(--ink-2)">C · 3,0 kg</text>
+  </svg>
+  <figcaption>
+
+O arranjo do exemplo abaixo. Cada força sobre $B$ aponta **para** a partícula que a produz; a resultante é a diagonal do paralelogramo — soma de vetores, não de módulos.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — três partículas em ângulo reto">
+
+A partícula $B$ ($1{,}0\ \mathrm{kg}$) está na origem; $A$ ($4{,}0\ \mathrm{kg}$) está em $x = 0{,}20\ \mathrm{m}$ e $C$ ($3{,}0\ \mathrm{kg}$) em $y = 0{,}15\ \mathrm{m}$. Qual a força gravitacional resultante sobre $B$?
+
+A força de $A$, no sentido $+x$:
+
+$$
+F_{BA} = \frac{6{,}67\times10^{-11} \cdot 4{,}0 \cdot 1{,}0}{(0{,}20)^2} = 6{,}67\times10^{-9}\ \mathrm{N}
+$$
+
+A força de $C$, no sentido $+y$:
+
+$$
+F_{BC} = \frac{6{,}67\times10^{-11} \cdot 3{,}0 \cdot 1{,}0}{(0{,}15)^2} = 8{,}89\times10^{-9}\ \mathrm{N}
+$$
+
+As duas são perpendiculares, então a resultante sai por Pitágoras, e o ângulo com o eixo $x$ pela tangente:
+
+$$
+F_{\text{res}} = \sqrt{(6{,}67)^2 + (8{,}89)^2}\times10^{-9} = 1{,}11\times10^{-8}\ \mathrm{N}
+\qquad
+\theta = \arctan\frac{8{,}89}{6{,}67} = 53{,}1^\circ
+$$
+
+Repare na ordem de grandeza: **cem bilionésimos de newton** entre massas de quilogramas. É por isso que a gravidade entre objetos comuns passa despercebida.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-g-terra" num="05" titulo="A gravidade perto da superfície e no interior da Terra">
+
+**A ideia.** O $g$ que se usa em todo problema de física é só a lei de Newton aplicada a um corpo na superfície da Terra: a força dividida pela massa do corpo. Daí sai como $g$ muda com a altitude, por que ele é um pouco menor no equador e — o resultado mais curioso — como ele **diminui** quando se desce para o interior do planeta, até zerar no centro.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $a_g$ — aceleração gravitacional produzida pela Terra a uma distância $r$ do centro, em $\mathrm{m/s^2}$;
+- $M$ — massa da Terra, $5{,}98\times10^{24}\ \mathrm{kg}$;
+- $R$ — raio da Terra, $6{,}37\times10^{6}\ \mathrm{m}$;
+- $r$ — distância do ponto ao **centro** da Terra, em $\mathrm{m}$;
+- $\rho$ — massa específica (densidade) do planeta, em $\mathrm{kg/m^3}$;
+- $M_{\text{int}}$ — massa contida dentro da esfera de raio $r$, em $\mathrm{kg}$.
+
+</Caixa>
+
+### Do lado de fora: o $g$ cai com $1/r^2$
+
+Igualando a força de Newton a $m\,a_g$, a massa do corpo se cancela:
+
+$$
+\boxed{\;a_g = \frac{G\,M}{r^2}\;}
+$$
+
+Na superfície, $r = R$ e $a_g \approx 9{,}83\ \mathrm{m/s^2}$. Subindo, $r$ cresce e $a_g$ cai — mas devagar no começo: a $400\ \mathrm{km}$ de altitude ainda sobram quase 90% do valor da superfície.
+
+<Caixa tipo="dica" rotulo="Altitude não é distância">
+
+A fórmula usa $r = R + h$, **distância ao centro**. Trocar $r$ pela altitude $h$ é o erro mais comum da unidade. Quando o enunciado pede "a que altitude o $g$ cai à metade", resolva para $r$ e **subtraia o raio** no fim.
+
+</Caixa>
+
+### Por que o $g$ medido não é exatamente $GM/R^2$
+
+Três coisas separam o $a_g$ da fórmula do $g$ que uma balança mede:
+
+1. **a Terra não é uniforme** — a densidade varia de região para região, e o $g$ varia junto;
+2. **a Terra não é uma esfera** — é achatada nos polos, então quem está no equador está mais longe do centro;
+3. **a Terra gira.** Quem está no equador descreve um círculo, e parte da atração gravitacional é "gasta" como força centrípeta. O peso aparente fica menor: $g = a_g - \omega^2 R$.
+
+O efeito da rotação é pequeno: $\omega^2 R \approx 0{,}034\ \mathrm{m/s^2}$ no equador e zero nos polos. Nos problemas de prova, salvo pedido explícito, **despreza-se** e usa-se $g = a_g$.
+
+### O teorema das cascas
+
+Newton provou duas coisas sobre uma casca esférica de massa uniforme:
+
+- uma partícula **fora** da casca é atraída como se toda a massa da casca estivesse no centro;
+- uma partícula **dentro** da casca sofre força resultante **nula** — as partes da casca que puxam para um lado cancelam exatamente as que puxam para o outro.
+
+A segunda afirmação é a que resolve o interior da Terra.
+
+### Do lado de dentro: o $g$ cresce com $r$
+
+Num ponto a uma distância $r \lt R$ do centro, divida a Terra em duas partes: a esfera de raio $r$ abaixo do ponto e as cascas acima dele. **As cascas de cima não fazem força nenhuma** (teorema das cascas). Sobra só a esfera interna, que age como partícula no centro:
+
+$$
+a_g = \frac{G\,M_{\text{int}}}{r^2}
+\qquad\text{com}\qquad
+M_{\text{int}} = \rho\,\frac{4}{3}\pi r^3 = M\,\frac{r^3}{R^3}
+$$
+
+Substituindo:
+
+$$
+\boxed{\;a_g = \frac{G\,M}{R^3}\,r \qquad (r \le R,\ \text{densidade uniforme})\;}
+$$
+
+O $g$ é **proporcional a $r$**: vale zero no centro, cresce em linha reta e alcança o valor da superfície em $r = R$. A partir daí, cai com $1/r^2$.
+
+<Figura>
+  <svg viewBox="0 0 420 230" role="img" aria-label="Gráfico de g em função da distância r ao centro. De zero até R, uma reta subindo até g na superfície; depois de R, uma curva que cai como 1 sobre r ao quadrado">
+    {/* ---------- eixos ---------- */}
+    <line x1="50" y1="190" x2="405" y2="190" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="410,190 400,186 400,194" fill="var(--ink-2)"/>
+    <line x1="50" y1="190" x2="50" y2="30" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="50,25 46,35 54,35" fill="var(--ink-2)"/>
+    <text x="398" y="208" font-size="12" font-style="italic" fill="var(--ink-2)">r</text>
+    <text x="30" y="34" font-size="12" font-style="italic" fill="var(--ink-2)">g</text>
+    <text x="40" y="206" font-size="11" fill="var(--ink-3)">0</text>
+    {/* ---------- marcas de R e g_s ---------- */}
+    <line x1="150" y1="60" x2="150" y2="190" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="50" y1="60" x2="150" y2="60" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="146" y="206" font-size="12" font-style="italic" fill="var(--ink-2)">R</text>
+    <text x="22" y="64" font-size="12" font-style="italic" fill="var(--ink-2)">g<tspan font-size="9" dy="3">s</tspan></text>
+    {/* ---------- dentro: reta ---------- */}
+    <line x1="50" y1="190" x2="150" y2="60" stroke="var(--accent)" stroke-width="2.2"/>
+    {/* ---------- fora: 1/r² ---------- */}
+    <path d="M150.0 60.0 L160.0 82.6 L170.0 99.7 L180.0 113.1 L190.0 123.7 L200.0 132.2 L210.0 139.2 L220.0 145.0 L230.0 149.9 L240.0 154.0 L250.0 157.5 L260.0 160.5 L270.0 163.1 L280.0 165.4 L290.0 167.4 L300.0 169.2 L310.0 170.8 L320.0 172.2 L330.0 173.4 L340.0 174.5 L350.0 175.6 L360.0 176.5 L370.0 177.3 L380.0 178.1 L390.0 178.8" fill="none" stroke="var(--warn)" stroke-width="2.2"/>
+    <text x="72" y="184" font-size="10" fill="var(--accent)">dentro: g ∝ r</text>
+    <text x="196" y="108" font-size="11" fill="var(--warn)">fora: g ∝ 1/r²</text>
+  </svg>
+  <figcaption>
+
+O $g$ de uma esfera uniforme em função da distância ao centro. **O máximo está na superfície**: tanto subir quanto descer diminui o $g$.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="dica" rotulo="O túnel que atravessa a Terra">
+
+Dentro da esfera, a força é $F = -\dfrac{G M m}{R^3}\,r$: proporcional ao deslocamento e de sentido oposto. É exatamente a forma da lei de Hooke — um corpo solto num túnel reto que atravessasse a Terra faria um **movimento harmônico simples**, ida e volta, com $\omega^2 = GM/R^3$.
+
+</Caixa>
+
+### Planeta com a mesma massa específica
+
+Escrevendo $M = \rho\,\frac{4}{3}\pi R^3$ na expressão da superfície:
+
+$$
+\boxed{\;g_s = \frac{G\,M}{R^2} = \frac{4}{3}\pi\,G\,\rho\,R\;}
+$$
+
+Com a **mesma densidade**, o $g$ da superfície é **proporcional ao raio**. Um planeta da mesma rocha que a Terra e com o dobro do raio tem o dobro do $g$ — mesmo tendo oito vezes a massa.
+
+<Caixa tipo="macete" rotulo="Razões em vez de números">
+
+Quando o enunciado compara dois planetas, **não calcule $G$, $M$ e $R$ separadamente**: divida uma expressão pela outra e deixe as constantes se cancelarem.
+
+- mesma densidade: $\dfrac{g_2}{g_1} = \dfrac{R_2}{R_1}$;
+- mesma massa: $\dfrac{g_2}{g_1} = \left(\dfrac{R_1}{R_2}\right)^{2}$;
+- dentro da Terra uniforme, a uma fração $f$ do raio: $g = f\,g_s$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — subindo, descendo e trocando de planeta">
+
+Use $M = 5{,}98\times10^{24}\ \mathrm{kg}$ e $R = 6{,}37\times10^{6}\ \mathrm{m}$.
+
+**(a) Na superfície e a $400\ \mathrm{km}$ de altitude.** A distância ao centro passa de $6{,}37\times10^6$ para $6{,}77\times10^6\ \mathrm{m}$:
+
+$$
+g_s = \frac{6{,}67\times10^{-11}\cdot 5{,}98\times10^{24}}{(6{,}37\times10^{6})^2} = 9{,}83\ \mathrm{m/s^2}
+\qquad
+g_{400} = \frac{6{,}67\times10^{-11}\cdot 5{,}98\times10^{24}}{(6{,}77\times10^{6})^2} = 8{,}70\ \mathrm{m/s^2}
+$$
+
+Na altitude de uma estação espacial o $g$ ainda é 88,5% do da superfície. Os astronautas flutuam porque estão **em queda livre** junto com a estação, e não por falta de gravidade.
+
+**(b) A meio caminho do centro**, supondo a Terra uniforme: $g = \tfrac{1}{2}\,g_s = 4{,}91\ \mathrm{m/s^2}$.
+
+**(c) Um planeta da mesma densidade da Terra e raio $0{,}40\,R$:**
+
+$$
+g = 0{,}40 \times 9{,}83 = 3{,}93\ \mathrm{m/s^2}
+$$
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-energia-grav" num="06" titulo="Energia potencial gravitacional e velocidade de escape">
+
+**A ideia.** O $U = mgh$ só vale perto do chão, onde $g$ é praticamente constante. Para um foguete que sobe milhares de quilômetros, o $g$ muda no caminho e é preciso a expressão geral da energia potencial. Com ela, a conservação da energia responde às duas perguntas que a prova faz: **até onde sobe** um corpo lançado com certa velocidade, e **qual a velocidade mínima** para ele nunca mais voltar.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $U$ — energia potencial gravitacional do sistema das duas massas, em $\mathrm{J}$;
+- $M,\ m$ — massa do planeta e do corpo, em $\mathrm{kg}$;
+- $r$ — distância entre os centros, em $\mathrm{m}$;
+- $R$ — raio do planeta, em $\mathrm{m}$;
+- $v_{\text{esc}}$ — velocidade de escape, em $\mathrm{m/s}$;
+- $K = \tfrac{1}{2}mv^2$ — energia cinética, em $\mathrm{J}$.
+
+</Caixa>
+
+### A energia potencial com referência no infinito
+
+$$
+\boxed{\;U = -\,\frac{G\,M\,m}{r}\;}
+$$
+
+A referência ($U = 0$) foi posta com as massas **infinitamente afastadas**. Como a gravidade é atrativa, aproximar as massas libera energia — então a energia potencial em qualquer distância finita é **negativa**, e fica mais negativa quanto mais perto.
+
+<Caixa tipo="dica" rotulo="O sinal negativo não é um detalhe">
+
+O $U$ só **cresce** (fica menos negativo) quando $r$ aumenta. Subir é ganhar energia potencial, como no $mgh$ — os dois contam a mesma história, só com referências diferentes. Para uma variação pequena de altura perto do chão, $\Delta U = GMm\left(\dfrac{1}{R} - \dfrac{1}{R+h}\right) \approx mgh$.
+
+</Caixa>
+
+Para várias partículas, a energia potencial do sistema é a soma sobre **cada par**, contado uma vez só: três partículas têm três pares, quatro partículas têm seis.
+
+A força gravitacional é **conservativa**: o trabalho dela entre dois pontos não depende do caminho, só de $r$ inicial e final. É isso que autoriza a conservação da energia mecânica.
+
+### A conservação da energia longe da superfície
+
+Sem atrito com o ar, a energia mecânica do corpo se conserva:
+
+$$
+\boxed{\;\frac{1}{2}m v_i^2 - \frac{G M m}{r_i} = \frac{1}{2}m v_f^2 - \frac{G M m}{r_f}\;}
+$$
+
+A massa $m$ se cancela de todos os termos. Para um lançamento vertical a partir da superfície, $r_i = R$; na **altura máxima**, $v_f = 0$ e $r_f = r_{\max}$.
+
+### Velocidade de escape
+
+É a menor velocidade de lançamento com que o corpo chega ao infinito — $r_f \to \infty$ — com velocidade nula. A energia final é zero, então a inicial também tem de ser:
+
+$$
+\frac{1}{2}m v_{\text{esc}}^2 - \frac{G M m}{R} = 0
+\qquad\Longrightarrow\qquad
+\boxed{\;v_{\text{esc}} = \sqrt{\frac{2\,G\,M}{R}}\;}
+$$
+
+Na Terra, $v_{\text{esc}} \approx 11{,}2\ \mathrm{km/s}$. Ela **não depende da massa do corpo** nem da direção do lançamento (desde que a trajetória não bata no planeta).
+
+<Caixa tipo="dica">
+
+A energia cinética que corresponde à velocidade de escape tem um nome útil: **energia de escape**, $K_{\text{esc}} = \dfrac{G M m}{R}$. Ela é exatamente o módulo da energia potencial na superfície.
+
+</Caixa>
+
+### Lançamento com uma fração da velocidade ou da energia de escape
+
+É a forma que a prova usa. Seja $f$ a fração da **energia** de escape com que o corpo é lançado, $K_i = f\,\dfrac{GMm}{R}$. A conservação dá:
+
+$$
+f\,\frac{G M m}{R} - \frac{G M m}{R} = -\,\frac{G M m}{r_{\max}}
+\qquad\Longrightarrow\qquad
+\boxed{\;r_{\max} = \frac{R}{1-f}\;}
+$$
+
+<Caixa tipo="macete" rotulo="Fração da velocidade ou fração da energia?">
+
+Leia o enunciado com atenção, porque as duas frações não são a mesma coisa:
+
+- "lançado com **metade da energia** de escape": $f = 0{,}5$;
+- "lançado com **metade da velocidade** de escape": a energia cinética vai com o quadrado da velocidade, então $f = (0{,}5)^2 = 0{,}25$.
+
+Depois, $r_{\max} = R/(1-f)$ é a distância **ao centro**. A altura acima da superfície é $h = r_{\max} - R = \dfrac{f}{1-f}\,R$.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — lançado com 60% da velocidade de escape">
+
+Um projétil sai verticalmente da superfície da Terra ($R = 6{,}37\times10^6\ \mathrm{m}$) com $v = 0{,}60\,v_{\text{esc}}$. Até que altura ele sobe?
+
+A fração da **energia** de escape é o quadrado da fração da velocidade:
+
+$$
+f = (0{,}60)^2 = 0{,}36
+$$
+
+A distância máxima ao centro:
+
+$$
+r_{\max} = \frac{R}{1 - 0{,}36} = \frac{6{,}37\times10^6}{0{,}64} = 9{,}95\times10^{6}\ \mathrm{m}
+$$
+
+E a altura acima da superfície:
+
+$$
+h = r_{\max} - R = 3{,}58\times10^{6}\ \mathrm{m} \approx 3580\ \mathrm{km}
+$$
+
+Com $U = mgh$ e $g$ constante, a conta daria $h = v^2/2g = 0{,}36\,R \approx 2290\ \mathrm{km}$ — **subestima em mais de mil quilômetros**, porque ignora que o $g$ enfraquece na subida.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-kepler" num="07" titulo="As leis de Kepler">
+
+**A ideia.** Kepler tirou três regras empíricas das observações dos planetas, décadas antes de Newton; depois, Newton mostrou que todas as três **saem da lei da gravitação**. Elas valem para qualquer corpo em órbita de outro bem mais massivo — planetas em volta do Sol, satélites em volta da Terra, estrelas em volta do centro da galáxia. A terceira é a que mais cai em prova, porque liga o **período** ao **tamanho** da órbita e à **massa** do corpo central.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $T$ — período da órbita (tempo de uma volta), em $\mathrm{s}$;
+- $a$ — semieixo maior da elipse, em $\mathrm{m}$ (na órbita circular, $a = r$, o raio);
+- $e$ — excentricidade da elipse, sem unidade ($e = 0$ é o círculo);
+- $M$ — massa do corpo central, em $\mathrm{kg}$;
+- $r_p,\ r_a$ — distâncias do periélio e do afélio ao corpo central, em $\mathrm{m}$;
+- $\dfrac{dA}{dt}$ — taxa com que a reta corpo central–planeta varre área, em $\mathrm{m^2/s}$.
+
+</Caixa>
+
+### Primeira lei: as órbitas são elipses
+
+> Todo planeta descreve uma órbita **elíptica**, com o Sol em um dos **focos**.
+
+A elipse é descrita pelo semieixo maior $a$ e pela excentricidade $e$. O ponto mais próximo do Sol é o **periélio** e o mais afastado, o **afélio**:
+
+$$
+r_p = a\,(1-e)
+\qquad
+r_a = a\,(1+e)
+\qquad
+r_p + r_a = 2a
+$$
+
+As órbitas dos planetas do Sistema Solar são quase circulares (a da Terra tem $e = 0{,}0167$), e é por isso que a maioria dos problemas trata a órbita como círculo de raio $r$.
+
+### Segunda lei: áreas iguais em tempos iguais
+
+> A reta que liga o planeta ao Sol varre **áreas iguais em intervalos de tempo iguais**.
+
+Por trás dela está a **conservação do momento angular** — a força gravitacional aponta para o Sol, não faz torque em relação a ele, e $L$ fica constante. A taxa de área varrida vale $\dfrac{dA}{dt} = \dfrac{L}{2m}$. A consequência prática: o planeta **anda mais rápido no periélio e mais devagar no afélio**, e, como nesses dois pontos a velocidade é perpendicular ao raio,
+
+$$
+\boxed{\;r_p\,v_p = r_a\,v_a\;}
+$$
+
+<Figura>
+  <svg viewBox="0 0 420 250" role="img" aria-label="Elipse com o Sol em um dos focos, à direita. Duas fatias com a mesma área: perto do Sol, curta e larga; longe do Sol, comprida e estreita. Marcados o periélio, o afélio e o semieixo maior a">
+    {/* ---------- áreas varridas ---------- */}
+    <path d="M302 120 L314.9 49.3 A150 110 0 0 1 314.9 190.7 Z" fill="var(--accent)" opacity="0.32"/>
+    <path d="M302 120 L51.8 137.1 A150 110 0 0 1 51.8 102.9 Z" fill="var(--accent)" opacity="0.32"/>
+    {/* ---------- órbita ---------- */}
+    <ellipse cx="200" cy="120" rx="150" ry="110" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="50" y1="120" x2="350" y2="120" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    {/* ---------- focos ---------- */}
+    <circle cx="302" cy="120" r="9" fill="var(--warn)"/>
+    <text x="268" y="146" font-size="11" fill="var(--warn)">Sol</text>
+    <circle cx="98" cy="120" r="2.5" fill="var(--ink-3)"/>
+    <text x="94" y="148" font-size="11" fill="var(--ink-3)">F</text>
+    <circle cx="200" cy="120" r="2" fill="var(--ink-3)"/>
+    {/* ---------- planeta ---------- */}
+    <circle cx="314.9" cy="49.3" r="5" fill="var(--ok)"/>
+    {/* ---------- semieixo maior ---------- */}
+    <line x1="50" y1="238" x2="200" y2="238" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="50" y1="233" x2="50" y2="243" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <line x1="200" y1="233" x2="200" y2="243" stroke="var(--ink-3)" stroke-width="0.8"/>
+    <text x="120" y="233" font-size="12" font-style="italic" fill="var(--ink-3)">a</text>
+    {/* ---------- rótulos ---------- */}
+    <text x="356" y="124" font-size="11" fill="var(--ink-2)">periélio</text>
+    <text x="4" y="94" font-size="11" fill="var(--ink-2)">afélio</text>
+    <text x="330" y="40" font-size="11" fill="var(--accent)">rápido</text>
+    <text x="10" y="160" font-size="11" fill="var(--accent)">devagar</text>
+  </svg>
+  <figcaption>
+
+As duas fatias azuis têm a mesma área e são varridas no mesmo tempo. Perto do Sol a fatia é curta e larga, longe dele é comprida e estreita — **o planeta corre no periélio e se arrasta no afélio**. A excentricidade está exagerada.
+
+  </figcaption>
+</Figura>
+
+### Terceira lei: a lei dos períodos
+
+> O quadrado do período é proporcional ao cubo do semieixo maior.
+
+Para a órbita circular, a dedução cabe numa linha: a gravidade é a força centrípeta,
+
+$$
+\frac{G M m}{r^2} = m\,\omega^2 r = m\left(\frac{2\pi}{T}\right)^{2} r
+\qquad\Longrightarrow\qquad
+\boxed{\;T^2 = \frac{4\pi^2}{G\,M}\,r^3\;}
+$$
+
+Para a elipse, vale a mesma fórmula com $r$ trocado pelo semieixo maior $a$. **A massa $m$ do corpo que orbita não aparece** — só a do corpo central.
+
+<Caixa tipo="macete" rotulo="A terceira lei usada nos dois sentidos">
+
+- **Sabe a massa, quer a órbita**: dado $T$, ache $r = \left(\dfrac{G M T^2}{4\pi^2}\right)^{1/3}$ — é a conta da órbita geoestacionária, na próxima seção;
+- **sabe a órbita, quer a massa**: medindo $T$ e $r$ de qualquer coisa que gira em volta de um corpo, $M = \dfrac{4\pi^2 r^3}{G\,T^2}$. É **assim que se pesa** um planeta (por uma lua dele), o Sol (pela Terra) ou o buraco negro do centro da galáxia (por uma estrela que o orbita);
+- dois corpos em volta do **mesmo** centro: $\dfrac{T_1^2}{r_1^3} = \dfrac{T_2^2}{r_2^3}$, e as constantes nem entram na conta.
+
+</Caixa>
+
+### Estrela dupla: a massa que entra é a soma
+
+Quando os dois corpos têm massas comparáveis — duas estrelas, por exemplo — nenhum fica parado: ambos giram em torno do **centro de massa** comum, com o mesmo período. A terceira lei continua valendo, com duas trocas:
+
+$$
+\boxed{\;T^2 = \frac{4\pi^2}{G\,(m_1+m_2)}\,r^3\;}
+$$
+
+- $r$ é a **distância entre as duas estrelas**, e não o raio da órbita de cada uma em torno do centro de massa;
+- a massa é a **soma** $m_1 + m_2$. A observação do período e da separação dá a massa total do par; para separar as duas, é preciso saber onde fica o centro de massa ($m_1 r_1 = m_2 r_2$).
+
+<Caixa tipo="dica" rotulo="Unidades astronômicas economizam conta">
+
+Para o Sol, $T^2/r^3 = 1$ quando $T$ está em **anos** e $r$ em **unidades astronômicas** ($1\ \mathrm{UA} = 1{,}496\times10^{11}\ \mathrm{m}$, a distância Terra–Sol). Então, em volta de uma massa $M$ qualquer,
+
+$$
+\frac{M}{M_{\odot}} = \frac{r^3\ (\mathrm{UA})}{T^2\ (\mathrm{anos})}
+$$
+
+É um jeito rápido de conferir a ordem de grandeza da resposta em SI.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — pesando uma estrela dupla">
+
+Duas estrelas giram uma em volta da outra com período de $50$ anos, separadas por $20\ \mathrm{UA}$. Qual a massa total do par?
+
+Em SI, $r = 20 \times 1{,}496\times10^{11} = 2{,}99\times10^{12}\ \mathrm{m}$ e $T = 50 \times 3{,}156\times10^{7} = 1{,}58\times10^{9}\ \mathrm{s}$:
+
+$$
+m_1 + m_2 = \frac{4\pi^2 r^3}{G\,T^2} = \frac{4\pi^2\,(2{,}99\times10^{12})^3}{6{,}67\times10^{-11}\,(1{,}58\times10^{9})^2} = 6{,}37\times10^{30}\ \mathrm{kg}
+$$
+
+Conferindo pelo atalho das unidades astronômicas:
+
+$$
+\frac{m_1+m_2}{M_\odot} = \frac{20^3}{50^2} = \frac{8000}{2500} = 3{,}2
+$$
+
+E, de fato, $3{,}2 \times 1{,}99\times10^{30} = 6{,}37\times10^{30}\ \mathrm{kg}$ — o par tem pouco mais de três massas solares.
+
+</Caixa>
+
+</Topico>
+
+<Topico id="ot-orbitas" num="08" titulo="Satélites: órbitas, energia e a órbita geoestacionária">
+
+**A ideia.** Um satélite em órbita está **caindo o tempo todo** — só que anda de lado rápido o bastante para a Terra "fugir" debaixo dele na mesma medida em que ele cai. Para cada raio de órbita existe uma única velocidade que faz isso, e a energia do satélite também fica determinada pelo raio. Daí saem a velocidade orbital, a energia para pôr um satélite em órbita e a órbita geoestacionária, a dos satélites de TV e meteorologia.
+
+<Caixa tipo="simbolos" rotulo="O que é cada símbolo">
+
+- $v$ — velocidade do satélite na órbita circular, em $\mathrm{m/s}$;
+- $r$ — raio da órbita, medido do **centro** da Terra, em $\mathrm{m}$;
+- $a$ — semieixo maior da órbita elíptica, em $\mathrm{m}$;
+- $K,\ U,\ E$ — energias cinética, potencial e mecânica do satélite, em $\mathrm{J}$;
+- $M,\ m$ — massas da Terra e do satélite, em $\mathrm{kg}$.
+
+</Caixa>
+
+### A velocidade orbital
+
+Na órbita circular, a gravidade faz o papel de força centrípeta:
+
+$$
+\frac{G M m}{r^2} = \frac{m v^2}{r}
+\qquad\Longrightarrow\qquad
+\boxed{\;v = \sqrt{\frac{G\,M}{r}}\;}
+$$
+
+Quanto **mais alta** a órbita, **mais devagar** o satélite anda — e mais longo é o período, como manda a terceira lei de Kepler. Repare que $v_{\text{esc}} = \sqrt{2}\,v$: na mesma distância, escapar exige $\sqrt{2}$ vezes a velocidade de órbita.
+
+### A energia na órbita circular
+
+Da equação acima, $m v^2 = GMm/r$, então a energia cinética é **metade do módulo** da potencial:
+
+$$
+K = \frac{G M m}{2r}
+\qquad
+U = -\,\frac{G M m}{r}
+\qquad\Longrightarrow\qquad
+\boxed{\;E = K + U = -\,\frac{G\,M\,m}{2\,r}\;}
+$$
+
+As três se amarram por $K = -E$ e $U = 2E$. A energia mecânica é **negativa**: o satélite está **preso** à Terra, e seria preciso fornecer $|E|$ para soltá-lo.
+
+<Figura>
+  <svg viewBox="0 0 420 240" role="img" aria-label="Gráfico das energias de um satélite em órbita circular em função do raio. A energia cinética K é positiva e cai com r; a potencial U é negativa e duas vezes mais funda; a mecânica E é negativa e igual a menos K. Uma linha vertical num raio r marca K, E e U">
+    {/* ---------- eixos ---------- */}
+    <line x1="50" y1="120" x2="405" y2="120" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="410,120 400,116 400,124" fill="var(--ink-2)"/>
+    <line x1="50" y1="230" x2="50" y2="20" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="50,15 46,25 54,25" fill="var(--ink-2)"/>
+    <text x="402" y="104" font-size="12" font-style="italic" fill="var(--ink-2)">r</text>
+    <text x="60" y="24" font-size="11" fill="var(--ink-2)">energia</text>
+    <text x="38" y="124" font-size="11" fill="var(--ink-3)">0</text>
+    {/* ---------- curvas ---------- */}
+    <path d="M106.0 70.0 L113.0 75.6 L120.0 80.0 L127.0 83.6 L134.0 86.7 L141.0 89.2 L148.0 91.4 L155.0 93.3 L162.0 95.0 L176.0 97.8 L190.0 100.0 L204.0 101.8 L218.0 103.3 L232.0 104.6 L246.0 105.7 L260.0 106.7 L274.0 107.5 L288.0 108.2 L302.0 108.9 L316.0 109.5 L330.0 110.0 L344.0 110.5 L358.0 110.9 L372.0 111.3 L386.0 111.7 L400.0 112.0" fill="none" stroke="var(--ok)" stroke-width="2.2"/>
+    <path d="M106.0 220.0 L113.0 208.9 L120.0 200.0 L127.0 192.7 L134.0 186.7 L141.0 181.5 L148.0 177.1 L155.0 173.3 L162.0 170.0 L176.0 164.4 L190.0 160.0 L204.0 156.4 L218.0 153.3 L232.0 150.8 L246.0 148.6 L260.0 146.7 L274.0 145.0 L288.0 143.5 L302.0 142.2 L316.0 141.1 L330.0 140.0 L344.0 139.0 L358.0 138.2 L372.0 137.4 L386.0 136.7 L400.0 136.0" fill="none" stroke="var(--warn)" stroke-width="2.2"/>
+    <path d="M106.0 170.0 L113.0 164.4 L120.0 160.0 L127.0 156.4 L134.0 153.3 L141.0 150.8 L148.0 148.6 L155.0 146.7 L162.0 145.0 L176.0 142.2 L190.0 140.0 L204.0 138.2 L218.0 136.7 L232.0 135.4 L246.0 134.3 L260.0 133.3 L274.0 132.5 L288.0 131.8 L302.0 131.1 L316.0 130.5 L330.0 130.0 L344.0 129.5 L358.0 129.1 L372.0 128.7 L386.0 128.3 L400.0 128.0" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+    {/* ---------- leitura num raio ---------- */}
+    <line x1="190" y1="92" x2="190" y2="170" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <circle cx="190" cy="100" r="3" fill="var(--ok)"/>
+    <circle cx="190" cy="140" r="3" fill="var(--accent)"/>
+    <circle cx="190" cy="160" r="3" fill="var(--warn)"/>
+    <text x="78" y="64" font-size="12" font-style="italic" fill="var(--ok)">K = GMm/2r</text>
+    <text x="240" y="129" font-size="11" font-style="italic" fill="var(--accent)">E = −K</text>
+    <text x="198" y="176" font-size="12" font-style="italic" fill="var(--warn)">U = 2E</text>
+  </svg>
+  <figcaption>
+
+As três energias de um satélite em órbita circular. Em qualquer raio, $K$ e $E$ têm o mesmo módulo e sinais opostos, e $U$ é o dobro de $E$. Subir de órbita **aumenta** $E$ (fica menos negativa) e **diminui** $K$.
+
+  </figcaption>
+</Figura>
+
+<Caixa tipo="dica" rotulo="O paradoxo do freio">
+
+Um satélite que perde energia (por atrito com a atmosfera rarefeita, por exemplo) **cai para uma órbita mais baixa e anda mais rápido**. $E$ diminuiu, mas $K = -E$ aumentou. A diferença vem da energia potencial, que caiu o dobro.
+
+</Caixa>
+
+### Órbitas elípticas
+
+Para uma elipse de semieixo maior $a$, a energia tem a mesma forma, com $r$ trocado por $a$:
+
+$$
+\boxed{\;E = -\,\frac{G\,M\,m}{2\,a}\;}
+$$
+
+A energia depende **só do semieixo maior**, e não da excentricidade: órbitas de mesmo $a$ — uma circular, outra bem achatada — têm a mesma energia e, pela terceira lei de Kepler, o mesmo período. Ao longo da elipse, $K$ e $U$ trocam energia entre si (mais rápido no periélio, mais devagar no afélio), mas a soma não muda.
+
+<Caixa tipo="macete" rotulo="Velocidade em qualquer ponto da elipse">
+
+Juntando $E = -GMm/2a$ com $E = \tfrac{1}{2}mv^2 - GMm/r$:
+
+$$
+v^2 = G\,M\left(\frac{2}{r} - \frac{1}{a}\right)
+$$
+
+Com $r = a$ volta a velocidade da órbita circular; com $a \to \infty$, volta a de escape. Uma fórmula só resolve periélio, afélio e qualquer ponto no meio.
+
+</Caixa>
+
+### A órbita geoestacionária
+
+Um satélite **geoestacionário** fica parado sobre o mesmo ponto do equador. Para isso, a órbita tem de ser circular, no plano do equador, no mesmo sentido da rotação da Terra e com período igual ao da rotação: $T = 24\ \mathrm{h}$ (a rigor, o dia sideral, $23\ \mathrm{h}\ 56\ \mathrm{min}$ — a diferença muda o raio em menos de 0,2%). A terceira lei de Kepler, usada para achar o raio, dá
+
+$$
+\boxed{\;r = \left(\frac{G\,M\,T^2}{4\pi^2}\right)^{1/3} \approx 4{,}2\times10^{7}\ \mathrm{m}\;}
+$$
+
+— cerca de **6,6 raios terrestres** do centro, ou **35 900 km de altitude**. É única: todo satélite geoestacionário está nesse mesmo anel.
+
+<Caixa tipo="macete" rotulo="O roteiro da questão de geoestacionário">
+
+1. $T = 24\ \mathrm{h} = 86\,400\ \mathrm{s}$ — **em segundos**;
+2. Kepler dá o raio $r$, medido do centro;
+3. altitude: $h = r - R$;
+4. velocidade: $v = 2\pi r/T$ ou $v = \sqrt{GM/r}$ (as duas têm de bater — é uma boa conferência);
+5. energia, se pedirem: $E = -GMm/2r$. A energia para levar o satélite do chão até lá é $E_{\text{órbita}} - U_{\text{superfície}}$, desprezando a rotação da Terra.
+
+</Caixa>
+
+### Einstein e a gravitação
+
+A teoria de Newton funciona tão bem que é a usada para lançar sondas, mas não é a palavra final. Einstein partiu do **princípio de equivalência**: dentro de uma cabine fechada, não há experimento capaz de distinguir se se está parado num campo gravitacional $g$ ou sendo acelerado com $a = g$ no espaço vazio. Daí a **relatividade geral** reinterpreta a gravitação como **curvatura do espaço-tempo** causada pelas massas: os corpos seguem as trajetórias "mais retas" possíveis num espaço curvo, e o que se vê como atração é a forma dessa curvatura. Para os problemas desta cadeira, Newton basta; a diferença só aparece perto de massas extremas ou em medidas muito precisas, como as correções de relógio que o GPS precisa fazer.
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — um satélite geoestacionário de 500 kg">
+
+Com $M = 5{,}98\times10^{24}\ \mathrm{kg}$, $R = 6{,}37\times10^6\ \mathrm{m}$ e $T = 86\,400\ \mathrm{s}$:
+
+**Raio e altitude:**
+
+$$
+r = \left(\frac{6{,}67\times10^{-11}\cdot 5{,}98\times10^{24}\cdot (86\,400)^2}{4\pi^2}\right)^{1/3} = 4{,}23\times10^{7}\ \mathrm{m}
+\qquad
+h = r - R = 3{,}59\times10^{7}\ \mathrm{m}
+$$
+
+**Velocidade:**
+
+$$
+v = \frac{2\pi r}{T} = \frac{2\pi \cdot 4{,}23\times10^{7}}{86\,400} = 3{,}07\times10^{3}\ \mathrm{m/s}
+$$
+
+**Energia mecânica na órbita:**
+
+$$
+E = -\frac{G M m}{2 r} = -\frac{6{,}67\times10^{-11}\cdot 5{,}98\times10^{24}\cdot 500}{2\cdot 4{,}23\times10^{7}} = -2{,}36\times10^{9}\ \mathrm{J}
+$$
+
+**Energia para pôr o satélite lá**, partindo do repouso na superfície ($U_0 = -GMm/R = -3{,}13\times10^{10}\ \mathrm{J}$):
+
+$$
+\Delta E = E - U_0 = -2{,}36\times10^{9} + 3{,}13\times10^{10} = 2{,}89\times10^{10}\ \mathrm{J}
+$$
+
+Quase toda essa energia vai para **subir** — a energia de movimento na órbita é menos de um décimo dela.
 
 </Caixa>
 
