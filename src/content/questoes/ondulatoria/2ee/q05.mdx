@@ -1,0 +1,54 @@
+---
+origem: "2024.2 · 2026.1"
+tema: "Adiabática · Compressão brusca e resfriamento isobárico"
+temaId: adiabatica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q05.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um gás ideal com $\gamma = 1{,}30$ ocupa $1{,}00\ \mathrm{L}$ a $273\ \mathrm{K}$ e $1{,}00\ \mathrm{atm}$. Ele é comprimido **adiabaticamente**, de forma brusca, até a metade do volume inicial.<br />(a) Qual é a pressão final?<br />(b) Qual é a temperatura final?<br />(c) Em seguida, o gás é resfriado até $273\ \mathrm{K}$ a pressão constante. Qual é o volume final?
+
+<Gabarito>
+(a) $p_f \approx 2{,}46\ \mathrm{atm}$  ·  (b) $T_f \approx 336\ \mathrm{K}$  ·  (c) $V \approx 0{,}406\ \mathrm{L}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que adiabática.** "De forma brusca" quer dizer que a compressão é rápida demais para trocar calor com a vizinhança: $Q = 0$, e para o gás ideal vale
+
+$$
+pV^{\gamma} = \text{constante}
+\qquad
+TV^{\gamma - 1} = \text{constante}
+$$
+
+**Passo 2 — (a) a pressão.** Com $V_i/V_f = 2$:
+
+$$
+p_f = p_i\left(\frac{V_i}{V_f}\right)^{\gamma} = 1{,}00 \cdot 2^{1{,}30} \approx 2{,}46\ \mathrm{atm}
+$$
+
+**Passo 3 — (b) a temperatura.**
+
+$$
+T_f = T_i\left(\frac{V_i}{V_f}\right)^{\gamma - 1} = 273 \cdot 2^{0{,}30} \approx 336\ \mathrm{K}
+$$
+
+**Passo 4 — (c) o resfriamento isobárico.** A pressão fica em $2{,}46\ \mathrm{atm}$, então $V/T$ é constante, partindo de $0{,}500\ \mathrm{L}$ a $336\ \mathrm{K}$:
+
+$$
+V = 0{,}500 \cdot \frac{273}{336} \approx 0{,}406\ \mathrm{L}
+$$
+
+**Conferência —** o estado final tem a mesma temperatura do inicial, então pela lei de Boyle $pV$ tem de ser o mesmo: $2{,}46 \cdot 0{,}406 \approx 1{,}00\ \mathrm{atm \cdot L}$ ✔ De outro jeito, $V = 0{,}500 \cdot 2^{-0{,}30} = 1{,}00/2^{1{,}30}$, o inverso do fator de pressão ✔
+</Passos>
