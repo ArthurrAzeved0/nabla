@@ -1,0 +1,126 @@
+---
+origem: "2025.1"
+tema: "Ciclos · Isotérmica, isobárica e isocórica, comparado com Carnot"
+temaId: ciclos
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um gás ideal com $\gamma = 5/3$ passa por um ciclo de três etapas: uma **expansão isotérmica** em que o volume aumenta $50\%$; uma **contração isobárica** até o volume inicial; e um **aquecimento a volume constante** até a temperatura inicial. (a) Desenhe o diagrama $p\times V$ do ciclo. (b) Calcule o rendimento do ciclo. (c) Compare com o rendimento de uma máquina de Carnot que opere entre as temperaturas extremas do ciclo.
+
+<Figura>
+  <svg viewBox="0 0 320 210" role="img" aria-label="Diagrama p–V do ciclo: de A, em V0 e p0, uma isoterma desce até B, em 1,5 V0 e dois terços de p0; uma reta horizontal volta a C, em V0 e dois terços de p0; uma reta vertical sobe de C até A">
+    {/* eixos */}
+    <line x1="30" y1="180" x2="305" y2="180" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="310,180 302,176 302,184" fill="var(--ink-3)"/>
+    <text x="300" y="196" font-size="11" fill="var(--ink-3)">V</text>
+    <line x1="30" y1="180" x2="30" y2="20" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="30,15 26,23 34,23" fill="var(--ink-3)"/>
+    <text x="12" y="22" font-size="11" fill="var(--ink-3)">p</text>
+    {/* guias */}
+    <line x1="30" y1="50" x2="190" y2="50" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="30" y1="93.3" x2="190" y2="93.3" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="190" y1="93.3" x2="190" y2="180" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="270" y1="93.3" x2="270" y2="180" stroke="var(--line-2)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="180" y="196" font-size="10" fill="var(--ink-3)">V<tspan font-size="9" dy="3">0</tspan><tspan dy="-3"></tspan></text>
+    <text x="252" y="196" font-size="10" fill="var(--ink-3)">1,5 V<tspan font-size="9" dy="3">0</tspan><tspan dy="-3"></tspan></text>
+    <text x="8" y="54" font-size="10" fill="var(--ink-3)">p<tspan font-size="9" dy="3">0</tspan><tspan dy="-3"></tspan></text>
+    <text x="0" y="97" font-size="10" fill="var(--ink-3)">⅔p<tspan font-size="9" dy="3">0</tspan><tspan dy="-3"></tspan></text>
+    {/* isoterma A→B */}
+    <polyline points="190.0,50.0 198.0,56.2 206.0,61.8 214.0,67.0 222.0,71.7 230.0,76.0 238.0,80.0 246.0,83.7 254.0,87.1 262.0,90.3 270.0,93.3" fill="none" stroke="var(--warn)" stroke-width="2"/>
+    <polygon points="234,78 223.3,77 226.9,69.8" fill="var(--warn)"/>
+    <text x="236" y="66" font-size="10" fill="var(--warn)">T<tspan font-size="9" dy="3">0</tspan><tspan dy="-3"></tspan></text>
+    {/* isobárica B→C */}
+    <line x1="270" y1="93.3" x2="190" y2="93.3" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="226,93.3 236,89.3 236,97.3" fill="var(--accent)"/>
+    {/* isocórica C→A */}
+    <line x1="190" y1="93.3" x2="190" y2="50" stroke="var(--ok)" stroke-width="2"/>
+    <polygon points="190,67 186,77 194,77" fill="var(--ok)"/>
+    {/* estados */}
+    <circle cx="190" cy="50" r="3.2" fill="var(--ink-2)"/>
+    <circle cx="270" cy="93.3" r="3.2" fill="var(--ink-2)"/>
+    <circle cx="190" cy="93.3" r="3.2" fill="var(--ink-2)"/>
+    <text x="176" y="46" font-size="11" fill="var(--ink-2)">A</text>
+    <text x="276" y="90" font-size="11" fill="var(--ink-2)">B</text>
+    <text x="176" y="110" font-size="11" fill="var(--ink-2)">C</text>
+  </svg>
+  <figcaption>
+
+A isoterma $A\to B$ (a $T_0$) abre o ciclo; a isobárica $B\to C$ o leva a $T_C = \tfrac{2}{3}T_0$, a menor temperatura; a isocórica $C\to A$ o fecha. O ciclo é percorrido no sentido horário, logo o trabalho líquido é positivo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) diagrama acima  ·  (b) $\varepsilon \approx 0{,}0797 = 7{,}97\%$  ·  (c) $\varepsilon_C = 1/3 \approx 33{,}3\%$: o ciclo rende cerca de um quarto ($0{,}24$) do de Carnot
+</Gabarito>
+
+<Passos>
+**Passo 1 — os três estados.** Chame de $A$ o estado inicial, com $V_0$, $p_0$ e $T_0$. A isotérmica leva a $V_B = 1{,}5V_0$ com $T_B = T_0$, logo $p_B = p_0/1{,}5 = \tfrac{2}{3}p_0$. A isobárica mantém essa pressão até $V_C = V_0$, e então
+
+$$
+T_C = T_B\,\frac{V_C}{V_B} = \frac{T_0}{1{,}5} = \tfrac{2}{3}T_0
+$$
+
+A isocórica $C\to A$ reaquece o gás de $\tfrac{2}{3}T_0$ até $T_0$. Com $\gamma = 5/3$, o gás é monoatômico: $C_V = \tfrac{3}{2}R$ e $C_p = \tfrac{5}{2}R$.
+
+**Passo 2 — trabalho e calor em cada etapa** (tudo em unidades de $nRT_0$).
+
+Isotérmica $A\to B$: $\Delta E_{\text{int}} = 0$, então
+
+$$
+Q_{AB} = W_{AB} = nRT_0\ln\frac{V_B}{V_A} = nRT_0\ln 1{,}5 = 0{,}4055\,nRT_0
+$$
+
+Isobárica $B\to C$, com $\Delta T = -\tfrac{1}{3}T_0$:
+
+$$
+W_{BC} = p_B\,(V_C - V_B) = nR\,\Delta T = -\tfrac{1}{3}\,nRT_0
+\qquad
+Q_{BC} = nC_p\,\Delta T = -\tfrac{5}{6}\,nRT_0
+$$
+
+Isocórica $C\to A$, com $\Delta T = +\tfrac{1}{3}T_0$:
+
+$$
+W_{CA} = 0
+\qquad
+Q_{CA} = nC_V\,\Delta T = +\tfrac{1}{2}\,nRT_0
+$$
+
+**Passo 3 — o rendimento.** O trabalho líquido é a soma dos trabalhos, e o calor **absorvido** é a soma só dos calores positivos ($AB$ e $CA$):
+
+$$
+W_{\text{líq}} = \left(\ln 1{,}5 - \tfrac{1}{3}\right)nRT_0 = 0{,}0721\,nRT_0
+\qquad
+Q_Q = \left(\ln 1{,}5 + \tfrac{1}{2}\right)nRT_0 = 0{,}9055\,nRT_0
+$$
+
+$$
+\varepsilon = \frac{W_{\text{líq}}}{Q_Q} = \frac{0{,}0721}{0{,}9055} = 0{,}0797 \approx 7{,}97\%
+$$
+
+**Passo 4 — comparação com Carnot.** As temperaturas extremas do ciclo são $T_0$ (em $A$ e $B$) e $\tfrac{2}{3}T_0$ (em $C$):
+
+$$
+\varepsilon_C = 1 - \frac{T_F}{T_Q} = 1 - \frac{2}{3} = \tfrac{1}{3} \approx 33{,}3\%
+$$
+
+O ciclo rende $0{,}0797/0{,}333 \approx 0{,}24$ do máximo teórico, como manda a segunda lei: nenhuma máquina operando entre essas temperaturas supera Carnot. A perda está nas trocas de calor a temperatura variável — na isocórica, por exemplo, o gás recebe calor estando mais frio que $T_0$.
+
+**Conferência —** no ciclo $\Delta E_{\text{int}} = 0$, então $Q_{AB} + Q_{BC} + Q_{CA}$ tem de ser igual a $W_{\text{líq}}$: $0{,}4055 - 0{,}8333 + 0{,}5 = 0{,}0721$ ✔ E pelo calor rejeitado: $\varepsilon = 1 - |Q_{BC}|/Q_Q = 1 - 0{,}8333/0{,}9055 = 0{,}0797$ ✔
+
+**Sobre o gabarito oficial —** ele monta as mesmas contas e chega a $W_{\text{líq}} = 0{,}072\,nRT_0$ e $Q_Q = 0{,}905\,nRT_0$, mas escreve $\varepsilon = 0{,}0792$; a divisão $0{,}072/0{,}905$ dá $0{,}0796$ (e $0{,}0797$ sem arredondar). A conclusão do item (c) não muda.
+</Passos>
