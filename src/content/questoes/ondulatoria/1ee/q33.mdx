@@ -1,0 +1,41 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "Fluidos em movimento · Continuidade num borrifador"
+temaId: continuidade
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q33.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma mangueira de jardim de diâmetro interno $1{,}9\ \mathrm{cm}$ está ligada a um borrifador (estacionário), que é só um recipiente com $24$ furos de $0{,}13\ \mathrm{cm}$ de diâmetro. A água circula na mangueira a $0{,}91\ \mathrm{m/s}$. Com que velocidade ela sai dos furos do borrifador?
+
+<Gabarito>
+$v_f \approx 8{,}1\ \mathrm{m/s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — Continuidade com várias saídas.** Toda a água que chega pela mangueira sai pelos $24$ furos, todos iguais. A vazão da mangueira é a soma das vazões dos furos:
+
+$$
+A_m v_m = 24\,A_f v_f
+$$
+
+**Passo 2 — As áreas.** Ambas são círculos, $A = \pi d^2/4$, e o fator $\pi/4$ cancela dos dois lados — dá para trabalhar com os diâmetros em centímetros, porque só a razão entre eles importa:
+
+$$
+v_f = \frac{d_m^2}{24\,d_f^2}\,v_m = \frac{1{,}9^2}{24 \cdot 0{,}13^2} \cdot 0{,}91 = \frac{3{,}61}{0{,}4056} \cdot 0{,}91 = \boxed{8{,}1\ \mathrm{m/s}}
+$$
+
+**Conferência —** pelas vazões em SI: a mangueira leva $\pi(0{,}0095)^2 \cdot 0{,}91 = 2{,}58 \times 10^{-4}\ \mathrm{m^3/s}$, e os furos, com área total $24\,\pi(0{,}00065)^2 = 3{,}19 \times 10^{-5}\ \mathrm{m^2}$, a $8{,}1\ \mathrm{m/s}$ escoam $2{,}58 \times 10^{-4}\ \mathrm{m^3/s}$ ✔. A área total dos furos é cerca de $1/9$ da seção da mangueira, e a velocidade sobe na mesma proporção.
+</Passos>
