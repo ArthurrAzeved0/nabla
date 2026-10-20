@@ -1,0 +1,70 @@
+---
+origem: "Final 2023.1"
+tema: "Máquina térmica · Rendimento acima do de Carnot"
+temaId: carnot
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q03.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um inventor apresenta o projeto de uma máquina térmica de rendimento $\varepsilon = 0{,}8$ que opera entre dois reservatórios, a $100\ \mathrm{K}$ e a $200\ \mathrm{K}$, produzindo $1{,}0\ \mathrm{kJ}$ de trabalho a cada ciclo.
+
+(a) Quanto calor a máquina receberia do reservatório quente e quanto rejeitaria para o frio, a cada ciclo?
+
+(b) Uma máquina de Carnot que opere entre os mesmos reservatórios e absorva, a cada ciclo, o mesmo calor que a máquina do inventor produziria quanto trabalho? Comente o resultado à luz da segunda lei da termodinâmica.
+
+<Gabarito>
+(a) $|Q_Q| = 1250\ \mathrm{J}$ recebidos; $|Q_F| = 250\ \mathrm{J}$ rejeitados<br />
+(b) $\varepsilon_C = 0{,}50$ e $W = 625\ \mathrm{J}$: a máquina do inventor ($\varepsilon = 0{,}8 \gt 0{,}5$) violaria a segunda lei — é impossível
+</Gabarito>
+
+<Passos>
+**Passo 1 — (a) o calor recebido.** O rendimento é a fração do calor absorvido que vira trabalho:
+
+$$
+\varepsilon = \frac{W}{|Q_Q|}
+\qquad\Longrightarrow\qquad
+|Q_Q| = \frac{W}{\varepsilon} = \frac{1000\ \mathrm{J}}{0{,}8} = \boxed{1250\ \mathrm{J}}
+$$
+
+**Passo 2 — o calor rejeitado.** Num ciclo $\Delta E_{\text{int}} = 0$, e a primeira lei dá $|Q_Q| = W + |Q_F|$:
+
+$$
+|Q_F| = 1250 - 1000 = \boxed{250\ \mathrm{J}}
+$$
+
+**Passo 3 — (b) o rendimento de Carnot.** Entre $T_Q = 200\ \mathrm{K}$ e $T_F = 100\ \mathrm{K}$, nenhuma máquina supera
+
+$$
+\varepsilon_C = 1 - \frac{T_F}{T_Q} = 1 - \frac{100}{200} = 0{,}50
+$$
+
+Com o mesmo calor absorvido, $|Q_Q| = 1250\ \mathrm{J}$:
+
+$$
+W_C = \varepsilon_C\,|Q_Q| = 0{,}50 \cdot 1250 = \boxed{625\ \mathrm{J}}
+$$
+
+**Passo 4 — o comentário.** A máquina de Carnot é reversível e tem o **maior rendimento possível** entre dois reservatórios dados. A do inventor, com $\varepsilon = 0{,}8$, tiraria $1000\ \mathrm{J}$ de onde a de Carnot tira só $625\ \mathrm{J}$ — isso contraria a segunda lei, e o projeto **não pode funcionar**.
+
+O mesmo se vê pela entropia: por ciclo, a máquina volta ao estado inicial, e só os reservatórios mudam,
+
+$$
+\Delta S = -\frac{1250}{200} + \frac{250}{100} = -6{,}25 + 2{,}50 = -3{,}75\ \mathrm{J/K} \lt 0
+$$
+
+e a entropia de um sistema fechado não pode diminuir.
+
+**Conferência —** a de Carnot rejeitaria $1250 - 625 = 625\ \mathrm{J}$, e então $-1250/200 + 625/100 = 0$: a máquina reversível é exatamente a fronteira $\Delta S = 0$ ✔
+</Passos>
