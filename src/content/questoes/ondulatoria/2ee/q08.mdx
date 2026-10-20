@@ -1,0 +1,55 @@
+---
+origem: "2025.1"
+tema: "Calores molares · Aquecimento isobárico de gás monoatômico"
+temaId: calores-molares
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q08.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A temperatura de $2{,}00$ mols de um gás ideal **monoatômico** sobe $15{,}0\ \mathrm{K}$ com a **pressão mantida constante**. Calcule (a) o trabalho $W$ realizado pelo gás; (b) o calor $Q$ que o gás recebe; (c) a variação $\Delta E_{\text{int}}$ da sua energia interna; (d) a variação $\Delta K$ da energia cinética média de translação **por átomo**. Use $R = 8{,}31\ \mathrm{J/(mol\cdot K)}$ e $k_B = 1{,}38\times10^{-23}\ \mathrm{J/K}$.
+
+<Gabarito>
+(a) $W \approx 249\ \mathrm{J}$  ·  (b) $Q \approx 623\ \mathrm{J}$  ·  (c) $\Delta E_{\text{int}} \approx 374\ \mathrm{J}$  ·  (d) $\Delta K \approx 3{,}11\times10^{-22}\ \mathrm{J}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o trabalho a pressão constante.** Com $p$ fixo, $W = p\,\Delta V$, e a equação dos gases ideais troca $p\,\Delta V$ por $nR\,\Delta T$:
+
+$$
+W = nR\,\Delta T = (2{,}00)(8{,}31)(15{,}0) = 249{,}3\ \mathrm{J}
+$$
+
+**Passo 2 — o calor usa o calor molar a pressão constante.** Para gás monoatômico, $C_V = \tfrac{3}{2}R$ e $C_p = C_V + R = \tfrac{5}{2}R$:
+
+$$
+Q = nC_p\,\Delta T = (2{,}00)\left(\tfrac{5}{2}\cdot 8{,}31\right)(15{,}0) = 623{,}3\ \mathrm{J}
+$$
+
+**Passo 3 — a energia interna só depende de $\Delta T$.** Em qualquer processo de gás ideal,
+
+$$
+\Delta E_{\text{int}} = nC_V\,\Delta T = (2{,}00)\left(\tfrac{3}{2}\cdot 8{,}31\right)(15{,}0) = 374{,}0\ \mathrm{J}
+$$
+
+**Passo 4 — a energia cinética média por átomo.** A energia cinética média de translação de cada átomo é $K_{\text{méd}} = \tfrac{3}{2}k_B T$; logo
+
+$$
+\Delta K = \tfrac{3}{2}k_B\,\Delta T = \tfrac{3}{2}(1{,}38\times10^{-23})(15{,}0) = 3{,}11\times10^{-22}\ \mathrm{J}
+$$
+
+**Conferência —** a primeira lei fecha: $\Delta E_{\text{int}} + W = 374{,}0 + 249{,}3 = 623{,}3\ \mathrm{J} = Q$ ✔ E por outro caminho: $N\,\Delta K = (2{,}00)(6{,}02\times10^{23})(3{,}105\times10^{-22}) \approx 374\ \mathrm{J} = \Delta E_{\text{int}}$, como deve ser num gás monoatômico, cuja energia interna é toda de translação ✔
+
+**Sobre o gabarito oficial —** ele escreve a fórmula certa, $Q = nC_p\,\Delta T$ com $C_p = \tfrac{5}{2}R$, mas dá $Q = 249{,}3\ \mathrm{J}$, que é o valor do trabalho repetido. A conta $\tfrac{5}{2}(2{,}00)(8{,}31)(15{,}0)$ dá $623\ \mathrm{J}$, e só esse valor satisfaz a primeira lei com os $374\ \mathrm{J}$ e os $249\ \mathrm{J}$ que o próprio gabarito obtém nos outros itens.
+</Passos>
