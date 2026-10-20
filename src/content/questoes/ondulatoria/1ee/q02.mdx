@@ -1,0 +1,110 @@
+---
+origem: "2023.1"
+tema: "Oscilações · Pêndulo invertido (balão de hélio)"
+temaId: pendulo-simples
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q02.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um balão leve, cheio de hélio ($\rho_{He} = 0{,}180\ \mathrm{kg/m^3}$), está preso ao chão por um fio leve de comprimento $L = 3{,}0\ \mathrm{m}$, no ar livre ($\rho_{ar} = 1{,}290\ \mathrm{kg/m^3}$). Em equilíbrio o fio fica vertical, com o balão em cima: é um pêndulo simples "invertido". Despreze o atrito com o ar, a massa do invólucro e o tamanho do balão diante do fio. O balão é afastado da vertical por um ângulo pequeno $\theta$ e solto. Use $g = 10{,}0\ \mathrm{m/s^2}$.
+
+(a) Represente o diagrama de forças sobre o balão fora do equilíbrio.<br />
+(b) Mostre que o movimento resultante é harmônico simples.<br />
+(c) Determine o período do movimento.
+
+<Figura>
+  <svg viewBox="0 0 340 180" role="img" aria-label="(a) balão de hélio preso ao chão por um fio vertical de comprimento L; (b) o mesmo balão afastado de um ângulo theta da vertical, com o peso para baixo, o empuxo para cima e a tração ao longo do fio, para o ponto de amarração">
+    {/* (a) */}
+    <line x1="20" y1="150" x2="130" y2="150" stroke="var(--ink-3)" stroke-width="2"/>
+    <line x1="75" y1="150" x2="75" y2="40" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <circle cx="75" cy="32" r="9" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.4"/>
+    <text x="90" y="30" font-size="10" fill="var(--accent)">He</text>
+    <text x="80" y="100" font-size="10" fill="var(--ink-3)">L</text>
+    <text x="70" y="170" font-size="10" fill="var(--ink-3)">(a)</text>
+    <line x1="30" y1="60" x2="30" y2="88" stroke="var(--ink-3)" stroke-width="1.3"/>
+    <polygon points="30,95 26,85 34,85" fill="var(--ink-3)"/>
+    <text x="36" y="80" font-size="10" fill="var(--ink-3)">g</text>
+    {/* (b) */}
+    <line x1="180" y1="150" x2="320" y2="150" stroke="var(--ink-3)" stroke-width="2"/>
+    <line x1="220" y1="150" x2="220" y2="40" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+    {/* fio a 22 graus: topo em (220+110 sen22, 150-110 cos22) = (261, 48) */}
+    <line x1="220" y1="150" x2="261" y2="48" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <path d="M 220 120 A 30 30 0 0 1 231.2 122.2" fill="none" stroke="var(--ink-3)" stroke-width="0.9"/>
+    <text x="222" y="114" font-size="10" fill="var(--ink-3)">θ</text>
+    <circle cx="261" cy="48" r="7" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.4"/>
+    {/* empuxo para cima */}
+    <line x1="261" y1="41" x2="261" y2="10" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="261,4 257,14 265,14" fill="var(--ok)"/>
+    <text x="267" y="16" font-size="10" fill="var(--ok)">E = ρ<tspan font-size="9" dy="3">ar</tspan><tspan dy="-3">Vg</tspan></text>
+    {/* peso para baixo */}
+    <line x1="261" y1="55" x2="261" y2="68" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="261,74 257,64 265,64" fill="var(--warn)"/>
+    <text x="267" y="74" font-size="10" fill="var(--warn)">P = ρ<tspan font-size="9" dy="3">He</tspan><tspan dy="-3">Vg</tspan></text>
+    {/* tração ao longo do fio, para baixo */}
+    <line x1="258" y1="56" x2="248.5" y2="79.5" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="246,86 245,75 252.5,78" fill="var(--accent)"/>
+    <text x="230" y="80" font-size="10" fill="var(--accent)">τ</text>
+    <text x="215" y="170" font-size="10" fill="var(--ink-3)">(b)</text>
+  </svg>
+  <figcaption>
+
+Fora do equilíbrio: o empuxo $E$ vence o peso $P$ e a diferença $E - P$ aponta para cima, como uma "gravidade invertida"; a tração $\tau$ segue o fio até o ponto de amarração.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) Peso $P = \rho_{He}Vg$ para baixo, empuxo $E = \rho_{ar}Vg$ para cima e tração $\tau$ ao longo do fio, apontando para o ponto de amarração.<br />
+(b) $\ddot\theta = -\omega^2\theta$ com $\omega^2 = \dfrac{(\rho_{ar}-\rho_{He})\,g}{\rho_{He}\,L}$: MHS para ângulos pequenos.<br />
+(c) $T = 1{,}39\ \mathrm{s}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as forças (a).** Sobre o balão de volume $V$ atuam três forças: o peso do hélio, $P = \rho_{He}Vg$, vertical para baixo; o empuxo do ar, $E = \rho_{ar}Vg$, vertical para cima; e a tração do fio, ao longo dele, apontando para o ponto onde está amarrado. Como $\rho_{ar} \gt \rho_{He}$, a resultante vertical $E - P$ aponta para **cima** — é ela que mantém o fio esticado.
+
+**Passo 2 — a componente que restaura (b).** A tração não tem componente perpendicular ao fio. Na direção do arco de raio $L$, só sobra a componente de $E - P$, que puxa o balão de volta à vertical:
+
+$$
+F_\perp = -(\rho_{ar}-\rho_{He})\,V g\,\mathrm{sen}\,\theta
+$$
+
+A massa que se move é a do hélio, $m = \rho_{He}V$, e a aceleração ao longo do arco é $L\ddot\theta$. A segunda lei de Newton dá
+
+$$
+\rho_{He}V\,L\,\ddot\theta = -(\rho_{ar}-\rho_{He})\,V g\,\mathrm{sen}\,\theta
+$$
+
+**Passo 3 — ângulo pequeno.** Com $\mathrm{sen}\,\theta \approx \theta$, o volume se cancela:
+
+$$
+\ddot\theta = -\underbrace{\frac{(\rho_{ar}-\rho_{He})\,g}{\rho_{He}\,L}}_{\omega^2}\;\theta
+$$
+
+É a equação $\ddot\theta = -\omega^2\theta$ do MHS: a aceleração angular é proporcional ao deslocamento e de sinal oposto. O balão é um pêndulo simples sob uma "gravidade efetiva" voltada para cima, $g_{ef} = \dfrac{\rho_{ar}-\rho_{He}}{\rho_{He}}\,g$.
+
+**Passo 4 — o período (c).**
+
+$$
+\omega^2 = \frac{(1{,}290-0{,}180)\cdot 10{,}0}{0{,}180\cdot 3{,}0} = 20{,}6\ \mathrm{s^{-2}}
+\qquad\Longrightarrow\qquad
+\omega = 4{,}53\ \mathrm{rad/s}
+$$
+
+$$
+T = \frac{2\pi}{\omega} = \frac{2\pi}{4{,}53} = \boxed{1{,}39\ \mathrm{s}}
+$$
+
+**Conferência —** pelo pêndulo simples com a gravidade efetiva: $g_{ef} = \dfrac{1{,}110}{0{,}180}\cdot 10 = 61{,}7\ \mathrm{m/s^2}$ e $T = 2\pi\sqrt{L/g_{ef}} = 2\pi\sqrt{3{,}0/61{,}7} = 1{,}39\ \mathrm{s}$ ✔ Limite: se o gás tivesse a massa específica do ar, $g_{ef} \to 0$ e $T \to \infty$ — o balão não voltaria à vertical ✔
+</Passos>
