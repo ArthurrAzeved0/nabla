@@ -1,0 +1,114 @@
+---
+origem: "Final 2023.1"
+tema: "Empuxo · Cubo preso por mola ao fundo"
+temaId: empuxo
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q01.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um cubo de madeira de massa $500\ \mathrm{g}$ e volume $1000\ \mathrm{cm^3}$ é mantido **totalmente submerso** na água ($1{,}0\ \mathrm{g/cm^3}$) de um recipiente, preso a uma mola ideal vertical de constante $k = 5{,}0\ \mathrm{N/cm}$ cuja outra ponta está fixa no fundo. Use $g = 10\ \mathrm{m/s^2}$.
+
+(a) No equilíbrio, a mola fica esticada ou comprimida? De quanto é a deformação? Explique.
+
+(b) Se a água for trocada por um líquido de densidade $5{,}0\ \mathrm{g/cm^3}$, com o cubo ainda todo submerso, a mola fica esticada ou comprimida, e de quanto?
+
+(c) Em cada uma das duas situações, que fração do volume do cubo ficaria submersa se a mola fosse removida?
+
+<Figura>
+  <svg viewBox="0 0 320 210" role="img" aria-label="Recipiente com líquido; o cubo de madeira está todo submerso, preso por uma mola vertical ao fundo; o empuxo aponta para cima, o peso e a força da mola para baixo">
+    {/* recipiente e líquido */}
+    <rect x="80" y="34" width="160" height="156" fill="var(--surface-2)"/>
+    <line x1="80" y1="34" x2="240" y2="34" stroke="var(--accent)" stroke-width="1.4"/>
+    <polyline points="80,14 80,190 240,190 240,14" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+    <text x="246" y="38" font-size="10" fill="var(--accent)">superfície</text>
+    {/* cubo */}
+    <rect x="130" y="60" width="60" height="60" fill="var(--line-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <text x="146" y="94" font-size="10" fill="var(--ink-2)">cubo</text>
+    {/* mola */}
+    <polyline points="160,120 160,128 150,133 170,141 150,149 170,157 150,165 170,173 160,178 160,190" fill="none" stroke="var(--ink-3)" stroke-width="1.5"/>
+    <text x="176" y="160" font-size="10" fill="var(--ink-3)">k</text>
+    {/* forças */}
+    <line x1="120" y1="90" x2="120" y2="52" stroke="var(--ok)" stroke-width="1.8"/>
+    <polygon points="120,46 116,56 124,56" fill="var(--ok)"/>
+    <text x="104" y="56" font-size="10" fill="var(--ok)">E</text>
+    <line x1="200" y1="90" x2="200" y2="128" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="200,134 196,124 204,124" fill="var(--warn)"/>
+    <text x="206" y="126" font-size="10" fill="var(--warn)">P</text>
+    <line x1="140" y1="122" x2="140" y2="148" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="140,154 136,144 144,144" fill="var(--warn)"/>
+    <text x="112" y="150" font-size="10" fill="var(--warn)">F<tspan font-size="9" dy="3">m</tspan><tspan dy="-3"></tspan></text>
+  </svg>
+  <figcaption>
+
+O cubo é mais leve que a água que desloca: o empuxo $E$ vence o peso $P$, e a mola, presa ao fundo, segura o cubo puxando-o para baixo com $F_m$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+(a) Esticada, $x = 1{,}0\ \mathrm{cm}$ ($F_m = 5{,}0\ \mathrm{N}$)<br />
+(b) Esticada, $x = 9{,}0\ \mathrm{cm}$ ($F_m = 45\ \mathrm{N}$)<br />
+(c) Na água, $50\%$; no líquido de $5{,}0\ \mathrm{g/cm^3}$, $10\%$
+</Gabarito>
+
+<Passos>
+**Passo 1 — peso e massa específica do cubo.** Com $m = 0{,}500\ \mathrm{kg}$ e $V = 1000\ \mathrm{cm^3} = 1{,}0\times10^{-3}\ \mathrm{m^3}$:
+
+$$
+P = mg = 0{,}500 \cdot 10 = 5{,}0\ \mathrm{N}
+\qquad
+\rho_c = \frac{500\ \mathrm{g}}{1000\ \mathrm{cm^3}} = 0{,}50\ \mathrm{g/cm^3}
+$$
+
+**Passo 2 — (a) empuxo na água.** Totalmente submerso, o cubo desloca o próprio volume:
+
+$$
+E = \rho_a V g = 1000 \cdot 1{,}0\times10^{-3} \cdot 10 = 10\ \mathrm{N}
+$$
+
+O empuxo é maior que o peso, então o cubo tende a subir; a mola, presa ao fundo, só o mantém no lugar puxando para baixo — logo está **esticada**. No equilíbrio, $E = P + F_m$:
+
+$$
+F_m = 10 - 5{,}0 = 5{,}0\ \mathrm{N}
+\qquad\Longrightarrow\qquad
+x = \frac{F_m}{k} = \frac{5{,}0\ \mathrm{N}}{5{,}0\ \mathrm{N/cm}} = \boxed{1{,}0\ \mathrm{cm}}
+$$
+
+**Passo 3 — (b) o líquido mais denso.** Com $\rho = 5{,}0\ \mathrm{g/cm^3} = 5000\ \mathrm{kg/m^3}$, o empuxo fica cinco vezes maior:
+
+$$
+E = 5000 \cdot 1{,}0\times10^{-3} \cdot 10 = 50\ \mathrm{N}
+$$
+
+A mola continua **esticada**, agora com
+
+$$
+F_m = 50 - 5{,}0 = 45\ \mathrm{N}
+\qquad\Longrightarrow\qquad
+x = \frac{45}{5{,}0} = \boxed{9{,}0\ \mathrm{cm}}
+$$
+
+**Passo 4 — (c) boiando sem a mola.** Sem a mola, o cubo sobe até que o empuxo da parte submersa iguale o peso: $\rho\,V_{\text{sub}}\,g = \rho_c V g$, ou seja,
+
+$$
+\frac{V_{\text{sub}}}{V} = \frac{\rho_c}{\rho}
+$$
+
+Na água, $0{,}50/1{,}0 = \boxed{50\%}$; no líquido denso, $0{,}50/5{,}0 = \boxed{10\%}$.
+
+**Conferência —** o item (c) confirma o sentido da mola: um cubo que boiaria com só $10\%$ submerso precisa de uma força grande para baixo para ficar inteiro dentro do líquido, e essa força é $E - P = (\rho - \rho_c)Vg = 4{,}5\cdot10^3 \cdot 10^{-3}\cdot 10 = 45\ \mathrm{N}$ ✔ Em unidades: $\mathrm{N}/(\mathrm{N/cm}) = \mathrm{cm}$ ✔
+
+**Sobre a resolução do acervo —** a resolução manuscrita chega aos mesmos $F_m = 45\ \mathrm{N}$ e $45 = 5x$, mas o algarismo escrito no resultado do item (b) se lê como **7 cm**. A conta dá $45/5 = 9{,}0\ \mathrm{cm}$.
+</Passos>
