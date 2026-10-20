@@ -1,0 +1,77 @@
+---
+origem: "2023.1"
+tema: "Ondas · Onda progressiva numa corda e estacionária"
+temaId: onda-progressiva
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q04.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Num laboratório de ensino monta-se uma corda uniforme de comprimento $1{,}00\ \mathrm{m}$ e massa $10\ \mathrm{g}$, esticada sob tração de $1{,}0\ \mathrm{N}$. A extremidade esquerda é ligada a um oscilador de amplitude $1{,}0\ \mathrm{cm}$ e frequência $20{,}0\ \mathrm{Hz}$, que no instante $t = 0$ começa puxando essa ponta **para baixo**; uma perturbação transversal passa a se propagar pela corda.
+
+(a) Determine a velocidade de propagação e o comprimento de onda. (0,5)<br />
+(b) Escreva o deslocamento transversal $y$, em função do tempo $t$, de um ponto da corda a uma distância $x$ da extremidade que oscila, depois de a onda atingi-lo e antes de ela chegar à outra extremidade. (1,5)<br />
+(c) Depois que a onda se reflete na extremidade oposta, forma-se uma onda estacionária. Quantos ventres serão observados? (0,5)
+
+<Gabarito>
+(a) $v = 10\ \mathrm{m/s}$ · $\lambda = 0{,}50\ \mathrm{m}$<br />
+(b) $y(x,t) = (0{,}010\ \mathrm{m})\,\mathrm{sen}(4\pi x - 40\pi t)$, com $x$ em metros e $t$ em segundos, válida para $x \le vt$ e $t \lt 0{,}1\ \mathrm{s}$<br />
+(c) 4 ventres
+</Gabarito>
+
+<Passos>
+**Passo 1 — a densidade linear.** A massa está distribuída uniformemente ao longo do metro de corda:
+
+$$
+\mu = \frac{m}{L} = \frac{0{,}010\ \mathrm{kg}}{1{,}00\ \mathrm{m}} = 0{,}010\ \mathrm{kg/m}
+$$
+
+**Passo 2 — velocidade e comprimento de onda (a).** A velocidade numa corda depende só da tração e de $\mu$:
+
+$$
+v = \sqrt{\frac{\tau}{\mu}} = \sqrt{\frac{1{,}0}{0{,}010}} = \boxed{10\ \mathrm{m/s}}
+\qquad
+\lambda = \frac{v}{f} = \frac{10}{20{,}0} = \boxed{0{,}50\ \mathrm{m}}
+$$
+
+**Passo 3 — os parâmetros da onda (b).**
+
+$$
+k = \frac{2\pi}{\lambda} = 4\pi\ \mathrm{rad/m}
+\qquad
+\omega = 2\pi f = 40\pi\ \mathrm{rad/s}
+\qquad
+y_m = 0{,}010\ \mathrm{m}
+$$
+
+A onda vai da esquerda para a direita, no sentido de $+x$, então a fase é $kx - \omega t$.
+
+**Passo 4 — a fase inicial.** Testando $y = y_m\,\mathrm{sen}(kx - \omega t + \phi)$ na ponta $x = 0$: com $\phi = 0$ fica $y(0,t) = -y_m\,\mathrm{sen}\,\omega t$, que vale zero em $t = 0$ e logo fica **negativo** — a ponta começa descendo, como o enunciado pede. Então $\phi = 0$:
+
+$$
+y(x,t) = \boxed{(0{,}010\ \mathrm{m})\,\mathrm{sen}(4\pi x - 40\pi t)}
+$$
+
+Ela só vale onde a frente já chegou ($x \le vt$) e enquanto a onda não alcança a outra ponta, isto é, $t \lt L/v = 0{,}1\ \mathrm{s}$.
+
+**Passo 5 — os ventres (c).** Numa corda com as duas pontas praticamente fixas (a amplitude do oscilador é pequena, e a ponta dele se comporta como um nó), a estacionária só se forma se o comprimento couber num número inteiro de meios comprimentos de onda, $L = n\,\lambda/2$:
+
+$$
+n = \frac{2L}{\lambda} = \frac{2 \cdot 1{,}00}{0{,}50} = 4
+$$
+
+O número inteiro confirma que $20\ \mathrm{Hz}$ é uma frequência de ressonância (o 4º harmônico). Entre dois nós consecutivos há um ventre, então são $\boxed{4\ \text{ventres}}$ (e 5 nós).
+
+**Conferência —** frequência fundamental: $f_1 = v/2L = 10/2 = 5\ \mathrm{Hz}$, e $20 = 4 \times 5$ ✔ Na equação da onda, a razão $\omega/k = 40\pi/4\pi = 10\ \mathrm{m/s}$ devolve a velocidade do item (a) ✔
+</Passos>
