@@ -1,0 +1,51 @@
+---
+origem: "Prova colegiada · sem data"
+tema: "Fluidos em movimento · Potência de uma bomba"
+temaId: bernoulli
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A água de um porão inundado é bombeada com velocidade de $5\ \mathrm{m/s}$ por uma mangueira de $1\ \mathrm{cm}$ de raio. A mangueira passa por uma janela $3\ \mathrm{m}$ acima do nível da água, por onde a água sai. Determine a potência da bomba. (Dado: $\rho_{\mathrm{H_2O}} = 10^3\ \mathrm{kg/m^3}$.)
+
+<Gabarito>
+$P \approx 66\ \mathrm{W}$ (com $g = 9{,}8\ \mathrm{m/s^2}$; com $g = 10\ \mathrm{m/s^2}$, $67\ \mathrm{W}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — Leitura dos dados.** A prova impressa traz "$103\ \mathrm{kg/m^3}$", que é $10^3$ com o expoente perdido na impressão — a correção à mão na própria folha confirma. A questão não dá $g$; usamos $9{,}8\ \mathrm{m/s^2}$ (a questão 4 da mesma prova usa $10$, e o resultado com esse valor vai no fim). A água é suposta parada na superfície do porão e em pressão atmosférica nas duas pontas.
+
+**Passo 2 — Massa bombeada por segundo.** A vazão mássica é $R_m = \rho A v$:
+
+$$
+R_m = 10^3 \cdot \pi (0{,}01)^2 \cdot 5 = 1{,}57\ \mathrm{kg/s}
+$$
+
+**Passo 3 — Energia que cada quilograma recebe.** A bomba tira a água do repouso no nível do porão e a entrega $3\ \mathrm{m}$ acima, a $5\ \mathrm{m/s}$. Como a pressão é a atmosférica nas duas pontas, o termo de pressão de Bernoulli não contribui, e o trabalho por unidade de massa é a soma das energias potencial e cinética ganhas:
+
+$$
+gh + \tfrac12 v^2 = 9{,}8 \cdot 3 + \tfrac12 \cdot 5^2 = 29{,}4 + 12{,}5 = 41{,}9\ \mathrm{J/kg}
+$$
+
+**Passo 4 — A potência.**
+
+$$
+P = R_m\left(gh + \tfrac12 v^2\right) = 1{,}57 \cdot 41{,}9 = \boxed{66\ \mathrm{W}}
+$$
+
+Com $g = 10\ \mathrm{m/s^2}$, $gh = 30\ \mathrm{J/kg}$ e $P = 1{,}57 \cdot 42{,}5 = 67\ \mathrm{W}$.
+
+**Conferência —** unidade: $\mathrm{(kg/s)(J/kg)} = \mathrm{J/s} = \mathrm{W}$ ✔. Outro caminho, pela energia de um intervalo $\Delta t = 1\ \mathrm{s}$: sai pela janela $1{,}57\ \mathrm{kg}$ de água, que ganhou $mgh = 1{,}57 \cdot 9{,}8 \cdot 3 = 46{,}2\ \mathrm{J}$ e $\tfrac12 m v^2 = \tfrac12 \cdot 1{,}57 \cdot 25 = 19{,}6\ \mathrm{J}$; somando, $65{,}8\ \mathrm{J}$ em $1\ \mathrm{s}$ ✔. Note que a bomba gasta quase um terço da potência só em dar velocidade à água.
+</Passos>
