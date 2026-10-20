@@ -1,0 +1,67 @@
+---
+origem: "2024.2"
+tema: "Ondas · Interferência de duas ondas defasadas de π/3"
+temaId: interferencia
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Duas ondas numa mesma corda são descritas por
+
+$$
+y_1 = 0{,}30\,\operatorname{sen}[\pi(5x - 200t)]
+\qquad\text{e}\qquad
+y_2 = 0{,}30\,\operatorname{sen}[\pi(5x - 200t) + \pi/3]
+$$
+
+com $y_1$, $y_2$ e $x$ em metros e $t$ em segundos. A superposição das duas é uma onda progressiva. Determine, para essa onda resultante:<br />(a) a amplitude;<br />(b) a velocidade;<br />(c) o comprimento de onda.
+
+<Gabarito>
+(a) $y_m' = 0{,}52\ \mathrm{m}$  ·  (b) $v = 40\ \mathrm{m/s}$, no sentido $+x$  ·  (c) $\lambda = 0{,}40\ \mathrm{m}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — Somar duas senoides iguais e defasadas.** As duas ondas têm a mesma amplitude $y_m = 0{,}30\ \mathrm{m}$, o mesmo $k$ e o mesmo $\omega$, e diferem só pela constante de fase $\phi = \pi/3$. Pela identidade $\operatorname{sen}\alpha + \operatorname{sen}\beta = 2\operatorname{sen}\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}$:
+
+$$
+y' = y_1 + y_2 = \left[2y_m\cos\frac{\phi}{2}\right]\operatorname{sen}\!\left(kx - \omega t + \frac{\phi}{2}\right)
+$$
+
+com $k = 5\pi\ \mathrm{rad/m}$ e $\omega = 200\pi\ \mathrm{rad/s}$, lidos dentro do colchete $\pi(5x - 200t)$.
+
+**Passo 2 — (a) A amplitude.** É o fator entre colchetes:
+
+$$
+y_m' = 2 \cdot 0{,}30 \cdot \cos\frac{\pi}{6} = 0{,}60 \cdot 0{,}866 = \boxed{0{,}52\ \mathrm{m}}
+$$
+
+**Passo 3 — (b) A velocidade.** A onda resultante tem o mesmo $k$ e o mesmo $\omega$ das componentes, logo a mesma velocidade:
+
+$$
+v = \frac{\omega}{k} = \frac{200\pi}{5\pi} = \boxed{40\ \mathrm{m/s}}
+$$
+
+O sinal de menos entre $kx$ e $\omega t$ diz que ela anda no sentido $+x$.
+
+**Passo 4 — (c) O comprimento de onda.**
+
+$$
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{5\pi} = \boxed{0{,}40\ \mathrm{m}}
+$$
+
+**Conferência —** pelos fasores: dois vetores de módulo $0{,}30$ com ângulo de $60°$ entre si somam $\sqrt{0{,}30^2 + 0{,}30^2 + 2 \cdot 0{,}30^2\cos 60°} = 0{,}30\sqrt{3} = 0{,}52\ \mathrm{m}$ ✔ E $v = \lambda f = 0{,}40 \cdot 100 = 40\ \mathrm{m/s}$, com $f = \omega/2\pi = 100\ \mathrm{Hz}$ ✔
+
+**Sobre o gabarito oficial —** os números finais estão certos, mas a resolução tem dois descuidos de digitação: escreve $y_1$ sem o $\pi$ na frente do parêntese e faz $v = 200\pi/4\pi$, quando o denominador é $k = 5\pi$ (é essa divisão que dá os $40\ \mathrm{m/s}$ que ele mesmo escreve).
+</Passos>
