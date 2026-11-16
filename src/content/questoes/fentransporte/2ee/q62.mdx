@@ -57,12 +57,14 @@ Três seções: **(1)** no tubo largo, onde está o manômetro; **(2)** no fim d
 
 <Gabarito>
 $$
-Q = 0{,}212\ \mathrm{m^3/s}, \quad v_2 = 12\ \mathrm{m/s}, \quad p_2 = 16{,}5\ \mathrm{kPa}, \quad H_T = 1{,}37\ \mathrm{m}, \quad p_3 = 2{,}8\ \mathrm{kPa}
+Q = 0{,}212\ \mathrm{m^3/s}, \quad Q_m = 212{,}1\ \mathrm{kg/s}, \quad v_2 = 12\ \mathrm{m/s}, \quad p_2 = 16{,}5\ \mathrm{kPa}, \quad H_T = 1{,}37\ \mathrm{m}, \quad p_3 = 2{,}8\ \mathrm{kPa}
 $$
 
-**a)** $F_{red} = p_1 A_1 - p_2 A_2 - \rho Q\,(v_2 - v_1) = 5938 - 292 - 1909 \approx \mathbf{3{,}74\ kN}$
+Com $\vec{F}_S = -\big[p_e A_e\,\vec{n}_e + p_s A_s\,\vec{n}_s + Q_m(\vec{v}_s - \vec{v}_e)\big]$ e $\vec{n}_e = -\vec{i}$, $\vec{n}_s = +\vec{i}$:
 
-**b)** $F_{turb} = (p_2 - p_3)\,A_2 = 13\,675 \times 0{,}01767 \approx \mathbf{242\ N}$
+**a)** $F_{S_x} = p_1 A_1 - p_2 A_2 - Q_m\,(v_2 - v_1) = 5938 - 292 - 1909 \approx \mathbf{3{,}74\ kN}$
+
+**b)** $F_{S_x} = (p_2 - p_3)\,A_2 = 13\,675 \times 0{,}01767 \approx \mathbf{242\ N}$
 
 Ambas no sentido do escoamento.
 </Gabarito>
@@ -87,14 +89,20 @@ $$
 - seção (1): tubo largo, $p_1 = 84\ \mathrm{kPa}$, $v_1 = 3\ \mathrm{m/s}$
 - seção (2): fim da redução, **antes** da turbina, $v_2 = 12\ \mathrm{m/s}$
 - seção (3): **depois** da turbina, mesmo diâmetro, $v_3 = v_2$
-- $\gamma = \rho g = 10^4\ \mathrm{N/m^3}$; $\rho Q = 212{,}1\ \mathrm{kg/s}$
+- $\gamma = \rho g = 10^4\ \mathrm{N/m^3}$; $Q_m = \rho Q = 212{,}1\ \mathrm{kg/s}$
 
 </Caixa>
 
-**Passo 2 — a pressão no fim da redução.** Bernoulli de (1) a (2), horizontal e sem perdas:
+**Passo 2 — a pressão no fim da redução.** Bernoulli de (1) a (2), horizontal ($z_1 = z_2$) e sem perdas:
 
 $$
-p_2 = p_1 + \frac{\rho}{2}\left(v_1^2 - v_2^2\right) = 84\,000 + 500\,(9 - 144) = 16\,500\ \mathrm{Pa}
+\frac{v_1^2}{2g} + \frac{p_1}{\gamma} = \frac{v_2^2}{2g} + \frac{p_2}{\gamma}
+\qquad\Longrightarrow\qquad
+\frac{p_2}{\gamma} = \frac{84\,000}{10^4} + \frac{9 - 144}{20} = 8{,}4 - 6{,}75 = 1{,}65\ \mathrm{m}
+$$
+
+$$
+p_2 = 16\,500\ \mathrm{Pa}
 $$
 
 **Passo 3 — a queda de pressão na turbina.** A turbina retira a carga
@@ -111,42 +119,40 @@ p_2 - p_3 = \gamma\,H_T = 13\,675\ \mathrm{Pa}
 p_3 = 2825\ \mathrm{Pa}
 $$
 
-**Passo 4 — a) a força na redução.** Volume de controle de (1) a (2), em torno do líquido dentro da redução. Com $F_x$ a força da parede **sobre o líquido**:
+**Passo 4 — a) a força na redução.** Volume de controle de (1) a (2), em torno do líquido dentro da redução. É a equação dos slides, que já dá a força **do fluido na superfície sólida**:
 
 $$
-p_1 A_1 - p_2 A_2 + F_x = \rho Q\,(v_2 - v_1)
+\vec{F}_S = -\big[\,p_1 A_1\,\vec{n}_1 + p_2 A_2\,\vec{n}_2 + Q_m\,(\vec{v}_2 - \vec{v}_1)\,\big]
+$$
+
+com as normais **para fora** do volume de controle: $\vec{n}_1 = -\vec{i}$ na entrada e $\vec{n}_2 = +\vec{i}$ na saída. Em $x$:
+
+$$
+F_{S_x} = -\big[\,p_1 A_1(-1) + p_2 A_2(+1) + Q_m\,(v_2 - v_1)\,\big] = p_1 A_1 - p_2 A_2 - Q_m\,(v_2 - v_1)
 $$
 
 $$
 p_1 A_1 = 84\,000 \times 0{,}07069 = 5938\ \mathrm{N}
 \qquad
 p_2 A_2 = 16\,500 \times 0{,}01767 = 292\ \mathrm{N}
+\qquad
+Q_m\,(v_2 - v_1) = 212{,}1 \times 9 = 1909\ \mathrm{N}
 $$
 
 $$
-\rho Q\,(v_2 - v_1) = 212{,}1 \times 9 = 1909\ \mathrm{N}
+\boxed{F_{S_x} = 5938 - 292 - 1909 \approx 3737\ \mathrm{N} \approx 3{,}74\ \mathrm{kN}}
+$$
+
+Positivo: a água empurra a redução **para a frente**. Em $y$ não há componente, $F_{S_y} = 0$.
+
+**Passo 5 — b) a força na turbina.** Mesma equação, agora de (2) a (3). O diâmetro não muda, então $v_3 = v_2$ e o termo $Q_m(v_3 - v_2)$ some:
+
+$$
+F_{S_x} = -\big[\,p_2 A_2(-1) + p_3 A_2(+1) + 0\,\big] = (p_2 - p_3)\,A_2
 $$
 
 $$
-F_x = 1909 - 5938 + 292 = -3737\ \mathrm{N}
-$$
-
-A parede segura o líquido para trás; o líquido empurra a redução **para a frente**:
-
-$$
-\boxed{F_{red} \approx 3{,}74\ \mathrm{kN}}
-$$
-
-**Passo 5 — b) a força na turbina.** Volume de controle de (2) a (3). A velocidade **não muda**, então o lado direito da equação é zero:
-
-$$
-p_2 A_2 - p_3 A_2 + F_x = \rho Q\,(v_3 - v_2) = 0
-\qquad\Longrightarrow\qquad
-F_x = -(p_2 - p_3)\,A_2
-$$
-
-$$
-\boxed{F_{turb} = 13\,675 \times 0{,}01767 \approx 242\ \mathrm{N}}
+\boxed{F_{S_x} = 13\,675 \times 0{,}01767 \approx 242\ \mathrm{N}}
 $$
 
 no sentido do escoamento.
