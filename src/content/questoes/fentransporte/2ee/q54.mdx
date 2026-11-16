@@ -23,7 +23,7 @@ temaId: camada-limite
   <svg viewBox="0 0 340 190" role="img" aria-label="Escoamento sobre uma placa plana: a camada limite cresce a partir do bordo de ataque, com velocidade nula na parede e igual à do escoamento livre na borda da camada">
     {/* placa */}
     <rect x="30" y="140" width="280" height="10" fill="var(--line-2)" stroke="var(--ink-3)" stroke-width="1.2"/>
-    <text x="140" y="164" font-size="9" fill="var(--ink-3)">placa (superfície a T<tspan font-size="7" dy="2">s</tspan><tspan dy="-2">)</tspan></text>
+    <text x="150" y="164" font-size="9" fill="var(--ink-3)">placa (superfície a T<tspan font-size="7" dy="2">s</tspan><tspan dy="-2">)</tspan></text>
     {/* escoamento livre */}
     <line x1="6" y1="40" x2="30" y2="40" stroke="var(--accent)" stroke-width="1.6"/>
     <polygon points="36,40 26,36 26,44" fill="var(--accent)"/>
@@ -35,28 +35,35 @@ temaId: camada-limite
     {/* borda da camada limite */}
     <path d="M30 140 Q140 106 306 88" fill="none" stroke="var(--warn)" stroke-width="1.8" stroke-dasharray="5 3"/>
     <text x="228" y="80" font-size="9" fill="var(--warn)">borda da camada limite</text>
-    {/* perfis dentro da camada */}
-    <line x1="110" y1="140" x2="110" y2="118" stroke="var(--ok)" stroke-width="1"/>
-    <path d="M110 140 Q120 130 130 118" fill="none" stroke="var(--ok)" stroke-width="1.4"/>
-    <line x1="110" y1="134" x2="116" y2="134" stroke="var(--ok)" stroke-width="0.9"/>
-    <polygon points="120,134 113,131 113,137" fill="var(--ok)"/>
-    <line x1="110" y1="124" x2="124" y2="124" stroke="var(--ok)" stroke-width="0.9"/>
-    <polygon points="128,124 121,121 121,127" fill="var(--ok)"/>
-    <line x1="220" y1="140" x2="220" y2="98" stroke="var(--ok)" stroke-width="1"/>
-    <path d="M220 140 Q234 124 248 98" fill="none" stroke="var(--ok)" stroke-width="1.4"/>
-    <line x1="220" y1="132" x2="228" y2="132" stroke="var(--ok)" stroke-width="0.9"/>
-    <polygon points="232,132 225,129 225,135" fill="var(--ok)"/>
-    <line x1="220" y1="116" x2="238" y2="116" stroke="var(--ok)" stroke-width="0.9"/>
-    <polygon points="242,116 235,113 235,119" fill="var(--ok)"/>
-    <line x1="220" y1="104" x2="244" y2="104" stroke="var(--ok)" stroke-width="0.9"/>
-    <polygon points="248,104 241,101 241,107" fill="var(--ok)"/>
+    {/* perfis dentro da camada: u/U = 2η − η², zero na parede e U na borda */}
+    <line x1="110" y1="140" x2="110" y2="111.0" stroke="var(--ok)" stroke-width="1"/>
+    <path d="M110.0 140.0 L112.5 139.0 L114.9 137.9 L117.2 136.9 L119.4 135.8 L121.4 134.8 L123.3 133.7 L125.0 132.7 L126.6 131.6 L128.1 130.6 L129.5 129.5 L130.7 128.5 L131.8 127.4 L132.8 126.4 L133.7 125.3 L134.4 124.3 L135.0 123.2 L135.4 122.2 L135.7 121.1 L135.9 120.1 L136.0 119.0 L136.0 111.0" fill="none" stroke="var(--ok)" stroke-width="1.4"/>
+    <line x1="110" y1="134.8" x2="117.4" y2="134.8" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="121.4,134.8 115.4,132.2 115.4,137.4" fill="var(--ok)"/>
+    <line x1="110" y1="129.5" x2="125.5" y2="129.5" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="129.5,129.5 123.5,126.9 123.5,132.1" fill="var(--ok)"/>
+    <line x1="110" y1="124.3" x2="130.4" y2="124.3" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="134.4,124.3 128.4,121.7 128.4,126.9" fill="var(--ok)"/>
+    <line x1="110" y1="119.0" x2="132.0" y2="119.0" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="136.0,119.0 130.0,116.4 130.0,121.6" fill="var(--ok)"/>
+    <circle cx="110" cy="140" r="2.6" fill="var(--warn)"/>
+    <line x1="220" y1="140" x2="220" y2="91.0" stroke="var(--ok)" stroke-width="1"/>
+    <path d="M220.0 140.0 L222.9 137.9 L225.7 135.9 L228.3 133.8 L230.8 131.8 L233.1 129.7 L235.3 127.7 L237.3 125.6 L239.2 123.6 L240.9 121.5 L242.5 119.5 L243.9 117.4 L245.2 115.4 L246.3 113.3 L247.3 111.3 L248.1 109.2 L248.8 107.2 L249.3 105.1 L249.7 103.1 L249.9 101.0 L250.0 99.0 L250.0 91.0" fill="none" stroke="var(--ok)" stroke-width="1.4"/>
+    <line x1="220" y1="129.7" x2="229.1" y2="129.7" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="233.1,129.7 227.1,127.1 227.1,132.3" fill="var(--ok)"/>
+    <line x1="220" y1="119.5" x2="238.5" y2="119.5" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="242.5,119.5 236.5,116.9 236.5,122.1" fill="var(--ok)"/>
+    <line x1="220" y1="109.2" x2="244.1" y2="109.2" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="248.1,109.2 242.1,106.6 242.1,111.8" fill="var(--ok)"/>
+    <line x1="220" y1="99.0" x2="246.0" y2="99.0" stroke="var(--ok)" stroke-width="0.9"/>
+    <polygon points="250.0,99.0 244.0,96.4 244.0,101.6" fill="var(--ok)"/>
+    <circle cx="220" cy="140" r="2.6" fill="var(--warn)"/>
     {/* espessura delta */}
-    <line x1="264" y1="140" x2="264" y2="92" stroke="var(--ink-3)" stroke-width="1"/>
-    <polygon points="264,88 261,96 267,96" fill="var(--ink-3)"/>
+    <line x1="264" y1="140" x2="264" y2="99" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="264,93 261,101 267,101" fill="var(--ink-3)"/>
     <text x="268" y="118" font-size="10" fill="var(--ink-3)">δ</text>
     {/* v = 0 na parede */}
-    <circle cx="160" cy="140" r="3" fill="var(--warn)"/>
-    <text x="140" y="134" font-size="8" fill="var(--warn)">v = 0 (aderência)</text>
+    <text x="30" y="180" font-size="8" fill="var(--warn)">● v = 0 na parede (aderência)</text>
     {/* bordo de ataque */}
     <text x="26" y="132" font-size="8" fill="var(--ink-3)">bordo</text>
   </svg>
