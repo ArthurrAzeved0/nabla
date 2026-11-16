@@ -2463,8 +2463,37 @@ Ou seja $\dfrac{\partial u}{\partial x} + \dfrac{\partial v}{\partial y} + \dfra
 Para fluido **newtoniano** e **incompressível** com $\mu$ constante:
 
 $$
-\boxed{\;\rho\frac{D\vec{v}}{Dt} = -\nabla p + \mu\nabla^2\vec{v} + \rho\vec{g}\;}
+\boxed{\;\rho\frac{D\vec{v}}{Dt} = -\nabla p + \rho\vec{g} + \mu\nabla^2\vec{v}\;}
+\qquad\text{com}\qquad
+\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}
 $$
+
+Nos slides ela se lê **inércia = pressão + gravidade + viscosidade**. O sinal de menos no gradiente diz que o fluido se move espontaneamente da **maior para a menor pressão**: $-\nabla p$ aponta para onde a pressão diminui.
+
+Em coordenadas cartesianas, com $\vec{v} = (u, v, w)$, a componente $x$ é (as outras duas são iguais, trocando $u$ por $v$ ou $w$, $x$ por $y$ ou $z$, e $g_x$ por $g_y$ ou $g_z$):
+
+$$
+\rho\left(\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}\right)
+= -\frac{\partial p}{\partial x} + \rho g_x + \mu\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)
+$$
+
+<Caixa tipo="dica" rotulo="Newtoniano ou não">
+
+A forma acima vale para fluido **newtoniano**, que obedece à lei de Newton da viscosidade, $\tau = \mu\,du/dy$, com $\mu$ constante: água, óleo mineral leve, óleo lubrificante. Num fluido **não newtoniano** a viscosidade muda com a taxa de deformação, a relação entre tensão e deformação não é linear, e a equação precisa ser modificada: lama, concreto fresco, sangue, tinta, polpas minerais, lodo de esgoto, ketchup.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Conferência dimensional: todo termo é força por volume">
+
+Com $[\nabla] = L^{-1}$ e $[\nabla^2] = L^{-2}$, os quatro termos dão a mesma dimensão:
+
+$$
+\left[\rho\frac{\partial \vec{v}}{\partial t}\right] = \left[\rho(\vec{v}\cdot\nabla)\vec{v}\right] = [\nabla p] = [\rho\vec{g}] = [\mu\nabla^2\vec{v}] = ML^{-2}T^{-2} = \frac{\text{força}}{\text{volume}}
+$$
+
+É a segunda lei de Newton aplicada a um elemento diferencial: força por volume $=$ massa por volume $\times$ aceleração.
+
+</Caixa>
 
 <Caixa tipo="dica" rotulo="É a segunda lei de Newton, termo a termo">
 
@@ -2479,21 +2508,93 @@ Zerando o termo viscoso ($\mu = 0$) obtém-se a equação de **Euler**, e integr
 
 </Caixa>
 
-### A aplicação clássica: escoamento entre placas
+### De Navier-Stokes a Bernoulli
 
-Para escoamento **laminar, permanente e unidirecional** entre duas placas paralelas, quase todos os termos morrem e sobra uma equação ordinária simples:
-
-$$
-\frac{d^2u}{dy^2} = \frac{1}{\mu}\frac{dp}{dx}
-$$
-
-Integrando duas vezes com $u = 0$ nas paredes (aderência), obtém-se o **perfil parabólico** — e, dele, o resultado de Hagen-Poiseuille que a seção de perda de carga usou:
+**1. Fluido ideal ($\mu = 0$) → Euler:**
 
 $$
-v = \frac{v_{max}}{2}
+\rho\frac{D\vec{v}}{Dt} = -\nabla p + \rho\vec{g}
+$$
+
+**2. Projetar Euler numa linha de corrente.** Seja $s$ a coordenada ao longo do escoamento, com $z$ positivo para cima e a gravidade para baixo. Em regime permanente, a aceleração ao longo de $s$ é $V\,dV/ds$, e o peso projetado é $-\rho g\,dz/ds$:
+
+$$
+\rho\,V\frac{dV}{ds} = -\frac{dp}{ds} - \rho\,g\,\frac{dz}{ds}
+\qquad\Longrightarrow\qquad
+dp + \rho\,V\,dV + \rho\,g\,dz = 0
+$$
+
+**3. Dividir por $\rho$ e integrar de 1 a 2** (fluido incompressível):
+
+$$
+\frac{dp}{\rho} + V\,dV + g\,dz = 0
+\qquad\Longrightarrow\qquad
+\frac{p_2 - p_1}{\rho} + \frac{V_2^2 - V_1^2}{2} + g\,(z_2 - z_1) = 0
+$$
+
+**4. Dividir por $g$:** sai a forma clássica, a da seção 15:
+
+$$
+z_1 + \frac{V_1^2}{2g} + \frac{p_1}{\gamma} = z_2 + \frac{V_2^2}{2g} + \frac{p_2}{\gamma}
+$$
+
+Cada passo usou uma hipótese de Bernoulli: $\mu = 0$ (SP), regime permanente (RP), $\rho$ constante (FI).
+
+### As aplicações dos slides
+
+O roteiro é sempre o mesmo: listar as **hipóteses** do enunciado, **riscar** os termos que elas anulam nas três componentes, integrar o que sobra e usar as **condições de contorno** (aderência, $u = 0$ na parede parada; tensão nula, $du/dy = 0$, numa superfície livre).
+
+**Exemplo 1 — entre duas placas planas horizontais fixas** (laminar, permanente, incompressível, placas infinitas em $z = \pm h$, velocidade só em $x$, $\vec{g}$ em $z$). Como $u$ só depende de $z$ e $v = w = 0$, os termos de inércia somem:
+
+$$
+x:\ \ 0 = -\frac{\partial p}{\partial x} + \mu\frac{d^2u}{dz^2}
 \qquad\qquad
-f = \frac{64}{Re}
+z:\ \ 0 = -\frac{\partial p}{\partial z} - \rho g
 $$
+
+A equação em $z$ é a hidrostática. Na de $x$, um lado só depende de $x$ e o outro só de $z$: os dois são uma **constante**. Integrando duas vezes, com $u = 0$ em $z = \pm h$ (o que dá $C_1 = 0$ por simetria):
+
+$$
+u = v_{máx}\left(1 - \frac{z^2}{h^2}\right)
+\qquad\text{com}\qquad
+v_{máx} = -\frac{h^2}{2\mu}\frac{dp}{dx}
+$$
+
+Perfil **parabólico**, com velocidade média $V_m = \tfrac{2}{3}\,v_{máx}$. A perda de pressão ao longo do escoamento, a partir de $x = 0$:
+
+$$
+p = p_0 - \frac{3\,\mu\,V_m}{h^2}\,x
+$$
+
+**Exemplo 2 — placa inferior fixa e superior móvel com $V_0$**, sem gradiente de pressão ($dp/dx = 0$). Sobra $\mu\,d^2u/dz^2 = 0$, e com $u(0) = 0$ e $u(h) = V_0$:
+
+$$
+u = \frac{V_0}{h}\,z
+$$
+
+Perfil **linear** (escoamento de Couette): é exatamente a hipótese da lei de Newton da viscosidade, $\tau = \mu V_0/h$, na película entre duas placas.
+
+**Exemplo 3 — filme num plano inclinado** de ângulo $\alpha$ (laminar, permanente, dinamicamente estabelecido, bidimensional, sem atrito com o ar). Com $x$ ao longo do plano, para baixo, e $y$ normal a ele, a pressão é atmosférica na superfície livre e não varia em $x$; sobra o peso contra a viscosidade:
+
+$$
+0 = \rho\,g\,\text{sen}\,\alpha + \mu\frac{d^2u}{dy^2}
+$$
+
+Com $u = 0$ em $y = 0$ (aderência) e $\tau = \mu\,du/dy = 0$ em $y = h$ (superfície livre):
+
+$$
+u = \frac{\rho\,g\,\text{sen}\,\alpha}{\mu}\left(h\,y - \frac{y^2}{2}\right)
+\qquad
+V_m = \frac{1}{h}\int_0^h u\,dy = \frac{\rho\,g\,h^2\,\text{sen}\,\alpha}{3\mu} = \frac{g\,h^2\,\text{sen}\,\alpha}{3\nu}
+$$
+
+e a vazão em massa numa largura $b$ é $Q_m = \rho\,V_m\,h\,b$.
+
+<Caixa tipo="dica" rotulo="Placas não são tubo">
+
+A média $\tfrac{2}{3}\,v_{máx}$ vale para o escoamento **entre placas**. No **tubo circular** (Hagen-Poiseuille), a mesma conta em coordenadas cilíndricas dá perfil parabólico em $r$, média $\tfrac{1}{2}\,v_{máx}$ e o $f = 64/Re$ que a seção de perda de carga usa.
+
+</Caixa>
 
 <Caixa tipo="macete" rotulo="O que a prova cobra desta seção">
 
