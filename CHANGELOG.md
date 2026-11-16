@@ -88,6 +88,19 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Corrigido
 
+- **44 figuras de Fenômenos redesenhadas depois de uma auditoria visual no
+  tema escuro**, questão por questão, no 2º EE (27), na final (3) e no 1º EE
+  (14). Os defeitos eram de quatro tipos: **tubulações desenhadas como uma linha
+  só**, que agora são tubos de parede dupla, com as junções fundidas e
+  entrando nos reservatórios por uma abertura; o **ícone de fluido em
+  parênteses "(( ))"**, que parecia quebrado e virou linhas onduladas com seta;
+  **rótulos encavalados** em setas, paredes e cotas; e desenhos errados — o
+  perfil de velocidades da camada limite (q54 do 2º EE), a reação do apoio na
+  curva (q55 do 2º EE, que apontava para baixo), a seta de $r_2$ maior que o
+  raio (q06 da final), o Tanque 2 de boca para baixo (q20 do 1º EE) e os vetores
+  velocidade soltos das linhas de corrente (q35 do 1º EE). Junto, as três
+  questões que davam o limite de Reynolds como $4000$ passaram ao $2400$ do
+  professor.
 - **A velocidade média entre placas paralelas é $\tfrac{2}{3}\,v_{máx}$, não
   $\tfrac{1}{2}\,v_{máx}$.** A seção de Navier-Stokes dava a média do tubo
   circular (Hagen-Poiseuille) para o escoamento entre placas. Agora as duas
