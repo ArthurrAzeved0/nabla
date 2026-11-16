@@ -52,6 +52,19 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   e o passo a passo diz qual. **22 questões têm figura**, redesenhada em SVG e
   conferida ao lado da original. Nenhuma das provas cobra o capítulo 17. O site
   vai de 558 para **622 questões**.
+- **A 2ª lista de exercícios de Fenômenos de Transporte (2026.2), resolvida
+  inteira.** É a lista do **Prof. Marcos Barbosa da Silva Junior** sobre
+  dinâmica dos fluidos, que vale de $0{,}0$ a $2{,}0$ pontos na nota do 2º EE:
+  Bernoulli e Torricelli, o Venturi vertical, bomba ou turbina, forças em
+  redução e em turbina pela quantidade de movimento, semelhança e teoria dos
+  modelos, perdas distribuídas e localizadas, comprimento equivalente,
+  instalação ramificada e o tubo de Pitot. As **16 questões** entraram no banco
+  do 2º EE (q56 a q71), com `origem: "2ª lista · 2026.2"`, e **13 figuras novas
+  em SVG** conferidas ao lado do original. Duas leituras ficam declaradas na
+  própria questão: na q67, o comprimento é a soma dos $L_{i,j}$ dados (com as
+  subidas, a resposta muda 2%), e na q69, que nomeia as peças sem dar a
+  tabela, os comprimentos equivalentes são os da tabela de Azevedo Netto. A
+  cadeira vai de 113 para **129 questões**, e o site, de 622 para **638**.
 
 ### Notas de acervo
 
