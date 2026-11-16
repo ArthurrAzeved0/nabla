@@ -28,7 +28,7 @@ Na instalação da figura, todas as tubulações são de diâmetro muito grande 
     <path d="M21 80 L149 80 L149 159 L21 159 Z" fill="var(--accent-soft)" opacity="0.5"/>
     <line x1="21" y1="80" x2="149" y2="80" stroke="var(--accent)" stroke-width="1"/>
     <polygon points="110,72 120,72 115,80" fill="none" stroke="var(--accent)" stroke-width="1"/>
-    <text x="154" y="78" font-size="11" fill="var(--ink-2)">(0)</text>
+    <text x="124" y="74" font-size="11" fill="var(--ink-2)">(0)</text>
     <text x="30" y="130" font-size="10" fill="var(--ink-2)">γ = 10⁴ N/m³</text>
     {/* manômetro */}
     <line x1="60" y1="40" x2="60" y2="28" stroke="var(--ink-2)" stroke-width="2"/>
@@ -36,8 +36,12 @@ Na instalação da figura, todas as tubulações são de diâmetro muito grande 
     <line x1="55" y1="23" x2="65" y2="13" stroke="var(--ink-2)" stroke-width="1"/>
     <text x="76" y="22" font-size="11" fill="var(--ink-2)">50 kPa</text>
     {/* tubo do reservatório ao nó (1) */}
-    <path d="M150 150 L260 150" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
-    <circle cx="260" cy="150" r="3.5" fill="var(--ink-2)"/>
+    <path d="M150 150 L260 150" fill="none" stroke="var(--ink-2)" stroke-width="9.0" stroke-linejoin="round"/>
+    <path d="M260 150 L300 150 L300 40 L340 40" fill="none" stroke="var(--ink-2)" stroke-width="9.0" stroke-linejoin="round"/>
+    <path d="M260 150 L260 196 L326 196 M354 196 L410 196 L410 62 L446 62" fill="none" stroke="var(--ink-2)" stroke-width="9.0" stroke-linejoin="round"/>
+    <path d="M150 150 L260 150" fill="none" stroke="var(--accent-soft)" stroke-width="6.0" stroke-linejoin="round"/>
+    <path d="M260 150 L300 150 L300 40 L340 40" fill="none" stroke="var(--accent-soft)" stroke-width="6.0" stroke-linejoin="round"/>
+    <path d="M260 150 L260 196 L326 196 M354 196 L410 196 L410 62 L446 62" fill="none" stroke="var(--accent-soft)" stroke-width="6.0" stroke-linejoin="round"/>
     <text x="236" y="142" font-size="11" fill="var(--ink-2)">(1)</text>
     <line x1="170" y1="86" x2="170" y2="144" stroke="var(--ink-3)" stroke-width="1"/>
     <polygon points="170,80 167,89 173,89" fill="var(--ink-3)"/>
@@ -47,7 +51,6 @@ Na instalação da figura, todas as tubulações são de diâmetro muito grande 
     {/* plano de referência */}
     <line x1="150" y1="150" x2="456" y2="150" stroke="var(--ink-3)" stroke-width="0.6" stroke-dasharray="8 3 2 3"/>
     {/* ramal (2) */}
-    <path d="M260 150 L300 150 L300 40 L340 40" fill="none" stroke="var(--ink-2)" stroke-width="3" stroke-linejoin="round"/>
     <text x="342" y="44" font-size="11" fill="var(--ink-2)">(2)</text>
     <line x1="284" y1="46" x2="284" y2="144" stroke="var(--ink-3)" stroke-width="1"/>
     <polygon points="284,40 281,49 287,49" fill="var(--ink-3)"/>
@@ -55,7 +58,6 @@ Na instalação da figura, todas as tubulações são de diâmetro muito grande 
     <line x1="278" y1="40" x2="298" y2="40" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
     <text x="262" y="100" font-size="11" fill="var(--ink-3)">5 m</text>
     {/* ramal (3) com a máquina, no mesmo nível do nó */}
-    <path d="M260 150 L260 196 L326 196 M354 196 L410 196 L410 62 L446 62" fill="none" stroke="var(--ink-2)" stroke-width="3" stroke-linejoin="round"/>
     <circle cx="340" cy="196" r="14" fill="var(--surface-2, #fff)" stroke="var(--ink-2)" stroke-width="1.6"/>
     <text x="334" y="200" font-size="11" fill="var(--ink-2)">M</text>
     <text x="424" y="56" font-size="11" fill="var(--ink-2)">(3)</text>
