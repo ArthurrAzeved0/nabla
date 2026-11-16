@@ -1,0 +1,155 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Quantidade de movimento · Forças na redução e numa turbina"
+temaId: quantidade-de-movimento
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q62.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A turbina mostrada na figura **extrai uma potência de $2{,}9\ \mathrm{kW}$** da água em escoamento. Desprezando as perdas de carga na redução, determine as forças exercidas pela água sobre: **a)** a redução; **b)** a turbina.
+
+**Dados:** $\rho = 1000\ \mathrm{kg/m^3}$; $g = 10\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 440 170" role="img" aria-label="Tubo horizontal de 30 centímetros de diâmetro, com velocidade de 3 metros por segundo e manômetro marcando 84 quilopascais, que se reduz para um tubo de 15 centímetros; logo depois da redução há uma turbina dentro do tubo menor">
+    <path d="M40 40 L200 40 L300 68 L410 68 L410 112 L300 112 L200 140 L40 140 Z" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <ellipse cx="40" cy="90" rx="10" ry="50" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <ellipse cx="410" cy="90" rx="5" ry="22" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <line x1="20" y1="90" x2="430" y2="90" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="8 3 2 3"/>
+    {/* manômetro */}
+    <line x1="190" y1="40" x2="190" y2="24" stroke="var(--ink-2)" stroke-width="2"/>
+    <circle cx="190" cy="14" r="10" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="185" y1="19" x2="195" y2="9" stroke="var(--ink-2)" stroke-width="1"/>
+    <text x="206" y="18" font-size="11" fill="var(--ink-2)">p = 84 kPa</text>
+    {/* seção 1 */}
+    <line x1="70" y1="90" x2="120" y2="90" stroke="var(--ink-2)" stroke-width="2"/>
+    <polygon points="130,90 118,85 118,95" fill="var(--ink-2)"/>
+    <text x="64" y="78" font-size="11" fill="var(--ink-2)">v₁ = 3 m/s</text>
+    <text x="64" y="112" font-size="11" fill="var(--ink-2)">D₁ = 30 cm</text>
+    {/* turbina */}
+    <line x1="318" y1="70" x2="318" y2="110" stroke="var(--warn)" stroke-width="1"/>
+    <ellipse cx="318" cy="80" rx="4" ry="9" fill="var(--warn)" opacity="0.8"/>
+    <ellipse cx="318" cy="100" rx="4" ry="9" fill="var(--warn)" opacity="0.8"/>
+    <circle cx="318" cy="90" r="3" fill="var(--ink-2)"/>
+    <line x1="312" y1="114" x2="298" y2="150" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="270" y="162" font-size="11" fill="var(--warn)">turbina</text>
+    {/* D2 */}
+    <line x1="372" y1="66" x2="384" y2="44" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="360" y="38" font-size="11" fill="var(--ink-2)">D₂ = 15 cm</text>
+  </svg>
+  <figcaption>
+
+Três seções: **(1)** no tubo largo, onde está o manômetro; **(2)** no fim da redução, logo antes da turbina; **(3)** logo depois da turbina. Entre (2) e (3) o diâmetro é o mesmo.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+Q = 0{,}212\ \mathrm{m^3/s}, \quad v_2 = 12\ \mathrm{m/s}, \quad p_2 = 16{,}5\ \mathrm{kPa}, \quad H_T = 1{,}37\ \mathrm{m}, \quad p_3 = 2{,}8\ \mathrm{kPa}
+$$
+
+**a)** $F_{red} = p_1 A_1 - p_2 A_2 - \rho Q\,(v_2 - v_1) = 5938 - 292 - 1909 \approx \mathbf{3{,}74\ kN}$
+
+**b)** $F_{turb} = (p_2 - p_3)\,A_2 = 13\,675 \times 0{,}01767 \approx \mathbf{242\ N}$
+
+Ambas no sentido do escoamento.
+</Gabarito>
+
+<Passos>
+**Passo 1 — vazão e velocidades.**
+
+$$
+A_1 = \frac{\pi\,(0{,}30)^2}{4} = 0{,}07069\ \mathrm{m^2}
+\qquad
+A_2 = \frac{\pi\,(0{,}15)^2}{4} = 0{,}01767\ \mathrm{m^2}
+$$
+
+$$
+Q = v_1 A_1 = 3 \times 0{,}07069 = 0{,}2121\ \mathrm{m^3/s}
+\qquad
+v_2 = v_1\left(\frac{30}{15}\right)^2 = 12\ \mathrm{m/s}
+$$
+
+<Caixa tipo="simbolos">
+
+- seção (1): tubo largo, $p_1 = 84\ \mathrm{kPa}$, $v_1 = 3\ \mathrm{m/s}$
+- seção (2): fim da redução, **antes** da turbina, $v_2 = 12\ \mathrm{m/s}$
+- seção (3): **depois** da turbina, mesmo diâmetro, $v_3 = v_2$
+- $\gamma = \rho g = 10^4\ \mathrm{N/m^3}$; $\rho Q = 212{,}1\ \mathrm{kg/s}$
+
+</Caixa>
+
+**Passo 2 — a pressão no fim da redução.** Bernoulli de (1) a (2), horizontal e sem perdas:
+
+$$
+p_2 = p_1 + \frac{\rho}{2}\left(v_1^2 - v_2^2\right) = 84\,000 + 500\,(9 - 144) = 16\,500\ \mathrm{Pa}
+$$
+
+**Passo 3 — a queda de pressão na turbina.** A turbina retira a carga
+
+$$
+H_T = \frac{N}{\gamma\,Q} = \frac{2900}{10^4 \times 0{,}2121} = 1{,}368\ \mathrm{m}
+$$
+
+Como a velocidade e a cota não mudam de (2) para (3), toda essa carga sai da **pressão**:
+
+$$
+p_2 - p_3 = \gamma\,H_T = 13\,675\ \mathrm{Pa}
+\qquad\Longrightarrow\qquad
+p_3 = 2825\ \mathrm{Pa}
+$$
+
+**Passo 4 — a) a força na redução.** Volume de controle de (1) a (2), em torno do líquido dentro da redução. Com $F_x$ a força da parede **sobre o líquido**:
+
+$$
+p_1 A_1 - p_2 A_2 + F_x = \rho Q\,(v_2 - v_1)
+$$
+
+$$
+p_1 A_1 = 84\,000 \times 0{,}07069 = 5938\ \mathrm{N}
+\qquad
+p_2 A_2 = 16\,500 \times 0{,}01767 = 292\ \mathrm{N}
+$$
+
+$$
+\rho Q\,(v_2 - v_1) = 212{,}1 \times 9 = 1909\ \mathrm{N}
+$$
+
+$$
+F_x = 1909 - 5938 + 292 = -3737\ \mathrm{N}
+$$
+
+A parede segura o líquido para trás; o líquido empurra a redução **para a frente**:
+
+$$
+\boxed{F_{red} \approx 3{,}74\ \mathrm{kN}}
+$$
+
+**Passo 5 — b) a força na turbina.** Volume de controle de (2) a (3). A velocidade **não muda**, então o lado direito da equação é zero:
+
+$$
+p_2 A_2 - p_3 A_2 + F_x = \rho Q\,(v_3 - v_2) = 0
+\qquad\Longrightarrow\qquad
+F_x = -(p_2 - p_3)\,A_2
+$$
+
+$$
+\boxed{F_{turb} = 13\,675 \times 0{,}01767 \approx 242\ \mathrm{N}}
+$$
+
+no sentido do escoamento.
+
+**Conferência —** há um caminho mais curto para a turbina: a potência extraída é força vezes velocidade, então $F = N/v_2 = 2900/12 = 241{,}7\ \mathrm{N}$ ✔. Funciona porque toda a carga retirada vem da pressão sobre a mesma área.
+</Passos>
