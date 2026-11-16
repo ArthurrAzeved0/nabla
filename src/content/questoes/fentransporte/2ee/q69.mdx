@@ -77,20 +77,20 @@ Fora de escala, como no original. De baixo para cima: válvula A, $0{,}4\ \mathr
 <Gabarito>
 Desnível geométrico: do nível inferior à saída F, $0{,}5 + 8{,}0 + 1{,}0 = 9{,}5\ \mathrm{m}$.
 
-Comprimentos equivalentes (tabela usual, em metros): sucção $\varnothing 300$: A $= 78{,}0$, B $= 6{,}1$; recalque $\varnothing 250$: C $= 20{,}0$, D $=$ E $= 3{,}8$, F $= 6{,}7$.
+Comprimentos equivalentes (em metros; a tabela dos slides vai só até DN 150, então valem os da tabela estendida de Azevedo Netto): sucção $\varnothing 300$: A $= 78{,}0$, B $= 6{,}1$; recalque $\varnothing 250$: C $= 20{,}0$, D $=$ E $= 3{,}8$, F $= 6{,}7$.
 
 $$
-h_{f,s} = 0{,}05 \times \frac{87{,}1}{0{,}30} \times \frac{0{,}707^2}{2g} = 0{,}37\ \mathrm{m}
+\Delta h_s = f\,\frac{L_{real} + L_{eq}}{D_H}\,\frac{v^2}{2g} = 0{,}05 \times \frac{87{,}1}{0{,}30} \times \frac{0{,}707^2}{2g} = 0{,}37\ \mathrm{m}
 \qquad
-h_{f,r} = 0{,}05 \times \frac{134{,}3}{0{,}25} \times \frac{1{,}019^2}{2g} = 1{,}42\ \mathrm{m}
+\Delta h_r = 0{,}05 \times \frac{134{,}3}{0{,}25} \times \frac{1{,}019^2}{2g} = 1{,}42\ \mathrm{m}
 $$
 
 $$
-H_{man} = 9{,}5 + 0{,}37 + 1{,}42 + 0{,}05 = 11{,}3\ \mathrm{m}
+H_B = 9{,}5 + 0{,}37 + 1{,}42 + 0{,}05 = 11{,}3\ \mathrm{m}
 $$
 
 $$
-N = \frac{\gamma\,Q\,H_{man}}{\eta_B\,\eta_M} = \frac{9810 \times 0{,}05 \times 11{,}34}{0{,}60 \times 0{,}90} \approx \mathbf{10{,}3\ kW} \approx \mathbf{14\ CV}
+N_{motor} = \frac{\gamma\,Q\,H_B}{\eta_B\,\eta_{motor}} = \frac{9810 \times 0{,}05 \times 11{,}34}{0{,}60 \times 0{,}90} \approx \mathbf{10{,}3\ kW} \approx \mathbf{14\ CV}
 $$
 </Gabarito>
 
@@ -107,8 +107,8 @@ Os $0{,}4\ \mathrm{m}$ de submersão da válvula de pé **não entram**: a energ
 
 - $Q = 3000\ \mathrm{L/min} = 0{,}05\ \mathrm{m^3/s}$
 - $L_{eq}$ — **comprimento equivalente**: o comprimento de tubo reto que daria a mesma perda que a peça
-- perda total de cada trecho: $h_f = f\,\dfrac{L + \sum L_{eq}}{D}\,\dfrac{v^2}{2g}$
-- $\gamma = 9810\ \mathrm{N/m^3}$, $g = 9{,}81\ \mathrm{m/s^2}$
+- perda total de cada trecho, pelo **método dos comprimentos equivalentes** dos slides: $\Delta h = f\,\dfrac{(L_{real} + L_{eq})}{D_H}\,\dfrac{v^2}{2g}$
+- $\gamma = 9810\ \mathrm{N/m^3}$, $g = 9{,}81\ \mathrm{m/s^2}$ (como nos exemplos de comprimento equivalente dos slides); $1\ \mathrm{CV} = 735\ \mathrm{W}$
 
 </Caixa>
 
@@ -126,7 +126,7 @@ $$
 \frac{v_r^2}{2g} = 0{,}0529\ \mathrm{m}
 $$
 
-**Passo 3 — os comprimentos equivalentes.** O enunciado nomeia as peças mas não traz a tabela; os valores abaixo são os da tabela usual de comprimentos equivalentes (Azevedo Netto), para o diâmetro de cada trecho:
+**Passo 3 — os comprimentos equivalentes.** O enunciado nomeia as peças mas não traz a tabela. A tabela de $L_{eq}$ dos slides (aço galvanizado ou ferro fundido) **para em DN 150 mm** ($6''$), e aqui os tubos são de $250$ e $300\ \mathrm{mm}$. Os valores abaixo vêm da versão estendida da mesma tabela (Azevedo Netto), para o diâmetro de cada trecho:
 
 | peça | trecho | $\varnothing$ | $L_{eq}$ (m) |
 |---|---|---|---|
@@ -144,36 +144,48 @@ A válvula de pé sozinha equivale a $78\ \mathrm{m}$ de tubo, **26 vezes** o co
 Sucção: $L_{total} = 3{,}0 + 78{,}0 + 6{,}1 = 87{,}1\ \mathrm{m}$
 
 $$
-h_{f,s} = 0{,}05 \times \frac{87{,}1}{0{,}30} \times 0{,}0255 = 0{,}370\ \mathrm{m}
+\Delta h_s = f\,\frac{L_{real} + L_{eq}}{D_H}\,\frac{v_s^2}{2g} = 0{,}05 \times \frac{87{,}1}{0{,}30} \times 0{,}0255 = 0{,}370\ \mathrm{m}
 $$
 
 Recalque: $L_{total} = 100{,}0 + 20{,}0 + 3{,}8 + 3{,}8 + 6{,}7 = 134{,}3\ \mathrm{m}$
 
 $$
-h_{f,r} = 0{,}05 \times \frac{134{,}3}{0{,}25} \times 0{,}0529 = 1{,}420\ \mathrm{m}
+\Delta h_r = 0{,}05 \times \frac{134{,}3}{0{,}25} \times 0{,}0529 = 1{,}420\ \mathrm{m}
 $$
 
-**Passo 5 — a altura manométrica.** Energia do nível inferior até o jato em F: a bomba fornece o desnível, as perdas e a carga cinética com que a água sai em F.
+**Passo 5 — a carga da bomba.** Equação da energia do nível inferior (0) até o jato em F, com o PHR no nível inferior:
 
 $$
-H_{man} = H_g + h_{f,s} + h_{f,r} + \frac{v_r^2}{2g} = 9{,}5 + 0{,}370 + 1{,}420 + 0{,}053 = 11{,}34\ \mathrm{m}
-$$
-
-**Passo 6 — a potência.** A potência hidráulica é $\gamma Q H_{man}$. A bomba perde $40\%$ e o motor mais $10\%$: a energia que o motor puxa da rede é a hidráulica dividida pelos **dois** rendimentos.
-
-$$
-N_{hidr} = 9810 \times 0{,}05 \times 11{,}34 = 5564\ \mathrm{W}
+H_0 + H_B = H_F + H_{p_{0,F}}
+\qquad\Longrightarrow\qquad
+0 + H_B = \left(9{,}5 + \frac{v_r^2}{2g} + 0\right) + \Delta h_s + \Delta h_r
 $$
 
 $$
-\boxed{N = \frac{5564}{0{,}60 \times 0{,}90} \approx 10\,300\ \mathrm{W} = 10{,}3\ \mathrm{kW}}
+H_B = 9{,}5 + 0{,}053 + 0{,}370 + 1{,}420 = 11{,}34\ \mathrm{m}
+$$
+
+A bomba fornece o desnível, as perdas e a carga cinética com que a água sai em F.
+
+**Passo 6 — a potência.** Nos slides, $N = \gamma\,Q\,H_B$ é a potência **recebida pelo fluido** e $N_B = N/\eta_B$ a potência **no eixo da bomba**. O motor tem o seu próprio rendimento, então a potência que ele precisa é a do eixo dividida por $\eta_{motor}$:
+
+$$
+N = \gamma\,Q\,H_B = 9810 \times 0{,}05 \times 11{,}34 = 5564\ \mathrm{W}
 $$
 
 $$
-\boxed{N = \frac{10\,300}{735{,}5} \approx 14\ \mathrm{CV}}
+N_B = \frac{N}{\eta_B} = \frac{5564}{0{,}60} = 9273\ \mathrm{W}
 $$
 
-No eixo da bomba (só o rendimento dela) seriam $9{,}27\ \mathrm{kW}$, ou $12{,}6\ \mathrm{CV}$.
+$$
+\boxed{N_{motor} = \frac{N_B}{\eta_{motor}} = \frac{9273}{0{,}90} \approx 10\,300\ \mathrm{W} = 10{,}3\ \mathrm{kW}}
+$$
+
+$$
+\boxed{N_{motor} = \frac{10\,300}{735} \approx 14\ \mathrm{CV}}
+$$
+
+No eixo da bomba seriam $9{,}27\ \mathrm{kW}$, ou $12{,}6\ \mathrm{CV}$. A pergunta é a "potência necessária", que é a que o motor puxa: por isso entram os **dois** rendimentos.
 
 <Caixa tipo="dica" rotulo="Se a tabela da turma for outra">
 
