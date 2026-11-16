@@ -1443,31 +1443,60 @@ Mas o acervo mostra que **a divisão já foi diferente**: a prova do 1º EE de 2
 
 <Caixa tipo="simbolos" rotulo="O que é cada símbolo">
 
-- $z$ — **carga de posição** (cota), em $\mathrm{m}$: a altura do ponto em relação a um plano de referência;
-- $\dfrac{p}{\gamma}$ — **carga de pressão**, em $\mathrm{m}$;
-- $\dfrac{v^2}{2g}$ — **carga cinética** (ou de velocidade), em $\mathrm{m}$;
-- $H$ — **carga total**, a soma das três, em $\mathrm{m}$;
+- $z$ — **carga gravitacional** ou de posição, $H_G$, em $\mathrm{m}$: a cota do ponto em relação a um plano horizontal de referência (**PHR**);
+- $\dfrac{v^2}{2g}$ — **carga cinética**, $H_C$, em $\mathrm{m}$;
+- $\dfrac{p}{\gamma}$ — **carga de pressão**, $H_P$, em $\mathrm{m}$;
+- $H$ — **carga total** na seção, a soma das três, em $\mathrm{m}$;
 - $g$ — aceleração da gravidade, em $\mathrm{m/s^2}$.
 
 </Caixa>
 
+### De onde vêm os três termos
+
+Um fluido em escoamento carrega três energias mecânicas. Para uma porção de massa $m$, peso $G = mg$ e volume $V$:
+
+$$
+E_p = m\,g\,z = G\,z
+\qquad
+E_c = \frac{m\,v^2}{2}
+\qquad
+E_{pr} = p\,V
+$$
+
+- $E_p$ — energia **potencial gravitacional**, pela posição em relação ao PHR;
+- $E_c$ — energia **cinética**, pelo movimento;
+- $E_{pr}$ — energia de **pressão**: o trabalho que a força $pA$ faz para empurrar o fluido por um deslocamento $ds$, $dW = pA\,ds = p\,dV$.
+
+A energia total é a soma, $E = E_p + E_c + E_{pr}$. Dividindo cada uma pelo **peso** $G = mg$ (e usando $V = G/\gamma$), cada energia vira uma **carga**:
+
+$$
+H_G = \frac{m g z}{m g} = z
+\qquad
+H_C = \frac{m v^2/2}{m g} = \frac{v^2}{2g}
+\qquad
+H_P = \frac{p V}{\gamma V} = \frac{p}{\gamma}
+$$
+
 ### A equação
 
+Se nada entra nem sai de energia entre duas seções, a carga total se mantém:
+
 $$
-\boxed{\;z_1 + \frac{p_1}{\gamma} + \frac{v_1^2}{2g} \;=\; z_2 + \frac{p_2}{\gamma} + \frac{v_2^2}{2g} \;=\; H\;}
+\boxed{\;H_1 = H_2 \quad\Longrightarrow\quad z_1 + \frac{v_1^2}{2g} + \frac{p_1}{\gamma} \;=\; z_2 + \frac{v_2^2}{2g} + \frac{p_2}{\gamma}\;}
 $$
 
-<Caixa tipo="dica" rotulo="As hipóteses — que a prova cobra por escrito">
+<Caixa tipo="dica" rotulo="As seis hipóteses — que a prova cobra por escrito">
 
-Bernoulli nesta forma vale para escoamento:
+Bernoulli nesta forma só vale com as seis hipóteses dos slides (as siglas são do professor):
 
-1. **permanente**;
-2. **incompressível** ($\gamma$ constante);
-3. **sem atrito** (fluido ideal, **sem perda de carga**);
-4. **sem máquina** (nada de bomba ou turbina no trecho);
-5. ao longo de **uma mesma linha de corrente**.
+1. **RP** — regime **permanente**;
+2. **SM** — **sem máquina** no trecho (nem bomba nem turbina);
+3. **SP** — **sem perdas** por atrito (fluido ideal);
+4. **PUS** — **propriedades uniformes na seção**: uma velocidade média e uma pressão representam a seção inteira, e é isso que permite aplicar a equação entre **seções** de um tubo, e não só ao longo de uma linha de corrente;
+5. **FI** — fluido **incompressível** ($\gamma$ constante);
+6. **STC** — **sem trocas de calor**.
 
-Cada hipótese quebrada acrescenta um termo à equação — e as duas próximas seções são exatamente sobre isso: máquina (4) e atrito (3).
+Cada hipótese quebrada acrescenta um termo à equação — e as duas próximas seções são exatamente sobre isso: máquina (SM) e atrito (SP).
 
 </Caixa>
 
