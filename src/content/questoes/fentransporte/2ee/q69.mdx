@@ -1,0 +1,183 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Comprimento equivalente · Potência para elevar 3000 L/min"
+temaId: comprimento-equivalente
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q69.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Calcular a **potência necessária** para elevar $3000\ \mathrm{L/min}$ no dispositivo esquematizado abaixo (expressar a resposta em **watt** e em **CV**).
+
+**Dados:** $f = 0{,}05$; rendimento da bomba $= 60\%$; rendimento do motor $= 90\%$; diâmetro da sucção $= 300\ \mathrm{mm}$; diâmetro de recalque $= 250\ \mathrm{mm}$; comprimento de sucção $= 3{,}0\ \mathrm{m}$; comprimento de recalque $= 100{,}0\ \mathrm{m}$. A = válvula de pé com crivo; B = joelho de $90^\circ$ (raio longo); C = válvula de retenção (leve); D, E = cotovelos de $45^\circ$; F = cotovelo de $90^\circ$ (raio médio).
+
+<Figura>
+  <svg viewBox="0 0 460 230" role="img" aria-label="Reservatório inferior com a válvula de pé A no fundo; o tubo de sucção sobe até o joelho B, na altura da bomba; depois da bomba vêm a válvula de retenção C e o cotovelo D; o recalque sobe inclinado até o cotovelo E, segue na horizontal e desce no cotovelo F, que descarrega sobre o reservatório superior. Cotas: a válvula A fica 0,4 metro abaixo do nível inferior, a bomba 0,5 metro acima dele, o nível superior 8 metros acima da bomba e a saída F 1 metro acima do nível superior">
+    {/* reservatório inferior */}
+    <path d="M24 140 L24 214 L136 214 L136 140 Z" fill="var(--accent-soft)" opacity="0.5"/>
+    <path d="M24 124 L24 214 L136 214 L136 124" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="24" y1="140" x2="136" y2="140" stroke="var(--accent)" stroke-width="1"/>
+    {/* sucção */}
+    <path d="M100 200 L100 108 L150 108" fill="none" stroke="var(--ink-2)" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="92" y="198" width="16" height="10" fill="var(--warn)"/>
+    <text x="78" y="208" font-size="11" fill="var(--ink-2)">A</text>
+    <rect x="94" y="102" width="12" height="12" fill="var(--warn)"/>
+    <text x="84" y="98" font-size="11" fill="var(--ink-2)">B</text>
+    {/* bomba */}
+    <circle cx="164" cy="108" r="13" fill="var(--surface-2, #fff)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="146" y="86" font-size="10" fill="var(--ink-2)">bomba</text>
+    {/* recalque */}
+    <path d="M177 108 L236 108 L290 52 L360 52 L360 62" fill="none" stroke="var(--ink-2)" stroke-width="3.4" stroke-linejoin="round"/>
+    <rect x="198" y="103" width="12" height="10" fill="var(--warn)"/>
+    <text x="198" y="98" font-size="11" fill="var(--ink-2)">C</text>
+    <rect x="230" y="103" width="10" height="10" fill="var(--warn)"/>
+    <text x="232" y="126" font-size="11" fill="var(--ink-2)">D</text>
+    <rect x="285" y="47" width="10" height="10" fill="var(--warn)"/>
+    <text x="284" y="42" font-size="11" fill="var(--ink-2)">E</text>
+    <rect x="355" y="47" width="10" height="12" fill="var(--warn)"/>
+    <text x="352" y="42" font-size="11" fill="var(--ink-2)">F</text>
+    {/* reservatório superior */}
+    <path d="M300 76 L300 90 L380 90 L380 76 Z" fill="var(--accent-soft)" opacity="0.5"/>
+    <path d="M300 70 L300 90 L380 90 L380 70" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="300" y1="76" x2="380" y2="76" stroke="var(--accent)" stroke-width="1"/>
+    {/* linhas de cota */}
+    <line x1="368" y1="62" x2="430" y2="62" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="384" y1="76" x2="430" y2="76" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="244" y1="108" x2="430" y2="108" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="140" y1="140" x2="430" y2="140" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="112" y1="203" x2="430" y2="203" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="424" y1="62" x2="424" y2="203" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="430" y="72" font-size="10" fill="var(--ink-3)">1,0 m</text>
+    <text x="430" y="96" font-size="10" fill="var(--ink-3)">8,0 m</text>
+    <text x="430" y="128" font-size="10" fill="var(--ink-3)">0,5 m</text>
+    <text x="430" y="176" font-size="10" fill="var(--ink-3)">0,4 m</text>
+    <polygon points="424,62 421,68 427,68" fill="var(--ink-3)"/>
+    <polygon points="424,203 421,197 427,197" fill="var(--ink-3)"/>
+    <line x1="420" y1="76" x2="428" y2="76" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="420" y1="108" x2="428" y2="108" stroke="var(--ink-3)" stroke-width="1"/>
+    <line x1="420" y1="140" x2="428" y2="140" stroke="var(--ink-3)" stroke-width="1"/>
+  </svg>
+  <figcaption>
+
+Fora de escala, como no original. De baixo para cima: válvula A, $0{,}4\ \mathrm{m}$ até o **nível do reservatório inferior**, $0{,}5\ \mathrm{m}$ até o **eixo da bomba**, $8{,}0\ \mathrm{m}$ até o **nível do reservatório superior** e mais $1{,}0\ \mathrm{m}$ até a **saída F**, que descarrega livre acima dele.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+Desnível geométrico: do nível inferior à saída F, $0{,}5 + 8{,}0 + 1{,}0 = 9{,}5\ \mathrm{m}$.
+
+Comprimentos equivalentes (tabela usual, em metros): sucção $\varnothing 300$: A $= 78{,}0$, B $= 6{,}1$; recalque $\varnothing 250$: C $= 20{,}0$, D $=$ E $= 3{,}8$, F $= 6{,}7$.
+
+$$
+h_{f,s} = 0{,}05 \times \frac{87{,}1}{0{,}30} \times \frac{0{,}707^2}{2g} = 0{,}37\ \mathrm{m}
+\qquad
+h_{f,r} = 0{,}05 \times \frac{134{,}3}{0{,}25} \times \frac{1{,}019^2}{2g} = 1{,}42\ \mathrm{m}
+$$
+
+$$
+H_{man} = 9{,}5 + 0{,}37 + 1{,}42 + 0{,}05 = 11{,}3\ \mathrm{m}
+$$
+
+$$
+N = \frac{\gamma\,Q\,H_{man}}{\eta_B\,\eta_M} = \frac{9810 \times 0{,}05 \times 11{,}34}{0{,}60 \times 0{,}90} \approx \mathbf{10{,}3\ kW} \approx \mathbf{14\ CV}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a altura que a bomba precisa vencer.** A água sai do **nível do reservatório inferior** (pressão atmosférica, velocidade nula) e termina como **jato livre em F**, $1\ \mathrm{m}$ acima do reservatório superior. O desnível geométrico é o de F, não o do nível superior:
+
+$$
+H_g = 0{,}5 + 8{,}0 + 1{,}0 = 9{,}5\ \mathrm{m}
+$$
+
+Os $0{,}4\ \mathrm{m}$ de submersão da válvula de pé **não entram**: a energia é medida a partir da superfície livre, e a água desce até A e torna a subir.
+
+<Caixa tipo="simbolos">
+
+- $Q = 3000\ \mathrm{L/min} = 0{,}05\ \mathrm{m^3/s}$
+- $L_{eq}$ — **comprimento equivalente**: o comprimento de tubo reto que daria a mesma perda que a peça
+- perda total de cada trecho: $h_f = f\,\dfrac{L + \sum L_{eq}}{D}\,\dfrac{v^2}{2g}$
+- $\gamma = 9810\ \mathrm{N/m^3}$, $g = 9{,}81\ \mathrm{m/s^2}$
+
+</Caixa>
+
+**Passo 2 — as velocidades.**
+
+$$
+v_s = \frac{0{,}05}{\pi\,(0{,}30)^2/4} = 0{,}707\ \mathrm{m/s}
+\qquad
+v_r = \frac{0{,}05}{\pi\,(0{,}25)^2/4} = 1{,}019\ \mathrm{m/s}
+$$
+
+$$
+\frac{v_s^2}{2g} = 0{,}0255\ \mathrm{m}
+\qquad
+\frac{v_r^2}{2g} = 0{,}0529\ \mathrm{m}
+$$
+
+**Passo 3 — os comprimentos equivalentes.** O enunciado nomeia as peças mas não traz a tabela; os valores abaixo são os da tabela usual de comprimentos equivalentes (Azevedo Netto), para o diâmetro de cada trecho:
+
+| peça | trecho | $\varnothing$ | $L_{eq}$ (m) |
+|---|---|---|---|
+| A — válvula de pé com crivo | sucção | 300 mm | 78,0 |
+| B — joelho 90° raio longo | sucção | 300 mm | 6,1 |
+| C — válvula de retenção leve | recalque | 250 mm | 20,0 |
+| D — cotovelo 45° | recalque | 250 mm | 3,8 |
+| E — cotovelo 45° | recalque | 250 mm | 3,8 |
+| F — cotovelo 90° raio médio | recalque | 250 mm | 6,7 |
+
+A válvula de pé sozinha equivale a $78\ \mathrm{m}$ de tubo, **26 vezes** o comprimento real da sucção.
+
+**Passo 4 — as perdas.**
+
+Sucção: $L_{total} = 3{,}0 + 78{,}0 + 6{,}1 = 87{,}1\ \mathrm{m}$
+
+$$
+h_{f,s} = 0{,}05 \times \frac{87{,}1}{0{,}30} \times 0{,}0255 = 0{,}370\ \mathrm{m}
+$$
+
+Recalque: $L_{total} = 100{,}0 + 20{,}0 + 3{,}8 + 3{,}8 + 6{,}7 = 134{,}3\ \mathrm{m}$
+
+$$
+h_{f,r} = 0{,}05 \times \frac{134{,}3}{0{,}25} \times 0{,}0529 = 1{,}420\ \mathrm{m}
+$$
+
+**Passo 5 — a altura manométrica.** Energia do nível inferior até o jato em F: a bomba fornece o desnível, as perdas e a carga cinética com que a água sai em F.
+
+$$
+H_{man} = H_g + h_{f,s} + h_{f,r} + \frac{v_r^2}{2g} = 9{,}5 + 0{,}370 + 1{,}420 + 0{,}053 = 11{,}34\ \mathrm{m}
+$$
+
+**Passo 6 — a potência.** A potência hidráulica é $\gamma Q H_{man}$. A bomba perde $40\%$ e o motor mais $10\%$: a energia que o motor puxa da rede é a hidráulica dividida pelos **dois** rendimentos.
+
+$$
+N_{hidr} = 9810 \times 0{,}05 \times 11{,}34 = 5564\ \mathrm{W}
+$$
+
+$$
+\boxed{N = \frac{5564}{0{,}60 \times 0{,}90} \approx 10\,300\ \mathrm{W} = 10{,}3\ \mathrm{kW}}
+$$
+
+$$
+\boxed{N = \frac{10\,300}{735{,}5} \approx 14\ \mathrm{CV}}
+$$
+
+No eixo da bomba (só o rendimento dela) seriam $9{,}27\ \mathrm{kW}$, ou $12{,}6\ \mathrm{CV}$.
+
+<Caixa tipo="dica" rotulo="Se a tabela da turma for outra">
+
+Os valores de $L_{eq}$ mudam um pouco de tabela para tabela. As peças respondem por só $0{,}72\ \mathrm{m}$ dos $11{,}3$, então uma diferença de 20% nos $L_{eq}$ muda a resposta em pouco mais de 1%: o resultado fica em torno de $14\ \mathrm{CV}$ de qualquer jeito.
+
+</Caixa>
+</Passos>
