@@ -52,14 +52,18 @@ Tubo **horizontal**: o peso do líquido é vertical e não entra no balanço da 
 
 <Gabarito>
 $$
-v_A = 1{,}06\ \mathrm{m/s}, \quad v_B = 4{,}24\ \mathrm{m/s}, \quad p_A = 176{,}5\ \mathrm{kPa}, \quad p_B = 168{,}1\ \mathrm{kPa}
+v_A = 1{,}06\ \mathrm{m/s}, \quad v_B = 4{,}24\ \mathrm{m/s}, \quad p_A = 176{,}5\ \mathrm{kPa}, \quad p_B = 168{,}1\ \mathrm{kPa}, \quad Q_m = 300\ \mathrm{kg/s}
 $$
 
 $$
-F = p_A A_A - p_B A_B - \rho Q\,(v_B - v_A) = 49{,}91 - 11{,}88 - 0{,}95 \approx \mathbf{37{,}1\ kN}
+F_{S_x} = -\big[p_A A_A(-1) + p_B A_B(+1) + Q_m\,(v_B - v_A)\big] = p_A A_A - p_B A_B - Q_m\,(v_B - v_A)
 $$
 
-no sentido do escoamento (cerca de $3{,}78\ \mathrm{tf}$).
+$$
+F_{S_x} = 49{,}91 - 11{,}88 - 0{,}95 \approx \mathbf{37{,}1\ kN}
+$$
+
+no sentido do escoamento (cerca de $3{,}78\ \mathrm{tf}$); $F_{S_y} = 0$.
 </Gabarito>
 
 <Passos>
@@ -83,49 +87,63 @@ $$
 p_A = 1{,}80 \times 9{,}807 \times 10^4 = 176\,520\ \mathrm{Pa}
 $$
 
-**Passo 3 — a pressão em B, por Bernoulli.** Sem perdas e na horizontal ($z_A = z_B$), com água ($\rho = 1000\ \mathrm{kg/m^3}$):
+**Passo 3 — a pressão em B, por Bernoulli.** Sem perdas e na horizontal ($z_A = z_B$), com água:
 
 $$
-p_B = p_A + \frac{\rho}{2}\left(v_A^2 - v_B^2\right) = 176\,520 + 500\,(1{,}126 - 18{,}012) = 168\,077\ \mathrm{Pa}
+z_A + \frac{v_A^2}{2g} + \frac{p_A}{\gamma} = z_B + \frac{v_B^2}{2g} + \frac{p_B}{\gamma}
+\qquad\Longrightarrow\qquad
+p_B = p_A + \frac{\gamma}{2g}\left(v_A^2 - v_B^2\right)
+$$
+
+Como $\gamma/g = \rho = 1000\ \mathrm{kg/m^3}$:
+
+$$
+p_B = 176\,520 + 500\,(1{,}126 - 18{,}012) = 168\,077\ \mathrm{Pa}
 $$
 
 A pressão cai só $8{,}4\ \mathrm{kPa}$: a velocidade ainda é baixa.
 
-**Passo 4 — o volume de controle.** Envolve o líquido dentro da redução, de A até B. Na direção $x$ do escoamento agem: a pressão em A empurrando para a frente, a pressão em B empurrando para trás e a força $F_x$ da parede sobre o líquido. A soma é igual ao que sai menos o que entra de quantidade de movimento:
+**Passo 4 — a equação da quantidade de movimento.** É a **Aplicação 1** dos slides, o conduto com redução gradual de seção. Com o volume de controle envolvendo o líquido de A até B e desprezando o peso:
 
 $$
-p_A A_A - p_B A_B + F_x = \rho Q\,(v_B - v_A)
+\vec{F}_S = -\big[\,p_A A_A\,\vec{n}_A + p_B A_B\,\vec{n}_B + Q_m\,(\vec{v}_B - \vec{v}_A)\,\big]
 $$
 
 <Caixa tipo="simbolos">
 
-- $F_x$ — força da **redução sobre o líquido**, que é a incógnita; o líquido faz a mesma força, com sinal trocado, sobre a redução
-- $\rho Q = 1000 \times 0{,}30 = 300\ \mathrm{kg/s}$ — vazão em massa
+- $\vec{F}_S$ — força que o **fluido exerce na superfície sólida** (a redução). É exatamente o que a questão pede, e por isso a equação já sai com o sinal certo
+- $\vec{n}_A$, $\vec{n}_B$ — vetores unitários **normais às seções, apontando para fora** do volume de controle. Com $x$ no sentido do escoamento: $\vec{n}_A = -\vec{i}$ (a seção de entrada "olha" para trás) e $\vec{n}_B = +\vec{i}$
+- $Q_m = \rho\,Q = 1000 \times 0{,}30 = 300\ \mathrm{kg/s}$ — vazão em massa
+- $\vec{v}_A$, $\vec{v}_B$ — as duas no sentido de $+x$
 
 </Caixa>
 
-**Passo 5 — as parcelas.**
+**Passo 5 — projetar em $x$ e em $y$.**
+
+$$
+F_{S_x} = -\big[\,p_A A_A(-1) + p_B A_B(+1) + Q_m\,(v_B - v_A)\,\big] = p_A A_A - p_B A_B - Q_m\,(v_B - v_A)
+$$
+
+Em $y$ nenhum termo tem componente, então $F_{S_y} = 0$. As parcelas:
 
 $$
 p_A A_A = 176\,520 \times 0{,}2827 = 49\,910\ \mathrm{N}
-$$
-
-$$
+\qquad
 p_B A_B = 168\,077 \times 0{,}0707 = 11\,881\ \mathrm{N}
 $$
 
 $$
-\rho Q\,(v_B - v_A) = 300 \times (4{,}244 - 1{,}061) = 955\ \mathrm{N}
+Q_m\,(v_B - v_A) = 300 \times (4{,}244 - 1{,}061) = 955\ \mathrm{N}
 $$
 
 $$
-F_x = 955 - 49\,910 + 11\,881 = -37\,074\ \mathrm{N}
+F_{S_x} = 49\,910 - 11\,881 - 955 = 37\,074\ \mathrm{N}
 $$
 
-O sinal negativo diz que a parede empurra o líquido **para trás**. Então o líquido empurra a redução **para a frente**, no sentido do escoamento:
+Positivo: o líquido empurra a redução **para a frente**, no sentido do escoamento.
 
 $$
-\boxed{F \approx 37{,}1\ \mathrm{kN} \approx 3{,}78\ \mathrm{tf}}
+\boxed{F_S \approx 37{,}1\ \mathrm{kN} \approx 3{,}78\ \mathrm{tf}}
 $$
 
 **Conferência —** quase toda a força vem da **pressão**: $49{,}9 - 11{,}9 = 38\ \mathrm{kN}$, contra menos de $1\ \mathrm{kN}$ da variação de quantidade de movimento. Em redução com pressão alta e velocidade baixa é sempre assim. É essa força que as **ancoragens** da tubulação precisam segurar.
