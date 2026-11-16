@@ -1,0 +1,87 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Semelhança · Placa na água e placa no ar: dimensões e força"
+temaId: semelhanca-dinamica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q65.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma placa plana retangular, com $1{,}5\ \mathrm{m}$ de comprimento e $15\ \mathrm{cm}$ de largura, encontra-se totalmente submersa em um tanque contendo água. Para mantê-la em movimento a uma velocidade de $6\ \mathrm{m/s}$, é necessária a aplicação de uma força de $15\ \mathrm{N}$. Deseja-se construir uma placa geometricamente semelhante para operar **no ar**, de modo que haja semelhança dinâmica completa entre os dois escoamentos. A nova placa deverá deslocar-se com velocidade de $30\ \mathrm{m/s}$. Determinar: **a)** as dimensões da placa a ser utilizada no ar; **b)** a força necessária para manter essa placa em movimento.
+
+**Dados:** $\rho_{água} = 1000\ \mathrm{kg/m^3}$; $\nu_{água} = 10^{-6}\ \mathrm{m^2/s}$; $\rho_{ar} = 1{,}2\ \mathrm{kg/m^3}$; $\nu_{ar} = 10^{-5}\ \mathrm{m^2/s}$. Função representativa do fenômeno: $F = F(V, L, \rho, \mu)$.
+
+<Gabarito>
+**a)** Reynolds igual: $\dfrac{L_{ar}}{L_{água}} = \dfrac{V_{água}}{V_{ar}}\cdot\dfrac{\nu_{ar}}{\nu_{água}} = \dfrac{6}{30} \times 10 = 2$
+
+placa no ar com $\mathbf{3{,}0\ m}$ de comprimento e $\mathbf{30\ cm}$ de largura.
+
+**b)** Adimensional de força igual: $\dfrac{F}{\rho V^2 L^2}$ igual nos dois,
+
+$$
+F_{ar} = 15 \times \frac{1{,}2}{1000} \times \left(\frac{30}{6}\right)^2 \times 2^2 = \mathbf{1{,}8\ N}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os adimensionais do fenômeno.** São 5 grandezas ($F, V, L, \rho, \mu$) e 3 dimensões fundamentais ($M, L, T$): pelo teorema dos $\pi$, $5 - 3 = 2$ adimensionais. Com base $\rho, V, L$:
+
+$$
+\pi_1 = \frac{F}{\rho\,V^2 L^2}
+\qquad\qquad
+\pi_2 = \frac{\rho\,V L}{\mu} = \frac{V L}{\nu} = Re
+$$
+
+Semelhança dinâmica completa é ter $\pi_1$ **e** $\pi_2$ iguais na água e no ar.
+
+<Caixa tipo="simbolos">
+
+- água: $L = 1{,}5\ \mathrm{m}$, $b = 0{,}15\ \mathrm{m}$, $V = 6\ \mathrm{m/s}$, $F = 15\ \mathrm{N}$
+- ar: $V = 30\ \mathrm{m/s}$; $L$, $b$ e $F$ são as incógnitas
+- $\nu = \mu/\rho$ — viscosidade cinemática
+
+</Caixa>
+
+**Passo 2 — a) Reynolds dá a escala.**
+
+$$
+\frac{V_{água}\,L_{água}}{\nu_{água}} = \frac{V_{ar}\,L_{ar}}{\nu_{ar}}
+\qquad\Longrightarrow\qquad
+\frac{L_{ar}}{L_{água}} = \frac{V_{água}}{V_{ar}}\cdot\frac{\nu_{ar}}{\nu_{água}} = \frac{6}{30}\times\frac{10^{-5}}{10^{-6}} = 0{,}2 \times 10 = 2
+$$
+
+A placa no ar é **duas vezes maior**: o ar é dez vezes mais "viscoso" em termos cinemáticos, e a velocidade só cinco vezes maior não compensa. Pela semelhança geométrica, as duas dimensões dobram:
+
+$$
+\boxed{L_{ar} = 2 \times 1{,}5 = 3{,}0\ \mathrm{m}
+\qquad
+b_{ar} = 2 \times 15 = 30\ \mathrm{cm}}
+$$
+
+**Passo 3 — b) o adimensional de força.**
+
+$$
+\frac{F_{ar}}{\rho_{ar}V_{ar}^2 L_{ar}^2} = \frac{F_{água}}{\rho_{água}V_{água}^2 L_{água}^2}
+$$
+
+$$
+F_{ar} = F_{água}\cdot\frac{\rho_{ar}}{\rho_{água}}\cdot\left(\frac{V_{ar}}{V_{água}}\right)^2\cdot\left(\frac{L_{ar}}{L_{água}}\right)^2
+= 15 \times 0{,}0012 \times 25 \times 4
+$$
+
+$$
+\boxed{F_{ar} = 1{,}8\ \mathrm{N}}
+$$
+
+**Conferência —** o ar é quase mil vezes menos denso que a água, e isso pesa mais que a velocidade ao quadrado ($\times 25$) e a área ($\times 4$) juntas: $0{,}0012 \times 100 = 0{,}12$. A força no ar sai um oitavo da força na água, o que é coerente com a experiência de que arrastar algo no ar custa muito menos.
+</Passos>
