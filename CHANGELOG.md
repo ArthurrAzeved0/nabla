@@ -66,6 +66,37 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   tabela, os comprimentos equivalentes são os da tabela de Azevedo Netto. A
   cadeira vai de 113 para **129 questões**, e o site, de 622 para **638**.
 
+### Alterado
+
+- **A teoria e as questões do 2º EE de Fenômenos agora usam a notação do
+  Prof. Marcos Barbosa**, tirada dos slides 7 a 12 dele. Na teoria: os limites
+  de Reynolds passam a $2000$ e $2400$; Bernoulli ganha as cargas $H_G$, $H_C$
+  e $H_P$, de onde vêm, e as seis hipóteses com as siglas dele (RP, SM, SP,
+  PUS, FI, STC); a máquina usa $N = \gamma Q H$, $N_B$ e $N_T$ no eixo e
+  $1\ \mathrm{CV} = 735\ \mathrm{W}$; a perda distribuída passa a $h_f$, com
+  raio e diâmetro hidráulico, rugosidade $k$ e $D_H/k$, linha piezométrica e
+  linha de energia e o diagrama de Moody-Rouse; a localizada passa a $h_s$ e
+  $k_s$, com as tabelas de coeficientes e de comprimentos equivalentes dos
+  slides; a quantidade de movimento é escrita como
+  $\vec F_S = -[p_1A_1\vec n_1 + p_2A_2\vec n_2 + Q_m\Delta\vec v]$, com as
+  normais para fora e as quatro aplicações; a análise dimensional vai para a
+  base $FLT$; a semelhança, para as escalas $K$ e $Fr = v^2/(Lg)$; e
+  Navier-Stokes ganha as componentes, a passagem de Euler a Bernoulli e os três
+  exemplos dele (placas fixas, placa móvel e filme em plano inclinado). Onde os
+  slides pulavam um passo, a teoria completa. As 16 questões da 2ª lista foram
+  reescritas na mesma notação.
+
+### Corrigido
+
+- **A velocidade média entre placas paralelas é $\tfrac{2}{3}\,v_{máx}$, não
+  $\tfrac{1}{2}\,v_{máx}$.** A seção de Navier-Stokes dava a média do tubo
+  circular (Hagen-Poiseuille) para o escoamento entre placas. Agora as duas
+  aparecem, cada uma no seu caso.
+- **Entrada de borda e entrada normal estavam trocadas na tabela de perdas
+  localizadas**: a de borda, com quina viva, perde o dobro ($k_s = 1{,}0$ contra
+  $0{,}5$). E "curva de 90°" e "joelho" eram tratados como a mesma peça; nos
+  slides, o cotovelo de 90° vale $0{,}9$ e a curva, $0{,}4$.
+
 ### Notas de acervo
 
 - **Os gabaritos oficiais erram em oito lugares**, e cada questão afetada
