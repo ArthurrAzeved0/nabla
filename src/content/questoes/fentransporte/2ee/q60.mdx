@@ -1,0 +1,146 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Máquina · Bomba ou turbina? A potência com rendimento"
+temaId: turbina
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q60.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O reservatório de grandes dimensões da figura descarrega água para a atmosfera através de uma tubulação com uma vazão de $10\ \mathrm{L/s}$. **Verificar se a máquina instalada é BOMBA ou TURBINA** e determinar sua **potência** se o rendimento é $75\%$. Suponha fluido perfeito.
+
+**Dados:** $\rho = 1000\ \mathrm{kg/m^3}$; $g = 10\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 440 200" role="img" aria-label="Reservatório com a superfície livre, seção 1, a 20 metros do plano horizontal de referência; a tubulação de área 10 centímetros quadrados corre pelo fundo, passa pela máquina M, sobe e descarrega na atmosfera na seção 2, a 5 metros do plano de referência">
+    {/* PHR */}
+    <line x1="20" y1="168" x2="420" y2="168" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <text x="370" y="162" font-size="10" fill="var(--ink-3)">PHR</text>
+    {/* reservatório */}
+    <path d="M40 40 L40 174 L160 174 L160 40 Z" fill="var(--accent-soft)" opacity="0.5" stroke="none"/>
+    <path d="M40 22 L40 174 L160 174 L160 174" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="160" y1="22" x2="160" y2="162" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="40" y1="40" x2="160" y2="40" stroke="var(--accent)" stroke-width="1"/>
+    <text x="50" y="34" font-size="10" fill="var(--ink-2)">p<tspan font-size="7" dy="2">atm</tspan></text>
+    <text x="166" y="38" font-size="11" fill="var(--ink-2)">(1)</text>
+    {/* tubulação com a máquina */}
+    <path d="M160 162 L320 162 L320 72 L360 72 M160 174 L332 174 L332 84 L360 84" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <path d="M160 162 L320 162 L320 72 L360 72 L360 84 L332 84 L332 174 L160 174 Z" fill="var(--accent-soft)" opacity="0.5"/>
+    <circle cx="240" cy="168" r="13" fill="var(--surface-2, #fff)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="234" y="172" font-size="12" fill="var(--ink-2)">M</text>
+    <line x1="200" y1="150" x2="190" y2="132" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="168" y="128" font-size="10" fill="var(--ink-2)">A = 10 cm²</text>
+    {/* jato */}
+    <path d="M361 74 Q384 78 392 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M361 82 Q378 88 382 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="352" y="64" font-size="11" fill="var(--ink-2)">(2)</text>
+    {/* cotas */}
+    <line x1="70" y1="46" x2="70" y2="162" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="70,40 67,49 73,49" fill="var(--ink-3)"/>
+    <polygon points="70,168 67,159 73,159" fill="var(--ink-3)"/>
+    <text x="76" y="110" font-size="11" fill="var(--ink-3)">20 m</text>
+    <line x1="404" y1="84" x2="404" y2="162" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="404,78 401,87 407,87" fill="var(--ink-3)"/>
+    <polygon points="404,168 401,159 407,159" fill="var(--ink-3)"/>
+    <line x1="364" y1="78" x2="412" y2="78" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="408" y="128" font-size="11" fill="var(--ink-3)">5 m</text>
+  </svg>
+  <figcaption>
+
+O PHR passa pelo eixo da tubulação no fundo. A área de $10\ \mathrm{cm^2}$ vale para toda a tubulação, inclusive na saída (2).
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v_2 = \frac{Q}{A} = \frac{0{,}010}{10 \times 10^{-4}} = 10\ \mathrm{m/s}
+\qquad
+H_2 = 5 + \frac{10^2}{20} = 10\ \mathrm{m}
+$$
+
+$$
+H_M = H_2 - H_1 = 10 - 20 = -10\ \mathrm{m} < 0 \quad\Longrightarrow\quad \textbf{turbina}
+$$
+
+$$
+N_T = \gamma\,Q\,|H_M|\,\eta_T = 10^4 \times 0{,}010 \times 10 \times 0{,}75 = \mathbf{750\ W}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a pergunta "bomba ou turbina" é uma conta de sinal.** Escreve-se a equação da energia **supondo** uma máquina de carga $H_M$ e deixa o sinal decidir:
+
+$$
+H_1 + H_M = H_2
+$$
+
+- $H_M > 0$: a máquina **fornece** energia ao fluido → bomba;
+- $H_M < 0$: a máquina **retira** energia do fluido → turbina.
+
+<Caixa tipo="simbolos">
+
+- $Q = 10\ \mathrm{L/s} = 0{,}010\ \mathrm{m^3/s}$
+- $A = 10\ \mathrm{cm^2} = 10^{-3}\ \mathrm{m^2}$
+- $\gamma = \rho g = 1000 \times 10 = 10^4\ \mathrm{N/m^3}$
+- $\eta = 0{,}75$
+
+</Caixa>
+
+**Passo 2 — a carga em (1).** Superfície livre de um reservatório grande: pressão atmosférica ($0$ efetiva), velocidade desprezível, cota $20\ \mathrm{m}$.
+
+$$
+H_1 = \frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 = 0 + 0 + 20 = 20\ \mathrm{m}
+$$
+
+**Passo 3 — a carga em (2).** Jato livre: pressão atmosférica, cota $5\ \mathrm{m}$ e uma velocidade que **não** é desprezível:
+
+$$
+v_2 = \frac{Q}{A} = \frac{0{,}010}{0{,}001} = 10\ \mathrm{m/s}
+\qquad\Longrightarrow\qquad
+\frac{v_2^2}{2g} = \frac{100}{20} = 5\ \mathrm{m}
+$$
+
+$$
+H_2 = 0 + 5 + 5 = 10\ \mathrm{m}
+$$
+
+**Passo 4 — o sinal.**
+
+$$
+H_M = H_2 - H_1 = 10 - 20 = -10\ \mathrm{m}
+$$
+
+Negativo: o fluido **chega com 20 m** de carga e **sai com 10 m**, sem perdas no caminho. Os $10\ \mathrm{m}$ que faltam foram retirados pela máquina. É uma **turbina**, com $H_T = 10\ \mathrm{m}$.
+
+**Passo 5 — a potência.** A potência que o fluido entrega à turbina é $\gamma Q H_T$; a turbina converte só $75\%$ disso em potência no eixo:
+
+$$
+N_{fluido} = \gamma\,Q\,H_T = 10^4 \times 0{,}010 \times 10 = 1000\ \mathrm{W}
+$$
+
+$$
+\boxed{N_T = N_{fluido}\,\eta_T = 1000 \times 0{,}75 = 750\ \mathrm{W} = 0{,}75\ \mathrm{kW}}
+$$
+
+<Caixa tipo="macete" rotulo="Rendimento multiplica ou divide?">
+
+O rendimento sempre **reduz** o que sai da máquina:
+
+- na **turbina**, entra potência hidráulica e sai potência no eixo → $N_T = \gamma Q H_T \cdot \eta$ (multiplica);
+- na **bomba**, entra potência no eixo e sai potência hidráulica → $N_B = \gamma Q H_B / \eta$ (divide).
+
+Se a conta deu uma turbina que entrega **mais** do que o fluido perdeu, o rendimento foi dividido no lugar errado.
+
+</Caixa>
+</Passos>
