@@ -29,18 +29,18 @@ d) Escreva a equação de Bernoulli para **aplicação na prática**.
 **a)** Entre duas seções (1) e (2), em $\mathrm{J/kg}$:
 
 $$
-\frac{p_1}{\rho} + \frac{v_1^2}{2} + g\,z_1 = \frac{p_2}{\rho} + \frac{v_2^2}{2} + g\,z_2
+g\,z_1 + \frac{v_1^2}{2} + \frac{p_1}{\rho} = g\,z_2 + \frac{v_2^2}{2} + \frac{p_2}{\rho}
 $$
 
-$p/\rho$ é a energia de pressão, $v^2/2$ a energia cinética e $g z$ a energia potencial de posição, todas por unidade de massa.
+$g z$ é a energia potencial gravitacional, $v^2/2$ a energia cinética e $p/\rho$ a energia de pressão, todas por unidade de massa.
 
 **b)** Dividindo por $g$, em metros de coluna de fluido (cargas):
 
 $$
-\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2 = H
+z_1 + \frac{v_1^2}{2g} + \frac{p_1}{\gamma} = z_2 + \frac{v_2^2}{2g} + \frac{p_2}{\gamma} = H
 $$
 
-**c)** Regime **permanente**, **sem máquina** no trecho, **sem perdas** (fluido ideal), fluido **incompressível**, propriedades uniformes nas seções, sem troca de calor.
+**c)** Regime **permanente** (RP), **sem máquina** no trecho (SM), **sem perdas** por atrito, isto é, fluido ideal (SP), **propriedades uniformes** nas seções (PUS), fluido **incompressível** (FI) e **sem trocas de calor** (STC).
 
 **d)** Com máquina e perdas de carga (fluido real):
 
@@ -55,7 +55,7 @@ com $H_M > 0$ para bomba e $H_M < 0$ para turbina.
 **Passo 1 — a forma por unidade de massa.** A equação de Bernoulli é um **balanço de energia** entre duas seções de um mesmo tubo de corrente. Cada termo é energia dividida pela massa que passa:
 
 $$
-\frac{p}{\rho} + \frac{v^2}{2} + g\,z = \text{constante} \qquad [\mathrm{J/kg} = \mathrm{m^2/s^2}]
+g\,z + \frac{v^2}{2} + \frac{p}{\rho} = \text{constante} \qquad [\mathrm{J/kg} = \mathrm{m^2/s^2}]
 $$
 
 <Caixa tipo="simbolos">
@@ -69,19 +69,19 @@ $$
 **Passo 2 — por unidade de peso.** Dividindo tudo por $g$ (e lembrando que $\gamma = \rho g$), cada termo vira uma **altura**:
 
 $$
-\underbrace{\frac{p}{\gamma}}_{\text{carga de pressão}} + \underbrace{\frac{v^2}{2g}}_{\text{carga cinética}} + \underbrace{z}_{\text{carga potencial}} = H \qquad [\mathrm{m}]
+\underbrace{z}_{\text{carga gravitacional } H_G} + \underbrace{\frac{v^2}{2g}}_{\text{carga cinética } H_C} + \underbrace{\frac{p}{\gamma}}_{\text{carga de pressão } H_P} = H \qquad [\mathrm{m}]
 $$
 
 $H$ é a **carga total**. Essa é a forma usada em hidráulica: a energia de cada seção vira uma altura de coluna de fluido, e comparar seções é comparar alturas.
 
-**Passo 3 — as hipóteses.** A equação de Bernoulli só vale, sem correção, quando o escoamento é:
+**Passo 3 — as hipóteses.** A equação de Bernoulli só vale, sem correção, sob as seis hipóteses dos slides (as siglas ajudam a decorar):
 
-- em **regime permanente** (nada muda com o tempo em cada ponto);
-- **sem máquina** entre as seções (nem bomba fornecendo nem turbina retirando energia);
-- **sem perdas** por atrito: fluido ideal, de viscosidade desprezível;
-- **incompressível** ($\rho$ constante);
-- com **propriedades uniformes** em cada seção (velocidade média representativa);
-- **sem troca de calor** com o exterior.
+1. **RP** — regime **permanente**: nada muda com o tempo em cada ponto;
+2. **SM** — **sem máquina** entre as seções: nem bomba fornecendo nem turbina retirando energia;
+3. **SP** — **sem perdas** por atrito: fluido ideal, de viscosidade desprezível;
+4. **PUS** — **propriedades uniformes** em cada seção: velocidade média representativa;
+5. **FI** — fluido **incompressível**: $\rho$ constante;
+6. **STC** — **sem trocas de calor** com o exterior.
 
 Nessas condições, $H_1 = H_2$: a carga total se conserva e só se redistribui entre pressão, velocidade e cota.
 
