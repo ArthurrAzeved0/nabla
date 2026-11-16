@@ -1,0 +1,112 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Bernoulli · Vazão de um tanque que descarrega por um tubo"
+temaId: torricelli
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q57.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O tanque da figura tem grandes dimensões e descarrega água pelo tubo indicado. Considerando o **fluido ideal**, determinar a **vazão em volume** de água descarregada, se a seção do tubo é $10\ \mathrm{cm^2}$.
+
+<Figura>
+  <svg viewBox="0 0 420 200" role="img" aria-label="Tanque grande com a superfície livre, seção 1, a 10 metros do fundo; um tubo sai pelo fundo, corre na horizontal, sobe e descarrega na atmosfera na seção 2, a 2 metros do fundo">
+    {/* referência no fundo */}
+    <line x1="20" y1="170" x2="400" y2="170" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="5 3"/>
+    {/* tanque */}
+    <path d="M60 40 L60 170 L150 170 L150 40" fill="var(--accent-soft)" opacity="0.5" stroke="none"/>
+    <path d="M60 20 L60 170 L150 170 L150 158" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="150" y1="20" x2="150" y2="158" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="60" y1="40" x2="150" y2="40" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="96" y1="48" x2="114" y2="48" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="100" y1="52" x2="110" y2="52" stroke="var(--accent)" stroke-width="1"/>
+    <text x="156" y="36" font-size="11" fill="var(--ink-2)">(1)</text>
+    {/* tubo: sai pelo fundo, horizontal, sobe e sai */}
+    <path d="M150 158 L290 158 L290 136 L330 136 L330 146 L300 146 L300 170 L150 170" fill="var(--accent-soft)" opacity="0.5" stroke="none"/>
+    <path d="M150 158 L290 158 L290 136 L330 136" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <path d="M150 170 L300 170 L300 146 L330 146" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="330" y1="136" x2="330" y2="146" stroke="var(--ink-2)" stroke-width="0.8"/>
+    {/* jato */}
+    <path d="M331 138 Q348 140 354 168" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M331 144 Q344 148 347 168" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="324" y="128" font-size="11" fill="var(--ink-2)">(2)</text>
+    {/* cotas */}
+    <line x1="36" y1="46" x2="36" y2="164" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="36,40 33,49 39,49" fill="var(--ink-3)"/>
+    <polygon points="36,170 33,161 39,161" fill="var(--ink-3)"/>
+    <text x="6" y="108" font-size="11" fill="var(--ink-3)">10 m</text>
+    <line x1="368" y1="141" x2="368" y2="170" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="380" y1="147" x2="380" y2="164" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="380,141 377,150 383,150" fill="var(--ink-3)"/>
+    <polygon points="380,170 377,161 383,161" fill="var(--ink-3)"/>
+    <line x1="334" y1="141" x2="386" y2="141" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="386" y="160" font-size="11" fill="var(--ink-3)">2 m</text>
+  </svg>
+  <figcaption>
+
+As duas cotas partem do **fundo**: a superfície livre está a $10\ \mathrm{m}$ e o eixo da saída a $2\ \mathrm{m}$. O desnível que importa é a diferença, $8\ \mathrm{m}$.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v_2 = \sqrt{2g\,(z_1 - z_2)} = \sqrt{2 \times 10 \times 8} \approx 12{,}6\ \mathrm{m/s}
+$$
+
+$$
+Q = v_2\,A = 12{,}6 \times 10 \times 10^{-4} \approx 1{,}26 \times 10^{-2}\ \mathrm{m^3/s} = \mathbf{12{,}6\ L/s}
+$$
+
+(com $g = 9{,}81\ \mathrm{m/s^2}$: $12{,}5\ \mathrm{L/s}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — escolher as seções.** Bernoulli entre a **superfície livre** (1) e a **saída do tubo** (2), com o plano de referência no fundo do tanque. As duas seções são as que têm tudo conhecido, menos a velocidade de saída.
+
+<Caixa tipo="simbolos">
+
+- $z_1 = 10\ \mathrm{m}$, $z_2 = 2\ \mathrm{m}$ (a partir do fundo)
+- $p_1 = p_2 = p_{atm} = 0$ em escala efetiva: (1) é superfície livre e (2) descarrega na atmosfera
+- $v_1 \approx 0$: tanque de **grandes dimensões**, o nível praticamente não desce
+- $A = 10\ \mathrm{cm^2} = 10 \times 10^{-4}\ \mathrm{m^2}$
+- $g = 10\ \mathrm{m/s^2}$, o valor que a própria lista usa nas outras questões
+
+</Caixa>
+
+**Passo 2 — Bernoulli.** Fluido ideal, sem máquina: $H_1 = H_2$.
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2
+\quad\Longrightarrow\quad
+0 + 0 + 10 = 0 + \frac{v_2^2}{2g} + 2
+$$
+
+$$
+\frac{v_2^2}{2g} = 8\ \mathrm{m}
+\qquad\Longrightarrow\qquad
+v_2 = \sqrt{2 \times 10 \times 8} = \sqrt{160} \approx 12{,}65\ \mathrm{m/s}
+$$
+
+É a fórmula de **Torricelli**, $v = \sqrt{2gh}$, com $h$ medido da superfície livre até a **saída**, e não até o fundo. O trecho horizontal e a subida do tubo não entram: sem perdas, o caminho não importa, só o desnível entre as pontas.
+
+**Passo 3 — a vazão.**
+
+$$
+Q = v_2\,A = 12{,}65 \times 10^{-3}
+\qquad\Longrightarrow\qquad
+\boxed{Q \approx 12{,}6 \times 10^{-3}\ \mathrm{m^3/s} = 12{,}6\ \mathrm{L/s}}
+$$
+
+**Conferência —** com $g = 9{,}81$, $v_2 = 12{,}53\ \mathrm{m/s}$ e $Q = 12{,}5\ \mathrm{L/s}$: menos de 1% de diferença. A armadilha da questão é usar $h = 10\ \mathrm{m}$, o que daria $14{,}1\ \mathrm{L/s}$.
+</Passos>
