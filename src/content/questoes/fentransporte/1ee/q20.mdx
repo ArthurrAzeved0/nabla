@@ -31,7 +31,7 @@ Um sistema hidráulico transfere água de um reservatório aberto de grandes dim
     <path d="M40 140 L40 200 L120 200 L120 140" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
     <rect x="41" y="152" width="78" height="48" fill="var(--accent-soft)" opacity="0.6"/>
     <line x1="41" y1="152" x2="119" y2="152" stroke="var(--accent)" stroke-width="1.4"/>
-    <text x="58" y="182" font-size="10" fill="var(--ink-2)">Tanque 1</text>
+    <text x="14" y="134" font-size="10" fill="var(--ink-2)">Tanque 1</text>
     {/* cota 5 m */}
     <line x1="150" y1="76" x2="150" y2="152" stroke="var(--warn)" stroke-width="1.2"/>
     <polygon points="150,76 146,86 154,86" fill="var(--warn)"/>
@@ -39,29 +39,29 @@ Um sistema hidráulico transfere água de um reservatório aberto de grandes dim
     <line x1="119" y1="152" x2="150" y2="152" stroke="var(--warn)" stroke-width="0.8" stroke-dasharray="3 3"/>
     <text x="156" y="118" font-size="10" fill="var(--warn)">5 m</text>
     {/* tubulação: sobe do tanque 1 até a bomba */}
-    <line x1="80" y1="152" x2="80" y2="76" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <line x1="80" y1="76" x2="176" y2="76" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <path d="M80 184 L80 76 L180 76" fill="none" stroke="var(--ink-2)" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M80 184 L80 76 L180 76" fill="none" stroke="var(--accent-soft)" stroke-width="4" stroke-linejoin="round"/>
     {/* bomba */}
     <circle cx="192" cy="76" r="14" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
     <text x="186" y="80" font-size="11" fill="var(--ink-2)">B</text>
     <text x="164" y="102" font-size="9" fill="var(--ink-2)">N = 2 kW</text>
     {/* tubulação: da bomba até o tanque 2 */}
-    <line x1="206" y1="76" x2="262" y2="76" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <line x1="262" y1="76" x2="262" y2="40" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <path d="M204 76 L262 76 L262 36" fill="none" stroke="var(--ink-2)" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M204 76 L262 76 L262 36" fill="none" stroke="var(--accent-soft)" stroke-width="4" stroke-linejoin="round"/>
     <text x="212" y="66" font-size="9" fill="var(--ink-3)">d = 10 cm</text>
     {/* tanque 2 */}
-    <path d="M242 40 L242 20 L316 20 L316 40" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
-    <rect x="243" y="28" width="72" height="12" fill="var(--accent-soft)" opacity="0.6"/>
+    <path d="M242 12 L242 46 L258 46 M266 46 L316 46 L316 12" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <rect x="243" y="28" width="72" height="18" fill="var(--accent-soft)" opacity="0.6"/>
     <line x1="243" y1="28" x2="315" y2="28" stroke="var(--accent)" stroke-width="1.4"/>
-    <text x="258" y="16" font-size="10" fill="var(--ink-2)">Tanque 2</text>
+    <text x="188" y="24" font-size="10" fill="var(--ink-2)">Tanque 2</text>
     {/* cota h */}
     <line x1="330" y1="28" x2="330" y2="76" stroke="var(--ok)" stroke-width="1.2"/>
     <polygon points="330,28 326,38 334,38" fill="var(--ok)"/>
     <polygon points="330,76 326,66 334,66" fill="var(--ok)"/>
     <line x1="316" y1="28" x2="330" y2="28" stroke="var(--ok)" stroke-width="0.8" stroke-dasharray="3 3"/>
-    <text x="308" y="56" font-size="11" fill="var(--ok)">h = ?</text>
+    <text x="286" y="64" font-size="11" fill="var(--ok)">h = ?</text>
     {/* perda de carga */}
-    <text x="34" y="222" font-size="9" fill="var(--ink-3)">perda de carga total do sistema: hₚ = 2 m</text>
+    <text x="34" y="222" font-size="9" fill="var(--ink-3)">perda de carga total do sistema: H<tspan font-size="7" dy="2">p</tspan><tspan dy="-2"> = 2 m</tspan></text>
   </svg>
   <figcaption>
 
