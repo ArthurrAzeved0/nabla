@@ -1,0 +1,186 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Perda de carga · Entre dois reservatórios: vazão e pressão num ponto"
+temaId: perda-de-carga-localizada
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q67.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dada a instalação da figura, determinar: **a)** a velocidade e a vazão na tubulação; **b)** a pressão no ponto A, localizado no ponto médio do trecho compreendido entre as seções (3) e (4).
+
+**Dados:** $k_1 = 0{,}5$; $k_2 = k_3 = k_4 = k_5 = k_7 = 1$; $k_6 = 10$; $D = 6\ \mathrm{cm}$; $K = 0{,}15\ \mathrm{cm}$; $g = 10\ \mathrm{m/s^2}$; $\nu = 10^{-6}\ \mathrm{m^2/s}$; $\gamma = 10^4\ \mathrm{N/m^3}$.
+
+<Figura>
+  <svg viewBox="0 0 460 240" role="img" aria-label="Reservatório da esquerda com nível, seção 0, 2,5 metros acima do eixo da tubulação; o tubo sai na seção 1, corre 1 metro até a seção 2, sobe até a seção 3, segue horizontal passando pelo ponto A até a seção 4, na altura do nível do reservatório da direita, desce até a seção 5, passa pelo registro na seção 6 e entra no reservatório da direita na seção 7; o nível desse reservatório, seção 8, está 0,5 metro acima do eixo">
+    {/* reservatório (0) */}
+    <path d="M24 70 L24 196 L120 196 L120 70 Z" fill="var(--accent-soft)" opacity="0.5"/>
+    <path d="M24 30 L24 196 L120 196 M120 30 L120 170" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="24" y1="70" x2="120" y2="70" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="86,62 96,62 91,70" fill="none" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="83" y1="75" x2="99" y2="75" stroke="var(--accent)" stroke-width="1"/>
+    <text x="26" y="26" font-size="11" fill="var(--ink-2)">(0)</text>
+    {/* tubulação */}
+    <path d="M120 170 L200 170 L200 150 L280 150 L280 170 L360 170" fill="none" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="280" y1="150" x2="360" y2="150" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <circle cx="240" cy="150" r="4" fill="var(--ink-2)"/>
+    <text x="230" y="138" font-size="11" fill="var(--ink-2)">(A)</text>
+    {/* registro (6) */}
+    <line x1="320" y1="170" x2="320" y2="156" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="310" y1="156" x2="330" y2="156" stroke="var(--ink-2)" stroke-width="3"/>
+    {/* reservatório (8) */}
+    <path d="M360 150 L360 196 L440 196 L440 150 Z" fill="var(--accent-soft)" opacity="0.5"/>
+    <path d="M360 120 L360 166 M360 174 L360 196 L440 196 L440 120" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="360" y1="150" x2="440" y2="150" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="414,142 424,142 419,150" fill="none" stroke="var(--accent)" stroke-width="1"/>
+    <text x="420" y="116" font-size="11" fill="var(--ink-2)">(8)</text>
+    {/* rótulos das seções */}
+    <text x="124" y="186" font-size="10" fill="var(--ink-2)">(1)</text>
+    <text x="176" y="186" font-size="10" fill="var(--ink-2)">(2)</text>
+    <text x="184" y="144" font-size="10" fill="var(--ink-2)">(3)</text>
+    <text x="276" y="144" font-size="10" fill="var(--ink-2)">(4)</text>
+    <text x="284" y="186" font-size="10" fill="var(--ink-2)">(5)</text>
+    <text x="312" y="186" font-size="10" fill="var(--ink-2)">(6)</text>
+    <text x="336" y="186" font-size="10" fill="var(--ink-2)">(7)</text>
+    {/* cotas verticais */}
+    <line x1="60" y1="76" x2="60" y2="164" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="60,70 57,79 63,79" fill="var(--ink-3)"/>
+    <polygon points="60,170 57,161 63,161" fill="var(--ink-3)"/>
+    <line x1="56" y1="170" x2="120" y2="170" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="30" y="124" font-size="11" fill="var(--ink-3)">2,5 m</text>
+    <line x1="400" y1="156" x2="400" y2="164" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="400,150 397,158 403,158" fill="var(--ink-3)"/>
+    <polygon points="400,170 397,162 403,162" fill="var(--ink-3)"/>
+    <line x1="364" y1="170" x2="408" y2="170" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="406" y="176" font-size="10" fill="var(--ink-3)">0,5 m</text>
+    {/* cotas horizontais */}
+    <line x1="120" y1="200" x2="120" y2="224" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="200" y1="174" x2="200" y2="224" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="280" y1="174" x2="280" y2="224" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="360" y1="200" x2="360" y2="224" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="120" y1="214" x2="360" y2="214" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="120,214 128,211 128,217" fill="var(--ink-3)"/>
+    <polygon points="200,214 192,211 192,217" fill="var(--ink-3)"/>
+    <polygon points="200,214 208,211 208,217" fill="var(--ink-3)"/>
+    <polygon points="280,214 272,211 272,217" fill="var(--ink-3)"/>
+    <polygon points="280,214 288,211 288,217" fill="var(--ink-3)"/>
+    <polygon points="360,214 352,211 352,217" fill="var(--ink-3)"/>
+    <text x="134" y="234" font-size="10" fill="var(--ink-3)">L₁,₂ = 1 m</text>
+    <text x="214" y="234" font-size="10" fill="var(--ink-3)">L₂,₅ = 1 m</text>
+    <text x="294" y="234" font-size="10" fill="var(--ink-3)">L₅,₇ = 1 m</text>
+  </svg>
+  <figcaption>
+
+O trecho (3)–(4) está **na cota do nível do reservatório (8)**, $0{,}5\ \mathrm{m}$ acima do eixo de (1)–(2), como marca a linha tracejada. As singularidades são a entrada (1), as quatro curvas (2), (3), (4) e (5), o registro (6) e a saída (7).
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+**a)** Com $D/K = 40$, regime turbulento rugoso, $f \approx 0{,}053$; comprimento total $L = 3\ \mathrm{m}$ e $\sum k = 15{,}5$:
+
+$$
+2{,}0 = \left(f\,\frac{L}{D} + \sum k\right)\frac{v^2}{2g}
+\quad\Longrightarrow\quad
+v = \sqrt{\frac{2 \times 10 \times 2{,}0}{2{,}68 + 15{,}5}} \approx \mathbf{1{,}48\ m/s}
+$$
+
+$$
+Q = v\,\frac{\pi D^2}{4} \approx 4{,}2 \times 10^{-3}\ \mathrm{m^3/s} = \mathbf{4{,}2\ L/s}
+$$
+
+**b)** $\dfrac{p_A}{\gamma} = 2{,}5 - 0{,}5 - \dfrac{v^2}{2g}\left(1 + k_1 + k_2 + k_3 + f\,\dfrac{1{,}5}{0{,}06}\right) = 2{,}0 - 0{,}110 \times 4{,}84 \approx 1{,}47\ \mathrm{m}$
+
+$$
+p_A \approx \mathbf{14{,}7\ kPa}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a equação da energia de (0) a (8).** As duas seções são superfícies livres: pressão atmosférica, velocidade nula. Com o plano de referência no eixo de (1)–(2):
+
+$$
+H_0 = H_8 + H_{p_{0,8}}
+\qquad\Longrightarrow\qquad
+2{,}5 = 0{,}5 + H_{p_{0,8}}
+\qquad\Longrightarrow\qquad
+H_{p_{0,8}} = 2{,}0\ \mathrm{m}
+$$
+
+Os $2\ \mathrm{m}$ de desnível são **inteiramente gastos** em perdas. É isso que determina a velocidade.
+
+<Caixa tipo="simbolos">
+
+- $H_p = \left(f\,\dfrac{L}{D} + \sum k\right)\dfrac{v^2}{2g}$ — perda distribuída (Darcy-Weisbach) mais localizadas
+- $\sum k = k_1 + k_2 + k_3 + k_4 + k_5 + k_6 + k_7 = 0{,}5 + 4 \times 1 + 10 + 1 = 15{,}5$
+- $L = L_{1,2} + L_{2,5} + L_{5,7} = 3\ \mathrm{m}$
+- $D/K = 6/0{,}15 = 40$ — tubo **muito rugoso**
+
+</Caixa>
+
+**Passo 2 — o fator de atrito.** $f$ depende de $Re$, que depende de $v$, a incógnita. Mas com $D/K = 40$ o tubo é tão rugoso que, para qualquer $Re$ acima de algumas dezenas de milhares, o diagrama de Moody está na região **plena turbulência**, onde $f$ só depende de $D/K$:
+
+$$
+\frac{1}{\sqrt f} = 2\log\left(3{,}7\,\frac{D}{K}\right) = 2\log(148) = 4{,}34
+\qquad\Longrightarrow\qquad
+f \approx 0{,}053
+$$
+
+**Passo 3 — a) a velocidade.**
+
+$$
+f\,\frac{L}{D} = 0{,}053 \times \frac{3}{0{,}06} = 2{,}68
+$$
+
+$$
+2{,}0 = (2{,}68 + 15{,}5)\,\frac{v^2}{2 \times 10}
+\qquad\Longrightarrow\qquad
+v = \sqrt{\frac{40}{18{,}18}} \approx 1{,}48\ \mathrm{m/s}
+$$
+
+**Conferência do $f$:** $Re = vD/\nu = 1{,}48 \times 0{,}06/10^{-6} \approx 8{,}9 \times 10^4$, turbulento. Pela equação de Colebrook com esse $Re$, $f = 0{,}0535$: praticamente o mesmo, e a velocidade não muda.
+
+$$
+\boxed{v \approx 1{,}48\ \mathrm{m/s}
+\qquad
+Q = 1{,}48 \times \frac{\pi\,(0{,}06)^2}{4} \approx 4{,}2 \times 10^{-3}\ \mathrm{m^3/s} = 4{,}2\ \mathrm{L/s}}
+$$
+
+Repare que as perdas **localizadas** ($15{,}5$) pesam quase seis vezes mais que a distribuída ($2{,}68$): em tubulação curta com muitos acessórios, são elas que mandam, e o registro sozinho ($k_6 = 10$) responde por mais da metade.
+
+**Passo 4 — b) a pressão em A.** Energia de (0) até A. No caminho há a entrada (1), as curvas (2) e (3), e $1{,}5\ \mathrm{m}$ de tubo: $1\ \mathrm{m}$ de (1) a (2) e metade do trecho $L_{2,5}$.
+
+$$
+\frac{v^2}{2g} = \frac{1{,}484^2}{20} = 0{,}110\ \mathrm{m}
+$$
+
+$$
+H_0 = z_A + \frac{p_A}{\gamma} + \frac{v^2}{2g} + \left(k_1 + k_2 + k_3 + f\,\frac{1{,}5}{D}\right)\frac{v^2}{2g}
+$$
+
+$$
+2{,}5 = 0{,}5 + \frac{p_A}{\gamma} + 0{,}110 \times (1 + 0{,}5 + 1 + 1 + 1{,}34)
+$$
+
+$$
+\frac{p_A}{\gamma} = 2{,}0 - 0{,}110 \times 4{,}84 = 1{,}47\ \mathrm{m}
+\qquad\Longrightarrow\qquad
+\boxed{p_A \approx 14{,}7\ \mathrm{kPa}}
+$$
+
+<Caixa tipo="dica" rotulo="E os trechos verticais?">
+
+O enunciado dá só $L_{1,2}$, $L_{2,5}$ e $L_{5,7}$, e a solução usa a soma, $3\ \mathrm{m}$. Se as subidas de $0{,}5\ \mathrm{m}$ em (2)–(3) e (4)–(5) fossem somadas como tubo a mais ($L = 4\ \mathrm{m}$, e $2\ \mathrm{m}$ até A), sairia $v = 1{,}45\ \mathrm{m/s}$, $Q = 4{,}1\ \mathrm{L/s}$ e $p_A = 14{,}5\ \mathrm{kPa}$: diferença de 2%, porque a perda distribuída é a parcela pequena.
+
+</Caixa>
+</Passos>
