@@ -1859,73 +1859,116 @@ Dois metros e pouco de coluna de água perdidos em só $50\ \mathrm{m}$ de tubo:
 
 <Topico id="ft-localizadas" num="18" titulo="Perdas de carga localizadas e comprimento equivalente">
 
-**A ideia.** Cada curva, válvula, registro ou mudança de seção obriga o fluido a **mudar de direção ou de velocidade** bruscamente, e isso gera turbilhonamento — energia que vira calor. Numa instalação curta e cheia de conexões, essas perdas "pontuais" podem passar a distribuída. Há dois métodos para contabilizá-las, e a prova pede saber os dois.
+**A ideia.** Cada curva, junção, válvula, medidor ou mudança de seção é uma **singularidade**: obriga o fluido a mudar de direção ou de velocidade bruscamente, e isso gera turbilhonamento — energia que vira calor. Numa instalação curta e cheia de conexões, essas perdas "pontuais" podem passar a distribuída. Há dois métodos para contabilizá-las, e os slides cobram os dois: o **dos coeficientes** e o **dos comprimentos virtuais** (ou equivalentes).
 
 <Caixa tipo="simbolos" rotulo="O que é cada símbolo">
 
-- $H_L$ — **perda de carga localizada**, em $\mathrm{m}$;
-- $K$ — **coeficiente de perda localizada** da peça, adimensional (tabelado);
-- $L_{eq}$ — **comprimento equivalente**: o comprimento de tubo reto que causaria a mesma perda, em $\mathrm{m}$;
-- $H_{p_{total}}$ — perda de carga total, em $\mathrm{m}$.
+- $h_s$ — **perda de carga localizada** (ou singular), em $\mathrm{m}$; nas contas dos slides aparece também como $\Delta h$;
+- $k_s$ — **coeficiente de perda localizada** da peça, adimensional (tabelado);
+- $v$ — velocidade média **de referência**, em $\mathrm{m/s}$: a da canalização onde a peça está;
+- $L_{eq}$ — **comprimento equivalente**: o comprimento de tubo reto, de mesmo diâmetro, que causaria a mesma perda, em $\mathrm{m}$;
+- $\Delta h$ — perda de carga **total** do sistema, em $\mathrm{m}$.
 
 </Caixa>
 
-### Método 1 — o coeficiente $K$
+### Método 1 — o dos coeficientes ($k_s$)
 
 $$
-\boxed{\;H_L = K\,\frac{v^2}{2g}\;}
+\boxed{\;h_s = k_s\,\frac{v^2}{2g}\;}
 $$
 
-Cada peça tem seu $K$, tabelado. Some as perdas de todas:
+Cada peça tem seu $k_s$, tabelado. A perda **total** do sistema é a dos acessórios somada à distribuída do tubo, com a carga cinética em evidência:
 
 $$
-H_L = \left(\sum K_i\right)\frac{v^2}{2g}
+\boxed{\;\Delta h = \left(f\,\frac{L}{D} + \sum k_s\right)\frac{v^2}{2g}\;}
 $$
 
-<Caixa tipo="dica" rotulo="Valores de K que aparecem em enunciado">
+<Caixa tipo="dica" rotulo="A tabela de k_s dos slides">
 
-| peça | $K$ aproximado |
-|---|---|
-| curva de 90° (joelho) | $0{,}9$ |
-| curva de 45° | $0{,}4$ |
-| registro de gaveta **aberto** | $0{,}2$ |
-| registro de globo aberto | $10$ |
-| válvula de pé com crivo | $1{,}75$ |
-| entrada de borda (reservatório → tubo) | $0{,}5$ |
-| saída de tubo (tubo → reservatório) | $1{,}0$ |
+| peça | $k_s$ | peça | $k_s$ |
+|---|---|---|---|
+| ampliação gradual | $0{,}30$ ¹ | pequena derivação | $0{,}03$ |
+| comporta aberta | $1{,}00$ | redução gradual | $0{,}15$ ² |
+| controlador de vazão | $2{,}50$ | saída de canalização | $1{,}00$ |
+| cotovelo de 45° | $0{,}40$ | tê de passagem direta | $0{,}60$ |
+| cotovelo de 90° | $0{,}90$ | tê de saída de lado | $1{,}30$ |
+| crivo | $0{,}75$ | tê de saída bilateral | $1{,}80$ |
+| curva de 22,5° | $0{,}10$ | válvula borboleta aberta | $0{,}30$ |
+| curva de 45° | $0{,}20$ | válvula de ângulo aberta | $5{,}00$ |
+| curva de 90° | $0{,}40$ | válvula de gaveta aberta | $0{,}20$ |
+| entrada de borda | $1{,}00$ | válvula de pé | $1{,}75$ |
+| entrada normal | $0{,}50$ | válvula de retenção | $2{,}50$ |
+| junção | $0{,}40$ | válvula globo aberta | $10{,}00$ |
+| medidor Venturi | $2{,}50$ ² | | |
 
-O registro de globo com $K = 10$ é a razão de ele ser usado para **controlar** vazão, e o de gaveta, com $K = 0{,}2$, para apenas **abrir e fechar**.
+¹ relativo à velocidade na canalização. ² com base na maior velocidade.
+
+**Cotovelo não é curva.** O cotovelo (joelho) muda a direção num canto, com turbulência alta ($k_s = 0{,}90$ a $90°$); a curva faz a mesma mudança com raio maior e perde menos ($0{,}40$). A **entrada de borda**, com quina viva, perde o dobro da **entrada normal**. O registro de globo, com $k_s = 10$, serve para **regular** vazão; o de gaveta, com $0{,}20$, só para **abrir e fechar**.
 
 </Caixa>
 
-### Método 2 — o comprimento equivalente
+### Método 2 — o dos comprimentos equivalentes
 
-Trocar cada peça por um trecho de tubo reto que perderia o mesmo:
-
-$$
-L_{eq} = K\,\frac{D}{f}
-$$
-
-Aí a perda total sai de **uma única** aplicação de Darcy, com o comprimento somado:
+Cada peça é substituída, no cálculo, por um trecho de tubo reto **de mesmo diâmetro** que perderia o mesmo. O sistema inteiro passa a ser tratado como um conduto retilíneo, e a perda total sai de **uma única** aplicação de Darcy:
 
 $$
-\boxed{\;H_{p_{total}} = f\,\frac{L_{real} + \sum L_{eq}}{D}\,\frac{v^2}{2g}\;}
+\boxed{\;\Delta h = f\,\frac{(L_{real} + L_{eq})}{D_H}\,\frac{v^2}{2g}\;}
 $$
+
+Os slides tiram $L_{eq}$ direto da tabela. Igualando as duas expressões da perda de uma peça, $f\,(L_{eq}/D)\,v^2/2g = k_s\,v^2/2g$, sai a ponte entre os métodos, útil quando só se tem um dos dados:
+
+$$
+L_{eq} = k_s\,\frac{D}{f}
+$$
+
+<Caixa tipo="dica" rotulo="A tabela de L_eq dos slides (m de canalização, aço galvanizado ou ferro fundido)">
+
+Conexões e entradas/saída:
+
+| DN (mm) | joelho 90° | joelho 45° | curva 90° | curva 45° | tê passagem direta | tê saída lateral | tê saída bilateral | entrada normal | entrada de borda | saída de canalização |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 13 (½″) | 0,5 | 0,2 | 0,3 | 0,2 | 0,1 | 0,7 | 0,8 | 0,2 | 0,4 | 0,4 |
+| 19 (¾″) | 0,7 | 0,3 | 0,5 | 0,3 | 0,1 | 1,0 | 1,3 | 0,2 | 0,5 | 0,5 |
+| 25 (1″) | 0,9 | 0,4 | 0,7 | 0,4 | 0,2 | 1,4 | 1,7 | 0,3 | 0,7 | 0,7 |
+| 32 (1¼″) | 1,2 | 0,5 | 0,8 | 0,5 | 0,2 | 1,7 | 2,1 | 0,4 | 0,9 | 0,9 |
+| 38 (1½″) | 1,4 | 0,7 | 1,0 | 0,6 | 0,3 | 2,1 | 2,5 | 0,5 | 1,0 | 1,0 |
+| 50 (2″) | 1,9 | 0,9 | 1,4 | 0,8 | 0,3 | 2,7 | 3,3 | 0,7 | 1,5 | 1,5 |
+| 63 (2½″) | 2,4 | 1,1 | 1,7 | 1,0 | 0,4 | 3,4 | 4,2 | 0,9 | 1,9 | 1,9 |
+| 75 (3″) | 2,8 | 1,3 | 2,0 | 1,2 | 0,5 | 4,1 | 5,0 | 1,1 | 2,2 | 2,2 |
+| 100 (4″) | 3,8 | 1,7 | 2,7 | — | 0,7 | 5,5 | 6,7 | 1,6 | 3,2 | 3,2 |
+| 125 (5″) | 4,7 | 2,2 | — | — | 0,8 | 6,9 | 8,3 | 2,0 | 4,0 | 4,0 |
+| 150 (6″) | 5,6 | 2,6 | 4,0 | — | 1,0 | 8,2 | 10,0 | 2,5 | 5,0 | 5,0 |
+
+Válvulas e registros:
+
+| DN (mm) | válvula de pé e crivo | retenção leve | retenção pesada | registro globo aberto | registro gaveta aberto | registro de ângulo aberto |
+|---|---|---|---|---|---|---|
+| 13 (½″) | 3,6 | 1,1 | 1,6 | 4,9 | 0,1 | 2,6 |
+| 19 (¾″) | 5,6 | 1,6 | 2,4 | 6,7 | 0,1 | 3,6 |
+| 25 (1″) | 7,3 | 2,1 | 3,2 | 8,2 | 0,2 | 4,6 |
+| 32 (1¼″) | 10,0 | 2,7 | 4,0 | 11,3 | 0,2 | 5,6 |
+| 38 (1½″) | 11,6 | 3,2 | 4,8 | 13,4 | 0,3 | 6,7 |
+| 50 (2″) | 14,4 | 4,2 | 6,4 | 17,4 | 0,4 | 8,5 |
+| 63 (2½″) | 17,0 | 5,2 | 8,1 | 21,0 | 0,4 | 10,0 |
+| 75 (3″) | 20,0 | 6,3 | 9,7 | 26,0 | 0,5 | 13,0 |
+| 100 (4″) | 23,0 | 8,4 | 12,9 | 34,0 | 0,7 | 17,0 |
+| 125 (5″) | 30,0 | 10,4 | 16,1 | 43,0 | 0,9 | 21,0 |
+| 150 (6″) | 39,0 | 12,5 | 19,3 | 51,0 | 1,1 | 26,0 |
+
+A tabela **para em DN 150**. Para diâmetros maiores (a q69 do 2º EE tem tubos de $250$ e $300\ \mathrm{mm}$), usa-se a versão estendida da mesma tabela (Azevedo Netto).
+
+</Caixa>
 
 <Caixa tipo="macete" rotulo="Qual método usar">
 
-- **coeficiente $K$** — quando o enunciado der uma lista de $K$;
-- **comprimento equivalente** — quando der uma tabela de $L_{eq}$ (comum em hidráulica), ou quando o tubo tiver **um só diâmetro**, porque aí uma conta resolve tudo.
+- **coeficientes $k_s$** — quando o enunciado der uma lista de $k_s$;
+- **comprimento equivalente** — quando der (ou pedir que se consulte) a tabela de $L_{eq}$, ou quando o tubo tiver **um só diâmetro**, porque aí uma conta resolve tudo.
 
-Os dois dão o mesmo resultado. **Não some os dois métodos** para a mesma peça — é contar a perda duas vezes, e é um erro que aparece.
+Os dois dão praticamente o mesmo resultado. **Não some os dois métodos** para a mesma peça — é contar a perda duas vezes, e é um erro que aparece.
 
 </Caixa>
 
-### A perda total, e quando desprezar as localizadas
-
-$$
-H_{p_{total}} = H_f + H_L
-$$
+### Quando desprezar as localizadas
 
 <Caixa tipo="dica">
 
@@ -1933,27 +1976,35 @@ Chama-se **instalação longa** aquela em que $L/D > 4000$ — nela as localizad
 
 </Caixa>
 
-<Caixa tipo="exemplo" rotulo="Exemplo rápido — os dois métodos dando o mesmo">
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o Exemplo 3 dos slides">
 
-Tubo de $D = 100\ \mathrm{mm}$, $f = 0{,}02$, $v = 2\ \mathrm{m/s}$, com **dois** joelhos de 90° ($K = 0{,}9$ cada).
+Tubo de ferro fundido com $D = 50\ \mathrm{mm}$, $Q = 0{,}20\ \mathrm{L/s}$, $f = 0{,}035$ e $L = 2 + 13 + 5 + 25 = 45\ \mathrm{m}$, com um cotovelo de 90° ($k_s = 0{,}9$), duas curvas de 45° ($k_s = 0{,}2$ cada) e um registro de gaveta ($k_s = 0{,}2$). Qual a perda total?
 
-**Por $K$:**
-
-$$
-H_L = \left(\sum K\right)\frac{v^2}{2g} = 1{,}8 \times \frac{4}{20} = 0{,}36\ \mathrm{m}
-$$
-
-**Por comprimento equivalente:**
+**Velocidade:**
 
 $$
-L_{eq} = K\,\frac{D}{f} = 0{,}9 \times \frac{0{,}100}{0{,}02} = 4{,}5\ \mathrm{m} \text{ por joelho} \;\Rightarrow\; 9{,}0\ \mathrm{m}
+A = \frac{\pi\,(0{,}05)^2}{4} = 1{,}963 \times 10^{-3}\ \mathrm{m^2}
+\qquad
+v = \frac{0{,}0002}{1{,}963 \times 10^{-3}} = 0{,}102\ \mathrm{m/s}
+\qquad
+\frac{v^2}{2g} = \frac{0{,}102^2}{2 \times 9{,}81} = 0{,}00053\ \mathrm{m}
+$$
+
+**Distribuída e localizadas:**
+
+$$
+h_f = 0{,}035 \times \frac{45}{0{,}05} \times 0{,}00053 = 0{,}0167\ \mathrm{m}
+\qquad
+\sum k_s = 0{,}9 + 2 \times 0{,}2 + 0{,}2 = 1{,}5
+\qquad
+h_s = 1{,}5 \times 0{,}00053 = 0{,}0008\ \mathrm{m}
 $$
 
 $$
-H_L = f\,\frac{\sum L_{eq}}{D}\,\frac{v^2}{2g} = 0{,}02 \times \frac{9{,}0}{0{,}100} \times 0{,}2 = 0{,}36\ \mathrm{m}
+\Delta h = h_f + h_s = 0{,}0167 + 0{,}0008 = 0{,}0175\ \mathrm{m}
 $$
 
-Idênticos, como tinham de ser — os métodos são a mesma conta reorganizada. E a leitura prática é boa: **cada joelho de 90° custa 4,5 m de tubo reto.**
+**A leitura:** com $L/D = 900$ e só quatro peças, as localizadas são menos de 5 % do total. **Pelo comprimento equivalente**, as mesmas peças valem $L_{eq} = 1{,}5 \times 0{,}05/0{,}035 = 2{,}1\ \mathrm{m}$ de tubo, e $\Delta h = 0{,}035 \times (45 + 2{,}1)/0{,}05 \times 0{,}00053 = 0{,}0175\ \mathrm{m}$: o mesmo número.
 
 </Caixa>
 
