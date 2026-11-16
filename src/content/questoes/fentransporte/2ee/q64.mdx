@@ -1,0 +1,85 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Semelhança · Froude e Reynolds ao mesmo tempo: a viscosidade do modelo"
+temaId: semelhanca-dinamica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q64.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um óleo de viscosidade cinemática igual a $4{,}7 \times 10^{-5}\ \mathrm{m^2/s}$ deverá ser usado em um protótipo em que as forças dominantes são as de **viscosidade e de gravidade**. Um modelo na escala $1:5$ é desejado. Qual a **viscosidade do líquido do modelo** necessária para que os números de Froude e de Reynolds sejam os mesmos, no modelo e no protótipo?
+
+<Gabarito>
+$$
+\nu_m = \nu_p\left(\frac{L_m}{L_p}\right)^{3/2} = 4{,}7 \times 10^{-5} \times \left(\frac{1}{5}\right)^{3/2}
+\approx \mathbf{4{,}2 \times 10^{-6}\ m^2/s}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que cada adimensional exige.** Com viscosidade e gravidade dominando, a semelhança dinâmica pede **os dois** iguais:
+
+$$
+Fr = \frac{v}{\sqrt{g\,L}}
+\qquad\qquad
+Re = \frac{v\,L}{\nu}
+$$
+
+<Caixa tipo="simbolos">
+
+- $L_m/L_p = 1/5$ — escala geométrica
+- $\nu_p = 4{,}7 \times 10^{-5}\ \mathrm{m^2/s}$ — óleo do protótipo
+- $g$ é o mesmo nos dois (o laboratório está na Terra)
+
+</Caixa>
+
+**Passo 2 — Froude fixa a escala de velocidades.**
+
+$$
+\frac{v_m}{\sqrt{g L_m}} = \frac{v_p}{\sqrt{g L_p}}
+\qquad\Longrightarrow\qquad
+\frac{v_m}{v_p} = \left(\frac{L_m}{L_p}\right)^{1/2}
+$$
+
+**Passo 3 — Reynolds fixa a viscosidade.**
+
+$$
+\frac{v_m L_m}{\nu_m} = \frac{v_p L_p}{\nu_p}
+\qquad\Longrightarrow\qquad
+\frac{\nu_m}{\nu_p} = \frac{v_m}{v_p}\cdot\frac{L_m}{L_p}
+$$
+
+Substituindo a escala de velocidades do Froude:
+
+$$
+\frac{\nu_m}{\nu_p} = \left(\frac{L_m}{L_p}\right)^{1/2}\cdot\frac{L_m}{L_p} = \left(\frac{L_m}{L_p}\right)^{3/2}
+$$
+
+**Passo 4 — o número.**
+
+$$
+\left(\frac{1}{5}\right)^{3/2} = \frac{1}{5\sqrt{5}} = \frac{1}{11{,}18} = 0{,}0894
+$$
+
+$$
+\boxed{\nu_m = 4{,}7 \times 10^{-5} \times 0{,}0894 \approx 4{,}2 \times 10^{-6}\ \mathrm{m^2/s}}
+$$
+
+**Conferência —** é um líquido cerca de quatro vezes mais viscoso que a água ($\nu_{água} \approx 10^{-6}$) e onze vezes menos que o óleo. Existe (um óleo leve, ou uma mistura de água com glicerina), o que torna o ensaio viável.
+
+<Caixa tipo="macete" rotulo="Por que é preciso trocar de fluido">
+
+Com o **mesmo** fluido, Reynolds pede $v_m/v_p = L_p/L_m = 5$, e Froude pede $v_m/v_p = \sqrt{1/5} = 0{,}45$. As duas exigências se contradizem. A única saída para satisfazer ambas é mudar a viscosidade do fluido do modelo.
+
+</Caixa>
+</Passos>
