@@ -25,19 +25,20 @@ Dada a instalação da figura, determinar: **a)** a velocidade e a vazão na tub
   <svg viewBox="0 0 460 240" role="img" aria-label="Reservatório da esquerda com nível, seção 0, 2,5 metros acima do eixo da tubulação; o tubo sai na seção 1, corre 1 metro até a seção 2, sobe até a seção 3, segue horizontal passando pelo ponto A até a seção 4, na altura do nível do reservatório da direita, desce até a seção 5, passa pelo registro na seção 6 e entra no reservatório da direita na seção 7; o nível desse reservatório, seção 8, está 0,5 metro acima do eixo">
     {/* reservatório (0) */}
     <path d="M24 70 L24 196 L120 196 L120 70 Z" fill="var(--accent-soft)" opacity="0.5"/>
-    <path d="M24 30 L24 196 L120 196 M120 30 L120 170" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <path d="M24 30 L24 196 L120 196 L120 174 M120 30 L120 166" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
     <line x1="24" y1="70" x2="120" y2="70" stroke="var(--accent)" stroke-width="1"/>
     <polygon points="86,62 96,62 91,70" fill="none" stroke="var(--accent)" stroke-width="1"/>
     <line x1="83" y1="75" x2="99" y2="75" stroke="var(--accent)" stroke-width="1"/>
     <text x="26" y="26" font-size="11" fill="var(--ink-2)">(0)</text>
     {/* tubulação */}
-    <path d="M120 170 L200 170 L200 150 L280 150 L280 170 L360 170" fill="none" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <path d="M120 170 L200 170 L200 150 L280 150 L280 170 L360 170" fill="none" stroke="var(--ink-2)" stroke-width="8.0" stroke-linejoin="round"/>
+    <path d="M120 170 L200 170 L200 150 L280 150 L280 170 L360 170" fill="none" stroke="var(--accent-soft)" stroke-width="5.0" stroke-linejoin="round"/>
     <line x1="280" y1="150" x2="360" y2="150" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
-    <circle cx="240" cy="150" r="4" fill="var(--ink-2)"/>
+    <circle cx="240" cy="150" r="2.5" fill="var(--ink-2)"/>
     <text x="230" y="138" font-size="11" fill="var(--ink-2)">(A)</text>
     {/* registro (6) */}
-    <line x1="320" y1="170" x2="320" y2="156" stroke="var(--ink-2)" stroke-width="2.6"/>
-    <line x1="310" y1="156" x2="330" y2="156" stroke="var(--ink-2)" stroke-width="3"/>
+    <line x1="320" y1="166" x2="320" y2="154" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <line x1="310" y1="153" x2="330" y2="153" stroke="var(--ink-2)" stroke-width="3"/>
     {/* reservatório (8) */}
     <path d="M360 150 L360 196 L440 196 L440 150 Z" fill="var(--accent-soft)" opacity="0.5"/>
     <path d="M360 120 L360 166 M360 174 L360 196 L440 196 L440 120" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
