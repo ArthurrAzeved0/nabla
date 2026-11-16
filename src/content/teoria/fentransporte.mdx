@@ -1580,8 +1580,9 @@ $$
 
 - $H_M$ — **carga da máquina**, em $\mathrm{m}$: energia por unidade de peso que a máquina entrega ($>0$, bomba) ou retira ($<0$, turbina);
 - $H_{p_{1,2}}$ — **perda de carga** entre (1) e (2), em $\mathrm{m}$ — sempre positiva;
-- $N$ — **potência**, em $\mathrm{W}$;
-- $\eta$ — **rendimento** da máquina, adimensional (entre 0 e 1);
+- $N$ — potência **do fluido**: a que ele recebe da bomba ou cede à turbina, em $\mathrm{W}$;
+- $N_B$, $N_T$ — potência **da máquina**, no seu eixo, em $\mathrm{W}$;
+- $\eta_B$, $\eta_T$ — **rendimento** da bomba e da turbina, adimensional (entre 0 e 1);
 - $\gamma,\ Q$ — peso específico e vazão.
 
 </Caixa>
@@ -1589,35 +1590,46 @@ $$
 ### A equação completa
 
 $$
-\boxed{\;z_1 + \frac{p_1}{\gamma} + \frac{v_1^2}{2g} + H_M \;=\; z_2 + \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + H_{p_{1,2}}\;}
+\boxed{\;H_1 + H_M = H_2 + H_{p_{1,2}}\;}
+\qquad\Longrightarrow\qquad
+z_1 + \frac{v_1^2}{2g} + \frac{p_1}{\gamma} + H_M \;=\; z_2 + \frac{v_2^2}{2g} + \frac{p_2}{\gamma} + H_{p_{1,2}}
+$$
+
+**Máquina**, nos slides, é qualquer dispositivo introduzido no escoamento que forneça ou retire energia dele na forma de trabalho. Sem máquina e sem perdas, volta-se a $H_1 = H_2$. Isolando a carga da máquina (sem perdas), sai a forma que ajuda a ver o que ela faz:
+
+$$
+H_M = (z_2 - z_1) + \frac{v_2^2 - v_1^2}{2g} + \frac{p_2 - p_1}{\gamma}
 $$
 
 Lê-se: **a carga em (1), mais o que a máquina põe, é a carga em (2) mais o que o atrito comeu.**
 
 <Caixa tipo="macete" rotulo="O sinal de H_M, que decide a questão">
 
-- **bomba** → entrega energia ao fluido → $H_M > 0$. Costuma-se escrever $H_B$;
-- **turbina** → retira energia do fluido → $H_M < 0$. Costuma-se escrever $-H_T$.
+- **bomba** → o fluido recebe acréscimo de energia, $H_2 > H_1$ → $H_M = H_B$, e $H_1 + H_B = H_2$;
+- **turbina** → o fluido perde energia, $H_1 > H_2$ → $H_M = -H_T$, e $H_1 - H_T = H_2$.
 
 Se você isolar $H_M$ e o resultado sair **negativo** num problema de bomba, o erro está na ordem dos pontos (1) e (2): o ponto (1) tem de ser **antes** da máquina, no sentido do escoamento.
 
 </Caixa>
 
-### Potência: três versões da mesma fórmula
+### Potência e rendimento
 
-A potência **útil**, transferida ao fluido:
-
-$$
-N_{\text{útil}} = \gamma\,Q\,H_M
-$$
-
-Máquina real tem perdas internas, e aí entra o rendimento:
+Potência é energia mecânica por tempo. Escrevendo energia por **peso** (a carga $H$) vezes peso por tempo ($\gamma Q$):
 
 $$
-\boxed{\;N_{\text{bomba}} = \frac{\gamma\,Q\,H_B}{\eta}\;}
-\qquad\qquad
-N_{\text{turbina}} = \eta\,\gamma\,Q\,H_T
+N = \frac{\text{energia mecânica}}{\text{peso}} \times \frac{\text{peso}}{\text{tempo}}
+\qquad\Longrightarrow\qquad
+\boxed{\;N = \gamma\,Q\,H\;}
 $$
+
+Essa é a potência **do fluido**. Máquina real tem perdas internas, e o rendimento compara a potência do fluido com a do eixo:
+
+| | bomba | turbina |
+|---|---|---|
+| $N$ | potência **recebida** pelo fluido, $\gamma Q H_B$ | potência **cedida** pelo fluido, $\gamma Q H_T$ |
+| eixo | $N_B$, a potência da bomba | $N_T$, a potência da turbina |
+| rendimento | $\eta_B = \dfrac{N}{N_B}$ | $\eta_T = \dfrac{N_T}{N}$ |
+| fórmula | $N_B = \dfrac{\gamma\,Q\,H_B}{\eta_B}$, com $N < N_B$ | $N_T = \gamma\,Q\,H_T\,\eta_T$, com $N > N_T$ |
 
 <Caixa tipo="dica" rotulo="Por que o rendimento divide numa e multiplica na outra">
 
@@ -1633,14 +1645,14 @@ Regra prática: o rendimento sempre **piora** o resultado para quem paga a conta
 <Caixa tipo="dica" rotulo="Unidades de potência que aparecem">
 
 $$
-1\ \mathrm{CV} = 735{,}5\ \mathrm{W}
+1\ \mathrm{CV} = 735\ \mathrm{W}
 \qquad\qquad
-1\ \mathrm{HP} = 745{,}7\ \mathrm{W}
+1\ \mathrm{HP} = 1{,}014\ \mathrm{CV}
 \qquad\qquad
 1\ \mathrm{kW} = 1000\ \mathrm{W}
 $$
 
-Enunciado de hidráulica gosta de $\mathrm{CV}$; confira o que ele pede antes de responder.
+São os valores dos slides (o CV exato é $735{,}5\ \mathrm{W}$, e o HP, $745{,}7\ \mathrm{W}$; a diferença não muda a resposta). No sistema MKS, a potência sai em $\mathrm{kgf \cdot m/s}$. Enunciado de hidráulica gosta de $\mathrm{CV}$; confira o que ele pede antes de responder.
 
 </Caixa>
 
@@ -1659,11 +1671,11 @@ $$
 **A potência:**
 
 $$
-N = \frac{\gamma\,Q\,H_B}{\eta} = \frac{10\,000 \times 10 \times 10^{-3} \times 24}{0{,}75} = 3200\ \mathrm{W}
+N_B = \frac{\gamma\,Q\,H_B}{\eta_B} = \frac{10\,000 \times 10 \times 10^{-3} \times 24}{0{,}75} = 3200\ \mathrm{W}
 $$
 
 $$
-N = \frac{3200}{735{,}5} = 4{,}35\ \mathrm{CV}
+N_B = \frac{3200}{735} = 4{,}35\ \mathrm{CV}
 $$
 
 **Leitura:** dos $24\ \mathrm{m}$ de carga, $20$ são o desnível que precisava ser vencido e $4$ foram desperdiçados no atrito. Se a tubulação fosse mais larga, a perda cairia e a bomba seria menor — é esse o compromisso de todo projeto hidráulico.
