@@ -44,14 +44,20 @@ Considere a parede composta apresentada na figura, com fluidos distintos escoand
     <text x="234" y="96" font-size="10" fill="var(--ink-2)">(4)</text>
     <text x="212" y="110" font-size="8" fill="var(--ink-3)">k=0,5 · A=3,0</text>
     {/* convecção à esquerda */}
-    <path d="M86 88 Q78 100 86 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-    <path d="M76 82 Q66 100 76 118" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    {/* fluido escoando junto à superfície */}
+    <path d="M71.0 118 Q73.4 115.5 71.0 113 Q68.6 110.5 71.0 108 Q73.4 105.5 71.0 103 Q68.6 100.5 71.0 98 Q73.4 95.5 71.0 93 L71.0 88" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
+    <polygon points="71.0,82 68.0,89 74.0,89" fill="var(--accent)"/>
+    <path d="M81.0 118 Q83.4 115.5 81.0 113 Q78.6 110.5 81.0 108 Q83.4 105.5 81.0 103 Q78.6 100.5 81.0 98 Q83.4 95.5 81.0 93 L81.0 88" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
+    <polygon points="81.0,82 78.0,89 84.0,89" fill="var(--accent)"/>
     <text x="12" y="90" font-size="9" fill="var(--accent)">fluido A</text>
     <text x="12" y="103" font-size="9" fill="var(--accent)">T∞,1 = 50 °C</text>
     <text x="16" y="116" font-size="9" fill="var(--warn)">h<tspan font-size="7" dy="2">A</tspan><tspan dy="-2"> = ?</tspan></text>
     {/* convecção à direita */}
-    <path d="M294 88 Q302 100 294 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-    <path d="M304 82 Q314 100 304 118" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    {/* fluido escoando junto à superfície */}
+    <path d="M299.0 118 Q301.4 115.5 299.0 113 Q296.6 110.5 299.0 108 Q301.4 105.5 299.0 103 Q296.6 100.5 299.0 98 Q301.4 95.5 299.0 93 L299.0 88" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
+    <polygon points="299.0,82 296.0,89 302.0,89" fill="var(--accent)"/>
+    <path d="M309.0 118 Q311.4 115.5 309.0 113 Q306.6 110.5 309.0 108 Q311.4 105.5 309.0 103 Q306.6 100.5 309.0 98 Q311.4 95.5 309.0 93 L309.0 88" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
+    <polygon points="309.0,82 306.0,89 312.0,89" fill="var(--accent)"/>
     <text x="320" y="90" font-size="9" fill="var(--accent)">fluido B</text>
     <text x="320" y="103" font-size="9" fill="var(--accent)">T∞,2 = 20 °C</text>
     <text x="320" y="116" font-size="9" fill="var(--warn)">h<tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> = 5 h</tspan><tspan font-size="7" dy="2">A</tspan></text>
