@@ -1,0 +1,155 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Máquina · Reservatório pressurizado com dois ramais"
+temaId: equacao-da-energia-com-maquina
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q70.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Na instalação da figura, todas as tubulações são de diâmetro muito grande em face da vazão, o que torna **desprezível a carga cinética**. Determinar: **a)** o tipo de máquina e a sua carga manométrica; **b)** a vazão em volume proveniente do reservatório.
+
+**Dados:** $Q_2 = Q_3$; $H_{p_{0,1}} = 1\ \mathrm{m}$; $H_{p_{1,2}} = 1\ \mathrm{m}$; $H_{p_{1,3}} = 4\ \mathrm{m}$; $\eta_m = 80\%$; potência no eixo da máquina $= 0{,}7\ \mathrm{kW}$.
+
+<Figura>
+  <svg viewBox="0 0 460 220" role="img" aria-label="Reservatório fechado de grandes dimensões, com manômetro de 50 quilopascais no topo e água de peso específico 10 mil newtons por metro cúbico; o nível, seção 0, está 2 metros acima do eixo da tubulação que sai dele até o nó 1. Do nó 1 um ramal sobe 5 metros e descarrega na atmosfera na seção 2; o outro passa pela máquina M e sobe 4 metros até descarregar na seção 3">
+    {/* reservatório */}
+    <rect x="20" y="40" width="130" height="120" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <path d="M21 80 L149 80 L149 159 L21 159 Z" fill="var(--accent-soft)" opacity="0.5"/>
+    <line x1="21" y1="80" x2="149" y2="80" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="110,72 120,72 115,80" fill="none" stroke="var(--accent)" stroke-width="1"/>
+    <text x="154" y="78" font-size="11" fill="var(--ink-2)">(0)</text>
+    <text x="30" y="130" font-size="10" fill="var(--ink-2)">γ = 10⁴ N/m³</text>
+    {/* manômetro */}
+    <line x1="60" y1="40" x2="60" y2="28" stroke="var(--ink-2)" stroke-width="2"/>
+    <circle cx="60" cy="18" r="10" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="55" y1="23" x2="65" y2="13" stroke="var(--ink-2)" stroke-width="1"/>
+    <text x="76" y="22" font-size="11" fill="var(--ink-2)">50 kPa</text>
+    {/* tubo do reservatório ao nó (1) */}
+    <path d="M150 150 L260 150" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+    <circle cx="260" cy="150" r="3.5" fill="var(--ink-2)"/>
+    <text x="236" y="142" font-size="11" fill="var(--ink-2)">(1)</text>
+    <line x1="170" y1="86" x2="170" y2="144" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="170,80 167,89 173,89" fill="var(--ink-3)"/>
+    <polygon points="170,150 167,141 173,141" fill="var(--ink-3)"/>
+    <line x1="150" y1="80" x2="178" y2="80" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="176" y="120" font-size="11" fill="var(--ink-3)">2 m</text>
+    {/* plano de referência */}
+    <line x1="150" y1="150" x2="456" y2="150" stroke="var(--ink-3)" stroke-width="0.6" stroke-dasharray="8 3 2 3"/>
+    {/* ramal (2) */}
+    <path d="M260 150 L300 150 L300 40 L340 40" fill="none" stroke="var(--ink-2)" stroke-width="3" stroke-linejoin="round"/>
+    <text x="342" y="44" font-size="11" fill="var(--ink-2)">(2)</text>
+    <line x1="284" y1="46" x2="284" y2="144" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="284,40 281,49 287,49" fill="var(--ink-3)"/>
+    <polygon points="284,150 281,141 287,141" fill="var(--ink-3)"/>
+    <line x1="278" y1="40" x2="298" y2="40" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <text x="262" y="100" font-size="11" fill="var(--ink-3)">5 m</text>
+    {/* ramal (3) com a máquina, no mesmo nível do nó */}
+    <path d="M260 150 L260 196 L326 196 M354 196 L410 196 L410 62 L446 62" fill="none" stroke="var(--ink-2)" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="340" cy="196" r="14" fill="var(--surface-2, #fff)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="334" y="200" font-size="11" fill="var(--ink-2)">M</text>
+    <text x="424" y="56" font-size="11" fill="var(--ink-2)">(3)</text>
+    <line x1="432" y1="68" x2="432" y2="144" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="432,62 429,71 435,71" fill="var(--ink-3)"/>
+    <polygon points="432,150 429,141 435,141" fill="var(--ink-3)"/>
+    <text x="436" y="112" font-size="11" fill="var(--ink-3)">4 m</text>
+  </svg>
+  <figcaption>
+
+Esquema plano da figura original, que é em perspectiva; o desvio do ramal (3) para baixo é só para não cruzar os tubos no desenho. As cotas usam como referência o **eixo da tubulação no nível do nó (1) e da máquina** (traço-ponto): o nível (0) está $2\ \mathrm{m}$ acima dele, a saída (2) $5\ \mathrm{m}$ e a saída (3) $4\ \mathrm{m}$. As duas saídas descarregam na atmosfera.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+H_0 = 2 + \frac{50\,000}{10^4} = 7\ \mathrm{m}
+\qquad
+H_1 = H_0 - H_{p_{0,1}} = 6\ \mathrm{m}
+$$
+
+**a)** $H_1 + H_M = H_3 + H_{p_{1,3}} \Rightarrow 6 + H_M = 4 + 4 \Rightarrow H_M = +2\ \mathrm{m}$: **bomba**, $H_B = \mathbf{2\ m}$.
+
+**b)** $Q_3 = \dfrac{N\,\eta}{\gamma\,H_B} = \dfrac{700 \times 0{,}8}{10^4 \times 2} = 0{,}028\ \mathrm{m^3/s}$, e $Q_0 = Q_2 + Q_3 = 2 \times 28 = \mathbf{56\ L/s}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a carga no reservatório.** A superfície (0) não está na atmosfera: o manômetro marca $50\ \mathrm{kPa}$ no ar comprimido acima da água. Essa pressão **soma carga**:
+
+$$
+H_0 = \frac{p_0}{\gamma} + \frac{v_0^2}{2g} + z_0 = \frac{50\,000}{10^4} + 0 + 2 = 7\ \mathrm{m}
+$$
+
+<Caixa tipo="simbolos">
+
+- plano de referência no eixo do nó (1) e da máquina
+- cargas cinéticas **desprezadas** em todas as seções (enunciado)
+- (2) e (3): saídas para a atmosfera, $p = 0$
+- $N_{eixo} = 700\ \mathrm{W}$; $\eta = 0{,}8$
+
+</Caixa>
+
+**Passo 2 — a carga no nó.** De (0) a (1) se perde $1\ \mathrm{m}$:
+
+$$
+H_1 = H_0 - H_{p_{0,1}} = 7 - 1 = 6\ \mathrm{m}
+$$
+
+Num nó, a carga é **uma só** para todos os ramais que saem dele. É o ponto de partida dos dois.
+
+**Passo 3 — conferir o ramal (2).** De (1) a (2) não há máquina:
+
+$$
+H_1 = H_2 + H_{p_{1,2}}
+\qquad\Longrightarrow\qquad
+6 = 5 + 1 \ \checkmark
+$$
+
+Fecha. O ramal (2) só confirma os dados; a vazão dele vem da condição $Q_2 = Q_3$.
+
+**Passo 4 — a) o ramal com a máquina.** Supondo uma máquina de carga $H_M$:
+
+$$
+H_1 + H_M = H_3 + H_{p_{1,3}}
+\qquad\Longrightarrow\qquad
+6 + H_M = 4 + 4
+\qquad\Longrightarrow\qquad
+H_M = +2\ \mathrm{m}
+$$
+
+Positivo: sem a máquina, o nó tem $6\ \mathrm{m}$ e o ramal precisa de $8\ \mathrm{m}$ (os $4\ \mathrm{m}$ de altura de (3) mais os $4\ \mathrm{m}$ de perda). Faltam $2\ \mathrm{m}$, e a máquina os fornece.
+
+$$
+\boxed{\text{bomba, com } H_B = 2\ \mathrm{m}}
+$$
+
+**Passo 5 — b) as vazões.** Na bomba, a potência no eixo é a hidráulica **dividida** pelo rendimento:
+
+$$
+N_{eixo} = \frac{\gamma\,Q_3\,H_B}{\eta_B}
+\qquad\Longrightarrow\qquad
+Q_3 = \frac{N_{eixo}\,\eta_B}{\gamma\,H_B} = \frac{700 \times 0{,}8}{10^4 \times 2} = 0{,}028\ \mathrm{m^3/s}
+$$
+
+Pela continuidade no nó, o reservatório alimenta os dois ramais, com $Q_2 = Q_3$:
+
+$$
+\boxed{Q_0 = Q_2 + Q_3 = 0{,}028 + 0{,}028 = 0{,}056\ \mathrm{m^3/s} = 56\ \mathrm{L/s}}
+$$
+
+<Caixa tipo="macete" rotulo="Em instalação ramificada">
+
+Comece pelo **nó**: a carga dele é única e cada ramal sai dela com a sua própria equação da energia. A continuidade ($Q$ que entra $= \sum Q$ que sai) só entra no fim, para juntar as vazões.
+
+</Caixa>
+</Passos>
