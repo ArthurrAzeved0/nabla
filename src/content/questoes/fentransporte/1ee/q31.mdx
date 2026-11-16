@@ -28,22 +28,25 @@ Um sistema de escoamento é composto por **dois tubos de entrada e um de saída*
     <rect x="26" y="24" width="240" height="130" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 4"/>
     <text x="30" y="18" font-size="9" fill="var(--accent)">volume de controle</text>
     {/* duto 1 */}
-    <path d="M40 48 L140 48 L176 84" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
+    {/* tubos: dois de entrada que se juntam no de saída */}
+    <path d="M40 48 L140 48 L182 89" fill="none" stroke="var(--ink-2)" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M40 130 L140 130 L182 89" fill="none" stroke="var(--ink-2)" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M176 89 L256 89" fill="none" stroke="var(--ink-2)" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M40 48 L140 48 L182 89" fill="none" stroke="var(--accent-soft)" stroke-width="9.5" stroke-linejoin="round"/>
+    <path d="M40 130 L140 130 L182 89" fill="none" stroke="var(--accent-soft)" stroke-width="9.5" stroke-linejoin="round"/>
+    <path d="M176 89 L256 89" fill="none" stroke="var(--accent-soft)" stroke-width="9.5" stroke-linejoin="round"/>
     <line x1="4" y1="48" x2="30" y2="48" stroke="var(--ok)" stroke-width="2"/>
     <polygon points="36,48 26,44 26,52" fill="var(--ok)"/>
-    <text x="46" y="40" font-size="10" fill="var(--ink-2)">①</text>
-    <text x="58" y="40" font-size="9" fill="var(--ink-3)">10 atm · 500 K · ℳ = 28</text>
-    <text x="58" y="62" font-size="9" fill="var(--ok)">Q₁ = 0,01 m³/s</text>
+    <text x="46" y="34" font-size="10" fill="var(--ink-2)">①</text>
+    <text x="58" y="34" font-size="9" fill="var(--ink-3)">10 atm · 500 K · ℳ = 28</text>
+    <text x="58" y="68" font-size="9" fill="var(--ok)">Q₁ = 0,01 m³/s</text>
     {/* duto 2 */}
-    <path d="M40 130 L140 130 L176 94" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
     <line x1="4" y1="130" x2="30" y2="130" stroke="var(--ok)" stroke-width="2"/>
     <polygon points="36,130 26,126 26,134" fill="var(--ok)"/>
-    <text x="46" y="146" font-size="10" fill="var(--ink-2)">②</text>
-    <text x="58" y="146" font-size="9" fill="var(--ink-3)">3 atm · 750 K · ℳ = 44</text>
-    <text x="58" y="124" font-size="9" fill="var(--ok)">Q₂ = 0,04 m³/s</text>
+    <text x="46" y="149" font-size="10" fill="var(--ink-2)">②</text>
+    <text x="58" y="149" font-size="9" fill="var(--ink-3)">3 atm · 750 K · ℳ = 44</text>
+    <text x="58" y="117" font-size="9" fill="var(--ok)">Q₂ = 0,04 m³/s</text>
     {/* duto de saída */}
-    <line x1="176" y1="84" x2="256" y2="84" stroke="var(--ink-2)" stroke-width="2.6"/>
-    <line x1="176" y1="94" x2="256" y2="94" stroke="var(--ink-2)" stroke-width="2.6"/>
     <line x1="264" y1="89" x2="300" y2="89" stroke="var(--warn)" stroke-width="2"/>
     <polygon points="306,89 296,85 296,93" fill="var(--warn)"/>
     <text x="228" y="76" font-size="10" fill="var(--ink-2)">③</text>
