@@ -1,0 +1,104 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Bernoulli · As formas por massa e por peso, e quando valem"
+temaId: equacao-de-bernoulli
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q56.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+a) Escreva a equação de Bernoulli na forma da **energia por unidade de massa** (explique os termos).
+
+b) Escreva a equação de Bernoulli na forma de **energia por unidade de peso**.
+
+c) Quais os tipos de escoamento em que as equações acima valem?
+
+d) Escreva a equação de Bernoulli para **aplicação na prática**.
+
+<Gabarito>
+**a)** Entre duas seções (1) e (2), em $\mathrm{J/kg}$:
+
+$$
+\frac{p_1}{\rho} + \frac{v_1^2}{2} + g\,z_1 = \frac{p_2}{\rho} + \frac{v_2^2}{2} + g\,z_2
+$$
+
+$p/\rho$ é a energia de pressão, $v^2/2$ a energia cinética e $g z$ a energia potencial de posição, todas por unidade de massa.
+
+**b)** Dividindo por $g$, em metros de coluna de fluido (cargas):
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2 = H
+$$
+
+**c)** Regime **permanente**, **sem máquina** no trecho, **sem perdas** (fluido ideal), fluido **incompressível**, propriedades uniformes nas seções, sem troca de calor.
+
+**d)** Com máquina e perdas de carga (fluido real):
+
+$$
+H_1 + H_M = H_2 + H_{p_{1,2}}
+$$
+
+com $H_M > 0$ para bomba e $H_M < 0$ para turbina.
+</Gabarito>
+
+<Passos>
+**Passo 1 — a forma por unidade de massa.** A equação de Bernoulli é um **balanço de energia** entre duas seções de um mesmo tubo de corrente. Cada termo é energia dividida pela massa que passa:
+
+$$
+\frac{p}{\rho} + \frac{v^2}{2} + g\,z = \text{constante} \qquad [\mathrm{J/kg} = \mathrm{m^2/s^2}]
+$$
+
+<Caixa tipo="simbolos">
+
+- $p/\rho$ — **energia de pressão**: o trabalho que o fluido de trás faz para empurrar a massa através da seção (por isso também se chama *trabalho de escoamento*);
+- $v^2/2$ — **energia cinética** por unidade de massa;
+- $g\,z$ — **energia potencial** de posição, medida a partir de um plano horizontal de referência (PHR) escolhido à vontade.
+
+</Caixa>
+
+**Passo 2 — por unidade de peso.** Dividindo tudo por $g$ (e lembrando que $\gamma = \rho g$), cada termo vira uma **altura**:
+
+$$
+\underbrace{\frac{p}{\gamma}}_{\text{carga de pressão}} + \underbrace{\frac{v^2}{2g}}_{\text{carga cinética}} + \underbrace{z}_{\text{carga potencial}} = H \qquad [\mathrm{m}]
+$$
+
+$H$ é a **carga total**. Essa é a forma usada em hidráulica: a energia de cada seção vira uma altura de coluna de fluido, e comparar seções é comparar alturas.
+
+**Passo 3 — as hipóteses.** A equação de Bernoulli só vale, sem correção, quando o escoamento é:
+
+- em **regime permanente** (nada muda com o tempo em cada ponto);
+- **sem máquina** entre as seções (nem bomba fornecendo nem turbina retirando energia);
+- **sem perdas** por atrito: fluido ideal, de viscosidade desprezível;
+- **incompressível** ($\rho$ constante);
+- com **propriedades uniformes** em cada seção (velocidade média representativa);
+- **sem troca de calor** com o exterior.
+
+Nessas condições, $H_1 = H_2$: a carga total se conserva e só se redistribui entre pressão, velocidade e cota.
+
+**Passo 4 — a forma prática.** Em instalação real há bombas, turbinas e atrito. O balanço ganha dois termos:
+
+$$
+\boxed{H_1 + H_M = H_2 + H_{p_{1,2}}}
+$$
+
+- $H_M$ é a **carga da máquina**: positiva se for bomba ($H_B$, energia entra), negativa se for turbina ($H_T$, energia sai);
+- $H_{p_{1,2}}$ é a **perda de carga** entre (1) e (2), sempre positiva no sentido do escoamento: a parte da energia que o atrito transforma em calor.
+
+As potências saem de $N = \gamma\,Q\,H_M$, com o rendimento dividindo na bomba ($N_B = \gamma Q H_B/\eta_B$) e multiplicando na turbina ($N_T = \gamma Q H_T\,\eta_T$).
+
+<Caixa tipo="macete" rotulo="Como lembrar de que lado fica cada termo">
+
+Leia como uma conta bancária: **o que chega** em (1) mais **o que a bomba deposita** é igual **ao que sobra** em (2) mais **o que o atrito cobrou** no caminho.
+
+</Caixa>
+</Passos>
