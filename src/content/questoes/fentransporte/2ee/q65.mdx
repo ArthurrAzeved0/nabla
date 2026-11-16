@@ -22,24 +22,44 @@ Uma placa plana retangular, com $1{,}5\ \mathrm{m}$ de comprimento e $15\ \mathr
 **Dados:** $\rho_{água} = 1000\ \mathrm{kg/m^3}$; $\nu_{água} = 10^{-6}\ \mathrm{m^2/s}$; $\rho_{ar} = 1{,}2\ \mathrm{kg/m^3}$; $\nu_{ar} = 10^{-5}\ \mathrm{m^2/s}$. Função representativa do fenômeno: $F = F(V, L, \rho, \mu)$.
 
 <Gabarito>
-**a)** Reynolds igual: $\dfrac{L_{ar}}{L_{água}} = \dfrac{V_{água}}{V_{ar}}\cdot\dfrac{\nu_{ar}}{\nu_{água}} = \dfrac{6}{30} \times 10 = 2$
+Escalas **ar / água**: $K_v = 30/6 = 5$, $K_\nu = 10^{-5}/10^{-6} = 10$, $K_\rho = 1{,}2/1000 = 0{,}0012$.
+
+**a)** Reynolds igual: $K_\nu = K_v\,K_L \Rightarrow K_L = \dfrac{10}{5} = 2$
 
 placa no ar com $\mathbf{3{,}0\ m}$ de comprimento e $\mathbf{30\ cm}$ de largura.
 
-**b)** Adimensional de força igual: $\dfrac{F}{\rho V^2 L^2}$ igual nos dois,
+**b)** Euler igual ($\pi_1 = F/\rho v^2 L^2$): $K_F = K_\rho\,K_v^2\,K_L^2 = 0{,}0012 \times 25 \times 4 = 0{,}12$
 
 $$
-F_{ar} = 15 \times \frac{1{,}2}{1000} \times \left(\frac{30}{6}\right)^2 \times 2^2 = \mathbf{1{,}8\ N}
+F_{ar} = 0{,}12 \times 15 = \mathbf{1{,}8\ N}
 $$
 </Gabarito>
 
 <Passos>
-**Passo 1 — os adimensionais do fenômeno.** São 5 grandezas ($F, V, L, \rho, \mu$) e 3 dimensões fundamentais ($M, L, T$): pelo teorema dos $\pi$, $5 - 3 = 2$ adimensionais. Com base $\rho, V, L$:
+**Passo 1 — os adimensionais, pelo teorema dos $\pi$.** A função é $f(F, V, L, \rho, \mu) = 0$: $n = 5$ grandezas. Na base $FLT$, $r = 3$, então $m = n - r = 2$ adimensionais. A base é $\rho, V, L$ (massa específica, velocidade e comprimento, a escolha que os slides recomendam):
 
 $$
-\pi_1 = \frac{F}{\rho\,V^2 L^2}
-\qquad\qquad
-\pi_2 = \frac{\rho\,V L}{\mu} = \frac{V L}{\nu} = Re
+[\rho] = FL^{-4}T^{2} \qquad [V] = LT^{-1} \qquad [L] = L \qquad [F] = F \qquad [\mu] = FL^{-2}T
+$$
+
+Para $\pi_1 = \rho^a\,V^b\,L^c\,F$:
+
+$$
+F^0L^0T^0 = (FL^{-4}T^{2})^a\,(LT^{-1})^b\,(L)^c\,(F) = F^{a+1}\,L^{-4a+b+c}\,T^{2a-b}
+$$
+
+$$
+a + 1 = 0,\quad -4a + b + c = 0,\quad 2a - b = 0
+\qquad\Longrightarrow\qquad
+a = -1,\ b = -2,\ c = -2
+\qquad\Longrightarrow\qquad
+\pi_1 = \frac{F}{\rho\,V^2 L^2} = Eu
+$$
+
+Para $\pi_2 = \rho^a\,V^b\,L^c\,\mu$, do mesmo jeito, sai $a = b = c = -1$:
+
+$$
+\pi_2 = \frac{\mu}{\rho\,V L} = \frac{1}{Re}
 $$
 
 Semelhança dinâmica completa é ter $\pi_1$ **e** $\pi_2$ iguais na água e no ar.
@@ -48,16 +68,19 @@ Semelhança dinâmica completa é ter $\pi_1$ **e** $\pi_2$ iguais na água e no
 
 - água: $L = 1{,}5\ \mathrm{m}$, $b = 0{,}15\ \mathrm{m}$, $V = 6\ \mathrm{m/s}$, $F = 15\ \mathrm{N}$
 - ar: $V = 30\ \mathrm{m/s}$; $L$, $b$ e $F$ são as incógnitas
+- escalas $K$ = valor **no ar** ÷ valor **na água**: $K_v = 5$, $K_\nu = 10$, $K_\rho = 0{,}0012$
 - $\nu = \mu/\rho$ — viscosidade cinemática
 
 </Caixa>
 
-**Passo 2 — a) Reynolds dá a escala.**
+**Passo 2 — a) Reynolds dá a escala geométrica.**
 
 $$
-\frac{V_{água}\,L_{água}}{\nu_{água}} = \frac{V_{ar}\,L_{ar}}{\nu_{ar}}
+\frac{V_{ar}\,L_{ar}}{\nu_{ar}} = \frac{V_{água}\,L_{água}}{\nu_{água}}
 \qquad\Longrightarrow\qquad
-\frac{L_{ar}}{L_{água}} = \frac{V_{água}}{V_{ar}}\cdot\frac{\nu_{ar}}{\nu_{água}} = \frac{6}{30}\times\frac{10^{-5}}{10^{-6}} = 0{,}2 \times 10 = 2
+K_\nu = K_v\,K_L
+\qquad\Longrightarrow\qquad
+K_L = \frac{K_\nu}{K_v} = \frac{10}{5} = 2
 $$
 
 A placa no ar é **duas vezes maior**: o ar é dez vezes mais "viscoso" em termos cinemáticos, e a velocidade só cinco vezes maior não compensa. Pela semelhança geométrica, as duas dimensões dobram:
@@ -68,20 +91,19 @@ $$
 b_{ar} = 2 \times 15 = 30\ \mathrm{cm}}
 $$
 
-**Passo 3 — b) o adimensional de força.**
+**Passo 3 — b) Euler dá a escala de forças.**
 
 $$
 \frac{F_{ar}}{\rho_{ar}V_{ar}^2 L_{ar}^2} = \frac{F_{água}}{\rho_{água}V_{água}^2 L_{água}^2}
+\qquad\Longrightarrow\qquad
+K_F = K_\rho\,K_v^2\,K_L^2
 $$
 
 $$
-F_{ar} = F_{água}\cdot\frac{\rho_{ar}}{\rho_{água}}\cdot\left(\frac{V_{ar}}{V_{água}}\right)^2\cdot\left(\frac{L_{ar}}{L_{água}}\right)^2
-= 15 \times 0{,}0012 \times 25 \times 4
+K_F = 0{,}0012 \times 5^2 \times 2^2 = 0{,}12
+\qquad\Longrightarrow\qquad
+\boxed{F_{ar} = 0{,}12 \times 15 = 1{,}8\ \mathrm{N}}
 $$
 
-$$
-\boxed{F_{ar} = 1{,}8\ \mathrm{N}}
-$$
-
-**Conferência —** o ar é quase mil vezes menos denso que a água, e isso pesa mais que a velocidade ao quadrado ($\times 25$) e a área ($\times 4$) juntas: $0{,}0012 \times 100 = 0{,}12$. A força no ar sai um oitavo da força na água, o que é coerente com a experiência de que arrastar algo no ar custa muito menos.
+**Conferência —** o ar é quase mil vezes menos denso que a água, e isso pesa mais que a velocidade ao quadrado ($\times 25$) e a área ($\times 4$) juntas. A força no ar sai um oitavo da força na água, o que é coerente com a experiência de que arrastar algo no ar custa muito menos.
 </Passos>
