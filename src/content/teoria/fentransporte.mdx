@@ -2291,96 +2291,128 @@ $$
 
 <Topico id="ft-semelhanca" num="21" titulo="Semelhança e teoria dos modelos">
 
-**A ideia.** Ninguém constrói uma barragem para descobrir se ela funciona. Constrói-se um **modelo** reduzido, ensaia-se, e transfere-se o resultado para o **protótipo**. A teoria dos modelos é o conjunto de regras que garante que essa transferência é legítima — e a regra central é: **os adimensionais relevantes têm de ser iguais nos dois**.
+**A ideia.** Ninguém constrói uma barragem para descobrir se ela funciona. Constrói-se um **modelo**, uma representação simplificada da realidade, ensaia-se, e prevê-se o comportamento do **protótipo**. Semelhança é o estudo dessa previsão — e a regra central é: **os adimensionais relevantes têm de ser iguais nos dois**.
 
 <Caixa tipo="simbolos" rotulo="O que é cada símbolo">
 
 - índice $m$ — **modelo** (o que se constrói e ensaia);
 - índice $p$ — **protótipo** (a obra real);
-- $\lambda = \dfrac{L_m}{L_p}$ — **escala geométrica** (razão de comprimentos);
-- $Re, Fr$ — os adimensionais a igualar.
+- $K_X = \dfrac{X_m}{X_p}$ — **escala** da grandeza $X$, sempre no sentido modelo ÷ protótipo;
+- $K_L = \dfrac{L_m}{L_p}$ — **escala geométrica**; um modelo $1:25$ tem $K_L = 1/25$;
+- $K_v$, $K_F$, $K_\rho$, $K_\mu$, $K_\nu$, $K_g$ — escalas de velocidade, força, massa específica, viscosidades e gravidade.
 
 </Caixa>
 
-### Os três níveis de semelhança
+### Os três tipos de semelhança
 
 <Caixa tipo="dica">
 
-Para o ensaio valer, é preciso ter, nesta ordem:
+1. **geométrica** — dimensões relacionadas, como numa maquete: $\dfrac{a_m}{a_p} = \dfrac{b_m}{b_p} = K_L$;
+2. **cinemática** — inclui a geométrica; velocidades em pontos correspondentes se relacionam, e o regime de escoamento é o mesmo: $\dfrac{v_{1m}}{v_{1p}} = \dfrac{v_{2m}}{v_{2p}} = K_v$;
+3. **dinâmica** — inclui a geométrica e a cinemática; **todas** as forças do escoamento no modelo são proporcionais às do protótipo: $\dfrac{F_{1m}}{F_{1p}} = \dfrac{F_{2m}}{F_{2p}} = K_F$.
 
-1. **semelhança geométrica** — mesma forma, todas as dimensões na mesma escala $\lambda$;
-2. **semelhança cinemática** — velocidades homólogas na mesma razão, campos de escoamento com a mesma forma;
-3. **semelhança dinâmica** — forças homólogas na mesma razão. É esta que exige igualar os adimensionais.
-
-Geométrica é condição para a cinemática, que é condição para a dinâmica. Falhar na primeira invalida tudo.
+Uma contém a outra, como círculos concêntricos: geométrica ⊂ cinemática ⊂ dinâmica. A semelhança **completa** só existe quando as três valem.
 
 </Caixa>
 
-### A condição de projeto
+### A condição de projeto: $\pi_m = \pi_p$
+
+Em termos dos adimensionais do fenômeno, as três semelhanças juntas equivalem a
 
 $$
-\boxed{\;\pi_{i,m} = \pi_{i,p}\;}
+\boxed{\;\pi_{1m} = \pi_{1p}, \quad \pi_{2m} = \pi_{2p}, \quad \dots, \quad \pi_{mm} = \pi_{mp}\;}
 $$
 
-para cada adimensional relevante. Na prática, iguala-se **o que domina** o fenômeno:
+e cada igualdade vira uma **relação entre escalas**. As três dos slides:
+
+**Reynolds**, $Re_m = Re_p$:
 
 $$
-Re_m = Re_p
-\qquad\text{(escoamento confinado, viscosidade dominante)}
-$$
-
-$$
-Fr_m = Fr_p
-\qquad\text{(superfície livre, gravidade dominante)}
-$$
-
-<Caixa tipo="macete" rotulo="Semelhança de Froude — a que cai em hidráulica">
-
-Igualando $Fr$ e usando o mesmo fluido e a mesma gravidade:
-
-$$
-\frac{v_m}{\sqrt{g L_m}} = \frac{v_p}{\sqrt{g L_p}}
+\frac{\rho_m v_m D_m}{\mu_m} = \frac{\rho_p v_p D_p}{\mu_p}
 \qquad\Longrightarrow\qquad
-\frac{v_m}{v_p} = \sqrt{\lambda}
+\boxed{\;K_\mu = K_\rho\,K_v\,K_L\;}
+\qquad\left(\text{ou } K_\nu = K_v\,K_L\right)
 $$
 
-E daí saem as escalas derivadas, que a prova pede:
+**Euler**, $Eu_m = Eu_p$:
 
 $$
-\frac{Q_m}{Q_p} = \lambda^{5/2}
+\frac{F_m}{\rho_m v_m^2 L_m^2} = \frac{F_p}{\rho_p v_p^2 L_p^2}
+\qquad\Longrightarrow\qquad
+\boxed{\;K_F = K_\rho\,K_v^2\,K_L^2\;}
+$$
+
+**Froude**, $Fr_m = Fr_p$, com $Fr = v^2/(Lg)$:
+
+$$
+\frac{v_m^2}{L_m\,g_m} = \frac{v_p^2}{L_p\,g_p}
+\qquad\Longrightarrow\qquad
+\boxed{\;K_v^2 = K_L\,K_g\;}
+$$
+
+Na Terra, $K_g = 1$, e o Froude dá $K_v = \sqrt{K_L}$.
+
+<Caixa tipo="macete" rotulo="Qual adimensional igualar">
+
+- modelos **aerodinâmicos** de aviões e automóveis → **Mach**;
+- modelos **hidrodinâmicos** de condutos forçados, turbinas e bombas → **Reynolds**;
+- **condutos livres**: canais, usinas hidrelétricas, vertedouros, eclusas de navegação, navios → **Froude**.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Semelhança de Froude — as escalas que a prova pede">
+
+Mesmo fluido ($K_\rho = 1$) e mesma gravidade ($K_g = 1$), $K_v = \sqrt{K_L}$. As outras escalas saem das definições:
+
+$$
+K_Q = K_v\,K_L^2 = K_L^{5/2}
 \qquad\qquad
-\frac{t_m}{t_p} = \sqrt{\lambda}
+K_t = \frac{K_L}{K_v} = \sqrt{K_L}
 \qquad\qquad
-\frac{F_m}{F_p} = \lambda^{3}
+K_F = K_\rho\,K_v^2\,K_L^2 = K_L^{3}
 $$
 
-**Como lembrar:** $Q = vA$, então a escala de vazão é $\sqrt{\lambda} \times \lambda^2 = \lambda^{5/2}$. Vale mais deduzir do que decorar.
+**Como lembrar:** $Q = vA$, então a escala de vazão é $\sqrt{K_L} \times K_L^2 = K_L^{5/2}$. Vale mais deduzir do que decorar.
 
 </Caixa>
 
 <Caixa tipo="exemplo" rotulo="Exemplo rápido — modelo de vertedouro 1:25">
 
-Um vertedouro é ensaiado em escala $1{:}25$ ($\lambda = 1/25$). No modelo mediu-se $Q_m = 60\ \mathrm{L/s}$. Qual a vazão do protótipo?
+Um vertedouro é ensaiado em escala $1{:}25$ ($K_L = 1/25$). No modelo mediu-se $Q_m = 60\ \mathrm{L/s}$. Qual a vazão do protótipo?
 
 Superfície livre → **Froude**:
 
 $$
-\frac{Q_m}{Q_p} = \lambda^{5/2} = \left(\frac{1}{25}\right)^{5/2} = \frac{1}{3125}
+K_Q = K_L^{5/2} = \left(\frac{1}{25}\right)^{5/2} = \frac{1}{3125}
+\qquad\Longrightarrow\qquad
+Q_p = \frac{Q_m}{K_Q} = 60 \times 3125 = 187\,500\ \mathrm{L/s} = 187{,}5\ \mathrm{m^3/s}
+$$
+
+E o tempo: um evento que no modelo durou $10\ \mathrm{s}$ corresponde a $10/K_t = 10 \times \sqrt{25} = 50\ \mathrm{s}$ na obra. **O modelo é mais rápido que a realidade** — é por isso que ensaio de maré em modelo reduzido comprime dias em horas.
+
+</Caixa>
+
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o avião dos slides (Froude + Euler)">
+
+Um modelo de avião em escala $1:10$ decola a $50\ \mathrm{km/h}$. Desprezando a viscosidade, qual a velocidade de decolagem do protótipo e a escala de forças? Dado: $f(F, v, L, \rho, g) = 0$.
+
+$$
+K_v^2 = K_L\,K_g = \frac{1}{10}
+\qquad\Longrightarrow\qquad
+v_p = \frac{v_m}{K_v} = 50\sqrt{10} \approx 158\ \mathrm{km/h}
 $$
 
 $$
-Q_p = 60 \times 3125 = 187\,500\ \mathrm{L/s} = 187{,}5\ \mathrm{m^3/s}
+K_F = K_\rho\,K_v^2\,K_L^2 = 1 \times \frac{1}{10} \times \frac{1}{100} = \frac{1}{1000}
 $$
-
-E o tempo: um evento que no modelo durou $10\ \mathrm{s}$ corresponde a $10 \times \sqrt{25} = 50\ \mathrm{s}$ na obra. **O modelo é mais rápido que a realidade** — é por isso que ensaio de maré em modelo reduzido comprime dias em horas.
 
 </Caixa>
 
 <Caixa tipo="dica" rotulo="Por que não se consegue igualar tudo">
 
-Igualar $Re$ **e** $Fr$ ao mesmo tempo, com o mesmo fluido, é impossível: $Re$ pede $v_m/v_p = 1/\lambda$ e $Fr$ pede $v_m/v_p = \sqrt{\lambda}$ — só coincidem se $\lambda = 1$, ou seja, se o modelo for do tamanho da obra.
+Igualar $Re$ **e** $Fr$ ao mesmo tempo, com o mesmo fluido, é impossível: $Re$ pede $K_v = 1/K_L$ e $Fr$ pede $K_v = \sqrt{K_L}$ — só coincidem se $K_L = 1$, ou seja, se o modelo for do tamanho da obra. Para satisfazer os dois, troca-se o fluido do modelo, com $K_\nu = K_L^{3/2}$ (é a q64 do 2º EE).
 
-A saída prática é o **efeito de escala**: iguala-se o adimensional dominante, aceita-se o erro no outro e corrige-se por coeficiente empírico. Reconhecer essa limitação é uma pergunta conceitual frequente.
+A saída prática, quando não dá para trocar o fluido, é o **efeito de escala**: iguala-se o adimensional dominante, aceita-se o erro no outro e corrige-se por coeficiente empírico. Reconhecer essa limitação é uma pergunta conceitual frequente.
 
 </Caixa>
 
