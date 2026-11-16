@@ -27,13 +27,13 @@ pontos: 1,0 pt
     <line x1="36" y1="32" x2="300" y2="32" stroke="var(--accent)" stroke-width="1.2"/>
     <line x1="36" y1="41" x2="300" y2="41" stroke="var(--accent)" stroke-width="1.2"/>
     <line x1="36" y1="50" x2="300" y2="50" stroke="var(--accent)" stroke-width="1.2"/>
-    <text x="30" y="18" font-size="9" fill="var(--ink-2)">laminar · Re &lt; 2000</text>
+    <text x="30" y="18" font-size="9" fill="var(--ink-2)">laminar · Re ≤ 2000</text>
     {/* transição */}
     <rect x="30" y="76" width="276" height="34" fill="var(--accent-soft)" opacity="0.35" stroke="var(--ink-3)" stroke-width="1.1"/>
     <path d="M36 84 L150 84 Q190 84 214 90 Q248 98 300 92" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
     <path d="M36 93 L150 93 Q192 93 218 100 Q250 106 300 100" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
     <path d="M36 102 L150 102 Q188 102 210 96 Q244 88 300 96" fill="none" stroke="var(--warn)" stroke-width="1.2"/>
-    <text x="30" y="70" font-size="9" fill="var(--ink-2)">transição · 2000 &lt; Re &lt; 4000</text>
+    <text x="30" y="70" font-size="9" fill="var(--ink-2)">transição · 2000 &lt; Re &lt; 2400</text>
     {/* turbulento */}
     <rect x="30" y="128" width="276" height="34" fill="var(--accent-soft)" opacity="0.35" stroke="var(--ink-3)" stroke-width="1.1"/>
     <path d="M36 145 Q60 132 84 145 Q108 158 132 145 Q156 132 180 145 Q204 158 228 145 Q252 132 276 145 Q292 154 300 145" fill="none" stroke="var(--ok)" stroke-width="1.3"/>
@@ -41,7 +41,7 @@ pontos: 1,0 pt
     <circle cx="160" cy="153" r="5" fill="none" stroke="var(--ok)" stroke-width="1"/>
     <circle cx="228" cy="135" r="5" fill="none" stroke="var(--ok)" stroke-width="1"/>
     <circle cx="266" cy="154" r="4" fill="none" stroke="var(--ok)" stroke-width="1"/>
-    <text x="30" y="122" font-size="9" fill="var(--ink-2)">turbulento · Re &gt; 4000</text>
+    <text x="30" y="122" font-size="9" fill="var(--ink-2)">turbulento · Re ≥ 2400</text>
     {/* sentido */}
     <line x1="30" y1="178" x2="70" y2="178" stroke="var(--ink-3)" stroke-width="1.4"/>
     <polygon points="76,178 66,174 66,182" fill="var(--ink-3)"/>
@@ -61,9 +61,9 @@ $$
 Re = \frac{\rho\,v\,D}{\mu} = \frac{v\,D}{\nu}
 $$
 
-- **laminar** — o fluido escoa como se fosse constituído de **lâminas paralelas** que deslizam umas sobre as outras, **sem mistura macroscópica**. As linhas de corrente são bem definidas e a viscosidade domina. Em tubos, $Re < 2000$;
-- **transição** — regime instável, em que as perturbações começam a crescer mas ainda não dominam. Em tubos, $2000 < Re < 4000$;
-- **turbulento** — as partículas se movem em **trajetórias irregulares**, com **mistura macroscópica** por meio de turbilhões. A inércia domina. Em tubos, $Re > 4000$.
+- **laminar** — o fluido escoa como se fosse constituído de **lâminas paralelas** que deslizam umas sobre as outras, **sem mistura macroscópica**. As linhas de corrente são bem definidas e a viscosidade domina. Em tubos, $Re \leq 2000$;
+- **transição** — regime instável, em que as perturbações começam a crescer mas ainda não dominam. Em tubos, $2000 < Re < 2400$ (o limite de cima varia de livro para livro; o do professor é $2400$, e outros usam $4000$);
+- **turbulento** — as partículas se movem em **trajetórias irregulares**, com **mistura macroscópica** por meio de turbilhões. A inércia domina. Em tubos, $Re \geq 2400$.
 </Gabarito>
 
 <Passos>
@@ -102,7 +102,7 @@ Exemplos: água numa adutora, ar num duto de ventilação, fumaça subindo depoi
 
 | | laminar | transição | turbulento |
 |---|---|---|---|
-| $Re$ (em tubo) | $< 2000$ | $2000$–$4000$ | $> 4000$ |
+| $Re$ (em tubo) | $\leq 2000$ | $2000$–$2400$ | $\geq 2400$ |
 | quem domina | viscosidade | disputa | inércia |
 | mistura | **nenhuma** (macroscópica) | intermitente | **intensa** |
 | perfil de velocidade | parábola | instável | achatado |
@@ -114,7 +114,7 @@ Exemplos: água numa adutora, ar num duto de ventilação, fumaça subindo depoi
 
 <Caixa tipo="dica" rotulo="Os limites não são universais">
 
-Os valores $2000$ e $4000$ valem para **escoamento interno em tubo circular**. Em placa plana a transição se dá perto de $Re \approx 5\times10^5$; em torno de esfera, perto de $2\times10^5$. O que muda é o **comprimento característico** e a geometria — o critério continua sendo o mesmo Reynolds.
+Os valores $2000$ e $2400$ valem para **escoamento interno em tubo circular**. Em placa plana a transição se dá perto de $Re \approx 5\times10^5$; em torno de esfera, perto de $2\times10^5$. O que muda é o **comprimento característico** e a geometria — o critério continua sendo o mesmo Reynolds.
 
 </Caixa>
 
