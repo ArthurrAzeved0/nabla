@@ -1,0 +1,61 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Semelhança · Modelo de submarino no mesmo fluido"
+temaId: semelhanca-dinamica
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q66.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um modelo $1:15$ de um submarino deve ser testado em um tanque de provas contendo **água salgada**. Se o submarino se move a $20\ \mathrm{km/h}$, a que velocidade deverá o modelo ser tracionado para haver semelhança dinâmica?
+
+<Gabarito>
+Submarino submerso: domina a viscosidade, vale **Reynolds**. Mesmo fluido ($\nu_m = \nu_p$):
+
+$$
+v_m = v_p\,\frac{L_p}{L_m} = 20 \times 15 = \mathbf{300\ km/h}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — qual adimensional.** Um submarino **submerso** não forma ondas na superfície: a gravidade não governa o escoamento em volta dele, e o número de Froude não interessa. A força dominante é a **viscosa**, então a semelhança dinâmica é dada pelo **número de Reynolds**.
+
+<Caixa tipo="simbolos">
+
+- $L_m/L_p = 1/15$
+- $v_p = 20\ \mathrm{km/h}$
+- água salgada nos dois: mesma $\nu$
+
+</Caixa>
+
+**Passo 2 — Reynolds igual.**
+
+$$
+\frac{v_m L_m}{\nu_m} = \frac{v_p L_p}{\nu_p}
+\qquad\text{com } \nu_m = \nu_p
+\qquad\Longrightarrow\qquad
+v_m = v_p\,\frac{L_p}{L_m}
+$$
+
+$$
+\boxed{v_m = 20 \times 15 = 300\ \mathrm{km/h} \approx 83\ \mathrm{m/s}}
+$$
+
+**Passo 3 — o que o número revela.** O modelo menor precisa andar **mais rápido**, na proporção inversa da escala, para manter o mesmo Reynolds. $300\ \mathrm{km/h}$ dentro de um tanque de provas é impraticável. É a limitação clássica de ensaiar no mesmo fluido.
+
+<Caixa tipo="dica" rotulo="E se fosse um navio na superfície?">
+
+Aí dominaria a gravidade (as ondas), e a semelhança seria por **Froude**: $v_m = v_p\sqrt{L_m/L_p} = 20/\sqrt{15} \approx 5{,}2\ \mathrm{km/h}$. A mesma escala dá velocidades opostas conforme o fenômeno, e escolher o adimensional certo é metade da questão.
+
+</Caixa>
+</Passos>
