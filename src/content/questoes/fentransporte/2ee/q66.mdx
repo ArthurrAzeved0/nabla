@@ -23,7 +23,7 @@ Um modelo $1:15$ de um submarino deve ser testado em um tanque de provas contend
 Submarino submerso: domina a viscosidade, vale **Reynolds**. Mesmo fluido ($\nu_m = \nu_p$):
 
 $$
-v_m = v_p\,\frac{L_p}{L_m} = 20 \times 15 = \mathbf{300\ km/h}
+K_\nu = K_v\,K_L = 1 \;\Rightarrow\; K_v = \frac{1}{K_L} = 15 \;\Rightarrow\; v_m = 15 \times 20 = \mathbf{300\ km/h}
 $$
 </Gabarito>
 
@@ -32,7 +32,8 @@ $$
 
 <Caixa tipo="simbolos">
 
-- $L_m/L_p = 1/15$
+- $K_L = L_m/L_p = 1/15$
+- $K_v = v_m/v_p$ — a escala de velocidades, que é a incógnita
 - $v_p = 20\ \mathrm{km/h}$
 - água salgada nos dois: mesma $\nu$
 
@@ -41,10 +42,14 @@ $$
 **Passo 2 — Reynolds igual.**
 
 $$
+Re_m = Re_p
+\qquad\Longrightarrow\qquad
 \frac{v_m L_m}{\nu_m} = \frac{v_p L_p}{\nu_p}
+\qquad\Longrightarrow\qquad
+K_\nu = K_v\,K_L
 \qquad\text{com } \nu_m = \nu_p
 \qquad\Longrightarrow\qquad
-v_m = v_p\,\frac{L_p}{L_m}
+K_v = \frac{1}{K_L} = 15
 $$
 
 $$
@@ -55,7 +60,7 @@ $$
 
 <Caixa tipo="dica" rotulo="E se fosse um navio na superfície?">
 
-Aí dominaria a gravidade (as ondas), e a semelhança seria por **Froude**: $v_m = v_p\sqrt{L_m/L_p} = 20/\sqrt{15} \approx 5{,}2\ \mathrm{km/h}$. A mesma escala dá velocidades opostas conforme o fenômeno, e escolher o adimensional certo é metade da questão.
+Aí dominaria a gravidade (as ondas), e a semelhança seria por **Froude**: $K_v^2 = K_L\,K_g$, com $K_g = 1$, dá $K_v = \sqrt{1/15}$ e $v_m = 20/\sqrt{15} \approx 5{,}2\ \mathrm{km/h}$. A mesma escala dá velocidades opostas conforme o fenômeno, e escolher o adimensional certo é metade da questão.
 
 </Caixa>
 </Passos>
