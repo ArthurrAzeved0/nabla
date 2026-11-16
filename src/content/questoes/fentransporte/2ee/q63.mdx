@@ -1,0 +1,77 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Semelhança · Protótipo, modelo e os três tipos de semelhança"
+temaId: semelhanca
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q63.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Explique resumidamente os seguintes conceitos:
+
+a) Protótipo
+
+b) Modelo reduzido
+
+c) Semelhança geométrica
+
+d) Semelhança cinemática
+
+e) Semelhança dinâmica
+
+<Gabarito>
+**a) Protótipo** — a estrutura ou máquina **real**, em tamanho natural, cujo comportamento se quer prever (a barragem, o navio, o avião, a bomba).
+
+**b) Modelo reduzido** — uma reprodução do protótipo em **escala**, ensaiada em laboratório, cujos resultados, por meio das leis de semelhança, são transpostos para o protótipo.
+
+**c) Semelhança geométrica** — todas as dimensões lineares do modelo e do protótipo guardam a **mesma razão** (a escala $k_L = L_m/L_p$), e os ângulos são iguais.
+
+**d) Semelhança cinemática** — além de geometricamente semelhantes, as **velocidades** (e acelerações) em pontos homólogos têm a mesma razão e a mesma direção: as linhas de corrente são semelhantes.
+
+**e) Semelhança dinâmica** — as **forças** em pontos homólogos têm a mesma razão e a mesma direção. Na prática, os **números adimensionais** relevantes (Reynolds, Froude, Euler, Mach…) são iguais no modelo e no protótipo.
+</Gabarito>
+
+<Passos>
+**Passo 1 — por que existe modelo.** Testar uma barragem, um navio ou uma turbina em tamanho real é caro, lento ou impossível antes de construí-los. Ensaia-se então uma versão em escala e se **transfere** o resultado. Para a transferência valer, os dois escoamentos precisam ser "o mesmo escoamento em tamanhos diferentes", e é isso que os três níveis de semelhança garantem.
+
+<Caixa tipo="simbolos">
+
+- índice $p$ — protótipo; índice $m$ — modelo
+- escala geométrica: $k_L = \dfrac{L_m}{L_p}$ (por exemplo, $1:50$)
+- escalas derivadas: $k_v = v_m/v_p$, $k_F = F_m/F_p$, …
+
+</Caixa>
+
+**Passo 2 — os três níveis, um dentro do outro.**
+
+| semelhança | o que se exige | consequência |
+|---|---|---|
+| **geométrica** | razão constante entre **comprimentos** | áreas na razão $k_L^2$, volumes $k_L^3$ |
+| **cinemática** | razão constante entre **velocidades** | linhas de corrente com a mesma forma |
+| **dinâmica** | razão constante entre **forças** | números adimensionais iguais |
+
+Cada uma pressupõe a anterior: não há semelhança cinemática sem geométrica, nem dinâmica sem cinemática.
+
+**Passo 3 — a semelhança dinâmica na prática.** Iguala-se o adimensional da força que **domina** o fenômeno:
+
+- forças viscosas (escoamento em condutos, corpo submerso) → **Reynolds**, $Re = \dfrac{\rho v L}{\mu}$;
+- gravidade (superfície livre, navios, vertedouros) → **Froude**, $Fr = \dfrac{v}{\sqrt{gL}}$;
+- pressão → **Euler**, $Eu = \dfrac{\Delta p}{\rho v^2}$;
+- compressibilidade → **Mach**.
+
+<Caixa tipo="macete" rotulo="Geométrica, cinemática, dinâmica">
+
+Pense nas grandezas da física básica: **comprimento** → **movimento** → **força**. A ordem das semelhanças é a mesma.
+
+</Caixa>
+</Passos>
