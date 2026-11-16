@@ -1,0 +1,171 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Bomba · Desnível, rugosidade e a altura que zera a pressão na sucção"
+temaId: potencia-da-bomba
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q68.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Na instalação da figura, deseja-se conhecer o desnível $\Delta h$ entre os reservatórios de água. Determinar: **a)** o desnível $\Delta h$ entre os níveis livres dos reservatórios; **b)** a rugosidade absoluta $K$ da tubulação; **c)** a altura $h_0$ para que a pressão efetiva na sucção da bomba seja igual a zero.
+
+**Dados:** potência fornecida ao fluido $N = 0{,}75\ \mathrm{kW}$; diâmetro $D = 3\ \mathrm{cm}$; $Q = 3\ \mathrm{L/s}$; $L_{1,2} = 2\ \mathrm{m}$; $L_{3,6} = 10\ \mathrm{m}$; $k_1 = 1$; $k_4 = k_5 = 1{,}2$; $k_6 = 1{,}6$; $f = 0{,}02$; $\gamma = 10^4\ \mathrm{N/m^3}$.
+
+<Figura>
+  <svg viewBox="0 0 440 200" role="img" aria-label="Reservatório inferior, seção 0, com nível a uma altura h zero acima do eixo da tubulação; o tubo sai na seção 1, vai até a bomba B entre as seções 2 e 3, segue até a seção 4, sobe até a seção 5 e corre na horizontal até a seção 6, onde entra no reservatório superior, de nível 7; o desnível entre os dois níveis livres é delta h">
+    {/* reservatório inferior */}
+    <path d="M20 112 L20 164 L80 164 L80 112 Z" fill="var(--accent-soft)" opacity="0.5"/>
+    <path d="M20 100 L20 164 L80 164 L80 100" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="20" y1="112" x2="80" y2="112" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="30,104 40,104 35,112" fill="none" stroke="var(--accent)" stroke-width="1"/>
+    <text x="20" y="94" font-size="11" fill="var(--ink-2)">(0)</text>
+    <line x1="66" y1="118" x2="66" y2="158" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="66,112 63,121 69,121" fill="var(--ink-3)"/>
+    <polygon points="66,164 63,155 69,155" fill="var(--ink-3)"/>
+    <text x="48" y="142" font-size="11" fill="var(--ink-3)">h₀</text>
+    {/* tubulação */}
+    <path d="M80 164 L184 164 M212 164 L270 164 L270 84 L370 84" fill="none" stroke="var(--ink-2)" stroke-width="2.6"/>
+    <circle cx="198" cy="164" r="14" fill="var(--surface-2, #fff)" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <text x="193" y="168" font-size="11" fill="var(--ink-2)">B</text>
+    {/* reservatório superior */}
+    <path d="M370 30 L370 84 L420 84 L420 30 Z" fill="var(--accent-soft)" opacity="0.5"/>
+    <path d="M370 20 L370 84 L420 84 L420 20" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="370" y1="30" x2="420" y2="30" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="384,22 394,22 389,30" fill="none" stroke="var(--accent)" stroke-width="1"/>
+    <text x="410" y="14" font-size="11" fill="var(--ink-2)">(7)</text>
+    {/* desnível */}
+    <line x1="80" y1="112" x2="190" y2="112" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="170" y1="30" x2="370" y2="30" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="180" y1="36" x2="180" y2="106" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="180,30 177,39 183,39" fill="var(--ink-3)"/>
+    <polygon points="180,112 177,103 183,103" fill="var(--ink-3)"/>
+    <text x="150" y="76" font-size="12" fill="var(--ink-3)">Δh</text>
+    {/* rótulos */}
+    <text x="76" y="182" font-size="10" fill="var(--ink-2)">(1)</text>
+    <text x="164" y="182" font-size="10" fill="var(--ink-2)">(2)</text>
+    <text x="214" y="182" font-size="10" fill="var(--ink-2)">(3)</text>
+    <text x="262" y="182" font-size="10" fill="var(--ink-2)">(4)</text>
+    <text x="256" y="78" font-size="10" fill="var(--ink-2)">(5)</text>
+    <text x="356" y="100" font-size="10" fill="var(--ink-2)">(6)</text>
+  </svg>
+  <figcaption>
+
+$L_{1,2}$ é o trecho de **sucção** (antes da bomba) e $L_{3,6}$ o de **recalque** (depois dela). $k_1$ é a entrada, $k_4$ e $k_5$ as duas curvas, $k_6$ a saída no reservatório superior.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v = \frac{Q}{A} = 4{,}24\ \mathrm{m/s}, \qquad \frac{v^2}{2g} = 0{,}90\ \mathrm{m}, \qquad H_B = \frac{N}{\gamma Q} = 25\ \mathrm{m}
+$$
+
+**a)** $H_{p} = \left(f\,\dfrac{12}{0{,}03} + 1 + 1{,}2 + 1{,}2 + 1{,}6\right)\times 0{,}90 = (8 + 5)\times 0{,}90 = 11{,}7\ \mathrm{m}$
+
+$$
+\Delta h = H_B - H_p \approx \mathbf{13{,}3\ m}
+$$
+
+**b)** $Re = 1{,}27 \times 10^5$ e $f = 0{,}02$ no diagrama de Moody (ou em Colebrook): $D/K \approx 1800$, $K \approx \mathbf{0{,}017\ mm}$ ($\approx 1{,}7 \times 10^{-3}\ \mathrm{cm}$)
+
+**c)** $h_0 = \dfrac{v^2}{2g}\left(1 + k_1 + f\,\dfrac{L_{1,2}}{D}\right) = 0{,}90 \times (1 + 1 + 1{,}33) \approx \mathbf{3{,}0\ m}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as grandezas comuns.** Diâmetro único, então a velocidade é a mesma em toda a tubulação.
+
+$$
+A = \frac{\pi\,(0{,}03)^2}{4} = 7{,}07 \times 10^{-4}\ \mathrm{m^2}
+\qquad
+v = \frac{0{,}003}{7{,}07 \times 10^{-4}} = 4{,}24\ \mathrm{m/s}
+\qquad
+\frac{v^2}{2g} = \frac{4{,}24^2}{20} = 0{,}900\ \mathrm{m}
+$$
+
+Com $\gamma = 10^4$, usa-se $g = 10\ \mathrm{m/s^2}$. A carga que a bomba dá ao fluido sai da potência **fornecida ao fluido**, sem rendimento no meio:
+
+$$
+H_B = \frac{N}{\gamma\,Q} = \frac{750}{10^4 \times 0{,}003} = 25\ \mathrm{m}
+$$
+
+<Caixa tipo="simbolos">
+
+- $H_B$ — carga da bomba
+- $H_p = \left(f\,\dfrac{L}{D} + \sum k\right)\dfrac{v^2}{2g}$ — perda total
+- $L = L_{1,2} + L_{3,6} = 12\ \mathrm{m}$
+- $\sum k = k_1 + k_4 + k_5 + k_6 = 1 + 1{,}2 + 1{,}2 + 1{,}6 = 5$
+
+</Caixa>
+
+**Passo 2 — a) o desnível.** Energia de (0) a (7), as duas superfícies livres:
+
+$$
+H_0 + H_B = H_7 + H_{p_{0,7}}
+\qquad\Longrightarrow\qquad
+z_7 - z_0 = \Delta h = H_B - H_{p_{0,7}}
+$$
+
+$$
+H_{p_{0,7}} = \left(0{,}02 \times \frac{12}{0{,}03} + 5\right)\times 0{,}900 = (8 + 5)\times 0{,}900 = 11{,}7\ \mathrm{m}
+$$
+
+$$
+\boxed{\Delta h = 25 - 11{,}7 \approx 13{,}3\ \mathrm{m}}
+$$
+
+A bomba eleva a água $13{,}3\ \mathrm{m}$ e gasta outros $11{,}7\ \mathrm{m}$ vencendo o atrito: quase metade da energia vai para as perdas, num tubo fino de $3\ \mathrm{cm}$ com velocidade alta.
+
+**Passo 3 — b) a rugosidade.** Com $f$ e $Re$, o diagrama de Moody devolve a rugosidade relativa. A água tem $\nu \approx 10^{-6}\ \mathrm{m^2/s}$ (o enunciado não dá; é o valor da teoria):
+
+$$
+Re = \frac{v\,D}{\nu} = \frac{4{,}24 \times 0{,}03}{10^{-6}} = 1{,}27 \times 10^5
+$$
+
+No diagrama, o ponto $(Re = 1{,}27 \times 10^5;\ f = 0{,}02)$ cai na curva $D/K \approx 2000$. Pela equação de Colebrook, que é a fórmula das curvas do diagrama:
+
+$$
+\frac{1}{\sqrt f} = -2\log\left(\frac{K/D}{3{,}7} + \frac{2{,}51}{Re\sqrt f}\right)
+\qquad\Longrightarrow\qquad
+7{,}07 = -2\log\left(\frac{K/D}{3{,}7} + 1{,}39 \times 10^{-4}\right)
+$$
+
+$$
+\frac{K/D}{3{,}7} = 10^{-3{,}536} - 1{,}39 \times 10^{-4} = 1{,}52 \times 10^{-4}
+\qquad\Longrightarrow\qquad
+\frac{K}{D} = 5{,}6 \times 10^{-4}
+$$
+
+$$
+\boxed{K \approx 5{,}6 \times 10^{-4} \times 30\ \mathrm{mm} \approx 0{,}017\ \mathrm{mm}}
+$$
+
+Rugosidade de tubo **liso**: cobre, latão ou PVC. Na leitura do diagrama, $D/K = 2000$ dá $K = 0{,}015\ \mathrm{mm}$; a diferença é de leitura gráfica.
+
+**Passo 4 — c) a altura $h_0$.** Energia de (0) até a entrada da bomba (2), com o plano de referência no eixo da tubulação e $p_2 = 0$:
+
+$$
+h_0 = \frac{p_2}{\gamma} + \frac{v^2}{2g} + H_{p_{0,2}}
+\qquad\text{com}\qquad
+H_{p_{0,2}} = \left(k_1 + f\,\frac{L_{1,2}}{D}\right)\frac{v^2}{2g}
+$$
+
+$$
+H_{p_{0,2}} = \left(1 + 0{,}02 \times \frac{2}{0{,}03}\right)\times 0{,}900 = (1 + 1{,}33)\times 0{,}900 = 2{,}10\ \mathrm{m}
+$$
+
+$$
+\boxed{h_0 = 0 + 0{,}900 + 2{,}10 \approx 3{,}0\ \mathrm{m}}
+$$
+
+**A leitura física:** o nível do reservatório inferior precisa estar $3\ \mathrm{m}$ acima da bomba só para **acelerar** a água até $4{,}24\ \mathrm{m/s}$ e pagar as perdas da sucção. Com $h_0$ menor, a pressão na entrada da bomba fica **negativa** (abaixo da atmosférica), o que aproxima a bomba da cavitação.
+</Passos>
