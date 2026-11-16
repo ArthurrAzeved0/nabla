@@ -34,7 +34,7 @@ e) Semelhança dinâmica
 
 **b) Modelo reduzido** — uma reprodução do protótipo em **escala**, ensaiada em laboratório, cujos resultados, por meio das leis de semelhança, são transpostos para o protótipo.
 
-**c) Semelhança geométrica** — todas as dimensões lineares do modelo e do protótipo guardam a **mesma razão** (a escala $k_L = L_m/L_p$), e os ângulos são iguais.
+**c) Semelhança geométrica** — todas as dimensões lineares do modelo e do protótipo guardam a **mesma razão** (a escala geométrica $K_L = L_m/L_p$, ou $a_m/a_p = b_m/b_p$ para duas dimensões quaisquer), e os ângulos são iguais.
 
 **d) Semelhança cinemática** — além de geometricamente semelhantes, as **velocidades** (e acelerações) em pontos homólogos têm a mesma razão e a mesma direção: as linhas de corrente são semelhantes.
 
@@ -47,8 +47,8 @@ e) Semelhança dinâmica
 <Caixa tipo="simbolos">
 
 - índice $p$ — protótipo; índice $m$ — modelo
-- escala geométrica: $k_L = \dfrac{L_m}{L_p}$ (por exemplo, $1:50$)
-- escalas derivadas: $k_v = v_m/v_p$, $k_F = F_m/F_p$, …
+- escala geométrica: $K_L = \dfrac{L_m}{L_p}$ (por exemplo, $1:50$)
+- escalas derivadas, com a mesma letra: $K_v = v_m/v_p$, $K_F = F_m/F_p$, $K_\mu = \mu_m/\mu_p$, $K_\rho$, $K_g$…
 
 </Caixa>
 
@@ -56,18 +56,18 @@ e) Semelhança dinâmica
 
 | semelhança | o que se exige | consequência |
 |---|---|---|
-| **geométrica** | razão constante entre **comprimentos** | áreas na razão $k_L^2$, volumes $k_L^3$ |
-| **cinemática** | razão constante entre **velocidades** | linhas de corrente com a mesma forma |
-| **dinâmica** | razão constante entre **forças** | números adimensionais iguais |
+| **geométrica** | razão constante entre **comprimentos** | $\dfrac{a_m}{a_p} = \dfrac{b_m}{b_p} = K_L$; áreas em $K_L^2$, volumes em $K_L^3$ |
+| **cinemática** | razão constante entre **velocidades** | $\dfrac{v_{1m}}{v_{1p}} = \dfrac{v_{2m}}{v_{2p}} = K_v$; mesmo regime de escoamento |
+| **dinâmica** | razão constante entre **forças** | $\dfrac{F_{1m}}{F_{1p}} = \dfrac{F_{2m}}{F_{2p}} = K_F$; adimensionais iguais, $\pi_m = \pi_p$ |
 
 Cada uma pressupõe a anterior: não há semelhança cinemática sem geométrica, nem dinâmica sem cinemática.
 
 **Passo 3 — a semelhança dinâmica na prática.** Iguala-se o adimensional da força que **domina** o fenômeno:
 
-- forças viscosas (escoamento em condutos, corpo submerso) → **Reynolds**, $Re = \dfrac{\rho v L}{\mu}$;
-- gravidade (superfície livre, navios, vertedouros) → **Froude**, $Fr = \dfrac{v}{\sqrt{gL}}$;
-- pressão → **Euler**, $Eu = \dfrac{\Delta p}{\rho v^2}$;
-- compressibilidade → **Mach**.
+- forças viscosas (escoamento em condutos, corpo submerso) → **Reynolds**, $Re = \dfrac{\rho v D}{\mu}$: condutos forçados, bombas e turbinas;
+- gravidade (superfície livre, navios, vertedouros, canais) → **Froude**, $Fr = \dfrac{v^2}{L\,g}$;
+- pressão ou força → **Euler**, $Eu = \dfrac{F}{\rho v^2 L^2}$;
+- compressibilidade (modelos aerodinâmicos de aviões e carros) → **Mach**.
 
 <Caixa tipo="macete" rotulo="Geométrica, cinemática, dinâmica">
 
