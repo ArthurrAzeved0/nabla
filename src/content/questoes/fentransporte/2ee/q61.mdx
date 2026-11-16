@@ -1,0 +1,132 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Quantidade de movimento · Força do líquido numa redução"
+temaId: quantidade-de-movimento
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q61.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um tubo de diâmetro $60\ \mathrm{cm}$ é ligado a um tubo de $30\ \mathrm{cm}$ através de uma redução. Para um fluxo de $0{,}30\ \mathrm{m^3/s}$ e pressão em A de $1{,}80\ \mathrm{kgf/cm^2}$, **que força exercerá o líquido sobre a redução**, desprezando-se qualquer perda?
+
+<Figura>
+  <svg viewBox="0 0 400 160" role="img" aria-label="Redução horizontal: tubo de 60 centímetros, seção A, que afunila para um tubo de 30 centímetros, seção B; o escoamento vai da esquerda para a direita">
+    <path d="M80 30 L210 30 L270 60 L330 60 L330 100 L270 100 L210 130 L80 130 Z" fill="var(--accent-soft)" opacity="0.5" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <ellipse cx="80" cy="80" rx="12" ry="50" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <ellipse cx="330" cy="80" rx="5" ry="20" fill="none" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <line x1="210" y1="30" x2="210" y2="130" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="270" y1="60" x2="270" y2="100" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="110" y1="80" x2="160" y2="80" stroke="var(--ink-2)" stroke-width="2"/>
+    <polygon points="170,80 158,75 158,85" fill="var(--ink-2)"/>
+    <text x="140" y="22" font-size="12" fill="var(--ink-2)">A</text>
+    <text x="294" y="52" font-size="12" fill="var(--ink-2)">B</text>
+    <line x1="44" y1="36" x2="44" y2="124" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="44,30 41,39 47,39" fill="var(--ink-3)"/>
+    <polygon points="44,130 41,121 47,121" fill="var(--ink-3)"/>
+    <line x1="36" y1="30" x2="76" y2="30" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <line x1="36" y1="130" x2="76" y2="130" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="6" y="84" font-size="11" fill="var(--ink-3)">60 cm</text>
+    <line x1="352" y1="66" x2="352" y2="94" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="352,60 349,69 355,69" fill="var(--ink-3)"/>
+    <polygon points="352,100 349,91 355,91" fill="var(--ink-3)"/>
+    <line x1="336" y1="60" x2="360" y2="60" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <line x1="336" y1="100" x2="360" y2="100" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="360" y="84" font-size="11" fill="var(--ink-3)">30 cm</text>
+  </svg>
+  <figcaption>
+
+Tubo **horizontal**: o peso do líquido é vertical e não entra no balanço da direção do escoamento.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+v_A = 1{,}06\ \mathrm{m/s}, \quad v_B = 4{,}24\ \mathrm{m/s}, \quad p_A = 176{,}5\ \mathrm{kPa}, \quad p_B = 168{,}1\ \mathrm{kPa}
+$$
+
+$$
+F = p_A A_A - p_B A_B - \rho Q\,(v_B - v_A) = 49{,}91 - 11{,}88 - 0{,}95 \approx \mathbf{37{,}1\ kN}
+$$
+
+no sentido do escoamento (cerca de $3{,}78\ \mathrm{tf}$).
+</Gabarito>
+
+<Passos>
+**Passo 1 — as velocidades, pela continuidade.**
+
+$$
+A_A = \frac{\pi\,(0{,}60)^2}{4} = 0{,}2827\ \mathrm{m^2}
+\qquad
+A_B = \frac{\pi\,(0{,}30)^2}{4} = 0{,}0707\ \mathrm{m^2}
+$$
+
+$$
+v_A = \frac{0{,}30}{0{,}2827} = 1{,}061\ \mathrm{m/s}
+\qquad
+v_B = \frac{0{,}30}{0{,}0707} = 4{,}244\ \mathrm{m/s}
+$$
+
+**Passo 2 — a pressão em A, em pascal.** $1\ \mathrm{kgf} = 9{,}807\ \mathrm{N}$ e $1\ \mathrm{cm^2} = 10^{-4}\ \mathrm{m^2}$:
+
+$$
+p_A = 1{,}80 \times 9{,}807 \times 10^4 = 176\,520\ \mathrm{Pa}
+$$
+
+**Passo 3 — a pressão em B, por Bernoulli.** Sem perdas e na horizontal ($z_A = z_B$), com água ($\rho = 1000\ \mathrm{kg/m^3}$):
+
+$$
+p_B = p_A + \frac{\rho}{2}\left(v_A^2 - v_B^2\right) = 176\,520 + 500\,(1{,}126 - 18{,}012) = 168\,077\ \mathrm{Pa}
+$$
+
+A pressão cai só $8{,}4\ \mathrm{kPa}$: a velocidade ainda é baixa.
+
+**Passo 4 — o volume de controle.** Envolve o líquido dentro da redução, de A até B. Na direção $x$ do escoamento agem: a pressão em A empurrando para a frente, a pressão em B empurrando para trás e a força $F_x$ da parede sobre o líquido. A soma é igual ao que sai menos o que entra de quantidade de movimento:
+
+$$
+p_A A_A - p_B A_B + F_x = \rho Q\,(v_B - v_A)
+$$
+
+<Caixa tipo="simbolos">
+
+- $F_x$ — força da **redução sobre o líquido**, que é a incógnita; o líquido faz a mesma força, com sinal trocado, sobre a redução
+- $\rho Q = 1000 \times 0{,}30 = 300\ \mathrm{kg/s}$ — vazão em massa
+
+</Caixa>
+
+**Passo 5 — as parcelas.**
+
+$$
+p_A A_A = 176\,520 \times 0{,}2827 = 49\,910\ \mathrm{N}
+$$
+
+$$
+p_B A_B = 168\,077 \times 0{,}0707 = 11\,881\ \mathrm{N}
+$$
+
+$$
+\rho Q\,(v_B - v_A) = 300 \times (4{,}244 - 1{,}061) = 955\ \mathrm{N}
+$$
+
+$$
+F_x = 955 - 49\,910 + 11\,881 = -37\,074\ \mathrm{N}
+$$
+
+O sinal negativo diz que a parede empurra o líquido **para trás**. Então o líquido empurra a redução **para a frente**, no sentido do escoamento:
+
+$$
+\boxed{F \approx 37{,}1\ \mathrm{kN} \approx 3{,}78\ \mathrm{tf}}
+$$
+
+**Conferência —** quase toda a força vem da **pressão**: $49{,}9 - 11{,}9 = 38\ \mathrm{kN}$, contra menos de $1\ \mathrm{kN}$ da variação de quantidade de movimento. Em redução com pressão alta e velocidade baixa é sempre assim. É essa força que as **ancoragens** da tubulação precisam segurar.
+</Passos>
