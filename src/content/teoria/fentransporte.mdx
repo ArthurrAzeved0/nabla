@@ -2145,85 +2145,105 @@ O jato empurra a placa com $400\ \mathrm{N}$ **no sentido do escoamento**. Se a 
 
 <Topico id="ft-dimensional" num="20" titulo="Análise dimensional, números adimensionais e o teorema dos π">
 
-**A ideia.** Alguns problemas de fluidos têm variáveis demais para resolver analiticamente e caro demais para testar em tamanho real. A análise dimensional é a ferramenta que **reduz o número de variáveis** antes de qualquer experimento: em vez de estudar sete grandezas separadas, estuda-se um punhado de **grupos adimensionais**. É o que permite ensaiar um modelo pequeno e extrapolar para a obra.
+**A ideia.** Alguns problemas de fluidos têm variáveis demais para resolver analiticamente e são caros demais para testar em tamanho real. A análise dimensional (ou **teoria da homogeneidade dimensional**) é a ferramenta que **reduz o número de variáveis** antes de qualquer experimento: em vez de estudar seis grandezas separadas, estuda-se um punhado de **números adimensionais** $\pi$. Serve para apresentar e interpretar dados experimentais, atacar problemas sem solução analítica, fazer modelagem física e passar de um sistema de unidades para outro.
 
 <Caixa tipo="simbolos" rotulo="O que é cada símbolo">
 
-- $[M], [L], [T]$ — **dimensões primárias**: massa, comprimento, tempo (e $[\Theta]$ para temperatura);
-- $n$ — número de **variáveis** do problema;
-- $k$ — número de **dimensões primárias** envolvidas;
-- $n - k$ — número de **grupos adimensionais** independentes ($\pi$);
-- $Re, Fr, Eu, Ma, We$ — os adimensionais clássicos.
+- $F, L, T$ — **grandezas fundamentais** da base usada nos slides: força, comprimento, tempo (a outra base comum é $M, L, T$);
+- $[X]$ — lê-se "**dimensão de** $X$";
+- $n$ — número de **grandezas** da função representativa do fenômeno;
+- $r$ — número de **grandezas fundamentais** envolvidas (o tamanho da base);
+- $m = n - r$ — número de **adimensionais** $\pi$ independentes;
+- $Re, Fr, Eu, Ma$ — os adimensionais clássicos.
 
 </Caixa>
 
-### Dimensões das grandezas usuais
+### Homogeneidade dimensional
 
-<Caixa tipo="dica" rotulo="A tabela que resolve qualquer equação dimensional">
+**Lei da homogeneidade dimensional:** todo termo aditivo de uma equação deve ter as mesmas dimensões; só se iguala o que tem a mesma dimensão. Não é possível somar maçãs e laranjas.
 
-$$
-[v] = LT^{-1}
-\qquad
-[a] = LT^{-2}
-\qquad
-[F] = MLT^{-2}
-\qquad
-[\rho] = ML^{-3}
-$$
+As grandezas **fundamentais** (ou de base) são independentes; todas as outras são **derivadas**, e a **equação dimensional** escreve cada derivada em função da base:
 
 $$
-[p] = [\tau] = ML^{-1}T^{-2}
-\qquad
-[\mu] = ML^{-1}T^{-1}
-\qquad
-[\nu] = L^{2}T^{-1}
-\qquad
-[Q] = L^{3}T^{-1}
+[X] = F^a\,L^b\,T^c
+\qquad\text{ou}\qquad
+[X] = M^a\,L^b\,T^c
 $$
 
-$$
-[\gamma] = ML^{-2}T^{-2}
-\qquad
-[\text{energia}] = ML^{2}T^{-2}
-\qquad
-[\text{potência}] = ML^{2}T^{-3}
-$$
+<Caixa tipo="dica" rotulo="A tabela que resolve qualquer equação dimensional (base FLT, a dos slides)">
 
-Toda equação dimensional se resolve com essa tabela e a regra de que **os dois lados de uma equação física têm as mesmas dimensões** (homogeneidade dimensional).
+Como $F = m\,a$, a massa na base $FLT$ é $[m] = F\,L^{-1}T^{2}$, e daí sai o resto:
+
+| grandeza | base $FLT$ | base $MLT$ |
+|---|---|---|
+| velocidade | $LT^{-1}$ | $LT^{-1}$ |
+| aceleração | $LT^{-2}$ | $LT^{-2}$ |
+| força | $F$ | $MLT^{-2}$ |
+| massa | $FL^{-1}T^{2}$ | $M$ |
+| massa específica | $FL^{-4}T^{2}$ | $ML^{-3}$ |
+| peso específico | $FL^{-3}$ | $ML^{-2}T^{-2}$ |
+| pressão, tensão | $FL^{-2}$ | $ML^{-1}T^{-2}$ |
+| gradiente de velocidade | $T^{-1}$ | $T^{-1}$ |
+| viscosidade dinâmica | $FL^{-2}T$ | $ML^{-1}T^{-1}$ |
+| viscosidade cinemática | $L^{2}T^{-1}$ | $L^{2}T^{-1}$ |
+| vazão | $L^{3}T^{-1}$ | $L^{3}T^{-1}$ |
+| rotação | $T^{-1}$ | $T^{-1}$ |
+| potência | $FLT^{-1}$ | $ML^{2}T^{-3}$ |
+
+A viscosidade dinâmica sai da lei de Newton: $\tau = \mu\,dv/dy$, então $[\mu] = [\tau]/[dv/dy] = FL^{-2}/T^{-1} = FL^{-2}T$.
 
 </Caixa>
 
-### O teorema dos $\pi$ de Buckingham
+### Número adimensional
 
-> Um problema com $n$ variáveis, envolvendo $k$ dimensões primárias, pode ser reescrito com $n - k$ grupos adimensionais independentes.
+É aquele cuja equação dimensional tem **expoente zero** em todas as grandezas fundamentais: $[\pi] = F^0 L^0 T^0$. Os mais conhecidos são os números de Reynolds, Froude, Euler e Mach.
 
-<Caixa tipo="macete" rotulo="O roteiro em cinco passos">
+### O teorema dos $\pi$ (Buckingham)
 
-1. **liste as $n$ variáveis** relevantes do problema;
-2. **escreva a dimensão** de cada uma e conte quantas dimensões primárias $k$ aparecem;
-3. o número de grupos é $n - k$;
-4. **escolha $k$ variáveis repetentes** — devem conter juntas todas as dimensões e **não** formar um adimensional entre si. Escolha padrão em fluidos: uma **geométrica** ($D$), uma **cinemática** ($v$) e uma de **propriedade** ($\rho$);
-5. monte cada $\pi$ multiplicando as repetentes elevadas a expoentes desconhecidos por uma das variáveis restantes, e **resolva os expoentes** impondo que o grupo seja adimensional.
+> Se um fenômeno depende de $n$ grandezas, $f(X_1, X_2, \dots, X_n) = 0$, e elas envolvem $r$ grandezas fundamentais, ele pode ser reescrito com $m = n - r$ adimensionais independentes, $\varphi(\pi_1, \pi_2, \dots, \pi_m) = 0$.
+
+<Caixa tipo="macete" rotulo="O roteiro dos slides">
+
+1. **escreva a função representativa** $f(\dots) = 0$ e conte $n$;
+2. **escreva a dimensão** de cada grandeza e conte as fundamentais $r$; $m = n - r$;
+3. **escolha a base**: $r$ grandezas que juntas contenham todas as fundamentais e **não** formem um adimensional entre si. A escolha sensata em fluidos: uma **massa específica** ($\rho$), uma **velocidade** ($v$) e um **comprimento** ($D$);
+4. cada $\pi$ é a base elevada a expoentes desconhecidos vezes **uma** das grandezas que ficaram de fora, $\pi = \rho^a\,v^b\,D^c\,X$, e os adimensionais diferem entre si em pelo menos essa grandeza;
+5. **imponha** $F^0L^0T^0$, resolva o sistema em $a, b, c$ e substitua.
 
 </Caixa>
 
-<Caixa tipo="exemplo" rotulo="Exemplo rápido — de onde sai o número de Reynolds">
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — a força de arrasto numa esfera">
 
-Suponha que a força de arrasto $F$ sobre um corpo dependa de $v$, $D$, $\rho$ e $\mu$. Então $n = 5$ variáveis e $k = 3$ dimensões ($M$, $L$, $T$), logo $n - k = 2$ grupos.
+A força $F$ de resistência ao avanço de uma esfera lisa num fluido depende de $v$, $D$, $\rho$ e $\mu$: $f(F, v, D, \rho, \mu) = 0$. Então $n = 5$ e $r = 3$ ($F, L, T$), logo $m = 2$. Base $\rho, v, D$.
 
-Com repetentes $D$, $v$, $\rho$, um dos grupos sai com $\mu$:
-
-$$
-\pi_1 = \frac{\mu}{\rho\,v\,D} = \frac{1}{Re}
-$$
-
-e o outro, com $F$:
+**Primeiro adimensional**, com $F$:
 
 $$
-\pi_2 = \frac{F}{\rho\,v^2\,D^2} = C_D \text{ (coeficiente de arrasto)}
+\pi_1 = \rho^a\,v^b\,D^c\,F
+\qquad
+F^0L^0T^0 = (FL^{-4}T^{2})^a\,(LT^{-1})^b\,(L)^c\,(F) = F^{a+1}\,L^{-4a+b+c}\,T^{2a-b}
 $$
 
-Resultado: em vez de mapear $F(v, D, \rho, \mu)$ com quatro eixos, basta medir **uma curva** $C_D$ contra $Re$. Foi assim que a aerodinâmica ficou viável antes dos computadores.
+$$
+a + 1 = 0,\quad -4a + b + c = 0,\quad 2a - b = 0
+\qquad\Longrightarrow\qquad
+a = -1,\ b = -2,\ c = -2
+\qquad\Longrightarrow\qquad
+\pi_1 = \frac{F}{\rho\,v^2 D^2} = Eu
+$$
+
+**Segundo**, com $\mu$, do mesmo jeito: $a = b = c = -1$ e
+
+$$
+\pi_2 = \frac{\mu}{\rho\,v\,D} = \frac{1}{Re}
+\qquad\text{(os slides usam o inverso, } \pi_2 = Re\text{)}
+$$
+
+Resultado: em vez de mapear $F(v, D, \rho, \mu)$ com quatro eixos, basta medir **uma curva**, a **curva universal** $\pi_1 \times \pi_2$. No exemplo dos slides, uma esfera de $1\ \mathrm{cm}$ andando a $1\ \mathrm{cm/s}$ em água ($\rho = 1000\ \mathrm{kg/m^3}$, $\mu = 10^{-3}\ \mathrm{N\,s/m^2}$) tem $Re = 100$; a curva dá $\pi_1 = 0{,}4$, e
+
+$$
+F = 0{,}4\,\rho\,v^2 D^2 = 0{,}4 \times 1000 \times (0{,}01)^2 \times (0{,}01)^2 = 4 \times 10^{-6}\ \mathrm{N}
+$$
 
 </Caixa>
 
@@ -2232,25 +2252,38 @@ Resultado: em vez de mapear $F(v, D, \rho, \mu)$ com quatro eixos, basta medir *
 <Caixa tipo="dica" rotulo="Cada um compara a inércia com uma força diferente">
 
 $$
-Re = \frac{\rho v D}{\mu} \;\text{(inércia / viscosa)}
+Re = \frac{\rho\,v\,D}{\mu} = \frac{v\,D}{\nu} \;\text{(inércia / viscosa)}
 \qquad
-Fr = \frac{v}{\sqrt{g\,L}} \;\text{(inércia / gravidade)}
+Fr = \frac{v^2}{D\,g} \;\text{(inércia / gravidade)}
 $$
 
 $$
-Eu = \frac{p}{\rho v^2} \;\text{(pressão / inércia)}
+Eu = \frac{F}{\rho\,v^2 D^2} = \frac{\Delta p}{\rho\,v^2} \;\text{(pressão / inércia)}
 \qquad
 Ma = \frac{v}{c} \;\text{(inércia / elástica)}
-\qquad
-We = \frac{\rho v^2 L}{\sigma} \;\text{(inércia / tensão superficial)}
 $$
+
+O Froude dos slides é **ao quadrado**, $v^2/(Dg)$. Muitos livros usam a raiz, $v/\sqrt{gD}$; igualar um ou outro no modelo e no protótipo dá a mesma escala, mas na prova escreva a forma do professor. O Weber, $We = \rho v^2 L/\sigma$ (inércia / tensão superficial), não está nos slides; aparece em gotas, bolhas e jatos finos.
 
 Qual domina o problema decide qual deve ser igualado no ensaio de modelo:
 
-- escoamento **em tubulação**, submerso → **Reynolds**;
-- escoamento com **superfície livre** (canal, vertedouro, navio) → **Froude**;
-- escoamento com **alta velocidade** de gás → **Mach**;
-- gotas, bolhas, jatos finos → **Weber**.
+- condutos **forçados**, bombas e turbinas → **Reynolds**;
+- **superfície livre** (canais, usinas hidrelétricas, vertedouros, eclusas, navios) → **Froude**;
+- modelos **aerodinâmicos** de aviões e automóveis → **Mach**.
+
+</Caixa>
+
+<Caixa tipo="dica" rotulo="Os coeficientes de bomba, que o mesmo roteiro dá">
+
+Para uma bomba centrífuga, $f(\rho, n, D, \mu, Q, \gamma H_B) = 0$, com $n$ a rotação. Com a base $\rho, n, D$:
+
+$$
+\pi_1 = \frac{\mu}{\rho\,n\,D^2}
+\qquad
+\varphi = \frac{Q}{n\,D^3} \;\text{(coeficiente de vazão)}
+\qquad
+\psi = \frac{g\,H_B}{n^2 D^2} \;\text{(coeficiente manométrico)}
+$$
 
 </Caixa>
 
