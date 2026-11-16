@@ -1,0 +1,143 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Bernoulli · Tubo de Pitot e manômetro diferencial: a vazão"
+temaId: bernoulli
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q71.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dado o dispositivo da figura, calcular a **vazão** do escoamento da água no conduto. Desprezar as perdas de carga e considerar o diagrama de velocidades uniforme.
+
+**Dados:** $\gamma_m = 6 \times 10^4\ \mathrm{N/m^3}$; $p_2 = 20\ \mathrm{kPa}$; $A = 10^{-2}\ \mathrm{m^2}$; $g = 10\ \mathrm{m/s^2}$.
+
+<Figura>
+  <svg viewBox="0 0 460 220" role="img" aria-label="Conduto horizontal de área A na seção 1, que se reduz antes da seção 2. Em 1, um tubo de Pitot com a boca voltada contra o escoamento sobe e mostra uma coluna de água 3,80 metros acima do eixo. Embaixo, um manômetro diferencial em U, com fluido de peso específico gama m, liga a seção 1 à seção 2; o nível do fluido manométrico no ramo de 2 fica 0,20 metro acima do nível no ramo de 1">
+    {/* conduto */}
+    <path d="M40 60 L280 60 L330 70 L430 70 L430 110 L330 110 L280 120 L40 120 Z" fill="var(--accent-soft)" opacity="0.5" stroke="none"/>
+    <path d="M40 60 L280 60 L330 70 L430 70 M40 120 L148 120 M156 120 L280 120 L330 110 L376 110 M384 110 L430 110" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <ellipse cx="70" cy="90" rx="8" ry="30" fill="var(--line-2)" opacity="0.6" stroke="var(--ink-2)" stroke-width="1"/>
+    <text x="54" y="44" font-size="11" fill="var(--ink-2)">Área A</text>
+    <line x1="10" y1="90" x2="450" y2="90" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="8 3 2 3"/>
+    <line x1="10" y1="90" x2="34" y2="90" stroke="var(--ink-2)" stroke-width="2"/>
+    <polygon points="40,90 30,86 30,94" fill="var(--ink-2)"/>
+    <text x="8" y="80" font-size="10" fill="var(--ink-2)">água</text>
+    <circle cx="130" cy="90" r="3.5" fill="var(--ink-2)"/>
+    <text x="126" y="82" font-size="11" fill="var(--ink-2)">1</text>
+    <circle cx="380" cy="90" r="3.5" fill="var(--ink-2)"/>
+    <text x="376" y="82" font-size="11" fill="var(--ink-2)">2</text>
+    {/* pitot */}
+    <path d="M160 92 L196 92 L196 14" fill="none" stroke="var(--ink-2)" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M160 92 L196 92 L196 14" fill="none" stroke="var(--accent-soft)" stroke-width="4" stroke-linejoin="round"/>
+    <line x1="192" y1="24" x2="200" y2="24" stroke="var(--accent)" stroke-width="1.4"/>
+    <line x1="212" y1="24" x2="250" y2="24" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <line x1="232" y1="30" x2="232" y2="84" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="232,24 229,33 235,33" fill="var(--ink-3)"/>
+    <polygon points="232,90 229,81 235,81" fill="var(--ink-3)"/>
+    <text x="238" y="50" font-size="11" fill="var(--ink-3)">3,80 m</text>
+    {/* manômetro diferencial */}
+    <path d="M152 120 L152 196 L380 196 L380 110" fill="none" stroke="var(--ink-2)" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M152 120 L152 196 L380 196 L380 110" fill="none" stroke="var(--accent-soft)" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M152 170 L152 196 L380 196 L380 150" fill="none" stroke="var(--warn)" stroke-width="4" stroke-linejoin="round"/>
+    <text x="392" y="212" font-size="11" fill="var(--warn)">γ<tspan font-size="8" dy="2">m</tspan></text>
+    <line x1="160" y1="170" x2="372" y2="170" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="8 3 2 3"/>
+    <line x1="340" y1="150" x2="372" y2="150" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <line x1="350" y1="156" x2="350" y2="164" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="350,150 347,157 353,157" fill="var(--ink-3)"/>
+    <polygon points="350,170 347,163 353,163" fill="var(--ink-3)"/>
+    <text x="294" y="164" font-size="10" fill="var(--ink-3)">0,20 m</text>
+  </svg>
+  <figcaption>
+
+O **Pitot** em 1 tem a boca voltada **contra** o escoamento: a coluna de $3{,}80\ \mathrm{m}$, medida a partir do eixo, é a carga de pressão **mais** a carga cinética. O fluido manométrico está **mais alto** no ramo de 2, ou seja, a pressão em 1 é maior.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+p_1 - p_2 = (\gamma_m - \gamma)\times 0{,}20 = (6 \times 10^4 - 10^4)\times 0{,}20 = 10\ \mathrm{kPa}
+\qquad\Longrightarrow\qquad
+p_1 = 30\ \mathrm{kPa}
+$$
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} = 3{,}80
+\quad\Longrightarrow\quad
+\frac{v_1^2}{2g} = 3{,}80 - 3{,}0 = 0{,}80\ \mathrm{m}
+\quad\Longrightarrow\quad
+v_1 = 4\ \mathrm{m/s}
+$$
+
+$$
+Q = v_1\,A = 4 \times 10^{-2} = 0{,}04\ \mathrm{m^3/s} = \mathbf{40\ L/s}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que cada instrumento mede.**
+
+- O **tubo de Pitot** tem a boca virada para o escoamento. A água que entra nele **para**, e toda a carga cinética vira pressão: a coluna mede a **carga total** em 1 (com o eixo como referência), $\dfrac{p_1}{\gamma} + \dfrac{v_1^2}{2g}$.
+- O **manômetro diferencial** liga 1 e 2 e mede só $p_1 - p_2$.
+
+Somando as duas leituras, sai a velocidade em 1. A seção 2 serve só para levar o valor de $p_2$ até $p_1$.
+
+<Caixa tipo="simbolos">
+
+- $\gamma = 10^4\ \mathrm{N/m^3}$ (água, com $g = 10$)
+- $\gamma_m = 6 \times 10^4\ \mathrm{N/m^3}$ — fluido manométrico
+- $A = 10^{-2}\ \mathrm{m^2}$ — área da seção 1
+- $p_2 = 20\ \mathrm{kPa}$
+
+</Caixa>
+
+**Passo 2 — a equação manométrica.** As tomadas estão no fundo do conduto, na mesma cota. Do ponto 1, descendo pelo ramo da esquerda até o nível do fluido manométrico, atravessando os $0{,}20\ \mathrm{m}$ de $\gamma_m$ e subindo pelo ramo da direita até 2:
+
+$$
+p_1 + \gamma\,(h + 0{,}20) - \gamma_m\,(0{,}20) - \gamma\,h = p_2
+$$
+
+O trecho $h$ de água comum aos dois ramos se cancela:
+
+$$
+p_1 - p_2 = (\gamma_m - \gamma)\times 0{,}20 = 5 \times 10^4 \times 0{,}20 = 10^4\ \mathrm{Pa}
+\qquad\Longrightarrow\qquad
+p_1 = 20 + 10 = 30\ \mathrm{kPa}
+$$
+
+O sinal confere com a figura: o fluido manométrico foi **empurrado para o lado de 2**, então é em 1 que a pressão é maior. E faz sentido: 2 está depois da redução, onde a velocidade é maior e a pressão, menor.
+
+**Passo 3 — a velocidade pelo Pitot.**
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} = 3{,}80
+\qquad\Longrightarrow\qquad
+\frac{v_1^2}{2g} = 3{,}80 - \frac{30\,000}{10^4} = 0{,}80\ \mathrm{m}
+$$
+
+$$
+v_1 = \sqrt{2 \times 10 \times 0{,}80} = 4\ \mathrm{m/s}
+$$
+
+**Passo 4 — a vazão.** Com o diagrama de velocidades uniforme, $v_1$ é a velocidade média da seção:
+
+$$
+\boxed{Q = v_1\,A = 4 \times 10^{-2} = 0{,}04\ \mathrm{m^3/s} = 40\ \mathrm{L/s}}
+$$
+
+<Caixa tipo="macete" rotulo="Pitot mede a total, piezômetro mede a de pressão">
+
+Tubo **virado contra** o escoamento: carga **total** ($p/\gamma + v^2/2g$). Tubo **rente à parede**, sem boca voltada para o fluxo: só a carga de **pressão** ($p/\gamma$). A diferença entre os dois é a carga cinética. É assim que se mede velocidade de avião e de água em conduto.
+
+</Caixa>
+</Passos>
