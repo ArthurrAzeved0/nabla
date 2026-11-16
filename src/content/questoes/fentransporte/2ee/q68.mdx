@@ -70,15 +70,15 @@ $$
 v = \frac{Q}{A} = 4{,}24\ \mathrm{m/s}, \qquad \frac{v^2}{2g} = 0{,}90\ \mathrm{m}, \qquad H_B = \frac{N}{\gamma Q} = 25\ \mathrm{m}
 $$
 
-**a)** $H_{p} = \left(f\,\dfrac{12}{0{,}03} + 1 + 1{,}2 + 1{,}2 + 1{,}6\right)\times 0{,}90 = (8 + 5)\times 0{,}90 = 11{,}7\ \mathrm{m}$
+**a)** $H_{p_{0,7}} = h_f + h_s = \left(f\,\dfrac{12}{0{,}03} + 1 + 1{,}2 + 1{,}2 + 1{,}6\right)\times 0{,}90 = (8 + 5)\times 0{,}90 = 11{,}7\ \mathrm{m}$
 
 $$
-\Delta h = H_B - H_p \approx \mathbf{13{,}3\ m}
+\Delta h = H_B - H_{p_{0,7}} \approx \mathbf{13{,}3\ m}
 $$
 
-**b)** $Re = 1{,}27 \times 10^5$ e $f = 0{,}02$ no diagrama de Moody (ou em Colebrook): $D/K \approx 1800$, $K \approx \mathbf{0{,}017\ mm}$ ($\approx 1{,}7 \times 10^{-3}\ \mathrm{cm}$)
+**b)** $Re = 1{,}27 \times 10^5$ e $f = 0{,}02$ no diagrama de Moody-Rouse: $D_H/K \approx 2000$, $K \approx \mathbf{0{,}015\ mm}$ ($1{,}5 \times 10^{-3}\ \mathrm{cm}$; pela fórmula de Colebrook, $0{,}017\ \mathrm{mm}$)
 
-**c)** $h_0 = \dfrac{v^2}{2g}\left(1 + k_1 + f\,\dfrac{L_{1,2}}{D}\right) = 0{,}90 \times (1 + 1 + 1{,}33) \approx \mathbf{3{,}0\ m}$
+**c)** $h_0 = \dfrac{v^2}{2g}\left(1 + k_1 + f\,\dfrac{L_{1,2}}{D_H}\right) = 0{,}90 \times (1 + 1 + 1{,}33) \approx \mathbf{3{,}0\ m}$
 </Gabarito>
 
 <Passos>
@@ -101,9 +101,9 @@ $$
 <Caixa tipo="simbolos">
 
 - $H_B$ — carga da bomba
-- $H_p = \left(f\,\dfrac{L}{D} + \sum k\right)\dfrac{v^2}{2g}$ — perda total
+- $H_p = h_f + h_s = \left(f\,\dfrac{L}{D_H} + \sum k_s\right)\dfrac{v^2}{2g}$ — perda total: distribuída (Darcy-Weisbach) mais localizadas, com a carga cinética em evidência
 - $L = L_{1,2} + L_{3,6} = 12\ \mathrm{m}$
-- $\sum k = k_1 + k_4 + k_5 + k_6 = 1 + 1{,}2 + 1{,}2 + 1{,}6 = 5$
+- $\sum k_s = k_1 + k_4 + k_5 + k_6 = 1 + 1{,}2 + 1{,}2 + 1{,}6 = 5$
 
 </Caixa>
 
@@ -125,38 +125,44 @@ $$
 
 A bomba eleva a água $13{,}3\ \mathrm{m}$ e gasta outros $11{,}7\ \mathrm{m}$ vencendo o atrito: quase metade da energia vai para as perdas, num tubo fino de $3\ \mathrm{cm}$ com velocidade alta.
 
-**Passo 3 — b) a rugosidade.** Com $f$ e $Re$, o diagrama de Moody devolve a rugosidade relativa. A água tem $\nu \approx 10^{-6}\ \mathrm{m^2/s}$ (o enunciado não dá; é o valor da teoria):
+**Passo 3 — b) a rugosidade.** Nos slides, $f = \text{função}(Re;\ D_H/K)$: dados $Re$ e $f$, o diagrama de Moody-Rouse devolve a **rugosidade relativa** $D_H/K$. A água tem $\nu \approx 10^{-6}\ \mathrm{m^2/s}$ (o enunciado não dá; é o valor dos exemplos dos slides):
 
 $$
-Re = \frac{v\,D}{\nu} = \frac{4{,}24 \times 0{,}03}{10^{-6}} = 1{,}27 \times 10^5
+Re = \frac{v\,D_H}{\nu} = \frac{4{,}24 \times 0{,}03}{10^{-6}} = 1{,}27 \times 10^5 \geq 2400 \quad\text{(turbulento)}
 $$
 
-No diagrama, o ponto $(Re = 1{,}27 \times 10^5;\ f = 0{,}02)$ cai na curva $D/K \approx 2000$. Pela equação de Colebrook, que é a fórmula das curvas do diagrama:
+No diagrama, sobe-se de $Re = 1{,}27 \times 10^5$ até a horizontal $f = 0{,}02$; o ponto cai sobre a curva
 
 $$
-\frac{1}{\sqrt f} = -2\log\left(\frac{K/D}{3{,}7} + \frac{2{,}51}{Re\sqrt f}\right)
+\frac{D_H}{K} \approx 2000
 \qquad\Longrightarrow\qquad
-7{,}07 = -2\log\left(\frac{K/D}{3{,}7} + 1{,}39 \times 10^{-4}\right)
+\boxed{K \approx \frac{30\ \mathrm{mm}}{2000} = 0{,}015\ \mathrm{mm} = 1{,}5 \times 10^{-3}\ \mathrm{cm}}
 $$
 
+Rugosidade de tubo **liso**: na tabela do diagrama, é a faixa de vidro, latão, cobre e PVC.
+
+**Conferência pela fórmula —** as curvas do diagrama são a equação de Colebrook:
+
 $$
-\frac{K/D}{3{,}7} = 10^{-3{,}536} - 1{,}39 \times 10^{-4} = 1{,}52 \times 10^{-4}
+\frac{1}{\sqrt f} = -2\log\left(\frac{K/D_H}{3{,}7} + \frac{2{,}51}{Re\sqrt f}\right)
 \qquad\Longrightarrow\qquad
-\frac{K}{D} = 5{,}6 \times 10^{-4}
+7{,}07 = -2\log\left(\frac{K/D_H}{3{,}7} + 1{,}39 \times 10^{-4}\right)
 $$
 
 $$
-\boxed{K \approx 5{,}6 \times 10^{-4} \times 30\ \mathrm{mm} \approx 0{,}017\ \mathrm{mm}}
+\frac{K}{D_H} = 3{,}7\,\big(10^{-3{,}536} - 1{,}39 \times 10^{-4}\big) = 5{,}6 \times 10^{-4}
+\qquad\Longrightarrow\qquad
+\frac{D_H}{K} \approx 1800, \quad K \approx 0{,}017\ \mathrm{mm}
 $$
 
-Rugosidade de tubo **liso**: cobre, latão ou PVC. Na leitura do diagrama, $D/K = 2000$ dá $K = 0{,}015\ \mathrm{mm}$; a diferença é de leitura gráfica.
+A diferença entre $0{,}015$ e $0{,}017\ \mathrm{mm}$ é só de leitura gráfica: na prova vale o que se lê no diagrama.
 
 **Passo 4 — c) a altura $h_0$.** Energia de (0) até a entrada da bomba (2), com o plano de referência no eixo da tubulação e $p_2 = 0$:
 
 $$
-h_0 = \frac{p_2}{\gamma} + \frac{v^2}{2g} + H_{p_{0,2}}
+h_0 = \frac{v^2}{2g} + \frac{p_2}{\gamma} + H_{p_{0,2}}
 \qquad\text{com}\qquad
-H_{p_{0,2}} = \left(k_1 + f\,\frac{L_{1,2}}{D}\right)\frac{v^2}{2g}
+H_{p_{0,2}} = \left(f\,\frac{L_{1,2}}{D_H} + k_1\right)\frac{v^2}{2g}
 $$
 
 $$
