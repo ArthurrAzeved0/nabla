@@ -68,65 +68,69 @@ O tubo largo tem $70\ \mathrm{cm}$ de diâmetro, tanto em cima quanto embaixo, e
 </Figura>
 
 <Gabarito>
+Com $\gamma = 10^4\ \mathrm{N/m^3}$, $\gamma_{Hg} = 136\,000\ \mathrm{N/m^3}$ e $g = 10\ \mathrm{m/s^2}$:
+
 $$
-\left(\frac{p_A}{\gamma} + z_A\right) - \left(\frac{p_B}{\gamma} + z_B\right) = 0{,}36\,(13{,}6 - 1) = 4{,}536\ \mathrm{m}
+\left(z_A + \frac{p_A}{\gamma}\right) - \left(z_B + \frac{p_B}{\gamma}\right) = \frac{h\,(\gamma_{Hg} - \gamma)}{\gamma} = \frac{0{,}36 \times 126\,000}{10\,000} = 4{,}536\ \mathrm{m}
 $$
 
 $$
-v_B = \sqrt{\frac{2 \times 9{,}81 \times 4{,}536}{1 - (20/70)^4}} \approx 9{,}47\ \mathrm{m/s}
-$$
-
-$$
-Q = v_B\,\frac{\pi\,(0{,}20)^2}{4} \approx \mathbf{0{,}297\ m^3/s} \approx 0{,}30\ \mathrm{m^3/s}
+v_B = \sqrt{\frac{2 \times 10 \times 4{,}536}{1 - (20/70)^4}} \approx 9{,}56\ \mathrm{m/s}
+\qquad
+Q = v_B\,A_B = 9{,}56 \times \frac{\pi\,(0{,}20)^2}{4} \approx \mathbf{0{,}30\ m^3/s}
 $$
 </Gabarito>
 
 <Passos>
-**Passo 1 — o que o manômetro mede.** Num Venturi, o manômetro diferencial não mede só $p_A - p_B$: como A e B estão em **cotas diferentes**, ele mede a diferença de **carga piezométrica** $p/\gamma + z$. É isso que entra no Bernoulli, e por isso os $60\ \mathrm{cm}$ entre A e B vão se cancelar.
+**Passo 1 — o que o manômetro mede.** Num Venturi, o manômetro diferencial não mede só $p_A - p_B$: como A e B estão em **cotas diferentes**, ele mede a diferença de **carga piezométrica** $z + p/\gamma$. É isso que entra no Bernoulli, e por isso os $60\ \mathrm{cm}$ entre A e B vão se cancelar.
 
 <Caixa tipo="simbolos">
 
 - $D_A = 70\ \mathrm{cm}$ (tubo largo), $D_B = 20\ \mathrm{cm}$ (garganta)
 - $z_B - z_A = 0{,}60\ \mathrm{m}$ (B está acima)
 - $h = 0{,}36\ \mathrm{m}$ — o desnível do mercúrio
-- $\gamma_{Hg}/\gamma = 13{,}6$; $g = 9{,}81\ \mathrm{m/s^2}$
+- $\gamma_{H_2O} = 10\,000\ \mathrm{N/m^3}$, $\gamma_{Hg} = 136\,000\ \mathrm{N/m^3}$, $g = 10\ \mathrm{m/s^2}$ — os valores que o professor usa nos slides
 
 </Caixa>
 
 **Passo 2 — a equação manométrica.** Do ponto A até B, descendo e subindo pelo manômetro. O nível do mercúrio no ramo de B está $75\ \mathrm{cm}$ abaixo de B, ou seja, $15\ \mathrm{cm}$ abaixo de A; o do ramo de A está $36\ \mathrm{cm}$ mais abaixo, a $51\ \mathrm{cm}$ de A:
 
 $$
-p_A + \gamma\,(0{,}51) - \gamma_{Hg}\,(0{,}36) - \gamma\,(0{,}75) = p_B
+p_A + \gamma_{H_2O}\,(0{,}51) - \gamma_{Hg}\,(0{,}36) - \gamma_{H_2O}\,(0{,}75) = p_B
 $$
 
 $$
-\frac{p_A - p_B}{\gamma} = 13{,}6 \times 0{,}36 + 0{,}75 - 0{,}51 = 4{,}896 + 0{,}24 = 5{,}136\ \mathrm{m}
+p_A - p_B = 136\,000 \times 0{,}36 + 10\,000 \times (0{,}75 - 0{,}51) = 48\,960 + 2400 = 51\,360\ \mathrm{N/m^2}
 $$
 
-Agora a carga piezométrica, com $z_A - z_B = -0{,}60$:
+Agora a carga piezométrica, com $z_A - z_B = -0{,}60\ \mathrm{m}$:
 
 $$
-\left(\frac{p_A}{\gamma} + z_A\right) - \left(\frac{p_B}{\gamma} + z_B\right) = 5{,}136 - 0{,}60 = 4{,}536\ \mathrm{m}
+\left(z_A + \frac{p_A}{\gamma}\right) - \left(z_B + \frac{p_B}{\gamma}\right) = -0{,}60 + \frac{51\,360}{10\,000} = 4{,}536\ \mathrm{m}
 $$
 
-que é exatamente $h\,(\gamma_{Hg}/\gamma - 1) = 0{,}36 \times 12{,}6$. A posição do manômetro e os $75\ \mathrm{cm}$ somem da conta: só o desnível do mercúrio importa.
+que é exatamente $h\,(\gamma_{Hg} - \gamma_{H_2O})/\gamma_{H_2O} = 0{,}36 \times 126\,000/10\,000$. A posição do manômetro e os $75\ \mathrm{cm}$ somem da conta: só o desnível do mercúrio importa.
 
-**Passo 3 — Bernoulli de A até B.** Sem perdas:
-
-$$
-\frac{v_B^2 - v_A^2}{2g} = \left(\frac{p_A}{\gamma} + z_A\right) - \left(\frac{p_B}{\gamma} + z_B\right) = 4{,}536\ \mathrm{m}
-$$
-
-**Passo 4 — a continuidade amarra as velocidades.**
+**Passo 3 — Bernoulli de A até B.** Sem perdas e sem máquina, $H_A = H_B$:
 
 $$
+z_A + \frac{v_A^2}{2g} + \frac{p_A}{\gamma} = z_B + \frac{v_B^2}{2g} + \frac{p_B}{\gamma}
+\qquad\Longrightarrow\qquad
+\frac{v_B^2 - v_A^2}{2g} = 4{,}536\ \mathrm{m}
+$$
+
+**Passo 4 — a continuidade amarra as velocidades.** Regime permanente, $Q_A = Q_B$:
+
+$$
+v_A\,A_A = v_B\,A_B
+\qquad\Longrightarrow\qquad
 v_A = v_B\left(\frac{D_B}{D_A}\right)^2 = v_B\left(\frac{20}{70}\right)^2 = 0{,}0816\,v_B
 $$
 
 $$
-v_B^2\,\big[1 - (0{,}0816)^2\big] = 2 \times 9{,}81 \times 4{,}536 = 89{,}0
+v_B^2\,\big[1 - (0{,}0816)^2\big] = 2 \times 10 \times 4{,}536 = 90{,}72
 \qquad\Longrightarrow\qquad
-v_B = \sqrt{\frac{89{,}0}{0{,}9933}} \approx 9{,}47\ \mathrm{m/s}
+v_B = \sqrt{\frac{90{,}72}{0{,}9933}} \approx 9{,}56\ \mathrm{m/s}
 $$
 
 O termo $(D_B/D_A)^4 = 0{,}0067$ quase não pesa: com o tubo largo três vezes e meia maior que a garganta, a velocidade em A é praticamente nula perto da de B.
@@ -134,16 +138,16 @@ O termo $(D_B/D_A)^4 = 0{,}0067$ quase não pesa: com o tubo largo três vezes e
 **Passo 5 — a vazão.**
 
 $$
-Q = v_B\,\frac{\pi D_B^2}{4} = 9{,}47 \times \frac{\pi\,(0{,}20)^2}{4}
+Q = v_B\,A_B = 9{,}56 \times \frac{\pi\,(0{,}20)^2}{4}
 \qquad\Longrightarrow\qquad
-\boxed{Q \approx 0{,}297\ \mathrm{m^3/s} \approx 297\ \mathrm{L/s}}
+\boxed{Q \approx 0{,}300\ \mathrm{m^3/s} = 300\ \mathrm{L/s}}
 $$
 
-**Conferência —** com $g = 10\ \mathrm{m/s^2}$, como nas outras questões da lista, sai $v_B = 9{,}56\ \mathrm{m/s}$ e $Q = 0{,}300\ \mathrm{m^3/s}$. Os dois arredondam para $0{,}30\ \mathrm{m^3/s}$.
+**Conferência —** com $g = 9{,}81\ \mathrm{m/s^2}$ e $\gamma_{Hg}/\gamma = 13{,}6$ sai $v_B = 9{,}47\ \mathrm{m/s}$ e $Q = 0{,}297\ \mathrm{m^3/s}$: os dois arredondam para $0{,}30\ \mathrm{m^3/s}$.
 
 <Caixa tipo="macete" rotulo="O atalho do manômetro diferencial">
 
-Com o mesmo fluido nos dois ramos acima do mercúrio, a diferença de carga piezométrica entre as tomadas é sempre $h\,(\gamma_m/\gamma - 1)$, **qualquer que seja** a inclinação do tubo ou a posição do manômetro. Para água e mercúrio, cada centímetro de desnível vale $12{,}6\ \mathrm{cm}$ de coluna de água.
+Com o mesmo fluido nos dois ramos acima do mercúrio, a diferença de carga piezométrica entre as tomadas é sempre $h\,(\gamma_m - \gamma)/\gamma$, **qualquer que seja** a inclinação do tubo ou a posição do manômetro. É a mesma conta do Exemplo 1 dos slides, $p_1 - p_2 = h\,(\gamma_{Hg} - \gamma_{H_2O})$, só que com as tomadas em cotas diferentes. Para água e mercúrio, cada centímetro de desnível vale $12{,}6\ \mathrm{cm}$ de coluna de água.
 
 </Caixa>
 </Passos>
