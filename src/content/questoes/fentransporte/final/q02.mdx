@@ -24,17 +24,17 @@ Considere a instalação hidráulica apresentada na figura. Admitindo que a vaz�
 
 <Figura>
   <svg viewBox="0 0 400 220" role="img" aria-label="Instalação com dois tanques: o de cima com 9 metros de coluna descarrega pelo ponto 2, o do meio com 7 metros contribui com Q1 pelo ponto 3, e a linha segue para a esquerda passando pela máquina até a descarga livre em 6">
-    {/* linha da tubulação */}
-    <line x1="16" y1="170" x2="384" y2="170" stroke="var(--ink-2)" stroke-width="2.4"/>
+    {/* tubulação, de seção A_t constante */}
+    <path d="M30 170 L340 170 L340 88" fill="none" stroke="var(--ink-2)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M200 104 L200 170" fill="none" stroke="var(--ink-2)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M30 170 L340 170 L340 88" fill="none" stroke="var(--accent-soft)" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M200 104 L200 170" fill="none" stroke="var(--accent-soft)" stroke-width="5" stroke-linejoin="round"/>
     {/* tanque (0), à direita */}
-    <path d="M300 20 L300 92 L382 92 L382 20" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <path d="M300 20 L300 92 L336 92 M344 92 L382 92 L382 20" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
     <rect x="301" y="30" width="80" height="62" fill="var(--accent-soft)" opacity="0.6"/>
     <line x1="301" y1="30" x2="381" y2="30" stroke="var(--accent)" stroke-width="1.3"/>
     <line x1="312" y1="25" x2="330" y2="25" stroke="var(--accent)" stroke-width="1"/>
     <text x="384" y="26" font-size="10" fill="var(--ink-2)">(0)</text>
-    <line x1="340" y1="92" x2="340" y2="170" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <circle cx="340" cy="126" r="7" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
-    <text x="350" y="122" font-size="9" fill="var(--ink-3)">A t</text>
     {/* cota 9 m */}
     <line x1="276" y1="30" x2="276" y2="170" stroke="var(--ok)" stroke-width="1.2"/>
     <polygon points="276,30 273,39 279,39" fill="var(--ok)"/>
@@ -46,19 +46,16 @@ Considere a instalação hidráulica apresentada na figura. Admitindo que a vaz�
     <text x="246" y="192" font-size="10" fill="var(--warn)">(2)</text>
     <circle cx="230" cy="146" r="8" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
     <line x1="230" y1="146" x2="234" y2="142" stroke="var(--ink-2)" stroke-width="1.1"/>
-    <line x1="230" y1="154" x2="230" y2="164" stroke="var(--ink-3)" stroke-width="1"/>
-    <text x="212" y="136" font-size="9" fill="var(--ink-2)">p m</text>
-    <text x="348" y="146" font-size="9" fill="var(--warn)">Q₀</text>
+    <line x1="230" y1="154" x2="230" y2="166" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="242" y="144" font-size="9" fill="var(--ink-2)">p<tspan font-size="7" dy="2">m</tspan></text>
+    <text x="348" y="134" font-size="9" fill="var(--warn)">Q₀</text>
     {/* tanque (1), no meio */}
-    <path d="M164 46 L164 108 L242 108 L242 46" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <path d="M164 46 L164 108 L196 108 M204 108 L242 108 L242 46" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
     <rect x="165" y="56" width="76" height="52" fill="var(--accent-soft)" opacity="0.6"/>
     <line x1="165" y1="56" x2="241" y2="56" stroke="var(--accent)" stroke-width="1.3"/>
     <line x1="176" y1="51" x2="194" y2="51" stroke="var(--accent)" stroke-width="1"/>
     <text x="244" y="52" font-size="10" fill="var(--ink-2)">(1)</text>
-    <line x1="200" y1="108" x2="200" y2="170" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <circle cx="200" cy="140" r="7" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
-    <text x="176" y="136" font-size="9" fill="var(--ink-3)">A t</text>
-    <text x="206" y="152" font-size="9" fill="var(--warn)">Q₁</text>
+    <text x="182" y="140" font-size="9" fill="var(--warn)">Q₁</text>
     {/* cota 7 m */}
     <line x1="140" y1="56" x2="140" y2="170" stroke="var(--ok)" stroke-width="1.2"/>
     <polygon points="140,56 137,65 143,65" fill="var(--ok)"/>
@@ -76,14 +73,13 @@ Considere a instalação hidráulica apresentada na figura. Admitindo que a vaz�
     <line x1="82" y1="164" x2="82" y2="176" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 2"/>
     <text x="76" y="192" font-size="10" fill="var(--ink-3)">(5)</text>
     {/* descarga em (6) */}
-    <circle cx="52" cy="170" r="7" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
-    <text x="44" y="156" font-size="9" fill="var(--ink-3)">A t</text>
     <path d="M14 162 L30 166 M14 170 L30 170 M14 178 L30 174" stroke="var(--accent)" stroke-width="1.2"/>
     <text x="18" y="192" font-size="10" fill="var(--ink-2)">(6)</text>
     {/* sentido */}
     <line x1="300" y1="206" x2="240" y2="206" stroke="var(--warn)" stroke-width="1.8"/>
     <polygon points="234,206 244,202 244,210" fill="var(--warn)"/>
     <text x="306" y="210" font-size="9" fill="var(--warn)">escoamento</text>
+    <text x="16" y="210" font-size="9" fill="var(--ink-3)">A<tspan font-size="7" dy="2">t</tspan><tspan dy="-2"> = 0,02 m² em toda a tubulação</tspan></text>
   </svg>
   <figcaption>
 
