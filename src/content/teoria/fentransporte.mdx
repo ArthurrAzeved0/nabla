@@ -1624,9 +1624,9 @@ $$
 
 Essa é a potência **do fluido**. Máquina real tem perdas internas, e o rendimento compara a potência do fluido com a do eixo:
 
-| | bomba | turbina |
+| grandeza | bomba | turbina |
 |---|---|---|
-| $N$ | potência **recebida** pelo fluido, $\gamma Q H_B$ | potência **cedida** pelo fluido, $\gamma Q H_T$ |
+| potência do fluido | potência **recebida** pelo fluido, $\gamma Q H_B$ | potência **cedida** pelo fluido, $\gamma Q H_T$ |
 | eixo | $N_B$, a potência da bomba | $N_T$, a potência da turbina |
 | rendimento | $\eta_B = \dfrac{N}{N_B}$ | $\eta_T = \dfrac{N_T}{N}$ |
 | fórmula | $N_B = \dfrac{\gamma\,Q\,H_B}{\eta_B}$, com $N < N_B$ | $N_T = \gamma\,Q\,H_T\,\eta_T$, com $N > N_T$ |
@@ -1684,33 +1684,94 @@ $$
 
 </Topico>
 
-<Topico id="ft-perdas" num="17" titulo="Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody">
+<Topico id="ft-perdas" num="17" titulo="Perda de carga distribuída: Darcy-Weisbach e o diagrama de Moody-Rouse">
 
-**A ideia.** O termo $H_p$ da seção anterior apareceu como um número dado. Aqui ele é **calculado**. A perda de carga tem duas origens: o atrito ao longo do tubo reto (**distribuída**) e as singularidades como curvas e válvulas (**localizada**, próxima seção). A distribuída é governada por uma fórmula única, e a dificuldade toda está em achar **um** coeficiente: o fator de atrito.
+**A ideia.** O termo $H_p$ da seção anterior apareceu como um número dado. Aqui ele é **calculado**. O líquido, ao escoar, dissipa parte da sua energia, principalmente em calor, e essa energia não volta a ser cinética nem potencial: é a **perda de carga**. Ela tem duas origens: o atrito ao longo do tubo reto (**distribuída**, $h_f$) e as singularidades como curvas e válvulas (**localizada** ou singular, $h_s$, próxima seção). A distribuída é governada por uma fórmula única, e a dificuldade toda está em achar **um** coeficiente: o fator de atrito.
 
 <Caixa tipo="simbolos" rotulo="O que é cada símbolo">
 
-- $H_f$ — **perda de carga distribuída**, em $\mathrm{m}$;
-- $f$ — **fator de atrito**, adimensional;
+- $h_f$ — **perda de carga distribuída**, em $\mathrm{m}$;
+- $f$ — **coeficiente de perda de carga distribuída** (fator de atrito), adimensional;
 - $L$ — comprimento do trecho reto, em $\mathrm{m}$;
-- $D$ — diâmetro interno, em $\mathrm{m}$;
+- $D_H$ — **diâmetro hidráulico**, em $\mathrm{m}$ (no tubo circular cheio, $D_H = D$);
 - $v$ — velocidade média, em $\mathrm{m/s}$;
-- $\varepsilon$ — **rugosidade absoluta** da parede, em $\mathrm{m}$;
-- $\varepsilon/D$ — **rugosidade relativa**, adimensional.
+- $k$ — **rugosidade absoluta** da parede, em $\mathrm{m}$ (outros livros chamam de $\varepsilon$);
+- $D_H/k$ — **rugosidade relativa**, adimensional.
 
 </Caixa>
 
-### A fórmula universal
+### Condutos, raio hidráulico e diâmetro hidráulico
+
+**Conduto** é qualquer estrutura sólida destinada ao transporte de fluidos. Ele é **forçado** quando o fluido o preenche inteiro e escoa sob pressão (a tubulação de água), e **livre** quando o fluido tem superfície livre, à pressão atmosférica (canal, calha, tubo de esgoto parcialmente cheio).
+
+Para usar as fórmulas de tubo circular em qualquer seção, define-se:
 
 $$
-\boxed{\;H_f = f\,\frac{L}{D}\,\frac{v^2}{2g}\;}
+\boxed{\;R_H = \frac{A}{P}\;}
+\qquad\qquad
+\boxed{\;D_H = 4\,R_H\;}
+$$
+
+- $A$ — área transversal do escoamento;
+- $P$ — **perímetro molhado**: só o trecho do perímetro em que o fluido toca a parede. A superfície livre de um canal **não** entra.
+
+| seção | área | perímetro molhado | raio hidráulico | diâmetro hidráulico |
+|---|---|---|---|---|
+| círculo cheio, diâmetro $D$ | $\pi D^2/4$ | $\pi D$ | $D/4$ | $D$ |
+| quadrado cheio, lado $a$ | $a^2$ | $4a$ | $a/4$ | $a$ |
+| retângulo cheio, $a \times b$ | $ab$ | $2(a+b)$ | $\dfrac{ab}{2(a+b)}$ | $\dfrac{2ab}{a+b}$ |
+| canal retangular, largura $b$, lâmina $a$ | $ab$ | $2a + b$ | $\dfrac{ab}{2a+b}$ | $\dfrac{4ab}{2a+b}$ |
+| triângulo equilátero cheio, lado $a$ | $\dfrac{a^2\sqrt3}{4}$ | $3a$ | $\dfrac{a\sqrt3}{12}$ | $\dfrac{a\sqrt3}{3}$ |
+
+O fator 4 existe para que o tubo circular dê $D_H = D$: é a ponte entre a seção qualquer e as fórmulas de tubo.
+
+### A rugosidade
+
+As paredes internas têm asperezas, que dependem do material, do processo de fabricação, do estado de conservação (tubo novo ou usado) e das medidas de proteção. A perda **não** depende diretamente da rugosidade absoluta $k$, e sim do quociente $D_H/k$: a mesma aspereza pesa muito num tubo fino e quase nada num tubo grosso.
+
+| material do conduto (novo) | rugosidade absoluta |
+|---|---|
+| vidro, latão, cobre, chumbo, PVC | liso, $k \approx 0$ |
+| ferro forjado, aço | $4{,}6 \times 10^{-5}\ \mathrm{m}$ |
+| ferro fundido revestido de asfalto | $1{,}2 \times 10^{-4}\ \mathrm{m}$ |
+| ferro galvanizado | $1{,}52 \times 10^{-4}\ \mathrm{m}$ |
+| ferro fundido | $2{,}59 \times 10^{-4}\ \mathrm{m}$ |
+| concreto | $0{,}3$ a $3{,}0 \times 10^{-3}\ \mathrm{m}$ |
+
+### De onde sai $h_f$: carga piezométrica, LP e LE
+
+As hipóteses da perda distribuída são: **regime permanente**, conduto **longo** o bastante para o escoamento estar dinamicamente estabelecido, conduto **cilíndrico de seção constante** e trecho **sem máquinas**. Com seção constante, a continuidade dá $Q_1 = Q_2$ e $v_1 = v_2$, e as cargas cinéticas se cancelam na equação da energia:
+
+$$
+H_1 = H_2 + H_{p_{1,2}}
+\qquad\Longrightarrow\qquad
+H_{p_{1,2}} = \left(z_1 + \frac{p_1}{\gamma}\right) - \left(z_2 + \frac{p_2}{\gamma}\right)
+$$
+
+A soma $z + p/\gamma$ é a **carga piezométrica**: a altura a que a água subiria num piezômetro ligado ao tubo. Num trecho reto de seção constante, a perda é **a queda da carga piezométrica**, e é isso que dois piezômetros medem diretamente.
+
+- **Linha piezométrica (LP)** — o lugar geométrico dos pontos $z + p/\gamma$ ao longo do conduto. Mostra como a pressão anda ao longo do tubo.
+- **Linha de energia (LE)** — o lugar dos pontos $H = z + p/\gamma + v^2/2g$. Fica **acima** da LP, à distância $v^2/2g$, e, com seção constante, **paralela** a ela. A diferença de cotas entre dois pontos da LE é a perda de carga no trecho.
+
+Em regime real, a LE só desce no sentido do escoamento (a não ser numa bomba, onde ela dá um salto para cima).
+
+### A fórmula universal (Darcy-Weisbach)
+
+$$
+\boxed{\;h_f = f\,\frac{L}{D_H}\,\frac{v^2}{2g}\;}
+$$
+
+Dados $L$, $D_H$ e a vazão (ou a velocidade), $h_f$ sai assim que se conhece $f$, que é função do número de Reynolds e da rugosidade relativa:
+
+$$
+f = \text{função}\left(Re;\ \frac{D_H}{k}\right)
 $$
 
 <Caixa tipo="dica" rotulo="O que a fórmula diz antes de qualquer conta">
 
 - a perda é **proporcional ao comprimento** — dobrar o tubo dobra a perda;
 - é **proporcional ao quadrado da velocidade** — dobrar a vazão **quadruplica** a perda;
-- é **inversamente proporcional ao diâmetro**, e o efeito é ainda mais forte do que parece: se $D$ dobra, $v$ cai a um quarto (continuidade), então $H_f$ cai por um fator $2 \times 16 = 32$.
+- é **inversamente proporcional ao diâmetro**, e o efeito é ainda mais forte do que parece: se $D$ dobra, $v$ cai a um quarto (continuidade), então $h_f$ cai por um fator $2 \times 16 = 32$.
 
 É por isso que engrossar o tubo é o remédio mais eficaz contra perda de carga — e o mais caro.
 
@@ -1718,9 +1779,9 @@ $$
 
 ### Como achar $f$
 
-<Caixa tipo="macete" rotulo="Laminar tem fórmula exata; turbulento precisa de Moody">
+<Caixa tipo="macete" rotulo="Laminar tem fórmula; transição não tem; turbulento é no diagrama">
 
-**Se $Re < 2000$ (laminar):**
+**A. Laminar ($Re \leq 2000$):**
 
 $$
 f = \frac{64}{Re}
@@ -1729,55 +1790,68 @@ $$
 Substituindo na fórmula universal, chega-se à equação de **Hagen-Poiseuille**, em que a perda é proporcional à **primeira** potência da velocidade:
 
 $$
-H_f = \frac{32\,\mu\,L\,v}{\gamma\,D^2}
+h_f = \frac{32\,\mu\,L\,v}{\gamma\,D^2}
 $$
 
-**Se $Re > 4000$ (turbulento):** $f$ depende de $Re$ **e** da rugosidade relativa $\varepsilon/D$, e se obtém no **diagrama de Moody** — ou pela equação de Colebrook-White, que é implícita em $f$:
+**B. Transição ($2000 < Re < 2400$):** o valor de $f$ é **indeterminado** — não se estima com precisão. Projeto evita essa faixa.
+
+**C. Turbulento ($Re \geq 2400$):** $f = \text{função}(Re;\ D_H/k)$, lido no **diagrama de Moody-Rouse** (o diagrama universal). As curvas dele são a equação de Colebrook-White, que é implícita em $f$ e serve para conferir uma leitura:
 
 $$
-\frac{1}{\sqrt{f}} = -2\log\left(\frac{\varepsilon/D}{3{,}7} + \frac{2{,}51}{Re\sqrt{f}}\right)
+\frac{1}{\sqrt{f}} = -2\log\left(\frac{k/D_H}{3{,}7} + \frac{2{,}51}{Re\sqrt{f}}\right)
 $$
 
 </Caixa>
 
-<Caixa tipo="dica" rotulo="Como ler o diagrama de Moody">
+<Caixa tipo="dica" rotulo="Como ler o diagrama de Moody-Rouse">
 
-1. calcule $Re$ (entra no **eixo horizontal**);
-2. calcule $\varepsilon/D$ (escolhe a **curva**);
-3. leia $f$ no **eixo vertical**, no cruzamento.
+1. calcule $Re = v D_H/\nu$ e localize-o no **eixo horizontal de baixo**;
+2. calcule $D_H/k$: é o número escrito em cada **curva**, na margem direita ($20, 40, 100, 200, 400, 1000, \dots$). Se cair entre duas, interpole a olho;
+3. suba do $Re$ até a curva e leia $f$ na **horizontal**, no eixo da esquerda.
 
 Duas regiões valem nome:
 
 - **tubo liso** — a curva de baixo; $f$ depende só de $Re$;
-- **turbulência completa** — à direita, as curvas ficam **horizontais**: $f$ depende só de $\varepsilon/D$ e **não** muda mais com $Re$. Se o seu $Re$ é muito alto, nem precisa de precisão nele.
+- **turbulência plena** — à direita, as curvas ficam **horizontais**: $f$ depende só de $D_H/k$ e **não** muda mais com $Re$. Se o seu $Re$ é muito alto, nem precisa de precisão nele, e é por aí que se começa quando a velocidade é a incógnita.
 
 </Caixa>
 
 ### A fórmula de Hazen-Williams
 
-Em hidráulica de água a fórmula empírica de Hazen-Williams aparece com frequência (é a preferida em projeto de redes):
+Fora dos slides, mas comum em projeto de redes de água, aparece a fórmula empírica de Hazen-Williams:
 
 $$
-H_f = 10{,}65\,\frac{Q^{1,85}}{C^{1,85}\,D^{4,87}}\,L
+h_f = 10{,}65\,\frac{Q^{1,85}}{C^{1,85}\,D^{4,87}}\,L
 $$
 
 com $C$ o coeficiente de Hazen-Williams (depende do material: $\approx 130$ para PVC, $\approx 100$ para ferro fundido usado). **Só vale para água** em regime turbulento — não é universal como Darcy.
 
-<Caixa tipo="exemplo" rotulo="Exemplo rápido — perda num trecho reto">
+<Caixa tipo="exemplo" rotulo="Exemplo rápido — o Exemplo 2 dos slides">
 
-Água ($\nu = 10^{-6}\ \mathrm{m^2/s}$) escoa a $2\ \mathrm{m/s}$ por $500\ \mathrm{m}$ de tubo de $100\ \mathrm{mm}$, com $f = 0{,}02$. Qual a perda de carga?
+Água a $20\ ^\circ\mathrm{C}$ ($\nu = 10^{-6}\ \mathrm{m^2/s}$) escoa em tubo de **ferro galvanizado novo** ($k = 1{,}52 \times 10^{-4}\ \mathrm{m}$), com $D_H = 0{,}10\ \mathrm{m}$, $v = 2{,}0\ \mathrm{m/s}$ e $L = 50\ \mathrm{m}$. Ache $Re$, o regime, $f$ e $h_f$.
 
-$$
-H_f = f\,\frac{L}{D}\,\frac{v^2}{2g} = 0{,}02 \times \frac{500}{0{,}100} \times \frac{2^2}{2 \times 10}
-$$
+**Reynolds e regime:**
 
 $$
-H_f = 0{,}02 \times 5000 \times 0{,}2 = 20\ \mathrm{m}
+Re = \frac{v\,D_H}{\nu} = \frac{2{,}0 \times 0{,}10}{10^{-6}} = 2 \times 10^5 \geq 2400
+\quad\Longrightarrow\quad \text{turbulento}
 $$
 
-**Vinte metros de coluna de água perdidos só em atrito** — é mais que o desnível de muitas instalações, e mostra por que a perda de carga não é um detalhe do projeto: é o projeto.
+**Rugosidade relativa e $f$:**
 
-Conferindo o regime: $Re = 2 \times 0{,}1/10^{-6} = 2 \times 10^5$, turbulento, coerente com $f$ dado em vez de calculado.
+$$
+\frac{D_H}{k} = \frac{0{,}10}{1{,}52 \times 10^{-4}} \approx 658
+$$
+
+No diagrama, a curva fica entre $400$ e $1000$ (algo como $600$); subindo de $Re = 2 \times 10^5$ até ela, lê-se $f \approx 0{,}022$.
+
+**Perda de carga:**
+
+$$
+h_f = 0{,}022 \times \frac{50}{0{,}10} \times \frac{2^2}{2 \times 9{,}81} \approx 2{,}24\ \mathrm{m}
+$$
+
+Dois metros e pouco de coluna de água perdidos em só $50\ \mathrm{m}$ de tubo: em instalação longa, a perda de carga não é um detalhe do projeto, é o projeto.
 
 </Caixa>
 
