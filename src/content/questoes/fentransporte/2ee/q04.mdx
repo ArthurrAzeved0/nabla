@@ -50,8 +50,11 @@ Considere a parede composta apresentada na figura, com um fluido escoando apenas
     <polygon points="94,104 82,99 82,109" fill="var(--warn)"/>
     <text x="26" y="94" font-size="10" fill="var(--warn)">q″ = 860 W/m²</text>
     {/* fluido à direita */}
-    <path d="M254 90 Q262 98 254 106" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-    <path d="M262 84 Q272 98 262 112" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+    {/* fluido escoando junto à superfície */}
+    <path d="M258.0 112 Q260.4 109.5 258.0 107 Q255.6 104.5 258.0 102 Q260.4 99.5 258.0 97 Q255.6 94.5 258.0 92 L258.0 90" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
+    <polygon points="258.0,84 255.0,91 261.0,91" fill="var(--accent)"/>
+    <path d="M268.0 112 Q270.4 109.5 268.0 107 Q265.6 104.5 268.0 102 Q270.4 99.5 268.0 97 Q265.6 94.5 268.0 92 L268.0 90" fill="none" stroke="var(--accent)" stroke-width="1.3"/>
+    <polygon points="268.0,84 265.0,91 271.0,91" fill="var(--accent)"/>
     <text x="280" y="88" font-size="11" fill="var(--accent)">Fluido</text>
     <text x="280" y="103" font-size="10" fill="var(--accent)">h∞ = 10</text>
     <text x="280" y="117" font-size="10" fill="var(--accent)">T∞ = 20 °C</text>
