@@ -1,0 +1,95 @@
+---
+origem: "2ª lista · 2026.2"
+tema: "Torricelli · Velocidade do jato num orifício"
+temaId: torricelli
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q58.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar a **velocidade do jato** do líquido no orifício do tanque de grandes dimensões da figura. Considerar o **fluido ideal**.
+
+<Figura>
+  <svg viewBox="0 0 400 180" role="img" aria-label="Tanque de grandes dimensões com superfície livre; um tubo curto sai pela parede direita, perto do fundo, e o jato sai com velocidade v; a altura h vai da superfície livre até o eixo do orifício">
+    {/* tanque */}
+    <path d="M70 40 L70 150 L260 150 L260 40 Z" fill="var(--accent-soft)" opacity="0.5" stroke="none"/>
+    <path d="M70 20 L70 150 L260 150 L260 136" fill="none" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="260" y1="20" x2="260" y2="120" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="70" y1="40" x2="260" y2="40" stroke="var(--accent)" stroke-width="1"/>
+    <polygon points="122,32 132,32 127,40" fill="none" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="119" y1="45" x2="135" y2="45" stroke="var(--accent)" stroke-width="1"/>
+    <line x1="123" y1="49" x2="131" y2="49" stroke="var(--accent)" stroke-width="1"/>
+    {/* bocal */}
+    <path d="M260 120 L300 120 M260 136 L300 136" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <rect x="260" y="120" width="40" height="16" fill="var(--accent-soft)" opacity="0.5"/>
+    {/* eixo e jato */}
+    <line x1="30" y1="128" x2="350" y2="128" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="8 3 2 3"/>
+    <line x1="304" y1="128" x2="336" y2="128" stroke="var(--warn)" stroke-width="1.8"/>
+    <polygon points="346,128 334,123 334,133" fill="var(--warn)"/>
+    <text x="352" y="132" font-size="12" fill="var(--warn)" font-style="italic">v</text>
+    {/* cota h */}
+    <line x1="46" y1="46" x2="46" y2="122" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="46,40 43,49 49,49" fill="var(--ink-3)"/>
+    <polygon points="46,128 43,119 49,119" fill="var(--ink-3)"/>
+    <line x1="30" y1="40" x2="70" y2="40" stroke="var(--ink-3)" stroke-width="0.7"/>
+    <text x="30" y="90" font-size="12" fill="var(--ink-3)" font-style="italic">h</text>
+  </svg>
+  <figcaption>
+
+A altura $h$ vai da **superfície livre** até o **eixo** do orifício.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$$
+\boxed{v = \sqrt{2\,g\,h}}
+$$
+
+(fórmula de Torricelli)
+</Gabarito>
+
+<Passos>
+**Passo 1 — as duas seções.** Bernoulli entre a superfície livre (1) e o jato logo na saída do orifício (2), com o plano de referência no **eixo do orifício**.
+
+<Caixa tipo="simbolos">
+
+- $z_1 = h$, $z_2 = 0$
+- $p_1 = p_2 = 0$ (efetiva): superfície livre e jato livre, ambos na atmosfera
+- $v_1 \approx 0$: tanque de grandes dimensões
+- $v_2 = v$, a incógnita
+
+</Caixa>
+
+**Passo 2 — Bernoulli.** Fluido ideal, sem máquina:
+
+$$
+\frac{p_1}{\gamma} + \frac{v_1^2}{2g} + z_1 = \frac{p_2}{\gamma} + \frac{v_2^2}{2g} + z_2
+\quad\Longrightarrow\quad
+0 + 0 + h = 0 + \frac{v^2}{2g} + 0
+$$
+
+$$
+\boxed{v = \sqrt{2\,g\,h}}
+$$
+
+**Passo 3 — a leitura física.** É a velocidade que uma pedra teria depois de **cair em queda livre** a altura $h$. Toda a carga potencial da superfície vira carga cinética no jato: a pressão é atmosférica nas duas pontas, então não participa da troca.
+
+Repare que a velocidade **não depende** do líquido: água, óleo ou mercúrio saem com a mesma velocidade, se o fluido for ideal. A densidade só muda a **vazão em massa**.
+
+<Caixa tipo="dica" rotulo="E se o tanque fosse fechado e pressurizado?">
+
+Aí $p_1 \neq 0$, e a pressão do ar soma carga: $v = \sqrt{2g\,(h + p_1/\gamma)}$. Em fluido real, o jato sai um pouco mais lento, e se escreve $v_{real} = C_v\sqrt{2gh}$, com o coeficiente de velocidade $C_v$ entre $0{,}95$ e $0{,}99$.
+
+</Caixa>
+</Passos>
