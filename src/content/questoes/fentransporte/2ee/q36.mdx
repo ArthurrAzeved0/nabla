@@ -41,21 +41,21 @@ Considere o sistema hidráulico da figura, cujo **sentido do escoamento vai de (
     <text x="122" y="90" font-size="10" fill="var(--ink-2)">(1)</text>
     <text x="34" y="182" font-size="8" fill="var(--ink-3)">γ = 10⁴ N/m³</text>
     {/* tubulação: fundo do reservatório -> desce -> máquina -> sobe ao PHR */}
-    <line x1="74" y1="190" x2="74" y2="200" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <line x1="74" y1="200" x2="140" y2="200" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <line x1="140" y1="200" x2="140" y2="130" stroke="var(--ink-2)" stroke-width="2.2"/>
+    <path d="M74 186 L74 200 L140 200 L140 92 L197 92" fill="none" stroke="var(--ink-2)" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M74 186 L74 200 L140 200 L140 92 L197 92" fill="none" stroke="var(--accent-soft)" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M213 86 L268 86 L268 52 L296 52" fill="none" stroke="var(--ink-2)" stroke-width="11" stroke-linejoin="round"/>
+    <path d="M213 86 L268 86 L268 52 L296 52" fill="none" stroke="var(--accent-soft)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M196 88.5 L214 80.5 L214 91.5 L196 95.5 Z" fill="var(--accent-soft)" stroke="none"/>
+    <path d="M196 88.5 L214 80.5 M196 95.5 L214 91.5" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
     <circle cx="140" cy="130" r="11" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.6"/>
     <text x="136" y="134" font-size="10" fill="var(--ink-2)">M</text>
     <text x="152" y="152" font-size="8" fill="var(--ink-3)">ηₘ = 0,8</text>
-    <line x1="140" y1="119" x2="140" y2="96" stroke="var(--ink-2)" stroke-width="2.2"/>
     {/* cota 2 m */}
     <line x1="158" y1="96" x2="158" y2="130" stroke="var(--ok)" stroke-width="1.1"/>
     <polygon points="158,96 155,105 161,105" fill="var(--ok)"/>
     <polygon points="158,130 155,121 161,121" fill="var(--ok)"/>
     <text x="162" y="128" font-size="9" fill="var(--ok)">2 m</text>
     {/* trecho horizontal com as seções 2 e 3 */}
-    <line x1="140" y1="92" x2="196" y2="92" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <path d="M196 92 L214 88 L214 84 L268 84" fill="none" stroke="var(--ink-2)" stroke-width="2.2"/>
     <line x1="182" y1="80" x2="182" y2="100" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2"/>
     <text x="190" y="110" font-size="10" fill="var(--accent)">(2)</text>
     <text x="140" y="66" font-size="8" fill="var(--accent)">A₂ = 2·10⁻³ m²</text>
@@ -63,9 +63,7 @@ Considere o sistema hidráulico da figura, cujo **sentido do escoamento vai de (
     <text x="234" y="108" font-size="10" fill="var(--warn)">(3)</text>
     <text x="248" y="120" font-size="8" fill="var(--warn)">A₃ = 8·10⁻³ m²</text>
     {/* sobe até o reservatório 4 */}
-    <line x1="268" y1="84" x2="268" y2="44" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <line x1="268" y1="44" x2="292" y2="44" stroke="var(--ink-2)" stroke-width="2.2"/>
-    <path d="M292 26 L292 60 L376 60 L376 26" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
+    <path d="M292 26 L292 46 M292 58 L292 60 L376 60 L376 26" fill="none" stroke="var(--ink-3)" stroke-width="1.4"/>
     <rect x="293" y="28" width="82" height="16" fill="var(--line-2)" opacity="0.7"/>
     <text x="326" y="40" font-size="9" fill="var(--ink-2)">Ar</text>
     <rect x="293" y="44" width="82" height="16" fill="var(--accent-soft)" opacity="0.6"/>
