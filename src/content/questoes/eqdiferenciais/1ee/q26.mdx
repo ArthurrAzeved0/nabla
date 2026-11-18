@@ -1,0 +1,109 @@
+---
+origem: "2022.2"
+tema: "Queda com resistência do meio · velocidade limite"
+temaId: queda-com-resistencia
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um corpo com massa $m$ é projetado verticalmente para baixo com uma velocidade inicial $v_0$ num meio que oferece resistência proporcional à raiz quadrada do módulo da velocidade. Ache a relação entre a velocidade $v$ e o tempo $t$. Prove que a velocidade pode ser dada por
+
+$$
+v(t) = \sqrt{\frac{mg}{k}}\left(\frac{1 - e^{-2\sqrt{\frac{kg}{m}}\,t}}{1 + e^{-2\sqrt{\frac{kg}{m}}\,t}}\right)
+$$
+
+e ache a velocidade limite.
+
+<Gabarito>
+Com a resistência $kv^2$ e o corpo partindo do repouso, que é o caso da fórmula:
+
+$$
+m\frac{dv}{dt} = mg - kv^2
+\;\Rightarrow\;
+v(t) = \sqrt{\frac{mg}{k}}\;\frac{1 - e^{-2\sqrt{kg/m}\,t}}{1 + e^{-2\sqrt{kg/m}\,t}}
+$$
+
+Velocidade limite: $v_L = \sqrt{\dfrac{mg}{k}}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o modelo.** Com o eixo positivo para baixo, o peso $mg$ acelera e a resistência do meio freia. A fórmula que a questão pede para provar é a da resistência $kv^2$ com o corpo saindo de $v(0) = 0$, e é esse modelo que a leva até lá:
+
+$$
+m\frac{dv}{dt} = mg - kv^2
+$$
+
+<Caixa tipo="simbolos">
+
+- $m$ — massa do corpo; $g$ — gravidade
+- $k$ — constante da resistência do meio
+- $v_L = \sqrt{mg/k}$ — velocidade em que a resistência iguala o peso
+
+</Caixa>
+
+**Passo 2 — separar as variáveis.** Escrevendo $mg - kv^2 = k\,(v_L^2 - v^2)$:
+
+$$
+\frac{dv}{v_L^2 - v^2} = \frac{k}{m}\,dt
+$$
+
+**Passo 3 — frações parciais.**
+
+$$
+\frac{1}{v_L^2 - v^2} = \frac{1}{2v_L}\left(\frac{1}{v_L - v} + \frac{1}{v_L + v}\right)
+\;\Rightarrow\;
+\frac{1}{2v_L}\ln\frac{v_L + v}{v_L - v} = \frac{k}{m}\,t + C
+$$
+
+**Passo 4 — a constante.** Com $v(0) = 0$, o logaritmo vale $\ln 1 = 0$ e $C = 0$. Multiplicando por $2v_L$, e usando $\dfrac{2kv_L}{m} = 2\sqrt{\dfrac{kg}{m}}$:
+
+$$
+\frac{v_L + v}{v_L - v} = e^{2\sqrt{kg/m}\,t}
+$$
+
+**Passo 5 — isolar $v$.** Chamando $E = e^{2\sqrt{kg/m}\,t}$: $v_L + v = E\,(v_L - v)$, então
+
+$$
+v = v_L\,\frac{E - 1}{E + 1}
+$$
+
+Dividindo em cima e embaixo por $E$:
+
+$$
+\boxed{v(t) = \sqrt{\frac{mg}{k}}\;\frac{1 - e^{-2\sqrt{kg/m}\,t}}{1 + e^{-2\sqrt{kg/m}\,t}}}
+$$
+
+que é a fórmula pedida, ou seja, $v = v_L\tanh\!\left(\sqrt{kg/m}\;t\right)$.
+
+**Passo 6 — a velocidade limite.** Quando $t \to \infty$, a exponencial vai a zero:
+
+$$
+\boxed{v_L = \lim_{t\to\infty} v(t) = \sqrt{\frac{mg}{k}}}
+$$
+
+É a velocidade em que $kv^2 = mg$: a resistência equilibra o peso e a aceleração some.
+
+<Caixa tipo="dica">
+
+Partindo de $v(0) = v_0$ em vez do repouso, a constante do passo 4 deixa de ser zero, e a relação geral fica
+
+$$
+v(t) = v_L\tanh\!\left(\sqrt{\frac{kg}{m}}\;t + \operatorname{arctanh}\frac{v_0}{v_L}\right), \quad v_0 < v_L
+$$
+
+O limite continua o mesmo: $v_L$ não depende de como o corpo começou.
+
+</Caixa>
+</Passos>
