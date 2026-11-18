@@ -1,0 +1,65 @@
+---
+origem: "2026.1"
+tema: "Crescimento · a lei a partir de dois tamanhos"
+temaId: crescimento-exponencial
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Certos organismos biológicos crescem a uma taxa proporcional ao seu tamanho, em um dado instante. Mostre que, em tais casos, a lei de crescimento é completamente determinada pelo tamanho em dois tempos diferentes, e encontre a lei.
+
+<Gabarito>
+Com $S(0) = S_0$ e $S(t_1) = S_1$:
+
+$$
+S(t) = S_0\left(\frac{S_1}{S_0}\right)^{t/t_1}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o modelo.** Se $S$ é o tamanho no instante $t$, "taxa proporcional ao tamanho" é
+
+$$
+\frac{dS}{dt} = kS, \quad k \text{ constante}
+$$
+
+**Passo 2 — resolver.** Separando as variáveis:
+
+$$
+\int \frac{dS}{S} = \int k\,dt \;\Rightarrow\; \ln S = kt + c_0 \;\Rightarrow\; S = c\,e^{kt}
+$$
+
+A lei tem **duas** constantes desconhecidas, $c$ e $k$. Dois dados bastam para fixá-las.
+
+**Passo 3 — os dois tamanhos.** Medindo $S_0$ em $t = 0$ e $S_1$ em $t = t_1$:
+
+$$
+S_0 = c \qquad S_1 = c\,e^{kt_1}
+$$
+
+Dividindo uma pela outra:
+
+$$
+e^{kt_1} = \frac{S_1}{S_0} \;\Rightarrow\; e^{k} = \left(\frac{S_1}{S_0}\right)^{1/t_1}
+$$
+
+**Passo 4 — a lei.** Com $c = S_0$ e $e^{kt} = (e^k)^t$:
+
+$$
+\boxed{S(t) = S_0\left(\frac{S_1}{S_0}\right)^{t/t_1}}
+$$
+
+A lei inteira sai de $S_0$, $S_1$ e $t_1$. Se preferir a taxa explícita: $k = \dfrac{1}{t_1}\ln\dfrac{S_1}{S_0}$.
+</Passos>
