@@ -1,0 +1,126 @@
+---
+origem: "2022.2"
+tema: "Cauchy-Euler · redução de ordem e variação de parâmetros"
+temaId: variacao-de-parametros
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva as seguintes equações diferenciais pelo método de variação de parâmetros. Use o método de redução de ordem para encontrar a segunda solução.
+
+a) $x^2y'' - 2xy' + 2y = 4x^2$, $\;x > 0$; $\;y_1(x) = x$;<br />
+b) $x^2y'' + 7xy' + 5y = x$, $\;x > 0$; $\;y_1(x) = x^{-1}$.
+
+<Gabarito>
+**a)** $y_2 = x^2$, $W = x^2$, $y_p = 4x^2\ln x$
+
+$$
+y = c_1x + c_2x^2 + 4x^2\ln x
+$$
+
+**b)** $y_2 = x^{-5}$, $W = -4x^{-7}$, $y_p = \dfrac{x}{12}$
+
+$$
+y = \frac{c_1}{x} + \frac{c_2}{x^5} + \frac{x}{12}
+$$
+</Gabarito>
+
+<Passos>
+**O roteiro, nos dois itens.** Dividir por $x^2$ para chegar à forma padrão $y'' + P\,y' + Q\,y = g$; achar $y_2$ por redução de ordem; e montar $y_p$ por variação de parâmetros:
+
+$$
+y_2 = y_1\int\frac{e^{-\int P\,dx}}{y_1^2}\,dx
+\qquad
+y_p = -y_1\int\frac{y_2\,g}{W}\,dx + y_2\int\frac{y_1\,g}{W}\,dx
+$$
+
+<Caixa tipo="dica">
+
+O $g$ das fórmulas é o lado direito **depois** de dividir por $x^2$. Usar o lado direito original é o erro mais comum nesta questão.
+
+</Caixa>
+
+**Passo 1 (a) — forma padrão.**
+
+$$
+y'' - \frac{2}{x}\,y' + \frac{2}{x^2}\,y = 4
+\qquad P = -\frac{2}{x} \qquad g = 4
+$$
+
+**Passo 2 — a segunda solução.** $e^{-\int P\,dx} = e^{2\ln x} = x^2$:
+
+$$
+y_2 = x\int\frac{x^2}{x^2}\,dx = x \cdot x = x^2
+$$
+
+**Passo 3 — o Wronskiano.**
+
+$$
+W = \begin{vmatrix} x & x^2 \\ 1 & 2x \end{vmatrix} = 2x^2 - x^2 = x^2
+$$
+
+**Passo 4 — a particular.**
+
+$$
+y_p = -x\int\frac{x^2 \cdot 4}{x^2}\,dx + x^2\int\frac{x \cdot 4}{x^2}\,dx = -4x^2 + 4x^2\ln x
+$$
+
+O termo $-4x^2$ é múltiplo de $y_2$ e entra em $c_2$:
+
+$$
+\boxed{y = c_1x + c_2x^2 + 4x^2\ln x}
+$$
+
+**Conferência —** com $y = x^2\ln x$: $y' = 2x\ln x + x$, $y'' = 2\ln x + 3$, e $x^2y'' - 2xy' + 2y = x^2$. Vezes 4, dá $4x^2$. ✓
+
+**Passo 5 (b) — forma padrão.**
+
+$$
+y'' + \frac{7}{x}\,y' + \frac{5}{x^2}\,y = \frac{1}{x}
+\qquad P = \frac{7}{x} \qquad g = \frac{1}{x}
+$$
+
+**Passo 6 — a segunda solução.** $e^{-\int P\,dx} = x^{-7}$:
+
+$$
+y_2 = x^{-1}\int\frac{x^{-7}}{x^{-2}}\,dx = x^{-1}\int x^{-5}\,dx = x^{-1}\cdot\frac{x^{-4}}{-4}
+\;\Rightarrow\; y_2 = x^{-5}
+$$
+
+(a constante $-\tfrac14$ não importa para uma solução da homogênea).
+
+**Passo 7 — o Wronskiano.**
+
+$$
+W = \begin{vmatrix} x^{-1} & x^{-5} \\ -x^{-2} & -5x^{-6} \end{vmatrix} = -5x^{-7} + x^{-7} = -4x^{-7}
+$$
+
+**Passo 8 — a particular.**
+
+$$
+y_p = -x^{-1}\int\frac{x^{-5}\cdot x^{-1}}{-4x^{-7}}\,dx + x^{-5}\int\frac{x^{-1}\cdot x^{-1}}{-4x^{-7}}\,dx
+= x^{-1}\int\frac{x}{4}\,dx - x^{-5}\int\frac{x^5}{4}\,dx
+$$
+
+$$
+y_p = \frac{x}{8} - \frac{x}{24} = \frac{x}{12}
+$$
+
+$$
+\boxed{y = \frac{c_1}{x} + \frac{c_2}{x^5} + \frac{x}{12}}
+$$
+
+**Conferência —** com $y_p = x/12$: $0 + \tfrac{7x}{12} + \tfrac{5x}{12} = x$. ✓
+</Passos>
