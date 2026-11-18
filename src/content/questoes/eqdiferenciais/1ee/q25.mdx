@@ -1,0 +1,79 @@
+---
+origem: "2026.1"
+tema: "2ª ordem sem y · y' = p e fator integrante"
+temaId: fator-integrante
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva a EDO
+
+$$
+\cos x\;y'' + \operatorname{sen} x\;y' = \operatorname{sen}^2 x
+$$
+
+<Gabarito>
+Com $y' = p$: $\dfrac{p}{\cos x} = c_1 - x + \operatorname{tg} x$
+
+$$
+y = c_2 + (c_1 - x)\operatorname{sen} x - 2\cos x
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — baixar a ordem.** A equação não tem $y$, só $y'$ e $y''$. Fazendo $y' = p$, $y'' = p' = \dfrac{dp}{dx}$, e ela vira de **primeira ordem** em $p$:
+
+$$
+\cos x\,\frac{dp}{dx} + \operatorname{sen} x\;p = \operatorname{sen}^2 x
+$$
+
+**Passo 2 — a forma linear.** Dividindo por $\cos x$:
+
+$$
+p' + \operatorname{tg} x\;p = \frac{\operatorname{sen}^2 x}{\cos x}
+$$
+
+**Passo 3 — o fator integrante.**
+
+$$
+\mu = e^{\int \operatorname{tg} x\,dx} = e^{-\ln\cos x} = \frac{1}{\cos x}
+$$
+
+Multiplicando:
+
+$$
+\left(\frac{p}{\cos x}\right)' = \frac{\operatorname{sen}^2 x}{\cos^2 x} = \operatorname{tg}^2 x = \sec^2 x - 1
+$$
+
+**Passo 4 — integrar.**
+
+$$
+\frac{p}{\cos x} = c_1 + \int\big(\sec^2 x - 1\big)\,dx = c_1 - x + \operatorname{tg} x
+$$
+
+$$
+p = c_1\cos x - x\cos x + \operatorname{sen} x
+$$
+
+**Passo 5 — voltar a $y$.** Como $y' = p$, integramos mais uma vez. O termo $x\cos x$ sai por partes, $\displaystyle\int x\cos x\,dx = x\operatorname{sen} x + \cos x$:
+
+$$
+y = c_1\operatorname{sen} x - \big(x\operatorname{sen} x + \cos x\big) - \cos x + c_2
+$$
+
+$$
+\boxed{y = c_2 + (c_1 - x)\operatorname{sen} x - 2\cos x}
+$$
+</Passos>
