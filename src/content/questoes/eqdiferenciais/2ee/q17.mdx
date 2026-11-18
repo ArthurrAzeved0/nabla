@@ -1,0 +1,80 @@
+---
+origem: "2026.1"
+tema: "Pontos singulares · classificação e equação indicial"
+temaId: frobenius
+pontos: 4,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q17.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dada a equação diferencial
+
+$$
+y'' + \frac{1}{x(x-1)}\,y' + \left[\frac{1}{(x-2)^3} + \frac{1}{(x-3)^4}\right]y = 0
+$$
+
+a) (1,0 ponto) Determine seus pontos singulares;<br />
+b) (1,0 ponto) Classifique-os em singulares regulares ou irregulares;<br />
+c) (2,0 pontos) Determine os valores das raízes da equação indicial para um dos pontos singulares regulares.
+
+<Gabarito>
+**a)** $x = 0$, $x = 1$, $x = 2$ e $x = 3$.
+
+**b)** $x = 0$ e $x = 1$ são **regulares**; $x = 2$ e $x = 3$ são **irregulares**.
+
+**c)** Em $x = 0$: $r(r-2) = 0 \Rightarrow r_1 = 2,\ r_2 = 0$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** A equação já está na forma padrão $y'' + P(x)\,y' + Q(x)\,y = 0$, com
+
+$$
+P(x) = \frac{1}{x(x-1)} \qquad Q(x) = \frac{1}{(x-2)^3} + \frac{1}{(x-3)^4}
+$$
+
+Os pontos singulares são os que zeram algum denominador: $\boxed{x = 0,\ x = 1,\ x = 2,\ x = 3}$.
+
+**Passo 2 (b) —** O ponto $x_0$ é **regular** quando $(x - x_0)\,P(x)$ e $(x - x_0)^2\,Q(x)$ são analíticas em $x_0$.
+
+- $x = 0$: $x\,P(x) = \dfrac{1}{x-1}$ e $x^2 Q(x) = \dfrac{x^2}{(x-2)^3} + \dfrac{x^2}{(x-3)^4}$, ambas analíticas em $0$. **Regular.**
+- $x = 1$: $(x-1)\,P(x) = \dfrac{1}{x}$ e $(x-1)^2 Q(x)$, ambas analíticas em $1$ ($Q$ nem tem problema ali). **Regular.**
+- $x = 2$: $(x-2)^2 Q(x) = \dfrac{1}{x-2} + \dfrac{(x-2)^2}{(x-3)^4}$. O primeiro termo explode em $x = 2$. **Irregular.**
+- $x = 3$: $(x-3)^2 Q(x) = \dfrac{(x-3)^2}{(x-2)^3} + \dfrac{1}{(x-3)^2}$. O segundo termo explode em $x = 3$. **Irregular.**
+
+<Caixa tipo="macete" rotulo="Olhe a potência no denominador">
+
+$P$ pode ter o fator $(x - x_0)$ no máximo na **primeira** potência, e $Q$ no máximo na **segunda**. Aqui $(x-2)^3$ e $(x-3)^4$ em $Q$ passam do limite, então esses dois pontos são irregulares sem precisar de conta.
+
+</Caixa>
+
+**Passo 3 (c) —** Escolhendo $x = 0$:
+
+$$
+p_0 = \lim_{x\to 0} x\,P(x) = \lim_{x\to 0}\frac{1}{x-1} = -1
+\qquad
+q_0 = \lim_{x\to 0} x^2 Q(x) = 0
+$$
+
+A equação indicial é $r(r-1) + p_0\,r + q_0 = 0$:
+
+$$
+r(r-1) - r = 0 \;\Rightarrow\; r^2 - 2r = 0 \;\Rightarrow\; r(r-2) = 0 \;\Rightarrow\; \boxed{r_1 = 2,\quad r_2 = 0}
+$$
+
+<Caixa tipo="dica">
+
+Escolher $x = 1$ também vale. Lá, $p_0 = \lim_{x\to 1}\dfrac{1}{x} = 1$ e $q_0 = 0$, e a equação indicial fica $r(r-1) + r = r^2 = 0$, com a raiz dupla $r = 0$.
+
+</Caixa>
+</Passos>
