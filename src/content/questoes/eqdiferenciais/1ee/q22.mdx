@@ -1,0 +1,81 @@
+---
+origem: "2026.1"
+tema: "Equação exata · e a prova por derivação implícita"
+temaId: equacoes-exatas
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+a) (1,0) Encontre a solução geral da EDO $(x - 2y - 2)\,dx - (2x + y + 6)\,dy = 0$;<br />
+b) (1,0) Prove que a solução obtida está correta.
+
+<Gabarito>
+**a)** $M_y = N_x = -2$, exata:
+
+$$
+x^2 - 4xy - 4x - y^2 - 12y = C
+$$
+
+**b)** Derivando implicitamente e dividindo por 2, volta $(x - 2y - 2) - (2x + y + 6)\,y' = 0$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — é exata?** Com $M = x - 2y - 2$ e $N = -(2x + y + 6) = -2x - y - 6$:
+
+$$
+M_y = -2 \qquad N_x = -2
+\;\Rightarrow\; M_y = N_x \;\Rightarrow\; \text{exata}
+$$
+
+Existe então $f(x, y)$ com $f_x = M$ e $f_y = N$.
+
+**Passo 2 — integrar $M$ em $x$.**
+
+$$
+f(x, y) = \int (x - 2y - 2)\,dx + g(y) = \frac{x^2}{2} - 2xy - 2x + g(y)
+$$
+
+**Passo 3 — achar $g$.** Derivando em $y$ e igualando a $N$:
+
+$$
+f_y = -2x + g'(y) = -2x - y - 6
+\;\Rightarrow\;
+g'(y) = -y - 6
+\;\Rightarrow\;
+g(y) = -\frac{y^2}{2} - 6y
+$$
+
+**Passo 4 — a solução.** $f(x, y) = C_1$; multiplicando por 2 para limpar as frações:
+
+$$
+\boxed{x^2 - 4xy - 4x - y^2 - 12y = C}
+$$
+
+**Passo 5 (b) — a prova.** Derivando a solução em relação a $x$, com $y = y(x)$:
+
+$$
+2x - 4y - 4xy' - 4 - 2yy' - 12y' = 0
+\;\Rightarrow\;
+(2x - 4y - 4) + (-4x - 2y - 12)\,y' = 0
+$$
+
+Dividindo por 2 e escrevendo $y' = dy/dx$:
+
+$$
+(x - 2y - 2)\,dx - (2x + y + 6)\,dy = 0
+$$
+
+que é a equação original. ✓
+</Passos>
