@@ -1,0 +1,68 @@
+---
+origem: "2024.1 · 2ª chamada"
+tema: "Equação exata · o valor de b que a torna exata"
+temaId: equacoes-exatas
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+a) Determine o valor de $b$ para o qual a equação diferencial
+
+$$
+(xy^2 + bx^2y)\,dx + (x + y)\,x^2\,dy = 0
+$$
+
+é exata; b) resolva a equação com este valor de $b$.
+
+<Gabarito>
+**a)** $2xy + bx^2 = 3x^2 + 2xy \Rightarrow b = 3$
+
+**b)**
+
+$$
+\frac{x^2y^2}{2} + x^3y = c
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) — a condição de exatidão.** Com $M = xy^2 + bx^2y$ e $N = (x + y)\,x^2 = x^3 + x^2y$:
+
+$$
+\frac{\partial M}{\partial y} = 2xy + bx^2
+\qquad
+\frac{\partial N}{\partial x} = 3x^2 + 2xy
+$$
+
+Igualando: $2xy + bx^2 = 3x^2 + 2xy \;\Rightarrow\; \boxed{b = 3}$.
+
+**Passo 2 (b) — integrar $M$ em $x$.** Com $b = 3$, $M = xy^2 + 3x^2y$:
+
+$$
+F(x, y) = \int\big(xy^2 + 3x^2y\big)\,dx = \frac{x^2y^2}{2} + x^3y + h(y)
+$$
+
+**Passo 3 — achar $h$.**
+
+$$
+\frac{\partial F}{\partial y} = x^2y + x^3 + h'(y) = x^3 + x^2y = N
+\;\Rightarrow\; h'(y) = 0 \;\Rightarrow\; h = \text{constante}
+$$
+
+**Passo 4 — a solução.**
+
+$$
+\boxed{\frac{x^2y^2}{2} + x^3y = c}
+$$
+</Passos>
