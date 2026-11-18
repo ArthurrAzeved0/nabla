@@ -1,0 +1,80 @@
+---
+origem: "2024.1 · 2ª chamada"
+tema: "Redução de ordem · fórmula de Abel"
+temaId: reducao-de-ordem
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $y_1 = x$ uma solução da equação diferencial homogênea de segunda ordem $x^2y'' + xy' - y = 0$, $x > 0$. Encontre a sua solução geral.
+
+<Gabarito>
+$W = \dfrac{1}{x}$, $\;y_2 = -\dfrac{1}{2x}$
+
+$$
+y = c_1x + \frac{c_2}{x}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — forma padrão.** Dividindo por $x^2$:
+
+$$
+y'' + \frac{1}{x}\,y' - \frac{1}{x^2}\,y = 0
+\qquad P(x) = \frac{1}{x}
+$$
+
+**Passo 2 — o Wronskiano de duas formas.** Pela definição, com $y_1 = x$:
+
+$$
+W[y_1, y_2] = y_1y_2' - y_2y_1' = x\,y_2' - y_2
+$$
+
+Pela fórmula de Abel:
+
+$$
+W = c\,e^{-\int P\,dx} = c\,e^{-\ln x} = \frac{c}{x}
+$$
+
+**Passo 3 — igualar.** Com $c = 1$:
+
+$$
+x\,y_2' - y_2 = \frac{1}{x}
+\;\Rightarrow\;
+y_2' - \frac{1}{x}\,y_2 = \frac{1}{x^2}
+$$
+
+**Passo 4 — fator integrante.** $\mu = e^{-\int \frac{1}{x}dx} = \dfrac{1}{x}$:
+
+$$
+\left(\frac{y_2}{x}\right)' = \frac{1}{x^3}
+\;\Rightarrow\;
+\frac{y_2}{x} = \int x^{-3}\,dx = -\frac{1}{2x^2}
+\;\Rightarrow\;
+y_2 = -\frac{1}{2x}
+$$
+
+**Passo 5 — a solução geral.** O fator $-\tfrac12$ entra na constante:
+
+$$
+\boxed{y = c_1x + \frac{c_2}{x}}
+$$
+
+<Caixa tipo="dica">
+
+É uma Cauchy-Euler: $m(m-1) + m - 1 = m^2 - 1 = 0$ dá $m = \pm 1$, e as duas soluções $x$ e $x^{-1}$ saem direto. Serve para conferir.
+
+</Caixa>
+</Passos>
