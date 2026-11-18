@@ -21,7 +21,7 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
-## [Não publicado]
+## [2.17.0] — 2026-11-18
 
 ### Adicionado
 
@@ -1454,6 +1454,7 @@ julho de 2026, antes da adoção de changelog.
   ao topo, tema claro/escuro.
 - Fórmulas em MathJax (tex-svg) e cache-busting manual por `?v=N` nos assets.
 
+[2.17.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.17.0
 [2.16.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.16.0
 [2.15.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.15.0
 [2.14.0]: https://github.com/ArthurrAzeved0/nabla/releases/tag/v2.14.0
