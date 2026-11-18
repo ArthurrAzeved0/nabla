@@ -1,0 +1,82 @@
+---
+origem: "2024.1 · 2ª chamada"
+tema: "Sistema · autovalores complexos 5 ± 2i"
+temaId: sistemas-autovalores-complexos
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q29.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução geral do sistema de equações diferenciais
+
+$$
+\begin{cases} \dfrac{dx}{dt} = 6x - y \\[3mm] \dfrac{dy}{dt} = 5x + 4y \end{cases}
+$$
+
+<Gabarito>
+$\lambda = 5 \pm 2i$, $\;K_1 = \begin{pmatrix} 1 \\ 1 - 2i \end{pmatrix}$
+
+$$
+\begin{aligned}
+x(t) &= e^{5t}\big(c_1\cos 2t + c_2\operatorname{sen} 2t\big) \\
+y(t) &= e^{5t}\big[c_1(\cos 2t + 2\operatorname{sen} 2t) + c_2(\operatorname{sen} 2t - 2\cos 2t)\big]
+\end{aligned}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — os autovalores.**
+
+$$
+\det(A - \lambda I) = \begin{vmatrix} 6 - \lambda & -1 \\ 5 & 4 - \lambda \end{vmatrix} = \lambda^2 - 10\lambda + 29 = 0
+\;\Rightarrow\;
+\lambda = \frac{10 \pm \sqrt{100 - 116}}{2} = 5 \pm 2i
+$$
+
+**Passo 2 — o autovetor de $\lambda_1 = 5 + 2i$.**
+
+$$
+\begin{cases} (1 - 2i)\,k_1 - k_2 = 0 \\ 5k_1 - (1 + 2i)\,k_2 = 0 \end{cases}
+\;\Rightarrow\; k_2 = (1 - 2i)\,k_1
+$$
+
+Com $k_1 = 1$:
+
+$$
+K_1 = \begin{pmatrix} 1 \\ 1 - 2i \end{pmatrix} = \underbrace{\begin{pmatrix} 1 \\ 1 \end{pmatrix}}_{B_1} + i\,\underbrace{\begin{pmatrix} 0 \\ -2 \end{pmatrix}}_{B_2}
+$$
+
+Em forma complexa, a solução é $X = c_1K_1e^{(5+2i)t} + c_2\overline{K_1}\,e^{(5-2i)t}$, com $\overline{K_1} = \begin{pmatrix} 1 \\ 1 + 2i \end{pmatrix}$. Para ter $x$ e $y$ reais, separamos parte real e imaginária.
+
+**Passo 3 — as soluções reais.** Com $\alpha = 5$ e $\beta = 2$:
+
+$$
+X_1 = e^{5t}\big(B_1\cos 2t - B_2\operatorname{sen} 2t\big) = e^{5t}\begin{pmatrix} \cos 2t \\ \cos 2t + 2\operatorname{sen} 2t \end{pmatrix}
+$$
+
+$$
+X_2 = e^{5t}\big(B_1\operatorname{sen} 2t + B_2\cos 2t\big) = e^{5t}\begin{pmatrix} \operatorname{sen} 2t \\ \operatorname{sen} 2t - 2\cos 2t \end{pmatrix}
+$$
+
+**Passo 4 — a solução geral.** $X = c_1X_1 + c_2X_2$:
+
+$$
+\boxed{\begin{aligned}
+x(t) &= e^{5t}\big(c_1\cos 2t + c_2\operatorname{sen} 2t\big) \\
+y(t) &= e^{5t}\big[c_1(\cos 2t + 2\operatorname{sen} 2t) + c_2(\operatorname{sen} 2t - 2\cos 2t)\big]
+\end{aligned}}
+$$
+
+**Conferência —** com $c_1 = 1$, $c_2 = 0$: $x' = e^{5t}(5\cos 2t - 2\operatorname{sen} 2t)$ e $6x - y = e^{5t}(6\cos 2t - \cos 2t - 2\operatorname{sen} 2t)$, iguais. ✓
+</Passos>
