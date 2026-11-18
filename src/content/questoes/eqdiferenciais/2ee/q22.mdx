@@ -1,0 +1,73 @@
+---
+origem: "2022.2"
+tema: "Bernoulli · y' = 3y/x + x²y³"
+temaId: bernoulli
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q22.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a seguinte EDO não linear de primeira ordem:
+
+$$
+y' = \frac{3}{x}\,y + x^2y^3
+$$
+
+Encontre a solução geral.
+
+<Gabarito>
+Com $v = y^{-2}$: $\;v' + \dfrac{6}{x}\,v = -2x^2$
+
+$$
+\frac{1}{y^2} = \frac{C}{x^6} - \frac{2x^3}{9}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reconhecer Bernoulli.** Na forma $y' + P(x)\,y = Q(x)\,y^n$:
+
+$$
+y' - \frac{3}{x}\,y = x^2y^3 \qquad n = 3
+$$
+
+**Passo 2 — a troca de variável.** $v = y^{1-n} = y^{-2}$, então $v' = -2y^{-3}y'$. Multiplicando a equação por $-2y^{-3}$:
+
+$$
+-2y^{-3}y' + \frac{6}{x}\,y^{-2} = -2x^2
+\;\Rightarrow\;
+v' + \frac{6}{x}\,v = -2x^2
+$$
+
+Ficou **linear** em $v$.
+
+**Passo 3 — fator integrante.** $\mu = e^{\int 6/x\,dx} = x^6$:
+
+$$
+\big(x^6v\big)' = -2x^8
+\;\Rightarrow\;
+x^6v = -\frac{2x^9}{9} + C
+\;\Rightarrow\;
+v = \frac{C}{x^6} - \frac{2x^3}{9}
+$$
+
+**Passo 4 — voltar a $y$.**
+
+$$
+\boxed{\frac{1}{y^2} = \frac{C}{x^6} - \frac{2x^3}{9}}
+\qquad\text{ou}\qquad
+y^2 = \frac{9x^6}{9C - 2x^9}
+$$
+
+$y = 0$ também é solução, perdida ao dividir por $y^3$.
+</Passos>

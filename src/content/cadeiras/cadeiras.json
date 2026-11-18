@@ -192,6 +192,7 @@
     "teoria": {
       "crescimento-exponencial": "ed-aplicacoes1",
       "arrefecimento-de-newton": "ed-aplicacoes1",
+      "queda-com-resistencia": "ed-aplicacoes1",
       "fator-integrante": "ed-lineares",
       "fator-integrante-exatas": "ed-exatas",
       "equacoes-exatas": "ed-exatas",

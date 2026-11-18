@@ -1,0 +1,73 @@
+---
+origem: "2024.1"
+tema: "Pontos singulares regulares · x = ±2"
+temaId: frobenius
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q26.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine: a) todos os pontos singulares regulares; b) a equação indicial e os expoentes na singularidade para cada ponto singular regular da equação diferencial
+
+$$
+(4 - x^2)\,y'' + 2xy' + 3y = 0
+$$
+
+<Gabarito>
+**a)** $x = 2$ e $x = -2$, os dois regulares.
+
+**b)** Nos dois pontos, $r(r-1) - r = 0 \Rightarrow r^2 - 2r = 0$: $\;r_1 = 2$, $r_2 = 0$.
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) — forma padrão.** Dividindo por $4 - x^2$:
+
+$$
+P(x) = \frac{2x}{4 - x^2} \qquad Q(x) = \frac{3}{4 - x^2}
+$$
+
+O denominador zera em $x = 2$ e $x = -2$: esses são os pontos singulares.
+
+**Passo 2 — $x = 2$.** Usando $4 - x^2 = (2 - x)(2 + x)$:
+
+$$
+p_0 = \lim_{x\to 2}(x - 2)\,\frac{2x}{(2 - x)(2 + x)} = \lim_{x\to 2}\frac{-2x}{2 + x} = -1
+$$
+
+$$
+q_0 = \lim_{x\to 2}(x - 2)^2\,\frac{3}{(2 - x)(2 + x)} = \lim_{x\to 2}\frac{-3\,(x - 2)}{2 + x} = 0
+$$
+
+Os dois limites existem: **$x = 2$ é singular regular**.
+
+**Passo 3 — $x = -2$.**
+
+$$
+p_0 = \lim_{x\to -2}(x + 2)\,\frac{2x}{(2 - x)(2 + x)} = \lim_{x\to -2}\frac{2x}{2 - x} = \frac{-4}{4} = -1
+$$
+
+$$
+q_0 = \lim_{x\to -2}(x + 2)^2\,\frac{3}{(2 - x)(2 + x)} = \lim_{x\to -2}\frac{3\,(x + 2)}{2 - x} = 0
+$$
+
+**$x = -2$ também é singular regular.**
+
+**Passo 4 (b) — a equação indicial.** $r(r-1) + p_0\,r + q_0 = 0$, com $p_0 = -1$ e $q_0 = 0$ nos dois pontos:
+
+$$
+r(r-1) - r = 0 \;\Rightarrow\; r^2 - 2r = 0 \;\Rightarrow\; \boxed{r_1 = 2, \quad r_2 = 0}
+$$
+
+Os expoentes são os mesmos em $x = 2$ e em $x = -2$.
+</Passos>

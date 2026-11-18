@@ -1,0 +1,68 @@
+---
+origem: "2022.2"
+tema: "Cauchy-Euler · raízes complexas e lado direito x³"
+temaId: cauchy-euler
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a EDO
+
+$$
+x^2y'' - 5xy' + 10y = x^3, \quad x > 0
+$$
+
+Encontre a solução geral.
+
+<Gabarito>
+$m = 3 \pm i$, $\;y_p = x^3$
+
+$$
+y = x^3\big[c_1\cos(\ln x) + c_2\operatorname{sen}(\ln x)\big] + x^3
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a homogênea.** Com $y = x^m$:
+
+$$
+m(m-1) - 5m + 10 = 0 \;\Rightarrow\; m^2 - 6m + 10 = 0 \;\Rightarrow\; m = \frac{6 \pm \sqrt{36 - 40}}{2} = 3 \pm i
+$$
+
+Raízes complexas $\alpha \pm i\beta$, com $\alpha = 3$ e $\beta = 1$:
+
+$$
+y_h = x^3\big[c_1\cos(\ln x) + c_2\operatorname{sen}(\ln x)\big]
+$$
+
+**Passo 2 — a particular.** O lado direito é uma potência de $x$, e $x^3$ **não** é solução da homogênea ($m = 3$ não é raiz). Tentando $y_p = Ax^3$, com $y_p' = 3Ax^2$ e $y_p'' = 6Ax$:
+
+$$
+x^2(6Ax) - 5x(3Ax^2) + 10Ax^3 = (6 - 15 + 10)\,Ax^3 = Ax^3 = x^3
+\;\Rightarrow\; A = 1
+$$
+
+**Passo 3 — a solução geral.**
+
+$$
+\boxed{y = x^3\big[c_1\cos(\ln x) + c_2\operatorname{sen}(\ln x)\big] + x^3}
+$$
+
+<Caixa tipo="macete" rotulo="Potência no lado direito">
+
+Em Cauchy-Euler, $y_p = Ax^k$ funciona sempre que o lado direito é $x^k$ e $k$ não é raiz da equação auxiliar. Basta trocar $m$ por $k$ no polinômio: $A \cdot (k^2 - 6k + 10) = 1$, com $k = 3$, dá $A = 1$. Bem mais curto que variação de parâmetros.
+
+</Caixa>
+</Passos>

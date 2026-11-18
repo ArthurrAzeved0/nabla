@@ -1,0 +1,127 @@
+---
+origem: "2024.1"
+tema: "Sistema · dois tanques trocando salmoura"
+temaId: sistemas-autovalores-reais
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Dois tanques possuem 500 litros de líquido. Inicialmente o primeiro tanque possui somente água, e o segundo tanque uma mistura de água com 60 kg de sal. Os tanques recebem os conteúdos um do outro por meio de duas ligações entre eles, e isso ocorre com a taxa de 4,0 litros por minuto, em ambas as direções. Dois agitadores mantêm as soluções homogêneas em cada tanque.
+
+<Figura>
+  <svg viewBox="0 0 480 210" role="img" aria-label="Dois tanques cilíndricos lado a lado, I à esquerda com a quantidade de sal Q1 de t e II à direita com Q2 de t, ligados por dois tubos curtos perto do fundo. No tubo de baixo, a mistura passa de I para II a 4 litros por minuto; no de cima, de II para I, também a 4 litros por minuto">
+    {/* líquido */}
+    <rect x="90" y="56" width="110" height="134" fill="var(--accent-soft)" opacity="0.5"/>
+    <rect x="280" y="56" width="110" height="134" fill="var(--accent-soft)" opacity="0.5"/>
+    {/* paredes */}
+    <path d="M90 30 L90 190 L200 190 L200 30 M280 30 L280 190 L390 190 L390 30" fill="none" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <ellipse cx="145" cy="30" rx="55" ry="7" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <ellipse cx="335" cy="30" rx="55" ry="7" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="90" y1="56" x2="200" y2="56" stroke="var(--accent)" stroke-width="1.2"/>
+    <line x1="280" y1="56" x2="390" y2="56" stroke="var(--accent)" stroke-width="1.2"/>
+    {/* tubos: paredes, depois a água */}
+    <line x1="198" y1="146" x2="282" y2="146" stroke="var(--ink-2)" stroke-width="12"/>
+    <line x1="198" y1="172" x2="282" y2="172" stroke="var(--ink-2)" stroke-width="12"/>
+    <line x1="196" y1="146" x2="284" y2="146" stroke="var(--accent-soft)" stroke-width="8.4"/>
+    <line x1="196" y1="172" x2="284" y2="172" stroke="var(--accent-soft)" stroke-width="8.4"/>
+    {/* setas de vazão */}
+    <line x1="262" y1="146" x2="224" y2="146" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="217,146 225,142.5 225,149.5" fill="var(--ink-2)"/>
+    <line x1="218" y1="172" x2="256" y2="172" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <polygon points="263,172 255,168.5 255,175.5" fill="var(--ink-2)"/>
+    <text x="240" y="132" font-size="10" fill="var(--ink-2)" text-anchor="middle">4,0 L/min</text>
+    <text x="240" y="194" font-size="10" fill="var(--ink-2)" text-anchor="middle">4,0 L/min</text>
+    {/* rótulos */}
+    <text x="145" y="84" font-size="14" fill="var(--ink-2)" text-anchor="middle" font-weight="600">I</text>
+    <text x="335" y="84" font-size="14" fill="var(--ink-2)" text-anchor="middle" font-weight="600">II</text>
+    <text x="80" y="116" font-size="13" fill="var(--ink-2)" text-anchor="end">Q<tspan font-size="9" dy="3">1</tspan><tspan dy="-3">(t)</tspan></text>
+    <text x="400" y="116" font-size="13" fill="var(--ink-2)">Q<tspan font-size="9" dy="3">2</tspan><tspan dy="-3">(t)</tspan></text>
+  </svg>
+</Figura>
+
+Sendo as quantidades de sal em função do tempo para os tanques I e II dadas por $Q_1(t)$ e $Q_2(t)$, pode-se mostrar que suas taxas de variação são dadas pelo sistema de EDOs abaixo:
+
+$$
+\begin{cases} \dfrac{dQ_1}{dt} = -\dfrac{4}{500}\,Q_1 + \dfrac{4}{500}\,Q_2 \\[3mm] \dfrac{dQ_2}{dt} = \dfrac{4}{500}\,Q_1 - \dfrac{4}{500}\,Q_2 \end{cases}
+$$
+
+a) (1,0) Encontre a solução geral para $Q_1(t)$ e $Q_2(t)$.<br />
+b) (1,0) Dadas as condições iniciais $Q_1(0) = 0$ e $Q_2(0) = 60$, que indicam que os tanques I e II inicialmente contêm 0 e 60 kg de sal, encontre as soluções particulares para essas condições.<br />
+c) (1,0) Depois de quantos minutos o tanque I terá uma quantidade de sal de 29,9 kg? (Informação útil: $\ln(0{,}1/30) = \ln(0{,}0033) = -5{,}704$.)
+
+<Gabarito>
+**a)** $\lambda_1 = 0$, $\lambda_2 = -\dfrac{8}{500}$:
+
+$$
+Q_1(t) = c_1 + c_2e^{-8t/500} \qquad Q_2(t) = c_1 - c_2e^{-8t/500}
+$$
+
+**b)** $c_1 = 30$, $c_2 = -30$:
+
+$$
+Q_1(t) = 30 - 30\,e^{-8t/500} \qquad Q_2(t) = 30 + 30\,e^{-8t/500}
+$$
+
+**c)** $t \approx 356{,}5\ \text{min} \approx 5{,}94\ \text{h}$
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) — os autovalores.**
+
+$$
+\begin{vmatrix} -\frac{4}{500} - \lambda & \frac{4}{500} \\[1mm] \frac{4}{500} & -\frac{4}{500} - \lambda \end{vmatrix} = 0
+\;\Rightarrow\;
+\left(\frac{4}{500} + \lambda\right)^2 = \left(\frac{4}{500}\right)^2
+\;\Rightarrow\;
+\frac{4}{500} + \lambda = \pm\frac{4}{500}
+$$
+
+$$
+\lambda_1 = 0 \qquad \lambda_2 = -\frac{8}{500}
+$$
+
+**Passo 2 — os autovetores.** Para $\lambda_1 = 0$: $-\tfrac{4}{500}a + \tfrac{4}{500}b = 0 \Rightarrow a = b$, e $\vec v_1 = (1, 1)$. Para $\lambda_2 = -\tfrac{8}{500}$: $\tfrac{4}{500}a + \tfrac{4}{500}b = 0 \Rightarrow a = -b$, e $\vec v_2 = (1, -1)$.
+
+$$
+\boxed{Q_1(t) = c_1 + c_2e^{-8t/500} \qquad Q_2(t) = c_1 - c_2e^{-8t/500}}
+$$
+
+**Passo 3 (b) — as condições iniciais.** Em $t = 0$ a exponencial vale 1:
+
+$$
+\begin{cases} c_1 + c_2 = 0 \\ c_1 - c_2 = 60 \end{cases}
+\;\Rightarrow\; c_1 = 30,\ c_2 = -30
+$$
+
+$$
+\boxed{Q_1(t) = 30 - 30\,e^{-8t/500} \qquad Q_2(t) = 30 + 30\,e^{-8t/500}}
+$$
+
+Faz sentido: com o tempo, o sal se divide igualmente, 30 kg em cada tanque, e o total $Q_1 + Q_2 = 60$ fica constante o tempo todo.
+
+**Passo 4 (c) — quando $Q_1 = 29{,}9$.**
+
+$$
+29{,}9 = 30 - 30\,e^{-8t/500}
+\;\Rightarrow\;
+e^{-8t/500} = \frac{0{,}1}{30}
+\;\Rightarrow\;
+-\frac{8}{500}\,t = -5{,}704
+$$
+
+$$
+\boxed{t = \frac{5{,}704 \times 500}{8} \approx 356{,}5\ \text{min} \approx 5{,}94\ \text{h}}
+$$
+</Passos>

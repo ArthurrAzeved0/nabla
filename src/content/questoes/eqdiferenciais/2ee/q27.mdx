@@ -1,0 +1,102 @@
+---
+origem: "2024.1"
+tema: "Sistema 3×3 · um autovalor dado e um par complexo"
+temaId: sistemas-autovalores-complexos
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q27.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução $(x_1(t), x_2(t), x_3(t))$ do sistema de equações diferenciais, sabendo que um dos autovalores é $1$:
+
+$$
+\begin{cases} x_1' = x_1 - x_2 + 2x_3 \\ x_2' = -x_1 + x_2 + 0x_3 \\ x_3' = -x_1 + 0x_2 + x_3 \end{cases}
+$$
+
+<Gabarito>
+$\lambda_1 = 1$, $\lambda_{2,3} = 1 \pm i$
+
+$$
+\begin{aligned}
+x_1 &= c_2e^t\operatorname{sen} t - c_3e^t\cos t \\
+x_2 &= 2c_1e^t + c_2e^t\cos t + c_3e^t\operatorname{sen} t \\
+x_3 &= c_1e^t + c_2e^t\cos t + c_3e^t\operatorname{sen} t
+\end{aligned}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o polinômio característico.** Expandindo $\det(A - \lambda I)$ pela primeira linha:
+
+$$
+\det\begin{pmatrix} 1-\lambda & -1 & 2 \\ -1 & 1-\lambda & 0 \\ -1 & 0 & 1-\lambda \end{pmatrix}
+= (1-\lambda)^3 - (1-\lambda) + 2(1-\lambda) = (1-\lambda)\big[(1-\lambda)^2 + 1\big]
+$$
+
+Em forma de polinômio: $-\lambda^3 + 3\lambda^2 - 4\lambda + 2 = 0$, ou $\lambda^3 - 3\lambda^2 + 4\lambda - 2 = 0$.
+
+**Passo 2 — os outros dois autovalores.** Sabendo que $\lambda = 1$ é raiz, Briot-Ruffini divide o polinômio por $(\lambda - 1)$:
+
+$$
+\lambda^3 - 3\lambda^2 + 4\lambda - 2 = (\lambda - 1)(\lambda^2 - 2\lambda + 2)
+\;\Rightarrow\;
+\lambda_{2,3} = \frac{2 \pm \sqrt{4 - 8}}{2} = 1 \pm i
+$$
+
+**Passo 3 — $\lambda_1 = 1$.**
+
+$$
+\begin{pmatrix} 0 & -1 & 2 \\ -1 & 0 & 0 \\ -1 & 0 & 0 \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix} = 0
+\;\Rightarrow\;
+v_1 = 0,\ v_2 = 2v_3
+\;\Rightarrow\;
+\vec V_1 = \begin{pmatrix} 0 \\ 2 \\ 1 \end{pmatrix}
+$$
+
+**Passo 4 — $\lambda_2 = 1 + i$.**
+
+$$
+\begin{pmatrix} -i & -1 & 2 \\ -1 & -i & 0 \\ -1 & 0 & -i \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix} = 0
+\;\Rightarrow\;
+v_1 = -iv_2,\quad v_1 = -iv_3 \;\Rightarrow\; v_2 = v_3
+$$
+
+Com $v_2 = 1$, separando parte real e imaginária:
+
+$$
+\vec V_2 = \begin{pmatrix} -i \\ 1 \\ 1 \end{pmatrix} = \underbrace{\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}}_{B_1} + i\,\underbrace{\begin{pmatrix} -1 \\ 0 \\ 0 \end{pmatrix}}_{B_2}
+$$
+
+**Passo 5 — as soluções reais.** Para $\lambda = \alpha + i\beta$ com $\alpha = \beta = 1$:
+
+$$
+X_2 = e^{t}\big(B_1\cos t - B_2\operatorname{sen} t\big) \qquad X_3 = e^{t}\big(B_1\operatorname{sen} t + B_2\cos t\big)
+$$
+
+**Passo 6 — a solução geral.** $\vec X = c_1\vec V_1e^t + c_2X_2 + c_3X_3$:
+
+$$
+\vec X = c_1e^t\begin{pmatrix} 0 \\ 2 \\ 1 \end{pmatrix}
++ c_2e^t\left[\cos t\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} - \operatorname{sen} t\begin{pmatrix} -1 \\ 0 \\ 0 \end{pmatrix}\right]
++ c_3e^t\left[\operatorname{sen} t\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} + \cos t\begin{pmatrix} -1 \\ 0 \\ 0 \end{pmatrix}\right]
+$$
+
+$$
+\boxed{\begin{aligned}
+x_1 &= c_2e^t\operatorname{sen} t - c_3e^t\cos t \\
+x_2 &= 2c_1e^t + c_2e^t\cos t + c_3e^t\operatorname{sen} t \\
+x_3 &= c_1e^t + c_2e^t\cos t + c_3e^t\operatorname{sen} t
+\end{aligned}}
+$$
+</Passos>
