@@ -1,0 +1,71 @@
+---
+origem: "2023.2"
+tema: "Sistema 3×3 · verificar uma solução"
+temaId: sistemas-verificacao
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q24.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Verificar se
+
+$$
+X = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = e^{-t}\begin{pmatrix} 6 \\ -8 \\ -4 \end{pmatrix} + 2e^{2t}\begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+$$
+
+satisfaz o sistema de EDO
+
+$$
+\begin{cases} x_1' = x_1 + x_2 + x_3 \\ x_2' = 2x_1 + x_2 - x_3 \\ x_3' = -x_2 + x_3 \end{cases}
+$$
+
+<Gabarito>
+**Satisfaz.** Os dois lados dão $-6e^{-t}$, $\;8e^{-t} + 4e^{2t}$ e $\;4e^{-t} - 4e^{2t}$.
+</Gabarito>
+
+<Passos>
+**Passo 1 — as componentes.**
+
+$$
+x_1 = 6e^{-t} \qquad x_2 = -8e^{-t} + 2e^{2t} \qquad x_3 = -4e^{-t} - 2e^{2t}
+$$
+
+**Passo 2 — o lado esquerdo, derivando.**
+
+$$
+x_1' = -6e^{-t} \qquad x_2' = 8e^{-t} + 4e^{2t} \qquad x_3' = 4e^{-t} - 4e^{2t}
+$$
+
+**Passo 3 — o lado direito, substituindo.**
+
+$$
+x_1 + x_2 + x_3 = 6e^{-t} - 8e^{-t} + 2e^{2t} - 4e^{-t} - 2e^{2t} = -6e^{-t}
+$$
+
+$$
+2x_1 + x_2 - x_3 = 12e^{-t} - 8e^{-t} + 2e^{2t} + 4e^{-t} + 2e^{2t} = 8e^{-t} + 4e^{2t}
+$$
+
+$$
+-x_2 + x_3 = 8e^{-t} - 2e^{2t} - 4e^{-t} - 2e^{2t} = 4e^{-t} - 4e^{2t}
+$$
+
+**Passo 4 — comparar.** As três linhas batem com o passo 2: $X$ **satisfaz** o sistema. ✓
+
+<Caixa tipo="macete" rotulo="Um atalho">
+
+Cada parcela de $X$ tem a forma $Ke^{\lambda t}$, e ela é solução exatamente quando $AK = \lambda K$. Por exemplo, $A\,(0, 1, -1) = (0,\ 2,\ -2) = 2\,(0, 1, -1)$: autovetor de $\lambda = 2$. Com $(6, -8, -4)$ e $\lambda = -1$ é a mesma conta, e não precisa derivar nada.
+
+</Caixa>
+</Passos>
