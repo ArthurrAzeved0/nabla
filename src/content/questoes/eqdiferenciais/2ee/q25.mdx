@@ -1,0 +1,100 @@
+---
+origem: "2023.2"
+tema: "Não homogêneas · Cauchy-Euler e 3ª ordem"
+temaId: cauchy-euler
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q25.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre as soluções gerais das seguintes equações diferenciais ordinárias não homogêneas.
+
+a) $x^2y'' - 2xy' + 2y = x^4$<br />
+b) $y''' - 2y'' - y' + 2y = 8x^3$
+
+<Gabarito>
+**a)** $y = c_1x + c_2x^2 + \dfrac{x^4}{6}$
+
+**b)** $y = c_1e^{-x} + c_2e^{x} + c_3e^{2x} + 4x^3 + 6x^2 + 30x + 15$
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) — a homogênea.** Com $y = x^m$: $m(m-1) - 2m + 2 = m^2 - 3m + 2 = 0$, então $m_1 = 1$ e $m_2 = 2$:
+
+$$
+y_h = c_1x + c_2x^2 \qquad y_1 = x \qquad y_2 = x^2
+$$
+
+**Passo 2 — o Wronskiano e a forma padrão.**
+
+$$
+W = \begin{vmatrix} x & x^2 \\ 1 & 2x \end{vmatrix} = x^2
+$$
+
+Para usar a variação de parâmetros, a equação precisa estar com $y''$ sozinho. Dividindo por $x^2$, o lado direito vira $g(x) = \dfrac{x^4}{x^2} = x^2$.
+
+**Passo 3 — a particular.**
+
+$$
+y_p = -y_1\int\frac{y_2\,g}{W}\,dx + y_2\int\frac{y_1\,g}{W}\,dx
+= -x\int\frac{x^2 \cdot x^2}{x^2}\,dx + x^2\int\frac{x \cdot x^2}{x^2}\,dx
+$$
+
+$$
+y_p = -x\cdot\frac{x^3}{3} + x^2\cdot\frac{x^2}{2} = -\frac{x^4}{3} + \frac{x^4}{2} = \frac{x^4}{6}
+$$
+
+$$
+\boxed{y = c_1x + c_2x^2 + \frac{x^4}{6}}
+$$
+
+**Conferência —** com $y_p = x^4/6$: $x^2 \cdot 2x^2 - 2x \cdot \tfrac{2x^3}{3} + \tfrac{x^4}{3} = 2x^4 - \tfrac43x^4 + \tfrac13x^4 = x^4$. ✓ (Pelo atalho da potência: $k = 4$ no polinômio auxiliar dá $16 - 12 + 2 = 6$, e $A = \tfrac16$.)
+
+**Passo 4 (b) — a homogênea.**
+
+$$
+\lambda^3 - 2\lambda^2 - \lambda + 2 = \lambda^2(\lambda - 2) - (\lambda - 2) = (\lambda - 2)(\lambda - 1)(\lambda + 1) = 0
+$$
+
+$$
+y_h = c_1e^{-x} + c_2e^{x} + c_3e^{2x}
+$$
+
+**Passo 5 — a forma da particular.** O lado direito é um polinômio de grau 3, e $\lambda = 0$ não é raiz:
+
+$$
+y_p = Ax^3 + Bx^2 + Cx + D
+\qquad
+y_p' = 3Ax^2 + 2Bx + C
+\qquad
+y_p'' = 6Ax + 2B
+\qquad
+y_p''' = 6A
+$$
+
+**Passo 6 — substituir e igualar coeficientes.**
+
+$$
+6A - 2(6Ax + 2B) - (3Ax^2 + 2Bx + C) + 2(Ax^3 + Bx^2 + Cx + D) = 8x^3
+$$
+
+- $x^3$: $2A = 8 \Rightarrow A = 4$
+- $x^2$: $-3A + 2B = 0 \Rightarrow B = 6$
+- $x^1$: $-12A - 2B + 2C = 0 \Rightarrow C = 30$
+- $x^0$: $6A - 4B - C + 2D = 0 \Rightarrow 24 - 24 - 30 + 2D = 0 \Rightarrow D = 15$
+
+$$
+\boxed{y = c_1e^{-x} + c_2e^{x} + c_3e^{2x} + 4x^3 + 6x^2 + 30x + 15}
+$$
+</Passos>
