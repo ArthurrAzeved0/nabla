@@ -1,0 +1,61 @@
+---
+origem: "2026.1"
+tema: "Cauchy-Euler · raízes reais distintas"
+temaId: cauchy-euler
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q10.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Em um modelo simplificado de vibração de uma estrutura mecânica, o deslocamento $y(x)$ satisfaz a equação diferencial
+
+$$
+x^2y'' - 4xy' + 6y = 0, \quad x > 0
+$$
+
+Determine a solução geral da equação diferencial.
+
+<Gabarito>
+$m(m-1) - 4m + 6 = 0 \Rightarrow m_1 = 2,\ m_2 = 3$
+
+$$
+y(x) = C_1x^2 + C_2x^3
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — reconhecer a equação.** Ela tem a forma $ax^2y'' + bxy' + cy = 0$: cada derivada vem multiplicada pela potência de $x$ de mesma ordem. É uma equação de **Cauchy-Euler**, e a tentativa é $y = x^m$.
+
+**Passo 2 — substituir.** Com $y' = mx^{m-1}$ e $y'' = m(m-1)x^{m-2}$:
+
+$$
+x^2\big[m(m-1)x^{m-2}\big] - 4x\big[mx^{m-1}\big] + 6x^m = 0
+\;\Rightarrow\;
+x^m\big[m(m-1) - 4m + 6\big] = 0
+$$
+
+**Passo 3 — a equação auxiliar.** Como $x > 0$, $x^m \neq 0$:
+
+$$
+m^2 - 5m + 6 = 0 \;\Rightarrow\; (m-2)(m-3) = 0 \;\Rightarrow\; m_1 = 2,\ m_2 = 3
+$$
+
+**Passo 4 —** Raízes reais e distintas, cada uma dá uma solução $x^m$:
+
+$$
+\boxed{y(x) = C_1x^2 + C_2x^3}
+$$
+
+onde $C_1$ e $C_2$ são constantes arbitrárias.
+</Passos>
