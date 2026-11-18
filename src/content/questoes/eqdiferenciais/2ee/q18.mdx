@@ -1,0 +1,96 @@
+---
+origem: "2026.1"
+tema: "Sistema · autovalor repetido (λ = 0)"
+temaId: sistemas-autovalor-repetido
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q18.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja o sistema
+
+$$
+\begin{cases} \dfrac{dx}{dt} = 4x(t) - 2y(t) \\[2mm] \dfrac{dy}{dt} = 8x(t) - 4y(t) \end{cases}
+$$
+
+a) (0,5 ponto) Escreva na forma vetorial $U' = AU$;<br />
+b) (2,0 pontos) Calcule os autovalores e defina os autovetores $U_1$ e $U_2$;<br />
+c) (0,5 ponto) Obtenha a solução para $x$ e $y$.
+
+<Gabarito>
+**a)** $U' = \begin{pmatrix} 4 & -2 \\ 8 & -4 \end{pmatrix}U$, com $U = \begin{pmatrix} x \\ y \end{pmatrix}$.
+
+**b)** $\lambda_1 = \lambda_2 = 0$; $\vec V_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$, $\vec n = \begin{pmatrix} 0 \\ -\tfrac12 \end{pmatrix}$
+
+$$
+U_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix} \qquad U_2 = t\begin{pmatrix} 1 \\ 2 \end{pmatrix} + \begin{pmatrix} 0 \\ -\tfrac12 \end{pmatrix}
+$$
+
+**c)**
+
+$$
+x(t) = c_1 + c_2\,t \qquad y(t) = 2c_1 + 2c_2\,t - \tfrac12\,c_2
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) —** Juntando $x$ e $y$ no vetor $U$:
+
+$$
+U' = \begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 4 & -2 \\ 8 & -4 \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix} = AU
+$$
+
+**Passo 2 (b) — os autovalores.**
+
+$$
+\det(A - \lambda I) = \begin{vmatrix} 4-\lambda & -2 \\ 8 & -4-\lambda \end{vmatrix} = (4-\lambda)(-4-\lambda) + 16 = \lambda^2 - 16 + 16 = \lambda^2 = 0
+$$
+
+$$
+\boxed{\lambda_1 = \lambda_2 = 0}
+$$
+
+**Passo 3 — o autovetor.** Com $\lambda = 0$, $(A - 0I)\vec V_1 = 0$:
+
+$$
+\begin{pmatrix} 4 & -2 \\ 8 & -4 \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\;\Rightarrow\; 4v_1 - 2v_2 = 0 \;\Rightarrow\; v_2 = 2v_1
+\;\Rightarrow\; \vec V_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+$$
+
+As duas linhas são a mesma equação, então só existe **um** autovetor independente. A primeira solução é $U_1 = e^{0t}\vec V_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$.
+
+**Passo 4 — o autovetor generalizado.** A segunda solução tem a forma $U_2 = t\,e^{\lambda t}\vec V_1 + e^{\lambda t}\vec n$, com $(A - \lambda I)\vec n = \vec V_1$:
+
+$$
+\begin{pmatrix} 4 & -2 \\ 8 & -4 \end{pmatrix}\begin{pmatrix} n_1 \\ n_2 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+\;\Rightarrow\; 4n_1 - 2n_2 = 1 \;\Rightarrow\; n_2 = \frac{4n_1 - 1}{2}
+$$
+
+Escolhendo $n_1 = 0$: $\vec n = \begin{pmatrix} 0 \\ -\tfrac12 \end{pmatrix}$. Como $e^{0t} = 1$:
+
+$$
+\boxed{U_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix} \qquad U_2 = t\begin{pmatrix} 1 \\ 2 \end{pmatrix} + \begin{pmatrix} 0 \\ -\tfrac12 \end{pmatrix}}
+$$
+
+**Passo 5 (c) —** $U = c_1U_1 + c_2U_2$:
+
+$$
+\begin{pmatrix} x \\ y \end{pmatrix} = c_1\begin{pmatrix} 1 \\ 2 \end{pmatrix} + c_2\left[t\begin{pmatrix} 1 \\ 2 \end{pmatrix} + \begin{pmatrix} 0 \\ -\tfrac12 \end{pmatrix}\right]
+\;\Rightarrow\;
+\boxed{x = c_1 + c_2\,t \qquad y = 2c_1 + 2c_2\,t - \tfrac12\,c_2}
+$$
+
+**Conferência —** $x' = c_2$ e $4x - 2y = 4c_1 + 4c_2t - 4c_1 - 4c_2t + c_2 = c_2$ ✓. $y' = 2c_2$ e $8x - 4y = 2\,(4x - 2y) = 2c_2$ ✓.
+</Passos>
