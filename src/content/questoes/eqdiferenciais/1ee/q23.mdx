@@ -1,0 +1,61 @@
+---
+origem: "2026.1"
+tema: "Cauchy-Euler · raiz dupla"
+temaId: cauchy-euler
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva a equação diferencial pelo método de Cauchy-Euler:
+
+$$
+x^2y'' - 3xy' + 4y = 0, \quad x > 0
+$$
+
+<Gabarito>
+$m^2 - 4m + 4 = 0 \Rightarrow m = 2$ (dupla)
+
+$$
+y(x) = C_1x^2 + C_2x^2\ln x
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a tentativa.** Com $y = x^m$, $y' = mx^{m-1}$ e $y'' = m(m-1)x^{m-2}$:
+
+$$
+x^m\big[m(m-1) - 3m + 4\big] = 0
+$$
+
+**Passo 2 — a equação característica.** Como $x > 0$, $x^m \neq 0$:
+
+$$
+m^2 - 4m + 4 = 0 \;\Rightarrow\; (m-2)^2 = 0 \;\Rightarrow\; m = 2 \text{ (raiz dupla)}
+$$
+
+**Passo 3 — a segunda solução.** A raiz dupla dá só $y_1 = x^2$. Em Cauchy-Euler, a segunda solução é a primeira vezes $\ln x$ (o papel que o $t$ faz em coeficientes constantes, já que $x = e^t$):
+
+$$
+\boxed{y(x) = C_1x^2 + C_2x^2\ln x}
+$$
+
+<Caixa tipo="macete" rotulo="As três formas da solução">
+
+- raízes reais distintas: $C_1x^{m_1} + C_2x^{m_2}$
+- raiz dupla: $C_1x^{m} + C_2x^{m}\ln x$
+- raízes complexas $\alpha \pm i\beta$: $x^{\alpha}\big[C_1\cos(\beta\ln x) + C_2\operatorname{sen}(\beta\ln x)\big]$
+
+</Caixa>
+</Passos>
