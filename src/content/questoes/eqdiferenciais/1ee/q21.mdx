@@ -1,0 +1,93 @@
+---
+origem: "2026.1"
+tema: "Coef. indeterminados · lado direito que já é solução"
+temaId: coeficientes-indeterminados
+pontos: 2,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q21.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Encontre a solução geral da EDO
+
+$$
+y'' - 4y' - 5y = -6x\,e^{-x}
+$$
+
+<Gabarito>
+$m_1 = -1$, $m_2 = 5$; $y_p = e^{-x}\left(\dfrac{x^2}{2} + \dfrac{x}{6}\right)$
+
+$$
+y = C_1e^{-x} + C_2e^{5x} + \frac{e^{-x}}{6}\,\big(3x^2 + x\big)
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a homogênea.**
+
+$$
+m^2 - 4m - 5 = 0 \;\Rightarrow\; (m+1)(m-5) = 0 \;\Rightarrow\; m_1 = -1,\ m_2 = 5
+\qquad
+y_h = C_1e^{-x} + C_2e^{5x}
+$$
+
+**Passo 2 — a forma da particular.** O lado direito é $e^{-x}$ vezes um polinômio de grau 1, então a tentativa natural seria $e^{-x}(A_1x + A_0)$. Só que $e^{-x}$ **já é solução da homogênea** ($m = -1$ é raiz simples), e por isso a tentativa é multiplicada por $x$:
+
+$$
+y_p = e^{-x}\,(A_1x + A_0)\,x = e^{-x}\,\big(A_1x^2 + A_0x\big)
+$$
+
+<Caixa tipo="macete" rotulo="Por que multiplicar por x">
+
+Se $-1$ é raiz da equação característica, qualquer termo $Ce^{-x}$ da tentativa é zerado pelo lado esquerdo e não ajuda a produzir o lado direito. Multiplicar por $x$ (uma vez para raiz simples, duas para raiz dupla) resolve.
+
+</Caixa>
+
+**Passo 3 — derivar.** Chamando $u = A_1x^2 + A_0x$, temos $y_p = e^{-x}u$ e
+
+$$
+y_p' = e^{-x}\,(u' - u)
+\qquad
+y_p'' = e^{-x}\,(u'' - 2u' + u)
+$$
+
+Substituindo no lado esquerdo, os termos em $u$ se cancelam (é justamente porque $e^{-x}$ é solução da homogênea):
+
+$$
+y_p'' - 4y_p' - 5y_p = e^{-x}\big[(u'' - 2u' + u) - 4(u' - u) - 5u\big] = e^{-x}\,\big(u'' - 6u'\big)
+$$
+
+**Passo 4 — igualar.** Com $u' = 2A_1x + A_0$ e $u'' = 2A_1$:
+
+$$
+2A_1 - 6\,(2A_1x + A_0) = -6x
+\;\Rightarrow\;
+-12A_1\,x + (2A_1 - 6A_0) = -6x
+$$
+
+$$
+-12A_1 = -6 \;\Rightarrow\; A_1 = \frac12
+\qquad
+2A_1 - 6A_0 = 0 \;\Rightarrow\; A_0 = \frac16
+$$
+
+$$
+y_p = e^{-x}\left(\frac{x^2}{2} + \frac{x}{6}\right)
+$$
+
+**Passo 5 — a solução geral.**
+
+$$
+\boxed{y = C_1e^{-x} + C_2e^{5x} + \frac{e^{-x}}{6}\,\big(3x^2 + x\big)}
+$$
+</Passos>
