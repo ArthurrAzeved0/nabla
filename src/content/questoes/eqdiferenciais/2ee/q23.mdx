@@ -1,0 +1,67 @@
+---
+origem: "2023.2"
+tema: "Série de potências · a recorrência da equação de Legendre"
+temaId: series-ponto-ordinario
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q23.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determine uma fórmula de recorrência para a solução em série de potências, na vizinhança de $x = 0$, da equação
+
+$$
+(1 - x^2)\,y'' - 2xy' + m(m+1)\,y = 0
+$$
+
+<Gabarito>
+$$
+a_{n+2} = \frac{(n - m)(n + m + 1)}{(n + 2)(n + 1)}\,a_n, \qquad n = 0, 1, 2, \ldots
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as séries.** $y = \displaystyle\sum_{n=0}^{\infty} a_nx^n$, $\;y' = \sum_{n=1}^{\infty} na_nx^{n-1}$, $\;y'' = \sum_{n=2}^{\infty} n(n-1)a_nx^{n-2}$. Substituindo e distribuindo o $(1 - x^2)$:
+
+$$
+\sum_{n=2}^{\infty} n(n-1)a_nx^{n-2} - \sum_{n=2}^{\infty} n(n-1)a_nx^{n} - 2\sum_{n=1}^{\infty} na_nx^{n} + m(m+1)\sum_{n=0}^{\infty} a_nx^n = 0
+$$
+
+**Passo 2 — acertar os expoentes.** Só a primeira soma tem $x^{n-2}$; trocando $n \to n + 2$ nela:
+
+$$
+\sum_{n=0}^{\infty} (n+2)(n+1)a_{n+2}x^{n} - \sum_{n=2}^{\infty} n(n-1)a_nx^{n} - 2\sum_{n=1}^{\infty} na_nx^{n} + m(m+1)\sum_{n=0}^{\infty} a_nx^n = 0
+$$
+
+As somas começam em índices diferentes, mas os termos que faltam valem zero: $n(n-1) = 0$ para $n = 0, 1$ e $2n = 0$ para $n = 0$. Todas podem começar em $n = 0$.
+
+**Passo 3 — juntar.** O coeficiente de cada $x^n$ tem de ser zero:
+
+$$
+(n+2)(n+1)a_{n+2} - \big[n(n-1) + 2n - m(m+1)\big]a_n = 0
+$$
+
+**Passo 4 — fatorar.** O colchete é $n^2 + n - m^2 - m = (n - m)(n + m + 1)$:
+
+$$
+\boxed{a_{n+2} = \frac{(n - m)(n + m + 1)}{(n + 2)(n + 1)}\,a_n, \qquad n = 0, 1, 2, \ldots}
+$$
+
+**Conferência —** os dois primeiros termos, feitos à parte: o termo $x^0$ dá $2a_2 + m(m+1)a_0 = 0$, ou seja, $a_2 = -\tfrac{m(m+1)}{2}\,a_0$, que é a fórmula com $n = 0$. ✓
+
+<Caixa tipo="dica">
+
+Se $m$ é um inteiro não negativo, o fator $(n - m)$ zera $a_{m+2}$, e daí em diante todos os coeficientes de mesma paridade. Uma das duas séries vira um **polinômio** de grau $m$: são os polinômios de Legendre.
+
+</Caixa>
+</Passos>
