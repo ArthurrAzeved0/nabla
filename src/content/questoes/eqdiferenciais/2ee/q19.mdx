@@ -1,0 +1,84 @@
+---
+origem: "2026.1"
+tema: "Frobenius · y'' = xy"
+temaId: frobenius
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q19.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolver a equação diferencial pelo método de Frobenius, escrevendo a série para uma das raízes da equação indicial:
+
+$$
+y'' = xy
+$$
+
+<Gabarito>
+Equação indicial $r(r-1) = 0 \Rightarrow r = 0$ ou $r = 1$. Recorrência $a_{n+3} = \dfrac{a_n}{(r+n+2)(r+n+3)}$, com $a_2 = 0$.
+
+Para $r = 0$:
+
+$$
+y(x) = a_0\left(1 + \frac{x^3}{3\cdot 2} + \frac{x^6}{6\cdot 5\cdot 3\cdot 2} + \cdots\right) + a_1\left(x + \frac{x^4}{4\cdot 3} + \frac{x^7}{7\cdot 6\cdot 4\cdot 3} + \cdots\right)
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — a hipótese.** $y = \displaystyle\sum_{n=0}^{\infty} a_n x^{n+r}$, com $a_0 \neq 0$. Derivando duas vezes e substituindo em $y'' = xy$:
+
+$$
+\sum_{n=0}^{\infty} a_n(r+n)(r+n-1)\,x^{r+n-2} = \sum_{n=0}^{\infty} a_n\,x^{r+n+1}
+$$
+
+**Passo 2 — igualar as potências.** O lado esquerdo começa em $x^{r-2}$ e o direito em $x^{r+1}$. Separamos os três primeiros termos da esquerda e, no que sobra, trocamos $n \to n+3$ para os expoentes baterem:
+
+$$
+a_0 r(r-1)x^{r-2} + a_1 (r+1)r\,x^{r-1} + a_2 (r+2)(r+1)\,x^{r} + \sum_{n=0}^{\infty}\Big[(r+n+3)(r+n+2)\,a_{n+3} - a_n\Big]x^{r+n+1} = 0
+$$
+
+Cada coeficiente tem de ser zero:
+
+$$
+a_0\,r(r-1) = 0 \qquad a_1\,r(r+1) = 0 \qquad a_2\,(r+1)(r+2) = 0
+$$
+
+$$
+a_{n+3} = \frac{a_n}{(r+n+2)(r+n+3)}, \quad n = 0, 1, 2, \ldots
+$$
+
+**Passo 3 — a equação indicial.** Como $a_0 \neq 0$: $r(r-1) = 0 \Rightarrow \boxed{r = 0 \text{ ou } r = 1}$. Nas duas raízes, $(r+1)(r+2) \neq 0$, então $a_2 = 0$, e com ele $a_5 = a_8 = \cdots = 0$.
+
+**Passo 4 — a série para $r = 0$.** Aqui $a_1\,r(r+1) = 0$ vale para qualquer $a_1$: ele fica **livre**. A recorrência vira $a_{n+3} = \dfrac{a_n}{(n+2)(n+3)}$:
+
+- a partir de $a_0$: $a_3 = \dfrac{a_0}{3\cdot 2}$, $a_6 = \dfrac{a_3}{6\cdot 5} = \dfrac{a_0}{6\cdot 5\cdot 3\cdot 2}$
+- a partir de $a_1$: $a_4 = \dfrac{a_1}{4\cdot 3}$, $a_7 = \dfrac{a_4}{7\cdot 6} = \dfrac{a_1}{7\cdot 6\cdot 4\cdot 3}$
+
+$$
+\boxed{y(x) = a_0\left(1 + \frac{x^3}{3\cdot 2} + \frac{x^6}{6\cdot 5\cdot 3\cdot 2} + \cdots\right) + a_1\left(x + \frac{x^4}{4\cdot 3} + \frac{x^7}{7\cdot 6\cdot 4\cdot 3} + \cdots\right)}
+$$
+
+Com as duas constantes livres, essa já é a **solução geral**.
+
+<Caixa tipo="dica">
+
+A raiz $r = 1$ não traz nada novo. A recorrência fica $a_{n+3} = \dfrac{a_n}{(n+3)(n+4)}$, e a série sai
+
+$$
+y(x) = a_0\,x\left(1 + \frac{x^3}{4\cdot 3} + \frac{x^6}{7\cdot 6\cdot 4\cdot 3} + \cdots\right)
+$$
+
+que é exatamente a série de $a_1$ do caso $r = 0$. Isso acontece porque $x = 0$ é ponto **ordinário** de $y'' = xy$: a série de potências comum já dá as duas soluções.
+
+</Caixa>
+</Passos>
