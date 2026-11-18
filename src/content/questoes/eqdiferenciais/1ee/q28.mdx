@@ -1,0 +1,72 @@
+---
+origem: "2024.1 · 2ª chamada"
+tema: "Crescimento de bactérias · dois instantes"
+temaId: crescimento-exponencial
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q28.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma certa colônia de bactérias aumenta a uma taxa proporcional à sua população atual. Depois de 1 hora, são observados 900 núcleos de bactérias na cultura, e após 4 horas, 2700 núcleos. Determine:
+
+a) uma expressão para o número de núcleos presentes na cultura em um tempo $t$ arbitrário;<br />
+b) o número de núcleos inicialmente existentes na cultura.
+
+<Gabarito>
+**a)** $k = \dfrac{\ln 3}{3} \approx 0{,}366$, $c \approx 624$: $\;N(t) = 624\,e^{0{,}366\,t}$
+
+**b)** $N(0) \approx 624$ núcleos.
+</Gabarito>
+
+<Passos>
+**Passo 1 — o modelo.** Taxa proporcional à população:
+
+$$
+\frac{dN}{dt} = kN \;\Rightarrow\; N = c\,e^{kt}
+$$
+
+**Passo 2 — os dois dados.**
+
+$$
+t = 1:\; 900 = c\,e^{k}
+\qquad
+t = 4:\; 2700 = c\,e^{4k}
+$$
+
+**Passo 3 — dividir para eliminar $c$.**
+
+$$
+\frac{2700}{900} = e^{3k} \;\Rightarrow\; 3 = e^{3k} \;\Rightarrow\; k = \frac{\ln 3}{3} \approx 0{,}366\ \mathrm{h^{-1}}
+$$
+
+**Passo 4 — achar $c$.**
+
+$$
+c = 900\,e^{-k} = \frac{900}{3^{1/3}} \approx 624
+$$
+
+**Passo 5 (a) —**
+
+$$
+\boxed{N(t) = 624\,e^{0{,}366\,t}}
+$$
+
+**Passo 6 (b) —** Em $t = 0$, a exponencial vale 1:
+
+$$
+\boxed{N(0) = c \approx 624 \text{ núcleos}}
+$$
+
+**Conferência —** a população triplica em 3 horas (de $t = 1$ a $t = 4$). Então, em 1 hora, ela é multiplicada por $3^{1/3} \approx 1{,}44$, e $900/1{,}44 \approx 624$. ✓
+</Passos>
