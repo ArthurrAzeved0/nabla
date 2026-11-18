@@ -1,0 +1,73 @@
+---
+origem: "2026.1"
+tema: "Linear · fator integrante com seno"
+temaId: fator-integrante
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q09.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Resolva a EDO de primeira ordem:
+
+$$
+y' + 2y = \operatorname{sen} x
+$$
+
+<Gabarito>
+$$
+y(x) = \frac{2}{5}\operatorname{sen} x - \frac{1}{5}\cos x + C\,e^{-2x}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o fator integrante.** A equação já está na forma $y' + P(x)\,y = Q(x)$, com $P = 2$:
+
+$$
+\mu(x) = e^{\int 2\,dx} = e^{2x}
+$$
+
+Multiplicando a equação por $\mu$, o lado esquerdo vira a derivada de um produto:
+
+$$
+\big(y\,e^{2x}\big)' = e^{2x}\operatorname{sen} x
+$$
+
+**Passo 2 — integrar.**
+
+$$
+y\,e^{2x} = \int e^{2x}\operatorname{sen} x\,dx + C
+$$
+
+**Passo 3 — a integral, por partes duas vezes.** Chamando $I = \displaystyle\int e^{2x}\operatorname{sen} x\,dx$ e derivando sempre o $e^{2x}$:
+
+$$
+I = -e^{2x}\cos x + 2\int e^{2x}\cos x\,dx = -e^{2x}\cos x + 2\Big(e^{2x}\operatorname{sen} x - 2I\Big)
+$$
+
+A integral original voltou. Isolando $I$:
+
+$$
+5I = e^{2x}\big(2\operatorname{sen} x - \cos x\big)
+\;\Rightarrow\;
+I = e^{2x}\left(\frac{2}{5}\operatorname{sen} x - \frac{1}{5}\cos x\right)
+$$
+
+**Passo 4 — a solução.** Dividindo por $e^{2x}$:
+
+$$
+\boxed{y(x) = \frac{2}{5}\operatorname{sen} x - \frac{1}{5}\cos x + C\,e^{-2x}}
+$$
+
+**Conferência —** $y' = \tfrac25\cos x + \tfrac15\operatorname{sen} x - 2Ce^{-2x}$ e $2y = \tfrac45\operatorname{sen} x - \tfrac25\cos x + 2Ce^{-2x}$. Somando, sobra $\operatorname{sen} x$. ✓
+</Passos>
