@@ -75,6 +75,20 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   Cauchy-Euler, variação de parâmetros e o circuito RLC paralelo como sistema,
   com o circuito desenhado pelo gerador do site). São **12 questões**, e o
   site vai para **650**.
+- **Mais cinco provas antigas de Equações Diferenciais (C4).** O **1º EE de
+  2022.2** trouxe a queda com resistência do meio e a velocidade limite (q26)
+  e duas Cauchy-Euler por redução de ordem e variação de parâmetros (q27); a
+  questão de Bessel dessa prova é a mesma da q19, que passa a ter os dois
+  períodos na origem. A **2ª chamada do 1º EE de 2024.1** trouxe as bactérias
+  entre 1 h e 4 h, a fórmula de Abel e o $b$ que torna a equação exata (q28 a
+  q30). No 2º EE entraram **2022.2** (sistema 3×3, Cauchy-Euler com raízes
+  complexas e Bernoulli, q20 a q22), **2023.2** (a recorrência de Legendre, a
+  verificação de um sistema 3×3 e duas não homogêneas, q23 a q25), **2024.1**
+  (pontos singulares em $x = \pm 2$, sistema 3×3 com par complexo e os dois
+  tanques de salmoura, com figura nova, q26 a q28) e a **2ª chamada de
+  2024.1** (sistema com $5 \pm 2i$ e 3ª ordem com ressonância, q29 e q30). As
+  questões que já estavam no site ficaram de fora. São **16 questões**, e o
+  site vai para **666**.
 
 ### Alterado
 
