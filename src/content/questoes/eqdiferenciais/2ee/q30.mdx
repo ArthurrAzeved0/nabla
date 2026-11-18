@@ -1,0 +1,91 @@
+---
+origem: "2024.1 · 2ª chamada"
+tema: "3ª ordem · coeficientes indeterminados com ressonância"
+temaId: coeficientes-indeterminados
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q30.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Sabendo que $\lambda = 3$ é uma raiz da equação $\lambda^3 - 3\lambda^2 + \lambda - 3 = 0$, encontre a solução particular da seguinte EDO de 3ª ordem não homogênea:
+
+$$
+y''' - 3y'' + y' - 3y = 4\cos x
+$$
+
+<Gabarito>
+$\lambda = 3$, $\lambda = \pm i$; $\;y_h = c_1e^{3x} + c_2\cos x + c_3\operatorname{sen} x$
+
+$$
+y_p = -\frac{x}{5}\cos x - \frac{3x}{5}\operatorname{sen} x
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as raízes.** Dividindo por $(\lambda - 3)$ (ou agrupando):
+
+$$
+\lambda^3 - 3\lambda^2 + \lambda - 3 = \lambda^2(\lambda - 3) + (\lambda - 3) = (\lambda - 3)(\lambda^2 + 1)
+$$
+
+$$
+\lambda_1 = 3 \qquad \lambda_{2,3} = \pm i
+\qquad
+y_h = c_1e^{3x} + c_2\cos x + c_3\operatorname{sen} x
+$$
+
+**Passo 2 — a forma da particular.** O lado direito é $4\cos x$, mas $\cos x$ e $\operatorname{sen} x$ **já são soluções da homogênea** ($\pm i$ são raízes simples). A tentativa é multiplicada por $x$:
+
+$$
+y_p = x\,(A\cos x + B\operatorname{sen} x)
+$$
+
+**Passo 3 — derivar.**
+
+$$
+y_p' = A\cos x + B\operatorname{sen} x + x(-A\operatorname{sen} x + B\cos x)
+$$
+
+$$
+y_p'' = -2A\operatorname{sen} x + 2B\cos x - x(A\cos x + B\operatorname{sen} x)
+$$
+
+$$
+y_p''' = -3A\cos x - 3B\operatorname{sen} x + x(A\operatorname{sen} x - B\cos x)
+$$
+
+**Passo 4 — substituir.** Os termos com $x$ na frente se cancelam (é para isso que o $x$ foi posto). Sobram:
+
+$$
+\underbrace{(-3A\cos x - 3B\operatorname{sen} x)}_{y'''} - 3\underbrace{(-2A\operatorname{sen} x + 2B\cos x)}_{y''} + \underbrace{(A\cos x + B\operatorname{sen} x)}_{y'} = 4\cos x
+$$
+
+$$
+(-2A - 6B)\cos x + (6A - 2B)\operatorname{sen} x = 4\cos x
+$$
+
+**Passo 5 — o sistema.**
+
+$$
+\begin{cases} -2A - 6B = 4 \\ 6A - 2B = 0 \end{cases}
+\;\Rightarrow\; B = 3A \;\Rightarrow\; -20A = 4
+\;\Rightarrow\; A = -\frac15,\quad B = -\frac35
+$$
+
+$$
+\boxed{y_p = -\frac{x}{5}\cos x - \frac{3x}{5}\operatorname{sen} x}
+$$
+
+A solução geral, se pedida, é $y = c_1e^{3x} + c_2\cos x + c_3\operatorname{sen} x + y_p$.
+</Passos>
