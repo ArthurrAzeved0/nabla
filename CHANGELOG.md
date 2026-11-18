@@ -65,6 +65,16 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
   subidas, a resposta muda 2%), e na q69, que nomeia as peças sem dar a
   tabela, os comprimentos equivalentes são os da tabela de Azevedo Netto. A
   cadeira vai de 113 para **129 questões**, e o site, de 622 para **638**.
+- **As três provas de 2026.1 de Equações Diferenciais (C4).** O **1º EE**
+  entrou como q21 a q25 (coeficientes indeterminados com o lado direito que já
+  é solução, equação exata com a prova por derivação implícita, Cauchy-Euler
+  com raiz dupla, a lei de crescimento a partir de dois tamanhos e a 2ª ordem
+  sem $y$ por $y' = p$); o **2º EE**, como q17 a q19 (pontos singulares e
+  equação indicial, sistema com autovalor duplo $\lambda = 0$ e Frobenius em
+  $y'' = xy$); e a **final**, como q09 a q12 (fator integrante com seno,
+  Cauchy-Euler, variação de parâmetros e o circuito RLC paralelo como sistema,
+  com o circuito desenhado pelo gerador do site). São **12 questões**, e o
+  site vai para **650**.
 
 ### Alterado
 
