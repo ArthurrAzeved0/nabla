@@ -1,0 +1,133 @@
+---
+origem: "2026.1"
+tema: "Sistema · circuito RLC paralelo, autovalores complexos"
+temaId: sistemas-autovalores-complexos
+pontos: 2,5 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q12.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja o circuito elétrico abaixo, onde $I$ é a corrente que passa pelo indutor $L$ e $V$ é a tensão aplicada no capacitor $C$. O sistema de equações diferenciais associado a este circuito é definido abaixo.
+
+<Circuito
+  alt="Capacitor C, resistor R e indutor L ligados em paralelo entre dois nós"
+  itens={[
+    { t: "C", de: [0, 0], para: [3, 0], rotulo: "C" },
+    { t: "R", de: [0, 1.4], para: [3, 1.4], rotulo: "R" },
+    { t: "L", de: [0, 2.8], para: [3, 2.8], rotulo: "L" },
+    { t: "fio", pts: [[0, 0], [0, 2.8]] },
+    { t: "fio", pts: [[3, 0], [3, 2.8]] },
+    { t: "no", em: [0, 1.4] },
+    { t: "no", em: [3, 1.4] },
+  ]}
+/>
+
+$$
+\begin{cases} \dfrac{dI}{dt} = 0\,I(t) + \dfrac{1}{L}\,V(t) \\[3mm] \dfrac{dV}{dt} = -\dfrac{1}{C}\,I(t) - \dfrac{1}{RC}\,V(t) \end{cases}
+$$
+
+a) (1,0) Os autovalores do sistema de equações diferenciais serão reais e diferentes para qual relação entre o valor de $L$ e o produto dos parâmetros $R$ e $C$, ou seja, $L$ maior em relação a quais valores de $R$ e $C$?<br />
+b) (1,5) Suponha que $R = 1\ \Omega$, $C = \tfrac12\ \mathrm{F}$ e $L = 1\ \mathrm{H}$. Encontre os valores da corrente $I$ (ampères) e da tensão $V$ (volts), solução do sistema de equações diferenciais acima.
+
+<Gabarito>
+**a)** $L > 4R^2C$
+
+**b)** $\lambda = -1 \pm i$
+
+$$
+I(t) = c_1e^{-t}\cos t + c_2e^{-t}\operatorname{sen} t
+$$
+
+$$
+V(t) = -c_1e^{-t}\big(\cos t + \operatorname{sen} t\big) + c_2e^{-t}\big(\cos t - \operatorname{sen} t\big)
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 (a) — a forma matricial.** Com $U = \begin{pmatrix} I \\ V \end{pmatrix}$:
+
+$$
+U' = \begin{pmatrix} 0 & \dfrac{1}{L} \\[2mm] -\dfrac{1}{C} & -\dfrac{1}{RC} \end{pmatrix}U = AU
+$$
+
+**Passo 2 — o polinômio característico.**
+
+$$
+\det(A - \lambda I) = \begin{vmatrix} -\lambda & \dfrac{1}{L} \\[2mm] -\dfrac{1}{C} & -\dfrac{1}{RC} - \lambda \end{vmatrix}
+= \lambda\left(\frac{1}{RC} + \lambda\right) + \frac{1}{LC}
+= \lambda^2 + \frac{1}{RC}\,\lambda + \frac{1}{LC} = 0
+$$
+
+$$
+\lambda_{1,2} = \frac{-\dfrac{1}{RC} \pm \sqrt{\left(\dfrac{1}{RC}\right)^2 - \dfrac{4}{LC}}}{2}
+$$
+
+**Passo 3 — reais e diferentes.** O discriminante tem de ser positivo:
+
+$$
+\frac{1}{R^2C^2} > \frac{4}{LC}
+\;\Rightarrow\;
+\frac{1}{R^2C} > \frac{4}{L}
+\;\Rightarrow\;
+\boxed{L > 4R^2C}
+$$
+
+**Passo 4 (b) — os autovalores.** Com $R = 1$, $C = \tfrac12$ e $L = 1$, a matriz fica $A = \begin{pmatrix} 0 & 1 \\ -2 & -2 \end{pmatrix}$ e
+
+$$
+\lambda^2 + 2\lambda + 2 = 0
+\;\Rightarrow\;
+\lambda = \frac{-2 \pm \sqrt{4 - 8}}{2} = -1 \pm i
+$$
+
+Aqui $4R^2C = 2 > L = 1$: a condição do item a falha, e os autovalores saem complexos.
+
+**Passo 5 — o autovetor de $\lambda_1 = -1 + i$.**
+
+$$
+\begin{pmatrix} 1 - i & 1 \\ -2 & -1 - i \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\;\Rightarrow\;
+(1 - i)\,v_1 + v_2 = 0
+\;\Rightarrow\;
+v_2 = (-1 + i)\,v_1
+$$
+
+Com $v_1 = 1$, separando a parte real da imaginária:
+
+$$
+\vec V = \begin{pmatrix} 1 \\ -1 + i \end{pmatrix} = \underbrace{\begin{pmatrix} 1 \\ -1 \end{pmatrix}}_{B_1} + i\,\underbrace{\begin{pmatrix} 0 \\ 1 \end{pmatrix}}_{B_2}
+$$
+
+**Passo 6 — as duas soluções reais.** Com $\lambda = \alpha + i\beta$, $\alpha = -1$ e $\beta = 1$:
+
+$$
+U_1 = e^{-t}\big(B_1\cos t - B_2\operatorname{sen} t\big) = e^{-t}\left[\cos t\begin{pmatrix} 1 \\ -1 \end{pmatrix} - \operatorname{sen} t\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right]
+$$
+
+$$
+U_2 = e^{-t}\big(B_1\operatorname{sen} t + B_2\cos t\big) = e^{-t}\left[\operatorname{sen} t\begin{pmatrix} 1 \\ -1 \end{pmatrix} + \cos t\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right]
+$$
+
+**Passo 7 — $I$ e $V$.** $U = c_1U_1 + c_2U_2$, linha por linha:
+
+$$
+\boxed{I(t) = c_1e^{-t}\cos t + c_2e^{-t}\operatorname{sen} t}
+$$
+
+$$
+\boxed{V(t) = -c_1e^{-t}\big(\cos t + \operatorname{sen} t\big) + c_2e^{-t}\big(\cos t - \operatorname{sen} t\big)}
+$$
+
+**Conferência —** $I' = -c_1e^{-t}(\cos t + \operatorname{sen} t) + c_2e^{-t}(\cos t - \operatorname{sen} t)$, que é exatamente $V/L = V$. ✓
+</Passos>
