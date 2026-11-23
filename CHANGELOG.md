@@ -21,6 +21,19 @@ A série **1.x** é o site original, "Responde Aí" — HTML/CSS/JS sem build. A
 novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.0`
 é a virada, quando o Nabla passou a ser o site no ar.
 
+## [Não publicado]
+
+### Corrigido
+
+- **A q67 do 2º EE de Fenômenos (2ª lista) passa a contar as duas subidas da
+  tubulação.** O comprimento da perda distribuída era só a soma dos trechos
+  horizontais dados ($L_{1,2} + L_{2,5} + L_{5,7} = 3$ m); faltavam os dois
+  trechos verticais de $0{,}5$ m, de (2) a (3) e de (4) a (5), onde o fluido
+  também atrita na parede. Com $L = 4$ m (e $2$ m até o ponto A), a resposta
+  vai a $v = 1{,}45$ m/s, $Q = 4{,}1$ L/s e $p_A = 14{,}5$ kPa (eram 1,48 m/s,
+  4,2 L/s e 14,7 kPa). Saiu a caixa que tratava as subidas como leitura
+  alternativa.
+
 ## [2.17.0] — 2026-11-18
 
 ### Adicionado
