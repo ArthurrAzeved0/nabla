@@ -1,0 +1,63 @@
+---
+/* **************************************************************************
+   * Nabla — Guia do aluno POLI/UPE                     DiagramaMoody.astro *
+   *------------------------------------------------------------------------*
+   * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+   * Todos os direitos reservados.                                          *
+   *                                                                        *
+   * Software proprietário — ver arquivo LICENSE.                           *
+   *                                                                        *
+   * Autor:   Arthur Epifanio De Azevedo                                    *
+   * Página:  https://github.com/ArthurrAzeved0                             *
+   * Contato: arthur_azevedo05@hotmail.com                                  *
+   ************************************************************************** */
+/* Diagrama de Moody-Rouse. Casca fina sobre src/lib/moody.ts: as curvas
+   são Colebrook-White calculada no build, e a leitura da questão (Re,
+   D_H/k e o f) vem em destaque por cima.
+
+   Uso:
+     <DiagramaMoody alt="..." re={8.7e4} dk={40} f={0.053}>
+       legenda opcional em markdown
+     </DiagramaMoody> */
+import { desenharMoody } from "~/lib/moody";
+
+interface Props {
+  alt: string;
+  re?: number;
+  dk?: number;
+  f?: number;
+}
+const { alt, re, dk, f } = Astro.props;
+const svg = desenharMoody({ alt, leitura: re && dk ? { re, dk, f } : undefined });
+const temLegenda = Astro.slots.has("default");
+---
+
+<figure class="figura moody">
+  <Fragment set:html={svg} />
+  {temLegenda && (
+    <figcaption>
+      <slot />
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .figura {
+    margin: var(--e-4) 0;
+    text-align: center;
+  }
+  .figura > :global(svg) {
+    max-width: 100%;
+    height: auto;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-caixa);
+    padding: var(--e-2);
+  }
+  .figura :global(figcaption) {
+    margin-top: var(--e-2);
+    font-size: var(--t-sm);
+    color: var(--ink-3);
+    text-align: center;
+  }
+</style>
