@@ -23,6 +23,16 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ## [Não publicado]
 
+### Adicionado
+
+- **O diagrama de Moody-Rouse aparece na questão que o usa.** A q67 do 2º EE
+  de Fenômenos lia $f \approx 0{,}053$ "no diagrama" sem mostrá-lo; agora o
+  diagrama está no passo, com a curva $D_H/k = 40$, o $Re$ da questão e o $f$
+  lido em destaque. As curvas são geradas no build pela equação de
+  Colebrook-White, com a laminar até $Re = 2000$, a transição até $2400$ e a
+  fronteira da turbulência plena, e o mesmo componente serve para as outras
+  questões de perda distribuída.
+
 ### Corrigido
 
 - **A q67 do 2º EE de Fenômenos (2ª lista) passa a contar as duas subidas da
