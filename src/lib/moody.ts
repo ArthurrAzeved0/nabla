@@ -66,12 +66,16 @@ export function fRugoso(dk: number): number {
 }
 
 const virgula = (v: number, casas: number) => v.toFixed(casas).replace(".", ",");
+/* com até `casas` decimais, sem os zeros à direita: 0,02 / 0,017 / 8,7 / 3,06 */
+const enxuto = (v: number, casas: number) => virgula(v, casas).replace(/(,\d*?)0+$/, "$1").replace(/,$/, "");
+/* auréola da cor do fundo, para o rótulo não ser riscado pelas linhas que cruza */
+const AUREOLA = 'stroke="var(--surface-2)" stroke-width="3.5" stroke-linejoin="round" paint-order="stroke"';
 
 function potencia(re: number): string {
   const e = Math.floor(Math.log10(re));
   const m = re / 10 ** e;
   const sup = String(e).replace(/\d/g, (d) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[+d]);
-  return `${virgula(m, 1)}·10${sup}`;
+  return `${enxuto(m, 2)}·10${sup}`;
 }
 
 function rotuloDk(dk: number): string {
@@ -123,7 +127,8 @@ export function desenharMoody({ alt, leitura }: OpcoesMoody): string {
       p.push(`<text x="${M.esq + LX + 5}" y="${n(y(fy) + 3.5)}" font-size="${destaque ? 10.5 : 9.5}" fill="${destaque ? "var(--accent)" : "var(--ink-3)"}"${destaque ? ' font-weight="600"' : ""}>${rotuloDk(dk)}</text>`);
     }
   }
-  p.push(`<text x="${n(x(1.2e6))}" y="${n(y(colebrook(1.2e6, Infinity)) + 22)}" font-size="9.5" fill="var(--ink-3)">tubo liso</text>`);
+  // no vazio abaixo do feixe, à esquerda (à direita cruzaria a leitura de Re)
+  p.push(`<text x="${n(x(5000))}" y="${n(y(0.0155))}" font-size="9.5" fill="var(--ink-3)">tubo liso: a tracejada</text>`);
 
   // fronteira da turbulência plena (Moody): Re = 200·(D/k)/√f
   const fronteira = curvas
@@ -138,8 +143,9 @@ export function desenharMoody({ alt, leitura }: OpcoesMoody): string {
   p.push(`<text x="${n(x(3.2e5))}" y="${n(y(0.088))}" font-size="9.5" fill="var(--ink-3)">turbulência plena: f só depende de D<tspan font-size="7" dy="2">H</tspan><tspan dy="-2">/k</tspan></text>`);
 
   // rótulos das regiões
-  p.push(`<text x="${n(x(640))}" y="${n(y(0.02))}" font-size="9.5" fill="var(--ink-3)">laminar</text>`);
-  p.push(`<text x="${n(x(640))}" y="${n(y(0.02) + 13)}" font-size="9.5" fill="var(--ink-3)">f = 64/Re</text>`);
+  // embaixo, longe dos f usuais (0,02 a 0,05), que a guia horizontal da leitura atravessa
+  p.push(`<text x="${n(x(640))}" y="${n(y(0.0125))}" font-size="9.5" fill="var(--ink-3)">laminar</text>`);
+  p.push(`<text x="${n(x(640))}" y="${n(y(0.0125) + 13)}" font-size="9.5" fill="var(--ink-3)">f = 64/Re</text>`);
   p.push(`<text x="${n((x(2000) + x(2400)) / 2)}" y="${M.cima + LY - 6}" font-size="8.5" fill="var(--warn)" text-anchor="middle" transform="rotate(-90 ${n((x(2000) + x(2400)) / 2)} ${M.cima + LY - 6})">transição</text>`);
 
   // moldura e eixos
@@ -162,8 +168,8 @@ export function desenharMoody({ alt, leitura }: OpcoesMoody): string {
     p.push(`<line x1="${n(px)}" y1="${M.cima + LY}" x2="${n(px)}" y2="${n(py)}" stroke="var(--accent)" stroke-width="1.3" stroke-dasharray="5 3"/>`);
     p.push(`<line x1="${n(px)}" y1="${n(py)}" x2="${M.esq}" y2="${n(py)}" stroke="var(--accent)" stroke-width="1.3" stroke-dasharray="5 3"/>`);
     p.push(`<circle cx="${n(px)}" cy="${n(py)}" r="4" fill="var(--accent)"/>`);
-    p.push(`<text x="${n(px + 5)}" y="${M.cima + LY - 6}" font-size="10.5" fill="var(--accent)" font-weight="600">Re = ${potencia(leitura.re)}</text>`);
-    p.push(`<text x="${n(px - 8)}" y="${n(py - 7)}" font-size="10.5" fill="var(--accent)" font-weight="600" text-anchor="end">f ≈ ${virgula(f, 3)}</text>`);
+    p.push(`<text x="${n(px + 5)}" y="${M.cima + LY - 6}" font-size="10.5" fill="var(--accent)" font-weight="600" ${AUREOLA}>Re = ${potencia(leitura.re)}</text>`);
+    p.push(`<text x="${n(px - 8)}" y="${n(py - 7)}" font-size="10.5" fill="var(--accent)" font-weight="600" text-anchor="end" ${AUREOLA}>f ≈ ${enxuto(f, 3)}</text>`);
   }
 
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(alt)}" xmlns="http://www.w3.org/2000/svg">${p.join("")}</svg>`;
