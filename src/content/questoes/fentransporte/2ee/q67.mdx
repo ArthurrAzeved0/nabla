@@ -88,22 +88,22 @@ O trecho (3)–(4) está **na cota do nível do reservatório (8)**, $0{,}5\ \ma
 </Figura>
 
 <Gabarito>
-**a)** Com $D_H/K = 40$, no diagrama de Moody-Rouse $f \approx 0{,}053$; comprimento total $L = 3\ \mathrm{m}$ e $\sum k_s = 15{,}5$:
+**a)** Com $D_H/K = 40$, no diagrama de Moody-Rouse $f \approx 0{,}053$; comprimento total $L = 4\ \mathrm{m}$ (os três trechos horizontais e as duas subidas de $0{,}5\ \mathrm{m}$) e $\sum k_s = 15{,}5$:
 
 $$
 H_{p_{0,8}} = h_f + h_s = \left(f\,\frac{L}{D_H} + \sum k_s\right)\frac{v^2}{2g} = 2{,}0
 \quad\Longrightarrow\quad
-v = \sqrt{\frac{2 \times 10 \times 2{,}0}{2{,}68 + 15{,}5}} \approx \mathbf{1{,}48\ m/s}
+v = \sqrt{\frac{2 \times 10 \times 2{,}0}{3{,}53 + 15{,}5}} \approx \mathbf{1{,}45\ m/s}
 $$
 
 $$
-Q = v\,\frac{\pi D^2}{4} \approx 4{,}2 \times 10^{-3}\ \mathrm{m^3/s} = \mathbf{4{,}2\ L/s}
+Q = v\,\frac{\pi D^2}{4} \approx 4{,}1 \times 10^{-3}\ \mathrm{m^3/s} = \mathbf{4{,}1\ L/s}
 $$
 
-**b)** $\dfrac{p_A}{\gamma} = 2{,}5 - 0{,}5 - \dfrac{v^2}{2g}\left(1 + k_1 + k_2 + k_3 + f\,\dfrac{1{,}5}{0{,}06}\right) = 2{,}0 - 0{,}110 \times 4{,}84 \approx 1{,}47\ \mathrm{m}$
+**b)** $\dfrac{p_A}{\gamma} = 2{,}5 - 0{,}5 - \dfrac{v^2}{2g}\left(1 + k_1 + k_2 + k_3 + f\,\dfrac{2{,}0}{0{,}06}\right) = 2{,}0 - 0{,}105 \times 5{,}27 \approx 1{,}45\ \mathrm{m}$
 
 $$
-p_A \approx \mathbf{14{,}7\ kPa}
+p_A \approx \mathbf{14{,}5\ kPa}
 $$
 </Gabarito>
 
@@ -126,7 +126,7 @@ Os $2\ \mathrm{m}$ de desnível são **inteiramente gastos** em perdas. É isso 
 - $h_s = \sum k_s\,\dfrac{v^2}{2g}$ — perdas **localizadas** (método dos coeficientes); os $k_1, \dots, k_7$ do enunciado são esses $k_s$
 - $H_{p_{0,8}} = h_f + h_s = \left(f\,\dfrac{L}{D_H} + \sum k_s\right)\dfrac{v^2}{2g}$ — a carga cinética em evidência, como nos slides
 - $\sum k_s = k_1 + k_2 + k_3 + k_4 + k_5 + k_6 + k_7 = 0{,}5 + 4 \times 1 + 10 + 1 = 15{,}5$
-- $L = L_{1,2} + L_{2,5} + L_{5,7} = 3\ \mathrm{m}$
+- $L = L_{1,2} + L_{2,5} + L_{5,7} + 2 \times 0{,}5 = 4\ \mathrm{m}$ — os três trechos horizontais **e** as duas subidas de $0{,}5\ \mathrm{m}$, de (2) a (3) e de (4) a (5): o fluido atrita na parede também quando sobe e desce
 - $K = 0{,}15\ \mathrm{cm}$ é a **rugosidade absoluta** (nos slides, $k$), e o que entra no diagrama é a rugosidade relativa $D_H/K = 6/0{,}15 = 40$: tubo **muito rugoso**
 
 </Caixa>
@@ -144,54 +144,49 @@ Na fórmula, que é o que o diagrama desenha nessa região: $1/\sqrt f = 2\log(3
 **Passo 3 — a) a velocidade.**
 
 $$
-f\,\frac{L}{D_H} = 0{,}053 \times \frac{3}{0{,}06} = 2{,}68
+f\,\frac{L}{D_H} = 0{,}053 \times \frac{4}{0{,}06} = 3{,}53
 $$
 
 $$
-2{,}0 = (2{,}68 + 15{,}5)\,\frac{v^2}{2 \times 10}
+2{,}0 = (3{,}53 + 15{,}5)\,\frac{v^2}{2 \times 10}
 \qquad\Longrightarrow\qquad
-v = \sqrt{\frac{40}{18{,}18}} \approx 1{,}48\ \mathrm{m/s}
+v = \sqrt{\frac{40}{19{,}03}} \approx 1{,}45\ \mathrm{m/s}
 $$
 
-**Conferência do $f$:** $Re = v\,D_H/\nu = 1{,}48 \times 0{,}06/10^{-6} \approx 8{,}9 \times 10^4 \geq 2400$, turbulento. No diagrama, $Re = 8{,}9 \times 10^4$ já está na parte horizontal da curva $D_H/K = 40$: o $f$ lido vale, e a velocidade não muda.
+**Conferência do $f$:** $Re = v\,D_H/\nu = 1{,}45 \times 0{,}06/10^{-6} \approx 8{,}7 \times 10^4 \geq 2400$, turbulento. No diagrama, $Re = 8{,}7 \times 10^4$ já está na parte horizontal da curva $D_H/K = 40$: o $f$ lido vale, e a velocidade não muda.
 
 $$
-\boxed{v \approx 1{,}48\ \mathrm{m/s}
+\boxed{v \approx 1{,}45\ \mathrm{m/s}
 \qquad
-Q = 1{,}48 \times \frac{\pi\,(0{,}06)^2}{4} \approx 4{,}2 \times 10^{-3}\ \mathrm{m^3/s} = 4{,}2\ \mathrm{L/s}}
+Q = 1{,}45 \times \frac{\pi\,(0{,}06)^2}{4} \approx 4{,}1 \times 10^{-3}\ \mathrm{m^3/s} = 4{,}1\ \mathrm{L/s}}
 $$
 
-Repare que as perdas **localizadas** ($\sum k_s = 15{,}5$) pesam quase seis vezes mais que a distribuída ($2{,}68$): em tubulação curta com muitos acessórios, são elas que mandam, e o registro sozinho ($k_6 = 10$) responde por mais da metade.
+Repare que as perdas **localizadas** ($\sum k_s = 15{,}5$) pesam mais de quatro vezes a distribuída ($3{,}53$): em tubulação curta com muitos acessórios, são elas que mandam, e o registro sozinho ($k_6 = 10$) responde por mais da metade.
 
-**Passo 4 — b) a pressão em A.** Energia de (0) até A. No caminho há a entrada (1), as curvas (2) e (3), e $1{,}5\ \mathrm{m}$ de tubo: $1\ \mathrm{m}$ de (1) a (2) e metade do trecho $L_{2,5}$.
+**Passo 4 — b) a pressão em A.** Energia de (0) até A. No caminho há a entrada (1), as curvas (2) e (3), e $2{,}0\ \mathrm{m}$ de tubo: $1\ \mathrm{m}$ de (1) a (2), a subida de $0{,}5\ \mathrm{m}$ de (2) a (3) e metade do trecho horizontal (3)–(4).
 
 $$
-\frac{v^2}{2g} = \frac{1{,}484^2}{20} = 0{,}110\ \mathrm{m}
+\frac{v^2}{2g} = \frac{1{,}450^2}{20} = 0{,}105\ \mathrm{m}
 $$
 
 $$
 H_0 = H_A + H_{p_{0,A}}
 \qquad\text{com}\qquad
-H_{p_{0,A}} = \left(f\,\frac{1{,}5}{D_H} + k_1 + k_2 + k_3\right)\frac{v^2}{2g}
+H_{p_{0,A}} = \left(f\,\frac{2{,}0}{D_H} + k_1 + k_2 + k_3\right)\frac{v^2}{2g}
 $$
 
 $$
-H_0 = z_A + \frac{v^2}{2g} + \frac{p_A}{\gamma} + \left(f\,\frac{1{,}5}{D_H} + k_1 + k_2 + k_3\right)\frac{v^2}{2g}
+H_0 = z_A + \frac{v^2}{2g} + \frac{p_A}{\gamma} + \left(f\,\frac{2{,}0}{D_H} + k_1 + k_2 + k_3\right)\frac{v^2}{2g}
 $$
 
 $$
-2{,}5 = 0{,}5 + \frac{p_A}{\gamma} + 0{,}110 \times (1 + 0{,}5 + 1 + 1 + 1{,}34)
+2{,}5 = 0{,}5 + \frac{p_A}{\gamma} + 0{,}105 \times (1 + 0{,}5 + 1 + 1 + 1{,}77)
 $$
 
 $$
-\frac{p_A}{\gamma} = 2{,}0 - 0{,}110 \times 4{,}84 = 1{,}47\ \mathrm{m}
+\frac{p_A}{\gamma} = 2{,}0 - 0{,}105 \times 5{,}27 = 1{,}45\ \mathrm{m}
 \qquad\Longrightarrow\qquad
-\boxed{p_A \approx 14{,}7\ \mathrm{kPa}}
+\boxed{p_A \approx 14{,}5\ \mathrm{kPa}}
 $$
 
-<Caixa tipo="dica" rotulo="E os trechos verticais?">
-
-O enunciado dá só $L_{1,2}$, $L_{2,5}$ e $L_{5,7}$, e a solução usa a soma, $3\ \mathrm{m}$. Se as subidas de $0{,}5\ \mathrm{m}$ em (2)–(3) e (4)–(5) fossem somadas como tubo a mais ($L = 4\ \mathrm{m}$, e $2\ \mathrm{m}$ até A), sairia $v = 1{,}45\ \mathrm{m/s}$, $Q = 4{,}1\ \mathrm{L/s}$ e $p_A = 14{,}5\ \mathrm{kPa}$: diferença de 2%, porque a perda distribuída é a parcela pequena.
-
-</Caixa>
 </Passos>
