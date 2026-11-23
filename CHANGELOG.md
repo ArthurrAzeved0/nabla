@@ -25,13 +25,16 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Adicionado
 
-- **O diagrama de Moody-Rouse aparece na questão que o usa.** A q67 do 2º EE
-  de Fenômenos lia $f \approx 0{,}053$ "no diagrama" sem mostrá-lo; agora o
-  diagrama está no passo, com a curva $D_H/k = 40$, o $Re$ da questão e o $f$
-  lido em destaque. As curvas são geradas no build pela equação de
+- **O diagrama de Moody-Rouse aparece nas questões que o usam.** Quatro
+  questões de Fenômenos liam o $f$ "no diagrama" sem mostrá-lo; agora o
+  diagrama está no passo, com a curva de rugosidade relativa, o $Re$ da questão
+  e o $f$ lido em destaque: a q27 do 1º EE ($d/\varepsilon = 2000$,
+  $f \approx 0{,}017$), as q44 ($1000$, $0{,}02$) e q67 ($40$, $0{,}053$) do
+  2º EE, e a q68 do 2º EE, que faz a leitura ao contrário — de $Re$ e $f$ para
+  a curva $D_H/K \approx 2000$. As curvas são geradas no build pela equação de
   Colebrook-White, com a laminar até $Re = 2000$, a transição até $2400$ e a
-  fronteira da turbulência plena, e o mesmo componente serve para as outras
-  questões de perda distribuída.
+  fronteira da turbulência plena. Os rótulos da leitura têm uma auréola da cor
+  do fundo, para não serem riscados pelas curvas que cruzam.
 
 ### Corrigido
 
