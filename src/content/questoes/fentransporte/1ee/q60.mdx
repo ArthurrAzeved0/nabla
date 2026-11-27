@@ -1,0 +1,102 @@
+---
+origem: "2026.2"
+tema: "Flutuação · Bloco de gelo cúbico no mar"
+temaId: flutuacao
+pontos: 1,60 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q60.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere um grande bloco de gelo cúbico flutuando na água do mar. As densidades relativas do gelo e da água do mar são $0{,}92$ e $1{,}025$, respectivamente. Se uma parte de $10\ \mathrm{cm}$ de altura do bloco de gelo ficar acima da superfície da água, determine a altura do bloco de gelo abaixo da superfície.
+
+<Figura>
+  <svg viewBox="0 0 360 220" role="img" aria-label="Bloco de gelo cúbico flutuando no mar, com 10 cm acima da superfície e a altura h abaixo dela">
+    <rect x="30" y="60" width="300" height="140" fill="var(--accent-soft)" opacity="0.55" stroke="none"/>
+    <line x1="30" y1="60" x2="330" y2="60" stroke="var(--accent)" stroke-width="1.6"/>
+    <text x="40" y="100" font-size="13" fill="var(--accent)">Mar</text>
+    <rect x="110" y="46" width="140" height="140" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.8"/>
+    <text x="140" y="120" font-size="12" fill="var(--ink-2)">Bloco de gelo</text>
+    <text x="158" y="136" font-size="12" fill="var(--ink-2)">cúbico</text>
+    {/* cotas */}
+    <line x1="250" y1="46" x2="290" y2="46" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="250" y1="186" x2="290" y2="186" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="280" y1="46" x2="280" y2="60" stroke="var(--ink-3)" stroke-width="1"/>
+    <text x="290" y="57" font-size="11" fill="var(--ink-3)">10 cm</text>
+    <line x1="280" y1="66" x2="280" y2="180" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="280,60 277,69 283,69" fill="var(--ink-3)"/>
+    <polygon points="280,186 277,177 283,177" fill="var(--ink-3)"/>
+    <text x="288" y="128" font-size="13" font-style="italic" fill="var(--ink-3)">h</text>
+  </svg>
+</Figura>
+
+<Gabarito>
+$h \approx 87{,}6\ \mathrm{cm}$ (aresta do cubo $\approx 97{,}6\ \mathrm{cm}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — o equilíbrio.** Flutuando parado, o bloco tem peso igual ao empuxo:
+
+$$
+P = F_e
+\qquad\Longrightarrow\qquad
+\gamma_{\text{gelo}}\,V_{\text{total}} = \gamma_{\text{mar}}\,V_{\text{submerso}}
+$$
+
+**Passo 2 — os volumes de um cubo.** Com aresta $a$, a seção horizontal é $a^2$ em qualquer altura, e a parte submersa tem altura $h = a - 0{,}10$:
+
+$$
+V_{\text{total}} = a^2 \cdot a
+\qquad
+V_{\text{submerso}} = a^2 \cdot h
+$$
+
+A área $a^2$ se cancela, e sobra uma relação só entre alturas:
+
+$$
+\delta_{\text{gelo}}\,a = \delta_{\text{mar}}\,h
+\qquad\Longrightarrow\qquad
+0{,}92\,a = 1{,}025\,(a - 0{,}10)
+$$
+
+As densidades relativas podem entrar no lugar dos pesos específicos porque o $\gamma_{\text{água}}$ de referência aparece dos dois lados e se cancela.
+
+**Passo 3 — resolver.**
+
+$$
+1{,}025\,a - 0{,}92\,a = 0{,}1025
+\qquad\Longrightarrow\qquad
+a = \frac{0{,}1025}{0{,}105} = 0{,}976\ \mathrm{m}
+$$
+
+$$
+\boxed{h = a - 0{,}10 = 0{,}876\ \mathrm{m} \approx 87{,}6\ \mathrm{cm}}
+$$
+
+**Conferência.** A fração submersa de um corpo flutuante é a razão das densidades:
+
+$$
+\frac{h}{a} = \frac{0{,}92}{1{,}025} = 0{,}898
+\qquad
+\frac{0{,}876}{0{,}976} = 0{,}898
+\;\;\checkmark
+$$
+
+Quase $90\,\%$ do gelo fica debaixo d'água — é a "ponta do iceberg".
+
+<Caixa tipo="dica" rotulo="Por que o cubo facilita">
+
+Num corpo de seção constante na vertical (cubo, cilindro em pé, prisma), a fração submersa em **volume** é a mesma fração em **altura**. Por isso a conta se reduz a alturas e a aresta sai de uma equação de primeiro grau. Numa esfera ou num cone isso não vale.
+
+</Caixa>
+</Passos>
