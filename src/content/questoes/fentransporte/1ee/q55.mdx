@@ -1,0 +1,80 @@
+---
+origem: "2026.1"
+tema: "Empuxo · Massa aparente de um bloco de concreto no fundo de um lago"
+temaId: peso-aparente
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q55.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Um bloco de concreto com massa de $180\ \mathrm{kg}$ ($\rho_{\text{bloco}} = 2500\ \mathrm{kg/m^3}$) é solto em um lago. Determine a massa aparente do bloco, considerando que um homem consegue levantá-lo do fundo do lago. Considerar $g = 9{,}81\ \mathrm{m/s^2}$ e $\rho_{\text{água}} = 1000\ \mathrm{kg/m^3}$.
+
+<Gabarito>
+$m_{ap} = 108\ \mathrm{kg}$ (peso aparente $\approx 1059{,}5\ \mathrm{N}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — o que é massa aparente.** Debaixo d'água, o homem não precisa vencer o peso inteiro do bloco: a água ajuda com o empuxo. O que ele sente é o **peso aparente**,
+
+$$
+P_{ap} = P - F_e
+$$
+
+e a massa aparente é esse peso dividido por $g$ — a massa que, fora d'água, pesaria o mesmo.
+
+**Passo 2 — o volume do bloco**, que é o volume de água deslocada (ele está todo submerso):
+
+$$
+V = \frac{m}{\rho_{\text{bloco}}} = \frac{180}{2500} = 0{,}072\ \mathrm{m^3}
+$$
+
+**Passo 3 — peso e empuxo.**
+
+$$
+P = m\,g = 180 \times 9{,}81 = 1765{,}8\ \mathrm{N}
+$$
+
+$$
+F_e = \rho_{\text{água}}\,g\,V = 1000 \times 9{,}81 \times 0{,}072 = 706{,}3\ \mathrm{N}
+$$
+
+**Passo 4 — peso e massa aparentes.**
+
+$$
+P_{ap} = 1765{,}8 - 706{,}3 = 1059{,}5\ \mathrm{N}
+\qquad\Longrightarrow\qquad
+\boxed{m_{ap} = \frac{P_{ap}}{g} = 108\ \mathrm{kg}}
+$$
+
+**Conferência pela fórmula direta.** Dividindo tudo por $g$:
+
+$$
+m_{ap} = m\left(1 - \frac{\rho_{\text{água}}}{\rho_{\text{bloco}}}\right) = 180\left(1 - \frac{1000}{2500}\right) = 180 \times 0{,}6 = 108\ \mathrm{kg}
+\;\;\checkmark
+$$
+
+O bloco "perde" $40\,\%$ da massa porque a água tem $40\,\%$ da densidade do concreto. O $g$ se cancela: a massa aparente não depende dele.
+
+<Caixa tipo="macete" rotulo="A fração que some é a razão das densidades">
+
+Para qualquer corpo totalmente submerso,
+
+$$
+\frac{P_{ap}}{P} = 1 - \frac{\rho_{\text{fluido}}}{\rho_{\text{corpo}}}
+$$
+
+Se $\rho_{\text{corpo}} < \rho_{\text{fluido}}$ a razão fica negativa: o corpo não afunda, flutua.
+
+</Caixa>
+</Passos>
