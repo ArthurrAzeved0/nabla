@@ -25,6 +25,12 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Adicionado
 
+- **O Teste de 2026.2 de Complementos, o simulado do 2º EE.** Cinco dos seis
+  quesitos repetem, palavra por palavra, o 2º EE de 2026.1; o único novo virou
+  a q35 do 2º EE: a barra isolada com o degrau como temperatura inicial, cuja
+  resposta é $u(x,t) = 1$ — o trecho do degrau em $[-\pi,0)$ fica fora da
+  barra. As q18, q19, q20, q21 e q23 ganharam a nota "Caiu de novo", com o
+  número do quesito no teste.
 - **O diagrama de Moody-Rouse aparece nas questões que o usam.** Quatro
   questões de Fenômenos liam o $f$ "no diagrama" sem mostrá-lo; agora o
   diagrama está no passo, com a curva de rugosidade relativa, o $Re$ da questão
