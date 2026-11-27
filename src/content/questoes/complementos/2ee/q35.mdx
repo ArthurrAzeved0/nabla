@@ -1,0 +1,126 @@
+---
+origem: "Teste · 2026.2"
+tema: "EDP · Barra isolada com o degrau como temperatura inicial"
+temaId: problema-do-calor
+pontos: 3,0 pts
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q35.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere uma barra, termicamente isolada em suas extremidades, digamos, à temperatura de $0\ ^\circ\mathrm{C}$. Determine, explicando os detalhes não triviais, uma função $u(x,t)$ tal que
+
+$$
+\begin{cases}
+u_t = k\,u_{xx}, & \text{em } \mathbb{R}\\
+u_x(0,t) = u_x(\pi,t) = 0, & t > 0\\
+u(x,0) = f(x) = \begin{cases} 1, & 0 \le x \le \pi\\ 0, & -\pi \le x < 0\end{cases}
+\end{cases}
+$$
+
+<Gabarito>
+$$
+u(x,t) = 1
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — onde está a barra.** As condições de contorno são impostas em $x = 0$ e $x = \pi$: a barra ocupa $[0,\pi]$, com $L = \pi$. Nesse trecho, $f(x) = 1$. O pedaço $f = 0$ em $[-\pi,0)$ fica **fora da barra** e não entra em conta nenhuma — o coeficiente de Fourier só integra de $0$ a $L$.
+
+**Passo 2 — ler o contorno.** $u_x = 0$ nas duas pontas é condição de **Neumann**: fluxo de calor nulo, extremidades **isoladas**. Isso decide a família de autofunções: **cossenos**, com o modo constante incluído.
+
+**Passo 3 — separar variáveis.** Com $u = X(x)\,T(t)$:
+
+$$
+X\,T' = k\,X''\,T
+\qquad\Longrightarrow\qquad
+\frac{T'}{k\,T} = \frac{X''}{X} = -\lambda
+$$
+
+O lado esquerdo só depende de $t$ e o direito só de $x$; se são iguais para todo $x$ e todo $t$, os dois são a mesma **constante**.
+
+**Passo 4 — os três casos de $\lambda$**, para $X'' + \lambda X = 0$ com $X'(0) = X'(\pi) = 0$:
+
+**$\lambda < 0$** ($\lambda = -\mu^2$): $X = A\cosh(\mu x) + B\operatorname{senh}(\mu x)$. $X'(0) = B\mu = 0$ dá $B = 0$, e $X'(\pi) = A\mu\operatorname{senh}(\mu\pi) = 0$ dá $A = 0$. Só a solução nula — descartado.
+
+**$\lambda = 0$**: $X = A + Bx$, e $X' = B = 0$. Sobra $X = A$ **constante**, que satisfaz as duas condições. **Este caso conta.**
+
+**$\lambda > 0$** ($\lambda = \mu^2$): $X = A\cos(\mu x) + B\operatorname{sen}(\mu x)$. $X'(0) = B\mu = 0$ dá $B = 0$; $X'(\pi) = -A\mu\operatorname{sen}(\mu\pi) = 0$ exige $\operatorname{sen}(\mu\pi) = 0$, isto é, $\mu = n$:
+
+$$
+\lambda_n = n^2,
+\qquad
+X_n(x) = \cos(nx),
+\qquad n = 0, 1, 2, \dots
+$$
+
+**Passo 5 — o tempo.** $T' = -k n^2 T$ dá $T_n(t) = e^{-kn^2t}$; para $n = 0$, $T_0 = 1$.
+
+**Passo 6 — a solução geral.** Somando os modos (a equação é linear e homogênea):
+
+$$
+u(x,t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n\cos(nx)\,e^{-kn^2t},
+\qquad
+a_n = \frac{2}{\pi}\int_0^{\pi}f(x)\cos(nx)\,dx
+$$
+
+**Passo 7 — os coeficientes**, com $f = 1$ em $[0,\pi]$:
+
+$$
+a_0 = \frac2\pi\int_0^\pi 1\,dx = \frac2\pi\cdot\pi = 2
+\qquad\Longrightarrow\qquad
+\frac{a_0}{2} = 1
+$$
+
+$$
+a_n = \frac2\pi\int_0^\pi\cos(nx)\,dx = \frac2\pi\left[\frac{\operatorname{sen}(nx)}{n}\right]_0^\pi = \frac{2}{\pi}\cdot\frac{\operatorname{sen}(n\pi)}{n} = 0,
+\qquad n \ge 1
+$$
+
+Todos os modos que oscilam somem. Sobra só o termo constante:
+
+$$
+\boxed{\;u(x,t) = 1\;}
+$$
+
+**Conferência.** $u = 1$ dá $u_t = 0$ e $u_{xx} = 0$, logo $u_t = k\,u_{xx}$ ✔. $u_x = 0$ em $x = 0$ e $x = \pi$ ✔. $u(x,0) = 1 = f(x)$ em $[0,\pi]$ ✔.
+
+**O detalhe não trivial, por escrito.** A barra começa toda a $1\ ^\circ\mathrm{C}$ e está isolada: não há diferença de temperatura para o calor correr, e nenhum calor entra ou sai pelas pontas. Ela fica a $1\ ^\circ\mathrm{C}$ para sempre. É o caso particular do resultado geral da barra isolada,
+
+$$
+\lim_{t\to\infty}u(x,t) = \frac{a_0}{2} = \frac1L\int_0^L f(x)\,dx
+$$
+
+em que a temperatura final é a **média** do perfil inicial — aqui a média de uma constante, que é ela mesma.
+
+<Caixa tipo="dica" rotulo="O f dado em [−π, π] é a armadilha">
+
+O enunciado define $f$ também em $[-\pi,0)$, o que convida a calcular a série de Fourier **completa** do degrau em $[-\pi,\pi]$, com termo médio $\tfrac12$ e senos $\tfrac{1-(-1)^n}{n\pi}$. Esse caminho não satisfaz o contorno: senos têm derivada $\ne 0$ em $x=0$, e $u_x(0,t) = 0$ deixa de valer.
+
+Quem manda é o contorno. A barra vai de $0$ a $\pi$, a solução é de cossenos, e os coeficientes integram só em $[0,\pi]$.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="O mesmo problema com Dirichlet daria outra resposta">
+
+Se as pontas fossem mantidas a $0\ ^\circ\mathrm{C}$ ($u = 0$ em vez de $u_x = 0$), a mesma barra a $1\ ^\circ\mathrm{C}$ esfriaria:
+
+$$
+u(x,t) = \frac4\pi\sum_{n\ \text{ímpar}}\frac{\operatorname{sen}(nx)}{n}\,e^{-kn^2t}
+\;\xrightarrow{\;t\to\infty\;}\; 0
+$$
+
+Isolada, ela não muda. Ler o contorno antes de qualquer conta é o que separa as duas respostas — ver a q22 desta unidade, que é a versão geral deste problema.
+
+</Caixa>
+</Passos>
