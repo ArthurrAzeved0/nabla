@@ -25,6 +25,15 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Adicionado
 
+- **Os 1º EE de 2026.1 e 2026.2 de Fenômenos, do Prof. Marcos Barbosa.** Nove
+  questões novas no 1º EE, q52 a q60: os conceitos de propriedades e de
+  classificação dos escoamentos, as duas versões do óleo entre placas
+  ($36$ e $48\ \mathrm{N/m^2}$), a massa aparente do bloco de concreto, o canto
+  arredondado de um tanque com o centro do arco na superfície, a comporta que
+  gira contra um gás pressurizado ($z_{min} \approx 6{,}27\ \mathrm{m}$) e o
+  bloco de gelo no mar. As outras quatro questões das duas provas são da 1ª
+  lista de 2026.2 e viraram notas "Caiu de novo" nas q43, q44, q47 e q49, com
+  a conta refeita onde os dados mudaram.
 - **O Teste de 2026.2 de Complementos, o simulado do 2º EE.** Cinco dos seis
   quesitos repetem, palavra por palavra, o 2º EE de 2026.1; o único novo virou
   a q35 do 2º EE: a barra isolada com o degrau como temperatura inicial, cuja
