@@ -1,0 +1,57 @@
+---
+origem: "2026.1"
+tema: "Viscosidade · Tensão de cisalhamento no óleo entre duas placas"
+temaId: tensao-de-cisalhamento
+pontos: 0,50 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q54.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Com a finalidade de reduzir o atrito entre duas placas planas paralelas, um óleo com viscosidade dinâmica igual a $0{,}027\ \mathrm{N\cdot s/m^2}$ e densidade de $700\ \mathrm{kg/m^3}$ é aplicado entre elas. As placas estão situadas a $1{,}5\ \mathrm{mm}$ de distância uma da outra e a placa superior move-se com velocidade de $7{,}2\ \mathrm{km/h}$, enquanto a placa inferior está imóvel. Determinar a tensão de cisalhamento aproximada, no sistema SI, que agirá sobre o óleo. **Justifique com os cálculos.** Dados: $\tau = \mu\dfrac{V_0}{\varepsilon}$; $\nu = \dfrac{\mu}{\rho}$.
+
+**[A]** $36\ \mathrm{N/m^2}$ &nbsp;&nbsp; **[B]** $3{,}6\ \mathrm{N/m^2}$ &nbsp;&nbsp; **[C]** $129{,}6\ \mathrm{N/m^2}$ &nbsp;&nbsp; **[D]** $0{,}036\ \mathrm{N/m^2}$ &nbsp;&nbsp; **[E]** $12{,}96\ \mathrm{N/m^2}$
+
+<Gabarito>
+**[A]** $\tau = 36\ \mathrm{N/m^2}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — tudo no SI.** As duas conversões que a questão esconde:
+
+$$
+V_0 = 7{,}2\ \mathrm{km/h} = \frac{7{,}2}{3{,}6} = 2\ \mathrm{m/s}
+\qquad
+\varepsilon = 1{,}5\ \mathrm{mm} = 1{,}5\times10^{-3}\ \mathrm{m}
+$$
+
+**Passo 2 — a lei de Newton da viscosidade.** Com a folga pequena, o perfil de velocidade no óleo é linear, de $0$ na placa parada a $V_0$ na que se move, e o gradiente é $V_0/\varepsilon$:
+
+$$
+\tau = \mu\,\frac{V_0}{\varepsilon} = 0{,}027 \times \frac{2}{1{,}5\times10^{-3}} = 0{,}027 \times 1333{,}3
+$$
+
+$$
+\boxed{\tau = 36\ \mathrm{N/m^2}}
+$$
+
+Opção **[A]**.
+
+**Passo 3 — a densidade não entra.** A tensão depende da viscosidade **dinâmica**, que já foi dada. Os $700\ \mathrm{kg/m^3}$ e a fórmula de $\nu$ só serviriam se o enunciado desse a viscosidade cinemática.
+
+<Caixa tipo="dica" rotulo="As alternativas erradas são erros de unidade">
+
+$129{,}6$ é o que sai usando $7{,}2$ como se fosse $\mathrm{m/s}$; $0{,}036$ é o que sai esquecendo de converter os milímetros. As alternativas são montadas com os deslizes mais comuns — converter primeiro, calcular depois, evita todos eles.
+
+</Caixa>
+</Passos>
