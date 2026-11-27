@@ -1,0 +1,138 @@
+---
+origem: "2026.2"
+tema: "Comporta · Profundidade mínima para a comporta girar contra um gás pressurizado"
+temaId: comporta
+pontos: 1,60 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q59.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Determinar o mínimo valor de $z$ para o qual a comporta da figura girará em torno do ponto O, se a comporta é retangular e tem largura $2{,}00\ \mathrm{m}$.
+
+<Figura>
+  <svg viewBox="0 0 460 250" role="img" aria-label="Tanque de água com profundidade z do lado esquerdo; à direita, um teto baixo a 5 metros do fundo cobre a água até uma comporta vertical de 5 metros, articulada no topo, no ponto O. Do outro lado da comporta há gás a 46 kPa. No pé da comporta, do lado da água, um batente impede que ela gire para a esquerda">
+    {/* água: a parte funda e a parte sob o teto */}
+    <path d="M30 50 L200 50 L200 110 L296 110 L296 210 L30 210 Z" fill="var(--accent-soft)" opacity="0.55" stroke="none"/>
+    <line x1="30" y1="50" x2="200" y2="50" stroke="var(--accent)" stroke-width="1.6"/>
+    <polygon points="102,32 120,32 111,44" fill="none" stroke="var(--ink-2)" stroke-width="1.3"/>
+    <line x1="98" y1="50" x2="124" y2="50" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="104" y1="57" x2="118" y2="57" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="60" y="150" font-size="13" fill="var(--accent)">γ = 10 000 N/m³</text>
+    {/* gás */}
+    <rect x="304" y="110" width="116" height="100" fill="var(--line-2)" opacity="0.35" stroke="none"/>
+    <text x="345" y="166" font-size="13" fill="var(--ink-2)">gás</text>
+    {/* paredes, teto e fundo */}
+    <line x1="30" y1="30" x2="30" y2="210" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="200" y1="30" x2="200" y2="110" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="200" y1="110" x2="420" y2="110" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="420" y1="110" x2="420" y2="210" stroke="var(--ink-2)" stroke-width="2"/>
+    <line x1="30" y1="210" x2="420" y2="210" stroke="var(--ink-2)" stroke-width="2"/>
+    {/* manômetro */}
+    <line x1="372" y1="98" x2="372" y2="110" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <circle cx="372" cy="86" r="12" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="366" y1="92" x2="378" y2="80" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="390" y="90" font-size="12" fill="var(--ink-2)">p = 46 kPa</text>
+    {/* comporta articulada em O e o batente do lado da água */}
+    <rect x="296" y="110" width="8" height="100" fill="var(--warn)" opacity="0.85"/>
+    <circle cx="300" cy="110" r="5" fill="var(--ink-2)"/>
+    <text x="308" y="102" font-size="13" font-weight="600" fill="var(--ink-2)">O</text>
+    <rect x="284" y="200" width="12" height="10" fill="var(--ink-3)"/>
+    {/* cotas */}
+    <line x1="14" y1="56" x2="14" y2="204" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="14,50 11,59 17,59" fill="var(--ink-3)"/>
+    <polygon points="14,210 11,201 17,201" fill="var(--ink-3)"/>
+    <text x="18" y="135" font-size="13" font-style="italic" fill="var(--ink-3)">z</text>
+    <line x1="250" y1="116" x2="250" y2="204" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="250,110 247,119 253,119" fill="var(--ink-3)"/>
+    <polygon points="250,210 247,201 253,201" fill="var(--ink-3)"/>
+    <text x="224" y="164" font-size="12" fill="var(--ink-3)">5 m</text>
+  </svg>
+  <figcaption>
+
+A comporta tem $5\ \mathrm{m}$ de altura, do teto ao fundo, e é articulada no **topo**, em O. O batente no pé dela, do lado da água, impede que gire para a esquerda: ela só pode abrir para a direita, para dentro do gás.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$z_{min} \approx 6{,}27\ \mathrm{m}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — o critério.** Dois carregamentos empurram a comporta em sentidos opostos: a água, da esquerda para a direita, e o gás, da direita para a esquerda. O batente só segura a comporta contra o gás. Ela começa a girar em torno de O quando o momento da água supera o do gás:
+
+$$
+M_{\text{água}} = M_{\text{gás}}
+$$
+
+Comparar só as forças não basta — elas atuam em alturas diferentes, e o que gira a comporta é o momento.
+
+**Passo 2 — o lado do gás.** A pressão de um gás é **uniforme** (o peso dele é desprezível), então a resultante passa pelo **centro** da comporta, a $2{,}5\ \mathrm{m}$ de O:
+
+$$
+A = 5 \times 2 = 10\ \mathrm{m^2}
+\qquad
+F_{\text{gás}} = p\,A = 46\,000 \times 10 = 460\ \mathrm{kN}
+$$
+
+$$
+M_{\text{gás}} = 460\,000 \times 2{,}5 = 1\,150\ \mathrm{kN\cdot m}
+$$
+
+**Passo 3 — o lado da água.** O topo da comporta (em O) está à profundidade $z - 5$, e o centro dela a $z - 2{,}5$:
+
+$$
+F_{\text{água}} = \gamma\,h_{CG}\,A = 10\,000\,(z - 2{,}5)(10) = 100\,000\,(z - 2{,}5)
+$$
+
+A resultante fica abaixo do CG:
+
+$$
+y_{CP} - y_{CG} = \frac{I_{CG}}{h_{CG}\,A} = \frac{2 \times 5^3/12}{(z - 2{,}5)(10)} = \frac{2{,}083}{z - 2{,}5}
+$$
+
+Então o braço até O é $2{,}5 + \dfrac{2{,}083}{z - 2{,}5}$, e
+
+$$
+M_{\text{água}} = 100\,000\,(z - 2{,}5)\left[2{,}5 + \frac{2{,}083}{z - 2{,}5}\right] = 250\,000\,(z - 2{,}5) + 208\,333
+$$
+
+**Passo 4 — igualar e resolver.**
+
+$$
+250\,000\,(z - 2{,}5) + 208\,333 = 1\,150\,000
+$$
+
+$$
+z - 2{,}5 = \frac{941\,667}{250\,000} = 3{,}767
+\qquad\Longrightarrow\qquad
+\boxed{z_{min} \approx 6{,}27\ \mathrm{m}}
+$$
+
+**Conferência por integração direta.** A pressão a uma distância $s$ abaixo de O é $\gamma(z - 5 + s)$, com braço $s$:
+
+$$
+M_{\text{água}} = \gamma\,b\int_0^5 (z - 5 + s)\,s\,ds = 20\,000\left[\frac{25}{2}(z - 5) + \frac{125}{3}\right]
+$$
+
+Com $z = 6{,}267$: $20\,000\,(15{,}83 + 41{,}67) = 1\,150\,000\ \mathrm{N\cdot m}$ ✔
+
+**Leitura física.** A $z = 6{,}27\ \mathrm{m}$, a pressão da água no topo da comporta é só $12{,}7\ \mathrm{kPa}$ e no pé é $62{,}7\ \mathrm{kPa}$; a média, $37{,}7\ \mathrm{kPa}$, fica **abaixo** dos $46\ \mathrm{kPa}$ do gás. Mesmo assim a comporta gira: a água concentra a força embaixo, longe de O, e ganha no braço o que perde na força.
+
+<Caixa tipo="macete" rotulo="Gás é retângulo, líquido é trapézio">
+
+Diante de uma comporta, o diagrama de pressões de um **gás** é um retângulo (resultante no meio) e o de um **líquido** é um trapézio ou triângulo (resultante deslocada para o fundo). É essa diferença de braço que torna o momento, e não a força, o critério de abertura. A q46 desta unidade é o mesmo problema com ar comprimido e uma comporta pequena.
+
+</Caixa>
+</Passos>
