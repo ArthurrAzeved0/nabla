@@ -1,0 +1,55 @@
+---
+origem: "2026.2"
+tema: "Viscosidade · Tensão de cisalhamento no óleo entre duas placas"
+temaId: tensao-de-cisalhamento
+pontos: 1,0 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q58.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Com a finalidade de reduzir o atrito entre duas placas planas paralelas, um óleo com viscosidade dinâmica igual a $0{,}024\ \mathrm{N\cdot s/m^2}$ e densidade de $750\ \mathrm{kg/m^3}$ é aplicado entre elas. As placas estão situadas a $1{,}5\ \mathrm{mm}$ de distância uma da outra, e a placa superior move-se com velocidade de $10{,}8\ \mathrm{km/h}$, enquanto a placa inferior permanece imóvel. Determine a tensão de cisalhamento aproximada, no Sistema Internacional, que atuará sobre o óleo. Justifique sua resposta apresentando os cálculos. Dado: $\tau = \mu\dfrac{V_0}{\varepsilon}$.
+
+**[A]** $0{,}1728\ \mathrm{N/m^2}$ &nbsp;&nbsp; **[B]** $0{,}072\ \mathrm{N/m^2}$ &nbsp;&nbsp; **[C]** $48\ \mathrm{N/m^2}$ &nbsp;&nbsp; **[D]** $17{,}28\ \mathrm{N/m^2}$ &nbsp;&nbsp; **[E]** $172{,}8\ \mathrm{N/m^2}$
+
+<Gabarito>
+**[C]** $\tau = 48\ \mathrm{N/m^2}$
+</Gabarito>
+
+<Passos>
+**Passo 1 — tudo no SI.**
+
+$$
+V_0 = 10{,}8\ \mathrm{km/h} = \frac{10{,}8}{3{,}6} = 3\ \mathrm{m/s}
+\qquad
+\varepsilon = 1{,}5\ \mathrm{mm} = 1{,}5\times10^{-3}\ \mathrm{m}
+$$
+
+**Passo 2 — a lei de Newton da viscosidade**, com perfil linear entre a placa parada e a que se move:
+
+$$
+\tau = \mu\,\frac{V_0}{\varepsilon} = 0{,}024 \times \frac{3}{1{,}5\times10^{-3}} = 0{,}024 \times 2000
+$$
+
+$$
+\boxed{\tau = 48\ \mathrm{N/m^2}}
+$$
+
+Opção **[C]**. A densidade de $750\ \mathrm{kg/m^3}$ não entra: a viscosidade dada já é a dinâmica.
+
+<Caixa tipo="dica" rotulo="De onde vêm as outras alternativas">
+
+$172{,}8$ é o resultado com $10{,}8$ tratado como $\mathrm{m/s}$; $17{,}28$ e $0{,}1728$ são o mesmo erro com a folga em escala errada. A conversão de $\mathrm{km/h}$ (dividir por $3{,}6$) é o que a questão testa — é a mesma questão do 1º EE de 2026.1 (q54), com outros números.
+
+</Caixa>
+</Passos>
