@@ -1,0 +1,75 @@
+---
+origem: "2026.2"
+tema: "Conceitos · Verdadeiro ou falso sobre propriedades e escoamentos"
+temaId: propriedades-dos-fluidos
+pontos: 0,60 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q57.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Analise as afirmativas a seguir e assinale (V) para Verdadeiro ou (F) para Falso.
+
+**a)** ( &nbsp; ) A massa específica representa a razão entre a massa e o volume ocupado pelo fluido, enquanto o peso específico relaciona o peso do fluido ao volume ocupado.
+
+**b)** ( &nbsp; ) Para um mesmo fluido submetido à mesma aceleração gravitacional, o peso específico é diretamente proporcional à sua massa específica.
+
+**c)** ( &nbsp; ) A viscosidade cinemática corresponde à razão entre a viscosidade dinâmica e a massa específica do fluido, sendo uma propriedade relevante na caracterização do escoamento.
+
+**d)** ( &nbsp; ) Um escoamento pode ser representado como unidimensional, bidimensional ou tridimensional conforme o número de coordenadas espaciais necessárias para descrever adequadamente suas características.
+
+**e)** ( &nbsp; ) Um escoamento é considerado incompressível quando sua massa específica permanece rigorosamente constante em qualquer condição de pressão e temperatura.
+
+**f)** ( &nbsp; ) O número de Reynolds é uma grandeza adimensional que relaciona os efeitos das forças inerciais e viscosas e pode ser utilizado na identificação do regime de escoamento.
+
+<Gabarito>
+**a)** V &nbsp;·&nbsp; **b)** V &nbsp;·&nbsp; **c)** V &nbsp;·&nbsp; **d)** V &nbsp;·&nbsp; **e)** F &nbsp;·&nbsp; **f)** V
+</Gabarito>
+
+<Passos>
+**a) V — são as duas definições.**
+
+$$
+\rho = \frac{m}{V}
+\qquad
+\gamma = \frac{G}{V}
+$$
+
+**b) V — é a fórmula $\gamma = \rho g$.** Com $g$ fixo, $\gamma$ é $\rho$ multiplicado por uma constante: dobrar um dobra o outro. Isso é proporcionalidade direta.
+
+**c) V — é a definição de $\nu$.**
+
+$$
+\nu = \frac{\mu}{\rho}
+$$
+
+E ela é relevante para o escoamento porque é a viscosidade que entra no número de Reynolds escrito como $Re = vD/\nu$.
+
+**d) V — é o critério da classificação geométrica.** Uni, bi ou tridimensional conforme quantas coordenadas espaciais as propriedades precisam para ser descritas.
+
+**e) F — a palavra "rigorosamente" derruba a frase.** Nenhum fluido real tem massa específica rigorosamente constante: até a água se comprime um pouco sob pressão. Um escoamento é tratado como **incompressível** quando as variações de $\rho$ são **desprezíveis** para o problema — o que vale para quase todo líquido e até para gases a baixa velocidade.
+
+**f) V — Reynolds é adimensional e compara inércia com viscosidade.**
+
+$$
+Re = \frac{\rho\,v\,D}{\mu} = \frac{\text{forças de inércia}}{\text{forças viscosas}}
+$$
+
+Com $Re$ baixo dominam as viscosas e o escoamento é laminar; com $Re$ alto dominam as de inércia e ele é turbulento.
+
+<Caixa tipo="dica" rotulo="Advérbios absolutos são o alvo">
+
+"Rigorosamente", "sempre", "qualquer condição": em questões de conceito, a palavra que torna a frase absoluta costuma ser a que a torna falsa. As definições de engenharia são quase todas aproximações com um critério de "desprezível".
+
+</Caixa>
+</Passos>
