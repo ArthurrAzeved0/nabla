@@ -1,0 +1,124 @@
+---
+origem: "2026.1"
+tema: "Perda de carga · Distribuída e localizada num trecho com cinco curvas"
+temaId: perda-total
+pontos: 1,50 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q77.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+No trecho (1)–(5) de uma instalação existem: uma entrada reentrante (1), um tê de saída lateral (2), cinco curvas $90^\circ$ raio longo (3), um registro de gaveta aberto (4) e uma saída de canalização (5). Sendo a tubulação de ferro fundido com diâmetro $= 50\ \mathrm{mm}$, determinar a perda de carga entre (1) e (5), sabendo que a vazão é $3{,}0\ \mathrm{L/s}$ e que os comprimentos dos trechos da tubulação entre (1) e (5) estão indicados na figura abaixo. Considerar: $\nu = 0{,}7\times10^{-6}\ \mathrm{m^2/s}$, $f = 0{,}023$ e $g = 9{,}81\ \mathrm{m/s^2}$. Obs.: as distâncias informadas na figura correspondem à distância total entre as respectivas conexões.
+
+| item | peça | $K$ |
+|---|---|---|
+| 1 | entrada reentrante | $1{,}0$ |
+| 2 | tê de saída lateral | $1{,}3$ |
+| 3 | curva $90^\circ$ raio longo | $0{,}4$ |
+| 4 | registro de gaveta aberto | $0{,}2$ |
+| 5 | saída de canalização | $1{,}0$ |
+
+<Figura>
+  <svg viewBox="0 0 400 290" role="img" aria-label="Reservatório com a entrada 1 no fundo; o tubo desce 2 metros até o tê 2, segue 1 metro na horizontal até uma curva, desce 1,5 metro passando pelo registro 4, faz uma curva e segue 2 metros na horizontal, curva e sobe 2,5 metros, curva e segue 1 metro, curva e desce até a saída 5. São cinco curvas, todas marcadas com o número 3">
+    {/* reservatório */}
+    <path d="M30 20 L30 80 L130 80 L130 20" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+    <rect x="31" y="35" width="98" height="44" fill="var(--accent-soft)" opacity="0.55"/>
+    <line x1="31" y1="35" x2="129" y2="35" stroke="var(--accent)" stroke-width="1.5"/>
+    {/* tubulação, parede dupla */}
+    <path d="M80 80 L80 150 L170 150 L170 240 L260 240 L260 110 L330 110 L330 165" fill="none" stroke="var(--ink-2)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M80 80 L80 150 L170 150 L170 240 L260 240 L260 110 L330 110 L330 165" fill="none" stroke="var(--accent-soft)" stroke-width="5" stroke-linejoin="round"/>
+    {/* tê em 2 e registro em 4 */}
+    <line x1="72" y1="150" x2="88" y2="150" stroke="var(--ink-2)" stroke-width="3"/>
+    <polygon points="162,188 178,188 162,202 178,202" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.3"/>
+    {/* saída 5 */}
+    <line x1="322" y1="172" x2="338" y2="172" stroke="var(--ink-2)" stroke-width="1.2"/>
+    {/* números das peças */}
+    <text x="90" y="96" font-size="12" font-weight="600" fill="var(--ink-2)">1</text>
+    <text x="58" y="155" font-size="12" font-weight="600" fill="var(--ink-2)">2</text>
+    <text x="178" y="146" font-size="12" font-weight="600" fill="var(--ink-2)">3</text>
+    <text x="146" y="200" font-size="12" font-weight="600" fill="var(--ink-2)">4</text>
+    <text x="156" y="258" font-size="12" font-weight="600" fill="var(--ink-2)">3</text>
+    <text x="266" y="258" font-size="12" font-weight="600" fill="var(--ink-2)">3</text>
+    <text x="246" y="104" font-size="12" font-weight="600" fill="var(--ink-2)">3</text>
+    <text x="338" y="106" font-size="12" font-weight="600" fill="var(--ink-2)">3</text>
+    <text x="342" y="180" font-size="12" font-weight="600" fill="var(--ink-2)">5</text>
+    {/* comprimentos */}
+    <text x="40" y="120" font-size="11" fill="var(--ink-3)">2 m</text>
+    <text x="114" y="142" font-size="11" fill="var(--ink-3)">1 m</text>
+    <text x="180" y="218" font-size="11" fill="var(--ink-3)">1,5 m</text>
+    <text x="206" y="232" font-size="11" fill="var(--ink-3)">2 m</text>
+    <text x="268" y="180" font-size="11" fill="var(--ink-3)">2,5 m</text>
+    <text x="286" y="102" font-size="11" fill="var(--ink-3)">1 m</text>
+  </svg>
+</Figura>
+
+<Gabarito>
+$\Delta h \approx 1{,}20\ \mathrm{m}$ ($0{,}55\ \mathrm{m}$ distribuída e $0{,}65\ \mathrm{m}$ localizada)
+</Gabarito>
+
+<Passos>
+**Passo 1 — a velocidade e a carga cinética.**
+
+$$
+A = \frac{\pi D^2}{4} = \frac{\pi \times 0{,}05^2}{4} = 1{,}963\times10^{-3}\ \mathrm{m^2}
+\qquad
+v = \frac{Q}{A} = \frac{3{,}0\times10^{-3}}{1{,}963\times10^{-3}} = 1{,}528\ \mathrm{m/s}
+$$
+
+$$
+\frac{v^2}{2g} = \frac{1{,}528^2}{2 \times 9{,}81} = 0{,}119\ \mathrm{m}
+$$
+
+**Passo 2 — o regime.** O $\nu$ dado serve para confirmar que o $f$ dado é coerente:
+
+$$
+Re = \frac{v\,D}{\nu} = \frac{1{,}528 \times 0{,}05}{0{,}7\times10^{-6}} \approx 1{,}09\times10^5
+$$
+
+Turbulento. O $f = 0{,}023$ do enunciado é o do diagrama de Moody para o ferro fundido nesse $Re$; o $64/Re$ do formulário só valeria em regime laminar.
+
+**Passo 3 — o comprimento total.** Somando os trechos da figura:
+
+$$
+L = 2 + 1 + 1{,}5 + 2 + 2{,}5 + 1 = 10\ \mathrm{m}
+$$
+
+**Passo 4 — a soma dos $K$.** Uma peça de cada, menos as curvas, que são cinco:
+
+$$
+\sum K = \underbrace{1{,}0}_{1} + \underbrace{1{,}3}_{2} + \underbrace{5 \times 0{,}4}_{3} + \underbrace{0{,}2}_{4} + \underbrace{1{,}0}_{5} = 5{,}5
+$$
+
+**Passo 5 — a perda de carga total**, pela fórmula do formulário:
+
+$$
+\Delta h = \left(f\,\frac{L}{D} + \sum K\right)\frac{v^2}{2g}
+= \left(0{,}023 \times \frac{10}{0{,}05} + 5{,}5\right) \times 0{,}119
+$$
+
+$$
+\Delta h = (4{,}6 + 5{,}5) \times 0{,}119
+\qquad\Longrightarrow\qquad
+\boxed{\Delta h \approx 1{,}20\ \mathrm{m}}
+$$
+
+Separando: a distribuída é $4{,}6 \times 0{,}119 = 0{,}55\ \mathrm{m}$ e a localizada é $5{,}5 \times 0{,}119 = 0{,}65\ \mathrm{m}$.
+
+**Leitura física.** Num trecho curto (só $10\ \mathrm{m}$) e cheio de peças, as **perdas localizadas superam as distribuídas**. Só as cinco curvas ($2{,}0$) já valem quase metade do atrito ao longo do tubo inteiro ($4{,}6$). Em adutoras longas acontece o contrário, e é aí que as localizadas costumam ser desprezadas.
+
+<Caixa tipo="dica" rotulo="Contar as peças na figura, não só no enunciado">
+
+O enunciado diz "cinco curvas", mas a tabela lista a curva uma vez só, como item 3. Quem soma a tabela linha a linha usa $\sum K = 3{,}9$ e acha $1{,}01\ \mathrm{m}$. O número 3 aparece **cinco vezes** no desenho: é ele que manda.
+
+</Caixa>
+</Passos>
