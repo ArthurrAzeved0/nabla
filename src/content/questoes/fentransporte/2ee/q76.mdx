@@ -1,0 +1,144 @@
+---
+origem: "2026.1"
+tema: "Quantidade de movimento · Força da água num cotovelo vertical preso por luvas"
+temaId: quantidade-de-movimento
+pontos: 1,50 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q76.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+O cotovelo da figura está preso por duas luvas elásticas para que não seja influenciado pelo resto da instalação. Sendo a área de sua seção $20\ \mathrm{cm^2}$ e a vazão $20\ \mathrm{L/s}$, quais serão as componentes horizontal, vertical e a resultante da força causada pelo escoamento do fluido, se a perda de carga é $1{,}0\ \mathrm{m}$ ($\rho = 1000\ \mathrm{kg/m^3}$; $g = 10\ \mathrm{m/s^2}$)?
+
+<Figura>
+  <svg viewBox="0 0 400 270" role="img" aria-label="Cotovelo de 90 graus num plano vertical: a água entra por baixo, subindo pelo ramo vertical, onde um manômetro marca 200 kPa na seção 1; faz a curva e sai pelo ramo horizontal, seção 2, um metro acima. Cada ramo tem uma luva elástica">
+    <path d="M140 250 L140 100 A40 40 0 0 1 180 60 L350 60" fill="none" stroke="var(--ink-2)" stroke-width="24" stroke-linejoin="round"/>
+    <path d="M140 250 L140 100 A40 40 0 0 1 180 60 L350 60" fill="none" stroke="var(--accent-soft)" stroke-width="20" stroke-linejoin="round"/>
+    {/* luvas elásticas */}
+    <g stroke="var(--ink-2)" stroke-width="1.2">
+      <line x1="127" y1="212" x2="153" y2="212"/><line x1="127" y1="218" x2="153" y2="218"/>
+      <line x1="127" y1="224" x2="153" y2="224"/><line x1="127" y1="230" x2="153" y2="230"/>
+      <line x1="127" y1="236" x2="153" y2="236"/>
+      <line x1="290" y1="47" x2="290" y2="73"/><line x1="296" y1="47" x2="296" y2="73"/>
+      <line x1="302" y1="47" x2="302" y2="73"/><line x1="308" y1="47" x2="308" y2="73"/>
+      <line x1="314" y1="47" x2="314" y2="73"/>
+    </g>
+    {/* sentido do escoamento */}
+    <line x1="140" y1="200" x2="140" y2="160" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="140,152 135,163 145,163" fill="var(--accent)"/>
+    <line x1="220" y1="60" x2="260" y2="60" stroke="var(--accent)" stroke-width="1.8"/>
+    <polygon points="268,60 257,55 257,65" fill="var(--accent)"/>
+    {/* manômetro na seção 1 */}
+    <line x1="128" y1="190" x2="96" y2="190" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <circle cx="84" cy="190" r="12" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <line x1="78" y1="196" x2="90" y2="184" stroke="var(--ink-2)" stroke-width="1.2"/>
+    <text x="54" y="220" font-size="12" fill="var(--ink-2)">200 kPa</text>
+    <text x="160" y="194" font-size="13" font-weight="600" fill="var(--ink-2)">1</text>
+    <text x="330" y="40" font-size="13" font-weight="600" fill="var(--ink-2)">2</text>
+    <text x="230" y="130" font-size="12" fill="var(--ink-3)">plano vertical</text>
+    {/* cota de 1 m */}
+    <line x1="30" y1="60" x2="124" y2="60" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="30" y1="190" x2="70" y2="190" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="40" y1="66" x2="40" y2="184" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="40,60 37,69 43,69" fill="var(--ink-3)"/>
+    <polygon points="40,190 37,181 43,181" fill="var(--ink-3)"/>
+    <text x="46" y="130" font-size="12" fill="var(--ink-3)">1 m</text>
+  </svg>
+  <figcaption>
+
+A água entra **por baixo**, na seção 1, onde está o manômetro, sobe, faz a curva e sai na horizontal pela seção 2, $1\ \mathrm{m}$ acima de 1. As luvas elásticas isolam o cotovelo: a força calculada é toda do escoamento.
+
+  </figcaption>
+</Figura>
+
+<Gabarito>
+$F_x = 560\ \mathrm{N}$ (para trás, contra o sentido da saída), $F_y = 600\ \mathrm{N}$ (para cima) e resultante $F \approx 821\ \mathrm{N}$, a $47^\circ$ da horizontal
+</Gabarito>
+
+<Passos>
+**Passo 1 — as velocidades.** A seção é a mesma na entrada e na saída:
+
+$$
+v = \frac{Q}{A} = \frac{0{,}020}{20\times10^{-4}} = 10\ \mathrm{m/s}
+\qquad
+Q_m = \rho\,Q = 1000 \times 0{,}020 = 20\ \mathrm{kg/s}
+$$
+
+Muda só a **direção**: $\vec v_1 = 10\,\hat\jmath$ (para cima) e $\vec v_2 = 10\,\hat\imath$ (para a direita).
+
+**Passo 2 — a pressão na saída, pela equação da energia.** As velocidades são iguais e se cancelam:
+
+$$
+\frac{p_1}{\gamma} + z_1 = \frac{p_2}{\gamma} + z_2 + H_{p}
+\qquad\Longrightarrow\qquad
+p_2 = p_1 - \gamma\,(z_2 - z_1) - \gamma\,H_p
+$$
+
+$$
+p_2 = 200\,000 - 10\,000 \times 1 - 10\,000 \times 1{,}0 = 180\ \mathrm{kPa}
+$$
+
+**Passo 3 — as forças de pressão, cada uma empurrando para dentro do volume de controle.**
+
+$$
+p_1 A = 200\,000 \times 0{,}002 = 400\ \mathrm{N}\ (\text{para cima, em }1)
+\qquad
+p_2 A = 180\,000 \times 0{,}002 = 360\ \mathrm{N}\ (\text{para a esquerda, em }2)
+$$
+
+**Passo 4 — a equação da quantidade de movimento.** Com $\vec F_s$ a força que o fluido exerce sobre o cotovelo, a do formulário (normais $\vec n$ apontando para fora do volume de controle, $\vec n_1 = -\hat\jmath$ e $\vec n_2 = +\hat\imath$):
+
+$$
+\vec F_s = -\left[p_1A_1\vec n_1 + p_2A_2\vec n_2 + Q_m(\vec v_2 - \vec v_1)\right]
+$$
+
+Componente a componente:
+
+$$
+x:\quad F_{s,x} = -\left[0 + 360 + 20(10 - 0)\right] = -560\ \mathrm{N}
+$$
+
+$$
+y:\quad F_{s,y} = -\left[-400 + 0 + 20(0 - 10)\right] = +600\ \mathrm{N}
+$$
+
+O peso da água no cotovelo fica de fora: o enunciado não dá o volume, e a pergunta é a força **causada pelo escoamento**.
+
+**Passo 5 — a resultante.**
+
+$$
+\boxed{F_x = 560\ \mathrm{N}\ (\leftarrow),\qquad F_y = 600\ \mathrm{N}\ (\uparrow)}
+$$
+
+$$
+F = \sqrt{560^2 + 600^2} \approx 821\ \mathrm{N}
+\qquad
+\theta = \arctan\frac{600}{560} \approx 47^\circ
+$$
+
+acima da horizontal, apontando para cima e para trás.
+
+**Leitura física.** A água chega subindo e é obrigada a virar: ela empurra o cotovelo **para cima** (a pressão de entrada mais a quantidade de movimento que perde na vertical) e **para trás** (a reação ao jato que sai para a direita, mais a pressão na saída). Cada componente tem duas parcelas de mesmo sentido — $400 + 200$ e $360 + 200$ —, por isso os dois números são parecidos.
+
+<Caixa tipo="macete" rotulo="Montar a equação sem errar o sinal">
+
+Três regras resolvem quase todo problema de força em curva ou redução:
+
+1. pressão **sempre empurra para dentro** do volume de controle;
+2. o termo de quantidade de movimento é **saída menos entrada**, $Q_m(\vec v_2 - \vec v_1)$;
+3. a força no suporte é **o contrário** da que o suporte faz no fluido.
+
+Faça uma componente por vez e confira o sentido pela intuição no fim.
+
+</Caixa>
+</Passos>
