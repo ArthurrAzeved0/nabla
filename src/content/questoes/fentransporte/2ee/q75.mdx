@@ -1,0 +1,124 @@
+---
+origem: "2026.1"
+tema: "Análise dimensional · Força de um fluido sobre um corpo parcialmente submerso"
+temaId: teorema-dos-pi
+pontos: 1,50 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q75.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Seja $F$ a força total exercida por um fluido sobre um corpo parcialmente submerso. Considerando que a interação entre o líquido e o sólido dependerá da velocidade relativa ($v$), da viscosidade do líquido ($\mu = FL^{-2}T$), da massa específica ($\rho$), da forma do corpo ($l$) e da gravidade ($g$), com função representativa $f(v, \rho, l, g, \mu, F) = 0$. Encontre os grupos adimensionais para este fenômeno.
+
+<Gabarito>
+$$
+\pi_1 = \frac{F}{\rho\,v^2\,l^2},
+\qquad
+\pi_2 = \frac{\mu}{\rho\,v\,l} = \frac{1}{Re},
+\qquad
+\pi_3 = \frac{g\,l}{v^2} = \frac{1}{Fr^2}
+$$
+</Gabarito>
+
+<Passos>
+**Passo 1 — as dimensões no sistema $FLT$**, que é o do enunciado (ele dá $\mu = FL^{-2}T$):
+
+| grandeza | dimensão |
+|---|---|
+| $F$ | $F$ |
+| $v$ | $LT^{-1}$ |
+| $\rho$ | $FL^{-4}T^2$ |
+| $l$ | $L$ |
+| $g$ | $LT^{-2}$ |
+| $\mu$ | $FL^{-2}T$ |
+
+A massa específica sai de $\rho = m/V$ com $m = F/a$: $\dfrac{F\,L^{-1}T^2}{L^3} = FL^{-4}T^2$.
+
+**Passo 2 — quantos grupos (teorema dos $\pi$).** São $n = 6$ grandezas e $r = 3$ dimensões fundamentais ($F$, $L$, $T$):
+
+$$
+n - r = 6 - 3 = 3 \text{ grupos adimensionais}
+$$
+
+**Passo 3 — a base.** Escolhem-se três grandezas que, juntas, contenham $F$, $L$ e $T$ e não formem um adimensional entre si: $\rho$, $v$ e $l$ (uma do fluido, uma cinemática, uma geométrica). Cada grupo é a base elevada a expoentes, vezes uma das grandezas restantes.
+
+**Passo 4 — $\pi_1$, com $F$.** $\pi_1 = \rho^a v^b l^c F$:
+
+$$
+(FL^{-4}T^2)^a\,(LT^{-1})^b\,L^c\,F = F^0L^0T^0
+$$
+
+$$
+F:\ a + 1 = 0
+\qquad
+T:\ 2a - b = 0
+\qquad
+L:\ -4a + b + c = 0
+$$
+
+$a = -1$, $b = -2$, $c = -2$:
+
+$$
+\pi_1 = \frac{F}{\rho\,v^2\,l^2}
+$$
+
+**Passo 5 — $\pi_2$, com $\mu$.** $\pi_2 = \rho^a v^b l^c \mu$:
+
+$$
+F:\ a + 1 = 0
+\qquad
+T:\ 2a - b + 1 = 0
+\qquad
+L:\ -4a + b + c - 2 = 0
+$$
+
+$a = -1$, $b = -1$, $c = -1$:
+
+$$
+\pi_2 = \frac{\mu}{\rho\,v\,l} = \frac{1}{Re}
+$$
+
+**Passo 6 — $\pi_3$, com $g$.** $\pi_3 = \rho^a v^b l^c g$:
+
+$$
+F:\ a = 0
+\qquad
+T:\ -b - 2 = 0
+\qquad
+L:\ b + c + 1 = 0
+$$
+
+$a = 0$, $b = -2$, $c = 1$:
+
+$$
+\pi_3 = \frac{g\,l}{v^2} = \frac{1}{Fr^2}
+$$
+
+**Passo 7 — a função adimensional.** A relação entre seis grandezas vira uma relação entre três grupos:
+
+$$
+\boxed{\;\frac{F}{\rho\,v^2\,l^2} = \phi\!\left(Re,\ Fr\right)\;}
+$$
+
+<Caixa tipo="dica" rotulo="Por que aparecem Reynolds e Froude juntos">
+
+O corpo está **parcialmente** submerso: além do atrito viscoso (governado por $Re$), ele forma ondas na superfície livre, e ondas são governadas pela gravidade (por $Fr$). É o caso clássico do casco de navio — e a razão de ensaios de modelos de navio serem difíceis: é quase impossível igualar $Re$ e $Fr$ ao mesmo tempo com o mesmo fluido. A q64 desta unidade explora exatamente isso.
+
+</Caixa>
+
+<Caixa tipo="macete" rotulo="Conferir cada grupo sem refazer a conta">
+
+Em $\pi_1$: $\rho v^2$ é pressão, vezes $l^2$ é força — força sobre força ✔. Em $\pi_2$: $\rho v l/\mu$ é o Reynolds ✔. Em $\pi_3$: $v^2$ e $gl$ são ambos velocidade ao quadrado ✔. Os grupos podem ser invertidos ou elevados a potências; qualquer combinação deles também é resposta válida.
+
+</Caixa>
+</Passos>
