@@ -25,6 +25,14 @@ novos. As `2.0.0-alpha.*` são as fases da migração, uma tag por fase; a `2.0.
 
 ### Adicionado
 
+- **O 2º EE de 2026.1 de Fenômenos, do Prof. Marcos Barbosa.** Sete questões
+  novas, q72 a q78 do 2º EE: as hipóteses de Bernoulli, o termo convectivo de
+  Navier-Stokes, a vazão num tubo inclinado em unidades técnicas
+  ($28{,}0\ \mathrm{L/s}$), os grupos adimensionais de um corpo parcialmente
+  submerso ($Re$ e $Fr$), a força num cotovelo vertical preso por luvas
+  ($560$ e $600\ \mathrm{N}$), a perda de carga num trecho com cinco curvas
+  ($1{,}20\ \mathrm{m}$) e o forno de duas camadas ($1480\ \mathrm{kcal/h}$ por
+  $\mathrm{m^2}$). Nenhuma delas repete a 2ª lista de 2026.2.
 - **Os 1º EE de 2026.1 e 2026.2 de Fenômenos, do Prof. Marcos Barbosa.** Nove
   questões novas no 1º EE, q52 a q60: os conceitos de propriedades e de
   classificação dos escoamentos, as duas versões do óleo entre placas
