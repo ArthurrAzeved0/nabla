@@ -1,0 +1,57 @@
+---
+origem: "2026.1"
+tema: "Navier-Stokes · O significado do termo convectivo"
+temaId: navier-stokes
+pontos: 0,25 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q73.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Considere a forma vetorial da equação de Navier-Stokes:
+
+$$
+\rho\left(\frac{\partial\vec V}{\partial t} + \vec V\cdot\nabla\vec V\right) = -\nabla P + \rho\vec g + \mu\nabla^2\vec V
+$$
+
+Qual alternativa apresenta a interpretação física correta do termo $\vec V\cdot\nabla\vec V$?
+
+**[A]** Representa a variação temporal da velocidade em um ponto fixo.
+
+**[B]** Representa a difusão viscosa da quantidade de movimento.
+
+**[C]** Representa a aceleração convectiva decorrente da variação espacial da velocidade.
+
+**[D]** Representa a força de pressão atuando sobre o fluido.
+
+**[E]** Representa a ação das forças gravitacionais.
+
+<Gabarito>
+**[C]** A aceleração convectiva
+</Gabarito>
+
+<Passos>
+**Cada termo da equação tem um nome**, e as cinco alternativas são exatamente esses cinco nomes:
+
+| termo | significado | alternativa |
+|---|---|---|
+| $\dfrac{\partial\vec V}{\partial t}$ | aceleração **local**: variação no tempo num ponto fixo | [A] |
+| $\vec V\cdot\nabla\vec V$ | aceleração **convectiva**: variação de um ponto a outro | **[C]** |
+| $-\nabla P$ | força de **pressão** | [D] |
+| $\rho\vec g$ | força **gravitacional** | [E] |
+| $\mu\nabla^2\vec V$ | **difusão viscosa** da quantidade de movimento | [B] |
+
+**Por que "convectiva".** Mesmo num escoamento permanente ($\partial\vec V/\partial t = 0$), uma partícula acelera se for levada para uma região onde a velocidade é diferente — como a água que acelera ao entrar num bocal. O termo $\vec V\cdot\nabla\vec V$ mede isso: o gradiente $\nabla\vec V$ diz quanto a velocidade muda no espaço, e $\vec V$ diz com que rapidez a partícula percorre esse espaço.
+
+A soma dos dois termos do parêntese é a **derivada material** $\dfrac{D\vec V}{Dt}$, a aceleração de quem acompanha a partícula.
+</Passos>
