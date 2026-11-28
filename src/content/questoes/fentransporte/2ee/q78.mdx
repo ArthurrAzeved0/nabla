@@ -1,0 +1,102 @@
+---
+origem: "2026.1"
+tema: "Forno · Duas camadas de tijolo, o fluxo de calor e as temperaturas das faces"
+temaId: paredes-compostas
+pontos: 1,50 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q78.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+Uma parede de um forno é constituída de duas camadas: $0{,}20\ \mathrm{m}$ de tijolo refratário ($k = 1{,}2\ \mathrm{kcal/h\cdot m\cdot{}^\circ C}$) e $0{,}13\ \mathrm{m}$ de tijolo isolante ($k = 0{,}15\ \mathrm{kcal/h\cdot m\cdot{}^\circ C}$). A temperatura dos gases dentro do forno é $1700\ ^\circ\mathrm{C}$ e o coeficiente de película na parede interna é $58\ \mathrm{kcal/h\cdot m^2\cdot{}^\circ C}$. A temperatura ambiente é $27\ ^\circ\mathrm{C}$ e o coeficiente de película na parede externa é $12{,}5\ \mathrm{kcal/h\cdot m^2\cdot{}^\circ C}$. Calcular:
+
+**a)** o fluxo de calor por $\mathrm{m^2}$ de parede;
+
+**b)** a temperatura nas superfícies interna e externa da parede.
+
+<Gabarito>
+**a)** $q \approx 1480\ \mathrm{kcal/h}$ por $\mathrm{m^2}$
+
+**b)** face interna $\approx 1674{,}5\ ^\circ\mathrm{C}$ e face externa $\approx 145{,}4\ ^\circ\mathrm{C}$ (entre as camadas, $\approx 1427{,}9\ ^\circ\mathrm{C}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — o circuito térmico.** O calor sai dos gases e atravessa quatro resistências **em série**: a película interna, o refratário, o isolante e a película externa. Para $A = 1\ \mathrm{m^2}$:
+
+$$
+R_{conv} = \frac{1}{hA}
+\qquad
+R_{cond} = \frac{L}{kA}
+$$
+
+**Passo 2 — as quatro resistências** (em $\mathrm{h\cdot{}^\circ C/kcal}$):
+
+$$
+R_i = \frac{1}{58} = 0{,}0172
+\qquad
+R_1 = \frac{0{,}20}{1{,}2} = 0{,}1667
+$$
+
+$$
+R_2 = \frac{0{,}13}{0{,}15} = 0{,}8667
+\qquad
+R_e = \frac{1}{12{,}5} = 0{,}0800
+$$
+
+$$
+R_t = 0{,}0172 + 0{,}1667 + 0{,}8667 + 0{,}0800 = 1{,}1306
+$$
+
+**Passo 3 — a) o fluxo.** A diferença total de temperatura dividida pela resistência total:
+
+$$
+q = \frac{\Delta T}{R_t} = \frac{1700 - 27}{1{,}1306}
+\qquad\Longrightarrow\qquad
+\boxed{q \approx 1480\ \mathrm{kcal/h \text{ por } m^2}}
+$$
+
+**Passo 4 — b) as temperaturas.** O fluxo é o mesmo em todas as resistências; cada uma "consome" uma queda $q\,R$.
+
+Face interna — descontando a película interna dos $1700\ ^\circ\mathrm{C}$ dos gases:
+
+$$
+T_{si} = 1700 - q\,R_i = 1700 - 1480 \times 0{,}0172
+\qquad\Longrightarrow\qquad
+\boxed{T_{si} \approx 1674{,}5\ ^\circ\mathrm{C}}
+$$
+
+Face externa — somando a película externa aos $27\ ^\circ\mathrm{C}$ do ambiente:
+
+$$
+T_{se} = 27 + q\,R_e = 27 + 1480 \times 0{,}08
+\qquad\Longrightarrow\qquad
+\boxed{T_{se} \approx 145{,}4\ ^\circ\mathrm{C}}
+$$
+
+**Conferência pela interface.** Atravessando o refratário a partir da face interna e o isolante a partir dela, as duas contas têm de se encontrar:
+
+$$
+T_{int} = 1674{,}5 - 1480 \times 0{,}1667 = 1427{,}9\ ^\circ\mathrm{C}
+\qquad
+1427{,}9 - 1480 \times 0{,}8667 = 145{,}4\ ^\circ\mathrm{C}
+\;\;\checkmark
+$$
+
+**Leitura física.** O isolante tem só $0{,}13\ \mathrm{m}$, mas responde por $77\,\%$ da resistência total — e por quase $1300\ ^\circ\mathrm{C}$ da queda. O refratário está ali para **suportar** a temperatura, não para isolar; quem isola é o tijolo de $k$ baixo.
+
+<Caixa tipo="macete" rotulo="A maior queda de temperatura está na maior resistência">
+
+Em série, a queda em cada camada é proporcional à sua resistência. Antes de calcular, dá para prever onde a temperatura despenca: basta comparar os $R$. Aqui $R_2$ é cinco vezes $R_1$, e a queda no isolante é cinco vezes a do refratário ($1282$ contra $247\ ^\circ\mathrm{C}$).
+
+</Caixa>
+</Passos>
