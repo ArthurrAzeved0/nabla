@@ -1,0 +1,107 @@
+---
+origem: "2026.1"
+tema: "Bernoulli · Vazão num tubo inclinado que se estreita"
+temaId: equacao-de-bernoulli
+pontos: 1,50 pt
+---
+
+{/* **************************************************************************
+     * Nabla — Guia do aluno POLI/UPE                                 q74.mdx *
+     *------------------------------------------------------------------------*
+     * Copyright © 2026  Arthur Epifanio De Azevedo                           *
+     * Todos os direitos reservados.                                          *
+     *                                                                        *
+     * Software proprietário — ver arquivo LICENSE.                           *
+     *                                                                        *
+     * Autor:   Arthur Epifanio De Azevedo                                    *
+     * Página:  https://github.com/ArthurrAzeved0                             *
+     * Contato: arthur_azevedo05@hotmail.com                                  *
+     ************************************************************************** */}
+
+A água ($\gamma_{H_2O} = 1000\ \mathrm{kgf/m^3}$) passa pelo tubo indicado na figura abaixo, cuja seção varia do ponto 1 para o ponto 2, de $100\ \mathrm{cm^2}$ para $50\ \mathrm{cm^2}$. Em 1, a pressão é de $0{,}5\ \mathrm{kgf/cm^2}$ e a elevação $100\ \mathrm{m}$, ao passo que, no ponto 2, a pressão é de $3{,}38\ \mathrm{kgf/cm^2}$ na elevação $70\ \mathrm{m}$. Calcular a vazão em litros por segundo. Considere $g = 9{,}81\ \mathrm{m/s^2}$ e despreze a perda de carga entre 1 e 2.
+
+<Figura>
+  <svg viewBox="0 0 420 240" role="img" aria-label="Tubo inclinado que desce do ponto 1, à esquerda, com 100 centímetros quadrados, 0,5 kgf por centímetro quadrado e elevação de 100 metros, até o ponto 2, à direita, com 50 centímetros quadrados, 3,38 kgf por centímetro quadrado e elevação de 70 metros">
+    <polygon points="93.9,46.6 332.8,120.4 327.2,139.6 86.1,73.4" fill="var(--accent-soft)" opacity="0.6" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <ellipse cx="90" cy="60" rx="6" ry="14" transform="rotate(16 90 60)" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.4"/>
+    <g transform="translate(170 83.6) rotate(16.26)">
+      <line x1="0" y1="0" x2="72" y2="0" stroke="var(--accent)" stroke-width="1.8"/>
+      <polygon points="82,0 70,-5 70,5" fill="var(--accent)"/>
+    </g>
+    {/* dados das seções */}
+    <text x="62" y="26" font-size="12" fill="var(--ink-2)">1 · A₁ = 100 cm²</text>
+    <text x="74" y="40" font-size="11" fill="var(--ink-3)">p₁ = 0,5 kgf/cm²</text>
+    <text x="300" y="88" font-size="12" fill="var(--ink-2)">2 · A₂ = 50 cm²</text>
+    <text x="300" y="102" font-size="11" fill="var(--ink-3)">p₂ = 3,38 kgf/cm²</text>
+    {/* referência e cotas */}
+    <line x1="20" y1="212" x2="400" y2="212" stroke="var(--ink-2)" stroke-width="1.6"/>
+    <line x1="40" y1="60" x2="84" y2="60" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="50" y1="66" x2="50" y2="206" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="50,60 47,69 53,69" fill="var(--ink-3)"/>
+    <polygon points="50,212 47,203 53,203" fill="var(--ink-3)"/>
+    <text x="56" y="150" font-size="12" fill="var(--ink-3)">100 m</text>
+    <line x1="336" y1="130" x2="380" y2="130" stroke="var(--ink-3)" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <line x1="370" y1="136" x2="370" y2="206" stroke="var(--ink-3)" stroke-width="1"/>
+    <polygon points="370,130 367,139 373,139" fill="var(--ink-3)"/>
+    <polygon points="370,212 367,203 373,203" fill="var(--ink-3)"/>
+    <text x="376" y="176" font-size="12" fill="var(--ink-3)">70 m</text>
+  </svg>
+</Figura>
+
+<Gabarito>
+$Q \approx 28{,}0\ \mathrm{L/s}$ ($v_1 \approx 2{,}80\ \mathrm{m/s}$, $v_2 \approx 5{,}60\ \mathrm{m/s}$)
+</Gabarito>
+
+<Passos>
+**Passo 1 — as cargas de pressão.** Com $\gamma$ em $\mathrm{kgf/m^3}$, a pressão tem de estar em $\mathrm{kgf/m^2}$; como $1\ \mathrm{m^2} = 10^4\ \mathrm{cm^2}$:
+
+$$
+\frac{p_1}{\gamma} = \frac{0{,}5 \times 10^4}{1000} = 5\ \mathrm{m}
+\qquad
+\frac{p_2}{\gamma} = \frac{3{,}38 \times 10^4}{1000} = 33{,}8\ \mathrm{m}
+$$
+
+A grande vantagem das unidades técnicas: a carga de pressão sai direto em metros, sem passar por $g$.
+
+**Passo 2 — a continuidade liga as duas velocidades.**
+
+$$
+v_1 A_1 = v_2 A_2
+\qquad\Longrightarrow\qquad
+v_2 = v_1\,\frac{100}{50} = 2\,v_1
+$$
+
+**Passo 3 — Bernoulli entre 1 e 2.**
+
+$$
+z_1 + \frac{p_1}{\gamma} + \frac{v_1^2}{2g} = z_2 + \frac{p_2}{\gamma} + \frac{v_2^2}{2g}
+$$
+
+$$
+100 + 5 + \frac{v_1^2}{2g} = 70 + 33{,}8 + \frac{4v_1^2}{2g}
+$$
+
+$$
+\frac{3v_1^2}{2g} = 105 - 103{,}8 = 1{,}2\ \mathrm{m}
+\qquad\Longrightarrow\qquad
+v_1^2 = \frac{2 \times 9{,}81 \times 1{,}2}{3} = 7{,}848
+$$
+
+$$
+v_1 = 2{,}80\ \mathrm{m/s}
+\qquad
+v_2 = 5{,}60\ \mathrm{m/s}
+$$
+
+**Passo 4 — a vazão.**
+
+$$
+Q = v_1 A_1 = 2{,}80 \times 100\times10^{-4} = 0{,}0280\ \mathrm{m^3/s}
+\qquad\Longrightarrow\qquad
+\boxed{Q \approx 28{,}0\ \mathrm{L/s}}
+$$
+
+**Conferência pela seção 2:** $5{,}60 \times 50\times10^{-4} = 0{,}0280\ \mathrm{m^3/s}$ ✔
+
+**Leitura física.** A água desce $30\ \mathrm{m}$, mas a pressão sobe quase o mesmo ($28{,}8\ \mathrm{m}$ de carga). Só $1{,}2\ \mathrm{m}$ dos $30$ viram velocidade — é essa pequena diferença que define a vazão inteira, e por isso um arredondamento nas cargas de pressão estraga o resultado.
+</Passos>
